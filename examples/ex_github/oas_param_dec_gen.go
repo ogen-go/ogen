@@ -3728,6 +3728,76 @@ func decodeActionsListArtifactsForRepoParams(r *http.Request) (ActionsListArtifa
 			return params, fmt.Errorf("path parameter 'repo' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -3793,6 +3863,76 @@ func decodeActionsListEnvironmentSecretsParams(r *http.Request) (ActionsListEnvi
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'environment_name' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -3893,6 +4033,111 @@ func decodeActionsListJobsForWorkflowRunParams(r *http.Request) (ActionsListJobs
 			return params, fmt.Errorf("path parameter 'run_id' not specified")
 		}
 	}
+	// Decode param "filter" located in "Query".
+	{
+		values, ok := r.URL.Query()["filter"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsFilterValue ActionsListJobsForWorkflowRunFilter
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsFilterValue = ActionsListJobsForWorkflowRunFilter(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Filter.SetTo(ParamsFilterValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -3927,6 +4172,76 @@ func decodeActionsListOrgSecretsParams(r *http.Request) (ActionsListOrgSecretsPa
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'org' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -3996,6 +4311,76 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reque
 			return params, fmt.Errorf("path parameter 'runner_group_id' not specified")
 		}
 	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -4063,6 +4448,76 @@ func decodeActionsListRepoSecretsParams(r *http.Request) (ActionsListRepoSecrets
 			return params, fmt.Errorf("path parameter 'repo' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -4128,6 +4583,76 @@ func decodeActionsListRepoWorkflowsParams(r *http.Request) (ActionsListRepoWorkf
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'repo' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -4300,6 +4825,76 @@ func decodeActionsListSelectedReposForOrgSecretParams(r *http.Request) (ActionsL
 			return params, fmt.Errorf("path parameter 'secret_name' not specified")
 		}
 	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -4334,6 +4929,76 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'org' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -4372,6 +5037,76 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(r *http.Request) (Actio
 			return params, fmt.Errorf("path parameter 'org' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -4406,6 +5141,76 @@ func decodeActionsListSelfHostedRunnersForOrgParams(r *http.Request) (ActionsLis
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'org' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -4475,6 +5280,76 @@ func decodeActionsListSelfHostedRunnersForRepoParams(r *http.Request) (ActionsLi
 			return params, fmt.Errorf("path parameter 'repo' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -4540,6 +5415,76 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(r *http.Request) (Act
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'runner_group_id' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -4640,6 +5585,76 @@ func decodeActionsListWorkflowRunArtifactsParams(r *http.Request) (ActionsListWo
 			return params, fmt.Errorf("path parameter 'run_id' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -4705,6 +5720,251 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'repo' not specified")
+		}
+	}
+	// Decode param "actor" located in "Query".
+	{
+		values, ok := r.URL.Query()["actor"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsActorValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsActorValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Actor.SetTo(ParamsActorValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "branch" located in "Query".
+	{
+		values, ok := r.URL.Query()["branch"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsBranchValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsBranchValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Branch.SetTo(ParamsBranchValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "event" located in "Query".
+	{
+		values, ok := r.URL.Query()["event"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsEventValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsEventValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Event.SetTo(ParamsEventValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "status" located in "Query".
+	{
+		values, ok := r.URL.Query()["status"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsStatusValue ActionsListWorkflowRunsForRepoStatus
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsStatusValue = ActionsListWorkflowRunsForRepoStatus(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Status.SetTo(ParamsStatusValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "created" located in "Query".
+	{
+		values, ok := r.URL.Query()["created"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsCreatedValue time.Time
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToTime(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsCreatedValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Created.SetTo(ParamsCreatedValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -6052,6 +7312,76 @@ func decodeActivityListEventsForAuthenticatedUserParams(r *http.Request) (Activi
 			return params, fmt.Errorf("path parameter 'username' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -6117,6 +7447,151 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(r *http.Request) (Act
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'org' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeActivityListPublicEventsParams(r *http.Request) (ActivityListPublicEventsParams, error) {
+	var params ActivityListPublicEventsParams
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -6186,6 +7661,76 @@ func decodeActivityListPublicEventsForRepoNetworkParams(r *http.Request) (Activi
 			return params, fmt.Errorf("path parameter 'repo' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -6220,6 +7765,76 @@ func decodeActivityListPublicEventsForUserParams(r *http.Request) (ActivityListP
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'username' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -6258,6 +7873,76 @@ func decodeActivityListPublicOrgEventsParams(r *http.Request) (ActivityListPubli
 			return params, fmt.Errorf("path parameter 'org' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -6294,6 +7979,76 @@ func decodeActivityListReceivedEventsForUserParams(r *http.Request) (ActivityLis
 			return params, fmt.Errorf("path parameter 'username' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -6328,6 +8083,76 @@ func decodeActivityListReceivedPublicEventsForUserParams(r *http.Request) (Activ
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'username' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -6397,6 +8222,76 @@ func decodeActivityListRepoEventsParams(r *http.Request) (ActivityListRepoEvents
 			return params, fmt.Errorf("path parameter 'repo' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -6464,6 +8359,361 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 			return params, fmt.Errorf("path parameter 'repo' not specified")
 		}
 	}
+	// Decode param "all" located in "Query".
+	{
+		values, ok := r.URL.Query()["all"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsAllValue bool
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsAllValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.All.SetTo(ParamsAllValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "participating" located in "Query".
+	{
+		values, ok := r.URL.Query()["participating"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsParticipatingValue bool
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsParticipatingValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Participating.SetTo(ParamsParticipatingValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "since" located in "Query".
+	{
+		values, ok := r.URL.Query()["since"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsSinceValue time.Time
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToTime(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsSinceValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Since.SetTo(ParamsSinceValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "before" located in "Query".
+	{
+		values, ok := r.URL.Query()["before"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsBeforeValue time.Time
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToTime(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsBeforeValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Before.SetTo(ParamsBeforeValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeActivityListReposStarredByAuthenticatedUserParams(r *http.Request) (ActivityListReposStarredByAuthenticatedUserParams, error) {
+	var params ActivityListReposStarredByAuthenticatedUserParams
+	// Decode param "sort" located in "Query".
+	{
+		values, ok := r.URL.Query()["sort"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsSortValue ActivityListReposStarredByAuthenticatedUserSort
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsSortValue = ActivityListReposStarredByAuthenticatedUserSort(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Sort.SetTo(ParamsSortValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "direction" located in "Query".
+	{
+		values, ok := r.URL.Query()["direction"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsDirectionValue ActivityListReposStarredByAuthenticatedUserDirection
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsDirectionValue = ActivityListReposStarredByAuthenticatedUserDirection(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Direction.SetTo(ParamsDirectionValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -6498,6 +8748,151 @@ func decodeActivityListReposWatchedByUserParams(r *http.Request) (ActivityListRe
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'username' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeActivityListWatchedReposForAuthenticatedUserParams(r *http.Request) (ActivityListWatchedReposForAuthenticatedUserParams, error) {
+	var params ActivityListWatchedReposForAuthenticatedUserParams
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -6565,6 +8960,76 @@ func decodeActivityListWatchersForRepoParams(r *http.Request) (ActivityListWatch
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'repo' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -7154,6 +9619,146 @@ func decodeAppsListAccountsForPlanStubbedParams(r *http.Request) (AppsListAccoun
 			return params, fmt.Errorf("path parameter 'plan_id' not specified")
 		}
 	}
+	// Decode param "sort" located in "Query".
+	{
+		values, ok := r.URL.Query()["sort"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsSortValue AppsListAccountsForPlanStubbedSort
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsSortValue = AppsListAccountsForPlanStubbedSort(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Sort.SetTo(ParamsSortValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "direction" located in "Query".
+	{
+		values, ok := r.URL.Query()["direction"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsDirectionValue AppsListAccountsForPlanStubbedDirection
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsDirectionValue = AppsListAccountsForPlanStubbedDirection(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Direction.SetTo(ParamsDirectionValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -7188,6 +9793,451 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(r *http.Request) 
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'installation_id' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeAppsListPlansParams(r *http.Request) (AppsListPlansParams, error) {
+	var params AppsListPlansParams
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeAppsListPlansStubbedParams(r *http.Request) (AppsListPlansStubbedParams, error) {
+	var params AppsListPlansStubbedParams
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeAppsListReposAccessibleToInstallationParams(r *http.Request) (AppsListReposAccessibleToInstallationParams, error) {
+	var params AppsListReposAccessibleToInstallationParams
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeAppsListSubscriptionsForAuthenticatedUserParams(r *http.Request) (AppsListSubscriptionsForAuthenticatedUserParams, error) {
+	var params AppsListSubscriptionsForAuthenticatedUserParams
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(r *http.Request) (AppsListSubscriptionsForAuthenticatedUserStubbedParams, error) {
+	var params AppsListSubscriptionsForAuthenticatedUserStubbedParams
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -8014,6 +11064,76 @@ func decodeChecksListAnnotationsParams(r *http.Request) (ChecksListAnnotationsPa
 			return params, fmt.Errorf("path parameter 'check_run_id' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -8110,6 +11230,216 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'ref' not specified")
+		}
+	}
+	// Decode param "check_name" located in "Query".
+	{
+		values, ok := r.URL.Query()["check_name"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsCheckNameValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsCheckNameValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.CheckName.SetTo(ParamsCheckNameValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "status" located in "Query".
+	{
+		values, ok := r.URL.Query()["status"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsStatusValue ChecksListForRefStatus
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsStatusValue = ChecksListForRefStatus(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Status.SetTo(ParamsStatusValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "filter" located in "Query".
+	{
+		values, ok := r.URL.Query()["filter"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsFilterValue ChecksListForRefFilter
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsFilterValue = ChecksListForRefFilter(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Filter.SetTo(ParamsFilterValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "app_id" located in "Query".
+	{
+		values, ok := r.URL.Query()["app_id"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsAppIDValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsAppIDValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.AppID.SetTo(ParamsAppIDValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -8210,6 +11540,181 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 			return params, fmt.Errorf("path parameter 'check_suite_id' not specified")
 		}
 	}
+	// Decode param "check_name" located in "Query".
+	{
+		values, ok := r.URL.Query()["check_name"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsCheckNameValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsCheckNameValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.CheckName.SetTo(ParamsCheckNameValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "status" located in "Query".
+	{
+		values, ok := r.URL.Query()["status"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsStatusValue ChecksListForSuiteStatus
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsStatusValue = ChecksListForSuiteStatus(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Status.SetTo(ParamsStatusValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "filter" located in "Query".
+	{
+		values, ok := r.URL.Query()["filter"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsFilterValue ChecksListForSuiteFilter
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsFilterValue = ChecksListForSuiteFilter(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Filter.SetTo(ParamsFilterValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -8306,6 +11811,146 @@ func decodeChecksListSuitesForRefParams(r *http.Request) (ChecksListSuitesForRef
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'ref' not specified")
+		}
+	}
+	// Decode param "app_id" located in "Query".
+	{
+		values, ok := r.URL.Query()["app_id"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsAppIDValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsAppIDValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.AppID.SetTo(ParamsAppIDValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "check_name" located in "Query".
+	{
+		values, ok := r.URL.Query()["check_name"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsCheckNameValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsCheckNameValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.CheckName.SetTo(ParamsCheckNameValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -8569,6 +12214,41 @@ func decodeCodeScanningDeleteAnalysisParams(r *http.Request) (CodeScanningDelete
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'analysis_id' not specified")
+		}
+	}
+	// Decode param "confirm_delete" located in "Query".
+	{
+		values, ok := r.URL.Query()["confirm_delete"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsConfirmDeleteValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsConfirmDeleteValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.ConfirmDelete.SetTo(ParamsConfirmDeleteValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -8977,6 +12657,118 @@ func decodeCodeScanningListAlertInstancesParams(r *http.Request) (CodeScanningLi
 			return params, fmt.Errorf("path parameter 'alert_number' not specified")
 		}
 	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "ref" located in "Query".
+	{
+		values, ok := r.URL.Query()["ref"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsRefValue CodeScanningRef
+				if err := func() error {
+					var ParamsRefValueUnderlying string
+					if err := func() error {
+						s, err := d.Value()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(s)
+						if err != nil {
+							return err
+						}
+
+						ParamsRefValueUnderlying = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					ParamsRefValue.wrap(ParamsRefValueUnderlying)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Ref.SetTo(ParamsRefValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -9044,6 +12836,237 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 			return params, fmt.Errorf("path parameter 'repo' not specified")
 		}
 	}
+	// Decode param "tool_name" located in "Query".
+	{
+		values, ok := r.URL.Query()["tool_name"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsToolNameValue CodeScanningAnalysisToolName
+				if err := func() error {
+					var ParamsToolNameValueUnderlying string
+					if err := func() error {
+						s, err := d.Value()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(s)
+						if err != nil {
+							return err
+						}
+
+						ParamsToolNameValueUnderlying = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					ParamsToolNameValue.wrap(ParamsToolNameValueUnderlying)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.ToolName.SetTo(ParamsToolNameValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "tool_guid" located in "Query".
+	{
+		values, ok := r.URL.Query()["tool_guid"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsToolGUIDValue CodeScanningAnalysisToolGUID
+				if err := func() error {
+					var ParamsToolGUIDValueUnderlying string
+					if err := func() error {
+						s, err := d.Value()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(s)
+						if err != nil {
+							return err
+						}
+
+						ParamsToolGUIDValueUnderlying = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					ParamsToolGUIDValue.wrap(ParamsToolGUIDValueUnderlying)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.ToolGUID.SetTo(ParamsToolGUIDValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "ref" located in "Query".
+	{
+		values, ok := r.URL.Query()["ref"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsRefValue CodeScanningRef
+				if err := func() error {
+					var ParamsRefValueUnderlying string
+					if err := func() error {
+						s, err := d.Value()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(s)
+						if err != nil {
+							return err
+						}
+
+						ParamsRefValueUnderlying = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					ParamsRefValue.wrap(ParamsRefValueUnderlying)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Ref.SetTo(ParamsRefValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "state" located in "Query".
+	{
+		values, ok := r.URL.Query()["state"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsStateValue CodeScanningAlertState
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsStateValue = CodeScanningAlertState(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.State.SetTo(ParamsStateValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -9109,6 +13132,244 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'repo' not specified")
+		}
+	}
+	// Decode param "tool_name" located in "Query".
+	{
+		values, ok := r.URL.Query()["tool_name"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsToolNameValue CodeScanningAnalysisToolName
+				if err := func() error {
+					var ParamsToolNameValueUnderlying string
+					if err := func() error {
+						s, err := d.Value()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(s)
+						if err != nil {
+							return err
+						}
+
+						ParamsToolNameValueUnderlying = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					ParamsToolNameValue.wrap(ParamsToolNameValueUnderlying)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.ToolName.SetTo(ParamsToolNameValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "tool_guid" located in "Query".
+	{
+		values, ok := r.URL.Query()["tool_guid"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsToolGUIDValue CodeScanningAnalysisToolGUID
+				if err := func() error {
+					var ParamsToolGUIDValueUnderlying string
+					if err := func() error {
+						s, err := d.Value()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(s)
+						if err != nil {
+							return err
+						}
+
+						ParamsToolGUIDValueUnderlying = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					ParamsToolGUIDValue.wrap(ParamsToolGUIDValueUnderlying)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.ToolGUID.SetTo(ParamsToolGUIDValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "ref" located in "Query".
+	{
+		values, ok := r.URL.Query()["ref"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsRefValue CodeScanningRef
+				if err := func() error {
+					var ParamsRefValueUnderlying string
+					if err := func() error {
+						s, err := d.Value()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(s)
+						if err != nil {
+							return err
+						}
+
+						ParamsRefValueUnderlying = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					ParamsRefValue.wrap(ParamsRefValueUnderlying)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Ref.SetTo(ParamsRefValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "sarif_id" located in "Query".
+	{
+		values, ok := r.URL.Query()["sarif_id"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsSarifIDValue CodeScanningAnalysisSarifID
+				if err := func() error {
+					var ParamsSarifIDValueUnderlying string
+					if err := func() error {
+						s, err := d.Value()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(s)
+						if err != nil {
+							return err
+						}
+
+						ParamsSarifIDValueUnderlying = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					ParamsSarifIDValue.wrap(ParamsSarifIDValueUnderlying)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.SarifID.SetTo(ParamsSarifIDValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -10097,6 +14358,251 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 			return params, fmt.Errorf("path parameter 'enterprise' not specified")
 		}
 	}
+	// Decode param "phrase" located in "Query".
+	{
+		values, ok := r.URL.Query()["phrase"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPhraseValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPhraseValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Phrase.SetTo(ParamsPhraseValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "include" located in "Query".
+	{
+		values, ok := r.URL.Query()["include"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsIncludeValue EnterpriseAdminGetAuditLogInclude
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsIncludeValue = EnterpriseAdminGetAuditLogInclude(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Include.SetTo(ParamsIncludeValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "after" located in "Query".
+	{
+		values, ok := r.URL.Query()["after"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsAfterValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsAfterValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.After.SetTo(ParamsAfterValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "before" located in "Query".
+	{
+		values, ok := r.URL.Query()["before"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsBeforeValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsBeforeValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Before.SetTo(ParamsBeforeValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "order" located in "Query".
+	{
+		values, ok := r.URL.Query()["order"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsOrderValue EnterpriseAdminGetAuditLogOrder
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsOrderValue = EnterpriseAdminGetAuditLogOrder(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Order.SetTo(ParamsOrderValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -10198,6 +14704,41 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(r *
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'scim_group_id' not specified")
+		}
+	}
+	// Decode param "excludedAttributes" located in "Query".
+	{
+		values, ok := r.URL.Query()["excludedAttributes"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsExcludedAttributesValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsExcludedAttributesValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.ExcludedAttributes.SetTo(ParamsExcludedAttributesValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -10468,6 +15009,76 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 			return params, fmt.Errorf("path parameter 'runner_group_id' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -10504,6 +15115,146 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(r *http.Request)
 			return params, fmt.Errorf("path parameter 'enterprise' not specified")
 		}
 	}
+	// Decode param "startIndex" located in "Query".
+	{
+		values, ok := r.URL.Query()["startIndex"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsStartIndexValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsStartIndexValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.StartIndex.SetTo(ParamsStartIndexValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "count" located in "Query".
+	{
+		values, ok := r.URL.Query()["count"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsCountValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsCountValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Count.SetTo(ParamsCountValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "filter" located in "Query".
+	{
+		values, ok := r.URL.Query()["filter"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsFilterValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsFilterValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Filter.SetTo(ParamsFilterValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "excludedAttributes" located in "Query".
+	{
+		values, ok := r.URL.Query()["excludedAttributes"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsExcludedAttributesValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsExcludedAttributesValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.ExcludedAttributes.SetTo(ParamsExcludedAttributesValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -10538,6 +15289,111 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(r *http.Requ
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'enterprise' not specified")
+		}
+	}
+	// Decode param "startIndex" located in "Query".
+	{
+		values, ok := r.URL.Query()["startIndex"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsStartIndexValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsStartIndexValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.StartIndex.SetTo(ParamsStartIndexValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "count" located in "Query".
+	{
+		values, ok := r.URL.Query()["count"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsCountValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsCountValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Count.SetTo(ParamsCountValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "filter" located in "Query".
+	{
+		values, ok := r.URL.Query()["filter"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsFilterValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsFilterValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Filter.SetTo(ParamsFilterValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -10612,6 +15468,76 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 			return params, fmt.Errorf("path parameter 'enterprise' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -10648,6 +15574,76 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(r *http.
 			return params, fmt.Errorf("path parameter 'enterprise' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -10682,6 +15678,76 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(r *http.Reque
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'enterprise' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -10749,6 +15815,76 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(r *htt
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'runner_group_id' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -11810,6 +16946,116 @@ func decodeGistsGetCommentParams(r *http.Request) (GistsGetCommentParams, error)
 	return params, nil
 }
 
+func decodeGistsListParams(r *http.Request) (GistsListParams, error) {
+	var params GistsListParams
+	// Decode param "since" located in "Query".
+	{
+		values, ok := r.URL.Query()["since"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsSinceValue time.Time
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToTime(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsSinceValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Since.SetTo(ParamsSinceValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	return params, nil
+}
+
 func decodeGistsListCommentsParams(r *http.Request) (GistsListCommentsParams, error) {
 	var params GistsListCommentsParams
 	// Decode param "gist_id" located in "Path".
@@ -11841,6 +17087,76 @@ func decodeGistsListCommentsParams(r *http.Request) (GistsListCommentsParams, er
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'gist_id' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -11879,6 +17195,76 @@ func decodeGistsListCommitsParams(r *http.Request) (GistsListCommitsParams, erro
 			return params, fmt.Errorf("path parameter 'gist_id' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -11913,6 +17299,186 @@ func decodeGistsListForksParams(r *http.Request) (GistsListForksParams, error) {
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'gist_id' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeGistsListStarredParams(r *http.Request) (GistsListStarredParams, error) {
+	var params GistsListStarredParams
+	// Decode param "since" located in "Query".
+	{
+		values, ok := r.URL.Query()["since"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsSinceValue time.Time
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToTime(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsSinceValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Since.SetTo(ParamsSinceValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -12444,6 +18010,76 @@ func decodeGitListMatchingRefsParams(r *http.Request) (GitListMatchingRefsParams
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'ref' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -13601,6 +19237,76 @@ func decodeIssuesListAssigneesParams(r *http.Request) (IssuesListAssigneesParams
 			return params, fmt.Errorf("path parameter 'repo' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -13697,6 +19403,111 @@ func decodeIssuesListCommentsParams(r *http.Request) (IssuesListCommentsParams, 
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'issue_number' not specified")
+		}
+	}
+	// Decode param "since" located in "Query".
+	{
+		values, ok := r.URL.Query()["since"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsSinceValue time.Time
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToTime(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsSinceValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Since.SetTo(ParamsSinceValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -13797,6 +19608,76 @@ func decodeIssuesListLabelsForMilestoneParams(r *http.Request) (IssuesListLabels
 			return params, fmt.Errorf("path parameter 'milestone_number' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -13862,6 +19743,76 @@ func decodeIssuesListLabelsForRepoParams(r *http.Request) (IssuesListLabelsForRe
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'repo' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -13962,6 +19913,76 @@ func decodeIssuesListLabelsOnIssueParams(r *http.Request) (IssuesListLabelsOnIss
 			return params, fmt.Errorf("path parameter 'issue_number' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -14027,6 +20048,181 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'repo' not specified")
+		}
+	}
+	// Decode param "state" located in "Query".
+	{
+		values, ok := r.URL.Query()["state"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsStateValue IssuesListMilestonesState
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsStateValue = IssuesListMilestonesState(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.State.SetTo(ParamsStateValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "sort" located in "Query".
+	{
+		values, ok := r.URL.Query()["sort"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsSortValue IssuesListMilestonesSort
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsSortValue = IssuesListMilestonesSort(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Sort.SetTo(ParamsSortValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "direction" located in "Query".
+	{
+		values, ok := r.URL.Query()["direction"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsDirectionValue IssuesListMilestonesDirection
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsDirectionValue = IssuesListMilestonesDirection(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Direction.SetTo(ParamsDirectionValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -14687,6 +20883,116 @@ func decodeLicensesGetParams(r *http.Request) (LicensesGetParams, error) {
 	return params, nil
 }
 
+func decodeLicensesGetAllCommonlyUsedParams(r *http.Request) (LicensesGetAllCommonlyUsedParams, error) {
+	var params LicensesGetAllCommonlyUsedParams
+	// Decode param "featured" located in "Query".
+	{
+		values, ok := r.URL.Query()["featured"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsFeaturedValue bool
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsFeaturedValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Featured.SetTo(ParamsFeaturedValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	return params, nil
+}
+
 func decodeLicensesGetForRepoParams(r *http.Request) (LicensesGetForRepoParams, error) {
 	var params LicensesGetForRepoParams
 	// Decode param "owner" located in "Path".
@@ -14749,6 +21055,46 @@ func decodeLicensesGetForRepoParams(r *http.Request) (LicensesGetForRepoParams, 
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'repo' not specified")
+		}
+	}
+	return params, nil
+}
+
+func decodeMetaGetOctocatParams(r *http.Request) (MetaGetOctocatParams, error) {
+	var params MetaGetOctocatParams
+	// Decode param "s" located in "Query".
+	{
+		values, ok := r.URL.Query()["s"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsSValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsSValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.S.SetTo(ParamsSValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -15091,6 +21437,41 @@ func decodeMigrationsGetCommitAuthorsParams(r *http.Request) (MigrationsGetCommi
 			return params, fmt.Errorf("path parameter 'repo' not specified")
 		}
 	}
+	// Decode param "since" located in "Query".
+	{
+		values, ok := r.URL.Query()["since"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsSinceValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsSinceValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Since.SetTo(ParamsSinceValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -15261,6 +21642,43 @@ func decodeMigrationsGetStatusForAuthenticatedUserParams(r *http.Request) (Migra
 			return params, fmt.Errorf("path parameter 'migration_id' not specified")
 		}
 	}
+	// Decode param "exclude" located in "Query".
+	{
+		values, ok := r.URL.Query()["exclude"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				return d.Array(func(d uri.Decoder) error {
+					var ParamsExcludeItem string
+					if err := func() error {
+						s, err := d.Value()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(s)
+						if err != nil {
+							return err
+						}
+
+						ParamsExcludeItem = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.Exclude = append(params.Exclude, ParamsExcludeItem)
+					return nil
+				})
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -15328,6 +21746,118 @@ func decodeMigrationsGetStatusForOrgParams(r *http.Request) (MigrationsGetStatus
 			return params, fmt.Errorf("path parameter 'migration_id' not specified")
 		}
 	}
+	// Decode param "exclude" located in "Query".
+	{
+		values, ok := r.URL.Query()["exclude"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				return d.Array(func(d uri.Decoder) error {
+					var ParamsExcludeItem MigrationsGetStatusForOrgExcludeItem
+					if err := func() error {
+						s, err := d.Value()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(s)
+						if err != nil {
+							return err
+						}
+
+						ParamsExcludeItem = MigrationsGetStatusForOrgExcludeItem(c)
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.Exclude = append(params.Exclude, ParamsExcludeItem)
+					return nil
+				})
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeMigrationsListForAuthenticatedUserParams(r *http.Request) (MigrationsListForAuthenticatedUserParams, error) {
+	var params MigrationsListForAuthenticatedUserParams
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -15362,6 +21892,113 @@ func decodeMigrationsListForOrgParams(r *http.Request) (MigrationsListForOrgPara
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'org' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "exclude" located in "Query".
+	{
+		values, ok := r.URL.Query()["exclude"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				return d.Array(func(d uri.Decoder) error {
+					var ParamsExcludeItem MigrationsListForOrgExcludeItem
+					if err := func() error {
+						s, err := d.Value()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(s)
+						if err != nil {
+							return err
+						}
+
+						ParamsExcludeItem = MigrationsListForOrgExcludeItem(c)
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.Exclude = append(params.Exclude, ParamsExcludeItem)
+					return nil
+				})
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -15431,6 +22068,76 @@ func decodeMigrationsListReposForOrgParams(r *http.Request) (MigrationsListRepos
 			return params, fmt.Errorf("path parameter 'migration_id' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -15465,6 +22172,76 @@ func decodeMigrationsListReposForUserParams(r *http.Request) (MigrationsListRepo
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'migration_id' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -15841,6 +22618,226 @@ func decodeOAuthAuthorizationsGetGrantParams(r *http.Request) (OAuthAuthorizatio
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'grant_id' not specified")
+		}
+	}
+	return params, nil
+}
+
+func decodeOAuthAuthorizationsListAuthorizationsParams(r *http.Request) (OAuthAuthorizationsListAuthorizationsParams, error) {
+	var params OAuthAuthorizationsListAuthorizationsParams
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "client_id" located in "Query".
+	{
+		values, ok := r.URL.Query()["client_id"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsClientIDValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsClientIDValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.ClientID.SetTo(ParamsClientIDValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeOAuthAuthorizationsListGrantsParams(r *http.Request) (OAuthAuthorizationsListGrantsParams, error) {
+	var params OAuthAuthorizationsListGrantsParams
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "client_id" located in "Query".
+	{
+		values, ok := r.URL.Query()["client_id"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsClientIDValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsClientIDValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.ClientID.SetTo(ParamsClientIDValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -16250,6 +23247,251 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 			return params, fmt.Errorf("path parameter 'org' not specified")
 		}
 	}
+	// Decode param "phrase" located in "Query".
+	{
+		values, ok := r.URL.Query()["phrase"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPhraseValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPhraseValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Phrase.SetTo(ParamsPhraseValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "include" located in "Query".
+	{
+		values, ok := r.URL.Query()["include"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsIncludeValue OrgsGetAuditLogInclude
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsIncludeValue = OrgsGetAuditLogInclude(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Include.SetTo(ParamsIncludeValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "after" located in "Query".
+	{
+		values, ok := r.URL.Query()["after"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsAfterValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsAfterValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.After.SetTo(ParamsAfterValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "before" located in "Query".
+	{
+		values, ok := r.URL.Query()["before"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsBeforeValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsBeforeValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Before.SetTo(ParamsBeforeValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "order" located in "Query".
+	{
+		values, ok := r.URL.Query()["order"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsOrderValue OrgsGetAuditLogOrder
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsOrderValue = OrgsGetAuditLogOrder(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Order.SetTo(ParamsOrderValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -16490,6 +23732,81 @@ func decodeOrgsGetWebhookConfigForOrgParams(r *http.Request) (OrgsGetWebhookConf
 	return params, nil
 }
 
+func decodeOrgsListParams(r *http.Request) (OrgsListParams, error) {
+	var params OrgsListParams
+	// Decode param "since" located in "Query".
+	{
+		values, ok := r.URL.Query()["since"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsSinceValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsSinceValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Since.SetTo(ParamsSinceValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	return params, nil
+}
+
 func decodeOrgsListBlockedUsersParams(r *http.Request) (OrgsListBlockedUsersParams, error) {
 	var params OrgsListBlockedUsersParams
 	// Decode param "org" located in "Path".
@@ -16559,6 +23876,151 @@ func decodeOrgsListFailedInvitationsParams(r *http.Request) (OrgsListFailedInvit
 			return params, fmt.Errorf("path parameter 'org' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeOrgsListForAuthenticatedUserParams(r *http.Request) (OrgsListForAuthenticatedUserParams, error) {
+	var params OrgsListForAuthenticatedUserParams
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -16593,6 +24055,76 @@ func decodeOrgsListForUserParams(r *http.Request) (OrgsListForUserParams, error)
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'username' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -16662,6 +24194,76 @@ func decodeOrgsListInvitationTeamsParams(r *http.Request) (OrgsListInvitationTea
 			return params, fmt.Errorf("path parameter 'invitation_id' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -16696,6 +24298,111 @@ func decodeOrgsListOutsideCollaboratorsParams(r *http.Request) (OrgsListOutsideC
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'org' not specified")
+		}
+	}
+	// Decode param "filter" located in "Query".
+	{
+		values, ok := r.URL.Query()["filter"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsFilterValue OrgsListOutsideCollaboratorsFilter
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsFilterValue = OrgsListOutsideCollaboratorsFilter(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Filter.SetTo(ParamsFilterValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -16734,6 +24441,76 @@ func decodeOrgsListPendingInvitationsParams(r *http.Request) (OrgsListPendingInv
 			return params, fmt.Errorf("path parameter 'org' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -16768,6 +24545,76 @@ func decodeOrgsListPublicMembersParams(r *http.Request) (OrgsListPublicMembersPa
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'org' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -16840,6 +24687,76 @@ func decodeOrgsListWebhooksParams(r *http.Request) (OrgsListWebhooksParams, erro
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'org' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -18131,6 +26048,111 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 			return params, fmt.Errorf("path parameter 'package_name' not specified")
 		}
 	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "state" located in "Query".
+	{
+		values, ok := r.URL.Query()["state"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsStateValue PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsStateValue = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.State.SetTo(ParamsStateValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -18227,6 +26249,111 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(r *http.Reque
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'org' not specified")
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "state" located in "Query".
+	{
+		values, ok := r.URL.Query()["state"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsStateValue PackagesGetAllPackageVersionsForPackageOwnedByOrgState
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsStateValue = PackagesGetAllPackageVersionsForPackageOwnedByOrgState(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.State.SetTo(ParamsStateValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -18981,6 +27108,41 @@ func decodePackagesListPackagesForAuthenticatedUserParams(r *http.Request) (Pack
 			return params, fmt.Errorf("query parameter 'package_type' not specified")
 		}
 	}
+	// Decode param "visibility" located in "Query".
+	{
+		values, ok := r.URL.Query()["visibility"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsVisibilityValue PackagesListPackagesForAuthenticatedUserVisibility
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsVisibilityValue = PackagesListPackagesForAuthenticatedUserVisibility(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Visibility.SetTo(ParamsVisibilityValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -19047,6 +27209,41 @@ func decodePackagesListPackagesForOrganizationParams(r *http.Request) (PackagesL
 			return params, fmt.Errorf("path parameter 'org' not specified")
 		}
 	}
+	// Decode param "visibility" located in "Query".
+	{
+		values, ok := r.URL.Query()["visibility"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsVisibilityValue PackagesListPackagesForOrganizationVisibility
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsVisibilityValue = PackagesListPackagesForOrganizationVisibility(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Visibility.SetTo(ParamsVisibilityValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -19080,6 +27277,41 @@ func decodePackagesListPackagesForUserParams(r *http.Request) (PackagesListPacka
 			}
 		} else {
 			return params, fmt.Errorf("query parameter 'package_type' not specified")
+		}
+	}
+	// Decode param "visibility" located in "Query".
+	{
+		values, ok := r.URL.Query()["visibility"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsVisibilityValue PackagesListPackagesForUserVisibility
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsVisibilityValue = PackagesListPackagesForUserVisibility(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Visibility.SetTo(ParamsVisibilityValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	// Decode param "username" located in "Path".
@@ -19180,6 +27412,41 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(r *http.Request) (Pa
 			return params, fmt.Errorf("path parameter 'package_name' not specified")
 		}
 	}
+	// Decode param "token" located in "Query".
+	{
+		values, ok := r.URL.Query()["token"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsTokenValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsTokenValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Token.SetTo(ParamsTokenValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -19278,6 +27545,41 @@ func decodePackagesRestorePackageForOrgParams(r *http.Request) (PackagesRestoreP
 			return params, fmt.Errorf("path parameter 'org' not specified")
 		}
 	}
+	// Decode param "token" located in "Query".
+	{
+		values, ok := r.URL.Query()["token"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsTokenValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsTokenValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Token.SetTo(ParamsTokenValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -19374,6 +27676,41 @@ func decodePackagesRestorePackageForUserParams(r *http.Request) (PackagesRestore
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'username' not specified")
+		}
+	}
+	// Decode param "token" located in "Query".
+	{
+		values, ok := r.URL.Query()["token"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsTokenValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsTokenValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Token.SetTo(ParamsTokenValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -20123,6 +28460,111 @@ func decodeProjectsListCardsParams(r *http.Request) (ProjectsListCardsParams, er
 			return params, fmt.Errorf("path parameter 'column_id' not specified")
 		}
 	}
+	// Decode param "archived_state" located in "Query".
+	{
+		values, ok := r.URL.Query()["archived_state"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsArchivedStateValue ProjectsListCardsArchivedState
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsArchivedStateValue = ProjectsListCardsArchivedState(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.ArchivedState.SetTo(ParamsArchivedStateValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -20159,6 +28601,76 @@ func decodeProjectsListColumnsParams(r *http.Request) (ProjectsListColumnsParams
 			return params, fmt.Errorf("path parameter 'project_id' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -20193,6 +28705,111 @@ func decodeProjectsListForOrgParams(r *http.Request) (ProjectsListForOrgParams, 
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'org' not specified")
+		}
+	}
+	// Decode param "state" located in "Query".
+	{
+		values, ok := r.URL.Query()["state"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsStateValue ProjectsListForOrgState
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsStateValue = ProjectsListForOrgState(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.State.SetTo(ParamsStateValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -20260,6 +28877,111 @@ func decodeProjectsListForRepoParams(r *http.Request) (ProjectsListForRepoParams
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'repo' not specified")
+		}
+	}
+	// Decode param "state" located in "Query".
+	{
+		values, ok := r.URL.Query()["state"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsStateValue ProjectsListForRepoState
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsStateValue = ProjectsListForRepoState(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.State.SetTo(ParamsStateValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -21541,6 +30263,76 @@ func decodePullsListCommentsForReviewParams(r *http.Request) (PullsListCommentsF
 			return params, fmt.Errorf("path parameter 'review_id' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -21637,6 +30429,76 @@ func decodePullsListCommitsParams(r *http.Request) (PullsListCommitsParams, erro
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'pull_number' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -21737,6 +30599,76 @@ func decodePullsListRequestedReviewersParams(r *http.Request) (PullsListRequeste
 			return params, fmt.Errorf("path parameter 'pull_number' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -21835,6 +30767,181 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 			return params, fmt.Errorf("path parameter 'pull_number' not specified")
 		}
 	}
+	// Decode param "sort" located in "Query".
+	{
+		values, ok := r.URL.Query()["sort"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsSortValue PullsListReviewCommentsSort
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsSortValue = PullsListReviewCommentsSort(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Sort.SetTo(ParamsSortValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "direction" located in "Query".
+	{
+		values, ok := r.URL.Query()["direction"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsDirectionValue PullsListReviewCommentsDirection
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsDirectionValue = PullsListReviewCommentsDirection(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Direction.SetTo(ParamsDirectionValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "since" located in "Query".
+	{
+		values, ok := r.URL.Query()["since"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsSinceValue time.Time
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToTime(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsSinceValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Since.SetTo(ParamsSinceValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -21900,6 +31007,181 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'repo' not specified")
+		}
+	}
+	// Decode param "sort" located in "Query".
+	{
+		values, ok := r.URL.Query()["sort"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsSortValue PullsListReviewCommentsForRepoSort
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsSortValue = PullsListReviewCommentsForRepoSort(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Sort.SetTo(ParamsSortValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "direction" located in "Query".
+	{
+		values, ok := r.URL.Query()["direction"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsDirectionValue PullsListReviewCommentsForRepoDirection
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsDirectionValue = PullsListReviewCommentsForRepoDirection(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Direction.SetTo(ParamsDirectionValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "since" located in "Query".
+	{
+		values, ok := r.URL.Query()["since"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsSinceValue time.Time
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToTime(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsSinceValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Since.SetTo(ParamsSinceValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -21998,6 +31280,76 @@ func decodePullsListReviewsParams(r *http.Request) (PullsListReviewsParams, erro
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'pull_number' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -23687,6 +33039,111 @@ func decodeReactionsListForCommitCommentParams(r *http.Request) (ReactionsListFo
 			return params, fmt.Errorf("path parameter 'comment_id' not specified")
 		}
 	}
+	// Decode param "content" located in "Query".
+	{
+		values, ok := r.URL.Query()["content"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsContentValue ReactionsListForCommitCommentContent
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsContentValue = ReactionsListForCommitCommentContent(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Content.SetTo(ParamsContentValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -23783,6 +33240,111 @@ func decodeReactionsListForIssueParams(r *http.Request) (ReactionsListForIssuePa
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'issue_number' not specified")
+		}
+	}
+	// Decode param "content" located in "Query".
+	{
+		values, ok := r.URL.Query()["content"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsContentValue ReactionsListForIssueContent
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsContentValue = ReactionsListForIssueContent(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Content.SetTo(ParamsContentValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -23883,6 +33445,111 @@ func decodeReactionsListForIssueCommentParams(r *http.Request) (ReactionsListFor
 			return params, fmt.Errorf("path parameter 'comment_id' not specified")
 		}
 	}
+	// Decode param "content" located in "Query".
+	{
+		values, ok := r.URL.Query()["content"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsContentValue ReactionsListForIssueCommentContent
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsContentValue = ReactionsListForIssueCommentContent(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Content.SetTo(ParamsContentValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -23979,6 +33646,111 @@ func decodeReactionsListForPullRequestReviewCommentParams(r *http.Request) (Reac
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'comment_id' not specified")
+		}
+	}
+	// Decode param "content" located in "Query".
+	{
+		values, ok := r.URL.Query()["content"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsContentValue ReactionsListForPullRequestReviewCommentContent
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsContentValue = ReactionsListForPullRequestReviewCommentContent(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Content.SetTo(ParamsContentValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -24110,6 +33882,111 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (Re
 			return params, fmt.Errorf("path parameter 'comment_number' not specified")
 		}
 	}
+	// Decode param "content" located in "Query".
+	{
+		values, ok := r.URL.Query()["content"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsContentValue ReactionsListForTeamDiscussionCommentInOrgContent
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsContentValue = ReactionsListForTeamDiscussionCommentInOrgContent(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Content.SetTo(ParamsContentValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -24206,6 +34083,111 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(r *http.Request) (R
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'comment_number' not specified")
+		}
+	}
+	// Decode param "content" located in "Query".
+	{
+		values, ok := r.URL.Query()["content"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsContentValue ReactionsListForTeamDiscussionCommentLegacyContent
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsContentValue = ReactionsListForTeamDiscussionCommentLegacyContent(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Content.SetTo(ParamsContentValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -24306,6 +34288,111 @@ func decodeReactionsListForTeamDiscussionInOrgParams(r *http.Request) (Reactions
 			return params, fmt.Errorf("path parameter 'discussion_number' not specified")
 		}
 	}
+	// Decode param "content" located in "Query".
+	{
+		values, ok := r.URL.Query()["content"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsContentValue ReactionsListForTeamDiscussionInOrgContent
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsContentValue = ReactionsListForTeamDiscussionInOrgContent(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Content.SetTo(ParamsContentValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -24371,6 +34458,111 @@ func decodeReactionsListForTeamDiscussionLegacyParams(r *http.Request) (Reaction
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'discussion_number' not specified")
+		}
+	}
+	// Decode param "content" located in "Query".
+	{
+		values, ok := r.URL.Query()["content"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsContentValue ReactionsListForTeamDiscussionLegacyContent
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsContentValue = ReactionsListForTeamDiscussionLegacyContent(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Content.SetTo(ParamsContentValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -24639,6 +34831,76 @@ func decodeReposCompareCommitsParams(r *http.Request) (ReposCompareCommitsParams
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'repo' not specified")
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	// Decode param "basehead" located in "Path".
@@ -27436,6 +37698,76 @@ func decodeReposGetAllTopicsParams(r *http.Request) (ReposGetAllTopicsParams, er
 			return params, fmt.Errorf("path parameter 'repo' not specified")
 		}
 	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -27895,6 +38227,41 @@ func decodeReposGetClonesParams(r *http.Request) (ReposGetClonesParams, error) {
 			return params, fmt.Errorf("path parameter 'repo' not specified")
 		}
 	}
+	// Decode param "per" located in "Query".
+	{
+		values, ok := r.URL.Query()["per"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerValue ReposGetClonesPer
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerValue = ReposGetClonesPer(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Per.SetTo(ParamsPerValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -28156,6 +38523,76 @@ func decodeReposGetCombinedStatusForRefParams(r *http.Request) (ReposGetCombined
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'ref' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -30169,6 +40606,41 @@ func decodeReposGetViewsParams(r *http.Request) (ReposGetViewsParams, error) {
 			return params, fmt.Errorf("path parameter 'repo' not specified")
 		}
 	}
+	// Decode param "per" located in "Query".
+	{
+		values, ok := r.URL.Query()["per"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerValue ReposGetViewsPer
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerValue = ReposGetViewsPer(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Per.SetTo(ParamsPerValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -30432,6 +40904,41 @@ func decodeReposListAutolinksParams(r *http.Request) (ReposListAutolinksParams, 
 			return params, fmt.Errorf("path parameter 'repo' not specified")
 		}
 	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -30499,6 +41006,111 @@ func decodeReposListBranchesParams(r *http.Request) (ReposListBranchesParams, er
 			return params, fmt.Errorf("path parameter 'repo' not specified")
 		}
 	}
+	// Decode param "protected" located in "Query".
+	{
+		values, ok := r.URL.Query()["protected"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsProtectedValue bool
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsProtectedValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Protected.SetTo(ParamsProtectedValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -30564,6 +41176,111 @@ func decodeReposListCollaboratorsParams(r *http.Request) (ReposListCollaborators
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'repo' not specified")
+		}
+	}
+	// Decode param "affiliation" located in "Query".
+	{
+		values, ok := r.URL.Query()["affiliation"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsAffiliationValue ReposListCollaboratorsAffiliation
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsAffiliationValue = ReposListCollaboratorsAffiliation(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Affiliation.SetTo(ParamsAffiliationValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -30664,6 +41381,76 @@ func decodeReposListCommentsForCommitParams(r *http.Request) (ReposListCommentsF
 			return params, fmt.Errorf("path parameter 'commit_sha' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -30729,6 +41516,76 @@ func decodeReposListCommitCommentsForRepoParams(r *http.Request) (ReposListCommi
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'repo' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -30829,6 +41686,76 @@ func decodeReposListCommitStatusesForRefParams(r *http.Request) (ReposListCommit
 			return params, fmt.Errorf("path parameter 'ref' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -30894,6 +41821,251 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'repo' not specified")
+		}
+	}
+	// Decode param "sha" located in "Query".
+	{
+		values, ok := r.URL.Query()["sha"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsShaValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsShaValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Sha.SetTo(ParamsShaValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "path" located in "Query".
+	{
+		values, ok := r.URL.Query()["path"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPathValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPathValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Path.SetTo(ParamsPathValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "author" located in "Query".
+	{
+		values, ok := r.URL.Query()["author"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsAuthorValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsAuthorValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Author.SetTo(ParamsAuthorValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "since" located in "Query".
+	{
+		values, ok := r.URL.Query()["since"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsSinceValue time.Time
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToTime(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsSinceValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Since.SetTo(ParamsSinceValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "until" located in "Query".
+	{
+		values, ok := r.URL.Query()["until"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsUntilValue time.Time
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToTime(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsUntilValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Until.SetTo(ParamsUntilValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -30963,6 +42135,111 @@ func decodeReposListContributorsParams(r *http.Request) (ReposListContributorsPa
 			return params, fmt.Errorf("path parameter 'repo' not specified")
 		}
 	}
+	// Decode param "anon" located in "Query".
+	{
+		values, ok := r.URL.Query()["anon"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsAnonValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsAnonValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Anon.SetTo(ParamsAnonValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -31028,6 +42305,76 @@ func decodeReposListDeployKeysParams(r *http.Request) (ReposListDeployKeysParams
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'repo' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -31128,6 +42475,76 @@ func decodeReposListDeploymentStatusesParams(r *http.Request) (ReposListDeployme
 			return params, fmt.Errorf("path parameter 'deployment_id' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -31164,6 +42581,181 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 			return params, fmt.Errorf("path parameter 'org' not specified")
 		}
 	}
+	// Decode param "type" located in "Query".
+	{
+		values, ok := r.URL.Query()["type"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsTypeValue ReposListForOrgType
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsTypeValue = ReposListForOrgType(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Type.SetTo(ParamsTypeValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "sort" located in "Query".
+	{
+		values, ok := r.URL.Query()["sort"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsSortValue ReposListForOrgSort
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsSortValue = ReposListForOrgSort(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Sort.SetTo(ParamsSortValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "direction" located in "Query".
+	{
+		values, ok := r.URL.Query()["direction"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsDirectionValue ReposListForOrgDirection
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsDirectionValue = ReposListForOrgDirection(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Direction.SetTo(ParamsDirectionValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -31198,6 +42790,181 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'username' not specified")
+		}
+	}
+	// Decode param "type" located in "Query".
+	{
+		values, ok := r.URL.Query()["type"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsTypeValue ReposListForUserType
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsTypeValue = ReposListForUserType(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Type.SetTo(ParamsTypeValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "sort" located in "Query".
+	{
+		values, ok := r.URL.Query()["sort"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsSortValue ReposListForUserSort
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsSortValue = ReposListForUserSort(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Sort.SetTo(ParamsSortValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "direction" located in "Query".
+	{
+		values, ok := r.URL.Query()["direction"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsDirectionValue ReposListForUserDirection
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsDirectionValue = ReposListForUserDirection(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Direction.SetTo(ParamsDirectionValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -31267,6 +43034,111 @@ func decodeReposListForksParams(r *http.Request) (ReposListForksParams, error) {
 			return params, fmt.Errorf("path parameter 'repo' not specified")
 		}
 	}
+	// Decode param "sort" located in "Query".
+	{
+		values, ok := r.URL.Query()["sort"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsSortValue ReposListForksSort
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsSortValue = ReposListForksSort(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Sort.SetTo(ParamsSortValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -31332,6 +43204,151 @@ func decodeReposListInvitationsParams(r *http.Request) (ReposListInvitationsPara
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'repo' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeReposListInvitationsForAuthenticatedUserParams(r *http.Request) (ReposListInvitationsForAuthenticatedUserParams, error) {
+	var params ReposListInvitationsForAuthenticatedUserParams
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -31468,6 +43485,76 @@ func decodeReposListPagesBuildsParams(r *http.Request) (ReposListPagesBuildsPara
 			return params, fmt.Errorf("path parameter 'repo' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -31564,6 +43651,76 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(r *http.Request) (Rep
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'commit_sha' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -31664,6 +43821,76 @@ func decodeReposListReleaseAssetsParams(r *http.Request) (ReposListReleaseAssets
 			return params, fmt.Errorf("path parameter 'release_id' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -31729,6 +43956,76 @@ func decodeReposListReleasesParams(r *http.Request) (ReposListReleasesParams, er
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'repo' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -31798,6 +44095,76 @@ func decodeReposListTagsParams(r *http.Request) (ReposListTagsParams, error) {
 			return params, fmt.Errorf("path parameter 'repo' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -31865,6 +44232,76 @@ func decodeReposListTeamsParams(r *http.Request) (ReposListTeamsParams, error) {
 			return params, fmt.Errorf("path parameter 'repo' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -31930,6 +44367,76 @@ func decodeReposListWebhooksParams(r *http.Request) (ReposListWebhooksParams, er
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'repo' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -33406,6 +45913,41 @@ func decodeReposUploadReleaseAssetParams(r *http.Request) (ReposUploadReleaseAss
 			return params, fmt.Errorf("query parameter 'name' not specified")
 		}
 	}
+	// Decode param "label" located in "Query".
+	{
+		values, ok := r.URL.Query()["label"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsLabelValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsLabelValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Label.SetTo(ParamsLabelValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -33508,6 +46050,146 @@ func decodeSearchCommitsParams(r *http.Request) (SearchCommitsParams, error) {
 			return params, fmt.Errorf("query parameter 'q' not specified")
 		}
 	}
+	// Decode param "sort" located in "Query".
+	{
+		values, ok := r.URL.Query()["sort"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsSortValue SearchCommitsSort
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsSortValue = SearchCommitsSort(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Sort.SetTo(ParamsSortValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "order" located in "Query".
+	{
+		values, ok := r.URL.Query()["order"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsOrderValue SearchCommitsOrder
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsOrderValue = SearchCommitsOrder(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Order.SetTo(ParamsOrderValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -33541,6 +46223,76 @@ func decodeSearchTopicsParams(r *http.Request) (SearchTopicsParams, error) {
 			}
 		} else {
 			return params, fmt.Errorf("query parameter 'q' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -33684,6 +46436,146 @@ func decodeSecretScanningListAlertsForOrgParams(r *http.Request) (SecretScanning
 			return params, fmt.Errorf("path parameter 'org' not specified")
 		}
 	}
+	// Decode param "state" located in "Query".
+	{
+		values, ok := r.URL.Query()["state"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsStateValue SecretScanningListAlertsForOrgState
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsStateValue = SecretScanningListAlertsForOrgState(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.State.SetTo(ParamsStateValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "secret_type" located in "Query".
+	{
+		values, ok := r.URL.Query()["secret_type"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsSecretTypeValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsSecretTypeValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.SecretType.SetTo(ParamsSecretTypeValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -33749,6 +46641,146 @@ func decodeSecretScanningListAlertsForRepoParams(r *http.Request) (SecretScannin
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'repo' not specified")
+		}
+	}
+	// Decode param "state" located in "Query".
+	{
+		values, ok := r.URL.Query()["state"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsStateValue SecretScanningListAlertsForRepoState
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsStateValue = SecretScanningListAlertsForRepoState(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.State.SetTo(ParamsStateValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "secret_type" located in "Query".
+	{
+		values, ok := r.URL.Query()["secret_type"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsSecretTypeValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsSecretTypeValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.SecretType.SetTo(ParamsSecretTypeValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -36264,6 +49296,76 @@ func decodeTeamsListParams(r *http.Request) (TeamsListParams, error) {
 			return params, fmt.Errorf("path parameter 'org' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -36329,6 +49431,76 @@ func decodeTeamsListChildInOrgParams(r *http.Request) (TeamsListChildInOrgParams
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'team_slug' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -36429,6 +49601,111 @@ func decodeTeamsListDiscussionCommentsInOrgParams(r *http.Request) (TeamsListDis
 			return params, fmt.Errorf("path parameter 'discussion_number' not specified")
 		}
 	}
+	// Decode param "direction" located in "Query".
+	{
+		values, ok := r.URL.Query()["direction"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsDirectionValue TeamsListDiscussionCommentsInOrgDirection
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsDirectionValue = TeamsListDiscussionCommentsInOrgDirection(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Direction.SetTo(ParamsDirectionValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -36494,6 +49771,111 @@ func decodeTeamsListDiscussionCommentsLegacyParams(r *http.Request) (TeamsListDi
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'discussion_number' not specified")
+		}
+	}
+	// Decode param "direction" located in "Query".
+	{
+		values, ok := r.URL.Query()["direction"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsDirectionValue TeamsListDiscussionCommentsLegacyDirection
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsDirectionValue = TeamsListDiscussionCommentsLegacyDirection(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Direction.SetTo(ParamsDirectionValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -36563,6 +49945,146 @@ func decodeTeamsListDiscussionsInOrgParams(r *http.Request) (TeamsListDiscussion
 			return params, fmt.Errorf("path parameter 'team_slug' not specified")
 		}
 	}
+	// Decode param "direction" located in "Query".
+	{
+		values, ok := r.URL.Query()["direction"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsDirectionValue TeamsListDiscussionsInOrgDirection
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsDirectionValue = TeamsListDiscussionsInOrgDirection(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Direction.SetTo(ParamsDirectionValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "pinned" located in "Query".
+	{
+		values, ok := r.URL.Query()["pinned"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPinnedValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPinnedValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Pinned.SetTo(ParamsPinnedValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -36597,6 +50119,186 @@ func decodeTeamsListDiscussionsLegacyParams(r *http.Request) (TeamsListDiscussio
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'team_id' not specified")
+		}
+	}
+	// Decode param "direction" located in "Query".
+	{
+		values, ok := r.URL.Query()["direction"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsDirectionValue TeamsListDiscussionsLegacyDirection
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsDirectionValue = TeamsListDiscussionsLegacyDirection(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Direction.SetTo(ParamsDirectionValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeTeamsListForAuthenticatedUserParams(r *http.Request) (TeamsListForAuthenticatedUserParams, error) {
+	var params TeamsListForAuthenticatedUserParams
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -36669,6 +50371,76 @@ func decodeTeamsListIdpGroupsForOrgParams(r *http.Request) (TeamsListIdpGroupsFo
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'org' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue string
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -36805,6 +50577,111 @@ func decodeTeamsListMembersInOrgParams(r *http.Request) (TeamsListMembersInOrgPa
 			return params, fmt.Errorf("path parameter 'team_slug' not specified")
 		}
 	}
+	// Decode param "role" located in "Query".
+	{
+		values, ok := r.URL.Query()["role"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsRoleValue TeamsListMembersInOrgRole
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsRoleValue = TeamsListMembersInOrgRole(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Role.SetTo(ParamsRoleValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -36839,6 +50716,111 @@ func decodeTeamsListMembersLegacyParams(r *http.Request) (TeamsListMembersLegacy
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'team_id' not specified")
+		}
+	}
+	// Decode param "role" located in "Query".
+	{
+		values, ok := r.URL.Query()["role"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsRoleValue TeamsListMembersLegacyRole
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsRoleValue = TeamsListMembersLegacyRole(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Role.SetTo(ParamsRoleValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -36908,6 +50890,76 @@ func decodeTeamsListPendingInvitationsInOrgParams(r *http.Request) (TeamsListPen
 			return params, fmt.Errorf("path parameter 'team_slug' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -36942,6 +50994,76 @@ func decodeTeamsListPendingInvitationsLegacyParams(r *http.Request) (TeamsListPe
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'team_id' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -37011,6 +51133,76 @@ func decodeTeamsListProjectsInOrgParams(r *http.Request) (TeamsListProjectsInOrg
 			return params, fmt.Errorf("path parameter 'team_slug' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -37045,6 +51237,76 @@ func decodeTeamsListProjectsLegacyParams(r *http.Request) (TeamsListProjectsLega
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'team_id' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -37114,6 +51376,76 @@ func decodeTeamsListReposInOrgParams(r *http.Request) (TeamsListReposInOrgParams
 			return params, fmt.Errorf("path parameter 'team_slug' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -37148,6 +51480,76 @@ func decodeTeamsListReposLegacyParams(r *http.Request) (TeamsListReposLegacyPara
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'team_id' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -38488,6 +52890,306 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedParams(r *http.Request) (UsersGet
 	return params, nil
 }
 
+func decodeUsersListParams(r *http.Request) (UsersListParams, error) {
+	var params UsersListParams
+	// Decode param "since" located in "Query".
+	{
+		values, ok := r.URL.Query()["since"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsSinceValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsSinceValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Since.SetTo(ParamsSinceValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeUsersListEmailsForAuthenticatedParams(r *http.Request) (UsersListEmailsForAuthenticatedParams, error) {
+	var params UsersListEmailsForAuthenticatedParams
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeUsersListFollowedByAuthenticatedParams(r *http.Request) (UsersListFollowedByAuthenticatedParams, error) {
+	var params UsersListFollowedByAuthenticatedParams
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeUsersListFollowersForAuthenticatedUserParams(r *http.Request) (UsersListFollowersForAuthenticatedUserParams, error) {
+	var params UsersListFollowersForAuthenticatedUserParams
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	return params, nil
+}
+
 func decodeUsersListFollowersForUserParams(r *http.Request) (UsersListFollowersForUserParams, error) {
 	var params UsersListFollowersForUserParams
 	// Decode param "username" located in "Path".
@@ -38519,6 +53221,76 @@ func decodeUsersListFollowersForUserParams(r *http.Request) (UsersListFollowersF
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'username' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil
@@ -38557,6 +53329,151 @@ func decodeUsersListFollowingForUserParams(r *http.Request) (UsersListFollowingF
 			return params, fmt.Errorf("path parameter 'username' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeUsersListGpgKeysForAuthenticatedParams(r *http.Request) (UsersListGpgKeysForAuthenticatedParams, error) {
+	var params UsersListGpgKeysForAuthenticatedParams
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -38593,6 +53510,151 @@ func decodeUsersListGpgKeysForUserParams(r *http.Request) (UsersListGpgKeysForUs
 			return params, fmt.Errorf("path parameter 'username' not specified")
 		}
 	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeUsersListPublicEmailsForAuthenticatedParams(r *http.Request) (UsersListPublicEmailsForAuthenticatedParams, error) {
+	var params UsersListPublicEmailsForAuthenticatedParams
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
 	return params, nil
 }
 
@@ -38627,6 +53689,151 @@ func decodeUsersListPublicKeysForUserParams(r *http.Request) (UsersListPublicKey
 			}
 		} else {
 			return params, fmt.Errorf("path parameter 'username' not specified")
+		}
+	}
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeUsersListPublicSSHKeysForAuthenticatedParams(r *http.Request) (UsersListPublicSSHKeysForAuthenticatedParams, error) {
+	var params UsersListPublicSSHKeysForAuthenticatedParams
+	// Decode param "per_page" located in "Query".
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPerPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPerPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(ParamsPerPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	// Decode param "page" located in "Query".
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsPageValue int
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsPageValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(ParamsPageValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
 		}
 	}
 	return params, nil

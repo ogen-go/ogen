@@ -65,7 +65,7 @@ type Server interface {
 	// CreatePets implements createPets operation.
 	CreatePets(ctx context.Context) (CreatePetsRes, error)
 	// ListPets implements listPets operation.
-	ListPets(ctx context.Context) (ListPetsRes, error)
+	ListPets(ctx context.Context, params ListPetsParams) (ListPetsRes, error)
 	// ShowPetById implements showPetById operation.
 	ShowPetById(ctx context.Context, params ShowPetByIdParams) (ShowPetByIdRes, error)
 }

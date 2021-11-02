@@ -59,3 +59,764 @@ var (
 	_ = metric.NewNoopMeterProvider
 	_ = regexp.MustCompile
 )
+
+type CreateAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
+	DryRun       OptString
+	FieldManager OptString
+}
+
+type CreateAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
+	DryRun       OptString
+	FieldManager OptString
+}
+
+type CreateApiextensionsV1CustomResourceDefinitionParams struct {
+	DryRun       OptString
+	FieldManager OptString
+}
+
+type CreateApiregistrationV1APIServiceParams struct {
+	DryRun       OptString
+	FieldManager OptString
+}
+
+type CreateCertificatesV1CertificateSigningRequestParams struct {
+	DryRun       OptString
+	FieldManager OptString
+}
+
+type CreateCoreV1NamespaceParams struct {
+	DryRun       OptString
+	FieldManager OptString
+}
+
+type CreateCoreV1NodeParams struct {
+	DryRun       OptString
+	FieldManager OptString
+}
+
+type CreateCoreV1PersistentVolumeParams struct {
+	DryRun       OptString
+	FieldManager OptString
+}
+
+type CreateFlowcontrolApiserverV1beta1FlowSchemaParams struct {
+	DryRun       OptString
+	FieldManager OptString
+}
+
+type CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
+	DryRun       OptString
+	FieldManager OptString
+}
+
+type CreateFlowcontrolApiserverV1beta2FlowSchemaParams struct {
+	DryRun       OptString
+	FieldManager OptString
+}
+
+type CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
+	DryRun       OptString
+	FieldManager OptString
+}
+
+type CreateInternalApiserverV1alpha1StorageVersionParams struct {
+	DryRun       OptString
+	FieldManager OptString
+}
+
+type CreateNetworkingV1IngressClassParams struct {
+	DryRun       OptString
+	FieldManager OptString
+}
+
+type CreateNodeV1RuntimeClassParams struct {
+	DryRun       OptString
+	FieldManager OptString
+}
+
+type CreateNodeV1alpha1RuntimeClassParams struct {
+	DryRun       OptString
+	FieldManager OptString
+}
+
+type CreateNodeV1beta1RuntimeClassParams struct {
+	DryRun       OptString
+	FieldManager OptString
+}
+
+type CreatePolicyV1beta1PodSecurityPolicyParams struct {
+	DryRun       OptString
+	FieldManager OptString
+}
+
+type CreateRbacAuthorizationV1ClusterRoleParams struct {
+	DryRun       OptString
+	FieldManager OptString
+}
+
+type CreateRbacAuthorizationV1ClusterRoleBindingParams struct {
+	DryRun       OptString
+	FieldManager OptString
+}
+
+type CreateSchedulingV1PriorityClassParams struct {
+	DryRun       OptString
+	FieldManager OptString
+}
+
+type CreateStorageV1CSIDriverParams struct {
+	DryRun       OptString
+	FieldManager OptString
+}
+
+type CreateStorageV1CSINodeParams struct {
+	DryRun       OptString
+	FieldManager OptString
+}
+
+type CreateStorageV1StorageClassParams struct {
+	DryRun       OptString
+	FieldManager OptString
+}
+
+type CreateStorageV1VolumeAttachmentParams struct {
+	DryRun       OptString
+	FieldManager OptString
+}
+
+type DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+}
+
+type DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+}
+
+type DeleteApiextensionsV1CollectionCustomResourceDefinitionParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+}
+
+type DeleteApiregistrationV1CollectionAPIServiceParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+}
+
+type DeleteCertificatesV1CollectionCertificateSigningRequestParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+}
+
+type DeleteCoreV1CollectionNodeParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+}
+
+type DeleteCoreV1CollectionPersistentVolumeParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+}
+
+type DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+}
+
+type DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+}
+
+type DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+}
+
+type DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+}
+
+type DeleteInternalApiserverV1alpha1CollectionStorageVersionParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+}
+
+type DeleteNetworkingV1CollectionIngressClassParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+}
+
+type DeleteNodeV1CollectionRuntimeClassParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+}
+
+type DeleteNodeV1alpha1CollectionRuntimeClassParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+}
+
+type DeleteNodeV1beta1CollectionRuntimeClassParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+}
+
+type DeletePolicyV1beta1CollectionPodSecurityPolicyParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+}
+
+type DeleteRbacAuthorizationV1CollectionClusterRoleParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+}
+
+type DeleteRbacAuthorizationV1CollectionClusterRoleBindingParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+}
+
+type DeleteSchedulingV1CollectionPriorityClassParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+}
+
+type DeleteStorageV1CollectionCSIDriverParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+}
+
+type DeleteStorageV1CollectionCSINodeParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+}
+
+type DeleteStorageV1CollectionStorageClassParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+}
+
+type DeleteStorageV1CollectionVolumeAttachmentParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+}
+
+type ListAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListApiextensionsV1CustomResourceDefinitionParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListApiregistrationV1APIServiceParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListCertificatesV1CertificateSigningRequestParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListCoreV1NamespaceParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListCoreV1NodeParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListCoreV1PersistentVolumeParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListFlowcontrolApiserverV1beta1FlowSchemaParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListFlowcontrolApiserverV1beta2FlowSchemaParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListInternalApiserverV1alpha1StorageVersionParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListNetworkingV1IngressClassParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListNodeV1RuntimeClassParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListNodeV1alpha1RuntimeClassParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListNodeV1beta1RuntimeClassParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListPolicyV1beta1PodSecurityPolicyParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListRbacAuthorizationV1ClusterRoleParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListRbacAuthorizationV1ClusterRoleBindingParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListSchedulingV1PriorityClassParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListStorageV1CSIDriverParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListStorageV1CSINodeParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListStorageV1StorageClassParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListStorageV1VolumeAttachmentParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}

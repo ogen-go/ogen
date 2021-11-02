@@ -47008,6 +47008,30 @@ func (o *OptFloat64) ReadJSON(d *json.Decoder) error {
 	}
 }
 
+// WriteJSON writes json value of int to json stream.
+func (o OptInt) WriteJSON(e *json.Encoder) {
+	e.Int(int(o.Value))
+}
+
+// ReadJSON reads json value of int from json iterator.
+func (o *OptInt) ReadJSON(d *json.Decoder) error {
+	if o == nil {
+		return fmt.Errorf(`invalid: unable to decode OptInt to nil`)
+	}
+	switch d.Next() {
+	case json.Number:
+		o.Set = true
+		v, err := d.Int()
+		if err != nil {
+			return err
+		}
+		o.Value = int(v)
+		return nil
+	default:
+		return fmt.Errorf("unexpected type %q while reading OptInt", d.Next())
+	}
+}
+
 // WriteJSON writes json value of int32 to json stream.
 func (o OptInt32) WriteJSON(e *json.Encoder) {
 	e.Int32(int32(o.Value))

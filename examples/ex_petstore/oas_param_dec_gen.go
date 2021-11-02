@@ -60,6 +60,46 @@ var (
 	_ = regexp.MustCompile
 )
 
+func decodeListPetsParams(r *http.Request) (ListPetsParams, error) {
+	var params ListPetsParams
+	// Decode param "limit" located in "Query".
+	{
+		values, ok := r.URL.Query()["limit"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var ParamsLimitValue int32
+				if err := func() error {
+					s, err := d.Value()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt32(s)
+					if err != nil {
+						return err
+					}
+
+					ParamsLimitValue = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Limit.SetTo(ParamsLimitValue)
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		}
+	}
+	return params, nil
+}
+
 func decodeShowPetByIdParams(r *http.Request) (ShowPetByIdParams, error) {
 	var params ShowPetByIdParams
 	// Decode param "petId" located in "Path".

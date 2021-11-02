@@ -422,6 +422,23 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 		}
 		q["query"] = e.Result()
 	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if encErr := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.Value(conv.IntToString(val))
+			}
+			return nil
+		}(); encErr != nil {
+			err = fmt.Errorf("encode query: %w", encErr)
+			return
+		}
+		q["page"] = e.Result()
+	}
 	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -476,6 +493,23 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 			return
 		}
 		q["tag_id"] = e.Result()
+	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if encErr := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.Value(conv.IntToString(val))
+			}
+			return nil
+		}(); encErr != nil {
+			err = fmt.Errorf("encode query: %w", encErr)
+			return
+		}
+		q["page"] = e.Result()
 	}
 	u.RawQuery = q.Encode()
 

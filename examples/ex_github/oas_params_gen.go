@@ -305,38 +305,53 @@ type ActionsGetWorkflowRunUsageParams struct {
 }
 
 type ActionsListArtifactsForRepoParams struct {
-	Owner string
-	Repo  string
+	Owner   string
+	Repo    string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ActionsListEnvironmentSecretsParams struct {
 	RepositoryID    int
 	EnvironmentName string
+	PerPage         OptInt
+	Page            OptInt
 }
 
 type ActionsListJobsForWorkflowRunParams struct {
-	Owner string
-	Repo  string
-	RunID int
+	Owner   string
+	Repo    string
+	RunID   int
+	Filter  OptActionsListJobsForWorkflowRunFilter
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ActionsListOrgSecretsParams struct {
-	Org string
+	Org     string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
 	Org           string
 	RunnerGroupID int
+	Page          OptInt
+	PerPage       OptInt
 }
 
 type ActionsListRepoSecretsParams struct {
-	Owner string
-	Repo  string
+	Owner   string
+	Repo    string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ActionsListRepoWorkflowsParams struct {
-	Owner string
-	Repo  string
+	Owner   string
+	Repo    string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ActionsListRunnerApplicationsForOrgParams struct {
@@ -351,39 +366,60 @@ type ActionsListRunnerApplicationsForRepoParams struct {
 type ActionsListSelectedReposForOrgSecretParams struct {
 	Org        string
 	SecretName string
+	Page       OptInt
+	PerPage    OptInt
 }
 
 type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams struct {
-	Org string
+	Org     string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ActionsListSelfHostedRunnerGroupsForOrgParams struct {
-	Org string
+	Org     string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ActionsListSelfHostedRunnersForOrgParams struct {
-	Org string
+	Org     string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ActionsListSelfHostedRunnersForRepoParams struct {
-	Owner string
-	Repo  string
+	Owner   string
+	Repo    string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ActionsListSelfHostedRunnersInGroupForOrgParams struct {
 	Org           string
 	RunnerGroupID int
+	PerPage       OptInt
+	Page          OptInt
 }
 
 type ActionsListWorkflowRunArtifactsParams struct {
-	Owner string
-	Repo  string
-	RunID int
+	Owner   string
+	Repo    string
+	RunID   int
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ActionsListWorkflowRunsForRepoParams struct {
-	Owner string
-	Repo  string
+	Owner   string
+	Repo    string
+	Actor   OptString
+	Branch  OptString
+	Event   OptString
+	Status  OptActionsListWorkflowRunsForRepoStatus
+	PerPage OptInt
+	Page    OptInt
+	Created OptTime
 }
 
 type ActionsReRunWorkflowParams struct {
@@ -487,51 +523,94 @@ type ActivityGetThreadSubscriptionForAuthenticatedUserParams struct {
 
 type ActivityListEventsForAuthenticatedUserParams struct {
 	Username string
+	PerPage  OptInt
+	Page     OptInt
 }
 
 type ActivityListOrgEventsForAuthenticatedUserParams struct {
 	Username string
 	Org      string
+	PerPage  OptInt
+	Page     OptInt
+}
+
+type ActivityListPublicEventsParams struct {
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ActivityListPublicEventsForRepoNetworkParams struct {
-	Owner string
-	Repo  string
+	Owner   string
+	Repo    string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ActivityListPublicEventsForUserParams struct {
 	Username string
+	PerPage  OptInt
+	Page     OptInt
 }
 
 type ActivityListPublicOrgEventsParams struct {
-	Org string
+	Org     string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ActivityListReceivedEventsForUserParams struct {
 	Username string
+	PerPage  OptInt
+	Page     OptInt
 }
 
 type ActivityListReceivedPublicEventsForUserParams struct {
 	Username string
+	PerPage  OptInt
+	Page     OptInt
 }
 
 type ActivityListRepoEventsParams struct {
-	Owner string
-	Repo  string
+	Owner   string
+	Repo    string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ActivityListRepoNotificationsForAuthenticatedUserParams struct {
-	Owner string
-	Repo  string
+	Owner         string
+	Repo          string
+	All           OptBool
+	Participating OptBool
+	Since         OptTime
+	Before        OptTime
+	PerPage       OptInt
+	Page          OptInt
+}
+
+type ActivityListReposStarredByAuthenticatedUserParams struct {
+	Sort      OptActivityListReposStarredByAuthenticatedUserSort
+	Direction OptActivityListReposStarredByAuthenticatedUserDirection
+	PerPage   OptInt
+	Page      OptInt
 }
 
 type ActivityListReposWatchedByUserParams struct {
 	Username string
+	PerPage  OptInt
+	Page     OptInt
+}
+
+type ActivityListWatchedReposForAuthenticatedUserParams struct {
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ActivityListWatchersForRepoParams struct {
-	Owner string
-	Repo  string
+	Owner   string
+	Repo    string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ActivityMarkRepoNotificationsAsReadParams struct {
@@ -584,11 +663,42 @@ type AppsGetSubscriptionPlanForAccountStubbedParams struct {
 }
 
 type AppsListAccountsForPlanStubbedParams struct {
-	PlanID int
+	PlanID    int
+	Sort      OptAppsListAccountsForPlanStubbedSort
+	Direction OptAppsListAccountsForPlanStubbedDirection
+	PerPage   OptInt
+	Page      OptInt
 }
 
 type AppsListInstallationReposForAuthenticatedUserParams struct {
 	InstallationID int
+	PerPage        OptInt
+	Page           OptInt
+}
+
+type AppsListPlansParams struct {
+	PerPage OptInt
+	Page    OptInt
+}
+
+type AppsListPlansStubbedParams struct {
+	PerPage OptInt
+	Page    OptInt
+}
+
+type AppsListReposAccessibleToInstallationParams struct {
+	PerPage OptInt
+	Page    OptInt
+}
+
+type AppsListSubscriptionsForAuthenticatedUserParams struct {
+	PerPage OptInt
+	Page    OptInt
+}
+
+type AppsListSubscriptionsForAuthenticatedUserStubbedParams struct {
+	PerPage OptInt
+	Page    OptInt
 }
 
 type AppsRemoveRepoFromInstallationParams struct {
@@ -661,24 +771,41 @@ type ChecksListAnnotationsParams struct {
 	Owner      string
 	Repo       string
 	CheckRunID int
+	PerPage    OptInt
+	Page       OptInt
 }
 
 type ChecksListForRefParams struct {
-	Owner string
-	Repo  string
-	Ref   string
+	Owner     string
+	Repo      string
+	Ref       string
+	CheckName OptString
+	Status    OptChecksListForRefStatus
+	Filter    OptChecksListForRefFilter
+	PerPage   OptInt
+	Page      OptInt
+	AppID     OptInt
 }
 
 type ChecksListForSuiteParams struct {
 	Owner        string
 	Repo         string
 	CheckSuiteID int
+	CheckName    OptString
+	Status       OptChecksListForSuiteStatus
+	Filter       OptChecksListForSuiteFilter
+	PerPage      OptInt
+	Page         OptInt
 }
 
 type ChecksListSuitesForRefParams struct {
-	Owner string
-	Repo  string
-	Ref   string
+	Owner     string
+	Repo      string
+	Ref       string
+	AppID     OptInt
+	CheckName OptString
+	PerPage   OptInt
+	Page      OptInt
 }
 
 type ChecksRerequestSuiteParams struct {
@@ -693,9 +820,10 @@ type ChecksSetSuitesPreferencesParams struct {
 }
 
 type CodeScanningDeleteAnalysisParams struct {
-	Owner      string
-	Repo       string
-	AnalysisID int
+	Owner         string
+	Repo          string
+	AnalysisID    int
+	ConfirmDelete OptNilString
 }
 
 type CodeScanningGetAlertParams struct {
@@ -720,16 +848,31 @@ type CodeScanningListAlertInstancesParams struct {
 	Owner       string
 	Repo        string
 	AlertNumber AlertNumber
+	Page        OptInt
+	PerPage     OptInt
+	Ref         OptCodeScanningRef
 }
 
 type CodeScanningListAlertsForRepoParams struct {
-	Owner string
-	Repo  string
+	Owner    string
+	Repo     string
+	ToolName OptCodeScanningAnalysisToolName
+	ToolGUID OptNilCodeScanningAnalysisToolGUID
+	Page     OptInt
+	PerPage  OptInt
+	Ref      OptCodeScanningRef
+	State    OptCodeScanningAlertState
 }
 
 type CodeScanningListRecentAnalysesParams struct {
-	Owner string
-	Repo  string
+	Owner    string
+	Repo     string
+	ToolName OptCodeScanningAnalysisToolName
+	ToolGUID OptNilCodeScanningAnalysisToolGUID
+	Page     OptInt
+	PerPage  OptInt
+	Ref      OptCodeScanningRef
+	SarifID  OptCodeScanningAnalysisSarifID
 }
 
 type CodeScanningUpdateAlertParams struct {
@@ -807,6 +950,13 @@ type EnterpriseAdminGetAllowedActionsEnterpriseParams struct {
 
 type EnterpriseAdminGetAuditLogParams struct {
 	Enterprise string
+	Phrase     OptString
+	Include    OptEnterpriseAdminGetAuditLogInclude
+	After      OptString
+	Before     OptString
+	Order      OptEnterpriseAdminGetAuditLogOrder
+	Page       OptInt
+	PerPage    OptInt
 }
 
 type EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams struct {
@@ -814,8 +964,9 @@ type EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams struct {
 }
 
 type EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams struct {
-	Enterprise  string
-	ScimGroupID string
+	Enterprise         string
+	ScimGroupID        string
+	ExcludedAttributes OptString
 }
 
 type EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams struct {
@@ -836,14 +987,23 @@ type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams struct {
 type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams struct {
 	Enterprise    string
 	RunnerGroupID int
+	PerPage       OptInt
+	Page          OptInt
 }
 
 type EnterpriseAdminListProvisionedGroupsEnterpriseParams struct {
-	Enterprise string
+	Enterprise         string
+	StartIndex         OptInt
+	Count              OptInt
+	Filter             OptString
+	ExcludedAttributes OptString
 }
 
 type EnterpriseAdminListProvisionedIdentitiesEnterpriseParams struct {
 	Enterprise string
+	StartIndex OptInt
+	Count      OptInt
+	Filter     OptString
 }
 
 type EnterpriseAdminListRunnerApplicationsForEnterpriseParams struct {
@@ -852,19 +1012,27 @@ type EnterpriseAdminListRunnerApplicationsForEnterpriseParams struct {
 
 type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams struct {
 	Enterprise string
+	PerPage    OptInt
+	Page       OptInt
 }
 
 type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams struct {
 	Enterprise string
+	PerPage    OptInt
+	Page       OptInt
 }
 
 type EnterpriseAdminListSelfHostedRunnersForEnterpriseParams struct {
 	Enterprise string
+	PerPage    OptInt
+	Page       OptInt
 }
 
 type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams struct {
 	Enterprise    string
 	RunnerGroupID int
+	PerPage       OptInt
+	Page          OptInt
 }
 
 type EnterpriseAdminProvisionAndInviteEnterpriseGroupParams struct {
@@ -955,16 +1123,34 @@ type GistsGetCommentParams struct {
 	CommentID int
 }
 
+type GistsListParams struct {
+	Since   OptTime
+	PerPage OptInt
+	Page    OptInt
+}
+
 type GistsListCommentsParams struct {
-	GistID string
+	GistID  string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type GistsListCommitsParams struct {
-	GistID string
+	GistID  string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type GistsListForksParams struct {
-	GistID string
+	GistID  string
+	PerPage OptInt
+	Page    OptInt
+}
+
+type GistsListStarredParams struct {
+	Since   OptTime
+	PerPage OptInt
+	Page    OptInt
 }
 
 type GistsStarParams struct {
@@ -999,9 +1185,11 @@ type GitGetTagParams struct {
 }
 
 type GitListMatchingRefsParams struct {
-	Owner string
-	Repo  string
-	Ref   string
+	Owner   string
+	Repo    string
+	Ref     string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type GitignoreGetTemplateParams struct {
@@ -1077,36 +1265,52 @@ type IssuesGetMilestoneParams struct {
 }
 
 type IssuesListAssigneesParams struct {
-	Owner string
-	Repo  string
+	Owner   string
+	Repo    string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type IssuesListCommentsParams struct {
 	Owner       string
 	Repo        string
 	IssueNumber int
+	Since       OptTime
+	PerPage     OptInt
+	Page        OptInt
 }
 
 type IssuesListLabelsForMilestoneParams struct {
 	Owner           string
 	Repo            string
 	MilestoneNumber int
+	PerPage         OptInt
+	Page            OptInt
 }
 
 type IssuesListLabelsForRepoParams struct {
-	Owner string
-	Repo  string
+	Owner   string
+	Repo    string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type IssuesListLabelsOnIssueParams struct {
 	Owner       string
 	Repo        string
 	IssueNumber int
+	PerPage     OptInt
+	Page        OptInt
 }
 
 type IssuesListMilestonesParams struct {
-	Owner string
-	Repo  string
+	Owner     string
+	Repo      string
+	State     OptIssuesListMilestonesState
+	Sort      OptIssuesListMilestonesSort
+	Direction OptIssuesListMilestonesDirection
+	PerPage   OptInt
+	Page      OptInt
 }
 
 type IssuesRemoveAllLabelsParams struct {
@@ -1150,9 +1354,19 @@ type LicensesGetParams struct {
 	License string
 }
 
+type LicensesGetAllCommonlyUsedParams struct {
+	Featured OptBool
+	PerPage  OptInt
+	Page     OptInt
+}
+
 type LicensesGetForRepoParams struct {
 	Owner string
 	Repo  string
+}
+
+type MetaGetOctocatParams struct {
+	S OptString
 }
 
 type MigrationsCancelImportParams struct {
@@ -1181,6 +1395,7 @@ type MigrationsGetArchiveForAuthenticatedUserParams struct {
 type MigrationsGetCommitAuthorsParams struct {
 	Owner string
 	Repo  string
+	Since OptInt
 }
 
 type MigrationsGetImportStatusParams struct {
@@ -1195,24 +1410,38 @@ type MigrationsGetLargeFilesParams struct {
 
 type MigrationsGetStatusForAuthenticatedUserParams struct {
 	MigrationID int
+	Exclude     []string
 }
 
 type MigrationsGetStatusForOrgParams struct {
 	Org         string
 	MigrationID int
+	Exclude     []MigrationsGetStatusForOrgExcludeItem
+}
+
+type MigrationsListForAuthenticatedUserParams struct {
+	PerPage OptInt
+	Page    OptInt
 }
 
 type MigrationsListForOrgParams struct {
-	Org string
+	Org     string
+	PerPage OptInt
+	Page    OptInt
+	Exclude []MigrationsListForOrgExcludeItem
 }
 
 type MigrationsListReposForOrgParams struct {
 	Org         string
 	MigrationID int
+	PerPage     OptInt
+	Page        OptInt
 }
 
 type MigrationsListReposForUserParams struct {
 	MigrationID int
+	PerPage     OptInt
+	Page        OptInt
 }
 
 type MigrationsUnlockRepoForAuthenticatedUserParams struct {
@@ -1247,6 +1476,18 @@ type OAuthAuthorizationsGetGrantParams struct {
 	GrantID int
 }
 
+type OAuthAuthorizationsListAuthorizationsParams struct {
+	PerPage  OptInt
+	Page     OptInt
+	ClientID OptString
+}
+
+type OAuthAuthorizationsListGrantsParams struct {
+	PerPage  OptInt
+	Page     OptInt
+	ClientID OptString
+}
+
 type OrgsCheckBlockedUserParams struct {
 	Org      string
 	Username string
@@ -1277,7 +1518,14 @@ type OrgsGetParams struct {
 }
 
 type OrgsGetAuditLogParams struct {
-	Org string
+	Org     string
+	Phrase  OptString
+	Include OptOrgsGetAuditLogInclude
+	After   OptString
+	Before  OptString
+	Order   OptOrgsGetAuditLogOrder
+	PerPage OptInt
+	Page    OptInt
 }
 
 type OrgsGetMembershipForAuthenticatedUserParams struct {
@@ -1299,33 +1547,56 @@ type OrgsGetWebhookConfigForOrgParams struct {
 	HookID int
 }
 
+type OrgsListParams struct {
+	Since   OptInt
+	PerPage OptInt
+}
+
 type OrgsListBlockedUsersParams struct {
 	Org string
 }
 
 type OrgsListFailedInvitationsParams struct {
-	Org string
+	Org     string
+	PerPage OptInt
+	Page    OptInt
+}
+
+type OrgsListForAuthenticatedUserParams struct {
+	PerPage OptInt
+	Page    OptInt
 }
 
 type OrgsListForUserParams struct {
 	Username string
+	PerPage  OptInt
+	Page     OptInt
 }
 
 type OrgsListInvitationTeamsParams struct {
 	Org          string
 	InvitationID int
+	PerPage      OptInt
+	Page         OptInt
 }
 
 type OrgsListOutsideCollaboratorsParams struct {
-	Org string
+	Org     string
+	Filter  OptOrgsListOutsideCollaboratorsFilter
+	PerPage OptInt
+	Page    OptInt
 }
 
 type OrgsListPendingInvitationsParams struct {
-	Org string
+	Org     string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type OrgsListPublicMembersParams struct {
-	Org string
+	Org     string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type OrgsListSamlSSOAuthorizationsParams struct {
@@ -1333,7 +1604,9 @@ type OrgsListSamlSSOAuthorizationsParams struct {
 }
 
 type OrgsListWebhooksParams struct {
-	Org string
+	Org     string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type OrgsPingWebhookParams struct {
@@ -1421,12 +1694,18 @@ type PackagesDeletePackageVersionForUserParams struct {
 type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams struct {
 	PackageType PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType
 	PackageName string
+	Page        OptInt
+	PerPage     OptInt
+	State       OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState
 }
 
 type PackagesGetAllPackageVersionsForPackageOwnedByOrgParams struct {
 	PackageType PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType
 	PackageName string
 	Org         string
+	Page        OptInt
+	PerPage     OptInt
+	State       OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState
 }
 
 type PackagesGetAllPackageVersionsForPackageOwnedByUserParams struct {
@@ -1474,33 +1753,39 @@ type PackagesGetPackageVersionForUserParams struct {
 
 type PackagesListPackagesForAuthenticatedUserParams struct {
 	PackageType PackagesListPackagesForAuthenticatedUserPackageType
+	Visibility  OptPackagesListPackagesForAuthenticatedUserVisibility
 }
 
 type PackagesListPackagesForOrganizationParams struct {
 	PackageType PackagesListPackagesForOrganizationPackageType
 	Org         string
+	Visibility  OptPackagesListPackagesForOrganizationVisibility
 }
 
 type PackagesListPackagesForUserParams struct {
 	PackageType PackagesListPackagesForUserPackageType
+	Visibility  OptPackagesListPackagesForUserVisibility
 	Username    string
 }
 
 type PackagesRestorePackageForAuthenticatedUserParams struct {
 	PackageType PackagesRestorePackageForAuthenticatedUserPackageType
 	PackageName string
+	Token       OptString
 }
 
 type PackagesRestorePackageForOrgParams struct {
 	PackageType PackagesRestorePackageForOrgPackageType
 	PackageName string
 	Org         string
+	Token       OptString
 }
 
 type PackagesRestorePackageForUserParams struct {
 	PackageType PackagesRestorePackageForUserPackageType
 	PackageName string
 	Username    string
+	Token       OptString
 }
 
 type PackagesRestorePackageVersionForAuthenticatedUserParams struct {
@@ -1561,20 +1846,31 @@ type ProjectsGetColumnParams struct {
 }
 
 type ProjectsListCardsParams struct {
-	ColumnID int
+	ColumnID      int
+	ArchivedState OptProjectsListCardsArchivedState
+	PerPage       OptInt
+	Page          OptInt
 }
 
 type ProjectsListColumnsParams struct {
 	ProjectID int
+	PerPage   OptInt
+	Page      OptInt
 }
 
 type ProjectsListForOrgParams struct {
-	Org string
+	Org     string
+	State   OptProjectsListForOrgState
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ProjectsListForRepoParams struct {
-	Owner string
-	Repo  string
+	Owner   string
+	Repo    string
+	State   OptProjectsListForRepoState
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ProjectsMoveColumnParams struct {
@@ -1656,35 +1952,53 @@ type PullsListCommentsForReviewParams struct {
 	Repo       string
 	PullNumber int
 	ReviewID   int
+	PerPage    OptInt
+	Page       OptInt
 }
 
 type PullsListCommitsParams struct {
 	Owner      string
 	Repo       string
 	PullNumber int
+	PerPage    OptInt
+	Page       OptInt
 }
 
 type PullsListRequestedReviewersParams struct {
 	Owner      string
 	Repo       string
 	PullNumber int
+	PerPage    OptInt
+	Page       OptInt
 }
 
 type PullsListReviewCommentsParams struct {
 	Owner      string
 	Repo       string
 	PullNumber int
+	Sort       OptPullsListReviewCommentsSort
+	Direction  OptPullsListReviewCommentsDirection
+	Since      OptTime
+	PerPage    OptInt
+	Page       OptInt
 }
 
 type PullsListReviewCommentsForRepoParams struct {
-	Owner string
-	Repo  string
+	Owner     string
+	Repo      string
+	Sort      OptPullsListReviewCommentsForRepoSort
+	Direction OptPullsListReviewCommentsForRepoDirection
+	Since     OptTime
+	PerPage   OptInt
+	Page      OptInt
 }
 
 type PullsListReviewsParams struct {
 	Owner      string
 	Repo       string
 	PullNumber int
+	PerPage    OptInt
+	Page       OptInt
 }
 
 type PullsSubmitReviewParams struct {
@@ -1782,24 +2096,36 @@ type ReactionsListForCommitCommentParams struct {
 	Owner     string
 	Repo      string
 	CommentID int
+	Content   OptReactionsListForCommitCommentContent
+	PerPage   OptInt
+	Page      OptInt
 }
 
 type ReactionsListForIssueParams struct {
 	Owner       string
 	Repo        string
 	IssueNumber int
+	Content     OptReactionsListForIssueContent
+	PerPage     OptInt
+	Page        OptInt
 }
 
 type ReactionsListForIssueCommentParams struct {
 	Owner     string
 	Repo      string
 	CommentID int
+	Content   OptReactionsListForIssueCommentContent
+	PerPage   OptInt
+	Page      OptInt
 }
 
 type ReactionsListForPullRequestReviewCommentParams struct {
 	Owner     string
 	Repo      string
 	CommentID int
+	Content   OptReactionsListForPullRequestReviewCommentContent
+	PerPage   OptInt
+	Page      OptInt
 }
 
 type ReactionsListForTeamDiscussionCommentInOrgParams struct {
@@ -1807,23 +2133,35 @@ type ReactionsListForTeamDiscussionCommentInOrgParams struct {
 	TeamSlug         string
 	DiscussionNumber int
 	CommentNumber    int
+	Content          OptReactionsListForTeamDiscussionCommentInOrgContent
+	PerPage          OptInt
+	Page             OptInt
 }
 
 type ReactionsListForTeamDiscussionCommentLegacyParams struct {
 	TeamID           int
 	DiscussionNumber int
 	CommentNumber    int
+	Content          OptReactionsListForTeamDiscussionCommentLegacyContent
+	PerPage          OptInt
+	Page             OptInt
 }
 
 type ReactionsListForTeamDiscussionInOrgParams struct {
 	Org              string
 	TeamSlug         string
 	DiscussionNumber int
+	Content          OptReactionsListForTeamDiscussionInOrgContent
+	PerPage          OptInt
+	Page             OptInt
 }
 
 type ReactionsListForTeamDiscussionLegacyParams struct {
 	TeamID           int
 	DiscussionNumber int
+	Content          OptReactionsListForTeamDiscussionLegacyContent
+	PerPage          OptInt
+	Page             OptInt
 }
 
 type ReposAcceptInvitationParams struct {
@@ -1844,6 +2182,8 @@ type ReposCheckVulnerabilityAlertsParams struct {
 type ReposCompareCommitsParams struct {
 	Owner    string
 	Repo     string
+	Page     OptInt
+	PerPage  OptInt
 	Basehead string
 }
 
@@ -2023,8 +2363,10 @@ type ReposGetAllStatusCheckContextsParams struct {
 }
 
 type ReposGetAllTopicsParams struct {
-	Owner string
-	Repo  string
+	Owner   string
+	Repo    string
+	Page    OptInt
+	PerPage OptInt
 }
 
 type ReposGetAppsWithAccessToProtectedBranchParams struct {
@@ -2054,6 +2396,7 @@ type ReposGetBranchProtectionParams struct {
 type ReposGetClonesParams struct {
 	Owner string
 	Repo  string
+	Per   OptReposGetClonesPer
 }
 
 type ReposGetCodeFrequencyStatsParams struct {
@@ -2068,9 +2411,11 @@ type ReposGetCollaboratorPermissionLevelParams struct {
 }
 
 type ReposGetCombinedStatusForRefParams struct {
-	Owner string
-	Repo  string
-	Ref   string
+	Owner   string
+	Repo    string
+	Ref     string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ReposGetCommitActivityStatsParams struct {
@@ -2204,6 +2549,7 @@ type ReposGetUsersWithAccessToProtectedBranchParams struct {
 type ReposGetViewsParams struct {
 	Owner string
 	Repo  string
+	Per   OptReposGetViewsPer
 }
 
 type ReposGetWebhookParams struct {
@@ -2221,72 +2567,119 @@ type ReposGetWebhookConfigForRepoParams struct {
 type ReposListAutolinksParams struct {
 	Owner string
 	Repo  string
+	Page  OptInt
 }
 
 type ReposListBranchesParams struct {
-	Owner string
-	Repo  string
+	Owner     string
+	Repo      string
+	Protected OptBool
+	PerPage   OptInt
+	Page      OptInt
 }
 
 type ReposListCollaboratorsParams struct {
-	Owner string
-	Repo  string
+	Owner       string
+	Repo        string
+	Affiliation OptReposListCollaboratorsAffiliation
+	PerPage     OptInt
+	Page        OptInt
 }
 
 type ReposListCommentsForCommitParams struct {
 	Owner     string
 	Repo      string
 	CommitSha string
+	PerPage   OptInt
+	Page      OptInt
 }
 
 type ReposListCommitCommentsForRepoParams struct {
-	Owner string
-	Repo  string
+	Owner   string
+	Repo    string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ReposListCommitStatusesForRefParams struct {
-	Owner string
-	Repo  string
-	Ref   string
+	Owner   string
+	Repo    string
+	Ref     string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ReposListCommitsParams struct {
-	Owner string
-	Repo  string
+	Owner   string
+	Repo    string
+	Sha     OptString
+	Path    OptString
+	Author  OptString
+	Since   OptTime
+	Until   OptTime
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ReposListContributorsParams struct {
-	Owner string
-	Repo  string
+	Owner   string
+	Repo    string
+	Anon    OptString
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ReposListDeployKeysParams struct {
-	Owner string
-	Repo  string
+	Owner   string
+	Repo    string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ReposListDeploymentStatusesParams struct {
 	Owner        string
 	Repo         string
 	DeploymentID int
+	PerPage      OptInt
+	Page         OptInt
 }
 
 type ReposListForOrgParams struct {
-	Org string
+	Org       string
+	Type      OptReposListForOrgType
+	Sort      OptReposListForOrgSort
+	Direction OptReposListForOrgDirection
+	PerPage   OptInt
+	Page      OptInt
 }
 
 type ReposListForUserParams struct {
-	Username string
+	Username  string
+	Type      OptReposListForUserType
+	Sort      OptReposListForUserSort
+	Direction OptReposListForUserDirection
+	PerPage   OptInt
+	Page      OptInt
 }
 
 type ReposListForksParams struct {
-	Owner string
-	Repo  string
+	Owner   string
+	Repo    string
+	Sort    OptReposListForksSort
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ReposListInvitationsParams struct {
-	Owner string
-	Repo  string
+	Owner   string
+	Repo    string
+	PerPage OptInt
+	Page    OptInt
+}
+
+type ReposListInvitationsForAuthenticatedUserParams struct {
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ReposListLanguagesParams struct {
@@ -2295,40 +2688,54 @@ type ReposListLanguagesParams struct {
 }
 
 type ReposListPagesBuildsParams struct {
-	Owner string
-	Repo  string
+	Owner   string
+	Repo    string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ReposListPullRequestsAssociatedWithCommitParams struct {
 	Owner     string
 	Repo      string
 	CommitSha string
+	PerPage   OptInt
+	Page      OptInt
 }
 
 type ReposListReleaseAssetsParams struct {
 	Owner     string
 	Repo      string
 	ReleaseID int
+	PerPage   OptInt
+	Page      OptInt
 }
 
 type ReposListReleasesParams struct {
-	Owner string
-	Repo  string
+	Owner   string
+	Repo    string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ReposListTagsParams struct {
-	Owner string
-	Repo  string
+	Owner   string
+	Repo    string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ReposListTeamsParams struct {
-	Owner string
-	Repo  string
+	Owner   string
+	Repo    string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ReposListWebhooksParams struct {
-	Owner string
-	Repo  string
+	Owner   string
+	Repo    string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type ReposMergeUpstreamParams struct {
@@ -2422,6 +2829,7 @@ type ReposUploadReleaseAssetParams struct {
 	Repo      string
 	ReleaseID int
 	Name      string
+	Label     OptString
 }
 
 type ScimDeleteUserFromOrgParams struct {
@@ -2430,11 +2838,17 @@ type ScimDeleteUserFromOrgParams struct {
 }
 
 type SearchCommitsParams struct {
-	Q string
+	Q       string
+	Sort    OptSearchCommitsSort
+	Order   OptSearchCommitsOrder
+	PerPage OptInt
+	Page    OptInt
 }
 
 type SearchTopicsParams struct {
-	Q string
+	Q       string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type SecretScanningGetAlertParams struct {
@@ -2444,12 +2858,20 @@ type SecretScanningGetAlertParams struct {
 }
 
 type SecretScanningListAlertsForOrgParams struct {
-	Org string
+	Org        string
+	State      OptSecretScanningListAlertsForOrgState
+	SecretType OptString
+	Page       OptInt
+	PerPage    OptInt
 }
 
 type SecretScanningListAlertsForRepoParams struct {
-	Owner string
-	Repo  string
+	Owner      string
+	Repo       string
+	State      OptSecretScanningListAlertsForRepoState
+	SecretType OptString
+	Page       OptInt
+	PerPage    OptInt
 }
 
 type SecretScanningUpdateAlertParams struct {
@@ -2615,32 +3037,54 @@ type TeamsGetMembershipForUserLegacyParams struct {
 }
 
 type TeamsListParams struct {
-	Org string
+	Org     string
+	PerPage OptInt
+	Page    OptInt
 }
 
 type TeamsListChildInOrgParams struct {
 	Org      string
 	TeamSlug string
+	PerPage  OptInt
+	Page     OptInt
 }
 
 type TeamsListDiscussionCommentsInOrgParams struct {
 	Org              string
 	TeamSlug         string
 	DiscussionNumber int
+	Direction        OptTeamsListDiscussionCommentsInOrgDirection
+	PerPage          OptInt
+	Page             OptInt
 }
 
 type TeamsListDiscussionCommentsLegacyParams struct {
 	TeamID           int
 	DiscussionNumber int
+	Direction        OptTeamsListDiscussionCommentsLegacyDirection
+	PerPage          OptInt
+	Page             OptInt
 }
 
 type TeamsListDiscussionsInOrgParams struct {
-	Org      string
-	TeamSlug string
+	Org       string
+	TeamSlug  string
+	Direction OptTeamsListDiscussionsInOrgDirection
+	PerPage   OptInt
+	Page      OptInt
+	Pinned    OptString
 }
 
 type TeamsListDiscussionsLegacyParams struct {
-	TeamID int
+	TeamID    int
+	Direction OptTeamsListDiscussionsLegacyDirection
+	PerPage   OptInt
+	Page      OptInt
+}
+
+type TeamsListForAuthenticatedUserParams struct {
+	PerPage OptInt
+	Page    OptInt
 }
 
 type TeamsListIdpGroupsForLegacyParams struct {
@@ -2648,7 +3092,9 @@ type TeamsListIdpGroupsForLegacyParams struct {
 }
 
 type TeamsListIdpGroupsForOrgParams struct {
-	Org string
+	Org     string
+	PerPage OptInt
+	Page    OptString
 }
 
 type TeamsListIdpGroupsInOrgParams struct {
@@ -2659,37 +3105,55 @@ type TeamsListIdpGroupsInOrgParams struct {
 type TeamsListMembersInOrgParams struct {
 	Org      string
 	TeamSlug string
+	Role     OptTeamsListMembersInOrgRole
+	PerPage  OptInt
+	Page     OptInt
 }
 
 type TeamsListMembersLegacyParams struct {
-	TeamID int
+	TeamID  int
+	Role    OptTeamsListMembersLegacyRole
+	PerPage OptInt
+	Page    OptInt
 }
 
 type TeamsListPendingInvitationsInOrgParams struct {
 	Org      string
 	TeamSlug string
+	PerPage  OptInt
+	Page     OptInt
 }
 
 type TeamsListPendingInvitationsLegacyParams struct {
-	TeamID int
+	TeamID  int
+	PerPage OptInt
+	Page    OptInt
 }
 
 type TeamsListProjectsInOrgParams struct {
 	Org      string
 	TeamSlug string
+	PerPage  OptInt
+	Page     OptInt
 }
 
 type TeamsListProjectsLegacyParams struct {
-	TeamID int
+	TeamID  int
+	PerPage OptInt
+	Page    OptInt
 }
 
 type TeamsListReposInOrgParams struct {
 	Org      string
 	TeamSlug string
+	PerPage  OptInt
+	Page     OptInt
 }
 
 type TeamsListReposLegacyParams struct {
-	TeamID int
+	TeamID  int
+	PerPage OptInt
+	Page    OptInt
 }
 
 type TeamsRemoveMemberLegacyParams struct {
@@ -2789,20 +3253,63 @@ type UsersGetPublicSSHKeyForAuthenticatedParams struct {
 	KeyID int
 }
 
+type UsersListParams struct {
+	Since   OptInt
+	PerPage OptInt
+}
+
+type UsersListEmailsForAuthenticatedParams struct {
+	PerPage OptInt
+	Page    OptInt
+}
+
+type UsersListFollowedByAuthenticatedParams struct {
+	PerPage OptInt
+	Page    OptInt
+}
+
+type UsersListFollowersForAuthenticatedUserParams struct {
+	PerPage OptInt
+	Page    OptInt
+}
+
 type UsersListFollowersForUserParams struct {
 	Username string
+	PerPage  OptInt
+	Page     OptInt
 }
 
 type UsersListFollowingForUserParams struct {
 	Username string
+	PerPage  OptInt
+	Page     OptInt
+}
+
+type UsersListGpgKeysForAuthenticatedParams struct {
+	PerPage OptInt
+	Page    OptInt
 }
 
 type UsersListGpgKeysForUserParams struct {
 	Username string
+	PerPage  OptInt
+	Page     OptInt
+}
+
+type UsersListPublicEmailsForAuthenticatedParams struct {
+	PerPage OptInt
+	Page    OptInt
 }
 
 type UsersListPublicKeysForUserParams struct {
 	Username string
+	PerPage  OptInt
+	Page     OptInt
+}
+
+type UsersListPublicSSHKeysForAuthenticatedParams struct {
+	PerPage OptInt
+	Page    OptInt
 }
 
 type UsersUnblockParams struct {

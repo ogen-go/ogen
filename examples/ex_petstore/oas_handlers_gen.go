@@ -91,8 +91,14 @@ func NewListPetsHandler(s Server, opts ...Option) func(w http.ResponseWriter, r 
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeListPetsParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.ListPets(ctx)
+		response, err := s.ListPets(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)

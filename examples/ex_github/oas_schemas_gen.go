@@ -606,6 +606,13 @@ type ActionsListEnvironmentSecretsOK struct {
 	Secrets    []ActionsSecret `json:"secrets"`
 }
 
+type ActionsListJobsForWorkflowRunFilter string
+
+const (
+	ActionsListJobsForWorkflowRunFilterLatest ActionsListJobsForWorkflowRunFilter = "latest"
+	ActionsListJobsForWorkflowRunFilterAll    ActionsListJobsForWorkflowRunFilter = "all"
+)
+
 type ActionsListJobsForWorkflowRunOK struct {
 	TotalCount int   `json:"total_count"`
 	Jobs       []Job `json:"jobs"`
@@ -670,6 +677,24 @@ type ActionsListWorkflowRunsForRepoOK struct {
 	TotalCount   int           `json:"total_count"`
 	WorkflowRuns []WorkflowRun `json:"workflow_runs"`
 }
+
+type ActionsListWorkflowRunsForRepoStatus string
+
+const (
+	ActionsListWorkflowRunsForRepoStatusCompleted      ActionsListWorkflowRunsForRepoStatus = "completed"
+	ActionsListWorkflowRunsForRepoStatusActionRequired ActionsListWorkflowRunsForRepoStatus = "action_required"
+	ActionsListWorkflowRunsForRepoStatusCancelled      ActionsListWorkflowRunsForRepoStatus = "cancelled"
+	ActionsListWorkflowRunsForRepoStatusFailure        ActionsListWorkflowRunsForRepoStatus = "failure"
+	ActionsListWorkflowRunsForRepoStatusNeutral        ActionsListWorkflowRunsForRepoStatus = "neutral"
+	ActionsListWorkflowRunsForRepoStatusSkipped        ActionsListWorkflowRunsForRepoStatus = "skipped"
+	ActionsListWorkflowRunsForRepoStatusStale          ActionsListWorkflowRunsForRepoStatus = "stale"
+	ActionsListWorkflowRunsForRepoStatusSuccess        ActionsListWorkflowRunsForRepoStatus = "success"
+	ActionsListWorkflowRunsForRepoStatusTimedOut       ActionsListWorkflowRunsForRepoStatus = "timed_out"
+	ActionsListWorkflowRunsForRepoStatusInProgress     ActionsListWorkflowRunsForRepoStatus = "in_progress"
+	ActionsListWorkflowRunsForRepoStatusQueued         ActionsListWorkflowRunsForRepoStatus = "queued"
+	ActionsListWorkflowRunsForRepoStatusRequested      ActionsListWorkflowRunsForRepoStatus = "requested"
+	ActionsListWorkflowRunsForRepoStatusWaiting        ActionsListWorkflowRunsForRepoStatus = "waiting"
+)
 
 // ActionsListWorkflowRunsWorkflowID represents sum type.
 type ActionsListWorkflowRunsWorkflowID struct {
@@ -1069,6 +1094,13 @@ func (a *ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized)
 func (*ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized) activityListReposStarredByAuthenticatedUserRes() {
 }
 
+type ActivityListReposStarredByAuthenticatedUserDirection string
+
+const (
+	ActivityListReposStarredByAuthenticatedUserDirectionAsc  ActivityListReposStarredByAuthenticatedUserDirection = "asc"
+	ActivityListReposStarredByAuthenticatedUserDirectionDesc ActivityListReposStarredByAuthenticatedUserDirection = "desc"
+)
+
 type ActivityListReposStarredByAuthenticatedUserOKApplicationJSON []Repository
 
 func (a *ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) wrap(v []Repository) {
@@ -1092,6 +1124,27 @@ func (a *ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3Star
 
 func (*ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON) activityListReposStarredByAuthenticatedUserRes() {
 }
+
+type ActivityListReposStarredByAuthenticatedUserSort string
+
+const (
+	ActivityListReposStarredByAuthenticatedUserSortCreated ActivityListReposStarredByAuthenticatedUserSort = "created"
+	ActivityListReposStarredByAuthenticatedUserSortUpdated ActivityListReposStarredByAuthenticatedUserSort = "updated"
+)
+
+type ActivityListReposStarredByUserDirection string
+
+const (
+	ActivityListReposStarredByUserDirectionAsc  ActivityListReposStarredByUserDirection = "asc"
+	ActivityListReposStarredByUserDirectionDesc ActivityListReposStarredByUserDirection = "desc"
+)
+
+type ActivityListReposStarredByUserSort string
+
+const (
+	ActivityListReposStarredByUserSortCreated ActivityListReposStarredByUserSort = "created"
+	ActivityListReposStarredByUserSortUpdated ActivityListReposStarredByUserSort = "updated"
+)
 
 type ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -1726,6 +1779,27 @@ type AppsGetSubscriptionPlanForAccountStubbedNotFound struct{}
 func (*AppsGetSubscriptionPlanForAccountStubbedNotFound) appsGetSubscriptionPlanForAccountStubbedRes() {
 }
 
+type AppsListAccountsForPlanDirection string
+
+const (
+	AppsListAccountsForPlanDirectionAsc  AppsListAccountsForPlanDirection = "asc"
+	AppsListAccountsForPlanDirectionDesc AppsListAccountsForPlanDirection = "desc"
+)
+
+type AppsListAccountsForPlanSort string
+
+const (
+	AppsListAccountsForPlanSortCreated AppsListAccountsForPlanSort = "created"
+	AppsListAccountsForPlanSortUpdated AppsListAccountsForPlanSort = "updated"
+)
+
+type AppsListAccountsForPlanStubbedDirection string
+
+const (
+	AppsListAccountsForPlanStubbedDirectionAsc  AppsListAccountsForPlanStubbedDirection = "asc"
+	AppsListAccountsForPlanStubbedDirectionDesc AppsListAccountsForPlanStubbedDirection = "desc"
+)
+
 type AppsListAccountsForPlanStubbedOKApplicationJSON []MarketplacePurchase
 
 func (a *AppsListAccountsForPlanStubbedOKApplicationJSON) wrap(v []MarketplacePurchase) {
@@ -1736,6 +1810,13 @@ func (a *AppsListAccountsForPlanStubbedOKApplicationJSON) unwrap() []Marketplace
 }
 
 func (*AppsListAccountsForPlanStubbedOKApplicationJSON) appsListAccountsForPlanStubbedRes() {}
+
+type AppsListAccountsForPlanStubbedSort string
+
+const (
+	AppsListAccountsForPlanStubbedSortCreated AppsListAccountsForPlanStubbedSort = "created"
+	AppsListAccountsForPlanStubbedSortUpdated AppsListAccountsForPlanStubbedSort = "updated"
+)
 
 type AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -2587,15 +2668,45 @@ type ChecksCreateSuiteReq struct {
 	HeadSha string `json:"head_sha"`
 }
 
+type ChecksListForRefFilter string
+
+const (
+	ChecksListForRefFilterLatest ChecksListForRefFilter = "latest"
+	ChecksListForRefFilterAll    ChecksListForRefFilter = "all"
+)
+
 type ChecksListForRefOK struct {
 	TotalCount int        `json:"total_count"`
 	CheckRuns  []CheckRun `json:"check_runs"`
 }
 
+type ChecksListForRefStatus string
+
+const (
+	ChecksListForRefStatusQueued     ChecksListForRefStatus = "queued"
+	ChecksListForRefStatusInProgress ChecksListForRefStatus = "in_progress"
+	ChecksListForRefStatusCompleted  ChecksListForRefStatus = "completed"
+)
+
+type ChecksListForSuiteFilter string
+
+const (
+	ChecksListForSuiteFilterLatest ChecksListForSuiteFilter = "latest"
+	ChecksListForSuiteFilterAll    ChecksListForSuiteFilter = "all"
+)
+
 type ChecksListForSuiteOK struct {
 	TotalCount int        `json:"total_count"`
 	CheckRuns  []CheckRun `json:"check_runs"`
 }
+
+type ChecksListForSuiteStatus string
+
+const (
+	ChecksListForSuiteStatusQueued     ChecksListForSuiteStatus = "queued"
+	ChecksListForSuiteStatusInProgress ChecksListForSuiteStatus = "in_progress"
+	ChecksListForSuiteStatusCompleted  ChecksListForSuiteStatus = "completed"
+)
 
 type ChecksListSuitesForRefOK struct {
 	TotalCount  int          `json:"total_count"`
@@ -3695,6 +3806,21 @@ type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent 
 
 // EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent is response for EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise operation.
 type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent struct{}
+
+type EnterpriseAdminGetAuditLogInclude string
+
+const (
+	EnterpriseAdminGetAuditLogIncludeWeb EnterpriseAdminGetAuditLogInclude = "web"
+	EnterpriseAdminGetAuditLogIncludeGit EnterpriseAdminGetAuditLogInclude = "git"
+	EnterpriseAdminGetAuditLogIncludeAll EnterpriseAdminGetAuditLogInclude = "all"
+)
+
+type EnterpriseAdminGetAuditLogOrder string
+
+const (
+	EnterpriseAdminGetAuditLogOrderDesc EnterpriseAdminGetAuditLogOrder = "desc"
+	EnterpriseAdminGetAuditLogOrderAsc  EnterpriseAdminGetAuditLogOrder = "asc"
+)
 
 type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK struct {
 	TotalCount    float64              `json:"total_count"`
@@ -5308,6 +5434,20 @@ func (a *IssuesListCommentsApplicationJSONNotFound) unwrap() BasicError { return
 
 func (*IssuesListCommentsApplicationJSONNotFound) issuesListCommentsRes() {}
 
+type IssuesListCommentsForRepoDirection string
+
+const (
+	IssuesListCommentsForRepoDirectionAsc  IssuesListCommentsForRepoDirection = "asc"
+	IssuesListCommentsForRepoDirectionDesc IssuesListCommentsForRepoDirection = "desc"
+)
+
+type IssuesListCommentsForRepoSort string
+
+const (
+	IssuesListCommentsForRepoSortCreated IssuesListCommentsForRepoSort = "created"
+	IssuesListCommentsForRepoSortUpdated IssuesListCommentsForRepoSort = "updated"
+)
+
 type IssuesListCommentsOKApplicationJSON []IssueComment
 
 func (a *IssuesListCommentsOKApplicationJSON) wrap(v []IssueComment) {
@@ -5316,6 +5456,115 @@ func (a *IssuesListCommentsOKApplicationJSON) wrap(v []IssueComment) {
 func (a *IssuesListCommentsOKApplicationJSON) unwrap() []IssueComment { return []IssueComment(*a) }
 
 func (*IssuesListCommentsOKApplicationJSON) issuesListCommentsRes() {}
+
+type IssuesListDirection string
+
+const (
+	IssuesListDirectionAsc  IssuesListDirection = "asc"
+	IssuesListDirectionDesc IssuesListDirection = "desc"
+)
+
+type IssuesListFilter string
+
+const (
+	IssuesListFilterAssigned   IssuesListFilter = "assigned"
+	IssuesListFilterCreated    IssuesListFilter = "created"
+	IssuesListFilterMentioned  IssuesListFilter = "mentioned"
+	IssuesListFilterSubscribed IssuesListFilter = "subscribed"
+	IssuesListFilterRepos      IssuesListFilter = "repos"
+	IssuesListFilterAll        IssuesListFilter = "all"
+)
+
+type IssuesListForAuthenticatedUserDirection string
+
+const (
+	IssuesListForAuthenticatedUserDirectionAsc  IssuesListForAuthenticatedUserDirection = "asc"
+	IssuesListForAuthenticatedUserDirectionDesc IssuesListForAuthenticatedUserDirection = "desc"
+)
+
+type IssuesListForAuthenticatedUserFilter string
+
+const (
+	IssuesListForAuthenticatedUserFilterAssigned   IssuesListForAuthenticatedUserFilter = "assigned"
+	IssuesListForAuthenticatedUserFilterCreated    IssuesListForAuthenticatedUserFilter = "created"
+	IssuesListForAuthenticatedUserFilterMentioned  IssuesListForAuthenticatedUserFilter = "mentioned"
+	IssuesListForAuthenticatedUserFilterSubscribed IssuesListForAuthenticatedUserFilter = "subscribed"
+	IssuesListForAuthenticatedUserFilterRepos      IssuesListForAuthenticatedUserFilter = "repos"
+	IssuesListForAuthenticatedUserFilterAll        IssuesListForAuthenticatedUserFilter = "all"
+)
+
+type IssuesListForAuthenticatedUserSort string
+
+const (
+	IssuesListForAuthenticatedUserSortCreated  IssuesListForAuthenticatedUserSort = "created"
+	IssuesListForAuthenticatedUserSortUpdated  IssuesListForAuthenticatedUserSort = "updated"
+	IssuesListForAuthenticatedUserSortComments IssuesListForAuthenticatedUserSort = "comments"
+)
+
+type IssuesListForAuthenticatedUserState string
+
+const (
+	IssuesListForAuthenticatedUserStateOpen   IssuesListForAuthenticatedUserState = "open"
+	IssuesListForAuthenticatedUserStateClosed IssuesListForAuthenticatedUserState = "closed"
+	IssuesListForAuthenticatedUserStateAll    IssuesListForAuthenticatedUserState = "all"
+)
+
+type IssuesListForOrgDirection string
+
+const (
+	IssuesListForOrgDirectionAsc  IssuesListForOrgDirection = "asc"
+	IssuesListForOrgDirectionDesc IssuesListForOrgDirection = "desc"
+)
+
+type IssuesListForOrgFilter string
+
+const (
+	IssuesListForOrgFilterAssigned   IssuesListForOrgFilter = "assigned"
+	IssuesListForOrgFilterCreated    IssuesListForOrgFilter = "created"
+	IssuesListForOrgFilterMentioned  IssuesListForOrgFilter = "mentioned"
+	IssuesListForOrgFilterSubscribed IssuesListForOrgFilter = "subscribed"
+	IssuesListForOrgFilterRepos      IssuesListForOrgFilter = "repos"
+	IssuesListForOrgFilterAll        IssuesListForOrgFilter = "all"
+)
+
+type IssuesListForOrgSort string
+
+const (
+	IssuesListForOrgSortCreated  IssuesListForOrgSort = "created"
+	IssuesListForOrgSortUpdated  IssuesListForOrgSort = "updated"
+	IssuesListForOrgSortComments IssuesListForOrgSort = "comments"
+)
+
+type IssuesListForOrgState string
+
+const (
+	IssuesListForOrgStateOpen   IssuesListForOrgState = "open"
+	IssuesListForOrgStateClosed IssuesListForOrgState = "closed"
+	IssuesListForOrgStateAll    IssuesListForOrgState = "all"
+)
+
+type IssuesListForRepoDirection string
+
+const (
+	IssuesListForRepoDirectionAsc  IssuesListForRepoDirection = "asc"
+	IssuesListForRepoDirectionDesc IssuesListForRepoDirection = "desc"
+)
+
+type IssuesListForRepoSort string
+
+const (
+	IssuesListForRepoSortCreated  IssuesListForRepoSort = "created"
+	IssuesListForRepoSortUpdated  IssuesListForRepoSort = "updated"
+	IssuesListForRepoSortComments IssuesListForRepoSort = "comments"
+)
+
+type IssuesListForRepoState string
+
+const (
+	IssuesListForRepoStateOpen   IssuesListForRepoState = "open"
+	IssuesListForRepoStateClosed IssuesListForRepoState = "closed"
+	IssuesListForRepoStateAll    IssuesListForRepoState = "all"
+)
 
 type IssuesListLabelsForRepoOKApplicationJSON []Label
 
@@ -5335,6 +5584,13 @@ func (a *IssuesListLabelsOnIssueOKApplicationJSON) unwrap() []Label { return []L
 
 func (*IssuesListLabelsOnIssueOKApplicationJSON) issuesListLabelsOnIssueRes() {}
 
+type IssuesListMilestonesDirection string
+
+const (
+	IssuesListMilestonesDirectionAsc  IssuesListMilestonesDirection = "asc"
+	IssuesListMilestonesDirectionDesc IssuesListMilestonesDirection = "desc"
+)
+
 type IssuesListMilestonesOKApplicationJSON []Milestone
 
 func (a *IssuesListMilestonesOKApplicationJSON) wrap(v []Milestone) {
@@ -5343,6 +5599,37 @@ func (a *IssuesListMilestonesOKApplicationJSON) wrap(v []Milestone) {
 func (a *IssuesListMilestonesOKApplicationJSON) unwrap() []Milestone { return []Milestone(*a) }
 
 func (*IssuesListMilestonesOKApplicationJSON) issuesListMilestonesRes() {}
+
+type IssuesListMilestonesSort string
+
+const (
+	IssuesListMilestonesSortDueOn        IssuesListMilestonesSort = "due_on"
+	IssuesListMilestonesSortCompleteness IssuesListMilestonesSort = "completeness"
+)
+
+type IssuesListMilestonesState string
+
+const (
+	IssuesListMilestonesStateOpen   IssuesListMilestonesState = "open"
+	IssuesListMilestonesStateClosed IssuesListMilestonesState = "closed"
+	IssuesListMilestonesStateAll    IssuesListMilestonesState = "all"
+)
+
+type IssuesListSort string
+
+const (
+	IssuesListSortCreated  IssuesListSort = "created"
+	IssuesListSortUpdated  IssuesListSort = "updated"
+	IssuesListSortComments IssuesListSort = "comments"
+)
+
+type IssuesListState string
+
+const (
+	IssuesListStateOpen   IssuesListState = "open"
+	IssuesListStateClosed IssuesListState = "closed"
+	IssuesListStateAll    IssuesListState = "all"
+)
 
 // IssuesLockNoContent is response for IssuesLock operation.
 type IssuesLockNoContent struct{}
@@ -5937,6 +6224,12 @@ func (a *MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) unw
 func (*MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) migrationsGetStatusForAuthenticatedUserRes() {
 }
 
+type MigrationsGetStatusForOrgExcludeItem string
+
+const (
+	MigrationsGetStatusForOrgExcludeItemRepositories MigrationsGetStatusForOrgExcludeItem = "repositories"
+)
+
 type MigrationsListForAuthenticatedUserApplicationJSONForbidden BasicError
 
 func (a *MigrationsListForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
@@ -5971,6 +6264,12 @@ func (a *MigrationsListForAuthenticatedUserOKApplicationJSON) unwrap() []Migrati
 }
 
 func (*MigrationsListForAuthenticatedUserOKApplicationJSON) migrationsListForAuthenticatedUserRes() {}
+
+type MigrationsListForOrgExcludeItem string
+
+const (
+	MigrationsListForOrgExcludeItemRepositories MigrationsListForOrgExcludeItem = "repositories"
+)
 
 type MigrationsListReposForOrgOKApplicationJSON []MinimalRepository
 
@@ -8101,6 +8400,82 @@ func (o OptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) Get() (v Actio
 	return o.Value, true
 }
 
+// NewOptActionsListJobsForWorkflowRunFilter returns new OptActionsListJobsForWorkflowRunFilter with value set to v.
+func NewOptActionsListJobsForWorkflowRunFilter(v ActionsListJobsForWorkflowRunFilter) OptActionsListJobsForWorkflowRunFilter {
+	return OptActionsListJobsForWorkflowRunFilter{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptActionsListJobsForWorkflowRunFilter is optional ActionsListJobsForWorkflowRunFilter.
+type OptActionsListJobsForWorkflowRunFilter struct {
+	Value ActionsListJobsForWorkflowRunFilter
+	Set   bool
+}
+
+// IsSet returns true if OptActionsListJobsForWorkflowRunFilter was set.
+func (o OptActionsListJobsForWorkflowRunFilter) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptActionsListJobsForWorkflowRunFilter) Reset() {
+	var v ActionsListJobsForWorkflowRunFilter
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptActionsListJobsForWorkflowRunFilter) SetTo(v ActionsListJobsForWorkflowRunFilter) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptActionsListJobsForWorkflowRunFilter) Get() (v ActionsListJobsForWorkflowRunFilter, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptActionsListWorkflowRunsForRepoStatus returns new OptActionsListWorkflowRunsForRepoStatus with value set to v.
+func NewOptActionsListWorkflowRunsForRepoStatus(v ActionsListWorkflowRunsForRepoStatus) OptActionsListWorkflowRunsForRepoStatus {
+	return OptActionsListWorkflowRunsForRepoStatus{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptActionsListWorkflowRunsForRepoStatus is optional ActionsListWorkflowRunsForRepoStatus.
+type OptActionsListWorkflowRunsForRepoStatus struct {
+	Value ActionsListWorkflowRunsForRepoStatus
+	Set   bool
+}
+
+// IsSet returns true if OptActionsListWorkflowRunsForRepoStatus was set.
+func (o OptActionsListWorkflowRunsForRepoStatus) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptActionsListWorkflowRunsForRepoStatus) Reset() {
+	var v ActionsListWorkflowRunsForRepoStatus
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptActionsListWorkflowRunsForRepoStatus) SetTo(v ActionsListWorkflowRunsForRepoStatus) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptActionsListWorkflowRunsForRepoStatus) Get() (v ActionsListWorkflowRunsForRepoStatus, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility returns new OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility with value set to v.
 func NewOptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility(v ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility {
 	return OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility{
@@ -8133,6 +8508,82 @@ func (o *OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) SetTo(v Actio
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) Get() (v ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptActivityListReposStarredByAuthenticatedUserDirection returns new OptActivityListReposStarredByAuthenticatedUserDirection with value set to v.
+func NewOptActivityListReposStarredByAuthenticatedUserDirection(v ActivityListReposStarredByAuthenticatedUserDirection) OptActivityListReposStarredByAuthenticatedUserDirection {
+	return OptActivityListReposStarredByAuthenticatedUserDirection{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptActivityListReposStarredByAuthenticatedUserDirection is optional ActivityListReposStarredByAuthenticatedUserDirection.
+type OptActivityListReposStarredByAuthenticatedUserDirection struct {
+	Value ActivityListReposStarredByAuthenticatedUserDirection
+	Set   bool
+}
+
+// IsSet returns true if OptActivityListReposStarredByAuthenticatedUserDirection was set.
+func (o OptActivityListReposStarredByAuthenticatedUserDirection) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptActivityListReposStarredByAuthenticatedUserDirection) Reset() {
+	var v ActivityListReposStarredByAuthenticatedUserDirection
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptActivityListReposStarredByAuthenticatedUserDirection) SetTo(v ActivityListReposStarredByAuthenticatedUserDirection) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptActivityListReposStarredByAuthenticatedUserDirection) Get() (v ActivityListReposStarredByAuthenticatedUserDirection, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptActivityListReposStarredByAuthenticatedUserSort returns new OptActivityListReposStarredByAuthenticatedUserSort with value set to v.
+func NewOptActivityListReposStarredByAuthenticatedUserSort(v ActivityListReposStarredByAuthenticatedUserSort) OptActivityListReposStarredByAuthenticatedUserSort {
+	return OptActivityListReposStarredByAuthenticatedUserSort{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptActivityListReposStarredByAuthenticatedUserSort is optional ActivityListReposStarredByAuthenticatedUserSort.
+type OptActivityListReposStarredByAuthenticatedUserSort struct {
+	Value ActivityListReposStarredByAuthenticatedUserSort
+	Set   bool
+}
+
+// IsSet returns true if OptActivityListReposStarredByAuthenticatedUserSort was set.
+func (o OptActivityListReposStarredByAuthenticatedUserSort) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptActivityListReposStarredByAuthenticatedUserSort) Reset() {
+	var v ActivityListReposStarredByAuthenticatedUserSort
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptActivityListReposStarredByAuthenticatedUserSort) SetTo(v ActivityListReposStarredByAuthenticatedUserSort) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptActivityListReposStarredByAuthenticatedUserSort) Get() (v ActivityListReposStarredByAuthenticatedUserSort, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -9583,6 +10034,82 @@ func (o OptAppPermissionsWorkflows) Get() (v AppPermissionsWorkflows, ok bool) {
 	return o.Value, true
 }
 
+// NewOptAppsListAccountsForPlanStubbedDirection returns new OptAppsListAccountsForPlanStubbedDirection with value set to v.
+func NewOptAppsListAccountsForPlanStubbedDirection(v AppsListAccountsForPlanStubbedDirection) OptAppsListAccountsForPlanStubbedDirection {
+	return OptAppsListAccountsForPlanStubbedDirection{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptAppsListAccountsForPlanStubbedDirection is optional AppsListAccountsForPlanStubbedDirection.
+type OptAppsListAccountsForPlanStubbedDirection struct {
+	Value AppsListAccountsForPlanStubbedDirection
+	Set   bool
+}
+
+// IsSet returns true if OptAppsListAccountsForPlanStubbedDirection was set.
+func (o OptAppsListAccountsForPlanStubbedDirection) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptAppsListAccountsForPlanStubbedDirection) Reset() {
+	var v AppsListAccountsForPlanStubbedDirection
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptAppsListAccountsForPlanStubbedDirection) SetTo(v AppsListAccountsForPlanStubbedDirection) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptAppsListAccountsForPlanStubbedDirection) Get() (v AppsListAccountsForPlanStubbedDirection, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptAppsListAccountsForPlanStubbedSort returns new OptAppsListAccountsForPlanStubbedSort with value set to v.
+func NewOptAppsListAccountsForPlanStubbedSort(v AppsListAccountsForPlanStubbedSort) OptAppsListAccountsForPlanStubbedSort {
+	return OptAppsListAccountsForPlanStubbedSort{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptAppsListAccountsForPlanStubbedSort is optional AppsListAccountsForPlanStubbedSort.
+type OptAppsListAccountsForPlanStubbedSort struct {
+	Value AppsListAccountsForPlanStubbedSort
+	Set   bool
+}
+
+// IsSet returns true if OptAppsListAccountsForPlanStubbedSort was set.
+func (o OptAppsListAccountsForPlanStubbedSort) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptAppsListAccountsForPlanStubbedSort) Reset() {
+	var v AppsListAccountsForPlanStubbedSort
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptAppsListAccountsForPlanStubbedSort) SetTo(v AppsListAccountsForPlanStubbedSort) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptAppsListAccountsForPlanStubbedSort) Get() (v AppsListAccountsForPlanStubbedSort, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptAuditLogEventActorLocation returns new OptAuditLogEventActorLocation with value set to v.
 func NewOptAuditLogEventActorLocation(v AuditLogEventActorLocation) OptAuditLogEventActorLocation {
 	return OptAuditLogEventActorLocation{
@@ -10109,6 +10636,158 @@ func (o *OptBranchRestrictionPolicyAppsItemPermissions) SetTo(v BranchRestrictio
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptBranchRestrictionPolicyAppsItemPermissions) Get() (v BranchRestrictionPolicyAppsItemPermissions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptChecksListForRefFilter returns new OptChecksListForRefFilter with value set to v.
+func NewOptChecksListForRefFilter(v ChecksListForRefFilter) OptChecksListForRefFilter {
+	return OptChecksListForRefFilter{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptChecksListForRefFilter is optional ChecksListForRefFilter.
+type OptChecksListForRefFilter struct {
+	Value ChecksListForRefFilter
+	Set   bool
+}
+
+// IsSet returns true if OptChecksListForRefFilter was set.
+func (o OptChecksListForRefFilter) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptChecksListForRefFilter) Reset() {
+	var v ChecksListForRefFilter
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptChecksListForRefFilter) SetTo(v ChecksListForRefFilter) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptChecksListForRefFilter) Get() (v ChecksListForRefFilter, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptChecksListForRefStatus returns new OptChecksListForRefStatus with value set to v.
+func NewOptChecksListForRefStatus(v ChecksListForRefStatus) OptChecksListForRefStatus {
+	return OptChecksListForRefStatus{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptChecksListForRefStatus is optional ChecksListForRefStatus.
+type OptChecksListForRefStatus struct {
+	Value ChecksListForRefStatus
+	Set   bool
+}
+
+// IsSet returns true if OptChecksListForRefStatus was set.
+func (o OptChecksListForRefStatus) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptChecksListForRefStatus) Reset() {
+	var v ChecksListForRefStatus
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptChecksListForRefStatus) SetTo(v ChecksListForRefStatus) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptChecksListForRefStatus) Get() (v ChecksListForRefStatus, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptChecksListForSuiteFilter returns new OptChecksListForSuiteFilter with value set to v.
+func NewOptChecksListForSuiteFilter(v ChecksListForSuiteFilter) OptChecksListForSuiteFilter {
+	return OptChecksListForSuiteFilter{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptChecksListForSuiteFilter is optional ChecksListForSuiteFilter.
+type OptChecksListForSuiteFilter struct {
+	Value ChecksListForSuiteFilter
+	Set   bool
+}
+
+// IsSet returns true if OptChecksListForSuiteFilter was set.
+func (o OptChecksListForSuiteFilter) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptChecksListForSuiteFilter) Reset() {
+	var v ChecksListForSuiteFilter
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptChecksListForSuiteFilter) SetTo(v ChecksListForSuiteFilter) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptChecksListForSuiteFilter) Get() (v ChecksListForSuiteFilter, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptChecksListForSuiteStatus returns new OptChecksListForSuiteStatus with value set to v.
+func NewOptChecksListForSuiteStatus(v ChecksListForSuiteStatus) OptChecksListForSuiteStatus {
+	return OptChecksListForSuiteStatus{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptChecksListForSuiteStatus is optional ChecksListForSuiteStatus.
+type OptChecksListForSuiteStatus struct {
+	Value ChecksListForSuiteStatus
+	Set   bool
+}
+
+// IsSet returns true if OptChecksListForSuiteStatus was set.
+func (o OptChecksListForSuiteStatus) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptChecksListForSuiteStatus) Reset() {
+	var v ChecksListForSuiteStatus
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptChecksListForSuiteStatus) SetTo(v ChecksListForSuiteStatus) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptChecksListForSuiteStatus) Get() (v ChecksListForSuiteStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -10757,6 +11436,82 @@ func (o *OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility) Get() (v EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptEnterpriseAdminGetAuditLogInclude returns new OptEnterpriseAdminGetAuditLogInclude with value set to v.
+func NewOptEnterpriseAdminGetAuditLogInclude(v EnterpriseAdminGetAuditLogInclude) OptEnterpriseAdminGetAuditLogInclude {
+	return OptEnterpriseAdminGetAuditLogInclude{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptEnterpriseAdminGetAuditLogInclude is optional EnterpriseAdminGetAuditLogInclude.
+type OptEnterpriseAdminGetAuditLogInclude struct {
+	Value EnterpriseAdminGetAuditLogInclude
+	Set   bool
+}
+
+// IsSet returns true if OptEnterpriseAdminGetAuditLogInclude was set.
+func (o OptEnterpriseAdminGetAuditLogInclude) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptEnterpriseAdminGetAuditLogInclude) Reset() {
+	var v EnterpriseAdminGetAuditLogInclude
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptEnterpriseAdminGetAuditLogInclude) SetTo(v EnterpriseAdminGetAuditLogInclude) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptEnterpriseAdminGetAuditLogInclude) Get() (v EnterpriseAdminGetAuditLogInclude, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptEnterpriseAdminGetAuditLogOrder returns new OptEnterpriseAdminGetAuditLogOrder with value set to v.
+func NewOptEnterpriseAdminGetAuditLogOrder(v EnterpriseAdminGetAuditLogOrder) OptEnterpriseAdminGetAuditLogOrder {
+	return OptEnterpriseAdminGetAuditLogOrder{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptEnterpriseAdminGetAuditLogOrder is optional EnterpriseAdminGetAuditLogOrder.
+type OptEnterpriseAdminGetAuditLogOrder struct {
+	Value EnterpriseAdminGetAuditLogOrder
+	Set   bool
+}
+
+// IsSet returns true if OptEnterpriseAdminGetAuditLogOrder was set.
+func (o OptEnterpriseAdminGetAuditLogOrder) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptEnterpriseAdminGetAuditLogOrder) Reset() {
+	var v EnterpriseAdminGetAuditLogOrder
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptEnterpriseAdminGetAuditLogOrder) SetTo(v EnterpriseAdminGetAuditLogOrder) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptEnterpriseAdminGetAuditLogOrder) Get() (v EnterpriseAdminGetAuditLogOrder, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -12013,6 +12768,120 @@ func (o *OptIssuesCreateMilestoneReqState) SetTo(v IssuesCreateMilestoneReqState
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptIssuesCreateMilestoneReqState) Get() (v IssuesCreateMilestoneReqState, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesListMilestonesDirection returns new OptIssuesListMilestonesDirection with value set to v.
+func NewOptIssuesListMilestonesDirection(v IssuesListMilestonesDirection) OptIssuesListMilestonesDirection {
+	return OptIssuesListMilestonesDirection{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesListMilestonesDirection is optional IssuesListMilestonesDirection.
+type OptIssuesListMilestonesDirection struct {
+	Value IssuesListMilestonesDirection
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesListMilestonesDirection was set.
+func (o OptIssuesListMilestonesDirection) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesListMilestonesDirection) Reset() {
+	var v IssuesListMilestonesDirection
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesListMilestonesDirection) SetTo(v IssuesListMilestonesDirection) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesListMilestonesDirection) Get() (v IssuesListMilestonesDirection, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesListMilestonesSort returns new OptIssuesListMilestonesSort with value set to v.
+func NewOptIssuesListMilestonesSort(v IssuesListMilestonesSort) OptIssuesListMilestonesSort {
+	return OptIssuesListMilestonesSort{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesListMilestonesSort is optional IssuesListMilestonesSort.
+type OptIssuesListMilestonesSort struct {
+	Value IssuesListMilestonesSort
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesListMilestonesSort was set.
+func (o OptIssuesListMilestonesSort) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesListMilestonesSort) Reset() {
+	var v IssuesListMilestonesSort
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesListMilestonesSort) SetTo(v IssuesListMilestonesSort) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesListMilestonesSort) Get() (v IssuesListMilestonesSort, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesListMilestonesState returns new OptIssuesListMilestonesState with value set to v.
+func NewOptIssuesListMilestonesState(v IssuesListMilestonesState) OptIssuesListMilestonesState {
+	return OptIssuesListMilestonesState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesListMilestonesState is optional IssuesListMilestonesState.
+type OptIssuesListMilestonesState struct {
+	Value IssuesListMilestonesState
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesListMilestonesState was set.
+func (o OptIssuesListMilestonesState) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesListMilestonesState) Reset() {
+	var v IssuesListMilestonesState
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesListMilestonesState) SetTo(v IssuesListMilestonesState) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesListMilestonesState) Get() (v IssuesListMilestonesState, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -14507,6 +15376,120 @@ func (o OptOrgsCreateInvitationReqRole) Get() (v OrgsCreateInvitationReqRole, ok
 	return o.Value, true
 }
 
+// NewOptOrgsGetAuditLogInclude returns new OptOrgsGetAuditLogInclude with value set to v.
+func NewOptOrgsGetAuditLogInclude(v OrgsGetAuditLogInclude) OptOrgsGetAuditLogInclude {
+	return OptOrgsGetAuditLogInclude{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptOrgsGetAuditLogInclude is optional OrgsGetAuditLogInclude.
+type OptOrgsGetAuditLogInclude struct {
+	Value OrgsGetAuditLogInclude
+	Set   bool
+}
+
+// IsSet returns true if OptOrgsGetAuditLogInclude was set.
+func (o OptOrgsGetAuditLogInclude) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptOrgsGetAuditLogInclude) Reset() {
+	var v OrgsGetAuditLogInclude
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptOrgsGetAuditLogInclude) SetTo(v OrgsGetAuditLogInclude) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptOrgsGetAuditLogInclude) Get() (v OrgsGetAuditLogInclude, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptOrgsGetAuditLogOrder returns new OptOrgsGetAuditLogOrder with value set to v.
+func NewOptOrgsGetAuditLogOrder(v OrgsGetAuditLogOrder) OptOrgsGetAuditLogOrder {
+	return OptOrgsGetAuditLogOrder{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptOrgsGetAuditLogOrder is optional OrgsGetAuditLogOrder.
+type OptOrgsGetAuditLogOrder struct {
+	Value OrgsGetAuditLogOrder
+	Set   bool
+}
+
+// IsSet returns true if OptOrgsGetAuditLogOrder was set.
+func (o OptOrgsGetAuditLogOrder) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptOrgsGetAuditLogOrder) Reset() {
+	var v OrgsGetAuditLogOrder
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptOrgsGetAuditLogOrder) SetTo(v OrgsGetAuditLogOrder) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptOrgsGetAuditLogOrder) Get() (v OrgsGetAuditLogOrder, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptOrgsListOutsideCollaboratorsFilter returns new OptOrgsListOutsideCollaboratorsFilter with value set to v.
+func NewOptOrgsListOutsideCollaboratorsFilter(v OrgsListOutsideCollaboratorsFilter) OptOrgsListOutsideCollaboratorsFilter {
+	return OptOrgsListOutsideCollaboratorsFilter{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptOrgsListOutsideCollaboratorsFilter is optional OrgsListOutsideCollaboratorsFilter.
+type OptOrgsListOutsideCollaboratorsFilter struct {
+	Value OrgsListOutsideCollaboratorsFilter
+	Set   bool
+}
+
+// IsSet returns true if OptOrgsListOutsideCollaboratorsFilter was set.
+func (o OptOrgsListOutsideCollaboratorsFilter) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptOrgsListOutsideCollaboratorsFilter) Reset() {
+	var v OrgsListOutsideCollaboratorsFilter
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptOrgsListOutsideCollaboratorsFilter) SetTo(v OrgsListOutsideCollaboratorsFilter) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptOrgsListOutsideCollaboratorsFilter) Get() (v OrgsListOutsideCollaboratorsFilter, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptOrgsSetMembershipForUserReqRole returns new OptOrgsSetMembershipForUserReqRole with value set to v.
 func NewOptOrgsSetMembershipForUserReqRole(v OrgsSetMembershipForUserReqRole) OptOrgsSetMembershipForUserReqRole {
 	return OptOrgsSetMembershipForUserReqRole{
@@ -14773,6 +15756,198 @@ func (o OptPackageVersionMetadataDocker) Get() (v PackageVersionMetadataDocker, 
 	return o.Value, true
 }
 
+// NewOptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState returns new OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState with value set to v.
+func NewOptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState(v PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState {
+	return OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState is optional PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState.
+type OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState struct {
+	Value PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState
+	Set   bool
+}
+
+// IsSet returns true if OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState was set.
+func (o OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) Reset() {
+	var v PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) SetTo(v PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) Get() (v PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptPackagesGetAllPackageVersionsForPackageOwnedByOrgState returns new OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState with value set to v.
+func NewOptPackagesGetAllPackageVersionsForPackageOwnedByOrgState(v PackagesGetAllPackageVersionsForPackageOwnedByOrgState) OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState {
+	return OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState is optional PackagesGetAllPackageVersionsForPackageOwnedByOrgState.
+type OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState struct {
+	Value PackagesGetAllPackageVersionsForPackageOwnedByOrgState
+	Set   bool
+}
+
+// IsSet returns true if OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState was set.
+func (o OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState) Reset() {
+	var v PackagesGetAllPackageVersionsForPackageOwnedByOrgState
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState) SetTo(v PackagesGetAllPackageVersionsForPackageOwnedByOrgState) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState) Get() (v PackagesGetAllPackageVersionsForPackageOwnedByOrgState, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptPackagesListPackagesForAuthenticatedUserVisibility returns new OptPackagesListPackagesForAuthenticatedUserVisibility with value set to v.
+func NewOptPackagesListPackagesForAuthenticatedUserVisibility(v PackagesListPackagesForAuthenticatedUserVisibility) OptPackagesListPackagesForAuthenticatedUserVisibility {
+	return OptPackagesListPackagesForAuthenticatedUserVisibility{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPackagesListPackagesForAuthenticatedUserVisibility is optional PackagesListPackagesForAuthenticatedUserVisibility.
+type OptPackagesListPackagesForAuthenticatedUserVisibility struct {
+	Value PackagesListPackagesForAuthenticatedUserVisibility
+	Set   bool
+}
+
+// IsSet returns true if OptPackagesListPackagesForAuthenticatedUserVisibility was set.
+func (o OptPackagesListPackagesForAuthenticatedUserVisibility) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPackagesListPackagesForAuthenticatedUserVisibility) Reset() {
+	var v PackagesListPackagesForAuthenticatedUserVisibility
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPackagesListPackagesForAuthenticatedUserVisibility) SetTo(v PackagesListPackagesForAuthenticatedUserVisibility) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPackagesListPackagesForAuthenticatedUserVisibility) Get() (v PackagesListPackagesForAuthenticatedUserVisibility, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptPackagesListPackagesForOrganizationVisibility returns new OptPackagesListPackagesForOrganizationVisibility with value set to v.
+func NewOptPackagesListPackagesForOrganizationVisibility(v PackagesListPackagesForOrganizationVisibility) OptPackagesListPackagesForOrganizationVisibility {
+	return OptPackagesListPackagesForOrganizationVisibility{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPackagesListPackagesForOrganizationVisibility is optional PackagesListPackagesForOrganizationVisibility.
+type OptPackagesListPackagesForOrganizationVisibility struct {
+	Value PackagesListPackagesForOrganizationVisibility
+	Set   bool
+}
+
+// IsSet returns true if OptPackagesListPackagesForOrganizationVisibility was set.
+func (o OptPackagesListPackagesForOrganizationVisibility) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPackagesListPackagesForOrganizationVisibility) Reset() {
+	var v PackagesListPackagesForOrganizationVisibility
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPackagesListPackagesForOrganizationVisibility) SetTo(v PackagesListPackagesForOrganizationVisibility) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPackagesListPackagesForOrganizationVisibility) Get() (v PackagesListPackagesForOrganizationVisibility, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptPackagesListPackagesForUserVisibility returns new OptPackagesListPackagesForUserVisibility with value set to v.
+func NewOptPackagesListPackagesForUserVisibility(v PackagesListPackagesForUserVisibility) OptPackagesListPackagesForUserVisibility {
+	return OptPackagesListPackagesForUserVisibility{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPackagesListPackagesForUserVisibility is optional PackagesListPackagesForUserVisibility.
+type OptPackagesListPackagesForUserVisibility struct {
+	Value PackagesListPackagesForUserVisibility
+	Set   bool
+}
+
+// IsSet returns true if OptPackagesListPackagesForUserVisibility was set.
+func (o OptPackagesListPackagesForUserVisibility) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPackagesListPackagesForUserVisibility) Reset() {
+	var v PackagesListPackagesForUserVisibility
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPackagesListPackagesForUserVisibility) SetTo(v PackagesListPackagesForUserVisibility) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPackagesListPackagesForUserVisibility) Get() (v PackagesListPackagesForUserVisibility, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptPagesHTTPSCertificate returns new OptPagesHTTPSCertificate with value set to v.
 func NewOptPagesHTTPSCertificate(v PagesHTTPSCertificate) OptPagesHTTPSCertificate {
 	return OptPagesHTTPSCertificate{
@@ -14995,6 +16170,120 @@ func (o *OptProjectsAddCollaboratorReqPermission) SetTo(v ProjectsAddCollaborato
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptProjectsAddCollaboratorReqPermission) Get() (v ProjectsAddCollaboratorReqPermission, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptProjectsListCardsArchivedState returns new OptProjectsListCardsArchivedState with value set to v.
+func NewOptProjectsListCardsArchivedState(v ProjectsListCardsArchivedState) OptProjectsListCardsArchivedState {
+	return OptProjectsListCardsArchivedState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptProjectsListCardsArchivedState is optional ProjectsListCardsArchivedState.
+type OptProjectsListCardsArchivedState struct {
+	Value ProjectsListCardsArchivedState
+	Set   bool
+}
+
+// IsSet returns true if OptProjectsListCardsArchivedState was set.
+func (o OptProjectsListCardsArchivedState) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptProjectsListCardsArchivedState) Reset() {
+	var v ProjectsListCardsArchivedState
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptProjectsListCardsArchivedState) SetTo(v ProjectsListCardsArchivedState) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptProjectsListCardsArchivedState) Get() (v ProjectsListCardsArchivedState, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptProjectsListForOrgState returns new OptProjectsListForOrgState with value set to v.
+func NewOptProjectsListForOrgState(v ProjectsListForOrgState) OptProjectsListForOrgState {
+	return OptProjectsListForOrgState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptProjectsListForOrgState is optional ProjectsListForOrgState.
+type OptProjectsListForOrgState struct {
+	Value ProjectsListForOrgState
+	Set   bool
+}
+
+// IsSet returns true if OptProjectsListForOrgState was set.
+func (o OptProjectsListForOrgState) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptProjectsListForOrgState) Reset() {
+	var v ProjectsListForOrgState
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptProjectsListForOrgState) SetTo(v ProjectsListForOrgState) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptProjectsListForOrgState) Get() (v ProjectsListForOrgState, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptProjectsListForRepoState returns new OptProjectsListForRepoState with value set to v.
+func NewOptProjectsListForRepoState(v ProjectsListForRepoState) OptProjectsListForRepoState {
+	return OptProjectsListForRepoState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptProjectsListForRepoState is optional ProjectsListForRepoState.
+type OptProjectsListForRepoState struct {
+	Value ProjectsListForRepoState
+	Set   bool
+}
+
+// IsSet returns true if OptProjectsListForRepoState was set.
+func (o OptProjectsListForRepoState) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptProjectsListForRepoState) Reset() {
+	var v ProjectsListForRepoState
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptProjectsListForRepoState) SetTo(v ProjectsListForRepoState) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptProjectsListForRepoState) Get() (v ProjectsListForRepoState, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -15761,6 +17050,158 @@ func (o OptPullsCreateReviewReqEvent) Get() (v PullsCreateReviewReqEvent, ok boo
 	return o.Value, true
 }
 
+// NewOptPullsListReviewCommentsDirection returns new OptPullsListReviewCommentsDirection with value set to v.
+func NewOptPullsListReviewCommentsDirection(v PullsListReviewCommentsDirection) OptPullsListReviewCommentsDirection {
+	return OptPullsListReviewCommentsDirection{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPullsListReviewCommentsDirection is optional PullsListReviewCommentsDirection.
+type OptPullsListReviewCommentsDirection struct {
+	Value PullsListReviewCommentsDirection
+	Set   bool
+}
+
+// IsSet returns true if OptPullsListReviewCommentsDirection was set.
+func (o OptPullsListReviewCommentsDirection) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPullsListReviewCommentsDirection) Reset() {
+	var v PullsListReviewCommentsDirection
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPullsListReviewCommentsDirection) SetTo(v PullsListReviewCommentsDirection) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPullsListReviewCommentsDirection) Get() (v PullsListReviewCommentsDirection, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptPullsListReviewCommentsForRepoDirection returns new OptPullsListReviewCommentsForRepoDirection with value set to v.
+func NewOptPullsListReviewCommentsForRepoDirection(v PullsListReviewCommentsForRepoDirection) OptPullsListReviewCommentsForRepoDirection {
+	return OptPullsListReviewCommentsForRepoDirection{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPullsListReviewCommentsForRepoDirection is optional PullsListReviewCommentsForRepoDirection.
+type OptPullsListReviewCommentsForRepoDirection struct {
+	Value PullsListReviewCommentsForRepoDirection
+	Set   bool
+}
+
+// IsSet returns true if OptPullsListReviewCommentsForRepoDirection was set.
+func (o OptPullsListReviewCommentsForRepoDirection) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPullsListReviewCommentsForRepoDirection) Reset() {
+	var v PullsListReviewCommentsForRepoDirection
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPullsListReviewCommentsForRepoDirection) SetTo(v PullsListReviewCommentsForRepoDirection) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPullsListReviewCommentsForRepoDirection) Get() (v PullsListReviewCommentsForRepoDirection, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptPullsListReviewCommentsForRepoSort returns new OptPullsListReviewCommentsForRepoSort with value set to v.
+func NewOptPullsListReviewCommentsForRepoSort(v PullsListReviewCommentsForRepoSort) OptPullsListReviewCommentsForRepoSort {
+	return OptPullsListReviewCommentsForRepoSort{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPullsListReviewCommentsForRepoSort is optional PullsListReviewCommentsForRepoSort.
+type OptPullsListReviewCommentsForRepoSort struct {
+	Value PullsListReviewCommentsForRepoSort
+	Set   bool
+}
+
+// IsSet returns true if OptPullsListReviewCommentsForRepoSort was set.
+func (o OptPullsListReviewCommentsForRepoSort) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPullsListReviewCommentsForRepoSort) Reset() {
+	var v PullsListReviewCommentsForRepoSort
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPullsListReviewCommentsForRepoSort) SetTo(v PullsListReviewCommentsForRepoSort) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPullsListReviewCommentsForRepoSort) Get() (v PullsListReviewCommentsForRepoSort, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptPullsListReviewCommentsSort returns new OptPullsListReviewCommentsSort with value set to v.
+func NewOptPullsListReviewCommentsSort(v PullsListReviewCommentsSort) OptPullsListReviewCommentsSort {
+	return OptPullsListReviewCommentsSort{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPullsListReviewCommentsSort is optional PullsListReviewCommentsSort.
+type OptPullsListReviewCommentsSort struct {
+	Value PullsListReviewCommentsSort
+	Set   bool
+}
+
+// IsSet returns true if OptPullsListReviewCommentsSort was set.
+func (o OptPullsListReviewCommentsSort) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPullsListReviewCommentsSort) Reset() {
+	var v PullsListReviewCommentsSort
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPullsListReviewCommentsSort) SetTo(v PullsListReviewCommentsSort) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPullsListReviewCommentsSort) Get() (v PullsListReviewCommentsSort, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptPullsMergeReqMergeMethod returns new OptPullsMergeReqMergeMethod with value set to v.
 func NewOptPullsMergeReqMergeMethod(v PullsMergeReqMergeMethod) OptPullsMergeReqMergeMethod {
 	return OptPullsMergeReqMergeMethod{
@@ -15907,6 +17348,310 @@ func (o *OptReactionRollup) SetTo(v ReactionRollup) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptReactionRollup) Get() (v ReactionRollup, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReactionsListForCommitCommentContent returns new OptReactionsListForCommitCommentContent with value set to v.
+func NewOptReactionsListForCommitCommentContent(v ReactionsListForCommitCommentContent) OptReactionsListForCommitCommentContent {
+	return OptReactionsListForCommitCommentContent{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReactionsListForCommitCommentContent is optional ReactionsListForCommitCommentContent.
+type OptReactionsListForCommitCommentContent struct {
+	Value ReactionsListForCommitCommentContent
+	Set   bool
+}
+
+// IsSet returns true if OptReactionsListForCommitCommentContent was set.
+func (o OptReactionsListForCommitCommentContent) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReactionsListForCommitCommentContent) Reset() {
+	var v ReactionsListForCommitCommentContent
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReactionsListForCommitCommentContent) SetTo(v ReactionsListForCommitCommentContent) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReactionsListForCommitCommentContent) Get() (v ReactionsListForCommitCommentContent, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReactionsListForIssueCommentContent returns new OptReactionsListForIssueCommentContent with value set to v.
+func NewOptReactionsListForIssueCommentContent(v ReactionsListForIssueCommentContent) OptReactionsListForIssueCommentContent {
+	return OptReactionsListForIssueCommentContent{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReactionsListForIssueCommentContent is optional ReactionsListForIssueCommentContent.
+type OptReactionsListForIssueCommentContent struct {
+	Value ReactionsListForIssueCommentContent
+	Set   bool
+}
+
+// IsSet returns true if OptReactionsListForIssueCommentContent was set.
+func (o OptReactionsListForIssueCommentContent) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReactionsListForIssueCommentContent) Reset() {
+	var v ReactionsListForIssueCommentContent
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReactionsListForIssueCommentContent) SetTo(v ReactionsListForIssueCommentContent) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReactionsListForIssueCommentContent) Get() (v ReactionsListForIssueCommentContent, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReactionsListForIssueContent returns new OptReactionsListForIssueContent with value set to v.
+func NewOptReactionsListForIssueContent(v ReactionsListForIssueContent) OptReactionsListForIssueContent {
+	return OptReactionsListForIssueContent{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReactionsListForIssueContent is optional ReactionsListForIssueContent.
+type OptReactionsListForIssueContent struct {
+	Value ReactionsListForIssueContent
+	Set   bool
+}
+
+// IsSet returns true if OptReactionsListForIssueContent was set.
+func (o OptReactionsListForIssueContent) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReactionsListForIssueContent) Reset() {
+	var v ReactionsListForIssueContent
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReactionsListForIssueContent) SetTo(v ReactionsListForIssueContent) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReactionsListForIssueContent) Get() (v ReactionsListForIssueContent, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReactionsListForPullRequestReviewCommentContent returns new OptReactionsListForPullRequestReviewCommentContent with value set to v.
+func NewOptReactionsListForPullRequestReviewCommentContent(v ReactionsListForPullRequestReviewCommentContent) OptReactionsListForPullRequestReviewCommentContent {
+	return OptReactionsListForPullRequestReviewCommentContent{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReactionsListForPullRequestReviewCommentContent is optional ReactionsListForPullRequestReviewCommentContent.
+type OptReactionsListForPullRequestReviewCommentContent struct {
+	Value ReactionsListForPullRequestReviewCommentContent
+	Set   bool
+}
+
+// IsSet returns true if OptReactionsListForPullRequestReviewCommentContent was set.
+func (o OptReactionsListForPullRequestReviewCommentContent) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReactionsListForPullRequestReviewCommentContent) Reset() {
+	var v ReactionsListForPullRequestReviewCommentContent
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReactionsListForPullRequestReviewCommentContent) SetTo(v ReactionsListForPullRequestReviewCommentContent) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReactionsListForPullRequestReviewCommentContent) Get() (v ReactionsListForPullRequestReviewCommentContent, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReactionsListForTeamDiscussionCommentInOrgContent returns new OptReactionsListForTeamDiscussionCommentInOrgContent with value set to v.
+func NewOptReactionsListForTeamDiscussionCommentInOrgContent(v ReactionsListForTeamDiscussionCommentInOrgContent) OptReactionsListForTeamDiscussionCommentInOrgContent {
+	return OptReactionsListForTeamDiscussionCommentInOrgContent{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReactionsListForTeamDiscussionCommentInOrgContent is optional ReactionsListForTeamDiscussionCommentInOrgContent.
+type OptReactionsListForTeamDiscussionCommentInOrgContent struct {
+	Value ReactionsListForTeamDiscussionCommentInOrgContent
+	Set   bool
+}
+
+// IsSet returns true if OptReactionsListForTeamDiscussionCommentInOrgContent was set.
+func (o OptReactionsListForTeamDiscussionCommentInOrgContent) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReactionsListForTeamDiscussionCommentInOrgContent) Reset() {
+	var v ReactionsListForTeamDiscussionCommentInOrgContent
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReactionsListForTeamDiscussionCommentInOrgContent) SetTo(v ReactionsListForTeamDiscussionCommentInOrgContent) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReactionsListForTeamDiscussionCommentInOrgContent) Get() (v ReactionsListForTeamDiscussionCommentInOrgContent, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReactionsListForTeamDiscussionCommentLegacyContent returns new OptReactionsListForTeamDiscussionCommentLegacyContent with value set to v.
+func NewOptReactionsListForTeamDiscussionCommentLegacyContent(v ReactionsListForTeamDiscussionCommentLegacyContent) OptReactionsListForTeamDiscussionCommentLegacyContent {
+	return OptReactionsListForTeamDiscussionCommentLegacyContent{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReactionsListForTeamDiscussionCommentLegacyContent is optional ReactionsListForTeamDiscussionCommentLegacyContent.
+type OptReactionsListForTeamDiscussionCommentLegacyContent struct {
+	Value ReactionsListForTeamDiscussionCommentLegacyContent
+	Set   bool
+}
+
+// IsSet returns true if OptReactionsListForTeamDiscussionCommentLegacyContent was set.
+func (o OptReactionsListForTeamDiscussionCommentLegacyContent) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReactionsListForTeamDiscussionCommentLegacyContent) Reset() {
+	var v ReactionsListForTeamDiscussionCommentLegacyContent
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReactionsListForTeamDiscussionCommentLegacyContent) SetTo(v ReactionsListForTeamDiscussionCommentLegacyContent) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReactionsListForTeamDiscussionCommentLegacyContent) Get() (v ReactionsListForTeamDiscussionCommentLegacyContent, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReactionsListForTeamDiscussionInOrgContent returns new OptReactionsListForTeamDiscussionInOrgContent with value set to v.
+func NewOptReactionsListForTeamDiscussionInOrgContent(v ReactionsListForTeamDiscussionInOrgContent) OptReactionsListForTeamDiscussionInOrgContent {
+	return OptReactionsListForTeamDiscussionInOrgContent{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReactionsListForTeamDiscussionInOrgContent is optional ReactionsListForTeamDiscussionInOrgContent.
+type OptReactionsListForTeamDiscussionInOrgContent struct {
+	Value ReactionsListForTeamDiscussionInOrgContent
+	Set   bool
+}
+
+// IsSet returns true if OptReactionsListForTeamDiscussionInOrgContent was set.
+func (o OptReactionsListForTeamDiscussionInOrgContent) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReactionsListForTeamDiscussionInOrgContent) Reset() {
+	var v ReactionsListForTeamDiscussionInOrgContent
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReactionsListForTeamDiscussionInOrgContent) SetTo(v ReactionsListForTeamDiscussionInOrgContent) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReactionsListForTeamDiscussionInOrgContent) Get() (v ReactionsListForTeamDiscussionInOrgContent, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReactionsListForTeamDiscussionLegacyContent returns new OptReactionsListForTeamDiscussionLegacyContent with value set to v.
+func NewOptReactionsListForTeamDiscussionLegacyContent(v ReactionsListForTeamDiscussionLegacyContent) OptReactionsListForTeamDiscussionLegacyContent {
+	return OptReactionsListForTeamDiscussionLegacyContent{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReactionsListForTeamDiscussionLegacyContent is optional ReactionsListForTeamDiscussionLegacyContent.
+type OptReactionsListForTeamDiscussionLegacyContent struct {
+	Value ReactionsListForTeamDiscussionLegacyContent
+	Set   bool
+}
+
+// IsSet returns true if OptReactionsListForTeamDiscussionLegacyContent was set.
+func (o OptReactionsListForTeamDiscussionLegacyContent) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReactionsListForTeamDiscussionLegacyContent) Reset() {
+	var v ReactionsListForTeamDiscussionLegacyContent
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReactionsListForTeamDiscussionLegacyContent) SetTo(v ReactionsListForTeamDiscussionLegacyContent) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReactionsListForTeamDiscussionLegacyContent) Get() (v ReactionsListForTeamDiscussionLegacyContent, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -16287,6 +18032,386 @@ func (o *OptReposDeleteFileReqCommitter) SetTo(v ReposDeleteFileReqCommitter) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptReposDeleteFileReqCommitter) Get() (v ReposDeleteFileReqCommitter, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposGetClonesPer returns new OptReposGetClonesPer with value set to v.
+func NewOptReposGetClonesPer(v ReposGetClonesPer) OptReposGetClonesPer {
+	return OptReposGetClonesPer{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposGetClonesPer is optional ReposGetClonesPer.
+type OptReposGetClonesPer struct {
+	Value ReposGetClonesPer
+	Set   bool
+}
+
+// IsSet returns true if OptReposGetClonesPer was set.
+func (o OptReposGetClonesPer) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposGetClonesPer) Reset() {
+	var v ReposGetClonesPer
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposGetClonesPer) SetTo(v ReposGetClonesPer) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposGetClonesPer) Get() (v ReposGetClonesPer, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposGetViewsPer returns new OptReposGetViewsPer with value set to v.
+func NewOptReposGetViewsPer(v ReposGetViewsPer) OptReposGetViewsPer {
+	return OptReposGetViewsPer{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposGetViewsPer is optional ReposGetViewsPer.
+type OptReposGetViewsPer struct {
+	Value ReposGetViewsPer
+	Set   bool
+}
+
+// IsSet returns true if OptReposGetViewsPer was set.
+func (o OptReposGetViewsPer) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposGetViewsPer) Reset() {
+	var v ReposGetViewsPer
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposGetViewsPer) SetTo(v ReposGetViewsPer) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposGetViewsPer) Get() (v ReposGetViewsPer, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposListCollaboratorsAffiliation returns new OptReposListCollaboratorsAffiliation with value set to v.
+func NewOptReposListCollaboratorsAffiliation(v ReposListCollaboratorsAffiliation) OptReposListCollaboratorsAffiliation {
+	return OptReposListCollaboratorsAffiliation{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposListCollaboratorsAffiliation is optional ReposListCollaboratorsAffiliation.
+type OptReposListCollaboratorsAffiliation struct {
+	Value ReposListCollaboratorsAffiliation
+	Set   bool
+}
+
+// IsSet returns true if OptReposListCollaboratorsAffiliation was set.
+func (o OptReposListCollaboratorsAffiliation) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposListCollaboratorsAffiliation) Reset() {
+	var v ReposListCollaboratorsAffiliation
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposListCollaboratorsAffiliation) SetTo(v ReposListCollaboratorsAffiliation) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposListCollaboratorsAffiliation) Get() (v ReposListCollaboratorsAffiliation, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposListForOrgDirection returns new OptReposListForOrgDirection with value set to v.
+func NewOptReposListForOrgDirection(v ReposListForOrgDirection) OptReposListForOrgDirection {
+	return OptReposListForOrgDirection{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposListForOrgDirection is optional ReposListForOrgDirection.
+type OptReposListForOrgDirection struct {
+	Value ReposListForOrgDirection
+	Set   bool
+}
+
+// IsSet returns true if OptReposListForOrgDirection was set.
+func (o OptReposListForOrgDirection) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposListForOrgDirection) Reset() {
+	var v ReposListForOrgDirection
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposListForOrgDirection) SetTo(v ReposListForOrgDirection) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposListForOrgDirection) Get() (v ReposListForOrgDirection, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposListForOrgSort returns new OptReposListForOrgSort with value set to v.
+func NewOptReposListForOrgSort(v ReposListForOrgSort) OptReposListForOrgSort {
+	return OptReposListForOrgSort{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposListForOrgSort is optional ReposListForOrgSort.
+type OptReposListForOrgSort struct {
+	Value ReposListForOrgSort
+	Set   bool
+}
+
+// IsSet returns true if OptReposListForOrgSort was set.
+func (o OptReposListForOrgSort) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposListForOrgSort) Reset() {
+	var v ReposListForOrgSort
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposListForOrgSort) SetTo(v ReposListForOrgSort) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposListForOrgSort) Get() (v ReposListForOrgSort, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposListForOrgType returns new OptReposListForOrgType with value set to v.
+func NewOptReposListForOrgType(v ReposListForOrgType) OptReposListForOrgType {
+	return OptReposListForOrgType{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposListForOrgType is optional ReposListForOrgType.
+type OptReposListForOrgType struct {
+	Value ReposListForOrgType
+	Set   bool
+}
+
+// IsSet returns true if OptReposListForOrgType was set.
+func (o OptReposListForOrgType) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposListForOrgType) Reset() {
+	var v ReposListForOrgType
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposListForOrgType) SetTo(v ReposListForOrgType) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposListForOrgType) Get() (v ReposListForOrgType, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposListForUserDirection returns new OptReposListForUserDirection with value set to v.
+func NewOptReposListForUserDirection(v ReposListForUserDirection) OptReposListForUserDirection {
+	return OptReposListForUserDirection{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposListForUserDirection is optional ReposListForUserDirection.
+type OptReposListForUserDirection struct {
+	Value ReposListForUserDirection
+	Set   bool
+}
+
+// IsSet returns true if OptReposListForUserDirection was set.
+func (o OptReposListForUserDirection) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposListForUserDirection) Reset() {
+	var v ReposListForUserDirection
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposListForUserDirection) SetTo(v ReposListForUserDirection) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposListForUserDirection) Get() (v ReposListForUserDirection, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposListForUserSort returns new OptReposListForUserSort with value set to v.
+func NewOptReposListForUserSort(v ReposListForUserSort) OptReposListForUserSort {
+	return OptReposListForUserSort{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposListForUserSort is optional ReposListForUserSort.
+type OptReposListForUserSort struct {
+	Value ReposListForUserSort
+	Set   bool
+}
+
+// IsSet returns true if OptReposListForUserSort was set.
+func (o OptReposListForUserSort) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposListForUserSort) Reset() {
+	var v ReposListForUserSort
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposListForUserSort) SetTo(v ReposListForUserSort) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposListForUserSort) Get() (v ReposListForUserSort, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposListForUserType returns new OptReposListForUserType with value set to v.
+func NewOptReposListForUserType(v ReposListForUserType) OptReposListForUserType {
+	return OptReposListForUserType{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposListForUserType is optional ReposListForUserType.
+type OptReposListForUserType struct {
+	Value ReposListForUserType
+	Set   bool
+}
+
+// IsSet returns true if OptReposListForUserType was set.
+func (o OptReposListForUserType) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposListForUserType) Reset() {
+	var v ReposListForUserType
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposListForUserType) SetTo(v ReposListForUserType) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposListForUserType) Get() (v ReposListForUserType, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposListForksSort returns new OptReposListForksSort with value set to v.
+func NewOptReposListForksSort(v ReposListForksSort) OptReposListForksSort {
+	return OptReposListForksSort{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposListForksSort is optional ReposListForksSort.
+type OptReposListForksSort struct {
+	Value ReposListForksSort
+	Set   bool
+}
+
+// IsSet returns true if OptReposListForksSort was set.
+func (o OptReposListForksSort) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposListForksSort) Reset() {
+	var v ReposListForksSort
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposListForksSort) SetTo(v ReposListForksSort) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposListForksSort) Get() (v ReposListForksSort, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -17017,6 +19142,82 @@ func (o OptScimUserListEnterpriseResourcesItemName) Get() (v ScimUserListEnterpr
 	return o.Value, true
 }
 
+// NewOptSearchCommitsOrder returns new OptSearchCommitsOrder with value set to v.
+func NewOptSearchCommitsOrder(v SearchCommitsOrder) OptSearchCommitsOrder {
+	return OptSearchCommitsOrder{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSearchCommitsOrder is optional SearchCommitsOrder.
+type OptSearchCommitsOrder struct {
+	Value SearchCommitsOrder
+	Set   bool
+}
+
+// IsSet returns true if OptSearchCommitsOrder was set.
+func (o OptSearchCommitsOrder) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSearchCommitsOrder) Reset() {
+	var v SearchCommitsOrder
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSearchCommitsOrder) SetTo(v SearchCommitsOrder) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSearchCommitsOrder) Get() (v SearchCommitsOrder, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptSearchCommitsSort returns new OptSearchCommitsSort with value set to v.
+func NewOptSearchCommitsSort(v SearchCommitsSort) OptSearchCommitsSort {
+	return OptSearchCommitsSort{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSearchCommitsSort is optional SearchCommitsSort.
+type OptSearchCommitsSort struct {
+	Value SearchCommitsSort
+	Set   bool
+}
+
+// IsSet returns true if OptSearchCommitsSort was set.
+func (o OptSearchCommitsSort) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSearchCommitsSort) Reset() {
+	var v SearchCommitsSort
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSearchCommitsSort) SetTo(v SearchCommitsSort) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSearchCommitsSort) Get() (v SearchCommitsSort, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptSecretScanningAlertState returns new OptSecretScanningAlertState with value set to v.
 func NewOptSecretScanningAlertState(v SecretScanningAlertState) OptSecretScanningAlertState {
 	return OptSecretScanningAlertState{
@@ -17049,6 +19250,82 @@ func (o *OptSecretScanningAlertState) SetTo(v SecretScanningAlertState) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptSecretScanningAlertState) Get() (v SecretScanningAlertState, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptSecretScanningListAlertsForOrgState returns new OptSecretScanningListAlertsForOrgState with value set to v.
+func NewOptSecretScanningListAlertsForOrgState(v SecretScanningListAlertsForOrgState) OptSecretScanningListAlertsForOrgState {
+	return OptSecretScanningListAlertsForOrgState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSecretScanningListAlertsForOrgState is optional SecretScanningListAlertsForOrgState.
+type OptSecretScanningListAlertsForOrgState struct {
+	Value SecretScanningListAlertsForOrgState
+	Set   bool
+}
+
+// IsSet returns true if OptSecretScanningListAlertsForOrgState was set.
+func (o OptSecretScanningListAlertsForOrgState) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSecretScanningListAlertsForOrgState) Reset() {
+	var v SecretScanningListAlertsForOrgState
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSecretScanningListAlertsForOrgState) SetTo(v SecretScanningListAlertsForOrgState) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSecretScanningListAlertsForOrgState) Get() (v SecretScanningListAlertsForOrgState, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptSecretScanningListAlertsForRepoState returns new OptSecretScanningListAlertsForRepoState with value set to v.
+func NewOptSecretScanningListAlertsForRepoState(v SecretScanningListAlertsForRepoState) OptSecretScanningListAlertsForRepoState {
+	return OptSecretScanningListAlertsForRepoState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSecretScanningListAlertsForRepoState is optional SecretScanningListAlertsForRepoState.
+type OptSecretScanningListAlertsForRepoState struct {
+	Value SecretScanningListAlertsForRepoState
+	Set   bool
+}
+
+// IsSet returns true if OptSecretScanningListAlertsForRepoState was set.
+func (o OptSecretScanningListAlertsForRepoState) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSecretScanningListAlertsForRepoState) Reset() {
+	var v SecretScanningListAlertsForRepoState
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSecretScanningListAlertsForRepoState) SetTo(v SecretScanningListAlertsForRepoState) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSecretScanningListAlertsForRepoState) Get() (v SecretScanningListAlertsForRepoState, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -17657,6 +19934,234 @@ func (o *OptTeamsCreateReqPrivacy) SetTo(v TeamsCreateReqPrivacy) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptTeamsCreateReqPrivacy) Get() (v TeamsCreateReqPrivacy, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptTeamsListDiscussionCommentsInOrgDirection returns new OptTeamsListDiscussionCommentsInOrgDirection with value set to v.
+func NewOptTeamsListDiscussionCommentsInOrgDirection(v TeamsListDiscussionCommentsInOrgDirection) OptTeamsListDiscussionCommentsInOrgDirection {
+	return OptTeamsListDiscussionCommentsInOrgDirection{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTeamsListDiscussionCommentsInOrgDirection is optional TeamsListDiscussionCommentsInOrgDirection.
+type OptTeamsListDiscussionCommentsInOrgDirection struct {
+	Value TeamsListDiscussionCommentsInOrgDirection
+	Set   bool
+}
+
+// IsSet returns true if OptTeamsListDiscussionCommentsInOrgDirection was set.
+func (o OptTeamsListDiscussionCommentsInOrgDirection) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTeamsListDiscussionCommentsInOrgDirection) Reset() {
+	var v TeamsListDiscussionCommentsInOrgDirection
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTeamsListDiscussionCommentsInOrgDirection) SetTo(v TeamsListDiscussionCommentsInOrgDirection) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTeamsListDiscussionCommentsInOrgDirection) Get() (v TeamsListDiscussionCommentsInOrgDirection, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptTeamsListDiscussionCommentsLegacyDirection returns new OptTeamsListDiscussionCommentsLegacyDirection with value set to v.
+func NewOptTeamsListDiscussionCommentsLegacyDirection(v TeamsListDiscussionCommentsLegacyDirection) OptTeamsListDiscussionCommentsLegacyDirection {
+	return OptTeamsListDiscussionCommentsLegacyDirection{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTeamsListDiscussionCommentsLegacyDirection is optional TeamsListDiscussionCommentsLegacyDirection.
+type OptTeamsListDiscussionCommentsLegacyDirection struct {
+	Value TeamsListDiscussionCommentsLegacyDirection
+	Set   bool
+}
+
+// IsSet returns true if OptTeamsListDiscussionCommentsLegacyDirection was set.
+func (o OptTeamsListDiscussionCommentsLegacyDirection) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTeamsListDiscussionCommentsLegacyDirection) Reset() {
+	var v TeamsListDiscussionCommentsLegacyDirection
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTeamsListDiscussionCommentsLegacyDirection) SetTo(v TeamsListDiscussionCommentsLegacyDirection) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTeamsListDiscussionCommentsLegacyDirection) Get() (v TeamsListDiscussionCommentsLegacyDirection, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptTeamsListDiscussionsInOrgDirection returns new OptTeamsListDiscussionsInOrgDirection with value set to v.
+func NewOptTeamsListDiscussionsInOrgDirection(v TeamsListDiscussionsInOrgDirection) OptTeamsListDiscussionsInOrgDirection {
+	return OptTeamsListDiscussionsInOrgDirection{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTeamsListDiscussionsInOrgDirection is optional TeamsListDiscussionsInOrgDirection.
+type OptTeamsListDiscussionsInOrgDirection struct {
+	Value TeamsListDiscussionsInOrgDirection
+	Set   bool
+}
+
+// IsSet returns true if OptTeamsListDiscussionsInOrgDirection was set.
+func (o OptTeamsListDiscussionsInOrgDirection) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTeamsListDiscussionsInOrgDirection) Reset() {
+	var v TeamsListDiscussionsInOrgDirection
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTeamsListDiscussionsInOrgDirection) SetTo(v TeamsListDiscussionsInOrgDirection) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTeamsListDiscussionsInOrgDirection) Get() (v TeamsListDiscussionsInOrgDirection, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptTeamsListDiscussionsLegacyDirection returns new OptTeamsListDiscussionsLegacyDirection with value set to v.
+func NewOptTeamsListDiscussionsLegacyDirection(v TeamsListDiscussionsLegacyDirection) OptTeamsListDiscussionsLegacyDirection {
+	return OptTeamsListDiscussionsLegacyDirection{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTeamsListDiscussionsLegacyDirection is optional TeamsListDiscussionsLegacyDirection.
+type OptTeamsListDiscussionsLegacyDirection struct {
+	Value TeamsListDiscussionsLegacyDirection
+	Set   bool
+}
+
+// IsSet returns true if OptTeamsListDiscussionsLegacyDirection was set.
+func (o OptTeamsListDiscussionsLegacyDirection) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTeamsListDiscussionsLegacyDirection) Reset() {
+	var v TeamsListDiscussionsLegacyDirection
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTeamsListDiscussionsLegacyDirection) SetTo(v TeamsListDiscussionsLegacyDirection) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTeamsListDiscussionsLegacyDirection) Get() (v TeamsListDiscussionsLegacyDirection, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptTeamsListMembersInOrgRole returns new OptTeamsListMembersInOrgRole with value set to v.
+func NewOptTeamsListMembersInOrgRole(v TeamsListMembersInOrgRole) OptTeamsListMembersInOrgRole {
+	return OptTeamsListMembersInOrgRole{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTeamsListMembersInOrgRole is optional TeamsListMembersInOrgRole.
+type OptTeamsListMembersInOrgRole struct {
+	Value TeamsListMembersInOrgRole
+	Set   bool
+}
+
+// IsSet returns true if OptTeamsListMembersInOrgRole was set.
+func (o OptTeamsListMembersInOrgRole) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTeamsListMembersInOrgRole) Reset() {
+	var v TeamsListMembersInOrgRole
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTeamsListMembersInOrgRole) SetTo(v TeamsListMembersInOrgRole) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTeamsListMembersInOrgRole) Get() (v TeamsListMembersInOrgRole, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptTeamsListMembersLegacyRole returns new OptTeamsListMembersLegacyRole with value set to v.
+func NewOptTeamsListMembersLegacyRole(v TeamsListMembersLegacyRole) OptTeamsListMembersLegacyRole {
+	return OptTeamsListMembersLegacyRole{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTeamsListMembersLegacyRole is optional TeamsListMembersLegacyRole.
+type OptTeamsListMembersLegacyRole struct {
+	Value TeamsListMembersLegacyRole
+	Set   bool
+}
+
+// IsSet returns true if OptTeamsListMembersLegacyRole was set.
+func (o OptTeamsListMembersLegacyRole) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTeamsListMembersLegacyRole) Reset() {
+	var v TeamsListMembersLegacyRole
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTeamsListMembersLegacyRole) SetTo(v TeamsListMembersLegacyRole) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTeamsListMembersLegacyRole) Get() (v TeamsListMembersLegacyRole, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -18538,6 +21043,21 @@ type OrgsDeleteWebhookNoContent struct{}
 
 func (*OrgsDeleteWebhookNoContent) orgsDeleteWebhookRes() {}
 
+type OrgsGetAuditLogInclude string
+
+const (
+	OrgsGetAuditLogIncludeWeb OrgsGetAuditLogInclude = "web"
+	OrgsGetAuditLogIncludeGit OrgsGetAuditLogInclude = "git"
+	OrgsGetAuditLogIncludeAll OrgsGetAuditLogInclude = "all"
+)
+
+type OrgsGetAuditLogOrder string
+
+const (
+	OrgsGetAuditLogOrderDesc OrgsGetAuditLogOrder = "desc"
+	OrgsGetAuditLogOrderAsc  OrgsGetAuditLogOrder = "asc"
+)
+
 type OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden BasicError
 
 func (a *OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
@@ -18642,8 +21162,30 @@ func (a *OrgsListInvitationTeamsOKApplicationJSON) unwrap() []Team { return []Te
 
 func (*OrgsListInvitationTeamsOKApplicationJSON) orgsListInvitationTeamsRes() {}
 
+type OrgsListMembersFilter string
+
+const (
+	OrgsListMembersFilter2FADisabled OrgsListMembersFilter = "2fa_disabled"
+	OrgsListMembersFilterAll         OrgsListMembersFilter = "all"
+)
+
 // OrgsListMembersFound is response for OrgsListMembers operation.
 type OrgsListMembersFound struct{}
+
+type OrgsListMembersRole string
+
+const (
+	OrgsListMembersRoleAll    OrgsListMembersRole = "all"
+	OrgsListMembersRoleAdmin  OrgsListMembersRole = "admin"
+	OrgsListMembersRoleMember OrgsListMembersRole = "member"
+)
+
+type OrgsListMembershipsForAuthenticatedUserState string
+
+const (
+	OrgsListMembershipsForAuthenticatedUserStateActive  OrgsListMembershipsForAuthenticatedUserState = "active"
+	OrgsListMembershipsForAuthenticatedUserStatePending OrgsListMembershipsForAuthenticatedUserState = "pending"
+)
 
 type OrgsListOKApplicationJSON []OrganizationSimple
 
@@ -18651,6 +21193,13 @@ func (a *OrgsListOKApplicationJSON) wrap(v []OrganizationSimple)  { *a = OrgsLis
 func (a *OrgsListOKApplicationJSON) unwrap() []OrganizationSimple { return []OrganizationSimple(*a) }
 
 func (*OrgsListOKApplicationJSON) orgsListRes() {}
+
+type OrgsListOutsideCollaboratorsFilter string
+
+const (
+	OrgsListOutsideCollaboratorsFilter2FADisabled OrgsListOutsideCollaboratorsFilter = "2fa_disabled"
+	OrgsListOutsideCollaboratorsFilterAll         OrgsListOutsideCollaboratorsFilter = "all"
+)
 
 type OrgsListPendingInvitationsOKApplicationJSON []OrganizationInvitation
 
@@ -19266,6 +21815,13 @@ const (
 	PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeContainer PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType = "container"
 )
 
+type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState string
+
+const (
+	PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserStateActive  PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState = "active"
+	PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserStateDeleted PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState = "deleted"
+)
+
 type PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden BasicError
 
 func (a *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden) wrap(v BasicError) {
@@ -19323,6 +21879,13 @@ const (
 	PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeDocker    PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType = "docker"
 	PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeNuget     PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType = "nuget"
 	PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeContainer PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType = "container"
+)
+
+type PackagesGetAllPackageVersionsForPackageOwnedByOrgState string
+
+const (
+	PackagesGetAllPackageVersionsForPackageOwnedByOrgStateActive  PackagesGetAllPackageVersionsForPackageOwnedByOrgState = "active"
+	PackagesGetAllPackageVersionsForPackageOwnedByOrgStateDeleted PackagesGetAllPackageVersionsForPackageOwnedByOrgState = "deleted"
 )
 
 type PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden BasicError
@@ -19461,6 +22024,14 @@ const (
 	PackagesListPackagesForAuthenticatedUserPackageTypeContainer PackagesListPackagesForAuthenticatedUserPackageType = "container"
 )
 
+type PackagesListPackagesForAuthenticatedUserVisibility string
+
+const (
+	PackagesListPackagesForAuthenticatedUserVisibilityPublic   PackagesListPackagesForAuthenticatedUserVisibility = "public"
+	PackagesListPackagesForAuthenticatedUserVisibilityPrivate  PackagesListPackagesForAuthenticatedUserVisibility = "private"
+	PackagesListPackagesForAuthenticatedUserVisibilityInternal PackagesListPackagesForAuthenticatedUserVisibility = "internal"
+)
+
 type PackagesListPackagesForOrganizationApplicationJSONForbidden BasicError
 
 func (a *PackagesListPackagesForOrganizationApplicationJSONForbidden) wrap(v BasicError) {
@@ -19508,6 +22079,14 @@ const (
 	PackagesListPackagesForOrganizationPackageTypeContainer PackagesListPackagesForOrganizationPackageType = "container"
 )
 
+type PackagesListPackagesForOrganizationVisibility string
+
+const (
+	PackagesListPackagesForOrganizationVisibilityPublic   PackagesListPackagesForOrganizationVisibility = "public"
+	PackagesListPackagesForOrganizationVisibilityPrivate  PackagesListPackagesForOrganizationVisibility = "private"
+	PackagesListPackagesForOrganizationVisibilityInternal PackagesListPackagesForOrganizationVisibility = "internal"
+)
+
 type PackagesListPackagesForUserApplicationJSONForbidden BasicError
 
 func (a *PackagesListPackagesForUserApplicationJSONForbidden) wrap(v BasicError) {
@@ -19548,6 +22127,14 @@ const (
 	PackagesListPackagesForUserPackageTypeDocker    PackagesListPackagesForUserPackageType = "docker"
 	PackagesListPackagesForUserPackageTypeNuget     PackagesListPackagesForUserPackageType = "nuget"
 	PackagesListPackagesForUserPackageTypeContainer PackagesListPackagesForUserPackageType = "container"
+)
+
+type PackagesListPackagesForUserVisibility string
+
+const (
+	PackagesListPackagesForUserVisibilityPublic   PackagesListPackagesForUserVisibility = "public"
+	PackagesListPackagesForUserVisibilityPrivate  PackagesListPackagesForUserVisibility = "private"
+	PackagesListPackagesForUserVisibilityInternal PackagesListPackagesForUserVisibility = "internal"
 )
 
 type PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden BasicError
@@ -20595,6 +23182,14 @@ func (a *ProjectsListCardsApplicationJSONUnauthorized) unwrap() BasicError { ret
 
 func (*ProjectsListCardsApplicationJSONUnauthorized) projectsListCardsRes() {}
 
+type ProjectsListCardsArchivedState string
+
+const (
+	ProjectsListCardsArchivedStateAll         ProjectsListCardsArchivedState = "all"
+	ProjectsListCardsArchivedStateArchived    ProjectsListCardsArchivedState = "archived"
+	ProjectsListCardsArchivedStateNotArchived ProjectsListCardsArchivedState = "not_archived"
+)
+
 type ProjectsListCardsOKApplicationJSON []ProjectCard
 
 func (a *ProjectsListCardsOKApplicationJSON) wrap(v []ProjectCard) {
@@ -20603,6 +23198,14 @@ func (a *ProjectsListCardsOKApplicationJSON) wrap(v []ProjectCard) {
 func (a *ProjectsListCardsOKApplicationJSON) unwrap() []ProjectCard { return []ProjectCard(*a) }
 
 func (*ProjectsListCardsOKApplicationJSON) projectsListCardsRes() {}
+
+type ProjectsListCollaboratorsAffiliation string
+
+const (
+	ProjectsListCollaboratorsAffiliationOutside ProjectsListCollaboratorsAffiliation = "outside"
+	ProjectsListCollaboratorsAffiliationDirect  ProjectsListCollaboratorsAffiliation = "direct"
+	ProjectsListCollaboratorsAffiliationAll     ProjectsListCollaboratorsAffiliation = "all"
+)
 
 type ProjectsListColumnsApplicationJSONForbidden BasicError
 
@@ -20639,6 +23242,14 @@ func (a *ProjectsListForOrgOKApplicationJSON) wrap(v []Project) {
 func (a *ProjectsListForOrgOKApplicationJSON) unwrap() []Project { return []Project(*a) }
 
 func (*ProjectsListForOrgOKApplicationJSON) projectsListForOrgRes() {}
+
+type ProjectsListForOrgState string
+
+const (
+	ProjectsListForOrgStateOpen   ProjectsListForOrgState = "open"
+	ProjectsListForOrgStateClosed ProjectsListForOrgState = "closed"
+	ProjectsListForOrgStateAll    ProjectsListForOrgState = "all"
+)
 
 type ProjectsListForRepoApplicationJSONForbidden BasicError
 
@@ -20684,6 +23295,22 @@ func (a *ProjectsListForRepoOKApplicationJSON) wrap(v []Project) {
 func (a *ProjectsListForRepoOKApplicationJSON) unwrap() []Project { return []Project(*a) }
 
 func (*ProjectsListForRepoOKApplicationJSON) projectsListForRepoRes() {}
+
+type ProjectsListForRepoState string
+
+const (
+	ProjectsListForRepoStateOpen   ProjectsListForRepoState = "open"
+	ProjectsListForRepoStateClosed ProjectsListForRepoState = "closed"
+	ProjectsListForRepoStateAll    ProjectsListForRepoState = "all"
+)
+
+type ProjectsListForUserState string
+
+const (
+	ProjectsListForUserStateOpen   ProjectsListForUserState = "open"
+	ProjectsListForUserStateClosed ProjectsListForUserState = "closed"
+	ProjectsListForUserStateAll    ProjectsListForUserState = "all"
+)
 
 type ProjectsMoveCardCreated struct{}
 
@@ -21684,6 +24311,59 @@ func (a *PullsListCommentsForReviewOKApplicationJSON) unwrap() []ReviewComment {
 
 func (*PullsListCommentsForReviewOKApplicationJSON) pullsListCommentsForReviewRes() {}
 
+type PullsListDirection string
+
+const (
+	PullsListDirectionAsc  PullsListDirection = "asc"
+	PullsListDirectionDesc PullsListDirection = "desc"
+)
+
+type PullsListReviewCommentsDirection string
+
+const (
+	PullsListReviewCommentsDirectionAsc  PullsListReviewCommentsDirection = "asc"
+	PullsListReviewCommentsDirectionDesc PullsListReviewCommentsDirection = "desc"
+)
+
+type PullsListReviewCommentsForRepoDirection string
+
+const (
+	PullsListReviewCommentsForRepoDirectionAsc  PullsListReviewCommentsForRepoDirection = "asc"
+	PullsListReviewCommentsForRepoDirectionDesc PullsListReviewCommentsForRepoDirection = "desc"
+)
+
+type PullsListReviewCommentsForRepoSort string
+
+const (
+	PullsListReviewCommentsForRepoSortCreated   PullsListReviewCommentsForRepoSort = "created"
+	PullsListReviewCommentsForRepoSortUpdated   PullsListReviewCommentsForRepoSort = "updated"
+	PullsListReviewCommentsForRepoSortCreatedAt PullsListReviewCommentsForRepoSort = "created_at"
+)
+
+type PullsListReviewCommentsSort string
+
+const (
+	PullsListReviewCommentsSortCreated PullsListReviewCommentsSort = "created"
+	PullsListReviewCommentsSortUpdated PullsListReviewCommentsSort = "updated"
+)
+
+type PullsListSort string
+
+const (
+	PullsListSortCreated          PullsListSort = "created"
+	PullsListSortUpdated          PullsListSort = "updated"
+	PullsListSortPopularity       PullsListSort = "popularity"
+	PullsListSortLongMinusRunning PullsListSort = "long-running"
+)
+
+type PullsListState string
+
+const (
+	PullsListStateOpen   PullsListState = "open"
+	PullsListStateClosed PullsListState = "closed"
+	PullsListStateAll    PullsListState = "all"
+)
+
 type PullsMergeConflict struct {
 	Message          OptString `json:"message"`
 	DocumentationURL OptString `json:"documentation_url"`
@@ -22088,6 +24768,19 @@ type ReactionsDeleteLegacyNoContent struct{}
 
 func (*ReactionsDeleteLegacyNoContent) reactionsDeleteLegacyRes() {}
 
+type ReactionsListForCommitCommentContent string
+
+const (
+	ReactionsListForCommitCommentContentPlus1    ReactionsListForCommitCommentContent = "+1"
+	ReactionsListForCommitCommentContentMinus1   ReactionsListForCommitCommentContent = "-1"
+	ReactionsListForCommitCommentContentLaugh    ReactionsListForCommitCommentContent = "laugh"
+	ReactionsListForCommitCommentContentConfused ReactionsListForCommitCommentContent = "confused"
+	ReactionsListForCommitCommentContentHeart    ReactionsListForCommitCommentContent = "heart"
+	ReactionsListForCommitCommentContentHooray   ReactionsListForCommitCommentContent = "hooray"
+	ReactionsListForCommitCommentContentRocket   ReactionsListForCommitCommentContent = "rocket"
+	ReactionsListForCommitCommentContentEyes     ReactionsListForCommitCommentContent = "eyes"
+)
+
 type ReactionsListForCommitCommentOKApplicationJSON []Reaction
 
 func (a *ReactionsListForCommitCommentOKApplicationJSON) wrap(v []Reaction) {
@@ -22115,6 +24808,19 @@ func (a *ReactionsListForIssueApplicationJSONNotFound) unwrap() BasicError { ret
 
 func (*ReactionsListForIssueApplicationJSONNotFound) reactionsListForIssueRes() {}
 
+type ReactionsListForIssueCommentContent string
+
+const (
+	ReactionsListForIssueCommentContentPlus1    ReactionsListForIssueCommentContent = "+1"
+	ReactionsListForIssueCommentContentMinus1   ReactionsListForIssueCommentContent = "-1"
+	ReactionsListForIssueCommentContentLaugh    ReactionsListForIssueCommentContent = "laugh"
+	ReactionsListForIssueCommentContentConfused ReactionsListForIssueCommentContent = "confused"
+	ReactionsListForIssueCommentContentHeart    ReactionsListForIssueCommentContent = "heart"
+	ReactionsListForIssueCommentContentHooray   ReactionsListForIssueCommentContent = "hooray"
+	ReactionsListForIssueCommentContentRocket   ReactionsListForIssueCommentContent = "rocket"
+	ReactionsListForIssueCommentContentEyes     ReactionsListForIssueCommentContent = "eyes"
+)
+
 type ReactionsListForIssueCommentOKApplicationJSON []Reaction
 
 func (a *ReactionsListForIssueCommentOKApplicationJSON) wrap(v []Reaction) {
@@ -22124,6 +24830,19 @@ func (a *ReactionsListForIssueCommentOKApplicationJSON) unwrap() []Reaction { re
 
 func (*ReactionsListForIssueCommentOKApplicationJSON) reactionsListForIssueCommentRes() {}
 
+type ReactionsListForIssueContent string
+
+const (
+	ReactionsListForIssueContentPlus1    ReactionsListForIssueContent = "+1"
+	ReactionsListForIssueContentMinus1   ReactionsListForIssueContent = "-1"
+	ReactionsListForIssueContentLaugh    ReactionsListForIssueContent = "laugh"
+	ReactionsListForIssueContentConfused ReactionsListForIssueContent = "confused"
+	ReactionsListForIssueContentHeart    ReactionsListForIssueContent = "heart"
+	ReactionsListForIssueContentHooray   ReactionsListForIssueContent = "hooray"
+	ReactionsListForIssueContentRocket   ReactionsListForIssueContent = "rocket"
+	ReactionsListForIssueContentEyes     ReactionsListForIssueContent = "eyes"
+)
+
 type ReactionsListForIssueOKApplicationJSON []Reaction
 
 func (a *ReactionsListForIssueOKApplicationJSON) wrap(v []Reaction) {
@@ -22132,6 +24851,19 @@ func (a *ReactionsListForIssueOKApplicationJSON) wrap(v []Reaction) {
 func (a *ReactionsListForIssueOKApplicationJSON) unwrap() []Reaction { return []Reaction(*a) }
 
 func (*ReactionsListForIssueOKApplicationJSON) reactionsListForIssueRes() {}
+
+type ReactionsListForPullRequestReviewCommentContent string
+
+const (
+	ReactionsListForPullRequestReviewCommentContentPlus1    ReactionsListForPullRequestReviewCommentContent = "+1"
+	ReactionsListForPullRequestReviewCommentContentMinus1   ReactionsListForPullRequestReviewCommentContent = "-1"
+	ReactionsListForPullRequestReviewCommentContentLaugh    ReactionsListForPullRequestReviewCommentContent = "laugh"
+	ReactionsListForPullRequestReviewCommentContentConfused ReactionsListForPullRequestReviewCommentContent = "confused"
+	ReactionsListForPullRequestReviewCommentContentHeart    ReactionsListForPullRequestReviewCommentContent = "heart"
+	ReactionsListForPullRequestReviewCommentContentHooray   ReactionsListForPullRequestReviewCommentContent = "hooray"
+	ReactionsListForPullRequestReviewCommentContentRocket   ReactionsListForPullRequestReviewCommentContent = "rocket"
+	ReactionsListForPullRequestReviewCommentContentEyes     ReactionsListForPullRequestReviewCommentContent = "eyes"
+)
 
 type ReactionsListForPullRequestReviewCommentOKApplicationJSON []Reaction
 
@@ -22144,6 +24876,58 @@ func (a *ReactionsListForPullRequestReviewCommentOKApplicationJSON) unwrap() []R
 
 func (*ReactionsListForPullRequestReviewCommentOKApplicationJSON) reactionsListForPullRequestReviewCommentRes() {
 }
+
+type ReactionsListForTeamDiscussionCommentInOrgContent string
+
+const (
+	ReactionsListForTeamDiscussionCommentInOrgContentPlus1    ReactionsListForTeamDiscussionCommentInOrgContent = "+1"
+	ReactionsListForTeamDiscussionCommentInOrgContentMinus1   ReactionsListForTeamDiscussionCommentInOrgContent = "-1"
+	ReactionsListForTeamDiscussionCommentInOrgContentLaugh    ReactionsListForTeamDiscussionCommentInOrgContent = "laugh"
+	ReactionsListForTeamDiscussionCommentInOrgContentConfused ReactionsListForTeamDiscussionCommentInOrgContent = "confused"
+	ReactionsListForTeamDiscussionCommentInOrgContentHeart    ReactionsListForTeamDiscussionCommentInOrgContent = "heart"
+	ReactionsListForTeamDiscussionCommentInOrgContentHooray   ReactionsListForTeamDiscussionCommentInOrgContent = "hooray"
+	ReactionsListForTeamDiscussionCommentInOrgContentRocket   ReactionsListForTeamDiscussionCommentInOrgContent = "rocket"
+	ReactionsListForTeamDiscussionCommentInOrgContentEyes     ReactionsListForTeamDiscussionCommentInOrgContent = "eyes"
+)
+
+type ReactionsListForTeamDiscussionCommentLegacyContent string
+
+const (
+	ReactionsListForTeamDiscussionCommentLegacyContentPlus1    ReactionsListForTeamDiscussionCommentLegacyContent = "+1"
+	ReactionsListForTeamDiscussionCommentLegacyContentMinus1   ReactionsListForTeamDiscussionCommentLegacyContent = "-1"
+	ReactionsListForTeamDiscussionCommentLegacyContentLaugh    ReactionsListForTeamDiscussionCommentLegacyContent = "laugh"
+	ReactionsListForTeamDiscussionCommentLegacyContentConfused ReactionsListForTeamDiscussionCommentLegacyContent = "confused"
+	ReactionsListForTeamDiscussionCommentLegacyContentHeart    ReactionsListForTeamDiscussionCommentLegacyContent = "heart"
+	ReactionsListForTeamDiscussionCommentLegacyContentHooray   ReactionsListForTeamDiscussionCommentLegacyContent = "hooray"
+	ReactionsListForTeamDiscussionCommentLegacyContentRocket   ReactionsListForTeamDiscussionCommentLegacyContent = "rocket"
+	ReactionsListForTeamDiscussionCommentLegacyContentEyes     ReactionsListForTeamDiscussionCommentLegacyContent = "eyes"
+)
+
+type ReactionsListForTeamDiscussionInOrgContent string
+
+const (
+	ReactionsListForTeamDiscussionInOrgContentPlus1    ReactionsListForTeamDiscussionInOrgContent = "+1"
+	ReactionsListForTeamDiscussionInOrgContentMinus1   ReactionsListForTeamDiscussionInOrgContent = "-1"
+	ReactionsListForTeamDiscussionInOrgContentLaugh    ReactionsListForTeamDiscussionInOrgContent = "laugh"
+	ReactionsListForTeamDiscussionInOrgContentConfused ReactionsListForTeamDiscussionInOrgContent = "confused"
+	ReactionsListForTeamDiscussionInOrgContentHeart    ReactionsListForTeamDiscussionInOrgContent = "heart"
+	ReactionsListForTeamDiscussionInOrgContentHooray   ReactionsListForTeamDiscussionInOrgContent = "hooray"
+	ReactionsListForTeamDiscussionInOrgContentRocket   ReactionsListForTeamDiscussionInOrgContent = "rocket"
+	ReactionsListForTeamDiscussionInOrgContentEyes     ReactionsListForTeamDiscussionInOrgContent = "eyes"
+)
+
+type ReactionsListForTeamDiscussionLegacyContent string
+
+const (
+	ReactionsListForTeamDiscussionLegacyContentPlus1    ReactionsListForTeamDiscussionLegacyContent = "+1"
+	ReactionsListForTeamDiscussionLegacyContentMinus1   ReactionsListForTeamDiscussionLegacyContent = "-1"
+	ReactionsListForTeamDiscussionLegacyContentLaugh    ReactionsListForTeamDiscussionLegacyContent = "laugh"
+	ReactionsListForTeamDiscussionLegacyContentConfused ReactionsListForTeamDiscussionLegacyContent = "confused"
+	ReactionsListForTeamDiscussionLegacyContentHeart    ReactionsListForTeamDiscussionLegacyContent = "heart"
+	ReactionsListForTeamDiscussionLegacyContentHooray   ReactionsListForTeamDiscussionLegacyContent = "hooray"
+	ReactionsListForTeamDiscussionLegacyContentRocket   ReactionsListForTeamDiscussionLegacyContent = "rocket"
+	ReactionsListForTeamDiscussionLegacyContentEyes     ReactionsListForTeamDiscussionLegacyContent = "eyes"
+)
 
 // Ref: #/components/schemas/referrer-traffic
 type ReferrerTraffic struct {
@@ -22838,6 +25622,14 @@ func (a *ReposGetBranchApplicationJSONNotFound) unwrap() BasicError { return Bas
 
 func (*ReposGetBranchApplicationJSONNotFound) reposGetBranchRes() {}
 
+type ReposGetClonesPer string
+
+const (
+	ReposGetClonesPerEmpty ReposGetClonesPer = ""
+	ReposGetClonesPerDay   ReposGetClonesPer = "day"
+	ReposGetClonesPerWeek  ReposGetClonesPer = "week"
+)
+
 type ReposGetCodeFrequencyStatsOKApplicationJSON []CodeFrequencyStat
 
 func (a *ReposGetCodeFrequencyStatsOKApplicationJSON) wrap(v []CodeFrequencyStat) {
@@ -22936,6 +25728,14 @@ func (a *ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON) unwrap() []S
 func (*ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON) reposGetUsersWithAccessToProtectedBranchRes() {
 }
 
+type ReposGetViewsPer string
+
+const (
+	ReposGetViewsPerEmpty ReposGetViewsPer = ""
+	ReposGetViewsPerDay   ReposGetViewsPer = "day"
+	ReposGetViewsPerWeek  ReposGetViewsPer = "week"
+)
+
 type ReposListBranchesOKApplicationJSON []ShortBranch
 
 func (a *ReposListBranchesOKApplicationJSON) wrap(v []ShortBranch) {
@@ -22944,6 +25744,14 @@ func (a *ReposListBranchesOKApplicationJSON) wrap(v []ShortBranch) {
 func (a *ReposListBranchesOKApplicationJSON) unwrap() []ShortBranch { return []ShortBranch(*a) }
 
 func (*ReposListBranchesOKApplicationJSON) reposListBranchesRes() {}
+
+type ReposListCollaboratorsAffiliation string
+
+const (
+	ReposListCollaboratorsAffiliationOutside ReposListCollaboratorsAffiliation = "outside"
+	ReposListCollaboratorsAffiliationDirect  ReposListCollaboratorsAffiliation = "direct"
+	ReposListCollaboratorsAffiliationAll     ReposListCollaboratorsAffiliation = "all"
+)
 
 type ReposListCollaboratorsOKApplicationJSON []Collaborator
 
@@ -23053,6 +25861,92 @@ func (a *ReposListDeploymentStatusesOKApplicationJSON) unwrap() []DeploymentStat
 
 func (*ReposListDeploymentStatusesOKApplicationJSON) reposListDeploymentStatusesRes() {}
 
+type ReposListForAuthenticatedUserDirection string
+
+const (
+	ReposListForAuthenticatedUserDirectionAsc  ReposListForAuthenticatedUserDirection = "asc"
+	ReposListForAuthenticatedUserDirectionDesc ReposListForAuthenticatedUserDirection = "desc"
+)
+
+type ReposListForAuthenticatedUserSort string
+
+const (
+	ReposListForAuthenticatedUserSortCreated  ReposListForAuthenticatedUserSort = "created"
+	ReposListForAuthenticatedUserSortUpdated  ReposListForAuthenticatedUserSort = "updated"
+	ReposListForAuthenticatedUserSortPushed   ReposListForAuthenticatedUserSort = "pushed"
+	ReposListForAuthenticatedUserSortFullName ReposListForAuthenticatedUserSort = "full_name"
+)
+
+type ReposListForAuthenticatedUserType string
+
+const (
+	ReposListForAuthenticatedUserTypeAll     ReposListForAuthenticatedUserType = "all"
+	ReposListForAuthenticatedUserTypeOwner   ReposListForAuthenticatedUserType = "owner"
+	ReposListForAuthenticatedUserTypePublic  ReposListForAuthenticatedUserType = "public"
+	ReposListForAuthenticatedUserTypePrivate ReposListForAuthenticatedUserType = "private"
+	ReposListForAuthenticatedUserTypeMember  ReposListForAuthenticatedUserType = "member"
+)
+
+type ReposListForAuthenticatedUserVisibility string
+
+const (
+	ReposListForAuthenticatedUserVisibilityAll     ReposListForAuthenticatedUserVisibility = "all"
+	ReposListForAuthenticatedUserVisibilityPublic  ReposListForAuthenticatedUserVisibility = "public"
+	ReposListForAuthenticatedUserVisibilityPrivate ReposListForAuthenticatedUserVisibility = "private"
+)
+
+type ReposListForOrgDirection string
+
+const (
+	ReposListForOrgDirectionAsc  ReposListForOrgDirection = "asc"
+	ReposListForOrgDirectionDesc ReposListForOrgDirection = "desc"
+)
+
+type ReposListForOrgSort string
+
+const (
+	ReposListForOrgSortCreated  ReposListForOrgSort = "created"
+	ReposListForOrgSortUpdated  ReposListForOrgSort = "updated"
+	ReposListForOrgSortPushed   ReposListForOrgSort = "pushed"
+	ReposListForOrgSortFullName ReposListForOrgSort = "full_name"
+)
+
+type ReposListForOrgType string
+
+const (
+	ReposListForOrgTypeAll      ReposListForOrgType = "all"
+	ReposListForOrgTypePublic   ReposListForOrgType = "public"
+	ReposListForOrgTypePrivate  ReposListForOrgType = "private"
+	ReposListForOrgTypeForks    ReposListForOrgType = "forks"
+	ReposListForOrgTypeSources  ReposListForOrgType = "sources"
+	ReposListForOrgTypeMember   ReposListForOrgType = "member"
+	ReposListForOrgTypeInternal ReposListForOrgType = "internal"
+)
+
+type ReposListForUserDirection string
+
+const (
+	ReposListForUserDirectionAsc  ReposListForUserDirection = "asc"
+	ReposListForUserDirectionDesc ReposListForUserDirection = "desc"
+)
+
+type ReposListForUserSort string
+
+const (
+	ReposListForUserSortCreated  ReposListForUserSort = "created"
+	ReposListForUserSortUpdated  ReposListForUserSort = "updated"
+	ReposListForUserSortPushed   ReposListForUserSort = "pushed"
+	ReposListForUserSortFullName ReposListForUserSort = "full_name"
+)
+
+type ReposListForUserType string
+
+const (
+	ReposListForUserTypeAll    ReposListForUserType = "all"
+	ReposListForUserTypeOwner  ReposListForUserType = "owner"
+	ReposListForUserTypeMember ReposListForUserType = "member"
+)
+
 type ReposListForksOKApplicationJSON []MinimalRepository
 
 func (a *ReposListForksOKApplicationJSON) wrap(v []MinimalRepository) {
@@ -23063,6 +25957,15 @@ func (a *ReposListForksOKApplicationJSON) unwrap() []MinimalRepository {
 }
 
 func (*ReposListForksOKApplicationJSON) reposListForksRes() {}
+
+type ReposListForksSort string
+
+const (
+	ReposListForksSortNewest     ReposListForksSort = "newest"
+	ReposListForksSortOldest     ReposListForksSort = "oldest"
+	ReposListForksSortStargazers ReposListForksSort = "stargazers"
+	ReposListForksSortWatchers   ReposListForksSort = "watchers"
+)
 
 type ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -23969,6 +26872,19 @@ type SearchCodeOK struct {
 	Items             []CodeSearchResultItem `json:"items"`
 }
 
+type SearchCodeOrder string
+
+const (
+	SearchCodeOrderDesc SearchCodeOrder = "desc"
+	SearchCodeOrderAsc  SearchCodeOrder = "asc"
+)
+
+type SearchCodeSort string
+
+const (
+	SearchCodeSortIndexed SearchCodeSort = "indexed"
+)
+
 type SearchCommitsOK struct {
 	TotalCount        int                      `json:"total_count"`
 	IncompleteResults bool                     `json:"incomplete_results"`
@@ -23977,11 +26893,48 @@ type SearchCommitsOK struct {
 
 func (*SearchCommitsOK) searchCommitsRes() {}
 
+type SearchCommitsOrder string
+
+const (
+	SearchCommitsOrderDesc SearchCommitsOrder = "desc"
+	SearchCommitsOrderAsc  SearchCommitsOrder = "asc"
+)
+
+type SearchCommitsSort string
+
+const (
+	SearchCommitsSortAuthorMinusDate    SearchCommitsSort = "author-date"
+	SearchCommitsSortCommitterMinusDate SearchCommitsSort = "committer-date"
+)
+
 type SearchIssuesAndPullRequestsOK struct {
 	TotalCount        int                     `json:"total_count"`
 	IncompleteResults bool                    `json:"incomplete_results"`
 	Items             []IssueSearchResultItem `json:"items"`
 }
+
+type SearchIssuesAndPullRequestsOrder string
+
+const (
+	SearchIssuesAndPullRequestsOrderDesc SearchIssuesAndPullRequestsOrder = "desc"
+	SearchIssuesAndPullRequestsOrderAsc  SearchIssuesAndPullRequestsOrder = "asc"
+)
+
+type SearchIssuesAndPullRequestsSort string
+
+const (
+	SearchIssuesAndPullRequestsSortComments                   SearchIssuesAndPullRequestsSort = "comments"
+	SearchIssuesAndPullRequestsSortReactions                  SearchIssuesAndPullRequestsSort = "reactions"
+	SearchIssuesAndPullRequestsSortReactionsMinusPlus1        SearchIssuesAndPullRequestsSort = "reactions-+1"
+	SearchIssuesAndPullRequestsSortReactionsMinusMinus1       SearchIssuesAndPullRequestsSort = "reactions--1"
+	SearchIssuesAndPullRequestsSortReactionsMinusSmile        SearchIssuesAndPullRequestsSort = "reactions-smile"
+	SearchIssuesAndPullRequestsSortReactionsMinusThinkingFace SearchIssuesAndPullRequestsSort = "reactions-thinking_face"
+	SearchIssuesAndPullRequestsSortReactionsMinusHeart        SearchIssuesAndPullRequestsSort = "reactions-heart"
+	SearchIssuesAndPullRequestsSortReactionsMinusTada         SearchIssuesAndPullRequestsSort = "reactions-tada"
+	SearchIssuesAndPullRequestsSortInteractions               SearchIssuesAndPullRequestsSort = "interactions"
+	SearchIssuesAndPullRequestsSortCreated                    SearchIssuesAndPullRequestsSort = "created"
+	SearchIssuesAndPullRequestsSortUpdated                    SearchIssuesAndPullRequestsSort = "updated"
+)
 
 type SearchLabelsOK struct {
 	TotalCount        int                     `json:"total_count"`
@@ -23989,11 +26942,41 @@ type SearchLabelsOK struct {
 	Items             []LabelSearchResultItem `json:"items"`
 }
 
+type SearchLabelsOrder string
+
+const (
+	SearchLabelsOrderDesc SearchLabelsOrder = "desc"
+	SearchLabelsOrderAsc  SearchLabelsOrder = "asc"
+)
+
+type SearchLabelsSort string
+
+const (
+	SearchLabelsSortCreated SearchLabelsSort = "created"
+	SearchLabelsSortUpdated SearchLabelsSort = "updated"
+)
+
 type SearchReposOK struct {
 	TotalCount        int                    `json:"total_count"`
 	IncompleteResults bool                   `json:"incomplete_results"`
 	Items             []RepoSearchResultItem `json:"items"`
 }
+
+type SearchReposOrder string
+
+const (
+	SearchReposOrderDesc SearchReposOrder = "desc"
+	SearchReposOrderAsc  SearchReposOrder = "asc"
+)
+
+type SearchReposSort string
+
+const (
+	SearchReposSortStars                      SearchReposSort = "stars"
+	SearchReposSortForks                      SearchReposSort = "forks"
+	SearchReposSortHelpMinusWantedMinusIssues SearchReposSort = "help-wanted-issues"
+	SearchReposSortUpdated                    SearchReposSort = "updated"
+)
 
 type SearchResultTextMatches []SearchResultTextMatchesItem
 
@@ -24030,6 +27013,21 @@ type SearchUsersOK struct {
 	IncompleteResults bool                   `json:"incomplete_results"`
 	Items             []UserSearchResultItem `json:"items"`
 }
+
+type SearchUsersOrder string
+
+const (
+	SearchUsersOrderDesc SearchUsersOrder = "desc"
+	SearchUsersOrderAsc  SearchUsersOrder = "asc"
+)
+
+type SearchUsersSort string
+
+const (
+	SearchUsersSortFollowers    SearchUsersSort = "followers"
+	SearchUsersSortRepositories SearchUsersSort = "repositories"
+	SearchUsersSortJoined       SearchUsersSort = "joined"
+)
 
 // Ref: #/components/schemas/secret-scanning-alert
 type SecretScanningAlert struct {
@@ -24083,6 +27081,13 @@ func (a *SecretScanningListAlertsForOrgOKApplicationJSON) unwrap() []Organizatio
 
 func (*SecretScanningListAlertsForOrgOKApplicationJSON) secretScanningListAlertsForOrgRes() {}
 
+type SecretScanningListAlertsForOrgState string
+
+const (
+	SecretScanningListAlertsForOrgStateOpen     SecretScanningListAlertsForOrgState = "open"
+	SecretScanningListAlertsForOrgStateResolved SecretScanningListAlertsForOrgState = "resolved"
+)
+
 // SecretScanningListAlertsForRepoNotFound is response for SecretScanningListAlertsForRepo operation.
 type SecretScanningListAlertsForRepoNotFound struct{}
 
@@ -24098,6 +27103,13 @@ func (a *SecretScanningListAlertsForRepoOKApplicationJSON) unwrap() []SecretScan
 }
 
 func (*SecretScanningListAlertsForRepoOKApplicationJSON) secretScanningListAlertsForRepoRes() {}
+
+type SecretScanningListAlertsForRepoState string
+
+const (
+	SecretScanningListAlertsForRepoStateOpen     SecretScanningListAlertsForRepoState = "open"
+	SecretScanningListAlertsForRepoStateResolved SecretScanningListAlertsForRepoState = "resolved"
+)
 
 // SecretScanningUpdateAlertNotFound is response for SecretScanningUpdateAlert operation.
 type SecretScanningUpdateAlertNotFound struct{}
@@ -24812,6 +27824,34 @@ type TeamsGetMembershipForUserInOrgNotFound struct{}
 
 func (*TeamsGetMembershipForUserInOrgNotFound) teamsGetMembershipForUserInOrgRes() {}
 
+type TeamsListDiscussionCommentsInOrgDirection string
+
+const (
+	TeamsListDiscussionCommentsInOrgDirectionAsc  TeamsListDiscussionCommentsInOrgDirection = "asc"
+	TeamsListDiscussionCommentsInOrgDirectionDesc TeamsListDiscussionCommentsInOrgDirection = "desc"
+)
+
+type TeamsListDiscussionCommentsLegacyDirection string
+
+const (
+	TeamsListDiscussionCommentsLegacyDirectionAsc  TeamsListDiscussionCommentsLegacyDirection = "asc"
+	TeamsListDiscussionCommentsLegacyDirectionDesc TeamsListDiscussionCommentsLegacyDirection = "desc"
+)
+
+type TeamsListDiscussionsInOrgDirection string
+
+const (
+	TeamsListDiscussionsInOrgDirectionAsc  TeamsListDiscussionsInOrgDirection = "asc"
+	TeamsListDiscussionsInOrgDirectionDesc TeamsListDiscussionsInOrgDirection = "desc"
+)
+
+type TeamsListDiscussionsLegacyDirection string
+
+const (
+	TeamsListDiscussionsLegacyDirectionAsc  TeamsListDiscussionsLegacyDirection = "asc"
+	TeamsListDiscussionsLegacyDirectionDesc TeamsListDiscussionsLegacyDirection = "desc"
+)
+
 type TeamsListForAuthenticatedUserApplicationJSONForbidden BasicError
 
 func (a *TeamsListForAuthenticatedUserApplicationJSONForbidden) wrap(v BasicError) {
@@ -24865,6 +27905,14 @@ func (a *TeamsListIdpGroupsForLegacyApplicationJSONNotFound) unwrap() BasicError
 
 func (*TeamsListIdpGroupsForLegacyApplicationJSONNotFound) teamsListIdpGroupsForLegacyRes() {}
 
+type TeamsListMembersInOrgRole string
+
+const (
+	TeamsListMembersInOrgRoleMember     TeamsListMembersInOrgRole = "member"
+	TeamsListMembersInOrgRoleMaintainer TeamsListMembersInOrgRole = "maintainer"
+	TeamsListMembersInOrgRoleAll        TeamsListMembersInOrgRole = "all"
+)
+
 type TeamsListMembersLegacyOKApplicationJSON []SimpleUser
 
 func (a *TeamsListMembersLegacyOKApplicationJSON) wrap(v []SimpleUser) {
@@ -24873,6 +27921,14 @@ func (a *TeamsListMembersLegacyOKApplicationJSON) wrap(v []SimpleUser) {
 func (a *TeamsListMembersLegacyOKApplicationJSON) unwrap() []SimpleUser { return []SimpleUser(*a) }
 
 func (*TeamsListMembersLegacyOKApplicationJSON) teamsListMembersLegacyRes() {}
+
+type TeamsListMembersLegacyRole string
+
+const (
+	TeamsListMembersLegacyRoleMember     TeamsListMembersLegacyRole = "member"
+	TeamsListMembersLegacyRoleMaintainer TeamsListMembersLegacyRole = "maintainer"
+	TeamsListMembersLegacyRoleAll        TeamsListMembersLegacyRole = "all"
+)
 
 type TeamsListOKApplicationJSON []Team
 
@@ -25476,6 +28532,15 @@ func NewPublicUserUsersGetByUsernameOK(v PublicUser) UsersGetByUsernameOK {
 }
 
 func (*UsersGetByUsernameOK) usersGetByUsernameRes() {}
+
+type UsersGetContextForUserSubjectType string
+
+const (
+	UsersGetContextForUserSubjectTypeOrganization UsersGetContextForUserSubjectType = "organization"
+	UsersGetContextForUserSubjectTypeRepository   UsersGetContextForUserSubjectType = "repository"
+	UsersGetContextForUserSubjectTypeIssue        UsersGetContextForUserSubjectType = "issue"
+	UsersGetContextForUserSubjectTypePullRequest  UsersGetContextForUserSubjectType = "pull_request"
+)
 
 type UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden BasicError
 

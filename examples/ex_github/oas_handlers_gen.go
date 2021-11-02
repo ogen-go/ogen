@@ -2605,8 +2605,14 @@ func NewActivityListPublicEventsHandler(s Server, opts ...Option) func(w http.Re
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeActivityListPublicEventsParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.ActivityListPublicEvents(ctx)
+		response, err := s.ActivityListPublicEvents(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -2831,8 +2837,14 @@ func NewActivityListReposStarredByAuthenticatedUserHandler(s Server, opts ...Opt
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeActivityListReposStarredByAuthenticatedUserParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.ActivityListReposStarredByAuthenticatedUser(ctx)
+		response, err := s.ActivityListReposStarredByAuthenticatedUser(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -2883,8 +2895,14 @@ func NewActivityListWatchedReposForAuthenticatedUserHandler(s Server, opts ...Op
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeActivityListWatchedReposForAuthenticatedUserParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.ActivityListWatchedReposForAuthenticatedUser(ctx)
+		response, err := s.ActivityListWatchedReposForAuthenticatedUser(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -3405,8 +3423,14 @@ func NewAppsListPlansHandler(s Server, opts ...Option) func(w http.ResponseWrite
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeAppsListPlansParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.AppsListPlans(ctx)
+		response, err := s.AppsListPlans(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -3428,8 +3452,14 @@ func NewAppsListPlansStubbedHandler(s Server, opts ...Option) func(w http.Respon
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeAppsListPlansStubbedParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.AppsListPlansStubbed(ctx)
+		response, err := s.AppsListPlansStubbed(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -3451,8 +3481,14 @@ func NewAppsListReposAccessibleToInstallationHandler(s Server, opts ...Option) f
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeAppsListReposAccessibleToInstallationParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.AppsListReposAccessibleToInstallation(ctx)
+		response, err := s.AppsListReposAccessibleToInstallation(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -3474,8 +3510,14 @@ func NewAppsListSubscriptionsForAuthenticatedUserHandler(s Server, opts ...Optio
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeAppsListSubscriptionsForAuthenticatedUserParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.AppsListSubscriptionsForAuthenticatedUser(ctx)
+		response, err := s.AppsListSubscriptionsForAuthenticatedUser(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -3497,8 +3539,14 @@ func NewAppsListSubscriptionsForAuthenticatedUserStubbedHandler(s Server, opts .
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.AppsListSubscriptionsForAuthenticatedUserStubbed(ctx)
+		response, err := s.AppsListSubscriptionsForAuthenticatedUserStubbed(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -5924,8 +5972,14 @@ func NewGistsListHandler(s Server, opts ...Option) func(w http.ResponseWriter, r
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeGistsListParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.GistsList(ctx)
+		response, err := s.GistsList(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -6034,8 +6088,14 @@ func NewGistsListStarredHandler(s Server, opts ...Option) func(w http.ResponseWr
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeGistsListStarredParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.GistsListStarred(ctx)
+		response, err := s.GistsListStarred(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -7096,8 +7156,14 @@ func NewLicensesGetAllCommonlyUsedHandler(s Server, opts ...Option) func(w http.
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeLicensesGetAllCommonlyUsedParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.LicensesGetAllCommonlyUsed(ctx)
+		response, err := s.LicensesGetAllCommonlyUsed(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -7229,8 +7295,14 @@ func NewMetaGetOctocatHandler(s Server, opts ...Option) func(w http.ResponseWrit
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeMetaGetOctocatParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.MetaGetOctocat(ctx)
+		response, err := s.MetaGetOctocat(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -7588,8 +7660,14 @@ func NewMigrationsListForAuthenticatedUserHandler(s Server, opts ...Option) func
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeMigrationsListForAuthenticatedUserParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.MigrationsListForAuthenticatedUser(ctx)
+		response, err := s.MigrationsListForAuthenticatedUser(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -7907,8 +7985,14 @@ func NewOAuthAuthorizationsListAuthorizationsHandler(s Server, opts ...Option) f
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeOAuthAuthorizationsListAuthorizationsParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.OAuthAuthorizationsListAuthorizations(ctx)
+		response, err := s.OAuthAuthorizationsListAuthorizations(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -7930,8 +8014,14 @@ func NewOAuthAuthorizationsListGrantsHandler(s Server, opts ...Option) func(w ht
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeOAuthAuthorizationsListGrantsParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.OAuthAuthorizationsListGrants(ctx)
+		response, err := s.OAuthAuthorizationsListGrants(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -8272,8 +8362,14 @@ func NewOrgsListHandler(s Server, opts ...Option) func(w http.ResponseWriter, r 
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeOrgsListParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.OrgsList(ctx)
+		response, err := s.OrgsList(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -8353,8 +8449,14 @@ func NewOrgsListForAuthenticatedUserHandler(s Server, opts ...Option) func(w htt
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeOrgsListForAuthenticatedUserParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.OrgsListForAuthenticatedUser(ctx)
+		response, err := s.OrgsListForAuthenticatedUser(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -13710,8 +13812,14 @@ func NewReposListInvitationsForAuthenticatedUserHandler(s Server, opts ...Option
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeReposListInvitationsForAuthenticatedUserParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.ReposListInvitationsForAuthenticatedUser(ctx)
+		response, err := s.ReposListInvitationsForAuthenticatedUser(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -15738,8 +15846,14 @@ func NewTeamsListForAuthenticatedUserHandler(s Server, opts ...Option) func(w ht
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeTeamsListForAuthenticatedUserParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.TeamsListForAuthenticatedUser(ctx)
+		response, err := s.TeamsListForAuthenticatedUser(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -16684,8 +16798,14 @@ func NewUsersListHandler(s Server, opts ...Option) func(w http.ResponseWriter, r
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeUsersListParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.UsersList(ctx)
+		response, err := s.UsersList(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -16730,8 +16850,14 @@ func NewUsersListEmailsForAuthenticatedHandler(s Server, opts ...Option) func(w 
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeUsersListEmailsForAuthenticatedParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.UsersListEmailsForAuthenticated(ctx)
+		response, err := s.UsersListEmailsForAuthenticated(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -16753,8 +16879,14 @@ func NewUsersListFollowedByAuthenticatedHandler(s Server, opts ...Option) func(w
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeUsersListFollowedByAuthenticatedParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.UsersListFollowedByAuthenticated(ctx)
+		response, err := s.UsersListFollowedByAuthenticated(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -16776,8 +16908,14 @@ func NewUsersListFollowersForAuthenticatedUserHandler(s Server, opts ...Option) 
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeUsersListFollowersForAuthenticatedUserParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.UsersListFollowersForAuthenticatedUser(ctx)
+		response, err := s.UsersListFollowersForAuthenticatedUser(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -16857,8 +16995,14 @@ func NewUsersListGpgKeysForAuthenticatedHandler(s Server, opts ...Option) func(w
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeUsersListGpgKeysForAuthenticatedParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.UsersListGpgKeysForAuthenticated(ctx)
+		response, err := s.UsersListGpgKeysForAuthenticated(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -16909,8 +17053,14 @@ func NewUsersListPublicEmailsForAuthenticatedHandler(s Server, opts ...Option) f
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeUsersListPublicEmailsForAuthenticatedParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.UsersListPublicEmailsForAuthenticated(ctx)
+		response, err := s.UsersListPublicEmailsForAuthenticated(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -16961,8 +17111,14 @@ func NewUsersListPublicSSHKeysForAuthenticatedHandler(s Server, opts ...Option) 
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
+		params, err := decodeUsersListPublicSSHKeysForAuthenticatedParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
 
-		response, err := s.UsersListPublicSSHKeysForAuthenticated(ctx)
+		response, err := s.UsersListPublicSSHKeysForAuthenticated(ctx, params)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)

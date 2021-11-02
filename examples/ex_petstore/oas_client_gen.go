@@ -133,7 +133,7 @@ func (c *Client) CreatePets(ctx context.Context) (res CreatePetsRes, err error) 
 }
 
 // ListPets implements listPets operation.
-func (c *Client) ListPets(ctx context.Context) (res ListPetsRes, err error) {
+func (c *Client) ListPets(ctx context.Context, params ListPetsParams) (res ListPetsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListPets`,
 		trace.WithAttributes(otelogen.OperationID(`listPets`)),
@@ -152,6 +152,26 @@ func (c *Client) ListPets(ctx context.Context) (res ListPetsRes, err error) {
 	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pets"
+
+	q := u.Query()
+	{
+		// Encode "limit" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if encErr := func() error {
+			if val, ok := params.Limit.Get(); ok {
+				return e.Value(conv.Int32ToString(val))
+			}
+			return nil
+		}(); encErr != nil {
+			err = fmt.Errorf("encode query: %w", encErr)
+			return
+		}
+		q["limit"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
