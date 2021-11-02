@@ -44,6 +44,11 @@ func (p *parser) parseParameter(param ogen.Parameter) (*oas.Parameter, error) {
 		return nil, xerrors.Errorf("unsupported parameter type %s", param.In)
 	}
 
+	// Path parameters are always required.
+	if locatedIn == oas.LocationPath && !param.Required {
+		return nil, xerrors.Errorf("path parameters must be required")
+	}
+
 	schema, err := p.parseSchema(param.Schema)
 	if err != nil {
 		return nil, xerrors.Errorf("schema: %w", err)
