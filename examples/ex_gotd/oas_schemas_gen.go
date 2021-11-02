@@ -408,7 +408,7 @@ type Chat struct {
 	Bio                   OptString          `json:"bio"`
 	Description           OptString          `json:"description"`
 	InviteLink            OptString          `json:"invite_link"`
-	PinnedMessage         OptMessage         `json:"pinned_message"`
+	PinnedMessage         *Message           `json:"pinned_message"`
 	Permissions           OptChatPermissions `json:"permissions"`
 	SlowModeDelay         OptInt             `json:"slow_mode_delay"`
 	MessageAutoDeleteTime OptInt             `json:"message_auto_delete_time"`
@@ -1273,11 +1273,11 @@ type MaskPosition struct {
 type Message struct {
 	MessageID                     int                              `json:"message_id"`
 	From                          OptUser                          `json:"from"`
-	SenderChat                    *Chat                            `json:"sender_chat"`
+	SenderChat                    OptChat                          `json:"sender_chat"`
 	Date                          int                              `json:"date"`
-	Chat                          *Chat                            `json:"chat"`
+	Chat                          Chat                             `json:"chat"`
 	ForwardFrom                   OptUser                          `json:"forward_from"`
-	ForwardFromChat               *Chat                            `json:"forward_from_chat"`
+	ForwardFromChat               OptChat                          `json:"forward_from_chat"`
 	ForwardFromMessageID          OptInt                           `json:"forward_from_message_id"`
 	ForwardSignature              OptString                        `json:"forward_signature"`
 	ForwardSenderName             OptString                        `json:"forward_sender_name"`
@@ -1452,6 +1452,44 @@ func (o *OptBool) SetTo(v bool) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptBool) Get() (v bool, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptChat returns new OptChat with value set to v.
+func NewOptChat(v Chat) OptChat {
+	return OptChat{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptChat is optional Chat.
+type OptChat struct {
+	Value Chat
+	Set   bool
+}
+
+// IsSet returns true if OptChat was set.
+func (o OptChat) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptChat) Reset() {
+	var v Chat
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptChat) SetTo(v Chat) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptChat) Get() (v Chat, ok bool) {
 	if !o.Set {
 		return v, false
 	}

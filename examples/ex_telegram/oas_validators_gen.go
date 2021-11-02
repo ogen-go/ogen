@@ -526,10 +526,9 @@ func (s Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Chat == nil {
-			return fmt.Errorf("required, can't be nil")
+		if err := s.Chat.Validate(); err != nil {
+			return err
 		}
-		_ = s.Chat // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{

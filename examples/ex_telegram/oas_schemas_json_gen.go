@@ -1162,7 +1162,7 @@ func (s Chat) WriteJSON(e *json.Encoder) {
 		e.ObjField("invite_link")
 		s.InviteLink.WriteJSON(e)
 	}
-	if s.PinnedMessage.Set {
+	if s.PinnedMessage != nil {
 		more.More()
 		e.ObjField("pinned_message")
 		s.PinnedMessage.WriteJSON(e)
@@ -1258,10 +1258,12 @@ func (s *Chat) ReadJSON(d *json.Decoder) error {
 				return err
 			}
 		case "pinned_message":
-			s.PinnedMessage.Reset()
-			if err := s.PinnedMessage.ReadJSON(d); err != nil {
+			s.PinnedMessage = nil
+			var elem Message
+			if err := elem.ReadJSON(d); err != nil {
 				return err
 			}
+			s.PinnedMessage = &elem
 		case "permissions":
 			s.Permissions.Reset()
 			if err := s.Permissions.ReadJSON(d); err != nil {
@@ -4297,7 +4299,7 @@ func (s Message) WriteJSON(e *json.Encoder) {
 		e.ObjField("from")
 		s.From.WriteJSON(e)
 	}
-	if s.SenderChat != nil {
+	if s.SenderChat.Set {
 		more.More()
 		e.ObjField("sender_chat")
 		s.SenderChat.WriteJSON(e)
@@ -4305,17 +4307,15 @@ func (s Message) WriteJSON(e *json.Encoder) {
 	more.More()
 	e.ObjField("date")
 	e.Int(s.Date)
-	if s.Chat != nil {
-		more.More()
-		e.ObjField("chat")
-		s.Chat.WriteJSON(e)
-	}
+	more.More()
+	e.ObjField("chat")
+	s.Chat.WriteJSON(e)
 	if s.ForwardFrom.Set {
 		more.More()
 		e.ObjField("forward_from")
 		s.ForwardFrom.WriteJSON(e)
 	}
-	if s.ForwardFromChat != nil {
+	if s.ForwardFromChat.Set {
 		more.More()
 		e.ObjField("forward_from_chat")
 		s.ForwardFromChat.WriteJSON(e)
@@ -4597,12 +4597,10 @@ func (s *Message) ReadJSON(d *json.Decoder) error {
 				return err
 			}
 		case "sender_chat":
-			s.SenderChat = nil
-			var elem Chat
-			if err := elem.ReadJSON(d); err != nil {
+			s.SenderChat.Reset()
+			if err := s.SenderChat.ReadJSON(d); err != nil {
 				return err
 			}
-			s.SenderChat = &elem
 		case "date":
 			v, err := d.Int()
 			s.Date = int(v)
@@ -4610,24 +4608,19 @@ func (s *Message) ReadJSON(d *json.Decoder) error {
 				return err
 			}
 		case "chat":
-			s.Chat = nil
-			var elem Chat
-			if err := elem.ReadJSON(d); err != nil {
+			if err := s.Chat.ReadJSON(d); err != nil {
 				return err
 			}
-			s.Chat = &elem
 		case "forward_from":
 			s.ForwardFrom.Reset()
 			if err := s.ForwardFrom.ReadJSON(d); err != nil {
 				return err
 			}
 		case "forward_from_chat":
-			s.ForwardFromChat = nil
-			var elem Chat
-			if err := elem.ReadJSON(d); err != nil {
+			s.ForwardFromChat.Reset()
+			if err := s.ForwardFromChat.ReadJSON(d); err != nil {
 				return err
 			}
-			s.ForwardFromChat = &elem
 		case "forward_from_message_id":
 			s.ForwardFromMessageID.Reset()
 			if err := s.ForwardFromMessageID.ReadJSON(d); err != nil {
@@ -5094,6 +5087,28 @@ func (o *OptCallbackQuery) ReadJSON(d *json.Decoder) error {
 		return nil
 	default:
 		return fmt.Errorf("unexpected type %q while reading OptCallbackQuery", d.Next())
+	}
+}
+
+// WriteJSON writes json value of Chat to json stream.
+func (o OptChat) WriteJSON(e *json.Encoder) {
+	o.Value.WriteJSON(e)
+}
+
+// ReadJSON reads json value of Chat from json iterator.
+func (o *OptChat) ReadJSON(d *json.Decoder) error {
+	if o == nil {
+		return fmt.Errorf(`invalid: unable to decode OptChat to nil`)
+	}
+	switch d.Next() {
+	case json.Object:
+		o.Set = true
+		if err := o.Value.ReadJSON(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("unexpected type %q while reading OptChat", d.Next())
 	}
 }
 
