@@ -210,28 +210,74 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 	}
 	// Decode param "x-tags" located in "Header".
 	{
-		param := r.Header.Values("x-tags")
+		param := r.Header.Get("x-tags")
 		if len(param) > 0 {
-			v, err := conv.ToUUIDArray(param)
-			if err != nil {
+			d := uri.NewHeaderDecoder(uri.HeaderDecoderConfig{
+				Explode: false,
+			})
+
+			if err := func() error {
+				return d.Array(func(d uri.Decoder) error {
+					var ParamsXTagsItem uuid.UUID
+					if err := func() error {
+						s, err := d.Value()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToUUID(s)
+						if err != nil {
+							return err
+						}
+
+						ParamsXTagsItem = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.XTags = append(params.XTags, ParamsXTagsItem)
+					return nil
+				})
+			}(); err != nil {
 				return params, fmt.Errorf("parse header param 'x-tags': %w", err)
 			}
-
-			params.XTags = v
 		} else {
 			return params, fmt.Errorf("header parameter 'x-tags' not specified")
 		}
 	}
 	// Decode param "x-scope" located in "Header".
 	{
-		param := r.Header.Values("x-scope")
+		param := r.Header.Get("x-scope")
 		if len(param) > 0 {
-			v, err := conv.ToStringArray(param)
-			if err != nil {
+			d := uri.NewHeaderDecoder(uri.HeaderDecoderConfig{
+				Explode: false,
+			})
+
+			if err := func() error {
+				return d.Array(func(d uri.Decoder) error {
+					var ParamsXScopeItem string
+					if err := func() error {
+						s, err := d.Value()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(s)
+						if err != nil {
+							return err
+						}
+
+						ParamsXScopeItem = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.XScope = append(params.XScope, ParamsXScopeItem)
+					return nil
+				})
+			}(); err != nil {
 				return params, fmt.Errorf("parse header param 'x-scope': %w", err)
 			}
-
-			params.XScope = v
 		} else {
 			return params, fmt.Errorf("header parameter 'x-scope' not specified")
 		}

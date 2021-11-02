@@ -412,15 +412,49 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 	defer ht.PutRequest(r)
 
 	{
-		value := conv.UUIDArrayToString(params.XTags)
-		for _, v := range value {
-			r.Header.Add("x-tags", v)
+		e := uri.NewHeaderEncoder(uri.HeaderEncoderConfig{
+			Explode: false,
+		})
+		if encErr := func() error {
+			return e.Array(func(e uri.Encoder) error {
+				for i, item := range params.XTags {
+					if err := func() error {
+						return e.Value(conv.UUIDToString(item))
+					}(); err != nil {
+						return fmt.Errorf("[%d]: %w", i, err)
+					}
+				}
+				return nil
+			})
+		}(); encErr != nil {
+			err = fmt.Errorf("encode header param 'x-tags': %w", encErr)
+			return
+		}
+		if v, ok := e.Result(); ok {
+			r.Header.Set("x-tags", v)
 		}
 	}
 	{
-		value := conv.StringArrayToString(params.XScope)
-		for _, v := range value {
-			r.Header.Add("x-scope", v)
+		e := uri.NewHeaderEncoder(uri.HeaderEncoderConfig{
+			Explode: false,
+		})
+		if encErr := func() error {
+			return e.Array(func(e uri.Encoder) error {
+				for i, item := range params.XScope {
+					if err := func() error {
+						return e.Value(conv.StringToString(item))
+					}(); err != nil {
+						return fmt.Errorf("[%d]: %w", i, err)
+					}
+				}
+				return nil
+			})
+		}(); encErr != nil {
+			err = fmt.Errorf("encode header param 'x-scope': %w", encErr)
+			return
+		}
+		if v, ok := e.Result(); ok {
+			r.Header.Set("x-scope", v)
 		}
 	}
 
