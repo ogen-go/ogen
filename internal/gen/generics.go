@@ -42,18 +42,20 @@ func (g *Generator) boxStructFields(s *ir.Type) {
 		field.Type = func(typ *ir.Type) *ir.Type {
 			if s.RecursiveTo(typ) {
 				switch {
-				case v.Nullable && !v.Optional: // nullable
+				case v.OnlyNullable():
 					return ir.Pointer(typ, ir.NilNull)
-				case !v.Nullable && v.Optional: // optional
+				case v.OnlyOptional():
 					return ir.Pointer(typ, ir.NilOptional)
-				case v.Nullable && v.Optional: // nullable & optional
+				case v.NullableOptional():
 					return ir.Pointer(g.boxType(ir.GenericVariant{
 						Optional: true,
 					}, typ), ir.NilNull)
-				case !v.Nullable && !v.Optional: // required
+				default:
+					// Required.
 					panic(fmt.Sprintf("recursion: %s.%s", s.Name, field.Name))
 				}
-			} else if v.Any() {
+			}
+			if v.Any() {
 				return g.boxType(v, typ)
 			}
 			return typ

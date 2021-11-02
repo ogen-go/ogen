@@ -7,6 +7,10 @@ type GenericVariant struct {
 	Optional bool
 }
 
+func (v GenericVariant) NullableOptional() bool {
+	return v.Optional && v.Nullable
+}
+
 func (v GenericVariant) OnlyOptional() bool {
 	return v.Optional && !v.Nullable
 }
