@@ -29,6 +29,14 @@ func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 			}(); err != nil {
 				return params, err
 			}
+
+			{{- if $p.Type.NeedValidation }}
+			if err := func() error {
+				{{- template "validate" var_elem (sprintf "params.%s" $p.Name ) $p.Type }}
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter '{{ $p.Spec.Name }}' located in '{{ lower $p.Spec.In }}': %w", err)
+			}
+			{{- end }}
 		} {{- if $p.Spec.Required }} else {
 			return params, fmt.Errorf("query parameter '{{ $p.Spec.Name}}' not specified")
 		} {{- end }}
