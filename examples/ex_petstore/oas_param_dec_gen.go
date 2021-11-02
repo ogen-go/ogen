@@ -75,7 +75,7 @@ func decodeListPetsParams(r *http.Request) (ListPetsParams, error) {
 			if err := func() error {
 				var ParamsLimitValue int32
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -114,7 +114,7 @@ func decodeShowPetByIdParams(r *http.Request) (ShowPetByIdParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}

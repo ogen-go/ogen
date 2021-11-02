@@ -74,7 +74,7 @@ func decodeDeletePetParams(r *http.Request) (DeletePetParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}

@@ -743,7 +743,7 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DriveID))
+			return e.EncodeValue(conv.StringToString(params.DriveID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -813,7 +813,7 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request Par
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.IfaceID))
+			return e.EncodeValue(conv.StringToString(params.IfaceID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1085,7 +1085,7 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params Pu
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.DriveID))
+			return e.EncodeValue(conv.StringToString(params.DriveID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1155,7 +1155,7 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request Netwo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.IfaceID))
+			return e.EncodeValue(conv.StringToString(params.IfaceID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return

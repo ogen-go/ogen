@@ -73,7 +73,7 @@ func decodeCachingParams(r *http.Request) (CachingParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -108,7 +108,7 @@ func decodeQueriesParams(r *http.Request) (QueriesParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -143,7 +143,7 @@ func decodeUpdatesParams(r *http.Request) (UpdatesParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}

@@ -74,7 +74,7 @@ func decodeGetBookParams(r *http.Request) (GetBookParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -110,7 +110,7 @@ func decodeGetPageCoverImageParams(r *http.Request) (GetPageCoverImageParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -141,7 +141,7 @@ func decodeGetPageCoverImageParams(r *http.Request) (GetPageCoverImageParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -177,7 +177,7 @@ func decodeGetPageImageParams(r *http.Request) (GetPageImageParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -208,7 +208,7 @@ func decodeGetPageImageParams(r *http.Request) (GetPageImageParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -239,7 +239,7 @@ func decodeGetPageImageParams(r *http.Request) (GetPageImageParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -275,7 +275,7 @@ func decodeGetPageThumbnailImageParams(r *http.Request) (GetPageThumbnailImagePa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -306,7 +306,7 @@ func decodeGetPageThumbnailImageParams(r *http.Request) (GetPageThumbnailImagePa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -337,7 +337,7 @@ func decodeGetPageThumbnailImageParams(r *http.Request) (GetPageThumbnailImagePa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -372,7 +372,7 @@ func decodeSearchParams(r *http.Request) (SearchParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -404,7 +404,7 @@ func decodeSearchParams(r *http.Request) (SearchParams, error) {
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -442,7 +442,7 @@ func decodeSearchByTagIDParams(r *http.Request) (SearchByTagIDParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -474,7 +474,7 @@ func decodeSearchByTagIDParams(r *http.Request) (SearchByTagIDParams, error) {
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}

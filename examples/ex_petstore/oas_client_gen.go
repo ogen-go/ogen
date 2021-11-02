@@ -162,7 +162,7 @@ func (c *Client) ListPets(ctx context.Context, params ListPetsParams) (res ListP
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.Int32ToString(val))
+				return e.EncodeValue(conv.Int32ToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -218,7 +218,7 @@ func (c *Client) ShowPetById(ctx context.Context, params ShowPetByIdParams) (res
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PetId))
+			return e.EncodeValue(conv.StringToString(params.PetId))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return

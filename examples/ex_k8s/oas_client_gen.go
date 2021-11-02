@@ -139,7 +139,7 @@ func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -156,7 +156,7 @@ func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -231,7 +231,7 @@ func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -248,7 +248,7 @@ func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -323,7 +323,7 @@ func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Conte
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -340,7 +340,7 @@ func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Conte
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -406,7 +406,7 @@ func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, request 
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -423,7 +423,7 @@ func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, request 
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -691,7 +691,7 @@ func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Conte
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -708,7 +708,7 @@ func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Conte
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -774,7 +774,7 @@ func (c *Client) CreateCoreV1Namespace(ctx context.Context, request IoK8sAPICore
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -791,7 +791,7 @@ func (c *Client) CreateCoreV1Namespace(ctx context.Context, request IoK8sAPICore
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -857,7 +857,7 @@ func (c *Client) CreateCoreV1Node(ctx context.Context, request IoK8sAPICoreV1Nod
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -874,7 +874,7 @@ func (c *Client) CreateCoreV1Node(ctx context.Context, request IoK8sAPICoreV1Nod
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -949,7 +949,7 @@ func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, request IoK8s
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -966,7 +966,7 @@ func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, request IoK8s
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -1041,7 +1041,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -1058,7 +1058,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -1124,7 +1124,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -1141,7 +1141,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -1216,7 +1216,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -1233,7 +1233,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -1299,7 +1299,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -1316,7 +1316,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -1382,7 +1382,7 @@ func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Conte
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -1399,7 +1399,7 @@ func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Conte
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -1465,7 +1465,7 @@ func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, request IoK
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -1482,7 +1482,7 @@ func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, request IoK
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -1548,7 +1548,7 @@ func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, request IoK8sAPIN
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -1565,7 +1565,7 @@ func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, request IoK8sAPIN
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -1631,7 +1631,7 @@ func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, request IoK
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -1648,7 +1648,7 @@ func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, request IoK
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -1714,7 +1714,7 @@ func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, request IoK8
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -1731,7 +1731,7 @@ func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, request IoK8
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -1806,7 +1806,7 @@ func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, reque
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -1823,7 +1823,7 @@ func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, reque
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -1898,7 +1898,7 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, reque
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -1915,7 +1915,7 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, reque
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -1981,7 +1981,7 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -1998,7 +1998,7 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2064,7 +2064,7 @@ func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, request Io
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2081,7 +2081,7 @@ func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, request Io
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2147,7 +2147,7 @@ func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, request IoK8sAPIS
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2164,7 +2164,7 @@ func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, request IoK8sAPIS
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2239,7 +2239,7 @@ func (c *Client) CreateStorageV1CSINode(ctx context.Context, request IoK8sAPISto
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2256,7 +2256,7 @@ func (c *Client) CreateStorageV1CSINode(ctx context.Context, request IoK8sAPISto
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2331,7 +2331,7 @@ func (c *Client) CreateStorageV1StorageClass(ctx context.Context, request IoK8sA
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2348,7 +2348,7 @@ func (c *Client) CreateStorageV1StorageClass(ctx context.Context, request IoK8sA
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2423,7 +2423,7 @@ func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, request Io
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2440,7 +2440,7 @@ func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, request Io
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2506,7 +2506,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2523,7 +2523,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2540,7 +2540,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2557,7 +2557,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 		})
 		if encErr := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2574,7 +2574,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2591,7 +2591,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2608,7 +2608,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 		})
 		if encErr := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2625,7 +2625,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 		})
 		if encErr := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2642,7 +2642,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2659,7 +2659,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2676,7 +2676,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2742,7 +2742,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2759,7 +2759,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2776,7 +2776,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2793,7 +2793,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2810,7 +2810,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2827,7 +2827,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2844,7 +2844,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2861,7 +2861,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2878,7 +2878,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2895,7 +2895,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2912,7 +2912,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2978,7 +2978,7 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -2995,7 +2995,7 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3012,7 +3012,7 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3029,7 +3029,7 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3046,7 +3046,7 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3063,7 +3063,7 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3080,7 +3080,7 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3097,7 +3097,7 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3114,7 +3114,7 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3131,7 +3131,7 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3148,7 +3148,7 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3214,7 +3214,7 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3231,7 +3231,7 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3248,7 +3248,7 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3265,7 +3265,7 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3282,7 +3282,7 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3299,7 +3299,7 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3316,7 +3316,7 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3333,7 +3333,7 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3350,7 +3350,7 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3367,7 +3367,7 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3384,7 +3384,7 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3450,7 +3450,7 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3467,7 +3467,7 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3484,7 +3484,7 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3501,7 +3501,7 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3518,7 +3518,7 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3535,7 +3535,7 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3552,7 +3552,7 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3569,7 +3569,7 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3586,7 +3586,7 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3603,7 +3603,7 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3620,7 +3620,7 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3686,7 +3686,7 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3703,7 +3703,7 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3720,7 +3720,7 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3737,7 +3737,7 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 		})
 		if encErr := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3754,7 +3754,7 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3771,7 +3771,7 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3788,7 +3788,7 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 		})
 		if encErr := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3805,7 +3805,7 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 		})
 		if encErr := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3822,7 +3822,7 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3839,7 +3839,7 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3856,7 +3856,7 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3922,7 +3922,7 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3939,7 +3939,7 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3956,7 +3956,7 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3973,7 +3973,7 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 		})
 		if encErr := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3990,7 +3990,7 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4007,7 +4007,7 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4024,7 +4024,7 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 		})
 		if encErr := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4041,7 +4041,7 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 		})
 		if encErr := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4058,7 +4058,7 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4075,7 +4075,7 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4092,7 +4092,7 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4158,7 +4158,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4175,7 +4175,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4192,7 +4192,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4209,7 +4209,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4226,7 +4226,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4243,7 +4243,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4260,7 +4260,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4277,7 +4277,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4294,7 +4294,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4311,7 +4311,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4328,7 +4328,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4394,7 +4394,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4411,7 +4411,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4428,7 +4428,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4445,7 +4445,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4462,7 +4462,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4479,7 +4479,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4496,7 +4496,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4513,7 +4513,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4530,7 +4530,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4547,7 +4547,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4564,7 +4564,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4630,7 +4630,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4647,7 +4647,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4664,7 +4664,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4681,7 +4681,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4698,7 +4698,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4715,7 +4715,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4732,7 +4732,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4749,7 +4749,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4766,7 +4766,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4783,7 +4783,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4800,7 +4800,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4866,7 +4866,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4883,7 +4883,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4900,7 +4900,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4917,7 +4917,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4934,7 +4934,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4951,7 +4951,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4968,7 +4968,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4985,7 +4985,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5002,7 +5002,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5019,7 +5019,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5036,7 +5036,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5102,7 +5102,7 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5119,7 +5119,7 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5136,7 +5136,7 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5153,7 +5153,7 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5170,7 +5170,7 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5187,7 +5187,7 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5204,7 +5204,7 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5221,7 +5221,7 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5238,7 +5238,7 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5255,7 +5255,7 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5272,7 +5272,7 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5338,7 +5338,7 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5355,7 +5355,7 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5372,7 +5372,7 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5389,7 +5389,7 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 		})
 		if encErr := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5406,7 +5406,7 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5423,7 +5423,7 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5440,7 +5440,7 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 		})
 		if encErr := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5457,7 +5457,7 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 		})
 		if encErr := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5474,7 +5474,7 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5491,7 +5491,7 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5508,7 +5508,7 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5574,7 +5574,7 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5591,7 +5591,7 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5608,7 +5608,7 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5625,7 +5625,7 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 		})
 		if encErr := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5642,7 +5642,7 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5659,7 +5659,7 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5676,7 +5676,7 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 		})
 		if encErr := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5693,7 +5693,7 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 		})
 		if encErr := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5710,7 +5710,7 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5727,7 +5727,7 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5744,7 +5744,7 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5810,7 +5810,7 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5827,7 +5827,7 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5844,7 +5844,7 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5861,7 +5861,7 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 		})
 		if encErr := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5878,7 +5878,7 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5895,7 +5895,7 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5912,7 +5912,7 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 		})
 		if encErr := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5929,7 +5929,7 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 		})
 		if encErr := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5946,7 +5946,7 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5963,7 +5963,7 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5980,7 +5980,7 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6046,7 +6046,7 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6063,7 +6063,7 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6080,7 +6080,7 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6097,7 +6097,7 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 		})
 		if encErr := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6114,7 +6114,7 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6131,7 +6131,7 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6148,7 +6148,7 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 		})
 		if encErr := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6165,7 +6165,7 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 		})
 		if encErr := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6182,7 +6182,7 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6199,7 +6199,7 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6216,7 +6216,7 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6282,7 +6282,7 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6299,7 +6299,7 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6316,7 +6316,7 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6333,7 +6333,7 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6350,7 +6350,7 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6367,7 +6367,7 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6384,7 +6384,7 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6401,7 +6401,7 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6418,7 +6418,7 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6435,7 +6435,7 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6452,7 +6452,7 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6518,7 +6518,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6535,7 +6535,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6552,7 +6552,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6569,7 +6569,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6586,7 +6586,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6603,7 +6603,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6620,7 +6620,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6637,7 +6637,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6654,7 +6654,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6671,7 +6671,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6688,7 +6688,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6754,7 +6754,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6771,7 +6771,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6788,7 +6788,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6805,7 +6805,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6822,7 +6822,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6839,7 +6839,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6856,7 +6856,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6873,7 +6873,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6890,7 +6890,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6907,7 +6907,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6924,7 +6924,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -6990,7 +6990,7 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7007,7 +7007,7 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7024,7 +7024,7 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7041,7 +7041,7 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7058,7 +7058,7 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7075,7 +7075,7 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7092,7 +7092,7 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7109,7 +7109,7 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7126,7 +7126,7 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7143,7 +7143,7 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7160,7 +7160,7 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7226,7 +7226,7 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7243,7 +7243,7 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7260,7 +7260,7 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7277,7 +7277,7 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 		})
 		if encErr := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7294,7 +7294,7 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7311,7 +7311,7 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7328,7 +7328,7 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 		})
 		if encErr := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7345,7 +7345,7 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 		})
 		if encErr := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7362,7 +7362,7 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7379,7 +7379,7 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7396,7 +7396,7 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7462,7 +7462,7 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7479,7 +7479,7 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7496,7 +7496,7 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7513,7 +7513,7 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 		})
 		if encErr := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7530,7 +7530,7 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7547,7 +7547,7 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7564,7 +7564,7 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 		})
 		if encErr := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7581,7 +7581,7 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 		})
 		if encErr := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7598,7 +7598,7 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7615,7 +7615,7 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7632,7 +7632,7 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7698,7 +7698,7 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7715,7 +7715,7 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7732,7 +7732,7 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7749,7 +7749,7 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 		})
 		if encErr := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7766,7 +7766,7 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7783,7 +7783,7 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7800,7 +7800,7 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 		})
 		if encErr := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7817,7 +7817,7 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 		})
 		if encErr := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7834,7 +7834,7 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7851,7 +7851,7 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7868,7 +7868,7 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7934,7 +7934,7 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7951,7 +7951,7 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.DryRun.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7968,7 +7968,7 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7985,7 +7985,7 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -8002,7 +8002,7 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -8019,7 +8019,7 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -8036,7 +8036,7 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -8053,7 +8053,7 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -8070,7 +8070,7 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -8087,7 +8087,7 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -8104,7 +8104,7 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10330,7 +10330,7 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10347,7 +10347,7 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10364,7 +10364,7 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10381,7 +10381,7 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10398,7 +10398,7 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10415,7 +10415,7 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10432,7 +10432,7 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10449,7 +10449,7 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10466,7 +10466,7 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 		})
 		if encErr := func() error {
 			if val, ok := params.Watch.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10524,7 +10524,7 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10541,7 +10541,7 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10558,7 +10558,7 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10575,7 +10575,7 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10592,7 +10592,7 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10609,7 +10609,7 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10626,7 +10626,7 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10643,7 +10643,7 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10660,7 +10660,7 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.Watch.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10718,7 +10718,7 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10735,7 +10735,7 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10752,7 +10752,7 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10769,7 +10769,7 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10786,7 +10786,7 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10803,7 +10803,7 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10820,7 +10820,7 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10837,7 +10837,7 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10854,7 +10854,7 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.Watch.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10912,7 +10912,7 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 		})
 		if encErr := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10929,7 +10929,7 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10946,7 +10946,7 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10963,7 +10963,7 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10980,7 +10980,7 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10997,7 +10997,7 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11014,7 +11014,7 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11031,7 +11031,7 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11048,7 +11048,7 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 		})
 		if encErr := func() error {
 			if val, ok := params.Watch.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11524,7 +11524,7 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11541,7 +11541,7 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11558,7 +11558,7 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11575,7 +11575,7 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11592,7 +11592,7 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11609,7 +11609,7 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11626,7 +11626,7 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11643,7 +11643,7 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11660,7 +11660,7 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.Watch.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11946,7 +11946,7 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 		})
 		if encErr := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11963,7 +11963,7 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11980,7 +11980,7 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11997,7 +11997,7 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12014,7 +12014,7 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12031,7 +12031,7 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12048,7 +12048,7 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12065,7 +12065,7 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12082,7 +12082,7 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 		})
 		if encErr := func() error {
 			if val, ok := params.Watch.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12140,7 +12140,7 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 		})
 		if encErr := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12157,7 +12157,7 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12174,7 +12174,7 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12191,7 +12191,7 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12208,7 +12208,7 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12225,7 +12225,7 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12242,7 +12242,7 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12259,7 +12259,7 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12276,7 +12276,7 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 		})
 		if encErr := func() error {
 			if val, ok := params.Watch.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12334,7 +12334,7 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 		})
 		if encErr := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12351,7 +12351,7 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12368,7 +12368,7 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12385,7 +12385,7 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12402,7 +12402,7 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12419,7 +12419,7 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12436,7 +12436,7 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12453,7 +12453,7 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12470,7 +12470,7 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 		})
 		if encErr := func() error {
 			if val, ok := params.Watch.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12984,7 +12984,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13001,7 +13001,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13018,7 +13018,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13035,7 +13035,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13052,7 +13052,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13069,7 +13069,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13086,7 +13086,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13103,7 +13103,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13120,7 +13120,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.Watch.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13178,7 +13178,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13195,7 +13195,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13212,7 +13212,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13229,7 +13229,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13246,7 +13246,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13263,7 +13263,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13280,7 +13280,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13297,7 +13297,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13314,7 +13314,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.Watch.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13372,7 +13372,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13389,7 +13389,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13406,7 +13406,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13423,7 +13423,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13440,7 +13440,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13457,7 +13457,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13474,7 +13474,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13491,7 +13491,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13508,7 +13508,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.Watch.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13566,7 +13566,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13583,7 +13583,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13600,7 +13600,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13617,7 +13617,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13634,7 +13634,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13651,7 +13651,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13668,7 +13668,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13685,7 +13685,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13702,7 +13702,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 		})
 		if encErr := func() error {
 			if val, ok := params.Watch.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13760,7 +13760,7 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13777,7 +13777,7 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13794,7 +13794,7 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13811,7 +13811,7 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13828,7 +13828,7 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13845,7 +13845,7 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13862,7 +13862,7 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13879,7 +13879,7 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13896,7 +13896,7 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.Watch.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13954,7 +13954,7 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 		})
 		if encErr := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13971,7 +13971,7 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13988,7 +13988,7 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14005,7 +14005,7 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14022,7 +14022,7 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14039,7 +14039,7 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14056,7 +14056,7 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14073,7 +14073,7 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14090,7 +14090,7 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 		})
 		if encErr := func() error {
 			if val, ok := params.Watch.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14224,7 +14224,7 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 		})
 		if encErr := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14241,7 +14241,7 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14258,7 +14258,7 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14275,7 +14275,7 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14292,7 +14292,7 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14309,7 +14309,7 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14326,7 +14326,7 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14343,7 +14343,7 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14360,7 +14360,7 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 		})
 		if encErr := func() error {
 			if val, ok := params.Watch.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14418,7 +14418,7 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 		})
 		if encErr := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14435,7 +14435,7 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14452,7 +14452,7 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14469,7 +14469,7 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14486,7 +14486,7 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14503,7 +14503,7 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14520,7 +14520,7 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14537,7 +14537,7 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14554,7 +14554,7 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 		})
 		if encErr := func() error {
 			if val, ok := params.Watch.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14612,7 +14612,7 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 		})
 		if encErr := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14629,7 +14629,7 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14646,7 +14646,7 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14663,7 +14663,7 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14680,7 +14680,7 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14697,7 +14697,7 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14714,7 +14714,7 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14731,7 +14731,7 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14748,7 +14748,7 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 		})
 		if encErr := func() error {
 			if val, ok := params.Watch.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14882,7 +14882,7 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 		})
 		if encErr := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14899,7 +14899,7 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14916,7 +14916,7 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14933,7 +14933,7 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14950,7 +14950,7 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14967,7 +14967,7 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14984,7 +14984,7 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15001,7 +15001,7 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15018,7 +15018,7 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 		})
 		if encErr := func() error {
 			if val, ok := params.Watch.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15076,7 +15076,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 		})
 		if encErr := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15093,7 +15093,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15110,7 +15110,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15127,7 +15127,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15144,7 +15144,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15161,7 +15161,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15178,7 +15178,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15195,7 +15195,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15212,7 +15212,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 		})
 		if encErr := func() error {
 			if val, ok := params.Watch.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15270,7 +15270,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15287,7 +15287,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15304,7 +15304,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15321,7 +15321,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15338,7 +15338,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15355,7 +15355,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15372,7 +15372,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15389,7 +15389,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15406,7 +15406,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.Watch.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15540,7 +15540,7 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 		})
 		if encErr := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15557,7 +15557,7 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15574,7 +15574,7 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15591,7 +15591,7 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15608,7 +15608,7 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15625,7 +15625,7 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15642,7 +15642,7 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15659,7 +15659,7 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15676,7 +15676,7 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 		})
 		if encErr := func() error {
 			if val, ok := params.Watch.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15734,7 +15734,7 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 		})
 		if encErr := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15751,7 +15751,7 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15768,7 +15768,7 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15785,7 +15785,7 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15802,7 +15802,7 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15819,7 +15819,7 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15836,7 +15836,7 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15853,7 +15853,7 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15870,7 +15870,7 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 		})
 		if encErr := func() error {
 			if val, ok := params.Watch.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15928,7 +15928,7 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 		})
 		if encErr := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15945,7 +15945,7 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15962,7 +15962,7 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15979,7 +15979,7 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -15996,7 +15996,7 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16013,7 +16013,7 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16030,7 +16030,7 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16047,7 +16047,7 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16064,7 +16064,7 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 		})
 		if encErr := func() error {
 			if val, ok := params.Watch.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16122,7 +16122,7 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 		})
 		if encErr := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16139,7 +16139,7 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16156,7 +16156,7 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16173,7 +16173,7 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16190,7 +16190,7 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16207,7 +16207,7 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16224,7 +16224,7 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16241,7 +16241,7 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16258,7 +16258,7 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 		})
 		if encErr := func() error {
 			if val, ok := params.Watch.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16316,7 +16316,7 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 		})
 		if encErr := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16333,7 +16333,7 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 		})
 		if encErr := func() error {
 			if val, ok := params.Continue.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16350,7 +16350,7 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 		})
 		if encErr := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16367,7 +16367,7 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 		})
 		if encErr := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16384,7 +16384,7 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 		})
 		if encErr := func() error {
 			if val, ok := params.Limit.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16401,7 +16401,7 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16418,7 +16418,7 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 		})
 		if encErr := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16435,7 +16435,7 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 		})
 		if encErr := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16452,7 +16452,7 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 		})
 		if encErr := func() error {
 			if val, ok := params.Watch.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {

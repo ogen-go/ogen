@@ -123,7 +123,7 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldOb
 			Explode: true,
 		})
 		if encErr := func() error {
-			return e.Value(conv.Int64ToString(params.Count))
+			return e.EncodeValue(conv.Int64ToString(params.Count))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode query: %w", encErr)
 			return
@@ -254,7 +254,7 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldOb
 			Explode: true,
 		})
 		if encErr := func() error {
-			return e.Value(conv.Int64ToString(params.Queries))
+			return e.EncodeValue(conv.Int64ToString(params.Queries))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode query: %w", encErr)
 			return
@@ -309,7 +309,7 @@ func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res WorldOb
 			Explode: true,
 		})
 		if encErr := func() error {
-			return e.Value(conv.Int64ToString(params.Queries))
+			return e.EncodeValue(conv.Int64ToString(params.Queries))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode query: %w", encErr)
 			return

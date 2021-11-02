@@ -74,7 +74,7 @@ func decodePatchGuestDriveByIDParams(r *http.Request) (PatchGuestDriveByIDParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -110,7 +110,7 @@ func decodePatchGuestNetworkInterfaceByIDParams(r *http.Request) (PatchGuestNetw
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -146,7 +146,7 @@ func decodePutGuestDriveByIDParams(r *http.Request) (PutGuestDriveByIDParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -182,7 +182,7 @@ func decodePutGuestNetworkInterfaceByIDParams(r *http.Request) (PutGuestNetworkI
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}

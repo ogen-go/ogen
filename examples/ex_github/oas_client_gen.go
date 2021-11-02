@@ -122,7 +122,7 @@ func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -138,7 +138,7 @@ func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerGroupID))
+			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -154,7 +154,7 @@ func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RepositoryID))
+			return e.EncodeValue(conv.IntToString(params.RepositoryID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -207,7 +207,7 @@ func (c *Client) ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params A
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -223,7 +223,7 @@ func (c *Client) ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params A
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.SecretName))
+			return e.EncodeValue(conv.StringToString(params.SecretName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -239,7 +239,7 @@ func (c *Client) ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params A
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RepositoryID))
+			return e.EncodeValue(conv.IntToString(params.RepositoryID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -292,7 +292,7 @@ func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -308,7 +308,7 @@ func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerGroupID))
+			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -324,7 +324,7 @@ func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerID))
+			return e.EncodeValue(conv.IntToString(params.RunnerID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -377,7 +377,7 @@ func (c *Client) ActionsApproveWorkflowRun(ctx context.Context, params ActionsAp
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -393,7 +393,7 @@ func (c *Client) ActionsApproveWorkflowRun(ctx context.Context, params ActionsAp
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -409,7 +409,7 @@ func (c *Client) ActionsApproveWorkflowRun(ctx context.Context, params ActionsAp
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunID))
+			return e.EncodeValue(conv.IntToString(params.RunID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -463,7 +463,7 @@ func (c *Client) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCan
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -479,7 +479,7 @@ func (c *Client) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCan
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -495,7 +495,7 @@ func (c *Client) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCan
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunID))
+			return e.EncodeValue(conv.IntToString(params.RunID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -564,7 +564,7 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RepositoryID))
+			return e.EncodeValue(conv.IntToString(params.RepositoryID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -580,7 +580,7 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.EnvironmentName))
+			return e.EncodeValue(conv.StringToString(params.EnvironmentName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -596,7 +596,7 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.SecretName))
+			return e.EncodeValue(conv.StringToString(params.SecretName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -666,7 +666,7 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request Act
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -682,7 +682,7 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request Act
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.SecretName))
+			return e.EncodeValue(conv.StringToString(params.SecretName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -752,7 +752,7 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request Ac
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -768,7 +768,7 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request Ac
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -784,7 +784,7 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request Ac
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.SecretName))
+			return e.EncodeValue(conv.StringToString(params.SecretName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -839,7 +839,7 @@ func (c *Client) ActionsCreateRegistrationTokenForOrg(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -893,7 +893,7 @@ func (c *Client) ActionsCreateRegistrationTokenForRepo(ctx context.Context, para
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -909,7 +909,7 @@ func (c *Client) ActionsCreateRegistrationTokenForRepo(ctx context.Context, para
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -963,7 +963,7 @@ func (c *Client) ActionsCreateRemoveTokenForOrg(ctx context.Context, params Acti
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1017,7 +1017,7 @@ func (c *Client) ActionsCreateRemoveTokenForRepo(ctx context.Context, params Act
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1033,7 +1033,7 @@ func (c *Client) ActionsCreateRemoveTokenForRepo(ctx context.Context, params Act
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1102,7 +1102,7 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1158,7 +1158,7 @@ func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDelete
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1174,7 +1174,7 @@ func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDelete
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1190,7 +1190,7 @@ func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDelete
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ArtifactID))
+			return e.EncodeValue(conv.IntToString(params.ArtifactID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1243,7 +1243,7 @@ func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params Acti
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RepositoryID))
+			return e.EncodeValue(conv.IntToString(params.RepositoryID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1259,7 +1259,7 @@ func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params Acti
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.EnvironmentName))
+			return e.EncodeValue(conv.StringToString(params.EnvironmentName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1275,7 +1275,7 @@ func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params Acti
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.SecretName))
+			return e.EncodeValue(conv.StringToString(params.SecretName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1328,7 +1328,7 @@ func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDelet
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1344,7 +1344,7 @@ func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDelet
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.SecretName))
+			return e.EncodeValue(conv.StringToString(params.SecretName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1397,7 +1397,7 @@ func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDele
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1413,7 +1413,7 @@ func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDele
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1429,7 +1429,7 @@ func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDele
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.SecretName))
+			return e.EncodeValue(conv.StringToString(params.SecretName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1482,7 +1482,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1498,7 +1498,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerID))
+			return e.EncodeValue(conv.IntToString(params.RunnerID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1551,7 +1551,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, para
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1567,7 +1567,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, para
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1583,7 +1583,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, para
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerID))
+			return e.EncodeValue(conv.IntToString(params.RunnerID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1636,7 +1636,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1652,7 +1652,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerGroupID))
+			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1705,7 +1705,7 @@ func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDel
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1721,7 +1721,7 @@ func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDel
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1737,7 +1737,7 @@ func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDel
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunID))
+			return e.EncodeValue(conv.IntToString(params.RunID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1790,7 +1790,7 @@ func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params Action
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1806,7 +1806,7 @@ func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params Action
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1822,7 +1822,7 @@ func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params Action
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunID))
+			return e.EncodeValue(conv.IntToString(params.RunID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1876,7 +1876,7 @@ func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx c
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1892,7 +1892,7 @@ func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx c
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RepositoryID))
+			return e.EncodeValue(conv.IntToString(params.RepositoryID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1945,7 +1945,7 @@ func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDown
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1961,7 +1961,7 @@ func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDown
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1977,7 +1977,7 @@ func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDown
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ArtifactID))
+			return e.EncodeValue(conv.IntToString(params.ArtifactID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -1993,7 +1993,7 @@ func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDown
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ArchiveFormat))
+			return e.EncodeValue(conv.StringToString(params.ArchiveFormat))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2046,7 +2046,7 @@ func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2062,7 +2062,7 @@ func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2078,7 +2078,7 @@ func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.JobID))
+			return e.EncodeValue(conv.IntToString(params.JobID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2132,7 +2132,7 @@ func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params Acti
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2148,7 +2148,7 @@ func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params Acti
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2164,7 +2164,7 @@ func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params Acti
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunID))
+			return e.EncodeValue(conv.IntToString(params.RunID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2218,7 +2218,7 @@ func (c *Client) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx co
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2234,7 +2234,7 @@ func (c *Client) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx co
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RepositoryID))
+			return e.EncodeValue(conv.IntToString(params.RepositoryID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2287,7 +2287,7 @@ func (c *Client) ActionsGetAllowedActionsOrganization(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2341,7 +2341,7 @@ func (c *Client) ActionsGetAllowedActionsRepository(ctx context.Context, params 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2357,7 +2357,7 @@ func (c *Client) ActionsGetAllowedActionsRepository(ctx context.Context, params 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2411,7 +2411,7 @@ func (c *Client) ActionsGetArtifact(ctx context.Context, params ActionsGetArtifa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2427,7 +2427,7 @@ func (c *Client) ActionsGetArtifact(ctx context.Context, params ActionsGetArtifa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2443,7 +2443,7 @@ func (c *Client) ActionsGetArtifact(ctx context.Context, params ActionsGetArtifa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ArtifactID))
+			return e.EncodeValue(conv.IntToString(params.ArtifactID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2496,7 +2496,7 @@ func (c *Client) ActionsGetEnvironmentPublicKey(ctx context.Context, params Acti
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RepositoryID))
+			return e.EncodeValue(conv.IntToString(params.RepositoryID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2512,7 +2512,7 @@ func (c *Client) ActionsGetEnvironmentPublicKey(ctx context.Context, params Acti
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.EnvironmentName))
+			return e.EncodeValue(conv.StringToString(params.EnvironmentName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2566,7 +2566,7 @@ func (c *Client) ActionsGetEnvironmentSecret(ctx context.Context, params Actions
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RepositoryID))
+			return e.EncodeValue(conv.IntToString(params.RepositoryID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2582,7 +2582,7 @@ func (c *Client) ActionsGetEnvironmentSecret(ctx context.Context, params Actions
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.EnvironmentName))
+			return e.EncodeValue(conv.StringToString(params.EnvironmentName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2598,7 +2598,7 @@ func (c *Client) ActionsGetEnvironmentSecret(ctx context.Context, params Actions
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.SecretName))
+			return e.EncodeValue(conv.StringToString(params.SecretName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2651,7 +2651,7 @@ func (c *Client) ActionsGetGithubActionsPermissionsOrganization(ctx context.Cont
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2705,7 +2705,7 @@ func (c *Client) ActionsGetGithubActionsPermissionsRepository(ctx context.Contex
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2721,7 +2721,7 @@ func (c *Client) ActionsGetGithubActionsPermissionsRepository(ctx context.Contex
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2775,7 +2775,7 @@ func (c *Client) ActionsGetJobForWorkflowRun(ctx context.Context, params Actions
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2791,7 +2791,7 @@ func (c *Client) ActionsGetJobForWorkflowRun(ctx context.Context, params Actions
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2807,7 +2807,7 @@ func (c *Client) ActionsGetJobForWorkflowRun(ctx context.Context, params Actions
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.JobID))
+			return e.EncodeValue(conv.IntToString(params.JobID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2860,7 +2860,7 @@ func (c *Client) ActionsGetOrgPublicKey(ctx context.Context, params ActionsGetOr
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2914,7 +2914,7 @@ func (c *Client) ActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2930,7 +2930,7 @@ func (c *Client) ActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.SecretName))
+			return e.EncodeValue(conv.StringToString(params.SecretName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2983,7 +2983,7 @@ func (c *Client) ActionsGetRepoPublicKey(ctx context.Context, params ActionsGetR
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -2999,7 +2999,7 @@ func (c *Client) ActionsGetRepoPublicKey(ctx context.Context, params ActionsGetR
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3053,7 +3053,7 @@ func (c *Client) ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3069,7 +3069,7 @@ func (c *Client) ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3085,7 +3085,7 @@ func (c *Client) ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.SecretName))
+			return e.EncodeValue(conv.StringToString(params.SecretName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3138,7 +3138,7 @@ func (c *Client) ActionsGetReviewsForRun(ctx context.Context, params ActionsGetR
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3154,7 +3154,7 @@ func (c *Client) ActionsGetReviewsForRun(ctx context.Context, params ActionsGetR
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3170,7 +3170,7 @@ func (c *Client) ActionsGetReviewsForRun(ctx context.Context, params ActionsGetR
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunID))
+			return e.EncodeValue(conv.IntToString(params.RunID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3224,7 +3224,7 @@ func (c *Client) ActionsGetSelfHostedRunnerForOrg(ctx context.Context, params Ac
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3240,7 +3240,7 @@ func (c *Client) ActionsGetSelfHostedRunnerForOrg(ctx context.Context, params Ac
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerID))
+			return e.EncodeValue(conv.IntToString(params.RunnerID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3293,7 +3293,7 @@ func (c *Client) ActionsGetSelfHostedRunnerForRepo(ctx context.Context, params A
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3309,7 +3309,7 @@ func (c *Client) ActionsGetSelfHostedRunnerForRepo(ctx context.Context, params A
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3325,7 +3325,7 @@ func (c *Client) ActionsGetSelfHostedRunnerForRepo(ctx context.Context, params A
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerID))
+			return e.EncodeValue(conv.IntToString(params.RunnerID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3378,7 +3378,7 @@ func (c *Client) ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, para
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3394,7 +3394,7 @@ func (c *Client) ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, para
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerGroupID))
+			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3447,7 +3447,7 @@ func (c *Client) ActionsGetWorkflowRun(ctx context.Context, params ActionsGetWor
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3463,7 +3463,7 @@ func (c *Client) ActionsGetWorkflowRun(ctx context.Context, params ActionsGetWor
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3479,7 +3479,7 @@ func (c *Client) ActionsGetWorkflowRun(ctx context.Context, params ActionsGetWor
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunID))
+			return e.EncodeValue(conv.IntToString(params.RunID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3532,7 +3532,7 @@ func (c *Client) ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsG
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3548,7 +3548,7 @@ func (c *Client) ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsG
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3564,7 +3564,7 @@ func (c *Client) ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsG
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunID))
+			return e.EncodeValue(conv.IntToString(params.RunID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3618,7 +3618,7 @@ func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params Actions
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3634,7 +3634,7 @@ func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params Actions
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3652,7 +3652,7 @@ func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params Actions
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3669,7 +3669,7 @@ func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params Actions
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3725,7 +3725,7 @@ func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params Actio
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RepositoryID))
+			return e.EncodeValue(conv.IntToString(params.RepositoryID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3741,7 +3741,7 @@ func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params Actio
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.EnvironmentName))
+			return e.EncodeValue(conv.StringToString(params.EnvironmentName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3759,7 +3759,7 @@ func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params Actio
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3776,7 +3776,7 @@ func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params Actio
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3832,7 +3832,7 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3848,7 +3848,7 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3864,7 +3864,7 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunID))
+			return e.EncodeValue(conv.IntToString(params.RunID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3882,7 +3882,7 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 		})
 		if encErr := func() error {
 			if val, ok := params.Filter.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3899,7 +3899,7 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3916,7 +3916,7 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -3972,7 +3972,7 @@ func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOr
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -3990,7 +3990,7 @@ func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOr
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4007,7 +4007,7 @@ func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOr
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4063,7 +4063,7 @@ func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.C
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -4079,7 +4079,7 @@ func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.C
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerGroupID))
+			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -4097,7 +4097,7 @@ func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.C
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4114,7 +4114,7 @@ func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.C
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4170,7 +4170,7 @@ func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListR
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -4186,7 +4186,7 @@ func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListR
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -4204,7 +4204,7 @@ func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListR
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4221,7 +4221,7 @@ func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListR
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4277,7 +4277,7 @@ func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsLis
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -4293,7 +4293,7 @@ func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsLis
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -4311,7 +4311,7 @@ func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsLis
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4328,7 +4328,7 @@ func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsLis
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4384,7 +4384,7 @@ func (c *Client) ActionsListRunnerApplicationsForOrg(ctx context.Context, params
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -4438,7 +4438,7 @@ func (c *Client) ActionsListRunnerApplicationsForRepo(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -4454,7 +4454,7 @@ func (c *Client) ActionsListRunnerApplicationsForRepo(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -4508,7 +4508,7 @@ func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -4524,7 +4524,7 @@ func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.SecretName))
+			return e.EncodeValue(conv.StringToString(params.SecretName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -4542,7 +4542,7 @@ func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, param
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4559,7 +4559,7 @@ func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, param
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4615,7 +4615,7 @@ func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -4633,7 +4633,7 @@ func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4650,7 +4650,7 @@ func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4706,7 +4706,7 @@ func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -4724,7 +4724,7 @@ func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, pa
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4741,7 +4741,7 @@ func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, pa
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4797,7 +4797,7 @@ func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -4815,7 +4815,7 @@ func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params 
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4832,7 +4832,7 @@ func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params 
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4888,7 +4888,7 @@ func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -4904,7 +4904,7 @@ func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -4922,7 +4922,7 @@ func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4939,7 +4939,7 @@ func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -4995,7 +4995,7 @@ func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -5011,7 +5011,7 @@ func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerGroupID))
+			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -5029,7 +5029,7 @@ func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5046,7 +5046,7 @@ func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5102,7 +5102,7 @@ func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params Act
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -5118,7 +5118,7 @@ func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params Act
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -5134,7 +5134,7 @@ func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params Act
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunID))
+			return e.EncodeValue(conv.IntToString(params.RunID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -5152,7 +5152,7 @@ func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params Act
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5169,7 +5169,7 @@ func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params Act
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5225,7 +5225,7 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -5241,7 +5241,7 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -5259,7 +5259,7 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 		})
 		if encErr := func() error {
 			if val, ok := params.Actor.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5276,7 +5276,7 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 		})
 		if encErr := func() error {
 			if val, ok := params.Branch.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5293,7 +5293,7 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 		})
 		if encErr := func() error {
 			if val, ok := params.Event.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5310,7 +5310,7 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 		})
 		if encErr := func() error {
 			if val, ok := params.Status.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5327,7 +5327,7 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5344,7 +5344,7 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5361,7 +5361,7 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 		})
 		if encErr := func() error {
 			if val, ok := params.Created.Get(); ok {
-				return e.Value(conv.TimeToString(val))
+				return e.EncodeValue(conv.TimeToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -5417,7 +5417,7 @@ func (c *Client) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -5433,7 +5433,7 @@ func (c *Client) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -5449,7 +5449,7 @@ func (c *Client) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunID))
+			return e.EncodeValue(conv.IntToString(params.RunID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -5503,7 +5503,7 @@ func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -5519,7 +5519,7 @@ func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerGroupID))
+			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -5535,7 +5535,7 @@ func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RepositoryID))
+			return e.EncodeValue(conv.IntToString(params.RepositoryID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -5588,7 +5588,7 @@ func (c *Client) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, par
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -5604,7 +5604,7 @@ func (c *Client) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, par
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.SecretName))
+			return e.EncodeValue(conv.StringToString(params.SecretName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -5620,7 +5620,7 @@ func (c *Client) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, par
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RepositoryID))
+			return e.EncodeValue(conv.IntToString(params.RepositoryID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -5673,7 +5673,7 @@ func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Contex
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -5689,7 +5689,7 @@ func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Contex
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerGroupID))
+			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -5705,7 +5705,7 @@ func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Contex
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerID))
+			return e.EncodeValue(conv.IntToString(params.RunnerID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -5758,7 +5758,7 @@ func (c *Client) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -5774,7 +5774,7 @@ func (c *Client) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -5790,7 +5790,7 @@ func (c *Client) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunID))
+			return e.EncodeValue(conv.IntToString(params.RunID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -5850,7 +5850,7 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -5912,7 +5912,7 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -5928,7 +5928,7 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -5999,7 +5999,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -6070,7 +6070,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -6086,7 +6086,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -6157,7 +6157,7 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -6173,7 +6173,7 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerGroupID))
+			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -6244,7 +6244,7 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -6260,7 +6260,7 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.SecretName))
+			return e.EncodeValue(conv.StringToString(params.SecretName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -6331,7 +6331,7 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -6402,7 +6402,7 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -6418,7 +6418,7 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerGroupID))
+			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -6489,7 +6489,7 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -6505,7 +6505,7 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerGroupID))
+			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -6560,7 +6560,7 @@ func (c *Client) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Conte
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -6576,7 +6576,7 @@ func (c *Client) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Conte
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -6629,7 +6629,7 @@ func (c *Client) ActivityDeleteRepoSubscription(ctx context.Context, params Acti
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -6645,7 +6645,7 @@ func (c *Client) ActivityDeleteRepoSubscription(ctx context.Context, params Acti
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -6699,7 +6699,7 @@ func (c *Client) ActivityDeleteThreadSubscription(ctx context.Context, params Ac
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ThreadID))
+			return e.EncodeValue(conv.IntToString(params.ThreadID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -6791,7 +6791,7 @@ func (c *Client) ActivityGetRepoSubscription(ctx context.Context, params Activit
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -6807,7 +6807,7 @@ func (c *Client) ActivityGetRepoSubscription(ctx context.Context, params Activit
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -6861,7 +6861,7 @@ func (c *Client) ActivityGetThread(ctx context.Context, params ActivityGetThread
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ThreadID))
+			return e.EncodeValue(conv.IntToString(params.ThreadID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -6914,7 +6914,7 @@ func (c *Client) ActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.C
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ThreadID))
+			return e.EncodeValue(conv.IntToString(params.ThreadID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -6968,7 +6968,7 @@ func (c *Client) ActivityListEventsForAuthenticatedUser(ctx context.Context, par
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -6986,7 +6986,7 @@ func (c *Client) ActivityListEventsForAuthenticatedUser(ctx context.Context, par
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7003,7 +7003,7 @@ func (c *Client) ActivityListEventsForAuthenticatedUser(ctx context.Context, par
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7059,7 +7059,7 @@ func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -7075,7 +7075,7 @@ func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -7092,7 +7092,7 @@ func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7109,7 +7109,7 @@ func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7167,7 +7167,7 @@ func (c *Client) ActivityListPublicEvents(ctx context.Context, params ActivityLi
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7184,7 +7184,7 @@ func (c *Client) ActivityListPublicEvents(ctx context.Context, params ActivityLi
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7240,7 +7240,7 @@ func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, par
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -7256,7 +7256,7 @@ func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, par
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -7274,7 +7274,7 @@ func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, par
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7291,7 +7291,7 @@ func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, par
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7347,7 +7347,7 @@ func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params Act
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -7365,7 +7365,7 @@ func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params Act
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7382,7 +7382,7 @@ func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params Act
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7438,7 +7438,7 @@ func (c *Client) ActivityListPublicOrgEvents(ctx context.Context, params Activit
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -7456,7 +7456,7 @@ func (c *Client) ActivityListPublicOrgEvents(ctx context.Context, params Activit
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7473,7 +7473,7 @@ func (c *Client) ActivityListPublicOrgEvents(ctx context.Context, params Activit
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7529,7 +7529,7 @@ func (c *Client) ActivityListReceivedEventsForUser(ctx context.Context, params A
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -7547,7 +7547,7 @@ func (c *Client) ActivityListReceivedEventsForUser(ctx context.Context, params A
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7564,7 +7564,7 @@ func (c *Client) ActivityListReceivedEventsForUser(ctx context.Context, params A
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7620,7 +7620,7 @@ func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -7638,7 +7638,7 @@ func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, pa
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7655,7 +7655,7 @@ func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, pa
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7711,7 +7711,7 @@ func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityList
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -7727,7 +7727,7 @@ func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityList
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -7745,7 +7745,7 @@ func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityList
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7762,7 +7762,7 @@ func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityList
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7818,7 +7818,7 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -7834,7 +7834,7 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -7852,7 +7852,7 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 		})
 		if encErr := func() error {
 			if val, ok := params.All.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7869,7 +7869,7 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 		})
 		if encErr := func() error {
 			if val, ok := params.Participating.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7886,7 +7886,7 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 		})
 		if encErr := func() error {
 			if val, ok := params.Since.Get(); ok {
-				return e.Value(conv.TimeToString(val))
+				return e.EncodeValue(conv.TimeToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7903,7 +7903,7 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 		})
 		if encErr := func() error {
 			if val, ok := params.Before.Get(); ok {
-				return e.Value(conv.TimeToString(val))
+				return e.EncodeValue(conv.TimeToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7920,7 +7920,7 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7937,7 +7937,7 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -7995,7 +7995,7 @@ func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.Sort.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -8012,7 +8012,7 @@ func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.Direction.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -8029,7 +8029,7 @@ func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -8046,7 +8046,7 @@ func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -8102,7 +8102,7 @@ func (c *Client) ActivityListReposWatchedByUser(ctx context.Context, params Acti
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -8120,7 +8120,7 @@ func (c *Client) ActivityListReposWatchedByUser(ctx context.Context, params Acti
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -8137,7 +8137,7 @@ func (c *Client) ActivityListReposWatchedByUser(ctx context.Context, params Acti
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -8195,7 +8195,7 @@ func (c *Client) ActivityListWatchedReposForAuthenticatedUser(ctx context.Contex
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -8212,7 +8212,7 @@ func (c *Client) ActivityListWatchedReposForAuthenticatedUser(ctx context.Contex
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -8268,7 +8268,7 @@ func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params Activit
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -8284,7 +8284,7 @@ func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params Activit
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -8302,7 +8302,7 @@ func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params Activit
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -8319,7 +8319,7 @@ func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params Activit
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -8427,7 +8427,7 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, reques
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -8443,7 +8443,7 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, reques
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -8499,7 +8499,7 @@ func (c *Client) ActivityMarkThreadAsRead(ctx context.Context, params ActivityMa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ThreadID))
+			return e.EncodeValue(conv.IntToString(params.ThreadID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -8558,7 +8558,7 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request Activi
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -8574,7 +8574,7 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request Activi
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -8636,7 +8636,7 @@ func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request Acti
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ThreadID))
+			return e.EncodeValue(conv.IntToString(params.ThreadID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -8692,7 +8692,7 @@ func (c *Client) ActivityStarRepoForAuthenticatedUser(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -8708,7 +8708,7 @@ func (c *Client) ActivityStarRepoForAuthenticatedUser(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -8761,7 +8761,7 @@ func (c *Client) ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, par
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -8777,7 +8777,7 @@ func (c *Client) ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, par
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -8830,7 +8830,7 @@ func (c *Client) AppsAddRepoToInstallation(ctx context.Context, params AppsAddRe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.InstallationID))
+			return e.EncodeValue(conv.IntToString(params.InstallationID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -8846,7 +8846,7 @@ func (c *Client) AppsAddRepoToInstallation(ctx context.Context, params AppsAddRe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RepositoryID))
+			return e.EncodeValue(conv.IntToString(params.RepositoryID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -8899,7 +8899,7 @@ func (c *Client) AppsDeleteInstallation(ctx context.Context, params AppsDeleteIn
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.InstallationID))
+			return e.EncodeValue(conv.IntToString(params.InstallationID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -8990,7 +8990,7 @@ func (c *Client) AppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.AppSlug))
+			return e.EncodeValue(conv.StringToString(params.AppSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -9043,7 +9043,7 @@ func (c *Client) AppsGetSubscriptionPlanForAccount(ctx context.Context, params A
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.AccountID))
+			return e.EncodeValue(conv.IntToString(params.AccountID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -9096,7 +9096,7 @@ func (c *Client) AppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, p
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.AccountID))
+			return e.EncodeValue(conv.IntToString(params.AccountID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -9187,7 +9187,7 @@ func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params Apps
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.PlanID))
+			return e.EncodeValue(conv.IntToString(params.PlanID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -9205,7 +9205,7 @@ func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params Apps
 		})
 		if encErr := func() error {
 			if val, ok := params.Sort.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -9222,7 +9222,7 @@ func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params Apps
 		})
 		if encErr := func() error {
 			if val, ok := params.Direction.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -9239,7 +9239,7 @@ func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params Apps
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -9256,7 +9256,7 @@ func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params Apps
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -9312,7 +9312,7 @@ func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Conte
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.InstallationID))
+			return e.EncodeValue(conv.IntToString(params.InstallationID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -9330,7 +9330,7 @@ func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Conte
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -9347,7 +9347,7 @@ func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Conte
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -9405,7 +9405,7 @@ func (c *Client) AppsListPlans(ctx context.Context, params AppsListPlansParams) 
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -9422,7 +9422,7 @@ func (c *Client) AppsListPlans(ctx context.Context, params AppsListPlansParams) 
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -9480,7 +9480,7 @@ func (c *Client) AppsListPlansStubbed(ctx context.Context, params AppsListPlansS
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -9497,7 +9497,7 @@ func (c *Client) AppsListPlansStubbed(ctx context.Context, params AppsListPlansS
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -9555,7 +9555,7 @@ func (c *Client) AppsListReposAccessibleToInstallation(ctx context.Context, para
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -9572,7 +9572,7 @@ func (c *Client) AppsListReposAccessibleToInstallation(ctx context.Context, para
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -9630,7 +9630,7 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -9647,7 +9647,7 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -9705,7 +9705,7 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Co
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -9722,7 +9722,7 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Co
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -9778,7 +9778,7 @@ func (c *Client) AppsRemoveRepoFromInstallation(ctx context.Context, params Apps
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.InstallationID))
+			return e.EncodeValue(conv.IntToString(params.InstallationID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -9794,7 +9794,7 @@ func (c *Client) AppsRemoveRepoFromInstallation(ctx context.Context, params Apps
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RepositoryID))
+			return e.EncodeValue(conv.IntToString(params.RepositoryID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -9885,7 +9885,7 @@ func (c *Client) AppsSuspendInstallation(ctx context.Context, params AppsSuspend
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.InstallationID))
+			return e.EncodeValue(conv.IntToString(params.InstallationID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -9939,7 +9939,7 @@ func (c *Client) AppsUnsuspendInstallation(ctx context.Context, params AppsUnsus
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.InstallationID))
+			return e.EncodeValue(conv.IntToString(params.InstallationID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -10039,7 +10039,7 @@ func (c *Client) BillingGetGithubActionsBillingGhe(ctx context.Context, params B
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -10093,7 +10093,7 @@ func (c *Client) BillingGetGithubActionsBillingOrg(ctx context.Context, params B
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -10147,7 +10147,7 @@ func (c *Client) BillingGetGithubActionsBillingUser(ctx context.Context, params 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -10201,7 +10201,7 @@ func (c *Client) BillingGetGithubPackagesBillingGhe(ctx context.Context, params 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -10255,7 +10255,7 @@ func (c *Client) BillingGetGithubPackagesBillingOrg(ctx context.Context, params 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -10309,7 +10309,7 @@ func (c *Client) BillingGetGithubPackagesBillingUser(ctx context.Context, params
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -10363,7 +10363,7 @@ func (c *Client) BillingGetSharedStorageBillingGhe(ctx context.Context, params B
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -10417,7 +10417,7 @@ func (c *Client) BillingGetSharedStorageBillingOrg(ctx context.Context, params B
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -10471,7 +10471,7 @@ func (c *Client) BillingGetSharedStorageBillingUser(ctx context.Context, params 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -10531,7 +10531,7 @@ func (c *Client) ChecksCreateSuite(ctx context.Context, request ChecksCreateSuit
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -10547,7 +10547,7 @@ func (c *Client) ChecksCreateSuite(ctx context.Context, request ChecksCreateSuit
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -10603,7 +10603,7 @@ func (c *Client) ChecksGet(ctx context.Context, params ChecksGetParams) (res Che
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -10619,7 +10619,7 @@ func (c *Client) ChecksGet(ctx context.Context, params ChecksGetParams) (res Che
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -10635,7 +10635,7 @@ func (c *Client) ChecksGet(ctx context.Context, params ChecksGetParams) (res Che
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CheckRunID))
+			return e.EncodeValue(conv.IntToString(params.CheckRunID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -10688,7 +10688,7 @@ func (c *Client) ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -10704,7 +10704,7 @@ func (c *Client) ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -10720,7 +10720,7 @@ func (c *Client) ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CheckSuiteID))
+			return e.EncodeValue(conv.IntToString(params.CheckSuiteID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -10773,7 +10773,7 @@ func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnn
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -10789,7 +10789,7 @@ func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnn
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -10805,7 +10805,7 @@ func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnn
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CheckRunID))
+			return e.EncodeValue(conv.IntToString(params.CheckRunID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -10823,7 +10823,7 @@ func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnn
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10840,7 +10840,7 @@ func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnn
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10896,7 +10896,7 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -10912,7 +10912,7 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -10928,7 +10928,7 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Ref))
+			return e.EncodeValue(conv.StringToString(params.Ref))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -10946,7 +10946,7 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 		})
 		if encErr := func() error {
 			if val, ok := params.CheckName.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10963,7 +10963,7 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 		})
 		if encErr := func() error {
 			if val, ok := params.Status.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10980,7 +10980,7 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 		})
 		if encErr := func() error {
 			if val, ok := params.Filter.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -10997,7 +10997,7 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11014,7 +11014,7 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11031,7 +11031,7 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 		})
 		if encErr := func() error {
 			if val, ok := params.AppID.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11087,7 +11087,7 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -11103,7 +11103,7 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -11119,7 +11119,7 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CheckSuiteID))
+			return e.EncodeValue(conv.IntToString(params.CheckSuiteID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -11137,7 +11137,7 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 		})
 		if encErr := func() error {
 			if val, ok := params.CheckName.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11154,7 +11154,7 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 		})
 		if encErr := func() error {
 			if val, ok := params.Status.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11171,7 +11171,7 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 		})
 		if encErr := func() error {
 			if val, ok := params.Filter.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11188,7 +11188,7 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11205,7 +11205,7 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11261,7 +11261,7 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -11277,7 +11277,7 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -11293,7 +11293,7 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Ref))
+			return e.EncodeValue(conv.StringToString(params.Ref))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -11311,7 +11311,7 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 		})
 		if encErr := func() error {
 			if val, ok := params.AppID.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11328,7 +11328,7 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 		})
 		if encErr := func() error {
 			if val, ok := params.CheckName.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11345,7 +11345,7 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11362,7 +11362,7 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11418,7 +11418,7 @@ func (c *Client) ChecksRerequestSuite(ctx context.Context, params ChecksRereques
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -11434,7 +11434,7 @@ func (c *Client) ChecksRerequestSuite(ctx context.Context, params ChecksRereques
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -11450,7 +11450,7 @@ func (c *Client) ChecksRerequestSuite(ctx context.Context, params ChecksRereques
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CheckSuiteID))
+			return e.EncodeValue(conv.IntToString(params.CheckSuiteID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -11510,7 +11510,7 @@ func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request ChecksS
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -11526,7 +11526,7 @@ func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request ChecksS
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -11582,7 +11582,7 @@ func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScan
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -11598,7 +11598,7 @@ func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScan
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -11614,7 +11614,7 @@ func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScan
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.AnalysisID))
+			return e.EncodeValue(conv.IntToString(params.AnalysisID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -11631,7 +11631,7 @@ func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScan
 		})
 		if encErr := func() error {
 			if val, ok := params.ConfirmDelete.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11687,7 +11687,7 @@ func (c *Client) CodeScanningGetAlert(ctx context.Context, params CodeScanningGe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -11703,7 +11703,7 @@ func (c *Client) CodeScanningGetAlert(ctx context.Context, params CodeScanningGe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -11720,7 +11720,7 @@ func (c *Client) CodeScanningGetAlert(ctx context.Context, params CodeScanningGe
 		})
 		if encErr := func() error {
 			if unwrapped := params.AlertNumber.unwrap(); true {
-				return e.Value(conv.IntToString(unwrapped))
+				return e.EncodeValue(conv.IntToString(unwrapped))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11775,7 +11775,7 @@ func (c *Client) CodeScanningGetAnalysis(ctx context.Context, params CodeScannin
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -11791,7 +11791,7 @@ func (c *Client) CodeScanningGetAnalysis(ctx context.Context, params CodeScannin
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -11807,7 +11807,7 @@ func (c *Client) CodeScanningGetAnalysis(ctx context.Context, params CodeScannin
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.AnalysisID))
+			return e.EncodeValue(conv.IntToString(params.AnalysisID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -11860,7 +11860,7 @@ func (c *Client) CodeScanningGetSarif(ctx context.Context, params CodeScanningGe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -11876,7 +11876,7 @@ func (c *Client) CodeScanningGetSarif(ctx context.Context, params CodeScanningGe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -11892,7 +11892,7 @@ func (c *Client) CodeScanningGetSarif(ctx context.Context, params CodeScanningGe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.SarifID))
+			return e.EncodeValue(conv.StringToString(params.SarifID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -11945,7 +11945,7 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -11961,7 +11961,7 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -11978,7 +11978,7 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 		})
 		if encErr := func() error {
 			if unwrapped := params.AlertNumber.unwrap(); true {
-				return e.Value(conv.IntToString(unwrapped))
+				return e.EncodeValue(conv.IntToString(unwrapped))
 			}
 			return nil
 		}(); encErr != nil {
@@ -11998,7 +11998,7 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12015,7 +12015,7 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12033,7 +12033,7 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 		if encErr := func() error {
 			if val, ok := params.Ref.Get(); ok {
 				if unwrapped := val.unwrap(); true {
-					return e.Value(conv.StringToString(unwrapped))
+					return e.EncodeValue(conv.StringToString(unwrapped))
 				}
 				return nil
 			}
@@ -12091,7 +12091,7 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -12107,7 +12107,7 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -12126,7 +12126,7 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 		if encErr := func() error {
 			if val, ok := params.ToolName.Get(); ok {
 				if unwrapped := val.unwrap(); true {
-					return e.Value(conv.StringToString(unwrapped))
+					return e.EncodeValue(conv.StringToString(unwrapped))
 				}
 				return nil
 			}
@@ -12146,7 +12146,7 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 		if encErr := func() error {
 			if val, ok := params.ToolGUID.Get(); ok {
 				if unwrapped := val.unwrap(); true {
-					return e.Value(conv.StringToString(unwrapped))
+					return e.EncodeValue(conv.StringToString(unwrapped))
 				}
 				return nil
 			}
@@ -12165,7 +12165,7 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12182,7 +12182,7 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12200,7 +12200,7 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 		if encErr := func() error {
 			if val, ok := params.Ref.Get(); ok {
 				if unwrapped := val.unwrap(); true {
-					return e.Value(conv.StringToString(unwrapped))
+					return e.EncodeValue(conv.StringToString(unwrapped))
 				}
 				return nil
 			}
@@ -12219,7 +12219,7 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 		})
 		if encErr := func() error {
 			if val, ok := params.State.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12275,7 +12275,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -12291,7 +12291,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -12310,7 +12310,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 		if encErr := func() error {
 			if val, ok := params.ToolName.Get(); ok {
 				if unwrapped := val.unwrap(); true {
-					return e.Value(conv.StringToString(unwrapped))
+					return e.EncodeValue(conv.StringToString(unwrapped))
 				}
 				return nil
 			}
@@ -12330,7 +12330,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 		if encErr := func() error {
 			if val, ok := params.ToolGUID.Get(); ok {
 				if unwrapped := val.unwrap(); true {
-					return e.Value(conv.StringToString(unwrapped))
+					return e.EncodeValue(conv.StringToString(unwrapped))
 				}
 				return nil
 			}
@@ -12349,7 +12349,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12366,7 +12366,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12384,7 +12384,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 		if encErr := func() error {
 			if val, ok := params.Ref.Get(); ok {
 				if unwrapped := val.unwrap(); true {
-					return e.Value(conv.StringToString(unwrapped))
+					return e.EncodeValue(conv.StringToString(unwrapped))
 				}
 				return nil
 			}
@@ -12404,7 +12404,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 		if encErr := func() error {
 			if val, ok := params.SarifID.Get(); ok {
 				if unwrapped := val.unwrap(); true {
-					return e.Value(conv.StringToString(unwrapped))
+					return e.EncodeValue(conv.StringToString(unwrapped))
 				}
 				return nil
 			}
@@ -12477,7 +12477,7 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanni
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -12493,7 +12493,7 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanni
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -12510,7 +12510,7 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanni
 		})
 		if encErr := func() error {
 			if unwrapped := params.AlertNumber.unwrap(); true {
-				return e.Value(conv.IntToString(unwrapped))
+				return e.EncodeValue(conv.IntToString(unwrapped))
 			}
 			return nil
 		}(); encErr != nil {
@@ -12582,7 +12582,7 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanni
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -12598,7 +12598,7 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanni
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -12692,7 +12692,7 @@ func (c *Client) CodesOfConductGetConductCode(ctx context.Context, params CodesO
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Key))
+			return e.EncodeValue(conv.StringToString(params.Key))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -12783,7 +12783,7 @@ func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -12799,7 +12799,7 @@ func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerGroupID))
+			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -12815,7 +12815,7 @@ func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.OrgID))
+			return e.EncodeValue(conv.IntToString(params.OrgID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -12868,7 +12868,7 @@ func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx cont
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -12884,7 +12884,7 @@ func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx cont
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerGroupID))
+			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -12900,7 +12900,7 @@ func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx cont
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerID))
+			return e.EncodeValue(conv.IntToString(params.RunnerID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -12953,7 +12953,7 @@ func (c *Client) EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx context
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -13007,7 +13007,7 @@ func (c *Client) EnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.Conte
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -13076,7 +13076,7 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -13132,7 +13132,7 @@ func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Contex
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -13148,7 +13148,7 @@ func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Contex
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ScimGroupID))
+			return e.EncodeValue(conv.StringToString(params.ScimGroupID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -13201,7 +13201,7 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -13217,7 +13217,7 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerID))
+			return e.EncodeValue(conv.IntToString(params.RunnerID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -13270,7 +13270,7 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx co
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -13286,7 +13286,7 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx co
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerGroupID))
+			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -13339,7 +13339,7 @@ func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -13355,7 +13355,7 @@ func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ScimUserID))
+			return e.EncodeValue(conv.StringToString(params.ScimUserID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -13408,7 +13408,7 @@ func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpri
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -13424,7 +13424,7 @@ func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpri
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.OrgID))
+			return e.EncodeValue(conv.IntToString(params.OrgID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -13477,7 +13477,7 @@ func (c *Client) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpris
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -13493,7 +13493,7 @@ func (c *Client) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpris
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.OrgID))
+			return e.EncodeValue(conv.IntToString(params.OrgID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -13546,7 +13546,7 @@ func (c *Client) EnterpriseAdminGetAllowedActionsEnterprise(ctx context.Context,
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -13600,7 +13600,7 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -13618,7 +13618,7 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 		})
 		if encErr := func() error {
 			if val, ok := params.Phrase.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13635,7 +13635,7 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 		})
 		if encErr := func() error {
 			if val, ok := params.Include.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13652,7 +13652,7 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 		})
 		if encErr := func() error {
 			if val, ok := params.After.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13669,7 +13669,7 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 		})
 		if encErr := func() error {
 			if val, ok := params.Before.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13686,7 +13686,7 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 		})
 		if encErr := func() error {
 			if val, ok := params.Order.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13703,7 +13703,7 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13720,7 +13720,7 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13776,7 +13776,7 @@ func (c *Client) EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx contex
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -13830,7 +13830,7 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -13846,7 +13846,7 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ScimGroupID))
+			return e.EncodeValue(conv.StringToString(params.ScimGroupID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -13863,7 +13863,7 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx
 		})
 		if encErr := func() error {
 			if val, ok := params.ExcludedAttributes.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -13919,7 +13919,7 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -13935,7 +13935,7 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ScimUserID))
+			return e.EncodeValue(conv.StringToString(params.ScimUserID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -13988,7 +13988,7 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context.Con
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -14004,7 +14004,7 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context.Con
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerID))
+			return e.EncodeValue(conv.IntToString(params.RunnerID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -14057,7 +14057,7 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx contex
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -14073,7 +14073,7 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx contex
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerGroupID))
+			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -14126,7 +14126,7 @@ func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -14142,7 +14142,7 @@ func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerGroupID))
+			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -14160,7 +14160,7 @@ func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14177,7 +14177,7 @@ func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14233,7 +14233,7 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -14251,7 +14251,7 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.StartIndex.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14268,7 +14268,7 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.Count.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14285,7 +14285,7 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.Filter.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14302,7 +14302,7 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 		})
 		if encErr := func() error {
 			if val, ok := params.ExcludedAttributes.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14358,7 +14358,7 @@ func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -14376,7 +14376,7 @@ func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.
 		})
 		if encErr := func() error {
 			if val, ok := params.StartIndex.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14393,7 +14393,7 @@ func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.
 		})
 		if encErr := func() error {
 			if val, ok := params.Count.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14410,7 +14410,7 @@ func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.
 		})
 		if encErr := func() error {
 			if val, ok := params.Filter.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14466,7 +14466,7 @@ func (c *Client) EnterpriseAdminListRunnerApplicationsForEnterprise(ctx context.
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -14520,7 +14520,7 @@ func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnt
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -14538,7 +14538,7 @@ func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnt
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14555,7 +14555,7 @@ func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnt
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14611,7 +14611,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx cont
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -14629,7 +14629,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx cont
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14646,7 +14646,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx cont
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14702,7 +14702,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.C
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -14720,7 +14720,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.C
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14737,7 +14737,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.C
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14793,7 +14793,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx co
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -14809,7 +14809,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx co
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerGroupID))
+			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -14827,7 +14827,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx co
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14844,7 +14844,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx co
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -14915,7 +14915,7 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Co
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -14986,7 +14986,7 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -15042,7 +15042,7 @@ func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpri
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -15058,7 +15058,7 @@ func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpri
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerGroupID))
+			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -15074,7 +15074,7 @@ func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpri
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.OrgID))
+			return e.EncodeValue(conv.IntToString(params.OrgID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -15127,7 +15127,7 @@ func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -15143,7 +15143,7 @@ func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerGroupID))
+			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -15159,7 +15159,7 @@ func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerID))
+			return e.EncodeValue(conv.IntToString(params.RunnerID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -15218,7 +15218,7 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -15289,7 +15289,7 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -15360,7 +15360,7 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -15376,7 +15376,7 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ScimGroupID))
+			return e.EncodeValue(conv.StringToString(params.ScimGroupID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -15446,7 +15446,7 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -15462,7 +15462,7 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ScimUserID))
+			return e.EncodeValue(conv.StringToString(params.ScimUserID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -15532,7 +15532,7 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -15548,7 +15548,7 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerGroupID))
+			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -15619,7 +15619,7 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -15690,7 +15690,7 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -15706,7 +15706,7 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerGroupID))
+			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -15777,7 +15777,7 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -15793,7 +15793,7 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ScimUserID))
+			return e.EncodeValue(conv.StringToString(params.ScimUserID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -15863,7 +15863,7 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Enterprise))
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -15879,7 +15879,7 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.RunnerGroupID))
+			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -15934,7 +15934,7 @@ func (c *Client) GistsCheckIsStarred(ctx context.Context, params GistsCheckIsSta
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.GistID))
+			return e.EncodeValue(conv.StringToString(params.GistID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -16003,7 +16003,7 @@ func (c *Client) GistsCreateComment(ctx context.Context, request GistsCreateComm
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.GistID))
+			return e.EncodeValue(conv.StringToString(params.GistID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -16059,7 +16059,7 @@ func (c *Client) GistsDelete(ctx context.Context, params GistsDeleteParams) (res
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.GistID))
+			return e.EncodeValue(conv.StringToString(params.GistID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -16112,7 +16112,7 @@ func (c *Client) GistsDeleteComment(ctx context.Context, params GistsDeleteComme
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.GistID))
+			return e.EncodeValue(conv.StringToString(params.GistID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -16128,7 +16128,7 @@ func (c *Client) GistsDeleteComment(ctx context.Context, params GistsDeleteComme
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentID))
+			return e.EncodeValue(conv.IntToString(params.CommentID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -16181,7 +16181,7 @@ func (c *Client) GistsGet(ctx context.Context, params GistsGetParams) (res Gists
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.GistID))
+			return e.EncodeValue(conv.StringToString(params.GistID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -16234,7 +16234,7 @@ func (c *Client) GistsGetComment(ctx context.Context, params GistsGetCommentPara
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.GistID))
+			return e.EncodeValue(conv.StringToString(params.GistID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -16250,7 +16250,7 @@ func (c *Client) GistsGetComment(ctx context.Context, params GistsGetCommentPara
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentID))
+			return e.EncodeValue(conv.IntToString(params.CommentID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -16305,7 +16305,7 @@ func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res Gis
 		})
 		if encErr := func() error {
 			if val, ok := params.Since.Get(); ok {
-				return e.Value(conv.TimeToString(val))
+				return e.EncodeValue(conv.TimeToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16322,7 +16322,7 @@ func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res Gis
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16339,7 +16339,7 @@ func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res Gis
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16395,7 +16395,7 @@ func (c *Client) GistsListComments(ctx context.Context, params GistsListComments
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.GistID))
+			return e.EncodeValue(conv.StringToString(params.GistID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -16413,7 +16413,7 @@ func (c *Client) GistsListComments(ctx context.Context, params GistsListComments
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16430,7 +16430,7 @@ func (c *Client) GistsListComments(ctx context.Context, params GistsListComments
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16486,7 +16486,7 @@ func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.GistID))
+			return e.EncodeValue(conv.StringToString(params.GistID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -16504,7 +16504,7 @@ func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsPa
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16521,7 +16521,7 @@ func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsPa
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16577,7 +16577,7 @@ func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.GistID))
+			return e.EncodeValue(conv.StringToString(params.GistID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -16595,7 +16595,7 @@ func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16612,7 +16612,7 @@ func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16670,7 +16670,7 @@ func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredPa
 		})
 		if encErr := func() error {
 			if val, ok := params.Since.Get(); ok {
-				return e.Value(conv.TimeToString(val))
+				return e.EncodeValue(conv.TimeToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16687,7 +16687,7 @@ func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredPa
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16704,7 +16704,7 @@ func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredPa
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -16760,7 +16760,7 @@ func (c *Client) GistsStar(ctx context.Context, params GistsStarParams) (res Gis
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.GistID))
+			return e.EncodeValue(conv.StringToString(params.GistID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -16814,7 +16814,7 @@ func (c *Client) GistsUnstar(ctx context.Context, params GistsUnstarParams) (res
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.GistID))
+			return e.EncodeValue(conv.StringToString(params.GistID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -16883,7 +16883,7 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateComm
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.GistID))
+			return e.EncodeValue(conv.StringToString(params.GistID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -16899,7 +16899,7 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateComm
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentID))
+			return e.EncodeValue(conv.IntToString(params.CommentID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -16954,7 +16954,7 @@ func (c *Client) GitGetCommit(ctx context.Context, params GitGetCommitParams) (r
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -16970,7 +16970,7 @@ func (c *Client) GitGetCommit(ctx context.Context, params GitGetCommitParams) (r
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -16986,7 +16986,7 @@ func (c *Client) GitGetCommit(ctx context.Context, params GitGetCommitParams) (r
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.CommitSha))
+			return e.EncodeValue(conv.StringToString(params.CommitSha))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17039,7 +17039,7 @@ func (c *Client) GitGetRef(ctx context.Context, params GitGetRefParams) (res Git
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17055,7 +17055,7 @@ func (c *Client) GitGetRef(ctx context.Context, params GitGetRefParams) (res Git
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17071,7 +17071,7 @@ func (c *Client) GitGetRef(ctx context.Context, params GitGetRefParams) (res Git
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Ref))
+			return e.EncodeValue(conv.StringToString(params.Ref))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17124,7 +17124,7 @@ func (c *Client) GitGetTag(ctx context.Context, params GitGetTagParams) (res Git
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17140,7 +17140,7 @@ func (c *Client) GitGetTag(ctx context.Context, params GitGetTagParams) (res Git
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17156,7 +17156,7 @@ func (c *Client) GitGetTag(ctx context.Context, params GitGetTagParams) (res Git
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TagSha))
+			return e.EncodeValue(conv.StringToString(params.TagSha))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17209,7 +17209,7 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17225,7 +17225,7 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17241,7 +17241,7 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Ref))
+			return e.EncodeValue(conv.StringToString(params.Ref))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17258,7 +17258,7 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -17275,7 +17275,7 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -17369,7 +17369,7 @@ func (c *Client) GitignoreGetTemplate(ctx context.Context, params GitignoreGetTe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Name))
+			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17460,7 +17460,7 @@ func (c *Client) InteractionsRemoveRestrictionsForOrg(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17514,7 +17514,7 @@ func (c *Client) InteractionsRemoveRestrictionsForRepo(ctx context.Context, para
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17530,7 +17530,7 @@ func (c *Client) InteractionsRemoveRestrictionsForRepo(ctx context.Context, para
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17599,7 +17599,7 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17615,7 +17615,7 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17677,7 +17677,7 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, request IssuesAddAssign
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17693,7 +17693,7 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, request IssuesAddAssign
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17709,7 +17709,7 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, request IssuesAddAssign
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.IssueNumber))
+			return e.EncodeValue(conv.IntToString(params.IssueNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17765,7 +17765,7 @@ func (c *Client) IssuesCheckUserCanBeAssigned(ctx context.Context, params Issues
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17781,7 +17781,7 @@ func (c *Client) IssuesCheckUserCanBeAssigned(ctx context.Context, params Issues
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17797,7 +17797,7 @@ func (c *Client) IssuesCheckUserCanBeAssigned(ctx context.Context, params Issues
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Assignee))
+			return e.EncodeValue(conv.StringToString(params.Assignee))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17850,7 +17850,7 @@ func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCom
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17866,7 +17866,7 @@ func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCom
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17882,7 +17882,7 @@ func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCom
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentID))
+			return e.EncodeValue(conv.IntToString(params.CommentID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17935,7 +17935,7 @@ func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabel
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17951,7 +17951,7 @@ func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabel
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -17967,7 +17967,7 @@ func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabel
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Name))
+			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18020,7 +18020,7 @@ func (c *Client) IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteM
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18036,7 +18036,7 @@ func (c *Client) IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteM
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18052,7 +18052,7 @@ func (c *Client) IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteM
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.MilestoneNumber))
+			return e.EncodeValue(conv.IntToString(params.MilestoneNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18105,7 +18105,7 @@ func (c *Client) IssuesGetComment(ctx context.Context, params IssuesGetCommentPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18121,7 +18121,7 @@ func (c *Client) IssuesGetComment(ctx context.Context, params IssuesGetCommentPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18137,7 +18137,7 @@ func (c *Client) IssuesGetComment(ctx context.Context, params IssuesGetCommentPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentID))
+			return e.EncodeValue(conv.IntToString(params.CommentID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18190,7 +18190,7 @@ func (c *Client) IssuesGetEvent(ctx context.Context, params IssuesGetEventParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18206,7 +18206,7 @@ func (c *Client) IssuesGetEvent(ctx context.Context, params IssuesGetEventParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18222,7 +18222,7 @@ func (c *Client) IssuesGetEvent(ctx context.Context, params IssuesGetEventParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.EventID))
+			return e.EncodeValue(conv.IntToString(params.EventID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18275,7 +18275,7 @@ func (c *Client) IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18291,7 +18291,7 @@ func (c *Client) IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18307,7 +18307,7 @@ func (c *Client) IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Name))
+			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18360,7 +18360,7 @@ func (c *Client) IssuesGetMilestone(ctx context.Context, params IssuesGetMilesto
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18376,7 +18376,7 @@ func (c *Client) IssuesGetMilestone(ctx context.Context, params IssuesGetMilesto
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18392,7 +18392,7 @@ func (c *Client) IssuesGetMilestone(ctx context.Context, params IssuesGetMilesto
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.MilestoneNumber))
+			return e.EncodeValue(conv.IntToString(params.MilestoneNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18445,7 +18445,7 @@ func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssig
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18461,7 +18461,7 @@ func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssig
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18479,7 +18479,7 @@ func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssig
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -18496,7 +18496,7 @@ func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssig
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -18552,7 +18552,7 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18568,7 +18568,7 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18584,7 +18584,7 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.IssueNumber))
+			return e.EncodeValue(conv.IntToString(params.IssueNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18602,7 +18602,7 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 		})
 		if encErr := func() error {
 			if val, ok := params.Since.Get(); ok {
-				return e.Value(conv.TimeToString(val))
+				return e.EncodeValue(conv.TimeToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -18619,7 +18619,7 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -18636,7 +18636,7 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -18692,7 +18692,7 @@ func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params Issues
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18708,7 +18708,7 @@ func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params Issues
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18724,7 +18724,7 @@ func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params Issues
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.MilestoneNumber))
+			return e.EncodeValue(conv.IntToString(params.MilestoneNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18742,7 +18742,7 @@ func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params Issues
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -18759,7 +18759,7 @@ func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params Issues
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -18815,7 +18815,7 @@ func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListL
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18831,7 +18831,7 @@ func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListL
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18849,7 +18849,7 @@ func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListL
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -18866,7 +18866,7 @@ func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListL
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -18922,7 +18922,7 @@ func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListL
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18938,7 +18938,7 @@ func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListL
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18954,7 +18954,7 @@ func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListL
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.IssueNumber))
+			return e.EncodeValue(conv.IntToString(params.IssueNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -18972,7 +18972,7 @@ func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListL
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -18989,7 +18989,7 @@ func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListL
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -19045,7 +19045,7 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -19061,7 +19061,7 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -19079,7 +19079,7 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 		})
 		if encErr := func() error {
 			if val, ok := params.State.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -19096,7 +19096,7 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 		})
 		if encErr := func() error {
 			if val, ok := params.Sort.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -19113,7 +19113,7 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 		})
 		if encErr := func() error {
 			if val, ok := params.Direction.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -19130,7 +19130,7 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -19147,7 +19147,7 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -19203,7 +19203,7 @@ func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveA
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -19219,7 +19219,7 @@ func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveA
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -19235,7 +19235,7 @@ func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveA
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.IssueNumber))
+			return e.EncodeValue(conv.IntToString(params.IssueNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -19295,7 +19295,7 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, request IssuesRemove
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -19311,7 +19311,7 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, request IssuesRemove
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -19327,7 +19327,7 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, request IssuesRemove
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.IssueNumber))
+			return e.EncodeValue(conv.IntToString(params.IssueNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -19383,7 +19383,7 @@ func (c *Client) IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabel
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -19399,7 +19399,7 @@ func (c *Client) IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabel
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -19415,7 +19415,7 @@ func (c *Client) IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabel
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.IssueNumber))
+			return e.EncodeValue(conv.IntToString(params.IssueNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -19431,7 +19431,7 @@ func (c *Client) IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabel
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Name))
+			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -19484,7 +19484,7 @@ func (c *Client) IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (r
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -19500,7 +19500,7 @@ func (c *Client) IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (r
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -19516,7 +19516,7 @@ func (c *Client) IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (r
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.IssueNumber))
+			return e.EncodeValue(conv.IntToString(params.IssueNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -19576,7 +19576,7 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request IssuesUpdateLabe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -19592,7 +19592,7 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request IssuesUpdateLabe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -19608,7 +19608,7 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request IssuesUpdateLabe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Name))
+			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -19678,7 +19678,7 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request IssuesUpdate
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -19694,7 +19694,7 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request IssuesUpdate
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -19710,7 +19710,7 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request IssuesUpdate
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.MilestoneNumber))
+			return e.EncodeValue(conv.IntToString(params.MilestoneNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -19765,7 +19765,7 @@ func (c *Client) LicensesGet(ctx context.Context, params LicensesGetParams) (res
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.License))
+			return e.EncodeValue(conv.StringToString(params.License))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -19820,7 +19820,7 @@ func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params Licenses
 		})
 		if encErr := func() error {
 			if val, ok := params.Featured.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -19837,7 +19837,7 @@ func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params Licenses
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -19854,7 +19854,7 @@ func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params Licenses
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -19910,7 +19910,7 @@ func (c *Client) LicensesGetForRepo(ctx context.Context, params LicensesGetForRe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -19926,7 +19926,7 @@ func (c *Client) LicensesGetForRepo(ctx context.Context, params LicensesGetForRe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -20130,7 +20130,7 @@ func (c *Client) MetaGetOctocat(ctx context.Context, params MetaGetOctocatParams
 		})
 		if encErr := func() error {
 			if val, ok := params.S.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -20262,7 +20262,7 @@ func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -20278,7 +20278,7 @@ func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -20332,7 +20332,7 @@ func (c *Client) MigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.MigrationID))
+			return e.EncodeValue(conv.IntToString(params.MigrationID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -20386,7 +20386,7 @@ func (c *Client) MigrationsDeleteArchiveForOrg(ctx context.Context, params Migra
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -20402,7 +20402,7 @@ func (c *Client) MigrationsDeleteArchiveForOrg(ctx context.Context, params Migra
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.MigrationID))
+			return e.EncodeValue(conv.IntToString(params.MigrationID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -20456,7 +20456,7 @@ func (c *Client) MigrationsDownloadArchiveForOrg(ctx context.Context, params Mig
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -20472,7 +20472,7 @@ func (c *Client) MigrationsDownloadArchiveForOrg(ctx context.Context, params Mig
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.MigrationID))
+			return e.EncodeValue(conv.IntToString(params.MigrationID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -20526,7 +20526,7 @@ func (c *Client) MigrationsGetArchiveForAuthenticatedUser(ctx context.Context, p
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.MigrationID))
+			return e.EncodeValue(conv.IntToString(params.MigrationID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -20580,7 +20580,7 @@ func (c *Client) MigrationsGetCommitAuthors(ctx context.Context, params Migratio
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -20596,7 +20596,7 @@ func (c *Client) MigrationsGetCommitAuthors(ctx context.Context, params Migratio
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -20614,7 +20614,7 @@ func (c *Client) MigrationsGetCommitAuthors(ctx context.Context, params Migratio
 		})
 		if encErr := func() error {
 			if val, ok := params.Since.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -20670,7 +20670,7 @@ func (c *Client) MigrationsGetImportStatus(ctx context.Context, params Migration
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -20686,7 +20686,7 @@ func (c *Client) MigrationsGetImportStatus(ctx context.Context, params Migration
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -20740,7 +20740,7 @@ func (c *Client) MigrationsGetLargeFiles(ctx context.Context, params MigrationsG
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -20756,7 +20756,7 @@ func (c *Client) MigrationsGetLargeFiles(ctx context.Context, params MigrationsG
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -20810,7 +20810,7 @@ func (c *Client) MigrationsGetStatusForAuthenticatedUser(ctx context.Context, pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.MigrationID))
+			return e.EncodeValue(conv.IntToString(params.MigrationID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -20826,10 +20826,10 @@ func (c *Client) MigrationsGetStatusForAuthenticatedUser(ctx context.Context, pa
 			Explode: true,
 		})
 		if encErr := func() error {
-			return e.Array(func(e uri.Encoder) error {
+			return e.EncodeArray(func(e uri.Encoder) error {
 				for i, item := range params.Exclude {
 					if err := func() error {
-						return e.Value(conv.StringToString(item))
+						return e.EncodeValue(conv.StringToString(item))
 					}(); err != nil {
 						return fmt.Errorf("[%d]: %w", i, err)
 					}
@@ -20889,7 +20889,7 @@ func (c *Client) MigrationsGetStatusForOrg(ctx context.Context, params Migration
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -20905,7 +20905,7 @@ func (c *Client) MigrationsGetStatusForOrg(ctx context.Context, params Migration
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.MigrationID))
+			return e.EncodeValue(conv.IntToString(params.MigrationID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -20921,10 +20921,10 @@ func (c *Client) MigrationsGetStatusForOrg(ctx context.Context, params Migration
 			Explode: true,
 		})
 		if encErr := func() error {
-			return e.Array(func(e uri.Encoder) error {
+			return e.EncodeArray(func(e uri.Encoder) error {
 				for i, item := range params.Exclude {
 					if err := func() error {
-						return e.Value(conv.StringToString(string(item)))
+						return e.EncodeValue(conv.StringToString(string(item)))
 					}(); err != nil {
 						return fmt.Errorf("[%d]: %w", i, err)
 					}
@@ -20986,7 +20986,7 @@ func (c *Client) MigrationsListForAuthenticatedUser(ctx context.Context, params 
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -21003,7 +21003,7 @@ func (c *Client) MigrationsListForAuthenticatedUser(ctx context.Context, params 
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -21059,7 +21059,7 @@ func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsList
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -21077,7 +21077,7 @@ func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsList
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -21094,7 +21094,7 @@ func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsList
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -21110,10 +21110,10 @@ func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsList
 			Explode: true,
 		})
 		if encErr := func() error {
-			return e.Array(func(e uri.Encoder) error {
+			return e.EncodeArray(func(e uri.Encoder) error {
 				for i, item := range params.Exclude {
 					if err := func() error {
-						return e.Value(conv.StringToString(string(item)))
+						return e.EncodeValue(conv.StringToString(string(item)))
 					}(); err != nil {
 						return fmt.Errorf("[%d]: %w", i, err)
 					}
@@ -21173,7 +21173,7 @@ func (c *Client) MigrationsListReposForOrg(ctx context.Context, params Migration
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -21189,7 +21189,7 @@ func (c *Client) MigrationsListReposForOrg(ctx context.Context, params Migration
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.MigrationID))
+			return e.EncodeValue(conv.IntToString(params.MigrationID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -21207,7 +21207,7 @@ func (c *Client) MigrationsListReposForOrg(ctx context.Context, params Migration
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -21224,7 +21224,7 @@ func (c *Client) MigrationsListReposForOrg(ctx context.Context, params Migration
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -21280,7 +21280,7 @@ func (c *Client) MigrationsListReposForUser(ctx context.Context, params Migratio
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.MigrationID))
+			return e.EncodeValue(conv.IntToString(params.MigrationID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -21298,7 +21298,7 @@ func (c *Client) MigrationsListReposForUser(ctx context.Context, params Migratio
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -21315,7 +21315,7 @@ func (c *Client) MigrationsListReposForUser(ctx context.Context, params Migratio
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -21371,7 +21371,7 @@ func (c *Client) MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, p
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.MigrationID))
+			return e.EncodeValue(conv.IntToString(params.MigrationID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -21387,7 +21387,7 @@ func (c *Client) MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, p
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.RepoName))
+			return e.EncodeValue(conv.StringToString(params.RepoName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -21441,7 +21441,7 @@ func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params Migratio
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -21457,7 +21457,7 @@ func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params Migratio
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.MigrationID))
+			return e.EncodeValue(conv.IntToString(params.MigrationID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -21473,7 +21473,7 @@ func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params Migratio
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.RepoName))
+			return e.EncodeValue(conv.StringToString(params.RepoName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -21533,7 +21533,7 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, request MigrationsU
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -21549,7 +21549,7 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, request MigrationsU
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -21605,7 +21605,7 @@ func (c *Client) OAuthAuthorizationsDeleteAuthorization(ctx context.Context, par
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.AuthorizationID))
+			return e.EncodeValue(conv.IntToString(params.AuthorizationID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -21658,7 +21658,7 @@ func (c *Client) OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAut
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GrantID))
+			return e.EncodeValue(conv.IntToString(params.GrantID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -21711,7 +21711,7 @@ func (c *Client) OAuthAuthorizationsGetAuthorization(ctx context.Context, params
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.AuthorizationID))
+			return e.EncodeValue(conv.IntToString(params.AuthorizationID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -21764,7 +21764,7 @@ func (c *Client) OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAu
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GrantID))
+			return e.EncodeValue(conv.IntToString(params.GrantID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -21819,7 +21819,7 @@ func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, para
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -21836,7 +21836,7 @@ func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, para
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -21853,7 +21853,7 @@ func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, para
 		})
 		if encErr := func() error {
 			if val, ok := params.ClientID.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -21911,7 +21911,7 @@ func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuth
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -21928,7 +21928,7 @@ func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuth
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -21945,7 +21945,7 @@ func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuth
 		})
 		if encErr := func() error {
 			if val, ok := params.ClientID.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -22001,7 +22001,7 @@ func (c *Client) OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlock
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -22017,7 +22017,7 @@ func (c *Client) OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlock
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -22070,7 +22070,7 @@ func (c *Client) OrgsCheckMembershipForUser(ctx context.Context, params OrgsChec
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -22086,7 +22086,7 @@ func (c *Client) OrgsCheckMembershipForUser(ctx context.Context, params OrgsChec
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -22139,7 +22139,7 @@ func (c *Client) OrgsCheckPublicMembershipForUser(ctx context.Context, params Or
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -22155,7 +22155,7 @@ func (c *Client) OrgsCheckPublicMembershipForUser(ctx context.Context, params Or
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -22208,7 +22208,7 @@ func (c *Client) OrgsConvertMemberToOutsideCollaborator(ctx context.Context, par
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -22224,7 +22224,7 @@ func (c *Client) OrgsConvertMemberToOutsideCollaborator(ctx context.Context, par
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -22277,7 +22277,7 @@ func (c *Client) OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhook
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -22293,7 +22293,7 @@ func (c *Client) OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhook
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.HookID))
+			return e.EncodeValue(conv.IntToString(params.HookID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -22346,7 +22346,7 @@ func (c *Client) OrgsGet(ctx context.Context, params OrgsGetParams) (res OrgsGet
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -22399,7 +22399,7 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -22417,7 +22417,7 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 		})
 		if encErr := func() error {
 			if val, ok := params.Phrase.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -22434,7 +22434,7 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 		})
 		if encErr := func() error {
 			if val, ok := params.Include.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -22451,7 +22451,7 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 		})
 		if encErr := func() error {
 			if val, ok := params.After.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -22468,7 +22468,7 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 		})
 		if encErr := func() error {
 			if val, ok := params.Before.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -22485,7 +22485,7 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 		})
 		if encErr := func() error {
 			if val, ok := params.Order.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -22502,7 +22502,7 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -22519,7 +22519,7 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -22575,7 +22575,7 @@ func (c *Client) OrgsGetMembershipForAuthenticatedUser(ctx context.Context, para
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -22628,7 +22628,7 @@ func (c *Client) OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMem
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -22644,7 +22644,7 @@ func (c *Client) OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMem
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -22697,7 +22697,7 @@ func (c *Client) OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -22713,7 +22713,7 @@ func (c *Client) OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.HookID))
+			return e.EncodeValue(conv.IntToString(params.HookID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -22766,7 +22766,7 @@ func (c *Client) OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetW
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -22782,7 +22782,7 @@ func (c *Client) OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetW
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.HookID))
+			return e.EncodeValue(conv.IntToString(params.HookID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -22838,7 +22838,7 @@ func (c *Client) OrgsList(ctx context.Context, params OrgsListParams) (res OrgsL
 		})
 		if encErr := func() error {
 			if val, ok := params.Since.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -22855,7 +22855,7 @@ func (c *Client) OrgsList(ctx context.Context, params OrgsListParams) (res OrgsL
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -22911,7 +22911,7 @@ func (c *Client) OrgsListBlockedUsers(ctx context.Context, params OrgsListBlocke
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -22965,7 +22965,7 @@ func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListF
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -22983,7 +22983,7 @@ func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListF
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -23000,7 +23000,7 @@ func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListF
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -23058,7 +23058,7 @@ func (c *Client) OrgsListForAuthenticatedUser(ctx context.Context, params OrgsLi
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -23075,7 +23075,7 @@ func (c *Client) OrgsListForAuthenticatedUser(ctx context.Context, params OrgsLi
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -23131,7 +23131,7 @@ func (c *Client) OrgsListForUser(ctx context.Context, params OrgsListForUserPara
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -23149,7 +23149,7 @@ func (c *Client) OrgsListForUser(ctx context.Context, params OrgsListForUserPara
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -23166,7 +23166,7 @@ func (c *Client) OrgsListForUser(ctx context.Context, params OrgsListForUserPara
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -23222,7 +23222,7 @@ func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInv
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -23238,7 +23238,7 @@ func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInv
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.InvitationID))
+			return e.EncodeValue(conv.IntToString(params.InvitationID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -23256,7 +23256,7 @@ func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInv
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -23273,7 +23273,7 @@ func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInv
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -23329,7 +23329,7 @@ func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsLi
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -23347,7 +23347,7 @@ func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsLi
 		})
 		if encErr := func() error {
 			if val, ok := params.Filter.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -23364,7 +23364,7 @@ func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsLi
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -23381,7 +23381,7 @@ func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsLi
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -23437,7 +23437,7 @@ func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsList
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -23455,7 +23455,7 @@ func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsList
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -23472,7 +23472,7 @@ func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsList
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -23528,7 +23528,7 @@ func (c *Client) OrgsListPublicMembers(ctx context.Context, params OrgsListPubli
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -23546,7 +23546,7 @@ func (c *Client) OrgsListPublicMembers(ctx context.Context, params OrgsListPubli
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -23563,7 +23563,7 @@ func (c *Client) OrgsListPublicMembers(ctx context.Context, params OrgsListPubli
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -23619,7 +23619,7 @@ func (c *Client) OrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsL
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -23673,7 +23673,7 @@ func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -23691,7 +23691,7 @@ func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksPa
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -23708,7 +23708,7 @@ func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksPa
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -23764,7 +23764,7 @@ func (c *Client) OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookPara
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -23780,7 +23780,7 @@ func (c *Client) OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookPara
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.HookID))
+			return e.EncodeValue(conv.IntToString(params.HookID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -23834,7 +23834,7 @@ func (c *Client) OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -23850,7 +23850,7 @@ func (c *Client) OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -23903,7 +23903,7 @@ func (c *Client) OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRem
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -23919,7 +23919,7 @@ func (c *Client) OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRem
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -23972,7 +23972,7 @@ func (c *Client) OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsR
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -23988,7 +23988,7 @@ func (c *Client) OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsR
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24041,7 +24041,7 @@ func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Cont
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24057,7 +24057,7 @@ func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Cont
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24110,7 +24110,7 @@ func (c *Client) OrgsRemoveSamlSSOAuthorization(ctx context.Context, params Orgs
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24126,7 +24126,7 @@ func (c *Client) OrgsRemoveSamlSSOAuthorization(ctx context.Context, params Orgs
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CredentialID))
+			return e.EncodeValue(conv.IntToString(params.CredentialID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24179,7 +24179,7 @@ func (c *Client) OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24195,7 +24195,7 @@ func (c *Client) OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24248,7 +24248,7 @@ func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserPara
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24264,7 +24264,7 @@ func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserPara
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24323,7 +24323,7 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request Orgs
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24339,7 +24339,7 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request Orgs
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.HookID))
+			return e.EncodeValue(conv.IntToString(params.HookID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24395,7 +24395,7 @@ func (c *Client) PackagesDeletePackageForAuthenticatedUser(ctx context.Context, 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(string(params.PackageType)))
+			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24411,7 +24411,7 @@ func (c *Client) PackagesDeletePackageForAuthenticatedUser(ctx context.Context, 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PackageName))
+			return e.EncodeValue(conv.StringToString(params.PackageName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24464,7 +24464,7 @@ func (c *Client) PackagesDeletePackageForOrg(ctx context.Context, params Package
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24480,7 +24480,7 @@ func (c *Client) PackagesDeletePackageForOrg(ctx context.Context, params Package
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(string(params.PackageType)))
+			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24496,7 +24496,7 @@ func (c *Client) PackagesDeletePackageForOrg(ctx context.Context, params Package
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PackageName))
+			return e.EncodeValue(conv.StringToString(params.PackageName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24549,7 +24549,7 @@ func (c *Client) PackagesDeletePackageForUser(ctx context.Context, params Packag
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24565,7 +24565,7 @@ func (c *Client) PackagesDeletePackageForUser(ctx context.Context, params Packag
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(string(params.PackageType)))
+			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24581,7 +24581,7 @@ func (c *Client) PackagesDeletePackageForUser(ctx context.Context, params Packag
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PackageName))
+			return e.EncodeValue(conv.StringToString(params.PackageName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24634,7 +24634,7 @@ func (c *Client) PackagesDeletePackageVersionForAuthenticatedUser(ctx context.Co
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(string(params.PackageType)))
+			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24650,7 +24650,7 @@ func (c *Client) PackagesDeletePackageVersionForAuthenticatedUser(ctx context.Co
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PackageName))
+			return e.EncodeValue(conv.StringToString(params.PackageName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24666,7 +24666,7 @@ func (c *Client) PackagesDeletePackageVersionForAuthenticatedUser(ctx context.Co
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.PackageVersionID))
+			return e.EncodeValue(conv.IntToString(params.PackageVersionID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24719,7 +24719,7 @@ func (c *Client) PackagesDeletePackageVersionForOrg(ctx context.Context, params 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24735,7 +24735,7 @@ func (c *Client) PackagesDeletePackageVersionForOrg(ctx context.Context, params 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(string(params.PackageType)))
+			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24751,7 +24751,7 @@ func (c *Client) PackagesDeletePackageVersionForOrg(ctx context.Context, params 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PackageName))
+			return e.EncodeValue(conv.StringToString(params.PackageName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24767,7 +24767,7 @@ func (c *Client) PackagesDeletePackageVersionForOrg(ctx context.Context, params 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.PackageVersionID))
+			return e.EncodeValue(conv.IntToString(params.PackageVersionID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24820,7 +24820,7 @@ func (c *Client) PackagesDeletePackageVersionForUser(ctx context.Context, params
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24836,7 +24836,7 @@ func (c *Client) PackagesDeletePackageVersionForUser(ctx context.Context, params
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(string(params.PackageType)))
+			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24852,7 +24852,7 @@ func (c *Client) PackagesDeletePackageVersionForUser(ctx context.Context, params
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PackageName))
+			return e.EncodeValue(conv.StringToString(params.PackageName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24868,7 +24868,7 @@ func (c *Client) PackagesDeletePackageVersionForUser(ctx context.Context, params
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.PackageVersionID))
+			return e.EncodeValue(conv.IntToString(params.PackageVersionID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24921,7 +24921,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(string(params.PackageType)))
+			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24937,7 +24937,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PackageName))
+			return e.EncodeValue(conv.StringToString(params.PackageName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -24955,7 +24955,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -24972,7 +24972,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -24989,7 +24989,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser
 		})
 		if encErr := func() error {
 			if val, ok := params.State.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -25045,7 +25045,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25061,7 +25061,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(string(params.PackageType)))
+			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25077,7 +25077,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PackageName))
+			return e.EncodeValue(conv.StringToString(params.PackageName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25095,7 +25095,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -25112,7 +25112,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -25129,7 +25129,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 		})
 		if encErr := func() error {
 			if val, ok := params.State.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -25185,7 +25185,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25201,7 +25201,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(string(params.PackageType)))
+			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25217,7 +25217,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PackageName))
+			return e.EncodeValue(conv.StringToString(params.PackageName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25271,7 +25271,7 @@ func (c *Client) PackagesGetPackageForAuthenticatedUser(ctx context.Context, par
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(string(params.PackageType)))
+			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25287,7 +25287,7 @@ func (c *Client) PackagesGetPackageForAuthenticatedUser(ctx context.Context, par
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PackageName))
+			return e.EncodeValue(conv.StringToString(params.PackageName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25340,7 +25340,7 @@ func (c *Client) PackagesGetPackageForOrganization(ctx context.Context, params P
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25356,7 +25356,7 @@ func (c *Client) PackagesGetPackageForOrganization(ctx context.Context, params P
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(string(params.PackageType)))
+			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25372,7 +25372,7 @@ func (c *Client) PackagesGetPackageForOrganization(ctx context.Context, params P
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PackageName))
+			return e.EncodeValue(conv.StringToString(params.PackageName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25425,7 +25425,7 @@ func (c *Client) PackagesGetPackageForUser(ctx context.Context, params PackagesG
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25441,7 +25441,7 @@ func (c *Client) PackagesGetPackageForUser(ctx context.Context, params PackagesG
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(string(params.PackageType)))
+			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25457,7 +25457,7 @@ func (c *Client) PackagesGetPackageForUser(ctx context.Context, params PackagesG
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PackageName))
+			return e.EncodeValue(conv.StringToString(params.PackageName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25510,7 +25510,7 @@ func (c *Client) PackagesGetPackageVersionForAuthenticatedUser(ctx context.Conte
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(string(params.PackageType)))
+			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25526,7 +25526,7 @@ func (c *Client) PackagesGetPackageVersionForAuthenticatedUser(ctx context.Conte
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PackageName))
+			return e.EncodeValue(conv.StringToString(params.PackageName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25542,7 +25542,7 @@ func (c *Client) PackagesGetPackageVersionForAuthenticatedUser(ctx context.Conte
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.PackageVersionID))
+			return e.EncodeValue(conv.IntToString(params.PackageVersionID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25595,7 +25595,7 @@ func (c *Client) PackagesGetPackageVersionForOrganization(ctx context.Context, p
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25611,7 +25611,7 @@ func (c *Client) PackagesGetPackageVersionForOrganization(ctx context.Context, p
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(string(params.PackageType)))
+			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25627,7 +25627,7 @@ func (c *Client) PackagesGetPackageVersionForOrganization(ctx context.Context, p
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PackageName))
+			return e.EncodeValue(conv.StringToString(params.PackageName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25643,7 +25643,7 @@ func (c *Client) PackagesGetPackageVersionForOrganization(ctx context.Context, p
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.PackageVersionID))
+			return e.EncodeValue(conv.IntToString(params.PackageVersionID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25696,7 +25696,7 @@ func (c *Client) PackagesGetPackageVersionForUser(ctx context.Context, params Pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25712,7 +25712,7 @@ func (c *Client) PackagesGetPackageVersionForUser(ctx context.Context, params Pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(string(params.PackageType)))
+			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25728,7 +25728,7 @@ func (c *Client) PackagesGetPackageVersionForUser(ctx context.Context, params Pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PackageName))
+			return e.EncodeValue(conv.StringToString(params.PackageName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25744,7 +25744,7 @@ func (c *Client) PackagesGetPackageVersionForUser(ctx context.Context, params Pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.PackageVersionID))
+			return e.EncodeValue(conv.IntToString(params.PackageVersionID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25798,7 +25798,7 @@ func (c *Client) PackagesListPackagesForAuthenticatedUser(ctx context.Context, p
 			Explode: true,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(string(params.PackageType)))
+			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode query: %w", encErr)
 			return
@@ -25813,7 +25813,7 @@ func (c *Client) PackagesListPackagesForAuthenticatedUser(ctx context.Context, p
 		})
 		if encErr := func() error {
 			if val, ok := params.Visibility.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -25869,7 +25869,7 @@ func (c *Client) PackagesListPackagesForOrganization(ctx context.Context, params
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25886,7 +25886,7 @@ func (c *Client) PackagesListPackagesForOrganization(ctx context.Context, params
 			Explode: true,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(string(params.PackageType)))
+			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode query: %w", encErr)
 			return
@@ -25901,7 +25901,7 @@ func (c *Client) PackagesListPackagesForOrganization(ctx context.Context, params
 		})
 		if encErr := func() error {
 			if val, ok := params.Visibility.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -25957,7 +25957,7 @@ func (c *Client) PackagesListPackagesForUser(ctx context.Context, params Package
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -25974,7 +25974,7 @@ func (c *Client) PackagesListPackagesForUser(ctx context.Context, params Package
 			Explode: true,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(string(params.PackageType)))
+			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode query: %w", encErr)
 			return
@@ -25989,7 +25989,7 @@ func (c *Client) PackagesListPackagesForUser(ctx context.Context, params Package
 		})
 		if encErr := func() error {
 			if val, ok := params.Visibility.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -26045,7 +26045,7 @@ func (c *Client) PackagesRestorePackageForAuthenticatedUser(ctx context.Context,
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(string(params.PackageType)))
+			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -26061,7 +26061,7 @@ func (c *Client) PackagesRestorePackageForAuthenticatedUser(ctx context.Context,
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PackageName))
+			return e.EncodeValue(conv.StringToString(params.PackageName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -26079,7 +26079,7 @@ func (c *Client) PackagesRestorePackageForAuthenticatedUser(ctx context.Context,
 		})
 		if encErr := func() error {
 			if val, ok := params.Token.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -26135,7 +26135,7 @@ func (c *Client) PackagesRestorePackageForOrg(ctx context.Context, params Packag
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -26151,7 +26151,7 @@ func (c *Client) PackagesRestorePackageForOrg(ctx context.Context, params Packag
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(string(params.PackageType)))
+			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -26167,7 +26167,7 @@ func (c *Client) PackagesRestorePackageForOrg(ctx context.Context, params Packag
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PackageName))
+			return e.EncodeValue(conv.StringToString(params.PackageName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -26185,7 +26185,7 @@ func (c *Client) PackagesRestorePackageForOrg(ctx context.Context, params Packag
 		})
 		if encErr := func() error {
 			if val, ok := params.Token.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -26241,7 +26241,7 @@ func (c *Client) PackagesRestorePackageForUser(ctx context.Context, params Packa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -26257,7 +26257,7 @@ func (c *Client) PackagesRestorePackageForUser(ctx context.Context, params Packa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(string(params.PackageType)))
+			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -26273,7 +26273,7 @@ func (c *Client) PackagesRestorePackageForUser(ctx context.Context, params Packa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PackageName))
+			return e.EncodeValue(conv.StringToString(params.PackageName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -26291,7 +26291,7 @@ func (c *Client) PackagesRestorePackageForUser(ctx context.Context, params Packa
 		})
 		if encErr := func() error {
 			if val, ok := params.Token.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -26347,7 +26347,7 @@ func (c *Client) PackagesRestorePackageVersionForAuthenticatedUser(ctx context.C
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(string(params.PackageType)))
+			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -26363,7 +26363,7 @@ func (c *Client) PackagesRestorePackageVersionForAuthenticatedUser(ctx context.C
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PackageName))
+			return e.EncodeValue(conv.StringToString(params.PackageName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -26379,7 +26379,7 @@ func (c *Client) PackagesRestorePackageVersionForAuthenticatedUser(ctx context.C
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.PackageVersionID))
+			return e.EncodeValue(conv.IntToString(params.PackageVersionID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -26433,7 +26433,7 @@ func (c *Client) PackagesRestorePackageVersionForOrg(ctx context.Context, params
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -26449,7 +26449,7 @@ func (c *Client) PackagesRestorePackageVersionForOrg(ctx context.Context, params
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(string(params.PackageType)))
+			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -26465,7 +26465,7 @@ func (c *Client) PackagesRestorePackageVersionForOrg(ctx context.Context, params
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PackageName))
+			return e.EncodeValue(conv.StringToString(params.PackageName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -26481,7 +26481,7 @@ func (c *Client) PackagesRestorePackageVersionForOrg(ctx context.Context, params
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.PackageVersionID))
+			return e.EncodeValue(conv.IntToString(params.PackageVersionID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -26535,7 +26535,7 @@ func (c *Client) PackagesRestorePackageVersionForUser(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -26551,7 +26551,7 @@ func (c *Client) PackagesRestorePackageVersionForUser(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(string(params.PackageType)))
+			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -26567,7 +26567,7 @@ func (c *Client) PackagesRestorePackageVersionForUser(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.PackageName))
+			return e.EncodeValue(conv.StringToString(params.PackageName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -26583,7 +26583,7 @@ func (c *Client) PackagesRestorePackageVersionForUser(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.PackageVersionID))
+			return e.EncodeValue(conv.IntToString(params.PackageVersionID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -26643,7 +26643,7 @@ func (c *Client) ProjectsCreateColumn(ctx context.Context, request ProjectsCreat
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ProjectID))
+			return e.EncodeValue(conv.IntToString(params.ProjectID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -26751,7 +26751,7 @@ func (c *Client) ProjectsCreateForOrg(ctx context.Context, request ProjectsCreat
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -26813,7 +26813,7 @@ func (c *Client) ProjectsCreateForRepo(ctx context.Context, request ProjectsCrea
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -26829,7 +26829,7 @@ func (c *Client) ProjectsCreateForRepo(ctx context.Context, request ProjectsCrea
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -26885,7 +26885,7 @@ func (c *Client) ProjectsDelete(ctx context.Context, params ProjectsDeleteParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ProjectID))
+			return e.EncodeValue(conv.IntToString(params.ProjectID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -26938,7 +26938,7 @@ func (c *Client) ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CardID))
+			return e.EncodeValue(conv.IntToString(params.CardID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -26991,7 +26991,7 @@ func (c *Client) ProjectsDeleteColumn(ctx context.Context, params ProjectsDelete
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ColumnID))
+			return e.EncodeValue(conv.IntToString(params.ColumnID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -27044,7 +27044,7 @@ func (c *Client) ProjectsGet(ctx context.Context, params ProjectsGetParams) (res
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ProjectID))
+			return e.EncodeValue(conv.IntToString(params.ProjectID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -27097,7 +27097,7 @@ func (c *Client) ProjectsGetCard(ctx context.Context, params ProjectsGetCardPara
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CardID))
+			return e.EncodeValue(conv.IntToString(params.CardID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -27150,7 +27150,7 @@ func (c *Client) ProjectsGetColumn(ctx context.Context, params ProjectsGetColumn
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ColumnID))
+			return e.EncodeValue(conv.IntToString(params.ColumnID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -27203,7 +27203,7 @@ func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCards
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ColumnID))
+			return e.EncodeValue(conv.IntToString(params.ColumnID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -27221,7 +27221,7 @@ func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCards
 		})
 		if encErr := func() error {
 			if val, ok := params.ArchivedState.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -27238,7 +27238,7 @@ func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCards
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -27255,7 +27255,7 @@ func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCards
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -27311,7 +27311,7 @@ func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListCol
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ProjectID))
+			return e.EncodeValue(conv.IntToString(params.ProjectID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -27329,7 +27329,7 @@ func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListCol
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -27346,7 +27346,7 @@ func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListCol
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -27402,7 +27402,7 @@ func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForO
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -27420,7 +27420,7 @@ func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForO
 		})
 		if encErr := func() error {
 			if val, ok := params.State.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -27437,7 +27437,7 @@ func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForO
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -27454,7 +27454,7 @@ func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForO
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -27510,7 +27510,7 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -27526,7 +27526,7 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -27544,7 +27544,7 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 		})
 		if encErr := func() error {
 			if val, ok := params.State.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -27561,7 +27561,7 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -27578,7 +27578,7 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -27649,7 +27649,7 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveCol
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ColumnID))
+			return e.EncodeValue(conv.IntToString(params.ColumnID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -27720,7 +27720,7 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request ProjectsUpdateReq, 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ProjectID))
+			return e.EncodeValue(conv.IntToString(params.ProjectID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -27781,7 +27781,7 @@ func (c *Client) ProjectsUpdateCard(ctx context.Context, request ProjectsUpdateC
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CardID))
+			return e.EncodeValue(conv.IntToString(params.CardID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -27842,7 +27842,7 @@ func (c *Client) ProjectsUpdateColumn(ctx context.Context, request ProjectsUpdat
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ColumnID))
+			return e.EncodeValue(conv.IntToString(params.ColumnID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -27897,7 +27897,7 @@ func (c *Client) PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMerg
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -27913,7 +27913,7 @@ func (c *Client) PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMerg
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -27929,7 +27929,7 @@ func (c *Client) PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMerg
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.PullNumber))
+			return e.EncodeValue(conv.IntToString(params.PullNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -27989,7 +27989,7 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28005,7 +28005,7 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28021,7 +28021,7 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.PullNumber))
+			return e.EncodeValue(conv.IntToString(params.PullNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28037,7 +28037,7 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentID))
+			return e.EncodeValue(conv.IntToString(params.CommentID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28108,7 +28108,7 @@ func (c *Client) PullsCreateReview(ctx context.Context, request PullsCreateRevie
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28124,7 +28124,7 @@ func (c *Client) PullsCreateReview(ctx context.Context, request PullsCreateRevie
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28140,7 +28140,7 @@ func (c *Client) PullsCreateReview(ctx context.Context, request PullsCreateRevie
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.PullNumber))
+			return e.EncodeValue(conv.IntToString(params.PullNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28196,7 +28196,7 @@ func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDelet
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28212,7 +28212,7 @@ func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDelet
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28228,7 +28228,7 @@ func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDelet
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.PullNumber))
+			return e.EncodeValue(conv.IntToString(params.PullNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28244,7 +28244,7 @@ func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDelet
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ReviewID))
+			return e.EncodeValue(conv.IntToString(params.ReviewID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28297,7 +28297,7 @@ func (c *Client) PullsDeleteReviewComment(ctx context.Context, params PullsDelet
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28313,7 +28313,7 @@ func (c *Client) PullsDeleteReviewComment(ctx context.Context, params PullsDelet
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28329,7 +28329,7 @@ func (c *Client) PullsDeleteReviewComment(ctx context.Context, params PullsDelet
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentID))
+			return e.EncodeValue(conv.IntToString(params.CommentID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28388,7 +28388,7 @@ func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissRev
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28404,7 +28404,7 @@ func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissRev
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28420,7 +28420,7 @@ func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissRev
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.PullNumber))
+			return e.EncodeValue(conv.IntToString(params.PullNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28436,7 +28436,7 @@ func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissRev
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ReviewID))
+			return e.EncodeValue(conv.IntToString(params.ReviewID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28492,7 +28492,7 @@ func (c *Client) PullsGet(ctx context.Context, params PullsGetParams) (res Pulls
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28508,7 +28508,7 @@ func (c *Client) PullsGet(ctx context.Context, params PullsGetParams) (res Pulls
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28524,7 +28524,7 @@ func (c *Client) PullsGet(ctx context.Context, params PullsGetParams) (res Pulls
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.PullNumber))
+			return e.EncodeValue(conv.IntToString(params.PullNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28577,7 +28577,7 @@ func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28593,7 +28593,7 @@ func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28609,7 +28609,7 @@ func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.PullNumber))
+			return e.EncodeValue(conv.IntToString(params.PullNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28625,7 +28625,7 @@ func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ReviewID))
+			return e.EncodeValue(conv.IntToString(params.ReviewID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28678,7 +28678,7 @@ func (c *Client) PullsGetReviewComment(ctx context.Context, params PullsGetRevie
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28694,7 +28694,7 @@ func (c *Client) PullsGetReviewComment(ctx context.Context, params PullsGetRevie
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28710,7 +28710,7 @@ func (c *Client) PullsGetReviewComment(ctx context.Context, params PullsGetRevie
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentID))
+			return e.EncodeValue(conv.IntToString(params.CommentID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28763,7 +28763,7 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28779,7 +28779,7 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28795,7 +28795,7 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.PullNumber))
+			return e.EncodeValue(conv.IntToString(params.PullNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28811,7 +28811,7 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ReviewID))
+			return e.EncodeValue(conv.IntToString(params.ReviewID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28829,7 +28829,7 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -28846,7 +28846,7 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -28902,7 +28902,7 @@ func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28918,7 +28918,7 @@ func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28934,7 +28934,7 @@ func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.PullNumber))
+			return e.EncodeValue(conv.IntToString(params.PullNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -28952,7 +28952,7 @@ func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsPa
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -28969,7 +28969,7 @@ func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsPa
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -29025,7 +29025,7 @@ func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsLi
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -29041,7 +29041,7 @@ func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsLi
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -29057,7 +29057,7 @@ func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsLi
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.PullNumber))
+			return e.EncodeValue(conv.IntToString(params.PullNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -29075,7 +29075,7 @@ func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsLi
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -29092,7 +29092,7 @@ func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsLi
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -29148,7 +29148,7 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -29164,7 +29164,7 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -29180,7 +29180,7 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.PullNumber))
+			return e.EncodeValue(conv.IntToString(params.PullNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -29198,7 +29198,7 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 		})
 		if encErr := func() error {
 			if val, ok := params.Sort.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -29215,7 +29215,7 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 		})
 		if encErr := func() error {
 			if val, ok := params.Direction.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -29232,7 +29232,7 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 		})
 		if encErr := func() error {
 			if val, ok := params.Since.Get(); ok {
-				return e.Value(conv.TimeToString(val))
+				return e.EncodeValue(conv.TimeToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -29249,7 +29249,7 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -29266,7 +29266,7 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -29322,7 +29322,7 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -29338,7 +29338,7 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -29356,7 +29356,7 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 		})
 		if encErr := func() error {
 			if val, ok := params.Sort.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -29373,7 +29373,7 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 		})
 		if encErr := func() error {
 			if val, ok := params.Direction.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -29390,7 +29390,7 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 		})
 		if encErr := func() error {
 			if val, ok := params.Since.Get(); ok {
-				return e.Value(conv.TimeToString(val))
+				return e.EncodeValue(conv.TimeToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -29407,7 +29407,7 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -29424,7 +29424,7 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -29480,7 +29480,7 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -29496,7 +29496,7 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -29512,7 +29512,7 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.PullNumber))
+			return e.EncodeValue(conv.IntToString(params.PullNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -29530,7 +29530,7 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -29547,7 +29547,7 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -29618,7 +29618,7 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -29634,7 +29634,7 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -29650,7 +29650,7 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.PullNumber))
+			return e.EncodeValue(conv.IntToString(params.PullNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -29666,7 +29666,7 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ReviewID))
+			return e.EncodeValue(conv.IntToString(params.ReviewID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -29728,7 +29728,7 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateRevie
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -29744,7 +29744,7 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateRevie
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -29760,7 +29760,7 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateRevie
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.PullNumber))
+			return e.EncodeValue(conv.IntToString(params.PullNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -29776,7 +29776,7 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateRevie
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ReviewID))
+			return e.EncodeValue(conv.IntToString(params.ReviewID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -29837,7 +29837,7 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpda
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -29853,7 +29853,7 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpda
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -29869,7 +29869,7 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpda
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentID))
+			return e.EncodeValue(conv.IntToString(params.CommentID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -29977,7 +29977,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -29993,7 +29993,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30009,7 +30009,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30025,7 +30025,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentNumber))
+			return e.EncodeValue(conv.IntToString(params.CommentNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30096,7 +30096,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30112,7 +30112,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30128,7 +30128,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentNumber))
+			return e.EncodeValue(conv.IntToString(params.CommentNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30199,7 +30199,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30215,7 +30215,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30231,7 +30231,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30302,7 +30302,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30318,7 +30318,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30374,7 +30374,7 @@ func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params Rea
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30390,7 +30390,7 @@ func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params Rea
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30406,7 +30406,7 @@ func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params Rea
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentID))
+			return e.EncodeValue(conv.IntToString(params.CommentID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30422,7 +30422,7 @@ func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params Rea
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ReactionID))
+			return e.EncodeValue(conv.IntToString(params.ReactionID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30475,7 +30475,7 @@ func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30491,7 +30491,7 @@ func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30507,7 +30507,7 @@ func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.IssueNumber))
+			return e.EncodeValue(conv.IntToString(params.IssueNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30523,7 +30523,7 @@ func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ReactionID))
+			return e.EncodeValue(conv.IntToString(params.ReactionID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30576,7 +30576,7 @@ func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params Reac
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30592,7 +30592,7 @@ func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params Reac
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30608,7 +30608,7 @@ func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params Reac
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentID))
+			return e.EncodeValue(conv.IntToString(params.CommentID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30624,7 +30624,7 @@ func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params Reac
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ReactionID))
+			return e.EncodeValue(conv.IntToString(params.ReactionID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30677,7 +30677,7 @@ func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30693,7 +30693,7 @@ func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30709,7 +30709,7 @@ func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentID))
+			return e.EncodeValue(conv.IntToString(params.CommentID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30725,7 +30725,7 @@ func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ReactionID))
+			return e.EncodeValue(conv.IntToString(params.ReactionID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30778,7 +30778,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params Re
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30794,7 +30794,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params Re
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30810,7 +30810,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params Re
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30826,7 +30826,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params Re
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ReactionID))
+			return e.EncodeValue(conv.IntToString(params.ReactionID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30879,7 +30879,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30895,7 +30895,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30911,7 +30911,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30927,7 +30927,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentNumber))
+			return e.EncodeValue(conv.IntToString(params.CommentNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30943,7 +30943,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ReactionID))
+			return e.EncodeValue(conv.IntToString(params.ReactionID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -30996,7 +30996,7 @@ func (c *Client) ReactionsDeleteLegacy(ctx context.Context, params ReactionsDele
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ReactionID))
+			return e.EncodeValue(conv.IntToString(params.ReactionID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -31049,7 +31049,7 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -31065,7 +31065,7 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -31081,7 +31081,7 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentID))
+			return e.EncodeValue(conv.IntToString(params.CommentID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -31099,7 +31099,7 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 		})
 		if encErr := func() error {
 			if val, ok := params.Content.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -31116,7 +31116,7 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -31133,7 +31133,7 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -31189,7 +31189,7 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -31205,7 +31205,7 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -31221,7 +31221,7 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.IssueNumber))
+			return e.EncodeValue(conv.IntToString(params.IssueNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -31239,7 +31239,7 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 		})
 		if encErr := func() error {
 			if val, ok := params.Content.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -31256,7 +31256,7 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -31273,7 +31273,7 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -31329,7 +31329,7 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -31345,7 +31345,7 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -31361,7 +31361,7 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentID))
+			return e.EncodeValue(conv.IntToString(params.CommentID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -31379,7 +31379,7 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 		})
 		if encErr := func() error {
 			if val, ok := params.Content.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -31396,7 +31396,7 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -31413,7 +31413,7 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -31469,7 +31469,7 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -31485,7 +31485,7 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -31501,7 +31501,7 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentID))
+			return e.EncodeValue(conv.IntToString(params.CommentID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -31519,7 +31519,7 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 		})
 		if encErr := func() error {
 			if val, ok := params.Content.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -31536,7 +31536,7 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -31553,7 +31553,7 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -31609,7 +31609,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -31625,7 +31625,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -31641,7 +31641,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -31657,7 +31657,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentNumber))
+			return e.EncodeValue(conv.IntToString(params.CommentNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -31675,7 +31675,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 		})
 		if encErr := func() error {
 			if val, ok := params.Content.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -31692,7 +31692,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -31709,7 +31709,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -31765,7 +31765,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -31781,7 +31781,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -31797,7 +31797,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentNumber))
+			return e.EncodeValue(conv.IntToString(params.CommentNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -31815,7 +31815,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.Content.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -31832,7 +31832,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -31849,7 +31849,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -31905,7 +31905,7 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -31921,7 +31921,7 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -31937,7 +31937,7 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -31955,7 +31955,7 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 		})
 		if encErr := func() error {
 			if val, ok := params.Content.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -31972,7 +31972,7 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -31989,7 +31989,7 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -32045,7 +32045,7 @@ func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32061,7 +32061,7 @@ func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32079,7 +32079,7 @@ func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, param
 		})
 		if encErr := func() error {
 			if val, ok := params.Content.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -32096,7 +32096,7 @@ func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, param
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -32113,7 +32113,7 @@ func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, param
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -32169,7 +32169,7 @@ func (c *Client) ReposAcceptInvitation(ctx context.Context, params ReposAcceptIn
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.InvitationID))
+			return e.EncodeValue(conv.IntToString(params.InvitationID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32222,7 +32222,7 @@ func (c *Client) ReposCheckCollaborator(ctx context.Context, params ReposCheckCo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32238,7 +32238,7 @@ func (c *Client) ReposCheckCollaborator(ctx context.Context, params ReposCheckCo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32254,7 +32254,7 @@ func (c *Client) ReposCheckCollaborator(ctx context.Context, params ReposCheckCo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32307,7 +32307,7 @@ func (c *Client) ReposCheckVulnerabilityAlerts(ctx context.Context, params Repos
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32323,7 +32323,7 @@ func (c *Client) ReposCheckVulnerabilityAlerts(ctx context.Context, params Repos
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32377,7 +32377,7 @@ func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCom
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32393,7 +32393,7 @@ func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCom
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32409,7 +32409,7 @@ func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCom
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Basehead))
+			return e.EncodeValue(conv.StringToString(params.Basehead))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32426,7 +32426,7 @@ func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCom
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -32443,7 +32443,7 @@ func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCom
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -32499,7 +32499,7 @@ func (c *Client) ReposCreateCommitSignatureProtection(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32515,7 +32515,7 @@ func (c *Client) ReposCreateCommitSignatureProtection(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32531,7 +32531,7 @@ func (c *Client) ReposCreateCommitSignatureProtection(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Branch))
+			return e.EncodeValue(conv.StringToString(params.Branch))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32600,7 +32600,7 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreat
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32616,7 +32616,7 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreat
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32632,7 +32632,7 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreat
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Sha))
+			return e.EncodeValue(conv.StringToString(params.Sha))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32693,7 +32693,7 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCrea
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TemplateOwner))
+			return e.EncodeValue(conv.StringToString(params.TemplateOwner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32709,7 +32709,7 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCrea
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TemplateRepo))
+			return e.EncodeValue(conv.StringToString(params.TemplateRepo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32765,7 +32765,7 @@ func (c *Client) ReposDeclineInvitation(ctx context.Context, params ReposDecline
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.InvitationID))
+			return e.EncodeValue(conv.IntToString(params.InvitationID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32818,7 +32818,7 @@ func (c *Client) ReposDelete(ctx context.Context, params ReposDeleteParams) (res
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32834,7 +32834,7 @@ func (c *Client) ReposDelete(ctx context.Context, params ReposDeleteParams) (res
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32887,7 +32887,7 @@ func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params Repos
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32903,7 +32903,7 @@ func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params Repos
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32919,7 +32919,7 @@ func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params Repos
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Branch))
+			return e.EncodeValue(conv.StringToString(params.Branch))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32973,7 +32973,7 @@ func (c *Client) ReposDeleteAdminBranchProtection(ctx context.Context, params Re
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -32989,7 +32989,7 @@ func (c *Client) ReposDeleteAdminBranchProtection(ctx context.Context, params Re
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33005,7 +33005,7 @@ func (c *Client) ReposDeleteAdminBranchProtection(ctx context.Context, params Re
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Branch))
+			return e.EncodeValue(conv.StringToString(params.Branch))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33059,7 +33059,7 @@ func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDelet
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33075,7 +33075,7 @@ func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDelet
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33091,7 +33091,7 @@ func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDelet
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.EnvironmentName))
+			return e.EncodeValue(conv.StringToString(params.EnvironmentName))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33144,7 +33144,7 @@ func (c *Client) ReposDeleteAutolink(ctx context.Context, params ReposDeleteAuto
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33160,7 +33160,7 @@ func (c *Client) ReposDeleteAutolink(ctx context.Context, params ReposDeleteAuto
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33176,7 +33176,7 @@ func (c *Client) ReposDeleteAutolink(ctx context.Context, params ReposDeleteAuto
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.AutolinkID))
+			return e.EncodeValue(conv.IntToString(params.AutolinkID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33229,7 +33229,7 @@ func (c *Client) ReposDeleteBranchProtection(ctx context.Context, params ReposDe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33245,7 +33245,7 @@ func (c *Client) ReposDeleteBranchProtection(ctx context.Context, params ReposDe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33261,7 +33261,7 @@ func (c *Client) ReposDeleteBranchProtection(ctx context.Context, params ReposDe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Branch))
+			return e.EncodeValue(conv.StringToString(params.Branch))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33315,7 +33315,7 @@ func (c *Client) ReposDeleteCommitComment(ctx context.Context, params ReposDelet
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33331,7 +33331,7 @@ func (c *Client) ReposDeleteCommitComment(ctx context.Context, params ReposDelet
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33347,7 +33347,7 @@ func (c *Client) ReposDeleteCommitComment(ctx context.Context, params ReposDelet
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentID))
+			return e.EncodeValue(conv.IntToString(params.CommentID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33400,7 +33400,7 @@ func (c *Client) ReposDeleteCommitSignatureProtection(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33416,7 +33416,7 @@ func (c *Client) ReposDeleteCommitSignatureProtection(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33432,7 +33432,7 @@ func (c *Client) ReposDeleteCommitSignatureProtection(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Branch))
+			return e.EncodeValue(conv.StringToString(params.Branch))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33486,7 +33486,7 @@ func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDep
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33502,7 +33502,7 @@ func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDep
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33518,7 +33518,7 @@ func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDep
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.KeyID))
+			return e.EncodeValue(conv.IntToString(params.KeyID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33571,7 +33571,7 @@ func (c *Client) ReposDeleteDeployment(ctx context.Context, params ReposDeleteDe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33587,7 +33587,7 @@ func (c *Client) ReposDeleteDeployment(ctx context.Context, params ReposDeleteDe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33603,7 +33603,7 @@ func (c *Client) ReposDeleteDeployment(ctx context.Context, params ReposDeleteDe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DeploymentID))
+			return e.EncodeValue(conv.IntToString(params.DeploymentID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33656,7 +33656,7 @@ func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteIn
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33672,7 +33672,7 @@ func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteIn
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33688,7 +33688,7 @@ func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteIn
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.InvitationID))
+			return e.EncodeValue(conv.IntToString(params.InvitationID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33741,7 +33741,7 @@ func (c *Client) ReposDeletePullRequestReviewProtection(ctx context.Context, par
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33757,7 +33757,7 @@ func (c *Client) ReposDeletePullRequestReviewProtection(ctx context.Context, par
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33773,7 +33773,7 @@ func (c *Client) ReposDeletePullRequestReviewProtection(ctx context.Context, par
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Branch))
+			return e.EncodeValue(conv.StringToString(params.Branch))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33827,7 +33827,7 @@ func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteRelea
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33843,7 +33843,7 @@ func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteRelea
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33859,7 +33859,7 @@ func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteRelea
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ReleaseID))
+			return e.EncodeValue(conv.IntToString(params.ReleaseID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33912,7 +33912,7 @@ func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDelete
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33928,7 +33928,7 @@ func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDelete
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33944,7 +33944,7 @@ func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDelete
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.AssetID))
+			return e.EncodeValue(conv.IntToString(params.AssetID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -33997,7 +33997,7 @@ func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebho
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34013,7 +34013,7 @@ func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebho
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34029,7 +34029,7 @@ func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebho
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.HookID))
+			return e.EncodeValue(conv.IntToString(params.HookID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34082,7 +34082,7 @@ func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34098,7 +34098,7 @@ func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34152,7 +34152,7 @@ func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisable
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34168,7 +34168,7 @@ func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisable
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34222,7 +34222,7 @@ func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params Rep
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34238,7 +34238,7 @@ func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params Rep
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34292,7 +34292,7 @@ func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34308,7 +34308,7 @@ func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34324,7 +34324,7 @@ func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Ref))
+			return e.EncodeValue(conv.StringToString(params.Ref))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34377,7 +34377,7 @@ func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34393,7 +34393,7 @@ func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34409,7 +34409,7 @@ func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Ref))
+			return e.EncodeValue(conv.StringToString(params.Ref))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34462,7 +34462,7 @@ func (c *Client) ReposEnableAutomatedSecurityFixes(ctx context.Context, params R
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34478,7 +34478,7 @@ func (c *Client) ReposEnableAutomatedSecurityFixes(ctx context.Context, params R
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34532,7 +34532,7 @@ func (c *Client) ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLf
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34548,7 +34548,7 @@ func (c *Client) ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLf
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34602,7 +34602,7 @@ func (c *Client) ReposEnableVulnerabilityAlerts(ctx context.Context, params Repo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34618,7 +34618,7 @@ func (c *Client) ReposEnableVulnerabilityAlerts(ctx context.Context, params Repo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34672,7 +34672,7 @@ func (c *Client) ReposGet(ctx context.Context, params ReposGetParams) (res Repos
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34688,7 +34688,7 @@ func (c *Client) ReposGet(ctx context.Context, params ReposGetParams) (res Repos
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34741,7 +34741,7 @@ func (c *Client) ReposGetAccessRestrictions(ctx context.Context, params ReposGet
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34757,7 +34757,7 @@ func (c *Client) ReposGetAccessRestrictions(ctx context.Context, params ReposGet
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34773,7 +34773,7 @@ func (c *Client) ReposGetAccessRestrictions(ctx context.Context, params ReposGet
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Branch))
+			return e.EncodeValue(conv.StringToString(params.Branch))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34827,7 +34827,7 @@ func (c *Client) ReposGetAdminBranchProtection(ctx context.Context, params Repos
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34843,7 +34843,7 @@ func (c *Client) ReposGetAdminBranchProtection(ctx context.Context, params Repos
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34859,7 +34859,7 @@ func (c *Client) ReposGetAdminBranchProtection(ctx context.Context, params Repos
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Branch))
+			return e.EncodeValue(conv.StringToString(params.Branch))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34913,7 +34913,7 @@ func (c *Client) ReposGetAllStatusCheckContexts(ctx context.Context, params Repo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34929,7 +34929,7 @@ func (c *Client) ReposGetAllStatusCheckContexts(ctx context.Context, params Repo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34945,7 +34945,7 @@ func (c *Client) ReposGetAllStatusCheckContexts(ctx context.Context, params Repo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Branch))
+			return e.EncodeValue(conv.StringToString(params.Branch))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -34999,7 +34999,7 @@ func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopics
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35015,7 +35015,7 @@ func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopics
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35033,7 +35033,7 @@ func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopics
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -35050,7 +35050,7 @@ func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopics
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -35106,7 +35106,7 @@ func (c *Client) ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35122,7 +35122,7 @@ func (c *Client) ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35138,7 +35138,7 @@ func (c *Client) ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Branch))
+			return e.EncodeValue(conv.StringToString(params.Branch))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35192,7 +35192,7 @@ func (c *Client) ReposGetAutolink(ctx context.Context, params ReposGetAutolinkPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35208,7 +35208,7 @@ func (c *Client) ReposGetAutolink(ctx context.Context, params ReposGetAutolinkPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35224,7 +35224,7 @@ func (c *Client) ReposGetAutolink(ctx context.Context, params ReposGetAutolinkPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.AutolinkID))
+			return e.EncodeValue(conv.IntToString(params.AutolinkID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35277,7 +35277,7 @@ func (c *Client) ReposGetBranch(ctx context.Context, params ReposGetBranchParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35293,7 +35293,7 @@ func (c *Client) ReposGetBranch(ctx context.Context, params ReposGetBranchParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35309,7 +35309,7 @@ func (c *Client) ReposGetBranch(ctx context.Context, params ReposGetBranchParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Branch))
+			return e.EncodeValue(conv.StringToString(params.Branch))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35362,7 +35362,7 @@ func (c *Client) ReposGetBranchProtection(ctx context.Context, params ReposGetBr
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35378,7 +35378,7 @@ func (c *Client) ReposGetBranchProtection(ctx context.Context, params ReposGetBr
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35394,7 +35394,7 @@ func (c *Client) ReposGetBranchProtection(ctx context.Context, params ReposGetBr
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Branch))
+			return e.EncodeValue(conv.StringToString(params.Branch))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35448,7 +35448,7 @@ func (c *Client) ReposGetClones(ctx context.Context, params ReposGetClonesParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35464,7 +35464,7 @@ func (c *Client) ReposGetClones(ctx context.Context, params ReposGetClonesParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35482,7 +35482,7 @@ func (c *Client) ReposGetClones(ctx context.Context, params ReposGetClonesParams
 		})
 		if encErr := func() error {
 			if val, ok := params.Per.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -35538,7 +35538,7 @@ func (c *Client) ReposGetCodeFrequencyStats(ctx context.Context, params ReposGet
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35554,7 +35554,7 @@ func (c *Client) ReposGetCodeFrequencyStats(ctx context.Context, params ReposGet
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35608,7 +35608,7 @@ func (c *Client) ReposGetCollaboratorPermissionLevel(ctx context.Context, params
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35624,7 +35624,7 @@ func (c *Client) ReposGetCollaboratorPermissionLevel(ctx context.Context, params
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35640,7 +35640,7 @@ func (c *Client) ReposGetCollaboratorPermissionLevel(ctx context.Context, params
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35694,7 +35694,7 @@ func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposG
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35710,7 +35710,7 @@ func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposG
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35726,7 +35726,7 @@ func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposG
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Ref))
+			return e.EncodeValue(conv.StringToString(params.Ref))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35744,7 +35744,7 @@ func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposG
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -35761,7 +35761,7 @@ func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposG
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -35817,7 +35817,7 @@ func (c *Client) ReposGetCommitActivityStats(ctx context.Context, params ReposGe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35833,7 +35833,7 @@ func (c *Client) ReposGetCommitActivityStats(ctx context.Context, params ReposGe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35887,7 +35887,7 @@ func (c *Client) ReposGetCommitComment(ctx context.Context, params ReposGetCommi
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35903,7 +35903,7 @@ func (c *Client) ReposGetCommitComment(ctx context.Context, params ReposGetCommi
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35919,7 +35919,7 @@ func (c *Client) ReposGetCommitComment(ctx context.Context, params ReposGetCommi
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentID))
+			return e.EncodeValue(conv.IntToString(params.CommentID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35972,7 +35972,7 @@ func (c *Client) ReposGetCommitSignatureProtection(ctx context.Context, params R
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -35988,7 +35988,7 @@ func (c *Client) ReposGetCommitSignatureProtection(ctx context.Context, params R
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36004,7 +36004,7 @@ func (c *Client) ReposGetCommitSignatureProtection(ctx context.Context, params R
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Branch))
+			return e.EncodeValue(conv.StringToString(params.Branch))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36058,7 +36058,7 @@ func (c *Client) ReposGetCommunityProfileMetrics(ctx context.Context, params Rep
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36074,7 +36074,7 @@ func (c *Client) ReposGetCommunityProfileMetrics(ctx context.Context, params Rep
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36128,7 +36128,7 @@ func (c *Client) ReposGetContributorsStats(ctx context.Context, params ReposGetC
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36144,7 +36144,7 @@ func (c *Client) ReposGetContributorsStats(ctx context.Context, params ReposGetC
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36198,7 +36198,7 @@ func (c *Client) ReposGetDeployKey(ctx context.Context, params ReposGetDeployKey
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36214,7 +36214,7 @@ func (c *Client) ReposGetDeployKey(ctx context.Context, params ReposGetDeployKey
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36230,7 +36230,7 @@ func (c *Client) ReposGetDeployKey(ctx context.Context, params ReposGetDeployKey
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.KeyID))
+			return e.EncodeValue(conv.IntToString(params.KeyID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36283,7 +36283,7 @@ func (c *Client) ReposGetDeploymentStatus(ctx context.Context, params ReposGetDe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36299,7 +36299,7 @@ func (c *Client) ReposGetDeploymentStatus(ctx context.Context, params ReposGetDe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36315,7 +36315,7 @@ func (c *Client) ReposGetDeploymentStatus(ctx context.Context, params ReposGetDe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DeploymentID))
+			return e.EncodeValue(conv.IntToString(params.DeploymentID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36331,7 +36331,7 @@ func (c *Client) ReposGetDeploymentStatus(ctx context.Context, params ReposGetDe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.StatusID))
+			return e.EncodeValue(conv.IntToString(params.StatusID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36384,7 +36384,7 @@ func (c *Client) ReposGetLatestPagesBuild(ctx context.Context, params ReposGetLa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36400,7 +36400,7 @@ func (c *Client) ReposGetLatestPagesBuild(ctx context.Context, params ReposGetLa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36454,7 +36454,7 @@ func (c *Client) ReposGetLatestRelease(ctx context.Context, params ReposGetLates
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36470,7 +36470,7 @@ func (c *Client) ReposGetLatestRelease(ctx context.Context, params ReposGetLates
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36524,7 +36524,7 @@ func (c *Client) ReposGetPages(ctx context.Context, params ReposGetPagesParams) 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36540,7 +36540,7 @@ func (c *Client) ReposGetPages(ctx context.Context, params ReposGetPagesParams) 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36594,7 +36594,7 @@ func (c *Client) ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBui
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36610,7 +36610,7 @@ func (c *Client) ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBui
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36626,7 +36626,7 @@ func (c *Client) ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBui
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.BuildID))
+			return e.EncodeValue(conv.IntToString(params.BuildID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36679,7 +36679,7 @@ func (c *Client) ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36695,7 +36695,7 @@ func (c *Client) ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36749,7 +36749,7 @@ func (c *Client) ReposGetParticipationStats(ctx context.Context, params ReposGet
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36765,7 +36765,7 @@ func (c *Client) ReposGetParticipationStats(ctx context.Context, params ReposGet
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36819,7 +36819,7 @@ func (c *Client) ReposGetPullRequestReviewProtection(ctx context.Context, params
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36835,7 +36835,7 @@ func (c *Client) ReposGetPullRequestReviewProtection(ctx context.Context, params
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36851,7 +36851,7 @@ func (c *Client) ReposGetPullRequestReviewProtection(ctx context.Context, params
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Branch))
+			return e.EncodeValue(conv.StringToString(params.Branch))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36905,7 +36905,7 @@ func (c *Client) ReposGetPunchCardStats(ctx context.Context, params ReposGetPunc
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36921,7 +36921,7 @@ func (c *Client) ReposGetPunchCardStats(ctx context.Context, params ReposGetPunc
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36975,7 +36975,7 @@ func (c *Client) ReposGetRelease(ctx context.Context, params ReposGetReleasePara
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -36991,7 +36991,7 @@ func (c *Client) ReposGetRelease(ctx context.Context, params ReposGetReleasePara
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37007,7 +37007,7 @@ func (c *Client) ReposGetRelease(ctx context.Context, params ReposGetReleasePara
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ReleaseID))
+			return e.EncodeValue(conv.IntToString(params.ReleaseID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37060,7 +37060,7 @@ func (c *Client) ReposGetReleaseAsset(ctx context.Context, params ReposGetReleas
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37076,7 +37076,7 @@ func (c *Client) ReposGetReleaseAsset(ctx context.Context, params ReposGetReleas
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37092,7 +37092,7 @@ func (c *Client) ReposGetReleaseAsset(ctx context.Context, params ReposGetReleas
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.AssetID))
+			return e.EncodeValue(conv.IntToString(params.AssetID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37145,7 +37145,7 @@ func (c *Client) ReposGetReleaseByTag(ctx context.Context, params ReposGetReleas
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37161,7 +37161,7 @@ func (c *Client) ReposGetReleaseByTag(ctx context.Context, params ReposGetReleas
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37177,7 +37177,7 @@ func (c *Client) ReposGetReleaseByTag(ctx context.Context, params ReposGetReleas
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Tag))
+			return e.EncodeValue(conv.StringToString(params.Tag))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37230,7 +37230,7 @@ func (c *Client) ReposGetStatusChecksProtection(ctx context.Context, params Repo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37246,7 +37246,7 @@ func (c *Client) ReposGetStatusChecksProtection(ctx context.Context, params Repo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37262,7 +37262,7 @@ func (c *Client) ReposGetStatusChecksProtection(ctx context.Context, params Repo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Branch))
+			return e.EncodeValue(conv.StringToString(params.Branch))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37316,7 +37316,7 @@ func (c *Client) ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, p
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37332,7 +37332,7 @@ func (c *Client) ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, p
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37348,7 +37348,7 @@ func (c *Client) ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, p
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Branch))
+			return e.EncodeValue(conv.StringToString(params.Branch))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37402,7 +37402,7 @@ func (c *Client) ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37418,7 +37418,7 @@ func (c *Client) ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37472,7 +37472,7 @@ func (c *Client) ReposGetTopReferrers(ctx context.Context, params ReposGetTopRef
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37488,7 +37488,7 @@ func (c *Client) ReposGetTopReferrers(ctx context.Context, params ReposGetTopRef
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37542,7 +37542,7 @@ func (c *Client) ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, p
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37558,7 +37558,7 @@ func (c *Client) ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, p
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37574,7 +37574,7 @@ func (c *Client) ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, p
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Branch))
+			return e.EncodeValue(conv.StringToString(params.Branch))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37628,7 +37628,7 @@ func (c *Client) ReposGetViews(ctx context.Context, params ReposGetViewsParams) 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37644,7 +37644,7 @@ func (c *Client) ReposGetViews(ctx context.Context, params ReposGetViewsParams) 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37662,7 +37662,7 @@ func (c *Client) ReposGetViews(ctx context.Context, params ReposGetViewsParams) 
 		})
 		if encErr := func() error {
 			if val, ok := params.Per.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -37718,7 +37718,7 @@ func (c *Client) ReposGetWebhook(ctx context.Context, params ReposGetWebhookPara
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37734,7 +37734,7 @@ func (c *Client) ReposGetWebhook(ctx context.Context, params ReposGetWebhookPara
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37750,7 +37750,7 @@ func (c *Client) ReposGetWebhook(ctx context.Context, params ReposGetWebhookPara
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.HookID))
+			return e.EncodeValue(conv.IntToString(params.HookID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37803,7 +37803,7 @@ func (c *Client) ReposGetWebhookConfigForRepo(ctx context.Context, params ReposG
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37819,7 +37819,7 @@ func (c *Client) ReposGetWebhookConfigForRepo(ctx context.Context, params ReposG
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37835,7 +37835,7 @@ func (c *Client) ReposGetWebhookConfigForRepo(ctx context.Context, params ReposG
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.HookID))
+			return e.EncodeValue(conv.IntToString(params.HookID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37889,7 +37889,7 @@ func (c *Client) ReposListAutolinks(ctx context.Context, params ReposListAutolin
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37905,7 +37905,7 @@ func (c *Client) ReposListAutolinks(ctx context.Context, params ReposListAutolin
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37923,7 +37923,7 @@ func (c *Client) ReposListAutolinks(ctx context.Context, params ReposListAutolin
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -37979,7 +37979,7 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -37995,7 +37995,7 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -38013,7 +38013,7 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 		})
 		if encErr := func() error {
 			if val, ok := params.Protected.Get(); ok {
-				return e.Value(conv.BoolToString(val))
+				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -38030,7 +38030,7 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -38047,7 +38047,7 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -38103,7 +38103,7 @@ func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCol
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -38119,7 +38119,7 @@ func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCol
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -38137,7 +38137,7 @@ func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCol
 		})
 		if encErr := func() error {
 			if val, ok := params.Affiliation.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -38154,7 +38154,7 @@ func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCol
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -38171,7 +38171,7 @@ func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCol
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -38227,7 +38227,7 @@ func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposLis
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -38243,7 +38243,7 @@ func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposLis
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -38259,7 +38259,7 @@ func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposLis
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.CommitSha))
+			return e.EncodeValue(conv.StringToString(params.CommitSha))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -38277,7 +38277,7 @@ func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposLis
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -38294,7 +38294,7 @@ func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposLis
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -38350,7 +38350,7 @@ func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params Repo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -38366,7 +38366,7 @@ func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params Repo
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -38384,7 +38384,7 @@ func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params Repo
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -38401,7 +38401,7 @@ func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params Repo
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -38457,7 +38457,7 @@ func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params Repos
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -38473,7 +38473,7 @@ func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params Repos
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -38489,7 +38489,7 @@ func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params Repos
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Ref))
+			return e.EncodeValue(conv.StringToString(params.Ref))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -38507,7 +38507,7 @@ func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params Repos
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -38524,7 +38524,7 @@ func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params Repos
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -38580,7 +38580,7 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -38596,7 +38596,7 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -38614,7 +38614,7 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 		})
 		if encErr := func() error {
 			if val, ok := params.Sha.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -38631,7 +38631,7 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 		})
 		if encErr := func() error {
 			if val, ok := params.Path.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -38648,7 +38648,7 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 		})
 		if encErr := func() error {
 			if val, ok := params.Author.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -38665,7 +38665,7 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 		})
 		if encErr := func() error {
 			if val, ok := params.Since.Get(); ok {
-				return e.Value(conv.TimeToString(val))
+				return e.EncodeValue(conv.TimeToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -38682,7 +38682,7 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 		})
 		if encErr := func() error {
 			if val, ok := params.Until.Get(); ok {
-				return e.Value(conv.TimeToString(val))
+				return e.EncodeValue(conv.TimeToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -38699,7 +38699,7 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -38716,7 +38716,7 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -38772,7 +38772,7 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -38788,7 +38788,7 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -38806,7 +38806,7 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 		})
 		if encErr := func() error {
 			if val, ok := params.Anon.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -38823,7 +38823,7 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -38840,7 +38840,7 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -38896,7 +38896,7 @@ func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeploy
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -38912,7 +38912,7 @@ func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeploy
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -38930,7 +38930,7 @@ func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeploy
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -38947,7 +38947,7 @@ func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeploy
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -39003,7 +39003,7 @@ func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposLi
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -39019,7 +39019,7 @@ func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposLi
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -39035,7 +39035,7 @@ func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposLi
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DeploymentID))
+			return e.EncodeValue(conv.IntToString(params.DeploymentID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -39053,7 +39053,7 @@ func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposLi
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -39070,7 +39070,7 @@ func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposLi
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -39126,7 +39126,7 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -39144,7 +39144,7 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 		})
 		if encErr := func() error {
 			if val, ok := params.Type.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -39161,7 +39161,7 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 		})
 		if encErr := func() error {
 			if val, ok := params.Sort.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -39178,7 +39178,7 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 		})
 		if encErr := func() error {
 			if val, ok := params.Direction.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -39195,7 +39195,7 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -39212,7 +39212,7 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -39268,7 +39268,7 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -39286,7 +39286,7 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 		})
 		if encErr := func() error {
 			if val, ok := params.Type.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -39303,7 +39303,7 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 		})
 		if encErr := func() error {
 			if val, ok := params.Sort.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -39320,7 +39320,7 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 		})
 		if encErr := func() error {
 			if val, ok := params.Direction.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -39337,7 +39337,7 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -39354,7 +39354,7 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -39410,7 +39410,7 @@ func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -39426,7 +39426,7 @@ func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -39444,7 +39444,7 @@ func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams
 		})
 		if encErr := func() error {
 			if val, ok := params.Sort.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -39461,7 +39461,7 @@ func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -39478,7 +39478,7 @@ func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -39534,7 +39534,7 @@ func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvit
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -39550,7 +39550,7 @@ func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvit
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -39568,7 +39568,7 @@ func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvit
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -39585,7 +39585,7 @@ func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvit
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -39643,7 +39643,7 @@ func (c *Client) ReposListInvitationsForAuthenticatedUser(ctx context.Context, p
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -39660,7 +39660,7 @@ func (c *Client) ReposListInvitationsForAuthenticatedUser(ctx context.Context, p
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -39716,7 +39716,7 @@ func (c *Client) ReposListLanguages(ctx context.Context, params ReposListLanguag
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -39732,7 +39732,7 @@ func (c *Client) ReposListLanguages(ctx context.Context, params ReposListLanguag
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -39786,7 +39786,7 @@ func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPages
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -39802,7 +39802,7 @@ func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPages
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -39820,7 +39820,7 @@ func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPages
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -39837,7 +39837,7 @@ func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPages
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -39893,7 +39893,7 @@ func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -39909,7 +39909,7 @@ func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -39925,7 +39925,7 @@ func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.CommitSha))
+			return e.EncodeValue(conv.StringToString(params.CommitSha))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -39943,7 +39943,7 @@ func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -39960,7 +39960,7 @@ func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, 
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -40016,7 +40016,7 @@ func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListRel
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -40032,7 +40032,7 @@ func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListRel
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -40048,7 +40048,7 @@ func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListRel
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ReleaseID))
+			return e.EncodeValue(conv.IntToString(params.ReleaseID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -40066,7 +40066,7 @@ func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListRel
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -40083,7 +40083,7 @@ func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListRel
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -40139,7 +40139,7 @@ func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleases
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -40155,7 +40155,7 @@ func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleases
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -40173,7 +40173,7 @@ func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleases
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -40190,7 +40190,7 @@ func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleases
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -40246,7 +40246,7 @@ func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -40262,7 +40262,7 @@ func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -40280,7 +40280,7 @@ func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) 
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -40297,7 +40297,7 @@ func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) 
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -40353,7 +40353,7 @@ func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -40369,7 +40369,7 @@ func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -40387,7 +40387,7 @@ func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -40404,7 +40404,7 @@ func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -40460,7 +40460,7 @@ func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooks
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -40476,7 +40476,7 @@ func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooks
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -40494,7 +40494,7 @@ func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooks
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -40511,7 +40511,7 @@ func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooks
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -40573,7 +40573,7 @@ func (c *Client) ReposMergeUpstream(ctx context.Context, request ReposMergeUpstr
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -40589,7 +40589,7 @@ func (c *Client) ReposMergeUpstream(ctx context.Context, request ReposMergeUpstr
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -40645,7 +40645,7 @@ func (c *Client) ReposPingWebhook(ctx context.Context, params ReposPingWebhookPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -40661,7 +40661,7 @@ func (c *Client) ReposPingWebhook(ctx context.Context, params ReposPingWebhookPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -40677,7 +40677,7 @@ func (c *Client) ReposPingWebhook(ctx context.Context, params ReposPingWebhookPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.HookID))
+			return e.EncodeValue(conv.IntToString(params.HookID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -40731,7 +40731,7 @@ func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemove
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -40747,7 +40747,7 @@ func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemove
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -40763,7 +40763,7 @@ func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemove
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -40816,7 +40816,7 @@ func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params Re
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -40832,7 +40832,7 @@ func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params Re
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -40848,7 +40848,7 @@ func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params Re
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Branch))
+			return e.EncodeValue(conv.StringToString(params.Branch))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -40917,7 +40917,7 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplace
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -40933,7 +40933,7 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplace
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -40989,7 +40989,7 @@ func (c *Client) ReposRequestPagesBuild(ctx context.Context, params ReposRequest
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41005,7 +41005,7 @@ func (c *Client) ReposRequestPagesBuild(ctx context.Context, params ReposRequest
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41059,7 +41059,7 @@ func (c *Client) ReposSetAdminBranchProtection(ctx context.Context, params Repos
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41075,7 +41075,7 @@ func (c *Client) ReposSetAdminBranchProtection(ctx context.Context, params Repos
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41091,7 +41091,7 @@ func (c *Client) ReposSetAdminBranchProtection(ctx context.Context, params Repos
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Branch))
+			return e.EncodeValue(conv.StringToString(params.Branch))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41145,7 +41145,7 @@ func (c *Client) ReposTestPushWebhook(ctx context.Context, params ReposTestPushW
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41161,7 +41161,7 @@ func (c *Client) ReposTestPushWebhook(ctx context.Context, params ReposTestPushW
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41177,7 +41177,7 @@ func (c *Client) ReposTestPushWebhook(ctx context.Context, params ReposTestPushW
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.HookID))
+			return e.EncodeValue(conv.IntToString(params.HookID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41237,7 +41237,7 @@ func (c *Client) ReposTransfer(ctx context.Context, request ReposTransferReq, pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41253,7 +41253,7 @@ func (c *Client) ReposTransfer(ctx context.Context, request ReposTransferReq, pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41324,7 +41324,7 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposU
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41340,7 +41340,7 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposU
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41356,7 +41356,7 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposU
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Branch))
+			return e.EncodeValue(conv.StringToString(params.Branch))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41418,7 +41418,7 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpda
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41434,7 +41434,7 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpda
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41450,7 +41450,7 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpda
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentID))
+			return e.EncodeValue(conv.IntToString(params.CommentID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41520,7 +41520,7 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request ReposUpdateI
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41536,7 +41536,7 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request ReposUpdateI
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41552,7 +41552,7 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request ReposUpdateI
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.InvitationID))
+			return e.EncodeValue(conv.IntToString(params.InvitationID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41613,7 +41613,7 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request ReposUpdateRele
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41629,7 +41629,7 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request ReposUpdateRele
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41645,7 +41645,7 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request ReposUpdateRele
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ReleaseID))
+			return e.EncodeValue(conv.IntToString(params.ReleaseID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41706,7 +41706,7 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request ReposUpdat
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41722,7 +41722,7 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request ReposUpdat
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41738,7 +41738,7 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request ReposUpdat
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.AssetID))
+			return e.EncodeValue(conv.IntToString(params.AssetID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41799,7 +41799,7 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Re
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41815,7 +41815,7 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Re
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41831,7 +41831,7 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Re
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.HookID))
+			return e.EncodeValue(conv.IntToString(params.HookID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41893,7 +41893,7 @@ func (c *Client) ReposUploadReleaseAsset(ctx context.Context, request string, pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41909,7 +41909,7 @@ func (c *Client) ReposUploadReleaseAsset(ctx context.Context, request string, pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41925,7 +41925,7 @@ func (c *Client) ReposUploadReleaseAsset(ctx context.Context, request string, pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ReleaseID))
+			return e.EncodeValue(conv.IntToString(params.ReleaseID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -41942,7 +41942,7 @@ func (c *Client) ReposUploadReleaseAsset(ctx context.Context, request string, pa
 			Explode: true,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Name))
+			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode query: %w", encErr)
 			return
@@ -41957,7 +41957,7 @@ func (c *Client) ReposUploadReleaseAsset(ctx context.Context, request string, pa
 		})
 		if encErr := func() error {
 			if val, ok := params.Label.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -42015,7 +42015,7 @@ func (c *Client) ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUse
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -42031,7 +42031,7 @@ func (c *Client) ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUse
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.ScimUserID))
+			return e.EncodeValue(conv.StringToString(params.ScimUserID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -42085,7 +42085,7 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 			Explode: true,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Q))
+			return e.EncodeValue(conv.StringToString(params.Q))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode query: %w", encErr)
 			return
@@ -42100,7 +42100,7 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 		})
 		if encErr := func() error {
 			if val, ok := params.Sort.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -42117,7 +42117,7 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 		})
 		if encErr := func() error {
 			if val, ok := params.Order.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -42134,7 +42134,7 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -42151,7 +42151,7 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -42208,7 +42208,7 @@ func (c *Client) SearchTopics(ctx context.Context, params SearchTopicsParams) (r
 			Explode: true,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Q))
+			return e.EncodeValue(conv.StringToString(params.Q))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode query: %w", encErr)
 			return
@@ -42223,7 +42223,7 @@ func (c *Client) SearchTopics(ctx context.Context, params SearchTopicsParams) (r
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -42240,7 +42240,7 @@ func (c *Client) SearchTopics(ctx context.Context, params SearchTopicsParams) (r
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -42296,7 +42296,7 @@ func (c *Client) SecretScanningGetAlert(ctx context.Context, params SecretScanni
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -42312,7 +42312,7 @@ func (c *Client) SecretScanningGetAlert(ctx context.Context, params SecretScanni
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -42329,7 +42329,7 @@ func (c *Client) SecretScanningGetAlert(ctx context.Context, params SecretScanni
 		})
 		if encErr := func() error {
 			if unwrapped := params.AlertNumber.unwrap(); true {
-				return e.Value(conv.IntToString(unwrapped))
+				return e.EncodeValue(conv.IntToString(unwrapped))
 			}
 			return nil
 		}(); encErr != nil {
@@ -42384,7 +42384,7 @@ func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params Secr
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -42402,7 +42402,7 @@ func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params Secr
 		})
 		if encErr := func() error {
 			if val, ok := params.State.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -42419,7 +42419,7 @@ func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params Secr
 		})
 		if encErr := func() error {
 			if val, ok := params.SecretType.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -42436,7 +42436,7 @@ func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params Secr
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -42453,7 +42453,7 @@ func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params Secr
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -42509,7 +42509,7 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -42525,7 +42525,7 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -42543,7 +42543,7 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 		})
 		if encErr := func() error {
 			if val, ok := params.State.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -42560,7 +42560,7 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 		})
 		if encErr := func() error {
 			if val, ok := params.SecretType.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -42577,7 +42577,7 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -42594,7 +42594,7 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -42665,7 +42665,7 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -42681,7 +42681,7 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -42698,7 +42698,7 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 		})
 		if encErr := func() error {
 			if unwrapped := params.AlertNumber.unwrap(); true {
-				return e.Value(conv.IntToString(unwrapped))
+				return e.EncodeValue(conv.IntToString(unwrapped))
 			}
 			return nil
 		}(); encErr != nil {
@@ -42755,7 +42755,7 @@ func (c *Client) TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMember
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -42771,7 +42771,7 @@ func (c *Client) TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMember
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -42839,7 +42839,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -42855,7 +42855,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -42871,7 +42871,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -42941,7 +42941,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -42957,7 +42957,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43027,7 +43027,7 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43043,7 +43043,7 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43059,7 +43059,7 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ProjectID))
+			return e.EncodeValue(conv.IntToString(params.ProjectID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43129,7 +43129,7 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43145,7 +43145,7 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43161,7 +43161,7 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43177,7 +43177,7 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43232,7 +43232,7 @@ func (c *Client) TeamsCheckPermissionsForProjectInOrg(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43248,7 +43248,7 @@ func (c *Client) TeamsCheckPermissionsForProjectInOrg(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43264,7 +43264,7 @@ func (c *Client) TeamsCheckPermissionsForProjectInOrg(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ProjectID))
+			return e.EncodeValue(conv.IntToString(params.ProjectID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43317,7 +43317,7 @@ func (c *Client) TeamsCheckPermissionsForProjectLegacy(ctx context.Context, para
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43333,7 +43333,7 @@ func (c *Client) TeamsCheckPermissionsForProjectLegacy(ctx context.Context, para
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ProjectID))
+			return e.EncodeValue(conv.IntToString(params.ProjectID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43386,7 +43386,7 @@ func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params T
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43402,7 +43402,7 @@ func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params T
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43418,7 +43418,7 @@ func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params T
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43434,7 +43434,7 @@ func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params T
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43487,7 +43487,7 @@ func (c *Client) TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43503,7 +43503,7 @@ func (c *Client) TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43519,7 +43519,7 @@ func (c *Client) TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43578,7 +43578,7 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43594,7 +43594,7 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43610,7 +43610,7 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43672,7 +43672,7 @@ func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43688,7 +43688,7 @@ func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43750,7 +43750,7 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request TeamsCr
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43766,7 +43766,7 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request TeamsCr
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43828,7 +43828,7 @@ func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request TeamsC
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43890,7 +43890,7 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43906,7 +43906,7 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43962,7 +43962,7 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43978,7 +43978,7 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -43994,7 +43994,7 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44010,7 +44010,7 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentNumber))
+			return e.EncodeValue(conv.IntToString(params.CommentNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44063,7 +44063,7 @@ func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44079,7 +44079,7 @@ func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44095,7 +44095,7 @@ func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentNumber))
+			return e.EncodeValue(conv.IntToString(params.CommentNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44148,7 +44148,7 @@ func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDel
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44164,7 +44164,7 @@ func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDel
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44180,7 +44180,7 @@ func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDel
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44233,7 +44233,7 @@ func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44249,7 +44249,7 @@ func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44302,7 +44302,7 @@ func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44318,7 +44318,7 @@ func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgPa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44371,7 +44371,7 @@ func (c *Client) TeamsGetByName(ctx context.Context, params TeamsGetByNameParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44387,7 +44387,7 @@ func (c *Client) TeamsGetByName(ctx context.Context, params TeamsGetByNameParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44440,7 +44440,7 @@ func (c *Client) TeamsGetDiscussionCommentInOrg(ctx context.Context, params Team
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44456,7 +44456,7 @@ func (c *Client) TeamsGetDiscussionCommentInOrg(ctx context.Context, params Team
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44472,7 +44472,7 @@ func (c *Client) TeamsGetDiscussionCommentInOrg(ctx context.Context, params Team
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44488,7 +44488,7 @@ func (c *Client) TeamsGetDiscussionCommentInOrg(ctx context.Context, params Team
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentNumber))
+			return e.EncodeValue(conv.IntToString(params.CommentNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44541,7 +44541,7 @@ func (c *Client) TeamsGetDiscussionCommentLegacy(ctx context.Context, params Tea
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44557,7 +44557,7 @@ func (c *Client) TeamsGetDiscussionCommentLegacy(ctx context.Context, params Tea
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44573,7 +44573,7 @@ func (c *Client) TeamsGetDiscussionCommentLegacy(ctx context.Context, params Tea
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentNumber))
+			return e.EncodeValue(conv.IntToString(params.CommentNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44626,7 +44626,7 @@ func (c *Client) TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDis
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44642,7 +44642,7 @@ func (c *Client) TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDis
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44658,7 +44658,7 @@ func (c *Client) TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDis
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44711,7 +44711,7 @@ func (c *Client) TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDi
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44727,7 +44727,7 @@ func (c *Client) TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDi
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44780,7 +44780,7 @@ func (c *Client) TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44833,7 +44833,7 @@ func (c *Client) TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMember
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44849,7 +44849,7 @@ func (c *Client) TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMember
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44902,7 +44902,7 @@ func (c *Client) TeamsGetMembershipForUserInOrg(ctx context.Context, params Team
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44918,7 +44918,7 @@ func (c *Client) TeamsGetMembershipForUserInOrg(ctx context.Context, params Team
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44934,7 +44934,7 @@ func (c *Client) TeamsGetMembershipForUserInOrg(ctx context.Context, params Team
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -44987,7 +44987,7 @@ func (c *Client) TeamsGetMembershipForUserLegacy(ctx context.Context, params Tea
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -45003,7 +45003,7 @@ func (c *Client) TeamsGetMembershipForUserLegacy(ctx context.Context, params Tea
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -45056,7 +45056,7 @@ func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (res Tea
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -45074,7 +45074,7 @@ func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (res Tea
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -45091,7 +45091,7 @@ func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (res Tea
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -45147,7 +45147,7 @@ func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildI
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -45163,7 +45163,7 @@ func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildI
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -45181,7 +45181,7 @@ func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildI
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -45198,7 +45198,7 @@ func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildI
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -45254,7 +45254,7 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -45270,7 +45270,7 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -45286,7 +45286,7 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -45304,7 +45304,7 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 		})
 		if encErr := func() error {
 			if val, ok := params.Direction.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -45321,7 +45321,7 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -45338,7 +45338,7 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -45394,7 +45394,7 @@ func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params T
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -45410,7 +45410,7 @@ func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params T
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -45428,7 +45428,7 @@ func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params T
 		})
 		if encErr := func() error {
 			if val, ok := params.Direction.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -45445,7 +45445,7 @@ func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params T
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -45462,7 +45462,7 @@ func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params T
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -45518,7 +45518,7 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -45534,7 +45534,7 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -45552,7 +45552,7 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 		})
 		if encErr := func() error {
 			if val, ok := params.Direction.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -45569,7 +45569,7 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -45586,7 +45586,7 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -45603,7 +45603,7 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 		})
 		if encErr := func() error {
 			if val, ok := params.Pinned.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -45659,7 +45659,7 @@ func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsLis
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -45677,7 +45677,7 @@ func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsLis
 		})
 		if encErr := func() error {
 			if val, ok := params.Direction.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -45694,7 +45694,7 @@ func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsLis
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -45711,7 +45711,7 @@ func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsLis
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -45769,7 +45769,7 @@ func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params Teams
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -45786,7 +45786,7 @@ func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params Teams
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -45842,7 +45842,7 @@ func (c *Client) TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsLi
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -45896,7 +45896,7 @@ func (c *Client) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListI
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -45914,7 +45914,7 @@ func (c *Client) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListI
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -45931,7 +45931,7 @@ func (c *Client) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListI
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.StringToString(val))
+				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -45987,7 +45987,7 @@ func (c *Client) TeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListId
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -46003,7 +46003,7 @@ func (c *Client) TeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListId
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -46057,7 +46057,7 @@ func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMemb
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -46073,7 +46073,7 @@ func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMemb
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -46091,7 +46091,7 @@ func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMemb
 		})
 		if encErr := func() error {
 			if val, ok := params.Role.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -46108,7 +46108,7 @@ func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMemb
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -46125,7 +46125,7 @@ func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMemb
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -46181,7 +46181,7 @@ func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMem
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -46199,7 +46199,7 @@ func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMem
 		})
 		if encErr := func() error {
 			if val, ok := params.Role.Get(); ok {
-				return e.Value(conv.StringToString(string(val)))
+				return e.EncodeValue(conv.StringToString(string(val)))
 			}
 			return nil
 		}(); encErr != nil {
@@ -46216,7 +46216,7 @@ func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMem
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -46233,7 +46233,7 @@ func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMem
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -46289,7 +46289,7 @@ func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params Te
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -46305,7 +46305,7 @@ func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params Te
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -46323,7 +46323,7 @@ func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params Te
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -46340,7 +46340,7 @@ func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params Te
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -46396,7 +46396,7 @@ func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params T
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -46414,7 +46414,7 @@ func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params T
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -46431,7 +46431,7 @@ func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params T
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -46487,7 +46487,7 @@ func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListPro
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -46503,7 +46503,7 @@ func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListPro
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -46521,7 +46521,7 @@ func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListPro
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -46538,7 +46538,7 @@ func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListPro
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -46594,7 +46594,7 @@ func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListPr
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -46612,7 +46612,7 @@ func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListPr
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -46629,7 +46629,7 @@ func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListPr
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -46685,7 +46685,7 @@ func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposI
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -46701,7 +46701,7 @@ func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposI
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -46719,7 +46719,7 @@ func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposI
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -46736,7 +46736,7 @@ func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposI
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -46792,7 +46792,7 @@ func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListRepos
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -46810,7 +46810,7 @@ func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListRepos
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -46827,7 +46827,7 @@ func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListRepos
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -46883,7 +46883,7 @@ func (c *Client) TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemove
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -46899,7 +46899,7 @@ func (c *Client) TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemove
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -46952,7 +46952,7 @@ func (c *Client) TeamsRemoveMembershipForUserInOrg(ctx context.Context, params T
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -46968,7 +46968,7 @@ func (c *Client) TeamsRemoveMembershipForUserInOrg(ctx context.Context, params T
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -46984,7 +46984,7 @@ func (c *Client) TeamsRemoveMembershipForUserInOrg(ctx context.Context, params T
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47037,7 +47037,7 @@ func (c *Client) TeamsRemoveMembershipForUserLegacy(ctx context.Context, params 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47053,7 +47053,7 @@ func (c *Client) TeamsRemoveMembershipForUserLegacy(ctx context.Context, params 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47106,7 +47106,7 @@ func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemove
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47122,7 +47122,7 @@ func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemove
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47138,7 +47138,7 @@ func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemove
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ProjectID))
+			return e.EncodeValue(conv.IntToString(params.ProjectID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47191,7 +47191,7 @@ func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRep
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47207,7 +47207,7 @@ func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRep
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47223,7 +47223,7 @@ func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRep
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47239,7 +47239,7 @@ func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRep
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47292,7 +47292,7 @@ func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47308,7 +47308,7 @@ func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Owner))
+			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47324,7 +47324,7 @@ func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Repo))
+			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47383,7 +47383,7 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47399,7 +47399,7 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47415,7 +47415,7 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47431,7 +47431,7 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentNumber))
+			return e.EncodeValue(conv.IntToString(params.CommentNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47492,7 +47492,7 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47508,7 +47508,7 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47524,7 +47524,7 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.CommentNumber))
+			return e.EncodeValue(conv.IntToString(params.CommentNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47585,7 +47585,7 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request TeamsUp
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47601,7 +47601,7 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request TeamsUp
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47617,7 +47617,7 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request TeamsUp
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47678,7 +47678,7 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request TeamsU
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.TeamID))
+			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47694,7 +47694,7 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request TeamsU
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.DiscussionNumber))
+			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47764,7 +47764,7 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request TeamsUpdateInOrgR
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Org))
+			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47780,7 +47780,7 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request TeamsUpdateInOrgR
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TeamSlug))
+			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47835,7 +47835,7 @@ func (c *Client) UsersCheckBlocked(ctx context.Context, params UsersCheckBlocked
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47888,7 +47888,7 @@ func (c *Client) UsersCheckFollowingForUser(ctx context.Context, params UsersChe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47904,7 +47904,7 @@ func (c *Client) UsersCheckFollowingForUser(ctx context.Context, params UsersChe
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.TargetUser))
+			return e.EncodeValue(conv.StringToString(params.TargetUser))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -47957,7 +47957,7 @@ func (c *Client) UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -48010,7 +48010,7 @@ func (c *Client) UsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, pa
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.KeyID))
+			return e.EncodeValue(conv.IntToString(params.KeyID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -48063,7 +48063,7 @@ func (c *Client) UsersFollow(ctx context.Context, params UsersFollowParams) (res
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -48154,7 +48154,7 @@ func (c *Client) UsersGetByUsername(ctx context.Context, params UsersGetByUserna
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -48207,7 +48207,7 @@ func (c *Client) UsersGetGpgKeyForAuthenticated(ctx context.Context, params User
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.GpgKeyID))
+			return e.EncodeValue(conv.IntToString(params.GpgKeyID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -48260,7 +48260,7 @@ func (c *Client) UsersGetPublicSSHKeyForAuthenticated(ctx context.Context, param
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.KeyID))
+			return e.EncodeValue(conv.IntToString(params.KeyID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -48315,7 +48315,7 @@ func (c *Client) UsersList(ctx context.Context, params UsersListParams) (res Use
 		})
 		if encErr := func() error {
 			if val, ok := params.Since.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -48332,7 +48332,7 @@ func (c *Client) UsersList(ctx context.Context, params UsersListParams) (res Use
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -48428,7 +48428,7 @@ func (c *Client) UsersListEmailsForAuthenticated(ctx context.Context, params Use
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -48445,7 +48445,7 @@ func (c *Client) UsersListEmailsForAuthenticated(ctx context.Context, params Use
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -48503,7 +48503,7 @@ func (c *Client) UsersListFollowedByAuthenticated(ctx context.Context, params Us
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -48520,7 +48520,7 @@ func (c *Client) UsersListFollowedByAuthenticated(ctx context.Context, params Us
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -48578,7 +48578,7 @@ func (c *Client) UsersListFollowersForAuthenticatedUser(ctx context.Context, par
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -48595,7 +48595,7 @@ func (c *Client) UsersListFollowersForAuthenticatedUser(ctx context.Context, par
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -48651,7 +48651,7 @@ func (c *Client) UsersListFollowersForUser(ctx context.Context, params UsersList
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -48669,7 +48669,7 @@ func (c *Client) UsersListFollowersForUser(ctx context.Context, params UsersList
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -48686,7 +48686,7 @@ func (c *Client) UsersListFollowersForUser(ctx context.Context, params UsersList
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -48742,7 +48742,7 @@ func (c *Client) UsersListFollowingForUser(ctx context.Context, params UsersList
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -48760,7 +48760,7 @@ func (c *Client) UsersListFollowingForUser(ctx context.Context, params UsersList
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -48777,7 +48777,7 @@ func (c *Client) UsersListFollowingForUser(ctx context.Context, params UsersList
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -48835,7 +48835,7 @@ func (c *Client) UsersListGpgKeysForAuthenticated(ctx context.Context, params Us
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -48852,7 +48852,7 @@ func (c *Client) UsersListGpgKeysForAuthenticated(ctx context.Context, params Us
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -48908,7 +48908,7 @@ func (c *Client) UsersListGpgKeysForUser(ctx context.Context, params UsersListGp
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -48926,7 +48926,7 @@ func (c *Client) UsersListGpgKeysForUser(ctx context.Context, params UsersListGp
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -48943,7 +48943,7 @@ func (c *Client) UsersListGpgKeysForUser(ctx context.Context, params UsersListGp
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -49001,7 +49001,7 @@ func (c *Client) UsersListPublicEmailsForAuthenticated(ctx context.Context, para
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -49018,7 +49018,7 @@ func (c *Client) UsersListPublicEmailsForAuthenticated(ctx context.Context, para
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -49074,7 +49074,7 @@ func (c *Client) UsersListPublicKeysForUser(ctx context.Context, params UsersLis
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -49092,7 +49092,7 @@ func (c *Client) UsersListPublicKeysForUser(ctx context.Context, params UsersLis
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -49109,7 +49109,7 @@ func (c *Client) UsersListPublicKeysForUser(ctx context.Context, params UsersLis
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -49167,7 +49167,7 @@ func (c *Client) UsersListPublicSSHKeysForAuthenticated(ctx context.Context, par
 		})
 		if encErr := func() error {
 			if val, ok := params.PerPage.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -49184,7 +49184,7 @@ func (c *Client) UsersListPublicSSHKeysForAuthenticated(ctx context.Context, par
 		})
 		if encErr := func() error {
 			if val, ok := params.Page.Get(); ok {
-				return e.Value(conv.IntToString(val))
+				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
 		}(); encErr != nil {
@@ -49240,7 +49240,7 @@ func (c *Client) UsersUnblock(ctx context.Context, params UsersUnblockParams) (r
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -49293,7 +49293,7 @@ func (c *Client) UsersUnfollow(ctx context.Context, params UsersUnfollowParams) 
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Username))
+			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return

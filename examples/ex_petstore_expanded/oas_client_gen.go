@@ -122,7 +122,7 @@ func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (res Del
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.Int64ToString(params.ID))
+			return e.EncodeValue(conv.Int64ToString(params.ID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return

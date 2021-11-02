@@ -74,7 +74,7 @@ func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reques
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -105,7 +105,7 @@ func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reques
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -136,7 +136,7 @@ func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reques
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -172,7 +172,7 @@ func decodeActionsAddSelectedRepoToOrgSecretParams(r *http.Request) (ActionsAddS
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -203,7 +203,7 @@ func decodeActionsAddSelectedRepoToOrgSecretParams(r *http.Request) (ActionsAddS
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -234,7 +234,7 @@ func decodeActionsAddSelectedRepoToOrgSecretParams(r *http.Request) (ActionsAddS
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -270,7 +270,7 @@ func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(r *http.Request) (Actio
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -301,7 +301,7 @@ func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(r *http.Request) (Actio
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -332,7 +332,7 @@ func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(r *http.Request) (Actio
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -368,7 +368,7 @@ func decodeActionsApproveWorkflowRunParams(r *http.Request) (ActionsApproveWorkf
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -399,7 +399,7 @@ func decodeActionsApproveWorkflowRunParams(r *http.Request) (ActionsApproveWorkf
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -430,7 +430,7 @@ func decodeActionsApproveWorkflowRunParams(r *http.Request) (ActionsApproveWorkf
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -466,7 +466,7 @@ func decodeActionsCancelWorkflowRunParams(r *http.Request) (ActionsCancelWorkflo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -497,7 +497,7 @@ func decodeActionsCancelWorkflowRunParams(r *http.Request) (ActionsCancelWorkflo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -528,7 +528,7 @@ func decodeActionsCancelWorkflowRunParams(r *http.Request) (ActionsCancelWorkflo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -564,7 +564,7 @@ func decodeActionsCreateOrUpdateEnvironmentSecretParams(r *http.Request) (Action
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -595,7 +595,7 @@ func decodeActionsCreateOrUpdateEnvironmentSecretParams(r *http.Request) (Action
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -626,7 +626,7 @@ func decodeActionsCreateOrUpdateEnvironmentSecretParams(r *http.Request) (Action
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -662,7 +662,7 @@ func decodeActionsCreateOrUpdateOrgSecretParams(r *http.Request) (ActionsCreateO
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -693,7 +693,7 @@ func decodeActionsCreateOrUpdateOrgSecretParams(r *http.Request) (ActionsCreateO
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -729,7 +729,7 @@ func decodeActionsCreateOrUpdateRepoSecretParams(r *http.Request) (ActionsCreate
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -760,7 +760,7 @@ func decodeActionsCreateOrUpdateRepoSecretParams(r *http.Request) (ActionsCreate
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -791,7 +791,7 @@ func decodeActionsCreateOrUpdateRepoSecretParams(r *http.Request) (ActionsCreate
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -827,7 +827,7 @@ func decodeActionsCreateRegistrationTokenForOrgParams(r *http.Request) (ActionsC
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -863,7 +863,7 @@ func decodeActionsCreateRegistrationTokenForRepoParams(r *http.Request) (Actions
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -894,7 +894,7 @@ func decodeActionsCreateRegistrationTokenForRepoParams(r *http.Request) (Actions
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -930,7 +930,7 @@ func decodeActionsCreateRemoveTokenForOrgParams(r *http.Request) (ActionsCreateR
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -966,7 +966,7 @@ func decodeActionsCreateRemoveTokenForRepoParams(r *http.Request) (ActionsCreate
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -997,7 +997,7 @@ func decodeActionsCreateRemoveTokenForRepoParams(r *http.Request) (ActionsCreate
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1033,7 +1033,7 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgParams(r *http.Request) (Acti
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1069,7 +1069,7 @@ func decodeActionsDeleteArtifactParams(r *http.Request) (ActionsDeleteArtifactPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1100,7 +1100,7 @@ func decodeActionsDeleteArtifactParams(r *http.Request) (ActionsDeleteArtifactPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1131,7 +1131,7 @@ func decodeActionsDeleteArtifactParams(r *http.Request) (ActionsDeleteArtifactPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1167,7 +1167,7 @@ func decodeActionsDeleteEnvironmentSecretParams(r *http.Request) (ActionsDeleteE
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1198,7 +1198,7 @@ func decodeActionsDeleteEnvironmentSecretParams(r *http.Request) (ActionsDeleteE
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1229,7 +1229,7 @@ func decodeActionsDeleteEnvironmentSecretParams(r *http.Request) (ActionsDeleteE
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1265,7 +1265,7 @@ func decodeActionsDeleteOrgSecretParams(r *http.Request) (ActionsDeleteOrgSecret
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1296,7 +1296,7 @@ func decodeActionsDeleteOrgSecretParams(r *http.Request) (ActionsDeleteOrgSecret
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1332,7 +1332,7 @@ func decodeActionsDeleteRepoSecretParams(r *http.Request) (ActionsDeleteRepoSecr
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1363,7 +1363,7 @@ func decodeActionsDeleteRepoSecretParams(r *http.Request) (ActionsDeleteRepoSecr
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1394,7 +1394,7 @@ func decodeActionsDeleteRepoSecretParams(r *http.Request) (ActionsDeleteRepoSecr
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1430,7 +1430,7 @@ func decodeActionsDeleteSelfHostedRunnerFromOrgParams(r *http.Request) (ActionsD
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1461,7 +1461,7 @@ func decodeActionsDeleteSelfHostedRunnerFromOrgParams(r *http.Request) (ActionsD
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1497,7 +1497,7 @@ func decodeActionsDeleteSelfHostedRunnerFromRepoParams(r *http.Request) (Actions
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1528,7 +1528,7 @@ func decodeActionsDeleteSelfHostedRunnerFromRepoParams(r *http.Request) (Actions
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1559,7 +1559,7 @@ func decodeActionsDeleteSelfHostedRunnerFromRepoParams(r *http.Request) (Actions
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1595,7 +1595,7 @@ func decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(r *http.Request) (Act
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1626,7 +1626,7 @@ func decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(r *http.Request) (Act
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1662,7 +1662,7 @@ func decodeActionsDeleteWorkflowRunParams(r *http.Request) (ActionsDeleteWorkflo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1693,7 +1693,7 @@ func decodeActionsDeleteWorkflowRunParams(r *http.Request) (ActionsDeleteWorkflo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1724,7 +1724,7 @@ func decodeActionsDeleteWorkflowRunParams(r *http.Request) (ActionsDeleteWorkflo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1760,7 +1760,7 @@ func decodeActionsDeleteWorkflowRunLogsParams(r *http.Request) (ActionsDeleteWor
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1791,7 +1791,7 @@ func decodeActionsDeleteWorkflowRunLogsParams(r *http.Request) (ActionsDeleteWor
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1822,7 +1822,7 @@ func decodeActionsDeleteWorkflowRunLogsParams(r *http.Request) (ActionsDeleteWor
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1858,7 +1858,7 @@ func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(r *ht
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1889,7 +1889,7 @@ func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(r *ht
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1925,7 +1925,7 @@ func decodeActionsDownloadArtifactParams(r *http.Request) (ActionsDownloadArtifa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1956,7 +1956,7 @@ func decodeActionsDownloadArtifactParams(r *http.Request) (ActionsDownloadArtifa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -1987,7 +1987,7 @@ func decodeActionsDownloadArtifactParams(r *http.Request) (ActionsDownloadArtifa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2018,7 +2018,7 @@ func decodeActionsDownloadArtifactParams(r *http.Request) (ActionsDownloadArtifa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2054,7 +2054,7 @@ func decodeActionsDownloadJobLogsForWorkflowRunParams(r *http.Request) (ActionsD
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2085,7 +2085,7 @@ func decodeActionsDownloadJobLogsForWorkflowRunParams(r *http.Request) (ActionsD
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2116,7 +2116,7 @@ func decodeActionsDownloadJobLogsForWorkflowRunParams(r *http.Request) (ActionsD
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2152,7 +2152,7 @@ func decodeActionsDownloadWorkflowRunLogsParams(r *http.Request) (ActionsDownloa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2183,7 +2183,7 @@ func decodeActionsDownloadWorkflowRunLogsParams(r *http.Request) (ActionsDownloa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2214,7 +2214,7 @@ func decodeActionsDownloadWorkflowRunLogsParams(r *http.Request) (ActionsDownloa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2250,7 +2250,7 @@ func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(r *htt
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2281,7 +2281,7 @@ func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(r *htt
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2317,7 +2317,7 @@ func decodeActionsGetAllowedActionsOrganizationParams(r *http.Request) (ActionsG
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2353,7 +2353,7 @@ func decodeActionsGetAllowedActionsRepositoryParams(r *http.Request) (ActionsGet
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2384,7 +2384,7 @@ func decodeActionsGetAllowedActionsRepositoryParams(r *http.Request) (ActionsGet
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2420,7 +2420,7 @@ func decodeActionsGetArtifactParams(r *http.Request) (ActionsGetArtifactParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2451,7 +2451,7 @@ func decodeActionsGetArtifactParams(r *http.Request) (ActionsGetArtifactParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2482,7 +2482,7 @@ func decodeActionsGetArtifactParams(r *http.Request) (ActionsGetArtifactParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2518,7 +2518,7 @@ func decodeActionsGetEnvironmentPublicKeyParams(r *http.Request) (ActionsGetEnvi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2549,7 +2549,7 @@ func decodeActionsGetEnvironmentPublicKeyParams(r *http.Request) (ActionsGetEnvi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2585,7 +2585,7 @@ func decodeActionsGetEnvironmentSecretParams(r *http.Request) (ActionsGetEnviron
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2616,7 +2616,7 @@ func decodeActionsGetEnvironmentSecretParams(r *http.Request) (ActionsGetEnviron
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2647,7 +2647,7 @@ func decodeActionsGetEnvironmentSecretParams(r *http.Request) (ActionsGetEnviron
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2683,7 +2683,7 @@ func decodeActionsGetGithubActionsPermissionsOrganizationParams(r *http.Request)
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2719,7 +2719,7 @@ func decodeActionsGetGithubActionsPermissionsRepositoryParams(r *http.Request) (
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2750,7 +2750,7 @@ func decodeActionsGetGithubActionsPermissionsRepositoryParams(r *http.Request) (
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2786,7 +2786,7 @@ func decodeActionsGetJobForWorkflowRunParams(r *http.Request) (ActionsGetJobForW
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2817,7 +2817,7 @@ func decodeActionsGetJobForWorkflowRunParams(r *http.Request) (ActionsGetJobForW
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2848,7 +2848,7 @@ func decodeActionsGetJobForWorkflowRunParams(r *http.Request) (ActionsGetJobForW
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2884,7 +2884,7 @@ func decodeActionsGetOrgPublicKeyParams(r *http.Request) (ActionsGetOrgPublicKey
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2920,7 +2920,7 @@ func decodeActionsGetOrgSecretParams(r *http.Request) (ActionsGetOrgSecretParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2951,7 +2951,7 @@ func decodeActionsGetOrgSecretParams(r *http.Request) (ActionsGetOrgSecretParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -2987,7 +2987,7 @@ func decodeActionsGetRepoPublicKeyParams(r *http.Request) (ActionsGetRepoPublicK
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3018,7 +3018,7 @@ func decodeActionsGetRepoPublicKeyParams(r *http.Request) (ActionsGetRepoPublicK
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3054,7 +3054,7 @@ func decodeActionsGetRepoSecretParams(r *http.Request) (ActionsGetRepoSecretPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3085,7 +3085,7 @@ func decodeActionsGetRepoSecretParams(r *http.Request) (ActionsGetRepoSecretPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3116,7 +3116,7 @@ func decodeActionsGetRepoSecretParams(r *http.Request) (ActionsGetRepoSecretPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3152,7 +3152,7 @@ func decodeActionsGetReviewsForRunParams(r *http.Request) (ActionsGetReviewsForR
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3183,7 +3183,7 @@ func decodeActionsGetReviewsForRunParams(r *http.Request) (ActionsGetReviewsForR
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3214,7 +3214,7 @@ func decodeActionsGetReviewsForRunParams(r *http.Request) (ActionsGetReviewsForR
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3250,7 +3250,7 @@ func decodeActionsGetSelfHostedRunnerForOrgParams(r *http.Request) (ActionsGetSe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3281,7 +3281,7 @@ func decodeActionsGetSelfHostedRunnerForOrgParams(r *http.Request) (ActionsGetSe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3317,7 +3317,7 @@ func decodeActionsGetSelfHostedRunnerForRepoParams(r *http.Request) (ActionsGetS
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3348,7 +3348,7 @@ func decodeActionsGetSelfHostedRunnerForRepoParams(r *http.Request) (ActionsGetS
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3379,7 +3379,7 @@ func decodeActionsGetSelfHostedRunnerForRepoParams(r *http.Request) (ActionsGetS
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3415,7 +3415,7 @@ func decodeActionsGetSelfHostedRunnerGroupForOrgParams(r *http.Request) (Actions
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3446,7 +3446,7 @@ func decodeActionsGetSelfHostedRunnerGroupForOrgParams(r *http.Request) (Actions
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3482,7 +3482,7 @@ func decodeActionsGetWorkflowRunParams(r *http.Request) (ActionsGetWorkflowRunPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3513,7 +3513,7 @@ func decodeActionsGetWorkflowRunParams(r *http.Request) (ActionsGetWorkflowRunPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3544,7 +3544,7 @@ func decodeActionsGetWorkflowRunParams(r *http.Request) (ActionsGetWorkflowRunPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3580,7 +3580,7 @@ func decodeActionsGetWorkflowRunUsageParams(r *http.Request) (ActionsGetWorkflow
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3611,7 +3611,7 @@ func decodeActionsGetWorkflowRunUsageParams(r *http.Request) (ActionsGetWorkflow
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3642,7 +3642,7 @@ func decodeActionsGetWorkflowRunUsageParams(r *http.Request) (ActionsGetWorkflow
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3678,7 +3678,7 @@ func decodeActionsListArtifactsForRepoParams(r *http.Request) (ActionsListArtifa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3709,7 +3709,7 @@ func decodeActionsListArtifactsForRepoParams(r *http.Request) (ActionsListArtifa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3741,7 +3741,7 @@ func decodeActionsListArtifactsForRepoParams(r *http.Request) (ActionsListArtifa
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3776,7 +3776,7 @@ func decodeActionsListArtifactsForRepoParams(r *http.Request) (ActionsListArtifa
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3815,7 +3815,7 @@ func decodeActionsListEnvironmentSecretsParams(r *http.Request) (ActionsListEnvi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3846,7 +3846,7 @@ func decodeActionsListEnvironmentSecretsParams(r *http.Request) (ActionsListEnvi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3878,7 +3878,7 @@ func decodeActionsListEnvironmentSecretsParams(r *http.Request) (ActionsListEnvi
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3913,7 +3913,7 @@ func decodeActionsListEnvironmentSecretsParams(r *http.Request) (ActionsListEnvi
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3952,7 +3952,7 @@ func decodeActionsListJobsForWorkflowRunParams(r *http.Request) (ActionsListJobs
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -3983,7 +3983,7 @@ func decodeActionsListJobsForWorkflowRunParams(r *http.Request) (ActionsListJobs
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -4014,7 +4014,7 @@ func decodeActionsListJobsForWorkflowRunParams(r *http.Request) (ActionsListJobs
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -4046,7 +4046,7 @@ func decodeActionsListJobsForWorkflowRunParams(r *http.Request) (ActionsListJobs
 			if err := func() error {
 				var ParamsFilterValue ActionsListJobsForWorkflowRunFilter
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4087,7 +4087,7 @@ func decodeActionsListJobsForWorkflowRunParams(r *http.Request) (ActionsListJobs
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4122,7 +4122,7 @@ func decodeActionsListJobsForWorkflowRunParams(r *http.Request) (ActionsListJobs
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4161,7 +4161,7 @@ func decodeActionsListOrgSecretsParams(r *http.Request) (ActionsListOrgSecretsPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -4193,7 +4193,7 @@ func decodeActionsListOrgSecretsParams(r *http.Request) (ActionsListOrgSecretsPa
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4228,7 +4228,7 @@ func decodeActionsListOrgSecretsParams(r *http.Request) (ActionsListOrgSecretsPa
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4267,7 +4267,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reque
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -4298,7 +4298,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reque
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -4330,7 +4330,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reque
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4365,7 +4365,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reque
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4404,7 +4404,7 @@ func decodeActionsListRepoSecretsParams(r *http.Request) (ActionsListRepoSecrets
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -4435,7 +4435,7 @@ func decodeActionsListRepoSecretsParams(r *http.Request) (ActionsListRepoSecrets
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -4467,7 +4467,7 @@ func decodeActionsListRepoSecretsParams(r *http.Request) (ActionsListRepoSecrets
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4502,7 +4502,7 @@ func decodeActionsListRepoSecretsParams(r *http.Request) (ActionsListRepoSecrets
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4541,7 +4541,7 @@ func decodeActionsListRepoWorkflowsParams(r *http.Request) (ActionsListRepoWorkf
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -4572,7 +4572,7 @@ func decodeActionsListRepoWorkflowsParams(r *http.Request) (ActionsListRepoWorkf
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -4604,7 +4604,7 @@ func decodeActionsListRepoWorkflowsParams(r *http.Request) (ActionsListRepoWorkf
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4639,7 +4639,7 @@ func decodeActionsListRepoWorkflowsParams(r *http.Request) (ActionsListRepoWorkf
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4678,7 +4678,7 @@ func decodeActionsListRunnerApplicationsForOrgParams(r *http.Request) (ActionsLi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -4714,7 +4714,7 @@ func decodeActionsListRunnerApplicationsForRepoParams(r *http.Request) (ActionsL
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -4745,7 +4745,7 @@ func decodeActionsListRunnerApplicationsForRepoParams(r *http.Request) (ActionsL
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -4781,7 +4781,7 @@ func decodeActionsListSelectedReposForOrgSecretParams(r *http.Request) (ActionsL
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -4812,7 +4812,7 @@ func decodeActionsListSelectedReposForOrgSecretParams(r *http.Request) (ActionsL
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -4844,7 +4844,7 @@ func decodeActionsListSelectedReposForOrgSecretParams(r *http.Request) (ActionsL
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4879,7 +4879,7 @@ func decodeActionsListSelectedReposForOrgSecretParams(r *http.Request) (ActionsL
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4918,7 +4918,7 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -4950,7 +4950,7 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4985,7 +4985,7 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5024,7 +5024,7 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(r *http.Request) (Actio
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -5056,7 +5056,7 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(r *http.Request) (Actio
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5091,7 +5091,7 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(r *http.Request) (Actio
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5130,7 +5130,7 @@ func decodeActionsListSelfHostedRunnersForOrgParams(r *http.Request) (ActionsLis
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -5162,7 +5162,7 @@ func decodeActionsListSelfHostedRunnersForOrgParams(r *http.Request) (ActionsLis
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5197,7 +5197,7 @@ func decodeActionsListSelfHostedRunnersForOrgParams(r *http.Request) (ActionsLis
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5236,7 +5236,7 @@ func decodeActionsListSelfHostedRunnersForRepoParams(r *http.Request) (ActionsLi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -5267,7 +5267,7 @@ func decodeActionsListSelfHostedRunnersForRepoParams(r *http.Request) (ActionsLi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -5299,7 +5299,7 @@ func decodeActionsListSelfHostedRunnersForRepoParams(r *http.Request) (ActionsLi
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5334,7 +5334,7 @@ func decodeActionsListSelfHostedRunnersForRepoParams(r *http.Request) (ActionsLi
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5373,7 +5373,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(r *http.Request) (Act
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -5404,7 +5404,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(r *http.Request) (Act
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -5436,7 +5436,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(r *http.Request) (Act
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5471,7 +5471,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(r *http.Request) (Act
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5510,7 +5510,7 @@ func decodeActionsListWorkflowRunArtifactsParams(r *http.Request) (ActionsListWo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -5541,7 +5541,7 @@ func decodeActionsListWorkflowRunArtifactsParams(r *http.Request) (ActionsListWo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -5572,7 +5572,7 @@ func decodeActionsListWorkflowRunArtifactsParams(r *http.Request) (ActionsListWo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -5604,7 +5604,7 @@ func decodeActionsListWorkflowRunArtifactsParams(r *http.Request) (ActionsListWo
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5639,7 +5639,7 @@ func decodeActionsListWorkflowRunArtifactsParams(r *http.Request) (ActionsListWo
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5678,7 +5678,7 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -5709,7 +5709,7 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -5741,7 +5741,7 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 			if err := func() error {
 				var ParamsActorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5776,7 +5776,7 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 			if err := func() error {
 				var ParamsBranchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5811,7 +5811,7 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 			if err := func() error {
 				var ParamsEventValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5846,7 +5846,7 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 			if err := func() error {
 				var ParamsStatusValue ActionsListWorkflowRunsForRepoStatus
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5887,7 +5887,7 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5922,7 +5922,7 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5957,7 +5957,7 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 			if err := func() error {
 				var ParamsCreatedValue time.Time
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5996,7 +5996,7 @@ func decodeActionsReRunWorkflowParams(r *http.Request) (ActionsReRunWorkflowPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6027,7 +6027,7 @@ func decodeActionsReRunWorkflowParams(r *http.Request) (ActionsReRunWorkflowPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6058,7 +6058,7 @@ func decodeActionsReRunWorkflowParams(r *http.Request) (ActionsReRunWorkflowPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6094,7 +6094,7 @@ func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Req
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6125,7 +6125,7 @@ func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Req
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6156,7 +6156,7 @@ func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Req
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6192,7 +6192,7 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretParams(r *http.Request) (Action
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6223,7 +6223,7 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretParams(r *http.Request) (Action
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6254,7 +6254,7 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretParams(r *http.Request) (Action
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6290,7 +6290,7 @@ func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(r *http.Request) (
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6321,7 +6321,7 @@ func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(r *http.Request) (
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6352,7 +6352,7 @@ func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(r *http.Request) (
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6388,7 +6388,7 @@ func decodeActionsRetryWorkflowParams(r *http.Request) (ActionsRetryWorkflowPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6419,7 +6419,7 @@ func decodeActionsRetryWorkflowParams(r *http.Request) (ActionsRetryWorkflowPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6450,7 +6450,7 @@ func decodeActionsRetryWorkflowParams(r *http.Request) (ActionsRetryWorkflowPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6486,7 +6486,7 @@ func decodeActionsSetAllowedActionsOrganizationParams(r *http.Request) (ActionsS
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6522,7 +6522,7 @@ func decodeActionsSetAllowedActionsRepositoryParams(r *http.Request) (ActionsSet
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6553,7 +6553,7 @@ func decodeActionsSetAllowedActionsRepositoryParams(r *http.Request) (ActionsSet
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6589,7 +6589,7 @@ func decodeActionsSetGithubActionsPermissionsOrganizationParams(r *http.Request)
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6625,7 +6625,7 @@ func decodeActionsSetGithubActionsPermissionsRepositoryParams(r *http.Request) (
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6656,7 +6656,7 @@ func decodeActionsSetGithubActionsPermissionsRepositoryParams(r *http.Request) (
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6692,7 +6692,7 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reques
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6723,7 +6723,7 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reques
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6759,7 +6759,7 @@ func decodeActionsSetSelectedReposForOrgSecretParams(r *http.Request) (ActionsSe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6790,7 +6790,7 @@ func decodeActionsSetSelectedReposForOrgSecretParams(r *http.Request) (ActionsSe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6826,7 +6826,7 @@ func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6862,7 +6862,7 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgParams(r *http.Request) (Acti
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6893,7 +6893,7 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgParams(r *http.Request) (Acti
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6929,7 +6929,7 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(r *http.Request) (Acti
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6960,7 +6960,7 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(r *http.Request) (Acti
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -6996,7 +6996,7 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(r *http.Request) 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -7027,7 +7027,7 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(r *http.Request) 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -7063,7 +7063,7 @@ func decodeActivityDeleteRepoSubscriptionParams(r *http.Request) (ActivityDelete
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -7094,7 +7094,7 @@ func decodeActivityDeleteRepoSubscriptionParams(r *http.Request) (ActivityDelete
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -7130,7 +7130,7 @@ func decodeActivityDeleteThreadSubscriptionParams(r *http.Request) (ActivityDele
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -7166,7 +7166,7 @@ func decodeActivityGetRepoSubscriptionParams(r *http.Request) (ActivityGetRepoSu
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -7197,7 +7197,7 @@ func decodeActivityGetRepoSubscriptionParams(r *http.Request) (ActivityGetRepoSu
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -7233,7 +7233,7 @@ func decodeActivityGetThreadParams(r *http.Request) (ActivityGetThreadParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -7269,7 +7269,7 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(r *http.Reque
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -7305,7 +7305,7 @@ func decodeActivityListEventsForAuthenticatedUserParams(r *http.Request) (Activi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -7337,7 +7337,7 @@ func decodeActivityListEventsForAuthenticatedUserParams(r *http.Request) (Activi
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7372,7 +7372,7 @@ func decodeActivityListEventsForAuthenticatedUserParams(r *http.Request) (Activi
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7411,7 +7411,7 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(r *http.Request) (Act
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -7442,7 +7442,7 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(r *http.Request) (Act
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -7474,7 +7474,7 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(r *http.Request) (Act
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7509,7 +7509,7 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(r *http.Request) (Act
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7549,7 +7549,7 @@ func decodeActivityListPublicEventsParams(r *http.Request) (ActivityListPublicEv
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7584,7 +7584,7 @@ func decodeActivityListPublicEventsParams(r *http.Request) (ActivityListPublicEv
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7623,7 +7623,7 @@ func decodeActivityListPublicEventsForRepoNetworkParams(r *http.Request) (Activi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -7654,7 +7654,7 @@ func decodeActivityListPublicEventsForRepoNetworkParams(r *http.Request) (Activi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -7686,7 +7686,7 @@ func decodeActivityListPublicEventsForRepoNetworkParams(r *http.Request) (Activi
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7721,7 +7721,7 @@ func decodeActivityListPublicEventsForRepoNetworkParams(r *http.Request) (Activi
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7760,7 +7760,7 @@ func decodeActivityListPublicEventsForUserParams(r *http.Request) (ActivityListP
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -7792,7 +7792,7 @@ func decodeActivityListPublicEventsForUserParams(r *http.Request) (ActivityListP
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7827,7 +7827,7 @@ func decodeActivityListPublicEventsForUserParams(r *http.Request) (ActivityListP
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7866,7 +7866,7 @@ func decodeActivityListPublicOrgEventsParams(r *http.Request) (ActivityListPubli
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -7898,7 +7898,7 @@ func decodeActivityListPublicOrgEventsParams(r *http.Request) (ActivityListPubli
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7933,7 +7933,7 @@ func decodeActivityListPublicOrgEventsParams(r *http.Request) (ActivityListPubli
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7972,7 +7972,7 @@ func decodeActivityListReceivedEventsForUserParams(r *http.Request) (ActivityLis
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -8004,7 +8004,7 @@ func decodeActivityListReceivedEventsForUserParams(r *http.Request) (ActivityLis
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8039,7 +8039,7 @@ func decodeActivityListReceivedEventsForUserParams(r *http.Request) (ActivityLis
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8078,7 +8078,7 @@ func decodeActivityListReceivedPublicEventsForUserParams(r *http.Request) (Activ
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -8110,7 +8110,7 @@ func decodeActivityListReceivedPublicEventsForUserParams(r *http.Request) (Activ
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8145,7 +8145,7 @@ func decodeActivityListReceivedPublicEventsForUserParams(r *http.Request) (Activ
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8184,7 +8184,7 @@ func decodeActivityListRepoEventsParams(r *http.Request) (ActivityListRepoEvents
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -8215,7 +8215,7 @@ func decodeActivityListRepoEventsParams(r *http.Request) (ActivityListRepoEvents
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -8247,7 +8247,7 @@ func decodeActivityListRepoEventsParams(r *http.Request) (ActivityListRepoEvents
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8282,7 +8282,7 @@ func decodeActivityListRepoEventsParams(r *http.Request) (ActivityListRepoEvents
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8321,7 +8321,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -8352,7 +8352,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -8384,7 +8384,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 			if err := func() error {
 				var ParamsAllValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8419,7 +8419,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 			if err := func() error {
 				var ParamsParticipatingValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8454,7 +8454,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 			if err := func() error {
 				var ParamsSinceValue time.Time
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8489,7 +8489,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 			if err := func() error {
 				var ParamsBeforeValue time.Time
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8524,7 +8524,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8559,7 +8559,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8599,7 +8599,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(r *http.Request) (A
 			if err := func() error {
 				var ParamsSortValue ActivityListReposStarredByAuthenticatedUserSort
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8640,7 +8640,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(r *http.Request) (A
 			if err := func() error {
 				var ParamsDirectionValue ActivityListReposStarredByAuthenticatedUserDirection
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8681,7 +8681,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(r *http.Request) (A
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8716,7 +8716,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(r *http.Request) (A
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8755,7 +8755,7 @@ func decodeActivityListReposWatchedByUserParams(r *http.Request) (ActivityListRe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -8787,7 +8787,7 @@ func decodeActivityListReposWatchedByUserParams(r *http.Request) (ActivityListRe
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8822,7 +8822,7 @@ func decodeActivityListReposWatchedByUserParams(r *http.Request) (ActivityListRe
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8862,7 +8862,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(r *http.Request) (
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8897,7 +8897,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(r *http.Request) (
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8936,7 +8936,7 @@ func decodeActivityListWatchersForRepoParams(r *http.Request) (ActivityListWatch
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -8967,7 +8967,7 @@ func decodeActivityListWatchersForRepoParams(r *http.Request) (ActivityListWatch
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -8999,7 +8999,7 @@ func decodeActivityListWatchersForRepoParams(r *http.Request) (ActivityListWatch
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9034,7 +9034,7 @@ func decodeActivityListWatchersForRepoParams(r *http.Request) (ActivityListWatch
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9073,7 +9073,7 @@ func decodeActivityMarkRepoNotificationsAsReadParams(r *http.Request) (ActivityM
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -9104,7 +9104,7 @@ func decodeActivityMarkRepoNotificationsAsReadParams(r *http.Request) (ActivityM
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -9140,7 +9140,7 @@ func decodeActivityMarkThreadAsReadParams(r *http.Request) (ActivityMarkThreadAs
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -9176,7 +9176,7 @@ func decodeActivitySetRepoSubscriptionParams(r *http.Request) (ActivitySetRepoSu
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -9207,7 +9207,7 @@ func decodeActivitySetRepoSubscriptionParams(r *http.Request) (ActivitySetRepoSu
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -9243,7 +9243,7 @@ func decodeActivitySetThreadSubscriptionParams(r *http.Request) (ActivitySetThre
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -9279,7 +9279,7 @@ func decodeActivityStarRepoForAuthenticatedUserParams(r *http.Request) (Activity
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -9310,7 +9310,7 @@ func decodeActivityStarRepoForAuthenticatedUserParams(r *http.Request) (Activity
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -9346,7 +9346,7 @@ func decodeActivityUnstarRepoForAuthenticatedUserParams(r *http.Request) (Activi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -9377,7 +9377,7 @@ func decodeActivityUnstarRepoForAuthenticatedUserParams(r *http.Request) (Activi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -9413,7 +9413,7 @@ func decodeAppsAddRepoToInstallationParams(r *http.Request) (AppsAddRepoToInstal
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -9444,7 +9444,7 @@ func decodeAppsAddRepoToInstallationParams(r *http.Request) (AppsAddRepoToInstal
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -9480,7 +9480,7 @@ func decodeAppsDeleteInstallationParams(r *http.Request) (AppsDeleteInstallation
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -9516,7 +9516,7 @@ func decodeAppsGetBySlugParams(r *http.Request) (AppsGetBySlugParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -9552,7 +9552,7 @@ func decodeAppsGetSubscriptionPlanForAccountParams(r *http.Request) (AppsGetSubs
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -9588,7 +9588,7 @@ func decodeAppsGetSubscriptionPlanForAccountStubbedParams(r *http.Request) (Apps
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -9624,7 +9624,7 @@ func decodeAppsListAccountsForPlanStubbedParams(r *http.Request) (AppsListAccoun
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -9656,7 +9656,7 @@ func decodeAppsListAccountsForPlanStubbedParams(r *http.Request) (AppsListAccoun
 			if err := func() error {
 				var ParamsSortValue AppsListAccountsForPlanStubbedSort
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9697,7 +9697,7 @@ func decodeAppsListAccountsForPlanStubbedParams(r *http.Request) (AppsListAccoun
 			if err := func() error {
 				var ParamsDirectionValue AppsListAccountsForPlanStubbedDirection
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9738,7 +9738,7 @@ func decodeAppsListAccountsForPlanStubbedParams(r *http.Request) (AppsListAccoun
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9773,7 +9773,7 @@ func decodeAppsListAccountsForPlanStubbedParams(r *http.Request) (AppsListAccoun
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9812,7 +9812,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(r *http.Request) 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -9844,7 +9844,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(r *http.Request) 
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9879,7 +9879,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(r *http.Request) 
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9919,7 +9919,7 @@ func decodeAppsListPlansParams(r *http.Request) (AppsListPlansParams, error) {
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9954,7 +9954,7 @@ func decodeAppsListPlansParams(r *http.Request) (AppsListPlansParams, error) {
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9994,7 +9994,7 @@ func decodeAppsListPlansStubbedParams(r *http.Request) (AppsListPlansStubbedPara
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10029,7 +10029,7 @@ func decodeAppsListPlansStubbedParams(r *http.Request) (AppsListPlansStubbedPara
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10069,7 +10069,7 @@ func decodeAppsListReposAccessibleToInstallationParams(r *http.Request) (AppsLis
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10104,7 +10104,7 @@ func decodeAppsListReposAccessibleToInstallationParams(r *http.Request) (AppsLis
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10144,7 +10144,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(r *http.Request) (App
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10179,7 +10179,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(r *http.Request) (App
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10219,7 +10219,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(r *http.Reques
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10254,7 +10254,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(r *http.Reques
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10293,7 +10293,7 @@ func decodeAppsRemoveRepoFromInstallationParams(r *http.Request) (AppsRemoveRepo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -10324,7 +10324,7 @@ func decodeAppsRemoveRepoFromInstallationParams(r *http.Request) (AppsRemoveRepo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -10360,7 +10360,7 @@ func decodeAppsSuspendInstallationParams(r *http.Request) (AppsSuspendInstallati
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -10396,7 +10396,7 @@ func decodeAppsUnsuspendInstallationParams(r *http.Request) (AppsUnsuspendInstal
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -10432,7 +10432,7 @@ func decodeBillingGetGithubActionsBillingGheParams(r *http.Request) (BillingGetG
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -10468,7 +10468,7 @@ func decodeBillingGetGithubActionsBillingOrgParams(r *http.Request) (BillingGetG
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -10504,7 +10504,7 @@ func decodeBillingGetGithubActionsBillingUserParams(r *http.Request) (BillingGet
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -10540,7 +10540,7 @@ func decodeBillingGetGithubPackagesBillingGheParams(r *http.Request) (BillingGet
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -10576,7 +10576,7 @@ func decodeBillingGetGithubPackagesBillingOrgParams(r *http.Request) (BillingGet
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -10612,7 +10612,7 @@ func decodeBillingGetGithubPackagesBillingUserParams(r *http.Request) (BillingGe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -10648,7 +10648,7 @@ func decodeBillingGetSharedStorageBillingGheParams(r *http.Request) (BillingGetS
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -10684,7 +10684,7 @@ func decodeBillingGetSharedStorageBillingOrgParams(r *http.Request) (BillingGetS
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -10720,7 +10720,7 @@ func decodeBillingGetSharedStorageBillingUserParams(r *http.Request) (BillingGet
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -10756,7 +10756,7 @@ func decodeChecksCreateSuiteParams(r *http.Request) (ChecksCreateSuiteParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -10787,7 +10787,7 @@ func decodeChecksCreateSuiteParams(r *http.Request) (ChecksCreateSuiteParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -10823,7 +10823,7 @@ func decodeChecksGetParams(r *http.Request) (ChecksGetParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -10854,7 +10854,7 @@ func decodeChecksGetParams(r *http.Request) (ChecksGetParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -10885,7 +10885,7 @@ func decodeChecksGetParams(r *http.Request) (ChecksGetParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -10921,7 +10921,7 @@ func decodeChecksGetSuiteParams(r *http.Request) (ChecksGetSuiteParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -10952,7 +10952,7 @@ func decodeChecksGetSuiteParams(r *http.Request) (ChecksGetSuiteParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -10983,7 +10983,7 @@ func decodeChecksGetSuiteParams(r *http.Request) (ChecksGetSuiteParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -11019,7 +11019,7 @@ func decodeChecksListAnnotationsParams(r *http.Request) (ChecksListAnnotationsPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -11050,7 +11050,7 @@ func decodeChecksListAnnotationsParams(r *http.Request) (ChecksListAnnotationsPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -11081,7 +11081,7 @@ func decodeChecksListAnnotationsParams(r *http.Request) (ChecksListAnnotationsPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -11113,7 +11113,7 @@ func decodeChecksListAnnotationsParams(r *http.Request) (ChecksListAnnotationsPa
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11148,7 +11148,7 @@ func decodeChecksListAnnotationsParams(r *http.Request) (ChecksListAnnotationsPa
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11187,7 +11187,7 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -11218,7 +11218,7 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -11249,7 +11249,7 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -11281,7 +11281,7 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 			if err := func() error {
 				var ParamsCheckNameValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11316,7 +11316,7 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 			if err := func() error {
 				var ParamsStatusValue ChecksListForRefStatus
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11357,7 +11357,7 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 			if err := func() error {
 				var ParamsFilterValue ChecksListForRefFilter
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11398,7 +11398,7 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11433,7 +11433,7 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11468,7 +11468,7 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 			if err := func() error {
 				var ParamsAppIDValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11507,7 +11507,7 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -11538,7 +11538,7 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -11569,7 +11569,7 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -11601,7 +11601,7 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 			if err := func() error {
 				var ParamsCheckNameValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11636,7 +11636,7 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 			if err := func() error {
 				var ParamsStatusValue ChecksListForSuiteStatus
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11677,7 +11677,7 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 			if err := func() error {
 				var ParamsFilterValue ChecksListForSuiteFilter
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11718,7 +11718,7 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11753,7 +11753,7 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11792,7 +11792,7 @@ func decodeChecksListSuitesForRefParams(r *http.Request) (ChecksListSuitesForRef
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -11823,7 +11823,7 @@ func decodeChecksListSuitesForRefParams(r *http.Request) (ChecksListSuitesForRef
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -11854,7 +11854,7 @@ func decodeChecksListSuitesForRefParams(r *http.Request) (ChecksListSuitesForRef
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -11886,7 +11886,7 @@ func decodeChecksListSuitesForRefParams(r *http.Request) (ChecksListSuitesForRef
 			if err := func() error {
 				var ParamsAppIDValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11921,7 +11921,7 @@ func decodeChecksListSuitesForRefParams(r *http.Request) (ChecksListSuitesForRef
 			if err := func() error {
 				var ParamsCheckNameValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11956,7 +11956,7 @@ func decodeChecksListSuitesForRefParams(r *http.Request) (ChecksListSuitesForRef
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11991,7 +11991,7 @@ func decodeChecksListSuitesForRefParams(r *http.Request) (ChecksListSuitesForRef
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12030,7 +12030,7 @@ func decodeChecksRerequestSuiteParams(r *http.Request) (ChecksRerequestSuitePara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -12061,7 +12061,7 @@ func decodeChecksRerequestSuiteParams(r *http.Request) (ChecksRerequestSuitePara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -12092,7 +12092,7 @@ func decodeChecksRerequestSuiteParams(r *http.Request) (ChecksRerequestSuitePara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -12128,7 +12128,7 @@ func decodeChecksSetSuitesPreferencesParams(r *http.Request) (ChecksSetSuitesPre
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -12159,7 +12159,7 @@ func decodeChecksSetSuitesPreferencesParams(r *http.Request) (ChecksSetSuitesPre
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -12195,7 +12195,7 @@ func decodeCodeScanningDeleteAnalysisParams(r *http.Request) (CodeScanningDelete
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -12226,7 +12226,7 @@ func decodeCodeScanningDeleteAnalysisParams(r *http.Request) (CodeScanningDelete
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -12257,7 +12257,7 @@ func decodeCodeScanningDeleteAnalysisParams(r *http.Request) (CodeScanningDelete
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -12289,7 +12289,7 @@ func decodeCodeScanningDeleteAnalysisParams(r *http.Request) (CodeScanningDelete
 			if err := func() error {
 				var ParamsConfirmDeleteValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12328,7 +12328,7 @@ func decodeCodeScanningGetAlertParams(r *http.Request) (CodeScanningGetAlertPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -12359,7 +12359,7 @@ func decodeCodeScanningGetAlertParams(r *http.Request) (CodeScanningGetAlertPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -12392,7 +12392,7 @@ func decodeCodeScanningGetAlertParams(r *http.Request) (CodeScanningGetAlertPara
 			if err := func() error {
 				var ParamsAlertNumberUnderlying int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12433,7 +12433,7 @@ func decodeCodeScanningGetAnalysisParams(r *http.Request) (CodeScanningGetAnalys
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -12464,7 +12464,7 @@ func decodeCodeScanningGetAnalysisParams(r *http.Request) (CodeScanningGetAnalys
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -12495,7 +12495,7 @@ func decodeCodeScanningGetAnalysisParams(r *http.Request) (CodeScanningGetAnalys
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -12531,7 +12531,7 @@ func decodeCodeScanningGetSarifParams(r *http.Request) (CodeScanningGetSarifPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -12562,7 +12562,7 @@ func decodeCodeScanningGetSarifParams(r *http.Request) (CodeScanningGetSarifPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -12593,7 +12593,7 @@ func decodeCodeScanningGetSarifParams(r *http.Request) (CodeScanningGetSarifPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -12629,7 +12629,7 @@ func decodeCodeScanningListAlertInstancesParams(r *http.Request) (CodeScanningLi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -12660,7 +12660,7 @@ func decodeCodeScanningListAlertInstancesParams(r *http.Request) (CodeScanningLi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -12693,7 +12693,7 @@ func decodeCodeScanningListAlertInstancesParams(r *http.Request) (CodeScanningLi
 			if err := func() error {
 				var ParamsAlertNumberUnderlying int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12730,7 +12730,7 @@ func decodeCodeScanningListAlertInstancesParams(r *http.Request) (CodeScanningLi
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12765,7 +12765,7 @@ func decodeCodeScanningListAlertInstancesParams(r *http.Request) (CodeScanningLi
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12802,7 +12802,7 @@ func decodeCodeScanningListAlertInstancesParams(r *http.Request) (CodeScanningLi
 				if err := func() error {
 					var ParamsRefValueUnderlying string
 					if err := func() error {
-						s, err := d.Value()
+						s, err := d.DecodeValue()
 						if err != nil {
 							return err
 						}
@@ -12846,7 +12846,7 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -12877,7 +12877,7 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -12911,7 +12911,7 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 				if err := func() error {
 					var ParamsToolNameValueUnderlying string
 					if err := func() error {
-						s, err := d.Value()
+						s, err := d.DecodeValue()
 						if err != nil {
 							return err
 						}
@@ -12953,7 +12953,7 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 				if err := func() error {
 					var ParamsToolGUIDValueUnderlying string
 					if err := func() error {
-						s, err := d.Value()
+						s, err := d.DecodeValue()
 						if err != nil {
 							return err
 						}
@@ -12993,7 +12993,7 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13028,7 +13028,7 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13065,7 +13065,7 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 				if err := func() error {
 					var ParamsRefValueUnderlying string
 					if err := func() error {
-						s, err := d.Value()
+						s, err := d.DecodeValue()
 						if err != nil {
 							return err
 						}
@@ -13105,7 +13105,7 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 			if err := func() error {
 				var ParamsStateValue CodeScanningAlertState
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13150,7 +13150,7 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -13181,7 +13181,7 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -13215,7 +13215,7 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 				if err := func() error {
 					var ParamsToolNameValueUnderlying string
 					if err := func() error {
-						s, err := d.Value()
+						s, err := d.DecodeValue()
 						if err != nil {
 							return err
 						}
@@ -13257,7 +13257,7 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 				if err := func() error {
 					var ParamsToolGUIDValueUnderlying string
 					if err := func() error {
-						s, err := d.Value()
+						s, err := d.DecodeValue()
 						if err != nil {
 							return err
 						}
@@ -13297,7 +13297,7 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13332,7 +13332,7 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13369,7 +13369,7 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 				if err := func() error {
 					var ParamsRefValueUnderlying string
 					if err := func() error {
-						s, err := d.Value()
+						s, err := d.DecodeValue()
 						if err != nil {
 							return err
 						}
@@ -13411,7 +13411,7 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 				if err := func() error {
 					var ParamsSarifIDValueUnderlying string
 					if err := func() error {
-						s, err := d.Value()
+						s, err := d.DecodeValue()
 						if err != nil {
 							return err
 						}
@@ -13455,7 +13455,7 @@ func decodeCodeScanningUpdateAlertParams(r *http.Request) (CodeScanningUpdateAle
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -13486,7 +13486,7 @@ func decodeCodeScanningUpdateAlertParams(r *http.Request) (CodeScanningUpdateAle
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -13519,7 +13519,7 @@ func decodeCodeScanningUpdateAlertParams(r *http.Request) (CodeScanningUpdateAle
 			if err := func() error {
 				var ParamsAlertNumberUnderlying int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13560,7 +13560,7 @@ func decodeCodeScanningUploadSarifParams(r *http.Request) (CodeScanningUploadSar
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -13591,7 +13591,7 @@ func decodeCodeScanningUploadSarifParams(r *http.Request) (CodeScanningUploadSar
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -13627,7 +13627,7 @@ func decodeCodesOfConductGetConductCodeParams(r *http.Request) (CodesOfConductGe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -13663,7 +13663,7 @@ func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -13694,7 +13694,7 @@ func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -13725,7 +13725,7 @@ func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -13761,7 +13761,7 @@ func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(r *http.
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -13792,7 +13792,7 @@ func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(r *http.
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -13823,7 +13823,7 @@ func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(r *http.
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -13859,7 +13859,7 @@ func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(r *http.Req
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -13895,7 +13895,7 @@ func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(r *http.Request) 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -13931,7 +13931,7 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(r *http
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -13967,7 +13967,7 @@ func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(r *http.Request) (
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -13998,7 +13998,7 @@ func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(r *http.Request) (
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -14034,7 +14034,7 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(r *http.Req
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -14065,7 +14065,7 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(r *http.Req
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -14101,7 +14101,7 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(r *htt
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -14132,7 +14132,7 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(r *htt
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -14168,7 +14168,7 @@ func decodeEnterpriseAdminDeleteUserFromEnterpriseParams(r *http.Request) (Enter
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -14199,7 +14199,7 @@ func decodeEnterpriseAdminDeleteUserFromEnterpriseParams(r *http.Request) (Enter
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -14235,7 +14235,7 @@ func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprisePara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -14266,7 +14266,7 @@ func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprisePara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -14302,7 +14302,7 @@ func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParam
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -14333,7 +14333,7 @@ func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParam
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -14369,7 +14369,7 @@ func decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(r *http.Request) (En
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -14405,7 +14405,7 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -14437,7 +14437,7 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 			if err := func() error {
 				var ParamsPhraseValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14472,7 +14472,7 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 			if err := func() error {
 				var ParamsIncludeValue EnterpriseAdminGetAuditLogInclude
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14513,7 +14513,7 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 			if err := func() error {
 				var ParamsAfterValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14548,7 +14548,7 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 			if err := func() error {
 				var ParamsBeforeValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14583,7 +14583,7 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 			if err := func() error {
 				var ParamsOrderValue EnterpriseAdminGetAuditLogOrder
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14624,7 +14624,7 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14659,7 +14659,7 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14698,7 +14698,7 @@ func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(r *http.Re
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -14734,7 +14734,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(r *
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -14765,7 +14765,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(r *
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -14797,7 +14797,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(r *
 			if err := func() error {
 				var ParamsExcludedAttributesValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14836,7 +14836,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(r *h
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -14867,7 +14867,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(r *h
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -14903,7 +14903,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(r *http.Request
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -14934,7 +14934,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(r *http.Request
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -14970,7 +14970,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(r *http.Re
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -15001,7 +15001,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(r *http.Re
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -15037,7 +15037,7 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -15068,7 +15068,7 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -15100,7 +15100,7 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15135,7 +15135,7 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15174,7 +15174,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(r *http.Request)
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -15206,7 +15206,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(r *http.Request)
 			if err := func() error {
 				var ParamsStartIndexValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15241,7 +15241,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(r *http.Request)
 			if err := func() error {
 				var ParamsCountValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15276,7 +15276,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(r *http.Request)
 			if err := func() error {
 				var ParamsFilterValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15311,7 +15311,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(r *http.Request)
 			if err := func() error {
 				var ParamsExcludedAttributesValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15350,7 +15350,7 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(r *http.Requ
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -15382,7 +15382,7 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(r *http.Requ
 			if err := func() error {
 				var ParamsStartIndexValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15417,7 +15417,7 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(r *http.Requ
 			if err := func() error {
 				var ParamsCountValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15452,7 +15452,7 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(r *http.Requ
 			if err := func() error {
 				var ParamsFilterValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15491,7 +15491,7 @@ func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(r *http.Requ
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -15527,7 +15527,7 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -15559,7 +15559,7 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15594,7 +15594,7 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15633,7 +15633,7 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(r *http.
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -15665,7 +15665,7 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(r *http.
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15700,7 +15700,7 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(r *http.
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15739,7 +15739,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(r *http.Reque
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -15771,7 +15771,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(r *http.Reque
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15806,7 +15806,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(r *http.Reque
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15845,7 +15845,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(r *htt
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -15876,7 +15876,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(r *htt
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -15908,7 +15908,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(r *htt
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15943,7 +15943,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(r *htt
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15982,7 +15982,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(r *http.Reques
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16018,7 +16018,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(r *http.Request
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16054,7 +16054,7 @@ func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprisePara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16085,7 +16085,7 @@ func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprisePara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16116,7 +16116,7 @@ func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprisePara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16152,7 +16152,7 @@ func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(r *
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16183,7 +16183,7 @@ func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(r *
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16214,7 +16214,7 @@ func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(r *
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16250,7 +16250,7 @@ func decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(r *http.Request) (En
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16286,7 +16286,7 @@ func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(r *http.Re
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16322,7 +16322,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(r *h
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16353,7 +16353,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(r *h
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16389,7 +16389,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(r *ht
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16420,7 +16420,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(r *ht
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16456,7 +16456,7 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16487,7 +16487,7 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16523,7 +16523,7 @@ func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16559,7 +16559,7 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(r *http
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16590,7 +16590,7 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(r *http
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16626,7 +16626,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(r *http.Request
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16657,7 +16657,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(r *http.Request
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16693,7 +16693,7 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(r *http
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16724,7 +16724,7 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(r *http
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16760,7 +16760,7 @@ func decodeGistsCheckIsStarredParams(r *http.Request) (GistsCheckIsStarredParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16796,7 +16796,7 @@ func decodeGistsCreateCommentParams(r *http.Request) (GistsCreateCommentParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16832,7 +16832,7 @@ func decodeGistsDeleteParams(r *http.Request) (GistsDeleteParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16868,7 +16868,7 @@ func decodeGistsDeleteCommentParams(r *http.Request) (GistsDeleteCommentParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16899,7 +16899,7 @@ func decodeGistsDeleteCommentParams(r *http.Request) (GistsDeleteCommentParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16935,7 +16935,7 @@ func decodeGistsGetParams(r *http.Request) (GistsGetParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -16971,7 +16971,7 @@ func decodeGistsGetCommentParams(r *http.Request) (GistsGetCommentParams, error)
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -17002,7 +17002,7 @@ func decodeGistsGetCommentParams(r *http.Request) (GistsGetCommentParams, error)
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -17039,7 +17039,7 @@ func decodeGistsListParams(r *http.Request) (GistsListParams, error) {
 			if err := func() error {
 				var ParamsSinceValue time.Time
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17074,7 +17074,7 @@ func decodeGistsListParams(r *http.Request) (GistsListParams, error) {
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17109,7 +17109,7 @@ func decodeGistsListParams(r *http.Request) (GistsListParams, error) {
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17148,7 +17148,7 @@ func decodeGistsListCommentsParams(r *http.Request) (GistsListCommentsParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -17180,7 +17180,7 @@ func decodeGistsListCommentsParams(r *http.Request) (GistsListCommentsParams, er
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17215,7 +17215,7 @@ func decodeGistsListCommentsParams(r *http.Request) (GistsListCommentsParams, er
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17254,7 +17254,7 @@ func decodeGistsListCommitsParams(r *http.Request) (GistsListCommitsParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -17286,7 +17286,7 @@ func decodeGistsListCommitsParams(r *http.Request) (GistsListCommitsParams, erro
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17321,7 +17321,7 @@ func decodeGistsListCommitsParams(r *http.Request) (GistsListCommitsParams, erro
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17360,7 +17360,7 @@ func decodeGistsListForksParams(r *http.Request) (GistsListForksParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -17392,7 +17392,7 @@ func decodeGistsListForksParams(r *http.Request) (GistsListForksParams, error) {
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17427,7 +17427,7 @@ func decodeGistsListForksParams(r *http.Request) (GistsListForksParams, error) {
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17467,7 +17467,7 @@ func decodeGistsListStarredParams(r *http.Request) (GistsListStarredParams, erro
 			if err := func() error {
 				var ParamsSinceValue time.Time
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17502,7 +17502,7 @@ func decodeGistsListStarredParams(r *http.Request) (GistsListStarredParams, erro
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17537,7 +17537,7 @@ func decodeGistsListStarredParams(r *http.Request) (GistsListStarredParams, erro
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17576,7 +17576,7 @@ func decodeGistsStarParams(r *http.Request) (GistsStarParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -17612,7 +17612,7 @@ func decodeGistsUnstarParams(r *http.Request) (GistsUnstarParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -17648,7 +17648,7 @@ func decodeGistsUpdateCommentParams(r *http.Request) (GistsUpdateCommentParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -17679,7 +17679,7 @@ func decodeGistsUpdateCommentParams(r *http.Request) (GistsUpdateCommentParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -17715,7 +17715,7 @@ func decodeGitGetCommitParams(r *http.Request) (GitGetCommitParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -17746,7 +17746,7 @@ func decodeGitGetCommitParams(r *http.Request) (GitGetCommitParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -17777,7 +17777,7 @@ func decodeGitGetCommitParams(r *http.Request) (GitGetCommitParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -17813,7 +17813,7 @@ func decodeGitGetRefParams(r *http.Request) (GitGetRefParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -17844,7 +17844,7 @@ func decodeGitGetRefParams(r *http.Request) (GitGetRefParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -17875,7 +17875,7 @@ func decodeGitGetRefParams(r *http.Request) (GitGetRefParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -17911,7 +17911,7 @@ func decodeGitGetTagParams(r *http.Request) (GitGetTagParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -17942,7 +17942,7 @@ func decodeGitGetTagParams(r *http.Request) (GitGetTagParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -17973,7 +17973,7 @@ func decodeGitGetTagParams(r *http.Request) (GitGetTagParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18009,7 +18009,7 @@ func decodeGitListMatchingRefsParams(r *http.Request) (GitListMatchingRefsParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18040,7 +18040,7 @@ func decodeGitListMatchingRefsParams(r *http.Request) (GitListMatchingRefsParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18071,7 +18071,7 @@ func decodeGitListMatchingRefsParams(r *http.Request) (GitListMatchingRefsParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18103,7 +18103,7 @@ func decodeGitListMatchingRefsParams(r *http.Request) (GitListMatchingRefsParams
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18138,7 +18138,7 @@ func decodeGitListMatchingRefsParams(r *http.Request) (GitListMatchingRefsParams
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18177,7 +18177,7 @@ func decodeGitignoreGetTemplateParams(r *http.Request) (GitignoreGetTemplatePara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18213,7 +18213,7 @@ func decodeInteractionsRemoveRestrictionsForOrgParams(r *http.Request) (Interact
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18249,7 +18249,7 @@ func decodeInteractionsRemoveRestrictionsForRepoParams(r *http.Request) (Interac
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18280,7 +18280,7 @@ func decodeInteractionsRemoveRestrictionsForRepoParams(r *http.Request) (Interac
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18316,7 +18316,7 @@ func decodeInteractionsSetRestrictionsForRepoParams(r *http.Request) (Interactio
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18347,7 +18347,7 @@ func decodeInteractionsSetRestrictionsForRepoParams(r *http.Request) (Interactio
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18383,7 +18383,7 @@ func decodeIssuesAddAssigneesParams(r *http.Request) (IssuesAddAssigneesParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18414,7 +18414,7 @@ func decodeIssuesAddAssigneesParams(r *http.Request) (IssuesAddAssigneesParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18445,7 +18445,7 @@ func decodeIssuesAddAssigneesParams(r *http.Request) (IssuesAddAssigneesParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18481,7 +18481,7 @@ func decodeIssuesCheckUserCanBeAssignedParams(r *http.Request) (IssuesCheckUserC
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18512,7 +18512,7 @@ func decodeIssuesCheckUserCanBeAssignedParams(r *http.Request) (IssuesCheckUserC
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18543,7 +18543,7 @@ func decodeIssuesCheckUserCanBeAssignedParams(r *http.Request) (IssuesCheckUserC
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18579,7 +18579,7 @@ func decodeIssuesDeleteCommentParams(r *http.Request) (IssuesDeleteCommentParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18610,7 +18610,7 @@ func decodeIssuesDeleteCommentParams(r *http.Request) (IssuesDeleteCommentParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18641,7 +18641,7 @@ func decodeIssuesDeleteCommentParams(r *http.Request) (IssuesDeleteCommentParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18677,7 +18677,7 @@ func decodeIssuesDeleteLabelParams(r *http.Request) (IssuesDeleteLabelParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18708,7 +18708,7 @@ func decodeIssuesDeleteLabelParams(r *http.Request) (IssuesDeleteLabelParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18739,7 +18739,7 @@ func decodeIssuesDeleteLabelParams(r *http.Request) (IssuesDeleteLabelParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18775,7 +18775,7 @@ func decodeIssuesDeleteMilestoneParams(r *http.Request) (IssuesDeleteMilestonePa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18806,7 +18806,7 @@ func decodeIssuesDeleteMilestoneParams(r *http.Request) (IssuesDeleteMilestonePa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18837,7 +18837,7 @@ func decodeIssuesDeleteMilestoneParams(r *http.Request) (IssuesDeleteMilestonePa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18873,7 +18873,7 @@ func decodeIssuesGetCommentParams(r *http.Request) (IssuesGetCommentParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18904,7 +18904,7 @@ func decodeIssuesGetCommentParams(r *http.Request) (IssuesGetCommentParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18935,7 +18935,7 @@ func decodeIssuesGetCommentParams(r *http.Request) (IssuesGetCommentParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -18971,7 +18971,7 @@ func decodeIssuesGetEventParams(r *http.Request) (IssuesGetEventParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -19002,7 +19002,7 @@ func decodeIssuesGetEventParams(r *http.Request) (IssuesGetEventParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -19033,7 +19033,7 @@ func decodeIssuesGetEventParams(r *http.Request) (IssuesGetEventParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -19069,7 +19069,7 @@ func decodeIssuesGetLabelParams(r *http.Request) (IssuesGetLabelParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -19100,7 +19100,7 @@ func decodeIssuesGetLabelParams(r *http.Request) (IssuesGetLabelParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -19131,7 +19131,7 @@ func decodeIssuesGetLabelParams(r *http.Request) (IssuesGetLabelParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -19167,7 +19167,7 @@ func decodeIssuesGetMilestoneParams(r *http.Request) (IssuesGetMilestoneParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -19198,7 +19198,7 @@ func decodeIssuesGetMilestoneParams(r *http.Request) (IssuesGetMilestoneParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -19229,7 +19229,7 @@ func decodeIssuesGetMilestoneParams(r *http.Request) (IssuesGetMilestoneParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -19265,7 +19265,7 @@ func decodeIssuesListAssigneesParams(r *http.Request) (IssuesListAssigneesParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -19296,7 +19296,7 @@ func decodeIssuesListAssigneesParams(r *http.Request) (IssuesListAssigneesParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -19328,7 +19328,7 @@ func decodeIssuesListAssigneesParams(r *http.Request) (IssuesListAssigneesParams
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -19363,7 +19363,7 @@ func decodeIssuesListAssigneesParams(r *http.Request) (IssuesListAssigneesParams
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -19402,7 +19402,7 @@ func decodeIssuesListCommentsParams(r *http.Request) (IssuesListCommentsParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -19433,7 +19433,7 @@ func decodeIssuesListCommentsParams(r *http.Request) (IssuesListCommentsParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -19464,7 +19464,7 @@ func decodeIssuesListCommentsParams(r *http.Request) (IssuesListCommentsParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -19496,7 +19496,7 @@ func decodeIssuesListCommentsParams(r *http.Request) (IssuesListCommentsParams, 
 			if err := func() error {
 				var ParamsSinceValue time.Time
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -19531,7 +19531,7 @@ func decodeIssuesListCommentsParams(r *http.Request) (IssuesListCommentsParams, 
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -19566,7 +19566,7 @@ func decodeIssuesListCommentsParams(r *http.Request) (IssuesListCommentsParams, 
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -19605,7 +19605,7 @@ func decodeIssuesListLabelsForMilestoneParams(r *http.Request) (IssuesListLabels
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -19636,7 +19636,7 @@ func decodeIssuesListLabelsForMilestoneParams(r *http.Request) (IssuesListLabels
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -19667,7 +19667,7 @@ func decodeIssuesListLabelsForMilestoneParams(r *http.Request) (IssuesListLabels
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -19699,7 +19699,7 @@ func decodeIssuesListLabelsForMilestoneParams(r *http.Request) (IssuesListLabels
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -19734,7 +19734,7 @@ func decodeIssuesListLabelsForMilestoneParams(r *http.Request) (IssuesListLabels
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -19773,7 +19773,7 @@ func decodeIssuesListLabelsForRepoParams(r *http.Request) (IssuesListLabelsForRe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -19804,7 +19804,7 @@ func decodeIssuesListLabelsForRepoParams(r *http.Request) (IssuesListLabelsForRe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -19836,7 +19836,7 @@ func decodeIssuesListLabelsForRepoParams(r *http.Request) (IssuesListLabelsForRe
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -19871,7 +19871,7 @@ func decodeIssuesListLabelsForRepoParams(r *http.Request) (IssuesListLabelsForRe
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -19910,7 +19910,7 @@ func decodeIssuesListLabelsOnIssueParams(r *http.Request) (IssuesListLabelsOnIss
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -19941,7 +19941,7 @@ func decodeIssuesListLabelsOnIssueParams(r *http.Request) (IssuesListLabelsOnIss
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -19972,7 +19972,7 @@ func decodeIssuesListLabelsOnIssueParams(r *http.Request) (IssuesListLabelsOnIss
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -20004,7 +20004,7 @@ func decodeIssuesListLabelsOnIssueParams(r *http.Request) (IssuesListLabelsOnIss
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -20039,7 +20039,7 @@ func decodeIssuesListLabelsOnIssueParams(r *http.Request) (IssuesListLabelsOnIss
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -20078,7 +20078,7 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -20109,7 +20109,7 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -20141,7 +20141,7 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 			if err := func() error {
 				var ParamsStateValue IssuesListMilestonesState
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -20182,7 +20182,7 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 			if err := func() error {
 				var ParamsSortValue IssuesListMilestonesSort
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -20223,7 +20223,7 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 			if err := func() error {
 				var ParamsDirectionValue IssuesListMilestonesDirection
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -20264,7 +20264,7 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -20299,7 +20299,7 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -20338,7 +20338,7 @@ func decodeIssuesRemoveAllLabelsParams(r *http.Request) (IssuesRemoveAllLabelsPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -20369,7 +20369,7 @@ func decodeIssuesRemoveAllLabelsParams(r *http.Request) (IssuesRemoveAllLabelsPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -20400,7 +20400,7 @@ func decodeIssuesRemoveAllLabelsParams(r *http.Request) (IssuesRemoveAllLabelsPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -20436,7 +20436,7 @@ func decodeIssuesRemoveAssigneesParams(r *http.Request) (IssuesRemoveAssigneesPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -20467,7 +20467,7 @@ func decodeIssuesRemoveAssigneesParams(r *http.Request) (IssuesRemoveAssigneesPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -20498,7 +20498,7 @@ func decodeIssuesRemoveAssigneesParams(r *http.Request) (IssuesRemoveAssigneesPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -20534,7 +20534,7 @@ func decodeIssuesRemoveLabelParams(r *http.Request) (IssuesRemoveLabelParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -20565,7 +20565,7 @@ func decodeIssuesRemoveLabelParams(r *http.Request) (IssuesRemoveLabelParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -20596,7 +20596,7 @@ func decodeIssuesRemoveLabelParams(r *http.Request) (IssuesRemoveLabelParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -20627,7 +20627,7 @@ func decodeIssuesRemoveLabelParams(r *http.Request) (IssuesRemoveLabelParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -20663,7 +20663,7 @@ func decodeIssuesUnlockParams(r *http.Request) (IssuesUnlockParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -20694,7 +20694,7 @@ func decodeIssuesUnlockParams(r *http.Request) (IssuesUnlockParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -20725,7 +20725,7 @@ func decodeIssuesUnlockParams(r *http.Request) (IssuesUnlockParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -20761,7 +20761,7 @@ func decodeIssuesUpdateLabelParams(r *http.Request) (IssuesUpdateLabelParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -20792,7 +20792,7 @@ func decodeIssuesUpdateLabelParams(r *http.Request) (IssuesUpdateLabelParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -20823,7 +20823,7 @@ func decodeIssuesUpdateLabelParams(r *http.Request) (IssuesUpdateLabelParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -20859,7 +20859,7 @@ func decodeIssuesUpdateMilestoneParams(r *http.Request) (IssuesUpdateMilestonePa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -20890,7 +20890,7 @@ func decodeIssuesUpdateMilestoneParams(r *http.Request) (IssuesUpdateMilestonePa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -20921,7 +20921,7 @@ func decodeIssuesUpdateMilestoneParams(r *http.Request) (IssuesUpdateMilestonePa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -20957,7 +20957,7 @@ func decodeLicensesGetParams(r *http.Request) (LicensesGetParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -20994,7 +20994,7 @@ func decodeLicensesGetAllCommonlyUsedParams(r *http.Request) (LicensesGetAllComm
 			if err := func() error {
 				var ParamsFeaturedValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -21029,7 +21029,7 @@ func decodeLicensesGetAllCommonlyUsedParams(r *http.Request) (LicensesGetAllComm
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -21064,7 +21064,7 @@ func decodeLicensesGetAllCommonlyUsedParams(r *http.Request) (LicensesGetAllComm
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -21103,7 +21103,7 @@ func decodeLicensesGetForRepoParams(r *http.Request) (LicensesGetForRepoParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -21134,7 +21134,7 @@ func decodeLicensesGetForRepoParams(r *http.Request) (LicensesGetForRepoParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -21171,7 +21171,7 @@ func decodeMetaGetOctocatParams(r *http.Request) (MetaGetOctocatParams, error) {
 			if err := func() error {
 				var ParamsSValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -21210,7 +21210,7 @@ func decodeMigrationsCancelImportParams(r *http.Request) (MigrationsCancelImport
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -21241,7 +21241,7 @@ func decodeMigrationsCancelImportParams(r *http.Request) (MigrationsCancelImport
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -21277,7 +21277,7 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserParams(r *http.Request) (M
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -21313,7 +21313,7 @@ func decodeMigrationsDeleteArchiveForOrgParams(r *http.Request) (MigrationsDelet
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -21344,7 +21344,7 @@ func decodeMigrationsDeleteArchiveForOrgParams(r *http.Request) (MigrationsDelet
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -21380,7 +21380,7 @@ func decodeMigrationsDownloadArchiveForOrgParams(r *http.Request) (MigrationsDow
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -21411,7 +21411,7 @@ func decodeMigrationsDownloadArchiveForOrgParams(r *http.Request) (MigrationsDow
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -21447,7 +21447,7 @@ func decodeMigrationsGetArchiveForAuthenticatedUserParams(r *http.Request) (Migr
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -21483,7 +21483,7 @@ func decodeMigrationsGetCommitAuthorsParams(r *http.Request) (MigrationsGetCommi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -21514,7 +21514,7 @@ func decodeMigrationsGetCommitAuthorsParams(r *http.Request) (MigrationsGetCommi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -21546,7 +21546,7 @@ func decodeMigrationsGetCommitAuthorsParams(r *http.Request) (MigrationsGetCommi
 			if err := func() error {
 				var ParamsSinceValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -21585,7 +21585,7 @@ func decodeMigrationsGetImportStatusParams(r *http.Request) (MigrationsGetImport
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -21616,7 +21616,7 @@ func decodeMigrationsGetImportStatusParams(r *http.Request) (MigrationsGetImport
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -21652,7 +21652,7 @@ func decodeMigrationsGetLargeFilesParams(r *http.Request) (MigrationsGetLargeFil
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -21683,7 +21683,7 @@ func decodeMigrationsGetLargeFilesParams(r *http.Request) (MigrationsGetLargeFil
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -21719,7 +21719,7 @@ func decodeMigrationsGetStatusForAuthenticatedUserParams(r *http.Request) (Migra
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -21749,10 +21749,10 @@ func decodeMigrationsGetStatusForAuthenticatedUserParams(r *http.Request) (Migra
 			})
 
 			if err := func() error {
-				return d.Array(func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
 					var ParamsExcludeItem string
 					if err := func() error {
-						s, err := d.Value()
+						s, err := d.DecodeValue()
 						if err != nil {
 							return err
 						}
@@ -21792,7 +21792,7 @@ func decodeMigrationsGetStatusForOrgParams(r *http.Request) (MigrationsGetStatus
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -21823,7 +21823,7 @@ func decodeMigrationsGetStatusForOrgParams(r *http.Request) (MigrationsGetStatus
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -21853,10 +21853,10 @@ func decodeMigrationsGetStatusForOrgParams(r *http.Request) (MigrationsGetStatus
 			})
 
 			if err := func() error {
-				return d.Array(func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
 					var ParamsExcludeItem MigrationsGetStatusForOrgExcludeItem
 					if err := func() error {
-						s, err := d.Value()
+						s, err := d.DecodeValue()
 						if err != nil {
 							return err
 						}
@@ -21917,7 +21917,7 @@ func decodeMigrationsListForAuthenticatedUserParams(r *http.Request) (Migrations
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -21952,7 +21952,7 @@ func decodeMigrationsListForAuthenticatedUserParams(r *http.Request) (Migrations
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -21991,7 +21991,7 @@ func decodeMigrationsListForOrgParams(r *http.Request) (MigrationsListForOrgPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -22023,7 +22023,7 @@ func decodeMigrationsListForOrgParams(r *http.Request) (MigrationsListForOrgPara
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -22058,7 +22058,7 @@ func decodeMigrationsListForOrgParams(r *http.Request) (MigrationsListForOrgPara
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -22091,10 +22091,10 @@ func decodeMigrationsListForOrgParams(r *http.Request) (MigrationsListForOrgPara
 			})
 
 			if err := func() error {
-				return d.Array(func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
 					var ParamsExcludeItem MigrationsListForOrgExcludeItem
 					if err := func() error {
-						s, err := d.Value()
+						s, err := d.DecodeValue()
 						if err != nil {
 							return err
 						}
@@ -22154,7 +22154,7 @@ func decodeMigrationsListReposForOrgParams(r *http.Request) (MigrationsListRepos
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -22185,7 +22185,7 @@ func decodeMigrationsListReposForOrgParams(r *http.Request) (MigrationsListRepos
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -22217,7 +22217,7 @@ func decodeMigrationsListReposForOrgParams(r *http.Request) (MigrationsListRepos
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -22252,7 +22252,7 @@ func decodeMigrationsListReposForOrgParams(r *http.Request) (MigrationsListRepos
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -22291,7 +22291,7 @@ func decodeMigrationsListReposForUserParams(r *http.Request) (MigrationsListRepo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -22323,7 +22323,7 @@ func decodeMigrationsListReposForUserParams(r *http.Request) (MigrationsListRepo
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -22358,7 +22358,7 @@ func decodeMigrationsListReposForUserParams(r *http.Request) (MigrationsListRepo
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -22397,7 +22397,7 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserParams(r *http.Request) (Migr
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -22428,7 +22428,7 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserParams(r *http.Request) (Migr
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -22464,7 +22464,7 @@ func decodeMigrationsUnlockRepoForOrgParams(r *http.Request) (MigrationsUnlockRe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -22495,7 +22495,7 @@ func decodeMigrationsUnlockRepoForOrgParams(r *http.Request) (MigrationsUnlockRe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -22526,7 +22526,7 @@ func decodeMigrationsUnlockRepoForOrgParams(r *http.Request) (MigrationsUnlockRe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -22562,7 +22562,7 @@ func decodeMigrationsUpdateImportParams(r *http.Request) (MigrationsUpdateImport
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -22593,7 +22593,7 @@ func decodeMigrationsUpdateImportParams(r *http.Request) (MigrationsUpdateImport
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -22629,7 +22629,7 @@ func decodeOAuthAuthorizationsDeleteAuthorizationParams(r *http.Request) (OAuthA
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -22665,7 +22665,7 @@ func decodeOAuthAuthorizationsDeleteGrantParams(r *http.Request) (OAuthAuthoriza
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -22701,7 +22701,7 @@ func decodeOAuthAuthorizationsGetAuthorizationParams(r *http.Request) (OAuthAuth
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -22737,7 +22737,7 @@ func decodeOAuthAuthorizationsGetGrantParams(r *http.Request) (OAuthAuthorizatio
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -22774,7 +22774,7 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(r *http.Request) (OAuthAu
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -22809,7 +22809,7 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(r *http.Request) (OAuthAu
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -22844,7 +22844,7 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(r *http.Request) (OAuthAu
 			if err := func() error {
 				var ParamsClientIDValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -22884,7 +22884,7 @@ func decodeOAuthAuthorizationsListGrantsParams(r *http.Request) (OAuthAuthorizat
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -22919,7 +22919,7 @@ func decodeOAuthAuthorizationsListGrantsParams(r *http.Request) (OAuthAuthorizat
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -22954,7 +22954,7 @@ func decodeOAuthAuthorizationsListGrantsParams(r *http.Request) (OAuthAuthorizat
 			if err := func() error {
 				var ParamsClientIDValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -22993,7 +22993,7 @@ func decodeOrgsCheckBlockedUserParams(r *http.Request) (OrgsCheckBlockedUserPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -23024,7 +23024,7 @@ func decodeOrgsCheckBlockedUserParams(r *http.Request) (OrgsCheckBlockedUserPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -23060,7 +23060,7 @@ func decodeOrgsCheckMembershipForUserParams(r *http.Request) (OrgsCheckMembershi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -23091,7 +23091,7 @@ func decodeOrgsCheckMembershipForUserParams(r *http.Request) (OrgsCheckMembershi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -23127,7 +23127,7 @@ func decodeOrgsCheckPublicMembershipForUserParams(r *http.Request) (OrgsCheckPub
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -23158,7 +23158,7 @@ func decodeOrgsCheckPublicMembershipForUserParams(r *http.Request) (OrgsCheckPub
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -23194,7 +23194,7 @@ func decodeOrgsConvertMemberToOutsideCollaboratorParams(r *http.Request) (OrgsCo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -23225,7 +23225,7 @@ func decodeOrgsConvertMemberToOutsideCollaboratorParams(r *http.Request) (OrgsCo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -23261,7 +23261,7 @@ func decodeOrgsDeleteWebhookParams(r *http.Request) (OrgsDeleteWebhookParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -23292,7 +23292,7 @@ func decodeOrgsDeleteWebhookParams(r *http.Request) (OrgsDeleteWebhookParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -23328,7 +23328,7 @@ func decodeOrgsGetParams(r *http.Request) (OrgsGetParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -23364,7 +23364,7 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -23396,7 +23396,7 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 			if err := func() error {
 				var ParamsPhraseValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -23431,7 +23431,7 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 			if err := func() error {
 				var ParamsIncludeValue OrgsGetAuditLogInclude
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -23472,7 +23472,7 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 			if err := func() error {
 				var ParamsAfterValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -23507,7 +23507,7 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 			if err := func() error {
 				var ParamsBeforeValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -23542,7 +23542,7 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 			if err := func() error {
 				var ParamsOrderValue OrgsGetAuditLogOrder
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -23583,7 +23583,7 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -23618,7 +23618,7 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -23657,7 +23657,7 @@ func decodeOrgsGetMembershipForAuthenticatedUserParams(r *http.Request) (OrgsGet
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -23693,7 +23693,7 @@ func decodeOrgsGetMembershipForUserParams(r *http.Request) (OrgsGetMembershipFor
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -23724,7 +23724,7 @@ func decodeOrgsGetMembershipForUserParams(r *http.Request) (OrgsGetMembershipFor
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -23760,7 +23760,7 @@ func decodeOrgsGetWebhookParams(r *http.Request) (OrgsGetWebhookParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -23791,7 +23791,7 @@ func decodeOrgsGetWebhookParams(r *http.Request) (OrgsGetWebhookParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -23827,7 +23827,7 @@ func decodeOrgsGetWebhookConfigForOrgParams(r *http.Request) (OrgsGetWebhookConf
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -23858,7 +23858,7 @@ func decodeOrgsGetWebhookConfigForOrgParams(r *http.Request) (OrgsGetWebhookConf
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -23895,7 +23895,7 @@ func decodeOrgsListParams(r *http.Request) (OrgsListParams, error) {
 			if err := func() error {
 				var ParamsSinceValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -23930,7 +23930,7 @@ func decodeOrgsListParams(r *http.Request) (OrgsListParams, error) {
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -23969,7 +23969,7 @@ func decodeOrgsListBlockedUsersParams(r *http.Request) (OrgsListBlockedUsersPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -24005,7 +24005,7 @@ func decodeOrgsListFailedInvitationsParams(r *http.Request) (OrgsListFailedInvit
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -24037,7 +24037,7 @@ func decodeOrgsListFailedInvitationsParams(r *http.Request) (OrgsListFailedInvit
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -24072,7 +24072,7 @@ func decodeOrgsListFailedInvitationsParams(r *http.Request) (OrgsListFailedInvit
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -24112,7 +24112,7 @@ func decodeOrgsListForAuthenticatedUserParams(r *http.Request) (OrgsListForAuthe
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -24147,7 +24147,7 @@ func decodeOrgsListForAuthenticatedUserParams(r *http.Request) (OrgsListForAuthe
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -24186,7 +24186,7 @@ func decodeOrgsListForUserParams(r *http.Request) (OrgsListForUserParams, error)
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -24218,7 +24218,7 @@ func decodeOrgsListForUserParams(r *http.Request) (OrgsListForUserParams, error)
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -24253,7 +24253,7 @@ func decodeOrgsListForUserParams(r *http.Request) (OrgsListForUserParams, error)
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -24292,7 +24292,7 @@ func decodeOrgsListInvitationTeamsParams(r *http.Request) (OrgsListInvitationTea
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -24323,7 +24323,7 @@ func decodeOrgsListInvitationTeamsParams(r *http.Request) (OrgsListInvitationTea
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -24355,7 +24355,7 @@ func decodeOrgsListInvitationTeamsParams(r *http.Request) (OrgsListInvitationTea
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -24390,7 +24390,7 @@ func decodeOrgsListInvitationTeamsParams(r *http.Request) (OrgsListInvitationTea
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -24429,7 +24429,7 @@ func decodeOrgsListOutsideCollaboratorsParams(r *http.Request) (OrgsListOutsideC
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -24461,7 +24461,7 @@ func decodeOrgsListOutsideCollaboratorsParams(r *http.Request) (OrgsListOutsideC
 			if err := func() error {
 				var ParamsFilterValue OrgsListOutsideCollaboratorsFilter
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -24502,7 +24502,7 @@ func decodeOrgsListOutsideCollaboratorsParams(r *http.Request) (OrgsListOutsideC
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -24537,7 +24537,7 @@ func decodeOrgsListOutsideCollaboratorsParams(r *http.Request) (OrgsListOutsideC
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -24576,7 +24576,7 @@ func decodeOrgsListPendingInvitationsParams(r *http.Request) (OrgsListPendingInv
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -24608,7 +24608,7 @@ func decodeOrgsListPendingInvitationsParams(r *http.Request) (OrgsListPendingInv
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -24643,7 +24643,7 @@ func decodeOrgsListPendingInvitationsParams(r *http.Request) (OrgsListPendingInv
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -24682,7 +24682,7 @@ func decodeOrgsListPublicMembersParams(r *http.Request) (OrgsListPublicMembersPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -24714,7 +24714,7 @@ func decodeOrgsListPublicMembersParams(r *http.Request) (OrgsListPublicMembersPa
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -24749,7 +24749,7 @@ func decodeOrgsListPublicMembersParams(r *http.Request) (OrgsListPublicMembersPa
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -24788,7 +24788,7 @@ func decodeOrgsListSamlSSOAuthorizationsParams(r *http.Request) (OrgsListSamlSSO
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -24824,7 +24824,7 @@ func decodeOrgsListWebhooksParams(r *http.Request) (OrgsListWebhooksParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -24856,7 +24856,7 @@ func decodeOrgsListWebhooksParams(r *http.Request) (OrgsListWebhooksParams, erro
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -24891,7 +24891,7 @@ func decodeOrgsListWebhooksParams(r *http.Request) (OrgsListWebhooksParams, erro
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -24930,7 +24930,7 @@ func decodeOrgsPingWebhookParams(r *http.Request) (OrgsPingWebhookParams, error)
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -24961,7 +24961,7 @@ func decodeOrgsPingWebhookParams(r *http.Request) (OrgsPingWebhookParams, error)
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -24997,7 +24997,7 @@ func decodeOrgsRemoveMemberParams(r *http.Request) (OrgsRemoveMemberParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25028,7 +25028,7 @@ func decodeOrgsRemoveMemberParams(r *http.Request) (OrgsRemoveMemberParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25064,7 +25064,7 @@ func decodeOrgsRemoveMembershipForUserParams(r *http.Request) (OrgsRemoveMembers
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25095,7 +25095,7 @@ func decodeOrgsRemoveMembershipForUserParams(r *http.Request) (OrgsRemoveMembers
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25131,7 +25131,7 @@ func decodeOrgsRemoveOutsideCollaboratorParams(r *http.Request) (OrgsRemoveOutsi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25162,7 +25162,7 @@ func decodeOrgsRemoveOutsideCollaboratorParams(r *http.Request) (OrgsRemoveOutsi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25198,7 +25198,7 @@ func decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(r *http.Request)
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25229,7 +25229,7 @@ func decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(r *http.Request)
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25265,7 +25265,7 @@ func decodeOrgsRemoveSamlSSOAuthorizationParams(r *http.Request) (OrgsRemoveSaml
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25296,7 +25296,7 @@ func decodeOrgsRemoveSamlSSOAuthorizationParams(r *http.Request) (OrgsRemoveSaml
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25332,7 +25332,7 @@ func decodeOrgsSetPublicMembershipForAuthenticatedUserParams(r *http.Request) (O
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25363,7 +25363,7 @@ func decodeOrgsSetPublicMembershipForAuthenticatedUserParams(r *http.Request) (O
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25399,7 +25399,7 @@ func decodeOrgsUnblockUserParams(r *http.Request) (OrgsUnblockUserParams, error)
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25430,7 +25430,7 @@ func decodeOrgsUnblockUserParams(r *http.Request) (OrgsUnblockUserParams, error)
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25466,7 +25466,7 @@ func decodeOrgsUpdateWebhookConfigForOrgParams(r *http.Request) (OrgsUpdateWebho
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25497,7 +25497,7 @@ func decodeOrgsUpdateWebhookConfigForOrgParams(r *http.Request) (OrgsUpdateWebho
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25533,7 +25533,7 @@ func decodePackagesDeletePackageForAuthenticatedUserParams(r *http.Request) (Pac
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25564,7 +25564,7 @@ func decodePackagesDeletePackageForAuthenticatedUserParams(r *http.Request) (Pac
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25600,7 +25600,7 @@ func decodePackagesDeletePackageForOrgParams(r *http.Request) (PackagesDeletePac
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25631,7 +25631,7 @@ func decodePackagesDeletePackageForOrgParams(r *http.Request) (PackagesDeletePac
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25662,7 +25662,7 @@ func decodePackagesDeletePackageForOrgParams(r *http.Request) (PackagesDeletePac
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25698,7 +25698,7 @@ func decodePackagesDeletePackageForUserParams(r *http.Request) (PackagesDeletePa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25729,7 +25729,7 @@ func decodePackagesDeletePackageForUserParams(r *http.Request) (PackagesDeletePa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25760,7 +25760,7 @@ func decodePackagesDeletePackageForUserParams(r *http.Request) (PackagesDeletePa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25796,7 +25796,7 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserParams(r *http.Reques
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25827,7 +25827,7 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserParams(r *http.Reques
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25858,7 +25858,7 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserParams(r *http.Reques
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25894,7 +25894,7 @@ func decodePackagesDeletePackageVersionForOrgParams(r *http.Request) (PackagesDe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25925,7 +25925,7 @@ func decodePackagesDeletePackageVersionForOrgParams(r *http.Request) (PackagesDe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25956,7 +25956,7 @@ func decodePackagesDeletePackageVersionForOrgParams(r *http.Request) (PackagesDe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -25987,7 +25987,7 @@ func decodePackagesDeletePackageVersionForOrgParams(r *http.Request) (PackagesDe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -26023,7 +26023,7 @@ func decodePackagesDeletePackageVersionForUserParams(r *http.Request) (PackagesD
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -26054,7 +26054,7 @@ func decodePackagesDeletePackageVersionForUserParams(r *http.Request) (PackagesD
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -26085,7 +26085,7 @@ func decodePackagesDeletePackageVersionForUserParams(r *http.Request) (PackagesD
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -26116,7 +26116,7 @@ func decodePackagesDeletePackageVersionForUserParams(r *http.Request) (PackagesD
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -26152,7 +26152,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -26183,7 +26183,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -26215,7 +26215,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -26250,7 +26250,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -26285,7 +26285,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 			if err := func() error {
 				var ParamsStateValue PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -26330,7 +26330,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(r *http.Reque
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -26361,7 +26361,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(r *http.Reque
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -26392,7 +26392,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(r *http.Reque
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -26424,7 +26424,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(r *http.Reque
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -26459,7 +26459,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(r *http.Reque
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -26494,7 +26494,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(r *http.Reque
 			if err := func() error {
 				var ParamsStateValue PackagesGetAllPackageVersionsForPackageOwnedByOrgState
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -26539,7 +26539,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(r *http.Requ
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -26570,7 +26570,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(r *http.Requ
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -26601,7 +26601,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(r *http.Requ
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -26637,7 +26637,7 @@ func decodePackagesGetPackageForAuthenticatedUserParams(r *http.Request) (Packag
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -26668,7 +26668,7 @@ func decodePackagesGetPackageForAuthenticatedUserParams(r *http.Request) (Packag
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -26704,7 +26704,7 @@ func decodePackagesGetPackageForOrganizationParams(r *http.Request) (PackagesGet
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -26735,7 +26735,7 @@ func decodePackagesGetPackageForOrganizationParams(r *http.Request) (PackagesGet
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -26766,7 +26766,7 @@ func decodePackagesGetPackageForOrganizationParams(r *http.Request) (PackagesGet
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -26802,7 +26802,7 @@ func decodePackagesGetPackageForUserParams(r *http.Request) (PackagesGetPackageF
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -26833,7 +26833,7 @@ func decodePackagesGetPackageForUserParams(r *http.Request) (PackagesGetPackageF
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -26864,7 +26864,7 @@ func decodePackagesGetPackageForUserParams(r *http.Request) (PackagesGetPackageF
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -26900,7 +26900,7 @@ func decodePackagesGetPackageVersionForAuthenticatedUserParams(r *http.Request) 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -26931,7 +26931,7 @@ func decodePackagesGetPackageVersionForAuthenticatedUserParams(r *http.Request) 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -26962,7 +26962,7 @@ func decodePackagesGetPackageVersionForAuthenticatedUserParams(r *http.Request) 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -26998,7 +26998,7 @@ func decodePackagesGetPackageVersionForOrganizationParams(r *http.Request) (Pack
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -27029,7 +27029,7 @@ func decodePackagesGetPackageVersionForOrganizationParams(r *http.Request) (Pack
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -27060,7 +27060,7 @@ func decodePackagesGetPackageVersionForOrganizationParams(r *http.Request) (Pack
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -27091,7 +27091,7 @@ func decodePackagesGetPackageVersionForOrganizationParams(r *http.Request) (Pack
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -27127,7 +27127,7 @@ func decodePackagesGetPackageVersionForUserParams(r *http.Request) (PackagesGetP
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -27158,7 +27158,7 @@ func decodePackagesGetPackageVersionForUserParams(r *http.Request) (PackagesGetP
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -27189,7 +27189,7 @@ func decodePackagesGetPackageVersionForUserParams(r *http.Request) (PackagesGetP
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -27220,7 +27220,7 @@ func decodePackagesGetPackageVersionForUserParams(r *http.Request) (PackagesGetP
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -27255,7 +27255,7 @@ func decodePackagesListPackagesForAuthenticatedUserParams(r *http.Request) (Pack
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -27293,7 +27293,7 @@ func decodePackagesListPackagesForAuthenticatedUserParams(r *http.Request) (Pack
 			if err := func() error {
 				var ParamsVisibilityValue PackagesListPackagesForAuthenticatedUserVisibility
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -27337,7 +27337,7 @@ func decodePackagesListPackagesForOrganizationParams(r *http.Request) (PackagesL
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -27374,7 +27374,7 @@ func decodePackagesListPackagesForOrganizationParams(r *http.Request) (PackagesL
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -27406,7 +27406,7 @@ func decodePackagesListPackagesForOrganizationParams(r *http.Request) (PackagesL
 			if err := func() error {
 				var ParamsVisibilityValue PackagesListPackagesForOrganizationVisibility
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -27450,7 +27450,7 @@ func decodePackagesListPackagesForUserParams(r *http.Request) (PackagesListPacka
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -27488,7 +27488,7 @@ func decodePackagesListPackagesForUserParams(r *http.Request) (PackagesListPacka
 			if err := func() error {
 				var ParamsVisibilityValue PackagesListPackagesForUserVisibility
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -27528,7 +27528,7 @@ func decodePackagesListPackagesForUserParams(r *http.Request) (PackagesListPacka
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -27564,7 +27564,7 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(r *http.Request) (Pa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -27595,7 +27595,7 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(r *http.Request) (Pa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -27627,7 +27627,7 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(r *http.Request) (Pa
 			if err := func() error {
 				var ParamsTokenValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -27666,7 +27666,7 @@ func decodePackagesRestorePackageForOrgParams(r *http.Request) (PackagesRestoreP
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -27697,7 +27697,7 @@ func decodePackagesRestorePackageForOrgParams(r *http.Request) (PackagesRestoreP
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -27728,7 +27728,7 @@ func decodePackagesRestorePackageForOrgParams(r *http.Request) (PackagesRestoreP
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -27760,7 +27760,7 @@ func decodePackagesRestorePackageForOrgParams(r *http.Request) (PackagesRestoreP
 			if err := func() error {
 				var ParamsTokenValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -27799,7 +27799,7 @@ func decodePackagesRestorePackageForUserParams(r *http.Request) (PackagesRestore
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -27830,7 +27830,7 @@ func decodePackagesRestorePackageForUserParams(r *http.Request) (PackagesRestore
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -27861,7 +27861,7 @@ func decodePackagesRestorePackageForUserParams(r *http.Request) (PackagesRestore
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -27893,7 +27893,7 @@ func decodePackagesRestorePackageForUserParams(r *http.Request) (PackagesRestore
 			if err := func() error {
 				var ParamsTokenValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -27932,7 +27932,7 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserParams(r *http.Reque
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -27963,7 +27963,7 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserParams(r *http.Reque
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -27994,7 +27994,7 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserParams(r *http.Reque
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -28030,7 +28030,7 @@ func decodePackagesRestorePackageVersionForOrgParams(r *http.Request) (PackagesR
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -28061,7 +28061,7 @@ func decodePackagesRestorePackageVersionForOrgParams(r *http.Request) (PackagesR
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -28092,7 +28092,7 @@ func decodePackagesRestorePackageVersionForOrgParams(r *http.Request) (PackagesR
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -28123,7 +28123,7 @@ func decodePackagesRestorePackageVersionForOrgParams(r *http.Request) (PackagesR
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -28159,7 +28159,7 @@ func decodePackagesRestorePackageVersionForUserParams(r *http.Request) (Packages
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -28190,7 +28190,7 @@ func decodePackagesRestorePackageVersionForUserParams(r *http.Request) (Packages
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -28221,7 +28221,7 @@ func decodePackagesRestorePackageVersionForUserParams(r *http.Request) (Packages
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -28252,7 +28252,7 @@ func decodePackagesRestorePackageVersionForUserParams(r *http.Request) (Packages
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -28288,7 +28288,7 @@ func decodeProjectsCreateColumnParams(r *http.Request) (ProjectsCreateColumnPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -28324,7 +28324,7 @@ func decodeProjectsCreateForOrgParams(r *http.Request) (ProjectsCreateForOrgPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -28360,7 +28360,7 @@ func decodeProjectsCreateForRepoParams(r *http.Request) (ProjectsCreateForRepoPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -28391,7 +28391,7 @@ func decodeProjectsCreateForRepoParams(r *http.Request) (ProjectsCreateForRepoPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -28427,7 +28427,7 @@ func decodeProjectsDeleteParams(r *http.Request) (ProjectsDeleteParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -28463,7 +28463,7 @@ func decodeProjectsDeleteCardParams(r *http.Request) (ProjectsDeleteCardParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -28499,7 +28499,7 @@ func decodeProjectsDeleteColumnParams(r *http.Request) (ProjectsDeleteColumnPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -28535,7 +28535,7 @@ func decodeProjectsGetParams(r *http.Request) (ProjectsGetParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -28571,7 +28571,7 @@ func decodeProjectsGetCardParams(r *http.Request) (ProjectsGetCardParams, error)
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -28607,7 +28607,7 @@ func decodeProjectsGetColumnParams(r *http.Request) (ProjectsGetColumnParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -28643,7 +28643,7 @@ func decodeProjectsListCardsParams(r *http.Request) (ProjectsListCardsParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -28675,7 +28675,7 @@ func decodeProjectsListCardsParams(r *http.Request) (ProjectsListCardsParams, er
 			if err := func() error {
 				var ParamsArchivedStateValue ProjectsListCardsArchivedState
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -28716,7 +28716,7 @@ func decodeProjectsListCardsParams(r *http.Request) (ProjectsListCardsParams, er
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -28751,7 +28751,7 @@ func decodeProjectsListCardsParams(r *http.Request) (ProjectsListCardsParams, er
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -28790,7 +28790,7 @@ func decodeProjectsListColumnsParams(r *http.Request) (ProjectsListColumnsParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -28822,7 +28822,7 @@ func decodeProjectsListColumnsParams(r *http.Request) (ProjectsListColumnsParams
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -28857,7 +28857,7 @@ func decodeProjectsListColumnsParams(r *http.Request) (ProjectsListColumnsParams
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -28896,7 +28896,7 @@ func decodeProjectsListForOrgParams(r *http.Request) (ProjectsListForOrgParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -28928,7 +28928,7 @@ func decodeProjectsListForOrgParams(r *http.Request) (ProjectsListForOrgParams, 
 			if err := func() error {
 				var ParamsStateValue ProjectsListForOrgState
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -28969,7 +28969,7 @@ func decodeProjectsListForOrgParams(r *http.Request) (ProjectsListForOrgParams, 
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -29004,7 +29004,7 @@ func decodeProjectsListForOrgParams(r *http.Request) (ProjectsListForOrgParams, 
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -29043,7 +29043,7 @@ func decodeProjectsListForRepoParams(r *http.Request) (ProjectsListForRepoParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -29074,7 +29074,7 @@ func decodeProjectsListForRepoParams(r *http.Request) (ProjectsListForRepoParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -29106,7 +29106,7 @@ func decodeProjectsListForRepoParams(r *http.Request) (ProjectsListForRepoParams
 			if err := func() error {
 				var ParamsStateValue ProjectsListForRepoState
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -29147,7 +29147,7 @@ func decodeProjectsListForRepoParams(r *http.Request) (ProjectsListForRepoParams
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -29182,7 +29182,7 @@ func decodeProjectsListForRepoParams(r *http.Request) (ProjectsListForRepoParams
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -29221,7 +29221,7 @@ func decodeProjectsMoveColumnParams(r *http.Request) (ProjectsMoveColumnParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -29257,7 +29257,7 @@ func decodeProjectsUpdateParams(r *http.Request) (ProjectsUpdateParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -29293,7 +29293,7 @@ func decodeProjectsUpdateCardParams(r *http.Request) (ProjectsUpdateCardParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -29329,7 +29329,7 @@ func decodeProjectsUpdateColumnParams(r *http.Request) (ProjectsUpdateColumnPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -29365,7 +29365,7 @@ func decodePullsCheckIfMergedParams(r *http.Request) (PullsCheckIfMergedParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -29396,7 +29396,7 @@ func decodePullsCheckIfMergedParams(r *http.Request) (PullsCheckIfMergedParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -29427,7 +29427,7 @@ func decodePullsCheckIfMergedParams(r *http.Request) (PullsCheckIfMergedParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -29463,7 +29463,7 @@ func decodePullsCreateReplyForReviewCommentParams(r *http.Request) (PullsCreateR
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -29494,7 +29494,7 @@ func decodePullsCreateReplyForReviewCommentParams(r *http.Request) (PullsCreateR
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -29525,7 +29525,7 @@ func decodePullsCreateReplyForReviewCommentParams(r *http.Request) (PullsCreateR
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -29556,7 +29556,7 @@ func decodePullsCreateReplyForReviewCommentParams(r *http.Request) (PullsCreateR
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -29592,7 +29592,7 @@ func decodePullsCreateReviewParams(r *http.Request) (PullsCreateReviewParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -29623,7 +29623,7 @@ func decodePullsCreateReviewParams(r *http.Request) (PullsCreateReviewParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -29654,7 +29654,7 @@ func decodePullsCreateReviewParams(r *http.Request) (PullsCreateReviewParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -29690,7 +29690,7 @@ func decodePullsDeletePendingReviewParams(r *http.Request) (PullsDeletePendingRe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -29721,7 +29721,7 @@ func decodePullsDeletePendingReviewParams(r *http.Request) (PullsDeletePendingRe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -29752,7 +29752,7 @@ func decodePullsDeletePendingReviewParams(r *http.Request) (PullsDeletePendingRe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -29783,7 +29783,7 @@ func decodePullsDeletePendingReviewParams(r *http.Request) (PullsDeletePendingRe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -29819,7 +29819,7 @@ func decodePullsDeleteReviewCommentParams(r *http.Request) (PullsDeleteReviewCom
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -29850,7 +29850,7 @@ func decodePullsDeleteReviewCommentParams(r *http.Request) (PullsDeleteReviewCom
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -29881,7 +29881,7 @@ func decodePullsDeleteReviewCommentParams(r *http.Request) (PullsDeleteReviewCom
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -29917,7 +29917,7 @@ func decodePullsDismissReviewParams(r *http.Request) (PullsDismissReviewParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -29948,7 +29948,7 @@ func decodePullsDismissReviewParams(r *http.Request) (PullsDismissReviewParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -29979,7 +29979,7 @@ func decodePullsDismissReviewParams(r *http.Request) (PullsDismissReviewParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -30010,7 +30010,7 @@ func decodePullsDismissReviewParams(r *http.Request) (PullsDismissReviewParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -30046,7 +30046,7 @@ func decodePullsGetParams(r *http.Request) (PullsGetParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -30077,7 +30077,7 @@ func decodePullsGetParams(r *http.Request) (PullsGetParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -30108,7 +30108,7 @@ func decodePullsGetParams(r *http.Request) (PullsGetParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -30144,7 +30144,7 @@ func decodePullsGetReviewParams(r *http.Request) (PullsGetReviewParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -30175,7 +30175,7 @@ func decodePullsGetReviewParams(r *http.Request) (PullsGetReviewParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -30206,7 +30206,7 @@ func decodePullsGetReviewParams(r *http.Request) (PullsGetReviewParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -30237,7 +30237,7 @@ func decodePullsGetReviewParams(r *http.Request) (PullsGetReviewParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -30273,7 +30273,7 @@ func decodePullsGetReviewCommentParams(r *http.Request) (PullsGetReviewCommentPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -30304,7 +30304,7 @@ func decodePullsGetReviewCommentParams(r *http.Request) (PullsGetReviewCommentPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -30335,7 +30335,7 @@ func decodePullsGetReviewCommentParams(r *http.Request) (PullsGetReviewCommentPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -30371,7 +30371,7 @@ func decodePullsListCommentsForReviewParams(r *http.Request) (PullsListCommentsF
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -30402,7 +30402,7 @@ func decodePullsListCommentsForReviewParams(r *http.Request) (PullsListCommentsF
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -30433,7 +30433,7 @@ func decodePullsListCommentsForReviewParams(r *http.Request) (PullsListCommentsF
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -30464,7 +30464,7 @@ func decodePullsListCommentsForReviewParams(r *http.Request) (PullsListCommentsF
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -30496,7 +30496,7 @@ func decodePullsListCommentsForReviewParams(r *http.Request) (PullsListCommentsF
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -30531,7 +30531,7 @@ func decodePullsListCommentsForReviewParams(r *http.Request) (PullsListCommentsF
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -30570,7 +30570,7 @@ func decodePullsListCommitsParams(r *http.Request) (PullsListCommitsParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -30601,7 +30601,7 @@ func decodePullsListCommitsParams(r *http.Request) (PullsListCommitsParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -30632,7 +30632,7 @@ func decodePullsListCommitsParams(r *http.Request) (PullsListCommitsParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -30664,7 +30664,7 @@ func decodePullsListCommitsParams(r *http.Request) (PullsListCommitsParams, erro
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -30699,7 +30699,7 @@ func decodePullsListCommitsParams(r *http.Request) (PullsListCommitsParams, erro
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -30738,7 +30738,7 @@ func decodePullsListRequestedReviewersParams(r *http.Request) (PullsListRequeste
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -30769,7 +30769,7 @@ func decodePullsListRequestedReviewersParams(r *http.Request) (PullsListRequeste
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -30800,7 +30800,7 @@ func decodePullsListRequestedReviewersParams(r *http.Request) (PullsListRequeste
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -30832,7 +30832,7 @@ func decodePullsListRequestedReviewersParams(r *http.Request) (PullsListRequeste
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -30867,7 +30867,7 @@ func decodePullsListRequestedReviewersParams(r *http.Request) (PullsListRequeste
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -30906,7 +30906,7 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -30937,7 +30937,7 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -30968,7 +30968,7 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -31000,7 +31000,7 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 			if err := func() error {
 				var ParamsSortValue PullsListReviewCommentsSort
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -31041,7 +31041,7 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 			if err := func() error {
 				var ParamsDirectionValue PullsListReviewCommentsDirection
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -31082,7 +31082,7 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 			if err := func() error {
 				var ParamsSinceValue time.Time
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -31117,7 +31117,7 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -31152,7 +31152,7 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -31191,7 +31191,7 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -31222,7 +31222,7 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -31254,7 +31254,7 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 			if err := func() error {
 				var ParamsSortValue PullsListReviewCommentsForRepoSort
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -31295,7 +31295,7 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 			if err := func() error {
 				var ParamsDirectionValue PullsListReviewCommentsForRepoDirection
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -31336,7 +31336,7 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 			if err := func() error {
 				var ParamsSinceValue time.Time
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -31371,7 +31371,7 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -31406,7 +31406,7 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -31445,7 +31445,7 @@ func decodePullsListReviewsParams(r *http.Request) (PullsListReviewsParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -31476,7 +31476,7 @@ func decodePullsListReviewsParams(r *http.Request) (PullsListReviewsParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -31507,7 +31507,7 @@ func decodePullsListReviewsParams(r *http.Request) (PullsListReviewsParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -31539,7 +31539,7 @@ func decodePullsListReviewsParams(r *http.Request) (PullsListReviewsParams, erro
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -31574,7 +31574,7 @@ func decodePullsListReviewsParams(r *http.Request) (PullsListReviewsParams, erro
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -31613,7 +31613,7 @@ func decodePullsSubmitReviewParams(r *http.Request) (PullsSubmitReviewParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -31644,7 +31644,7 @@ func decodePullsSubmitReviewParams(r *http.Request) (PullsSubmitReviewParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -31675,7 +31675,7 @@ func decodePullsSubmitReviewParams(r *http.Request) (PullsSubmitReviewParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -31706,7 +31706,7 @@ func decodePullsSubmitReviewParams(r *http.Request) (PullsSubmitReviewParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -31742,7 +31742,7 @@ func decodePullsUpdateReviewParams(r *http.Request) (PullsUpdateReviewParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -31773,7 +31773,7 @@ func decodePullsUpdateReviewParams(r *http.Request) (PullsUpdateReviewParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -31804,7 +31804,7 @@ func decodePullsUpdateReviewParams(r *http.Request) (PullsUpdateReviewParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -31835,7 +31835,7 @@ func decodePullsUpdateReviewParams(r *http.Request) (PullsUpdateReviewParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -31871,7 +31871,7 @@ func decodePullsUpdateReviewCommentParams(r *http.Request) (PullsUpdateReviewCom
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -31902,7 +31902,7 @@ func decodePullsUpdateReviewCommentParams(r *http.Request) (PullsUpdateReviewCom
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -31933,7 +31933,7 @@ func decodePullsUpdateReviewCommentParams(r *http.Request) (PullsUpdateReviewCom
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -31969,7 +31969,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(r *http.Request) (
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32000,7 +32000,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(r *http.Request) (
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32031,7 +32031,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(r *http.Request) (
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32062,7 +32062,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(r *http.Request) (
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32098,7 +32098,7 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(r *http.Request) 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32129,7 +32129,7 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(r *http.Request) 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32160,7 +32160,7 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(r *http.Request) 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32196,7 +32196,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgParams(r *http.Request) (Reactio
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32227,7 +32227,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgParams(r *http.Request) (Reactio
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32258,7 +32258,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgParams(r *http.Request) (Reactio
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32294,7 +32294,7 @@ func decodeReactionsCreateForTeamDiscussionLegacyParams(r *http.Request) (Reacti
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32325,7 +32325,7 @@ func decodeReactionsCreateForTeamDiscussionLegacyParams(r *http.Request) (Reacti
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32361,7 +32361,7 @@ func decodeReactionsDeleteForCommitCommentParams(r *http.Request) (ReactionsDele
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32392,7 +32392,7 @@ func decodeReactionsDeleteForCommitCommentParams(r *http.Request) (ReactionsDele
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32423,7 +32423,7 @@ func decodeReactionsDeleteForCommitCommentParams(r *http.Request) (ReactionsDele
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32454,7 +32454,7 @@ func decodeReactionsDeleteForCommitCommentParams(r *http.Request) (ReactionsDele
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32490,7 +32490,7 @@ func decodeReactionsDeleteForIssueParams(r *http.Request) (ReactionsDeleteForIss
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32521,7 +32521,7 @@ func decodeReactionsDeleteForIssueParams(r *http.Request) (ReactionsDeleteForIss
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32552,7 +32552,7 @@ func decodeReactionsDeleteForIssueParams(r *http.Request) (ReactionsDeleteForIss
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32583,7 +32583,7 @@ func decodeReactionsDeleteForIssueParams(r *http.Request) (ReactionsDeleteForIss
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32619,7 +32619,7 @@ func decodeReactionsDeleteForIssueCommentParams(r *http.Request) (ReactionsDelet
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32650,7 +32650,7 @@ func decodeReactionsDeleteForIssueCommentParams(r *http.Request) (ReactionsDelet
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32681,7 +32681,7 @@ func decodeReactionsDeleteForIssueCommentParams(r *http.Request) (ReactionsDelet
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32712,7 +32712,7 @@ func decodeReactionsDeleteForIssueCommentParams(r *http.Request) (ReactionsDelet
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32748,7 +32748,7 @@ func decodeReactionsDeleteForPullRequestCommentParams(r *http.Request) (Reaction
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32779,7 +32779,7 @@ func decodeReactionsDeleteForPullRequestCommentParams(r *http.Request) (Reaction
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32810,7 +32810,7 @@ func decodeReactionsDeleteForPullRequestCommentParams(r *http.Request) (Reaction
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32841,7 +32841,7 @@ func decodeReactionsDeleteForPullRequestCommentParams(r *http.Request) (Reaction
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32877,7 +32877,7 @@ func decodeReactionsDeleteForTeamDiscussionParams(r *http.Request) (ReactionsDel
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32908,7 +32908,7 @@ func decodeReactionsDeleteForTeamDiscussionParams(r *http.Request) (ReactionsDel
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32939,7 +32939,7 @@ func decodeReactionsDeleteForTeamDiscussionParams(r *http.Request) (ReactionsDel
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -32970,7 +32970,7 @@ func decodeReactionsDeleteForTeamDiscussionParams(r *http.Request) (ReactionsDel
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -33006,7 +33006,7 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(r *http.Request) (React
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -33037,7 +33037,7 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(r *http.Request) (React
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -33068,7 +33068,7 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(r *http.Request) (React
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -33099,7 +33099,7 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(r *http.Request) (React
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -33130,7 +33130,7 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(r *http.Request) (React
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -33166,7 +33166,7 @@ func decodeReactionsDeleteLegacyParams(r *http.Request) (ReactionsDeleteLegacyPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -33202,7 +33202,7 @@ func decodeReactionsListForCommitCommentParams(r *http.Request) (ReactionsListFo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -33233,7 +33233,7 @@ func decodeReactionsListForCommitCommentParams(r *http.Request) (ReactionsListFo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -33264,7 +33264,7 @@ func decodeReactionsListForCommitCommentParams(r *http.Request) (ReactionsListFo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -33296,7 +33296,7 @@ func decodeReactionsListForCommitCommentParams(r *http.Request) (ReactionsListFo
 			if err := func() error {
 				var ParamsContentValue ReactionsListForCommitCommentContent
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -33337,7 +33337,7 @@ func decodeReactionsListForCommitCommentParams(r *http.Request) (ReactionsListFo
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -33372,7 +33372,7 @@ func decodeReactionsListForCommitCommentParams(r *http.Request) (ReactionsListFo
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -33411,7 +33411,7 @@ func decodeReactionsListForIssueParams(r *http.Request) (ReactionsListForIssuePa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -33442,7 +33442,7 @@ func decodeReactionsListForIssueParams(r *http.Request) (ReactionsListForIssuePa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -33473,7 +33473,7 @@ func decodeReactionsListForIssueParams(r *http.Request) (ReactionsListForIssuePa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -33505,7 +33505,7 @@ func decodeReactionsListForIssueParams(r *http.Request) (ReactionsListForIssuePa
 			if err := func() error {
 				var ParamsContentValue ReactionsListForIssueContent
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -33546,7 +33546,7 @@ func decodeReactionsListForIssueParams(r *http.Request) (ReactionsListForIssuePa
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -33581,7 +33581,7 @@ func decodeReactionsListForIssueParams(r *http.Request) (ReactionsListForIssuePa
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -33620,7 +33620,7 @@ func decodeReactionsListForIssueCommentParams(r *http.Request) (ReactionsListFor
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -33651,7 +33651,7 @@ func decodeReactionsListForIssueCommentParams(r *http.Request) (ReactionsListFor
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -33682,7 +33682,7 @@ func decodeReactionsListForIssueCommentParams(r *http.Request) (ReactionsListFor
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -33714,7 +33714,7 @@ func decodeReactionsListForIssueCommentParams(r *http.Request) (ReactionsListFor
 			if err := func() error {
 				var ParamsContentValue ReactionsListForIssueCommentContent
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -33755,7 +33755,7 @@ func decodeReactionsListForIssueCommentParams(r *http.Request) (ReactionsListFor
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -33790,7 +33790,7 @@ func decodeReactionsListForIssueCommentParams(r *http.Request) (ReactionsListFor
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -33829,7 +33829,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(r *http.Request) (Reac
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -33860,7 +33860,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(r *http.Request) (Reac
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -33891,7 +33891,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(r *http.Request) (Reac
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -33923,7 +33923,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(r *http.Request) (Reac
 			if err := func() error {
 				var ParamsContentValue ReactionsListForPullRequestReviewCommentContent
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -33964,7 +33964,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(r *http.Request) (Reac
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -33999,7 +33999,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(r *http.Request) (Reac
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -34038,7 +34038,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (Re
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -34069,7 +34069,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (Re
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -34100,7 +34100,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (Re
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -34131,7 +34131,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (Re
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -34163,7 +34163,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (Re
 			if err := func() error {
 				var ParamsContentValue ReactionsListForTeamDiscussionCommentInOrgContent
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -34204,7 +34204,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (Re
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -34239,7 +34239,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (Re
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -34278,7 +34278,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(r *http.Request) (R
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -34309,7 +34309,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(r *http.Request) (R
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -34340,7 +34340,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(r *http.Request) (R
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -34372,7 +34372,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(r *http.Request) (R
 			if err := func() error {
 				var ParamsContentValue ReactionsListForTeamDiscussionCommentLegacyContent
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -34413,7 +34413,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(r *http.Request) (R
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -34448,7 +34448,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(r *http.Request) (R
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -34487,7 +34487,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(r *http.Request) (Reactions
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -34518,7 +34518,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(r *http.Request) (Reactions
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -34549,7 +34549,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(r *http.Request) (Reactions
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -34581,7 +34581,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(r *http.Request) (Reactions
 			if err := func() error {
 				var ParamsContentValue ReactionsListForTeamDiscussionInOrgContent
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -34622,7 +34622,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(r *http.Request) (Reactions
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -34657,7 +34657,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(r *http.Request) (Reactions
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -34696,7 +34696,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(r *http.Request) (Reaction
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -34727,7 +34727,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(r *http.Request) (Reaction
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -34759,7 +34759,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(r *http.Request) (Reaction
 			if err := func() error {
 				var ParamsContentValue ReactionsListForTeamDiscussionLegacyContent
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -34800,7 +34800,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(r *http.Request) (Reaction
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -34835,7 +34835,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(r *http.Request) (Reaction
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -34874,7 +34874,7 @@ func decodeReposAcceptInvitationParams(r *http.Request) (ReposAcceptInvitationPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -34910,7 +34910,7 @@ func decodeReposCheckCollaboratorParams(r *http.Request) (ReposCheckCollaborator
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -34941,7 +34941,7 @@ func decodeReposCheckCollaboratorParams(r *http.Request) (ReposCheckCollaborator
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -34972,7 +34972,7 @@ func decodeReposCheckCollaboratorParams(r *http.Request) (ReposCheckCollaborator
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35008,7 +35008,7 @@ func decodeReposCheckVulnerabilityAlertsParams(r *http.Request) (ReposCheckVulne
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35039,7 +35039,7 @@ func decodeReposCheckVulnerabilityAlertsParams(r *http.Request) (ReposCheckVulne
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35075,7 +35075,7 @@ func decodeReposCompareCommitsParams(r *http.Request) (ReposCompareCommitsParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35106,7 +35106,7 @@ func decodeReposCompareCommitsParams(r *http.Request) (ReposCompareCommitsParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35138,7 +35138,7 @@ func decodeReposCompareCommitsParams(r *http.Request) (ReposCompareCommitsParams
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -35173,7 +35173,7 @@ func decodeReposCompareCommitsParams(r *http.Request) (ReposCompareCommitsParams
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -35207,7 +35207,7 @@ func decodeReposCompareCommitsParams(r *http.Request) (ReposCompareCommitsParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35243,7 +35243,7 @@ func decodeReposCreateCommitSignatureProtectionParams(r *http.Request) (ReposCre
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35274,7 +35274,7 @@ func decodeReposCreateCommitSignatureProtectionParams(r *http.Request) (ReposCre
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35305,7 +35305,7 @@ func decodeReposCreateCommitSignatureProtectionParams(r *http.Request) (ReposCre
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35341,7 +35341,7 @@ func decodeReposCreateCommitStatusParams(r *http.Request) (ReposCreateCommitStat
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35372,7 +35372,7 @@ func decodeReposCreateCommitStatusParams(r *http.Request) (ReposCreateCommitStat
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35403,7 +35403,7 @@ func decodeReposCreateCommitStatusParams(r *http.Request) (ReposCreateCommitStat
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35439,7 +35439,7 @@ func decodeReposCreateUsingTemplateParams(r *http.Request) (ReposCreateUsingTemp
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35470,7 +35470,7 @@ func decodeReposCreateUsingTemplateParams(r *http.Request) (ReposCreateUsingTemp
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35506,7 +35506,7 @@ func decodeReposDeclineInvitationParams(r *http.Request) (ReposDeclineInvitation
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35542,7 +35542,7 @@ func decodeReposDeleteParams(r *http.Request) (ReposDeleteParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35573,7 +35573,7 @@ func decodeReposDeleteParams(r *http.Request) (ReposDeleteParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35609,7 +35609,7 @@ func decodeReposDeleteAccessRestrictionsParams(r *http.Request) (ReposDeleteAcce
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35640,7 +35640,7 @@ func decodeReposDeleteAccessRestrictionsParams(r *http.Request) (ReposDeleteAcce
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35671,7 +35671,7 @@ func decodeReposDeleteAccessRestrictionsParams(r *http.Request) (ReposDeleteAcce
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35707,7 +35707,7 @@ func decodeReposDeleteAdminBranchProtectionParams(r *http.Request) (ReposDeleteA
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35738,7 +35738,7 @@ func decodeReposDeleteAdminBranchProtectionParams(r *http.Request) (ReposDeleteA
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35769,7 +35769,7 @@ func decodeReposDeleteAdminBranchProtectionParams(r *http.Request) (ReposDeleteA
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35805,7 +35805,7 @@ func decodeReposDeleteAnEnvironmentParams(r *http.Request) (ReposDeleteAnEnviron
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35836,7 +35836,7 @@ func decodeReposDeleteAnEnvironmentParams(r *http.Request) (ReposDeleteAnEnviron
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35867,7 +35867,7 @@ func decodeReposDeleteAnEnvironmentParams(r *http.Request) (ReposDeleteAnEnviron
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35903,7 +35903,7 @@ func decodeReposDeleteAutolinkParams(r *http.Request) (ReposDeleteAutolinkParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35934,7 +35934,7 @@ func decodeReposDeleteAutolinkParams(r *http.Request) (ReposDeleteAutolinkParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -35965,7 +35965,7 @@ func decodeReposDeleteAutolinkParams(r *http.Request) (ReposDeleteAutolinkParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36001,7 +36001,7 @@ func decodeReposDeleteBranchProtectionParams(r *http.Request) (ReposDeleteBranch
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36032,7 +36032,7 @@ func decodeReposDeleteBranchProtectionParams(r *http.Request) (ReposDeleteBranch
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36063,7 +36063,7 @@ func decodeReposDeleteBranchProtectionParams(r *http.Request) (ReposDeleteBranch
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36099,7 +36099,7 @@ func decodeReposDeleteCommitCommentParams(r *http.Request) (ReposDeleteCommitCom
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36130,7 +36130,7 @@ func decodeReposDeleteCommitCommentParams(r *http.Request) (ReposDeleteCommitCom
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36161,7 +36161,7 @@ func decodeReposDeleteCommitCommentParams(r *http.Request) (ReposDeleteCommitCom
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36197,7 +36197,7 @@ func decodeReposDeleteCommitSignatureProtectionParams(r *http.Request) (ReposDel
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36228,7 +36228,7 @@ func decodeReposDeleteCommitSignatureProtectionParams(r *http.Request) (ReposDel
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36259,7 +36259,7 @@ func decodeReposDeleteCommitSignatureProtectionParams(r *http.Request) (ReposDel
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36295,7 +36295,7 @@ func decodeReposDeleteDeployKeyParams(r *http.Request) (ReposDeleteDeployKeyPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36326,7 +36326,7 @@ func decodeReposDeleteDeployKeyParams(r *http.Request) (ReposDeleteDeployKeyPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36357,7 +36357,7 @@ func decodeReposDeleteDeployKeyParams(r *http.Request) (ReposDeleteDeployKeyPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36393,7 +36393,7 @@ func decodeReposDeleteDeploymentParams(r *http.Request) (ReposDeleteDeploymentPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36424,7 +36424,7 @@ func decodeReposDeleteDeploymentParams(r *http.Request) (ReposDeleteDeploymentPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36455,7 +36455,7 @@ func decodeReposDeleteDeploymentParams(r *http.Request) (ReposDeleteDeploymentPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36491,7 +36491,7 @@ func decodeReposDeleteInvitationParams(r *http.Request) (ReposDeleteInvitationPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36522,7 +36522,7 @@ func decodeReposDeleteInvitationParams(r *http.Request) (ReposDeleteInvitationPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36553,7 +36553,7 @@ func decodeReposDeleteInvitationParams(r *http.Request) (ReposDeleteInvitationPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36589,7 +36589,7 @@ func decodeReposDeletePullRequestReviewProtectionParams(r *http.Request) (ReposD
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36620,7 +36620,7 @@ func decodeReposDeletePullRequestReviewProtectionParams(r *http.Request) (ReposD
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36651,7 +36651,7 @@ func decodeReposDeletePullRequestReviewProtectionParams(r *http.Request) (ReposD
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36687,7 +36687,7 @@ func decodeReposDeleteReleaseParams(r *http.Request) (ReposDeleteReleaseParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36718,7 +36718,7 @@ func decodeReposDeleteReleaseParams(r *http.Request) (ReposDeleteReleaseParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36749,7 +36749,7 @@ func decodeReposDeleteReleaseParams(r *http.Request) (ReposDeleteReleaseParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36785,7 +36785,7 @@ func decodeReposDeleteReleaseAssetParams(r *http.Request) (ReposDeleteReleaseAss
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36816,7 +36816,7 @@ func decodeReposDeleteReleaseAssetParams(r *http.Request) (ReposDeleteReleaseAss
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36847,7 +36847,7 @@ func decodeReposDeleteReleaseAssetParams(r *http.Request) (ReposDeleteReleaseAss
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36883,7 +36883,7 @@ func decodeReposDeleteWebhookParams(r *http.Request) (ReposDeleteWebhookParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36914,7 +36914,7 @@ func decodeReposDeleteWebhookParams(r *http.Request) (ReposDeleteWebhookParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36945,7 +36945,7 @@ func decodeReposDeleteWebhookParams(r *http.Request) (ReposDeleteWebhookParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -36981,7 +36981,7 @@ func decodeReposDisableAutomatedSecurityFixesParams(r *http.Request) (ReposDisab
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37012,7 +37012,7 @@ func decodeReposDisableAutomatedSecurityFixesParams(r *http.Request) (ReposDisab
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37048,7 +37048,7 @@ func decodeReposDisableLfsForRepoParams(r *http.Request) (ReposDisableLfsForRepo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37079,7 +37079,7 @@ func decodeReposDisableLfsForRepoParams(r *http.Request) (ReposDisableLfsForRepo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37115,7 +37115,7 @@ func decodeReposDisableVulnerabilityAlertsParams(r *http.Request) (ReposDisableV
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37146,7 +37146,7 @@ func decodeReposDisableVulnerabilityAlertsParams(r *http.Request) (ReposDisableV
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37182,7 +37182,7 @@ func decodeReposDownloadTarballArchiveParams(r *http.Request) (ReposDownloadTarb
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37213,7 +37213,7 @@ func decodeReposDownloadTarballArchiveParams(r *http.Request) (ReposDownloadTarb
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37244,7 +37244,7 @@ func decodeReposDownloadTarballArchiveParams(r *http.Request) (ReposDownloadTarb
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37280,7 +37280,7 @@ func decodeReposDownloadZipballArchiveParams(r *http.Request) (ReposDownloadZipb
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37311,7 +37311,7 @@ func decodeReposDownloadZipballArchiveParams(r *http.Request) (ReposDownloadZipb
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37342,7 +37342,7 @@ func decodeReposDownloadZipballArchiveParams(r *http.Request) (ReposDownloadZipb
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37378,7 +37378,7 @@ func decodeReposEnableAutomatedSecurityFixesParams(r *http.Request) (ReposEnable
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37409,7 +37409,7 @@ func decodeReposEnableAutomatedSecurityFixesParams(r *http.Request) (ReposEnable
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37445,7 +37445,7 @@ func decodeReposEnableLfsForRepoParams(r *http.Request) (ReposEnableLfsForRepoPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37476,7 +37476,7 @@ func decodeReposEnableLfsForRepoParams(r *http.Request) (ReposEnableLfsForRepoPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37512,7 +37512,7 @@ func decodeReposEnableVulnerabilityAlertsParams(r *http.Request) (ReposEnableVul
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37543,7 +37543,7 @@ func decodeReposEnableVulnerabilityAlertsParams(r *http.Request) (ReposEnableVul
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37579,7 +37579,7 @@ func decodeReposGetParams(r *http.Request) (ReposGetParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37610,7 +37610,7 @@ func decodeReposGetParams(r *http.Request) (ReposGetParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37646,7 +37646,7 @@ func decodeReposGetAccessRestrictionsParams(r *http.Request) (ReposGetAccessRest
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37677,7 +37677,7 @@ func decodeReposGetAccessRestrictionsParams(r *http.Request) (ReposGetAccessRest
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37708,7 +37708,7 @@ func decodeReposGetAccessRestrictionsParams(r *http.Request) (ReposGetAccessRest
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37744,7 +37744,7 @@ func decodeReposGetAdminBranchProtectionParams(r *http.Request) (ReposGetAdminBr
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37775,7 +37775,7 @@ func decodeReposGetAdminBranchProtectionParams(r *http.Request) (ReposGetAdminBr
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37806,7 +37806,7 @@ func decodeReposGetAdminBranchProtectionParams(r *http.Request) (ReposGetAdminBr
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37842,7 +37842,7 @@ func decodeReposGetAllStatusCheckContextsParams(r *http.Request) (ReposGetAllSta
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37873,7 +37873,7 @@ func decodeReposGetAllStatusCheckContextsParams(r *http.Request) (ReposGetAllSta
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37904,7 +37904,7 @@ func decodeReposGetAllStatusCheckContextsParams(r *http.Request) (ReposGetAllSta
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37940,7 +37940,7 @@ func decodeReposGetAllTopicsParams(r *http.Request) (ReposGetAllTopicsParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -37971,7 +37971,7 @@ func decodeReposGetAllTopicsParams(r *http.Request) (ReposGetAllTopicsParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -38003,7 +38003,7 @@ func decodeReposGetAllTopicsParams(r *http.Request) (ReposGetAllTopicsParams, er
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -38038,7 +38038,7 @@ func decodeReposGetAllTopicsParams(r *http.Request) (ReposGetAllTopicsParams, er
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -38077,7 +38077,7 @@ func decodeReposGetAppsWithAccessToProtectedBranchParams(r *http.Request) (Repos
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -38108,7 +38108,7 @@ func decodeReposGetAppsWithAccessToProtectedBranchParams(r *http.Request) (Repos
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -38139,7 +38139,7 @@ func decodeReposGetAppsWithAccessToProtectedBranchParams(r *http.Request) (Repos
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -38175,7 +38175,7 @@ func decodeReposGetAutolinkParams(r *http.Request) (ReposGetAutolinkParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -38206,7 +38206,7 @@ func decodeReposGetAutolinkParams(r *http.Request) (ReposGetAutolinkParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -38237,7 +38237,7 @@ func decodeReposGetAutolinkParams(r *http.Request) (ReposGetAutolinkParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -38273,7 +38273,7 @@ func decodeReposGetBranchParams(r *http.Request) (ReposGetBranchParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -38304,7 +38304,7 @@ func decodeReposGetBranchParams(r *http.Request) (ReposGetBranchParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -38335,7 +38335,7 @@ func decodeReposGetBranchParams(r *http.Request) (ReposGetBranchParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -38371,7 +38371,7 @@ func decodeReposGetBranchProtectionParams(r *http.Request) (ReposGetBranchProtec
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -38402,7 +38402,7 @@ func decodeReposGetBranchProtectionParams(r *http.Request) (ReposGetBranchProtec
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -38433,7 +38433,7 @@ func decodeReposGetBranchProtectionParams(r *http.Request) (ReposGetBranchProtec
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -38469,7 +38469,7 @@ func decodeReposGetClonesParams(r *http.Request) (ReposGetClonesParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -38500,7 +38500,7 @@ func decodeReposGetClonesParams(r *http.Request) (ReposGetClonesParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -38532,7 +38532,7 @@ func decodeReposGetClonesParams(r *http.Request) (ReposGetClonesParams, error) {
 			if err := func() error {
 				var ParamsPerValue ReposGetClonesPer
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -38577,7 +38577,7 @@ func decodeReposGetCodeFrequencyStatsParams(r *http.Request) (ReposGetCodeFreque
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -38608,7 +38608,7 @@ func decodeReposGetCodeFrequencyStatsParams(r *http.Request) (ReposGetCodeFreque
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -38644,7 +38644,7 @@ func decodeReposGetCollaboratorPermissionLevelParams(r *http.Request) (ReposGetC
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -38675,7 +38675,7 @@ func decodeReposGetCollaboratorPermissionLevelParams(r *http.Request) (ReposGetC
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -38706,7 +38706,7 @@ func decodeReposGetCollaboratorPermissionLevelParams(r *http.Request) (ReposGetC
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -38742,7 +38742,7 @@ func decodeReposGetCombinedStatusForRefParams(r *http.Request) (ReposGetCombined
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -38773,7 +38773,7 @@ func decodeReposGetCombinedStatusForRefParams(r *http.Request) (ReposGetCombined
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -38804,7 +38804,7 @@ func decodeReposGetCombinedStatusForRefParams(r *http.Request) (ReposGetCombined
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -38836,7 +38836,7 @@ func decodeReposGetCombinedStatusForRefParams(r *http.Request) (ReposGetCombined
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -38871,7 +38871,7 @@ func decodeReposGetCombinedStatusForRefParams(r *http.Request) (ReposGetCombined
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -38910,7 +38910,7 @@ func decodeReposGetCommitActivityStatsParams(r *http.Request) (ReposGetCommitAct
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -38941,7 +38941,7 @@ func decodeReposGetCommitActivityStatsParams(r *http.Request) (ReposGetCommitAct
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -38977,7 +38977,7 @@ func decodeReposGetCommitCommentParams(r *http.Request) (ReposGetCommitCommentPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39008,7 +39008,7 @@ func decodeReposGetCommitCommentParams(r *http.Request) (ReposGetCommitCommentPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39039,7 +39039,7 @@ func decodeReposGetCommitCommentParams(r *http.Request) (ReposGetCommitCommentPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39075,7 +39075,7 @@ func decodeReposGetCommitSignatureProtectionParams(r *http.Request) (ReposGetCom
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39106,7 +39106,7 @@ func decodeReposGetCommitSignatureProtectionParams(r *http.Request) (ReposGetCom
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39137,7 +39137,7 @@ func decodeReposGetCommitSignatureProtectionParams(r *http.Request) (ReposGetCom
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39173,7 +39173,7 @@ func decodeReposGetCommunityProfileMetricsParams(r *http.Request) (ReposGetCommu
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39204,7 +39204,7 @@ func decodeReposGetCommunityProfileMetricsParams(r *http.Request) (ReposGetCommu
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39240,7 +39240,7 @@ func decodeReposGetContributorsStatsParams(r *http.Request) (ReposGetContributor
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39271,7 +39271,7 @@ func decodeReposGetContributorsStatsParams(r *http.Request) (ReposGetContributor
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39307,7 +39307,7 @@ func decodeReposGetDeployKeyParams(r *http.Request) (ReposGetDeployKeyParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39338,7 +39338,7 @@ func decodeReposGetDeployKeyParams(r *http.Request) (ReposGetDeployKeyParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39369,7 +39369,7 @@ func decodeReposGetDeployKeyParams(r *http.Request) (ReposGetDeployKeyParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39405,7 +39405,7 @@ func decodeReposGetDeploymentStatusParams(r *http.Request) (ReposGetDeploymentSt
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39436,7 +39436,7 @@ func decodeReposGetDeploymentStatusParams(r *http.Request) (ReposGetDeploymentSt
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39467,7 +39467,7 @@ func decodeReposGetDeploymentStatusParams(r *http.Request) (ReposGetDeploymentSt
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39498,7 +39498,7 @@ func decodeReposGetDeploymentStatusParams(r *http.Request) (ReposGetDeploymentSt
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39534,7 +39534,7 @@ func decodeReposGetLatestPagesBuildParams(r *http.Request) (ReposGetLatestPagesB
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39565,7 +39565,7 @@ func decodeReposGetLatestPagesBuildParams(r *http.Request) (ReposGetLatestPagesB
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39601,7 +39601,7 @@ func decodeReposGetLatestReleaseParams(r *http.Request) (ReposGetLatestReleasePa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39632,7 +39632,7 @@ func decodeReposGetLatestReleaseParams(r *http.Request) (ReposGetLatestReleasePa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39668,7 +39668,7 @@ func decodeReposGetPagesParams(r *http.Request) (ReposGetPagesParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39699,7 +39699,7 @@ func decodeReposGetPagesParams(r *http.Request) (ReposGetPagesParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39735,7 +39735,7 @@ func decodeReposGetPagesBuildParams(r *http.Request) (ReposGetPagesBuildParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39766,7 +39766,7 @@ func decodeReposGetPagesBuildParams(r *http.Request) (ReposGetPagesBuildParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39797,7 +39797,7 @@ func decodeReposGetPagesBuildParams(r *http.Request) (ReposGetPagesBuildParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39833,7 +39833,7 @@ func decodeReposGetPagesHealthCheckParams(r *http.Request) (ReposGetPagesHealthC
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39864,7 +39864,7 @@ func decodeReposGetPagesHealthCheckParams(r *http.Request) (ReposGetPagesHealthC
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39900,7 +39900,7 @@ func decodeReposGetParticipationStatsParams(r *http.Request) (ReposGetParticipat
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39931,7 +39931,7 @@ func decodeReposGetParticipationStatsParams(r *http.Request) (ReposGetParticipat
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39967,7 +39967,7 @@ func decodeReposGetPullRequestReviewProtectionParams(r *http.Request) (ReposGetP
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -39998,7 +39998,7 @@ func decodeReposGetPullRequestReviewProtectionParams(r *http.Request) (ReposGetP
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40029,7 +40029,7 @@ func decodeReposGetPullRequestReviewProtectionParams(r *http.Request) (ReposGetP
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40065,7 +40065,7 @@ func decodeReposGetPunchCardStatsParams(r *http.Request) (ReposGetPunchCardStats
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40096,7 +40096,7 @@ func decodeReposGetPunchCardStatsParams(r *http.Request) (ReposGetPunchCardStats
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40132,7 +40132,7 @@ func decodeReposGetReleaseParams(r *http.Request) (ReposGetReleaseParams, error)
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40163,7 +40163,7 @@ func decodeReposGetReleaseParams(r *http.Request) (ReposGetReleaseParams, error)
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40194,7 +40194,7 @@ func decodeReposGetReleaseParams(r *http.Request) (ReposGetReleaseParams, error)
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40230,7 +40230,7 @@ func decodeReposGetReleaseAssetParams(r *http.Request) (ReposGetReleaseAssetPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40261,7 +40261,7 @@ func decodeReposGetReleaseAssetParams(r *http.Request) (ReposGetReleaseAssetPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40292,7 +40292,7 @@ func decodeReposGetReleaseAssetParams(r *http.Request) (ReposGetReleaseAssetPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40328,7 +40328,7 @@ func decodeReposGetReleaseByTagParams(r *http.Request) (ReposGetReleaseByTagPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40359,7 +40359,7 @@ func decodeReposGetReleaseByTagParams(r *http.Request) (ReposGetReleaseByTagPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40390,7 +40390,7 @@ func decodeReposGetReleaseByTagParams(r *http.Request) (ReposGetReleaseByTagPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40426,7 +40426,7 @@ func decodeReposGetStatusChecksProtectionParams(r *http.Request) (ReposGetStatus
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40457,7 +40457,7 @@ func decodeReposGetStatusChecksProtectionParams(r *http.Request) (ReposGetStatus
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40488,7 +40488,7 @@ func decodeReposGetStatusChecksProtectionParams(r *http.Request) (ReposGetStatus
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40524,7 +40524,7 @@ func decodeReposGetTeamsWithAccessToProtectedBranchParams(r *http.Request) (Repo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40555,7 +40555,7 @@ func decodeReposGetTeamsWithAccessToProtectedBranchParams(r *http.Request) (Repo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40586,7 +40586,7 @@ func decodeReposGetTeamsWithAccessToProtectedBranchParams(r *http.Request) (Repo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40622,7 +40622,7 @@ func decodeReposGetTopPathsParams(r *http.Request) (ReposGetTopPathsParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40653,7 +40653,7 @@ func decodeReposGetTopPathsParams(r *http.Request) (ReposGetTopPathsParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40689,7 +40689,7 @@ func decodeReposGetTopReferrersParams(r *http.Request) (ReposGetTopReferrersPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40720,7 +40720,7 @@ func decodeReposGetTopReferrersParams(r *http.Request) (ReposGetTopReferrersPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40756,7 +40756,7 @@ func decodeReposGetUsersWithAccessToProtectedBranchParams(r *http.Request) (Repo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40787,7 +40787,7 @@ func decodeReposGetUsersWithAccessToProtectedBranchParams(r *http.Request) (Repo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40818,7 +40818,7 @@ func decodeReposGetUsersWithAccessToProtectedBranchParams(r *http.Request) (Repo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40854,7 +40854,7 @@ func decodeReposGetViewsParams(r *http.Request) (ReposGetViewsParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40885,7 +40885,7 @@ func decodeReposGetViewsParams(r *http.Request) (ReposGetViewsParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40917,7 +40917,7 @@ func decodeReposGetViewsParams(r *http.Request) (ReposGetViewsParams, error) {
 			if err := func() error {
 				var ParamsPerValue ReposGetViewsPer
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -40962,7 +40962,7 @@ func decodeReposGetWebhookParams(r *http.Request) (ReposGetWebhookParams, error)
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -40993,7 +40993,7 @@ func decodeReposGetWebhookParams(r *http.Request) (ReposGetWebhookParams, error)
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -41024,7 +41024,7 @@ func decodeReposGetWebhookParams(r *http.Request) (ReposGetWebhookParams, error)
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -41060,7 +41060,7 @@ func decodeReposGetWebhookConfigForRepoParams(r *http.Request) (ReposGetWebhookC
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -41091,7 +41091,7 @@ func decodeReposGetWebhookConfigForRepoParams(r *http.Request) (ReposGetWebhookC
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -41122,7 +41122,7 @@ func decodeReposGetWebhookConfigForRepoParams(r *http.Request) (ReposGetWebhookC
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -41158,7 +41158,7 @@ func decodeReposListAutolinksParams(r *http.Request) (ReposListAutolinksParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -41189,7 +41189,7 @@ func decodeReposListAutolinksParams(r *http.Request) (ReposListAutolinksParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -41221,7 +41221,7 @@ func decodeReposListAutolinksParams(r *http.Request) (ReposListAutolinksParams, 
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -41260,7 +41260,7 @@ func decodeReposListBranchesParams(r *http.Request) (ReposListBranchesParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -41291,7 +41291,7 @@ func decodeReposListBranchesParams(r *http.Request) (ReposListBranchesParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -41323,7 +41323,7 @@ func decodeReposListBranchesParams(r *http.Request) (ReposListBranchesParams, er
 			if err := func() error {
 				var ParamsProtectedValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -41358,7 +41358,7 @@ func decodeReposListBranchesParams(r *http.Request) (ReposListBranchesParams, er
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -41393,7 +41393,7 @@ func decodeReposListBranchesParams(r *http.Request) (ReposListBranchesParams, er
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -41432,7 +41432,7 @@ func decodeReposListCollaboratorsParams(r *http.Request) (ReposListCollaborators
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -41463,7 +41463,7 @@ func decodeReposListCollaboratorsParams(r *http.Request) (ReposListCollaborators
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -41495,7 +41495,7 @@ func decodeReposListCollaboratorsParams(r *http.Request) (ReposListCollaborators
 			if err := func() error {
 				var ParamsAffiliationValue ReposListCollaboratorsAffiliation
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -41536,7 +41536,7 @@ func decodeReposListCollaboratorsParams(r *http.Request) (ReposListCollaborators
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -41571,7 +41571,7 @@ func decodeReposListCollaboratorsParams(r *http.Request) (ReposListCollaborators
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -41610,7 +41610,7 @@ func decodeReposListCommentsForCommitParams(r *http.Request) (ReposListCommentsF
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -41641,7 +41641,7 @@ func decodeReposListCommentsForCommitParams(r *http.Request) (ReposListCommentsF
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -41672,7 +41672,7 @@ func decodeReposListCommentsForCommitParams(r *http.Request) (ReposListCommentsF
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -41704,7 +41704,7 @@ func decodeReposListCommentsForCommitParams(r *http.Request) (ReposListCommentsF
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -41739,7 +41739,7 @@ func decodeReposListCommentsForCommitParams(r *http.Request) (ReposListCommentsF
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -41778,7 +41778,7 @@ func decodeReposListCommitCommentsForRepoParams(r *http.Request) (ReposListCommi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -41809,7 +41809,7 @@ func decodeReposListCommitCommentsForRepoParams(r *http.Request) (ReposListCommi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -41841,7 +41841,7 @@ func decodeReposListCommitCommentsForRepoParams(r *http.Request) (ReposListCommi
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -41876,7 +41876,7 @@ func decodeReposListCommitCommentsForRepoParams(r *http.Request) (ReposListCommi
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -41915,7 +41915,7 @@ func decodeReposListCommitStatusesForRefParams(r *http.Request) (ReposListCommit
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -41946,7 +41946,7 @@ func decodeReposListCommitStatusesForRefParams(r *http.Request) (ReposListCommit
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -41977,7 +41977,7 @@ func decodeReposListCommitStatusesForRefParams(r *http.Request) (ReposListCommit
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -42009,7 +42009,7 @@ func decodeReposListCommitStatusesForRefParams(r *http.Request) (ReposListCommit
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -42044,7 +42044,7 @@ func decodeReposListCommitStatusesForRefParams(r *http.Request) (ReposListCommit
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -42083,7 +42083,7 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -42114,7 +42114,7 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -42146,7 +42146,7 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 			if err := func() error {
 				var ParamsShaValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -42181,7 +42181,7 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 			if err := func() error {
 				var ParamsPathValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -42216,7 +42216,7 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 			if err := func() error {
 				var ParamsAuthorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -42251,7 +42251,7 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 			if err := func() error {
 				var ParamsSinceValue time.Time
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -42286,7 +42286,7 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 			if err := func() error {
 				var ParamsUntilValue time.Time
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -42321,7 +42321,7 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -42356,7 +42356,7 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -42395,7 +42395,7 @@ func decodeReposListContributorsParams(r *http.Request) (ReposListContributorsPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -42426,7 +42426,7 @@ func decodeReposListContributorsParams(r *http.Request) (ReposListContributorsPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -42458,7 +42458,7 @@ func decodeReposListContributorsParams(r *http.Request) (ReposListContributorsPa
 			if err := func() error {
 				var ParamsAnonValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -42493,7 +42493,7 @@ func decodeReposListContributorsParams(r *http.Request) (ReposListContributorsPa
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -42528,7 +42528,7 @@ func decodeReposListContributorsParams(r *http.Request) (ReposListContributorsPa
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -42567,7 +42567,7 @@ func decodeReposListDeployKeysParams(r *http.Request) (ReposListDeployKeysParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -42598,7 +42598,7 @@ func decodeReposListDeployKeysParams(r *http.Request) (ReposListDeployKeysParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -42630,7 +42630,7 @@ func decodeReposListDeployKeysParams(r *http.Request) (ReposListDeployKeysParams
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -42665,7 +42665,7 @@ func decodeReposListDeployKeysParams(r *http.Request) (ReposListDeployKeysParams
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -42704,7 +42704,7 @@ func decodeReposListDeploymentStatusesParams(r *http.Request) (ReposListDeployme
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -42735,7 +42735,7 @@ func decodeReposListDeploymentStatusesParams(r *http.Request) (ReposListDeployme
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -42766,7 +42766,7 @@ func decodeReposListDeploymentStatusesParams(r *http.Request) (ReposListDeployme
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -42798,7 +42798,7 @@ func decodeReposListDeploymentStatusesParams(r *http.Request) (ReposListDeployme
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -42833,7 +42833,7 @@ func decodeReposListDeploymentStatusesParams(r *http.Request) (ReposListDeployme
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -42872,7 +42872,7 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -42904,7 +42904,7 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 			if err := func() error {
 				var ParamsTypeValue ReposListForOrgType
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -42945,7 +42945,7 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 			if err := func() error {
 				var ParamsSortValue ReposListForOrgSort
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -42986,7 +42986,7 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 			if err := func() error {
 				var ParamsDirectionValue ReposListForOrgDirection
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -43027,7 +43027,7 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -43062,7 +43062,7 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -43101,7 +43101,7 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -43133,7 +43133,7 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 			if err := func() error {
 				var ParamsTypeValue ReposListForUserType
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -43174,7 +43174,7 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 			if err := func() error {
 				var ParamsSortValue ReposListForUserSort
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -43215,7 +43215,7 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 			if err := func() error {
 				var ParamsDirectionValue ReposListForUserDirection
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -43256,7 +43256,7 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -43291,7 +43291,7 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -43330,7 +43330,7 @@ func decodeReposListForksParams(r *http.Request) (ReposListForksParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -43361,7 +43361,7 @@ func decodeReposListForksParams(r *http.Request) (ReposListForksParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -43393,7 +43393,7 @@ func decodeReposListForksParams(r *http.Request) (ReposListForksParams, error) {
 			if err := func() error {
 				var ParamsSortValue ReposListForksSort
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -43434,7 +43434,7 @@ func decodeReposListForksParams(r *http.Request) (ReposListForksParams, error) {
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -43469,7 +43469,7 @@ func decodeReposListForksParams(r *http.Request) (ReposListForksParams, error) {
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -43508,7 +43508,7 @@ func decodeReposListInvitationsParams(r *http.Request) (ReposListInvitationsPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -43539,7 +43539,7 @@ func decodeReposListInvitationsParams(r *http.Request) (ReposListInvitationsPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -43571,7 +43571,7 @@ func decodeReposListInvitationsParams(r *http.Request) (ReposListInvitationsPara
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -43606,7 +43606,7 @@ func decodeReposListInvitationsParams(r *http.Request) (ReposListInvitationsPara
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -43646,7 +43646,7 @@ func decodeReposListInvitationsForAuthenticatedUserParams(r *http.Request) (Repo
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -43681,7 +43681,7 @@ func decodeReposListInvitationsForAuthenticatedUserParams(r *http.Request) (Repo
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -43720,7 +43720,7 @@ func decodeReposListLanguagesParams(r *http.Request) (ReposListLanguagesParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -43751,7 +43751,7 @@ func decodeReposListLanguagesParams(r *http.Request) (ReposListLanguagesParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -43787,7 +43787,7 @@ func decodeReposListPagesBuildsParams(r *http.Request) (ReposListPagesBuildsPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -43818,7 +43818,7 @@ func decodeReposListPagesBuildsParams(r *http.Request) (ReposListPagesBuildsPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -43850,7 +43850,7 @@ func decodeReposListPagesBuildsParams(r *http.Request) (ReposListPagesBuildsPara
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -43885,7 +43885,7 @@ func decodeReposListPagesBuildsParams(r *http.Request) (ReposListPagesBuildsPara
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -43924,7 +43924,7 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(r *http.Request) (Rep
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -43955,7 +43955,7 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(r *http.Request) (Rep
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -43986,7 +43986,7 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(r *http.Request) (Rep
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -44018,7 +44018,7 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(r *http.Request) (Rep
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -44053,7 +44053,7 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(r *http.Request) (Rep
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -44092,7 +44092,7 @@ func decodeReposListReleaseAssetsParams(r *http.Request) (ReposListReleaseAssets
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -44123,7 +44123,7 @@ func decodeReposListReleaseAssetsParams(r *http.Request) (ReposListReleaseAssets
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -44154,7 +44154,7 @@ func decodeReposListReleaseAssetsParams(r *http.Request) (ReposListReleaseAssets
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -44186,7 +44186,7 @@ func decodeReposListReleaseAssetsParams(r *http.Request) (ReposListReleaseAssets
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -44221,7 +44221,7 @@ func decodeReposListReleaseAssetsParams(r *http.Request) (ReposListReleaseAssets
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -44260,7 +44260,7 @@ func decodeReposListReleasesParams(r *http.Request) (ReposListReleasesParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -44291,7 +44291,7 @@ func decodeReposListReleasesParams(r *http.Request) (ReposListReleasesParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -44323,7 +44323,7 @@ func decodeReposListReleasesParams(r *http.Request) (ReposListReleasesParams, er
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -44358,7 +44358,7 @@ func decodeReposListReleasesParams(r *http.Request) (ReposListReleasesParams, er
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -44397,7 +44397,7 @@ func decodeReposListTagsParams(r *http.Request) (ReposListTagsParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -44428,7 +44428,7 @@ func decodeReposListTagsParams(r *http.Request) (ReposListTagsParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -44460,7 +44460,7 @@ func decodeReposListTagsParams(r *http.Request) (ReposListTagsParams, error) {
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -44495,7 +44495,7 @@ func decodeReposListTagsParams(r *http.Request) (ReposListTagsParams, error) {
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -44534,7 +44534,7 @@ func decodeReposListTeamsParams(r *http.Request) (ReposListTeamsParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -44565,7 +44565,7 @@ func decodeReposListTeamsParams(r *http.Request) (ReposListTeamsParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -44597,7 +44597,7 @@ func decodeReposListTeamsParams(r *http.Request) (ReposListTeamsParams, error) {
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -44632,7 +44632,7 @@ func decodeReposListTeamsParams(r *http.Request) (ReposListTeamsParams, error) {
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -44671,7 +44671,7 @@ func decodeReposListWebhooksParams(r *http.Request) (ReposListWebhooksParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -44702,7 +44702,7 @@ func decodeReposListWebhooksParams(r *http.Request) (ReposListWebhooksParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -44734,7 +44734,7 @@ func decodeReposListWebhooksParams(r *http.Request) (ReposListWebhooksParams, er
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -44769,7 +44769,7 @@ func decodeReposListWebhooksParams(r *http.Request) (ReposListWebhooksParams, er
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -44808,7 +44808,7 @@ func decodeReposMergeUpstreamParams(r *http.Request) (ReposMergeUpstreamParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -44839,7 +44839,7 @@ func decodeReposMergeUpstreamParams(r *http.Request) (ReposMergeUpstreamParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -44875,7 +44875,7 @@ func decodeReposPingWebhookParams(r *http.Request) (ReposPingWebhookParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -44906,7 +44906,7 @@ func decodeReposPingWebhookParams(r *http.Request) (ReposPingWebhookParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -44937,7 +44937,7 @@ func decodeReposPingWebhookParams(r *http.Request) (ReposPingWebhookParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -44973,7 +44973,7 @@ func decodeReposRemoveCollaboratorParams(r *http.Request) (ReposRemoveCollaborat
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45004,7 +45004,7 @@ func decodeReposRemoveCollaboratorParams(r *http.Request) (ReposRemoveCollaborat
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45035,7 +45035,7 @@ func decodeReposRemoveCollaboratorParams(r *http.Request) (ReposRemoveCollaborat
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45071,7 +45071,7 @@ func decodeReposRemoveStatusCheckProtectionParams(r *http.Request) (ReposRemoveS
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45102,7 +45102,7 @@ func decodeReposRemoveStatusCheckProtectionParams(r *http.Request) (ReposRemoveS
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45133,7 +45133,7 @@ func decodeReposRemoveStatusCheckProtectionParams(r *http.Request) (ReposRemoveS
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45169,7 +45169,7 @@ func decodeReposReplaceAllTopicsParams(r *http.Request) (ReposReplaceAllTopicsPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45200,7 +45200,7 @@ func decodeReposReplaceAllTopicsParams(r *http.Request) (ReposReplaceAllTopicsPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45236,7 +45236,7 @@ func decodeReposRequestPagesBuildParams(r *http.Request) (ReposRequestPagesBuild
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45267,7 +45267,7 @@ func decodeReposRequestPagesBuildParams(r *http.Request) (ReposRequestPagesBuild
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45303,7 +45303,7 @@ func decodeReposSetAdminBranchProtectionParams(r *http.Request) (ReposSetAdminBr
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45334,7 +45334,7 @@ func decodeReposSetAdminBranchProtectionParams(r *http.Request) (ReposSetAdminBr
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45365,7 +45365,7 @@ func decodeReposSetAdminBranchProtectionParams(r *http.Request) (ReposSetAdminBr
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45401,7 +45401,7 @@ func decodeReposTestPushWebhookParams(r *http.Request) (ReposTestPushWebhookPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45432,7 +45432,7 @@ func decodeReposTestPushWebhookParams(r *http.Request) (ReposTestPushWebhookPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45463,7 +45463,7 @@ func decodeReposTestPushWebhookParams(r *http.Request) (ReposTestPushWebhookPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45499,7 +45499,7 @@ func decodeReposTransferParams(r *http.Request) (ReposTransferParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45530,7 +45530,7 @@ func decodeReposTransferParams(r *http.Request) (ReposTransferParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45566,7 +45566,7 @@ func decodeReposUpdateBranchProtectionParams(r *http.Request) (ReposUpdateBranch
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45597,7 +45597,7 @@ func decodeReposUpdateBranchProtectionParams(r *http.Request) (ReposUpdateBranch
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45628,7 +45628,7 @@ func decodeReposUpdateBranchProtectionParams(r *http.Request) (ReposUpdateBranch
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45664,7 +45664,7 @@ func decodeReposUpdateCommitCommentParams(r *http.Request) (ReposUpdateCommitCom
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45695,7 +45695,7 @@ func decodeReposUpdateCommitCommentParams(r *http.Request) (ReposUpdateCommitCom
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45726,7 +45726,7 @@ func decodeReposUpdateCommitCommentParams(r *http.Request) (ReposUpdateCommitCom
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45762,7 +45762,7 @@ func decodeReposUpdateInvitationParams(r *http.Request) (ReposUpdateInvitationPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45793,7 +45793,7 @@ func decodeReposUpdateInvitationParams(r *http.Request) (ReposUpdateInvitationPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45824,7 +45824,7 @@ func decodeReposUpdateInvitationParams(r *http.Request) (ReposUpdateInvitationPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45860,7 +45860,7 @@ func decodeReposUpdateReleaseParams(r *http.Request) (ReposUpdateReleaseParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45891,7 +45891,7 @@ func decodeReposUpdateReleaseParams(r *http.Request) (ReposUpdateReleaseParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45922,7 +45922,7 @@ func decodeReposUpdateReleaseParams(r *http.Request) (ReposUpdateReleaseParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45958,7 +45958,7 @@ func decodeReposUpdateReleaseAssetParams(r *http.Request) (ReposUpdateReleaseAss
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -45989,7 +45989,7 @@ func decodeReposUpdateReleaseAssetParams(r *http.Request) (ReposUpdateReleaseAss
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -46020,7 +46020,7 @@ func decodeReposUpdateReleaseAssetParams(r *http.Request) (ReposUpdateReleaseAss
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -46056,7 +46056,7 @@ func decodeReposUpdateWebhookConfigForRepoParams(r *http.Request) (ReposUpdateWe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -46087,7 +46087,7 @@ func decodeReposUpdateWebhookConfigForRepoParams(r *http.Request) (ReposUpdateWe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -46118,7 +46118,7 @@ func decodeReposUpdateWebhookConfigForRepoParams(r *http.Request) (ReposUpdateWe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -46154,7 +46154,7 @@ func decodeReposUploadReleaseAssetParams(r *http.Request) (ReposUploadReleaseAss
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -46185,7 +46185,7 @@ func decodeReposUploadReleaseAssetParams(r *http.Request) (ReposUploadReleaseAss
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -46216,7 +46216,7 @@ func decodeReposUploadReleaseAssetParams(r *http.Request) (ReposUploadReleaseAss
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -46246,7 +46246,7 @@ func decodeReposUploadReleaseAssetParams(r *http.Request) (ReposUploadReleaseAss
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -46278,7 +46278,7 @@ func decodeReposUploadReleaseAssetParams(r *http.Request) (ReposUploadReleaseAss
 			if err := func() error {
 				var ParamsLabelValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -46317,7 +46317,7 @@ func decodeScimDeleteUserFromOrgParams(r *http.Request) (ScimDeleteUserFromOrgPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -46348,7 +46348,7 @@ func decodeScimDeleteUserFromOrgParams(r *http.Request) (ScimDeleteUserFromOrgPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -46383,7 +46383,7 @@ func decodeSearchCommitsParams(r *http.Request) (SearchCommitsParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -46415,7 +46415,7 @@ func decodeSearchCommitsParams(r *http.Request) (SearchCommitsParams, error) {
 			if err := func() error {
 				var ParamsSortValue SearchCommitsSort
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -46456,7 +46456,7 @@ func decodeSearchCommitsParams(r *http.Request) (SearchCommitsParams, error) {
 			if err := func() error {
 				var ParamsOrderValue SearchCommitsOrder
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -46497,7 +46497,7 @@ func decodeSearchCommitsParams(r *http.Request) (SearchCommitsParams, error) {
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -46532,7 +46532,7 @@ func decodeSearchCommitsParams(r *http.Request) (SearchCommitsParams, error) {
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -46570,7 +46570,7 @@ func decodeSearchTopicsParams(r *http.Request) (SearchTopicsParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -46602,7 +46602,7 @@ func decodeSearchTopicsParams(r *http.Request) (SearchTopicsParams, error) {
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -46637,7 +46637,7 @@ func decodeSearchTopicsParams(r *http.Request) (SearchTopicsParams, error) {
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -46676,7 +46676,7 @@ func decodeSecretScanningGetAlertParams(r *http.Request) (SecretScanningGetAlert
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -46707,7 +46707,7 @@ func decodeSecretScanningGetAlertParams(r *http.Request) (SecretScanningGetAlert
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -46740,7 +46740,7 @@ func decodeSecretScanningGetAlertParams(r *http.Request) (SecretScanningGetAlert
 			if err := func() error {
 				var ParamsAlertNumberUnderlying int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -46781,7 +46781,7 @@ func decodeSecretScanningListAlertsForOrgParams(r *http.Request) (SecretScanning
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -46813,7 +46813,7 @@ func decodeSecretScanningListAlertsForOrgParams(r *http.Request) (SecretScanning
 			if err := func() error {
 				var ParamsStateValue SecretScanningListAlertsForOrgState
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -46854,7 +46854,7 @@ func decodeSecretScanningListAlertsForOrgParams(r *http.Request) (SecretScanning
 			if err := func() error {
 				var ParamsSecretTypeValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -46889,7 +46889,7 @@ func decodeSecretScanningListAlertsForOrgParams(r *http.Request) (SecretScanning
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -46924,7 +46924,7 @@ func decodeSecretScanningListAlertsForOrgParams(r *http.Request) (SecretScanning
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -46963,7 +46963,7 @@ func decodeSecretScanningListAlertsForRepoParams(r *http.Request) (SecretScannin
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -46994,7 +46994,7 @@ func decodeSecretScanningListAlertsForRepoParams(r *http.Request) (SecretScannin
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -47026,7 +47026,7 @@ func decodeSecretScanningListAlertsForRepoParams(r *http.Request) (SecretScannin
 			if err := func() error {
 				var ParamsStateValue SecretScanningListAlertsForRepoState
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -47067,7 +47067,7 @@ func decodeSecretScanningListAlertsForRepoParams(r *http.Request) (SecretScannin
 			if err := func() error {
 				var ParamsSecretTypeValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -47102,7 +47102,7 @@ func decodeSecretScanningListAlertsForRepoParams(r *http.Request) (SecretScannin
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -47137,7 +47137,7 @@ func decodeSecretScanningListAlertsForRepoParams(r *http.Request) (SecretScannin
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -47176,7 +47176,7 @@ func decodeSecretScanningUpdateAlertParams(r *http.Request) (SecretScanningUpdat
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -47207,7 +47207,7 @@ func decodeSecretScanningUpdateAlertParams(r *http.Request) (SecretScanningUpdat
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -47240,7 +47240,7 @@ func decodeSecretScanningUpdateAlertParams(r *http.Request) (SecretScanningUpdat
 			if err := func() error {
 				var ParamsAlertNumberUnderlying int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -47281,7 +47281,7 @@ func decodeTeamsAddMemberLegacyParams(r *http.Request) (TeamsAddMemberLegacyPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -47312,7 +47312,7 @@ func decodeTeamsAddMemberLegacyParams(r *http.Request) (TeamsAddMemberLegacyPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -47348,7 +47348,7 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(r *http.Request) (TeamsA
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -47379,7 +47379,7 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(r *http.Request) (TeamsA
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -47410,7 +47410,7 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(r *http.Request) (TeamsA
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -47446,7 +47446,7 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyParams(r *http.Request) (Teams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -47477,7 +47477,7 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyParams(r *http.Request) (Teams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -47513,7 +47513,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(r *http.Request) (Teams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -47544,7 +47544,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(r *http.Request) (Teams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -47575,7 +47575,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(r *http.Request) (Teams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -47611,7 +47611,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(r *http.Request) (TeamsAdd
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -47642,7 +47642,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(r *http.Request) (TeamsAdd
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -47673,7 +47673,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(r *http.Request) (TeamsAdd
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -47704,7 +47704,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(r *http.Request) (TeamsAdd
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -47740,7 +47740,7 @@ func decodeTeamsCheckPermissionsForProjectInOrgParams(r *http.Request) (TeamsChe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -47771,7 +47771,7 @@ func decodeTeamsCheckPermissionsForProjectInOrgParams(r *http.Request) (TeamsChe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -47802,7 +47802,7 @@ func decodeTeamsCheckPermissionsForProjectInOrgParams(r *http.Request) (TeamsChe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -47838,7 +47838,7 @@ func decodeTeamsCheckPermissionsForProjectLegacyParams(r *http.Request) (TeamsCh
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -47869,7 +47869,7 @@ func decodeTeamsCheckPermissionsForProjectLegacyParams(r *http.Request) (TeamsCh
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -47905,7 +47905,7 @@ func decodeTeamsCheckPermissionsForRepoInOrgParams(r *http.Request) (TeamsCheckP
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -47936,7 +47936,7 @@ func decodeTeamsCheckPermissionsForRepoInOrgParams(r *http.Request) (TeamsCheckP
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -47967,7 +47967,7 @@ func decodeTeamsCheckPermissionsForRepoInOrgParams(r *http.Request) (TeamsCheckP
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -47998,7 +47998,7 @@ func decodeTeamsCheckPermissionsForRepoInOrgParams(r *http.Request) (TeamsCheckP
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48034,7 +48034,7 @@ func decodeTeamsCheckPermissionsForRepoLegacyParams(r *http.Request) (TeamsCheck
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48065,7 +48065,7 @@ func decodeTeamsCheckPermissionsForRepoLegacyParams(r *http.Request) (TeamsCheck
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48096,7 +48096,7 @@ func decodeTeamsCheckPermissionsForRepoLegacyParams(r *http.Request) (TeamsCheck
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48132,7 +48132,7 @@ func decodeTeamsCreateDiscussionCommentInOrgParams(r *http.Request) (TeamsCreate
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48163,7 +48163,7 @@ func decodeTeamsCreateDiscussionCommentInOrgParams(r *http.Request) (TeamsCreate
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48194,7 +48194,7 @@ func decodeTeamsCreateDiscussionCommentInOrgParams(r *http.Request) (TeamsCreate
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48230,7 +48230,7 @@ func decodeTeamsCreateDiscussionCommentLegacyParams(r *http.Request) (TeamsCreat
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48261,7 +48261,7 @@ func decodeTeamsCreateDiscussionCommentLegacyParams(r *http.Request) (TeamsCreat
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48297,7 +48297,7 @@ func decodeTeamsCreateDiscussionInOrgParams(r *http.Request) (TeamsCreateDiscuss
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48328,7 +48328,7 @@ func decodeTeamsCreateDiscussionInOrgParams(r *http.Request) (TeamsCreateDiscuss
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48364,7 +48364,7 @@ func decodeTeamsCreateDiscussionLegacyParams(r *http.Request) (TeamsCreateDiscus
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48400,7 +48400,7 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(r *http.Request) (T
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48431,7 +48431,7 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(r *http.Request) (T
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48467,7 +48467,7 @@ func decodeTeamsDeleteDiscussionCommentInOrgParams(r *http.Request) (TeamsDelete
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48498,7 +48498,7 @@ func decodeTeamsDeleteDiscussionCommentInOrgParams(r *http.Request) (TeamsDelete
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48529,7 +48529,7 @@ func decodeTeamsDeleteDiscussionCommentInOrgParams(r *http.Request) (TeamsDelete
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48560,7 +48560,7 @@ func decodeTeamsDeleteDiscussionCommentInOrgParams(r *http.Request) (TeamsDelete
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48596,7 +48596,7 @@ func decodeTeamsDeleteDiscussionCommentLegacyParams(r *http.Request) (TeamsDelet
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48627,7 +48627,7 @@ func decodeTeamsDeleteDiscussionCommentLegacyParams(r *http.Request) (TeamsDelet
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48658,7 +48658,7 @@ func decodeTeamsDeleteDiscussionCommentLegacyParams(r *http.Request) (TeamsDelet
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48694,7 +48694,7 @@ func decodeTeamsDeleteDiscussionInOrgParams(r *http.Request) (TeamsDeleteDiscuss
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48725,7 +48725,7 @@ func decodeTeamsDeleteDiscussionInOrgParams(r *http.Request) (TeamsDeleteDiscuss
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48756,7 +48756,7 @@ func decodeTeamsDeleteDiscussionInOrgParams(r *http.Request) (TeamsDeleteDiscuss
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48792,7 +48792,7 @@ func decodeTeamsDeleteDiscussionLegacyParams(r *http.Request) (TeamsDeleteDiscus
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48823,7 +48823,7 @@ func decodeTeamsDeleteDiscussionLegacyParams(r *http.Request) (TeamsDeleteDiscus
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48859,7 +48859,7 @@ func decodeTeamsDeleteInOrgParams(r *http.Request) (TeamsDeleteInOrgParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48890,7 +48890,7 @@ func decodeTeamsDeleteInOrgParams(r *http.Request) (TeamsDeleteInOrgParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48926,7 +48926,7 @@ func decodeTeamsGetByNameParams(r *http.Request) (TeamsGetByNameParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48957,7 +48957,7 @@ func decodeTeamsGetByNameParams(r *http.Request) (TeamsGetByNameParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -48993,7 +48993,7 @@ func decodeTeamsGetDiscussionCommentInOrgParams(r *http.Request) (TeamsGetDiscus
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49024,7 +49024,7 @@ func decodeTeamsGetDiscussionCommentInOrgParams(r *http.Request) (TeamsGetDiscus
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49055,7 +49055,7 @@ func decodeTeamsGetDiscussionCommentInOrgParams(r *http.Request) (TeamsGetDiscus
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49086,7 +49086,7 @@ func decodeTeamsGetDiscussionCommentInOrgParams(r *http.Request) (TeamsGetDiscus
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49122,7 +49122,7 @@ func decodeTeamsGetDiscussionCommentLegacyParams(r *http.Request) (TeamsGetDiscu
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49153,7 +49153,7 @@ func decodeTeamsGetDiscussionCommentLegacyParams(r *http.Request) (TeamsGetDiscu
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49184,7 +49184,7 @@ func decodeTeamsGetDiscussionCommentLegacyParams(r *http.Request) (TeamsGetDiscu
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49220,7 +49220,7 @@ func decodeTeamsGetDiscussionInOrgParams(r *http.Request) (TeamsGetDiscussionInO
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49251,7 +49251,7 @@ func decodeTeamsGetDiscussionInOrgParams(r *http.Request) (TeamsGetDiscussionInO
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49282,7 +49282,7 @@ func decodeTeamsGetDiscussionInOrgParams(r *http.Request) (TeamsGetDiscussionInO
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49318,7 +49318,7 @@ func decodeTeamsGetDiscussionLegacyParams(r *http.Request) (TeamsGetDiscussionLe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49349,7 +49349,7 @@ func decodeTeamsGetDiscussionLegacyParams(r *http.Request) (TeamsGetDiscussionLe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49385,7 +49385,7 @@ func decodeTeamsGetLegacyParams(r *http.Request) (TeamsGetLegacyParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49421,7 +49421,7 @@ func decodeTeamsGetMemberLegacyParams(r *http.Request) (TeamsGetMemberLegacyPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49452,7 +49452,7 @@ func decodeTeamsGetMemberLegacyParams(r *http.Request) (TeamsGetMemberLegacyPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49488,7 +49488,7 @@ func decodeTeamsGetMembershipForUserInOrgParams(r *http.Request) (TeamsGetMember
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49519,7 +49519,7 @@ func decodeTeamsGetMembershipForUserInOrgParams(r *http.Request) (TeamsGetMember
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49550,7 +49550,7 @@ func decodeTeamsGetMembershipForUserInOrgParams(r *http.Request) (TeamsGetMember
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49586,7 +49586,7 @@ func decodeTeamsGetMembershipForUserLegacyParams(r *http.Request) (TeamsGetMembe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49617,7 +49617,7 @@ func decodeTeamsGetMembershipForUserLegacyParams(r *http.Request) (TeamsGetMembe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49653,7 +49653,7 @@ func decodeTeamsListParams(r *http.Request) (TeamsListParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49685,7 +49685,7 @@ func decodeTeamsListParams(r *http.Request) (TeamsListParams, error) {
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -49720,7 +49720,7 @@ func decodeTeamsListParams(r *http.Request) (TeamsListParams, error) {
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -49759,7 +49759,7 @@ func decodeTeamsListChildInOrgParams(r *http.Request) (TeamsListChildInOrgParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49790,7 +49790,7 @@ func decodeTeamsListChildInOrgParams(r *http.Request) (TeamsListChildInOrgParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49822,7 +49822,7 @@ func decodeTeamsListChildInOrgParams(r *http.Request) (TeamsListChildInOrgParams
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -49857,7 +49857,7 @@ func decodeTeamsListChildInOrgParams(r *http.Request) (TeamsListChildInOrgParams
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -49896,7 +49896,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(r *http.Request) (TeamsListDis
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49927,7 +49927,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(r *http.Request) (TeamsListDis
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49958,7 +49958,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(r *http.Request) (TeamsListDis
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -49990,7 +49990,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(r *http.Request) (TeamsListDis
 			if err := func() error {
 				var ParamsDirectionValue TeamsListDiscussionCommentsInOrgDirection
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -50031,7 +50031,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(r *http.Request) (TeamsListDis
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -50066,7 +50066,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(r *http.Request) (TeamsListDis
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -50105,7 +50105,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(r *http.Request) (TeamsListDi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -50136,7 +50136,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(r *http.Request) (TeamsListDi
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -50168,7 +50168,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(r *http.Request) (TeamsListDi
 			if err := func() error {
 				var ParamsDirectionValue TeamsListDiscussionCommentsLegacyDirection
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -50209,7 +50209,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(r *http.Request) (TeamsListDi
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -50244,7 +50244,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(r *http.Request) (TeamsListDi
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -50283,7 +50283,7 @@ func decodeTeamsListDiscussionsInOrgParams(r *http.Request) (TeamsListDiscussion
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -50314,7 +50314,7 @@ func decodeTeamsListDiscussionsInOrgParams(r *http.Request) (TeamsListDiscussion
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -50346,7 +50346,7 @@ func decodeTeamsListDiscussionsInOrgParams(r *http.Request) (TeamsListDiscussion
 			if err := func() error {
 				var ParamsDirectionValue TeamsListDiscussionsInOrgDirection
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -50387,7 +50387,7 @@ func decodeTeamsListDiscussionsInOrgParams(r *http.Request) (TeamsListDiscussion
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -50422,7 +50422,7 @@ func decodeTeamsListDiscussionsInOrgParams(r *http.Request) (TeamsListDiscussion
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -50457,7 +50457,7 @@ func decodeTeamsListDiscussionsInOrgParams(r *http.Request) (TeamsListDiscussion
 			if err := func() error {
 				var ParamsPinnedValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -50496,7 +50496,7 @@ func decodeTeamsListDiscussionsLegacyParams(r *http.Request) (TeamsListDiscussio
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -50528,7 +50528,7 @@ func decodeTeamsListDiscussionsLegacyParams(r *http.Request) (TeamsListDiscussio
 			if err := func() error {
 				var ParamsDirectionValue TeamsListDiscussionsLegacyDirection
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -50569,7 +50569,7 @@ func decodeTeamsListDiscussionsLegacyParams(r *http.Request) (TeamsListDiscussio
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -50604,7 +50604,7 @@ func decodeTeamsListDiscussionsLegacyParams(r *http.Request) (TeamsListDiscussio
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -50644,7 +50644,7 @@ func decodeTeamsListForAuthenticatedUserParams(r *http.Request) (TeamsListForAut
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -50679,7 +50679,7 @@ func decodeTeamsListForAuthenticatedUserParams(r *http.Request) (TeamsListForAut
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -50718,7 +50718,7 @@ func decodeTeamsListIdpGroupsForLegacyParams(r *http.Request) (TeamsListIdpGroup
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -50754,7 +50754,7 @@ func decodeTeamsListIdpGroupsForOrgParams(r *http.Request) (TeamsListIdpGroupsFo
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -50786,7 +50786,7 @@ func decodeTeamsListIdpGroupsForOrgParams(r *http.Request) (TeamsListIdpGroupsFo
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -50821,7 +50821,7 @@ func decodeTeamsListIdpGroupsForOrgParams(r *http.Request) (TeamsListIdpGroupsFo
 			if err := func() error {
 				var ParamsPageValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -50860,7 +50860,7 @@ func decodeTeamsListIdpGroupsInOrgParams(r *http.Request) (TeamsListIdpGroupsInO
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -50891,7 +50891,7 @@ func decodeTeamsListIdpGroupsInOrgParams(r *http.Request) (TeamsListIdpGroupsInO
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -50927,7 +50927,7 @@ func decodeTeamsListMembersInOrgParams(r *http.Request) (TeamsListMembersInOrgPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -50958,7 +50958,7 @@ func decodeTeamsListMembersInOrgParams(r *http.Request) (TeamsListMembersInOrgPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -50990,7 +50990,7 @@ func decodeTeamsListMembersInOrgParams(r *http.Request) (TeamsListMembersInOrgPa
 			if err := func() error {
 				var ParamsRoleValue TeamsListMembersInOrgRole
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -51031,7 +51031,7 @@ func decodeTeamsListMembersInOrgParams(r *http.Request) (TeamsListMembersInOrgPa
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -51066,7 +51066,7 @@ func decodeTeamsListMembersInOrgParams(r *http.Request) (TeamsListMembersInOrgPa
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -51105,7 +51105,7 @@ func decodeTeamsListMembersLegacyParams(r *http.Request) (TeamsListMembersLegacy
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -51137,7 +51137,7 @@ func decodeTeamsListMembersLegacyParams(r *http.Request) (TeamsListMembersLegacy
 			if err := func() error {
 				var ParamsRoleValue TeamsListMembersLegacyRole
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -51178,7 +51178,7 @@ func decodeTeamsListMembersLegacyParams(r *http.Request) (TeamsListMembersLegacy
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -51213,7 +51213,7 @@ func decodeTeamsListMembersLegacyParams(r *http.Request) (TeamsListMembersLegacy
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -51252,7 +51252,7 @@ func decodeTeamsListPendingInvitationsInOrgParams(r *http.Request) (TeamsListPen
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -51283,7 +51283,7 @@ func decodeTeamsListPendingInvitationsInOrgParams(r *http.Request) (TeamsListPen
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -51315,7 +51315,7 @@ func decodeTeamsListPendingInvitationsInOrgParams(r *http.Request) (TeamsListPen
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -51350,7 +51350,7 @@ func decodeTeamsListPendingInvitationsInOrgParams(r *http.Request) (TeamsListPen
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -51389,7 +51389,7 @@ func decodeTeamsListPendingInvitationsLegacyParams(r *http.Request) (TeamsListPe
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -51421,7 +51421,7 @@ func decodeTeamsListPendingInvitationsLegacyParams(r *http.Request) (TeamsListPe
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -51456,7 +51456,7 @@ func decodeTeamsListPendingInvitationsLegacyParams(r *http.Request) (TeamsListPe
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -51495,7 +51495,7 @@ func decodeTeamsListProjectsInOrgParams(r *http.Request) (TeamsListProjectsInOrg
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -51526,7 +51526,7 @@ func decodeTeamsListProjectsInOrgParams(r *http.Request) (TeamsListProjectsInOrg
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -51558,7 +51558,7 @@ func decodeTeamsListProjectsInOrgParams(r *http.Request) (TeamsListProjectsInOrg
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -51593,7 +51593,7 @@ func decodeTeamsListProjectsInOrgParams(r *http.Request) (TeamsListProjectsInOrg
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -51632,7 +51632,7 @@ func decodeTeamsListProjectsLegacyParams(r *http.Request) (TeamsListProjectsLega
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -51664,7 +51664,7 @@ func decodeTeamsListProjectsLegacyParams(r *http.Request) (TeamsListProjectsLega
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -51699,7 +51699,7 @@ func decodeTeamsListProjectsLegacyParams(r *http.Request) (TeamsListProjectsLega
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -51738,7 +51738,7 @@ func decodeTeamsListReposInOrgParams(r *http.Request) (TeamsListReposInOrgParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -51769,7 +51769,7 @@ func decodeTeamsListReposInOrgParams(r *http.Request) (TeamsListReposInOrgParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -51801,7 +51801,7 @@ func decodeTeamsListReposInOrgParams(r *http.Request) (TeamsListReposInOrgParams
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -51836,7 +51836,7 @@ func decodeTeamsListReposInOrgParams(r *http.Request) (TeamsListReposInOrgParams
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -51875,7 +51875,7 @@ func decodeTeamsListReposLegacyParams(r *http.Request) (TeamsListReposLegacyPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -51907,7 +51907,7 @@ func decodeTeamsListReposLegacyParams(r *http.Request) (TeamsListReposLegacyPara
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -51942,7 +51942,7 @@ func decodeTeamsListReposLegacyParams(r *http.Request) (TeamsListReposLegacyPara
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -51981,7 +51981,7 @@ func decodeTeamsRemoveMemberLegacyParams(r *http.Request) (TeamsRemoveMemberLega
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52012,7 +52012,7 @@ func decodeTeamsRemoveMemberLegacyParams(r *http.Request) (TeamsRemoveMemberLega
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52048,7 +52048,7 @@ func decodeTeamsRemoveMembershipForUserInOrgParams(r *http.Request) (TeamsRemove
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52079,7 +52079,7 @@ func decodeTeamsRemoveMembershipForUserInOrgParams(r *http.Request) (TeamsRemove
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52110,7 +52110,7 @@ func decodeTeamsRemoveMembershipForUserInOrgParams(r *http.Request) (TeamsRemove
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52146,7 +52146,7 @@ func decodeTeamsRemoveMembershipForUserLegacyParams(r *http.Request) (TeamsRemov
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52177,7 +52177,7 @@ func decodeTeamsRemoveMembershipForUserLegacyParams(r *http.Request) (TeamsRemov
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52213,7 +52213,7 @@ func decodeTeamsRemoveProjectInOrgParams(r *http.Request) (TeamsRemoveProjectInO
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52244,7 +52244,7 @@ func decodeTeamsRemoveProjectInOrgParams(r *http.Request) (TeamsRemoveProjectInO
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52275,7 +52275,7 @@ func decodeTeamsRemoveProjectInOrgParams(r *http.Request) (TeamsRemoveProjectInO
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52311,7 +52311,7 @@ func decodeTeamsRemoveRepoInOrgParams(r *http.Request) (TeamsRemoveRepoInOrgPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52342,7 +52342,7 @@ func decodeTeamsRemoveRepoInOrgParams(r *http.Request) (TeamsRemoveRepoInOrgPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52373,7 +52373,7 @@ func decodeTeamsRemoveRepoInOrgParams(r *http.Request) (TeamsRemoveRepoInOrgPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52404,7 +52404,7 @@ func decodeTeamsRemoveRepoInOrgParams(r *http.Request) (TeamsRemoveRepoInOrgPara
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52440,7 +52440,7 @@ func decodeTeamsRemoveRepoLegacyParams(r *http.Request) (TeamsRemoveRepoLegacyPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52471,7 +52471,7 @@ func decodeTeamsRemoveRepoLegacyParams(r *http.Request) (TeamsRemoveRepoLegacyPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52502,7 +52502,7 @@ func decodeTeamsRemoveRepoLegacyParams(r *http.Request) (TeamsRemoveRepoLegacyPa
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52538,7 +52538,7 @@ func decodeTeamsUpdateDiscussionCommentInOrgParams(r *http.Request) (TeamsUpdate
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52569,7 +52569,7 @@ func decodeTeamsUpdateDiscussionCommentInOrgParams(r *http.Request) (TeamsUpdate
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52600,7 +52600,7 @@ func decodeTeamsUpdateDiscussionCommentInOrgParams(r *http.Request) (TeamsUpdate
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52631,7 +52631,7 @@ func decodeTeamsUpdateDiscussionCommentInOrgParams(r *http.Request) (TeamsUpdate
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52667,7 +52667,7 @@ func decodeTeamsUpdateDiscussionCommentLegacyParams(r *http.Request) (TeamsUpdat
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52698,7 +52698,7 @@ func decodeTeamsUpdateDiscussionCommentLegacyParams(r *http.Request) (TeamsUpdat
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52729,7 +52729,7 @@ func decodeTeamsUpdateDiscussionCommentLegacyParams(r *http.Request) (TeamsUpdat
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52765,7 +52765,7 @@ func decodeTeamsUpdateDiscussionInOrgParams(r *http.Request) (TeamsUpdateDiscuss
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52796,7 +52796,7 @@ func decodeTeamsUpdateDiscussionInOrgParams(r *http.Request) (TeamsUpdateDiscuss
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52827,7 +52827,7 @@ func decodeTeamsUpdateDiscussionInOrgParams(r *http.Request) (TeamsUpdateDiscuss
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52863,7 +52863,7 @@ func decodeTeamsUpdateDiscussionLegacyParams(r *http.Request) (TeamsUpdateDiscus
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52894,7 +52894,7 @@ func decodeTeamsUpdateDiscussionLegacyParams(r *http.Request) (TeamsUpdateDiscus
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52930,7 +52930,7 @@ func decodeTeamsUpdateInOrgParams(r *http.Request) (TeamsUpdateInOrgParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52961,7 +52961,7 @@ func decodeTeamsUpdateInOrgParams(r *http.Request) (TeamsUpdateInOrgParams, erro
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -52997,7 +52997,7 @@ func decodeUsersCheckBlockedParams(r *http.Request) (UsersCheckBlockedParams, er
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -53033,7 +53033,7 @@ func decodeUsersCheckFollowingForUserParams(r *http.Request) (UsersCheckFollowin
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -53064,7 +53064,7 @@ func decodeUsersCheckFollowingForUserParams(r *http.Request) (UsersCheckFollowin
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -53100,7 +53100,7 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedParams(r *http.Request) (Use
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -53136,7 +53136,7 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedParams(r *http.Request) (Users
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -53172,7 +53172,7 @@ func decodeUsersFollowParams(r *http.Request) (UsersFollowParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -53208,7 +53208,7 @@ func decodeUsersGetByUsernameParams(r *http.Request) (UsersGetByUsernameParams, 
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -53244,7 +53244,7 @@ func decodeUsersGetGpgKeyForAuthenticatedParams(r *http.Request) (UsersGetGpgKey
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -53280,7 +53280,7 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedParams(r *http.Request) (UsersGet
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -53317,7 +53317,7 @@ func decodeUsersListParams(r *http.Request) (UsersListParams, error) {
 			if err := func() error {
 				var ParamsSinceValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -53352,7 +53352,7 @@ func decodeUsersListParams(r *http.Request) (UsersListParams, error) {
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -53392,7 +53392,7 @@ func decodeUsersListEmailsForAuthenticatedParams(r *http.Request) (UsersListEmai
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -53427,7 +53427,7 @@ func decodeUsersListEmailsForAuthenticatedParams(r *http.Request) (UsersListEmai
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -53467,7 +53467,7 @@ func decodeUsersListFollowedByAuthenticatedParams(r *http.Request) (UsersListFol
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -53502,7 +53502,7 @@ func decodeUsersListFollowedByAuthenticatedParams(r *http.Request) (UsersListFol
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -53542,7 +53542,7 @@ func decodeUsersListFollowersForAuthenticatedUserParams(r *http.Request) (UsersL
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -53577,7 +53577,7 @@ func decodeUsersListFollowersForAuthenticatedUserParams(r *http.Request) (UsersL
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -53616,7 +53616,7 @@ func decodeUsersListFollowersForUserParams(r *http.Request) (UsersListFollowersF
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -53648,7 +53648,7 @@ func decodeUsersListFollowersForUserParams(r *http.Request) (UsersListFollowersF
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -53683,7 +53683,7 @@ func decodeUsersListFollowersForUserParams(r *http.Request) (UsersListFollowersF
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -53722,7 +53722,7 @@ func decodeUsersListFollowingForUserParams(r *http.Request) (UsersListFollowingF
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -53754,7 +53754,7 @@ func decodeUsersListFollowingForUserParams(r *http.Request) (UsersListFollowingF
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -53789,7 +53789,7 @@ func decodeUsersListFollowingForUserParams(r *http.Request) (UsersListFollowingF
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -53829,7 +53829,7 @@ func decodeUsersListGpgKeysForAuthenticatedParams(r *http.Request) (UsersListGpg
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -53864,7 +53864,7 @@ func decodeUsersListGpgKeysForAuthenticatedParams(r *http.Request) (UsersListGpg
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -53903,7 +53903,7 @@ func decodeUsersListGpgKeysForUserParams(r *http.Request) (UsersListGpgKeysForUs
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -53935,7 +53935,7 @@ func decodeUsersListGpgKeysForUserParams(r *http.Request) (UsersListGpgKeysForUs
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -53970,7 +53970,7 @@ func decodeUsersListGpgKeysForUserParams(r *http.Request) (UsersListGpgKeysForUs
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -54010,7 +54010,7 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(r *http.Request) (UsersLi
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -54045,7 +54045,7 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(r *http.Request) (UsersLi
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -54084,7 +54084,7 @@ func decodeUsersListPublicKeysForUserParams(r *http.Request) (UsersListPublicKey
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -54116,7 +54116,7 @@ func decodeUsersListPublicKeysForUserParams(r *http.Request) (UsersListPublicKey
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -54151,7 +54151,7 @@ func decodeUsersListPublicKeysForUserParams(r *http.Request) (UsersListPublicKey
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -54191,7 +54191,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(r *http.Request) (UsersL
 			if err := func() error {
 				var ParamsPerPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -54226,7 +54226,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(r *http.Request) (UsersL
 			if err := func() error {
 				var ParamsPageValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -54265,7 +54265,7 @@ func decodeUsersUnblockParams(r *http.Request) (UsersUnblockParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -54301,7 +54301,7 @@ func decodeUsersUnfollowParams(r *http.Request) (UsersUnfollowParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}

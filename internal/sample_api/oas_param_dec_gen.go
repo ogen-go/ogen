@@ -73,7 +73,7 @@ func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -103,7 +103,7 @@ func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -139,7 +139,7 @@ func decodePetFriendsNamesByIDParams(r *http.Request) (PetFriendsNamesByIDParams
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -174,7 +174,7 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -217,10 +217,10 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 			})
 
 			if err := func() error {
-				return d.Array(func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
 					var ParamsXTagsItem uuid.UUID
 					if err := func() error {
-						s, err := d.Value()
+						s, err := d.DecodeValue()
 						if err != nil {
 							return err
 						}
@@ -254,10 +254,10 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 			})
 
 			if err := func() error {
-				return d.Array(func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
 					var ParamsXScopeItem string
 					if err := func() error {
-						s, err := d.Value()
+						s, err := d.DecodeValue()
 						if err != nil {
 							return err
 						}
@@ -293,7 +293,7 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -329,7 +329,7 @@ func decodePetGetByNameParams(r *http.Request) (PetGetByNameParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
@@ -365,7 +365,7 @@ func decodePetNameByIDParams(r *http.Request) (PetNameByIDParams, error) {
 			})
 
 			if err := func() error {
-				s, err := d.Value()
+				s, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}

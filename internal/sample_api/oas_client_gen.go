@@ -123,7 +123,7 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 			Explode: true,
 		})
 		if encErr := func() error {
-			return e.Value(conv.Int64ToString(params.InlinedParam))
+			return e.EncodeValue(conv.Int64ToString(params.InlinedParam))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode query: %w", encErr)
 			return
@@ -137,7 +137,7 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 			Explode: true,
 		})
 		if encErr := func() error {
-			return e.Value(conv.Int32ToString(params.Skip))
+			return e.EncodeValue(conv.Int32ToString(params.Skip))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode query: %w", encErr)
 			return
@@ -345,7 +345,7 @@ func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNames
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ID))
+			return e.EncodeValue(conv.IntToString(params.ID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -399,7 +399,7 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 			Explode: true,
 		})
 		if encErr := func() error {
-			return e.Value(conv.Int64ToString(params.PetID))
+			return e.EncodeValue(conv.Int64ToString(params.PetID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode query: %w", encErr)
 			return
@@ -413,7 +413,7 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 			Explode: true,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Token))
+			return e.EncodeValue(conv.StringToString(params.Token))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode query: %w", encErr)
 			return
@@ -430,10 +430,10 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Array(func(e uri.Encoder) error {
+			return e.EncodeArray(func(e uri.Encoder) error {
 				for i, item := range params.XTags {
 					if err := func() error {
-						return e.Value(conv.UUIDToString(item))
+						return e.EncodeValue(conv.UUIDToString(item))
 					}(); err != nil {
 						return fmt.Errorf("[%d]: %w", i, err)
 					}
@@ -453,10 +453,10 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Array(func(e uri.Encoder) error {
+			return e.EncodeArray(func(e uri.Encoder) error {
 				for i, item := range params.XScope {
 					if err := func() error {
-						return e.Value(conv.StringToString(item))
+						return e.EncodeValue(conv.StringToString(item))
 					}(); err != nil {
 						return fmt.Errorf("[%d]: %w", i, err)
 					}
@@ -514,7 +514,7 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.StringToString(params.Name))
+			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return
@@ -567,7 +567,7 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 			Explode: false,
 		})
 		if encErr := func() error {
-			return e.Value(conv.IntToString(params.ID))
+			return e.EncodeValue(conv.IntToString(params.ID))
 		}(); encErr != nil {
 			err = fmt.Errorf("encode path: %w", encErr)
 			return

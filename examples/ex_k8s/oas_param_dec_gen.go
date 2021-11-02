@@ -75,7 +75,7 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -110,7 +110,7 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsFieldManagerValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -150,7 +150,7 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -185,7 +185,7 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *
 			if err := func() error {
 				var ParamsFieldManagerValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -225,7 +225,7 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionParams(r *http.Request) 
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -260,7 +260,7 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionParams(r *http.Request) 
 			if err := func() error {
 				var ParamsFieldManagerValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -300,7 +300,7 @@ func decodeCreateApiregistrationV1APIServiceParams(r *http.Request) (CreateApire
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -335,7 +335,7 @@ func decodeCreateApiregistrationV1APIServiceParams(r *http.Request) (CreateApire
 			if err := func() error {
 				var ParamsFieldManagerValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -375,7 +375,7 @@ func decodeCreateCertificatesV1CertificateSigningRequestParams(r *http.Request) 
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -410,7 +410,7 @@ func decodeCreateCertificatesV1CertificateSigningRequestParams(r *http.Request) 
 			if err := func() error {
 				var ParamsFieldManagerValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -450,7 +450,7 @@ func decodeCreateCoreV1NamespaceParams(r *http.Request) (CreateCoreV1NamespacePa
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -485,7 +485,7 @@ func decodeCreateCoreV1NamespaceParams(r *http.Request) (CreateCoreV1NamespacePa
 			if err := func() error {
 				var ParamsFieldManagerValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -525,7 +525,7 @@ func decodeCreateCoreV1NodeParams(r *http.Request) (CreateCoreV1NodeParams, erro
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -560,7 +560,7 @@ func decodeCreateCoreV1NodeParams(r *http.Request) (CreateCoreV1NodeParams, erro
 			if err := func() error {
 				var ParamsFieldManagerValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -600,7 +600,7 @@ func decodeCreateCoreV1PersistentVolumeParams(r *http.Request) (CreateCoreV1Pers
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -635,7 +635,7 @@ func decodeCreateCoreV1PersistentVolumeParams(r *http.Request) (CreateCoreV1Pers
 			if err := func() error {
 				var ParamsFieldManagerValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -675,7 +675,7 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (C
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -710,7 +710,7 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (C
 			if err := func() error {
 				var ParamsFieldManagerValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -750,7 +750,7 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -785,7 +785,7 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *
 			if err := func() error {
 				var ParamsFieldManagerValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -825,7 +825,7 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (C
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -860,7 +860,7 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (C
 			if err := func() error {
 				var ParamsFieldManagerValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -900,7 +900,7 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -935,7 +935,7 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *
 			if err := func() error {
 				var ParamsFieldManagerValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -975,7 +975,7 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionParams(r *http.Request) 
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1010,7 +1010,7 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionParams(r *http.Request) 
 			if err := func() error {
 				var ParamsFieldManagerValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1050,7 +1050,7 @@ func decodeCreateNetworkingV1IngressClassParams(r *http.Request) (CreateNetworki
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1085,7 +1085,7 @@ func decodeCreateNetworkingV1IngressClassParams(r *http.Request) (CreateNetworki
 			if err := func() error {
 				var ParamsFieldManagerValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1125,7 +1125,7 @@ func decodeCreateNodeV1RuntimeClassParams(r *http.Request) (CreateNodeV1RuntimeC
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1160,7 +1160,7 @@ func decodeCreateNodeV1RuntimeClassParams(r *http.Request) (CreateNodeV1RuntimeC
 			if err := func() error {
 				var ParamsFieldManagerValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1200,7 +1200,7 @@ func decodeCreateNodeV1alpha1RuntimeClassParams(r *http.Request) (CreateNodeV1al
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1235,7 +1235,7 @@ func decodeCreateNodeV1alpha1RuntimeClassParams(r *http.Request) (CreateNodeV1al
 			if err := func() error {
 				var ParamsFieldManagerValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1275,7 +1275,7 @@ func decodeCreateNodeV1beta1RuntimeClassParams(r *http.Request) (CreateNodeV1bet
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1310,7 +1310,7 @@ func decodeCreateNodeV1beta1RuntimeClassParams(r *http.Request) (CreateNodeV1bet
 			if err := func() error {
 				var ParamsFieldManagerValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1350,7 +1350,7 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyParams(r *http.Request) (CreatePo
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1385,7 +1385,7 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyParams(r *http.Request) (CreatePo
 			if err := func() error {
 				var ParamsFieldManagerValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1425,7 +1425,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleParams(r *http.Request) (CreateRb
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1460,7 +1460,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleParams(r *http.Request) (CreateRb
 			if err := func() error {
 				var ParamsFieldManagerValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1500,7 +1500,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (C
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1535,7 +1535,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (C
 			if err := func() error {
 				var ParamsFieldManagerValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1575,7 +1575,7 @@ func decodeCreateSchedulingV1PriorityClassParams(r *http.Request) (CreateSchedul
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1610,7 +1610,7 @@ func decodeCreateSchedulingV1PriorityClassParams(r *http.Request) (CreateSchedul
 			if err := func() error {
 				var ParamsFieldManagerValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1650,7 +1650,7 @@ func decodeCreateStorageV1CSIDriverParams(r *http.Request) (CreateStorageV1CSIDr
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1685,7 +1685,7 @@ func decodeCreateStorageV1CSIDriverParams(r *http.Request) (CreateStorageV1CSIDr
 			if err := func() error {
 				var ParamsFieldManagerValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1725,7 +1725,7 @@ func decodeCreateStorageV1CSINodeParams(r *http.Request) (CreateStorageV1CSINode
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1760,7 +1760,7 @@ func decodeCreateStorageV1CSINodeParams(r *http.Request) (CreateStorageV1CSINode
 			if err := func() error {
 				var ParamsFieldManagerValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1800,7 +1800,7 @@ func decodeCreateStorageV1StorageClassParams(r *http.Request) (CreateStorageV1St
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1835,7 +1835,7 @@ func decodeCreateStorageV1StorageClassParams(r *http.Request) (CreateStorageV1St
 			if err := func() error {
 				var ParamsFieldManagerValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1875,7 +1875,7 @@ func decodeCreateStorageV1VolumeAttachmentParams(r *http.Request) (CreateStorage
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1910,7 +1910,7 @@ func decodeCreateStorageV1VolumeAttachmentParams(r *http.Request) (CreateStorage
 			if err := func() error {
 				var ParamsFieldManagerValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1950,7 +1950,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationPa
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -1985,7 +1985,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationPa
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2020,7 +2020,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationPa
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2055,7 +2055,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationPa
 			if err := func() error {
 				var ParamsGracePeriodSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2090,7 +2090,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationPa
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2125,7 +2125,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationPa
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2160,7 +2160,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationPa
 			if err := func() error {
 				var ParamsOrphanDependentsValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2195,7 +2195,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationPa
 			if err := func() error {
 				var ParamsPropagationPolicyValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2230,7 +2230,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationPa
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2265,7 +2265,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationPa
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2300,7 +2300,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationPa
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2340,7 +2340,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2375,7 +2375,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2410,7 +2410,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2445,7 +2445,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 			if err := func() error {
 				var ParamsGracePeriodSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2480,7 +2480,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2515,7 +2515,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2550,7 +2550,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 			if err := func() error {
 				var ParamsOrphanDependentsValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2585,7 +2585,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 			if err := func() error {
 				var ParamsPropagationPolicyValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2620,7 +2620,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2655,7 +2655,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2690,7 +2690,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2730,7 +2730,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionParams(r *http
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2765,7 +2765,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionParams(r *http
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2800,7 +2800,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionParams(r *http
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2835,7 +2835,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionParams(r *http
 			if err := func() error {
 				var ParamsGracePeriodSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2870,7 +2870,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionParams(r *http
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2905,7 +2905,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionParams(r *http
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2940,7 +2940,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionParams(r *http
 			if err := func() error {
 				var ParamsOrphanDependentsValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -2975,7 +2975,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionParams(r *http
 			if err := func() error {
 				var ParamsPropagationPolicyValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3010,7 +3010,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionParams(r *http
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3045,7 +3045,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionParams(r *http
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3080,7 +3080,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionParams(r *http
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3120,7 +3120,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceParams(r *http.Request) (D
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3155,7 +3155,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceParams(r *http.Request) (D
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3190,7 +3190,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceParams(r *http.Request) (D
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3225,7 +3225,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceParams(r *http.Request) (D
 			if err := func() error {
 				var ParamsGracePeriodSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3260,7 +3260,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceParams(r *http.Request) (D
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3295,7 +3295,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceParams(r *http.Request) (D
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3330,7 +3330,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceParams(r *http.Request) (D
 			if err := func() error {
 				var ParamsOrphanDependentsValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3365,7 +3365,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceParams(r *http.Request) (D
 			if err := func() error {
 				var ParamsPropagationPolicyValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3400,7 +3400,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceParams(r *http.Request) (D
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3435,7 +3435,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceParams(r *http.Request) (D
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3470,7 +3470,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceParams(r *http.Request) (D
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3510,7 +3510,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestParams(r *http
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3545,7 +3545,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestParams(r *http
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3580,7 +3580,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestParams(r *http
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3615,7 +3615,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestParams(r *http
 			if err := func() error {
 				var ParamsGracePeriodSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3650,7 +3650,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestParams(r *http
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3685,7 +3685,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestParams(r *http
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3720,7 +3720,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestParams(r *http
 			if err := func() error {
 				var ParamsOrphanDependentsValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3755,7 +3755,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestParams(r *http
 			if err := func() error {
 				var ParamsPropagationPolicyValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3790,7 +3790,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestParams(r *http
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3825,7 +3825,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestParams(r *http
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3860,7 +3860,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestParams(r *http
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3900,7 +3900,7 @@ func decodeDeleteCoreV1CollectionNodeParams(r *http.Request) (DeleteCoreV1Collec
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3935,7 +3935,7 @@ func decodeDeleteCoreV1CollectionNodeParams(r *http.Request) (DeleteCoreV1Collec
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -3970,7 +3970,7 @@ func decodeDeleteCoreV1CollectionNodeParams(r *http.Request) (DeleteCoreV1Collec
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4005,7 +4005,7 @@ func decodeDeleteCoreV1CollectionNodeParams(r *http.Request) (DeleteCoreV1Collec
 			if err := func() error {
 				var ParamsGracePeriodSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4040,7 +4040,7 @@ func decodeDeleteCoreV1CollectionNodeParams(r *http.Request) (DeleteCoreV1Collec
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4075,7 +4075,7 @@ func decodeDeleteCoreV1CollectionNodeParams(r *http.Request) (DeleteCoreV1Collec
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4110,7 +4110,7 @@ func decodeDeleteCoreV1CollectionNodeParams(r *http.Request) (DeleteCoreV1Collec
 			if err := func() error {
 				var ParamsOrphanDependentsValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4145,7 +4145,7 @@ func decodeDeleteCoreV1CollectionNodeParams(r *http.Request) (DeleteCoreV1Collec
 			if err := func() error {
 				var ParamsPropagationPolicyValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4180,7 +4180,7 @@ func decodeDeleteCoreV1CollectionNodeParams(r *http.Request) (DeleteCoreV1Collec
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4215,7 +4215,7 @@ func decodeDeleteCoreV1CollectionNodeParams(r *http.Request) (DeleteCoreV1Collec
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4250,7 +4250,7 @@ func decodeDeleteCoreV1CollectionNodeParams(r *http.Request) (DeleteCoreV1Collec
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4290,7 +4290,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeParams(r *http.Request) (Delete
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4325,7 +4325,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeParams(r *http.Request) (Delete
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4360,7 +4360,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeParams(r *http.Request) (Delete
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4395,7 +4395,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeParams(r *http.Request) (Delete
 			if err := func() error {
 				var ParamsGracePeriodSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4430,7 +4430,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeParams(r *http.Request) (Delete
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4465,7 +4465,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeParams(r *http.Request) (Delete
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4500,7 +4500,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeParams(r *http.Request) (Delete
 			if err := func() error {
 				var ParamsOrphanDependentsValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4535,7 +4535,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeParams(r *http.Request) (Delete
 			if err := func() error {
 				var ParamsPropagationPolicyValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4570,7 +4570,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeParams(r *http.Request) (Delete
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4605,7 +4605,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeParams(r *http.Request) (Delete
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4640,7 +4640,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeParams(r *http.Request) (Delete
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4680,7 +4680,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams(r *http.R
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4715,7 +4715,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams(r *http.R
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4750,7 +4750,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams(r *http.R
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4785,7 +4785,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams(r *http.R
 			if err := func() error {
 				var ParamsGracePeriodSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4820,7 +4820,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams(r *http.R
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4855,7 +4855,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams(r *http.R
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4890,7 +4890,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams(r *http.R
 			if err := func() error {
 				var ParamsOrphanDependentsValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4925,7 +4925,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams(r *http.R
 			if err := func() error {
 				var ParamsPropagationPolicyValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4960,7 +4960,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams(r *http.R
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -4995,7 +4995,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams(r *http.R
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5030,7 +5030,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams(r *http.R
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5070,7 +5070,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5105,7 +5105,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5140,7 +5140,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5175,7 +5175,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 			if err := func() error {
 				var ParamsGracePeriodSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5210,7 +5210,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5245,7 +5245,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5280,7 +5280,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 			if err := func() error {
 				var ParamsOrphanDependentsValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5315,7 +5315,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 			if err := func() error {
 				var ParamsPropagationPolicyValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5350,7 +5350,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5385,7 +5385,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5420,7 +5420,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5460,7 +5460,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams(r *http.R
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5495,7 +5495,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams(r *http.R
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5530,7 +5530,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams(r *http.R
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5565,7 +5565,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams(r *http.R
 			if err := func() error {
 				var ParamsGracePeriodSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5600,7 +5600,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams(r *http.R
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5635,7 +5635,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams(r *http.R
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5670,7 +5670,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams(r *http.R
 			if err := func() error {
 				var ParamsOrphanDependentsValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5705,7 +5705,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams(r *http.R
 			if err := func() error {
 				var ParamsPropagationPolicyValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5740,7 +5740,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams(r *http.R
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5775,7 +5775,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams(r *http.R
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5810,7 +5810,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams(r *http.R
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5850,7 +5850,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5885,7 +5885,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5920,7 +5920,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5955,7 +5955,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 			if err := func() error {
 				var ParamsGracePeriodSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -5990,7 +5990,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6025,7 +6025,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6060,7 +6060,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 			if err := func() error {
 				var ParamsOrphanDependentsValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6095,7 +6095,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 			if err := func() error {
 				var ParamsPropagationPolicyValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6130,7 +6130,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6165,7 +6165,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6200,7 +6200,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6240,7 +6240,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionParams(r *http
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6275,7 +6275,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionParams(r *http
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6310,7 +6310,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionParams(r *http
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6345,7 +6345,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionParams(r *http
 			if err := func() error {
 				var ParamsGracePeriodSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6380,7 +6380,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionParams(r *http
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6415,7 +6415,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionParams(r *http
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6450,7 +6450,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionParams(r *http
 			if err := func() error {
 				var ParamsOrphanDependentsValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6485,7 +6485,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionParams(r *http
 			if err := func() error {
 				var ParamsPropagationPolicyValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6520,7 +6520,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionParams(r *http
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6555,7 +6555,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionParams(r *http
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6590,7 +6590,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionParams(r *http
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6630,7 +6630,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassParams(r *http.Request) (Dele
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6665,7 +6665,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassParams(r *http.Request) (Dele
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6700,7 +6700,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassParams(r *http.Request) (Dele
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6735,7 +6735,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassParams(r *http.Request) (Dele
 			if err := func() error {
 				var ParamsGracePeriodSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6770,7 +6770,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassParams(r *http.Request) (Dele
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6805,7 +6805,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassParams(r *http.Request) (Dele
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6840,7 +6840,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassParams(r *http.Request) (Dele
 			if err := func() error {
 				var ParamsOrphanDependentsValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6875,7 +6875,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassParams(r *http.Request) (Dele
 			if err := func() error {
 				var ParamsPropagationPolicyValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6910,7 +6910,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassParams(r *http.Request) (Dele
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6945,7 +6945,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassParams(r *http.Request) (Dele
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -6980,7 +6980,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassParams(r *http.Request) (Dele
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7020,7 +7020,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassParams(r *http.Request) (DeleteNode
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7055,7 +7055,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassParams(r *http.Request) (DeleteNode
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7090,7 +7090,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassParams(r *http.Request) (DeleteNode
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7125,7 +7125,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassParams(r *http.Request) (DeleteNode
 			if err := func() error {
 				var ParamsGracePeriodSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7160,7 +7160,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassParams(r *http.Request) (DeleteNode
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7195,7 +7195,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassParams(r *http.Request) (DeleteNode
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7230,7 +7230,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassParams(r *http.Request) (DeleteNode
 			if err := func() error {
 				var ParamsOrphanDependentsValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7265,7 +7265,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassParams(r *http.Request) (DeleteNode
 			if err := func() error {
 				var ParamsPropagationPolicyValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7300,7 +7300,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassParams(r *http.Request) (DeleteNode
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7335,7 +7335,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassParams(r *http.Request) (DeleteNode
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7370,7 +7370,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassParams(r *http.Request) (DeleteNode
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7410,7 +7410,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassParams(r *http.Request) (Dele
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7445,7 +7445,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassParams(r *http.Request) (Dele
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7480,7 +7480,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassParams(r *http.Request) (Dele
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7515,7 +7515,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassParams(r *http.Request) (Dele
 			if err := func() error {
 				var ParamsGracePeriodSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7550,7 +7550,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassParams(r *http.Request) (Dele
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7585,7 +7585,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassParams(r *http.Request) (Dele
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7620,7 +7620,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassParams(r *http.Request) (Dele
 			if err := func() error {
 				var ParamsOrphanDependentsValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7655,7 +7655,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassParams(r *http.Request) (Dele
 			if err := func() error {
 				var ParamsPropagationPolicyValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7690,7 +7690,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassParams(r *http.Request) (Dele
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7725,7 +7725,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassParams(r *http.Request) (Dele
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7760,7 +7760,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassParams(r *http.Request) (Dele
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7800,7 +7800,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassParams(r *http.Request) (Delet
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7835,7 +7835,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassParams(r *http.Request) (Delet
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7870,7 +7870,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassParams(r *http.Request) (Delet
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7905,7 +7905,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassParams(r *http.Request) (Delet
 			if err := func() error {
 				var ParamsGracePeriodSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7940,7 +7940,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassParams(r *http.Request) (Delet
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -7975,7 +7975,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassParams(r *http.Request) (Delet
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8010,7 +8010,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassParams(r *http.Request) (Delet
 			if err := func() error {
 				var ParamsOrphanDependentsValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8045,7 +8045,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassParams(r *http.Request) (Delet
 			if err := func() error {
 				var ParamsPropagationPolicyValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8080,7 +8080,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassParams(r *http.Request) (Delet
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8115,7 +8115,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassParams(r *http.Request) (Delet
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8150,7 +8150,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassParams(r *http.Request) (Delet
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8190,7 +8190,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyParams(r *http.Request)
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8225,7 +8225,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyParams(r *http.Request)
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8260,7 +8260,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyParams(r *http.Request)
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8295,7 +8295,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyParams(r *http.Request)
 			if err := func() error {
 				var ParamsGracePeriodSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8330,7 +8330,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyParams(r *http.Request)
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8365,7 +8365,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyParams(r *http.Request)
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8400,7 +8400,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyParams(r *http.Request)
 			if err := func() error {
 				var ParamsOrphanDependentsValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8435,7 +8435,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyParams(r *http.Request)
 			if err := func() error {
 				var ParamsPropagationPolicyValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8470,7 +8470,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyParams(r *http.Request)
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8505,7 +8505,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyParams(r *http.Request)
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8540,7 +8540,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyParams(r *http.Request)
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8580,7 +8580,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleParams(r *http.Request)
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8615,7 +8615,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleParams(r *http.Request)
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8650,7 +8650,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleParams(r *http.Request)
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8685,7 +8685,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleParams(r *http.Request)
 			if err := func() error {
 				var ParamsGracePeriodSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8720,7 +8720,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleParams(r *http.Request)
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8755,7 +8755,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleParams(r *http.Request)
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8790,7 +8790,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleParams(r *http.Request)
 			if err := func() error {
 				var ParamsOrphanDependentsValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8825,7 +8825,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleParams(r *http.Request)
 			if err := func() error {
 				var ParamsPropagationPolicyValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8860,7 +8860,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleParams(r *http.Request)
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8895,7 +8895,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleParams(r *http.Request)
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8930,7 +8930,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleParams(r *http.Request)
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -8970,7 +8970,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingParams(r *http.R
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9005,7 +9005,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingParams(r *http.R
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9040,7 +9040,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingParams(r *http.R
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9075,7 +9075,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingParams(r *http.R
 			if err := func() error {
 				var ParamsGracePeriodSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9110,7 +9110,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingParams(r *http.R
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9145,7 +9145,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingParams(r *http.R
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9180,7 +9180,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingParams(r *http.R
 			if err := func() error {
 				var ParamsOrphanDependentsValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9215,7 +9215,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingParams(r *http.R
 			if err := func() error {
 				var ParamsPropagationPolicyValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9250,7 +9250,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingParams(r *http.R
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9285,7 +9285,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingParams(r *http.R
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9320,7 +9320,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingParams(r *http.R
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9360,7 +9360,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassParams(r *http.Request) (Del
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9395,7 +9395,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassParams(r *http.Request) (Del
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9430,7 +9430,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassParams(r *http.Request) (Del
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9465,7 +9465,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassParams(r *http.Request) (Del
 			if err := func() error {
 				var ParamsGracePeriodSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9500,7 +9500,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassParams(r *http.Request) (Del
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9535,7 +9535,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassParams(r *http.Request) (Del
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9570,7 +9570,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassParams(r *http.Request) (Del
 			if err := func() error {
 				var ParamsOrphanDependentsValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9605,7 +9605,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassParams(r *http.Request) (Del
 			if err := func() error {
 				var ParamsPropagationPolicyValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9640,7 +9640,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassParams(r *http.Request) (Del
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9675,7 +9675,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassParams(r *http.Request) (Del
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9710,7 +9710,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassParams(r *http.Request) (Del
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9750,7 +9750,7 @@ func decodeDeleteStorageV1CollectionCSIDriverParams(r *http.Request) (DeleteStor
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9785,7 +9785,7 @@ func decodeDeleteStorageV1CollectionCSIDriverParams(r *http.Request) (DeleteStor
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9820,7 +9820,7 @@ func decodeDeleteStorageV1CollectionCSIDriverParams(r *http.Request) (DeleteStor
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9855,7 +9855,7 @@ func decodeDeleteStorageV1CollectionCSIDriverParams(r *http.Request) (DeleteStor
 			if err := func() error {
 				var ParamsGracePeriodSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9890,7 +9890,7 @@ func decodeDeleteStorageV1CollectionCSIDriverParams(r *http.Request) (DeleteStor
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9925,7 +9925,7 @@ func decodeDeleteStorageV1CollectionCSIDriverParams(r *http.Request) (DeleteStor
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9960,7 +9960,7 @@ func decodeDeleteStorageV1CollectionCSIDriverParams(r *http.Request) (DeleteStor
 			if err := func() error {
 				var ParamsOrphanDependentsValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -9995,7 +9995,7 @@ func decodeDeleteStorageV1CollectionCSIDriverParams(r *http.Request) (DeleteStor
 			if err := func() error {
 				var ParamsPropagationPolicyValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10030,7 +10030,7 @@ func decodeDeleteStorageV1CollectionCSIDriverParams(r *http.Request) (DeleteStor
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10065,7 +10065,7 @@ func decodeDeleteStorageV1CollectionCSIDriverParams(r *http.Request) (DeleteStor
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10100,7 +10100,7 @@ func decodeDeleteStorageV1CollectionCSIDriverParams(r *http.Request) (DeleteStor
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10140,7 +10140,7 @@ func decodeDeleteStorageV1CollectionCSINodeParams(r *http.Request) (DeleteStorag
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10175,7 +10175,7 @@ func decodeDeleteStorageV1CollectionCSINodeParams(r *http.Request) (DeleteStorag
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10210,7 +10210,7 @@ func decodeDeleteStorageV1CollectionCSINodeParams(r *http.Request) (DeleteStorag
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10245,7 +10245,7 @@ func decodeDeleteStorageV1CollectionCSINodeParams(r *http.Request) (DeleteStorag
 			if err := func() error {
 				var ParamsGracePeriodSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10280,7 +10280,7 @@ func decodeDeleteStorageV1CollectionCSINodeParams(r *http.Request) (DeleteStorag
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10315,7 +10315,7 @@ func decodeDeleteStorageV1CollectionCSINodeParams(r *http.Request) (DeleteStorag
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10350,7 +10350,7 @@ func decodeDeleteStorageV1CollectionCSINodeParams(r *http.Request) (DeleteStorag
 			if err := func() error {
 				var ParamsOrphanDependentsValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10385,7 +10385,7 @@ func decodeDeleteStorageV1CollectionCSINodeParams(r *http.Request) (DeleteStorag
 			if err := func() error {
 				var ParamsPropagationPolicyValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10420,7 +10420,7 @@ func decodeDeleteStorageV1CollectionCSINodeParams(r *http.Request) (DeleteStorag
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10455,7 +10455,7 @@ func decodeDeleteStorageV1CollectionCSINodeParams(r *http.Request) (DeleteStorag
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10490,7 +10490,7 @@ func decodeDeleteStorageV1CollectionCSINodeParams(r *http.Request) (DeleteStorag
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10530,7 +10530,7 @@ func decodeDeleteStorageV1CollectionStorageClassParams(r *http.Request) (DeleteS
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10565,7 +10565,7 @@ func decodeDeleteStorageV1CollectionStorageClassParams(r *http.Request) (DeleteS
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10600,7 +10600,7 @@ func decodeDeleteStorageV1CollectionStorageClassParams(r *http.Request) (DeleteS
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10635,7 +10635,7 @@ func decodeDeleteStorageV1CollectionStorageClassParams(r *http.Request) (DeleteS
 			if err := func() error {
 				var ParamsGracePeriodSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10670,7 +10670,7 @@ func decodeDeleteStorageV1CollectionStorageClassParams(r *http.Request) (DeleteS
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10705,7 +10705,7 @@ func decodeDeleteStorageV1CollectionStorageClassParams(r *http.Request) (DeleteS
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10740,7 +10740,7 @@ func decodeDeleteStorageV1CollectionStorageClassParams(r *http.Request) (DeleteS
 			if err := func() error {
 				var ParamsOrphanDependentsValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10775,7 +10775,7 @@ func decodeDeleteStorageV1CollectionStorageClassParams(r *http.Request) (DeleteS
 			if err := func() error {
 				var ParamsPropagationPolicyValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10810,7 +10810,7 @@ func decodeDeleteStorageV1CollectionStorageClassParams(r *http.Request) (DeleteS
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10845,7 +10845,7 @@ func decodeDeleteStorageV1CollectionStorageClassParams(r *http.Request) (DeleteS
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10880,7 +10880,7 @@ func decodeDeleteStorageV1CollectionStorageClassParams(r *http.Request) (DeleteS
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10920,7 +10920,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentParams(r *http.Request) (Del
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10955,7 +10955,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentParams(r *http.Request) (Del
 			if err := func() error {
 				var ParamsDryRunValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -10990,7 +10990,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentParams(r *http.Request) (Del
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11025,7 +11025,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentParams(r *http.Request) (Del
 			if err := func() error {
 				var ParamsGracePeriodSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11060,7 +11060,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentParams(r *http.Request) (Del
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11095,7 +11095,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentParams(r *http.Request) (Del
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11130,7 +11130,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentParams(r *http.Request) (Del
 			if err := func() error {
 				var ParamsOrphanDependentsValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11165,7 +11165,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentParams(r *http.Request) (Del
 			if err := func() error {
 				var ParamsPropagationPolicyValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11200,7 +11200,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentParams(r *http.Request) (Del
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11235,7 +11235,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentParams(r *http.Request) (Del
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11270,7 +11270,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentParams(r *http.Request) (Del
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11310,7 +11310,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(r *http
 			if err := func() error {
 				var ParamsAllowWatchBookmarksValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11345,7 +11345,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(r *http
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11380,7 +11380,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(r *http
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11415,7 +11415,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(r *http
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11450,7 +11450,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(r *http
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11485,7 +11485,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(r *http
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11520,7 +11520,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(r *http
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11555,7 +11555,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(r *http
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11590,7 +11590,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(r *http
 			if err := func() error {
 				var ParamsWatchValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11630,7 +11630,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsAllowWatchBookmarksValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11665,7 +11665,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11700,7 +11700,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11735,7 +11735,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11770,7 +11770,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11805,7 +11805,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11840,7 +11840,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11875,7 +11875,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11910,7 +11910,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsWatchValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11950,7 +11950,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsAllowWatchBookmarksValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -11985,7 +11985,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12020,7 +12020,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12055,7 +12055,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12090,7 +12090,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12125,7 +12125,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12160,7 +12160,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12195,7 +12195,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12230,7 +12230,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsWatchValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12270,7 +12270,7 @@ func decodeListApiregistrationV1APIServiceParams(r *http.Request) (ListApiregist
 			if err := func() error {
 				var ParamsAllowWatchBookmarksValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12305,7 +12305,7 @@ func decodeListApiregistrationV1APIServiceParams(r *http.Request) (ListApiregist
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12340,7 +12340,7 @@ func decodeListApiregistrationV1APIServiceParams(r *http.Request) (ListApiregist
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12375,7 +12375,7 @@ func decodeListApiregistrationV1APIServiceParams(r *http.Request) (ListApiregist
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12410,7 +12410,7 @@ func decodeListApiregistrationV1APIServiceParams(r *http.Request) (ListApiregist
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12445,7 +12445,7 @@ func decodeListApiregistrationV1APIServiceParams(r *http.Request) (ListApiregist
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12480,7 +12480,7 @@ func decodeListApiregistrationV1APIServiceParams(r *http.Request) (ListApiregist
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12515,7 +12515,7 @@ func decodeListApiregistrationV1APIServiceParams(r *http.Request) (ListApiregist
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12550,7 +12550,7 @@ func decodeListApiregistrationV1APIServiceParams(r *http.Request) (ListApiregist
 			if err := func() error {
 				var ParamsWatchValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12590,7 +12590,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsAllowWatchBookmarksValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12625,7 +12625,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12660,7 +12660,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12695,7 +12695,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12730,7 +12730,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12765,7 +12765,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12800,7 +12800,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12835,7 +12835,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12870,7 +12870,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsWatchValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12910,7 +12910,7 @@ func decodeListCoreV1NamespaceParams(r *http.Request) (ListCoreV1NamespaceParams
 			if err := func() error {
 				var ParamsAllowWatchBookmarksValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12945,7 +12945,7 @@ func decodeListCoreV1NamespaceParams(r *http.Request) (ListCoreV1NamespaceParams
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -12980,7 +12980,7 @@ func decodeListCoreV1NamespaceParams(r *http.Request) (ListCoreV1NamespaceParams
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13015,7 +13015,7 @@ func decodeListCoreV1NamespaceParams(r *http.Request) (ListCoreV1NamespaceParams
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13050,7 +13050,7 @@ func decodeListCoreV1NamespaceParams(r *http.Request) (ListCoreV1NamespaceParams
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13085,7 +13085,7 @@ func decodeListCoreV1NamespaceParams(r *http.Request) (ListCoreV1NamespaceParams
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13120,7 +13120,7 @@ func decodeListCoreV1NamespaceParams(r *http.Request) (ListCoreV1NamespaceParams
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13155,7 +13155,7 @@ func decodeListCoreV1NamespaceParams(r *http.Request) (ListCoreV1NamespaceParams
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13190,7 +13190,7 @@ func decodeListCoreV1NamespaceParams(r *http.Request) (ListCoreV1NamespaceParams
 			if err := func() error {
 				var ParamsWatchValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13230,7 +13230,7 @@ func decodeListCoreV1NodeParams(r *http.Request) (ListCoreV1NodeParams, error) {
 			if err := func() error {
 				var ParamsAllowWatchBookmarksValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13265,7 +13265,7 @@ func decodeListCoreV1NodeParams(r *http.Request) (ListCoreV1NodeParams, error) {
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13300,7 +13300,7 @@ func decodeListCoreV1NodeParams(r *http.Request) (ListCoreV1NodeParams, error) {
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13335,7 +13335,7 @@ func decodeListCoreV1NodeParams(r *http.Request) (ListCoreV1NodeParams, error) {
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13370,7 +13370,7 @@ func decodeListCoreV1NodeParams(r *http.Request) (ListCoreV1NodeParams, error) {
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13405,7 +13405,7 @@ func decodeListCoreV1NodeParams(r *http.Request) (ListCoreV1NodeParams, error) {
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13440,7 +13440,7 @@ func decodeListCoreV1NodeParams(r *http.Request) (ListCoreV1NodeParams, error) {
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13475,7 +13475,7 @@ func decodeListCoreV1NodeParams(r *http.Request) (ListCoreV1NodeParams, error) {
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13510,7 +13510,7 @@ func decodeListCoreV1NodeParams(r *http.Request) (ListCoreV1NodeParams, error) {
 			if err := func() error {
 				var ParamsWatchValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13550,7 +13550,7 @@ func decodeListCoreV1PersistentVolumeParams(r *http.Request) (ListCoreV1Persiste
 			if err := func() error {
 				var ParamsAllowWatchBookmarksValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13585,7 +13585,7 @@ func decodeListCoreV1PersistentVolumeParams(r *http.Request) (ListCoreV1Persiste
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13620,7 +13620,7 @@ func decodeListCoreV1PersistentVolumeParams(r *http.Request) (ListCoreV1Persiste
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13655,7 +13655,7 @@ func decodeListCoreV1PersistentVolumeParams(r *http.Request) (ListCoreV1Persiste
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13690,7 +13690,7 @@ func decodeListCoreV1PersistentVolumeParams(r *http.Request) (ListCoreV1Persiste
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13725,7 +13725,7 @@ func decodeListCoreV1PersistentVolumeParams(r *http.Request) (ListCoreV1Persiste
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13760,7 +13760,7 @@ func decodeListCoreV1PersistentVolumeParams(r *http.Request) (ListCoreV1Persiste
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13795,7 +13795,7 @@ func decodeListCoreV1PersistentVolumeParams(r *http.Request) (ListCoreV1Persiste
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13830,7 +13830,7 @@ func decodeListCoreV1PersistentVolumeParams(r *http.Request) (ListCoreV1Persiste
 			if err := func() error {
 				var ParamsWatchValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13870,7 +13870,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsAllowWatchBookmarksValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13905,7 +13905,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13940,7 +13940,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -13975,7 +13975,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14010,7 +14010,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14045,7 +14045,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14080,7 +14080,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14115,7 +14115,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14150,7 +14150,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsWatchValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14190,7 +14190,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsAllowWatchBookmarksValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14225,7 +14225,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14260,7 +14260,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14295,7 +14295,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14330,7 +14330,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14365,7 +14365,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14400,7 +14400,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14435,7 +14435,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14470,7 +14470,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsWatchValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14510,7 +14510,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsAllowWatchBookmarksValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14545,7 +14545,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14580,7 +14580,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14615,7 +14615,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14650,7 +14650,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14685,7 +14685,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14720,7 +14720,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14755,7 +14755,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14790,7 +14790,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsWatchValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14830,7 +14830,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsAllowWatchBookmarksValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14865,7 +14865,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14900,7 +14900,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14935,7 +14935,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -14970,7 +14970,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15005,7 +15005,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15040,7 +15040,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15075,7 +15075,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15110,7 +15110,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *ht
 			if err := func() error {
 				var ParamsWatchValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15150,7 +15150,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsAllowWatchBookmarksValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15185,7 +15185,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15220,7 +15220,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15255,7 +15255,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15290,7 +15290,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15325,7 +15325,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15360,7 +15360,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15395,7 +15395,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15430,7 +15430,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(r *http.Request) (L
 			if err := func() error {
 				var ParamsWatchValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15470,7 +15470,7 @@ func decodeListNetworkingV1IngressClassParams(r *http.Request) (ListNetworkingV1
 			if err := func() error {
 				var ParamsAllowWatchBookmarksValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15505,7 +15505,7 @@ func decodeListNetworkingV1IngressClassParams(r *http.Request) (ListNetworkingV1
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15540,7 +15540,7 @@ func decodeListNetworkingV1IngressClassParams(r *http.Request) (ListNetworkingV1
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15575,7 +15575,7 @@ func decodeListNetworkingV1IngressClassParams(r *http.Request) (ListNetworkingV1
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15610,7 +15610,7 @@ func decodeListNetworkingV1IngressClassParams(r *http.Request) (ListNetworkingV1
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15645,7 +15645,7 @@ func decodeListNetworkingV1IngressClassParams(r *http.Request) (ListNetworkingV1
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15680,7 +15680,7 @@ func decodeListNetworkingV1IngressClassParams(r *http.Request) (ListNetworkingV1
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15715,7 +15715,7 @@ func decodeListNetworkingV1IngressClassParams(r *http.Request) (ListNetworkingV1
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15750,7 +15750,7 @@ func decodeListNetworkingV1IngressClassParams(r *http.Request) (ListNetworkingV1
 			if err := func() error {
 				var ParamsWatchValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15790,7 +15790,7 @@ func decodeListNodeV1RuntimeClassParams(r *http.Request) (ListNodeV1RuntimeClass
 			if err := func() error {
 				var ParamsAllowWatchBookmarksValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15825,7 +15825,7 @@ func decodeListNodeV1RuntimeClassParams(r *http.Request) (ListNodeV1RuntimeClass
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15860,7 +15860,7 @@ func decodeListNodeV1RuntimeClassParams(r *http.Request) (ListNodeV1RuntimeClass
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15895,7 +15895,7 @@ func decodeListNodeV1RuntimeClassParams(r *http.Request) (ListNodeV1RuntimeClass
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15930,7 +15930,7 @@ func decodeListNodeV1RuntimeClassParams(r *http.Request) (ListNodeV1RuntimeClass
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -15965,7 +15965,7 @@ func decodeListNodeV1RuntimeClassParams(r *http.Request) (ListNodeV1RuntimeClass
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16000,7 +16000,7 @@ func decodeListNodeV1RuntimeClassParams(r *http.Request) (ListNodeV1RuntimeClass
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16035,7 +16035,7 @@ func decodeListNodeV1RuntimeClassParams(r *http.Request) (ListNodeV1RuntimeClass
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16070,7 +16070,7 @@ func decodeListNodeV1RuntimeClassParams(r *http.Request) (ListNodeV1RuntimeClass
 			if err := func() error {
 				var ParamsWatchValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16110,7 +16110,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(r *http.Request) (ListNodeV1alpha1
 			if err := func() error {
 				var ParamsAllowWatchBookmarksValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16145,7 +16145,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(r *http.Request) (ListNodeV1alpha1
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16180,7 +16180,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(r *http.Request) (ListNodeV1alpha1
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16215,7 +16215,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(r *http.Request) (ListNodeV1alpha1
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16250,7 +16250,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(r *http.Request) (ListNodeV1alpha1
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16285,7 +16285,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(r *http.Request) (ListNodeV1alpha1
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16320,7 +16320,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(r *http.Request) (ListNodeV1alpha1
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16355,7 +16355,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(r *http.Request) (ListNodeV1alpha1
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16390,7 +16390,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(r *http.Request) (ListNodeV1alpha1
 			if err := func() error {
 				var ParamsWatchValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16430,7 +16430,7 @@ func decodeListNodeV1beta1RuntimeClassParams(r *http.Request) (ListNodeV1beta1Ru
 			if err := func() error {
 				var ParamsAllowWatchBookmarksValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16465,7 +16465,7 @@ func decodeListNodeV1beta1RuntimeClassParams(r *http.Request) (ListNodeV1beta1Ru
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16500,7 +16500,7 @@ func decodeListNodeV1beta1RuntimeClassParams(r *http.Request) (ListNodeV1beta1Ru
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16535,7 +16535,7 @@ func decodeListNodeV1beta1RuntimeClassParams(r *http.Request) (ListNodeV1beta1Ru
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16570,7 +16570,7 @@ func decodeListNodeV1beta1RuntimeClassParams(r *http.Request) (ListNodeV1beta1Ru
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16605,7 +16605,7 @@ func decodeListNodeV1beta1RuntimeClassParams(r *http.Request) (ListNodeV1beta1Ru
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16640,7 +16640,7 @@ func decodeListNodeV1beta1RuntimeClassParams(r *http.Request) (ListNodeV1beta1Ru
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16675,7 +16675,7 @@ func decodeListNodeV1beta1RuntimeClassParams(r *http.Request) (ListNodeV1beta1Ru
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16710,7 +16710,7 @@ func decodeListNodeV1beta1RuntimeClassParams(r *http.Request) (ListNodeV1beta1Ru
 			if err := func() error {
 				var ParamsWatchValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16750,7 +16750,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(r *http.Request) (ListPolicy
 			if err := func() error {
 				var ParamsAllowWatchBookmarksValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16785,7 +16785,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(r *http.Request) (ListPolicy
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16820,7 +16820,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(r *http.Request) (ListPolicy
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16855,7 +16855,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(r *http.Request) (ListPolicy
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16890,7 +16890,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(r *http.Request) (ListPolicy
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16925,7 +16925,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(r *http.Request) (ListPolicy
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16960,7 +16960,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(r *http.Request) (ListPolicy
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -16995,7 +16995,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(r *http.Request) (ListPolicy
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17030,7 +17030,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(r *http.Request) (ListPolicy
 			if err := func() error {
 				var ParamsWatchValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17070,7 +17070,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(r *http.Request) (ListRbacAu
 			if err := func() error {
 				var ParamsAllowWatchBookmarksValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17105,7 +17105,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(r *http.Request) (ListRbacAu
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17140,7 +17140,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(r *http.Request) (ListRbacAu
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17175,7 +17175,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(r *http.Request) (ListRbacAu
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17210,7 +17210,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(r *http.Request) (ListRbacAu
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17245,7 +17245,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(r *http.Request) (ListRbacAu
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17280,7 +17280,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(r *http.Request) (ListRbacAu
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17315,7 +17315,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(r *http.Request) (ListRbacAu
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17350,7 +17350,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(r *http.Request) (ListRbacAu
 			if err := func() error {
 				var ParamsWatchValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17390,7 +17390,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsAllowWatchBookmarksValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17425,7 +17425,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17460,7 +17460,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17495,7 +17495,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17530,7 +17530,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17565,7 +17565,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17600,7 +17600,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17635,7 +17635,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17670,7 +17670,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (Lis
 			if err := func() error {
 				var ParamsWatchValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17710,7 +17710,7 @@ func decodeListSchedulingV1PriorityClassParams(r *http.Request) (ListSchedulingV
 			if err := func() error {
 				var ParamsAllowWatchBookmarksValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17745,7 +17745,7 @@ func decodeListSchedulingV1PriorityClassParams(r *http.Request) (ListSchedulingV
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17780,7 +17780,7 @@ func decodeListSchedulingV1PriorityClassParams(r *http.Request) (ListSchedulingV
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17815,7 +17815,7 @@ func decodeListSchedulingV1PriorityClassParams(r *http.Request) (ListSchedulingV
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17850,7 +17850,7 @@ func decodeListSchedulingV1PriorityClassParams(r *http.Request) (ListSchedulingV
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17885,7 +17885,7 @@ func decodeListSchedulingV1PriorityClassParams(r *http.Request) (ListSchedulingV
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17920,7 +17920,7 @@ func decodeListSchedulingV1PriorityClassParams(r *http.Request) (ListSchedulingV
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17955,7 +17955,7 @@ func decodeListSchedulingV1PriorityClassParams(r *http.Request) (ListSchedulingV
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -17990,7 +17990,7 @@ func decodeListSchedulingV1PriorityClassParams(r *http.Request) (ListSchedulingV
 			if err := func() error {
 				var ParamsWatchValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18030,7 +18030,7 @@ func decodeListStorageV1CSIDriverParams(r *http.Request) (ListStorageV1CSIDriver
 			if err := func() error {
 				var ParamsAllowWatchBookmarksValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18065,7 +18065,7 @@ func decodeListStorageV1CSIDriverParams(r *http.Request) (ListStorageV1CSIDriver
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18100,7 +18100,7 @@ func decodeListStorageV1CSIDriverParams(r *http.Request) (ListStorageV1CSIDriver
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18135,7 +18135,7 @@ func decodeListStorageV1CSIDriverParams(r *http.Request) (ListStorageV1CSIDriver
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18170,7 +18170,7 @@ func decodeListStorageV1CSIDriverParams(r *http.Request) (ListStorageV1CSIDriver
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18205,7 +18205,7 @@ func decodeListStorageV1CSIDriverParams(r *http.Request) (ListStorageV1CSIDriver
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18240,7 +18240,7 @@ func decodeListStorageV1CSIDriverParams(r *http.Request) (ListStorageV1CSIDriver
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18275,7 +18275,7 @@ func decodeListStorageV1CSIDriverParams(r *http.Request) (ListStorageV1CSIDriver
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18310,7 +18310,7 @@ func decodeListStorageV1CSIDriverParams(r *http.Request) (ListStorageV1CSIDriver
 			if err := func() error {
 				var ParamsWatchValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18350,7 +18350,7 @@ func decodeListStorageV1CSINodeParams(r *http.Request) (ListStorageV1CSINodePara
 			if err := func() error {
 				var ParamsAllowWatchBookmarksValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18385,7 +18385,7 @@ func decodeListStorageV1CSINodeParams(r *http.Request) (ListStorageV1CSINodePara
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18420,7 +18420,7 @@ func decodeListStorageV1CSINodeParams(r *http.Request) (ListStorageV1CSINodePara
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18455,7 +18455,7 @@ func decodeListStorageV1CSINodeParams(r *http.Request) (ListStorageV1CSINodePara
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18490,7 +18490,7 @@ func decodeListStorageV1CSINodeParams(r *http.Request) (ListStorageV1CSINodePara
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18525,7 +18525,7 @@ func decodeListStorageV1CSINodeParams(r *http.Request) (ListStorageV1CSINodePara
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18560,7 +18560,7 @@ func decodeListStorageV1CSINodeParams(r *http.Request) (ListStorageV1CSINodePara
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18595,7 +18595,7 @@ func decodeListStorageV1CSINodeParams(r *http.Request) (ListStorageV1CSINodePara
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18630,7 +18630,7 @@ func decodeListStorageV1CSINodeParams(r *http.Request) (ListStorageV1CSINodePara
 			if err := func() error {
 				var ParamsWatchValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18670,7 +18670,7 @@ func decodeListStorageV1StorageClassParams(r *http.Request) (ListStorageV1Storag
 			if err := func() error {
 				var ParamsAllowWatchBookmarksValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18705,7 +18705,7 @@ func decodeListStorageV1StorageClassParams(r *http.Request) (ListStorageV1Storag
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18740,7 +18740,7 @@ func decodeListStorageV1StorageClassParams(r *http.Request) (ListStorageV1Storag
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18775,7 +18775,7 @@ func decodeListStorageV1StorageClassParams(r *http.Request) (ListStorageV1Storag
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18810,7 +18810,7 @@ func decodeListStorageV1StorageClassParams(r *http.Request) (ListStorageV1Storag
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18845,7 +18845,7 @@ func decodeListStorageV1StorageClassParams(r *http.Request) (ListStorageV1Storag
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18880,7 +18880,7 @@ func decodeListStorageV1StorageClassParams(r *http.Request) (ListStorageV1Storag
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18915,7 +18915,7 @@ func decodeListStorageV1StorageClassParams(r *http.Request) (ListStorageV1Storag
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18950,7 +18950,7 @@ func decodeListStorageV1StorageClassParams(r *http.Request) (ListStorageV1Storag
 			if err := func() error {
 				var ParamsWatchValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -18990,7 +18990,7 @@ func decodeListStorageV1VolumeAttachmentParams(r *http.Request) (ListStorageV1Vo
 			if err := func() error {
 				var ParamsAllowWatchBookmarksValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -19025,7 +19025,7 @@ func decodeListStorageV1VolumeAttachmentParams(r *http.Request) (ListStorageV1Vo
 			if err := func() error {
 				var ParamsContinueValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -19060,7 +19060,7 @@ func decodeListStorageV1VolumeAttachmentParams(r *http.Request) (ListStorageV1Vo
 			if err := func() error {
 				var ParamsFieldSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -19095,7 +19095,7 @@ func decodeListStorageV1VolumeAttachmentParams(r *http.Request) (ListStorageV1Vo
 			if err := func() error {
 				var ParamsLabelSelectorValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -19130,7 +19130,7 @@ func decodeListStorageV1VolumeAttachmentParams(r *http.Request) (ListStorageV1Vo
 			if err := func() error {
 				var ParamsLimitValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -19165,7 +19165,7 @@ func decodeListStorageV1VolumeAttachmentParams(r *http.Request) (ListStorageV1Vo
 			if err := func() error {
 				var ParamsResourceVersionValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -19200,7 +19200,7 @@ func decodeListStorageV1VolumeAttachmentParams(r *http.Request) (ListStorageV1Vo
 			if err := func() error {
 				var ParamsResourceVersionMatchValue string
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -19235,7 +19235,7 @@ func decodeListStorageV1VolumeAttachmentParams(r *http.Request) (ListStorageV1Vo
 			if err := func() error {
 				var ParamsTimeoutSecondsValue int
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
@@ -19270,7 +19270,7 @@ func decodeListStorageV1VolumeAttachmentParams(r *http.Request) (ListStorageV1Vo
 			if err := func() error {
 				var ParamsWatchValue bool
 				if err := func() error {
-					s, err := d.Value()
+					s, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
