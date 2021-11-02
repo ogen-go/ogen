@@ -21,7 +21,7 @@ func (g *Generator) wrapGenerics() {
 				Optional: !param.Spec.Required,
 			}
 
-			if v.Nullable || v.Optional {
+			if v.Any() {
 				param.Type = g.boxType(v, param.Type)
 			}
 		}
