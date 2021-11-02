@@ -406,6 +406,20 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 		}
 		q["petID"] = e.Result()
 	}
+	{
+		// Encode "token" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if encErr := func() error {
+			return e.Value(conv.StringToString(params.Token))
+		}(); encErr != nil {
+			err = fmt.Errorf("encode query: %w", encErr)
+			return
+		}
+		q["token"] = e.Result()
+	}
 	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
@@ -456,15 +470,6 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 		if v, ok := e.Result(); ok {
 			r.Header.Set("x-scope", v)
 		}
-	}
-
-	{
-		value := conv.StringToString(params.Token)
-		r.AddCookie(&http.Cookie{
-			Name:   "token",
-			Value:  value,
-			MaxAge: 1337,
-		})
 	}
 
 	resp, err := c.cfg.Client.Do(r)

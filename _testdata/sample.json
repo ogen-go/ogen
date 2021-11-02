@@ -120,7 +120,7 @@
           },
           {
             "name": "token",
-            "in": "cookie",
+            "in": "query",
             "description": "token",
             "required": true,
             "schema": {

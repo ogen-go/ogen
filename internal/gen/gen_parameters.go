@@ -10,6 +10,14 @@ import (
 func (g *Generator) generateParameters(opName string, params []*oas.Parameter) ([]*ir.Parameter, error) {
 	var result []*ir.Parameter
 	for _, p := range params {
+		if p.In == oas.LocationCookie {
+			err := &ErrNotImplemented{"cookie params"}
+			if g.shouldFail(err) {
+				return nil, err
+			}
+			continue
+		}
+
 		typ, err := g.generateSchema(pascal(opName, p.Name), p.Schema)
 		if err != nil {
 			return nil, xerrors.Errorf("%q: %w", p.Name, err)

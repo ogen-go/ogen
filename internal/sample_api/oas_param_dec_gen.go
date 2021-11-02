@@ -282,23 +282,34 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 			return params, fmt.Errorf("header parameter 'x-scope' not specified")
 		}
 	}
-	// Decode param "token" located in "Cookie".
+	// Decode param "token" located in "Query".
 	{
-		c, err := r.Cookie("token")
-		if err != nil {
-			return params, fmt.Errorf("get cookie 'token': %w", err)
-		}
+		values, ok := r.URL.Query()["token"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
 
-		param := c.Value
-		if len(param) > 0 {
-			v, err := conv.ToString(param)
-			if err != nil {
-				return params, fmt.Errorf("parse cookie param 'token': %w", err)
+			if err := func() error {
+				s, err := d.Value()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Token = c
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("parse parameter 'token' located in 'query': %w", err)
 			}
-
-			params.Token = v
 		} else {
-			return params, fmt.Errorf("cookie parameter 'token' not specified")
+			return params, fmt.Errorf("query parameter 'token' not specified")
 		}
 	}
 	return params, nil
