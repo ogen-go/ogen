@@ -66,10 +66,11 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	if err := g.makeIR(operations); err != nil {
 		return nil, err
 	}
-	g.fix()
 	for _, w := range g.wrapped.types {
 		g.saveType(w)
 	}
+	g.fix()
+	g.wrapGenerics()
 	return g, nil
 }
 

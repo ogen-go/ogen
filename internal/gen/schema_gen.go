@@ -20,13 +20,6 @@ type schemaGen struct {
 	globalRefs map[string]*ir.Type
 }
 
-func genericPostfix(name string) string {
-	if idx := strings.Index(name, "."); idx > 0 {
-		name = name[idx+1:]
-	}
-	return pascal(name)
-}
-
 func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) {
 	if ref := schema.Ref; ref != "" {
 		if t, ok := g.globalRefs[ref]; ok {
@@ -110,13 +103,11 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 
 	switch schema.Type {
 	case oas.Object:
-		s := &ir.Type{
+		s := side(&ir.Type{
 			Kind:   ir.KindStruct,
 			Name:   name,
 			Schema: schema,
-		}
-
-		s = side(s)
+		})
 
 		for i := range schema.Properties {
 			prop := schema.Properties[i]
@@ -124,46 +115,7 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 			if err != nil {
 				return nil, xerrors.Errorf("field '%s': %w", prop.Name, err)
 			}
-			v := ir.GenericVariant{
-				Nullable: prop.Schema.Nullable,
-				Optional: !prop.Required,
-			}
-			if v.Any() {
-				if typ.CanGeneric() && !s.RecursiveTo(typ) {
-					typ = ir.Generic(genericPostfix(typ.Go()),
-						typ, v,
-					)
-					g.side = append(g.side, typ)
-				} else if typ.IsArray() {
-					// Using special case for array nil value if possible.
-					switch {
-					case v.OnlyOptional():
-						typ.NilSemantic = ir.NilOptional
-					case v.OnlyNullable():
-						typ.NilSemantic = ir.NilNull
-					default:
-						typ = ir.Generic(genericPostfix(typ.Go()),
-							typ, v,
-						)
-						g.side = append(g.side, typ)
-					}
-				} else {
-					switch {
-					case v.OnlyOptional():
-						typ = typ.Pointer(ir.NilOptional)
-					case v.OnlyNullable():
-						typ = typ.Pointer(ir.NilNull)
-					default:
-						typ = ir.Generic(genericPostfix(typ.Go()),
-							typ.Pointer(ir.NilNull), ir.GenericVariant{Optional: true},
-						)
-						g.side = append(g.side, typ)
-					}
-				}
-			}
-			if s.RecursiveTo(typ) {
-				typ = typ.Pointer(ir.NilInvalid)
-			}
+
 			s.Fields = append(s.Fields, &ir.Field{
 				Name: pascalMP(prop.Name),
 				Type: typ,

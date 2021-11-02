@@ -1,38 +1,75 @@
 package ir
 
-// RecursiveTo reports whether target type is recursive to current.
-func (t *Type) RecursiveTo(to *Type) bool {
-	if to.Is(KindPrimitive, KindArray) {
-		return false
-	}
-	return t.recurse(t, to)
+import (
+	"fmt"
+	"reflect"
+)
+
+func (t *Type) RecursiveTo(target *Type) bool {
+	return t.recursive(target, &walkpath{})
 }
 
-// Equal reports whether two types are equal.
-func (t *Type) Equal(target *Type) bool {
-	if t.Kind != target.Kind {
+func (t *Type) recursive(target *Type, path *walkpath) bool {
+	if t.Is(KindPrimitive, KindPointer, KindArray, KindEnum) ||
+		target.Is(KindPrimitive, KindPointer, KindArray, KindEnum) {
 		return false
 	}
-	if t.Primitive != target.Primitive {
-		return false
-	}
-	return t.Go() == target.Go()
-}
 
-func (t *Type) recurse(parent, target *Type) bool {
-	if target.Equal(parent) {
+	if reflect.DeepEqual(t, target) {
 		return true
 	}
-	for _, f := range target.Fields {
-		if parent.RecursiveTo(f.Type) {
+
+	if path.has(t) {
+		return false
+	}
+
+	path = path.append(t)
+
+	switch target.Kind {
+	case KindAlias:
+		return t.recursive(target.AliasTo, path)
+	case KindGeneric:
+		return t.recursive(target.GenericOf, path)
+	case KindStruct:
+		for _, f := range target.Fields {
+			if !f.Spec.Required {
+				continue
+			}
+			if t.recursive(f.Type, path) {
+				return true
+			}
+		}
+		return false
+	case KindSum:
+		for _, of := range target.SumOf {
+			if t.recursive(of, path) {
+				return true
+			}
+		}
+		return false
+	default:
+		panic(fmt.Sprintf("unexpected kind: %s", t.Kind))
+	}
+}
+
+type walkpath struct {
+	nodes []*Type
+}
+
+func (wp *walkpath) has(t *Type) bool {
+	for _, n := range wp.nodes {
+		if n == t {
 			return true
 		}
 	}
-	if t.GenericOf != nil {
-		return t.GenericOf.RecursiveTo(target)
-	}
-	if target.GenericOf != nil {
-		return t.recurse(parent, target.GenericOf)
-	}
 	return false
+}
+
+func (wp *walkpath) append(t *Type) *walkpath {
+	return &walkpath{
+		append(
+			wp.nodes[:len(wp.nodes):len(wp.nodes)],
+			t,
+		),
+	}
 }
