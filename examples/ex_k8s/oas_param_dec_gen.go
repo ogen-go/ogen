@@ -93,7 +93,7 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationParams(r *ht
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -128,7 +128,7 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationParams(r *ht
 				params.FieldManager.SetTo(ParamsFieldManagerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldManager' located in 'query': %w", err)
 			}
 		}
 	}
@@ -168,7 +168,7 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -203,7 +203,7 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *
 				params.FieldManager.SetTo(ParamsFieldManagerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldManager' located in 'query': %w", err)
 			}
 		}
 	}
@@ -243,7 +243,7 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionParams(r *http.Request) 
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -278,7 +278,7 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionParams(r *http.Request) 
 				params.FieldManager.SetTo(ParamsFieldManagerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldManager' located in 'query': %w", err)
 			}
 		}
 	}
@@ -318,7 +318,7 @@ func decodeCreateApiregistrationV1APIServiceParams(r *http.Request) (CreateApire
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -353,7 +353,7 @@ func decodeCreateApiregistrationV1APIServiceParams(r *http.Request) (CreateApire
 				params.FieldManager.SetTo(ParamsFieldManagerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldManager' located in 'query': %w", err)
 			}
 		}
 	}
@@ -393,7 +393,7 @@ func decodeCreateCertificatesV1CertificateSigningRequestParams(r *http.Request) 
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -428,7 +428,7 @@ func decodeCreateCertificatesV1CertificateSigningRequestParams(r *http.Request) 
 				params.FieldManager.SetTo(ParamsFieldManagerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldManager' located in 'query': %w", err)
 			}
 		}
 	}
@@ -468,7 +468,7 @@ func decodeCreateCoreV1NamespaceParams(r *http.Request) (CreateCoreV1NamespacePa
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -503,7 +503,7 @@ func decodeCreateCoreV1NamespaceParams(r *http.Request) (CreateCoreV1NamespacePa
 				params.FieldManager.SetTo(ParamsFieldManagerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldManager' located in 'query': %w", err)
 			}
 		}
 	}
@@ -543,7 +543,7 @@ func decodeCreateCoreV1NodeParams(r *http.Request) (CreateCoreV1NodeParams, erro
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -578,7 +578,7 @@ func decodeCreateCoreV1NodeParams(r *http.Request) (CreateCoreV1NodeParams, erro
 				params.FieldManager.SetTo(ParamsFieldManagerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldManager' located in 'query': %w", err)
 			}
 		}
 	}
@@ -618,7 +618,7 @@ func decodeCreateCoreV1PersistentVolumeParams(r *http.Request) (CreateCoreV1Pers
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -653,7 +653,7 @@ func decodeCreateCoreV1PersistentVolumeParams(r *http.Request) (CreateCoreV1Pers
 				params.FieldManager.SetTo(ParamsFieldManagerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldManager' located in 'query': %w", err)
 			}
 		}
 	}
@@ -693,7 +693,7 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (C
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -728,7 +728,7 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (C
 				params.FieldManager.SetTo(ParamsFieldManagerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldManager' located in 'query': %w", err)
 			}
 		}
 	}
@@ -768,7 +768,7 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -803,7 +803,7 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *
 				params.FieldManager.SetTo(ParamsFieldManagerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldManager' located in 'query': %w", err)
 			}
 		}
 	}
@@ -843,7 +843,7 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (C
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -878,7 +878,7 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (C
 				params.FieldManager.SetTo(ParamsFieldManagerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldManager' located in 'query': %w", err)
 			}
 		}
 	}
@@ -918,7 +918,7 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -953,7 +953,7 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *
 				params.FieldManager.SetTo(ParamsFieldManagerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldManager' located in 'query': %w", err)
 			}
 		}
 	}
@@ -993,7 +993,7 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionParams(r *http.Request) 
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1028,7 +1028,7 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionParams(r *http.Request) 
 				params.FieldManager.SetTo(ParamsFieldManagerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldManager' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1068,7 +1068,7 @@ func decodeCreateNetworkingV1IngressClassParams(r *http.Request) (CreateNetworki
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1103,7 +1103,7 @@ func decodeCreateNetworkingV1IngressClassParams(r *http.Request) (CreateNetworki
 				params.FieldManager.SetTo(ParamsFieldManagerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldManager' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1143,7 +1143,7 @@ func decodeCreateNodeV1RuntimeClassParams(r *http.Request) (CreateNodeV1RuntimeC
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1178,7 +1178,7 @@ func decodeCreateNodeV1RuntimeClassParams(r *http.Request) (CreateNodeV1RuntimeC
 				params.FieldManager.SetTo(ParamsFieldManagerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldManager' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1218,7 +1218,7 @@ func decodeCreateNodeV1alpha1RuntimeClassParams(r *http.Request) (CreateNodeV1al
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1253,7 +1253,7 @@ func decodeCreateNodeV1alpha1RuntimeClassParams(r *http.Request) (CreateNodeV1al
 				params.FieldManager.SetTo(ParamsFieldManagerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldManager' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1293,7 +1293,7 @@ func decodeCreateNodeV1beta1RuntimeClassParams(r *http.Request) (CreateNodeV1bet
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1328,7 +1328,7 @@ func decodeCreateNodeV1beta1RuntimeClassParams(r *http.Request) (CreateNodeV1bet
 				params.FieldManager.SetTo(ParamsFieldManagerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldManager' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1368,7 +1368,7 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyParams(r *http.Request) (CreatePo
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1403,7 +1403,7 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyParams(r *http.Request) (CreatePo
 				params.FieldManager.SetTo(ParamsFieldManagerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldManager' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1443,7 +1443,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleParams(r *http.Request) (CreateRb
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1478,7 +1478,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleParams(r *http.Request) (CreateRb
 				params.FieldManager.SetTo(ParamsFieldManagerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldManager' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1518,7 +1518,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (C
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1553,7 +1553,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (C
 				params.FieldManager.SetTo(ParamsFieldManagerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldManager' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1593,7 +1593,7 @@ func decodeCreateSchedulingV1PriorityClassParams(r *http.Request) (CreateSchedul
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1628,7 +1628,7 @@ func decodeCreateSchedulingV1PriorityClassParams(r *http.Request) (CreateSchedul
 				params.FieldManager.SetTo(ParamsFieldManagerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldManager' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1668,7 +1668,7 @@ func decodeCreateStorageV1CSIDriverParams(r *http.Request) (CreateStorageV1CSIDr
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1703,7 +1703,7 @@ func decodeCreateStorageV1CSIDriverParams(r *http.Request) (CreateStorageV1CSIDr
 				params.FieldManager.SetTo(ParamsFieldManagerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldManager' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1743,7 +1743,7 @@ func decodeCreateStorageV1CSINodeParams(r *http.Request) (CreateStorageV1CSINode
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1778,7 +1778,7 @@ func decodeCreateStorageV1CSINodeParams(r *http.Request) (CreateStorageV1CSINode
 				params.FieldManager.SetTo(ParamsFieldManagerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldManager' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1818,7 +1818,7 @@ func decodeCreateStorageV1StorageClassParams(r *http.Request) (CreateStorageV1St
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1853,7 +1853,7 @@ func decodeCreateStorageV1StorageClassParams(r *http.Request) (CreateStorageV1St
 				params.FieldManager.SetTo(ParamsFieldManagerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldManager' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1893,7 +1893,7 @@ func decodeCreateStorageV1VolumeAttachmentParams(r *http.Request) (CreateStorage
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1928,7 +1928,7 @@ func decodeCreateStorageV1VolumeAttachmentParams(r *http.Request) (CreateStorage
 				params.FieldManager.SetTo(ParamsFieldManagerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldManager' located in 'query': %w", err)
 			}
 		}
 	}
@@ -1968,7 +1968,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationPa
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2003,7 +2003,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationPa
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2038,7 +2038,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationPa
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2073,7 +2073,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationPa
 				params.GracePeriodSeconds.SetTo(ParamsGracePeriodSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'gracePeriodSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2108,7 +2108,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationPa
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2143,7 +2143,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationPa
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2178,7 +2178,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationPa
 				params.OrphanDependents.SetTo(ParamsOrphanDependentsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'orphanDependents' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2213,7 +2213,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationPa
 				params.PropagationPolicy.SetTo(ParamsPropagationPolicyValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'propagationPolicy' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2248,7 +2248,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationPa
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2283,7 +2283,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationPa
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2318,7 +2318,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationPa
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2358,7 +2358,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2393,7 +2393,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2428,7 +2428,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2463,7 +2463,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 				params.GracePeriodSeconds.SetTo(ParamsGracePeriodSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'gracePeriodSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2498,7 +2498,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2533,7 +2533,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2568,7 +2568,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 				params.OrphanDependents.SetTo(ParamsOrphanDependentsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'orphanDependents' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2603,7 +2603,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 				params.PropagationPolicy.SetTo(ParamsPropagationPolicyValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'propagationPolicy' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2638,7 +2638,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2673,7 +2673,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2708,7 +2708,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2748,7 +2748,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionParams(r *http
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2783,7 +2783,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionParams(r *http
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2818,7 +2818,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionParams(r *http
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2853,7 +2853,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionParams(r *http
 				params.GracePeriodSeconds.SetTo(ParamsGracePeriodSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'gracePeriodSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2888,7 +2888,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionParams(r *http
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2923,7 +2923,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionParams(r *http
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2958,7 +2958,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionParams(r *http
 				params.OrphanDependents.SetTo(ParamsOrphanDependentsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'orphanDependents' located in 'query': %w", err)
 			}
 		}
 	}
@@ -2993,7 +2993,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionParams(r *http
 				params.PropagationPolicy.SetTo(ParamsPropagationPolicyValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'propagationPolicy' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3028,7 +3028,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionParams(r *http
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3063,7 +3063,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionParams(r *http
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3098,7 +3098,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionParams(r *http
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3138,7 +3138,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceParams(r *http.Request) (D
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3173,7 +3173,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceParams(r *http.Request) (D
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3208,7 +3208,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceParams(r *http.Request) (D
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3243,7 +3243,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceParams(r *http.Request) (D
 				params.GracePeriodSeconds.SetTo(ParamsGracePeriodSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'gracePeriodSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3278,7 +3278,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceParams(r *http.Request) (D
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3313,7 +3313,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceParams(r *http.Request) (D
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3348,7 +3348,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceParams(r *http.Request) (D
 				params.OrphanDependents.SetTo(ParamsOrphanDependentsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'orphanDependents' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3383,7 +3383,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceParams(r *http.Request) (D
 				params.PropagationPolicy.SetTo(ParamsPropagationPolicyValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'propagationPolicy' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3418,7 +3418,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceParams(r *http.Request) (D
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3453,7 +3453,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceParams(r *http.Request) (D
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3488,7 +3488,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceParams(r *http.Request) (D
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3528,7 +3528,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestParams(r *http
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3563,7 +3563,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestParams(r *http
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3598,7 +3598,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestParams(r *http
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3633,7 +3633,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestParams(r *http
 				params.GracePeriodSeconds.SetTo(ParamsGracePeriodSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'gracePeriodSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3668,7 +3668,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestParams(r *http
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3703,7 +3703,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestParams(r *http
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3738,7 +3738,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestParams(r *http
 				params.OrphanDependents.SetTo(ParamsOrphanDependentsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'orphanDependents' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3773,7 +3773,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestParams(r *http
 				params.PropagationPolicy.SetTo(ParamsPropagationPolicyValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'propagationPolicy' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3808,7 +3808,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestParams(r *http
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3843,7 +3843,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestParams(r *http
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3878,7 +3878,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestParams(r *http
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3918,7 +3918,7 @@ func decodeDeleteCoreV1CollectionNodeParams(r *http.Request) (DeleteCoreV1Collec
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3953,7 +3953,7 @@ func decodeDeleteCoreV1CollectionNodeParams(r *http.Request) (DeleteCoreV1Collec
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3988,7 +3988,7 @@ func decodeDeleteCoreV1CollectionNodeParams(r *http.Request) (DeleteCoreV1Collec
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4023,7 +4023,7 @@ func decodeDeleteCoreV1CollectionNodeParams(r *http.Request) (DeleteCoreV1Collec
 				params.GracePeriodSeconds.SetTo(ParamsGracePeriodSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'gracePeriodSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4058,7 +4058,7 @@ func decodeDeleteCoreV1CollectionNodeParams(r *http.Request) (DeleteCoreV1Collec
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4093,7 +4093,7 @@ func decodeDeleteCoreV1CollectionNodeParams(r *http.Request) (DeleteCoreV1Collec
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4128,7 +4128,7 @@ func decodeDeleteCoreV1CollectionNodeParams(r *http.Request) (DeleteCoreV1Collec
 				params.OrphanDependents.SetTo(ParamsOrphanDependentsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'orphanDependents' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4163,7 +4163,7 @@ func decodeDeleteCoreV1CollectionNodeParams(r *http.Request) (DeleteCoreV1Collec
 				params.PropagationPolicy.SetTo(ParamsPropagationPolicyValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'propagationPolicy' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4198,7 +4198,7 @@ func decodeDeleteCoreV1CollectionNodeParams(r *http.Request) (DeleteCoreV1Collec
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4233,7 +4233,7 @@ func decodeDeleteCoreV1CollectionNodeParams(r *http.Request) (DeleteCoreV1Collec
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4268,7 +4268,7 @@ func decodeDeleteCoreV1CollectionNodeParams(r *http.Request) (DeleteCoreV1Collec
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4308,7 +4308,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeParams(r *http.Request) (Delete
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4343,7 +4343,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeParams(r *http.Request) (Delete
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4378,7 +4378,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeParams(r *http.Request) (Delete
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4413,7 +4413,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeParams(r *http.Request) (Delete
 				params.GracePeriodSeconds.SetTo(ParamsGracePeriodSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'gracePeriodSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4448,7 +4448,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeParams(r *http.Request) (Delete
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4483,7 +4483,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeParams(r *http.Request) (Delete
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4518,7 +4518,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeParams(r *http.Request) (Delete
 				params.OrphanDependents.SetTo(ParamsOrphanDependentsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'orphanDependents' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4553,7 +4553,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeParams(r *http.Request) (Delete
 				params.PropagationPolicy.SetTo(ParamsPropagationPolicyValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'propagationPolicy' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4588,7 +4588,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeParams(r *http.Request) (Delete
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4623,7 +4623,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeParams(r *http.Request) (Delete
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4658,7 +4658,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeParams(r *http.Request) (Delete
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4698,7 +4698,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams(r *http.R
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4733,7 +4733,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams(r *http.R
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4768,7 +4768,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams(r *http.R
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4803,7 +4803,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams(r *http.R
 				params.GracePeriodSeconds.SetTo(ParamsGracePeriodSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'gracePeriodSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4838,7 +4838,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams(r *http.R
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4873,7 +4873,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams(r *http.R
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4908,7 +4908,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams(r *http.R
 				params.OrphanDependents.SetTo(ParamsOrphanDependentsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'orphanDependents' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4943,7 +4943,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams(r *http.R
 				params.PropagationPolicy.SetTo(ParamsPropagationPolicyValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'propagationPolicy' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4978,7 +4978,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams(r *http.R
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5013,7 +5013,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams(r *http.R
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5048,7 +5048,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams(r *http.R
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5088,7 +5088,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5123,7 +5123,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5158,7 +5158,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5193,7 +5193,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 				params.GracePeriodSeconds.SetTo(ParamsGracePeriodSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'gracePeriodSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5228,7 +5228,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5263,7 +5263,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5298,7 +5298,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 				params.OrphanDependents.SetTo(ParamsOrphanDependentsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'orphanDependents' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5333,7 +5333,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 				params.PropagationPolicy.SetTo(ParamsPropagationPolicyValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'propagationPolicy' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5368,7 +5368,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5403,7 +5403,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5438,7 +5438,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5478,7 +5478,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams(r *http.R
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5513,7 +5513,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams(r *http.R
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5548,7 +5548,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams(r *http.R
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5583,7 +5583,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams(r *http.R
 				params.GracePeriodSeconds.SetTo(ParamsGracePeriodSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'gracePeriodSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5618,7 +5618,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams(r *http.R
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5653,7 +5653,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams(r *http.R
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5688,7 +5688,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams(r *http.R
 				params.OrphanDependents.SetTo(ParamsOrphanDependentsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'orphanDependents' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5723,7 +5723,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams(r *http.R
 				params.PropagationPolicy.SetTo(ParamsPropagationPolicyValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'propagationPolicy' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5758,7 +5758,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams(r *http.R
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5793,7 +5793,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams(r *http.R
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5828,7 +5828,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams(r *http.R
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5868,7 +5868,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5903,7 +5903,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5938,7 +5938,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5973,7 +5973,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 				params.GracePeriodSeconds.SetTo(ParamsGracePeriodSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'gracePeriodSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6008,7 +6008,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6043,7 +6043,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6078,7 +6078,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 				params.OrphanDependents.SetTo(ParamsOrphanDependentsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'orphanDependents' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6113,7 +6113,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 				params.PropagationPolicy.SetTo(ParamsPropagationPolicyValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'propagationPolicy' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6148,7 +6148,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6183,7 +6183,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6218,7 +6218,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6258,7 +6258,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionParams(r *http
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6293,7 +6293,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionParams(r *http
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6328,7 +6328,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionParams(r *http
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6363,7 +6363,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionParams(r *http
 				params.GracePeriodSeconds.SetTo(ParamsGracePeriodSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'gracePeriodSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6398,7 +6398,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionParams(r *http
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6433,7 +6433,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionParams(r *http
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6468,7 +6468,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionParams(r *http
 				params.OrphanDependents.SetTo(ParamsOrphanDependentsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'orphanDependents' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6503,7 +6503,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionParams(r *http
 				params.PropagationPolicy.SetTo(ParamsPropagationPolicyValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'propagationPolicy' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6538,7 +6538,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionParams(r *http
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6573,7 +6573,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionParams(r *http
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6608,7 +6608,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionParams(r *http
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6648,7 +6648,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassParams(r *http.Request) (Dele
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6683,7 +6683,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassParams(r *http.Request) (Dele
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6718,7 +6718,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassParams(r *http.Request) (Dele
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6753,7 +6753,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassParams(r *http.Request) (Dele
 				params.GracePeriodSeconds.SetTo(ParamsGracePeriodSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'gracePeriodSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6788,7 +6788,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassParams(r *http.Request) (Dele
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6823,7 +6823,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassParams(r *http.Request) (Dele
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6858,7 +6858,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassParams(r *http.Request) (Dele
 				params.OrphanDependents.SetTo(ParamsOrphanDependentsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'orphanDependents' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6893,7 +6893,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassParams(r *http.Request) (Dele
 				params.PropagationPolicy.SetTo(ParamsPropagationPolicyValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'propagationPolicy' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6928,7 +6928,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassParams(r *http.Request) (Dele
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6963,7 +6963,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassParams(r *http.Request) (Dele
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -6998,7 +6998,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassParams(r *http.Request) (Dele
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7038,7 +7038,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassParams(r *http.Request) (DeleteNode
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7073,7 +7073,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassParams(r *http.Request) (DeleteNode
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7108,7 +7108,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassParams(r *http.Request) (DeleteNode
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7143,7 +7143,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassParams(r *http.Request) (DeleteNode
 				params.GracePeriodSeconds.SetTo(ParamsGracePeriodSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'gracePeriodSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7178,7 +7178,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassParams(r *http.Request) (DeleteNode
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7213,7 +7213,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassParams(r *http.Request) (DeleteNode
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7248,7 +7248,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassParams(r *http.Request) (DeleteNode
 				params.OrphanDependents.SetTo(ParamsOrphanDependentsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'orphanDependents' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7283,7 +7283,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassParams(r *http.Request) (DeleteNode
 				params.PropagationPolicy.SetTo(ParamsPropagationPolicyValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'propagationPolicy' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7318,7 +7318,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassParams(r *http.Request) (DeleteNode
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7353,7 +7353,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassParams(r *http.Request) (DeleteNode
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7388,7 +7388,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassParams(r *http.Request) (DeleteNode
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7428,7 +7428,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassParams(r *http.Request) (Dele
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7463,7 +7463,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassParams(r *http.Request) (Dele
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7498,7 +7498,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassParams(r *http.Request) (Dele
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7533,7 +7533,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassParams(r *http.Request) (Dele
 				params.GracePeriodSeconds.SetTo(ParamsGracePeriodSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'gracePeriodSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7568,7 +7568,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassParams(r *http.Request) (Dele
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7603,7 +7603,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassParams(r *http.Request) (Dele
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7638,7 +7638,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassParams(r *http.Request) (Dele
 				params.OrphanDependents.SetTo(ParamsOrphanDependentsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'orphanDependents' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7673,7 +7673,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassParams(r *http.Request) (Dele
 				params.PropagationPolicy.SetTo(ParamsPropagationPolicyValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'propagationPolicy' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7708,7 +7708,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassParams(r *http.Request) (Dele
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7743,7 +7743,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassParams(r *http.Request) (Dele
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7778,7 +7778,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassParams(r *http.Request) (Dele
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7818,7 +7818,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassParams(r *http.Request) (Delet
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7853,7 +7853,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassParams(r *http.Request) (Delet
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7888,7 +7888,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassParams(r *http.Request) (Delet
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7923,7 +7923,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassParams(r *http.Request) (Delet
 				params.GracePeriodSeconds.SetTo(ParamsGracePeriodSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'gracePeriodSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7958,7 +7958,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassParams(r *http.Request) (Delet
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7993,7 +7993,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassParams(r *http.Request) (Delet
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8028,7 +8028,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassParams(r *http.Request) (Delet
 				params.OrphanDependents.SetTo(ParamsOrphanDependentsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'orphanDependents' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8063,7 +8063,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassParams(r *http.Request) (Delet
 				params.PropagationPolicy.SetTo(ParamsPropagationPolicyValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'propagationPolicy' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8098,7 +8098,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassParams(r *http.Request) (Delet
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8133,7 +8133,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassParams(r *http.Request) (Delet
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8168,7 +8168,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassParams(r *http.Request) (Delet
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8208,7 +8208,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyParams(r *http.Request)
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8243,7 +8243,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyParams(r *http.Request)
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8278,7 +8278,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyParams(r *http.Request)
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8313,7 +8313,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyParams(r *http.Request)
 				params.GracePeriodSeconds.SetTo(ParamsGracePeriodSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'gracePeriodSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8348,7 +8348,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyParams(r *http.Request)
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8383,7 +8383,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyParams(r *http.Request)
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8418,7 +8418,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyParams(r *http.Request)
 				params.OrphanDependents.SetTo(ParamsOrphanDependentsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'orphanDependents' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8453,7 +8453,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyParams(r *http.Request)
 				params.PropagationPolicy.SetTo(ParamsPropagationPolicyValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'propagationPolicy' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8488,7 +8488,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyParams(r *http.Request)
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8523,7 +8523,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyParams(r *http.Request)
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8558,7 +8558,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyParams(r *http.Request)
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8598,7 +8598,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleParams(r *http.Request)
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8633,7 +8633,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleParams(r *http.Request)
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8668,7 +8668,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleParams(r *http.Request)
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8703,7 +8703,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleParams(r *http.Request)
 				params.GracePeriodSeconds.SetTo(ParamsGracePeriodSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'gracePeriodSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8738,7 +8738,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleParams(r *http.Request)
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8773,7 +8773,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleParams(r *http.Request)
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8808,7 +8808,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleParams(r *http.Request)
 				params.OrphanDependents.SetTo(ParamsOrphanDependentsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'orphanDependents' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8843,7 +8843,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleParams(r *http.Request)
 				params.PropagationPolicy.SetTo(ParamsPropagationPolicyValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'propagationPolicy' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8878,7 +8878,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleParams(r *http.Request)
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8913,7 +8913,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleParams(r *http.Request)
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8948,7 +8948,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleParams(r *http.Request)
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8988,7 +8988,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingParams(r *http.R
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9023,7 +9023,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingParams(r *http.R
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9058,7 +9058,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingParams(r *http.R
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9093,7 +9093,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingParams(r *http.R
 				params.GracePeriodSeconds.SetTo(ParamsGracePeriodSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'gracePeriodSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9128,7 +9128,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingParams(r *http.R
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9163,7 +9163,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingParams(r *http.R
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9198,7 +9198,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingParams(r *http.R
 				params.OrphanDependents.SetTo(ParamsOrphanDependentsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'orphanDependents' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9233,7 +9233,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingParams(r *http.R
 				params.PropagationPolicy.SetTo(ParamsPropagationPolicyValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'propagationPolicy' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9268,7 +9268,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingParams(r *http.R
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9303,7 +9303,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingParams(r *http.R
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9338,7 +9338,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingParams(r *http.R
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9378,7 +9378,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassParams(r *http.Request) (Del
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9413,7 +9413,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassParams(r *http.Request) (Del
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9448,7 +9448,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassParams(r *http.Request) (Del
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9483,7 +9483,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassParams(r *http.Request) (Del
 				params.GracePeriodSeconds.SetTo(ParamsGracePeriodSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'gracePeriodSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9518,7 +9518,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassParams(r *http.Request) (Del
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9553,7 +9553,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassParams(r *http.Request) (Del
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9588,7 +9588,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassParams(r *http.Request) (Del
 				params.OrphanDependents.SetTo(ParamsOrphanDependentsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'orphanDependents' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9623,7 +9623,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassParams(r *http.Request) (Del
 				params.PropagationPolicy.SetTo(ParamsPropagationPolicyValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'propagationPolicy' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9658,7 +9658,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassParams(r *http.Request) (Del
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9693,7 +9693,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassParams(r *http.Request) (Del
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9728,7 +9728,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassParams(r *http.Request) (Del
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9768,7 +9768,7 @@ func decodeDeleteStorageV1CollectionCSIDriverParams(r *http.Request) (DeleteStor
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9803,7 +9803,7 @@ func decodeDeleteStorageV1CollectionCSIDriverParams(r *http.Request) (DeleteStor
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9838,7 +9838,7 @@ func decodeDeleteStorageV1CollectionCSIDriverParams(r *http.Request) (DeleteStor
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9873,7 +9873,7 @@ func decodeDeleteStorageV1CollectionCSIDriverParams(r *http.Request) (DeleteStor
 				params.GracePeriodSeconds.SetTo(ParamsGracePeriodSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'gracePeriodSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9908,7 +9908,7 @@ func decodeDeleteStorageV1CollectionCSIDriverParams(r *http.Request) (DeleteStor
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9943,7 +9943,7 @@ func decodeDeleteStorageV1CollectionCSIDriverParams(r *http.Request) (DeleteStor
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9978,7 +9978,7 @@ func decodeDeleteStorageV1CollectionCSIDriverParams(r *http.Request) (DeleteStor
 				params.OrphanDependents.SetTo(ParamsOrphanDependentsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'orphanDependents' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10013,7 +10013,7 @@ func decodeDeleteStorageV1CollectionCSIDriverParams(r *http.Request) (DeleteStor
 				params.PropagationPolicy.SetTo(ParamsPropagationPolicyValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'propagationPolicy' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10048,7 +10048,7 @@ func decodeDeleteStorageV1CollectionCSIDriverParams(r *http.Request) (DeleteStor
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10083,7 +10083,7 @@ func decodeDeleteStorageV1CollectionCSIDriverParams(r *http.Request) (DeleteStor
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10118,7 +10118,7 @@ func decodeDeleteStorageV1CollectionCSIDriverParams(r *http.Request) (DeleteStor
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10158,7 +10158,7 @@ func decodeDeleteStorageV1CollectionCSINodeParams(r *http.Request) (DeleteStorag
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10193,7 +10193,7 @@ func decodeDeleteStorageV1CollectionCSINodeParams(r *http.Request) (DeleteStorag
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10228,7 +10228,7 @@ func decodeDeleteStorageV1CollectionCSINodeParams(r *http.Request) (DeleteStorag
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10263,7 +10263,7 @@ func decodeDeleteStorageV1CollectionCSINodeParams(r *http.Request) (DeleteStorag
 				params.GracePeriodSeconds.SetTo(ParamsGracePeriodSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'gracePeriodSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10298,7 +10298,7 @@ func decodeDeleteStorageV1CollectionCSINodeParams(r *http.Request) (DeleteStorag
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10333,7 +10333,7 @@ func decodeDeleteStorageV1CollectionCSINodeParams(r *http.Request) (DeleteStorag
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10368,7 +10368,7 @@ func decodeDeleteStorageV1CollectionCSINodeParams(r *http.Request) (DeleteStorag
 				params.OrphanDependents.SetTo(ParamsOrphanDependentsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'orphanDependents' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10403,7 +10403,7 @@ func decodeDeleteStorageV1CollectionCSINodeParams(r *http.Request) (DeleteStorag
 				params.PropagationPolicy.SetTo(ParamsPropagationPolicyValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'propagationPolicy' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10438,7 +10438,7 @@ func decodeDeleteStorageV1CollectionCSINodeParams(r *http.Request) (DeleteStorag
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10473,7 +10473,7 @@ func decodeDeleteStorageV1CollectionCSINodeParams(r *http.Request) (DeleteStorag
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10508,7 +10508,7 @@ func decodeDeleteStorageV1CollectionCSINodeParams(r *http.Request) (DeleteStorag
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10548,7 +10548,7 @@ func decodeDeleteStorageV1CollectionStorageClassParams(r *http.Request) (DeleteS
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10583,7 +10583,7 @@ func decodeDeleteStorageV1CollectionStorageClassParams(r *http.Request) (DeleteS
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10618,7 +10618,7 @@ func decodeDeleteStorageV1CollectionStorageClassParams(r *http.Request) (DeleteS
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10653,7 +10653,7 @@ func decodeDeleteStorageV1CollectionStorageClassParams(r *http.Request) (DeleteS
 				params.GracePeriodSeconds.SetTo(ParamsGracePeriodSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'gracePeriodSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10688,7 +10688,7 @@ func decodeDeleteStorageV1CollectionStorageClassParams(r *http.Request) (DeleteS
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10723,7 +10723,7 @@ func decodeDeleteStorageV1CollectionStorageClassParams(r *http.Request) (DeleteS
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10758,7 +10758,7 @@ func decodeDeleteStorageV1CollectionStorageClassParams(r *http.Request) (DeleteS
 				params.OrphanDependents.SetTo(ParamsOrphanDependentsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'orphanDependents' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10793,7 +10793,7 @@ func decodeDeleteStorageV1CollectionStorageClassParams(r *http.Request) (DeleteS
 				params.PropagationPolicy.SetTo(ParamsPropagationPolicyValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'propagationPolicy' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10828,7 +10828,7 @@ func decodeDeleteStorageV1CollectionStorageClassParams(r *http.Request) (DeleteS
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10863,7 +10863,7 @@ func decodeDeleteStorageV1CollectionStorageClassParams(r *http.Request) (DeleteS
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10898,7 +10898,7 @@ func decodeDeleteStorageV1CollectionStorageClassParams(r *http.Request) (DeleteS
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10938,7 +10938,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentParams(r *http.Request) (Del
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10973,7 +10973,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentParams(r *http.Request) (Del
 				params.DryRun.SetTo(ParamsDryRunValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'dryRun' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11008,7 +11008,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentParams(r *http.Request) (Del
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11043,7 +11043,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentParams(r *http.Request) (Del
 				params.GracePeriodSeconds.SetTo(ParamsGracePeriodSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'gracePeriodSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11078,7 +11078,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentParams(r *http.Request) (Del
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11113,7 +11113,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentParams(r *http.Request) (Del
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11148,7 +11148,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentParams(r *http.Request) (Del
 				params.OrphanDependents.SetTo(ParamsOrphanDependentsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'orphanDependents' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11183,7 +11183,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentParams(r *http.Request) (Del
 				params.PropagationPolicy.SetTo(ParamsPropagationPolicyValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'propagationPolicy' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11218,7 +11218,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentParams(r *http.Request) (Del
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11253,7 +11253,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentParams(r *http.Request) (Del
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11288,7 +11288,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentParams(r *http.Request) (Del
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11328,7 +11328,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(r *http
 				params.AllowWatchBookmarks.SetTo(ParamsAllowWatchBookmarksValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'allowWatchBookmarks' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11363,7 +11363,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(r *http
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11398,7 +11398,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(r *http
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11433,7 +11433,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(r *http
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11468,7 +11468,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(r *http
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11503,7 +11503,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(r *http
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11538,7 +11538,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(r *http
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11573,7 +11573,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(r *http
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11608,7 +11608,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(r *http
 				params.Watch.SetTo(ParamsWatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'watch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11648,7 +11648,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *ht
 				params.AllowWatchBookmarks.SetTo(ParamsAllowWatchBookmarksValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'allowWatchBookmarks' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11683,7 +11683,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *ht
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11718,7 +11718,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *ht
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11753,7 +11753,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *ht
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11788,7 +11788,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *ht
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11823,7 +11823,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *ht
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11858,7 +11858,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *ht
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11893,7 +11893,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *ht
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11928,7 +11928,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(r *ht
 				params.Watch.SetTo(ParamsWatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'watch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11968,7 +11968,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(r *http.Request) (L
 				params.AllowWatchBookmarks.SetTo(ParamsAllowWatchBookmarksValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'allowWatchBookmarks' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12003,7 +12003,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(r *http.Request) (L
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12038,7 +12038,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(r *http.Request) (L
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12073,7 +12073,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(r *http.Request) (L
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12108,7 +12108,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(r *http.Request) (L
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12143,7 +12143,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(r *http.Request) (L
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12178,7 +12178,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(r *http.Request) (L
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12213,7 +12213,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(r *http.Request) (L
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12248,7 +12248,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(r *http.Request) (L
 				params.Watch.SetTo(ParamsWatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'watch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12288,7 +12288,7 @@ func decodeListApiregistrationV1APIServiceParams(r *http.Request) (ListApiregist
 				params.AllowWatchBookmarks.SetTo(ParamsAllowWatchBookmarksValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'allowWatchBookmarks' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12323,7 +12323,7 @@ func decodeListApiregistrationV1APIServiceParams(r *http.Request) (ListApiregist
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12358,7 +12358,7 @@ func decodeListApiregistrationV1APIServiceParams(r *http.Request) (ListApiregist
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12393,7 +12393,7 @@ func decodeListApiregistrationV1APIServiceParams(r *http.Request) (ListApiregist
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12428,7 +12428,7 @@ func decodeListApiregistrationV1APIServiceParams(r *http.Request) (ListApiregist
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12463,7 +12463,7 @@ func decodeListApiregistrationV1APIServiceParams(r *http.Request) (ListApiregist
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12498,7 +12498,7 @@ func decodeListApiregistrationV1APIServiceParams(r *http.Request) (ListApiregist
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12533,7 +12533,7 @@ func decodeListApiregistrationV1APIServiceParams(r *http.Request) (ListApiregist
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12568,7 +12568,7 @@ func decodeListApiregistrationV1APIServiceParams(r *http.Request) (ListApiregist
 				params.Watch.SetTo(ParamsWatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'watch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12608,7 +12608,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(r *http.Request) (L
 				params.AllowWatchBookmarks.SetTo(ParamsAllowWatchBookmarksValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'allowWatchBookmarks' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12643,7 +12643,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(r *http.Request) (L
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12678,7 +12678,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(r *http.Request) (L
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12713,7 +12713,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(r *http.Request) (L
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12748,7 +12748,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(r *http.Request) (L
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12783,7 +12783,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(r *http.Request) (L
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12818,7 +12818,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(r *http.Request) (L
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12853,7 +12853,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(r *http.Request) (L
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12888,7 +12888,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(r *http.Request) (L
 				params.Watch.SetTo(ParamsWatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'watch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12928,7 +12928,7 @@ func decodeListCoreV1NamespaceParams(r *http.Request) (ListCoreV1NamespaceParams
 				params.AllowWatchBookmarks.SetTo(ParamsAllowWatchBookmarksValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'allowWatchBookmarks' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12963,7 +12963,7 @@ func decodeListCoreV1NamespaceParams(r *http.Request) (ListCoreV1NamespaceParams
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12998,7 +12998,7 @@ func decodeListCoreV1NamespaceParams(r *http.Request) (ListCoreV1NamespaceParams
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13033,7 +13033,7 @@ func decodeListCoreV1NamespaceParams(r *http.Request) (ListCoreV1NamespaceParams
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13068,7 +13068,7 @@ func decodeListCoreV1NamespaceParams(r *http.Request) (ListCoreV1NamespaceParams
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13103,7 +13103,7 @@ func decodeListCoreV1NamespaceParams(r *http.Request) (ListCoreV1NamespaceParams
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13138,7 +13138,7 @@ func decodeListCoreV1NamespaceParams(r *http.Request) (ListCoreV1NamespaceParams
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13173,7 +13173,7 @@ func decodeListCoreV1NamespaceParams(r *http.Request) (ListCoreV1NamespaceParams
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13208,7 +13208,7 @@ func decodeListCoreV1NamespaceParams(r *http.Request) (ListCoreV1NamespaceParams
 				params.Watch.SetTo(ParamsWatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'watch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13248,7 +13248,7 @@ func decodeListCoreV1NodeParams(r *http.Request) (ListCoreV1NodeParams, error) {
 				params.AllowWatchBookmarks.SetTo(ParamsAllowWatchBookmarksValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'allowWatchBookmarks' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13283,7 +13283,7 @@ func decodeListCoreV1NodeParams(r *http.Request) (ListCoreV1NodeParams, error) {
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13318,7 +13318,7 @@ func decodeListCoreV1NodeParams(r *http.Request) (ListCoreV1NodeParams, error) {
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13353,7 +13353,7 @@ func decodeListCoreV1NodeParams(r *http.Request) (ListCoreV1NodeParams, error) {
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13388,7 +13388,7 @@ func decodeListCoreV1NodeParams(r *http.Request) (ListCoreV1NodeParams, error) {
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13423,7 +13423,7 @@ func decodeListCoreV1NodeParams(r *http.Request) (ListCoreV1NodeParams, error) {
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13458,7 +13458,7 @@ func decodeListCoreV1NodeParams(r *http.Request) (ListCoreV1NodeParams, error) {
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13493,7 +13493,7 @@ func decodeListCoreV1NodeParams(r *http.Request) (ListCoreV1NodeParams, error) {
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13528,7 +13528,7 @@ func decodeListCoreV1NodeParams(r *http.Request) (ListCoreV1NodeParams, error) {
 				params.Watch.SetTo(ParamsWatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'watch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13568,7 +13568,7 @@ func decodeListCoreV1PersistentVolumeParams(r *http.Request) (ListCoreV1Persiste
 				params.AllowWatchBookmarks.SetTo(ParamsAllowWatchBookmarksValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'allowWatchBookmarks' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13603,7 +13603,7 @@ func decodeListCoreV1PersistentVolumeParams(r *http.Request) (ListCoreV1Persiste
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13638,7 +13638,7 @@ func decodeListCoreV1PersistentVolumeParams(r *http.Request) (ListCoreV1Persiste
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13673,7 +13673,7 @@ func decodeListCoreV1PersistentVolumeParams(r *http.Request) (ListCoreV1Persiste
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13708,7 +13708,7 @@ func decodeListCoreV1PersistentVolumeParams(r *http.Request) (ListCoreV1Persiste
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13743,7 +13743,7 @@ func decodeListCoreV1PersistentVolumeParams(r *http.Request) (ListCoreV1Persiste
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13778,7 +13778,7 @@ func decodeListCoreV1PersistentVolumeParams(r *http.Request) (ListCoreV1Persiste
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13813,7 +13813,7 @@ func decodeListCoreV1PersistentVolumeParams(r *http.Request) (ListCoreV1Persiste
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13848,7 +13848,7 @@ func decodeListCoreV1PersistentVolumeParams(r *http.Request) (ListCoreV1Persiste
 				params.Watch.SetTo(ParamsWatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'watch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13888,7 +13888,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (Lis
 				params.AllowWatchBookmarks.SetTo(ParamsAllowWatchBookmarksValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'allowWatchBookmarks' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13923,7 +13923,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (Lis
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13958,7 +13958,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (Lis
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13993,7 +13993,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (Lis
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14028,7 +14028,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (Lis
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14063,7 +14063,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (Lis
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14098,7 +14098,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (Lis
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14133,7 +14133,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (Lis
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14168,7 +14168,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(r *http.Request) (Lis
 				params.Watch.SetTo(ParamsWatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'watch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14208,7 +14208,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *ht
 				params.AllowWatchBookmarks.SetTo(ParamsAllowWatchBookmarksValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'allowWatchBookmarks' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14243,7 +14243,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *ht
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14278,7 +14278,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *ht
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14313,7 +14313,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *ht
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14348,7 +14348,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *ht
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14383,7 +14383,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *ht
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14418,7 +14418,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *ht
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14453,7 +14453,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *ht
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14488,7 +14488,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(r *ht
 				params.Watch.SetTo(ParamsWatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'watch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14528,7 +14528,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (Lis
 				params.AllowWatchBookmarks.SetTo(ParamsAllowWatchBookmarksValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'allowWatchBookmarks' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14563,7 +14563,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (Lis
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14598,7 +14598,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (Lis
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14633,7 +14633,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (Lis
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14668,7 +14668,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (Lis
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14703,7 +14703,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (Lis
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14738,7 +14738,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (Lis
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14773,7 +14773,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (Lis
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14808,7 +14808,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(r *http.Request) (Lis
 				params.Watch.SetTo(ParamsWatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'watch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14848,7 +14848,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *ht
 				params.AllowWatchBookmarks.SetTo(ParamsAllowWatchBookmarksValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'allowWatchBookmarks' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14883,7 +14883,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *ht
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14918,7 +14918,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *ht
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14953,7 +14953,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *ht
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14988,7 +14988,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *ht
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15023,7 +15023,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *ht
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15058,7 +15058,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *ht
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15093,7 +15093,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *ht
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15128,7 +15128,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(r *ht
 				params.Watch.SetTo(ParamsWatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'watch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15168,7 +15168,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(r *http.Request) (L
 				params.AllowWatchBookmarks.SetTo(ParamsAllowWatchBookmarksValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'allowWatchBookmarks' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15203,7 +15203,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(r *http.Request) (L
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15238,7 +15238,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(r *http.Request) (L
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15273,7 +15273,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(r *http.Request) (L
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15308,7 +15308,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(r *http.Request) (L
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15343,7 +15343,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(r *http.Request) (L
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15378,7 +15378,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(r *http.Request) (L
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15413,7 +15413,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(r *http.Request) (L
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15448,7 +15448,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(r *http.Request) (L
 				params.Watch.SetTo(ParamsWatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'watch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15488,7 +15488,7 @@ func decodeListNetworkingV1IngressClassParams(r *http.Request) (ListNetworkingV1
 				params.AllowWatchBookmarks.SetTo(ParamsAllowWatchBookmarksValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'allowWatchBookmarks' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15523,7 +15523,7 @@ func decodeListNetworkingV1IngressClassParams(r *http.Request) (ListNetworkingV1
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15558,7 +15558,7 @@ func decodeListNetworkingV1IngressClassParams(r *http.Request) (ListNetworkingV1
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15593,7 +15593,7 @@ func decodeListNetworkingV1IngressClassParams(r *http.Request) (ListNetworkingV1
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15628,7 +15628,7 @@ func decodeListNetworkingV1IngressClassParams(r *http.Request) (ListNetworkingV1
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15663,7 +15663,7 @@ func decodeListNetworkingV1IngressClassParams(r *http.Request) (ListNetworkingV1
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15698,7 +15698,7 @@ func decodeListNetworkingV1IngressClassParams(r *http.Request) (ListNetworkingV1
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15733,7 +15733,7 @@ func decodeListNetworkingV1IngressClassParams(r *http.Request) (ListNetworkingV1
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15768,7 +15768,7 @@ func decodeListNetworkingV1IngressClassParams(r *http.Request) (ListNetworkingV1
 				params.Watch.SetTo(ParamsWatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'watch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15808,7 +15808,7 @@ func decodeListNodeV1RuntimeClassParams(r *http.Request) (ListNodeV1RuntimeClass
 				params.AllowWatchBookmarks.SetTo(ParamsAllowWatchBookmarksValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'allowWatchBookmarks' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15843,7 +15843,7 @@ func decodeListNodeV1RuntimeClassParams(r *http.Request) (ListNodeV1RuntimeClass
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15878,7 +15878,7 @@ func decodeListNodeV1RuntimeClassParams(r *http.Request) (ListNodeV1RuntimeClass
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15913,7 +15913,7 @@ func decodeListNodeV1RuntimeClassParams(r *http.Request) (ListNodeV1RuntimeClass
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15948,7 +15948,7 @@ func decodeListNodeV1RuntimeClassParams(r *http.Request) (ListNodeV1RuntimeClass
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15983,7 +15983,7 @@ func decodeListNodeV1RuntimeClassParams(r *http.Request) (ListNodeV1RuntimeClass
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16018,7 +16018,7 @@ func decodeListNodeV1RuntimeClassParams(r *http.Request) (ListNodeV1RuntimeClass
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16053,7 +16053,7 @@ func decodeListNodeV1RuntimeClassParams(r *http.Request) (ListNodeV1RuntimeClass
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16088,7 +16088,7 @@ func decodeListNodeV1RuntimeClassParams(r *http.Request) (ListNodeV1RuntimeClass
 				params.Watch.SetTo(ParamsWatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'watch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16128,7 +16128,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(r *http.Request) (ListNodeV1alpha1
 				params.AllowWatchBookmarks.SetTo(ParamsAllowWatchBookmarksValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'allowWatchBookmarks' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16163,7 +16163,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(r *http.Request) (ListNodeV1alpha1
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16198,7 +16198,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(r *http.Request) (ListNodeV1alpha1
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16233,7 +16233,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(r *http.Request) (ListNodeV1alpha1
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16268,7 +16268,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(r *http.Request) (ListNodeV1alpha1
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16303,7 +16303,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(r *http.Request) (ListNodeV1alpha1
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16338,7 +16338,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(r *http.Request) (ListNodeV1alpha1
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16373,7 +16373,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(r *http.Request) (ListNodeV1alpha1
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16408,7 +16408,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(r *http.Request) (ListNodeV1alpha1
 				params.Watch.SetTo(ParamsWatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'watch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16448,7 +16448,7 @@ func decodeListNodeV1beta1RuntimeClassParams(r *http.Request) (ListNodeV1beta1Ru
 				params.AllowWatchBookmarks.SetTo(ParamsAllowWatchBookmarksValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'allowWatchBookmarks' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16483,7 +16483,7 @@ func decodeListNodeV1beta1RuntimeClassParams(r *http.Request) (ListNodeV1beta1Ru
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16518,7 +16518,7 @@ func decodeListNodeV1beta1RuntimeClassParams(r *http.Request) (ListNodeV1beta1Ru
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16553,7 +16553,7 @@ func decodeListNodeV1beta1RuntimeClassParams(r *http.Request) (ListNodeV1beta1Ru
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16588,7 +16588,7 @@ func decodeListNodeV1beta1RuntimeClassParams(r *http.Request) (ListNodeV1beta1Ru
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16623,7 +16623,7 @@ func decodeListNodeV1beta1RuntimeClassParams(r *http.Request) (ListNodeV1beta1Ru
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16658,7 +16658,7 @@ func decodeListNodeV1beta1RuntimeClassParams(r *http.Request) (ListNodeV1beta1Ru
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16693,7 +16693,7 @@ func decodeListNodeV1beta1RuntimeClassParams(r *http.Request) (ListNodeV1beta1Ru
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16728,7 +16728,7 @@ func decodeListNodeV1beta1RuntimeClassParams(r *http.Request) (ListNodeV1beta1Ru
 				params.Watch.SetTo(ParamsWatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'watch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16768,7 +16768,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(r *http.Request) (ListPolicy
 				params.AllowWatchBookmarks.SetTo(ParamsAllowWatchBookmarksValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'allowWatchBookmarks' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16803,7 +16803,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(r *http.Request) (ListPolicy
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16838,7 +16838,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(r *http.Request) (ListPolicy
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16873,7 +16873,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(r *http.Request) (ListPolicy
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16908,7 +16908,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(r *http.Request) (ListPolicy
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16943,7 +16943,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(r *http.Request) (ListPolicy
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16978,7 +16978,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(r *http.Request) (ListPolicy
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17013,7 +17013,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(r *http.Request) (ListPolicy
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17048,7 +17048,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(r *http.Request) (ListPolicy
 				params.Watch.SetTo(ParamsWatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'watch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17088,7 +17088,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(r *http.Request) (ListRbacAu
 				params.AllowWatchBookmarks.SetTo(ParamsAllowWatchBookmarksValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'allowWatchBookmarks' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17123,7 +17123,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(r *http.Request) (ListRbacAu
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17158,7 +17158,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(r *http.Request) (ListRbacAu
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17193,7 +17193,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(r *http.Request) (ListRbacAu
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17228,7 +17228,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(r *http.Request) (ListRbacAu
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17263,7 +17263,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(r *http.Request) (ListRbacAu
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17298,7 +17298,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(r *http.Request) (ListRbacAu
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17333,7 +17333,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(r *http.Request) (ListRbacAu
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17368,7 +17368,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(r *http.Request) (ListRbacAu
 				params.Watch.SetTo(ParamsWatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'watch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17408,7 +17408,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (Lis
 				params.AllowWatchBookmarks.SetTo(ParamsAllowWatchBookmarksValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'allowWatchBookmarks' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17443,7 +17443,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (Lis
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17478,7 +17478,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (Lis
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17513,7 +17513,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (Lis
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17548,7 +17548,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (Lis
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17583,7 +17583,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (Lis
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17618,7 +17618,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (Lis
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17653,7 +17653,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (Lis
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17688,7 +17688,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(r *http.Request) (Lis
 				params.Watch.SetTo(ParamsWatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'watch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17728,7 +17728,7 @@ func decodeListSchedulingV1PriorityClassParams(r *http.Request) (ListSchedulingV
 				params.AllowWatchBookmarks.SetTo(ParamsAllowWatchBookmarksValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'allowWatchBookmarks' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17763,7 +17763,7 @@ func decodeListSchedulingV1PriorityClassParams(r *http.Request) (ListSchedulingV
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17798,7 +17798,7 @@ func decodeListSchedulingV1PriorityClassParams(r *http.Request) (ListSchedulingV
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17833,7 +17833,7 @@ func decodeListSchedulingV1PriorityClassParams(r *http.Request) (ListSchedulingV
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17868,7 +17868,7 @@ func decodeListSchedulingV1PriorityClassParams(r *http.Request) (ListSchedulingV
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17903,7 +17903,7 @@ func decodeListSchedulingV1PriorityClassParams(r *http.Request) (ListSchedulingV
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17938,7 +17938,7 @@ func decodeListSchedulingV1PriorityClassParams(r *http.Request) (ListSchedulingV
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17973,7 +17973,7 @@ func decodeListSchedulingV1PriorityClassParams(r *http.Request) (ListSchedulingV
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18008,7 +18008,7 @@ func decodeListSchedulingV1PriorityClassParams(r *http.Request) (ListSchedulingV
 				params.Watch.SetTo(ParamsWatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'watch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18048,7 +18048,7 @@ func decodeListStorageV1CSIDriverParams(r *http.Request) (ListStorageV1CSIDriver
 				params.AllowWatchBookmarks.SetTo(ParamsAllowWatchBookmarksValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'allowWatchBookmarks' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18083,7 +18083,7 @@ func decodeListStorageV1CSIDriverParams(r *http.Request) (ListStorageV1CSIDriver
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18118,7 +18118,7 @@ func decodeListStorageV1CSIDriverParams(r *http.Request) (ListStorageV1CSIDriver
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18153,7 +18153,7 @@ func decodeListStorageV1CSIDriverParams(r *http.Request) (ListStorageV1CSIDriver
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18188,7 +18188,7 @@ func decodeListStorageV1CSIDriverParams(r *http.Request) (ListStorageV1CSIDriver
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18223,7 +18223,7 @@ func decodeListStorageV1CSIDriverParams(r *http.Request) (ListStorageV1CSIDriver
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18258,7 +18258,7 @@ func decodeListStorageV1CSIDriverParams(r *http.Request) (ListStorageV1CSIDriver
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18293,7 +18293,7 @@ func decodeListStorageV1CSIDriverParams(r *http.Request) (ListStorageV1CSIDriver
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18328,7 +18328,7 @@ func decodeListStorageV1CSIDriverParams(r *http.Request) (ListStorageV1CSIDriver
 				params.Watch.SetTo(ParamsWatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'watch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18368,7 +18368,7 @@ func decodeListStorageV1CSINodeParams(r *http.Request) (ListStorageV1CSINodePara
 				params.AllowWatchBookmarks.SetTo(ParamsAllowWatchBookmarksValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'allowWatchBookmarks' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18403,7 +18403,7 @@ func decodeListStorageV1CSINodeParams(r *http.Request) (ListStorageV1CSINodePara
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18438,7 +18438,7 @@ func decodeListStorageV1CSINodeParams(r *http.Request) (ListStorageV1CSINodePara
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18473,7 +18473,7 @@ func decodeListStorageV1CSINodeParams(r *http.Request) (ListStorageV1CSINodePara
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18508,7 +18508,7 @@ func decodeListStorageV1CSINodeParams(r *http.Request) (ListStorageV1CSINodePara
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18543,7 +18543,7 @@ func decodeListStorageV1CSINodeParams(r *http.Request) (ListStorageV1CSINodePara
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18578,7 +18578,7 @@ func decodeListStorageV1CSINodeParams(r *http.Request) (ListStorageV1CSINodePara
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18613,7 +18613,7 @@ func decodeListStorageV1CSINodeParams(r *http.Request) (ListStorageV1CSINodePara
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18648,7 +18648,7 @@ func decodeListStorageV1CSINodeParams(r *http.Request) (ListStorageV1CSINodePara
 				params.Watch.SetTo(ParamsWatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'watch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18688,7 +18688,7 @@ func decodeListStorageV1StorageClassParams(r *http.Request) (ListStorageV1Storag
 				params.AllowWatchBookmarks.SetTo(ParamsAllowWatchBookmarksValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'allowWatchBookmarks' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18723,7 +18723,7 @@ func decodeListStorageV1StorageClassParams(r *http.Request) (ListStorageV1Storag
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18758,7 +18758,7 @@ func decodeListStorageV1StorageClassParams(r *http.Request) (ListStorageV1Storag
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18793,7 +18793,7 @@ func decodeListStorageV1StorageClassParams(r *http.Request) (ListStorageV1Storag
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18828,7 +18828,7 @@ func decodeListStorageV1StorageClassParams(r *http.Request) (ListStorageV1Storag
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18863,7 +18863,7 @@ func decodeListStorageV1StorageClassParams(r *http.Request) (ListStorageV1Storag
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18898,7 +18898,7 @@ func decodeListStorageV1StorageClassParams(r *http.Request) (ListStorageV1Storag
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18933,7 +18933,7 @@ func decodeListStorageV1StorageClassParams(r *http.Request) (ListStorageV1Storag
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18968,7 +18968,7 @@ func decodeListStorageV1StorageClassParams(r *http.Request) (ListStorageV1Storag
 				params.Watch.SetTo(ParamsWatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'watch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -19008,7 +19008,7 @@ func decodeListStorageV1VolumeAttachmentParams(r *http.Request) (ListStorageV1Vo
 				params.AllowWatchBookmarks.SetTo(ParamsAllowWatchBookmarksValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'allowWatchBookmarks' located in 'query': %w", err)
 			}
 		}
 	}
@@ -19043,7 +19043,7 @@ func decodeListStorageV1VolumeAttachmentParams(r *http.Request) (ListStorageV1Vo
 				params.Continue.SetTo(ParamsContinueValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'continue' located in 'query': %w", err)
 			}
 		}
 	}
@@ -19078,7 +19078,7 @@ func decodeListStorageV1VolumeAttachmentParams(r *http.Request) (ListStorageV1Vo
 				params.FieldSelector.SetTo(ParamsFieldSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'fieldSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -19113,7 +19113,7 @@ func decodeListStorageV1VolumeAttachmentParams(r *http.Request) (ListStorageV1Vo
 				params.LabelSelector.SetTo(ParamsLabelSelectorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'labelSelector' located in 'query': %w", err)
 			}
 		}
 	}
@@ -19148,7 +19148,7 @@ func decodeListStorageV1VolumeAttachmentParams(r *http.Request) (ListStorageV1Vo
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}
@@ -19183,7 +19183,7 @@ func decodeListStorageV1VolumeAttachmentParams(r *http.Request) (ListStorageV1Vo
 				params.ResourceVersion.SetTo(ParamsResourceVersionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersion' located in 'query': %w", err)
 			}
 		}
 	}
@@ -19218,7 +19218,7 @@ func decodeListStorageV1VolumeAttachmentParams(r *http.Request) (ListStorageV1Vo
 				params.ResourceVersionMatch.SetTo(ParamsResourceVersionMatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'resourceVersionMatch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -19253,7 +19253,7 @@ func decodeListStorageV1VolumeAttachmentParams(r *http.Request) (ListStorageV1Vo
 				params.TimeoutSeconds.SetTo(ParamsTimeoutSecondsValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'timeoutSeconds' located in 'query': %w", err)
 			}
 		}
 	}
@@ -19288,7 +19288,7 @@ func decodeListStorageV1VolumeAttachmentParams(r *http.Request) (ListStorageV1Vo
 				params.Watch.SetTo(ParamsWatchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'watch' located in 'query': %w", err)
 			}
 		}
 	}

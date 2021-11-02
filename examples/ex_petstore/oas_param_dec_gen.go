@@ -93,7 +93,7 @@ func decodeListPetsParams(r *http.Request) (ListPetsParams, error) {
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
 			}
 		}
 	}

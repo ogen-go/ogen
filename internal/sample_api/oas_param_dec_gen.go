@@ -86,7 +86,7 @@ func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 				params.InlinedParam = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'inlinedParam' located in 'query': %w", err)
 			}
 		} else {
 			return params, fmt.Errorf("query parameter 'inlinedParam' not specified")
@@ -116,7 +116,7 @@ func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 				params.Skip = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'skip' located in 'query': %w", err)
 			}
 		} else {
 			return params, fmt.Errorf("query parameter 'skip' not specified")
@@ -187,7 +187,22 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 				params.PetID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'petID' located in 'query': %w", err)
+			}
+			if err := func() error {
+				if err := (validate.Int{
+					MinSet:       true,
+					Min:          1337,
+					MaxSet:       false,
+					Max:          0,
+					MinExclusive: false,
+					MaxExclusive: false,
+				}).Validate(int64(params.PetID)); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'petID' located in 'query': %w", err)
 			}
 		} else {
 			return params, fmt.Errorf("query parameter 'petID' not specified")

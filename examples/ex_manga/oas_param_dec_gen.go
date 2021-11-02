@@ -385,7 +385,7 @@ func decodeSearchParams(r *http.Request) (SearchParams, error) {
 				params.Query = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'query' located in 'query': %w", err)
 			}
 		} else {
 			return params, fmt.Errorf("query parameter 'query' not specified")
@@ -422,7 +422,7 @@ func decodeSearchParams(r *http.Request) (SearchParams, error) {
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -455,7 +455,7 @@ func decodeSearchByTagIDParams(r *http.Request) (SearchByTagIDParams, error) {
 				params.TagID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'tag_id' located in 'query': %w", err)
 			}
 		} else {
 			return params, fmt.Errorf("query parameter 'tag_id' not specified")
@@ -492,7 +492,7 @@ func decodeSearchByTagIDParams(r *http.Request) (SearchByTagIDParams, error) {
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}

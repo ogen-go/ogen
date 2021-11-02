@@ -3759,7 +3759,7 @@ func decodeActionsListArtifactsForRepoParams(r *http.Request) (ActionsListArtifa
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3794,7 +3794,7 @@ func decodeActionsListArtifactsForRepoParams(r *http.Request) (ActionsListArtifa
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3896,7 +3896,7 @@ func decodeActionsListEnvironmentSecretsParams(r *http.Request) (ActionsListEnvi
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -3931,7 +3931,7 @@ func decodeActionsListEnvironmentSecretsParams(r *http.Request) (ActionsListEnvi
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4064,7 +4064,13 @@ func decodeActionsListJobsForWorkflowRunParams(r *http.Request) (ActionsListJobs
 				params.Filter.SetTo(ParamsFilterValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'filter' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Filter // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'filter' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4099,7 +4105,7 @@ func decodeActionsListJobsForWorkflowRunParams(r *http.Request) (ActionsListJobs
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4134,7 +4140,7 @@ func decodeActionsListJobsForWorkflowRunParams(r *http.Request) (ActionsListJobs
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4205,7 +4211,7 @@ func decodeActionsListOrgSecretsParams(r *http.Request) (ActionsListOrgSecretsPa
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4240,7 +4246,7 @@ func decodeActionsListOrgSecretsParams(r *http.Request) (ActionsListOrgSecretsPa
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4342,7 +4348,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reque
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4377,7 +4383,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reque
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4479,7 +4485,7 @@ func decodeActionsListRepoSecretsParams(r *http.Request) (ActionsListRepoSecrets
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4514,7 +4520,7 @@ func decodeActionsListRepoSecretsParams(r *http.Request) (ActionsListRepoSecrets
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4616,7 +4622,7 @@ func decodeActionsListRepoWorkflowsParams(r *http.Request) (ActionsListRepoWorkf
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4651,7 +4657,7 @@ func decodeActionsListRepoWorkflowsParams(r *http.Request) (ActionsListRepoWorkf
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4856,7 +4862,7 @@ func decodeActionsListSelectedReposForOrgSecretParams(r *http.Request) (ActionsL
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4891,7 +4897,7 @@ func decodeActionsListSelectedReposForOrgSecretParams(r *http.Request) (ActionsL
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4962,7 +4968,7 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -4997,7 +5003,7 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5068,7 +5074,7 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(r *http.Request) (Actio
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5103,7 +5109,7 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(r *http.Request) (Actio
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5174,7 +5180,7 @@ func decodeActionsListSelfHostedRunnersForOrgParams(r *http.Request) (ActionsLis
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5209,7 +5215,7 @@ func decodeActionsListSelfHostedRunnersForOrgParams(r *http.Request) (ActionsLis
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5311,7 +5317,7 @@ func decodeActionsListSelfHostedRunnersForRepoParams(r *http.Request) (ActionsLi
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5346,7 +5352,7 @@ func decodeActionsListSelfHostedRunnersForRepoParams(r *http.Request) (ActionsLi
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5448,7 +5454,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(r *http.Request) (Act
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5483,7 +5489,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(r *http.Request) (Act
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5616,7 +5622,7 @@ func decodeActionsListWorkflowRunArtifactsParams(r *http.Request) (ActionsListWo
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5651,7 +5657,7 @@ func decodeActionsListWorkflowRunArtifactsParams(r *http.Request) (ActionsListWo
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5753,7 +5759,7 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 				params.Actor.SetTo(ParamsActorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'actor' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5788,7 +5794,7 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 				params.Branch.SetTo(ParamsBranchValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'branch' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5823,7 +5829,7 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 				params.Event.SetTo(ParamsEventValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'event' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5858,7 +5864,13 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 				params.Status.SetTo(ParamsStatusValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'status' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Status // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'status' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5893,7 +5905,7 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5928,7 +5940,7 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -5963,7 +5975,7 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 				params.Created.SetTo(ParamsCreatedValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'created' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7343,7 +7355,7 @@ func decodeActivityListEventsForAuthenticatedUserParams(r *http.Request) (Activi
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7378,7 +7390,7 @@ func decodeActivityListEventsForAuthenticatedUserParams(r *http.Request) (Activi
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7480,7 +7492,7 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(r *http.Request) (Act
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7515,7 +7527,7 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(r *http.Request) (Act
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7555,7 +7567,7 @@ func decodeActivityListPublicEventsParams(r *http.Request) (ActivityListPublicEv
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7590,7 +7602,7 @@ func decodeActivityListPublicEventsParams(r *http.Request) (ActivityListPublicEv
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7692,7 +7704,7 @@ func decodeActivityListPublicEventsForRepoNetworkParams(r *http.Request) (Activi
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7727,7 +7739,7 @@ func decodeActivityListPublicEventsForRepoNetworkParams(r *http.Request) (Activi
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7798,7 +7810,7 @@ func decodeActivityListPublicEventsForUserParams(r *http.Request) (ActivityListP
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7833,7 +7845,7 @@ func decodeActivityListPublicEventsForUserParams(r *http.Request) (ActivityListP
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7904,7 +7916,7 @@ func decodeActivityListPublicOrgEventsParams(r *http.Request) (ActivityListPubli
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -7939,7 +7951,7 @@ func decodeActivityListPublicOrgEventsParams(r *http.Request) (ActivityListPubli
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8010,7 +8022,7 @@ func decodeActivityListReceivedEventsForUserParams(r *http.Request) (ActivityLis
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8045,7 +8057,7 @@ func decodeActivityListReceivedEventsForUserParams(r *http.Request) (ActivityLis
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8116,7 +8128,7 @@ func decodeActivityListReceivedPublicEventsForUserParams(r *http.Request) (Activ
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8151,7 +8163,7 @@ func decodeActivityListReceivedPublicEventsForUserParams(r *http.Request) (Activ
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8253,7 +8265,7 @@ func decodeActivityListRepoEventsParams(r *http.Request) (ActivityListRepoEvents
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8288,7 +8300,7 @@ func decodeActivityListRepoEventsParams(r *http.Request) (ActivityListRepoEvents
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8390,7 +8402,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 				params.All.SetTo(ParamsAllValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'all' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8425,7 +8437,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 				params.Participating.SetTo(ParamsParticipatingValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'participating' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8460,7 +8472,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 				params.Since.SetTo(ParamsSinceValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'since' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8495,7 +8507,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 				params.Before.SetTo(ParamsBeforeValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'before' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8530,7 +8542,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8565,7 +8577,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8605,7 +8617,13 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(r *http.Request) (A
 				params.Sort.SetTo(ParamsSortValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'sort' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Sort // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'sort' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8640,7 +8658,13 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(r *http.Request) (A
 				params.Direction.SetTo(ParamsDirectionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'direction' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Direction // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'direction' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8675,7 +8699,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(r *http.Request) (A
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8710,7 +8734,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(r *http.Request) (A
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8781,7 +8805,7 @@ func decodeActivityListReposWatchedByUserParams(r *http.Request) (ActivityListRe
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8816,7 +8840,7 @@ func decodeActivityListReposWatchedByUserParams(r *http.Request) (ActivityListRe
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8856,7 +8880,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(r *http.Request) (
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8891,7 +8915,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(r *http.Request) (
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -8993,7 +9017,7 @@ func decodeActivityListWatchersForRepoParams(r *http.Request) (ActivityListWatch
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9028,7 +9052,7 @@ func decodeActivityListWatchersForRepoParams(r *http.Request) (ActivityListWatch
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9650,7 +9674,13 @@ func decodeAppsListAccountsForPlanStubbedParams(r *http.Request) (AppsListAccoun
 				params.Sort.SetTo(ParamsSortValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'sort' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Sort // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'sort' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9685,7 +9715,13 @@ func decodeAppsListAccountsForPlanStubbedParams(r *http.Request) (AppsListAccoun
 				params.Direction.SetTo(ParamsDirectionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'direction' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Direction // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'direction' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9720,7 +9756,7 @@ func decodeAppsListAccountsForPlanStubbedParams(r *http.Request) (AppsListAccoun
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9755,7 +9791,7 @@ func decodeAppsListAccountsForPlanStubbedParams(r *http.Request) (AppsListAccoun
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9826,7 +9862,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(r *http.Request) 
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9861,7 +9897,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(r *http.Request) 
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9901,7 +9937,7 @@ func decodeAppsListPlansParams(r *http.Request) (AppsListPlansParams, error) {
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9936,7 +9972,7 @@ func decodeAppsListPlansParams(r *http.Request) (AppsListPlansParams, error) {
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -9976,7 +10012,7 @@ func decodeAppsListPlansStubbedParams(r *http.Request) (AppsListPlansStubbedPara
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10011,7 +10047,7 @@ func decodeAppsListPlansStubbedParams(r *http.Request) (AppsListPlansStubbedPara
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10051,7 +10087,7 @@ func decodeAppsListReposAccessibleToInstallationParams(r *http.Request) (AppsLis
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10086,7 +10122,7 @@ func decodeAppsListReposAccessibleToInstallationParams(r *http.Request) (AppsLis
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10126,7 +10162,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(r *http.Request) (App
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10161,7 +10197,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(r *http.Request) (App
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10201,7 +10237,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(r *http.Reques
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -10236,7 +10272,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(r *http.Reques
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11095,7 +11131,7 @@ func decodeChecksListAnnotationsParams(r *http.Request) (ChecksListAnnotationsPa
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11130,7 +11166,7 @@ func decodeChecksListAnnotationsParams(r *http.Request) (ChecksListAnnotationsPa
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11263,7 +11299,7 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 				params.CheckName.SetTo(ParamsCheckNameValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'check_name' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11298,7 +11334,13 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 				params.Status.SetTo(ParamsStatusValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'status' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Status // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'status' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11333,7 +11375,13 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 				params.Filter.SetTo(ParamsFilterValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'filter' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Filter // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'filter' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11368,7 +11416,7 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11403,7 +11451,7 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11438,7 +11486,7 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 				params.AppID.SetTo(ParamsAppIDValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'app_id' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11571,7 +11619,7 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 				params.CheckName.SetTo(ParamsCheckNameValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'check_name' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11606,7 +11654,13 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 				params.Status.SetTo(ParamsStatusValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'status' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Status // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'status' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11641,7 +11695,13 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 				params.Filter.SetTo(ParamsFilterValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'filter' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Filter // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'filter' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11676,7 +11736,7 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11711,7 +11771,7 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11844,7 +11904,7 @@ func decodeChecksListSuitesForRefParams(r *http.Request) (ChecksListSuitesForRef
 				params.AppID.SetTo(ParamsAppIDValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'app_id' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11879,7 +11939,7 @@ func decodeChecksListSuitesForRefParams(r *http.Request) (ChecksListSuitesForRef
 				params.CheckName.SetTo(ParamsCheckNameValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'check_name' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11914,7 +11974,7 @@ func decodeChecksListSuitesForRefParams(r *http.Request) (ChecksListSuitesForRef
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -11949,7 +12009,7 @@ func decodeChecksListSuitesForRefParams(r *http.Request) (ChecksListSuitesForRef
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12247,7 +12307,7 @@ func decodeCodeScanningDeleteAnalysisParams(r *http.Request) (CodeScanningDelete
 				params.ConfirmDelete.SetTo(ParamsConfirmDeleteValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'confirm_delete' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12688,7 +12748,7 @@ func decodeCodeScanningListAlertInstancesParams(r *http.Request) (CodeScanningLi
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12723,7 +12783,7 @@ func decodeCodeScanningListAlertInstancesParams(r *http.Request) (CodeScanningLi
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12765,7 +12825,7 @@ func decodeCodeScanningListAlertInstancesParams(r *http.Request) (CodeScanningLi
 				params.Ref.SetTo(ParamsRefValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'ref' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12874,7 +12934,7 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 				params.ToolName.SetTo(ParamsToolNameValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'tool_name' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12916,7 +12976,7 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 				params.ToolGUID.SetTo(ParamsToolGUIDValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'tool_guid' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12951,7 +13011,7 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -12986,7 +13046,7 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13028,7 +13088,7 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 				params.Ref.SetTo(ParamsRefValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'ref' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13063,7 +13123,13 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 				params.State.SetTo(ParamsStateValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'state' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.State // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'state' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13172,7 +13238,7 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 				params.ToolName.SetTo(ParamsToolNameValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'tool_name' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13214,7 +13280,7 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 				params.ToolGUID.SetTo(ParamsToolGUIDValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'tool_guid' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13249,7 +13315,7 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13284,7 +13350,7 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13326,7 +13392,7 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 				params.Ref.SetTo(ParamsRefValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'ref' located in 'query': %w", err)
 			}
 		}
 	}
@@ -13368,7 +13434,7 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 				params.SarifID.SetTo(ParamsSarifIDValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'sarif_id' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14389,7 +14455,7 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 				params.Phrase.SetTo(ParamsPhraseValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'phrase' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14424,7 +14490,13 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 				params.Include.SetTo(ParamsIncludeValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'include' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Include // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'include' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14459,7 +14531,7 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 				params.After.SetTo(ParamsAfterValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'after' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14494,7 +14566,7 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 				params.Before.SetTo(ParamsBeforeValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'before' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14529,7 +14601,13 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 				params.Order.SetTo(ParamsOrderValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'order' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Order // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'order' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14564,7 +14642,7 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14599,7 +14677,7 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -14737,7 +14815,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(r *
 				params.ExcludedAttributes.SetTo(ParamsExcludedAttributesValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'excludedAttributes' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15040,7 +15118,7 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15075,7 +15153,7 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15146,7 +15224,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(r *http.Request)
 				params.StartIndex.SetTo(ParamsStartIndexValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'startIndex' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15181,7 +15259,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(r *http.Request)
 				params.Count.SetTo(ParamsCountValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'count' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15216,7 +15294,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(r *http.Request)
 				params.Filter.SetTo(ParamsFilterValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'filter' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15251,7 +15329,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(r *http.Request)
 				params.ExcludedAttributes.SetTo(ParamsExcludedAttributesValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'excludedAttributes' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15322,7 +15400,7 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(r *http.Requ
 				params.StartIndex.SetTo(ParamsStartIndexValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'startIndex' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15357,7 +15435,7 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(r *http.Requ
 				params.Count.SetTo(ParamsCountValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'count' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15392,7 +15470,7 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(r *http.Requ
 				params.Filter.SetTo(ParamsFilterValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'filter' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15499,7 +15577,7 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15534,7 +15612,7 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15605,7 +15683,7 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(r *http.
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15640,7 +15718,7 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(r *http.
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15711,7 +15789,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(r *http.Reque
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15746,7 +15824,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(r *http.Reque
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15848,7 +15926,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(r *htt
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -15883,7 +15961,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(r *htt
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -16979,7 +17057,7 @@ func decodeGistsListParams(r *http.Request) (GistsListParams, error) {
 				params.Since.SetTo(ParamsSinceValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'since' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17014,7 +17092,7 @@ func decodeGistsListParams(r *http.Request) (GistsListParams, error) {
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17049,7 +17127,7 @@ func decodeGistsListParams(r *http.Request) (GistsListParams, error) {
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17120,7 +17198,7 @@ func decodeGistsListCommentsParams(r *http.Request) (GistsListCommentsParams, er
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17155,7 +17233,7 @@ func decodeGistsListCommentsParams(r *http.Request) (GistsListCommentsParams, er
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17226,7 +17304,7 @@ func decodeGistsListCommitsParams(r *http.Request) (GistsListCommitsParams, erro
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17261,7 +17339,7 @@ func decodeGistsListCommitsParams(r *http.Request) (GistsListCommitsParams, erro
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17332,7 +17410,7 @@ func decodeGistsListForksParams(r *http.Request) (GistsListForksParams, error) {
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17367,7 +17445,7 @@ func decodeGistsListForksParams(r *http.Request) (GistsListForksParams, error) {
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17407,7 +17485,7 @@ func decodeGistsListStarredParams(r *http.Request) (GistsListStarredParams, erro
 				params.Since.SetTo(ParamsSinceValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'since' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17442,7 +17520,7 @@ func decodeGistsListStarredParams(r *http.Request) (GistsListStarredParams, erro
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -17477,7 +17555,7 @@ func decodeGistsListStarredParams(r *http.Request) (GistsListStarredParams, erro
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18043,7 +18121,7 @@ func decodeGitListMatchingRefsParams(r *http.Request) (GitListMatchingRefsParams
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -18078,7 +18156,7 @@ func decodeGitListMatchingRefsParams(r *http.Request) (GitListMatchingRefsParams
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -19268,7 +19346,7 @@ func decodeIssuesListAssigneesParams(r *http.Request) (IssuesListAssigneesParams
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -19303,7 +19381,7 @@ func decodeIssuesListAssigneesParams(r *http.Request) (IssuesListAssigneesParams
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -19436,7 +19514,7 @@ func decodeIssuesListCommentsParams(r *http.Request) (IssuesListCommentsParams, 
 				params.Since.SetTo(ParamsSinceValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'since' located in 'query': %w", err)
 			}
 		}
 	}
@@ -19471,7 +19549,7 @@ func decodeIssuesListCommentsParams(r *http.Request) (IssuesListCommentsParams, 
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -19506,7 +19584,7 @@ func decodeIssuesListCommentsParams(r *http.Request) (IssuesListCommentsParams, 
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -19639,7 +19717,7 @@ func decodeIssuesListLabelsForMilestoneParams(r *http.Request) (IssuesListLabels
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -19674,7 +19752,7 @@ func decodeIssuesListLabelsForMilestoneParams(r *http.Request) (IssuesListLabels
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -19776,7 +19854,7 @@ func decodeIssuesListLabelsForRepoParams(r *http.Request) (IssuesListLabelsForRe
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -19811,7 +19889,7 @@ func decodeIssuesListLabelsForRepoParams(r *http.Request) (IssuesListLabelsForRe
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -19944,7 +20022,7 @@ func decodeIssuesListLabelsOnIssueParams(r *http.Request) (IssuesListLabelsOnIss
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -19979,7 +20057,7 @@ func decodeIssuesListLabelsOnIssueParams(r *http.Request) (IssuesListLabelsOnIss
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -20081,7 +20159,13 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 				params.State.SetTo(ParamsStateValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'state' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.State // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'state' located in 'query': %w", err)
 			}
 		}
 	}
@@ -20116,7 +20200,13 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 				params.Sort.SetTo(ParamsSortValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'sort' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Sort // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'sort' located in 'query': %w", err)
 			}
 		}
 	}
@@ -20151,7 +20241,13 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 				params.Direction.SetTo(ParamsDirectionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'direction' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Direction // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'direction' located in 'query': %w", err)
 			}
 		}
 	}
@@ -20186,7 +20282,7 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -20221,7 +20317,7 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -20916,7 +21012,7 @@ func decodeLicensesGetAllCommonlyUsedParams(r *http.Request) (LicensesGetAllComm
 				params.Featured.SetTo(ParamsFeaturedValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'featured' located in 'query': %w", err)
 			}
 		}
 	}
@@ -20951,7 +21047,7 @@ func decodeLicensesGetAllCommonlyUsedParams(r *http.Request) (LicensesGetAllComm
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -20986,7 +21082,7 @@ func decodeLicensesGetAllCommonlyUsedParams(r *http.Request) (LicensesGetAllComm
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -21093,7 +21189,7 @@ func decodeMetaGetOctocatParams(r *http.Request) (MetaGetOctocatParams, error) {
 				params.S.SetTo(ParamsSValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 's' located in 'query': %w", err)
 			}
 		}
 	}
@@ -21468,7 +21564,7 @@ func decodeMigrationsGetCommitAuthorsParams(r *http.Request) (MigrationsGetCommi
 				params.Since.SetTo(ParamsSinceValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'since' located in 'query': %w", err)
 			}
 		}
 	}
@@ -21675,7 +21771,7 @@ func decodeMigrationsGetStatusForAuthenticatedUserParams(r *http.Request) (Migra
 					return nil
 				})
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'exclude' located in 'query': %w", err)
 			}
 		}
 	}
@@ -21779,7 +21875,27 @@ func decodeMigrationsGetStatusForOrgParams(r *http.Request) (MigrationsGetStatus
 					return nil
 				})
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'exclude' located in 'query': %w", err)
+			}
+			if err := func() error {
+				var failures []validate.FieldError
+				for i, elem := range params.Exclude {
+					if err := func() error {
+						_ = elem // validation expected, but not supported
+						return nil
+					}(); err != nil {
+						failures = append(failures, validate.FieldError{
+							Name:  fmt.Sprintf("[%d]", i),
+							Error: err,
+						})
+					}
+				}
+				if len(failures) > 0 {
+					return &validate.Error{Fields: failures}
+				}
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'exclude' located in 'query': %w", err)
 			}
 		}
 	}
@@ -21819,7 +21935,7 @@ func decodeMigrationsListForAuthenticatedUserParams(r *http.Request) (Migrations
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -21854,7 +21970,7 @@ func decodeMigrationsListForAuthenticatedUserParams(r *http.Request) (Migrations
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -21925,7 +22041,7 @@ func decodeMigrationsListForOrgParams(r *http.Request) (MigrationsListForOrgPara
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -21960,7 +22076,7 @@ func decodeMigrationsListForOrgParams(r *http.Request) (MigrationsListForOrgPara
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -21997,7 +22113,27 @@ func decodeMigrationsListForOrgParams(r *http.Request) (MigrationsListForOrgPara
 					return nil
 				})
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'exclude' located in 'query': %w", err)
+			}
+			if err := func() error {
+				var failures []validate.FieldError
+				for i, elem := range params.Exclude {
+					if err := func() error {
+						_ = elem // validation expected, but not supported
+						return nil
+					}(); err != nil {
+						failures = append(failures, validate.FieldError{
+							Name:  fmt.Sprintf("[%d]", i),
+							Error: err,
+						})
+					}
+				}
+				if len(failures) > 0 {
+					return &validate.Error{Fields: failures}
+				}
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'exclude' located in 'query': %w", err)
 			}
 		}
 	}
@@ -22099,7 +22235,7 @@ func decodeMigrationsListReposForOrgParams(r *http.Request) (MigrationsListRepos
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -22134,7 +22270,7 @@ func decodeMigrationsListReposForOrgParams(r *http.Request) (MigrationsListRepos
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -22205,7 +22341,7 @@ func decodeMigrationsListReposForUserParams(r *http.Request) (MigrationsListRepo
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -22240,7 +22376,7 @@ func decodeMigrationsListReposForUserParams(r *http.Request) (MigrationsListRepo
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -22656,7 +22792,7 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(r *http.Request) (OAuthAu
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -22691,7 +22827,7 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(r *http.Request) (OAuthAu
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -22726,7 +22862,7 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(r *http.Request) (OAuthAu
 				params.ClientID.SetTo(ParamsClientIDValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'client_id' located in 'query': %w", err)
 			}
 		}
 	}
@@ -22766,7 +22902,7 @@ func decodeOAuthAuthorizationsListGrantsParams(r *http.Request) (OAuthAuthorizat
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -22801,7 +22937,7 @@ func decodeOAuthAuthorizationsListGrantsParams(r *http.Request) (OAuthAuthorizat
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -22836,7 +22972,7 @@ func decodeOAuthAuthorizationsListGrantsParams(r *http.Request) (OAuthAuthorizat
 				params.ClientID.SetTo(ParamsClientIDValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'client_id' located in 'query': %w", err)
 			}
 		}
 	}
@@ -23278,7 +23414,7 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 				params.Phrase.SetTo(ParamsPhraseValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'phrase' located in 'query': %w", err)
 			}
 		}
 	}
@@ -23313,7 +23449,13 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 				params.Include.SetTo(ParamsIncludeValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'include' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Include // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'include' located in 'query': %w", err)
 			}
 		}
 	}
@@ -23348,7 +23490,7 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 				params.After.SetTo(ParamsAfterValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'after' located in 'query': %w", err)
 			}
 		}
 	}
@@ -23383,7 +23525,7 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 				params.Before.SetTo(ParamsBeforeValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'before' located in 'query': %w", err)
 			}
 		}
 	}
@@ -23418,7 +23560,13 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 				params.Order.SetTo(ParamsOrderValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'order' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Order // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'order' located in 'query': %w", err)
 			}
 		}
 	}
@@ -23453,7 +23601,7 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -23488,7 +23636,7 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -23765,7 +23913,7 @@ func decodeOrgsListParams(r *http.Request) (OrgsListParams, error) {
 				params.Since.SetTo(ParamsSinceValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'since' located in 'query': %w", err)
 			}
 		}
 	}
@@ -23800,7 +23948,7 @@ func decodeOrgsListParams(r *http.Request) (OrgsListParams, error) {
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -23907,7 +24055,7 @@ func decodeOrgsListFailedInvitationsParams(r *http.Request) (OrgsListFailedInvit
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -23942,7 +24090,7 @@ func decodeOrgsListFailedInvitationsParams(r *http.Request) (OrgsListFailedInvit
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -23982,7 +24130,7 @@ func decodeOrgsListForAuthenticatedUserParams(r *http.Request) (OrgsListForAuthe
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -24017,7 +24165,7 @@ func decodeOrgsListForAuthenticatedUserParams(r *http.Request) (OrgsListForAuthe
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -24088,7 +24236,7 @@ func decodeOrgsListForUserParams(r *http.Request) (OrgsListForUserParams, error)
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -24123,7 +24271,7 @@ func decodeOrgsListForUserParams(r *http.Request) (OrgsListForUserParams, error)
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -24225,7 +24373,7 @@ func decodeOrgsListInvitationTeamsParams(r *http.Request) (OrgsListInvitationTea
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -24260,7 +24408,7 @@ func decodeOrgsListInvitationTeamsParams(r *http.Request) (OrgsListInvitationTea
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -24331,7 +24479,13 @@ func decodeOrgsListOutsideCollaboratorsParams(r *http.Request) (OrgsListOutsideC
 				params.Filter.SetTo(ParamsFilterValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'filter' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Filter // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'filter' located in 'query': %w", err)
 			}
 		}
 	}
@@ -24366,7 +24520,7 @@ func decodeOrgsListOutsideCollaboratorsParams(r *http.Request) (OrgsListOutsideC
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -24401,7 +24555,7 @@ func decodeOrgsListOutsideCollaboratorsParams(r *http.Request) (OrgsListOutsideC
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -24472,7 +24626,7 @@ func decodeOrgsListPendingInvitationsParams(r *http.Request) (OrgsListPendingInv
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -24507,7 +24661,7 @@ func decodeOrgsListPendingInvitationsParams(r *http.Request) (OrgsListPendingInv
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -24578,7 +24732,7 @@ func decodeOrgsListPublicMembersParams(r *http.Request) (OrgsListPublicMembersPa
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -24613,7 +24767,7 @@ func decodeOrgsListPublicMembersParams(r *http.Request) (OrgsListPublicMembersPa
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -24720,7 +24874,7 @@ func decodeOrgsListWebhooksParams(r *http.Request) (OrgsListWebhooksParams, erro
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -24755,7 +24909,7 @@ func decodeOrgsListWebhooksParams(r *http.Request) (OrgsListWebhooksParams, erro
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -26079,7 +26233,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -26114,7 +26268,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -26149,7 +26303,13 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 				params.State.SetTo(ParamsStateValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'state' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.State // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'state' located in 'query': %w", err)
 			}
 		}
 	}
@@ -26282,7 +26442,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(r *http.Reque
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -26317,7 +26477,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(r *http.Reque
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -26352,7 +26512,13 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(r *http.Reque
 				params.State.SetTo(ParamsStateValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'state' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.State // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'state' located in 'query': %w", err)
 			}
 		}
 	}
@@ -27102,7 +27268,13 @@ func decodePackagesListPackagesForAuthenticatedUserParams(r *http.Request) (Pack
 				params.PackageType = PackagesListPackagesForAuthenticatedUserPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'package_type' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.PackageType // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'package_type' located in 'query': %w", err)
 			}
 		} else {
 			return params, fmt.Errorf("query parameter 'package_type' not specified")
@@ -27139,7 +27311,13 @@ func decodePackagesListPackagesForAuthenticatedUserParams(r *http.Request) (Pack
 				params.Visibility.SetTo(ParamsVisibilityValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'visibility' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Visibility // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'visibility' located in 'query': %w", err)
 			}
 		}
 	}
@@ -27172,7 +27350,13 @@ func decodePackagesListPackagesForOrganizationParams(r *http.Request) (PackagesL
 				params.PackageType = PackagesListPackagesForOrganizationPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'package_type' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.PackageType // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'package_type' located in 'query': %w", err)
 			}
 		} else {
 			return params, fmt.Errorf("query parameter 'package_type' not specified")
@@ -27240,7 +27424,13 @@ func decodePackagesListPackagesForOrganizationParams(r *http.Request) (PackagesL
 				params.Visibility.SetTo(ParamsVisibilityValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'visibility' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Visibility // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'visibility' located in 'query': %w", err)
 			}
 		}
 	}
@@ -27273,7 +27463,13 @@ func decodePackagesListPackagesForUserParams(r *http.Request) (PackagesListPacka
 				params.PackageType = PackagesListPackagesForUserPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'package_type' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.PackageType // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'package_type' located in 'query': %w", err)
 			}
 		} else {
 			return params, fmt.Errorf("query parameter 'package_type' not specified")
@@ -27310,7 +27506,13 @@ func decodePackagesListPackagesForUserParams(r *http.Request) (PackagesListPacka
 				params.Visibility.SetTo(ParamsVisibilityValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'visibility' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Visibility // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'visibility' located in 'query': %w", err)
 			}
 		}
 	}
@@ -27443,7 +27645,7 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(r *http.Request) (Pa
 				params.Token.SetTo(ParamsTokenValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'token' located in 'query': %w", err)
 			}
 		}
 	}
@@ -27576,7 +27778,7 @@ func decodePackagesRestorePackageForOrgParams(r *http.Request) (PackagesRestoreP
 				params.Token.SetTo(ParamsTokenValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'token' located in 'query': %w", err)
 			}
 		}
 	}
@@ -27709,7 +27911,7 @@ func decodePackagesRestorePackageForUserParams(r *http.Request) (PackagesRestore
 				params.Token.SetTo(ParamsTokenValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'token' located in 'query': %w", err)
 			}
 		}
 	}
@@ -28491,7 +28693,13 @@ func decodeProjectsListCardsParams(r *http.Request) (ProjectsListCardsParams, er
 				params.ArchivedState.SetTo(ParamsArchivedStateValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'archived_state' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.ArchivedState // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'archived_state' located in 'query': %w", err)
 			}
 		}
 	}
@@ -28526,7 +28734,7 @@ func decodeProjectsListCardsParams(r *http.Request) (ProjectsListCardsParams, er
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -28561,7 +28769,7 @@ func decodeProjectsListCardsParams(r *http.Request) (ProjectsListCardsParams, er
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -28632,7 +28840,7 @@ func decodeProjectsListColumnsParams(r *http.Request) (ProjectsListColumnsParams
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -28667,7 +28875,7 @@ func decodeProjectsListColumnsParams(r *http.Request) (ProjectsListColumnsParams
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -28738,7 +28946,13 @@ func decodeProjectsListForOrgParams(r *http.Request) (ProjectsListForOrgParams, 
 				params.State.SetTo(ParamsStateValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'state' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.State // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'state' located in 'query': %w", err)
 			}
 		}
 	}
@@ -28773,7 +28987,7 @@ func decodeProjectsListForOrgParams(r *http.Request) (ProjectsListForOrgParams, 
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -28808,7 +29022,7 @@ func decodeProjectsListForOrgParams(r *http.Request) (ProjectsListForOrgParams, 
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -28910,7 +29124,13 @@ func decodeProjectsListForRepoParams(r *http.Request) (ProjectsListForRepoParams
 				params.State.SetTo(ParamsStateValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'state' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.State // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'state' located in 'query': %w", err)
 			}
 		}
 	}
@@ -28945,7 +29165,7 @@ func decodeProjectsListForRepoParams(r *http.Request) (ProjectsListForRepoParams
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -28980,7 +29200,7 @@ func decodeProjectsListForRepoParams(r *http.Request) (ProjectsListForRepoParams
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -30294,7 +30514,7 @@ func decodePullsListCommentsForReviewParams(r *http.Request) (PullsListCommentsF
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -30329,7 +30549,7 @@ func decodePullsListCommentsForReviewParams(r *http.Request) (PullsListCommentsF
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -30462,7 +30682,7 @@ func decodePullsListCommitsParams(r *http.Request) (PullsListCommitsParams, erro
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -30497,7 +30717,7 @@ func decodePullsListCommitsParams(r *http.Request) (PullsListCommitsParams, erro
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -30630,7 +30850,7 @@ func decodePullsListRequestedReviewersParams(r *http.Request) (PullsListRequeste
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -30665,7 +30885,7 @@ func decodePullsListRequestedReviewersParams(r *http.Request) (PullsListRequeste
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -30798,7 +31018,13 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 				params.Sort.SetTo(ParamsSortValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'sort' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Sort // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'sort' located in 'query': %w", err)
 			}
 		}
 	}
@@ -30833,7 +31059,13 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 				params.Direction.SetTo(ParamsDirectionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'direction' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Direction // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'direction' located in 'query': %w", err)
 			}
 		}
 	}
@@ -30868,7 +31100,7 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 				params.Since.SetTo(ParamsSinceValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'since' located in 'query': %w", err)
 			}
 		}
 	}
@@ -30903,7 +31135,7 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -30938,7 +31170,7 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -31040,7 +31272,13 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 				params.Sort.SetTo(ParamsSortValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'sort' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Sort // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'sort' located in 'query': %w", err)
 			}
 		}
 	}
@@ -31075,7 +31313,13 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 				params.Direction.SetTo(ParamsDirectionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'direction' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Direction // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'direction' located in 'query': %w", err)
 			}
 		}
 	}
@@ -31110,7 +31354,7 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 				params.Since.SetTo(ParamsSinceValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'since' located in 'query': %w", err)
 			}
 		}
 	}
@@ -31145,7 +31389,7 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -31180,7 +31424,7 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -31313,7 +31557,7 @@ func decodePullsListReviewsParams(r *http.Request) (PullsListReviewsParams, erro
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -31348,7 +31592,7 @@ func decodePullsListReviewsParams(r *http.Request) (PullsListReviewsParams, erro
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -33070,7 +33314,13 @@ func decodeReactionsListForCommitCommentParams(r *http.Request) (ReactionsListFo
 				params.Content.SetTo(ParamsContentValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'content' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Content // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'content' located in 'query': %w", err)
 			}
 		}
 	}
@@ -33105,7 +33355,7 @@ func decodeReactionsListForCommitCommentParams(r *http.Request) (ReactionsListFo
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -33140,7 +33390,7 @@ func decodeReactionsListForCommitCommentParams(r *http.Request) (ReactionsListFo
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -33273,7 +33523,13 @@ func decodeReactionsListForIssueParams(r *http.Request) (ReactionsListForIssuePa
 				params.Content.SetTo(ParamsContentValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'content' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Content // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'content' located in 'query': %w", err)
 			}
 		}
 	}
@@ -33308,7 +33564,7 @@ func decodeReactionsListForIssueParams(r *http.Request) (ReactionsListForIssuePa
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -33343,7 +33599,7 @@ func decodeReactionsListForIssueParams(r *http.Request) (ReactionsListForIssuePa
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -33476,7 +33732,13 @@ func decodeReactionsListForIssueCommentParams(r *http.Request) (ReactionsListFor
 				params.Content.SetTo(ParamsContentValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'content' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Content // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'content' located in 'query': %w", err)
 			}
 		}
 	}
@@ -33511,7 +33773,7 @@ func decodeReactionsListForIssueCommentParams(r *http.Request) (ReactionsListFor
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -33546,7 +33808,7 @@ func decodeReactionsListForIssueCommentParams(r *http.Request) (ReactionsListFor
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -33679,7 +33941,13 @@ func decodeReactionsListForPullRequestReviewCommentParams(r *http.Request) (Reac
 				params.Content.SetTo(ParamsContentValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'content' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Content // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'content' located in 'query': %w", err)
 			}
 		}
 	}
@@ -33714,7 +33982,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(r *http.Request) (Reac
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -33749,7 +34017,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(r *http.Request) (Reac
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -33913,7 +34181,13 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (Re
 				params.Content.SetTo(ParamsContentValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'content' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Content // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'content' located in 'query': %w", err)
 			}
 		}
 	}
@@ -33948,7 +34222,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (Re
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -33983,7 +34257,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (Re
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -34116,7 +34390,13 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(r *http.Request) (R
 				params.Content.SetTo(ParamsContentValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'content' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Content // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'content' located in 'query': %w", err)
 			}
 		}
 	}
@@ -34151,7 +34431,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(r *http.Request) (R
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -34186,7 +34466,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(r *http.Request) (R
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -34319,7 +34599,13 @@ func decodeReactionsListForTeamDiscussionInOrgParams(r *http.Request) (Reactions
 				params.Content.SetTo(ParamsContentValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'content' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Content // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'content' located in 'query': %w", err)
 			}
 		}
 	}
@@ -34354,7 +34640,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(r *http.Request) (Reactions
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -34389,7 +34675,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(r *http.Request) (Reactions
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -34491,7 +34777,13 @@ func decodeReactionsListForTeamDiscussionLegacyParams(r *http.Request) (Reaction
 				params.Content.SetTo(ParamsContentValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'content' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Content // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'content' located in 'query': %w", err)
 			}
 		}
 	}
@@ -34526,7 +34818,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(r *http.Request) (Reaction
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -34561,7 +34853,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(r *http.Request) (Reaction
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -34864,7 +35156,7 @@ func decodeReposCompareCommitsParams(r *http.Request) (ReposCompareCommitsParams
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -34899,7 +35191,7 @@ func decodeReposCompareCommitsParams(r *http.Request) (ReposCompareCommitsParams
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -37729,7 +38021,7 @@ func decodeReposGetAllTopicsParams(r *http.Request) (ReposGetAllTopicsParams, er
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -37764,7 +38056,7 @@ func decodeReposGetAllTopicsParams(r *http.Request) (ReposGetAllTopicsParams, er
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -38258,7 +38550,13 @@ func decodeReposGetClonesParams(r *http.Request) (ReposGetClonesParams, error) {
 				params.Per.SetTo(ParamsPerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Per // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'per' located in 'query': %w", err)
 			}
 		}
 	}
@@ -38556,7 +38854,7 @@ func decodeReposGetCombinedStatusForRefParams(r *http.Request) (ReposGetCombined
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -38591,7 +38889,7 @@ func decodeReposGetCombinedStatusForRefParams(r *http.Request) (ReposGetCombined
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -40637,7 +40935,13 @@ func decodeReposGetViewsParams(r *http.Request) (ReposGetViewsParams, error) {
 				params.Per.SetTo(ParamsPerValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Per // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'per' located in 'query': %w", err)
 			}
 		}
 	}
@@ -40935,7 +41239,7 @@ func decodeReposListAutolinksParams(r *http.Request) (ReposListAutolinksParams, 
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -41037,7 +41341,7 @@ func decodeReposListBranchesParams(r *http.Request) (ReposListBranchesParams, er
 				params.Protected.SetTo(ParamsProtectedValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'protected' located in 'query': %w", err)
 			}
 		}
 	}
@@ -41072,7 +41376,7 @@ func decodeReposListBranchesParams(r *http.Request) (ReposListBranchesParams, er
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -41107,7 +41411,7 @@ func decodeReposListBranchesParams(r *http.Request) (ReposListBranchesParams, er
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -41209,7 +41513,13 @@ func decodeReposListCollaboratorsParams(r *http.Request) (ReposListCollaborators
 				params.Affiliation.SetTo(ParamsAffiliationValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'affiliation' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Affiliation // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'affiliation' located in 'query': %w", err)
 			}
 		}
 	}
@@ -41244,7 +41554,7 @@ func decodeReposListCollaboratorsParams(r *http.Request) (ReposListCollaborators
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -41279,7 +41589,7 @@ func decodeReposListCollaboratorsParams(r *http.Request) (ReposListCollaborators
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -41412,7 +41722,7 @@ func decodeReposListCommentsForCommitParams(r *http.Request) (ReposListCommentsF
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -41447,7 +41757,7 @@ func decodeReposListCommentsForCommitParams(r *http.Request) (ReposListCommentsF
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -41549,7 +41859,7 @@ func decodeReposListCommitCommentsForRepoParams(r *http.Request) (ReposListCommi
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -41584,7 +41894,7 @@ func decodeReposListCommitCommentsForRepoParams(r *http.Request) (ReposListCommi
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -41717,7 +42027,7 @@ func decodeReposListCommitStatusesForRefParams(r *http.Request) (ReposListCommit
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -41752,7 +42062,7 @@ func decodeReposListCommitStatusesForRefParams(r *http.Request) (ReposListCommit
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -41854,7 +42164,7 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 				params.Sha.SetTo(ParamsShaValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'sha' located in 'query': %w", err)
 			}
 		}
 	}
@@ -41889,7 +42199,7 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 				params.Path.SetTo(ParamsPathValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'path' located in 'query': %w", err)
 			}
 		}
 	}
@@ -41924,7 +42234,7 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 				params.Author.SetTo(ParamsAuthorValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'author' located in 'query': %w", err)
 			}
 		}
 	}
@@ -41959,7 +42269,7 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 				params.Since.SetTo(ParamsSinceValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'since' located in 'query': %w", err)
 			}
 		}
 	}
@@ -41994,7 +42304,7 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 				params.Until.SetTo(ParamsUntilValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'until' located in 'query': %w", err)
 			}
 		}
 	}
@@ -42029,7 +42339,7 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -42064,7 +42374,7 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -42166,7 +42476,7 @@ func decodeReposListContributorsParams(r *http.Request) (ReposListContributorsPa
 				params.Anon.SetTo(ParamsAnonValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'anon' located in 'query': %w", err)
 			}
 		}
 	}
@@ -42201,7 +42511,7 @@ func decodeReposListContributorsParams(r *http.Request) (ReposListContributorsPa
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -42236,7 +42546,7 @@ func decodeReposListContributorsParams(r *http.Request) (ReposListContributorsPa
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -42338,7 +42648,7 @@ func decodeReposListDeployKeysParams(r *http.Request) (ReposListDeployKeysParams
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -42373,7 +42683,7 @@ func decodeReposListDeployKeysParams(r *http.Request) (ReposListDeployKeysParams
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -42506,7 +42816,7 @@ func decodeReposListDeploymentStatusesParams(r *http.Request) (ReposListDeployme
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -42541,7 +42851,7 @@ func decodeReposListDeploymentStatusesParams(r *http.Request) (ReposListDeployme
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -42612,7 +42922,13 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 				params.Type.SetTo(ParamsTypeValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'type' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Type // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'type' located in 'query': %w", err)
 			}
 		}
 	}
@@ -42647,7 +42963,13 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 				params.Sort.SetTo(ParamsSortValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'sort' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Sort // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'sort' located in 'query': %w", err)
 			}
 		}
 	}
@@ -42682,7 +43004,13 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 				params.Direction.SetTo(ParamsDirectionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'direction' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Direction // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'direction' located in 'query': %w", err)
 			}
 		}
 	}
@@ -42717,7 +43045,7 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -42752,7 +43080,7 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -42823,7 +43151,13 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 				params.Type.SetTo(ParamsTypeValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'type' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Type // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'type' located in 'query': %w", err)
 			}
 		}
 	}
@@ -42858,7 +43192,13 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 				params.Sort.SetTo(ParamsSortValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'sort' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Sort // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'sort' located in 'query': %w", err)
 			}
 		}
 	}
@@ -42893,7 +43233,13 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 				params.Direction.SetTo(ParamsDirectionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'direction' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Direction // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'direction' located in 'query': %w", err)
 			}
 		}
 	}
@@ -42928,7 +43274,7 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -42963,7 +43309,7 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -43065,7 +43411,13 @@ func decodeReposListForksParams(r *http.Request) (ReposListForksParams, error) {
 				params.Sort.SetTo(ParamsSortValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'sort' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Sort // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'sort' located in 'query': %w", err)
 			}
 		}
 	}
@@ -43100,7 +43452,7 @@ func decodeReposListForksParams(r *http.Request) (ReposListForksParams, error) {
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -43135,7 +43487,7 @@ func decodeReposListForksParams(r *http.Request) (ReposListForksParams, error) {
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -43237,7 +43589,7 @@ func decodeReposListInvitationsParams(r *http.Request) (ReposListInvitationsPara
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -43272,7 +43624,7 @@ func decodeReposListInvitationsParams(r *http.Request) (ReposListInvitationsPara
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -43312,7 +43664,7 @@ func decodeReposListInvitationsForAuthenticatedUserParams(r *http.Request) (Repo
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -43347,7 +43699,7 @@ func decodeReposListInvitationsForAuthenticatedUserParams(r *http.Request) (Repo
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -43516,7 +43868,7 @@ func decodeReposListPagesBuildsParams(r *http.Request) (ReposListPagesBuildsPara
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -43551,7 +43903,7 @@ func decodeReposListPagesBuildsParams(r *http.Request) (ReposListPagesBuildsPara
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -43684,7 +44036,7 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(r *http.Request) (Rep
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -43719,7 +44071,7 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(r *http.Request) (Rep
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -43852,7 +44204,7 @@ func decodeReposListReleaseAssetsParams(r *http.Request) (ReposListReleaseAssets
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -43887,7 +44239,7 @@ func decodeReposListReleaseAssetsParams(r *http.Request) (ReposListReleaseAssets
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -43989,7 +44341,7 @@ func decodeReposListReleasesParams(r *http.Request) (ReposListReleasesParams, er
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -44024,7 +44376,7 @@ func decodeReposListReleasesParams(r *http.Request) (ReposListReleasesParams, er
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -44126,7 +44478,7 @@ func decodeReposListTagsParams(r *http.Request) (ReposListTagsParams, error) {
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -44161,7 +44513,7 @@ func decodeReposListTagsParams(r *http.Request) (ReposListTagsParams, error) {
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -44263,7 +44615,7 @@ func decodeReposListTeamsParams(r *http.Request) (ReposListTeamsParams, error) {
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -44298,7 +44650,7 @@ func decodeReposListTeamsParams(r *http.Request) (ReposListTeamsParams, error) {
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -44400,7 +44752,7 @@ func decodeReposListWebhooksParams(r *http.Request) (ReposListWebhooksParams, er
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -44435,7 +44787,7 @@ func decodeReposListWebhooksParams(r *http.Request) (ReposListWebhooksParams, er
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -45907,7 +46259,7 @@ func decodeReposUploadReleaseAssetParams(r *http.Request) (ReposUploadReleaseAss
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'name' located in 'query': %w", err)
 			}
 		} else {
 			return params, fmt.Errorf("query parameter 'name' not specified")
@@ -45944,7 +46296,7 @@ func decodeReposUploadReleaseAssetParams(r *http.Request) (ReposUploadReleaseAss
 				params.Label.SetTo(ParamsLabelValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'label' located in 'query': %w", err)
 			}
 		}
 	}
@@ -46044,7 +46396,7 @@ func decodeSearchCommitsParams(r *http.Request) (SearchCommitsParams, error) {
 				params.Q = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'q' located in 'query': %w", err)
 			}
 		} else {
 			return params, fmt.Errorf("query parameter 'q' not specified")
@@ -46081,7 +46433,13 @@ func decodeSearchCommitsParams(r *http.Request) (SearchCommitsParams, error) {
 				params.Sort.SetTo(ParamsSortValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'sort' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Sort // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'sort' located in 'query': %w", err)
 			}
 		}
 	}
@@ -46116,7 +46474,13 @@ func decodeSearchCommitsParams(r *http.Request) (SearchCommitsParams, error) {
 				params.Order.SetTo(ParamsOrderValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'order' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Order // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'order' located in 'query': %w", err)
 			}
 		}
 	}
@@ -46151,7 +46515,7 @@ func decodeSearchCommitsParams(r *http.Request) (SearchCommitsParams, error) {
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -46186,7 +46550,7 @@ func decodeSearchCommitsParams(r *http.Request) (SearchCommitsParams, error) {
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -46219,7 +46583,7 @@ func decodeSearchTopicsParams(r *http.Request) (SearchTopicsParams, error) {
 				params.Q = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'q' located in 'query': %w", err)
 			}
 		} else {
 			return params, fmt.Errorf("query parameter 'q' not specified")
@@ -46256,7 +46620,7 @@ func decodeSearchTopicsParams(r *http.Request) (SearchTopicsParams, error) {
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -46291,7 +46655,7 @@ func decodeSearchTopicsParams(r *http.Request) (SearchTopicsParams, error) {
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -46467,7 +46831,13 @@ func decodeSecretScanningListAlertsForOrgParams(r *http.Request) (SecretScanning
 				params.State.SetTo(ParamsStateValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'state' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.State // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'state' located in 'query': %w", err)
 			}
 		}
 	}
@@ -46502,7 +46872,7 @@ func decodeSecretScanningListAlertsForOrgParams(r *http.Request) (SecretScanning
 				params.SecretType.SetTo(ParamsSecretTypeValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'secret_type' located in 'query': %w", err)
 			}
 		}
 	}
@@ -46537,7 +46907,7 @@ func decodeSecretScanningListAlertsForOrgParams(r *http.Request) (SecretScanning
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -46572,7 +46942,7 @@ func decodeSecretScanningListAlertsForOrgParams(r *http.Request) (SecretScanning
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -46674,7 +47044,13 @@ func decodeSecretScanningListAlertsForRepoParams(r *http.Request) (SecretScannin
 				params.State.SetTo(ParamsStateValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'state' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.State // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'state' located in 'query': %w", err)
 			}
 		}
 	}
@@ -46709,7 +47085,7 @@ func decodeSecretScanningListAlertsForRepoParams(r *http.Request) (SecretScannin
 				params.SecretType.SetTo(ParamsSecretTypeValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'secret_type' located in 'query': %w", err)
 			}
 		}
 	}
@@ -46744,7 +47120,7 @@ func decodeSecretScanningListAlertsForRepoParams(r *http.Request) (SecretScannin
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -46779,7 +47155,7 @@ func decodeSecretScanningListAlertsForRepoParams(r *http.Request) (SecretScannin
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -49327,7 +49703,7 @@ func decodeTeamsListParams(r *http.Request) (TeamsListParams, error) {
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -49362,7 +49738,7 @@ func decodeTeamsListParams(r *http.Request) (TeamsListParams, error) {
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -49464,7 +49840,7 @@ func decodeTeamsListChildInOrgParams(r *http.Request) (TeamsListChildInOrgParams
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -49499,7 +49875,7 @@ func decodeTeamsListChildInOrgParams(r *http.Request) (TeamsListChildInOrgParams
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -49632,7 +50008,13 @@ func decodeTeamsListDiscussionCommentsInOrgParams(r *http.Request) (TeamsListDis
 				params.Direction.SetTo(ParamsDirectionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'direction' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Direction // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'direction' located in 'query': %w", err)
 			}
 		}
 	}
@@ -49667,7 +50049,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(r *http.Request) (TeamsListDis
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -49702,7 +50084,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(r *http.Request) (TeamsListDis
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -49804,7 +50186,13 @@ func decodeTeamsListDiscussionCommentsLegacyParams(r *http.Request) (TeamsListDi
 				params.Direction.SetTo(ParamsDirectionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'direction' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Direction // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'direction' located in 'query': %w", err)
 			}
 		}
 	}
@@ -49839,7 +50227,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(r *http.Request) (TeamsListDi
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -49874,7 +50262,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(r *http.Request) (TeamsListDi
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -49976,7 +50364,13 @@ func decodeTeamsListDiscussionsInOrgParams(r *http.Request) (TeamsListDiscussion
 				params.Direction.SetTo(ParamsDirectionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'direction' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Direction // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'direction' located in 'query': %w", err)
 			}
 		}
 	}
@@ -50011,7 +50405,7 @@ func decodeTeamsListDiscussionsInOrgParams(r *http.Request) (TeamsListDiscussion
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -50046,7 +50440,7 @@ func decodeTeamsListDiscussionsInOrgParams(r *http.Request) (TeamsListDiscussion
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -50081,7 +50475,7 @@ func decodeTeamsListDiscussionsInOrgParams(r *http.Request) (TeamsListDiscussion
 				params.Pinned.SetTo(ParamsPinnedValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'pinned' located in 'query': %w", err)
 			}
 		}
 	}
@@ -50152,7 +50546,13 @@ func decodeTeamsListDiscussionsLegacyParams(r *http.Request) (TeamsListDiscussio
 				params.Direction.SetTo(ParamsDirectionValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'direction' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Direction // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'direction' located in 'query': %w", err)
 			}
 		}
 	}
@@ -50187,7 +50587,7 @@ func decodeTeamsListDiscussionsLegacyParams(r *http.Request) (TeamsListDiscussio
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -50222,7 +50622,7 @@ func decodeTeamsListDiscussionsLegacyParams(r *http.Request) (TeamsListDiscussio
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -50262,7 +50662,7 @@ func decodeTeamsListForAuthenticatedUserParams(r *http.Request) (TeamsListForAut
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -50297,7 +50697,7 @@ func decodeTeamsListForAuthenticatedUserParams(r *http.Request) (TeamsListForAut
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -50404,7 +50804,7 @@ func decodeTeamsListIdpGroupsForOrgParams(r *http.Request) (TeamsListIdpGroupsFo
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -50439,7 +50839,7 @@ func decodeTeamsListIdpGroupsForOrgParams(r *http.Request) (TeamsListIdpGroupsFo
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -50608,7 +51008,13 @@ func decodeTeamsListMembersInOrgParams(r *http.Request) (TeamsListMembersInOrgPa
 				params.Role.SetTo(ParamsRoleValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'role' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Role // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'role' located in 'query': %w", err)
 			}
 		}
 	}
@@ -50643,7 +51049,7 @@ func decodeTeamsListMembersInOrgParams(r *http.Request) (TeamsListMembersInOrgPa
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -50678,7 +51084,7 @@ func decodeTeamsListMembersInOrgParams(r *http.Request) (TeamsListMembersInOrgPa
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -50749,7 +51155,13 @@ func decodeTeamsListMembersLegacyParams(r *http.Request) (TeamsListMembersLegacy
 				params.Role.SetTo(ParamsRoleValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'role' located in 'query': %w", err)
+			}
+			if err := func() error {
+				_ = params.Role // validation expected, but not supported
+				return nil
+			}(); err != nil {
+				return params, fmt.Errorf("validate parameter 'role' located in 'query': %w", err)
 			}
 		}
 	}
@@ -50784,7 +51196,7 @@ func decodeTeamsListMembersLegacyParams(r *http.Request) (TeamsListMembersLegacy
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -50819,7 +51231,7 @@ func decodeTeamsListMembersLegacyParams(r *http.Request) (TeamsListMembersLegacy
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -50921,7 +51333,7 @@ func decodeTeamsListPendingInvitationsInOrgParams(r *http.Request) (TeamsListPen
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -50956,7 +51368,7 @@ func decodeTeamsListPendingInvitationsInOrgParams(r *http.Request) (TeamsListPen
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -51027,7 +51439,7 @@ func decodeTeamsListPendingInvitationsLegacyParams(r *http.Request) (TeamsListPe
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -51062,7 +51474,7 @@ func decodeTeamsListPendingInvitationsLegacyParams(r *http.Request) (TeamsListPe
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -51164,7 +51576,7 @@ func decodeTeamsListProjectsInOrgParams(r *http.Request) (TeamsListProjectsInOrg
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -51199,7 +51611,7 @@ func decodeTeamsListProjectsInOrgParams(r *http.Request) (TeamsListProjectsInOrg
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -51270,7 +51682,7 @@ func decodeTeamsListProjectsLegacyParams(r *http.Request) (TeamsListProjectsLega
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -51305,7 +51717,7 @@ func decodeTeamsListProjectsLegacyParams(r *http.Request) (TeamsListProjectsLega
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -51407,7 +51819,7 @@ func decodeTeamsListReposInOrgParams(r *http.Request) (TeamsListReposInOrgParams
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -51442,7 +51854,7 @@ func decodeTeamsListReposInOrgParams(r *http.Request) (TeamsListReposInOrgParams
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -51513,7 +51925,7 @@ func decodeTeamsListReposLegacyParams(r *http.Request) (TeamsListReposLegacyPara
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -51548,7 +51960,7 @@ func decodeTeamsListReposLegacyParams(r *http.Request) (TeamsListReposLegacyPara
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -52923,7 +53335,7 @@ func decodeUsersListParams(r *http.Request) (UsersListParams, error) {
 				params.Since.SetTo(ParamsSinceValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'since' located in 'query': %w", err)
 			}
 		}
 	}
@@ -52958,7 +53370,7 @@ func decodeUsersListParams(r *http.Request) (UsersListParams, error) {
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -52998,7 +53410,7 @@ func decodeUsersListEmailsForAuthenticatedParams(r *http.Request) (UsersListEmai
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -53033,7 +53445,7 @@ func decodeUsersListEmailsForAuthenticatedParams(r *http.Request) (UsersListEmai
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -53073,7 +53485,7 @@ func decodeUsersListFollowedByAuthenticatedParams(r *http.Request) (UsersListFol
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -53108,7 +53520,7 @@ func decodeUsersListFollowedByAuthenticatedParams(r *http.Request) (UsersListFol
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -53148,7 +53560,7 @@ func decodeUsersListFollowersForAuthenticatedUserParams(r *http.Request) (UsersL
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -53183,7 +53595,7 @@ func decodeUsersListFollowersForAuthenticatedUserParams(r *http.Request) (UsersL
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -53254,7 +53666,7 @@ func decodeUsersListFollowersForUserParams(r *http.Request) (UsersListFollowersF
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -53289,7 +53701,7 @@ func decodeUsersListFollowersForUserParams(r *http.Request) (UsersListFollowersF
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -53360,7 +53772,7 @@ func decodeUsersListFollowingForUserParams(r *http.Request) (UsersListFollowingF
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -53395,7 +53807,7 @@ func decodeUsersListFollowingForUserParams(r *http.Request) (UsersListFollowingF
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -53435,7 +53847,7 @@ func decodeUsersListGpgKeysForAuthenticatedParams(r *http.Request) (UsersListGpg
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -53470,7 +53882,7 @@ func decodeUsersListGpgKeysForAuthenticatedParams(r *http.Request) (UsersListGpg
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -53541,7 +53953,7 @@ func decodeUsersListGpgKeysForUserParams(r *http.Request) (UsersListGpgKeysForUs
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -53576,7 +53988,7 @@ func decodeUsersListGpgKeysForUserParams(r *http.Request) (UsersListGpgKeysForUs
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -53616,7 +54028,7 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(r *http.Request) (UsersLi
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -53651,7 +54063,7 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(r *http.Request) (UsersLi
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -53722,7 +54134,7 @@ func decodeUsersListPublicKeysForUserParams(r *http.Request) (UsersListPublicKey
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -53757,7 +54169,7 @@ func decodeUsersListPublicKeysForUserParams(r *http.Request) (UsersListPublicKey
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -53797,7 +54209,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(r *http.Request) (UsersL
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'per_page' located in 'query': %w", err)
 			}
 		}
 	}
@@ -53832,7 +54244,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(r *http.Request) (UsersL
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
 			}
 		}
 	}
