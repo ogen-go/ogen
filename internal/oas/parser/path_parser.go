@@ -15,7 +15,7 @@ type ErrPathParameterNotSpecified struct {
 }
 
 func (e ErrPathParameterNotSpecified) Error() string {
-	return fmt.Sprintf("path parameter '%s' not found in parameters", e.ParamName)
+	return fmt.Sprintf("path parameter %q not found in parameters", e.ParamName)
 }
 
 type pathParser struct {

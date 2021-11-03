@@ -1,13 +1,13 @@
 package conv
 
 import (
-	"fmt"
 	"net"
 	"net/url"
 	"strconv"
 	"time"
 
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 )
 
 func ToInt(s string) (int, error) {
@@ -56,7 +56,7 @@ func ToUUID(s string) (uuid.UUID, error) {
 func ToIP(s string) (net.IP, error) {
 	ip := net.ParseIP(s)
 	if ip == nil {
-		return nil, fmt.Errorf("invalid ip: '%s'", s)
+		return nil, errors.Errorf("invalid ip: %q", s)
 	}
 	return ip, nil
 }

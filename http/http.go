@@ -6,13 +6,14 @@ import (
 	"bytes"
 	"context"
 	"crypto/tls"
-	"fmt"
 	"io"
 	"mime/multipart"
 	"net/http"
 	"net/url"
 	"strings"
 	"unsafe"
+
+	"github.com/ogen-go/errors"
 )
 
 // httpRequest is copied version of http.Request structure.
@@ -62,7 +63,7 @@ func init() {
 	stdSize := unsafe.Sizeof(http.Request{})
 	gotSize := unsafe.Sizeof(httpRequest{})
 	if stdSize != gotSize {
-		panic(fmt.Errorf("%d (net/http) != %d", stdSize, gotSize))
+		panic(errors.Errorf("%d (net/http) != %d", stdSize, gotSize))
 	}
 }
 

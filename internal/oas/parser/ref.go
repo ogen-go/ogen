@@ -1,7 +1,6 @@
 package parser
 
 import (
-	"fmt"
 	"strings"
 
 	"github.com/ogen-go/errors"
@@ -12,7 +11,7 @@ import (
 func (p *parser) resolveRequestBody(ref string) (*oas.RequestBody, error) {
 	const prefix = "#/components/requestBodies/"
 	if !strings.HasPrefix(ref, prefix) {
-		return nil, errors.Errorf("invalid requestBody reference: '%s'", ref)
+		return nil, errors.Errorf("invalid requestBody reference: %q", ref)
 	}
 
 	if r, ok := p.refs.requestBodies[ref]; ok {
@@ -22,7 +21,7 @@ func (p *parser) resolveRequestBody(ref string) (*oas.RequestBody, error) {
 	name := strings.TrimPrefix(ref, prefix)
 	component, found := p.spec.Components.RequestBodies[name]
 	if !found {
-		return nil, fmt.Errorf("component by reference '%s' not found", ref)
+		return nil, errors.Errorf("component by reference %q not found", ref)
 	}
 
 	r, err := p.parseRequestBody(&component)
@@ -37,7 +36,7 @@ func (p *parser) resolveRequestBody(ref string) (*oas.RequestBody, error) {
 func (p *parser) resolveResponse(ref string) (*oas.Response, error) {
 	const prefix = "#/components/responses/"
 	if !strings.HasPrefix(ref, prefix) {
-		return nil, errors.Errorf("invalid response reference: '%s'", ref)
+		return nil, errors.Errorf("invalid response reference: %q", ref)
 	}
 
 	if r, ok := p.refs.responses[ref]; ok {
@@ -47,7 +46,7 @@ func (p *parser) resolveResponse(ref string) (*oas.Response, error) {
 	name := strings.TrimPrefix(ref, prefix)
 	component, found := p.spec.Components.Responses[name]
 	if !found {
-		return nil, fmt.Errorf("component by reference '%s' not found", ref)
+		return nil, errors.Errorf("component by reference %q not found", ref)
 	}
 
 	r, err := p.parseResponse(component)
@@ -63,7 +62,7 @@ func (p *parser) resolveResponse(ref string) (*oas.Response, error) {
 func (p *parser) resolveParameter(ref string) (*oas.Parameter, error) {
 	const prefix = "#/components/parameters/"
 	if !strings.HasPrefix(ref, prefix) {
-		return nil, errors.Errorf("invalid parameter reference: '%s'", ref)
+		return nil, errors.Errorf("invalid parameter reference: %q", ref)
 	}
 
 	if param, ok := p.refs.parameters[ref]; ok {
@@ -73,7 +72,7 @@ func (p *parser) resolveParameter(ref string) (*oas.Parameter, error) {
 	name := strings.TrimPrefix(ref, prefix)
 	component, found := p.spec.Components.Parameters[name]
 	if !found {
-		return nil, fmt.Errorf("component by reference '%s' not found", ref)
+		return nil, errors.Errorf("component by reference %q not found", ref)
 	}
 
 	param, err := p.parseParameter(component)

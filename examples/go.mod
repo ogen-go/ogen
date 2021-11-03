@@ -2,8 +2,6 @@ module github.com/ogen-go/ogen/examples
 
 go 1.17
 
-require golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
-
 require (
 	github.com/go-chi/chi/v5 v5.0.5
 	github.com/google/uuid v1.3.0
@@ -22,6 +20,7 @@ require (
 	github.com/ogen-go/jx v0.13.3 // indirect
 	golang.org/x/crypto v0.0.0-20210513164829-c07d793c2f9a // indirect
 	golang.org/x/sys v0.0.0-20211030160813-b3129d9d1021 // indirect
+	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
 )
 
 replace github.com/ogen-go/ogen v0.0.0 => ./..

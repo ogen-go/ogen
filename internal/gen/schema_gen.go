@@ -310,7 +310,7 @@ func (g *schemaGen) primitive(name string, schema *oas.Schema) (*ir.Type, error)
 
 	if len(schema.Enum) > 0 {
 		if !typ.Is(ir.KindPrimitive) {
-			return nil, errors.Errorf("unsupported enum type: '%s'", schema.Type)
+			return nil, errors.Errorf("unsupported enum type: %q", schema.Type)
 		}
 
 		var variants []*ir.EnumVariant
@@ -378,7 +378,7 @@ func parseSimple(schema *oas.Schema) (*ir.Type, error) {
 		case oas.FormatPassword, oas.FormatNone:
 			return ir.Primitive(ir.String, schema), nil
 		default:
-			// return nil, errors.Errorf("unexpected string format: '%s'", format)
+			// return nil, errors.Errorf("unexpected string format: %q", format)
 			return ir.Primitive(ir.String, schema), nil
 		}
 	case oas.Boolean:

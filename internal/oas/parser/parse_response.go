@@ -1,7 +1,6 @@
 package parser
 
 import (
-	"fmt"
 	"strconv"
 
 	"github.com/ogen-go/errors"
@@ -13,7 +12,7 @@ import (
 func (p *parser) parseResponses(responses ogen.Responses) (*oas.OperationResponse, error) {
 	result := createAstOpResponse()
 	if len(responses) == 0 {
-		return nil, fmt.Errorf("no responses")
+		return nil, errors.New("no responses")
 	}
 
 	// Iterate over method responses...
@@ -31,7 +30,7 @@ func (p *parser) parseResponses(responses ogen.Responses) (*oas.OperationRespons
 
 		statusCode, err := strconv.Atoi(status)
 		if err != nil {
-			return nil, errors.Errorf("invalid status code: '%s'", status)
+			return nil, errors.Errorf("invalid status code: %q", status)
 		}
 
 		resp, err := p.parseResponse(response)
@@ -49,7 +48,7 @@ func (p *parser) parseResponse(resp ogen.Response) (*oas.Response, error) {
 	if ref := resp.Ref; ref != "" {
 		resp, err := p.resolveResponse(ref)
 		if err != nil {
-			return nil, errors.Wrapf(err, "resolve '%s' reference", ref)
+			return nil, errors.Wrapf(err, "resolve %q reference", ref)
 		}
 
 		return resp, nil

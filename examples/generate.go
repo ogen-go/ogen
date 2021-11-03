@@ -1,7 +1,7 @@
 package examples
 
 import (
-	_ "golang.org/x/xerrors"
+	_ "github.com/ogen-go/errors"
 
 	_ "github.com/ogen-go/ogen"
 )

@@ -49,7 +49,7 @@ func (e *QueryEncoder) value() []string {
 	case QueryStyleSpaceDelimited,
 		QueryStylePipeDelimited,
 		QueryStyleDeepObject:
-		panic(fmt.Sprintf("style '%s' cannot be used for primitive values", e.style))
+		panic(fmt.Sprintf("style %q cannot be used for primitive values", e.style))
 	default:
 		panic("unreachable")
 	}
@@ -79,7 +79,7 @@ func (e *QueryEncoder) array() []string {
 		return []string{strings.Join(e.items, "|")}
 
 	case QueryStyleDeepObject:
-		panic(fmt.Sprintf("style '%s' cannot be used for arrays", e.style))
+		panic(fmt.Sprintf("style %q cannot be used for arrays", e.style))
 
 	default:
 		panic("unreachable")

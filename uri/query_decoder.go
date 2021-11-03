@@ -1,8 +1,9 @@
 package uri
 
 import (
-	"fmt"
 	"strings"
+
+	"github.com/ogen-go/errors"
 )
 
 type QueryStyle string
@@ -46,13 +47,13 @@ func (d *QueryDecoder) DecodeValue() (string, error) {
 	switch d.style {
 	case QueryStyleForm:
 		if len(d.src) != 1 {
-			return "", fmt.Errorf("multiple params")
+			return "", errors.New("multiple params")
 		}
 		return d.src[0], nil
 	case QueryStyleSpaceDelimited,
 		QueryStylePipeDelimited,
 		QueryStyleDeepObject:
-		return "", fmt.Errorf("style '%s' cannot be used for primitive values", d.style)
+		return "", errors.Errorf("style %q cannot be used for primitive values", d.style)
 	default:
 		panic("unreachable")
 	}
@@ -60,7 +61,7 @@ func (d *QueryDecoder) DecodeValue() (string, error) {
 
 func (d *QueryDecoder) DecodeArray(f func(d Decoder) error) error {
 	if len(d.src) < 1 {
-		return fmt.Errorf("empty array")
+		return errors.New("empty array")
 	}
 
 	switch d.style {
@@ -75,7 +76,7 @@ func (d *QueryDecoder) DecodeArray(f func(d Decoder) error) error {
 		}
 
 		if len(d.src) != 1 {
-			return fmt.Errorf("invalid value")
+			return errors.New("invalid value")
 		}
 
 		for _, item := range strings.Split(d.src[0], ",") {
@@ -97,10 +98,10 @@ func (d *QueryDecoder) DecodeArray(f func(d Decoder) error) error {
 		}
 
 		if len(d.src) != 1 {
-			return fmt.Errorf("invalid value")
+			return errors.New("invalid value")
 		}
 
-		return fmt.Errorf("spaceDelimited with explode: false not supported")
+		return errors.New("spaceDelimited with explode: false not supported")
 
 	case QueryStylePipeDelimited:
 		if d.explode {
@@ -113,7 +114,7 @@ func (d *QueryDecoder) DecodeArray(f func(d Decoder) error) error {
 		}
 
 		if len(d.src) != 1 {
-			return fmt.Errorf("invalid value")
+			return errors.New("invalid value")
 		}
 
 		for _, item := range strings.Split(d.src[0], "|") {
@@ -125,7 +126,7 @@ func (d *QueryDecoder) DecodeArray(f func(d Decoder) error) error {
 		return nil
 
 	case QueryStyleDeepObject:
-		return fmt.Errorf("style '%s' cannot be used for arrays", d.style)
+		return errors.Errorf("style %q cannot be used for arrays", d.style)
 
 	default:
 		panic("unreachable")
@@ -139,7 +140,7 @@ func (d *QueryDecoder) DecodeFields(f func(name string, d Decoder) error) error 
 		if d.explode {
 			for _, v := range d.src {
 				if strings.Count(v, "=") != 1 {
-					return fmt.Errorf("invalid value: %s", v)
+					return errors.Errorf("invalid value: %q", v)
 				}
 
 				s := strings.Split(v, "=")
@@ -151,7 +152,7 @@ func (d *QueryDecoder) DecodeFields(f func(name string, d Decoder) error) error 
 		}
 
 		if len(d.src) > 1 {
-			return fmt.Errorf("multiple values passed")
+			return errors.New("multiple values passed")
 		}
 
 		cur := &cursor{src: []rune(d.src[0])}
@@ -161,7 +162,7 @@ func (d *QueryDecoder) DecodeFields(f func(name string, d Decoder) error) error 
 		}
 
 		if param != d.param {
-			return fmt.Errorf("invalid param name: '%s'", param)
+			return errors.Errorf("invalid param name: %q", param)
 		}
 
 		return decodeObject(cur, ',', ',', adapter)
@@ -188,7 +189,7 @@ func (d *QueryDecoder) DecodeFields(f func(name string, d Decoder) error) error 
 			}
 
 			if pname != d.param {
-				return fmt.Errorf("invalid param name: '%s'", pname)
+				return errors.Errorf("invalid param name: %q", pname)
 			}
 
 			key, err := cur.readAt(']')
@@ -197,7 +198,7 @@ func (d *QueryDecoder) DecodeFields(f func(name string, d Decoder) error) error 
 			}
 
 			if !cur.eat('=') {
-				return fmt.Errorf("invalid value")
+				return errors.New("invalid value")
 			}
 
 			val, err := cur.readAll()

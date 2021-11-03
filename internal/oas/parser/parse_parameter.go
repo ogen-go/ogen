@@ -14,7 +14,7 @@ func (p *parser) parseParams(params []ogen.Parameter) ([]*oas.Parameter, error) 
 	for _, param := range params {
 		parsed, err := p.parseParameter(param)
 		if err != nil {
-			return nil, errors.Wrapf(err, "parse parameter '%s'", param.Name)
+			return nil, errors.Wrapf(err, "parse parameter %q", param.Name)
 		}
 
 		result = append(result, parsed)
@@ -27,7 +27,7 @@ func (p *parser) parseParameter(param ogen.Parameter) (*oas.Parameter, error) {
 	if ref := param.Ref; ref != "" {
 		parsed, err := p.resolveParameter(ref)
 		if err != nil {
-			return nil, errors.Wrapf(err, "resolve '%s' reference", ref)
+			return nil, errors.Wrapf(err, "resolve %q reference", ref)
 		}
 		return parsed, nil
 	}

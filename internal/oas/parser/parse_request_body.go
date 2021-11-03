@@ -11,7 +11,7 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody) (*oas.RequestBody, err
 	if ref := body.Ref; ref != "" {
 		reqBody, err := p.resolveRequestBody(ref)
 		if err != nil {
-			return nil, errors.Wrapf(err, "resolve '%s' reference", ref)
+			return nil, errors.Wrapf(err, "resolve %q reference", ref)
 		}
 
 		return reqBody, nil

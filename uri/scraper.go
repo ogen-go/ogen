@@ -1,6 +1,8 @@
 package uri
 
-import "fmt"
+import (
+	"github.com/ogen-go/errors"
+)
 
 type valueType string
 
@@ -31,10 +33,10 @@ func newScraper() *scraper {
 
 func (s *scraper) EncodeValue(v string) error {
 	if s.typ == typeValue {
-		return fmt.Errorf("multiple Value calls")
+		return errors.New("multiple Value calls")
 	}
 	if s.typ != typeNotSet && s.typ != typeValue {
-		return fmt.Errorf("encode value: already encoded as %s", s.typ)
+		return errors.Errorf("encode value: already encoded as %s", s.typ)
 	}
 
 	s.typ = typeValue
@@ -44,7 +46,7 @@ func (s *scraper) EncodeValue(v string) error {
 
 func (s *scraper) EncodeArray(f func(Encoder) error) error {
 	if s.typ != typeNotSet && s.typ != typeArray {
-		return fmt.Errorf("encode array: already encoded as %s", s.typ)
+		return errors.Errorf("encode array: already encoded as %s", s.typ)
 	}
 
 	s.typ = typeArray
@@ -59,7 +61,7 @@ func (s *scraper) EncodeArray(f func(Encoder) error) error {
 
 func (s *scraper) EncodeField(field string, f func(Encoder) error) error {
 	if s.typ != typeNotSet && s.typ != typeObject {
-		return fmt.Errorf("encode object: already encoded as %s", s.typ)
+		return errors.Errorf("encode object: already encoded as %s", s.typ)
 	}
 
 	s.typ = typeObject

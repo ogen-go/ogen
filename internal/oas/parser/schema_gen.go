@@ -1,7 +1,6 @@
 package parser
 
 import (
-	"fmt"
 	"sort"
 	"strings"
 
@@ -233,14 +232,14 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 		return extendInfo(&oas.Schema{Type: oas.String}), nil
 
 	default:
-		return nil, errors.Errorf("unexpected schema type: '%s'", schema.Type)
+		return nil, errors.Errorf("unexpected schema type: %q", schema.Type)
 	}
 }
 
 func (g *schemaGen) ref(ref string) (*oas.Schema, error) {
 	const prefix = "#/components/schemas/"
 	if !strings.HasPrefix(ref, prefix) {
-		return nil, fmt.Errorf("invalid schema reference %q", ref)
+		return nil, errors.Errorf("invalid schema reference %q", ref)
 	}
 
 	if s, ok := g.globalRefs[ref]; ok {

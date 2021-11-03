@@ -1,8 +1,9 @@
 package uri
 
 import (
-	"fmt"
 	"io"
+
+	"github.com/ogen-go/errors"
 )
 
 type PathDecoder struct {
@@ -36,13 +37,13 @@ func (d *PathDecoder) DecodeValue() (string, error) {
 
 	case PathStyleLabel:
 		if !d.cur.eat('.') {
-			return "", fmt.Errorf("label style value must begin with '.'")
+			return "", errors.Errorf(`label style value must begin with "."`)
 		}
 		return d.cur.readAll()
 
 	case PathStyleMatrix:
 		if !d.cur.eat(';') {
-			return "", fmt.Errorf("label style value must begin with ';'")
+			return "", errors.Errorf(`label style value must begin with ";"`)
 		}
 
 		param, err := d.cur.readAt('=')
@@ -51,7 +52,7 @@ func (d *PathDecoder) DecodeValue() (string, error) {
 		}
 
 		if param != d.param {
-			return "", fmt.Errorf("invalid param name '%s'", param)
+			return "", errors.Errorf("invalid param name %q", param)
 		}
 
 		return d.cur.readAll()
@@ -68,7 +69,7 @@ func (d *PathDecoder) DecodeArray(f func(d Decoder) error) error {
 
 	case PathStyleLabel:
 		if !d.cur.eat('.') {
-			return fmt.Errorf("value must begin with '.'")
+			return errors.New(`value must begin with "."`)
 		}
 
 		delim := ','
@@ -79,7 +80,7 @@ func (d *PathDecoder) DecodeArray(f func(d Decoder) error) error {
 
 	case PathStyleMatrix:
 		if !d.cur.eat(';') {
-			return fmt.Errorf("value must begin with '.'")
+			return errors.New(`value must begin with "."`)
 		}
 
 		if !d.explode {
@@ -89,7 +90,7 @@ func (d *PathDecoder) DecodeArray(f func(d Decoder) error) error {
 			}
 
 			if param != d.param {
-				return fmt.Errorf("unexpected param name: '%s'", param)
+				return errors.Errorf("unexpected param name: %q", param)
 			}
 
 			if !hasNext {
@@ -106,7 +107,7 @@ func (d *PathDecoder) DecodeArray(f func(d Decoder) error) error {
 			}
 
 			if param != d.param {
-				return fmt.Errorf("unexpected param name: '%s'", param)
+				return errors.Errorf("unexpected param name: %q", param)
 			}
 
 			if !hasNext {
@@ -146,7 +147,7 @@ func (d *PathDecoder) DecodeFields(f func(name string, d Decoder) error) error {
 
 	case PathStyleLabel:
 		if !d.cur.eat('.') {
-			return fmt.Errorf("value must begin with '.'")
+			return errors.New(`value must begin with "."`)
 		}
 
 		if d.explode {
@@ -159,7 +160,7 @@ func (d *PathDecoder) DecodeFields(f func(name string, d Decoder) error) error {
 
 	case PathStyleMatrix:
 		if !d.cur.eat(';') {
-			return fmt.Errorf("value must begin with ';'")
+			return errors.New(`value must begin with ";"`)
 		}
 
 		if !d.explode {
@@ -169,7 +170,7 @@ func (d *PathDecoder) DecodeFields(f func(name string, d Decoder) error) error {
 			}
 
 			if name != d.param {
-				return fmt.Errorf("expect param '%s', got '%s'", d.param, name)
+				return errors.Errorf("expect param %q, got %q", d.param, name)
 			}
 
 			const kvSep, fieldSep = ',', ','

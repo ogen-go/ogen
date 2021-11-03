@@ -3,8 +3,8 @@ package parser
 import (
 	"encoding/json"
 
-	"github.com/ogen-go/jx"
 	"github.com/ogen-go/errors"
+	"github.com/ogen-go/jx"
 
 	"github.com/ogen-go/ogen/internal/oas"
 )
@@ -20,7 +20,7 @@ func parseEnumValues(typ oas.SchemaType, rawValues []json.RawMessage) ([]interfa
 			if errors.Is(err, errNullValue) {
 				continue
 			}
-			return nil, errors.Wrapf(err, "parse value '%s'", raw)
+			return nil, errors.Wrapf(err, "parse value %q", raw)
 		}
 
 		if _, found := uniq[val]; found {
@@ -80,6 +80,6 @@ func parseJSONValue(typ oas.SchemaType, v json.RawMessage) (interface{}, error) 
 		}
 		return d.Bool()
 	default:
-		return nil, errors.Errorf("unexpected type: '%s'", typ)
+		return nil, errors.Errorf("unexpected type: %q", typ)
 	}
 }
