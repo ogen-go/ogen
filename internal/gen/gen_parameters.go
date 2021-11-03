@@ -1,7 +1,7 @@
 package gen
 
 import (
-	"golang.org/x/xerrors"
+	"github.com/ogen-go/errors"
 
 	"github.com/ogen-go/ogen/internal/ir"
 	"github.com/ogen-go/ogen/internal/oas"
@@ -20,7 +20,7 @@ func (g *Generator) generateParameters(opName string, params []*oas.Parameter) (
 
 		typ, err := g.generateSchema(pascal(opName, p.Name), p.Schema)
 		if err != nil {
-			return nil, xerrors.Errorf("%q: %w", p.Name, err)
+			return nil, errors.Wrapf(err, "%q", p.Name)
 		}
 
 		visited := map[*ir.Type]struct{}{}
@@ -57,7 +57,7 @@ func isParamAllowed(t *ir.Type, root bool, visited map[*ir.Type]struct{}) error 
 		return nil
 	case ir.KindArray:
 		if !root {
-			return xerrors.Errorf("nested arrays not allowed")
+			return errors.New("nested arrays not allowed")
 		}
 		return isParamAllowed(t.Item, false, visited)
 	case ir.KindAlias:
@@ -66,12 +66,12 @@ func isParamAllowed(t *ir.Type, root bool, visited map[*ir.Type]struct{}) error 
 		return isParamAllowed(t.PointerTo, root, visited)
 	case ir.KindStruct:
 		if !root {
-			return xerrors.Errorf("nested objects not allowed")
+			return errors.New("nested objects not allowed")
 		}
 		for _, field := range t.Fields {
 			if err := isParamAllowed(field.Type, false, visited); err != nil {
 				// TODO: Check field.Spec existence.
-				return xerrors.Errorf("field '%s': %w", field.Spec.Name, err)
+				return errors.Wrapf(err, "field '%s'", field.Spec.Name)
 			}
 		}
 		return nil
@@ -83,7 +83,7 @@ func isParamAllowed(t *ir.Type, root bool, visited map[*ir.Type]struct{}) error 
 		// for i, of := range t.SumOf {
 		// 	if err := isParamAllowed(of, root, visited); err != nil {
 		// 		// TODO: Check field.Spec existence.
-		// 		return xerrors.Errorf("sum[%d]: %w", i, err)
+		// 		return errors.Wrapf(err, "sum[%d]", i)
 		// 	}
 		// }
 		// return nil

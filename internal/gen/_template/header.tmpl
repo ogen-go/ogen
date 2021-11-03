@@ -8,7 +8,6 @@ package {{ $.Package }}
 import (
 "bytes"
 "context"
-"errors"
 "fmt"
 "io"
 "math"
@@ -32,6 +31,7 @@ import (
 ht "github.com/ogen-go/ogen/http"
 "github.com/ogen-go/ogen/json"
 "github.com/ogen-go/ogen/otelogen"
+"github.com/ogen-go/errors"
 )
 
 // No-op definition for keeping imports.

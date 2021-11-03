@@ -33,19 +33,19 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
         if err := func() error {
             {{- template "validate" req_dec_elem $t }}
         }(); err != nil {
-            return req, fmt.Errorf("validate: %w", err)
+            return req, errors.Wrap(err, "validate")
         }
         {{- end }}
         return {{ if or ($op.Request.Type.IsPointer) ($op.Request.Type.IsInterface) }}&{{ end }}request, nil
         {{- /* Decode json */ -}}
         {{- else }}
         _ = request
-        return req, fmt.Errorf("{{ $contentType }} decoder not implemented")
+        return req, errors.New("{{ $contentType }} decoder not implemented")
         {{- end }}
     {{- end }}
     {{- /* Range over all request types */}}
     default:
-        return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+        return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
     }
 }
 {{- end }}

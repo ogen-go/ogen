@@ -3,7 +3,7 @@ package gen
 import (
 	"strings"
 
-	"golang.org/x/xerrors"
+	"github.com/ogen-go/errors"
 )
 
 type ErrNotImplemented struct {
@@ -16,7 +16,7 @@ func (e *ErrNotImplemented) Error() string {
 
 func (g *Generator) shouldFail(err error) bool {
 	var notImplementedErr *ErrNotImplemented
-	if xerrors.As(err, &notImplementedErr) {
+	if errors.As(err, &notImplementedErr) {
 		for _, s := range g.opt.IgnoreNotImplemented {
 			s = strings.TrimSpace(s)
 			if s == "all" {

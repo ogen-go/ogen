@@ -20,7 +20,7 @@ func (s {{ $t.Name }}) WriteJSON(e *json.Encoder) {
 // ReadJSON reads {{ $t.Name }} from json stream.
 func (s *{{ $t.Name }}) ReadJSON(d *json.Decoder) error {
     if s == nil {
-        return fmt.Errorf(`invalid: unable to decode {{ $t.Name }} to nil`)
+        return errors.New(`invalid: unable to decode {{ $t.Name }} to nil`)
     }
     return d.ObjBytes(func(d *json.Decoder, k []byte) error {
         switch string(k) {
@@ -59,7 +59,7 @@ func (o {{ $t.Name }}) WriteJSON(e *json.Encoder{{ if $g.Format }}, format func(
 // ReadJSON reads json value of {{ $g.Go }} from json iterator.
 func (o *{{ $t.Name }}) ReadJSON(d *json.Decoder{{ if $g.Format }}, format func(*json.Decoder) ({{ $g.Go }}, error){{ end }}) error {
     if o == nil {
-        return fmt.Errorf(`invalid: unable to decode {{ $t.Name }} to nil`)
+        return errors.New(`invalid: unable to decode {{ $t.Name }} to nil`)
     }
     switch d.Next() {
     case json.{{ $g.JSON.Type }}:
@@ -107,7 +107,7 @@ func (o *{{ $t.Name }}) ReadJSON(d *json.Decoder{{ if $g.Format }}, format func(
         return nil
     {{- end }}
     default:
-        return fmt.Errorf("unexpected type %q while reading {{ $t.Name }}", d.Next())
+        return errors.Errorf(`unexpected type %q while reading {{ $t.Name }}`, d.Next())
     }
 }
 {{- else if $t.IsEnum }}
@@ -119,7 +119,7 @@ func (s {{ $t.Name }}) WriteJSON(e *json.Encoder) {
 // ReadJSON reads {{ $t.Name }} from json reader.
 func (s *{{ $t.Name }}) ReadJSON(d *json.Decoder) error {
     if s == nil {
-        return fmt.Errorf(`invalid: unable to decode {{ $t.Name }} to nil`)
+        return errors.New(`invalid: unable to decode {{ $t.Name }} to nil`)
     }
     v, err := d.{{ $t.JSON.Read }}()
     if err != nil {
@@ -146,7 +146,7 @@ func (s {{ $t.Name }}) WriteJSON(e *json.Encoder) {
 // ReadJSON reads value from json reader.
 func (s *{{ $t.Name }}) ReadJSON(d *json.Decoder) error {
     if s == nil {
-        return fmt.Errorf(`invalid: unable to decode {{ $t.Name }} to nil`)
+        return errors.New(`invalid: unable to decode {{ $t.Name }} to nil`)
     }
     // Sum type {{ $d }}.
     {{- if $d.Primitive }}
@@ -157,11 +157,11 @@ func (s *{{ $t.Name }}) ReadJSON(d *json.Decoder) error {
         s.Type = {{ $s.Name }}{{ $t.Name }}
     {{- end }}
     default:
-        return fmt.Errorf("unexpected json type %q", t)
+        return errors.Errorf("unexpected json type %q", t)
     }
     {{- else if or ($d.Fields) ($d.Discriminator) }}
     if d.Next() != json.Object {
-        return fmt.Errorf("unexpected json type %q", d.Next())
+        return errors.Errorf("unexpected json type %q", d.Next())
     }
     var found bool
     if err := d.Capture(func(d *json.Decoder) error {
@@ -183,7 +183,7 @@ func (s *{{ $t.Name }}) ReadJSON(d *json.Decoder) error {
                     found = true
                 {{- end }}
                 default:
-                    return fmt.Errorf("unknown type %s", typ)
+                    return errors.Errorf("unknown type %s", typ)
                 }
                 return nil
             {{- else }}
@@ -199,10 +199,10 @@ func (s *{{ $t.Name }}) ReadJSON(d *json.Decoder) error {
             return d.Skip()
         })
     }); err != nil {
-        return fmt.Errorf("capture: %w", err)
+        return errors.Wrap(err, "capture")
     }
     if !found {
-        return fmt.Errorf("unable to detect sum type variant")
+        return errors.New("unable to detect sum type variant")
     }
     switch s.Type {
     {{- range $s := $t.SumOf }}
@@ -210,7 +210,7 @@ func (s *{{ $t.Name }}) ReadJSON(d *json.Decoder) error {
         {{- template "dec_json" sum_elem $s }}
     {{- end}}
     default:
-        return fmt.Errorf("inferred invalid type: %s", s.Type)
+        return errors.Errorf("inferred invalid type: %s", s.Type)
     }
     {{- else if $d.Discriminator  }}
 

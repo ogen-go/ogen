@@ -3,7 +3,7 @@ package gen
 import (
 	"strings"
 
-	"golang.org/x/xerrors"
+	"github.com/ogen-go/errors"
 
 	"github.com/ogen-go/ogen/internal/ir"
 	"github.com/ogen-go/ogen/internal/oas"
@@ -21,7 +21,7 @@ func (g *Generator) generateOperation(spec *oas.Operation) (_ *ir.Operation, err
 	// Convert []oas.Parameter to []ir.Parameter.
 	op.Params, err = g.generateParameters(op.Name, spec.Parameters)
 	if err != nil {
-		return nil, xerrors.Errorf("parameters: %w", err)
+		return nil, errors.Wrap(err, "parameters")
 	}
 
 	// Convert []oas.PathPart to []ir.PathPart.
@@ -41,13 +41,13 @@ func (g *Generator) generateOperation(spec *oas.Operation) (_ *ir.Operation, err
 	if spec.RequestBody != nil {
 		op.Request, err = g.generateRequest(op.Name, spec.RequestBody)
 		if err != nil {
-			return nil, xerrors.Errorf("requestBody: %w", err)
+			return nil, errors.Wrap(err, "requestBody")
 		}
 	}
 
 	op.Response, err = g.generateResponses(op.Name, spec.Responses)
 	if err != nil {
-		return nil, xerrors.Errorf("responses: %w", err)
+		return nil, errors.Wrap(err, "responses")
 	}
 
 	return op, nil

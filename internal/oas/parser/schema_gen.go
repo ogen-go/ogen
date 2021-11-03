@@ -5,7 +5,7 @@ import (
 	"sort"
 	"strings"
 
-	"golang.org/x/xerrors"
+	"github.com/ogen-go/errors"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/oas"
@@ -31,7 +31,7 @@ type schemaGen struct {
 func (g *schemaGen) Generate(schema ogen.Schema) (*oas.Schema, error) {
 	s, err := g.generate(schema, "")
 	if err != nil {
-		return nil, xerrors.Errorf("gen: %w", err)
+		return nil, errors.Wrap(err, "gen")
 	}
 
 	return s, nil
@@ -41,7 +41,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 	if ref := schema.Ref; ref != "" {
 		s, err := g.ref(ref)
 		if err != nil {
-			return nil, xerrors.Errorf("ref %q: %w", ref, err)
+			return nil, errors.Wrapf(err, "ref %q", ref)
 		}
 		return s, nil
 	}
@@ -67,12 +67,12 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 	switch {
 	case len(schema.Enum) > 0:
 		if err := validateTypeFormat(schema.Type, schema.Format); err != nil {
-			return nil, xerrors.Errorf("validate format: %w", err)
+			return nil, errors.Wrap(err, "validate format")
 		}
 
 		values, err := parseEnumValues(oas.SchemaType(schema.Type), schema.Enum)
 		if err != nil {
-			return nil, xerrors.Errorf("parse enum: %w", err)
+			return nil, errors.Wrap(err, "parse enum")
 		}
 
 		return extendInfo(&oas.Schema{
@@ -85,7 +85,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 		for i, s := range schema.OneOf {
 			schema, err := g.generate(s, "")
 			if err != nil {
-				return nil, xerrors.Errorf("oneOf: %d: %w", i, err)
+				return nil, errors.Wrapf(err, "oneOf: %d", i)
 			}
 
 			schemas = append(schemas, schema)
@@ -97,7 +97,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 		for i, s := range schema.AnyOf {
 			schema, err := g.generate(s, "")
 			if err != nil {
-				return nil, xerrors.Errorf("anyOf: %d: %w", i, err)
+				return nil, errors.Wrapf(err, "anyOf: %d", i)
 			}
 
 			schemas = append(schemas, schema)
@@ -109,7 +109,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 		for i, s := range schema.AllOf {
 			schema, err := g.generate(s, "")
 			if err != nil {
-				return nil, xerrors.Errorf("allOf: %d: %w", i, err)
+				return nil, errors.Wrapf(err, "allOf: %d", i)
 			}
 
 			schemas = append(schemas, schema)
@@ -121,7 +121,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 	switch schema.Type {
 	case "object":
 		if schema.Items != nil {
-			return nil, xerrors.New("object cannot contain 'items' field")
+			return nil, errors.New("object cannot contain 'items' field")
 		}
 		required := func(name string) bool {
 			for _, p := range schema.Required {
@@ -143,7 +143,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			if _, ok := schema.Properties[k]; ok {
 				continue
 			}
-			return nil, xerrors.Errorf("invalid x-properties-order: missing %s", k)
+			return nil, errors.Errorf("invalid x-properties-order: missing %s", k)
 		}
 		if len(propKeys) == 0 {
 			for k := range schema.Properties {
@@ -156,7 +156,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			propSchema := schema.Properties[propName]
 			prop, err := g.generate(propSchema, "")
 			if err != nil {
-				return nil, xerrors.Errorf("%s: %w", propName, err)
+				return nil, errors.Wrapf(err, "%s", propName)
 			}
 
 			s.Properties = append(s.Properties, oas.Property{
@@ -180,12 +180,12 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			return array, nil
 		}
 		if len(schema.Properties) > 0 {
-			return nil, xerrors.New("array cannot contain properties")
+			return nil, errors.New("array cannot contain properties")
 		}
 
 		item, err := g.generate(*schema.Items, "")
 		if err != nil {
-			return nil, xerrors.Errorf("item: %w", err)
+			return nil, errors.Wrap(err, "item")
 		}
 
 		array.Item = item
@@ -193,7 +193,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 
 	case "number", "integer":
 		if err := validateTypeFormat(schema.Type, schema.Format); err != nil {
-			return nil, xerrors.Errorf("validate format: %w", err)
+			return nil, errors.Wrap(err, "validate format")
 		}
 
 		return extendInfo(&oas.Schema{
@@ -208,7 +208,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 
 	case "boolean":
 		if err := validateTypeFormat(schema.Type, schema.Format); err != nil {
-			return nil, xerrors.Errorf("validate format: %w", err)
+			return nil, errors.Wrap(err, "validate format")
 		}
 
 		return extendInfo(&oas.Schema{
@@ -218,7 +218,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 
 	case "string":
 		if err := validateTypeFormat(schema.Type, schema.Format); err != nil {
-			return nil, xerrors.Errorf("validate format: %w", err)
+			return nil, errors.Wrap(err, "validate format")
 		}
 
 		return extendInfo(&oas.Schema{
@@ -233,7 +233,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 		return extendInfo(&oas.Schema{Type: oas.String}), nil
 
 	default:
-		return nil, xerrors.Errorf("unexpected schema type: '%s'", schema.Type)
+		return nil, errors.Errorf("unexpected schema type: '%s'", schema.Type)
 	}
 }
 
@@ -254,7 +254,7 @@ func (g *schemaGen) ref(ref string) (*oas.Schema, error) {
 	name := strings.TrimPrefix(ref, prefix)
 	component, found := g.spec.Components.Schemas[name]
 	if !found {
-		return nil, xerrors.Errorf("component by reference %q not found", ref)
+		return nil, errors.Errorf("component by reference %q not found", ref)
 	}
 
 	return g.generate(component, ref)
@@ -267,28 +267,28 @@ func validateTypeFormat(typ, format string) error {
 		case "":
 			return nil
 		default:
-			return xerrors.Errorf("unexpected object format: %q", format)
+			return errors.Errorf("unexpected object format: %q", format)
 		}
 	case "array":
 		switch format {
 		case "":
 			return nil
 		default:
-			return xerrors.Errorf("unexpected array format: %q", format)
+			return errors.Errorf("unexpected array format: %q", format)
 		}
 	case "integer":
 		switch format {
 		case "int32", "int64", "":
 			return nil
 		default:
-			return xerrors.Errorf("unexpected integer format: %q", format)
+			return errors.Errorf("unexpected integer format: %q", format)
 		}
 	case "number":
 		switch format {
 		case "float", "double", "":
 			return nil
 		default:
-			return xerrors.Errorf("unexpected number format: %q", format)
+			return errors.Errorf("unexpected number format: %q", format)
 		}
 	case "string":
 		switch format {
@@ -316,9 +316,9 @@ func validateTypeFormat(typ, format string) error {
 		case "":
 			return nil
 		default:
-			return xerrors.Errorf("unexpected bool format: %q", format)
+			return errors.Errorf("unexpected bool format: %q", format)
 		}
 	default:
-		return xerrors.Errorf("unexpected type: %q", typ)
+		return errors.Errorf("unexpected type: %q", typ)
 	}
 }

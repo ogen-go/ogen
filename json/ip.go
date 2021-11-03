@@ -1,7 +1,7 @@
 package json
 
 import (
-	"errors"
+	"github.com/ogen-go/errors"
 	"net"
 )
 

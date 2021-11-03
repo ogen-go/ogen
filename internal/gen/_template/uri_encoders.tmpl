@@ -12,7 +12,7 @@ func (v {{ $t.Go }}) encodeURI(e uri.Encoder) error {
                 "var" (sprintf "v.%s" $f.Name)
             }}
         }); err != nil {
-            return fmt.Errorf("field '{{ $f.Spec.Name }}': %w", err)
+            return errors.Wrap(err, `field {{ $f.Spec.Name }}`)
         }
     {{- end }}
     {{- end }}
@@ -39,7 +39,7 @@ func (v {{ $t.Go }}) encodeURI(e uri.Encoder) error {
                     "var" "item"
                 }}
             }(); err != nil {
-                return fmt.Errorf("[%d]: %w", i, err)
+                return errors.Wrapf(err, "[%d]", i)
             }
         }
         return nil

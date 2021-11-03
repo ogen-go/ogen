@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 
 	"github.com/ogen-go/jx"
-	"golang.org/x/xerrors"
+	"github.com/ogen-go/errors"
 
 	"github.com/ogen-go/ogen/internal/oas"
 )
@@ -17,14 +17,14 @@ func parseEnumValues(typ oas.SchemaType, rawValues []json.RawMessage) ([]interfa
 	for _, raw := range rawValues {
 		val, err := parseJSONValue(typ, raw)
 		if err != nil {
-			if xerrors.Is(err, errNullValue) {
+			if errors.Is(err, errNullValue) {
 				continue
 			}
-			return nil, xerrors.Errorf("parse value '%s': %w", raw, err)
+			return nil, errors.Wrapf(err, "parse value '%s'", raw)
 		}
 
 		if _, found := uniq[val]; found {
-			return nil, xerrors.Errorf("duplicate enum value: '%v'", val)
+			return nil, errors.Errorf("duplicate enum value: '%v'", val)
 		}
 
 		uniq[val] = struct{}{}
@@ -34,7 +34,7 @@ func parseEnumValues(typ oas.SchemaType, rawValues []json.RawMessage) ([]interfa
 	return values, nil
 }
 
-var errNullValue = xerrors.New("json null value")
+var errNullValue = errors.New("json null value")
 
 func parseJSONValue(typ oas.SchemaType, v json.RawMessage) (interface{}, error) {
 	var (
@@ -47,39 +47,39 @@ func parseJSONValue(typ oas.SchemaType, v json.RawMessage) (interface{}, error) 
 	switch typ {
 	case oas.String:
 		if next != jx.String {
-			return nil, xerrors.Errorf("expected type %q, got %q", typ, next)
+			return nil, errors.Errorf("expected type %q, got %q", typ, next)
 		}
 		return d.Str()
 	case oas.Integer:
 		if next != jx.Number {
-			return nil, xerrors.Errorf("expected type %q, got %q", typ, next)
+			return nil, errors.Errorf("expected type %q, got %q", typ, next)
 		}
 		n, err := d.Number()
 		if err != nil {
 			return nil, err
 		}
 		if _, err := n.Float64(); err == nil {
-			return nil, xerrors.Errorf("expected type %q, got %q", typ, next)
+			return nil, errors.Errorf("expected type %q, got %q", typ, next)
 		}
 		return n.Int64()
 	case oas.Number:
 		if next != jx.Number {
-			return nil, xerrors.Errorf("expected type %q, got %q", typ, next)
+			return nil, errors.Errorf("expected type %q, got %q", typ, next)
 		}
 		n, err := d.Number()
 		if err != nil {
 			return nil, err
 		}
 		if _, err := n.Int64(); err == nil {
-			return nil, xerrors.Errorf("expected type %q, got %q", typ, next)
+			return nil, errors.Errorf("expected type %q, got %q", typ, next)
 		}
 		return n.Float64()
 	case oas.Boolean:
 		if next != jx.Bool {
-			return nil, xerrors.Errorf("expected type %q, got %q", typ, next)
+			return nil, errors.Errorf("expected type %q, got %q", typ, next)
 		}
 		return d.Bool()
 	default:
-		return nil, xerrors.Errorf("unexpected type: '%s'", typ)
+		return nil, errors.Errorf("unexpected type: '%s'", typ)
 	}
 }

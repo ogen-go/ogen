@@ -3,7 +3,7 @@ package parser
 import (
 	"strings"
 
-	"golang.org/x/xerrors"
+	"github.com/ogen-go/errors"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/oas"
@@ -14,7 +14,7 @@ func (p *parser) parseParams(params []ogen.Parameter) ([]*oas.Parameter, error) 
 	for _, param := range params {
 		parsed, err := p.parseParameter(param)
 		if err != nil {
-			return nil, xerrors.Errorf("parse parameter '%s': %w", param.Name, err)
+			return nil, errors.Wrapf(err, "parse parameter '%s'", param.Name)
 		}
 
 		result = append(result, parsed)
@@ -27,7 +27,7 @@ func (p *parser) parseParameter(param ogen.Parameter) (*oas.Parameter, error) {
 	if ref := param.Ref; ref != "" {
 		parsed, err := p.resolveParameter(ref)
 		if err != nil {
-			return nil, xerrors.Errorf("resolve '%s' reference: %w", ref, err)
+			return nil, errors.Wrapf(err, "resolve '%s' reference", ref)
 		}
 		return parsed, nil
 	}
@@ -41,22 +41,22 @@ func (p *parser) parseParameter(param ogen.Parameter) (*oas.Parameter, error) {
 
 	locatedIn, exists := types[strings.ToLower(param.In)]
 	if !exists {
-		return nil, xerrors.Errorf("unsupported parameter type %s", param.In)
+		return nil, errors.Errorf("unsupported parameter type %s", param.In)
 	}
 
 	// Path parameters are always required.
 	if locatedIn == oas.LocationPath && !param.Required {
-		return nil, xerrors.Errorf("path parameters must be required")
+		return nil, errors.New("path parameters must be required")
 	}
 
 	schema, err := p.parseSchema(param.Schema)
 	if err != nil {
-		return nil, xerrors.Errorf("schema: %w", err)
+		return nil, errors.Wrap(err, "schema")
 	}
 
 	style, err := paramStyle(locatedIn, param.Style)
 	if err != nil {
-		return nil, xerrors.Errorf("style: %w", err)
+		return nil, errors.Wrap(err, "style")
 	}
 
 	return &oas.Parameter{
@@ -105,7 +105,7 @@ func paramStyle(locatedIn oas.ParameterLocation, style string) (string, error) {
 	}
 
 	if _, found := allowedStyles[locatedIn][style]; !found {
-		return "", xerrors.Errorf("unexpected style: %s", style)
+		return "", errors.Errorf("unexpected style: %s", style)
 	}
 
 	return style, nil

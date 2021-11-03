@@ -27,18 +27,18 @@ func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 					"var" (sprintf "params.%s" $p.Name)
 				}}
 			}(); err != nil {
-				return params, fmt.Errorf("parse parameter '{{ $p.Spec.Name }}' located in '{{ lower $p.Spec.In }}': %w", err)
+				return params, errors.Wrap(err, `parse parameter {{ $p.Spec.Name }} located in {{ lower $p.Spec.In }}`)
 			}
 
 			{{- if $p.Type.NeedValidation }}
 			if err := func() error {
 				{{- template "validate" var_elem (sprintf "params.%s" $p.Name ) $p.Type }}
 			}(); err != nil {
-				return params, fmt.Errorf("validate parameter '{{ $p.Spec.Name }}' located in '{{ lower $p.Spec.In }}': %w", err)
+				return params, errors.Wrap(err, `invalid parameter {{ $p.Spec.Name }} ({{ lower $p.Spec.In }}`)
 			}
 			{{- end }}
 		} {{- if $p.Spec.Required }} else {
-			return params, fmt.Errorf("query parameter '{{ $p.Spec.Name}}' not specified")
+			return params, errors.New(`query parameter {{ $p.Spec.Name}} not specified`)
 		} {{- end }}
 	}
 	{{- else if eq $p.Spec.In "Path" }}
@@ -61,7 +61,7 @@ func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 				return params, err
 			}
 		} {{ if $p.Spec.Required }} else {
-			return params, fmt.Errorf("path parameter '{{ $p.Spec.Name}}' not specified")
+			return params, errors.New(`path parameter {{ $p.Spec.Name}} not specified`)
 		} {{ end }}
 	}
 	{{- else if eq $p.Spec.In "Header" }}
@@ -78,29 +78,29 @@ func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 					"var" (sprintf "params.%s" $p.Name)
 				}}
 			}(); err != nil {
-				return params, fmt.Errorf("parse {{ lower $p.Spec.In }} param '{{ $p.Spec.Name }}': %w", err)
+				return params, errors.Wrap(err, `parse {{ lower $p.Spec.In }}: param '{{ $p.Spec.Name }}`)
 			}
 		} {{ if $p.Spec.Required }} else {
-			return params, fmt.Errorf("header parameter '{{ $p.Spec.Name}}' not specified")
+			return params, errors.New(`header parameter {{ $p.Spec.Name}} not specified`)
 		} {{ end }}
 	}
 	{{- else if eq $p.Spec.In "Cookie" }}
 	{
 		c, err := r.Cookie("{{ $p.Spec.Name }}")
 		if err != nil {
-			return params, fmt.Errorf("get cookie '{{ $p.Spec.Name }}': %w", err)
+			return params, errors.Wrap(err, `get cookie {{ $p.Spec.Name }}`)
 		}
 
 		param := c.Value
 		if len(param) > 0 {
 			v, err := conv.{{ $p.Type.FromString }}(param)
 			if err != nil {
-				return params, fmt.Errorf("parse {{ lower $p.Spec.In }} param '{{ $p.Spec.Name }}': %w", err)
+				return params, errors.Wrap(err, `parse {{ lower $p.Spec.In }}: param {{ $p.Spec.Name }}`)
 			}
 
 			params.{{ $p.Name }} = v
 		} {{ if $p.Spec.Required }} else {
-			return params, fmt.Errorf("cookie parameter '{{ $p.Spec.Name}}' not specified")
+			return params, errors.New(`cookie parameter {{ $p.Spec.Name}} not specified`)
 		} {{ end }}
 	}
 	{{- else }}

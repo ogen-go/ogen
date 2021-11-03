@@ -6,7 +6,7 @@ import (
 	"os"
 	"text/template"
 
-	"golang.org/x/xerrors"
+	"github.com/ogen-go/errors"
 
 	"github.com/ogen-go/ogen/internal/ir"
 )
@@ -92,7 +92,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 
 		fileName := fmt.Sprintf("oas_%s_gen.go", name)
 		if err := w.Generate(name, fileName, cfg); err != nil {
-			return xerrors.Errorf("%s: %w", name, err)
+			return errors.Wrapf(err, "%s", name)
 		}
 	}
 

@@ -3,7 +3,7 @@ package parser
 import (
 	"fmt"
 
-	"golang.org/x/xerrors"
+	"github.com/ogen-go/errors"
 
 	"github.com/ogen-go/ogen/internal/oas"
 )
@@ -44,13 +44,13 @@ func (p *pathParser) parse() error {
 		switch r {
 		case '/':
 			if p.param {
-				return xerrors.Errorf("invalid path: %s", p.path)
+				return errors.Errorf("invalid path: %s", p.path)
 			}
 			p.part = append(p.part, r)
 
 		case '{':
 			if p.param {
-				return xerrors.Errorf("invalid path: %s", p.path)
+				return errors.Errorf("invalid path: %s", p.path)
 			}
 			if err := p.push(); err != nil {
 				return err
@@ -59,7 +59,7 @@ func (p *pathParser) parse() error {
 
 		case '}':
 			if !p.param {
-				return xerrors.Errorf("invalid path: %s", p.path)
+				return errors.Errorf("invalid path: %s", p.path)
 			}
 			if err := p.push(); err != nil {
 				return err
@@ -72,7 +72,7 @@ func (p *pathParser) parse() error {
 	}
 
 	if p.param {
-		return xerrors.Errorf("invalid path: %s", p.path)
+		return errors.Errorf("invalid path: %s", p.path)
 	}
 
 	return p.push()

@@ -3,7 +3,7 @@ package parser
 import (
 	"fmt"
 
-	"golang.org/x/xerrors"
+	"github.com/ogen-go/errors"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/oas"
@@ -18,7 +18,7 @@ func (p *parser) parseSchema(schema ogen.Schema) (*oas.Schema, error) {
 
 	s, err := gen.Generate(schema)
 	if err != nil {
-		return nil, xerrors.Errorf("generate: %w", err)
+		return nil, errors.Wrap(err, "generate")
 	}
 
 	// Merge references.

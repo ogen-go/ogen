@@ -2,7 +2,7 @@ package ogen
 
 import (
 	"encoding/json"
-	"errors"
+	"github.com/ogen-go/errors"
 
 	"github.com/goccy/go-yaml"
 	"github.com/ogen-go/jx"

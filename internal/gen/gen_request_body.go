@@ -3,7 +3,7 @@ package gen
 import (
 	"sort"
 
-	"golang.org/x/xerrors"
+	"github.com/ogen-go/errors"
 
 	"github.com/ogen-go/ogen/internal/ir"
 	"github.com/ogen-go/ogen/internal/oas"
@@ -32,7 +32,7 @@ func (g *Generator) generateRequest(opName string, body *oas.RequestBody) (*ir.R
 
 		typ, err := g.generateSchema(sName, schema)
 		if err != nil {
-			return nil, xerrors.Errorf("contents: %s: %w", contentType, err)
+			return nil, errors.Wrapf(err, "contents: %s", contentType)
 		}
 
 		types[ir.ContentType(contentType)] = typ

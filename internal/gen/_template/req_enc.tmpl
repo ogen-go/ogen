@@ -28,7 +28,7 @@ func encode{{ $op.Name }}Request(req {{ $op.Request.Type.Go }}, span trace.Span)
     {{- template "req_enc_json" $type }}
     return buf, "{{ $contentType }}", nil
     {{- else }}
-    return nil, "", fmt.Errorf("{{ $contentType }} encoder not implemented")
+    return nil, "", errors.New(`{{ $contentType }} encoder not implemented`)
     {{- end }}
 
     {{- end }}
@@ -41,11 +41,11 @@ func encode{{ $op.Name }}Request(req {{ $op.Request.Type.Go }}, span trace.Span)
         {{- template "req_enc_json" $type }}
         return buf, "{{ $contentType }}", nil
         {{- else }}
-        return nil, "", fmt.Errorf("{{ $contentType }} encoder not implemented")
+        return nil, "", errors.New(`{{ $contentType }} encoder not implemented`)
         {{- end }}
     {{- end }}
     default:
-        return nil, "", fmt.Errorf("unexpected request type: %T", req)
+        return nil, "", errors.Errorf("unexpected request type: %T", req)
     }
     {{- end }}
 }

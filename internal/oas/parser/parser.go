@@ -3,7 +3,7 @@ package parser
 import (
 	"strings"
 
-	"golang.org/x/xerrors"
+	"github.com/ogen-go/errors"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/oas"
@@ -53,25 +53,25 @@ func Parse(spec *ogen.Spec, opts Options) ([]*oas.Operation, error) {
 func (p *parser) parse() error {
 	for path, item := range p.spec.Paths {
 		if item.Ref != "" {
-			return xerrors.New("referenced paths are not supported")
+			return errors.New("referenced paths are not supported")
 		}
 
 		if err := forEachOps(item, func(method string, op ogen.Operation) error {
 			parsedOp, err := p.parseOp(path, strings.ToUpper(method), op)
 			if err != nil {
 				var paramNotSpecified *ErrPathParameterNotSpecified
-				if xerrors.As(err, &paramNotSpecified) {
+				if errors.As(err, &paramNotSpecified) {
 					if p.ops.IgnoreUnspecifiedParams {
 						return nil
 					}
 				}
-				return xerrors.Errorf("%s: %w", strings.ToLower(method), err)
+				return errors.Wrapf(err, "%s", strings.ToLower(method))
 			}
 
 			p.operations = append(p.operations, parsedOp)
 			return nil
 		}); err != nil {
-			return xerrors.Errorf("paths: %s: %w", path, err)
+			return errors.Wrapf(err, "paths: %s", path)
 		}
 	}
 
@@ -86,25 +86,25 @@ func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation) (_ *oas.O
 
 	op.Parameters, err = p.parseParams(spec.Parameters)
 	if err != nil {
-		return nil, xerrors.Errorf("parameters: %w", err)
+		return nil, errors.Wrap(err, "parameters")
 	}
 
 	op.PathParts, err = parsePath(path, op.Parameters)
 	if err != nil {
-		return nil, xerrors.Errorf("parse path: %w", err)
+		return nil, errors.Wrap(err, "parse path")
 	}
 
 	if spec.RequestBody != nil {
 		op.RequestBody, err = p.parseRequestBody(spec.RequestBody)
 		if err != nil {
-			return nil, xerrors.Errorf("requestBody: %w", err)
+			return nil, errors.Wrap(err, "requestBody")
 		}
 	}
 
 	if len(spec.Responses) > 0 {
 		op.Responses, err = p.parseResponses(spec.Responses)
 		if err != nil {
-			return nil, xerrors.Errorf("responses: %w", err)
+			return nil, errors.Wrap(err, "responses")
 		}
 	}
 

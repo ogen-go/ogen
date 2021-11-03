@@ -6,7 +6,7 @@ import (
 	"sort"
 	"strings"
 
-	"golang.org/x/xerrors"
+	"github.com/ogen-go/errors"
 
 	"github.com/ogen-go/ogen/internal/ir"
 	"github.com/ogen-go/ogen/internal/oas"
@@ -33,7 +33,7 @@ func (g *Generator) generateResponses(opName string, responses *oas.OperationRes
 		)
 		r, err := g.responseToIR(respName, doc, resp)
 		if err != nil {
-			return nil, xerrors.Errorf("%d: %w", code, err)
+			return nil, errors.Wrapf(err, "%d", code)
 		}
 
 		result.StatusCode[code] = r
@@ -46,7 +46,7 @@ func (g *Generator) generateResponses(opName string, responses *oas.OperationRes
 		)
 		resp, err := g.responseToIR(respName, doc, def)
 		if err != nil {
-			return nil, xerrors.Errorf("default: %w", err)
+			return nil, errors.Wrap(err, "default")
 		}
 
 		result.Default = g.wrapResponseStatusCode(resp)
@@ -131,7 +131,7 @@ func (g *Generator) responseToIR(name, doc string, resp *oas.Response) (ret *ir.
 
 		typ, err := g.generateSchema(typeName, schema)
 		if err != nil {
-			return nil, xerrors.Errorf("contents: %s: %w", contentType, err)
+			return nil, errors.Wrapf(err, "contents: %s", contentType)
 		}
 
 		types[ir.ContentType(contentType)] = typ

@@ -64,8 +64,6 @@ if err := d.Arr(func(d *json.Decoder) error {
        return err
     }
   {{- else  }}
-    if err := fmt.Errorf(`decoding of "{{ $t.Go }}" ({{ $t.Kind }}) is not implemented`); err != nil {
-      return err
-    }
+    return errors.New(`decoding of "{{ $t.Go }}" ({{ $t.Kind }}) is not implemented`)
   {{- end }}
 {{- end -}}

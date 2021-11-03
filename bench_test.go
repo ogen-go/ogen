@@ -18,7 +18,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/valyala/fasthttp"
 	"go.opentelemetry.io/otel/trace"
-	"golang.org/x/xerrors"
+	"github.com/ogen-go/errors"
 
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -100,7 +100,7 @@ func BenchmarkIntegration(b *testing.B) {
 							return err
 						}
 						if res.StatusCode != http.StatusOK {
-							return xerrors.Errorf("code: %d", res.StatusCode)
+							return errors.Errorf("code: %d", res.StatusCode)
 						}
 
 						return nil

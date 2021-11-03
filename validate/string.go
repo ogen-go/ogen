@@ -1,9 +1,10 @@
 package validate
 
 import (
-	"errors"
 	"regexp"
 	"unicode"
+
+	"github.com/ogen-go/errors"
 )
 
 // String validator.

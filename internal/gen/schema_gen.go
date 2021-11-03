@@ -8,7 +8,7 @@ import (
 	"strings"
 	"unicode"
 
-	"golang.org/x/xerrors"
+	"github.com/ogen-go/errors"
 
 	"github.com/ogen-go/ogen/internal/ir"
 	"github.com/ogen-go/ogen/internal/oas"
@@ -43,7 +43,7 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 	if schema.Pattern != "" {
 		p, err := regexp.Compile(schema.Pattern)
 		if err != nil {
-			return nil, xerrors.Errorf("pattern: %w", err)
+			return nil, errors.Wrap(err, "pattern")
 		}
 		reg = p
 	}
@@ -113,7 +113,7 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 			prop := schema.Properties[i]
 			typ, err := g.generate(pascalMP(name, prop.Name), prop.Schema)
 			if err != nil {
-				return nil, xerrors.Errorf("field '%s': %w", prop.Name, err)
+				return nil, errors.Wrapf(err, "field %s", prop.Name)
 			}
 
 			s.Fields = append(s.Fields, &ir.Field{
@@ -162,7 +162,7 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 		for i, s := range schema.OneOf {
 			t, err := g.generate(fmt.Sprintf("%s%d", name, i), s)
 			if err != nil {
-				return nil, xerrors.Errorf("oneOf[%d]: %w", i, err)
+				return nil, errors.Wrapf(err, "oneOf[%d]", i)
 			}
 			var result []rune
 			for i, c := range t.Go() {
@@ -173,9 +173,9 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 			}
 			t.Name = string(result)
 			if _, ok := names[t.Name]; ok {
-				return nil, xerrors.Errorf("%s: %w", name, &ErrNotImplemented{
+				return nil, errors.Wrap(&ErrNotImplemented{
 					Name: "sum types with same names",
-				})
+				}, name)
 			}
 			names[t.Name] = struct{}{}
 			sum.SumOf = append(sum.SumOf, t)
@@ -195,7 +195,7 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 					}
 				}
 				if !found {
-					return nil, xerrors.Errorf("discriminator: unable to map %s to %s", k, v)
+					return nil, errors.Errorf("discriminator: unable to map %s to %s", k, v)
 				}
 			}
 			if len(sum.SumSpec.Mapping) == 0 {
@@ -258,8 +258,9 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 			sort.Strings(v.Unique)
 			if isComplex && len(v.Unique) == 0 {
 				// Unable to deterministically select sub-schema only on fields.
-				return nil, xerrors.Errorf("oneOf %s: variant %s: no unique fields, "+
-					"unable to parse without discriminator: %w", sum.Name, k, &ErrNotImplemented{Name: "discriminator inference"},
+				return nil, errors.Wrapf(&ErrNotImplemented{Name: "discriminator inference"},
+					"oneOf %s: variant %s: no unique fields, "+
+						"unable to parse without discriminator", sum.Name, k,
 				)
 			}
 			variants = append(variants, v)
@@ -309,7 +310,7 @@ func (g *schemaGen) primitive(name string, schema *oas.Schema) (*ir.Type, error)
 
 	if len(schema.Enum) > 0 {
 		if !typ.Is(ir.KindPrimitive) {
-			return nil, xerrors.Errorf("unsupported enum type: '%s'", schema.Type)
+			return nil, errors.Errorf("unsupported enum type: '%s'", schema.Type)
 		}
 
 		var variants []*ir.EnumVariant
@@ -349,7 +350,7 @@ func parseSimple(schema *oas.Schema) (*ir.Type, error) {
 		case oas.FormatNone:
 			return ir.Primitive(ir.Int, schema), nil
 		default:
-			return nil, xerrors.Errorf("unexpected integer format: %q", format)
+			return nil, errors.Errorf("unexpected integer format: %q", format)
 		}
 	case oas.Number:
 		switch format {
@@ -358,7 +359,7 @@ func parseSimple(schema *oas.Schema) (*ir.Type, error) {
 		case oas.FormatDouble, oas.FormatNone:
 			return ir.Primitive(ir.Float64, schema), nil
 		default:
-			return nil, xerrors.Errorf("unexpected number format: %q", format)
+			return nil, errors.Errorf("unexpected number format: %q", format)
 		}
 	case oas.String:
 		switch format {
@@ -377,7 +378,7 @@ func parseSimple(schema *oas.Schema) (*ir.Type, error) {
 		case oas.FormatPassword, oas.FormatNone:
 			return ir.Primitive(ir.String, schema), nil
 		default:
-			// return nil, xerrors.Errorf("unexpected string format: '%s'", format)
+			// return nil, errors.Errorf("unexpected string format: '%s'", format)
 			return ir.Primitive(ir.String, schema), nil
 		}
 	case oas.Boolean:
@@ -385,9 +386,9 @@ func parseSimple(schema *oas.Schema) (*ir.Type, error) {
 		case oas.FormatNone:
 			return ir.Primitive(ir.Bool, schema), nil
 		default:
-			return nil, xerrors.Errorf("unexpected bool format: %q", format)
+			return nil, errors.Errorf("unexpected bool format: %q", format)
 		}
 	default:
-		return nil, xerrors.Errorf("unexpected type: %q", typ)
+		return nil, errors.Errorf("unexpected type: %q", typ)
 	}
 }

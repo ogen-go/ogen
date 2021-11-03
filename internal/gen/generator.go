@@ -4,7 +4,7 @@ import (
 	"sort"
 	"strings"
 
-	"golang.org/x/xerrors"
+	"github.com/ogen-go/errors"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/ir"
@@ -79,10 +79,9 @@ func (g *Generator) makeIR(ops []*oas.Operation) error {
 		op, err := g.generateOperation(spec)
 		if err != nil {
 			if g.shouldFail(err) {
-				return xerrors.Errorf("%q: %s: %w",
+				return errors.Wrapf(err, "%q: %s",
 					spec.Path(),
 					strings.ToLower(spec.HTTPMethod),
-					err,
 				)
 			}
 

@@ -40,11 +40,11 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
             {{- template "res_dec_json" $type }}
             return {{ if eq $op.Response.Type.Kind "interface" }}&{{ end }}response, nil
             {{- else }}
-            return res, fmt.Errorf("{{ $contentType }} decoder not implemented")
+            return res, errors.New("{{ $contentType }} decoder not implemented")
             {{- end }}{{/* Decode */}}
         {{- end }}{{/* Range over contents */}}
         default:
-            return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+            return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
         }
         {{- end }}{{/* Decode content response */}}
     {{- end }}{{/* Range over responses */}}
@@ -62,15 +62,15 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
             response.StatusCode = resp.StatusCode
             return {{ if eq $op.Response.Type.Kind "interface" }}&{{ end }}response, nil
             {{- else }}
-            return res, fmt.Errorf("{{ $contentType }} decoder not implemented")
+            return res, errors.New("{{ $contentType }} decoder not implemented")
             {{- end }}{{/* Decode */}}
         {{- end }}{{/* Range over contents */}}
         default:
-            return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+            return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
         }
         {{- end }}{{/* Decode content response */}}
         {{- else }}
-        return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+        return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
         {{- end }}{{- /* Decode default response */}}
     }
 }

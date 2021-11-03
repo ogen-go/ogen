@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"golang.org/x/xerrors"
+	"github.com/ogen-go/errors"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/oas"
@@ -22,7 +22,7 @@ func (p *parser) parseResponses(responses ogen.Responses) (*oas.OperationRespons
 		if status == "default" {
 			resp, err := p.parseResponse(response)
 			if err != nil {
-				return nil, xerrors.Errorf("default: %w", err)
+				return nil, errors.Wrap(err, "default")
 			}
 
 			result.Default = resp
@@ -31,12 +31,12 @@ func (p *parser) parseResponses(responses ogen.Responses) (*oas.OperationRespons
 
 		statusCode, err := strconv.Atoi(status)
 		if err != nil {
-			return nil, xerrors.Errorf("invalid status code: '%s'", status)
+			return nil, errors.Errorf("invalid status code: '%s'", status)
 		}
 
 		resp, err := p.parseResponse(response)
 		if err != nil {
-			return nil, xerrors.Errorf("%s: %w", status, err)
+			return nil, errors.Wrapf(err, "%s", status)
 		}
 
 		result.StatusCode[statusCode] = resp
@@ -49,7 +49,7 @@ func (p *parser) parseResponse(resp ogen.Response) (*oas.Response, error) {
 	if ref := resp.Ref; ref != "" {
 		resp, err := p.resolveResponse(ref)
 		if err != nil {
-			return nil, xerrors.Errorf("resolve '%s' reference: %w", ref, err)
+			return nil, errors.Wrapf(err, "resolve '%s' reference", ref)
 		}
 
 		return resp, nil
@@ -59,7 +59,7 @@ func (p *parser) parseResponse(resp ogen.Response) (*oas.Response, error) {
 	for contentType, media := range resp.Content {
 		schema, err := p.parseSchema(media.Schema)
 		if err != nil {
-			return nil, xerrors.Errorf("content: %s: schema: %w", contentType, err)
+			return nil, errors.Wrapf(err, "content: %s: schema", contentType)
 		}
 
 		response.Contents[contentType] = schema

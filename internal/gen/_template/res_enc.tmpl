@@ -21,7 +21,7 @@ func encode{{ $op.Name }}Response(response {{ $op.Response.Type.Go }}, w http.Re
         {{- template "respond" $info }}
     {{- end }}
     default:
-        return fmt.Errorf("{{ $op.Spec.Path}}: unexpected response type: %T", response)
+        return errors.Errorf(`{{ $op.Spec.Path}}: unexpected response type: %T`, response)
     }
     {{- end }}
 }
@@ -51,11 +51,11 @@ more := json.NewMore(e)
 defer more.Reset()
 {{ template "enc_json" res_elem $ }}
 if _, err := e.WriteTo(w); err != nil {
-    return fmt.Errorf("write: %w", err)
+    return errors.Wrap(err, "write")
 }
 
 return nil
 {{- else }}
-return fmt.Errorf("{{ $.ContentType }} encoder not implemented")
+return errors.New(`{{ $.ContentType }} encoder not implemented`)
 {{- end }}{{- /* Encode content */ -}}
 {{ end }}

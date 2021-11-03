@@ -5,7 +5,7 @@
 {{- if eq $t.Kind "struct" }}
 func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
     if v == nil {
-        return fmt.Errorf("unable to decode {{ $t.Go }} to nil")
+        return errors.New(`unable to decode {{ $t.Go }} to nil`)
     }
     return d.DecodeFields(func(name string, d uri.Decoder) error {
         switch name {
@@ -19,7 +19,7 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
         {{- end }}
         {{- end }}
         default:
-            return fmt.Errorf("unexpected field '%s'", name)
+            return errors.Errorf(`unexpected field %q`, name)
         }
     })
 }

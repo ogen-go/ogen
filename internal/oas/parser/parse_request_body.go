@@ -1,7 +1,7 @@
 package parser
 
 import (
-	"golang.org/x/xerrors"
+	"github.com/ogen-go/errors"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/oas"
@@ -11,7 +11,7 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody) (*oas.RequestBody, err
 	if ref := body.Ref; ref != "" {
 		reqBody, err := p.resolveRequestBody(ref)
 		if err != nil {
-			return nil, xerrors.Errorf("resolve '%s' reference: %w", ref, err)
+			return nil, errors.Wrapf(err, "resolve '%s' reference", ref)
 		}
 
 		return reqBody, nil
@@ -23,7 +23,7 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody) (*oas.RequestBody, err
 	for contentType, media := range body.Content {
 		schema, err := p.parseSchema(media.Schema)
 		if err != nil {
-			return nil, xerrors.Errorf("content: %s: parse schema: %w", contentType, err)
+			return nil, errors.Wrapf(err, "content: %s: parse schema", contentType)
 		}
 
 		reqBody.Contents[contentType] = schema
