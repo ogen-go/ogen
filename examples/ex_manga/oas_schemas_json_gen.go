@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -123,7 +123,7 @@ func (s Book) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Book from json stream.
 func (s *Book) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Book to nil`)
+		return errors.New(`invalid: unable to decode Book to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -197,7 +197,7 @@ func (s GetBookForbidden) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GetBookForbidden from json stream.
 func (s *GetBookForbidden) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GetBookForbidden to nil`)
+		return errors.New(`invalid: unable to decode GetBookForbidden to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -219,7 +219,7 @@ func (s GetPageCoverImageForbidden) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GetPageCoverImageForbidden from json stream.
 func (s *GetPageCoverImageForbidden) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GetPageCoverImageForbidden to nil`)
+		return errors.New(`invalid: unable to decode GetPageCoverImageForbidden to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -244,7 +244,7 @@ func (s GetPageImageForbidden) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GetPageImageForbidden from json stream.
 func (s *GetPageImageForbidden) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GetPageImageForbidden to nil`)
+		return errors.New(`invalid: unable to decode GetPageImageForbidden to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -269,7 +269,7 @@ func (s GetPageThumbnailImageForbidden) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GetPageThumbnailImageForbidden from json stream.
 func (s *GetPageThumbnailImageForbidden) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GetPageThumbnailImageForbidden to nil`)
+		return errors.New(`invalid: unable to decode GetPageThumbnailImageForbidden to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -309,7 +309,7 @@ func (s Image) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Image from json stream.
 func (s *Image) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Image to nil`)
+		return errors.New(`invalid: unable to decode Image to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -368,7 +368,7 @@ func (s Images) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Images from json stream.
 func (s *Images) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Images to nil`)
+		return errors.New(`invalid: unable to decode Images to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -409,7 +409,7 @@ func (o OptImage) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of Image from json iterator.
 func (o *OptImage) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptImage to nil`)
+		return errors.New(`invalid: unable to decode OptImage to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -419,7 +419,7 @@ func (o *OptImage) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptImage", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptImage`, d.Next())
 	}
 }
 
@@ -431,7 +431,7 @@ func (o OptImages) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of Images from json iterator.
 func (o *OptImages) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptImages to nil`)
+		return errors.New(`invalid: unable to decode OptImages to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -441,7 +441,7 @@ func (o *OptImages) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptImages", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptImages`, d.Next())
 	}
 }
 
@@ -453,7 +453,7 @@ func (o OptInt) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of int from json iterator.
 func (o *OptInt) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptInt to nil`)
+		return errors.New(`invalid: unable to decode OptInt to nil`)
 	}
 	switch d.Next() {
 	case json.Number:
@@ -465,7 +465,7 @@ func (o *OptInt) ReadJSON(d *json.Decoder) error {
 		o.Value = int(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptInt", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptInt`, d.Next())
 	}
 }
 
@@ -477,7 +477,7 @@ func (o OptString) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of string from json iterator.
 func (o *OptString) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptString to nil`)
+		return errors.New(`invalid: unable to decode OptString to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -489,7 +489,7 @@ func (o *OptString) ReadJSON(d *json.Decoder) error {
 		o.Value = string(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptString", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptString`, d.Next())
 	}
 }
 
@@ -501,7 +501,7 @@ func (o OptTagType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of TagType from json iterator.
 func (o *OptTagType) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTagType to nil`)
+		return errors.New(`invalid: unable to decode OptTagType to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -513,7 +513,7 @@ func (o *OptTagType) ReadJSON(d *json.Decoder) error {
 		o.Value = TagType(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTagType", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTagType`, d.Next())
 	}
 }
 
@@ -525,7 +525,7 @@ func (o OptTitle) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of Title from json iterator.
 func (o *OptTitle) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTitle to nil`)
+		return errors.New(`invalid: unable to decode OptTitle to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -535,7 +535,7 @@ func (o *OptTitle) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTitle", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTitle`, d.Next())
 	}
 }
 
@@ -550,7 +550,7 @@ func (s SearchByTagIDForbidden) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SearchByTagIDForbidden from json stream.
 func (s *SearchByTagIDForbidden) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchByTagIDForbidden to nil`)
+		return errors.New(`invalid: unable to decode SearchByTagIDForbidden to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -575,7 +575,7 @@ func (s SearchForbidden) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SearchForbidden from json stream.
 func (s *SearchForbidden) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchForbidden to nil`)
+		return errors.New(`invalid: unable to decode SearchForbidden to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -622,7 +622,7 @@ func (s SearchResponse) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SearchResponse from json stream.
 func (s *SearchResponse) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchResponse to nil`)
+		return errors.New(`invalid: unable to decode SearchResponse to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -691,7 +691,7 @@ func (s Tag) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Tag from json stream.
 func (s *Tag) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Tag to nil`)
+		return errors.New(`invalid: unable to decode Tag to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -735,7 +735,7 @@ func (s TagType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TagType from json reader.
 func (s *TagType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TagType to nil`)
+		return errors.New(`invalid: unable to decode TagType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -771,7 +771,7 @@ func (s Title) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Title from json stream.
 func (s *Title) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Title to nil`)
+		return errors.New(`invalid: unable to decode Title to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {

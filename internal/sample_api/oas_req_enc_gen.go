@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -93,9 +93,9 @@ func encodePetCreateRequest(req PetCreateReq, span trace.Span) (data *bytes.Buff
 
 		return buf, "application/json", nil
 	case *PetCreateReqTextPlain:
-		return nil, "", fmt.Errorf("text/plain encoder not implemented")
+		return nil, "", errors.New(`text/plain encoder not implemented`)
 	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
+		return nil, "", errors.Errorf("unexpected request type: %T", req)
 	}
 }
 

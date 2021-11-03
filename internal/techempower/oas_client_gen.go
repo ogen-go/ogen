@@ -5,7 +5,6 @@ package techempower
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -122,11 +122,10 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldOb
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.Int64ToString(params.Count))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["count"] = e.Result()
 	}
@@ -137,13 +136,13 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldOb
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCachingResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -175,13 +174,13 @@ func (c *Client) DB(ctx context.Context) (res WorldObject, err error) {
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDBResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -213,13 +212,13 @@ func (c *Client) JSON(ctx context.Context) (res HelloWorld, err error) {
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeJSONResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -253,11 +252,10 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldOb
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.Int64ToString(params.Queries))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["queries"] = e.Result()
 	}
@@ -268,13 +266,13 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldOb
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeQueriesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -308,11 +306,10 @@ func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res WorldOb
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.Int64ToString(params.Queries))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["queries"] = e.Result()
 	}
@@ -323,13 +320,13 @@ func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res WorldOb
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeUpdatesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil

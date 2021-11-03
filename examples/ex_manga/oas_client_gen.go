@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -121,11 +121,10 @@ func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBook
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.BookID))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode path: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -135,13 +134,13 @@ func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBook
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetBookResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -174,11 +173,10 @@ func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImage
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.MediaID))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode path: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -190,11 +188,10 @@ func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImage
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Format))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode path: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -204,13 +201,13 @@ func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImage
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetPageCoverImageResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -243,11 +240,10 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.MediaID))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode path: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -259,11 +255,10 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.Page))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode path: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -275,11 +270,10 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Format))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode path: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -289,13 +283,13 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetPageImageResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -328,11 +322,10 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.MediaID))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode path: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -344,11 +337,10 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.Page))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode path: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -360,11 +352,10 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Format))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode path: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -374,13 +365,13 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetPageThumbnailImageResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -414,11 +405,10 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Query))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["query"] = e.Result()
 	}
@@ -428,14 +418,13 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["page"] = e.Result()
 	}
@@ -446,13 +435,13 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSearchResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -486,11 +475,10 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.TagID))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["tag_id"] = e.Result()
 	}
@@ -500,14 +488,13 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["page"] = e.Result()
 	}
@@ -518,13 +505,13 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSearchByTagIDResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil

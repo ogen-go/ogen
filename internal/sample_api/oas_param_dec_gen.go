@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -86,10 +86,10 @@ func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 				params.InlinedParam = c
 				return nil
 			}(); err != nil {
-				return params, fmt.Errorf("parse parameter 'inlinedParam' located in 'query': %w", err)
+				return params, errors.Wrap(err, `parse parameter inlinedParam located in query`)
 			}
 		} else {
-			return params, fmt.Errorf("query parameter 'inlinedParam' not specified")
+			return params, errors.New(`query parameter inlinedParam not specified`)
 		}
 	}
 	// Decode param "skip" located in "Query".
@@ -116,10 +116,10 @@ func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 				params.Skip = c
 				return nil
 			}(); err != nil {
-				return params, fmt.Errorf("parse parameter 'skip' located in 'query': %w", err)
+				return params, errors.Wrap(err, `parse parameter skip located in query`)
 			}
 		} else {
-			return params, fmt.Errorf("query parameter 'skip' not specified")
+			return params, errors.New(`query parameter skip not specified`)
 		}
 	}
 	return params, nil
@@ -155,7 +155,7 @@ func decodePetFriendsNamesByIDParams(r *http.Request) (PetFriendsNamesByIDParams
 				return params, err
 			}
 		} else {
-			return params, fmt.Errorf("path parameter 'id' not specified")
+			return params, errors.New(`path parameter id not specified`)
 		}
 	}
 	return params, nil
@@ -187,7 +187,7 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 				params.PetID = c
 				return nil
 			}(); err != nil {
-				return params, fmt.Errorf("parse parameter 'petID' located in 'query': %w", err)
+				return params, errors.Wrap(err, `parse parameter petID located in query`)
 			}
 			if err := func() error {
 				if err := (validate.Int{
@@ -202,10 +202,10 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 				}
 				return nil
 			}(); err != nil {
-				return params, fmt.Errorf("validate parameter 'petID' located in 'query': %w", err)
+				return params, errors.Wrap(err, `invalid parameter petID (query`)
 			}
 		} else {
-			return params, fmt.Errorf("query parameter 'petID' not specified")
+			return params, errors.New(`query parameter petID not specified`)
 		}
 	}
 	// Decode param "x-tags" located in "Header".
@@ -239,10 +239,10 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 					return nil
 				})
 			}(); err != nil {
-				return params, fmt.Errorf("parse header param 'x-tags': %w", err)
+				return params, errors.Wrap(err, `parse header: param 'x-tags`)
 			}
 		} else {
-			return params, fmt.Errorf("header parameter 'x-tags' not specified")
+			return params, errors.New(`header parameter x-tags not specified`)
 		}
 	}
 	// Decode param "x-scope" located in "Header".
@@ -276,10 +276,10 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 					return nil
 				})
 			}(); err != nil {
-				return params, fmt.Errorf("parse header param 'x-scope': %w", err)
+				return params, errors.Wrap(err, `parse header: param 'x-scope`)
 			}
 		} else {
-			return params, fmt.Errorf("header parameter 'x-scope' not specified")
+			return params, errors.New(`header parameter x-scope not specified`)
 		}
 	}
 	// Decode param "token" located in "Query".
@@ -306,10 +306,10 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 				params.Token = c
 				return nil
 			}(); err != nil {
-				return params, fmt.Errorf("parse parameter 'token' located in 'query': %w", err)
+				return params, errors.Wrap(err, `parse parameter token located in query`)
 			}
 		} else {
-			return params, fmt.Errorf("query parameter 'token' not specified")
+			return params, errors.New(`query parameter token not specified`)
 		}
 	}
 	return params, nil
@@ -345,7 +345,7 @@ func decodePetGetByNameParams(r *http.Request) (PetGetByNameParams, error) {
 				return params, err
 			}
 		} else {
-			return params, fmt.Errorf("path parameter 'name' not specified")
+			return params, errors.New(`path parameter name not specified`)
 		}
 	}
 	return params, nil
@@ -381,7 +381,7 @@ func decodePetNameByIDParams(r *http.Request) (PetNameByIDParams, error) {
 				return params, err
 			}
 		} else {
-			return params, fmt.Errorf("path parameter 'id' not specified")
+			return params, errors.New(`path parameter id not specified`)
 		}
 	}
 	return params, nil

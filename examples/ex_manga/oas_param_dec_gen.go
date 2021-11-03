@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -90,7 +90,7 @@ func decodeGetBookParams(r *http.Request) (GetBookParams, error) {
 				return params, err
 			}
 		} else {
-			return params, fmt.Errorf("path parameter 'book_id' not specified")
+			return params, errors.New(`path parameter book_id not specified`)
 		}
 	}
 	return params, nil
@@ -126,7 +126,7 @@ func decodeGetPageCoverImageParams(r *http.Request) (GetPageCoverImageParams, er
 				return params, err
 			}
 		} else {
-			return params, fmt.Errorf("path parameter 'media_id' not specified")
+			return params, errors.New(`path parameter media_id not specified`)
 		}
 	}
 	// Decode param "format" located in "Path".
@@ -157,7 +157,7 @@ func decodeGetPageCoverImageParams(r *http.Request) (GetPageCoverImageParams, er
 				return params, err
 			}
 		} else {
-			return params, fmt.Errorf("path parameter 'format' not specified")
+			return params, errors.New(`path parameter format not specified`)
 		}
 	}
 	return params, nil
@@ -193,7 +193,7 @@ func decodeGetPageImageParams(r *http.Request) (GetPageImageParams, error) {
 				return params, err
 			}
 		} else {
-			return params, fmt.Errorf("path parameter 'media_id' not specified")
+			return params, errors.New(`path parameter media_id not specified`)
 		}
 	}
 	// Decode param "page" located in "Path".
@@ -224,7 +224,7 @@ func decodeGetPageImageParams(r *http.Request) (GetPageImageParams, error) {
 				return params, err
 			}
 		} else {
-			return params, fmt.Errorf("path parameter 'page' not specified")
+			return params, errors.New(`path parameter page not specified`)
 		}
 	}
 	// Decode param "format" located in "Path".
@@ -255,7 +255,7 @@ func decodeGetPageImageParams(r *http.Request) (GetPageImageParams, error) {
 				return params, err
 			}
 		} else {
-			return params, fmt.Errorf("path parameter 'format' not specified")
+			return params, errors.New(`path parameter format not specified`)
 		}
 	}
 	return params, nil
@@ -291,7 +291,7 @@ func decodeGetPageThumbnailImageParams(r *http.Request) (GetPageThumbnailImagePa
 				return params, err
 			}
 		} else {
-			return params, fmt.Errorf("path parameter 'media_id' not specified")
+			return params, errors.New(`path parameter media_id not specified`)
 		}
 	}
 	// Decode param "page" located in "Path".
@@ -322,7 +322,7 @@ func decodeGetPageThumbnailImageParams(r *http.Request) (GetPageThumbnailImagePa
 				return params, err
 			}
 		} else {
-			return params, fmt.Errorf("path parameter 'page' not specified")
+			return params, errors.New(`path parameter page not specified`)
 		}
 	}
 	// Decode param "format" located in "Path".
@@ -353,7 +353,7 @@ func decodeGetPageThumbnailImageParams(r *http.Request) (GetPageThumbnailImagePa
 				return params, err
 			}
 		} else {
-			return params, fmt.Errorf("path parameter 'format' not specified")
+			return params, errors.New(`path parameter format not specified`)
 		}
 	}
 	return params, nil
@@ -385,10 +385,10 @@ func decodeSearchParams(r *http.Request) (SearchParams, error) {
 				params.Query = c
 				return nil
 			}(); err != nil {
-				return params, fmt.Errorf("parse parameter 'query' located in 'query': %w", err)
+				return params, errors.Wrap(err, `parse parameter query located in query`)
 			}
 		} else {
-			return params, fmt.Errorf("query parameter 'query' not specified")
+			return params, errors.New(`query parameter query not specified`)
 		}
 	}
 	// Decode param "page" located in "Query".
@@ -422,7 +422,7 @@ func decodeSearchParams(r *http.Request) (SearchParams, error) {
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
+				return params, errors.Wrap(err, `parse parameter page located in query`)
 			}
 		}
 	}
@@ -455,10 +455,10 @@ func decodeSearchByTagIDParams(r *http.Request) (SearchByTagIDParams, error) {
 				params.TagID = c
 				return nil
 			}(); err != nil {
-				return params, fmt.Errorf("parse parameter 'tag_id' located in 'query': %w", err)
+				return params, errors.Wrap(err, `parse parameter tag_id located in query`)
 			}
 		} else {
-			return params, fmt.Errorf("query parameter 'tag_id' not specified")
+			return params, errors.New(`query parameter tag_id not specified`)
 		}
 	}
 	// Decode param "page" located in "Query".
@@ -492,7 +492,7 @@ func decodeSearchByTagIDParams(r *http.Request) (SearchByTagIDParams, error) {
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, fmt.Errorf("parse parameter 'page' located in 'query': %w", err)
+				return params, errors.Wrap(err, `parse parameter page located in query`)
 			}
 		}
 	}

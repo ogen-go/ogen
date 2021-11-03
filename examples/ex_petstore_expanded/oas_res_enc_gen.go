@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -75,11 +75,11 @@ func encodeDeletePetResponse(response DeletePetRes, w http.ResponseWriter, span 
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/pets/{id}: unexpected response type: %T", response)
+		return errors.Errorf(`/pets/{id}: unexpected response type: %T`, response)
 	}
 }

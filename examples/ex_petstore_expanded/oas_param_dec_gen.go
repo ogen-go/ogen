@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -90,7 +90,7 @@ func decodeDeletePetParams(r *http.Request) (DeletePetParams, error) {
 				return params, err
 			}
 		} else {
-			return params, fmt.Errorf("path parameter 'id' not specified")
+			return params, errors.New(`path parameter id not specified`)
 		}
 	}
 	return params, nil

@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -93,7 +93,7 @@ func decodeListPetsParams(r *http.Request) (ListPetsParams, error) {
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, fmt.Errorf("parse parameter 'limit' located in 'query': %w", err)
+				return params, errors.Wrap(err, `parse parameter limit located in query`)
 			}
 		}
 	}
@@ -130,7 +130,7 @@ func decodeShowPetByIdParams(r *http.Request) (ShowPetByIdParams, error) {
 				return params, err
 			}
 		} else {
-			return params, fmt.Errorf("path parameter 'petId' not specified")
+			return params, errors.New(`path parameter petId not specified`)
 		}
 	}
 	return params, nil

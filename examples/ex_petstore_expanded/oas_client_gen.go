@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -121,11 +121,10 @@ func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (res Del
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.Int64ToString(params.ID))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode path: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -135,13 +134,13 @@ func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (res Del
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeletePetResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil

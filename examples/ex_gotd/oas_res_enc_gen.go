@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -72,7 +72,7 @@ func encodeAddStickerToSetResponse(response AddStickerToSetRes, w http.ResponseW
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -86,12 +86,12 @@ func encodeAddStickerToSetResponse(response AddStickerToSetRes, w http.ResponseW
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/addStickerToSet: unexpected response type: %T", response)
+		return errors.Errorf(`/addStickerToSet: unexpected response type: %T`, response)
 	}
 }
 
@@ -107,7 +107,7 @@ func encodeAnswerCallbackQueryResponse(response AnswerCallbackQueryRes, w http.R
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -121,12 +121,12 @@ func encodeAnswerCallbackQueryResponse(response AnswerCallbackQueryRes, w http.R
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/answerCallbackQuery: unexpected response type: %T", response)
+		return errors.Errorf(`/answerCallbackQuery: unexpected response type: %T`, response)
 	}
 }
 
@@ -142,7 +142,7 @@ func encodeAnswerInlineQueryResponse(response AnswerInlineQueryRes, w http.Respo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -156,12 +156,12 @@ func encodeAnswerInlineQueryResponse(response AnswerInlineQueryRes, w http.Respo
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/answerInlineQuery: unexpected response type: %T", response)
+		return errors.Errorf(`/answerInlineQuery: unexpected response type: %T`, response)
 	}
 }
 
@@ -177,7 +177,7 @@ func encodeAnswerPreCheckoutQueryResponse(response AnswerPreCheckoutQueryRes, w 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -191,12 +191,12 @@ func encodeAnswerPreCheckoutQueryResponse(response AnswerPreCheckoutQueryRes, w 
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/answerPreCheckoutQuery: unexpected response type: %T", response)
+		return errors.Errorf(`/answerPreCheckoutQuery: unexpected response type: %T`, response)
 	}
 }
 
@@ -212,7 +212,7 @@ func encodeAnswerShippingQueryResponse(response AnswerShippingQueryRes, w http.R
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -226,12 +226,12 @@ func encodeAnswerShippingQueryResponse(response AnswerShippingQueryRes, w http.R
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/answerShippingQuery: unexpected response type: %T", response)
+		return errors.Errorf(`/answerShippingQuery: unexpected response type: %T`, response)
 	}
 }
 
@@ -247,7 +247,7 @@ func encodeBanChatMemberResponse(response BanChatMemberRes, w http.ResponseWrite
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -261,12 +261,12 @@ func encodeBanChatMemberResponse(response BanChatMemberRes, w http.ResponseWrite
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/banChatMember: unexpected response type: %T", response)
+		return errors.Errorf(`/banChatMember: unexpected response type: %T`, response)
 	}
 }
 
@@ -282,7 +282,7 @@ func encodeCopyMessageResponse(response CopyMessageRes, w http.ResponseWriter, s
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -296,12 +296,12 @@ func encodeCopyMessageResponse(response CopyMessageRes, w http.ResponseWriter, s
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/copyMessage: unexpected response type: %T", response)
+		return errors.Errorf(`/copyMessage: unexpected response type: %T`, response)
 	}
 }
 
@@ -317,7 +317,7 @@ func encodeCreateChatInviteLinkResponse(response CreateChatInviteLinkRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -331,12 +331,12 @@ func encodeCreateChatInviteLinkResponse(response CreateChatInviteLinkRes, w http
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/createChatInviteLink: unexpected response type: %T", response)
+		return errors.Errorf(`/createChatInviteLink: unexpected response type: %T`, response)
 	}
 }
 
@@ -352,7 +352,7 @@ func encodeCreateNewStickerSetResponse(response CreateNewStickerSetRes, w http.R
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -366,12 +366,12 @@ func encodeCreateNewStickerSetResponse(response CreateNewStickerSetRes, w http.R
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/createNewStickerSet: unexpected response type: %T", response)
+		return errors.Errorf(`/createNewStickerSet: unexpected response type: %T`, response)
 	}
 }
 
@@ -387,7 +387,7 @@ func encodeDeleteChatPhotoResponse(response DeleteChatPhotoRes, w http.ResponseW
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -401,12 +401,12 @@ func encodeDeleteChatPhotoResponse(response DeleteChatPhotoRes, w http.ResponseW
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/deleteChatPhoto: unexpected response type: %T", response)
+		return errors.Errorf(`/deleteChatPhoto: unexpected response type: %T`, response)
 	}
 }
 
@@ -422,7 +422,7 @@ func encodeDeleteChatStickerSetResponse(response DeleteChatStickerSetRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -436,12 +436,12 @@ func encodeDeleteChatStickerSetResponse(response DeleteChatStickerSetRes, w http
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/deleteChatStickerSet: unexpected response type: %T", response)
+		return errors.Errorf(`/deleteChatStickerSet: unexpected response type: %T`, response)
 	}
 }
 
@@ -457,7 +457,7 @@ func encodeDeleteMessageResponse(response DeleteMessageRes, w http.ResponseWrite
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -471,12 +471,12 @@ func encodeDeleteMessageResponse(response DeleteMessageRes, w http.ResponseWrite
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/deleteMessage: unexpected response type: %T", response)
+		return errors.Errorf(`/deleteMessage: unexpected response type: %T`, response)
 	}
 }
 
@@ -492,7 +492,7 @@ func encodeDeleteMyCommandsResponse(response DeleteMyCommandsRes, w http.Respons
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -506,12 +506,12 @@ func encodeDeleteMyCommandsResponse(response DeleteMyCommandsRes, w http.Respons
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/deleteMyCommands: unexpected response type: %T", response)
+		return errors.Errorf(`/deleteMyCommands: unexpected response type: %T`, response)
 	}
 }
 
@@ -527,7 +527,7 @@ func encodeDeleteStickerFromSetResponse(response DeleteStickerFromSetRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -541,12 +541,12 @@ func encodeDeleteStickerFromSetResponse(response DeleteStickerFromSetRes, w http
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/deleteStickerFromSet: unexpected response type: %T", response)
+		return errors.Errorf(`/deleteStickerFromSet: unexpected response type: %T`, response)
 	}
 }
 
@@ -562,7 +562,7 @@ func encodeDeleteWebhookResponse(response DeleteWebhookRes, w http.ResponseWrite
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -576,12 +576,12 @@ func encodeDeleteWebhookResponse(response DeleteWebhookRes, w http.ResponseWrite
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/deleteWebhook: unexpected response type: %T", response)
+		return errors.Errorf(`/deleteWebhook: unexpected response type: %T`, response)
 	}
 }
 
@@ -597,7 +597,7 @@ func encodeEditChatInviteLinkResponse(response EditChatInviteLinkRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -611,12 +611,12 @@ func encodeEditChatInviteLinkResponse(response EditChatInviteLinkRes, w http.Res
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/editChatInviteLink: unexpected response type: %T", response)
+		return errors.Errorf(`/editChatInviteLink: unexpected response type: %T`, response)
 	}
 }
 
@@ -632,7 +632,7 @@ func encodeEditMessageCaptionResponse(response EditMessageCaptionRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -646,12 +646,12 @@ func encodeEditMessageCaptionResponse(response EditMessageCaptionRes, w http.Res
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/editMessageCaption: unexpected response type: %T", response)
+		return errors.Errorf(`/editMessageCaption: unexpected response type: %T`, response)
 	}
 }
 
@@ -667,7 +667,7 @@ func encodeEditMessageLiveLocationResponse(response EditMessageLiveLocationRes, 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -681,12 +681,12 @@ func encodeEditMessageLiveLocationResponse(response EditMessageLiveLocationRes, 
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/editMessageLiveLocation: unexpected response type: %T", response)
+		return errors.Errorf(`/editMessageLiveLocation: unexpected response type: %T`, response)
 	}
 }
 
@@ -702,7 +702,7 @@ func encodeEditMessageMediaResponse(response EditMessageMediaRes, w http.Respons
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -716,12 +716,12 @@ func encodeEditMessageMediaResponse(response EditMessageMediaRes, w http.Respons
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/editMessageMedia: unexpected response type: %T", response)
+		return errors.Errorf(`/editMessageMedia: unexpected response type: %T`, response)
 	}
 }
 
@@ -737,7 +737,7 @@ func encodeEditMessageReplyMarkupResponse(response EditMessageReplyMarkupRes, w 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -751,12 +751,12 @@ func encodeEditMessageReplyMarkupResponse(response EditMessageReplyMarkupRes, w 
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/editMessageReplyMarkup: unexpected response type: %T", response)
+		return errors.Errorf(`/editMessageReplyMarkup: unexpected response type: %T`, response)
 	}
 }
 
@@ -772,7 +772,7 @@ func encodeEditMessageTextResponse(response EditMessageTextRes, w http.ResponseW
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -786,12 +786,12 @@ func encodeEditMessageTextResponse(response EditMessageTextRes, w http.ResponseW
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/editMessageText: unexpected response type: %T", response)
+		return errors.Errorf(`/editMessageText: unexpected response type: %T`, response)
 	}
 }
 
@@ -807,7 +807,7 @@ func encodeExportChatInviteLinkResponse(response ExportChatInviteLinkRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -821,12 +821,12 @@ func encodeExportChatInviteLinkResponse(response ExportChatInviteLinkRes, w http
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/exportChatInviteLink: unexpected response type: %T", response)
+		return errors.Errorf(`/exportChatInviteLink: unexpected response type: %T`, response)
 	}
 }
 
@@ -842,7 +842,7 @@ func encodeForwardMessageResponse(response ForwardMessageRes, w http.ResponseWri
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -856,12 +856,12 @@ func encodeForwardMessageResponse(response ForwardMessageRes, w http.ResponseWri
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/forwardMessage: unexpected response type: %T", response)
+		return errors.Errorf(`/forwardMessage: unexpected response type: %T`, response)
 	}
 }
 
@@ -877,7 +877,7 @@ func encodeGetChatResponse(response GetChatRes, w http.ResponseWriter, span trac
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -891,12 +891,12 @@ func encodeGetChatResponse(response GetChatRes, w http.ResponseWriter, span trac
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/getChat: unexpected response type: %T", response)
+		return errors.Errorf(`/getChat: unexpected response type: %T`, response)
 	}
 }
 
@@ -912,7 +912,7 @@ func encodeGetChatAdministratorsResponse(response GetChatAdministratorsRes, w ht
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -926,12 +926,12 @@ func encodeGetChatAdministratorsResponse(response GetChatAdministratorsRes, w ht
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/getChatAdministrators: unexpected response type: %T", response)
+		return errors.Errorf(`/getChatAdministrators: unexpected response type: %T`, response)
 	}
 }
 
@@ -947,7 +947,7 @@ func encodeGetChatMemberResponse(response GetChatMemberRes, w http.ResponseWrite
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -961,12 +961,12 @@ func encodeGetChatMemberResponse(response GetChatMemberRes, w http.ResponseWrite
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/getChatMember: unexpected response type: %T", response)
+		return errors.Errorf(`/getChatMember: unexpected response type: %T`, response)
 	}
 }
 
@@ -982,7 +982,7 @@ func encodeGetChatMemberCountResponse(response GetChatMemberCountRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -996,12 +996,12 @@ func encodeGetChatMemberCountResponse(response GetChatMemberCountRes, w http.Res
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/getChatMemberCount: unexpected response type: %T", response)
+		return errors.Errorf(`/getChatMemberCount: unexpected response type: %T`, response)
 	}
 }
 
@@ -1017,7 +1017,7 @@ func encodeGetFileResponse(response GetFileRes, w http.ResponseWriter, span trac
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1031,12 +1031,12 @@ func encodeGetFileResponse(response GetFileRes, w http.ResponseWriter, span trac
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/getFile: unexpected response type: %T", response)
+		return errors.Errorf(`/getFile: unexpected response type: %T`, response)
 	}
 }
 
@@ -1052,7 +1052,7 @@ func encodeGetGameHighScoresResponse(response GetGameHighScoresRes, w http.Respo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1066,12 +1066,12 @@ func encodeGetGameHighScoresResponse(response GetGameHighScoresRes, w http.Respo
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/getGameHighScores: unexpected response type: %T", response)
+		return errors.Errorf(`/getGameHighScores: unexpected response type: %T`, response)
 	}
 }
 
@@ -1087,7 +1087,7 @@ func encodeGetMeResponse(response GetMeRes, w http.ResponseWriter, span trace.Sp
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1101,12 +1101,12 @@ func encodeGetMeResponse(response GetMeRes, w http.ResponseWriter, span trace.Sp
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/getMe: unexpected response type: %T", response)
+		return errors.Errorf(`/getMe: unexpected response type: %T`, response)
 	}
 }
 
@@ -1122,7 +1122,7 @@ func encodeGetMyCommandsResponse(response GetMyCommandsRes, w http.ResponseWrite
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1136,12 +1136,12 @@ func encodeGetMyCommandsResponse(response GetMyCommandsRes, w http.ResponseWrite
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/getMyCommands: unexpected response type: %T", response)
+		return errors.Errorf(`/getMyCommands: unexpected response type: %T`, response)
 	}
 }
 
@@ -1157,7 +1157,7 @@ func encodeGetStickerSetResponse(response GetStickerSetRes, w http.ResponseWrite
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1171,12 +1171,12 @@ func encodeGetStickerSetResponse(response GetStickerSetRes, w http.ResponseWrite
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/getStickerSet: unexpected response type: %T", response)
+		return errors.Errorf(`/getStickerSet: unexpected response type: %T`, response)
 	}
 }
 
@@ -1192,7 +1192,7 @@ func encodeGetUpdatesResponse(response GetUpdatesRes, w http.ResponseWriter, spa
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1206,12 +1206,12 @@ func encodeGetUpdatesResponse(response GetUpdatesRes, w http.ResponseWriter, spa
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/getUpdates: unexpected response type: %T", response)
+		return errors.Errorf(`/getUpdates: unexpected response type: %T`, response)
 	}
 }
 
@@ -1227,7 +1227,7 @@ func encodeGetUserProfilePhotosResponse(response GetUserProfilePhotosRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1241,12 +1241,12 @@ func encodeGetUserProfilePhotosResponse(response GetUserProfilePhotosRes, w http
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/getUserProfilePhotos: unexpected response type: %T", response)
+		return errors.Errorf(`/getUserProfilePhotos: unexpected response type: %T`, response)
 	}
 }
 
@@ -1262,7 +1262,7 @@ func encodeLeaveChatResponse(response LeaveChatRes, w http.ResponseWriter, span 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1276,12 +1276,12 @@ func encodeLeaveChatResponse(response LeaveChatRes, w http.ResponseWriter, span 
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/leaveChat: unexpected response type: %T", response)
+		return errors.Errorf(`/leaveChat: unexpected response type: %T`, response)
 	}
 }
 
@@ -1297,7 +1297,7 @@ func encodePinChatMessageResponse(response PinChatMessageRes, w http.ResponseWri
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1311,12 +1311,12 @@ func encodePinChatMessageResponse(response PinChatMessageRes, w http.ResponseWri
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/pinChatMessage: unexpected response type: %T", response)
+		return errors.Errorf(`/pinChatMessage: unexpected response type: %T`, response)
 	}
 }
 
@@ -1332,7 +1332,7 @@ func encodePromoteChatMemberResponse(response PromoteChatMemberRes, w http.Respo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1346,12 +1346,12 @@ func encodePromoteChatMemberResponse(response PromoteChatMemberRes, w http.Respo
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/promoteChatMember: unexpected response type: %T", response)
+		return errors.Errorf(`/promoteChatMember: unexpected response type: %T`, response)
 	}
 }
 
@@ -1367,7 +1367,7 @@ func encodeRestrictChatMemberResponse(response RestrictChatMemberRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1381,12 +1381,12 @@ func encodeRestrictChatMemberResponse(response RestrictChatMemberRes, w http.Res
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/restrictChatMember: unexpected response type: %T", response)
+		return errors.Errorf(`/restrictChatMember: unexpected response type: %T`, response)
 	}
 }
 
@@ -1402,7 +1402,7 @@ func encodeRevokeChatInviteLinkResponse(response RevokeChatInviteLinkRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1416,12 +1416,12 @@ func encodeRevokeChatInviteLinkResponse(response RevokeChatInviteLinkRes, w http
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/revokeChatInviteLink: unexpected response type: %T", response)
+		return errors.Errorf(`/revokeChatInviteLink: unexpected response type: %T`, response)
 	}
 }
 
@@ -1437,7 +1437,7 @@ func encodeSendAnimationResponse(response SendAnimationRes, w http.ResponseWrite
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1451,12 +1451,12 @@ func encodeSendAnimationResponse(response SendAnimationRes, w http.ResponseWrite
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/sendAnimation: unexpected response type: %T", response)
+		return errors.Errorf(`/sendAnimation: unexpected response type: %T`, response)
 	}
 }
 
@@ -1472,7 +1472,7 @@ func encodeSendAudioResponse(response SendAudioRes, w http.ResponseWriter, span 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1486,12 +1486,12 @@ func encodeSendAudioResponse(response SendAudioRes, w http.ResponseWriter, span 
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/sendAudio: unexpected response type: %T", response)
+		return errors.Errorf(`/sendAudio: unexpected response type: %T`, response)
 	}
 }
 
@@ -1507,7 +1507,7 @@ func encodeSendChatActionResponse(response SendChatActionRes, w http.ResponseWri
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1521,12 +1521,12 @@ func encodeSendChatActionResponse(response SendChatActionRes, w http.ResponseWri
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/sendChatAction: unexpected response type: %T", response)
+		return errors.Errorf(`/sendChatAction: unexpected response type: %T`, response)
 	}
 }
 
@@ -1542,7 +1542,7 @@ func encodeSendContactResponse(response SendContactRes, w http.ResponseWriter, s
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1556,12 +1556,12 @@ func encodeSendContactResponse(response SendContactRes, w http.ResponseWriter, s
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/sendContact: unexpected response type: %T", response)
+		return errors.Errorf(`/sendContact: unexpected response type: %T`, response)
 	}
 }
 
@@ -1577,7 +1577,7 @@ func encodeSendDiceResponse(response SendDiceRes, w http.ResponseWriter, span tr
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1591,12 +1591,12 @@ func encodeSendDiceResponse(response SendDiceRes, w http.ResponseWriter, span tr
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/sendDice: unexpected response type: %T", response)
+		return errors.Errorf(`/sendDice: unexpected response type: %T`, response)
 	}
 }
 
@@ -1612,7 +1612,7 @@ func encodeSendDocumentResponse(response SendDocumentRes, w http.ResponseWriter,
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1626,12 +1626,12 @@ func encodeSendDocumentResponse(response SendDocumentRes, w http.ResponseWriter,
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/sendDocument: unexpected response type: %T", response)
+		return errors.Errorf(`/sendDocument: unexpected response type: %T`, response)
 	}
 }
 
@@ -1647,7 +1647,7 @@ func encodeSendGameResponse(response SendGameRes, w http.ResponseWriter, span tr
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1661,12 +1661,12 @@ func encodeSendGameResponse(response SendGameRes, w http.ResponseWriter, span tr
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/sendGame: unexpected response type: %T", response)
+		return errors.Errorf(`/sendGame: unexpected response type: %T`, response)
 	}
 }
 
@@ -1682,7 +1682,7 @@ func encodeSendInvoiceResponse(response SendInvoiceRes, w http.ResponseWriter, s
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1696,12 +1696,12 @@ func encodeSendInvoiceResponse(response SendInvoiceRes, w http.ResponseWriter, s
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/sendInvoice: unexpected response type: %T", response)
+		return errors.Errorf(`/sendInvoice: unexpected response type: %T`, response)
 	}
 }
 
@@ -1717,7 +1717,7 @@ func encodeSendLocationResponse(response SendLocationRes, w http.ResponseWriter,
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1731,12 +1731,12 @@ func encodeSendLocationResponse(response SendLocationRes, w http.ResponseWriter,
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/sendLocation: unexpected response type: %T", response)
+		return errors.Errorf(`/sendLocation: unexpected response type: %T`, response)
 	}
 }
 
@@ -1752,7 +1752,7 @@ func encodeSendMediaGroupResponse(response SendMediaGroupRes, w http.ResponseWri
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1766,12 +1766,12 @@ func encodeSendMediaGroupResponse(response SendMediaGroupRes, w http.ResponseWri
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/sendMediaGroup: unexpected response type: %T", response)
+		return errors.Errorf(`/sendMediaGroup: unexpected response type: %T`, response)
 	}
 }
 
@@ -1787,7 +1787,7 @@ func encodeSendMessageResponse(response SendMessageRes, w http.ResponseWriter, s
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1801,12 +1801,12 @@ func encodeSendMessageResponse(response SendMessageRes, w http.ResponseWriter, s
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/sendMessage: unexpected response type: %T", response)
+		return errors.Errorf(`/sendMessage: unexpected response type: %T`, response)
 	}
 }
 
@@ -1822,7 +1822,7 @@ func encodeSendPhotoResponse(response SendPhotoRes, w http.ResponseWriter, span 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1836,12 +1836,12 @@ func encodeSendPhotoResponse(response SendPhotoRes, w http.ResponseWriter, span 
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/sendPhoto: unexpected response type: %T", response)
+		return errors.Errorf(`/sendPhoto: unexpected response type: %T`, response)
 	}
 }
 
@@ -1857,7 +1857,7 @@ func encodeSendPollResponse(response SendPollRes, w http.ResponseWriter, span tr
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1871,12 +1871,12 @@ func encodeSendPollResponse(response SendPollRes, w http.ResponseWriter, span tr
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/sendPoll: unexpected response type: %T", response)
+		return errors.Errorf(`/sendPoll: unexpected response type: %T`, response)
 	}
 }
 
@@ -1892,7 +1892,7 @@ func encodeSendStickerResponse(response SendStickerRes, w http.ResponseWriter, s
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1906,12 +1906,12 @@ func encodeSendStickerResponse(response SendStickerRes, w http.ResponseWriter, s
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/sendSticker: unexpected response type: %T", response)
+		return errors.Errorf(`/sendSticker: unexpected response type: %T`, response)
 	}
 }
 
@@ -1927,7 +1927,7 @@ func encodeSendVenueResponse(response SendVenueRes, w http.ResponseWriter, span 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1941,12 +1941,12 @@ func encodeSendVenueResponse(response SendVenueRes, w http.ResponseWriter, span 
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/sendVenue: unexpected response type: %T", response)
+		return errors.Errorf(`/sendVenue: unexpected response type: %T`, response)
 	}
 }
 
@@ -1962,7 +1962,7 @@ func encodeSendVideoResponse(response SendVideoRes, w http.ResponseWriter, span 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1976,12 +1976,12 @@ func encodeSendVideoResponse(response SendVideoRes, w http.ResponseWriter, span 
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/sendVideo: unexpected response type: %T", response)
+		return errors.Errorf(`/sendVideo: unexpected response type: %T`, response)
 	}
 }
 
@@ -1997,7 +1997,7 @@ func encodeSendVideoNoteResponse(response SendVideoNoteRes, w http.ResponseWrite
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2011,12 +2011,12 @@ func encodeSendVideoNoteResponse(response SendVideoNoteRes, w http.ResponseWrite
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/sendVideoNote: unexpected response type: %T", response)
+		return errors.Errorf(`/sendVideoNote: unexpected response type: %T`, response)
 	}
 }
 
@@ -2032,7 +2032,7 @@ func encodeSendVoiceResponse(response SendVoiceRes, w http.ResponseWriter, span 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2046,12 +2046,12 @@ func encodeSendVoiceResponse(response SendVoiceRes, w http.ResponseWriter, span 
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/sendVoice: unexpected response type: %T", response)
+		return errors.Errorf(`/sendVoice: unexpected response type: %T`, response)
 	}
 }
 
@@ -2067,7 +2067,7 @@ func encodeSetChatAdministratorCustomTitleResponse(response SetChatAdministrator
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2081,12 +2081,12 @@ func encodeSetChatAdministratorCustomTitleResponse(response SetChatAdministrator
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/setChatAdministratorCustomTitle: unexpected response type: %T", response)
+		return errors.Errorf(`/setChatAdministratorCustomTitle: unexpected response type: %T`, response)
 	}
 }
 
@@ -2102,7 +2102,7 @@ func encodeSetChatDescriptionResponse(response SetChatDescriptionRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2116,12 +2116,12 @@ func encodeSetChatDescriptionResponse(response SetChatDescriptionRes, w http.Res
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/setChatDescription: unexpected response type: %T", response)
+		return errors.Errorf(`/setChatDescription: unexpected response type: %T`, response)
 	}
 }
 
@@ -2137,7 +2137,7 @@ func encodeSetChatPermissionsResponse(response SetChatPermissionsRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2151,12 +2151,12 @@ func encodeSetChatPermissionsResponse(response SetChatPermissionsRes, w http.Res
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/setChatPermissions: unexpected response type: %T", response)
+		return errors.Errorf(`/setChatPermissions: unexpected response type: %T`, response)
 	}
 }
 
@@ -2172,7 +2172,7 @@ func encodeSetChatPhotoResponse(response SetChatPhotoRes, w http.ResponseWriter,
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2186,12 +2186,12 @@ func encodeSetChatPhotoResponse(response SetChatPhotoRes, w http.ResponseWriter,
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/setChatPhoto: unexpected response type: %T", response)
+		return errors.Errorf(`/setChatPhoto: unexpected response type: %T`, response)
 	}
 }
 
@@ -2207,7 +2207,7 @@ func encodeSetChatStickerSetResponse(response SetChatStickerSetRes, w http.Respo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2221,12 +2221,12 @@ func encodeSetChatStickerSetResponse(response SetChatStickerSetRes, w http.Respo
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/setChatStickerSet: unexpected response type: %T", response)
+		return errors.Errorf(`/setChatStickerSet: unexpected response type: %T`, response)
 	}
 }
 
@@ -2242,7 +2242,7 @@ func encodeSetChatTitleResponse(response SetChatTitleRes, w http.ResponseWriter,
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2256,12 +2256,12 @@ func encodeSetChatTitleResponse(response SetChatTitleRes, w http.ResponseWriter,
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/setChatTitle: unexpected response type: %T", response)
+		return errors.Errorf(`/setChatTitle: unexpected response type: %T`, response)
 	}
 }
 
@@ -2277,7 +2277,7 @@ func encodeSetGameScoreResponse(response SetGameScoreRes, w http.ResponseWriter,
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2291,12 +2291,12 @@ func encodeSetGameScoreResponse(response SetGameScoreRes, w http.ResponseWriter,
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/setGameScore: unexpected response type: %T", response)
+		return errors.Errorf(`/setGameScore: unexpected response type: %T`, response)
 	}
 }
 
@@ -2312,7 +2312,7 @@ func encodeSetMyCommandsResponse(response SetMyCommandsRes, w http.ResponseWrite
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2326,12 +2326,12 @@ func encodeSetMyCommandsResponse(response SetMyCommandsRes, w http.ResponseWrite
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/setMyCommands: unexpected response type: %T", response)
+		return errors.Errorf(`/setMyCommands: unexpected response type: %T`, response)
 	}
 }
 
@@ -2347,7 +2347,7 @@ func encodeSetPassportDataErrorsResponse(response SetPassportDataErrorsRes, w ht
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2361,12 +2361,12 @@ func encodeSetPassportDataErrorsResponse(response SetPassportDataErrorsRes, w ht
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/setPassportDataErrors: unexpected response type: %T", response)
+		return errors.Errorf(`/setPassportDataErrors: unexpected response type: %T`, response)
 	}
 }
 
@@ -2382,7 +2382,7 @@ func encodeSetStickerPositionInSetResponse(response SetStickerPositionInSetRes, 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2396,12 +2396,12 @@ func encodeSetStickerPositionInSetResponse(response SetStickerPositionInSetRes, 
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/setStickerPositionInSet: unexpected response type: %T", response)
+		return errors.Errorf(`/setStickerPositionInSet: unexpected response type: %T`, response)
 	}
 }
 
@@ -2417,7 +2417,7 @@ func encodeSetStickerSetThumbResponse(response SetStickerSetThumbRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2431,12 +2431,12 @@ func encodeSetStickerSetThumbResponse(response SetStickerSetThumbRes, w http.Res
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/setStickerSetThumb: unexpected response type: %T", response)
+		return errors.Errorf(`/setStickerSetThumb: unexpected response type: %T`, response)
 	}
 }
 
@@ -2452,7 +2452,7 @@ func encodeSetWebhookResponse(response SetWebhookRes, w http.ResponseWriter, spa
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2466,12 +2466,12 @@ func encodeSetWebhookResponse(response SetWebhookRes, w http.ResponseWriter, spa
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/setWebhook: unexpected response type: %T", response)
+		return errors.Errorf(`/setWebhook: unexpected response type: %T`, response)
 	}
 }
 
@@ -2487,7 +2487,7 @@ func encodeStopMessageLiveLocationResponse(response StopMessageLiveLocationRes, 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2501,12 +2501,12 @@ func encodeStopMessageLiveLocationResponse(response StopMessageLiveLocationRes, 
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/stopMessageLiveLocation: unexpected response type: %T", response)
+		return errors.Errorf(`/stopMessageLiveLocation: unexpected response type: %T`, response)
 	}
 }
 
@@ -2522,7 +2522,7 @@ func encodeStopPollResponse(response StopPollRes, w http.ResponseWriter, span tr
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2536,12 +2536,12 @@ func encodeStopPollResponse(response StopPollRes, w http.ResponseWriter, span tr
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/stopPoll: unexpected response type: %T", response)
+		return errors.Errorf(`/stopPoll: unexpected response type: %T`, response)
 	}
 }
 
@@ -2557,7 +2557,7 @@ func encodeUnbanChatMemberResponse(response UnbanChatMemberRes, w http.ResponseW
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2571,12 +2571,12 @@ func encodeUnbanChatMemberResponse(response UnbanChatMemberRes, w http.ResponseW
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/unbanChatMember: unexpected response type: %T", response)
+		return errors.Errorf(`/unbanChatMember: unexpected response type: %T`, response)
 	}
 }
 
@@ -2592,7 +2592,7 @@ func encodeUnpinAllChatMessagesResponse(response UnpinAllChatMessagesRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2606,12 +2606,12 @@ func encodeUnpinAllChatMessagesResponse(response UnpinAllChatMessagesRes, w http
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/unpinAllChatMessages: unexpected response type: %T", response)
+		return errors.Errorf(`/unpinAllChatMessages: unexpected response type: %T`, response)
 	}
 }
 
@@ -2627,7 +2627,7 @@ func encodeUnpinChatMessageResponse(response UnpinChatMessageRes, w http.Respons
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2641,12 +2641,12 @@ func encodeUnpinChatMessageResponse(response UnpinChatMessageRes, w http.Respons
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/unpinChatMessage: unexpected response type: %T", response)
+		return errors.Errorf(`/unpinChatMessage: unexpected response type: %T`, response)
 	}
 }
 
@@ -2662,7 +2662,7 @@ func encodeUploadStickerFileResponse(response UploadStickerFileRes, w http.Respo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2676,11 +2676,11 @@ func encodeUploadStickerFileResponse(response UploadStickerFileRes, w http.Respo
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/uploadStickerFile: unexpected response type: %T", response)
+		return errors.Errorf(`/uploadStickerFile: unexpected response type: %T`, response)
 	}
 }

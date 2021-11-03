@@ -5,7 +5,6 @@ package techempower
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -86,10 +86,10 @@ func decodeCachingParams(r *http.Request) (CachingParams, error) {
 				params.Count = c
 				return nil
 			}(); err != nil {
-				return params, fmt.Errorf("parse parameter 'count' located in 'query': %w", err)
+				return params, errors.Wrap(err, `parse parameter count located in query`)
 			}
 		} else {
-			return params, fmt.Errorf("query parameter 'count' not specified")
+			return params, errors.New(`query parameter count not specified`)
 		}
 	}
 	return params, nil
@@ -121,10 +121,10 @@ func decodeQueriesParams(r *http.Request) (QueriesParams, error) {
 				params.Queries = c
 				return nil
 			}(); err != nil {
-				return params, fmt.Errorf("parse parameter 'queries' located in 'query': %w", err)
+				return params, errors.Wrap(err, `parse parameter queries located in query`)
 			}
 		} else {
-			return params, fmt.Errorf("query parameter 'queries' not specified")
+			return params, errors.New(`query parameter queries not specified`)
 		}
 	}
 	return params, nil
@@ -156,10 +156,10 @@ func decodeUpdatesParams(r *http.Request) (UpdatesParams, error) {
 				params.Queries = c
 				return nil
 			}(); err != nil {
-				return params, fmt.Errorf("parse parameter 'queries' located in 'query': %w", err)
+				return params, errors.Wrap(err, `parse parameter queries located in query`)
 			}
 		} else {
-			return params, fmt.Errorf("query parameter 'queries' not specified")
+			return params, errors.New(`query parameter queries not specified`)
 		}
 	}
 	return params, nil

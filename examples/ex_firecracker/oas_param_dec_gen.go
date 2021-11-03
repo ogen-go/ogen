@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -90,7 +90,7 @@ func decodePatchGuestDriveByIDParams(r *http.Request) (PatchGuestDriveByIDParams
 				return params, err
 			}
 		} else {
-			return params, fmt.Errorf("path parameter 'drive_id' not specified")
+			return params, errors.New(`path parameter drive_id not specified`)
 		}
 	}
 	return params, nil
@@ -126,7 +126,7 @@ func decodePatchGuestNetworkInterfaceByIDParams(r *http.Request) (PatchGuestNetw
 				return params, err
 			}
 		} else {
-			return params, fmt.Errorf("path parameter 'iface_id' not specified")
+			return params, errors.New(`path parameter iface_id not specified`)
 		}
 	}
 	return params, nil
@@ -162,7 +162,7 @@ func decodePutGuestDriveByIDParams(r *http.Request) (PutGuestDriveByIDParams, er
 				return params, err
 			}
 		} else {
-			return params, fmt.Errorf("path parameter 'drive_id' not specified")
+			return params, errors.New(`path parameter drive_id not specified`)
 		}
 	}
 	return params, nil
@@ -198,7 +198,7 @@ func decodePutGuestNetworkInterfaceByIDParams(r *http.Request) (PutGuestNetworkI
 				return params, err
 			}
 		} else {
-			return params, fmt.Errorf("path parameter 'iface_id' not specified")
+			return params, errors.New(`path parameter iface_id not specified`)
 		}
 	}
 	return params, nil

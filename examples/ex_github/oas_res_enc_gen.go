@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -74,7 +74,7 @@ func encodeActionsAddSelectedRepoToOrgSecretResponse(response ActionsAddSelected
 		w.WriteHeader(409)
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -95,7 +95,7 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -108,7 +108,7 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -121,12 +121,12 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/actions/runs/{run_id}/approve: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/actions/runs/{run_id}/approve: unexpected response type: %T`, response)
 	}
 }
 
@@ -140,7 +140,7 @@ func encodeActionsCancelWorkflowRunResponse(response ActionsCancelWorkflowRunAcc
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -158,7 +158,7 @@ func encodeActionsCreateOrUpdateEnvironmentSecretResponse(response ActionsCreate
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -166,7 +166,7 @@ func encodeActionsCreateOrUpdateEnvironmentSecretResponse(response ActionsCreate
 		w.WriteHeader(204)
 		return nil
 	default:
-		return fmt.Errorf("/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}: unexpected response type: %T", response)
+		return errors.Errorf(`/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}: unexpected response type: %T`, response)
 	}
 }
 
@@ -182,7 +182,7 @@ func encodeActionsCreateOrUpdateOrgSecretResponse(response ActionsCreateOrUpdate
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -190,7 +190,7 @@ func encodeActionsCreateOrUpdateOrgSecretResponse(response ActionsCreateOrUpdate
 		w.WriteHeader(204)
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/actions/secrets/{secret_name}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/actions/secrets/{secret_name}: unexpected response type: %T`, response)
 	}
 }
 
@@ -206,7 +206,7 @@ func encodeActionsCreateOrUpdateRepoSecretResponse(response ActionsCreateOrUpdat
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -214,7 +214,7 @@ func encodeActionsCreateOrUpdateRepoSecretResponse(response ActionsCreateOrUpdat
 		w.WriteHeader(204)
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/actions/secrets/{secret_name}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/actions/secrets/{secret_name}: unexpected response type: %T`, response)
 	}
 }
 
@@ -228,7 +228,7 @@ func encodeActionsCreateRegistrationTokenForOrgResponse(response AuthenticationT
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -244,7 +244,7 @@ func encodeActionsCreateRegistrationTokenForRepoResponse(response Authentication
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -260,7 +260,7 @@ func encodeActionsCreateRemoveTokenForOrgResponse(response AuthenticationToken, 
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -276,7 +276,7 @@ func encodeActionsCreateRemoveTokenForRepoResponse(response AuthenticationToken,
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -292,7 +292,7 @@ func encodeActionsCreateSelfHostedRunnerGroupForOrgResponse(response RunnerGroup
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -378,7 +378,7 @@ func encodeActionsGetAllowedActionsOrganizationResponse(response SelectedActions
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -394,7 +394,7 @@ func encodeActionsGetAllowedActionsRepositoryResponse(response SelectedActions, 
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -410,7 +410,7 @@ func encodeActionsGetArtifactResponse(response Artifact, w http.ResponseWriter, 
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -426,7 +426,7 @@ func encodeActionsGetEnvironmentPublicKeyResponse(response ActionsPublicKey, w h
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -442,7 +442,7 @@ func encodeActionsGetEnvironmentSecretResponse(response ActionsSecret, w http.Re
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -458,7 +458,7 @@ func encodeActionsGetGithubActionsPermissionsOrganizationResponse(response Actio
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -474,7 +474,7 @@ func encodeActionsGetGithubActionsPermissionsRepositoryResponse(response Actions
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -490,7 +490,7 @@ func encodeActionsGetJobForWorkflowRunResponse(response Job, w http.ResponseWrit
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -506,7 +506,7 @@ func encodeActionsGetOrgPublicKeyResponse(response ActionsPublicKey, w http.Resp
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -522,7 +522,7 @@ func encodeActionsGetOrgSecretResponse(response OrganizationActionsSecret, w htt
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -538,7 +538,7 @@ func encodeActionsGetRepoPublicKeyResponse(response ActionsPublicKey, w http.Res
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -554,7 +554,7 @@ func encodeActionsGetRepoSecretResponse(response ActionsSecret, w http.ResponseW
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -577,7 +577,7 @@ func encodeActionsGetReviewsForRunResponse(response []EnvironmentApprovals, w ht
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -593,7 +593,7 @@ func encodeActionsGetSelfHostedRunnerForOrgResponse(response Runner, w http.Resp
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -609,7 +609,7 @@ func encodeActionsGetSelfHostedRunnerForRepoResponse(response Runner, w http.Res
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -625,7 +625,7 @@ func encodeActionsGetSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOr
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -641,7 +641,7 @@ func encodeActionsGetWorkflowRunResponse(response WorkflowRun, w http.ResponseWr
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -657,7 +657,7 @@ func encodeActionsGetWorkflowRunUsageResponse(response WorkflowRunUsage, w http.
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -673,7 +673,7 @@ func encodeActionsListArtifactsForRepoResponse(response ActionsListArtifactsForR
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -689,7 +689,7 @@ func encodeActionsListEnvironmentSecretsResponse(response ActionsListEnvironment
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -705,7 +705,7 @@ func encodeActionsListJobsForWorkflowRunResponse(response ActionsListJobsForWork
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -721,7 +721,7 @@ func encodeActionsListOrgSecretsResponse(response ActionsListOrgSecretsOK, w htt
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -737,7 +737,7 @@ func encodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(response Ac
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -753,7 +753,7 @@ func encodeActionsListRepoSecretsResponse(response ActionsListRepoSecretsOK, w h
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -769,7 +769,7 @@ func encodeActionsListRepoWorkflowsResponse(response ActionsListRepoWorkflowsOK,
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -792,7 +792,7 @@ func encodeActionsListRunnerApplicationsForOrgResponse(response []RunnerApplicat
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -815,7 +815,7 @@ func encodeActionsListRunnerApplicationsForRepoResponse(response []RunnerApplica
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -831,7 +831,7 @@ func encodeActionsListSelectedReposForOrgSecretResponse(response ActionsListSele
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -847,7 +847,7 @@ func encodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRespon
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -863,7 +863,7 @@ func encodeActionsListSelfHostedRunnerGroupsForOrgResponse(response ActionsListS
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -879,7 +879,7 @@ func encodeActionsListSelfHostedRunnersForOrgResponse(response ActionsListSelfHo
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -895,7 +895,7 @@ func encodeActionsListSelfHostedRunnersForRepoResponse(response ActionsListSelfH
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -911,7 +911,7 @@ func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response ActionsLis
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -927,7 +927,7 @@ func encodeActionsListWorkflowRunArtifactsResponse(response ActionsListWorkflowR
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -943,7 +943,7 @@ func encodeActionsListWorkflowRunsForRepoResponse(response ActionsListWorkflowRu
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -959,7 +959,7 @@ func encodeActionsReRunWorkflowResponse(response ActionsReRunWorkflowCreated, w 
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -979,7 +979,7 @@ func encodeActionsRemoveSelectedRepoFromOrgSecretResponse(response ActionsRemove
 		w.WriteHeader(409)
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -998,7 +998,7 @@ func encodeActionsRetryWorkflowResponse(response ActionsRetryWorkflowCreated, w 
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -1054,7 +1054,7 @@ func encodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(response RunnerGroup
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -1077,7 +1077,7 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1090,7 +1090,7 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1103,12 +1103,12 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/starred/{owner}/{repo}: unexpected response type: %T", response)
+		return errors.Errorf(`/user/starred/{owner}/{repo}: unexpected response type: %T`, response)
 	}
 }
 
@@ -1134,7 +1134,7 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1147,12 +1147,12 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/notifications/threads/{thread_id}/subscription: unexpected response type: %T", response)
+		return errors.Errorf(`/notifications/threads/{thread_id}/subscription: unexpected response type: %T`, response)
 	}
 }
 
@@ -1166,7 +1166,7 @@ func encodeActivityGetFeedsResponse(response Feed, w http.ResponseWriter, span t
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -1184,7 +1184,7 @@ func encodeActivityGetRepoSubscriptionResponse(response ActivityGetRepoSubscript
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1198,7 +1198,7 @@ func encodeActivityGetRepoSubscriptionResponse(response ActivityGetRepoSubscript
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1206,7 +1206,7 @@ func encodeActivityGetRepoSubscriptionResponse(response ActivityGetRepoSubscript
 		w.WriteHeader(404)
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/subscription: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/subscription: unexpected response type: %T`, response)
 	}
 }
 
@@ -1222,7 +1222,7 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1238,7 +1238,7 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1251,12 +1251,12 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/notifications/threads/{thread_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/notifications/threads/{thread_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -1272,7 +1272,7 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1288,7 +1288,7 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1301,12 +1301,12 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/notifications/threads/{thread_id}/subscription: unexpected response type: %T", response)
+		return errors.Errorf(`/notifications/threads/{thread_id}/subscription: unexpected response type: %T`, response)
 	}
 }
 
@@ -1327,7 +1327,7 @@ func encodeActivityListEventsForAuthenticatedUserResponse(response []Event, w ht
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -1350,7 +1350,7 @@ func encodeActivityListOrgEventsForAuthenticatedUserResponse(response []Event, w
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -1367,7 +1367,7 @@ func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1384,7 +1384,7 @@ func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1398,12 +1398,12 @@ func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/events: unexpected response type: %T", response)
+		return errors.Errorf(`/events: unexpected response type: %T`, response)
 	}
 }
 
@@ -1418,7 +1418,7 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1431,7 +1431,7 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1447,7 +1447,7 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1460,12 +1460,12 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/networks/{owner}/{repo}/events: unexpected response type: %T", response)
+		return errors.Errorf(`/networks/{owner}/{repo}/events: unexpected response type: %T`, response)
 	}
 }
 
@@ -1486,7 +1486,7 @@ func encodeActivityListPublicEventsForUserResponse(response []Event, w http.Resp
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -1509,7 +1509,7 @@ func encodeActivityListPublicOrgEventsResponse(response []Event, w http.Response
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -1532,7 +1532,7 @@ func encodeActivityListReceivedEventsForUserResponse(response []Event, w http.Re
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -1555,7 +1555,7 @@ func encodeActivityListReceivedPublicEventsForUserResponse(response []Event, w h
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -1578,7 +1578,7 @@ func encodeActivityListRepoEventsResponse(response []Event, w http.ResponseWrite
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -1601,7 +1601,7 @@ func encodeActivityListRepoNotificationsForAuthenticatedUserResponse(response []
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -1618,14 +1618,14 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	case *ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON:
 		w.Header().Set("Content-Type", "application/vnd.github.v3.star+json")
 		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.github.v3.star+json encoder not implemented")
+		return errors.New(`application/vnd.github.v3.star+json encoder not implemented`)
 	case *NotModified:
 		w.WriteHeader(304)
 		return nil
@@ -1638,7 +1638,7 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1651,12 +1651,12 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/starred: unexpected response type: %T", response)
+		return errors.Errorf(`/user/starred: unexpected response type: %T`, response)
 	}
 }
 
@@ -1677,7 +1677,7 @@ func encodeActivityListReposWatchedByUserResponse(response []MinimalRepository, 
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -1694,7 +1694,7 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1710,7 +1710,7 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1723,12 +1723,12 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/subscriptions: unexpected response type: %T", response)
+		return errors.Errorf(`/user/subscriptions: unexpected response type: %T`, response)
 	}
 }
 
@@ -1749,7 +1749,7 @@ func encodeActivityListWatchersForRepoResponse(response []SimpleUser, w http.Res
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -1767,7 +1767,7 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1786,7 +1786,7 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1799,12 +1799,12 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/notifications: unexpected response type: %T", response)
+		return errors.Errorf(`/notifications: unexpected response type: %T`, response)
 	}
 }
 
@@ -1820,7 +1820,7 @@ func encodeActivityMarkRepoNotificationsAsReadResponse(response ActivityMarkRepo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1828,7 +1828,7 @@ func encodeActivityMarkRepoNotificationsAsReadResponse(response ActivityMarkRepo
 		w.WriteHeader(205)
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/notifications: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/notifications: unexpected response type: %T`, response)
 	}
 }
 
@@ -1850,12 +1850,12 @@ func encodeActivityMarkThreadAsReadResponse(response ActivityMarkThreadAsReadRes
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/notifications/threads/{thread_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/notifications/threads/{thread_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -1869,7 +1869,7 @@ func encodeActivitySetRepoSubscriptionResponse(response RepositorySubscription, 
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -1887,7 +1887,7 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1903,7 +1903,7 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1916,12 +1916,12 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/notifications/threads/{thread_id}/subscription: unexpected response type: %T", response)
+		return errors.Errorf(`/notifications/threads/{thread_id}/subscription: unexpected response type: %T`, response)
 	}
 }
 
@@ -1942,7 +1942,7 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1955,7 +1955,7 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1968,12 +1968,12 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/starred/{owner}/{repo}: unexpected response type: %T", response)
+		return errors.Errorf(`/user/starred/{owner}/{repo}: unexpected response type: %T`, response)
 	}
 }
 
@@ -1994,7 +1994,7 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2007,7 +2007,7 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2020,12 +2020,12 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/starred/{owner}/{repo}: unexpected response type: %T", response)
+		return errors.Errorf(`/user/starred/{owner}/{repo}: unexpected response type: %T`, response)
 	}
 }
 
@@ -2046,7 +2046,7 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2059,12 +2059,12 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/installations/{installation_id}/repositories/{repository_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/user/installations/{installation_id}/repositories/{repository_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -2083,12 +2083,12 @@ func encodeAppsDeleteInstallationResponse(response AppsDeleteInstallationRes, w 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/app/installations/{installation_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/app/installations/{installation_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -2102,7 +2102,7 @@ func encodeAppsGetAuthenticatedResponse(response Integration, w http.ResponseWri
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -2120,7 +2120,7 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2133,7 +2133,7 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2146,7 +2146,7 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2160,12 +2160,12 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/apps/{app_slug}: unexpected response type: %T", response)
+		return errors.Errorf(`/apps/{app_slug}: unexpected response type: %T`, response)
 	}
 }
 
@@ -2181,7 +2181,7 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2194,7 +2194,7 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2207,12 +2207,12 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/marketplace_listing/accounts/{account_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/marketplace_listing/accounts/{account_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -2228,7 +2228,7 @@ func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubs
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2242,7 +2242,7 @@ func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubs
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2250,7 +2250,7 @@ func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubs
 		w.WriteHeader(404)
 		return nil
 	default:
-		return fmt.Errorf("/marketplace_listing/stubbed/accounts/{account_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/marketplace_listing/stubbed/accounts/{account_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -2264,7 +2264,7 @@ func encodeAppsGetWebhookConfigForAppResponse(response WebhookConfig, w http.Res
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -2281,7 +2281,7 @@ func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPl
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2295,12 +2295,12 @@ func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPl
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/marketplace_listing/stubbed/plans/{plan_id}/accounts: unexpected response type: %T", response)
+		return errors.Errorf(`/marketplace_listing/stubbed/plans/{plan_id}/accounts: unexpected response type: %T`, response)
 	}
 }
 
@@ -2316,7 +2316,7 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2332,7 +2332,7 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2345,12 +2345,12 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/installations/{installation_id}/repositories: unexpected response type: %T", response)
+		return errors.Errorf(`/user/installations/{installation_id}/repositories: unexpected response type: %T`, response)
 	}
 }
 
@@ -2365,7 +2365,7 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2378,7 +2378,7 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2391,12 +2391,12 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/marketplace_listing/plans: unexpected response type: %T", response)
+		return errors.Errorf(`/marketplace_listing/plans: unexpected response type: %T`, response)
 	}
 }
 
@@ -2411,7 +2411,7 @@ func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2425,12 +2425,12 @@ func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/marketplace_listing/stubbed/plans: unexpected response type: %T", response)
+		return errors.Errorf(`/marketplace_listing/stubbed/plans: unexpected response type: %T`, response)
 	}
 }
 
@@ -2446,7 +2446,7 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2462,7 +2462,7 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2475,12 +2475,12 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/installation/repositories: unexpected response type: %T", response)
+		return errors.Errorf(`/installation/repositories: unexpected response type: %T`, response)
 	}
 }
 
@@ -2495,7 +2495,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2511,7 +2511,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2524,12 +2524,12 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/marketplace_purchases: unexpected response type: %T", response)
+		return errors.Errorf(`/user/marketplace_purchases: unexpected response type: %T`, response)
 	}
 }
 
@@ -2544,7 +2544,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2561,12 +2561,12 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/marketplace_purchases/stubbed: unexpected response type: %T", response)
+		return errors.Errorf(`/user/marketplace_purchases/stubbed: unexpected response type: %T`, response)
 	}
 }
 
@@ -2587,7 +2587,7 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2600,12 +2600,12 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/installations/{installation_id}/repositories/{repository_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/user/installations/{installation_id}/repositories/{repository_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -2629,12 +2629,12 @@ func encodeAppsSuspendInstallationResponse(response AppsSuspendInstallationRes, 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/app/installations/{installation_id}/suspended: unexpected response type: %T", response)
+		return errors.Errorf(`/app/installations/{installation_id}/suspended: unexpected response type: %T`, response)
 	}
 }
 
@@ -2653,12 +2653,12 @@ func encodeAppsUnsuspendInstallationResponse(response AppsUnsuspendInstallationR
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/app/installations/{installation_id}/suspended: unexpected response type: %T", response)
+		return errors.Errorf(`/app/installations/{installation_id}/suspended: unexpected response type: %T`, response)
 	}
 }
 
@@ -2672,7 +2672,7 @@ func encodeAppsUpdateWebhookConfigForAppResponse(response WebhookConfig, w http.
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -2688,7 +2688,7 @@ func encodeBillingGetGithubActionsBillingGheResponse(response ActionsBillingUsag
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -2704,7 +2704,7 @@ func encodeBillingGetGithubActionsBillingOrgResponse(response ActionsBillingUsag
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -2720,7 +2720,7 @@ func encodeBillingGetGithubActionsBillingUserResponse(response ActionsBillingUsa
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -2736,7 +2736,7 @@ func encodeBillingGetGithubPackagesBillingGheResponse(response PackagesBillingUs
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -2752,7 +2752,7 @@ func encodeBillingGetGithubPackagesBillingOrgResponse(response PackagesBillingUs
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -2768,7 +2768,7 @@ func encodeBillingGetGithubPackagesBillingUserResponse(response PackagesBillingU
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -2784,7 +2784,7 @@ func encodeBillingGetSharedStorageBillingGheResponse(response CombinedBillingUsa
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -2800,7 +2800,7 @@ func encodeBillingGetSharedStorageBillingOrgResponse(response CombinedBillingUsa
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -2816,7 +2816,7 @@ func encodeBillingGetSharedStorageBillingUserResponse(response CombinedBillingUs
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -2833,7 +2833,7 @@ func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.Respo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -2846,12 +2846,12 @@ func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.Respo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/check-suites: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/check-suites: unexpected response type: %T`, response)
 	}
 }
 
@@ -2865,7 +2865,7 @@ func encodeChecksGetResponse(response CheckRun, w http.ResponseWriter, span trac
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -2881,7 +2881,7 @@ func encodeChecksGetSuiteResponse(response CheckSuite, w http.ResponseWriter, sp
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -2904,7 +2904,7 @@ func encodeChecksListAnnotationsResponse(response []CheckAnnotation, w http.Resp
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -2920,7 +2920,7 @@ func encodeChecksListForRefResponse(response ChecksListForRefOK, w http.Response
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -2936,7 +2936,7 @@ func encodeChecksListForSuiteResponse(response ChecksListForSuiteOK, w http.Resp
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -2952,7 +2952,7 @@ func encodeChecksListSuitesForRefResponse(response ChecksListSuitesForRefOK, w h
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -2968,7 +2968,7 @@ func encodeChecksRerequestSuiteResponse(response ChecksRerequestSuiteCreated, w 
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -2984,7 +2984,7 @@ func encodeChecksSetSuitesPreferencesResponse(response CheckSuitePreference, w h
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -3002,7 +3002,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3015,14 +3015,14 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	case *ScimError:
 		w.Header().Set("Content-Type", "application/scim+json")
 		w.WriteHeader(400)
-		return fmt.Errorf("application/scim+json encoder not implemented")
+		return errors.New(`application/scim+json encoder not implemented`)
 	case *CodeScanningDeleteAnalysisApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
@@ -3032,7 +3032,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3045,7 +3045,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3059,12 +3059,12 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -3080,7 +3080,7 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3093,7 +3093,7 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3106,7 +3106,7 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3120,12 +3120,12 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}: unexpected response type: %T`, response)
 	}
 }
 
@@ -3141,14 +3141,14 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	case *CodeScanningGetAnalysisOKApplicationJSONSarif:
 		w.Header().Set("Content-Type", "application/json+sarif")
 		w.WriteHeader(200)
-		return fmt.Errorf("application/json+sarif encoder not implemented")
+		return errors.New(`application/json+sarif encoder not implemented`)
 	case *CodeScanningGetAnalysisApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
@@ -3158,7 +3158,7 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3171,7 +3171,7 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3185,12 +3185,12 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -3206,7 +3206,7 @@ func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3220,7 +3220,7 @@ func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3237,12 +3237,12 @@ func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -3257,7 +3257,7 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3270,7 +3270,7 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3283,7 +3283,7 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3297,12 +3297,12 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances: unexpected response type: %T`, response)
 	}
 }
 
@@ -3317,7 +3317,7 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3330,7 +3330,7 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3343,7 +3343,7 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3357,12 +3357,12 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/code-scanning/alerts: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/code-scanning/alerts: unexpected response type: %T`, response)
 	}
 }
 
@@ -3377,7 +3377,7 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3390,7 +3390,7 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3403,7 +3403,7 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3417,12 +3417,12 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/code-scanning/analyses: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/code-scanning/analyses: unexpected response type: %T`, response)
 	}
 }
 
@@ -3438,7 +3438,7 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3451,7 +3451,7 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3464,7 +3464,7 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3478,12 +3478,12 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}: unexpected response type: %T`, response)
 	}
 }
 
@@ -3499,7 +3499,7 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3515,7 +3515,7 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3528,7 +3528,7 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3545,12 +3545,12 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/code-scanning/sarifs: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/code-scanning/sarifs: unexpected response type: %T`, response)
 	}
 }
 
@@ -3565,7 +3565,7 @@ func encodeCodesOfConductGetAllCodesOfConductResponse(response CodesOfConductGet
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3573,7 +3573,7 @@ func encodeCodesOfConductGetAllCodesOfConductResponse(response CodesOfConductGet
 		w.WriteHeader(304)
 		return nil
 	default:
-		return fmt.Errorf("/codes_of_conduct: unexpected response type: %T", response)
+		return errors.Errorf(`/codes_of_conduct: unexpected response type: %T`, response)
 	}
 }
 
@@ -3589,7 +3589,7 @@ func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConduc
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3606,12 +3606,12 @@ func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConduc
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/codes_of_conduct/{key}: unexpected response type: %T", response)
+		return errors.Errorf(`/codes_of_conduct/{key}: unexpected response type: %T`, response)
 	}
 }
 
@@ -3627,7 +3627,7 @@ func encodeEmojisGetResponse(response EmojisGetRes, w http.ResponseWriter, span 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -3635,7 +3635,7 @@ func encodeEmojisGetResponse(response EmojisGetRes, w http.ResponseWriter, span 
 		w.WriteHeader(304)
 		return nil
 	default:
-		return fmt.Errorf("/emojis: unexpected response type: %T", response)
+		return errors.Errorf(`/emojis: unexpected response type: %T`, response)
 	}
 }
 
@@ -3659,7 +3659,7 @@ func encodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(response 
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -3675,7 +3675,7 @@ func encodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(response Authen
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -3691,7 +3691,7 @@ func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(respo
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -3737,7 +3737,7 @@ func encodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(response SelectedA
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -3760,7 +3760,7 @@ func encodeEnterpriseAdminGetAuditLogResponse(response []AuditLogEvent, w http.R
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -3776,7 +3776,7 @@ func encodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(response
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -3792,7 +3792,7 @@ func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(r
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -3808,7 +3808,7 @@ func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(re
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -3824,7 +3824,7 @@ func encodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(response Runn
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -3840,7 +3840,7 @@ func encodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(response
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -3856,7 +3856,7 @@ func encodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRespon
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -3872,7 +3872,7 @@ func encodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(response ScimG
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -3888,7 +3888,7 @@ func encodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(response S
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -3911,7 +3911,7 @@ func encodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(response [
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -3927,7 +3927,7 @@ func encodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -3943,7 +3943,7 @@ func encodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(respon
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -3959,7 +3959,7 @@ func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response En
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -3975,7 +3975,7 @@ func encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -3991,7 +3991,7 @@ func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(response Sci
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -4007,7 +4007,7 @@ func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(response Scim
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -4043,7 +4043,7 @@ func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(re
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -4059,7 +4059,7 @@ func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(res
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -4090,7 +4090,7 @@ func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(response Scim
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -4106,7 +4106,7 @@ func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(respo
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -4130,7 +4130,7 @@ func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredRes, w http.R
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4144,12 +4144,12 @@ func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredRes, w http.R
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/gists/{gist_id}/star: unexpected response type: %T", response)
+		return errors.Errorf(`/gists/{gist_id}/star: unexpected response type: %T`, response)
 	}
 }
 
@@ -4165,7 +4165,7 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4181,7 +4181,7 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4194,12 +4194,12 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/gists/{gist_id}/comments: unexpected response type: %T", response)
+		return errors.Errorf(`/gists/{gist_id}/comments: unexpected response type: %T`, response)
 	}
 }
 
@@ -4220,7 +4220,7 @@ func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter, s
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4233,12 +4233,12 @@ func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter, s
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/gists/{gist_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/gists/{gist_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -4259,7 +4259,7 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.Res
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4272,12 +4272,12 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.Res
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/gists/{gist_id}/comments/{comment_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/gists/{gist_id}/comments/{comment_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -4293,7 +4293,7 @@ func encodeGistsGetResponse(response GistsGetRes, w http.ResponseWriter, span tr
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4310,7 +4310,7 @@ func encodeGistsGetResponse(response GistsGetRes, w http.ResponseWriter, span tr
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4324,12 +4324,12 @@ func encodeGistsGetResponse(response GistsGetRes, w http.ResponseWriter, span tr
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/gists/{gist_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/gists/{gist_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -4345,7 +4345,7 @@ func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseW
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4362,7 +4362,7 @@ func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseW
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4376,12 +4376,12 @@ func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseW
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/gists/{gist_id}/comments/{comment_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/gists/{gist_id}/comments/{comment_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -4396,7 +4396,7 @@ func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter, span 
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4413,12 +4413,12 @@ func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter, span 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/gists: unexpected response type: %T", response)
+		return errors.Errorf(`/gists: unexpected response type: %T`, response)
 	}
 }
 
@@ -4433,7 +4433,7 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4449,7 +4449,7 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4462,12 +4462,12 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/gists/{gist_id}/comments: unexpected response type: %T", response)
+		return errors.Errorf(`/gists/{gist_id}/comments: unexpected response type: %T`, response)
 	}
 }
 
@@ -4482,7 +4482,7 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4498,7 +4498,7 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4511,12 +4511,12 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/gists/{gist_id}/commits: unexpected response type: %T", response)
+		return errors.Errorf(`/gists/{gist_id}/commits: unexpected response type: %T`, response)
 	}
 }
 
@@ -4531,7 +4531,7 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4547,7 +4547,7 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4560,12 +4560,12 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/gists/{gist_id}/forks: unexpected response type: %T", response)
+		return errors.Errorf(`/gists/{gist_id}/forks: unexpected response type: %T`, response)
 	}
 }
 
@@ -4580,7 +4580,7 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4596,7 +4596,7 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4609,12 +4609,12 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/gists/starred: unexpected response type: %T", response)
+		return errors.Errorf(`/gists/starred: unexpected response type: %T`, response)
 	}
 }
 
@@ -4635,7 +4635,7 @@ func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter, span 
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4648,12 +4648,12 @@ func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter, span 
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/gists/{gist_id}/star: unexpected response type: %T", response)
+		return errors.Errorf(`/gists/{gist_id}/star: unexpected response type: %T`, response)
 	}
 }
 
@@ -4674,7 +4674,7 @@ func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter, s
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4687,12 +4687,12 @@ func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter, s
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/gists/{gist_id}/star: unexpected response type: %T", response)
+		return errors.Errorf(`/gists/{gist_id}/star: unexpected response type: %T`, response)
 	}
 }
 
@@ -4708,7 +4708,7 @@ func encodeGistsUpdateCommentResponse(response GistsUpdateCommentRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4722,12 +4722,12 @@ func encodeGistsUpdateCommentResponse(response GistsUpdateCommentRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/gists/{gist_id}/comments/{comment_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/gists/{gist_id}/comments/{comment_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -4743,7 +4743,7 @@ func encodeGitGetCommitResponse(response GitGetCommitRes, w http.ResponseWriter,
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4757,12 +4757,12 @@ func encodeGitGetCommitResponse(response GitGetCommitRes, w http.ResponseWriter,
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/git/commits/{commit_sha}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/git/commits/{commit_sha}: unexpected response type: %T`, response)
 	}
 }
 
@@ -4778,7 +4778,7 @@ func encodeGitGetRefResponse(response GitGetRefRes, w http.ResponseWriter, span 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4792,12 +4792,12 @@ func encodeGitGetRefResponse(response GitGetRefRes, w http.ResponseWriter, span 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/git/ref/{ref}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/git/ref/{ref}: unexpected response type: %T`, response)
 	}
 }
 
@@ -4813,7 +4813,7 @@ func encodeGitGetTagResponse(response GitGetTagRes, w http.ResponseWriter, span 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4827,12 +4827,12 @@ func encodeGitGetTagResponse(response GitGetTagRes, w http.ResponseWriter, span 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/git/tags/{tag_sha}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/git/tags/{tag_sha}: unexpected response type: %T`, response)
 	}
 }
 
@@ -4853,7 +4853,7 @@ func encodeGitListMatchingRefsResponse(response []GitRef, w http.ResponseWriter,
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -4870,7 +4870,7 @@ func encodeGitignoreGetAllTemplatesResponse(response GitignoreGetAllTemplatesRes
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4878,7 +4878,7 @@ func encodeGitignoreGetAllTemplatesResponse(response GitignoreGetAllTemplatesRes
 		w.WriteHeader(304)
 		return nil
 	default:
-		return fmt.Errorf("/gitignore/templates: unexpected response type: %T", response)
+		return errors.Errorf(`/gitignore/templates: unexpected response type: %T`, response)
 	}
 }
 
@@ -4894,7 +4894,7 @@ func encodeGitignoreGetTemplateResponse(response GitignoreGetTemplateRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4902,7 +4902,7 @@ func encodeGitignoreGetTemplateResponse(response GitignoreGetTemplateRes, w http
 		w.WriteHeader(304)
 		return nil
 	default:
-		return fmt.Errorf("/gitignore/templates/{name}: unexpected response type: %T", response)
+		return errors.Errorf(`/gitignore/templates/{name}: unexpected response type: %T`, response)
 	}
 }
 
@@ -4925,7 +4925,7 @@ func encodeInteractionsRemoveRestrictionsForRepoResponse(response InteractionsRe
 		w.WriteHeader(409)
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/interaction-limits: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/interaction-limits: unexpected response type: %T`, response)
 	}
 }
 
@@ -4941,7 +4941,7 @@ func encodeInteractionsSetRestrictionsForRepoResponse(response InteractionsSetRe
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -4949,7 +4949,7 @@ func encodeInteractionsSetRestrictionsForRepoResponse(response InteractionsSetRe
 		w.WriteHeader(409)
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/interaction-limits: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/interaction-limits: unexpected response type: %T`, response)
 	}
 }
 
@@ -4963,7 +4963,7 @@ func encodeIssuesAddAssigneesResponse(response IssueSimple, w http.ResponseWrite
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -4984,12 +4984,12 @@ func encodeIssuesCheckUserCanBeAssignedResponse(response IssuesCheckUserCanBeAss
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/assignees/{assignee}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/assignees/{assignee}: unexpected response type: %T`, response)
 	}
 }
 
@@ -5018,12 +5018,12 @@ func encodeIssuesDeleteMilestoneResponse(response IssuesDeleteMilestoneRes, w ht
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/milestones/{milestone_number}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/milestones/{milestone_number}: unexpected response type: %T`, response)
 	}
 }
 
@@ -5039,7 +5039,7 @@ func encodeIssuesGetCommentResponse(response IssuesGetCommentRes, w http.Respons
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5053,12 +5053,12 @@ func encodeIssuesGetCommentResponse(response IssuesGetCommentRes, w http.Respons
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/issues/comments/{comment_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/issues/comments/{comment_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -5074,7 +5074,7 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5087,7 +5087,7 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5100,7 +5100,7 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5113,12 +5113,12 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/issues/events/{event_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/issues/events/{event_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -5134,7 +5134,7 @@ func encodeIssuesGetLabelResponse(response IssuesGetLabelRes, w http.ResponseWri
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5148,12 +5148,12 @@ func encodeIssuesGetLabelResponse(response IssuesGetLabelRes, w http.ResponseWri
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/labels/{name}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/labels/{name}: unexpected response type: %T`, response)
 	}
 }
 
@@ -5169,7 +5169,7 @@ func encodeIssuesGetMilestoneResponse(response IssuesGetMilestoneRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5183,12 +5183,12 @@ func encodeIssuesGetMilestoneResponse(response IssuesGetMilestoneRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/milestones/{milestone_number}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/milestones/{milestone_number}: unexpected response type: %T`, response)
 	}
 }
 
@@ -5203,7 +5203,7 @@ func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.R
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5217,12 +5217,12 @@ func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.R
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/assignees: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/assignees: unexpected response type: %T`, response)
 	}
 }
 
@@ -5237,7 +5237,7 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5250,7 +5250,7 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5263,12 +5263,12 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/issues/{issue_number}/comments: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/issues/{issue_number}/comments: unexpected response type: %T`, response)
 	}
 }
 
@@ -5289,7 +5289,7 @@ func encodeIssuesListLabelsForMilestoneResponse(response []Label, w http.Respons
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -5306,7 +5306,7 @@ func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, 
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5320,12 +5320,12 @@ func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/labels: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/labels: unexpected response type: %T`, response)
 	}
 }
 
@@ -5340,7 +5340,7 @@ func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, 
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5354,12 +5354,12 @@ func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/issues/{issue_number}/labels: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/issues/{issue_number}/labels: unexpected response type: %T`, response)
 	}
 }
 
@@ -5374,7 +5374,7 @@ func encodeIssuesListMilestonesResponse(response IssuesListMilestonesRes, w http
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5388,12 +5388,12 @@ func encodeIssuesListMilestonesResponse(response IssuesListMilestonesRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/milestones: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/milestones: unexpected response type: %T`, response)
 	}
 }
 
@@ -5412,12 +5412,12 @@ func encodeIssuesRemoveAllLabelsResponse(response IssuesRemoveAllLabelsRes, w ht
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/issues/{issue_number}/labels: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/issues/{issue_number}/labels: unexpected response type: %T`, response)
 	}
 }
 
@@ -5431,7 +5431,7 @@ func encodeIssuesRemoveAssigneesResponse(response IssueSimple, w http.ResponseWr
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -5448,7 +5448,7 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5461,7 +5461,7 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5474,12 +5474,12 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/issues/{issue_number}/labels/{name}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/issues/{issue_number}/labels/{name}: unexpected response type: %T`, response)
 	}
 }
 
@@ -5497,7 +5497,7 @@ func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter,
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5510,12 +5510,12 @@ func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter,
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/issues/{issue_number}/lock: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/issues/{issue_number}/lock: unexpected response type: %T`, response)
 	}
 }
 
@@ -5529,7 +5529,7 @@ func encodeIssuesUpdateLabelResponse(response Label, w http.ResponseWriter, span
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -5545,7 +5545,7 @@ func encodeIssuesUpdateMilestoneResponse(response Milestone, w http.ResponseWrit
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -5563,7 +5563,7 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, s
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5579,7 +5579,7 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, s
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5592,12 +5592,12 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, s
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/licenses/{license}: unexpected response type: %T", response)
+		return errors.Errorf(`/licenses/{license}: unexpected response type: %T`, response)
 	}
 }
 
@@ -5612,7 +5612,7 @@ func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUse
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5620,7 +5620,7 @@ func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUse
 		w.WriteHeader(304)
 		return nil
 	default:
-		return fmt.Errorf("/licenses: unexpected response type: %T", response)
+		return errors.Errorf(`/licenses: unexpected response type: %T`, response)
 	}
 }
 
@@ -5634,7 +5634,7 @@ func encodeLicensesGetForRepoResponse(response LicenseContent, w http.ResponseWr
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -5645,12 +5645,12 @@ func encodeMarkdownRenderResponse(response MarkdownRenderRes, w http.ResponseWri
 	case *MarkdownRenderOKTextHTML:
 		w.Header().Set("Content-Type", "text/html")
 		w.WriteHeader(200)
-		return fmt.Errorf("text/html encoder not implemented")
+		return errors.New(`text/html encoder not implemented`)
 	case *NotModified:
 		w.WriteHeader(304)
 		return nil
 	default:
-		return fmt.Errorf("/markdown: unexpected response type: %T", response)
+		return errors.Errorf(`/markdown: unexpected response type: %T`, response)
 	}
 }
 
@@ -5659,12 +5659,12 @@ func encodeMarkdownRenderRawResponse(response MarkdownRenderRawRes, w http.Respo
 	case *MarkdownRenderRawOKTextHTML:
 		w.Header().Set("Content-Type", "text/html")
 		w.WriteHeader(200)
-		return fmt.Errorf("text/html encoder not implemented")
+		return errors.New(`text/html encoder not implemented`)
 	case *NotModified:
 		w.WriteHeader(304)
 		return nil
 	default:
-		return fmt.Errorf("/markdown/raw: unexpected response type: %T", response)
+		return errors.Errorf(`/markdown/raw: unexpected response type: %T`, response)
 	}
 }
 
@@ -5680,7 +5680,7 @@ func encodeMetaGetResponse(response MetaGetRes, w http.ResponseWriter, span trac
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5688,20 +5688,20 @@ func encodeMetaGetResponse(response MetaGetRes, w http.ResponseWriter, span trac
 		w.WriteHeader(304)
 		return nil
 	default:
-		return fmt.Errorf("/meta: unexpected response type: %T", response)
+		return errors.Errorf(`/meta: unexpected response type: %T`, response)
 	}
 }
 
 func encodeMetaGetOctocatResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/octocat-stream")
 	w.WriteHeader(200)
-	return fmt.Errorf("application/octocat-stream encoder not implemented")
+	return errors.New(`application/octocat-stream encoder not implemented`)
 }
 
 func encodeMetaGetZenResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "text/plain")
 	w.WriteHeader(200)
-	return fmt.Errorf("text/plain encoder not implemented")
+	return errors.New(`text/plain encoder not implemented`)
 }
 
 func encodeMetaRootResponse(response MetaRootOK, w http.ResponseWriter, span trace.Span) error {
@@ -5714,7 +5714,7 @@ func encodeMetaRootResponse(response MetaRootOK, w http.ResponseWriter, span tra
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -5742,7 +5742,7 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5755,7 +5755,7 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5768,12 +5768,12 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/migrations/{migration_id}/archive: unexpected response type: %T", response)
+		return errors.Errorf(`/user/migrations/{migration_id}/archive: unexpected response type: %T`, response)
 	}
 }
 
@@ -5792,12 +5792,12 @@ func encodeMigrationsDeleteArchiveForOrgResponse(response MigrationsDeleteArchiv
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/migrations/{migration_id}/archive: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/migrations/{migration_id}/archive: unexpected response type: %T`, response)
 	}
 }
 
@@ -5816,12 +5816,12 @@ func encodeMigrationsDownloadArchiveForOrgResponse(response MigrationsDownloadAr
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/migrations/{migration_id}/archive: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/migrations/{migration_id}/archive: unexpected response type: %T`, response)
 	}
 }
 
@@ -5842,7 +5842,7 @@ func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsG
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5855,12 +5855,12 @@ func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsG
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/migrations/{migration_id}/archive: unexpected response type: %T", response)
+		return errors.Errorf(`/user/migrations/{migration_id}/archive: unexpected response type: %T`, response)
 	}
 }
 
@@ -5875,7 +5875,7 @@ func encodeMigrationsGetCommitAuthorsResponse(response MigrationsGetCommitAuthor
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5889,12 +5889,12 @@ func encodeMigrationsGetCommitAuthorsResponse(response MigrationsGetCommitAuthor
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/import/authors: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/import/authors: unexpected response type: %T`, response)
 	}
 }
 
@@ -5910,7 +5910,7 @@ func encodeMigrationsGetImportStatusResponse(response MigrationsGetImportStatusR
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5924,12 +5924,12 @@ func encodeMigrationsGetImportStatusResponse(response MigrationsGetImportStatusR
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/import: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/import: unexpected response type: %T`, response)
 	}
 }
 
@@ -5950,7 +5950,7 @@ func encodeMigrationsGetLargeFilesResponse(response []PorterLargeFile, w http.Re
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -5968,7 +5968,7 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5984,7 +5984,7 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -5997,7 +5997,7 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6010,12 +6010,12 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/migrations/{migration_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/user/migrations/{migration_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -6031,7 +6031,7 @@ func encodeMigrationsGetStatusForOrgResponse(response MigrationsGetStatusForOrgR
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6045,12 +6045,12 @@ func encodeMigrationsGetStatusForOrgResponse(response MigrationsGetStatusForOrgR
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/migrations/{migration_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/migrations/{migration_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -6065,7 +6065,7 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6081,7 +6081,7 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6094,12 +6094,12 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/migrations: unexpected response type: %T", response)
+		return errors.Errorf(`/user/migrations: unexpected response type: %T`, response)
 	}
 }
 
@@ -6120,7 +6120,7 @@ func encodeMigrationsListForOrgResponse(response []Migration, w http.ResponseWri
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -6137,7 +6137,7 @@ func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgR
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6151,12 +6151,12 @@ func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgR
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/migrations/{migration_id}/repositories: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/migrations/{migration_id}/repositories: unexpected response type: %T`, response)
 	}
 }
 
@@ -6171,7 +6171,7 @@ func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUse
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6185,12 +6185,12 @@ func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUse
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/migrations/{migration_id}/repositories: unexpected response type: %T", response)
+		return errors.Errorf(`/user/migrations/{migration_id}/repositories: unexpected response type: %T`, response)
 	}
 }
 
@@ -6211,7 +6211,7 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6224,7 +6224,7 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6237,12 +6237,12 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/migrations/{migration_id}/repos/{repo_name}/lock: unexpected response type: %T", response)
+		return errors.Errorf(`/user/migrations/{migration_id}/repos/{repo_name}/lock: unexpected response type: %T`, response)
 	}
 }
 
@@ -6261,12 +6261,12 @@ func encodeMigrationsUnlockRepoForOrgResponse(response MigrationsUnlockRepoForOr
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock: unexpected response type: %T`, response)
 	}
 }
 
@@ -6280,7 +6280,7 @@ func encodeMigrationsUpdateImportResponse(response Import, w http.ResponseWriter
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -6303,7 +6303,7 @@ func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthoriz
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6316,12 +6316,12 @@ func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthoriz
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/authorizations/{authorization_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/authorizations/{authorization_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -6342,7 +6342,7 @@ func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDe
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6355,12 +6355,12 @@ func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDe
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/applications/grants/{grant_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/applications/grants/{grant_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -6376,7 +6376,7 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6392,7 +6392,7 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6405,12 +6405,12 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/authorizations/{authorization_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/authorizations/{authorization_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -6426,7 +6426,7 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6442,7 +6442,7 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6455,12 +6455,12 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/applications/grants/{grant_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/applications/grants/{grant_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -6475,7 +6475,7 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6491,7 +6491,7 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6504,7 +6504,7 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6517,12 +6517,12 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/authorizations: unexpected response type: %T", response)
+		return errors.Errorf(`/authorizations: unexpected response type: %T`, response)
 	}
 }
 
@@ -6537,7 +6537,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6553,7 +6553,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6566,7 +6566,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6579,12 +6579,12 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/applications/grants: unexpected response type: %T", response)
+		return errors.Errorf(`/applications/grants: unexpected response type: %T`, response)
 	}
 }
 
@@ -6603,12 +6603,12 @@ func encodeOrgsCheckBlockedUserResponse(response OrgsCheckBlockedUserRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/blocks/{username}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/blocks/{username}: unexpected response type: %T`, response)
 	}
 }
 
@@ -6624,7 +6624,7 @@ func encodeOrgsCheckMembershipForUserResponse(response OrgsCheckMembershipForUse
 		w.WriteHeader(404)
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/members/{username}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/members/{username}: unexpected response type: %T`, response)
 	}
 }
 
@@ -6637,7 +6637,7 @@ func encodeOrgsCheckPublicMembershipForUserResponse(response OrgsCheckPublicMemb
 		w.WriteHeader(404)
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/public_members/{username}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/public_members/{username}: unexpected response type: %T`, response)
 	}
 }
 
@@ -6653,7 +6653,7 @@ func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMe
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6673,12 +6673,12 @@ func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMe
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/outside_collaborators/{username}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/outside_collaborators/{username}: unexpected response type: %T`, response)
 	}
 }
 
@@ -6697,12 +6697,12 @@ func encodeOrgsDeleteWebhookResponse(response OrgsDeleteWebhookRes, w http.Respo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/hooks/{hook_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/hooks/{hook_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -6718,7 +6718,7 @@ func encodeOrgsGetResponse(response OrgsGetRes, w http.ResponseWriter, span trac
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6732,12 +6732,12 @@ func encodeOrgsGetResponse(response OrgsGetRes, w http.ResponseWriter, span trac
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}: unexpected response type: %T`, response)
 	}
 }
 
@@ -6758,7 +6758,7 @@ func encodeOrgsGetAuditLogResponse(response []AuditLogEvent, w http.ResponseWrit
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -6776,7 +6776,7 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6789,7 +6789,7 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6802,12 +6802,12 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/memberships/orgs/{org}: unexpected response type: %T", response)
+		return errors.Errorf(`/user/memberships/orgs/{org}: unexpected response type: %T`, response)
 	}
 }
 
@@ -6823,7 +6823,7 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6836,7 +6836,7 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6849,12 +6849,12 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/memberships/{username}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/memberships/{username}: unexpected response type: %T`, response)
 	}
 }
 
@@ -6870,7 +6870,7 @@ func encodeOrgsGetWebhookResponse(response OrgsGetWebhookRes, w http.ResponseWri
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6884,12 +6884,12 @@ func encodeOrgsGetWebhookResponse(response OrgsGetWebhookRes, w http.ResponseWri
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/hooks/{hook_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/hooks/{hook_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -6903,7 +6903,7 @@ func encodeOrgsGetWebhookConfigForOrgResponse(response WebhookConfig, w http.Res
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -6920,7 +6920,7 @@ func encodeOrgsListResponse(response OrgsListRes, w http.ResponseWriter, span tr
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6928,7 +6928,7 @@ func encodeOrgsListResponse(response OrgsListRes, w http.ResponseWriter, span tr
 		w.WriteHeader(304)
 		return nil
 	default:
-		return fmt.Errorf("/organizations: unexpected response type: %T", response)
+		return errors.Errorf(`/organizations: unexpected response type: %T`, response)
 	}
 }
 
@@ -6943,7 +6943,7 @@ func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersRes, w http
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6957,12 +6957,12 @@ func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/blocks: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/blocks: unexpected response type: %T`, response)
 	}
 }
 
@@ -6977,7 +6977,7 @@ func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsR
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -6991,12 +6991,12 @@ func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsR
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/failed_invitations: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/failed_invitations: unexpected response type: %T`, response)
 	}
 }
 
@@ -7011,7 +7011,7 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7027,7 +7027,7 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7040,12 +7040,12 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/orgs: unexpected response type: %T", response)
+		return errors.Errorf(`/user/orgs: unexpected response type: %T`, response)
 	}
 }
 
@@ -7066,7 +7066,7 @@ func encodeOrgsListForUserResponse(response []OrganizationSimple, w http.Respons
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -7083,7 +7083,7 @@ func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, 
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7097,12 +7097,12 @@ func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/invitations/{invitation_id}/teams: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/invitations/{invitation_id}/teams: unexpected response type: %T`, response)
 	}
 }
 
@@ -7123,7 +7123,7 @@ func encodeOrgsListOutsideCollaboratorsResponse(response []SimpleUser, w http.Re
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -7140,7 +7140,7 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7154,12 +7154,12 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/invitations: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/invitations: unexpected response type: %T`, response)
 	}
 }
 
@@ -7180,7 +7180,7 @@ func encodeOrgsListPublicMembersResponse(response []SimpleUser, w http.ResponseW
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -7203,7 +7203,7 @@ func encodeOrgsListSamlSSOAuthorizationsResponse(response []CredentialAuthorizat
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -7220,7 +7220,7 @@ func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.Respons
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7234,12 +7234,12 @@ func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.Respons
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/hooks: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/hooks: unexpected response type: %T`, response)
 	}
 }
 
@@ -7258,12 +7258,12 @@ func encodeOrgsPingWebhookResponse(response OrgsPingWebhookRes, w http.ResponseW
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/hooks/{hook_id}/pings: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/hooks/{hook_id}/pings: unexpected response type: %T`, response)
 	}
 }
 
@@ -7282,12 +7282,12 @@ func encodeOrgsRemoveMemberResponse(response OrgsRemoveMemberRes, w http.Respons
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/members/{username}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/members/{username}: unexpected response type: %T`, response)
 	}
 }
 
@@ -7305,7 +7305,7 @@ func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForU
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7318,12 +7318,12 @@ func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForU
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/memberships/{username}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/memberships/{username}: unexpected response type: %T`, response)
 	}
 }
 
@@ -7342,12 +7342,12 @@ func encodeOrgsRemoveOutsideCollaboratorResponse(response OrgsRemoveOutsideColla
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/outside_collaborators/{username}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/outside_collaborators/{username}: unexpected response type: %T`, response)
 	}
 }
 
@@ -7371,12 +7371,12 @@ func encodeOrgsRemoveSamlSSOAuthorizationResponse(response OrgsRemoveSamlSSOAuth
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/credential-authorizations/{credential_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/credential-authorizations/{credential_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -7395,12 +7395,12 @@ func encodeOrgsSetPublicMembershipForAuthenticatedUserResponse(response OrgsSetP
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/public_members/{username}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/public_members/{username}: unexpected response type: %T`, response)
 	}
 }
 
@@ -7419,7 +7419,7 @@ func encodeOrgsUpdateWebhookConfigForOrgResponse(response WebhookConfig, w http.
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -7439,7 +7439,7 @@ func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDe
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7452,7 +7452,7 @@ func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDe
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7465,12 +7465,12 @@ func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDe
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/packages/{package_type}/{package_name}: unexpected response type: %T", response)
+		return errors.Errorf(`/user/packages/{package_type}/{package_name}: unexpected response type: %T`, response)
 	}
 }
 
@@ -7488,7 +7488,7 @@ func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageFor
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7501,7 +7501,7 @@ func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageFor
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7514,12 +7514,12 @@ func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageFor
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/packages/{package_type}/{package_name}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/packages/{package_type}/{package_name}: unexpected response type: %T`, response)
 	}
 }
 
@@ -7537,7 +7537,7 @@ func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageFo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7550,7 +7550,7 @@ func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageFo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7563,12 +7563,12 @@ func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageFo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/users/{username}/packages/{package_type}/{package_name}: unexpected response type: %T", response)
+		return errors.Errorf(`/users/{username}/packages/{package_type}/{package_name}: unexpected response type: %T`, response)
 	}
 }
 
@@ -7586,7 +7586,7 @@ func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response Pac
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7599,7 +7599,7 @@ func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response Pac
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7612,12 +7612,12 @@ func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response Pac
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/packages/{package_type}/{package_name}/versions/{package_version_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/user/packages/{package_type}/{package_name}/versions/{package_version_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -7635,7 +7635,7 @@ func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePac
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7648,7 +7648,7 @@ func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePac
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7661,12 +7661,12 @@ func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePac
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -7684,7 +7684,7 @@ func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePa
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7697,7 +7697,7 @@ func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePa
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7710,12 +7710,12 @@ func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePa
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -7730,7 +7730,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7743,7 +7743,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7756,7 +7756,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7769,12 +7769,12 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/packages/{package_type}/{package_name}/versions: unexpected response type: %T", response)
+		return errors.Errorf(`/user/packages/{package_type}/{package_name}/versions: unexpected response type: %T`, response)
 	}
 }
 
@@ -7789,7 +7789,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7802,7 +7802,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7815,7 +7815,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7828,12 +7828,12 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/packages/{package_type}/{package_name}/versions: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/packages/{package_type}/{package_name}/versions: unexpected response type: %T`, response)
 	}
 }
 
@@ -7848,7 +7848,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7861,7 +7861,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7874,7 +7874,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -7887,12 +7887,12 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/users/{username}/packages/{package_type}/{package_name}/versions: unexpected response type: %T", response)
+		return errors.Errorf(`/users/{username}/packages/{package_type}/{package_name}/versions: unexpected response type: %T`, response)
 	}
 }
 
@@ -7906,7 +7906,7 @@ func encodePackagesGetPackageForAuthenticatedUserResponse(response Package, w ht
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -7922,7 +7922,7 @@ func encodePackagesGetPackageForOrganizationResponse(response Package, w http.Re
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -7938,7 +7938,7 @@ func encodePackagesGetPackageForUserResponse(response Package, w http.ResponseWr
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -7954,7 +7954,7 @@ func encodePackagesGetPackageVersionForAuthenticatedUserResponse(response Packag
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -7970,7 +7970,7 @@ func encodePackagesGetPackageVersionForOrganizationResponse(response PackageVers
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -7986,7 +7986,7 @@ func encodePackagesGetPackageVersionForUserResponse(response PackageVersion, w h
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -8009,7 +8009,7 @@ func encodePackagesListPackagesForAuthenticatedUserResponse(response []Package, 
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -8026,7 +8026,7 @@ func encodePackagesListPackagesForOrganizationResponse(response PackagesListPack
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8039,7 +8039,7 @@ func encodePackagesListPackagesForOrganizationResponse(response PackagesListPack
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8052,12 +8052,12 @@ func encodePackagesListPackagesForOrganizationResponse(response PackagesListPack
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/packages: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/packages: unexpected response type: %T`, response)
 	}
 }
 
@@ -8072,7 +8072,7 @@ func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForU
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8085,7 +8085,7 @@ func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForU
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8098,12 +8098,12 @@ func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForU
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/users/{username}/packages: unexpected response type: %T", response)
+		return errors.Errorf(`/users/{username}/packages: unexpected response type: %T`, response)
 	}
 }
 
@@ -8121,7 +8121,7 @@ func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesR
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8134,7 +8134,7 @@ func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesR
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8147,12 +8147,12 @@ func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesR
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/packages/{package_type}/{package_name}/restore: unexpected response type: %T", response)
+		return errors.Errorf(`/user/packages/{package_type}/{package_name}/restore: unexpected response type: %T`, response)
 	}
 }
 
@@ -8170,7 +8170,7 @@ func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageF
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8183,7 +8183,7 @@ func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageF
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8196,12 +8196,12 @@ func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageF
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/packages/{package_type}/{package_name}/restore: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/packages/{package_type}/{package_name}/restore: unexpected response type: %T`, response)
 	}
 }
 
@@ -8219,7 +8219,7 @@ func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackage
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8232,7 +8232,7 @@ func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackage
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8245,12 +8245,12 @@ func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackage
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/users/{username}/packages/{package_type}/{package_name}/restore: unexpected response type: %T", response)
+		return errors.Errorf(`/users/{username}/packages/{package_type}/{package_name}/restore: unexpected response type: %T`, response)
 	}
 }
 
@@ -8268,7 +8268,7 @@ func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response Pa
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8281,7 +8281,7 @@ func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response Pa
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8294,12 +8294,12 @@ func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response Pa
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore: unexpected response type: %T", response)
+		return errors.Errorf(`/user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore: unexpected response type: %T`, response)
 	}
 }
 
@@ -8317,7 +8317,7 @@ func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestoreP
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8330,7 +8330,7 @@ func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestoreP
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8343,12 +8343,12 @@ func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestoreP
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore: unexpected response type: %T`, response)
 	}
 }
 
@@ -8366,7 +8366,7 @@ func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestore
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8379,7 +8379,7 @@ func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestore
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8392,12 +8392,12 @@ func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestore
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore: unexpected response type: %T", response)
+		return errors.Errorf(`/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore: unexpected response type: %T`, response)
 	}
 }
 
@@ -8413,7 +8413,7 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8429,7 +8429,7 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8442,7 +8442,7 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8456,12 +8456,12 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/projects/{project_id}/columns: unexpected response type: %T", response)
+		return errors.Errorf(`/projects/{project_id}/columns: unexpected response type: %T`, response)
 	}
 }
 
@@ -8477,7 +8477,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8493,7 +8493,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8506,7 +8506,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8520,7 +8520,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8534,12 +8534,12 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/projects: unexpected response type: %T", response)
+		return errors.Errorf(`/user/projects: unexpected response type: %T`, response)
 	}
 }
 
@@ -8555,7 +8555,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8568,7 +8568,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8581,7 +8581,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8594,7 +8594,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8607,7 +8607,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8621,12 +8621,12 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/projects: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/projects: unexpected response type: %T`, response)
 	}
 }
 
@@ -8642,7 +8642,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8655,7 +8655,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8668,7 +8668,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8681,7 +8681,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8694,7 +8694,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8708,12 +8708,12 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/projects: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/projects: unexpected response type: %T`, response)
 	}
 }
 
@@ -8734,7 +8734,7 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8748,7 +8748,7 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8761,7 +8761,7 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8774,12 +8774,12 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/projects/{project_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/projects/{project_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -8800,7 +8800,7 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8814,7 +8814,7 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8827,12 +8827,12 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/projects/columns/cards/{card_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/projects/columns/cards/{card_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -8853,7 +8853,7 @@ func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8866,12 +8866,12 @@ func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/projects/columns/{column_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/projects/columns/{column_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -8887,7 +8887,7 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, s
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8903,7 +8903,7 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, s
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8916,12 +8916,12 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, s
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/projects/{project_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/projects/{project_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -8937,7 +8937,7 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8953,7 +8953,7 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8966,7 +8966,7 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -8979,12 +8979,12 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/projects/columns/cards/{card_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/projects/columns/cards/{card_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -9000,7 +9000,7 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9016,7 +9016,7 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9029,7 +9029,7 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9042,12 +9042,12 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/projects/columns/{column_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/projects/columns/{column_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -9062,7 +9062,7 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9078,7 +9078,7 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9091,12 +9091,12 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/projects/columns/{column_id}/cards: unexpected response type: %T", response)
+		return errors.Errorf(`/projects/columns/{column_id}/cards: unexpected response type: %T`, response)
 	}
 }
 
@@ -9111,7 +9111,7 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9127,7 +9127,7 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9140,12 +9140,12 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/projects/{project_id}/columns: unexpected response type: %T", response)
+		return errors.Errorf(`/projects/{project_id}/columns: unexpected response type: %T`, response)
 	}
 }
 
@@ -9160,7 +9160,7 @@ func encodeProjectsListForOrgResponse(response ProjectsListForOrgRes, w http.Res
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9174,12 +9174,12 @@ func encodeProjectsListForOrgResponse(response ProjectsListForOrgRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/projects: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/projects: unexpected response type: %T`, response)
 	}
 }
 
@@ -9194,7 +9194,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9207,7 +9207,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9220,7 +9220,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9233,7 +9233,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9246,7 +9246,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9260,12 +9260,12 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/projects: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/projects: unexpected response type: %T`, response)
 	}
 }
 
@@ -9281,7 +9281,7 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9297,7 +9297,7 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9310,7 +9310,7 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9324,12 +9324,12 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/projects/columns/{column_id}/moves: unexpected response type: %T", response)
+		return errors.Errorf(`/projects/columns/{column_id}/moves: unexpected response type: %T`, response)
 	}
 }
 
@@ -9345,7 +9345,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9361,7 +9361,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9375,7 +9375,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9391,7 +9391,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9405,12 +9405,12 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/projects/{project_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/projects/{project_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -9426,7 +9426,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9442,7 +9442,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9455,7 +9455,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9468,7 +9468,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9482,12 +9482,12 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/projects/columns/cards/{card_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/projects/columns/cards/{card_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -9503,7 +9503,7 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9519,7 +9519,7 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9532,12 +9532,12 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/projects/columns/{column_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/projects/columns/{column_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -9550,7 +9550,7 @@ func encodePullsCheckIfMergedResponse(response PullsCheckIfMergedRes, w http.Res
 		w.WriteHeader(404)
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/merge: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/pulls/{pull_number}/merge: unexpected response type: %T`, response)
 	}
 }
 
@@ -9566,7 +9566,7 @@ func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyFor
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9580,12 +9580,12 @@ func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyFor
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies: unexpected response type: %T`, response)
 	}
 }
 
@@ -9601,7 +9601,7 @@ func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.Respo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9615,7 +9615,7 @@ func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.Respo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9629,12 +9629,12 @@ func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.Respo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/reviews: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/pulls/{pull_number}/reviews: unexpected response type: %T`, response)
 	}
 }
 
@@ -9650,7 +9650,7 @@ func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9664,7 +9664,7 @@ func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9678,12 +9678,12 @@ func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -9702,12 +9702,12 @@ func encodePullsDeleteReviewCommentResponse(response PullsDeleteReviewCommentRes
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pulls/comments/{comment_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/pulls/comments/{comment_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -9723,7 +9723,7 @@ func encodePullsDismissReviewResponse(response PullsDismissReviewRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9737,7 +9737,7 @@ func encodePullsDismissReviewResponse(response PullsDismissReviewRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9751,12 +9751,12 @@ func encodePullsDismissReviewResponse(response PullsDismissReviewRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals: unexpected response type: %T`, response)
 	}
 }
 
@@ -9772,7 +9772,7 @@ func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span tr
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9788,7 +9788,7 @@ func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span tr
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9801,12 +9801,12 @@ func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span tr
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/pulls/{pull_number}: unexpected response type: %T`, response)
 	}
 }
 
@@ -9822,7 +9822,7 @@ func encodePullsGetReviewResponse(response PullsGetReviewRes, w http.ResponseWri
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9836,12 +9836,12 @@ func encodePullsGetReviewResponse(response PullsGetReviewRes, w http.ResponseWri
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -9857,7 +9857,7 @@ func encodePullsGetReviewCommentResponse(response PullsGetReviewCommentRes, w ht
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9871,12 +9871,12 @@ func encodePullsGetReviewCommentResponse(response PullsGetReviewCommentRes, w ht
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pulls/comments/{comment_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/pulls/comments/{comment_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -9891,7 +9891,7 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -9905,12 +9905,12 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments: unexpected response type: %T`, response)
 	}
 }
 
@@ -9931,7 +9931,7 @@ func encodePullsListCommitsResponse(response []Commit, w http.ResponseWriter, sp
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -9947,7 +9947,7 @@ func encodePullsListRequestedReviewersResponse(response PullRequestReviewRequest
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -9970,7 +9970,7 @@ func encodePullsListReviewCommentsResponse(response []PullRequestReviewComment, 
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -9993,7 +9993,7 @@ func encodePullsListReviewCommentsForRepoResponse(response []PullRequestReviewCo
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -10016,7 +10016,7 @@ func encodePullsListReviewsResponse(response []PullRequestReview, w http.Respons
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -10034,7 +10034,7 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10047,7 +10047,7 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10060,7 +10060,7 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10074,12 +10074,12 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events: unexpected response type: %T`, response)
 	}
 }
 
@@ -10095,7 +10095,7 @@ func encodePullsUpdateReviewResponse(response PullsUpdateReviewRes, w http.Respo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10109,12 +10109,12 @@ func encodePullsUpdateReviewResponse(response PullsUpdateReviewRes, w http.Respo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -10128,7 +10128,7 @@ func encodePullsUpdateReviewCommentResponse(response PullRequestReviewComment, w
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -10146,7 +10146,7 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter,
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10163,12 +10163,12 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter,
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/rate_limit: unexpected response type: %T", response)
+		return errors.Errorf(`/rate_limit: unexpected response type: %T`, response)
 	}
 }
 
@@ -10183,7 +10183,7 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response Reactio
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10196,12 +10196,12 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response Reactio
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions: unexpected response type: %T`, response)
 	}
 }
 
@@ -10215,7 +10215,7 @@ func encodeReactionsCreateForTeamDiscussionCommentLegacyResponse(response Reacti
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -10232,7 +10232,7 @@ func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreat
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10245,12 +10245,12 @@ func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreat
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions: unexpected response type: %T`, response)
 	}
 }
 
@@ -10264,7 +10264,7 @@ func encodeReactionsCreateForTeamDiscussionLegacyResponse(response Reaction, w h
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -10317,7 +10317,7 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10330,7 +10330,7 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10343,7 +10343,7 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10357,12 +10357,12 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/reactions/{reaction_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/reactions/{reaction_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -10377,7 +10377,7 @@ func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommit
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10391,7 +10391,7 @@ func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommit
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10405,12 +10405,12 @@ func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommit
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/comments/{comment_id}/reactions: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/comments/{comment_id}/reactions: unexpected response type: %T`, response)
 	}
 }
 
@@ -10425,7 +10425,7 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10438,7 +10438,7 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10451,7 +10451,7 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10465,12 +10465,12 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/issues/{issue_number}/reactions: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/issues/{issue_number}/reactions: unexpected response type: %T`, response)
 	}
 }
 
@@ -10485,7 +10485,7 @@ func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10499,7 +10499,7 @@ func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10513,12 +10513,12 @@ func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions: unexpected response type: %T`, response)
 	}
 }
 
@@ -10533,7 +10533,7 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10547,7 +10547,7 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10561,12 +10561,12 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions: unexpected response type: %T`, response)
 	}
 }
 
@@ -10587,7 +10587,7 @@ func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response []Reactio
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -10610,7 +10610,7 @@ func encodeReactionsListForTeamDiscussionCommentLegacyResponse(response []Reacti
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -10633,7 +10633,7 @@ func encodeReactionsListForTeamDiscussionInOrgResponse(response []Reaction, w ht
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -10656,7 +10656,7 @@ func encodeReactionsListForTeamDiscussionLegacyResponse(response []Reaction, w h
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -10679,7 +10679,7 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10692,7 +10692,7 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10705,12 +10705,12 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/repository_invitations/{invitation_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/user/repository_invitations/{invitation_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -10723,7 +10723,7 @@ func encodeReposCheckCollaboratorResponse(response ReposCheckCollaboratorRes, w 
 		w.WriteHeader(404)
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/collaborators/{username}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/collaborators/{username}: unexpected response type: %T`, response)
 	}
 }
 
@@ -10736,7 +10736,7 @@ func encodeReposCheckVulnerabilityAlertsResponse(response ReposCheckVulnerabilit
 		w.WriteHeader(404)
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/vulnerability-alerts: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/vulnerability-alerts: unexpected response type: %T`, response)
 	}
 }
 
@@ -10752,7 +10752,7 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10765,7 +10765,7 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10778,12 +10778,12 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/compare/{basehead}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/compare/{basehead}: unexpected response type: %T`, response)
 	}
 }
 
@@ -10799,7 +10799,7 @@ func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateComm
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10813,12 +10813,12 @@ func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateComm
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures: unexpected response type: %T`, response)
 	}
 }
 
@@ -10832,7 +10832,7 @@ func encodeReposCreateCommitStatusResponse(response Status, w http.ResponseWrite
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -10848,7 +10848,7 @@ func encodeReposCreateUsingTemplateResponse(response Repository, w http.Response
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -10871,7 +10871,7 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10884,7 +10884,7 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10897,12 +10897,12 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/repository_invitations/{invitation_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/user/repository_invitations/{invitation_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -10920,7 +10920,7 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10934,7 +10934,7 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -10947,12 +10947,12 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}: unexpected response type: %T`, response)
 	}
 }
 
@@ -10976,12 +10976,12 @@ func encodeReposDeleteAdminBranchProtectionResponse(response ReposDeleteAdminBra
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins: unexpected response type: %T`, response)
 	}
 }
 
@@ -11005,12 +11005,12 @@ func encodeReposDeleteAutolinkResponse(response ReposDeleteAutolinkRes, w http.R
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/autolinks/{autolink_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/autolinks/{autolink_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -11029,12 +11029,12 @@ func encodeReposDeleteBranchProtectionResponse(response ReposDeleteBranchProtect
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection: unexpected response type: %T`, response)
 	}
 }
 
@@ -11053,12 +11053,12 @@ func encodeReposDeleteCommitCommentResponse(response ReposDeleteCommitCommentRes
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/comments/{comment_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/comments/{comment_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -11077,12 +11077,12 @@ func encodeReposDeleteCommitSignatureProtectionResponse(response ReposDeleteComm
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures: unexpected response type: %T`, response)
 	}
 }
 
@@ -11106,7 +11106,7 @@ func encodeReposDeleteDeploymentResponse(response ReposDeleteDeploymentRes, w ht
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11120,12 +11120,12 @@ func encodeReposDeleteDeploymentResponse(response ReposDeleteDeploymentRes, w ht
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/deployments/{deployment_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/deployments/{deployment_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -11149,12 +11149,12 @@ func encodeReposDeletePullRequestReviewProtectionResponse(response ReposDeletePu
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews: unexpected response type: %T`, response)
 	}
 }
 
@@ -11183,12 +11183,12 @@ func encodeReposDeleteWebhookResponse(response ReposDeleteWebhookRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/hooks/{hook_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/hooks/{hook_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -11234,7 +11234,7 @@ func encodeReposEnableLfsForRepoResponse(response ReposEnableLfsForRepoRes, w ht
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11242,7 +11242,7 @@ func encodeReposEnableLfsForRepoResponse(response ReposEnableLfsForRepoRes, w ht
 		w.WriteHeader(403)
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/lfs: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/lfs: unexpected response type: %T`, response)
 	}
 }
 
@@ -11263,7 +11263,7 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11276,7 +11276,7 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11289,7 +11289,7 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11302,12 +11302,12 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}: unexpected response type: %T`, response)
 	}
 }
 
@@ -11323,7 +11323,7 @@ func encodeReposGetAccessRestrictionsResponse(response ReposGetAccessRestriction
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11337,12 +11337,12 @@ func encodeReposGetAccessRestrictionsResponse(response ReposGetAccessRestriction
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection/restrictions: unexpected response type: %T`, response)
 	}
 }
 
@@ -11356,7 +11356,7 @@ func encodeReposGetAdminBranchProtectionResponse(response ProtectedBranchAdminEn
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -11373,7 +11373,7 @@ func encodeReposGetAllStatusCheckContextsResponse(response ReposGetAllStatusChec
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11387,12 +11387,12 @@ func encodeReposGetAllStatusCheckContextsResponse(response ReposGetAllStatusChec
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts: unexpected response type: %T`, response)
 	}
 }
 
@@ -11408,7 +11408,7 @@ func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, w http.Respo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11422,7 +11422,7 @@ func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, w http.Respo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11436,12 +11436,12 @@ func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, w http.Respo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/topics: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/topics: unexpected response type: %T`, response)
 	}
 }
 
@@ -11456,7 +11456,7 @@ func encodeReposGetAppsWithAccessToProtectedBranchResponse(response ReposGetApps
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11470,12 +11470,12 @@ func encodeReposGetAppsWithAccessToProtectedBranchResponse(response ReposGetApps
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps: unexpected response type: %T`, response)
 	}
 }
 
@@ -11491,7 +11491,7 @@ func encodeReposGetAutolinkResponse(response ReposGetAutolinkRes, w http.Respons
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11505,12 +11505,12 @@ func encodeReposGetAutolinkResponse(response ReposGetAutolinkRes, w http.Respons
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/autolinks/{autolink_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/autolinks/{autolink_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -11526,7 +11526,7 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11539,7 +11539,7 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11552,7 +11552,7 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11566,12 +11566,12 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/branches/{branch}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}: unexpected response type: %T`, response)
 	}
 }
 
@@ -11587,7 +11587,7 @@ func encodeReposGetBranchProtectionResponse(response ReposGetBranchProtectionRes
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11601,12 +11601,12 @@ func encodeReposGetBranchProtectionResponse(response ReposGetBranchProtectionRes
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection: unexpected response type: %T`, response)
 	}
 }
 
@@ -11622,7 +11622,7 @@ func encodeReposGetClonesResponse(response ReposGetClonesRes, w http.ResponseWri
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11636,12 +11636,12 @@ func encodeReposGetClonesResponse(response ReposGetClonesRes, w http.ResponseWri
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/traffic/clones: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/traffic/clones: unexpected response type: %T`, response)
 	}
 }
 
@@ -11656,7 +11656,7 @@ func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStat
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11670,7 +11670,7 @@ func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStat
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11678,7 +11678,7 @@ func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStat
 		w.WriteHeader(204)
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/stats/code_frequency: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/stats/code_frequency: unexpected response type: %T`, response)
 	}
 }
 
@@ -11694,7 +11694,7 @@ func encodeReposGetCollaboratorPermissionLevelResponse(response ReposGetCollabor
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11708,12 +11708,12 @@ func encodeReposGetCollaboratorPermissionLevelResponse(response ReposGetCollabor
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/collaborators/{username}/permission: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/collaborators/{username}/permission: unexpected response type: %T`, response)
 	}
 }
 
@@ -11729,7 +11729,7 @@ func encodeReposGetCombinedStatusForRefResponse(response ReposGetCombinedStatusF
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11743,12 +11743,12 @@ func encodeReposGetCombinedStatusForRefResponse(response ReposGetCombinedStatusF
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/commits/{ref}/status: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/commits/{ref}/status: unexpected response type: %T`, response)
 	}
 }
 
@@ -11763,7 +11763,7 @@ func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivitySt
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11777,7 +11777,7 @@ func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivitySt
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11785,7 +11785,7 @@ func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivitySt
 		w.WriteHeader(204)
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/stats/commit_activity: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/stats/commit_activity: unexpected response type: %T`, response)
 	}
 }
 
@@ -11801,7 +11801,7 @@ func encodeReposGetCommitCommentResponse(response ReposGetCommitCommentRes, w ht
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11815,12 +11815,12 @@ func encodeReposGetCommitCommentResponse(response ReposGetCommitCommentRes, w ht
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/comments/{comment_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/comments/{comment_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -11836,7 +11836,7 @@ func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSign
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11850,12 +11850,12 @@ func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSign
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures: unexpected response type: %T`, response)
 	}
 }
 
@@ -11869,7 +11869,7 @@ func encodeReposGetCommunityProfileMetricsResponse(response CommunityProfile, w 
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -11886,7 +11886,7 @@ func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsR
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11900,7 +11900,7 @@ func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsR
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11908,7 +11908,7 @@ func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsR
 		w.WriteHeader(204)
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/stats/contributors: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/stats/contributors: unexpected response type: %T`, response)
 	}
 }
 
@@ -11924,7 +11924,7 @@ func encodeReposGetDeployKeyResponse(response ReposGetDeployKeyRes, w http.Respo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11938,12 +11938,12 @@ func encodeReposGetDeployKeyResponse(response ReposGetDeployKeyRes, w http.Respo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/keys/{key_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/keys/{key_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -11959,7 +11959,7 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11973,7 +11973,7 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -11987,12 +11987,12 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -12006,7 +12006,7 @@ func encodeReposGetLatestPagesBuildResponse(response PageBuild, w http.ResponseW
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -12022,7 +12022,7 @@ func encodeReposGetLatestReleaseResponse(response Release, w http.ResponseWriter
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -12040,7 +12040,7 @@ func encodeReposGetPagesResponse(response ReposGetPagesRes, w http.ResponseWrite
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12054,12 +12054,12 @@ func encodeReposGetPagesResponse(response ReposGetPagesRes, w http.ResponseWrite
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pages: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/pages: unexpected response type: %T`, response)
 	}
 }
 
@@ -12073,7 +12073,7 @@ func encodeReposGetPagesBuildResponse(response PageBuild, w http.ResponseWriter,
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -12091,7 +12091,7 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12105,7 +12105,7 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12122,7 +12122,7 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12130,7 +12130,7 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 		w.WriteHeader(422)
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pages/health: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/pages/health: unexpected response type: %T`, response)
 	}
 }
 
@@ -12146,7 +12146,7 @@ func encodeReposGetParticipationStatsResponse(response ReposGetParticipationStat
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12160,12 +12160,12 @@ func encodeReposGetParticipationStatsResponse(response ReposGetParticipationStat
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/stats/participation: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/stats/participation: unexpected response type: %T`, response)
 	}
 }
 
@@ -12179,7 +12179,7 @@ func encodeReposGetPullRequestReviewProtectionResponse(response ProtectedBranchP
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -12196,7 +12196,7 @@ func encodeReposGetPunchCardStatsResponse(response ReposGetPunchCardStatsRes, w 
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12204,7 +12204,7 @@ func encodeReposGetPunchCardStatsResponse(response ReposGetPunchCardStatsRes, w 
 		w.WriteHeader(204)
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/stats/punch_card: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/stats/punch_card: unexpected response type: %T`, response)
 	}
 }
 
@@ -12220,7 +12220,7 @@ func encodeReposGetReleaseResponse(response ReposGetReleaseRes, w http.ResponseW
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12234,12 +12234,12 @@ func encodeReposGetReleaseResponse(response ReposGetReleaseRes, w http.ResponseW
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/releases/{release_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/releases/{release_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -12255,7 +12255,7 @@ func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12272,7 +12272,7 @@ func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12286,12 +12286,12 @@ func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/releases/assets/{asset_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/releases/assets/{asset_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -12307,7 +12307,7 @@ func encodeReposGetReleaseByTagResponse(response ReposGetReleaseByTagRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12321,12 +12321,12 @@ func encodeReposGetReleaseByTagResponse(response ReposGetReleaseByTagRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/releases/tags/{tag}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/releases/tags/{tag}: unexpected response type: %T`, response)
 	}
 }
 
@@ -12342,7 +12342,7 @@ func encodeReposGetStatusChecksProtectionResponse(response ReposGetStatusChecksP
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12356,12 +12356,12 @@ func encodeReposGetStatusChecksProtectionResponse(response ReposGetStatusChecksP
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks: unexpected response type: %T`, response)
 	}
 }
 
@@ -12376,7 +12376,7 @@ func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTea
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12390,12 +12390,12 @@ func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTea
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams: unexpected response type: %T`, response)
 	}
 }
 
@@ -12410,7 +12410,7 @@ func encodeReposGetTopPathsResponse(response ReposGetTopPathsRes, w http.Respons
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12424,12 +12424,12 @@ func encodeReposGetTopPathsResponse(response ReposGetTopPathsRes, w http.Respons
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/traffic/popular/paths: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/traffic/popular/paths: unexpected response type: %T`, response)
 	}
 }
 
@@ -12444,7 +12444,7 @@ func encodeReposGetTopReferrersResponse(response ReposGetTopReferrersRes, w http
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12458,12 +12458,12 @@ func encodeReposGetTopReferrersResponse(response ReposGetTopReferrersRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/traffic/popular/referrers: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/traffic/popular/referrers: unexpected response type: %T`, response)
 	}
 }
 
@@ -12478,7 +12478,7 @@ func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUse
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12492,12 +12492,12 @@ func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUse
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users: unexpected response type: %T`, response)
 	}
 }
 
@@ -12513,7 +12513,7 @@ func encodeReposGetViewsResponse(response ReposGetViewsRes, w http.ResponseWrite
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12527,12 +12527,12 @@ func encodeReposGetViewsResponse(response ReposGetViewsRes, w http.ResponseWrite
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/traffic/views: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/traffic/views: unexpected response type: %T`, response)
 	}
 }
 
@@ -12548,7 +12548,7 @@ func encodeReposGetWebhookResponse(response ReposGetWebhookRes, w http.ResponseW
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12562,12 +12562,12 @@ func encodeReposGetWebhookResponse(response ReposGetWebhookRes, w http.ResponseW
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/hooks/{hook_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/hooks/{hook_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -12581,7 +12581,7 @@ func encodeReposGetWebhookConfigForRepoResponse(response WebhookConfig, w http.R
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -12604,7 +12604,7 @@ func encodeReposListAutolinksResponse(response []Autolink, w http.ResponseWriter
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -12621,7 +12621,7 @@ func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.Respo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12635,12 +12635,12 @@ func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.Respo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/branches: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/branches: unexpected response type: %T`, response)
 	}
 }
 
@@ -12655,7 +12655,7 @@ func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w 
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12669,12 +12669,12 @@ func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/collaborators: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/collaborators: unexpected response type: %T`, response)
 	}
 }
 
@@ -12695,7 +12695,7 @@ func encodeReposListCommentsForCommitResponse(response []CommitComment, w http.R
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -12718,7 +12718,7 @@ func encodeReposListCommitCommentsForRepoResponse(response []CommitComment, w ht
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -12735,7 +12735,7 @@ func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatuse
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12749,12 +12749,12 @@ func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatuse
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/commits/{ref}/statuses: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/commits/{ref}/statuses: unexpected response type: %T`, response)
 	}
 }
 
@@ -12769,7 +12769,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12782,14 +12782,14 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	case *ScimError:
 		w.Header().Set("Content-Type", "application/scim+json")
 		w.WriteHeader(400)
-		return fmt.Errorf("application/scim+json encoder not implemented")
+		return errors.New(`application/scim+json encoder not implemented`)
 	case *ReposListCommitsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
@@ -12799,7 +12799,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12812,7 +12812,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12825,12 +12825,12 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/commits: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/commits: unexpected response type: %T`, response)
 	}
 }
 
@@ -12845,7 +12845,7 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12861,7 +12861,7 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12874,12 +12874,12 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/contributors: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/contributors: unexpected response type: %T`, response)
 	}
 }
 
@@ -12900,7 +12900,7 @@ func encodeReposListDeployKeysResponse(response []DeployKey, w http.ResponseWrit
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -12917,7 +12917,7 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -12931,12 +12931,12 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/deployments/{deployment_id}/statuses: unexpected response type: %T`, response)
 	}
 }
 
@@ -12957,7 +12957,7 @@ func encodeReposListForOrgResponse(response []MinimalRepository, w http.Response
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -12980,7 +12980,7 @@ func encodeReposListForUserResponse(response []MinimalRepository, w http.Respons
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -12997,7 +12997,7 @@ func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWri
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -13011,16 +13011,16 @@ func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWri
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	case *ScimError:
 		w.Header().Set("Content-Type", "application/scim+json")
 		w.WriteHeader(400)
-		return fmt.Errorf("application/scim+json encoder not implemented")
+		return errors.New(`application/scim+json encoder not implemented`)
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/forks: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/forks: unexpected response type: %T`, response)
 	}
 }
 
@@ -13041,7 +13041,7 @@ func encodeReposListInvitationsResponse(response []RepositoryInvitation, w http.
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -13058,7 +13058,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -13074,7 +13074,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -13087,7 +13087,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -13100,12 +13100,12 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/repository_invitations: unexpected response type: %T", response)
+		return errors.Errorf(`/user/repository_invitations: unexpected response type: %T`, response)
 	}
 }
 
@@ -13119,7 +13119,7 @@ func encodeReposListLanguagesResponse(response Language, w http.ResponseWriter, 
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -13142,7 +13142,7 @@ func encodeReposListPagesBuildsResponse(response []PageBuild, w http.ResponseWri
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -13165,7 +13165,7 @@ func encodeReposListPullRequestsAssociatedWithCommitResponse(response []PullRequ
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -13188,7 +13188,7 @@ func encodeReposListReleaseAssetsResponse(response []ReleaseAsset, w http.Respon
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -13205,7 +13205,7 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -13219,12 +13219,12 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/releases: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/releases: unexpected response type: %T`, response)
 	}
 }
 
@@ -13245,7 +13245,7 @@ func encodeReposListTagsResponse(response []Tag, w http.ResponseWriter, span tra
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -13268,7 +13268,7 @@ func encodeReposListTeamsResponse(response []Team, w http.ResponseWriter, span t
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -13285,7 +13285,7 @@ func encodeReposListWebhooksResponse(response ReposListWebhooksRes, w http.Respo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -13299,12 +13299,12 @@ func encodeReposListWebhooksResponse(response ReposListWebhooksRes, w http.Respo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/hooks: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/hooks: unexpected response type: %T`, response)
 	}
 }
 
@@ -13320,7 +13320,7 @@ func encodeReposMergeUpstreamResponse(response ReposMergeUpstreamRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -13331,7 +13331,7 @@ func encodeReposMergeUpstreamResponse(response ReposMergeUpstreamRes, w http.Res
 		w.WriteHeader(422)
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/merge-upstream: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/merge-upstream: unexpected response type: %T`, response)
 	}
 }
 
@@ -13350,12 +13350,12 @@ func encodeReposPingWebhookResponse(response ReposPingWebhookRes, w http.Respons
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/hooks/{hook_id}/pings: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/hooks/{hook_id}/pings: unexpected response type: %T`, response)
 	}
 }
 
@@ -13381,7 +13381,7 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -13395,7 +13395,7 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -13409,7 +13409,7 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -13423,12 +13423,12 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/topics: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/topics: unexpected response type: %T`, response)
 	}
 }
 
@@ -13442,7 +13442,7 @@ func encodeReposRequestPagesBuildResponse(response PageBuildStatus, w http.Respo
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -13458,7 +13458,7 @@ func encodeReposSetAdminBranchProtectionResponse(response ProtectedBranchAdminEn
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -13479,12 +13479,12 @@ func encodeReposTestPushWebhookResponse(response ReposTestPushWebhookRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/hooks/{hook_id}/tests: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/hooks/{hook_id}/tests: unexpected response type: %T`, response)
 	}
 }
 
@@ -13498,7 +13498,7 @@ func encodeReposTransferResponse(response MinimalRepository, w http.ResponseWrit
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -13516,7 +13516,7 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -13529,7 +13529,7 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -13542,7 +13542,7 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -13556,12 +13556,12 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection: unexpected response type: %T`, response)
 	}
 }
 
@@ -13577,7 +13577,7 @@ func encodeReposUpdateCommitCommentResponse(response ReposUpdateCommitCommentRes
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -13591,12 +13591,12 @@ func encodeReposUpdateCommitCommentResponse(response ReposUpdateCommitCommentRes
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/comments/{comment_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/comments/{comment_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -13610,7 +13610,7 @@ func encodeReposUpdateInvitationResponse(response RepositoryInvitation, w http.R
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -13628,7 +13628,7 @@ func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -13642,12 +13642,12 @@ func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/releases/{release_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/releases/{release_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -13661,7 +13661,7 @@ func encodeReposUpdateReleaseAssetResponse(response ReleaseAsset, w http.Respons
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -13677,7 +13677,7 @@ func encodeReposUpdateWebhookConfigForRepoResponse(response WebhookConfig, w htt
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -13693,7 +13693,7 @@ func encodeReposUploadReleaseAssetResponse(response ReleaseAsset, w http.Respons
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -13716,14 +13716,14 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w ht
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	case *ScimDeleteUserFromOrgApplicationScimJSONForbidden:
 		w.Header().Set("Content-Type", "application/scim+json")
 		w.WriteHeader(403)
-		return fmt.Errorf("application/scim+json encoder not implemented")
+		return errors.New(`application/scim+json encoder not implemented`)
 	case *ScimDeleteUserFromOrgApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
@@ -13733,16 +13733,16 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w ht
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	case *ScimDeleteUserFromOrgApplicationScimJSONNotFound:
 		w.Header().Set("Content-Type", "application/scim+json")
 		w.WriteHeader(404)
-		return fmt.Errorf("application/scim+json encoder not implemented")
+		return errors.New(`application/scim+json encoder not implemented`)
 	default:
-		return fmt.Errorf("/scim/v2/organizations/{org}/Users/{scim_user_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/scim/v2/organizations/{org}/Users/{scim_user_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -13758,7 +13758,7 @@ func encodeSearchCommitsResponse(response SearchCommitsRes, w http.ResponseWrite
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -13775,12 +13775,12 @@ func encodeSearchCommitsResponse(response SearchCommitsRes, w http.ResponseWrite
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/search/commits: unexpected response type: %T", response)
+		return errors.Errorf(`/search/commits: unexpected response type: %T`, response)
 	}
 }
 
@@ -13796,7 +13796,7 @@ func encodeSearchTopicsResponse(response SearchTopicsRes, w http.ResponseWriter,
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -13813,12 +13813,12 @@ func encodeSearchTopicsResponse(response SearchTopicsRes, w http.ResponseWriter,
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/search/topics: unexpected response type: %T", response)
+		return errors.Errorf(`/search/topics: unexpected response type: %T`, response)
 	}
 }
 
@@ -13834,7 +13834,7 @@ func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertRes, w 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -13851,12 +13851,12 @@ func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertRes, w 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}: unexpected response type: %T`, response)
 	}
 }
 
@@ -13871,7 +13871,7 @@ func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAle
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -13885,7 +13885,7 @@ func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAle
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -13899,12 +13899,12 @@ func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAle
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/secret-scanning/alerts: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/secret-scanning/alerts: unexpected response type: %T`, response)
 	}
 }
 
@@ -13919,7 +13919,7 @@ func encodeSecretScanningListAlertsForRepoResponse(response SecretScanningListAl
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -13936,12 +13936,12 @@ func encodeSecretScanningListAlertsForRepoResponse(response SecretScanningListAl
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/secret-scanning/alerts: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/secret-scanning/alerts: unexpected response type: %T`, response)
 	}
 }
 
@@ -13957,7 +13957,7 @@ func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertR
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -13977,12 +13977,12 @@ func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertR
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}: unexpected response type: %T", response)
+		return errors.Errorf(`/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}: unexpected response type: %T`, response)
 	}
 }
 
@@ -14001,7 +14001,7 @@ func encodeTeamsAddMemberLegacyResponse(response TeamsAddMemberLegacyRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -14012,7 +14012,7 @@ func encodeTeamsAddMemberLegacyResponse(response TeamsAddMemberLegacyRes, w http
 		w.WriteHeader(422)
 		return nil
 	default:
-		return fmt.Errorf("/teams/{team_id}/members/{username}: unexpected response type: %T", response)
+		return errors.Errorf(`/teams/{team_id}/members/{username}: unexpected response type: %T`, response)
 	}
 }
 
@@ -14028,7 +14028,7 @@ func encodeTeamsAddOrUpdateMembershipForUserInOrgResponse(response TeamsAddOrUpd
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -14039,7 +14039,7 @@ func encodeTeamsAddOrUpdateMembershipForUserInOrgResponse(response TeamsAddOrUpd
 		w.WriteHeader(422)
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/teams/{team_slug}/memberships/{username}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/teams/{team_slug}/memberships/{username}: unexpected response type: %T`, response)
 	}
 }
 
@@ -14055,7 +14055,7 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUp
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -14072,7 +14072,7 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUp
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -14080,7 +14080,7 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUp
 		w.WriteHeader(422)
 		return nil
 	default:
-		return fmt.Errorf("/teams/{team_id}/memberships/{username}: unexpected response type: %T", response)
+		return errors.Errorf(`/teams/{team_id}/memberships/{username}: unexpected response type: %T`, response)
 	}
 }
 
@@ -14099,12 +14099,12 @@ func encodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(response TeamsAddOrUp
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/teams/{team_slug}/projects/{project_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/teams/{team_slug}/projects/{project_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -14125,7 +14125,7 @@ func encodeTeamsCheckPermissionsForProjectInOrgResponse(response TeamsCheckPermi
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -14133,7 +14133,7 @@ func encodeTeamsCheckPermissionsForProjectInOrgResponse(response TeamsCheckPermi
 		w.WriteHeader(404)
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/teams/{team_slug}/projects/{project_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/teams/{team_slug}/projects/{project_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -14149,7 +14149,7 @@ func encodeTeamsCheckPermissionsForProjectLegacyResponse(response TeamsCheckPerm
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -14157,7 +14157,7 @@ func encodeTeamsCheckPermissionsForProjectLegacyResponse(response TeamsCheckPerm
 		w.WriteHeader(404)
 		return nil
 	default:
-		return fmt.Errorf("/teams/{team_id}/projects/{project_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/teams/{team_id}/projects/{project_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -14173,7 +14173,7 @@ func encodeTeamsCheckPermissionsForRepoInOrgResponse(response TeamsCheckPermissi
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -14184,7 +14184,7 @@ func encodeTeamsCheckPermissionsForRepoInOrgResponse(response TeamsCheckPermissi
 		w.WriteHeader(404)
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}: unexpected response type: %T`, response)
 	}
 }
 
@@ -14200,7 +14200,7 @@ func encodeTeamsCheckPermissionsForRepoLegacyResponse(response TeamsCheckPermiss
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -14211,7 +14211,7 @@ func encodeTeamsCheckPermissionsForRepoLegacyResponse(response TeamsCheckPermiss
 		w.WriteHeader(404)
 		return nil
 	default:
-		return fmt.Errorf("/teams/{team_id}/repos/{owner}/{repo}: unexpected response type: %T", response)
+		return errors.Errorf(`/teams/{team_id}/repos/{owner}/{repo}: unexpected response type: %T`, response)
 	}
 }
 
@@ -14225,7 +14225,7 @@ func encodeTeamsCreateDiscussionCommentInOrgResponse(response TeamDiscussionComm
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -14241,7 +14241,7 @@ func encodeTeamsCreateDiscussionCommentLegacyResponse(response TeamDiscussionCom
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -14257,7 +14257,7 @@ func encodeTeamsCreateDiscussionInOrgResponse(response TeamDiscussion, w http.Re
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -14273,7 +14273,7 @@ func encodeTeamsCreateDiscussionLegacyResponse(response TeamDiscussion, w http.R
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -14289,7 +14289,7 @@ func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(response GroupMap
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -14332,7 +14332,7 @@ func encodeTeamsGetByNameResponse(response TeamsGetByNameRes, w http.ResponseWri
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -14346,12 +14346,12 @@ func encodeTeamsGetByNameResponse(response TeamsGetByNameRes, w http.ResponseWri
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/teams/{team_slug}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/teams/{team_slug}: unexpected response type: %T`, response)
 	}
 }
 
@@ -14365,7 +14365,7 @@ func encodeTeamsGetDiscussionCommentInOrgResponse(response TeamDiscussionComment
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -14381,7 +14381,7 @@ func encodeTeamsGetDiscussionCommentLegacyResponse(response TeamDiscussionCommen
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -14397,7 +14397,7 @@ func encodeTeamsGetDiscussionInOrgResponse(response TeamDiscussion, w http.Respo
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -14413,7 +14413,7 @@ func encodeTeamsGetDiscussionLegacyResponse(response TeamDiscussion, w http.Resp
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -14431,7 +14431,7 @@ func encodeTeamsGetLegacyResponse(response TeamsGetLegacyRes, w http.ResponseWri
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -14445,12 +14445,12 @@ func encodeTeamsGetLegacyResponse(response TeamsGetLegacyRes, w http.ResponseWri
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/teams/{team_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/teams/{team_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -14463,7 +14463,7 @@ func encodeTeamsGetMemberLegacyResponse(response TeamsGetMemberLegacyRes, w http
 		w.WriteHeader(404)
 		return nil
 	default:
-		return fmt.Errorf("/teams/{team_id}/members/{username}: unexpected response type: %T", response)
+		return errors.Errorf(`/teams/{team_id}/members/{username}: unexpected response type: %T`, response)
 	}
 }
 
@@ -14479,7 +14479,7 @@ func encodeTeamsGetMembershipForUserInOrgResponse(response TeamsGetMembershipFor
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -14487,7 +14487,7 @@ func encodeTeamsGetMembershipForUserInOrgResponse(response TeamsGetMembershipFor
 		w.WriteHeader(404)
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/teams/{team_slug}/memberships/{username}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/teams/{team_slug}/memberships/{username}: unexpected response type: %T`, response)
 	}
 }
 
@@ -14503,7 +14503,7 @@ func encodeTeamsGetMembershipForUserLegacyResponse(response TeamsGetMembershipFo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -14517,12 +14517,12 @@ func encodeTeamsGetMembershipForUserLegacyResponse(response TeamsGetMembershipFo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/teams/{team_id}/memberships/{username}: unexpected response type: %T", response)
+		return errors.Errorf(`/teams/{team_id}/memberships/{username}: unexpected response type: %T`, response)
 	}
 }
 
@@ -14537,7 +14537,7 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span 
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -14551,12 +14551,12 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/teams: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/teams: unexpected response type: %T`, response)
 	}
 }
 
@@ -14577,7 +14577,7 @@ func encodeTeamsListChildInOrgResponse(response []Team, w http.ResponseWriter, s
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -14600,7 +14600,7 @@ func encodeTeamsListDiscussionCommentsInOrgResponse(response []TeamDiscussionCom
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -14623,7 +14623,7 @@ func encodeTeamsListDiscussionCommentsLegacyResponse(response []TeamDiscussionCo
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -14646,7 +14646,7 @@ func encodeTeamsListDiscussionsInOrgResponse(response []TeamDiscussion, w http.R
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -14669,7 +14669,7 @@ func encodeTeamsListDiscussionsLegacyResponse(response []TeamDiscussion, w http.
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -14686,7 +14686,7 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -14702,7 +14702,7 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -14715,12 +14715,12 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/teams: unexpected response type: %T", response)
+		return errors.Errorf(`/user/teams: unexpected response type: %T`, response)
 	}
 }
 
@@ -14736,7 +14736,7 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -14749,7 +14749,7 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -14762,12 +14762,12 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/teams/{team_id}/team-sync/group-mappings: unexpected response type: %T", response)
+		return errors.Errorf(`/teams/{team_id}/team-sync/group-mappings: unexpected response type: %T`, response)
 	}
 }
 
@@ -14781,7 +14781,7 @@ func encodeTeamsListIdpGroupsForOrgResponse(response GroupMapping, w http.Respon
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -14797,7 +14797,7 @@ func encodeTeamsListIdpGroupsInOrgResponse(response GroupMapping, w http.Respons
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -14820,7 +14820,7 @@ func encodeTeamsListMembersInOrgResponse(response []SimpleUser, w http.ResponseW
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -14837,7 +14837,7 @@ func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w 
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -14851,12 +14851,12 @@ func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/teams/{team_id}/members: unexpected response type: %T", response)
+		return errors.Errorf(`/teams/{team_id}/members: unexpected response type: %T`, response)
 	}
 }
 
@@ -14877,7 +14877,7 @@ func encodeTeamsListPendingInvitationsInOrgResponse(response []OrganizationInvit
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -14900,7 +14900,7 @@ func encodeTeamsListPendingInvitationsLegacyResponse(response []OrganizationInvi
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -14923,7 +14923,7 @@ func encodeTeamsListProjectsInOrgResponse(response []TeamProject, w http.Respons
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -14940,7 +14940,7 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -14954,12 +14954,12 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/teams/{team_id}/projects: unexpected response type: %T", response)
+		return errors.Errorf(`/teams/{team_id}/projects: unexpected response type: %T`, response)
 	}
 }
 
@@ -14980,7 +14980,7 @@ func encodeTeamsListReposInOrgResponse(response []MinimalRepository, w http.Resp
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -14997,7 +14997,7 @@ func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, w http
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15011,12 +15011,12 @@ func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/teams/{team_id}/repos: unexpected response type: %T", response)
+		return errors.Errorf(`/teams/{team_id}/repos: unexpected response type: %T`, response)
 	}
 }
 
@@ -15029,7 +15029,7 @@ func encodeTeamsRemoveMemberLegacyResponse(response TeamsRemoveMemberLegacyRes, 
 		w.WriteHeader(404)
 		return nil
 	default:
-		return fmt.Errorf("/teams/{team_id}/members/{username}: unexpected response type: %T", response)
+		return errors.Errorf(`/teams/{team_id}/members/{username}: unexpected response type: %T`, response)
 	}
 }
 
@@ -15042,7 +15042,7 @@ func encodeTeamsRemoveMembershipForUserInOrgResponse(response TeamsRemoveMembers
 		w.WriteHeader(403)
 		return nil
 	default:
-		return fmt.Errorf("/orgs/{org}/teams/{team_slug}/memberships/{username}: unexpected response type: %T", response)
+		return errors.Errorf(`/orgs/{org}/teams/{team_slug}/memberships/{username}: unexpected response type: %T`, response)
 	}
 }
 
@@ -15055,7 +15055,7 @@ func encodeTeamsRemoveMembershipForUserLegacyResponse(response TeamsRemoveMember
 		w.WriteHeader(403)
 		return nil
 	default:
-		return fmt.Errorf("/teams/{team_id}/memberships/{username}: unexpected response type: %T", response)
+		return errors.Errorf(`/teams/{team_id}/memberships/{username}: unexpected response type: %T`, response)
 	}
 }
 
@@ -15084,7 +15084,7 @@ func encodeTeamsUpdateDiscussionCommentInOrgResponse(response TeamDiscussionComm
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -15100,7 +15100,7 @@ func encodeTeamsUpdateDiscussionCommentLegacyResponse(response TeamDiscussionCom
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -15116,7 +15116,7 @@ func encodeTeamsUpdateDiscussionInOrgResponse(response TeamDiscussion, w http.Re
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -15132,7 +15132,7 @@ func encodeTeamsUpdateDiscussionLegacyResponse(response TeamDiscussion, w http.R
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -15148,7 +15148,7 @@ func encodeTeamsUpdateInOrgResponse(response TeamFull, w http.ResponseWriter, sp
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -15171,7 +15171,7 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15184,7 +15184,7 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15197,12 +15197,12 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/blocks/{username}: unexpected response type: %T", response)
+		return errors.Errorf(`/user/blocks/{username}: unexpected response type: %T`, response)
 	}
 }
 
@@ -15215,7 +15215,7 @@ func encodeUsersCheckFollowingForUserResponse(response UsersCheckFollowingForUse
 		w.WriteHeader(404)
 		return nil
 	default:
-		return fmt.Errorf("/users/{username}/following/{target_user}: unexpected response type: %T", response)
+		return errors.Errorf(`/users/{username}/following/{target_user}: unexpected response type: %T`, response)
 	}
 }
 
@@ -15236,7 +15236,7 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15249,7 +15249,7 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15262,12 +15262,12 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/following/{username}: unexpected response type: %T", response)
+		return errors.Errorf(`/user/following/{username}: unexpected response type: %T`, response)
 	}
 }
 
@@ -15288,7 +15288,7 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15301,7 +15301,7 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15314,12 +15314,12 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/keys/{key_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/user/keys/{key_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -15340,7 +15340,7 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15353,7 +15353,7 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15366,12 +15366,12 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/following/{username}: unexpected response type: %T", response)
+		return errors.Errorf(`/user/following/{username}: unexpected response type: %T`, response)
 	}
 }
 
@@ -15387,7 +15387,7 @@ func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedRes, w ht
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15403,7 +15403,7 @@ func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedRes, w ht
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15416,12 +15416,12 @@ func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedRes, w ht
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user: unexpected response type: %T", response)
+		return errors.Errorf(`/user: unexpected response type: %T`, response)
 	}
 }
 
@@ -15437,7 +15437,7 @@ func encodeUsersGetByUsernameResponse(response UsersGetByUsernameRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15451,7 +15451,7 @@ func encodeUsersGetByUsernameResponse(response UsersGetByUsernameRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15465,12 +15465,12 @@ func encodeUsersGetByUsernameResponse(response UsersGetByUsernameRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/users/{username}: unexpected response type: %T", response)
+		return errors.Errorf(`/users/{username}: unexpected response type: %T`, response)
 	}
 }
 
@@ -15486,7 +15486,7 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15502,7 +15502,7 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15515,7 +15515,7 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15528,12 +15528,12 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/gpg_keys/{gpg_key_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/user/gpg_keys/{gpg_key_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -15549,7 +15549,7 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15565,7 +15565,7 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15578,7 +15578,7 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15591,12 +15591,12 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/keys/{key_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/user/keys/{key_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -15611,7 +15611,7 @@ func encodeUsersListResponse(response UsersListRes, w http.ResponseWriter, span 
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15619,7 +15619,7 @@ func encodeUsersListResponse(response UsersListRes, w http.ResponseWriter, span 
 		w.WriteHeader(304)
 		return nil
 	default:
-		return fmt.Errorf("/users: unexpected response type: %T", response)
+		return errors.Errorf(`/users: unexpected response type: %T`, response)
 	}
 }
 
@@ -15634,7 +15634,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15650,7 +15650,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15663,7 +15663,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15676,7 +15676,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15690,12 +15690,12 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/blocks: unexpected response type: %T", response)
+		return errors.Errorf(`/user/blocks: unexpected response type: %T`, response)
 	}
 }
 
@@ -15710,7 +15710,7 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15726,7 +15726,7 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15739,7 +15739,7 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15752,12 +15752,12 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/emails: unexpected response type: %T", response)
+		return errors.Errorf(`/user/emails: unexpected response type: %T`, response)
 	}
 }
 
@@ -15772,7 +15772,7 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15788,7 +15788,7 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15801,12 +15801,12 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/following: unexpected response type: %T", response)
+		return errors.Errorf(`/user/following: unexpected response type: %T`, response)
 	}
 }
 
@@ -15821,7 +15821,7 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15837,7 +15837,7 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15850,12 +15850,12 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/followers: unexpected response type: %T", response)
+		return errors.Errorf(`/user/followers: unexpected response type: %T`, response)
 	}
 }
 
@@ -15876,7 +15876,7 @@ func encodeUsersListFollowersForUserResponse(response []SimpleUser, w http.Respo
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -15899,7 +15899,7 @@ func encodeUsersListFollowingForUserResponse(response []SimpleUser, w http.Respo
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -15916,7 +15916,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15932,7 +15932,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15945,7 +15945,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -15958,12 +15958,12 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/gpg_keys: unexpected response type: %T", response)
+		return errors.Errorf(`/user/gpg_keys: unexpected response type: %T`, response)
 	}
 }
 
@@ -15984,7 +15984,7 @@ func encodeUsersListGpgKeysForUserResponse(response []GpgKey, w http.ResponseWri
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -16001,7 +16001,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -16017,7 +16017,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -16030,7 +16030,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -16043,12 +16043,12 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/public_emails: unexpected response type: %T", response)
+		return errors.Errorf(`/user/public_emails: unexpected response type: %T`, response)
 	}
 }
 
@@ -16069,7 +16069,7 @@ func encodeUsersListPublicKeysForUserResponse(response []KeySimple, w http.Respo
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -16086,7 +16086,7 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -16102,7 +16102,7 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -16115,7 +16115,7 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -16128,12 +16128,12 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/keys: unexpected response type: %T", response)
+		return errors.Errorf(`/user/keys: unexpected response type: %T`, response)
 	}
 }
 
@@ -16154,7 +16154,7 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter,
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -16167,7 +16167,7 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter,
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -16180,12 +16180,12 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter,
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/blocks/{username}: unexpected response type: %T", response)
+		return errors.Errorf(`/user/blocks/{username}: unexpected response type: %T`, response)
 	}
 }
 
@@ -16206,7 +16206,7 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -16219,7 +16219,7 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -16232,11 +16232,11 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/user/following/{username}: unexpected response type: %T", response)
+		return errors.Errorf(`/user/following/{username}: unexpected response type: %T`, response)
 	}
 }

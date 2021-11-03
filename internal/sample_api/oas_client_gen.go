@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -122,11 +122,10 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.Int64ToString(params.InlinedParam))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["inlinedParam"] = e.Result()
 	}
@@ -136,11 +135,10 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.Int32ToString(params.Skip))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["skip"] = e.Result()
 	}
@@ -151,13 +149,13 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeFoobarGetResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -165,14 +163,13 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 
 // FoobarPost implements foobarPost operation.
 func (c *Client) FoobarPost(ctx context.Context, request Pet) (res FoobarPostRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `FoobarPost`,
@@ -206,13 +203,13 @@ func (c *Client) FoobarPost(ctx context.Context, request Pet) (res FoobarPostRes
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeFoobarPostResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -242,13 +239,13 @@ func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDefStatusCode, err
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeFoobarPutResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -258,20 +255,18 @@ func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDefStatusCode, err
 func (c *Client) PetCreate(ctx context.Context, request PetCreateReq) (res Pet, err error) {
 	switch request := request.(type) {
 	case *Pet:
-		if verr := func() error {
+		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
 			}
 			return nil
-		}(); verr != nil {
-			err = fmt.Errorf("validate: %w", verr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "validate")
 		}
 	case *PetCreateReqTextPlain:
 		// Validation is not required for this type.
 	default:
-		err = fmt.Errorf("unexpected request type: %T", request)
-		return
+		return res, errors.Errorf("unexpected request type: %T", request)
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetCreate`,
@@ -305,13 +300,13 @@ func (c *Client) PetCreate(ctx context.Context, request PetCreateReq) (res Pet, 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePetCreateResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -344,11 +339,10 @@ func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNames
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.ID))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode path: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -358,13 +352,13 @@ func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNames
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePetFriendsNamesByIDResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -398,11 +392,10 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.Int64ToString(params.PetID))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["petID"] = e.Result()
 	}
@@ -412,11 +405,10 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Token))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["token"] = e.Result()
 	}
@@ -429,20 +421,19 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 		e := uri.NewHeaderEncoder(uri.HeaderEncoderConfig{
 			Explode: false,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeArray(func(e uri.Encoder) error {
 				for i, item := range params.XTags {
 					if err := func() error {
 						return e.EncodeValue(conv.UUIDToString(item))
 					}(); err != nil {
-						return fmt.Errorf("[%d]: %w", i, err)
+						return errors.Wrapf(err, "[%d]", i)
 					}
 				}
 				return nil
 			})
-		}(); encErr != nil {
-			err = fmt.Errorf("encode header param 'x-tags': %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, `encode header param x-tags`)
 		}
 		if v, ok := e.Result(); ok {
 			r.Header.Set("x-tags", v)
@@ -452,20 +443,19 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 		e := uri.NewHeaderEncoder(uri.HeaderEncoderConfig{
 			Explode: false,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeArray(func(e uri.Encoder) error {
 				for i, item := range params.XScope {
 					if err := func() error {
 						return e.EncodeValue(conv.StringToString(item))
 					}(); err != nil {
-						return fmt.Errorf("[%d]: %w", i, err)
+						return errors.Wrapf(err, "[%d]", i)
 					}
 				}
 				return nil
 			})
-		}(); encErr != nil {
-			err = fmt.Errorf("encode header param 'x-scope': %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, `encode header param x-scope`)
 		}
 		if v, ok := e.Result(); ok {
 			r.Header.Set("x-scope", v)
@@ -474,13 +464,13 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePetGetResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -513,11 +503,10 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode path: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -527,13 +516,13 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePetGetByNameResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -566,11 +555,10 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.ID))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode path: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -580,20 +568,20 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePetNameByIDResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
 }
 
 func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request PetName) (res PetUpdateNameAliasPostDefStatusCode, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -609,9 +597,8 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request PetName) (r
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetUpdateNameAliasPost`,
@@ -644,20 +631,20 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request PetName) (r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePetUpdateNameAliasPostResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
 }
 
 func (c *Client) PetUpdateNamePost(ctx context.Context, request string) (res PetUpdateNamePostDefStatusCode, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := (validate.String{
 			MinLength:    6,
 			MinLengthSet: true,
@@ -670,9 +657,8 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request string) (res Pet
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetUpdateNamePost`,
@@ -705,13 +691,13 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request string) (res Pet
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePetUpdateNamePostResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil

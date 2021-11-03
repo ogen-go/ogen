@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -71,7 +71,7 @@ func (s CreatePetsCreated) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CreatePetsCreated from json stream.
 func (s *CreatePetsCreated) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CreatePetsCreated to nil`)
+		return errors.New(`invalid: unable to decode CreatePetsCreated to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -99,7 +99,7 @@ func (s Error) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Error from json stream.
 func (s *Error) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Error to nil`)
+		return errors.New(`invalid: unable to decode Error to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -133,7 +133,7 @@ func (s ErrorStatusCode) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ErrorStatusCode from json stream.
 func (s *ErrorStatusCode) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ErrorStatusCode to nil`)
+		return errors.New(`invalid: unable to decode ErrorStatusCode to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -152,7 +152,7 @@ func (o OptInt32) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of int32 from json iterator.
 func (o *OptInt32) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptInt32 to nil`)
+		return errors.New(`invalid: unable to decode OptInt32 to nil`)
 	}
 	switch d.Next() {
 	case json.Number:
@@ -164,7 +164,7 @@ func (o *OptInt32) ReadJSON(d *json.Decoder) error {
 		o.Value = int32(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptInt32", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptInt32`, d.Next())
 	}
 }
 
@@ -176,7 +176,7 @@ func (o OptString) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of string from json iterator.
 func (o *OptString) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptString to nil`)
+		return errors.New(`invalid: unable to decode OptString to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -188,7 +188,7 @@ func (o *OptString) ReadJSON(d *json.Decoder) error {
 		o.Value = string(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptString", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptString`, d.Next())
 	}
 }
 
@@ -214,7 +214,7 @@ func (s Pet) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Pet from json stream.
 func (s *Pet) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Pet to nil`)
+		return errors.New(`invalid: unable to decode Pet to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {

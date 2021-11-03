@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -255,7 +255,7 @@ func (s Pet) Validate() error {
 		for i, elem := range s.TestArray1 {
 			if err := func() error {
 				if elem == nil {
-					return fmt.Errorf("required, can't be nil")
+					return errors.New("required, can't be nil")
 				}
 				if err := (validate.Array{
 					MinLength:    0,

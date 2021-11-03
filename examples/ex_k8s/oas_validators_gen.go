@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -901,7 +901,7 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.AdmissionReviewVersions == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.AdmissionReviewVersions // validation expected, but not supported
 		return nil
@@ -952,7 +952,7 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Validat
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -987,7 +987,7 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.AdmissionReviewVersions == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.AdmissionReviewVersions // validation expected, but not supported
 		return nil
@@ -1038,7 +1038,7 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Valid
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -1073,7 +1073,7 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -1092,7 +1092,7 @@ func (s IoK8sAPIAppsV1ControllerRevisionList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -1127,7 +1127,7 @@ func (s IoK8sAPIAppsV1DaemonSetList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -1196,7 +1196,7 @@ func (s IoK8sAPIAppsV1DeploymentList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -1265,7 +1265,7 @@ func (s IoK8sAPIAppsV1ReplicaSetList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -1332,7 +1332,7 @@ func (s IoK8sAPIAppsV1StatefulSetList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -1385,7 +1385,7 @@ func (s IoK8sAPIAuthorizationV1NonResourceRule) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Verbs == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Verbs // validation expected, but not supported
 		return nil
@@ -1404,7 +1404,7 @@ func (s IoK8sAPIAuthorizationV1ResourceRule) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Verbs == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Verbs // validation expected, but not supported
 		return nil
@@ -1439,7 +1439,7 @@ func (s IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.NonResourceRules == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.NonResourceRules {
@@ -1467,7 +1467,7 @@ func (s IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) Validate() error {
 	}
 	if err := func() error {
 		if s.ResourceRules == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.ResourceRules {
@@ -1502,7 +1502,7 @@ func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -1537,7 +1537,7 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Validate() error 
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -1572,7 +1572,7 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Validate() erro
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Conditions == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Conditions // validation expected, but not supported
 		return nil
@@ -1607,7 +1607,7 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Validate() error 
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -1642,7 +1642,7 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Validate() erro
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Conditions == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Conditions // validation expected, but not supported
 		return nil
@@ -1677,7 +1677,7 @@ func (s IoK8sAPIBatchV1CronJobList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -1746,7 +1746,7 @@ func (s IoK8sAPIBatchV1JobList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -1831,7 +1831,7 @@ func (s IoK8sAPIBatchV1beta1CronJobList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -1918,7 +1918,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -1953,7 +1953,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Request == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		if err := (validate.String{
 			MinLength:    0,
@@ -1982,7 +1982,7 @@ func (s IoK8sAPICoordinationV1LeaseList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -2017,7 +2017,7 @@ func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Monitors == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Monitors // validation expected, but not supported
 		return nil
@@ -2036,7 +2036,7 @@ func (s IoK8sAPICoreV1CephFSVolumeSource) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Monitors == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Monitors // validation expected, but not supported
 		return nil
@@ -2055,7 +2055,7 @@ func (s IoK8sAPICoreV1ComponentStatusList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -2074,7 +2074,7 @@ func (s IoK8sAPICoreV1ConfigMapList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -2093,7 +2093,7 @@ func (s IoK8sAPICoreV1EndpointsList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -2112,7 +2112,7 @@ func (s IoK8sAPICoreV1EventList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -2147,7 +2147,7 @@ func (s IoK8sAPICoreV1LimitRangeList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -2182,7 +2182,7 @@ func (s IoK8sAPICoreV1LimitRangeSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Limits == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Limits // validation expected, but not supported
 		return nil
@@ -2201,7 +2201,7 @@ func (s IoK8sAPICoreV1NamespaceList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -2236,7 +2236,7 @@ func (s IoK8sAPICoreV1NodeList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -2255,7 +2255,7 @@ func (s IoK8sAPICoreV1NodeSelector) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.NodeSelectorTerms == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.NodeSelectorTerms // validation expected, but not supported
 		return nil
@@ -2290,7 +2290,7 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -2309,7 +2309,7 @@ func (s IoK8sAPICoreV1PersistentVolumeList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -2394,7 +2394,7 @@ func (s IoK8sAPICoreV1PodList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -2438,7 +2438,7 @@ func (s IoK8sAPICoreV1PodSpec) Validate() error {
 	}
 	if err := func() error {
 		if s.Containers == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Containers // validation expected, but not supported
 		return nil
@@ -2498,7 +2498,7 @@ func (s IoK8sAPICoreV1PodTemplateList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -2549,7 +2549,7 @@ func (s IoK8sAPICoreV1RBDPersistentVolumeSource) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Monitors == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Monitors // validation expected, but not supported
 		return nil
@@ -2568,7 +2568,7 @@ func (s IoK8sAPICoreV1RBDVolumeSource) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Monitors == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Monitors // validation expected, but not supported
 		return nil
@@ -2603,7 +2603,7 @@ func (s IoK8sAPICoreV1ReplicationControllerList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -2654,7 +2654,7 @@ func (s IoK8sAPICoreV1ResourceQuotaList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -2673,7 +2673,7 @@ func (s IoK8sAPICoreV1SecretList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -2692,7 +2692,7 @@ func (s IoK8sAPICoreV1ServiceAccountList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -2711,7 +2711,7 @@ func (s IoK8sAPICoreV1ServiceList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -2730,7 +2730,7 @@ func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Values == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Values // validation expected, but not supported
 		return nil
@@ -2822,7 +2822,7 @@ func (s IoK8sAPIDiscoveryV1Endpoint) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Addresses == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Addresses // validation expected, but not supported
 		return nil
@@ -2841,7 +2841,7 @@ func (s IoK8sAPIDiscoveryV1EndpointSlice) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Endpoints == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Endpoints {
@@ -2876,7 +2876,7 @@ func (s IoK8sAPIDiscoveryV1EndpointSliceList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -2911,7 +2911,7 @@ func (s IoK8sAPIDiscoveryV1beta1Endpoint) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Addresses == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Addresses // validation expected, but not supported
 		return nil
@@ -2930,7 +2930,7 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Endpoints == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Endpoints {
@@ -2965,7 +2965,7 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -3000,7 +3000,7 @@ func (s IoK8sAPIEventsV1EventList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -3019,7 +3019,7 @@ func (s IoK8sAPIEventsV1beta1EventList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -3054,7 +3054,7 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -3121,7 +3121,7 @@ func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.NonResourceURLs == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.NonResourceURLs // validation expected, but not supported
 		return nil
@@ -3133,7 +3133,7 @@ func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Validate() error {
 	}
 	if err := func() error {
 		if s.Verbs == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Verbs // validation expected, but not supported
 		return nil
@@ -3202,7 +3202,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Validate() error {
 	}
 	if err := func() error {
 		if s.Subjects == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Subjects // validation expected, but not supported
 		return nil
@@ -3221,7 +3221,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Validate() err
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -3240,7 +3240,7 @@ func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.ApiGroups == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.ApiGroups // validation expected, but not supported
 		return nil
@@ -3252,7 +3252,7 @@ func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Validate() error {
 	}
 	if err := func() error {
 		if s.Resources == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Resources // validation expected, but not supported
 		return nil
@@ -3264,7 +3264,7 @@ func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Validate() error {
 	}
 	if err := func() error {
 		if s.Verbs == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Verbs // validation expected, but not supported
 		return nil
@@ -3299,7 +3299,7 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -3366,7 +3366,7 @@ func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.NonResourceURLs == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.NonResourceURLs // validation expected, but not supported
 		return nil
@@ -3378,7 +3378,7 @@ func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Validate() error {
 	}
 	if err := func() error {
 		if s.Verbs == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Verbs // validation expected, but not supported
 		return nil
@@ -3447,7 +3447,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Validate() error {
 	}
 	if err := func() error {
 		if s.Subjects == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Subjects // validation expected, but not supported
 		return nil
@@ -3466,7 +3466,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Validate() err
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -3485,7 +3485,7 @@ func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.ApiGroups == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.ApiGroups // validation expected, but not supported
 		return nil
@@ -3497,7 +3497,7 @@ func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Validate() error {
 	}
 	if err := func() error {
 		if s.Resources == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Resources // validation expected, but not supported
 		return nil
@@ -3509,7 +3509,7 @@ func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Validate() error {
 	}
 	if err := func() error {
 		if s.Verbs == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Verbs // validation expected, but not supported
 		return nil
@@ -3528,7 +3528,7 @@ func (s IoK8sAPINetworkingV1HTTPIngressRuleValue) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Paths == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Paths // validation expected, but not supported
 		return nil
@@ -3563,7 +3563,7 @@ func (s IoK8sAPINetworkingV1IngressClassList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -3582,7 +3582,7 @@ func (s IoK8sAPINetworkingV1IngressList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -3665,7 +3665,7 @@ func (s IoK8sAPINetworkingV1NetworkPolicyList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -3684,7 +3684,7 @@ func (s IoK8sAPINodeV1RuntimeClassList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -3703,7 +3703,7 @@ func (s IoK8sAPINodeV1alpha1RuntimeClassList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -3722,7 +3722,7 @@ func (s IoK8sAPINodeV1beta1RuntimeClassList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -3741,7 +3741,7 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -3760,7 +3760,7 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -3795,7 +3795,7 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -3846,7 +3846,7 @@ func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.AllowedRuntimeClassNames == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.AllowedRuntimeClassNames // validation expected, but not supported
 		return nil
@@ -3897,7 +3897,7 @@ func (s IoK8sAPIRbacV1ClusterRoleBindingList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -3916,7 +3916,7 @@ func (s IoK8sAPIRbacV1ClusterRoleList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -3951,7 +3951,7 @@ func (s IoK8sAPIRbacV1PolicyRule) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Verbs == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Verbs // validation expected, but not supported
 		return nil
@@ -4002,7 +4002,7 @@ func (s IoK8sAPIRbacV1RoleBindingList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -4021,7 +4021,7 @@ func (s IoK8sAPIRbacV1RoleList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -4056,7 +4056,7 @@ func (s IoK8sAPISchedulingV1PriorityClassList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -4075,7 +4075,7 @@ func (s IoK8sAPIStorageV1CSIDriverList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -4112,7 +4112,7 @@ func (s IoK8sAPIStorageV1CSINodeList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -4147,7 +4147,7 @@ func (s IoK8sAPIStorageV1CSINodeSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Drivers == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Drivers // validation expected, but not supported
 		return nil
@@ -4198,7 +4198,7 @@ func (s IoK8sAPIStorageV1StorageClassList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -4251,7 +4251,7 @@ func (s IoK8sAPIStorageV1VolumeAttachmentList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -4320,7 +4320,7 @@ func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -4339,7 +4339,7 @@ func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil
@@ -4392,7 +4392,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -4436,7 +4436,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 	}
 	if err := func() error {
 		if s.Versions == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Versions // validation expected, but not supported
 		return nil
@@ -4455,7 +4455,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Vali
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.ConversionReviewVersions == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.ConversionReviewVersions // validation expected, but not supported
 		return nil
@@ -4474,7 +4474,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIGroup) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Versions == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Versions // validation expected, but not supported
 		return nil
@@ -4493,7 +4493,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Groups == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Groups {
@@ -4528,7 +4528,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIResource) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Verbs == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Verbs // validation expected, but not supported
 		return nil
@@ -4547,7 +4547,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Resources == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Resources {
@@ -4582,7 +4582,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIVersions) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.ServerAddressByClientCIDRs == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.ServerAddressByClientCIDRs // validation expected, but not supported
 		return nil
@@ -4594,7 +4594,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIVersions) Validate() error {
 	}
 	if err := func() error {
 		if s.Versions == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Versions // validation expected, but not supported
 		return nil
@@ -4613,7 +4613,7 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Validate() er
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Items // validation expected, but not supported
 		return nil

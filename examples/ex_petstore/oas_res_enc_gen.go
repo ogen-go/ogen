@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -75,12 +75,12 @@ func encodeCreatePetsResponse(response CreatePetsRes, w http.ResponseWriter, spa
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/pets: unexpected response type: %T", response)
+		return errors.Errorf(`/pets: unexpected response type: %T`, response)
 	}
 }
 
@@ -95,7 +95,7 @@ func encodeListPetsResponse(response ListPetsRes, w http.ResponseWriter, span tr
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -109,12 +109,12 @@ func encodeListPetsResponse(response ListPetsRes, w http.ResponseWriter, span tr
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/pets: unexpected response type: %T", response)
+		return errors.Errorf(`/pets: unexpected response type: %T`, response)
 	}
 }
 
@@ -130,7 +130,7 @@ func encodeShowPetByIdResponse(response ShowPetByIdRes, w http.ResponseWriter, s
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -144,11 +144,11 @@ func encodeShowPetByIdResponse(response ShowPetByIdRes, w http.ResponseWriter, s
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/pets/{petId}: unexpected response type: %T", response)
+		return errors.Errorf(`/pets/{petId}: unexpected response type: %T`, response)
 	}
 }

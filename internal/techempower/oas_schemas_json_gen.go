@@ -5,7 +5,6 @@ package techempower
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -74,7 +74,7 @@ func (s HelloWorld) WriteJSON(e *json.Encoder) {
 // ReadJSON reads HelloWorld from json stream.
 func (s *HelloWorld) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode HelloWorld to nil`)
+		return errors.New(`invalid: unable to decode HelloWorld to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -108,7 +108,7 @@ func (s WorldObject) WriteJSON(e *json.Encoder) {
 // ReadJSON reads WorldObject from json stream.
 func (s *WorldObject) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode WorldObject to nil`)
+		return errors.New(`invalid: unable to decode WorldObject to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {

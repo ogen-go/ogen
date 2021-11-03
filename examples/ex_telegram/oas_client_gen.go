@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -103,8 +103,7 @@ func (c *Client) AnswerCallbackQueryPost(ctx context.Context, request AnswerCall
 	case *AnswerCallbackQueryPostReqMultipartFormData:
 		// Validation is not required for this type.
 	default:
-		err = fmt.Errorf("unexpected request type: %T", request)
-		return
+		return res, errors.Errorf("unexpected request type: %T", request)
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerCallbackQueryPost`,
@@ -137,13 +136,13 @@ func (c *Client) AnswerCallbackQueryPost(ctx context.Context, request AnswerCall
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeAnswerCallbackQueryPostResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -158,8 +157,7 @@ func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, request AnswerP
 	case *AnswerPreCheckoutQueryPostReqMultipartFormData:
 		// Validation is not required for this type.
 	default:
-		err = fmt.Errorf("unexpected request type: %T", request)
-		return
+		return res, errors.Errorf("unexpected request type: %T", request)
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerPreCheckoutQueryPost`,
@@ -192,13 +190,13 @@ func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, request AnswerP
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeAnswerPreCheckoutQueryPostResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -207,38 +205,34 @@ func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, request AnswerP
 func (c *Client) AnswerShippingQueryPost(ctx context.Context, request AnswerShippingQueryPostReq) (res AnswerShippingQueryPostRes, err error) {
 	switch request := request.(type) {
 	case *AnswerShippingQueryPostReqApplicationJSON:
-		if verr := func() error {
+		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
 			}
 			return nil
-		}(); verr != nil {
-			err = fmt.Errorf("validate: %w", verr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "validate")
 		}
 	case *AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded:
-		if verr := func() error {
+		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
 			}
 			return nil
-		}(); verr != nil {
-			err = fmt.Errorf("validate: %w", verr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "validate")
 		}
 	case *AnswerShippingQueryPostReqMultipartFormData:
-		if verr := func() error {
+		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
 			}
 			return nil
-		}(); verr != nil {
-			err = fmt.Errorf("validate: %w", verr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "validate")
 		}
 	default:
-		err = fmt.Errorf("unexpected request type: %T", request)
-		return
+		return res, errors.Errorf("unexpected request type: %T", request)
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerShippingQueryPost`,
@@ -271,13 +265,13 @@ func (c *Client) AnswerShippingQueryPost(ctx context.Context, request AnswerShip
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeAnswerShippingQueryPostResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -307,13 +301,13 @@ func (c *Client) ClosePost(ctx context.Context) (res ClosePostRes, err error) {
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeClosePostResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -328,8 +322,7 @@ func (c *Client) DeleteStickerFromSetPost(ctx context.Context, request DeleteSti
 	case *DeleteStickerFromSetPostReqMultipartFormData:
 		// Validation is not required for this type.
 	default:
-		err = fmt.Errorf("unexpected request type: %T", request)
-		return
+		return res, errors.Errorf("unexpected request type: %T", request)
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStickerFromSetPost`,
@@ -362,13 +355,13 @@ func (c *Client) DeleteStickerFromSetPost(ctx context.Context, request DeleteSti
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteStickerFromSetPostResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -383,8 +376,7 @@ func (c *Client) DeleteWebhookPost(ctx context.Context, request DeleteWebhookPos
 	case *DeleteWebhookPostReqMultipartFormData:
 		// Validation is not required for this type.
 	default:
-		err = fmt.Errorf("unexpected request type: %T", request)
-		return
+		return res, errors.Errorf("unexpected request type: %T", request)
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteWebhookPost`,
@@ -417,13 +409,13 @@ func (c *Client) DeleteWebhookPost(ctx context.Context, request DeleteWebhookPos
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteWebhookPostResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -438,8 +430,7 @@ func (c *Client) GetFilePost(ctx context.Context, request GetFilePostReq) (res G
 	case *GetFilePostReqMultipartFormData:
 		// Validation is not required for this type.
 	default:
-		err = fmt.Errorf("unexpected request type: %T", request)
-		return
+		return res, errors.Errorf("unexpected request type: %T", request)
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetFilePost`,
@@ -472,13 +463,13 @@ func (c *Client) GetFilePost(ctx context.Context, request GetFilePostReq) (res G
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetFilePostResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -493,8 +484,7 @@ func (c *Client) GetGameHighScoresPost(ctx context.Context, request GetGameHighS
 	case *GetGameHighScoresPostReqMultipartFormData:
 		// Validation is not required for this type.
 	default:
-		err = fmt.Errorf("unexpected request type: %T", request)
-		return
+		return res, errors.Errorf("unexpected request type: %T", request)
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetGameHighScoresPost`,
@@ -527,13 +517,13 @@ func (c *Client) GetGameHighScoresPost(ctx context.Context, request GetGameHighS
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetGameHighScoresPostResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -563,13 +553,13 @@ func (c *Client) GetMePost(ctx context.Context) (res GetMePostRes, err error) {
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetMePostResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -599,13 +589,13 @@ func (c *Client) GetMyCommandsPost(ctx context.Context) (res GetMyCommandsPostRe
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetMyCommandsPostResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -620,8 +610,7 @@ func (c *Client) GetStickerSetPost(ctx context.Context, request GetStickerSetPos
 	case *GetStickerSetPostReqMultipartFormData:
 		// Validation is not required for this type.
 	default:
-		err = fmt.Errorf("unexpected request type: %T", request)
-		return
+		return res, errors.Errorf("unexpected request type: %T", request)
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetStickerSetPost`,
@@ -654,13 +643,13 @@ func (c *Client) GetStickerSetPost(ctx context.Context, request GetStickerSetPos
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetStickerSetPostResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -669,38 +658,34 @@ func (c *Client) GetStickerSetPost(ctx context.Context, request GetStickerSetPos
 func (c *Client) GetUpdatesPost(ctx context.Context, request GetUpdatesPostReq) (res GetUpdatesPostRes, err error) {
 	switch request := request.(type) {
 	case *GetUpdatesPostReqApplicationJSON:
-		if verr := func() error {
+		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
 			}
 			return nil
-		}(); verr != nil {
-			err = fmt.Errorf("validate: %w", verr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "validate")
 		}
 	case *GetUpdatesPostReqApplicationXWwwFormUrlencoded:
-		if verr := func() error {
+		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
 			}
 			return nil
-		}(); verr != nil {
-			err = fmt.Errorf("validate: %w", verr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "validate")
 		}
 	case *GetUpdatesPostReqMultipartFormData:
-		if verr := func() error {
+		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
 			}
 			return nil
-		}(); verr != nil {
-			err = fmt.Errorf("validate: %w", verr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "validate")
 		}
 	default:
-		err = fmt.Errorf("unexpected request type: %T", request)
-		return
+		return res, errors.Errorf("unexpected request type: %T", request)
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetUpdatesPost`,
@@ -733,13 +718,13 @@ func (c *Client) GetUpdatesPost(ctx context.Context, request GetUpdatesPostReq) 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetUpdatesPostResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -748,38 +733,34 @@ func (c *Client) GetUpdatesPost(ctx context.Context, request GetUpdatesPostReq) 
 func (c *Client) GetUserProfilePhotosPost(ctx context.Context, request GetUserProfilePhotosPostReq) (res GetUserProfilePhotosPostRes, err error) {
 	switch request := request.(type) {
 	case *GetUserProfilePhotosPostReqApplicationJSON:
-		if verr := func() error {
+		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
 			}
 			return nil
-		}(); verr != nil {
-			err = fmt.Errorf("validate: %w", verr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "validate")
 		}
 	case *GetUserProfilePhotosPostReqApplicationXWwwFormUrlencoded:
-		if verr := func() error {
+		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
 			}
 			return nil
-		}(); verr != nil {
-			err = fmt.Errorf("validate: %w", verr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "validate")
 		}
 	case *GetUserProfilePhotosPostReqMultipartFormData:
-		if verr := func() error {
+		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
 			}
 			return nil
-		}(); verr != nil {
-			err = fmt.Errorf("validate: %w", verr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "validate")
 		}
 	default:
-		err = fmt.Errorf("unexpected request type: %T", request)
-		return
+		return res, errors.Errorf("unexpected request type: %T", request)
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetUserProfilePhotosPost`,
@@ -812,13 +793,13 @@ func (c *Client) GetUserProfilePhotosPost(ctx context.Context, request GetUserPr
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetUserProfilePhotosPostResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -848,13 +829,13 @@ func (c *Client) GetWebhookInfoPost(ctx context.Context) (res GetWebhookInfoPost
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetWebhookInfoPostResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -884,13 +865,13 @@ func (c *Client) LogOutPost(ctx context.Context) (res LogOutPostRes, err error) 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeLogOutPostResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -899,38 +880,34 @@ func (c *Client) LogOutPost(ctx context.Context) (res LogOutPostRes, err error) 
 func (c *Client) SendGamePost(ctx context.Context, request SendGamePostReq) (res SendGamePostRes, err error) {
 	switch request := request.(type) {
 	case *SendGamePostReqApplicationJSON:
-		if verr := func() error {
+		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
 			}
 			return nil
-		}(); verr != nil {
-			err = fmt.Errorf("validate: %w", verr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "validate")
 		}
 	case *SendGamePostReqApplicationXWwwFormUrlencoded:
-		if verr := func() error {
+		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
 			}
 			return nil
-		}(); verr != nil {
-			err = fmt.Errorf("validate: %w", verr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "validate")
 		}
 	case *SendGamePostReqMultipartFormData:
-		if verr := func() error {
+		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
 			}
 			return nil
-		}(); verr != nil {
-			err = fmt.Errorf("validate: %w", verr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "validate")
 		}
 	default:
-		err = fmt.Errorf("unexpected request type: %T", request)
-		return
+		return res, errors.Errorf("unexpected request type: %T", request)
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendGamePost`,
@@ -963,13 +940,13 @@ func (c *Client) SendGamePost(ctx context.Context, request SendGamePostReq) (res
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendGamePostResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -978,38 +955,34 @@ func (c *Client) SendGamePost(ctx context.Context, request SendGamePostReq) (res
 func (c *Client) SendInvoicePost(ctx context.Context, request SendInvoicePostReq) (res SendInvoicePostRes, err error) {
 	switch request := request.(type) {
 	case *SendInvoicePostReqApplicationJSON:
-		if verr := func() error {
+		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
 			}
 			return nil
-		}(); verr != nil {
-			err = fmt.Errorf("validate: %w", verr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "validate")
 		}
 	case *SendInvoicePostReqApplicationXWwwFormUrlencoded:
-		if verr := func() error {
+		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
 			}
 			return nil
-		}(); verr != nil {
-			err = fmt.Errorf("validate: %w", verr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "validate")
 		}
 	case *SendInvoicePostReqMultipartFormData:
-		if verr := func() error {
+		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
 			}
 			return nil
-		}(); verr != nil {
-			err = fmt.Errorf("validate: %w", verr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "validate")
 		}
 	default:
-		err = fmt.Errorf("unexpected request type: %T", request)
-		return
+		return res, errors.Errorf("unexpected request type: %T", request)
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendInvoicePost`,
@@ -1042,13 +1015,13 @@ func (c *Client) SendInvoicePost(ctx context.Context, request SendInvoicePostReq
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendInvoicePostResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1057,38 +1030,34 @@ func (c *Client) SendInvoicePost(ctx context.Context, request SendInvoicePostReq
 func (c *Client) SetMyCommandsPost(ctx context.Context, request SetMyCommandsPostReq) (res SetMyCommandsPostRes, err error) {
 	switch request := request.(type) {
 	case *SetMyCommandsPostReqApplicationJSON:
-		if verr := func() error {
+		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
 			}
 			return nil
-		}(); verr != nil {
-			err = fmt.Errorf("validate: %w", verr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "validate")
 		}
 	case *SetMyCommandsPostReqApplicationXWwwFormUrlencoded:
-		if verr := func() error {
+		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
 			}
 			return nil
-		}(); verr != nil {
-			err = fmt.Errorf("validate: %w", verr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "validate")
 		}
 	case *SetMyCommandsPostReqMultipartFormData:
-		if verr := func() error {
+		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
 			}
 			return nil
-		}(); verr != nil {
-			err = fmt.Errorf("validate: %w", verr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "validate")
 		}
 	default:
-		err = fmt.Errorf("unexpected request type: %T", request)
-		return
+		return res, errors.Errorf("unexpected request type: %T", request)
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetMyCommandsPost`,
@@ -1121,13 +1090,13 @@ func (c *Client) SetMyCommandsPost(ctx context.Context, request SetMyCommandsPos
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetMyCommandsPostResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1142,8 +1111,7 @@ func (c *Client) SetStickerPositionInSetPost(ctx context.Context, request SetSti
 	case *SetStickerPositionInSetPostReqMultipartFormData:
 		// Validation is not required for this type.
 	default:
-		err = fmt.Errorf("unexpected request type: %T", request)
-		return
+		return res, errors.Errorf("unexpected request type: %T", request)
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetStickerPositionInSetPost`,
@@ -1176,13 +1144,13 @@ func (c *Client) SetStickerPositionInSetPost(ctx context.Context, request SetSti
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetStickerPositionInSetPostResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1220,13 +1188,13 @@ func (c *Client) SetWebhookPost(ctx context.Context, request SetWebhookPostReq) 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetWebhookPostResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1264,13 +1232,13 @@ func (c *Client) UploadStickerFilePost(ctx context.Context, request UploadSticke
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeUploadStickerFilePostResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil

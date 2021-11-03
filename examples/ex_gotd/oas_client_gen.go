@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -128,13 +128,13 @@ func (c *Client) AddStickerToSet(ctx context.Context, request AddStickerToSet) (
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeAddStickerToSetResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -142,14 +142,13 @@ func (c *Client) AddStickerToSet(ctx context.Context, request AddStickerToSet) (
 
 // AnswerCallbackQuery implements answerCallbackQuery operation.
 func (c *Client) AnswerCallbackQuery(ctx context.Context, request AnswerCallbackQuery) (res AnswerCallbackQueryRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerCallbackQuery`,
@@ -183,13 +182,13 @@ func (c *Client) AnswerCallbackQuery(ctx context.Context, request AnswerCallback
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeAnswerCallbackQueryResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -197,14 +196,13 @@ func (c *Client) AnswerCallbackQuery(ctx context.Context, request AnswerCallback
 
 // AnswerInlineQuery implements answerInlineQuery operation.
 func (c *Client) AnswerInlineQuery(ctx context.Context, request AnswerInlineQuery) (res AnswerInlineQueryRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerInlineQuery`,
@@ -238,13 +236,13 @@ func (c *Client) AnswerInlineQuery(ctx context.Context, request AnswerInlineQuer
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeAnswerInlineQueryResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -284,13 +282,13 @@ func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, request AnswerPreCh
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeAnswerPreCheckoutQueryResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -298,14 +296,13 @@ func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, request AnswerPreCh
 
 // AnswerShippingQuery implements answerShippingQuery operation.
 func (c *Client) AnswerShippingQuery(ctx context.Context, request AnswerShippingQuery) (res AnswerShippingQueryRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerShippingQuery`,
@@ -339,13 +336,13 @@ func (c *Client) AnswerShippingQuery(ctx context.Context, request AnswerShipping
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeAnswerShippingQueryResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -385,13 +382,13 @@ func (c *Client) BanChatMember(ctx context.Context, request BanChatMember) (res 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeBanChatMemberResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -399,14 +396,13 @@ func (c *Client) BanChatMember(ctx context.Context, request BanChatMember) (res 
 
 // CopyMessage implements copyMessage operation.
 func (c *Client) CopyMessage(ctx context.Context, request CopyMessage) (res CopyMessageRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CopyMessage`,
@@ -440,13 +436,13 @@ func (c *Client) CopyMessage(ctx context.Context, request CopyMessage) (res Copy
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCopyMessageResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -486,13 +482,13 @@ func (c *Client) CreateChatInviteLink(ctx context.Context, request CreateChatInv
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateChatInviteLinkResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -500,14 +496,13 @@ func (c *Client) CreateChatInviteLink(ctx context.Context, request CreateChatInv
 
 // CreateNewStickerSet implements createNewStickerSet operation.
 func (c *Client) CreateNewStickerSet(ctx context.Context, request CreateNewStickerSet) (res CreateNewStickerSetRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateNewStickerSet`,
@@ -541,13 +536,13 @@ func (c *Client) CreateNewStickerSet(ctx context.Context, request CreateNewStick
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateNewStickerSetResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -587,13 +582,13 @@ func (c *Client) DeleteChatPhoto(ctx context.Context, request DeleteChatPhoto) (
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteChatPhotoResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -633,13 +628,13 @@ func (c *Client) DeleteChatStickerSet(ctx context.Context, request DeleteChatSti
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteChatStickerSetResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -679,13 +674,13 @@ func (c *Client) DeleteMessage(ctx context.Context, request DeleteMessage) (res 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteMessageResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -725,13 +720,13 @@ func (c *Client) DeleteMyCommands(ctx context.Context, request DeleteMyCommands)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteMyCommandsResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -771,13 +766,13 @@ func (c *Client) DeleteStickerFromSet(ctx context.Context, request DeleteSticker
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteStickerFromSetResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -817,13 +812,13 @@ func (c *Client) DeleteWebhook(ctx context.Context, request DeleteWebhook) (res 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteWebhookResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -863,13 +858,13 @@ func (c *Client) EditChatInviteLink(ctx context.Context, request EditChatInviteL
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeEditChatInviteLinkResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -877,14 +872,13 @@ func (c *Client) EditChatInviteLink(ctx context.Context, request EditChatInviteL
 
 // EditMessageCaption implements editMessageCaption operation.
 func (c *Client) EditMessageCaption(ctx context.Context, request EditMessageCaption) (res EditMessageCaptionRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageCaption`,
@@ -918,13 +912,13 @@ func (c *Client) EditMessageCaption(ctx context.Context, request EditMessageCapt
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeEditMessageCaptionResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -932,14 +926,13 @@ func (c *Client) EditMessageCaption(ctx context.Context, request EditMessageCapt
 
 // EditMessageLiveLocation implements editMessageLiveLocation operation.
 func (c *Client) EditMessageLiveLocation(ctx context.Context, request EditMessageLiveLocation) (res EditMessageLiveLocationRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageLiveLocation`,
@@ -973,13 +966,13 @@ func (c *Client) EditMessageLiveLocation(ctx context.Context, request EditMessag
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeEditMessageLiveLocationResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -987,14 +980,13 @@ func (c *Client) EditMessageLiveLocation(ctx context.Context, request EditMessag
 
 // EditMessageMedia implements editMessageMedia operation.
 func (c *Client) EditMessageMedia(ctx context.Context, request EditMessageMedia) (res EditMessageMediaRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageMedia`,
@@ -1028,13 +1020,13 @@ func (c *Client) EditMessageMedia(ctx context.Context, request EditMessageMedia)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeEditMessageMediaResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1042,14 +1034,13 @@ func (c *Client) EditMessageMedia(ctx context.Context, request EditMessageMedia)
 
 // EditMessageReplyMarkup implements editMessageReplyMarkup operation.
 func (c *Client) EditMessageReplyMarkup(ctx context.Context, request EditMessageReplyMarkup) (res EditMessageReplyMarkupRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageReplyMarkup`,
@@ -1083,13 +1074,13 @@ func (c *Client) EditMessageReplyMarkup(ctx context.Context, request EditMessage
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeEditMessageReplyMarkupResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1097,14 +1088,13 @@ func (c *Client) EditMessageReplyMarkup(ctx context.Context, request EditMessage
 
 // EditMessageText implements editMessageText operation.
 func (c *Client) EditMessageText(ctx context.Context, request EditMessageText) (res EditMessageTextRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageText`,
@@ -1138,13 +1128,13 @@ func (c *Client) EditMessageText(ctx context.Context, request EditMessageText) (
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeEditMessageTextResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1184,13 +1174,13 @@ func (c *Client) ExportChatInviteLink(ctx context.Context, request ExportChatInv
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeExportChatInviteLinkResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1230,13 +1220,13 @@ func (c *Client) ForwardMessage(ctx context.Context, request ForwardMessage) (re
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeForwardMessageResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1276,13 +1266,13 @@ func (c *Client) GetChat(ctx context.Context, request GetChat) (res GetChatRes, 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetChatResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1322,13 +1312,13 @@ func (c *Client) GetChatAdministrators(ctx context.Context, request GetChatAdmin
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetChatAdministratorsResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1368,13 +1358,13 @@ func (c *Client) GetChatMember(ctx context.Context, request GetChatMember) (res 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetChatMemberResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1414,13 +1404,13 @@ func (c *Client) GetChatMemberCount(ctx context.Context, request GetChatMemberCo
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetChatMemberCountResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1460,13 +1450,13 @@ func (c *Client) GetFile(ctx context.Context, request GetFile) (res GetFileRes, 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetFileResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1506,13 +1496,13 @@ func (c *Client) GetGameHighScores(ctx context.Context, request GetGameHighScore
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetGameHighScoresResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1544,13 +1534,13 @@ func (c *Client) GetMe(ctx context.Context) (res GetMeRes, err error) {
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetMeResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1590,13 +1580,13 @@ func (c *Client) GetMyCommands(ctx context.Context, request GetMyCommands) (res 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetMyCommandsResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1636,13 +1626,13 @@ func (c *Client) GetStickerSet(ctx context.Context, request GetStickerSet) (res 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetStickerSetResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1650,14 +1640,13 @@ func (c *Client) GetStickerSet(ctx context.Context, request GetStickerSet) (res 
 
 // GetUpdates implements getUpdates operation.
 func (c *Client) GetUpdates(ctx context.Context, request GetUpdates) (res GetUpdatesRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetUpdates`,
@@ -1691,13 +1680,13 @@ func (c *Client) GetUpdates(ctx context.Context, request GetUpdates) (res GetUpd
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetUpdatesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1705,14 +1694,13 @@ func (c *Client) GetUpdates(ctx context.Context, request GetUpdates) (res GetUpd
 
 // GetUserProfilePhotos implements getUserProfilePhotos operation.
 func (c *Client) GetUserProfilePhotos(ctx context.Context, request GetUserProfilePhotos) (res GetUserProfilePhotosRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetUserProfilePhotos`,
@@ -1746,13 +1734,13 @@ func (c *Client) GetUserProfilePhotos(ctx context.Context, request GetUserProfil
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetUserProfilePhotosResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1792,13 +1780,13 @@ func (c *Client) LeaveChat(ctx context.Context, request LeaveChat) (res LeaveCha
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeLeaveChatResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1838,13 +1826,13 @@ func (c *Client) PinChatMessage(ctx context.Context, request PinChatMessage) (re
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePinChatMessageResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1884,13 +1872,13 @@ func (c *Client) PromoteChatMember(ctx context.Context, request PromoteChatMembe
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePromoteChatMemberResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1930,13 +1918,13 @@ func (c *Client) RestrictChatMember(ctx context.Context, request RestrictChatMem
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeRestrictChatMemberResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1976,13 +1964,13 @@ func (c *Client) RevokeChatInviteLink(ctx context.Context, request RevokeChatInv
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeRevokeChatInviteLinkResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1990,14 +1978,13 @@ func (c *Client) RevokeChatInviteLink(ctx context.Context, request RevokeChatInv
 
 // SendAnimation implements sendAnimation operation.
 func (c *Client) SendAnimation(ctx context.Context, request SendAnimation) (res SendAnimationRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendAnimation`,
@@ -2031,13 +2018,13 @@ func (c *Client) SendAnimation(ctx context.Context, request SendAnimation) (res 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendAnimationResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2045,14 +2032,13 @@ func (c *Client) SendAnimation(ctx context.Context, request SendAnimation) (res 
 
 // SendAudio implements sendAudio operation.
 func (c *Client) SendAudio(ctx context.Context, request SendAudio) (res SendAudioRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendAudio`,
@@ -2086,13 +2072,13 @@ func (c *Client) SendAudio(ctx context.Context, request SendAudio) (res SendAudi
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendAudioResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2132,13 +2118,13 @@ func (c *Client) SendChatAction(ctx context.Context, request SendChatAction) (re
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendChatActionResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2146,14 +2132,13 @@ func (c *Client) SendChatAction(ctx context.Context, request SendChatAction) (re
 
 // SendContact implements sendContact operation.
 func (c *Client) SendContact(ctx context.Context, request SendContact) (res SendContactRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendContact`,
@@ -2187,13 +2172,13 @@ func (c *Client) SendContact(ctx context.Context, request SendContact) (res Send
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendContactResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2201,14 +2186,13 @@ func (c *Client) SendContact(ctx context.Context, request SendContact) (res Send
 
 // SendDice implements sendDice operation.
 func (c *Client) SendDice(ctx context.Context, request SendDice) (res SendDiceRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendDice`,
@@ -2242,13 +2226,13 @@ func (c *Client) SendDice(ctx context.Context, request SendDice) (res SendDiceRe
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendDiceResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2256,14 +2240,13 @@ func (c *Client) SendDice(ctx context.Context, request SendDice) (res SendDiceRe
 
 // SendDocument implements sendDocument operation.
 func (c *Client) SendDocument(ctx context.Context, request SendDocument) (res SendDocumentRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendDocument`,
@@ -2297,13 +2280,13 @@ func (c *Client) SendDocument(ctx context.Context, request SendDocument) (res Se
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendDocumentResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2311,14 +2294,13 @@ func (c *Client) SendDocument(ctx context.Context, request SendDocument) (res Se
 
 // SendGame implements sendGame operation.
 func (c *Client) SendGame(ctx context.Context, request SendGame) (res SendGameRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendGame`,
@@ -2352,13 +2334,13 @@ func (c *Client) SendGame(ctx context.Context, request SendGame) (res SendGameRe
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendGameResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2366,14 +2348,13 @@ func (c *Client) SendGame(ctx context.Context, request SendGame) (res SendGameRe
 
 // SendInvoice implements sendInvoice operation.
 func (c *Client) SendInvoice(ctx context.Context, request SendInvoice) (res SendInvoiceRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendInvoice`,
@@ -2407,13 +2388,13 @@ func (c *Client) SendInvoice(ctx context.Context, request SendInvoice) (res Send
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendInvoiceResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2421,14 +2402,13 @@ func (c *Client) SendInvoice(ctx context.Context, request SendInvoice) (res Send
 
 // SendLocation implements sendLocation operation.
 func (c *Client) SendLocation(ctx context.Context, request SendLocation) (res SendLocationRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendLocation`,
@@ -2462,13 +2442,13 @@ func (c *Client) SendLocation(ctx context.Context, request SendLocation) (res Se
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendLocationResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2476,14 +2456,13 @@ func (c *Client) SendLocation(ctx context.Context, request SendLocation) (res Se
 
 // SendMediaGroup implements sendMediaGroup operation.
 func (c *Client) SendMediaGroup(ctx context.Context, request SendMediaGroup) (res SendMediaGroupRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendMediaGroup`,
@@ -2517,13 +2496,13 @@ func (c *Client) SendMediaGroup(ctx context.Context, request SendMediaGroup) (re
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendMediaGroupResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2531,14 +2510,13 @@ func (c *Client) SendMediaGroup(ctx context.Context, request SendMediaGroup) (re
 
 // SendMessage implements sendMessage operation.
 func (c *Client) SendMessage(ctx context.Context, request SendMessage) (res SendMessageRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendMessage`,
@@ -2572,13 +2550,13 @@ func (c *Client) SendMessage(ctx context.Context, request SendMessage) (res Send
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendMessageResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2586,14 +2564,13 @@ func (c *Client) SendMessage(ctx context.Context, request SendMessage) (res Send
 
 // SendPhoto implements sendPhoto operation.
 func (c *Client) SendPhoto(ctx context.Context, request SendPhoto) (res SendPhotoRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendPhoto`,
@@ -2627,13 +2604,13 @@ func (c *Client) SendPhoto(ctx context.Context, request SendPhoto) (res SendPhot
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendPhotoResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2641,14 +2618,13 @@ func (c *Client) SendPhoto(ctx context.Context, request SendPhoto) (res SendPhot
 
 // SendPoll implements sendPoll operation.
 func (c *Client) SendPoll(ctx context.Context, request SendPoll) (res SendPollRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendPoll`,
@@ -2682,13 +2658,13 @@ func (c *Client) SendPoll(ctx context.Context, request SendPoll) (res SendPollRe
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendPollResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2696,14 +2672,13 @@ func (c *Client) SendPoll(ctx context.Context, request SendPoll) (res SendPollRe
 
 // SendSticker implements sendSticker operation.
 func (c *Client) SendSticker(ctx context.Context, request SendSticker) (res SendStickerRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendSticker`,
@@ -2737,13 +2712,13 @@ func (c *Client) SendSticker(ctx context.Context, request SendSticker) (res Send
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendStickerResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2751,14 +2726,13 @@ func (c *Client) SendSticker(ctx context.Context, request SendSticker) (res Send
 
 // SendVenue implements sendVenue operation.
 func (c *Client) SendVenue(ctx context.Context, request SendVenue) (res SendVenueRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendVenue`,
@@ -2792,13 +2766,13 @@ func (c *Client) SendVenue(ctx context.Context, request SendVenue) (res SendVenu
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendVenueResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2806,14 +2780,13 @@ func (c *Client) SendVenue(ctx context.Context, request SendVenue) (res SendVenu
 
 // SendVideo implements sendVideo operation.
 func (c *Client) SendVideo(ctx context.Context, request SendVideo) (res SendVideoRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendVideo`,
@@ -2847,13 +2820,13 @@ func (c *Client) SendVideo(ctx context.Context, request SendVideo) (res SendVide
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendVideoResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2861,14 +2834,13 @@ func (c *Client) SendVideo(ctx context.Context, request SendVideo) (res SendVide
 
 // SendVideoNote implements sendVideoNote operation.
 func (c *Client) SendVideoNote(ctx context.Context, request SendVideoNote) (res SendVideoNoteRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendVideoNote`,
@@ -2902,13 +2874,13 @@ func (c *Client) SendVideoNote(ctx context.Context, request SendVideoNote) (res 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendVideoNoteResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2916,14 +2888,13 @@ func (c *Client) SendVideoNote(ctx context.Context, request SendVideoNote) (res 
 
 // SendVoice implements sendVoice operation.
 func (c *Client) SendVoice(ctx context.Context, request SendVoice) (res SendVoiceRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendVoice`,
@@ -2957,13 +2928,13 @@ func (c *Client) SendVoice(ctx context.Context, request SendVoice) (res SendVoic
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendVoiceResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2971,14 +2942,13 @@ func (c *Client) SendVoice(ctx context.Context, request SendVoice) (res SendVoic
 
 // SetChatAdministratorCustomTitle implements setChatAdministratorCustomTitle operation.
 func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, request SetChatAdministratorCustomTitle) (res SetChatAdministratorCustomTitleRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatAdministratorCustomTitle`,
@@ -3012,13 +2982,13 @@ func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, request Se
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetChatAdministratorCustomTitleResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -3026,14 +2996,13 @@ func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, request Se
 
 // SetChatDescription implements setChatDescription operation.
 func (c *Client) SetChatDescription(ctx context.Context, request SetChatDescription) (res SetChatDescriptionRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatDescription`,
@@ -3067,13 +3036,13 @@ func (c *Client) SetChatDescription(ctx context.Context, request SetChatDescript
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetChatDescriptionResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -3113,13 +3082,13 @@ func (c *Client) SetChatPermissions(ctx context.Context, request SetChatPermissi
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetChatPermissionsResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -3159,13 +3128,13 @@ func (c *Client) SetChatPhoto(ctx context.Context, request SetChatPhoto) (res Se
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetChatPhotoResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -3205,13 +3174,13 @@ func (c *Client) SetChatStickerSet(ctx context.Context, request SetChatStickerSe
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetChatStickerSetResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -3219,14 +3188,13 @@ func (c *Client) SetChatStickerSet(ctx context.Context, request SetChatStickerSe
 
 // SetChatTitle implements setChatTitle operation.
 func (c *Client) SetChatTitle(ctx context.Context, request SetChatTitle) (res SetChatTitleRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatTitle`,
@@ -3260,13 +3228,13 @@ func (c *Client) SetChatTitle(ctx context.Context, request SetChatTitle) (res Se
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetChatTitleResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -3306,13 +3274,13 @@ func (c *Client) SetGameScore(ctx context.Context, request SetGameScore) (res Se
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetGameScoreResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -3320,14 +3288,13 @@ func (c *Client) SetGameScore(ctx context.Context, request SetGameScore) (res Se
 
 // SetMyCommands implements setMyCommands operation.
 func (c *Client) SetMyCommands(ctx context.Context, request SetMyCommands) (res SetMyCommandsRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetMyCommands`,
@@ -3361,13 +3328,13 @@ func (c *Client) SetMyCommands(ctx context.Context, request SetMyCommands) (res 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetMyCommandsResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -3375,14 +3342,13 @@ func (c *Client) SetMyCommands(ctx context.Context, request SetMyCommands) (res 
 
 // SetPassportDataErrors implements setPassportDataErrors operation.
 func (c *Client) SetPassportDataErrors(ctx context.Context, request SetPassportDataErrors) (res SetPassportDataErrorsRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetPassportDataErrors`,
@@ -3416,13 +3382,13 @@ func (c *Client) SetPassportDataErrors(ctx context.Context, request SetPassportD
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetPassportDataErrorsResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -3462,13 +3428,13 @@ func (c *Client) SetStickerPositionInSet(ctx context.Context, request SetSticker
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetStickerPositionInSetResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -3508,13 +3474,13 @@ func (c *Client) SetStickerSetThumb(ctx context.Context, request SetStickerSetTh
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetStickerSetThumbResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -3554,13 +3520,13 @@ func (c *Client) SetWebhook(ctx context.Context, request SetWebhook) (res SetWeb
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetWebhookResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -3568,14 +3534,13 @@ func (c *Client) SetWebhook(ctx context.Context, request SetWebhook) (res SetWeb
 
 // StopMessageLiveLocation implements stopMessageLiveLocation operation.
 func (c *Client) StopMessageLiveLocation(ctx context.Context, request StopMessageLiveLocation) (res StopMessageLiveLocationRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `StopMessageLiveLocation`,
@@ -3609,13 +3574,13 @@ func (c *Client) StopMessageLiveLocation(ctx context.Context, request StopMessag
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeStopMessageLiveLocationResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -3623,14 +3588,13 @@ func (c *Client) StopMessageLiveLocation(ctx context.Context, request StopMessag
 
 // StopPoll implements stopPoll operation.
 func (c *Client) StopPoll(ctx context.Context, request StopPoll) (res StopPollRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `StopPoll`,
@@ -3664,13 +3628,13 @@ func (c *Client) StopPoll(ctx context.Context, request StopPoll) (res StopPollRe
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeStopPollResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -3710,13 +3674,13 @@ func (c *Client) UnbanChatMember(ctx context.Context, request UnbanChatMember) (
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeUnbanChatMemberResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -3756,13 +3720,13 @@ func (c *Client) UnpinAllChatMessages(ctx context.Context, request UnpinAllChatM
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeUnpinAllChatMessagesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -3802,13 +3766,13 @@ func (c *Client) UnpinChatMessage(ctx context.Context, request UnpinChatMessage)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeUnpinChatMessageResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -3848,13 +3812,13 @@ func (c *Client) UploadStickerFile(ctx context.Context, request UploadStickerFil
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeUploadStickerFileResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil

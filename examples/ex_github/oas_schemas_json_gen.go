@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -187,7 +187,7 @@ func (s APIOverview) WriteJSON(e *json.Encoder) {
 // ReadJSON reads APIOverview from json stream.
 func (s *APIOverview) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode APIOverview to nil`)
+		return errors.New(`invalid: unable to decode APIOverview to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -366,7 +366,7 @@ func (s APIOverviewSSHKeyFingerprints) WriteJSON(e *json.Encoder) {
 // ReadJSON reads APIOverviewSSHKeyFingerprints from json stream.
 func (s *APIOverviewSSHKeyFingerprints) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode APIOverviewSSHKeyFingerprints to nil`)
+		return errors.New(`invalid: unable to decode APIOverviewSSHKeyFingerprints to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -408,7 +408,7 @@ func (s Accepted) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Accepted from json stream.
 func (s *Accepted) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Accepted to nil`)
+		return errors.New(`invalid: unable to decode Accepted to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -430,7 +430,7 @@ func (s ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent) WriteJSON(e *
 // ReadJSON reads ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent from json stream.
 func (s *ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -452,7 +452,7 @@ func (s ActionsAddSelectedRepoToOrgSecretConflict) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsAddSelectedRepoToOrgSecretConflict from json stream.
 func (s *ActionsAddSelectedRepoToOrgSecretConflict) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsAddSelectedRepoToOrgSecretConflict to nil`)
+		return errors.New(`invalid: unable to decode ActionsAddSelectedRepoToOrgSecretConflict to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -474,7 +474,7 @@ func (s ActionsAddSelectedRepoToOrgSecretNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsAddSelectedRepoToOrgSecretNoContent from json stream.
 func (s *ActionsAddSelectedRepoToOrgSecretNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsAddSelectedRepoToOrgSecretNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsAddSelectedRepoToOrgSecretNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -496,7 +496,7 @@ func (s ActionsAddSelfHostedRunnerToGroupForOrgNoContent) WriteJSON(e *json.Enco
 // ReadJSON reads ActionsAddSelfHostedRunnerToGroupForOrgNoContent from json stream.
 func (s *ActionsAddSelfHostedRunnerToGroupForOrgNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsAddSelfHostedRunnerToGroupForOrgNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsAddSelfHostedRunnerToGroupForOrgNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -536,7 +536,7 @@ func (s ActionsBillingUsage) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsBillingUsage from json stream.
 func (s *ActionsBillingUsage) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsBillingUsage to nil`)
+		return errors.New(`invalid: unable to decode ActionsBillingUsage to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -595,7 +595,7 @@ func (s ActionsBillingUsageMinutesUsedBreakdown) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsBillingUsageMinutesUsedBreakdown from json stream.
 func (s *ActionsBillingUsageMinutesUsedBreakdown) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsBillingUsageMinutesUsedBreakdown to nil`)
+		return errors.New(`invalid: unable to decode ActionsBillingUsageMinutesUsedBreakdown to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -632,7 +632,7 @@ func (s ActionsCancelWorkflowRunAccepted) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsCancelWorkflowRunAccepted from json stream.
 func (s *ActionsCancelWorkflowRunAccepted) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsCancelWorkflowRunAccepted to nil`)
+		return errors.New(`invalid: unable to decode ActionsCancelWorkflowRunAccepted to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -654,7 +654,7 @@ func (s ActionsCreateOrUpdateEnvironmentSecretNoContent) WriteJSON(e *json.Encod
 // ReadJSON reads ActionsCreateOrUpdateEnvironmentSecretNoContent from json stream.
 func (s *ActionsCreateOrUpdateEnvironmentSecretNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsCreateOrUpdateEnvironmentSecretNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsCreateOrUpdateEnvironmentSecretNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -682,7 +682,7 @@ func (s ActionsCreateOrUpdateEnvironmentSecretReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsCreateOrUpdateEnvironmentSecretReq from json stream.
 func (s *ActionsCreateOrUpdateEnvironmentSecretReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsCreateOrUpdateEnvironmentSecretReq to nil`)
+		return errors.New(`invalid: unable to decode ActionsCreateOrUpdateEnvironmentSecretReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -716,7 +716,7 @@ func (s ActionsCreateOrUpdateOrgSecretNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsCreateOrUpdateOrgSecretNoContent from json stream.
 func (s *ActionsCreateOrUpdateOrgSecretNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsCreateOrUpdateOrgSecretNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsCreateOrUpdateOrgSecretNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -763,7 +763,7 @@ func (s ActionsCreateOrUpdateOrgSecretReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsCreateOrUpdateOrgSecretReq from json stream.
 func (s *ActionsCreateOrUpdateOrgSecretReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsCreateOrUpdateOrgSecretReq to nil`)
+		return errors.New(`invalid: unable to decode ActionsCreateOrUpdateOrgSecretReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -810,7 +810,7 @@ func (s ActionsCreateOrUpdateOrgSecretReqVisibility) WriteJSON(e *json.Encoder) 
 // ReadJSON reads ActionsCreateOrUpdateOrgSecretReqVisibility from json reader.
 func (s *ActionsCreateOrUpdateOrgSecretReqVisibility) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsCreateOrUpdateOrgSecretReqVisibility to nil`)
+		return errors.New(`invalid: unable to decode ActionsCreateOrUpdateOrgSecretReqVisibility to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -831,7 +831,7 @@ func (s ActionsCreateOrUpdateRepoSecretCreated) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsCreateOrUpdateRepoSecretCreated from json stream.
 func (s *ActionsCreateOrUpdateRepoSecretCreated) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsCreateOrUpdateRepoSecretCreated to nil`)
+		return errors.New(`invalid: unable to decode ActionsCreateOrUpdateRepoSecretCreated to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -853,7 +853,7 @@ func (s ActionsCreateOrUpdateRepoSecretNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsCreateOrUpdateRepoSecretNoContent from json stream.
 func (s *ActionsCreateOrUpdateRepoSecretNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsCreateOrUpdateRepoSecretNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsCreateOrUpdateRepoSecretNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -885,7 +885,7 @@ func (s ActionsCreateOrUpdateRepoSecretReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsCreateOrUpdateRepoSecretReq from json stream.
 func (s *ActionsCreateOrUpdateRepoSecretReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsCreateOrUpdateRepoSecretReq to nil`)
+		return errors.New(`invalid: unable to decode ActionsCreateOrUpdateRepoSecretReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -949,7 +949,7 @@ func (s ActionsCreateSelfHostedRunnerGroupForOrgReq) WriteJSON(e *json.Encoder) 
 // ReadJSON reads ActionsCreateSelfHostedRunnerGroupForOrgReq from json stream.
 func (s *ActionsCreateSelfHostedRunnerGroupForOrgReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsCreateSelfHostedRunnerGroupForOrgReq to nil`)
+		return errors.New(`invalid: unable to decode ActionsCreateSelfHostedRunnerGroupForOrgReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -1007,7 +1007,7 @@ func (s ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) WriteJSON(e *json
 // ReadJSON reads ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility from json reader.
 func (s *ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility to nil`)
+		return errors.New(`invalid: unable to decode ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -1030,7 +1030,7 @@ func (s ActionsCreateWorkflowDispatchWorkflowID) WriteJSON(e *json.Encoder) {
 // ReadJSON reads value from json reader.
 func (s *ActionsCreateWorkflowDispatchWorkflowID) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsCreateWorkflowDispatchWorkflowID to nil`)
+		return errors.New(`invalid: unable to decode ActionsCreateWorkflowDispatchWorkflowID to nil`)
 	}
 	// Sum type primitive.
 	switch t := d.Next(); t {
@@ -1049,7 +1049,7 @@ func (s *ActionsCreateWorkflowDispatchWorkflowID) ReadJSON(d *json.Decoder) erro
 		}
 		s.Type = StringActionsCreateWorkflowDispatchWorkflowID
 	default:
-		return fmt.Errorf("unexpected json type %q", t)
+		return errors.Errorf("unexpected json type %q", t)
 	}
 	return nil
 }
@@ -1065,7 +1065,7 @@ func (s ActionsDeleteArtifactNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsDeleteArtifactNoContent from json stream.
 func (s *ActionsDeleteArtifactNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsDeleteArtifactNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsDeleteArtifactNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -1087,7 +1087,7 @@ func (s ActionsDeleteEnvironmentSecretNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsDeleteEnvironmentSecretNoContent from json stream.
 func (s *ActionsDeleteEnvironmentSecretNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsDeleteEnvironmentSecretNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsDeleteEnvironmentSecretNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -1109,7 +1109,7 @@ func (s ActionsDeleteOrgSecretNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsDeleteOrgSecretNoContent from json stream.
 func (s *ActionsDeleteOrgSecretNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsDeleteOrgSecretNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsDeleteOrgSecretNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -1131,7 +1131,7 @@ func (s ActionsDeleteRepoSecretNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsDeleteRepoSecretNoContent from json stream.
 func (s *ActionsDeleteRepoSecretNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsDeleteRepoSecretNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsDeleteRepoSecretNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -1153,7 +1153,7 @@ func (s ActionsDeleteSelfHostedRunnerFromOrgNoContent) WriteJSON(e *json.Encoder
 // ReadJSON reads ActionsDeleteSelfHostedRunnerFromOrgNoContent from json stream.
 func (s *ActionsDeleteSelfHostedRunnerFromOrgNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsDeleteSelfHostedRunnerFromOrgNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsDeleteSelfHostedRunnerFromOrgNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -1175,7 +1175,7 @@ func (s ActionsDeleteSelfHostedRunnerFromRepoNoContent) WriteJSON(e *json.Encode
 // ReadJSON reads ActionsDeleteSelfHostedRunnerFromRepoNoContent from json stream.
 func (s *ActionsDeleteSelfHostedRunnerFromRepoNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsDeleteSelfHostedRunnerFromRepoNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsDeleteSelfHostedRunnerFromRepoNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -1197,7 +1197,7 @@ func (s ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent) WriteJSON(e *json.En
 // ReadJSON reads ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent from json stream.
 func (s *ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -1219,7 +1219,7 @@ func (s ActionsDeleteWorkflowRunLogsNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsDeleteWorkflowRunLogsNoContent from json stream.
 func (s *ActionsDeleteWorkflowRunLogsNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsDeleteWorkflowRunLogsNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsDeleteWorkflowRunLogsNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -1241,7 +1241,7 @@ func (s ActionsDeleteWorkflowRunNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsDeleteWorkflowRunNoContent from json stream.
 func (s *ActionsDeleteWorkflowRunNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsDeleteWorkflowRunNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsDeleteWorkflowRunNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -1263,7 +1263,7 @@ func (s ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent) Writ
 // ReadJSON reads ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent from json stream.
 func (s *ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -1287,7 +1287,7 @@ func (s ActionsDisableWorkflowWorkflowID) WriteJSON(e *json.Encoder) {
 // ReadJSON reads value from json reader.
 func (s *ActionsDisableWorkflowWorkflowID) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsDisableWorkflowWorkflowID to nil`)
+		return errors.New(`invalid: unable to decode ActionsDisableWorkflowWorkflowID to nil`)
 	}
 	// Sum type primitive.
 	switch t := d.Next(); t {
@@ -1306,7 +1306,7 @@ func (s *ActionsDisableWorkflowWorkflowID) ReadJSON(d *json.Decoder) error {
 		}
 		s.Type = StringActionsDisableWorkflowWorkflowID
 	default:
-		return fmt.Errorf("unexpected json type %q", t)
+		return errors.Errorf("unexpected json type %q", t)
 	}
 	return nil
 }
@@ -1322,7 +1322,7 @@ func (s ActionsDownloadArtifactFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsDownloadArtifactFound from json stream.
 func (s *ActionsDownloadArtifactFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsDownloadArtifactFound to nil`)
+		return errors.New(`invalid: unable to decode ActionsDownloadArtifactFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -1344,7 +1344,7 @@ func (s ActionsDownloadJobLogsForWorkflowRunFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsDownloadJobLogsForWorkflowRunFound from json stream.
 func (s *ActionsDownloadJobLogsForWorkflowRunFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsDownloadJobLogsForWorkflowRunFound to nil`)
+		return errors.New(`invalid: unable to decode ActionsDownloadJobLogsForWorkflowRunFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -1366,7 +1366,7 @@ func (s ActionsDownloadWorkflowRunLogsFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsDownloadWorkflowRunLogsFound from json stream.
 func (s *ActionsDownloadWorkflowRunLogsFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsDownloadWorkflowRunLogsFound to nil`)
+		return errors.New(`invalid: unable to decode ActionsDownloadWorkflowRunLogsFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -1388,7 +1388,7 @@ func (s ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent) Write
 // ReadJSON reads ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent from json stream.
 func (s *ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -1412,7 +1412,7 @@ func (s ActionsEnableWorkflowWorkflowID) WriteJSON(e *json.Encoder) {
 // ReadJSON reads value from json reader.
 func (s *ActionsEnableWorkflowWorkflowID) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsEnableWorkflowWorkflowID to nil`)
+		return errors.New(`invalid: unable to decode ActionsEnableWorkflowWorkflowID to nil`)
 	}
 	// Sum type primitive.
 	switch t := d.Next(); t {
@@ -1431,7 +1431,7 @@ func (s *ActionsEnableWorkflowWorkflowID) ReadJSON(d *json.Decoder) error {
 		}
 		s.Type = StringActionsEnableWorkflowWorkflowID
 	default:
-		return fmt.Errorf("unexpected json type %q", t)
+		return errors.Errorf("unexpected json type %q", t)
 	}
 	return nil
 }
@@ -1468,7 +1468,7 @@ func (s ActionsEnterprisePermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsEnterprisePermissions from json stream.
 func (s *ActionsEnterprisePermissions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsEnterprisePermissions to nil`)
+		return errors.New(`invalid: unable to decode ActionsEnterprisePermissions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -1511,7 +1511,7 @@ func (s ActionsGetWorkflowUsageWorkflowID) WriteJSON(e *json.Encoder) {
 // ReadJSON reads value from json reader.
 func (s *ActionsGetWorkflowUsageWorkflowID) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsGetWorkflowUsageWorkflowID to nil`)
+		return errors.New(`invalid: unable to decode ActionsGetWorkflowUsageWorkflowID to nil`)
 	}
 	// Sum type primitive.
 	switch t := d.Next(); t {
@@ -1530,7 +1530,7 @@ func (s *ActionsGetWorkflowUsageWorkflowID) ReadJSON(d *json.Decoder) error {
 		}
 		s.Type = StringActionsGetWorkflowUsageWorkflowID
 	default:
-		return fmt.Errorf("unexpected json type %q", t)
+		return errors.Errorf("unexpected json type %q", t)
 	}
 	return nil
 }
@@ -1548,7 +1548,7 @@ func (s ActionsGetWorkflowWorkflowID) WriteJSON(e *json.Encoder) {
 // ReadJSON reads value from json reader.
 func (s *ActionsGetWorkflowWorkflowID) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsGetWorkflowWorkflowID to nil`)
+		return errors.New(`invalid: unable to decode ActionsGetWorkflowWorkflowID to nil`)
 	}
 	// Sum type primitive.
 	switch t := d.Next(); t {
@@ -1567,7 +1567,7 @@ func (s *ActionsGetWorkflowWorkflowID) ReadJSON(d *json.Decoder) error {
 		}
 		s.Type = StringActionsGetWorkflowWorkflowID
 	default:
-		return fmt.Errorf("unexpected json type %q", t)
+		return errors.Errorf("unexpected json type %q", t)
 	}
 	return nil
 }
@@ -1596,7 +1596,7 @@ func (s ActionsListArtifactsForRepoOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsListArtifactsForRepoOK from json stream.
 func (s *ActionsListArtifactsForRepoOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsListArtifactsForRepoOK to nil`)
+		return errors.New(`invalid: unable to decode ActionsListArtifactsForRepoOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -1649,7 +1649,7 @@ func (s ActionsListEnvironmentSecretsOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsListEnvironmentSecretsOK from json stream.
 func (s *ActionsListEnvironmentSecretsOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsListEnvironmentSecretsOK to nil`)
+		return errors.New(`invalid: unable to decode ActionsListEnvironmentSecretsOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -1686,7 +1686,7 @@ func (s ActionsListJobsForWorkflowRunFilter) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsListJobsForWorkflowRunFilter from json reader.
 func (s *ActionsListJobsForWorkflowRunFilter) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsListJobsForWorkflowRunFilter to nil`)
+		return errors.New(`invalid: unable to decode ActionsListJobsForWorkflowRunFilter to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -1720,7 +1720,7 @@ func (s ActionsListJobsForWorkflowRunOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsListJobsForWorkflowRunOK from json stream.
 func (s *ActionsListJobsForWorkflowRunOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsListJobsForWorkflowRunOK to nil`)
+		return errors.New(`invalid: unable to decode ActionsListJobsForWorkflowRunOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -1773,7 +1773,7 @@ func (s ActionsListOrgSecretsOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsListOrgSecretsOK from json stream.
 func (s *ActionsListOrgSecretsOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsListOrgSecretsOK to nil`)
+		return errors.New(`invalid: unable to decode ActionsListOrgSecretsOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -1826,7 +1826,7 @@ func (s ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) WriteJSON(e *json.E
 // ReadJSON reads ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK from json stream.
 func (s *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK to nil`)
+		return errors.New(`invalid: unable to decode ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -1879,7 +1879,7 @@ func (s ActionsListRepoSecretsOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsListRepoSecretsOK from json stream.
 func (s *ActionsListRepoSecretsOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsListRepoSecretsOK to nil`)
+		return errors.New(`invalid: unable to decode ActionsListRepoSecretsOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -1932,7 +1932,7 @@ func (s ActionsListRepoWorkflowsOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsListRepoWorkflowsOK from json stream.
 func (s *ActionsListRepoWorkflowsOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsListRepoWorkflowsOK to nil`)
+		return errors.New(`invalid: unable to decode ActionsListRepoWorkflowsOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -1985,7 +1985,7 @@ func (s ActionsListSelectedReposForOrgSecretOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsListSelectedReposForOrgSecretOK from json stream.
 func (s *ActionsListSelectedReposForOrgSecretOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsListSelectedReposForOrgSecretOK to nil`)
+		return errors.New(`invalid: unable to decode ActionsListSelectedReposForOrgSecretOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -2038,7 +2038,7 @@ func (s ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) Write
 // ReadJSON reads ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK from json stream.
 func (s *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK to nil`)
+		return errors.New(`invalid: unable to decode ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -2091,7 +2091,7 @@ func (s ActionsListSelfHostedRunnerGroupsForOrgOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsListSelfHostedRunnerGroupsForOrgOK from json stream.
 func (s *ActionsListSelfHostedRunnerGroupsForOrgOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsListSelfHostedRunnerGroupsForOrgOK to nil`)
+		return errors.New(`invalid: unable to decode ActionsListSelfHostedRunnerGroupsForOrgOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -2144,7 +2144,7 @@ func (s ActionsListSelfHostedRunnersForOrgOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsListSelfHostedRunnersForOrgOK from json stream.
 func (s *ActionsListSelfHostedRunnersForOrgOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsListSelfHostedRunnersForOrgOK to nil`)
+		return errors.New(`invalid: unable to decode ActionsListSelfHostedRunnersForOrgOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -2197,7 +2197,7 @@ func (s ActionsListSelfHostedRunnersForRepoOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsListSelfHostedRunnersForRepoOK from json stream.
 func (s *ActionsListSelfHostedRunnersForRepoOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsListSelfHostedRunnersForRepoOK to nil`)
+		return errors.New(`invalid: unable to decode ActionsListSelfHostedRunnersForRepoOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -2250,7 +2250,7 @@ func (s ActionsListSelfHostedRunnersInGroupForOrgOK) WriteJSON(e *json.Encoder) 
 // ReadJSON reads ActionsListSelfHostedRunnersInGroupForOrgOK from json stream.
 func (s *ActionsListSelfHostedRunnersInGroupForOrgOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsListSelfHostedRunnersInGroupForOrgOK to nil`)
+		return errors.New(`invalid: unable to decode ActionsListSelfHostedRunnersInGroupForOrgOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -2303,7 +2303,7 @@ func (s ActionsListWorkflowRunArtifactsOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsListWorkflowRunArtifactsOK from json stream.
 func (s *ActionsListWorkflowRunArtifactsOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsListWorkflowRunArtifactsOK to nil`)
+		return errors.New(`invalid: unable to decode ActionsListWorkflowRunArtifactsOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -2356,7 +2356,7 @@ func (s ActionsListWorkflowRunsForRepoOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsListWorkflowRunsForRepoOK from json stream.
 func (s *ActionsListWorkflowRunsForRepoOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsListWorkflowRunsForRepoOK to nil`)
+		return errors.New(`invalid: unable to decode ActionsListWorkflowRunsForRepoOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -2393,7 +2393,7 @@ func (s ActionsListWorkflowRunsForRepoStatus) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsListWorkflowRunsForRepoStatus from json reader.
 func (s *ActionsListWorkflowRunsForRepoStatus) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsListWorkflowRunsForRepoStatus to nil`)
+		return errors.New(`invalid: unable to decode ActionsListWorkflowRunsForRepoStatus to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -2416,7 +2416,7 @@ func (s ActionsListWorkflowRunsWorkflowID) WriteJSON(e *json.Encoder) {
 // ReadJSON reads value from json reader.
 func (s *ActionsListWorkflowRunsWorkflowID) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsListWorkflowRunsWorkflowID to nil`)
+		return errors.New(`invalid: unable to decode ActionsListWorkflowRunsWorkflowID to nil`)
 	}
 	// Sum type primitive.
 	switch t := d.Next(); t {
@@ -2435,7 +2435,7 @@ func (s *ActionsListWorkflowRunsWorkflowID) ReadJSON(d *json.Decoder) error {
 		}
 		s.Type = StringActionsListWorkflowRunsWorkflowID
 	default:
-		return fmt.Errorf("unexpected json type %q", t)
+		return errors.Errorf("unexpected json type %q", t)
 	}
 	return nil
 }
@@ -2469,7 +2469,7 @@ func (s ActionsOrganizationPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsOrganizationPermissions from json stream.
 func (s *ActionsOrganizationPermissions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsOrganizationPermissions to nil`)
+		return errors.New(`invalid: unable to decode ActionsOrganizationPermissions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -2536,7 +2536,7 @@ func (s ActionsPublicKey) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsPublicKey from json stream.
 func (s *ActionsPublicKey) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsPublicKey to nil`)
+		return errors.New(`invalid: unable to decode ActionsPublicKey to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -2590,7 +2590,7 @@ func (s ActionsReRunWorkflowCreated) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsReRunWorkflowCreated from json stream.
 func (s *ActionsReRunWorkflowCreated) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsReRunWorkflowCreated to nil`)
+		return errors.New(`invalid: unable to decode ActionsReRunWorkflowCreated to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -2612,7 +2612,7 @@ func (s ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent) WriteJSON(
 // ReadJSON reads ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent from json stream.
 func (s *ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -2634,7 +2634,7 @@ func (s ActionsRemoveSelectedRepoFromOrgSecretConflict) WriteJSON(e *json.Encode
 // ReadJSON reads ActionsRemoveSelectedRepoFromOrgSecretConflict from json stream.
 func (s *ActionsRemoveSelectedRepoFromOrgSecretConflict) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsRemoveSelectedRepoFromOrgSecretConflict to nil`)
+		return errors.New(`invalid: unable to decode ActionsRemoveSelectedRepoFromOrgSecretConflict to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -2656,7 +2656,7 @@ func (s ActionsRemoveSelectedRepoFromOrgSecretNoContent) WriteJSON(e *json.Encod
 // ReadJSON reads ActionsRemoveSelectedRepoFromOrgSecretNoContent from json stream.
 func (s *ActionsRemoveSelectedRepoFromOrgSecretNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsRemoveSelectedRepoFromOrgSecretNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsRemoveSelectedRepoFromOrgSecretNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -2678,7 +2678,7 @@ func (s ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent) WriteJSON(e *json
 // ReadJSON reads ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent from json stream.
 func (s *ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -2711,14 +2711,12 @@ func (s ActionsRepositoryPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsRepositoryPermissions from json stream.
 func (s *ActionsRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsRepositoryPermissions to nil`)
+		return errors.New(`invalid: unable to decode ActionsRepositoryPermissions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
 		case "enabled":
-			if err := fmt.Errorf(`decoding of "ActionsEnabled" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "ActionsEnabled" (alias) is not implemented`)
 		case "allowed_actions":
 			s.AllowedActions.Reset()
 			if err := s.AllowedActions.ReadJSON(d); err != nil {
@@ -2747,7 +2745,7 @@ func (s ActionsRetryWorkflowCreated) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsRetryWorkflowCreated from json stream.
 func (s *ActionsRetryWorkflowCreated) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsRetryWorkflowCreated to nil`)
+		return errors.New(`invalid: unable to decode ActionsRetryWorkflowCreated to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -2785,7 +2783,7 @@ func (s ActionsReviewPendingDeploymentsForRunReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsReviewPendingDeploymentsForRunReq from json stream.
 func (s *ActionsReviewPendingDeploymentsForRunReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsReviewPendingDeploymentsForRunReq to nil`)
+		return errors.New(`invalid: unable to decode ActionsReviewPendingDeploymentsForRunReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -2828,7 +2826,7 @@ func (s ActionsReviewPendingDeploymentsForRunReqState) WriteJSON(e *json.Encoder
 // ReadJSON reads ActionsReviewPendingDeploymentsForRunReqState from json reader.
 func (s *ActionsReviewPendingDeploymentsForRunReqState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsReviewPendingDeploymentsForRunReqState to nil`)
+		return errors.New(`invalid: unable to decode ActionsReviewPendingDeploymentsForRunReqState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -2858,7 +2856,7 @@ func (s ActionsSecret) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsSecret from json stream.
 func (s *ActionsSecret) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsSecret to nil`)
+		return errors.New(`invalid: unable to decode ActionsSecret to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -2898,7 +2896,7 @@ func (s ActionsSetAllowedActionsOrganizationNoContent) WriteJSON(e *json.Encoder
 // ReadJSON reads ActionsSetAllowedActionsOrganizationNoContent from json stream.
 func (s *ActionsSetAllowedActionsOrganizationNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsSetAllowedActionsOrganizationNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsSetAllowedActionsOrganizationNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -2920,7 +2918,7 @@ func (s ActionsSetAllowedActionsRepositoryNoContent) WriteJSON(e *json.Encoder) 
 // ReadJSON reads ActionsSetAllowedActionsRepositoryNoContent from json stream.
 func (s *ActionsSetAllowedActionsRepositoryNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsSetAllowedActionsRepositoryNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsSetAllowedActionsRepositoryNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -2942,7 +2940,7 @@ func (s ActionsSetGithubActionsPermissionsOrganizationNoContent) WriteJSON(e *js
 // ReadJSON reads ActionsSetGithubActionsPermissionsOrganizationNoContent from json stream.
 func (s *ActionsSetGithubActionsPermissionsOrganizationNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsSetGithubActionsPermissionsOrganizationNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsSetGithubActionsPermissionsOrganizationNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -2972,7 +2970,7 @@ func (s ActionsSetGithubActionsPermissionsOrganizationReq) WriteJSON(e *json.Enc
 // ReadJSON reads ActionsSetGithubActionsPermissionsOrganizationReq from json stream.
 func (s *ActionsSetGithubActionsPermissionsOrganizationReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsSetGithubActionsPermissionsOrganizationReq to nil`)
+		return errors.New(`invalid: unable to decode ActionsSetGithubActionsPermissionsOrganizationReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -3003,7 +3001,7 @@ func (s ActionsSetGithubActionsPermissionsRepositoryNoContent) WriteJSON(e *json
 // ReadJSON reads ActionsSetGithubActionsPermissionsRepositoryNoContent from json stream.
 func (s *ActionsSetGithubActionsPermissionsRepositoryNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsSetGithubActionsPermissionsRepositoryNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsSetGithubActionsPermissionsRepositoryNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -3031,14 +3029,12 @@ func (s ActionsSetGithubActionsPermissionsRepositoryReq) WriteJSON(e *json.Encod
 // ReadJSON reads ActionsSetGithubActionsPermissionsRepositoryReq from json stream.
 func (s *ActionsSetGithubActionsPermissionsRepositoryReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsSetGithubActionsPermissionsRepositoryReq to nil`)
+		return errors.New(`invalid: unable to decode ActionsSetGithubActionsPermissionsRepositoryReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
 		case "enabled":
-			if err := fmt.Errorf(`decoding of "ActionsEnabled" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "ActionsEnabled" (alias) is not implemented`)
 		case "allowed_actions":
 			s.AllowedActions.Reset()
 			if err := s.AllowedActions.ReadJSON(d); err != nil {
@@ -3062,7 +3058,7 @@ func (s ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent) WriteJSON(e *
 // ReadJSON reads ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent from json stream.
 func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -3094,7 +3090,7 @@ func (s ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) WriteJSON(e *json.E
 // ReadJSON reads ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq from json stream.
 func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq to nil`)
+		return errors.New(`invalid: unable to decode ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -3130,7 +3126,7 @@ func (s ActionsSetSelectedReposForOrgSecretNoContent) WriteJSON(e *json.Encoder)
 // ReadJSON reads ActionsSetSelectedReposForOrgSecretNoContent from json stream.
 func (s *ActionsSetSelectedReposForOrgSecretNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsSetSelectedReposForOrgSecretNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsSetSelectedReposForOrgSecretNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -3162,7 +3158,7 @@ func (s ActionsSetSelectedReposForOrgSecretReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActionsSetSelectedReposForOrgSecretReq from json stream.
 func (s *ActionsSetSelectedReposForOrgSecretReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsSetSelectedReposForOrgSecretReq to nil`)
+		return errors.New(`invalid: unable to decode ActionsSetSelectedReposForOrgSecretReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -3198,7 +3194,7 @@ func (s ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent)
 // ReadJSON reads ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent from json stream.
 func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -3230,7 +3226,7 @@ func (s ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) Write
 // ReadJSON reads ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq from json stream.
 func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq to nil`)
+		return errors.New(`invalid: unable to decode ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -3266,7 +3262,7 @@ func (s ActionsSetSelfHostedRunnersInGroupForOrgNoContent) WriteJSON(e *json.Enc
 // ReadJSON reads ActionsSetSelfHostedRunnersInGroupForOrgNoContent from json stream.
 func (s *ActionsSetSelfHostedRunnersInGroupForOrgNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsSetSelfHostedRunnersInGroupForOrgNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActionsSetSelfHostedRunnersInGroupForOrgNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -3298,7 +3294,7 @@ func (s ActionsSetSelfHostedRunnersInGroupForOrgReq) WriteJSON(e *json.Encoder) 
 // ReadJSON reads ActionsSetSelfHostedRunnersInGroupForOrgReq from json stream.
 func (s *ActionsSetSelfHostedRunnersInGroupForOrgReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsSetSelfHostedRunnersInGroupForOrgReq to nil`)
+		return errors.New(`invalid: unable to decode ActionsSetSelfHostedRunnersInGroupForOrgReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -3342,7 +3338,7 @@ func (s ActionsUpdateSelfHostedRunnerGroupForOrgReq) WriteJSON(e *json.Encoder) 
 // ReadJSON reads ActionsUpdateSelfHostedRunnerGroupForOrgReq from json stream.
 func (s *ActionsUpdateSelfHostedRunnerGroupForOrgReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsUpdateSelfHostedRunnerGroupForOrgReq to nil`)
+		return errors.New(`invalid: unable to decode ActionsUpdateSelfHostedRunnerGroupForOrgReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -3372,7 +3368,7 @@ func (s ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) WriteJSON(e *json
 // ReadJSON reads ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility from json reader.
 func (s *ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility to nil`)
+		return errors.New(`invalid: unable to decode ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -3411,7 +3407,7 @@ func (s ActivityCheckRepoIsStarredByAuthenticatedUserNoContent) WriteJSON(e *jso
 // ReadJSON reads ActivityCheckRepoIsStarredByAuthenticatedUserNoContent from json stream.
 func (s *ActivityCheckRepoIsStarredByAuthenticatedUserNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActivityCheckRepoIsStarredByAuthenticatedUserNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActivityCheckRepoIsStarredByAuthenticatedUserNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -3433,7 +3429,7 @@ func (s ActivityDeleteRepoSubscriptionNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActivityDeleteRepoSubscriptionNoContent from json stream.
 func (s *ActivityDeleteRepoSubscriptionNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActivityDeleteRepoSubscriptionNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActivityDeleteRepoSubscriptionNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -3465,7 +3461,7 @@ func (s ActivityDeleteThreadSubscriptionNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActivityDeleteThreadSubscriptionNoContent from json stream.
 func (s *ActivityDeleteThreadSubscriptionNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActivityDeleteThreadSubscriptionNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActivityDeleteThreadSubscriptionNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -3487,7 +3483,7 @@ func (s ActivityGetRepoSubscriptionNotFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActivityGetRepoSubscriptionNotFound from json stream.
 func (s *ActivityGetRepoSubscriptionNotFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActivityGetRepoSubscriptionNotFound to nil`)
+		return errors.New(`invalid: unable to decode ActivityGetRepoSubscriptionNotFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -3560,7 +3556,7 @@ func (s ActivityListReposStarredByAuthenticatedUserDirection) WriteJSON(e *json.
 // ReadJSON reads ActivityListReposStarredByAuthenticatedUserDirection from json reader.
 func (s *ActivityListReposStarredByAuthenticatedUserDirection) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActivityListReposStarredByAuthenticatedUserDirection to nil`)
+		return errors.New(`invalid: unable to decode ActivityListReposStarredByAuthenticatedUserDirection to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -3589,7 +3585,7 @@ func (s ActivityListReposStarredByAuthenticatedUserSort) WriteJSON(e *json.Encod
 // ReadJSON reads ActivityListReposStarredByAuthenticatedUserSort from json reader.
 func (s *ActivityListReposStarredByAuthenticatedUserSort) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActivityListReposStarredByAuthenticatedUserSort to nil`)
+		return errors.New(`invalid: unable to decode ActivityListReposStarredByAuthenticatedUserSort to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -3607,7 +3603,7 @@ func (s ActivityListReposStarredByUserDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActivityListReposStarredByUserDirection from json reader.
 func (s *ActivityListReposStarredByUserDirection) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActivityListReposStarredByUserDirection to nil`)
+		return errors.New(`invalid: unable to decode ActivityListReposStarredByUserDirection to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -3625,7 +3621,7 @@ func (s ActivityListReposStarredByUserSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActivityListReposStarredByUserSort from json reader.
 func (s *ActivityListReposStarredByUserSort) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActivityListReposStarredByUserSort to nil`)
+		return errors.New(`invalid: unable to decode ActivityListReposStarredByUserSort to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -3668,7 +3664,7 @@ func (s ActivityMarkNotificationsAsReadAccepted) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActivityMarkNotificationsAsReadAccepted from json stream.
 func (s *ActivityMarkNotificationsAsReadAccepted) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActivityMarkNotificationsAsReadAccepted to nil`)
+		return errors.New(`invalid: unable to decode ActivityMarkNotificationsAsReadAccepted to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -3715,7 +3711,7 @@ func (s ActivityMarkNotificationsAsReadReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActivityMarkNotificationsAsReadReq from json stream.
 func (s *ActivityMarkNotificationsAsReadReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActivityMarkNotificationsAsReadReq to nil`)
+		return errors.New(`invalid: unable to decode ActivityMarkNotificationsAsReadReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -3747,7 +3743,7 @@ func (s ActivityMarkNotificationsAsReadResetContent) WriteJSON(e *json.Encoder) 
 // ReadJSON reads ActivityMarkNotificationsAsReadResetContent from json stream.
 func (s *ActivityMarkNotificationsAsReadResetContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActivityMarkNotificationsAsReadResetContent to nil`)
+		return errors.New(`invalid: unable to decode ActivityMarkNotificationsAsReadResetContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -3779,7 +3775,7 @@ func (s ActivityMarkRepoNotificationsAsReadAccepted) WriteJSON(e *json.Encoder) 
 // ReadJSON reads ActivityMarkRepoNotificationsAsReadAccepted from json stream.
 func (s *ActivityMarkRepoNotificationsAsReadAccepted) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActivityMarkRepoNotificationsAsReadAccepted to nil`)
+		return errors.New(`invalid: unable to decode ActivityMarkRepoNotificationsAsReadAccepted to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -3816,7 +3812,7 @@ func (s ActivityMarkRepoNotificationsAsReadReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActivityMarkRepoNotificationsAsReadReq from json stream.
 func (s *ActivityMarkRepoNotificationsAsReadReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActivityMarkRepoNotificationsAsReadReq to nil`)
+		return errors.New(`invalid: unable to decode ActivityMarkRepoNotificationsAsReadReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -3843,7 +3839,7 @@ func (s ActivityMarkRepoNotificationsAsReadResetContent) WriteJSON(e *json.Encod
 // ReadJSON reads ActivityMarkRepoNotificationsAsReadResetContent from json stream.
 func (s *ActivityMarkRepoNotificationsAsReadResetContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActivityMarkRepoNotificationsAsReadResetContent to nil`)
+		return errors.New(`invalid: unable to decode ActivityMarkRepoNotificationsAsReadResetContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -3865,7 +3861,7 @@ func (s ActivityMarkThreadAsReadResetContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActivityMarkThreadAsReadResetContent from json stream.
 func (s *ActivityMarkThreadAsReadResetContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActivityMarkThreadAsReadResetContent to nil`)
+		return errors.New(`invalid: unable to decode ActivityMarkThreadAsReadResetContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -3897,7 +3893,7 @@ func (s ActivitySetRepoSubscriptionReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActivitySetRepoSubscriptionReq from json stream.
 func (s *ActivitySetRepoSubscriptionReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActivitySetRepoSubscriptionReq to nil`)
+		return errors.New(`invalid: unable to decode ActivitySetRepoSubscriptionReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -3944,7 +3940,7 @@ func (s ActivitySetThreadSubscriptionReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ActivitySetThreadSubscriptionReq from json stream.
 func (s *ActivitySetThreadSubscriptionReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActivitySetThreadSubscriptionReq to nil`)
+		return errors.New(`invalid: unable to decode ActivitySetThreadSubscriptionReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -3986,7 +3982,7 @@ func (s ActivityStarRepoForAuthenticatedUserNoContent) WriteJSON(e *json.Encoder
 // ReadJSON reads ActivityStarRepoForAuthenticatedUserNoContent from json stream.
 func (s *ActivityStarRepoForAuthenticatedUserNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActivityStarRepoForAuthenticatedUserNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActivityStarRepoForAuthenticatedUserNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -4023,7 +4019,7 @@ func (s ActivityUnstarRepoForAuthenticatedUserNoContent) WriteJSON(e *json.Encod
 // ReadJSON reads ActivityUnstarRepoForAuthenticatedUserNoContent from json stream.
 func (s *ActivityUnstarRepoForAuthenticatedUserNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ActivityUnstarRepoForAuthenticatedUserNoContent to nil`)
+		return errors.New(`invalid: unable to decode ActivityUnstarRepoForAuthenticatedUserNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -4065,7 +4061,7 @@ func (s Actor) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Actor from json stream.
 func (s *Actor) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Actor to nil`)
+		return errors.New(`invalid: unable to decode Actor to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -4132,7 +4128,7 @@ func (s AllowedActions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AllowedActions from json reader.
 func (s *AllowedActions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AllowedActions to nil`)
+		return errors.New(`invalid: unable to decode AllowedActions to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4308,7 +4304,7 @@ func (s AppPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissions from json stream.
 func (s *AppPermissions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissions to nil`)
+		return errors.New(`invalid: unable to decode AppPermissions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -4482,7 +4478,7 @@ func (s AppPermissionsActions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsActions from json reader.
 func (s *AppPermissionsActions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsActions to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsActions to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4500,7 +4496,7 @@ func (s AppPermissionsAdministration) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsAdministration from json reader.
 func (s *AppPermissionsAdministration) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsAdministration to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsAdministration to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4518,7 +4514,7 @@ func (s AppPermissionsChecks) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsChecks from json reader.
 func (s *AppPermissionsChecks) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsChecks to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsChecks to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4536,7 +4532,7 @@ func (s AppPermissionsContentReferences) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsContentReferences from json reader.
 func (s *AppPermissionsContentReferences) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsContentReferences to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsContentReferences to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4554,7 +4550,7 @@ func (s AppPermissionsContents) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsContents from json reader.
 func (s *AppPermissionsContents) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsContents to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsContents to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4572,7 +4568,7 @@ func (s AppPermissionsDeployments) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsDeployments from json reader.
 func (s *AppPermissionsDeployments) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsDeployments to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsDeployments to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4590,7 +4586,7 @@ func (s AppPermissionsEnvironments) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsEnvironments from json reader.
 func (s *AppPermissionsEnvironments) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsEnvironments to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsEnvironments to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4608,7 +4604,7 @@ func (s AppPermissionsIssues) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsIssues from json reader.
 func (s *AppPermissionsIssues) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsIssues to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsIssues to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4626,7 +4622,7 @@ func (s AppPermissionsMembers) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsMembers from json reader.
 func (s *AppPermissionsMembers) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsMembers to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsMembers to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4644,7 +4640,7 @@ func (s AppPermissionsMetadata) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsMetadata from json reader.
 func (s *AppPermissionsMetadata) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsMetadata to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsMetadata to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4662,7 +4658,7 @@ func (s AppPermissionsOrganizationAdministration) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsOrganizationAdministration from json reader.
 func (s *AppPermissionsOrganizationAdministration) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsOrganizationAdministration to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsOrganizationAdministration to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4680,7 +4676,7 @@ func (s AppPermissionsOrganizationHooks) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsOrganizationHooks from json reader.
 func (s *AppPermissionsOrganizationHooks) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsOrganizationHooks to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsOrganizationHooks to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4698,7 +4694,7 @@ func (s AppPermissionsOrganizationPackages) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsOrganizationPackages from json reader.
 func (s *AppPermissionsOrganizationPackages) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsOrganizationPackages to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsOrganizationPackages to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4716,7 +4712,7 @@ func (s AppPermissionsOrganizationPlan) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsOrganizationPlan from json reader.
 func (s *AppPermissionsOrganizationPlan) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsOrganizationPlan to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsOrganizationPlan to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4734,7 +4730,7 @@ func (s AppPermissionsOrganizationProjects) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsOrganizationProjects from json reader.
 func (s *AppPermissionsOrganizationProjects) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsOrganizationProjects to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsOrganizationProjects to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4752,7 +4748,7 @@ func (s AppPermissionsOrganizationSecrets) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsOrganizationSecrets from json reader.
 func (s *AppPermissionsOrganizationSecrets) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsOrganizationSecrets to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsOrganizationSecrets to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4770,7 +4766,7 @@ func (s AppPermissionsOrganizationSelfHostedRunners) WriteJSON(e *json.Encoder) 
 // ReadJSON reads AppPermissionsOrganizationSelfHostedRunners from json reader.
 func (s *AppPermissionsOrganizationSelfHostedRunners) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsOrganizationSelfHostedRunners to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsOrganizationSelfHostedRunners to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4788,7 +4784,7 @@ func (s AppPermissionsOrganizationUserBlocking) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsOrganizationUserBlocking from json reader.
 func (s *AppPermissionsOrganizationUserBlocking) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsOrganizationUserBlocking to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsOrganizationUserBlocking to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4806,7 +4802,7 @@ func (s AppPermissionsPackages) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsPackages from json reader.
 func (s *AppPermissionsPackages) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsPackages to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsPackages to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4824,7 +4820,7 @@ func (s AppPermissionsPages) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsPages from json reader.
 func (s *AppPermissionsPages) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsPages to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsPages to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4842,7 +4838,7 @@ func (s AppPermissionsPullRequests) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsPullRequests from json reader.
 func (s *AppPermissionsPullRequests) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsPullRequests to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsPullRequests to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4860,7 +4856,7 @@ func (s AppPermissionsRepositoryHooks) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsRepositoryHooks from json reader.
 func (s *AppPermissionsRepositoryHooks) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsRepositoryHooks to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsRepositoryHooks to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4878,7 +4874,7 @@ func (s AppPermissionsRepositoryProjects) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsRepositoryProjects from json reader.
 func (s *AppPermissionsRepositoryProjects) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsRepositoryProjects to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsRepositoryProjects to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4896,7 +4892,7 @@ func (s AppPermissionsSecretScanningAlerts) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsSecretScanningAlerts from json reader.
 func (s *AppPermissionsSecretScanningAlerts) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsSecretScanningAlerts to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsSecretScanningAlerts to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4914,7 +4910,7 @@ func (s AppPermissionsSecrets) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsSecrets from json reader.
 func (s *AppPermissionsSecrets) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsSecrets to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsSecrets to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4932,7 +4928,7 @@ func (s AppPermissionsSecurityEvents) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsSecurityEvents from json reader.
 func (s *AppPermissionsSecurityEvents) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsSecurityEvents to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsSecurityEvents to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4950,7 +4946,7 @@ func (s AppPermissionsSingleFile) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsSingleFile from json reader.
 func (s *AppPermissionsSingleFile) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsSingleFile to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsSingleFile to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4968,7 +4964,7 @@ func (s AppPermissionsStatuses) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsStatuses from json reader.
 func (s *AppPermissionsStatuses) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsStatuses to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsStatuses to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -4986,7 +4982,7 @@ func (s AppPermissionsTeamDiscussions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsTeamDiscussions from json reader.
 func (s *AppPermissionsTeamDiscussions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsTeamDiscussions to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsTeamDiscussions to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -5004,7 +5000,7 @@ func (s AppPermissionsVulnerabilityAlerts) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsVulnerabilityAlerts from json reader.
 func (s *AppPermissionsVulnerabilityAlerts) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsVulnerabilityAlerts to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsVulnerabilityAlerts to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -5022,7 +5018,7 @@ func (s AppPermissionsWorkflows) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppPermissionsWorkflows from json reader.
 func (s *AppPermissionsWorkflows) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppPermissionsWorkflows to nil`)
+		return errors.New(`invalid: unable to decode AppPermissionsWorkflows to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -5073,7 +5069,7 @@ func (s ApplicationGrant) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ApplicationGrant from json stream.
 func (s *ApplicationGrant) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ApplicationGrant to nil`)
+		return errors.New(`invalid: unable to decode ApplicationGrant to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -5151,7 +5147,7 @@ func (s ApplicationGrantApp) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ApplicationGrantApp from json stream.
 func (s *ApplicationGrantApp) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ApplicationGrantApp to nil`)
+		return errors.New(`invalid: unable to decode ApplicationGrantApp to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -5197,7 +5193,7 @@ func (s AppsAddRepoToInstallationNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppsAddRepoToInstallationNoContent from json stream.
 func (s *AppsAddRepoToInstallationNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsAddRepoToInstallationNoContent to nil`)
+		return errors.New(`invalid: unable to decode AppsAddRepoToInstallationNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -5222,7 +5218,7 @@ func (s AppsCheckTokenReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppsCheckTokenReq from json stream.
 func (s *AppsCheckTokenReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsCheckTokenReq to nil`)
+		return errors.New(`invalid: unable to decode AppsCheckTokenReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -5256,7 +5252,7 @@ func (s AppsCreateContentAttachmentReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppsCreateContentAttachmentReq from json stream.
 func (s *AppsCreateContentAttachmentReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsCreateContentAttachmentReq to nil`)
+		return errors.New(`invalid: unable to decode AppsCreateContentAttachmentReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -5290,7 +5286,7 @@ func (s AppsCreateFromManifestReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppsCreateFromManifestReq from json stream.
 func (s *AppsCreateFromManifestReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsCreateFromManifestReq to nil`)
+		return errors.New(`invalid: unable to decode AppsCreateFromManifestReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -5341,7 +5337,7 @@ func (s AppsCreateInstallationAccessTokenReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppsCreateInstallationAccessTokenReq from json stream.
 func (s *AppsCreateInstallationAccessTokenReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsCreateInstallationAccessTokenReq to nil`)
+		return errors.New(`invalid: unable to decode AppsCreateInstallationAccessTokenReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -5396,7 +5392,7 @@ func (s AppsDeleteAuthorizationNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppsDeleteAuthorizationNoContent from json stream.
 func (s *AppsDeleteAuthorizationNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsDeleteAuthorizationNoContent to nil`)
+		return errors.New(`invalid: unable to decode AppsDeleteAuthorizationNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -5421,7 +5417,7 @@ func (s AppsDeleteAuthorizationReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppsDeleteAuthorizationReq from json stream.
 func (s *AppsDeleteAuthorizationReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsDeleteAuthorizationReq to nil`)
+		return errors.New(`invalid: unable to decode AppsDeleteAuthorizationReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -5449,7 +5445,7 @@ func (s AppsDeleteInstallationNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppsDeleteInstallationNoContent from json stream.
 func (s *AppsDeleteInstallationNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsDeleteInstallationNoContent to nil`)
+		return errors.New(`invalid: unable to decode AppsDeleteInstallationNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -5471,7 +5467,7 @@ func (s AppsDeleteTokenNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppsDeleteTokenNoContent from json stream.
 func (s *AppsDeleteTokenNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsDeleteTokenNoContent to nil`)
+		return errors.New(`invalid: unable to decode AppsDeleteTokenNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -5496,7 +5492,7 @@ func (s AppsDeleteTokenReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppsDeleteTokenReq from json stream.
 func (s *AppsDeleteTokenReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsDeleteTokenReq to nil`)
+		return errors.New(`invalid: unable to decode AppsDeleteTokenReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -5540,7 +5536,7 @@ func (s AppsGetSubscriptionPlanForAccountStubbedNotFound) WriteJSON(e *json.Enco
 // ReadJSON reads AppsGetSubscriptionPlanForAccountStubbedNotFound from json stream.
 func (s *AppsGetSubscriptionPlanForAccountStubbedNotFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsGetSubscriptionPlanForAccountStubbedNotFound to nil`)
+		return errors.New(`invalid: unable to decode AppsGetSubscriptionPlanForAccountStubbedNotFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -5559,7 +5555,7 @@ func (s AppsListAccountsForPlanDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppsListAccountsForPlanDirection from json reader.
 func (s *AppsListAccountsForPlanDirection) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsListAccountsForPlanDirection to nil`)
+		return errors.New(`invalid: unable to decode AppsListAccountsForPlanDirection to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -5577,7 +5573,7 @@ func (s AppsListAccountsForPlanSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppsListAccountsForPlanSort from json reader.
 func (s *AppsListAccountsForPlanSort) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsListAccountsForPlanSort to nil`)
+		return errors.New(`invalid: unable to decode AppsListAccountsForPlanSort to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -5595,7 +5591,7 @@ func (s AppsListAccountsForPlanStubbedDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppsListAccountsForPlanStubbedDirection from json reader.
 func (s *AppsListAccountsForPlanStubbedDirection) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsListAccountsForPlanStubbedDirection to nil`)
+		return errors.New(`invalid: unable to decode AppsListAccountsForPlanStubbedDirection to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -5616,7 +5612,7 @@ func (s AppsListAccountsForPlanStubbedSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppsListAccountsForPlanStubbedSort from json reader.
 func (s *AppsListAccountsForPlanStubbedSort) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsListAccountsForPlanStubbedSort to nil`)
+		return errors.New(`invalid: unable to decode AppsListAccountsForPlanStubbedSort to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -5667,7 +5663,7 @@ func (s AppsListInstallationReposForAuthenticatedUserOK) WriteJSON(e *json.Encod
 // ReadJSON reads AppsListInstallationReposForAuthenticatedUserOK from json stream.
 func (s *AppsListInstallationReposForAuthenticatedUserOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsListInstallationReposForAuthenticatedUserOK to nil`)
+		return errors.New(`invalid: unable to decode AppsListInstallationReposForAuthenticatedUserOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -5752,7 +5748,7 @@ func (s AppsListReposAccessibleToInstallationOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppsListReposAccessibleToInstallationOK from json stream.
 func (s *AppsListReposAccessibleToInstallationOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsListReposAccessibleToInstallationOK to nil`)
+		return errors.New(`invalid: unable to decode AppsListReposAccessibleToInstallationOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -5828,7 +5824,7 @@ func (s AppsRemoveRepoFromInstallationNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppsRemoveRepoFromInstallationNoContent from json stream.
 func (s *AppsRemoveRepoFromInstallationNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsRemoveRepoFromInstallationNoContent to nil`)
+		return errors.New(`invalid: unable to decode AppsRemoveRepoFromInstallationNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -5853,7 +5849,7 @@ func (s AppsResetTokenReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppsResetTokenReq from json stream.
 func (s *AppsResetTokenReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsResetTokenReq to nil`)
+		return errors.New(`invalid: unable to decode AppsResetTokenReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -5881,7 +5877,7 @@ func (s AppsRevokeInstallationAccessTokenNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppsRevokeInstallationAccessTokenNoContent from json stream.
 func (s *AppsRevokeInstallationAccessTokenNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsRevokeInstallationAccessTokenNoContent to nil`)
+		return errors.New(`invalid: unable to decode AppsRevokeInstallationAccessTokenNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -5945,7 +5941,7 @@ func (s AppsScopeTokenReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppsScopeTokenReq from json stream.
 func (s *AppsScopeTokenReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsScopeTokenReq to nil`)
+		return errors.New(`invalid: unable to decode AppsScopeTokenReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -6016,7 +6012,7 @@ func (s AppsSuspendInstallationNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppsSuspendInstallationNoContent from json stream.
 func (s *AppsSuspendInstallationNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsSuspendInstallationNoContent to nil`)
+		return errors.New(`invalid: unable to decode AppsSuspendInstallationNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -6038,7 +6034,7 @@ func (s AppsUnsuspendInstallationNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppsUnsuspendInstallationNoContent from json stream.
 func (s *AppsUnsuspendInstallationNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsUnsuspendInstallationNoContent to nil`)
+		return errors.New(`invalid: unable to decode AppsUnsuspendInstallationNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -6080,7 +6076,7 @@ func (s AppsUpdateWebhookConfigForAppReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AppsUpdateWebhookConfigForAppReq from json stream.
 func (s *AppsUpdateWebhookConfigForAppReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AppsUpdateWebhookConfigForAppReq to nil`)
+		return errors.New(`invalid: unable to decode AppsUpdateWebhookConfigForAppReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -6154,7 +6150,7 @@ func (s Artifact) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Artifact from json stream.
 func (s *Artifact) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Artifact to nil`)
+		return errors.New(`invalid: unable to decode Artifact to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -6458,7 +6454,7 @@ func (s AuditLogEvent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AuditLogEvent from json stream.
 func (s *AuditLogEvent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AuditLogEvent to nil`)
+		return errors.New(`invalid: unable to decode AuditLogEvent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -6723,7 +6719,7 @@ func (s AuditLogEventActorLocation) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AuditLogEventActorLocation from json stream.
 func (s *AuditLogEventActorLocation) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AuditLogEventActorLocation to nil`)
+		return errors.New(`invalid: unable to decode AuditLogEventActorLocation to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -6750,7 +6746,7 @@ func (s AuditLogEventData) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AuditLogEventData from json stream.
 func (s *AuditLogEventData) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AuditLogEventData to nil`)
+		return errors.New(`invalid: unable to decode AuditLogEventData to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -6805,7 +6801,7 @@ func (s AuthenticationToken) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AuthenticationToken from json stream.
 func (s *AuthenticationToken) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AuthenticationToken to nil`)
+		return errors.New(`invalid: unable to decode AuthenticationToken to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -6868,7 +6864,7 @@ func (s AuthenticationTokenPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AuthenticationTokenPermissions from json stream.
 func (s *AuthenticationTokenPermissions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AuthenticationTokenPermissions to nil`)
+		return errors.New(`invalid: unable to decode AuthenticationTokenPermissions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -6887,7 +6883,7 @@ func (s AuthenticationTokenRepositorySelection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AuthenticationTokenRepositorySelection from json reader.
 func (s *AuthenticationTokenRepositorySelection) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AuthenticationTokenRepositorySelection to nil`)
+		return errors.New(`invalid: unable to decode AuthenticationTokenRepositorySelection to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -6905,7 +6901,7 @@ func (s AuthorAssociation) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AuthorAssociation from json reader.
 func (s *AuthorAssociation) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AuthorAssociation to nil`)
+		return errors.New(`invalid: unable to decode AuthorAssociation to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -6986,7 +6982,7 @@ func (s Authorization) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Authorization from json stream.
 func (s *Authorization) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Authorization to nil`)
+		return errors.New(`invalid: unable to decode Authorization to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -7099,7 +7095,7 @@ func (s AuthorizationApp) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AuthorizationApp from json stream.
 func (s *AuthorizationApp) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AuthorizationApp to nil`)
+		return errors.New(`invalid: unable to decode AuthorizationApp to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -7151,7 +7147,7 @@ func (s AutoMerge) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AutoMerge from json stream.
 func (s *AutoMerge) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AutoMerge to nil`)
+		return errors.New(`invalid: unable to decode AutoMerge to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -7190,7 +7186,7 @@ func (s AutoMergeMergeMethod) WriteJSON(e *json.Encoder) {
 // ReadJSON reads AutoMergeMergeMethod from json reader.
 func (s *AutoMergeMergeMethod) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode AutoMergeMergeMethod to nil`)
+		return errors.New(`invalid: unable to decode AutoMergeMergeMethod to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -7220,7 +7216,7 @@ func (s Autolink) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Autolink from json stream.
 func (s *Autolink) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Autolink to nil`)
+		return errors.New(`invalid: unable to decode Autolink to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -7342,7 +7338,7 @@ func (s BaseGist) WriteJSON(e *json.Encoder) {
 // ReadJSON reads BaseGist from json stream.
 func (s *BaseGist) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode BaseGist to nil`)
+		return errors.New(`invalid: unable to decode BaseGist to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -7492,7 +7488,7 @@ func (s BaseGistFiles) WriteJSON(e *json.Encoder) {
 // ReadJSON reads BaseGistFiles from json stream.
 func (s *BaseGistFiles) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode BaseGistFiles to nil`)
+		return errors.New(`invalid: unable to decode BaseGistFiles to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -7534,7 +7530,7 @@ func (s BasicError) WriteJSON(e *json.Encoder) {
 // ReadJSON reads BasicError from json stream.
 func (s *BasicError) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode BasicError to nil`)
+		return errors.New(`invalid: unable to decode BasicError to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -7599,7 +7595,7 @@ func (s Blob) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Blob from json stream.
 func (s *Blob) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Blob to nil`)
+		return errors.New(`invalid: unable to decode Blob to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -7725,7 +7721,7 @@ func (s BranchProtection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads BranchProtection from json stream.
 func (s *BranchProtection) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode BranchProtection to nil`)
+		return errors.New(`invalid: unable to decode BranchProtection to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -7817,7 +7813,7 @@ func (s BranchProtectionAllowDeletions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads BranchProtectionAllowDeletions from json stream.
 func (s *BranchProtectionAllowDeletions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode BranchProtectionAllowDeletions to nil`)
+		return errors.New(`invalid: unable to decode BranchProtectionAllowDeletions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -7849,7 +7845,7 @@ func (s BranchProtectionAllowForcePushes) WriteJSON(e *json.Encoder) {
 // ReadJSON reads BranchProtectionAllowForcePushes from json stream.
 func (s *BranchProtectionAllowForcePushes) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode BranchProtectionAllowForcePushes to nil`)
+		return errors.New(`invalid: unable to decode BranchProtectionAllowForcePushes to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -7881,7 +7877,7 @@ func (s BranchProtectionRequiredConversationResolution) WriteJSON(e *json.Encode
 // ReadJSON reads BranchProtectionRequiredConversationResolution from json stream.
 func (s *BranchProtectionRequiredConversationResolution) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode BranchProtectionRequiredConversationResolution to nil`)
+		return errors.New(`invalid: unable to decode BranchProtectionRequiredConversationResolution to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -7913,7 +7909,7 @@ func (s BranchProtectionRequiredLinearHistory) WriteJSON(e *json.Encoder) {
 // ReadJSON reads BranchProtectionRequiredLinearHistory from json stream.
 func (s *BranchProtectionRequiredLinearHistory) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode BranchProtectionRequiredLinearHistory to nil`)
+		return errors.New(`invalid: unable to decode BranchProtectionRequiredLinearHistory to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -7946,7 +7942,7 @@ func (s BranchProtectionRequiredSignatures) WriteJSON(e *json.Encoder) {
 // ReadJSON reads BranchProtectionRequiredSignatures from json stream.
 func (s *BranchProtectionRequiredSignatures) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode BranchProtectionRequiredSignatures to nil`)
+		return errors.New(`invalid: unable to decode BranchProtectionRequiredSignatures to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -8010,7 +8006,7 @@ func (s BranchProtectionRequiredStatusChecks) WriteJSON(e *json.Encoder) {
 // ReadJSON reads BranchProtectionRequiredStatusChecks from json stream.
 func (s *BranchProtectionRequiredStatusChecks) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode BranchProtectionRequiredStatusChecks to nil`)
+		return errors.New(`invalid: unable to decode BranchProtectionRequiredStatusChecks to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -8108,7 +8104,7 @@ func (s BranchRestrictionPolicy) WriteJSON(e *json.Encoder) {
 // ReadJSON reads BranchRestrictionPolicy from json stream.
 func (s *BranchRestrictionPolicy) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode BranchRestrictionPolicy to nil`)
+		return errors.New(`invalid: unable to decode BranchRestrictionPolicy to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -8257,7 +8253,7 @@ func (s BranchRestrictionPolicyAppsItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads BranchRestrictionPolicyAppsItem from json stream.
 func (s *BranchRestrictionPolicyAppsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode BranchRestrictionPolicyAppsItem to nil`)
+		return errors.New(`invalid: unable to decode BranchRestrictionPolicyAppsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -8463,7 +8459,7 @@ func (s BranchRestrictionPolicyAppsItemOwner) WriteJSON(e *json.Encoder) {
 // ReadJSON reads BranchRestrictionPolicyAppsItemOwner from json stream.
 func (s *BranchRestrictionPolicyAppsItemOwner) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode BranchRestrictionPolicyAppsItemOwner to nil`)
+		return errors.New(`invalid: unable to decode BranchRestrictionPolicyAppsItemOwner to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -8620,7 +8616,7 @@ func (s BranchRestrictionPolicyAppsItemPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads BranchRestrictionPolicyAppsItemPermissions from json stream.
 func (s *BranchRestrictionPolicyAppsItemPermissions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode BranchRestrictionPolicyAppsItemPermissions to nil`)
+		return errors.New(`invalid: unable to decode BranchRestrictionPolicyAppsItemPermissions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -8722,7 +8718,7 @@ func (s BranchRestrictionPolicyTeamsItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads BranchRestrictionPolicyTeamsItem from json stream.
 func (s *BranchRestrictionPolicyTeamsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode BranchRestrictionPolicyTeamsItem to nil`)
+		return errors.New(`invalid: unable to decode BranchRestrictionPolicyTeamsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -8894,7 +8890,7 @@ func (s BranchRestrictionPolicyUsersItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads BranchRestrictionPolicyUsersItem from json stream.
 func (s *BranchRestrictionPolicyUsersItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode BranchRestrictionPolicyUsersItem to nil`)
+		return errors.New(`invalid: unable to decode BranchRestrictionPolicyUsersItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -9015,7 +9011,7 @@ func (s BranchShort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads BranchShort from json stream.
 func (s *BranchShort) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode BranchShort to nil`)
+		return errors.New(`invalid: unable to decode BranchShort to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -9059,7 +9055,7 @@ func (s BranchShortCommit) WriteJSON(e *json.Encoder) {
 // ReadJSON reads BranchShortCommit from json stream.
 func (s *BranchShortCommit) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode BranchShortCommit to nil`)
+		return errors.New(`invalid: unable to decode BranchShortCommit to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -9121,7 +9117,7 @@ func (s BranchWithProtection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads BranchWithProtection from json stream.
 func (s *BranchWithProtection) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode BranchWithProtection to nil`)
+		return errors.New(`invalid: unable to decode BranchWithProtection to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -9189,7 +9185,7 @@ func (s BranchWithProtectionLinks) WriteJSON(e *json.Encoder) {
 // ReadJSON reads BranchWithProtectionLinks from json stream.
 func (s *BranchWithProtectionLinks) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode BranchWithProtectionLinks to nil`)
+		return errors.New(`invalid: unable to decode BranchWithProtectionLinks to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -9253,7 +9249,7 @@ func (s CheckAnnotation) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CheckAnnotation from json stream.
 func (s *CheckAnnotation) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CheckAnnotation to nil`)
+		return errors.New(`invalid: unable to decode CheckAnnotation to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -9376,7 +9372,7 @@ func (s CheckRun) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CheckRun from json stream.
 func (s *CheckRun) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CheckRun to nil`)
+		return errors.New(`invalid: unable to decode CheckRun to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -9482,7 +9478,7 @@ func (s CheckRunCheckSuite) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CheckRunCheckSuite from json stream.
 func (s *CheckRunCheckSuite) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CheckRunCheckSuite to nil`)
+		return errors.New(`invalid: unable to decode CheckRunCheckSuite to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -9507,7 +9503,7 @@ func (s CheckRunConclusion) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CheckRunConclusion from json reader.
 func (s *CheckRunConclusion) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CheckRunConclusion to nil`)
+		return errors.New(`invalid: unable to decode CheckRunConclusion to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -9543,7 +9539,7 @@ func (s CheckRunOutput) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CheckRunOutput from json stream.
 func (s *CheckRunOutput) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CheckRunOutput to nil`)
+		return errors.New(`invalid: unable to decode CheckRunOutput to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -9586,7 +9582,7 @@ func (s CheckRunStatus) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CheckRunStatus from json reader.
 func (s *CheckRunStatus) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CheckRunStatus to nil`)
+		return errors.New(`invalid: unable to decode CheckRunStatus to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -9669,7 +9665,7 @@ func (s CheckSuite) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CheckSuite from json stream.
 func (s *CheckSuite) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CheckSuite to nil`)
+		return errors.New(`invalid: unable to decode CheckSuite to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -9774,7 +9770,7 @@ func (s CheckSuiteConclusion) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CheckSuiteConclusion from json reader.
 func (s *CheckSuiteConclusion) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CheckSuiteConclusion to nil`)
+		return errors.New(`invalid: unable to decode CheckSuiteConclusion to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -9801,7 +9797,7 @@ func (s CheckSuitePreference) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CheckSuitePreference from json stream.
 func (s *CheckSuitePreference) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CheckSuitePreference to nil`)
+		return errors.New(`invalid: unable to decode CheckSuitePreference to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -9843,7 +9839,7 @@ func (s CheckSuitePreferencePreferences) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CheckSuitePreferencePreferences from json stream.
 func (s *CheckSuitePreferencePreferences) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CheckSuitePreferencePreferences to nil`)
+		return errors.New(`invalid: unable to decode CheckSuitePreferencePreferences to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -9883,7 +9879,7 @@ func (s CheckSuitePreferencePreferencesAutoTriggerChecksItem) WriteJSON(e *json.
 // ReadJSON reads CheckSuitePreferencePreferencesAutoTriggerChecksItem from json stream.
 func (s *CheckSuitePreferencePreferencesAutoTriggerChecksItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CheckSuitePreferencePreferencesAutoTriggerChecksItem to nil`)
+		return errors.New(`invalid: unable to decode CheckSuitePreferencePreferencesAutoTriggerChecksItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -9914,7 +9910,7 @@ func (s CheckSuiteStatus) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CheckSuiteStatus from json reader.
 func (s *CheckSuiteStatus) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CheckSuiteStatus to nil`)
+		return errors.New(`invalid: unable to decode CheckSuiteStatus to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -9944,7 +9940,7 @@ func (s ChecksCreateSuiteReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ChecksCreateSuiteReq from json stream.
 func (s *ChecksCreateSuiteReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ChecksCreateSuiteReq to nil`)
+		return errors.New(`invalid: unable to decode ChecksCreateSuiteReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -9969,7 +9965,7 @@ func (s ChecksListForRefFilter) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ChecksListForRefFilter from json reader.
 func (s *ChecksListForRefFilter) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ChecksListForRefFilter to nil`)
+		return errors.New(`invalid: unable to decode ChecksListForRefFilter to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -10003,7 +9999,7 @@ func (s ChecksListForRefOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ChecksListForRefOK from json stream.
 func (s *ChecksListForRefOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ChecksListForRefOK to nil`)
+		return errors.New(`invalid: unable to decode ChecksListForRefOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -10040,7 +10036,7 @@ func (s ChecksListForRefStatus) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ChecksListForRefStatus from json reader.
 func (s *ChecksListForRefStatus) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ChecksListForRefStatus to nil`)
+		return errors.New(`invalid: unable to decode ChecksListForRefStatus to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -10058,7 +10054,7 @@ func (s ChecksListForSuiteFilter) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ChecksListForSuiteFilter from json reader.
 func (s *ChecksListForSuiteFilter) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ChecksListForSuiteFilter to nil`)
+		return errors.New(`invalid: unable to decode ChecksListForSuiteFilter to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -10092,7 +10088,7 @@ func (s ChecksListForSuiteOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ChecksListForSuiteOK from json stream.
 func (s *ChecksListForSuiteOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ChecksListForSuiteOK to nil`)
+		return errors.New(`invalid: unable to decode ChecksListForSuiteOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -10129,7 +10125,7 @@ func (s ChecksListForSuiteStatus) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ChecksListForSuiteStatus from json reader.
 func (s *ChecksListForSuiteStatus) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ChecksListForSuiteStatus to nil`)
+		return errors.New(`invalid: unable to decode ChecksListForSuiteStatus to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -10163,7 +10159,7 @@ func (s ChecksListSuitesForRefOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ChecksListSuitesForRefOK from json stream.
 func (s *ChecksListSuitesForRefOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ChecksListSuitesForRefOK to nil`)
+		return errors.New(`invalid: unable to decode ChecksListSuitesForRefOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -10203,7 +10199,7 @@ func (s ChecksRerequestSuiteCreated) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ChecksRerequestSuiteCreated from json stream.
 func (s *ChecksRerequestSuiteCreated) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ChecksRerequestSuiteCreated to nil`)
+		return errors.New(`invalid: unable to decode ChecksRerequestSuiteCreated to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -10237,7 +10233,7 @@ func (s ChecksSetSuitesPreferencesReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ChecksSetSuitesPreferencesReq from json stream.
 func (s *ChecksSetSuitesPreferencesReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ChecksSetSuitesPreferencesReq to nil`)
+		return errors.New(`invalid: unable to decode ChecksSetSuitesPreferencesReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -10277,7 +10273,7 @@ func (s ChecksSetSuitesPreferencesReqAutoTriggerChecksItem) WriteJSON(e *json.En
 // ReadJSON reads ChecksSetSuitesPreferencesReqAutoTriggerChecksItem from json stream.
 func (s *ChecksSetSuitesPreferencesReqAutoTriggerChecksItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ChecksSetSuitesPreferencesReqAutoTriggerChecksItem to nil`)
+		return errors.New(`invalid: unable to decode ChecksSetSuitesPreferencesReqAutoTriggerChecksItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -10327,7 +10323,7 @@ func (s CloneTraffic) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CloneTraffic from json stream.
 func (s *CloneTraffic) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CloneTraffic to nil`)
+		return errors.New(`invalid: unable to decode CloneTraffic to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -10393,7 +10389,7 @@ func (s CodeOfConduct) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeOfConduct from json stream.
 func (s *CodeOfConduct) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeOfConduct to nil`)
+		return errors.New(`invalid: unable to decode CodeOfConduct to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -10454,7 +10450,7 @@ func (s CodeOfConductSimple) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeOfConductSimple from json stream.
 func (s *CodeOfConductSimple) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeOfConductSimple to nil`)
+		return errors.New(`invalid: unable to decode CodeOfConductSimple to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -10529,35 +10525,25 @@ func (s CodeScanningAlert) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeScanningAlert from json stream.
 func (s *CodeScanningAlert) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeScanningAlert to nil`)
+		return errors.New(`invalid: unable to decode CodeScanningAlert to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
 		case "number":
-			if err := fmt.Errorf(`decoding of "AlertNumber" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "AlertNumber" (alias) is not implemented`)
 		case "created_at":
-			if err := fmt.Errorf(`decoding of "AlertCreatedAt" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "AlertCreatedAt" (alias) is not implemented`)
 		case "url":
-			if err := fmt.Errorf(`decoding of "AlertURL" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "AlertURL" (alias) is not implemented`)
 		case "html_url":
-			if err := fmt.Errorf(`decoding of "AlertHTMLURL" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "AlertHTMLURL" (alias) is not implemented`)
 		case "instances":
 			s.Instances.Reset()
 			if err := s.Instances.ReadJSON(d); err != nil {
 				return err
 			}
 		case "instances_url":
-			if err := fmt.Errorf(`decoding of "AlertInstancesURL" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "AlertInstancesURL" (alias) is not implemented`)
 		case "state":
 			if err := s.State.ReadJSON(d); err != nil {
 				return err
@@ -10601,7 +10587,7 @@ func (s CodeScanningAlertClassification) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeScanningAlertClassification from json reader.
 func (s *CodeScanningAlertClassification) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeScanningAlertClassification to nil`)
+		return errors.New(`invalid: unable to decode CodeScanningAlertClassification to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -10622,7 +10608,7 @@ func (s CodeScanningAlertDismissedReason) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeScanningAlertDismissedReason from json reader.
 func (s *CodeScanningAlertDismissedReason) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeScanningAlertDismissedReason to nil`)
+		return errors.New(`invalid: unable to decode CodeScanningAlertDismissedReason to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -10703,7 +10689,7 @@ func (s CodeScanningAlertInstance) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeScanningAlertInstance from json stream.
 func (s *CodeScanningAlertInstance) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeScanningAlertInstance to nil`)
+		return errors.New(`invalid: unable to decode CodeScanningAlertInstance to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -10787,7 +10773,7 @@ func (s CodeScanningAlertInstanceMessage) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeScanningAlertInstanceMessage from json stream.
 func (s *CodeScanningAlertInstanceMessage) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeScanningAlertInstanceMessage to nil`)
+		return errors.New(`invalid: unable to decode CodeScanningAlertInstanceMessage to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -10840,30 +10826,20 @@ func (s CodeScanningAlertItems) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeScanningAlertItems from json stream.
 func (s *CodeScanningAlertItems) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeScanningAlertItems to nil`)
+		return errors.New(`invalid: unable to decode CodeScanningAlertItems to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
 		case "number":
-			if err := fmt.Errorf(`decoding of "AlertNumber" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "AlertNumber" (alias) is not implemented`)
 		case "created_at":
-			if err := fmt.Errorf(`decoding of "AlertCreatedAt" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "AlertCreatedAt" (alias) is not implemented`)
 		case "url":
-			if err := fmt.Errorf(`decoding of "AlertURL" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "AlertURL" (alias) is not implemented`)
 		case "html_url":
-			if err := fmt.Errorf(`decoding of "AlertHTMLURL" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "AlertHTMLURL" (alias) is not implemented`)
 		case "instances_url":
-			if err := fmt.Errorf(`decoding of "AlertInstancesURL" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "AlertInstancesURL" (alias) is not implemented`)
 		case "state":
 			if err := s.State.ReadJSON(d); err != nil {
 				return err
@@ -10935,7 +10911,7 @@ func (s CodeScanningAlertLocation) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeScanningAlertLocation from json stream.
 func (s *CodeScanningAlertLocation) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeScanningAlertLocation to nil`)
+		return errors.New(`invalid: unable to decode CodeScanningAlertLocation to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -11022,7 +10998,7 @@ func (s CodeScanningAlertRule) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeScanningAlertRule from json stream.
 func (s *CodeScanningAlertRule) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeScanningAlertRule to nil`)
+		return errors.New(`invalid: unable to decode CodeScanningAlertRule to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -11081,7 +11057,7 @@ func (s CodeScanningAlertRuleSecuritySeverityLevel) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeScanningAlertRuleSecuritySeverityLevel from json reader.
 func (s *CodeScanningAlertRuleSecuritySeverityLevel) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeScanningAlertRuleSecuritySeverityLevel to nil`)
+		return errors.New(`invalid: unable to decode CodeScanningAlertRuleSecuritySeverityLevel to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -11099,7 +11075,7 @@ func (s CodeScanningAlertRuleSeverity) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeScanningAlertRuleSeverity from json reader.
 func (s *CodeScanningAlertRuleSeverity) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeScanningAlertRuleSeverity to nil`)
+		return errors.New(`invalid: unable to decode CodeScanningAlertRuleSeverity to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -11140,7 +11116,7 @@ func (s CodeScanningAlertRuleSummary) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeScanningAlertRuleSummary from json stream.
 func (s *CodeScanningAlertRuleSummary) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeScanningAlertRuleSummary to nil`)
+		return errors.New(`invalid: unable to decode CodeScanningAlertRuleSummary to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -11179,7 +11155,7 @@ func (s CodeScanningAlertRuleSummarySeverity) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeScanningAlertRuleSummarySeverity from json reader.
 func (s *CodeScanningAlertRuleSummarySeverity) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeScanningAlertRuleSummarySeverity to nil`)
+		return errors.New(`invalid: unable to decode CodeScanningAlertRuleSummarySeverity to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -11197,7 +11173,7 @@ func (s CodeScanningAlertSetState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeScanningAlertSetState from json reader.
 func (s *CodeScanningAlertSetState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeScanningAlertSetState to nil`)
+		return errors.New(`invalid: unable to decode CodeScanningAlertSetState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -11215,7 +11191,7 @@ func (s CodeScanningAlertState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeScanningAlertState from json reader.
 func (s *CodeScanningAlertState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeScanningAlertState to nil`)
+		return errors.New(`invalid: unable to decode CodeScanningAlertState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -11274,26 +11250,18 @@ func (s CodeScanningAnalysis) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeScanningAnalysis from json stream.
 func (s *CodeScanningAnalysis) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeScanningAnalysis to nil`)
+		return errors.New(`invalid: unable to decode CodeScanningAnalysis to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
 		case "ref":
-			if err := fmt.Errorf(`decoding of "CodeScanningRef" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "CodeScanningRef" (alias) is not implemented`)
 		case "commit_sha":
-			if err := fmt.Errorf(`decoding of "CodeScanningAnalysisCommitSha" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "CodeScanningAnalysisCommitSha" (alias) is not implemented`)
 		case "analysis_key":
-			if err := fmt.Errorf(`decoding of "CodeScanningAnalysisAnalysisKey" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "CodeScanningAnalysisAnalysisKey" (alias) is not implemented`)
 		case "environment":
-			if err := fmt.Errorf(`decoding of "CodeScanningAnalysisEnvironment" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "CodeScanningAnalysisEnvironment" (alias) is not implemented`)
 		case "category":
 			s.Category.Reset()
 			if err := s.Category.ReadJSON(d); err != nil {
@@ -11306,9 +11274,7 @@ func (s *CodeScanningAnalysis) ReadJSON(d *json.Decoder) error {
 				return err
 			}
 		case "created_at":
-			if err := fmt.Errorf(`decoding of "CodeScanningAnalysisCreatedAt" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "CodeScanningAnalysisCreatedAt" (alias) is not implemented`)
 		case "results_count":
 			v, err := d.Int()
 			s.ResultsCount = int(v)
@@ -11328,13 +11294,9 @@ func (s *CodeScanningAnalysis) ReadJSON(d *json.Decoder) error {
 				return err
 			}
 		case "url":
-			if err := fmt.Errorf(`decoding of "CodeScanningAnalysisURL" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "CodeScanningAnalysisURL" (alias) is not implemented`)
 		case "sarif_id":
-			if err := fmt.Errorf(`decoding of "CodeScanningAnalysisSarifID" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "CodeScanningAnalysisSarifID" (alias) is not implemented`)
 		case "tool":
 			if err := s.Tool.ReadJSON(d); err != nil {
 				return err
@@ -11392,7 +11354,7 @@ func (s CodeScanningAnalysisDeletion) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeScanningAnalysisDeletion from json stream.
 func (s *CodeScanningAnalysisDeletion) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeScanningAnalysisDeletion to nil`)
+		return errors.New(`invalid: unable to decode CodeScanningAnalysisDeletion to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -11446,7 +11408,7 @@ func (s CodeScanningAnalysisTool) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeScanningAnalysisTool from json stream.
 func (s *CodeScanningAnalysisTool) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeScanningAnalysisTool to nil`)
+		return errors.New(`invalid: unable to decode CodeScanningAnalysisTool to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -11521,7 +11483,7 @@ func (s CodeScanningGetSarifNotFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeScanningGetSarifNotFound from json stream.
 func (s *CodeScanningGetSarifNotFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeScanningGetSarifNotFound to nil`)
+		return errors.New(`invalid: unable to decode CodeScanningGetSarifNotFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -11595,7 +11557,7 @@ func (s CodeScanningSarifsReceipt) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeScanningSarifsReceipt from json stream.
 func (s *CodeScanningSarifsReceipt) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeScanningSarifsReceipt to nil`)
+		return errors.New(`invalid: unable to decode CodeScanningSarifsReceipt to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -11637,7 +11599,7 @@ func (s CodeScanningSarifsStatus) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeScanningSarifsStatus from json stream.
 func (s *CodeScanningSarifsStatus) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeScanningSarifsStatus to nil`)
+		return errors.New(`invalid: unable to decode CodeScanningSarifsStatus to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -11666,7 +11628,7 @@ func (s CodeScanningSarifsStatusProcessingStatus) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeScanningSarifsStatusProcessingStatus from json reader.
 func (s *CodeScanningSarifsStatusProcessingStatus) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeScanningSarifsStatusProcessingStatus to nil`)
+		return errors.New(`invalid: unable to decode CodeScanningSarifsStatusProcessingStatus to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -11701,7 +11663,7 @@ func (s CodeScanningUpdateAlertReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeScanningUpdateAlertReq from json stream.
 func (s *CodeScanningUpdateAlertReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeScanningUpdateAlertReq to nil`)
+		return errors.New(`invalid: unable to decode CodeScanningUpdateAlertReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -11738,7 +11700,7 @@ func (s CodeScanningUploadSarifBadRequest) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeScanningUploadSarifBadRequest from json stream.
 func (s *CodeScanningUploadSarifBadRequest) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeScanningUploadSarifBadRequest to nil`)
+		return errors.New(`invalid: unable to decode CodeScanningUploadSarifBadRequest to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -11778,22 +11740,16 @@ func (s CodeScanningUploadSarifReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeScanningUploadSarifReq from json stream.
 func (s *CodeScanningUploadSarifReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeScanningUploadSarifReq to nil`)
+		return errors.New(`invalid: unable to decode CodeScanningUploadSarifReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
 		case "commit_sha":
-			if err := fmt.Errorf(`decoding of "CodeScanningAnalysisCommitSha" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "CodeScanningAnalysisCommitSha" (alias) is not implemented`)
 		case "ref":
-			if err := fmt.Errorf(`decoding of "CodeScanningRef" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "CodeScanningRef" (alias) is not implemented`)
 		case "sarif":
-			if err := fmt.Errorf(`decoding of "CodeScanningAnalysisSarifFile" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "CodeScanningAnalysisSarifFile" (alias) is not implemented`)
 		case "checkout_uri":
 			s.CheckoutURI.Reset()
 			if err := s.CheckoutURI.ReadJSON(d); err != nil {
@@ -11827,7 +11783,7 @@ func (s CodeScanningUploadSarifRequestEntityTooLarge) WriteJSON(e *json.Encoder)
 // ReadJSON reads CodeScanningUploadSarifRequestEntityTooLarge from json stream.
 func (s *CodeScanningUploadSarifRequestEntityTooLarge) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeScanningUploadSarifRequestEntityTooLarge to nil`)
+		return errors.New(`invalid: unable to decode CodeScanningUploadSarifRequestEntityTooLarge to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -11905,7 +11861,7 @@ func (s CodeSearchResultItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CodeSearchResultItem from json stream.
 func (s *CodeSearchResultItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CodeSearchResultItem to nil`)
+		return errors.New(`invalid: unable to decode CodeSearchResultItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -11987,9 +11943,7 @@ func (s *CodeSearchResultItem) ReadJSON(d *json.Decoder) error {
 		case "text_matches":
 			s.TextMatches = nil
 			var elem SearchResultTextMatches
-			if err := fmt.Errorf(`decoding of "SearchResultTextMatches" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "SearchResultTextMatches" (alias) is not implemented`)
 			s.TextMatches = &elem
 		default:
 			return d.Skip()
@@ -12083,7 +12037,7 @@ func (s Collaborator) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Collaborator from json stream.
 func (s *Collaborator) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Collaborator to nil`)
+		return errors.New(`invalid: unable to decode Collaborator to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -12245,7 +12199,7 @@ func (s CollaboratorPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CollaboratorPermissions from json stream.
 func (s *CollaboratorPermissions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CollaboratorPermissions to nil`)
+		return errors.New(`invalid: unable to decode CollaboratorPermissions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -12304,7 +12258,7 @@ func (s CombinedBillingUsage) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CombinedBillingUsage from json stream.
 func (s *CombinedBillingUsage) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CombinedBillingUsage to nil`)
+		return errors.New(`invalid: unable to decode CombinedBillingUsage to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -12372,7 +12326,7 @@ func (s CombinedCommitStatus) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CombinedCommitStatus from json stream.
 func (s *CombinedCommitStatus) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CombinedCommitStatus to nil`)
+		return errors.New(`invalid: unable to decode CombinedCommitStatus to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -12491,7 +12445,7 @@ func (s Commit) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Commit from json stream.
 func (s *Commit) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Commit to nil`)
+		return errors.New(`invalid: unable to decode Commit to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -12600,7 +12554,7 @@ func (s CommitActivity) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CommitActivity from json stream.
 func (s *CommitActivity) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CommitActivity to nil`)
+		return errors.New(`invalid: unable to decode CommitActivity to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -12692,7 +12646,7 @@ func (s CommitComment) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CommitComment from json stream.
 func (s *CommitComment) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CommitComment to nil`)
+		return errors.New(`invalid: unable to decode CommitComment to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -12810,7 +12764,7 @@ func (s CommitCommit) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CommitCommit from json stream.
 func (s *CommitCommit) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CommitCommit to nil`)
+		return errors.New(`invalid: unable to decode CommitCommit to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -12873,7 +12827,7 @@ func (s CommitCommitTree) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CommitCommitTree from json stream.
 func (s *CommitCommitTree) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CommitCommitTree to nil`)
+		return errors.New(`invalid: unable to decode CommitCommitTree to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -12962,7 +12916,7 @@ func (s CommitComparison) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CommitComparison from json stream.
 func (s *CommitComparison) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CommitComparison to nil`)
+		return errors.New(`invalid: unable to decode CommitComparison to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -13065,7 +13019,7 @@ func (s CommitComparisonStatus) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CommitComparisonStatus from json reader.
 func (s *CommitComparisonStatus) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CommitComparisonStatus to nil`)
+		return errors.New(`invalid: unable to decode CommitComparisonStatus to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -13141,7 +13095,7 @@ func (s CommitFilesItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CommitFilesItem from json stream.
 func (s *CommitFilesItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CommitFilesItem to nil`)
+		return errors.New(`invalid: unable to decode CommitFilesItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -13229,7 +13183,7 @@ func (s CommitParentsItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CommitParentsItem from json stream.
 func (s *CommitParentsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CommitParentsItem to nil`)
+		return errors.New(`invalid: unable to decode CommitParentsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -13313,7 +13267,7 @@ func (s CommitSearchResultItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CommitSearchResultItem from json stream.
 func (s *CommitSearchResultItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CommitSearchResultItem to nil`)
+		return errors.New(`invalid: unable to decode CommitSearchResultItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -13384,9 +13338,7 @@ func (s *CommitSearchResultItem) ReadJSON(d *json.Decoder) error {
 		case "text_matches":
 			s.TextMatches = nil
 			var elem SearchResultTextMatches
-			if err := fmt.Errorf(`decoding of "SearchResultTextMatches" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "SearchResultTextMatches" (alias) is not implemented`)
 			s.TextMatches = &elem
 		default:
 			return d.Skip()
@@ -13429,7 +13381,7 @@ func (s CommitSearchResultItemCommit) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CommitSearchResultItemCommit from json stream.
 func (s *CommitSearchResultItemCommit) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CommitSearchResultItemCommit to nil`)
+		return errors.New(`invalid: unable to decode CommitSearchResultItemCommit to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -13495,7 +13447,7 @@ func (s CommitSearchResultItemCommitAuthor) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CommitSearchResultItemCommitAuthor from json stream.
 func (s *CommitSearchResultItemCommitAuthor) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CommitSearchResultItemCommitAuthor to nil`)
+		return errors.New(`invalid: unable to decode CommitSearchResultItemCommitAuthor to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -13541,7 +13493,7 @@ func (s CommitSearchResultItemCommitTree) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CommitSearchResultItemCommitTree from json stream.
 func (s *CommitSearchResultItemCommitTree) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CommitSearchResultItemCommitTree to nil`)
+		return errors.New(`invalid: unable to decode CommitSearchResultItemCommitTree to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -13590,7 +13542,7 @@ func (s CommitSearchResultItemParentsItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CommitSearchResultItemParentsItem from json stream.
 func (s *CommitSearchResultItemParentsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CommitSearchResultItemParentsItem to nil`)
+		return errors.New(`invalid: unable to decode CommitSearchResultItemParentsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -13642,7 +13594,7 @@ func (s CommitStats) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CommitStats from json stream.
 func (s *CommitStats) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CommitStats to nil`)
+		return errors.New(`invalid: unable to decode CommitStats to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -13699,7 +13651,7 @@ func (s CommunityProfile) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CommunityProfile from json stream.
 func (s *CommunityProfile) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CommunityProfile to nil`)
+		return errors.New(`invalid: unable to decode CommunityProfile to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -13769,7 +13721,7 @@ func (s CommunityProfileFiles) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CommunityProfileFiles from json stream.
 func (s *CommunityProfileFiles) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CommunityProfileFiles to nil`)
+		return errors.New(`invalid: unable to decode CommunityProfileFiles to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -13865,7 +13817,7 @@ func (s ContentFile) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ContentFile from json stream.
 func (s *ContentFile) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ContentFile to nil`)
+		return errors.New(`invalid: unable to decode ContentFile to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -13970,7 +13922,7 @@ func (s ContentFileLinks) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ContentFileLinks from json stream.
 func (s *ContentFileLinks) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ContentFileLinks to nil`)
+		return errors.New(`invalid: unable to decode ContentFileLinks to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -14020,7 +13972,7 @@ func (s ContentReferenceAttachment) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ContentReferenceAttachment from json stream.
 func (s *ContentReferenceAttachment) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ContentReferenceAttachment to nil`)
+		return errors.New(`invalid: unable to decode ContentReferenceAttachment to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -14077,7 +14029,7 @@ func (s ContentTraffic) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ContentTraffic from json stream.
 func (s *ContentTraffic) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ContentTraffic to nil`)
+		return errors.New(`invalid: unable to decode ContentTraffic to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -14224,7 +14176,7 @@ func (s Contributor) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Contributor from json stream.
 func (s *Contributor) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Contributor to nil`)
+		return errors.New(`invalid: unable to decode Contributor to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -14369,7 +14321,7 @@ func (s ContributorActivity) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ContributorActivity from json stream.
 func (s *ContributorActivity) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ContributorActivity to nil`)
+		return errors.New(`invalid: unable to decode ContributorActivity to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -14433,7 +14385,7 @@ func (s ContributorActivityWeeksItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ContributorActivityWeeksItem from json stream.
 func (s *ContributorActivityWeeksItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ContributorActivityWeeksItem to nil`)
+		return errors.New(`invalid: unable to decode ContributorActivityWeeksItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -14529,7 +14481,7 @@ func (s CredentialAuthorization) WriteJSON(e *json.Encoder) {
 // ReadJSON reads CredentialAuthorization from json stream.
 func (s *CredentialAuthorization) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode CredentialAuthorization to nil`)
+		return errors.New(`invalid: unable to decode CredentialAuthorization to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -14640,7 +14592,7 @@ func (s DeployKey) WriteJSON(e *json.Encoder) {
 // ReadJSON reads DeployKey from json stream.
 func (s *DeployKey) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode DeployKey to nil`)
+		return errors.New(`invalid: unable to decode DeployKey to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -14710,7 +14662,7 @@ func (s DeploymentBranchPolicy) WriteJSON(e *json.Encoder) {
 // ReadJSON reads DeploymentBranchPolicy from json stream.
 func (s *DeploymentBranchPolicy) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode DeploymentBranchPolicy to nil`)
+		return errors.New(`invalid: unable to decode DeploymentBranchPolicy to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -14741,7 +14693,7 @@ func (s DeploymentReviewerType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads DeploymentReviewerType from json reader.
 func (s *DeploymentReviewerType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode DeploymentReviewerType to nil`)
+		return errors.New(`invalid: unable to decode DeploymentReviewerType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -14812,7 +14764,7 @@ func (s DeploymentSimple) WriteJSON(e *json.Encoder) {
 // ReadJSON reads DeploymentSimple from json stream.
 func (s *DeploymentSimple) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode DeploymentSimple to nil`)
+		return errors.New(`invalid: unable to decode DeploymentSimple to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -14965,7 +14917,7 @@ func (s DeploymentStatus) WriteJSON(e *json.Encoder) {
 // ReadJSON reads DeploymentStatus from json stream.
 func (s *DeploymentStatus) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode DeploymentStatus to nil`)
+		return errors.New(`invalid: unable to decode DeploymentStatus to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -15066,7 +15018,7 @@ func (s DeploymentStatusState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads DeploymentStatusState from json reader.
 func (s *DeploymentStatusState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode DeploymentStatusState to nil`)
+		return errors.New(`invalid: unable to decode DeploymentStatusState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -15124,7 +15076,7 @@ func (s DiffEntry) WriteJSON(e *json.Encoder) {
 // ReadJSON reads DiffEntry from json stream.
 func (s *DiffEntry) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode DiffEntry to nil`)
+		return errors.New(`invalid: unable to decode DiffEntry to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -15205,7 +15157,7 @@ func (s DiffEntryStatus) WriteJSON(e *json.Encoder) {
 // ReadJSON reads DiffEntryStatus from json reader.
 func (s *DiffEntryStatus) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode DiffEntryStatus to nil`)
+		return errors.New(`invalid: unable to decode DiffEntryStatus to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -15238,7 +15190,7 @@ func (s Email) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Email from json stream.
 func (s *Email) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Email to nil`)
+		return errors.New(`invalid: unable to decode Email to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -15282,7 +15234,7 @@ func (s EmojisGetOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads EmojisGetOK from json stream.
 func (s *EmojisGetOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EmojisGetOK to nil`)
+		return errors.New(`invalid: unable to decode EmojisGetOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -15304,7 +15256,7 @@ func (s EmptyObject) WriteJSON(e *json.Encoder) {
 // ReadJSON reads EmptyObject from json stream.
 func (s *EmptyObject) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EmptyObject to nil`)
+		return errors.New(`invalid: unable to decode EmptyObject to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -15323,7 +15275,7 @@ func (s EnabledOrganizations) WriteJSON(e *json.Encoder) {
 // ReadJSON reads EnabledOrganizations from json reader.
 func (s *EnabledOrganizations) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnabledOrganizations to nil`)
+		return errors.New(`invalid: unable to decode EnabledOrganizations to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -15341,7 +15293,7 @@ func (s EnabledRepositories) WriteJSON(e *json.Encoder) {
 // ReadJSON reads EnabledRepositories from json reader.
 func (s *EnabledRepositories) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnabledRepositories to nil`)
+		return errors.New(`invalid: unable to decode EnabledRepositories to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -15362,7 +15314,7 @@ func (s EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent)
 // ReadJSON reads EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent from json stream.
 func (s *EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -15384,7 +15336,7 @@ func (s EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent) WriteJS
 // ReadJSON reads EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent from json stream.
 func (s *EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -15438,7 +15390,7 @@ func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) WriteJSON(e 
 // ReadJSON reads EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq from json stream.
 func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -15496,7 +15448,7 @@ func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility) Wr
 // ReadJSON reads EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility from json reader.
 func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -15517,7 +15469,7 @@ func (s EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent) WriteJSON(e *json
 // ReadJSON reads EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent from json stream.
 func (s *EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -15539,7 +15491,7 @@ func (s EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent) WriteJSON(
 // ReadJSON reads EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent from json stream.
 func (s *EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -15561,7 +15513,7 @@ func (s EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent) Write
 // ReadJSON reads EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent from json stream.
 func (s *EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -15583,7 +15535,7 @@ func (s EnterpriseAdminDeleteUserFromEnterpriseNoContent) WriteJSON(e *json.Enco
 // ReadJSON reads EnterpriseAdminDeleteUserFromEnterpriseNoContent from json stream.
 func (s *EnterpriseAdminDeleteUserFromEnterpriseNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminDeleteUserFromEnterpriseNoContent to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminDeleteUserFromEnterpriseNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -15605,7 +15557,7 @@ func (s EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoConte
 // ReadJSON reads EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent from json stream.
 func (s *EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -15627,7 +15579,7 @@ func (s EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoConten
 // ReadJSON reads EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent from json stream.
 func (s *EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -15646,7 +15598,7 @@ func (s EnterpriseAdminGetAuditLogInclude) WriteJSON(e *json.Encoder) {
 // ReadJSON reads EnterpriseAdminGetAuditLogInclude from json reader.
 func (s *EnterpriseAdminGetAuditLogInclude) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminGetAuditLogInclude to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminGetAuditLogInclude to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -15664,7 +15616,7 @@ func (s EnterpriseAdminGetAuditLogOrder) WriteJSON(e *json.Encoder) {
 // ReadJSON reads EnterpriseAdminGetAuditLogOrder from json reader.
 func (s *EnterpriseAdminGetAuditLogOrder) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminGetAuditLogOrder to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminGetAuditLogOrder to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -15698,7 +15650,7 @@ func (s EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) Write
 // ReadJSON reads EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK from json stream.
 func (s *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -15751,7 +15703,7 @@ func (s EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK
 // ReadJSON reads EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK from json stream.
 func (s *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -15804,7 +15756,7 @@ func (s EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) WriteJSON(e *j
 // ReadJSON reads EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK from json stream.
 func (s *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -15861,7 +15813,7 @@ func (s EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) WriteJSON(e *json.E
 // ReadJSON reads EnterpriseAdminListSelfHostedRunnersForEnterpriseOK from json stream.
 func (s *EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminListSelfHostedRunnersForEnterpriseOK to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminListSelfHostedRunnersForEnterpriseOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -15913,7 +15865,7 @@ func (s EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) WriteJSON(e 
 // ReadJSON reads EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK from json stream.
 func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -15978,7 +15930,7 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) WriteJSON(e *json.E
 // ReadJSON reads EnterpriseAdminProvisionAndInviteEnterpriseGroupReq from json stream.
 func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminProvisionAndInviteEnterpriseGroupReq to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminProvisionAndInviteEnterpriseGroupReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -16035,7 +15987,7 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem) WriteJSO
 // ReadJSON reads EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem from json stream.
 func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -16101,7 +16053,7 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReq) WriteJSON(e *json.En
 // ReadJSON reads EnterpriseAdminProvisionAndInviteEnterpriseUserReq from json stream.
 func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminProvisionAndInviteEnterpriseUserReq to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminProvisionAndInviteEnterpriseUserReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -16180,7 +16132,7 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem) WriteJSON(
 // ReadJSON reads EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem from json stream.
 func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -16225,7 +16177,7 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem) WriteJSON(
 // ReadJSON reads EnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem from json stream.
 func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -16258,7 +16210,7 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReqName) WriteJSON(e *jso
 // ReadJSON reads EnterpriseAdminProvisionAndInviteEnterpriseUserReqName from json stream.
 func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqName) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminProvisionAndInviteEnterpriseUserReqName to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminProvisionAndInviteEnterpriseUserReqName to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -16292,7 +16244,7 @@ func (s EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoConte
 // ReadJSON reads EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent from json stream.
 func (s *EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -16314,7 +16266,7 @@ func (s EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent) Wr
 // ReadJSON reads EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent from json stream.
 func (s *EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -16336,7 +16288,7 @@ func (s EnterpriseAdminSetAllowedActionsEnterpriseNoContent) WriteJSON(e *json.E
 // ReadJSON reads EnterpriseAdminSetAllowedActionsEnterpriseNoContent from json stream.
 func (s *EnterpriseAdminSetAllowedActionsEnterpriseNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminSetAllowedActionsEnterpriseNoContent to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminSetAllowedActionsEnterpriseNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -16358,7 +16310,7 @@ func (s EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent) WriteJSON
 // ReadJSON reads EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent from json stream.
 func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -16388,7 +16340,7 @@ func (s EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) WriteJSON(e *js
 // ReadJSON reads EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq from json stream.
 func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -16444,7 +16396,7 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) WriteJSON
 // ReadJSON reads EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq from json stream.
 func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -16501,7 +16453,7 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersItem
 // ReadJSON reads EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersItem from json stream.
 func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersItem to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -16567,7 +16519,7 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) WriteJSON(
 // ReadJSON reads EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq from json stream.
 func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -16646,7 +16598,7 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem) 
 // ReadJSON reads EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem from json stream.
 func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -16691,7 +16643,7 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem) 
 // ReadJSON reads EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem from json stream.
 func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -16724,7 +16676,7 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName) WriteJ
 // ReadJSON reads EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName from json stream.
 func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -16758,7 +16710,7 @@ func (s EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent)
 // ReadJSON reads EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent from json stream.
 func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -16790,7 +16742,7 @@ func (s EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) Write
 // ReadJSON reads EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq from json stream.
 func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -16826,7 +16778,7 @@ func (s EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoC
 // ReadJSON reads EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent from json stream.
 func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -16858,7 +16810,7 @@ func (s EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq
 // ReadJSON reads EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq from json stream.
 func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -16894,7 +16846,7 @@ func (s EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent) WriteJ
 // ReadJSON reads EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent from json stream.
 func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -16926,7 +16878,7 @@ func (s EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) WriteJSON(e 
 // ReadJSON reads EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq from json stream.
 func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -16982,7 +16934,7 @@ func (s EnterpriseAdminUpdateAttributeForEnterpriseUserReq) WriteJSON(e *json.En
 // ReadJSON reads EnterpriseAdminUpdateAttributeForEnterpriseUserReq from json stream.
 func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminUpdateAttributeForEnterpriseUserReq to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminUpdateAttributeForEnterpriseUserReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -17030,7 +16982,7 @@ func (s EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem) WriteJ
 // ReadJSON reads EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem from json stream.
 func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -17062,7 +17014,7 @@ func (s EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) WriteJSON(e 
 // ReadJSON reads EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq from json stream.
 func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -17091,7 +17043,7 @@ func (s EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility) Wr
 // ReadJSON reads EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility from json reader.
 func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility to nil`)
+		return errors.New(`invalid: unable to decode EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -17131,7 +17083,7 @@ func (s EnvironmentApprovals) WriteJSON(e *json.Encoder) {
 // ReadJSON reads EnvironmentApprovals from json stream.
 func (s *EnvironmentApprovals) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnvironmentApprovals to nil`)
+		return errors.New(`invalid: unable to decode EnvironmentApprovals to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -17214,7 +17166,7 @@ func (s EnvironmentApprovalsEnvironmentsItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads EnvironmentApprovalsEnvironmentsItem from json stream.
 func (s *EnvironmentApprovalsEnvironmentsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnvironmentApprovalsEnvironmentsItem to nil`)
+		return errors.New(`invalid: unable to decode EnvironmentApprovalsEnvironmentsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -17268,7 +17220,7 @@ func (s EnvironmentApprovalsState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads EnvironmentApprovalsState from json reader.
 func (s *EnvironmentApprovalsState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EnvironmentApprovalsState to nil`)
+		return errors.New(`invalid: unable to decode EnvironmentApprovalsState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -17315,7 +17267,7 @@ func (s Event) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Event from json stream.
 func (s *Event) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Event to nil`)
+		return errors.New(`invalid: unable to decode Event to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -17401,7 +17353,7 @@ func (s EventPayload) WriteJSON(e *json.Encoder) {
 // ReadJSON reads EventPayload from json stream.
 func (s *EventPayload) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EventPayload to nil`)
+		return errors.New(`invalid: unable to decode EventPayload to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -17480,7 +17432,7 @@ func (s EventPayloadPagesItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads EventPayloadPagesItem from json stream.
 func (s *EventPayloadPagesItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EventPayloadPagesItem to nil`)
+		return errors.New(`invalid: unable to decode EventPayloadPagesItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -17541,7 +17493,7 @@ func (s EventRepo) WriteJSON(e *json.Encoder) {
 // ReadJSON reads EventRepo from json stream.
 func (s *EventRepo) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode EventRepo to nil`)
+		return errors.New(`invalid: unable to decode EventRepo to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -17627,7 +17579,7 @@ func (s Feed) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Feed from json stream.
 func (s *Feed) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Feed to nil`)
+		return errors.New(`invalid: unable to decode Feed to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -17747,7 +17699,7 @@ func (s FeedLinks) WriteJSON(e *json.Encoder) {
 // ReadJSON reads FeedLinks from json stream.
 func (s *FeedLinks) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode FeedLinks to nil`)
+		return errors.New(`invalid: unable to decode FeedLinks to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -17820,7 +17772,7 @@ func (s FileCommit) WriteJSON(e *json.Encoder) {
 // ReadJSON reads FileCommit from json stream.
 func (s *FileCommit) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode FileCommit to nil`)
+		return errors.New(`invalid: unable to decode FileCommit to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -17907,7 +17859,7 @@ func (s FileCommitCommit) WriteJSON(e *json.Encoder) {
 // ReadJSON reads FileCommitCommit from json stream.
 func (s *FileCommitCommit) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode FileCommitCommit to nil`)
+		return errors.New(`invalid: unable to decode FileCommitCommit to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -18001,7 +17953,7 @@ func (s FileCommitCommitAuthor) WriteJSON(e *json.Encoder) {
 // ReadJSON reads FileCommitCommitAuthor from json stream.
 func (s *FileCommitCommitAuthor) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode FileCommitCommitAuthor to nil`)
+		return errors.New(`invalid: unable to decode FileCommitCommitAuthor to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -18053,7 +18005,7 @@ func (s FileCommitCommitCommitter) WriteJSON(e *json.Encoder) {
 // ReadJSON reads FileCommitCommitCommitter from json stream.
 func (s *FileCommitCommitCommitter) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode FileCommitCommitCommitter to nil`)
+		return errors.New(`invalid: unable to decode FileCommitCommitCommitter to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -18105,7 +18057,7 @@ func (s FileCommitCommitParentsItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads FileCommitCommitParentsItem from json stream.
 func (s *FileCommitCommitParentsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode FileCommitCommitParentsItem to nil`)
+		return errors.New(`invalid: unable to decode FileCommitCommitParentsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -18152,7 +18104,7 @@ func (s FileCommitCommitTree) WriteJSON(e *json.Encoder) {
 // ReadJSON reads FileCommitCommitTree from json stream.
 func (s *FileCommitCommitTree) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode FileCommitCommitTree to nil`)
+		return errors.New(`invalid: unable to decode FileCommitCommitTree to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -18204,7 +18156,7 @@ func (s FileCommitCommitVerification) WriteJSON(e *json.Encoder) {
 // ReadJSON reads FileCommitCommitVerification from json stream.
 func (s *FileCommitCommitVerification) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode FileCommitCommitVerification to nil`)
+		return errors.New(`invalid: unable to decode FileCommitCommitVerification to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -18296,7 +18248,7 @@ func (s FileCommitContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads FileCommitContent from json stream.
 func (s *FileCommitContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode FileCommitContent to nil`)
+		return errors.New(`invalid: unable to decode FileCommitContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -18383,7 +18335,7 @@ func (s FileCommitContentLinks) WriteJSON(e *json.Encoder) {
 // ReadJSON reads FileCommitContentLinks from json stream.
 func (s *FileCommitContentLinks) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode FileCommitContentLinks to nil`)
+		return errors.New(`invalid: unable to decode FileCommitContentLinks to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -18435,7 +18387,7 @@ func (s ForbiddenGist) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ForbiddenGist from json stream.
 func (s *ForbiddenGist) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ForbiddenGist to nil`)
+		return errors.New(`invalid: unable to decode ForbiddenGist to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -18487,7 +18439,7 @@ func (s ForbiddenGistBlock) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ForbiddenGistBlock from json stream.
 func (s *ForbiddenGistBlock) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ForbiddenGistBlock to nil`)
+		return errors.New(`invalid: unable to decode ForbiddenGistBlock to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -18524,7 +18476,7 @@ func (s Found) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Found from json stream.
 func (s *Found) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Found to nil`)
+		return errors.New(`invalid: unable to decode Found to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -18873,7 +18825,7 @@ func (s FullRepository) WriteJSON(e *json.Encoder) {
 // ReadJSON reads FullRepository from json stream.
 func (s *FullRepository) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode FullRepository to nil`)
+		return errors.New(`invalid: unable to decode FullRepository to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -19456,7 +19408,7 @@ func (s FullRepositoryPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads FullRepositoryPermissions from json stream.
 func (s *FullRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode FullRepositoryPermissions to nil`)
+		return errors.New(`invalid: unable to decode FullRepositoryPermissions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -19516,7 +19468,7 @@ func (s FullRepositorySecurityAndAnalysis) WriteJSON(e *json.Encoder) {
 // ReadJSON reads FullRepositorySecurityAndAnalysis from json stream.
 func (s *FullRepositorySecurityAndAnalysis) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode FullRepositorySecurityAndAnalysis to nil`)
+		return errors.New(`invalid: unable to decode FullRepositorySecurityAndAnalysis to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -19553,7 +19505,7 @@ func (s FullRepositorySecurityAndAnalysisAdvancedSecurity) WriteJSON(e *json.Enc
 // ReadJSON reads FullRepositorySecurityAndAnalysisAdvancedSecurity from json stream.
 func (s *FullRepositorySecurityAndAnalysisAdvancedSecurity) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode FullRepositorySecurityAndAnalysisAdvancedSecurity to nil`)
+		return errors.New(`invalid: unable to decode FullRepositorySecurityAndAnalysisAdvancedSecurity to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -19577,7 +19529,7 @@ func (s FullRepositorySecurityAndAnalysisAdvancedSecurityStatus) WriteJSON(e *js
 // ReadJSON reads FullRepositorySecurityAndAnalysisAdvancedSecurityStatus from json reader.
 func (s *FullRepositorySecurityAndAnalysisAdvancedSecurityStatus) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode FullRepositorySecurityAndAnalysisAdvancedSecurityStatus to nil`)
+		return errors.New(`invalid: unable to decode FullRepositorySecurityAndAnalysisAdvancedSecurityStatus to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -19603,7 +19555,7 @@ func (s FullRepositorySecurityAndAnalysisSecretScanning) WriteJSON(e *json.Encod
 // ReadJSON reads FullRepositorySecurityAndAnalysisSecretScanning from json stream.
 func (s *FullRepositorySecurityAndAnalysisSecretScanning) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode FullRepositorySecurityAndAnalysisSecretScanning to nil`)
+		return errors.New(`invalid: unable to decode FullRepositorySecurityAndAnalysisSecretScanning to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -19627,7 +19579,7 @@ func (s FullRepositorySecurityAndAnalysisSecretScanningStatus) WriteJSON(e *json
 // ReadJSON reads FullRepositorySecurityAndAnalysisSecretScanningStatus from json reader.
 func (s *FullRepositorySecurityAndAnalysisSecretScanningStatus) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode FullRepositorySecurityAndAnalysisSecretScanningStatus to nil`)
+		return errors.New(`invalid: unable to decode FullRepositorySecurityAndAnalysisSecretScanningStatus to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -19672,7 +19624,7 @@ func (s GistComment) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GistComment from json stream.
 func (s *GistComment) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GistComment to nil`)
+		return errors.New(`invalid: unable to decode GistComment to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -19753,7 +19705,7 @@ func (s GistCommit) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GistCommit from json stream.
 func (s *GistCommit) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GistCommit to nil`)
+		return errors.New(`invalid: unable to decode GistCommit to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -19816,7 +19768,7 @@ func (s GistCommitChangeStatus) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GistCommitChangeStatus from json stream.
 func (s *GistCommitChangeStatus) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GistCommitChangeStatus to nil`)
+		return errors.New(`invalid: unable to decode GistCommitChangeStatus to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -19878,7 +19830,7 @@ func (s GistHistory) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GistHistory from json stream.
 func (s *GistHistory) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GistHistory to nil`)
+		return errors.New(`invalid: unable to decode GistHistory to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -19940,7 +19892,7 @@ func (s GistHistoryChangeStatus) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GistHistoryChangeStatus from json stream.
 func (s *GistHistoryChangeStatus) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GistHistoryChangeStatus to nil`)
+		return errors.New(`invalid: unable to decode GistHistoryChangeStatus to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -20082,7 +20034,7 @@ func (s GistSimple) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GistSimple from json stream.
 func (s *GistSimple) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GistSimple to nil`)
+		return errors.New(`invalid: unable to decode GistSimple to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -20211,7 +20163,7 @@ func (s GistSimpleFiles) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GistSimpleFiles from json stream.
 func (s *GistSimpleFiles) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GistSimpleFiles to nil`)
+		return errors.New(`invalid: unable to decode GistSimpleFiles to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -20315,7 +20267,7 @@ func (s GistSimpleForkOf) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GistSimpleForkOf from json stream.
 func (s *GistSimpleForkOf) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GistSimpleForkOf to nil`)
+		return errors.New(`invalid: unable to decode GistSimpleForkOf to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -20465,7 +20417,7 @@ func (s GistSimpleForkOfFiles) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GistSimpleForkOfFiles from json stream.
 func (s *GistSimpleForkOfFiles) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GistSimpleForkOfFiles to nil`)
+		return errors.New(`invalid: unable to decode GistSimpleForkOfFiles to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -20512,7 +20464,7 @@ func (s GistSimpleForksItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GistSimpleForksItem from json stream.
 func (s *GistSimpleForksItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GistSimpleForksItem to nil`)
+		return errors.New(`invalid: unable to decode GistSimpleForksItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -20559,7 +20511,7 @@ func (s GistsCheckIsStarredNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GistsCheckIsStarredNoContent from json stream.
 func (s *GistsCheckIsStarredNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GistsCheckIsStarredNoContent to nil`)
+		return errors.New(`invalid: unable to decode GistsCheckIsStarredNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -20581,7 +20533,7 @@ func (s GistsCheckIsStarredNotFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GistsCheckIsStarredNotFound from json stream.
 func (s *GistsCheckIsStarredNotFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GistsCheckIsStarredNotFound to nil`)
+		return errors.New(`invalid: unable to decode GistsCheckIsStarredNotFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -20612,7 +20564,7 @@ func (s GistsCreateCommentReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GistsCreateCommentReq from json stream.
 func (s *GistsCreateCommentReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GistsCreateCommentReq to nil`)
+		return errors.New(`invalid: unable to decode GistsCreateCommentReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -20652,7 +20604,7 @@ func (s GistsDeleteCommentNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GistsDeleteCommentNoContent from json stream.
 func (s *GistsDeleteCommentNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GistsDeleteCommentNoContent to nil`)
+		return errors.New(`invalid: unable to decode GistsDeleteCommentNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -20674,7 +20626,7 @@ func (s GistsDeleteNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GistsDeleteNoContent from json stream.
 func (s *GistsDeleteNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GistsDeleteNoContent to nil`)
+		return errors.New(`invalid: unable to decode GistsDeleteNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -20741,7 +20693,7 @@ func (s GistsStarNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GistsStarNoContent from json stream.
 func (s *GistsStarNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GistsStarNoContent to nil`)
+		return errors.New(`invalid: unable to decode GistsStarNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -20769,7 +20721,7 @@ func (s GistsUnstarNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GistsUnstarNoContent from json stream.
 func (s *GistsUnstarNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GistsUnstarNoContent to nil`)
+		return errors.New(`invalid: unable to decode GistsUnstarNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -20794,7 +20746,7 @@ func (s GistsUpdateCommentReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GistsUpdateCommentReq from json stream.
 func (s *GistsUpdateCommentReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GistsUpdateCommentReq to nil`)
+		return errors.New(`invalid: unable to decode GistsUpdateCommentReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -20859,7 +20811,7 @@ func (s GitCommit) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitCommit from json stream.
 func (s *GitCommit) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitCommit to nil`)
+		return errors.New(`invalid: unable to decode GitCommit to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -20948,7 +20900,7 @@ func (s GitCommitAuthor) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitCommitAuthor from json stream.
 func (s *GitCommitAuthor) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitCommitAuthor to nil`)
+		return errors.New(`invalid: unable to decode GitCommitAuthor to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -20997,7 +20949,7 @@ func (s GitCommitCommitter) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitCommitCommitter from json stream.
 func (s *GitCommitCommitter) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitCommitCommitter to nil`)
+		return errors.New(`invalid: unable to decode GitCommitCommitter to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -21046,7 +20998,7 @@ func (s GitCommitParentsItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitCommitParentsItem from json stream.
 func (s *GitCommitParentsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitCommitParentsItem to nil`)
+		return errors.New(`invalid: unable to decode GitCommitParentsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -21092,7 +21044,7 @@ func (s GitCommitTree) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitCommitTree from json stream.
 func (s *GitCommitTree) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitCommitTree to nil`)
+		return errors.New(`invalid: unable to decode GitCommitTree to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -21138,7 +21090,7 @@ func (s GitCommitVerification) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitCommitVerification from json stream.
 func (s *GitCommitVerification) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitCommitVerification to nil`)
+		return errors.New(`invalid: unable to decode GitCommitVerification to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -21188,7 +21140,7 @@ func (s GitCreateBlobReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitCreateBlobReq from json stream.
 func (s *GitCreateBlobReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitCreateBlobReq to nil`)
+		return errors.New(`invalid: unable to decode GitCreateBlobReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -21254,7 +21206,7 @@ func (s GitCreateCommitReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitCreateCommitReq from json stream.
 func (s *GitCreateCommitReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitCreateCommitReq to nil`)
+		return errors.New(`invalid: unable to decode GitCreateCommitReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -21328,7 +21280,7 @@ func (s GitCreateCommitReqAuthor) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitCreateCommitReqAuthor from json stream.
 func (s *GitCreateCommitReqAuthor) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitCreateCommitReqAuthor to nil`)
+		return errors.New(`invalid: unable to decode GitCreateCommitReqAuthor to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -21382,7 +21334,7 @@ func (s GitCreateCommitReqCommitter) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitCreateCommitReqCommitter from json stream.
 func (s *GitCreateCommitReqCommitter) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitCreateCommitReqCommitter to nil`)
+		return errors.New(`invalid: unable to decode GitCreateCommitReqCommitter to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -21430,7 +21382,7 @@ func (s GitCreateRefReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitCreateRefReq from json stream.
 func (s *GitCreateRefReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitCreateRefReq to nil`)
+		return errors.New(`invalid: unable to decode GitCreateRefReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -21486,7 +21438,7 @@ func (s GitCreateTagReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitCreateTagReq from json stream.
 func (s *GitCreateTagReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitCreateTagReq to nil`)
+		return errors.New(`invalid: unable to decode GitCreateTagReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -21546,7 +21498,7 @@ func (s GitCreateTagReqTagger) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitCreateTagReqTagger from json stream.
 func (s *GitCreateTagReqTagger) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitCreateTagReqTagger to nil`)
+		return errors.New(`invalid: unable to decode GitCreateTagReqTagger to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -21582,7 +21534,7 @@ func (s GitCreateTagReqType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitCreateTagReqType from json reader.
 func (s *GitCreateTagReqType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitCreateTagReqType to nil`)
+		return errors.New(`invalid: unable to decode GitCreateTagReqType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -21618,7 +21570,7 @@ func (s GitCreateTreeReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitCreateTreeReq from json stream.
 func (s *GitCreateTreeReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitCreateTreeReq to nil`)
+		return errors.New(`invalid: unable to decode GitCreateTreeReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -21682,7 +21634,7 @@ func (s GitCreateTreeReqTreeItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitCreateTreeReqTreeItem from json stream.
 func (s *GitCreateTreeReqTreeItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitCreateTreeReqTreeItem to nil`)
+		return errors.New(`invalid: unable to decode GitCreateTreeReqTreeItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -21726,7 +21678,7 @@ func (s GitCreateTreeReqTreeItemMode) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitCreateTreeReqTreeItemMode from json reader.
 func (s *GitCreateTreeReqTreeItemMode) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitCreateTreeReqTreeItemMode to nil`)
+		return errors.New(`invalid: unable to decode GitCreateTreeReqTreeItemMode to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -21744,7 +21696,7 @@ func (s GitCreateTreeReqTreeItemType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitCreateTreeReqTreeItemType from json reader.
 func (s *GitCreateTreeReqTreeItemType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitCreateTreeReqTreeItemType to nil`)
+		return errors.New(`invalid: unable to decode GitCreateTreeReqTreeItemType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -21765,7 +21717,7 @@ func (s GitDeleteRefNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitDeleteRefNoContent from json stream.
 func (s *GitDeleteRefNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitDeleteRefNoContent to nil`)
+		return errors.New(`invalid: unable to decode GitDeleteRefNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -21799,7 +21751,7 @@ func (s GitRef) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitRef from json stream.
 func (s *GitRef) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitRef to nil`)
+		return errors.New(`invalid: unable to decode GitRef to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -21852,7 +21804,7 @@ func (s GitRefObject) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitRefObject from json stream.
 func (s *GitRefObject) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitRefObject to nil`)
+		return errors.New(`invalid: unable to decode GitRefObject to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -21918,7 +21870,7 @@ func (s GitTag) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitTag from json stream.
 func (s *GitTag) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitTag to nil`)
+		return errors.New(`invalid: unable to decode GitTag to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -21992,7 +21944,7 @@ func (s GitTagObject) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitTagObject from json stream.
 func (s *GitTagObject) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitTagObject to nil`)
+		return errors.New(`invalid: unable to decode GitTagObject to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -22041,7 +21993,7 @@ func (s GitTagTagger) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitTagTagger from json stream.
 func (s *GitTagTagger) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitTagTagger to nil`)
+		return errors.New(`invalid: unable to decode GitTagTagger to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -22100,7 +22052,7 @@ func (s GitTree) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitTree from json stream.
 func (s *GitTree) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitTree to nil`)
+		return errors.New(`invalid: unable to decode GitTree to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -22182,7 +22134,7 @@ func (s GitTreeTreeItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitTreeTreeItem from json stream.
 func (s *GitTreeTreeItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitTreeTreeItem to nil`)
+		return errors.New(`invalid: unable to decode GitTreeTreeItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -22242,7 +22194,7 @@ func (s GitUpdateRefReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitUpdateRefReq from json stream.
 func (s *GitUpdateRefReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitUpdateRefReq to nil`)
+		return errors.New(`invalid: unable to decode GitUpdateRefReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -22284,7 +22236,7 @@ func (s GitignoreTemplate) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GitignoreTemplate from json stream.
 func (s *GitignoreTemplate) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GitignoreTemplate to nil`)
+		return errors.New(`invalid: unable to decode GitignoreTemplate to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -22371,7 +22323,7 @@ func (s GpgKey) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GpgKey from json stream.
 func (s *GpgKey) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GpgKey to nil`)
+		return errors.New(`invalid: unable to decode GpgKey to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -22487,7 +22439,7 @@ func (s GpgKeyEmailsItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GpgKeyEmailsItem from json stream.
 func (s *GpgKeyEmailsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GpgKeyEmailsItem to nil`)
+		return errors.New(`invalid: unable to decode GpgKeyEmailsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -22598,7 +22550,7 @@ func (s GpgKeySubkeysItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GpgKeySubkeysItem from json stream.
 func (s *GpgKeySubkeysItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GpgKeySubkeysItem to nil`)
+		return errors.New(`invalid: unable to decode GpgKeySubkeysItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -22715,7 +22667,7 @@ func (s GroupMapping) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GroupMapping from json stream.
 func (s *GroupMapping) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GroupMapping to nil`)
+		return errors.New(`invalid: unable to decode GroupMapping to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -22768,7 +22720,7 @@ func (s GroupMappingGroupsItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads GroupMappingGroupsItem from json stream.
 func (s *GroupMappingGroupsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode GroupMappingGroupsItem to nil`)
+		return errors.New(`invalid: unable to decode GroupMappingGroupsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -22866,7 +22818,7 @@ func (s Hook) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Hook from json stream.
 func (s *Hook) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Hook to nil`)
+		return errors.New(`invalid: unable to decode Hook to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -23019,7 +22971,7 @@ func (s HookConfig) WriteJSON(e *json.Encoder) {
 // ReadJSON reads HookConfig from json stream.
 func (s *HookConfig) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode HookConfig to nil`)
+		return errors.New(`invalid: unable to decode HookConfig to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -23137,7 +23089,7 @@ func (s HookDelivery) WriteJSON(e *json.Encoder) {
 // ReadJSON reads HookDelivery from json stream.
 func (s *HookDelivery) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode HookDelivery to nil`)
+		return errors.New(`invalid: unable to decode HookDelivery to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -23265,7 +23217,7 @@ func (s HookDeliveryItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads HookDeliveryItem from json stream.
 func (s *HookDeliveryItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode HookDeliveryItem to nil`)
+		return errors.New(`invalid: unable to decode HookDeliveryItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -23361,7 +23313,7 @@ func (s HookDeliveryRequest) WriteJSON(e *json.Encoder) {
 // ReadJSON reads HookDeliveryRequest from json stream.
 func (s *HookDeliveryRequest) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode HookDeliveryRequest to nil`)
+		return errors.New(`invalid: unable to decode HookDeliveryRequest to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -23397,7 +23349,7 @@ func (s HookDeliveryRequestHeaders) WriteJSON(e *json.Encoder) {
 // ReadJSON reads HookDeliveryRequestHeaders from json stream.
 func (s *HookDeliveryRequestHeaders) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode HookDeliveryRequestHeaders to nil`)
+		return errors.New(`invalid: unable to decode HookDeliveryRequestHeaders to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -23419,7 +23371,7 @@ func (s HookDeliveryRequestPayload) WriteJSON(e *json.Encoder) {
 // ReadJSON reads HookDeliveryRequestPayload from json stream.
 func (s *HookDeliveryRequestPayload) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode HookDeliveryRequestPayload to nil`)
+		return errors.New(`invalid: unable to decode HookDeliveryRequestPayload to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -23451,7 +23403,7 @@ func (s HookDeliveryResponse) WriteJSON(e *json.Encoder) {
 // ReadJSON reads HookDeliveryResponse from json stream.
 func (s *HookDeliveryResponse) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode HookDeliveryResponse to nil`)
+		return errors.New(`invalid: unable to decode HookDeliveryResponse to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -23484,7 +23436,7 @@ func (s HookDeliveryResponseHeaders) WriteJSON(e *json.Encoder) {
 // ReadJSON reads HookDeliveryResponseHeaders from json stream.
 func (s *HookDeliveryResponseHeaders) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode HookDeliveryResponseHeaders to nil`)
+		return errors.New(`invalid: unable to decode HookDeliveryResponseHeaders to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -23515,7 +23467,7 @@ func (s HookResponse) WriteJSON(e *json.Encoder) {
 // ReadJSON reads HookResponse from json stream.
 func (s *HookResponse) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode HookResponse to nil`)
+		return errors.New(`invalid: unable to decode HookResponse to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -23559,7 +23511,7 @@ func (s Hovercard) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Hovercard from json stream.
 func (s *Hovercard) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Hovercard to nil`)
+		return errors.New(`invalid: unable to decode Hovercard to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -23599,7 +23551,7 @@ func (s HovercardContextsItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads HovercardContextsItem from json stream.
 func (s *HovercardContextsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode HovercardContextsItem to nil`)
+		return errors.New(`invalid: unable to decode HovercardContextsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -23741,7 +23693,7 @@ func (s Import) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Import from json stream.
 func (s *Import) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Import to nil`)
+		return errors.New(`invalid: unable to decode Import to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -23903,7 +23855,7 @@ func (s ImportProjectChoicesItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ImportProjectChoicesItem from json stream.
 func (s *ImportProjectChoicesItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ImportProjectChoicesItem to nil`)
+		return errors.New(`invalid: unable to decode ImportProjectChoicesItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -23937,7 +23889,7 @@ func (s ImportStatus) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ImportStatus from json reader.
 func (s *ImportStatus) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ImportStatus to nil`)
+		return errors.New(`invalid: unable to decode ImportStatus to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -24008,7 +23960,7 @@ func (s InstallationToken) WriteJSON(e *json.Encoder) {
 // ReadJSON reads InstallationToken from json stream.
 func (s *InstallationToken) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode InstallationToken to nil`)
+		return errors.New(`invalid: unable to decode InstallationToken to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -24085,7 +24037,7 @@ func (s InstallationTokenRepositorySelection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads InstallationTokenRepositorySelection from json reader.
 func (s *InstallationTokenRepositorySelection) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode InstallationTokenRepositorySelection to nil`)
+		return errors.New(`invalid: unable to decode InstallationTokenRepositorySelection to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -24176,7 +24128,7 @@ func (s Integration) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Integration from json stream.
 func (s *Integration) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Integration to nil`)
+		return errors.New(`invalid: unable to decode Integration to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -24321,7 +24273,7 @@ func (s IntegrationPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IntegrationPermissions from json stream.
 func (s *IntegrationPermissions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IntegrationPermissions to nil`)
+		return errors.New(`invalid: unable to decode IntegrationPermissions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -24365,7 +24317,7 @@ func (s InteractionExpiry) WriteJSON(e *json.Encoder) {
 // ReadJSON reads InteractionExpiry from json reader.
 func (s *InteractionExpiry) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode InteractionExpiry to nil`)
+		return errors.New(`invalid: unable to decode InteractionExpiry to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -24383,7 +24335,7 @@ func (s InteractionGroup) WriteJSON(e *json.Encoder) {
 // ReadJSON reads InteractionGroup from json reader.
 func (s *InteractionGroup) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode InteractionGroup to nil`)
+		return errors.New(`invalid: unable to decode InteractionGroup to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -24412,7 +24364,7 @@ func (s InteractionLimit) WriteJSON(e *json.Encoder) {
 // ReadJSON reads InteractionLimit from json stream.
 func (s *InteractionLimit) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode InteractionLimit to nil`)
+		return errors.New(`invalid: unable to decode InteractionLimit to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -24452,7 +24404,7 @@ func (s InteractionLimitResponse) WriteJSON(e *json.Encoder) {
 // ReadJSON reads InteractionLimitResponse from json stream.
 func (s *InteractionLimitResponse) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode InteractionLimitResponse to nil`)
+		return errors.New(`invalid: unable to decode InteractionLimitResponse to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -24490,7 +24442,7 @@ func (s InteractionsRemoveRestrictionsForAuthenticatedUserNoContent) WriteJSON(e
 // ReadJSON reads InteractionsRemoveRestrictionsForAuthenticatedUserNoContent from json stream.
 func (s *InteractionsRemoveRestrictionsForAuthenticatedUserNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode InteractionsRemoveRestrictionsForAuthenticatedUserNoContent to nil`)
+		return errors.New(`invalid: unable to decode InteractionsRemoveRestrictionsForAuthenticatedUserNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -24512,7 +24464,7 @@ func (s InteractionsRemoveRestrictionsForOrgNoContent) WriteJSON(e *json.Encoder
 // ReadJSON reads InteractionsRemoveRestrictionsForOrgNoContent from json stream.
 func (s *InteractionsRemoveRestrictionsForOrgNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode InteractionsRemoveRestrictionsForOrgNoContent to nil`)
+		return errors.New(`invalid: unable to decode InteractionsRemoveRestrictionsForOrgNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -24534,7 +24486,7 @@ func (s InteractionsRemoveRestrictionsForRepoConflict) WriteJSON(e *json.Encoder
 // ReadJSON reads InteractionsRemoveRestrictionsForRepoConflict from json stream.
 func (s *InteractionsRemoveRestrictionsForRepoConflict) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode InteractionsRemoveRestrictionsForRepoConflict to nil`)
+		return errors.New(`invalid: unable to decode InteractionsRemoveRestrictionsForRepoConflict to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -24556,7 +24508,7 @@ func (s InteractionsRemoveRestrictionsForRepoNoContent) WriteJSON(e *json.Encode
 // ReadJSON reads InteractionsRemoveRestrictionsForRepoNoContent from json stream.
 func (s *InteractionsRemoveRestrictionsForRepoNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode InteractionsRemoveRestrictionsForRepoNoContent to nil`)
+		return errors.New(`invalid: unable to decode InteractionsRemoveRestrictionsForRepoNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -24578,7 +24530,7 @@ func (s InteractionsSetRestrictionsForRepoConflict) WriteJSON(e *json.Encoder) {
 // ReadJSON reads InteractionsSetRestrictionsForRepoConflict from json stream.
 func (s *InteractionsSetRestrictionsForRepoConflict) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode InteractionsSetRestrictionsForRepoConflict to nil`)
+		return errors.New(`invalid: unable to decode InteractionsSetRestrictionsForRepoConflict to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -24652,7 +24604,7 @@ func (s IssueComment) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssueComment from json stream.
 func (s *IssueComment) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssueComment to nil`)
+		return errors.New(`invalid: unable to decode IssueComment to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -24843,7 +24795,7 @@ func (s IssueEvent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssueEvent from json stream.
 func (s *IssueEvent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssueEvent to nil`)
+		return errors.New(`invalid: unable to decode IssueEvent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -24991,7 +24943,7 @@ func (s IssueEventDismissedReview) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssueEventDismissedReview from json stream.
 func (s *IssueEventDismissedReview) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssueEventDismissedReview to nil`)
+		return errors.New(`invalid: unable to decode IssueEventDismissedReview to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -25040,7 +24992,7 @@ func (s IssueEventLabel) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssueEventLabel from json stream.
 func (s *IssueEventLabel) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssueEventLabel to nil`)
+		return errors.New(`invalid: unable to decode IssueEventLabel to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -25073,7 +25025,7 @@ func (s IssueEventMilestone) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssueEventMilestone from json stream.
 func (s *IssueEventMilestone) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssueEventMilestone to nil`)
+		return errors.New(`invalid: unable to decode IssueEventMilestone to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -25121,7 +25073,7 @@ func (s IssueEventProjectCard) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssueEventProjectCard from json stream.
 func (s *IssueEventProjectCard) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssueEventProjectCard to nil`)
+		return errors.New(`invalid: unable to decode IssueEventProjectCard to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -25184,7 +25136,7 @@ func (s IssueEventRename) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssueEventRename from json stream.
 func (s *IssueEventRename) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssueEventRename to nil`)
+		return errors.New(`invalid: unable to decode IssueEventRename to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -25346,7 +25298,7 @@ func (s IssueSearchResultItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssueSearchResultItem from json stream.
 func (s *IssueSearchResultItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssueSearchResultItem to nil`)
+		return errors.New(`invalid: unable to decode IssueSearchResultItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -25481,9 +25433,7 @@ func (s *IssueSearchResultItem) ReadJSON(d *json.Decoder) error {
 		case "text_matches":
 			s.TextMatches = nil
 			var elem SearchResultTextMatches
-			if err := fmt.Errorf(`decoding of "SearchResultTextMatches" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "SearchResultTextMatches" (alias) is not implemented`)
 			s.TextMatches = &elem
 		case "pull_request":
 			s.PullRequest.Reset()
@@ -25588,7 +25538,7 @@ func (s IssueSearchResultItemLabelsItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssueSearchResultItemLabelsItem from json stream.
 func (s *IssueSearchResultItemLabelsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssueSearchResultItemLabelsItem to nil`)
+		return errors.New(`invalid: unable to decode IssueSearchResultItemLabelsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -25662,7 +25612,7 @@ func (s IssueSearchResultItemPullRequest) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssueSearchResultItemPullRequest from json stream.
 func (s *IssueSearchResultItemPullRequest) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssueSearchResultItemPullRequest to nil`)
+		return errors.New(`invalid: unable to decode IssueSearchResultItemPullRequest to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -25820,7 +25770,7 @@ func (s IssueSimple) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssueSimple from json stream.
 func (s *IssueSimple) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssueSimple to nil`)
+		return errors.New(`invalid: unable to decode IssueSimple to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -26026,7 +25976,7 @@ func (s IssueSimplePullRequest) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssueSimplePullRequest from json stream.
 func (s *IssueSimplePullRequest) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssueSimplePullRequest to nil`)
+		return errors.New(`invalid: unable to decode IssueSimplePullRequest to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -26081,7 +26031,7 @@ func (s IssuesAddAssigneesReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesAddAssigneesReq from json stream.
 func (s *IssuesAddAssigneesReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesAddAssigneesReq to nil`)
+		return errors.New(`invalid: unable to decode IssuesAddAssigneesReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -26117,7 +26067,7 @@ func (s IssuesCheckUserCanBeAssignedNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesCheckUserCanBeAssignedNoContent from json stream.
 func (s *IssuesCheckUserCanBeAssignedNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesCheckUserCanBeAssignedNoContent to nil`)
+		return errors.New(`invalid: unable to decode IssuesCheckUserCanBeAssignedNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -26142,7 +26092,7 @@ func (s IssuesCreateCommentReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesCreateCommentReq from json stream.
 func (s *IssuesCreateCommentReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesCreateCommentReq to nil`)
+		return errors.New(`invalid: unable to decode IssuesCreateCommentReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -26183,7 +26133,7 @@ func (s IssuesCreateLabelReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesCreateLabelReq from json stream.
 func (s *IssuesCreateLabelReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesCreateLabelReq to nil`)
+		return errors.New(`invalid: unable to decode IssuesCreateLabelReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -26239,7 +26189,7 @@ func (s IssuesCreateMilestoneReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesCreateMilestoneReq from json stream.
 func (s *IssuesCreateMilestoneReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesCreateMilestoneReq to nil`)
+		return errors.New(`invalid: unable to decode IssuesCreateMilestoneReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -26279,7 +26229,7 @@ func (s IssuesCreateMilestoneReqState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesCreateMilestoneReqState from json reader.
 func (s *IssuesCreateMilestoneReqState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesCreateMilestoneReqState to nil`)
+		return errors.New(`invalid: unable to decode IssuesCreateMilestoneReqState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -26300,7 +26250,7 @@ func (s IssuesDeleteCommentNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesDeleteCommentNoContent from json stream.
 func (s *IssuesDeleteCommentNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesDeleteCommentNoContent to nil`)
+		return errors.New(`invalid: unable to decode IssuesDeleteCommentNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -26322,7 +26272,7 @@ func (s IssuesDeleteLabelNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesDeleteLabelNoContent from json stream.
 func (s *IssuesDeleteLabelNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesDeleteLabelNoContent to nil`)
+		return errors.New(`invalid: unable to decode IssuesDeleteLabelNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -26344,7 +26294,7 @@ func (s IssuesDeleteMilestoneNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesDeleteMilestoneNoContent from json stream.
 func (s *IssuesDeleteMilestoneNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesDeleteMilestoneNoContent to nil`)
+		return errors.New(`invalid: unable to decode IssuesDeleteMilestoneNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -26381,7 +26331,7 @@ func (s IssuesListCommentsForRepoDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesListCommentsForRepoDirection from json reader.
 func (s *IssuesListCommentsForRepoDirection) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListCommentsForRepoDirection to nil`)
+		return errors.New(`invalid: unable to decode IssuesListCommentsForRepoDirection to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -26399,7 +26349,7 @@ func (s IssuesListCommentsForRepoSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesListCommentsForRepoSort from json reader.
 func (s *IssuesListCommentsForRepoSort) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListCommentsForRepoSort to nil`)
+		return errors.New(`invalid: unable to decode IssuesListCommentsForRepoSort to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -26420,7 +26370,7 @@ func (s IssuesListDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesListDirection from json reader.
 func (s *IssuesListDirection) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListDirection to nil`)
+		return errors.New(`invalid: unable to decode IssuesListDirection to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -26438,7 +26388,7 @@ func (s IssuesListFilter) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesListFilter from json reader.
 func (s *IssuesListFilter) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListFilter to nil`)
+		return errors.New(`invalid: unable to decode IssuesListFilter to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -26456,7 +26406,7 @@ func (s IssuesListForAuthenticatedUserDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesListForAuthenticatedUserDirection from json reader.
 func (s *IssuesListForAuthenticatedUserDirection) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListForAuthenticatedUserDirection to nil`)
+		return errors.New(`invalid: unable to decode IssuesListForAuthenticatedUserDirection to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -26474,7 +26424,7 @@ func (s IssuesListForAuthenticatedUserFilter) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesListForAuthenticatedUserFilter from json reader.
 func (s *IssuesListForAuthenticatedUserFilter) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListForAuthenticatedUserFilter to nil`)
+		return errors.New(`invalid: unable to decode IssuesListForAuthenticatedUserFilter to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -26492,7 +26442,7 @@ func (s IssuesListForAuthenticatedUserSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesListForAuthenticatedUserSort from json reader.
 func (s *IssuesListForAuthenticatedUserSort) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListForAuthenticatedUserSort to nil`)
+		return errors.New(`invalid: unable to decode IssuesListForAuthenticatedUserSort to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -26510,7 +26460,7 @@ func (s IssuesListForAuthenticatedUserState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesListForAuthenticatedUserState from json reader.
 func (s *IssuesListForAuthenticatedUserState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListForAuthenticatedUserState to nil`)
+		return errors.New(`invalid: unable to decode IssuesListForAuthenticatedUserState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -26528,7 +26478,7 @@ func (s IssuesListForOrgDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesListForOrgDirection from json reader.
 func (s *IssuesListForOrgDirection) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListForOrgDirection to nil`)
+		return errors.New(`invalid: unable to decode IssuesListForOrgDirection to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -26546,7 +26496,7 @@ func (s IssuesListForOrgFilter) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesListForOrgFilter from json reader.
 func (s *IssuesListForOrgFilter) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListForOrgFilter to nil`)
+		return errors.New(`invalid: unable to decode IssuesListForOrgFilter to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -26564,7 +26514,7 @@ func (s IssuesListForOrgSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesListForOrgSort from json reader.
 func (s *IssuesListForOrgSort) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListForOrgSort to nil`)
+		return errors.New(`invalid: unable to decode IssuesListForOrgSort to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -26582,7 +26532,7 @@ func (s IssuesListForOrgState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesListForOrgState from json reader.
 func (s *IssuesListForOrgState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListForOrgState to nil`)
+		return errors.New(`invalid: unable to decode IssuesListForOrgState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -26600,7 +26550,7 @@ func (s IssuesListForRepoDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesListForRepoDirection from json reader.
 func (s *IssuesListForRepoDirection) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListForRepoDirection to nil`)
+		return errors.New(`invalid: unable to decode IssuesListForRepoDirection to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -26618,7 +26568,7 @@ func (s IssuesListForRepoSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesListForRepoSort from json reader.
 func (s *IssuesListForRepoSort) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListForRepoSort to nil`)
+		return errors.New(`invalid: unable to decode IssuesListForRepoSort to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -26636,7 +26586,7 @@ func (s IssuesListForRepoState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesListForRepoState from json reader.
 func (s *IssuesListForRepoState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListForRepoState to nil`)
+		return errors.New(`invalid: unable to decode IssuesListForRepoState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -26660,7 +26610,7 @@ func (s IssuesListMilestonesDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesListMilestonesDirection from json reader.
 func (s *IssuesListMilestonesDirection) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListMilestonesDirection to nil`)
+		return errors.New(`invalid: unable to decode IssuesListMilestonesDirection to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -26681,7 +26631,7 @@ func (s IssuesListMilestonesSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesListMilestonesSort from json reader.
 func (s *IssuesListMilestonesSort) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListMilestonesSort to nil`)
+		return errors.New(`invalid: unable to decode IssuesListMilestonesSort to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -26699,7 +26649,7 @@ func (s IssuesListMilestonesState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesListMilestonesState from json reader.
 func (s *IssuesListMilestonesState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListMilestonesState to nil`)
+		return errors.New(`invalid: unable to decode IssuesListMilestonesState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -26717,7 +26667,7 @@ func (s IssuesListSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesListSort from json reader.
 func (s *IssuesListSort) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListSort to nil`)
+		return errors.New(`invalid: unable to decode IssuesListSort to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -26735,7 +26685,7 @@ func (s IssuesListState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesListState from json reader.
 func (s *IssuesListState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesListState to nil`)
+		return errors.New(`invalid: unable to decode IssuesListState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -26756,7 +26706,7 @@ func (s IssuesLockNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesLockNoContent from json stream.
 func (s *IssuesLockNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesLockNoContent to nil`)
+		return errors.New(`invalid: unable to decode IssuesLockNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -26783,7 +26733,7 @@ func (s IssuesLockReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesLockReq from json stream.
 func (s *IssuesLockReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesLockReq to nil`)
+		return errors.New(`invalid: unable to decode IssuesLockReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -26807,7 +26757,7 @@ func (s IssuesLockReqLockReason) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesLockReqLockReason from json reader.
 func (s *IssuesLockReqLockReason) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesLockReqLockReason to nil`)
+		return errors.New(`invalid: unable to decode IssuesLockReqLockReason to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -26828,7 +26778,7 @@ func (s IssuesRemoveAllLabelsNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesRemoveAllLabelsNoContent from json stream.
 func (s *IssuesRemoveAllLabelsNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesRemoveAllLabelsNoContent to nil`)
+		return errors.New(`invalid: unable to decode IssuesRemoveAllLabelsNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -26862,7 +26812,7 @@ func (s IssuesRemoveAssigneesReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesRemoveAssigneesReq from json stream.
 func (s *IssuesRemoveAssigneesReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesRemoveAssigneesReq to nil`)
+		return errors.New(`invalid: unable to decode IssuesRemoveAssigneesReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -26913,7 +26863,7 @@ func (s IssuesUnlockNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesUnlockNoContent from json stream.
 func (s *IssuesUnlockNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesUnlockNoContent to nil`)
+		return errors.New(`invalid: unable to decode IssuesUnlockNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -26938,7 +26888,7 @@ func (s IssuesUpdateCommentReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesUpdateCommentReq from json stream.
 func (s *IssuesUpdateCommentReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesUpdateCommentReq to nil`)
+		return errors.New(`invalid: unable to decode IssuesUpdateCommentReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -26981,7 +26931,7 @@ func (s IssuesUpdateLabelReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesUpdateLabelReq from json stream.
 func (s *IssuesUpdateLabelReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesUpdateLabelReq to nil`)
+		return errors.New(`invalid: unable to decode IssuesUpdateLabelReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -27038,7 +26988,7 @@ func (s IssuesUpdateMilestoneReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesUpdateMilestoneReq from json stream.
 func (s *IssuesUpdateMilestoneReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesUpdateMilestoneReq to nil`)
+		return errors.New(`invalid: unable to decode IssuesUpdateMilestoneReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -27077,7 +27027,7 @@ func (s IssuesUpdateMilestoneReqState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads IssuesUpdateMilestoneReqState from json reader.
 func (s *IssuesUpdateMilestoneReqState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode IssuesUpdateMilestoneReqState to nil`)
+		return errors.New(`invalid: unable to decode IssuesUpdateMilestoneReqState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -27149,7 +27099,7 @@ func (s Job) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Job from json stream.
 func (s *Job) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Job to nil`)
+		return errors.New(`invalid: unable to decode Job to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -27250,7 +27200,7 @@ func (s JobStatus) WriteJSON(e *json.Encoder) {
 // ReadJSON reads JobStatus from json reader.
 func (s *JobStatus) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode JobStatus to nil`)
+		return errors.New(`invalid: unable to decode JobStatus to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -27293,7 +27243,7 @@ func (s JobStepsItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads JobStepsItem from json stream.
 func (s *JobStepsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode JobStepsItem to nil`)
+		return errors.New(`invalid: unable to decode JobStepsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -27342,7 +27292,7 @@ func (s JobStepsItemStatus) WriteJSON(e *json.Encoder) {
 // ReadJSON reads JobStepsItemStatus from json reader.
 func (s *JobStepsItemStatus) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode JobStepsItemStatus to nil`)
+		return errors.New(`invalid: unable to decode JobStepsItemStatus to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -27384,7 +27334,7 @@ func (s Key) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Key from json stream.
 func (s *Key) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Key to nil`)
+		return errors.New(`invalid: unable to decode Key to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -27454,7 +27404,7 @@ func (s KeySimple) WriteJSON(e *json.Encoder) {
 // ReadJSON reads KeySimple from json stream.
 func (s *KeySimple) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode KeySimple to nil`)
+		return errors.New(`invalid: unable to decode KeySimple to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -27509,7 +27459,7 @@ func (s Label) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Label from json stream.
 func (s *Label) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Label to nil`)
+		return errors.New(`invalid: unable to decode Label to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -27600,7 +27550,7 @@ func (s LabelSearchResultItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads LabelSearchResultItem from json stream.
 func (s *LabelSearchResultItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode LabelSearchResultItem to nil`)
+		return errors.New(`invalid: unable to decode LabelSearchResultItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -27653,9 +27603,7 @@ func (s *LabelSearchResultItem) ReadJSON(d *json.Decoder) error {
 		case "text_matches":
 			s.TextMatches = nil
 			var elem SearchResultTextMatches
-			if err := fmt.Errorf(`decoding of "SearchResultTextMatches" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "SearchResultTextMatches" (alias) is not implemented`)
 			s.TextMatches = &elem
 		default:
 			return d.Skip()
@@ -27675,7 +27623,7 @@ func (s Language) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Language from json stream.
 func (s *Language) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Language to nil`)
+		return errors.New(`invalid: unable to decode Language to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -27757,7 +27705,7 @@ func (s License) WriteJSON(e *json.Encoder) {
 // ReadJSON reads License from json stream.
 func (s *License) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode License to nil`)
+		return errors.New(`invalid: unable to decode License to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -27916,7 +27864,7 @@ func (s LicenseContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads LicenseContent from json stream.
 func (s *LicenseContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode LicenseContent to nil`)
+		return errors.New(`invalid: unable to decode LicenseContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -28015,7 +27963,7 @@ func (s LicenseContentLinks) WriteJSON(e *json.Encoder) {
 // ReadJSON reads LicenseContentLinks from json stream.
 func (s *LicenseContentLinks) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode LicenseContentLinks to nil`)
+		return errors.New(`invalid: unable to decode LicenseContentLinks to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -28071,7 +28019,7 @@ func (s LicenseSimple) WriteJSON(e *json.Encoder) {
 // ReadJSON reads LicenseSimple from json stream.
 func (s *LicenseSimple) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode LicenseSimple to nil`)
+		return errors.New(`invalid: unable to decode LicenseSimple to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -28136,7 +28084,7 @@ func (s Link) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Link from json stream.
 func (s *Link) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Link to nil`)
+		return errors.New(`invalid: unable to decode Link to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -28170,7 +28118,7 @@ func (s LinkWithType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads LinkWithType from json stream.
 func (s *LinkWithType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode LinkWithType to nil`)
+		return errors.New(`invalid: unable to decode LinkWithType to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -28229,7 +28177,7 @@ func (s MarkdownRenderReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MarkdownRenderReq from json stream.
 func (s *MarkdownRenderReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MarkdownRenderReq to nil`)
+		return errors.New(`invalid: unable to decode MarkdownRenderReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -28264,7 +28212,7 @@ func (s MarkdownRenderReqMode) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MarkdownRenderReqMode from json reader.
 func (s *MarkdownRenderReqMode) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MarkdownRenderReqMode to nil`)
+		return errors.New(`invalid: unable to decode MarkdownRenderReqMode to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -28312,7 +28260,7 @@ func (s MarketplaceAccount) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MarketplaceAccount from json stream.
 func (s *MarketplaceAccount) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MarketplaceAccount to nil`)
+		return errors.New(`invalid: unable to decode MarketplaceAccount to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -28419,7 +28367,7 @@ func (s MarketplaceListingPlan) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MarketplaceListingPlan from json stream.
 func (s *MarketplaceListingPlan) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MarketplaceListingPlan to nil`)
+		return errors.New(`invalid: unable to decode MarketplaceListingPlan to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -28555,7 +28503,7 @@ func (s MarketplacePurchase) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MarketplacePurchase from json stream.
 func (s *MarketplacePurchase) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MarketplacePurchase to nil`)
+		return errors.New(`invalid: unable to decode MarketplacePurchase to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -28645,7 +28593,7 @@ func (s MarketplacePurchaseMarketplacePendingChange) WriteJSON(e *json.Encoder) 
 // ReadJSON reads MarketplacePurchaseMarketplacePendingChange from json stream.
 func (s *MarketplacePurchaseMarketplacePendingChange) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MarketplacePurchaseMarketplacePendingChange to nil`)
+		return errors.New(`invalid: unable to decode MarketplacePurchaseMarketplacePendingChange to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -28732,7 +28680,7 @@ func (s MarketplacePurchaseMarketplacePurchase) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MarketplacePurchaseMarketplacePurchase from json stream.
 func (s *MarketplacePurchaseMarketplacePurchase) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MarketplacePurchaseMarketplacePurchase to nil`)
+		return errors.New(`invalid: unable to decode MarketplacePurchaseMarketplacePurchase to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -28809,7 +28757,7 @@ func (s MergedUpstream) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MergedUpstream from json stream.
 func (s *MergedUpstream) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MergedUpstream to nil`)
+		return errors.New(`invalid: unable to decode MergedUpstream to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -28843,7 +28791,7 @@ func (s MergedUpstreamMergeType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MergedUpstreamMergeType from json reader.
 func (s *MergedUpstreamMergeType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MergedUpstreamMergeType to nil`)
+		return errors.New(`invalid: unable to decode MergedUpstreamMergeType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -28965,7 +28913,7 @@ func (s MetaRootOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MetaRootOK from json stream.
 func (s *MetaRootOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MetaRootOK to nil`)
+		return errors.New(`invalid: unable to decode MetaRootOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -29253,7 +29201,7 @@ func (s Migration) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Migration from json stream.
 func (s *Migration) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Migration to nil`)
+		return errors.New(`invalid: unable to decode Migration to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -29388,7 +29336,7 @@ func (s MigrationsCancelImportNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MigrationsCancelImportNoContent from json stream.
 func (s *MigrationsCancelImportNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MigrationsCancelImportNoContent to nil`)
+		return errors.New(`invalid: unable to decode MigrationsCancelImportNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -29428,7 +29376,7 @@ func (s MigrationsDeleteArchiveForAuthenticatedUserNoContent) WriteJSON(e *json.
 // ReadJSON reads MigrationsDeleteArchiveForAuthenticatedUserNoContent from json stream.
 func (s *MigrationsDeleteArchiveForAuthenticatedUserNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MigrationsDeleteArchiveForAuthenticatedUserNoContent to nil`)
+		return errors.New(`invalid: unable to decode MigrationsDeleteArchiveForAuthenticatedUserNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -29450,7 +29398,7 @@ func (s MigrationsDeleteArchiveForOrgNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MigrationsDeleteArchiveForOrgNoContent from json stream.
 func (s *MigrationsDeleteArchiveForOrgNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MigrationsDeleteArchiveForOrgNoContent to nil`)
+		return errors.New(`invalid: unable to decode MigrationsDeleteArchiveForOrgNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -29472,7 +29420,7 @@ func (s MigrationsDownloadArchiveForOrgFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MigrationsDownloadArchiveForOrgFound from json stream.
 func (s *MigrationsDownloadArchiveForOrgFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MigrationsDownloadArchiveForOrgFound to nil`)
+		return errors.New(`invalid: unable to decode MigrationsDownloadArchiveForOrgFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -29505,7 +29453,7 @@ func (s MigrationsGetArchiveForAuthenticatedUserFound) WriteJSON(e *json.Encoder
 // ReadJSON reads MigrationsGetArchiveForAuthenticatedUserFound from json stream.
 func (s *MigrationsGetArchiveForAuthenticatedUserFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MigrationsGetArchiveForAuthenticatedUserFound to nil`)
+		return errors.New(`invalid: unable to decode MigrationsGetArchiveForAuthenticatedUserFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -29543,7 +29491,7 @@ func (s MigrationsGetStatusForOrgExcludeItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MigrationsGetStatusForOrgExcludeItem from json reader.
 func (s *MigrationsGetStatusForOrgExcludeItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MigrationsGetStatusForOrgExcludeItem to nil`)
+		return errors.New(`invalid: unable to decode MigrationsGetStatusForOrgExcludeItem to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -29576,7 +29524,7 @@ func (s MigrationsListForOrgExcludeItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MigrationsListForOrgExcludeItem from json reader.
 func (s *MigrationsListForOrgExcludeItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MigrationsListForOrgExcludeItem to nil`)
+		return errors.New(`invalid: unable to decode MigrationsListForOrgExcludeItem to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -29613,7 +29561,7 @@ func (s MigrationsMapCommitAuthorReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MigrationsMapCommitAuthorReq from json stream.
 func (s *MigrationsMapCommitAuthorReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MigrationsMapCommitAuthorReq to nil`)
+		return errors.New(`invalid: unable to decode MigrationsMapCommitAuthorReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -29648,7 +29596,7 @@ func (s MigrationsSetLfsPreferenceReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MigrationsSetLfsPreferenceReq from json stream.
 func (s *MigrationsSetLfsPreferenceReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MigrationsSetLfsPreferenceReq to nil`)
+		return errors.New(`invalid: unable to decode MigrationsSetLfsPreferenceReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -29671,7 +29619,7 @@ func (s MigrationsSetLfsPreferenceReqUseLfs) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MigrationsSetLfsPreferenceReqUseLfs from json reader.
 func (s *MigrationsSetLfsPreferenceReqUseLfs) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MigrationsSetLfsPreferenceReqUseLfs to nil`)
+		return errors.New(`invalid: unable to decode MigrationsSetLfsPreferenceReqUseLfs to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -29734,7 +29682,7 @@ func (s MigrationsStartForAuthenticatedUserReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MigrationsStartForAuthenticatedUserReq from json stream.
 func (s *MigrationsStartForAuthenticatedUserReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MigrationsStartForAuthenticatedUserReq to nil`)
+		return errors.New(`invalid: unable to decode MigrationsStartForAuthenticatedUserReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -29799,7 +29747,7 @@ func (s MigrationsStartForAuthenticatedUserReqExcludeItem) WriteJSON(e *json.Enc
 // ReadJSON reads MigrationsStartForAuthenticatedUserReqExcludeItem from json reader.
 func (s *MigrationsStartForAuthenticatedUserReqExcludeItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MigrationsStartForAuthenticatedUserReqExcludeItem to nil`)
+		return errors.New(`invalid: unable to decode MigrationsStartForAuthenticatedUserReqExcludeItem to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -29862,7 +29810,7 @@ func (s MigrationsStartForOrgReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MigrationsStartForOrgReq from json stream.
 func (s *MigrationsStartForOrgReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MigrationsStartForOrgReq to nil`)
+		return errors.New(`invalid: unable to decode MigrationsStartForOrgReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -29927,7 +29875,7 @@ func (s MigrationsStartForOrgReqExcludeItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MigrationsStartForOrgReqExcludeItem from json reader.
 func (s *MigrationsStartForOrgReqExcludeItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MigrationsStartForOrgReqExcludeItem to nil`)
+		return errors.New(`invalid: unable to decode MigrationsStartForOrgReqExcludeItem to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -29971,7 +29919,7 @@ func (s MigrationsStartImportReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MigrationsStartImportReq from json stream.
 func (s *MigrationsStartImportReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MigrationsStartImportReq to nil`)
+		return errors.New(`invalid: unable to decode MigrationsStartImportReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -30016,7 +29964,7 @@ func (s MigrationsStartImportReqVcs) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MigrationsStartImportReqVcs from json reader.
 func (s *MigrationsStartImportReqVcs) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MigrationsStartImportReqVcs to nil`)
+		return errors.New(`invalid: unable to decode MigrationsStartImportReqVcs to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -30053,7 +30001,7 @@ func (s MigrationsUnlockRepoForAuthenticatedUserNoContent) WriteJSON(e *json.Enc
 // ReadJSON reads MigrationsUnlockRepoForAuthenticatedUserNoContent from json stream.
 func (s *MigrationsUnlockRepoForAuthenticatedUserNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MigrationsUnlockRepoForAuthenticatedUserNoContent to nil`)
+		return errors.New(`invalid: unable to decode MigrationsUnlockRepoForAuthenticatedUserNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -30075,7 +30023,7 @@ func (s MigrationsUnlockRepoForOrgNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MigrationsUnlockRepoForOrgNoContent from json stream.
 func (s *MigrationsUnlockRepoForOrgNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MigrationsUnlockRepoForOrgNoContent to nil`)
+		return errors.New(`invalid: unable to decode MigrationsUnlockRepoForOrgNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -30117,7 +30065,7 @@ func (s MigrationsUpdateImportReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MigrationsUpdateImportReq from json stream.
 func (s *MigrationsUpdateImportReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MigrationsUpdateImportReq to nil`)
+		return errors.New(`invalid: unable to decode MigrationsUpdateImportReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -30207,7 +30155,7 @@ func (s Milestone) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Milestone from json stream.
 func (s *Milestone) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Milestone to nil`)
+		return errors.New(`invalid: unable to decode Milestone to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -30312,7 +30260,7 @@ func (s MilestoneState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MilestoneState from json reader.
 func (s *MilestoneState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MilestoneState to nil`)
+		return errors.New(`invalid: unable to decode MilestoneState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -30668,7 +30616,7 @@ func (s MinimalRepository) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MinimalRepository from json stream.
 func (s *MinimalRepository) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MinimalRepository to nil`)
+		return errors.New(`invalid: unable to decode MinimalRepository to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -31186,7 +31134,7 @@ func (s MinimalRepositoryLicense) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MinimalRepositoryLicense from json stream.
 func (s *MinimalRepositoryLicense) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MinimalRepositoryLicense to nil`)
+		return errors.New(`invalid: unable to decode MinimalRepositoryLicense to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -31258,7 +31206,7 @@ func (s MinimalRepositoryPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads MinimalRepositoryPermissions from json stream.
 func (s *MinimalRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode MinimalRepositoryPermissions to nil`)
+		return errors.New(`invalid: unable to decode MinimalRepositoryPermissions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -31306,7 +31254,7 @@ func (o NilAutoMerge) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AutoMerge from json iterator.
 func (o *NilAutoMerge) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilAutoMerge to nil`)
+		return errors.New(`invalid: unable to decode NilAutoMerge to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -31324,7 +31272,7 @@ func (o *NilAutoMerge) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilAutoMerge", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilAutoMerge`, d.Next())
 	}
 }
 
@@ -31340,7 +31288,7 @@ func (o NilBool) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of bool from json iterator.
 func (o *NilBool) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilBool to nil`)
+		return errors.New(`invalid: unable to decode NilBool to nil`)
 	}
 	switch d.Next() {
 	case json.Bool:
@@ -31360,7 +31308,7 @@ func (o *NilBool) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilBool", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilBool`, d.Next())
 	}
 }
 
@@ -31376,7 +31324,7 @@ func (o NilCheckRunCheckSuite) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of CheckRunCheckSuite from json iterator.
 func (o *NilCheckRunCheckSuite) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilCheckRunCheckSuite to nil`)
+		return errors.New(`invalid: unable to decode NilCheckRunCheckSuite to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -31394,7 +31342,7 @@ func (o *NilCheckRunCheckSuite) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilCheckRunCheckSuite", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilCheckRunCheckSuite`, d.Next())
 	}
 }
 
@@ -31410,7 +31358,7 @@ func (o NilCheckRunConclusion) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of CheckRunConclusion from json iterator.
 func (o *NilCheckRunConclusion) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilCheckRunConclusion to nil`)
+		return errors.New(`invalid: unable to decode NilCheckRunConclusion to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -31430,7 +31378,7 @@ func (o *NilCheckRunConclusion) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilCheckRunConclusion", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilCheckRunConclusion`, d.Next())
 	}
 }
 
@@ -31446,7 +31394,7 @@ func (o NilCheckSuiteConclusion) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of CheckSuiteConclusion from json iterator.
 func (o *NilCheckSuiteConclusion) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilCheckSuiteConclusion to nil`)
+		return errors.New(`invalid: unable to decode NilCheckSuiteConclusion to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -31466,7 +31414,7 @@ func (o *NilCheckSuiteConclusion) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilCheckSuiteConclusion", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilCheckSuiteConclusion`, d.Next())
 	}
 }
 
@@ -31482,7 +31430,7 @@ func (o NilCheckSuiteStatus) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of CheckSuiteStatus from json iterator.
 func (o *NilCheckSuiteStatus) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilCheckSuiteStatus to nil`)
+		return errors.New(`invalid: unable to decode NilCheckSuiteStatus to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -31502,7 +31450,7 @@ func (o *NilCheckSuiteStatus) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilCheckSuiteStatus", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilCheckSuiteStatus`, d.Next())
 	}
 }
 
@@ -31517,7 +31465,7 @@ func (o NilCodeScanningAlertDismissedAt) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of CodeScanningAlertDismissedAt from json iterator.
 func (o *NilCodeScanningAlertDismissedAt) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilCodeScanningAlertDismissedAt to nil`)
+		return errors.New(`invalid: unable to decode NilCodeScanningAlertDismissedAt to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -31532,7 +31480,7 @@ func (o *NilCodeScanningAlertDismissedAt) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilCodeScanningAlertDismissedAt", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilCodeScanningAlertDismissedAt`, d.Next())
 	}
 }
 
@@ -31548,7 +31496,7 @@ func (o NilCodeScanningAlertDismissedReason) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of CodeScanningAlertDismissedReason from json iterator.
 func (o *NilCodeScanningAlertDismissedReason) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilCodeScanningAlertDismissedReason to nil`)
+		return errors.New(`invalid: unable to decode NilCodeScanningAlertDismissedReason to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -31568,7 +31516,7 @@ func (o *NilCodeScanningAlertDismissedReason) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilCodeScanningAlertDismissedReason", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilCodeScanningAlertDismissedReason`, d.Next())
 	}
 }
 
@@ -31584,7 +31532,7 @@ func (o NilFileCommitContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of FileCommitContent from json iterator.
 func (o *NilFileCommitContent) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilFileCommitContent to nil`)
+		return errors.New(`invalid: unable to decode NilFileCommitContent to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -31602,7 +31550,7 @@ func (o *NilFileCommitContent) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilFileCommitContent", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilFileCommitContent`, d.Next())
 	}
 }
 
@@ -31618,7 +31566,7 @@ func (o NilInt) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of int from json iterator.
 func (o *NilInt) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilInt to nil`)
+		return errors.New(`invalid: unable to decode NilInt to nil`)
 	}
 	switch d.Next() {
 	case json.Number:
@@ -31638,7 +31586,7 @@ func (o *NilInt) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilInt", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilInt`, d.Next())
 	}
 }
 
@@ -31654,7 +31602,7 @@ func (o NilNullableCodeOfConductSimple) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of NullableCodeOfConductSimple from json iterator.
 func (o *NilNullableCodeOfConductSimple) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilNullableCodeOfConductSimple to nil`)
+		return errors.New(`invalid: unable to decode NilNullableCodeOfConductSimple to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -31672,7 +31620,7 @@ func (o *NilNullableCodeOfConductSimple) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilNullableCodeOfConductSimple", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilNullableCodeOfConductSimple`, d.Next())
 	}
 }
 
@@ -31688,7 +31636,7 @@ func (o NilNullableCommunityHealthFile) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of NullableCommunityHealthFile from json iterator.
 func (o *NilNullableCommunityHealthFile) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilNullableCommunityHealthFile to nil`)
+		return errors.New(`invalid: unable to decode NilNullableCommunityHealthFile to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -31706,7 +31654,7 @@ func (o *NilNullableCommunityHealthFile) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilNullableCommunityHealthFile", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilNullableCommunityHealthFile`, d.Next())
 	}
 }
 
@@ -31722,7 +31670,7 @@ func (o NilNullableGitUser) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of NullableGitUser from json iterator.
 func (o *NilNullableGitUser) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilNullableGitUser to nil`)
+		return errors.New(`invalid: unable to decode NilNullableGitUser to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -31740,7 +31688,7 @@ func (o *NilNullableGitUser) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilNullableGitUser", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilNullableGitUser`, d.Next())
 	}
 }
 
@@ -31756,7 +31704,7 @@ func (o NilNullableIntegration) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of NullableIntegration from json iterator.
 func (o *NilNullableIntegration) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilNullableIntegration to nil`)
+		return errors.New(`invalid: unable to decode NilNullableIntegration to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -31774,7 +31722,7 @@ func (o *NilNullableIntegration) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilNullableIntegration", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilNullableIntegration`, d.Next())
 	}
 }
 
@@ -31790,7 +31738,7 @@ func (o NilNullableLicenseSimple) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of NullableLicenseSimple from json iterator.
 func (o *NilNullableLicenseSimple) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilNullableLicenseSimple to nil`)
+		return errors.New(`invalid: unable to decode NilNullableLicenseSimple to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -31808,7 +31756,7 @@ func (o *NilNullableLicenseSimple) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilNullableLicenseSimple", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilNullableLicenseSimple`, d.Next())
 	}
 }
 
@@ -31824,7 +31772,7 @@ func (o NilNullableMilestone) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of NullableMilestone from json iterator.
 func (o *NilNullableMilestone) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilNullableMilestone to nil`)
+		return errors.New(`invalid: unable to decode NilNullableMilestone to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -31842,7 +31790,7 @@ func (o *NilNullableMilestone) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilNullableMilestone", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilNullableMilestone`, d.Next())
 	}
 }
 
@@ -31858,7 +31806,7 @@ func (o NilNullableSimpleCommit) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of NullableSimpleCommit from json iterator.
 func (o *NilNullableSimpleCommit) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilNullableSimpleCommit to nil`)
+		return errors.New(`invalid: unable to decode NilNullableSimpleCommit to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -31876,7 +31824,7 @@ func (o *NilNullableSimpleCommit) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilNullableSimpleCommit", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilNullableSimpleCommit`, d.Next())
 	}
 }
 
@@ -31892,7 +31840,7 @@ func (o NilNullableSimpleCommitAuthor) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of NullableSimpleCommitAuthor from json iterator.
 func (o *NilNullableSimpleCommitAuthor) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilNullableSimpleCommitAuthor to nil`)
+		return errors.New(`invalid: unable to decode NilNullableSimpleCommitAuthor to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -31910,7 +31858,7 @@ func (o *NilNullableSimpleCommitAuthor) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilNullableSimpleCommitAuthor", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilNullableSimpleCommitAuthor`, d.Next())
 	}
 }
 
@@ -31926,7 +31874,7 @@ func (o NilNullableSimpleCommitCommitter) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of NullableSimpleCommitCommitter from json iterator.
 func (o *NilNullableSimpleCommitCommitter) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilNullableSimpleCommitCommitter to nil`)
+		return errors.New(`invalid: unable to decode NilNullableSimpleCommitCommitter to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -31944,7 +31892,7 @@ func (o *NilNullableSimpleCommitCommitter) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilNullableSimpleCommitCommitter", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilNullableSimpleCommitCommitter`, d.Next())
 	}
 }
 
@@ -31960,7 +31908,7 @@ func (o NilNullableSimpleUser) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of NullableSimpleUser from json iterator.
 func (o *NilNullableSimpleUser) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilNullableSimpleUser to nil`)
+		return errors.New(`invalid: unable to decode NilNullableSimpleUser to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -31978,7 +31926,7 @@ func (o *NilNullableSimpleUser) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilNullableSimpleUser", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilNullableSimpleUser`, d.Next())
 	}
 }
 
@@ -31994,7 +31942,7 @@ func (o NilNullableTeamSimple) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of NullableTeamSimple from json iterator.
 func (o *NilNullableTeamSimple) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilNullableTeamSimple to nil`)
+		return errors.New(`invalid: unable to decode NilNullableTeamSimple to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -32012,7 +31960,7 @@ func (o *NilNullableTeamSimple) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilNullableTeamSimple", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilNullableTeamSimple`, d.Next())
 	}
 }
 
@@ -32028,7 +31976,7 @@ func (o NilPageStatus) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PageStatus from json iterator.
 func (o *NilPageStatus) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilPageStatus to nil`)
+		return errors.New(`invalid: unable to decode NilPageStatus to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -32048,7 +31996,7 @@ func (o *NilPageStatus) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilPageStatus", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilPageStatus`, d.Next())
 	}
 }
 
@@ -32064,7 +32012,7 @@ func (o NilPullRequestHeadRepo) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PullRequestHeadRepo from json iterator.
 func (o *NilPullRequestHeadRepo) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilPullRequestHeadRepo to nil`)
+		return errors.New(`invalid: unable to decode NilPullRequestHeadRepo to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -32082,7 +32030,7 @@ func (o *NilPullRequestHeadRepo) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilPullRequestHeadRepo", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilPullRequestHeadRepo`, d.Next())
 	}
 }
 
@@ -32098,7 +32046,7 @@ func (o NilPullRequestHeadRepoLicense) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PullRequestHeadRepoLicense from json iterator.
 func (o *NilPullRequestHeadRepoLicense) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilPullRequestHeadRepoLicense to nil`)
+		return errors.New(`invalid: unable to decode NilPullRequestHeadRepoLicense to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -32116,7 +32064,7 @@ func (o *NilPullRequestHeadRepoLicense) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilPullRequestHeadRepoLicense", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilPullRequestHeadRepoLicense`, d.Next())
 	}
 }
 
@@ -32132,7 +32080,7 @@ func (o NilReposUpdateBranchProtectionReqRequiredPullRequestReviews) WriteJSON(e
 // ReadJSON reads json value of ReposUpdateBranchProtectionReqRequiredPullRequestReviews from json iterator.
 func (o *NilReposUpdateBranchProtectionReqRequiredPullRequestReviews) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilReposUpdateBranchProtectionReqRequiredPullRequestReviews to nil`)
+		return errors.New(`invalid: unable to decode NilReposUpdateBranchProtectionReqRequiredPullRequestReviews to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -32150,7 +32098,7 @@ func (o *NilReposUpdateBranchProtectionReqRequiredPullRequestReviews) ReadJSON(d
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilReposUpdateBranchProtectionReqRequiredPullRequestReviews", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilReposUpdateBranchProtectionReqRequiredPullRequestReviews`, d.Next())
 	}
 }
 
@@ -32166,7 +32114,7 @@ func (o NilReposUpdateBranchProtectionReqRequiredStatusChecks) WriteJSON(e *json
 // ReadJSON reads json value of ReposUpdateBranchProtectionReqRequiredStatusChecks from json iterator.
 func (o *NilReposUpdateBranchProtectionReqRequiredStatusChecks) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilReposUpdateBranchProtectionReqRequiredStatusChecks to nil`)
+		return errors.New(`invalid: unable to decode NilReposUpdateBranchProtectionReqRequiredStatusChecks to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -32184,7 +32132,7 @@ func (o *NilReposUpdateBranchProtectionReqRequiredStatusChecks) ReadJSON(d *json
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilReposUpdateBranchProtectionReqRequiredStatusChecks", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilReposUpdateBranchProtectionReqRequiredStatusChecks`, d.Next())
 	}
 }
 
@@ -32200,7 +32148,7 @@ func (o NilReposUpdateBranchProtectionReqRestrictions) WriteJSON(e *json.Encoder
 // ReadJSON reads json value of ReposUpdateBranchProtectionReqRestrictions from json iterator.
 func (o *NilReposUpdateBranchProtectionReqRestrictions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilReposUpdateBranchProtectionReqRestrictions to nil`)
+		return errors.New(`invalid: unable to decode NilReposUpdateBranchProtectionReqRestrictions to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -32218,7 +32166,7 @@ func (o *NilReposUpdateBranchProtectionReqRestrictions) ReadJSON(d *json.Decoder
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilReposUpdateBranchProtectionReqRestrictions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilReposUpdateBranchProtectionReqRestrictions`, d.Next())
 	}
 }
 
@@ -32234,7 +32182,7 @@ func (o NilSimpleCommitAuthor) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of SimpleCommitAuthor from json iterator.
 func (o *NilSimpleCommitAuthor) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilSimpleCommitAuthor to nil`)
+		return errors.New(`invalid: unable to decode NilSimpleCommitAuthor to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -32252,7 +32200,7 @@ func (o *NilSimpleCommitAuthor) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilSimpleCommitAuthor", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilSimpleCommitAuthor`, d.Next())
 	}
 }
 
@@ -32268,7 +32216,7 @@ func (o NilSimpleCommitCommitter) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of SimpleCommitCommitter from json iterator.
 func (o *NilSimpleCommitCommitter) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilSimpleCommitCommitter to nil`)
+		return errors.New(`invalid: unable to decode NilSimpleCommitCommitter to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -32286,7 +32234,7 @@ func (o *NilSimpleCommitCommitter) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilSimpleCommitCommitter", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilSimpleCommitCommitter`, d.Next())
 	}
 }
 
@@ -32302,7 +32250,7 @@ func (o NilString) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of string from json iterator.
 func (o *NilString) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilString to nil`)
+		return errors.New(`invalid: unable to decode NilString to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -32322,7 +32270,7 @@ func (o *NilString) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilString", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilString`, d.Next())
 	}
 }
 
@@ -32338,7 +32286,7 @@ func (o NilTime) WriteJSON(e *json.Encoder, format func(*json.Encoder, time.Time
 // ReadJSON reads json value of time.Time from json iterator.
 func (o *NilTime) ReadJSON(d *json.Decoder, format func(*json.Decoder) (time.Time, error)) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilTime to nil`)
+		return errors.New(`invalid: unable to decode NilTime to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -32358,7 +32306,7 @@ func (o *NilTime) ReadJSON(d *json.Decoder, format func(*json.Decoder) (time.Tim
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilTime", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilTime`, d.Next())
 	}
 }
 
@@ -32374,7 +32322,7 @@ func (o NilURL) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of url.URL from json iterator.
 func (o *NilURL) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode NilURL to nil`)
+		return errors.New(`invalid: unable to decode NilURL to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -32394,7 +32342,7 @@ func (o *NilURL) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading NilURL", d.Next())
+		return errors.Errorf(`unexpected type %q while reading NilURL`, d.Next())
 	}
 }
 
@@ -32409,7 +32357,7 @@ func (s NoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads NoContent from json stream.
 func (s *NoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NoContent to nil`)
+		return errors.New(`invalid: unable to decode NoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -32431,7 +32379,7 @@ func (s NotModified) WriteJSON(e *json.Encoder) {
 // ReadJSON reads NotModified from json stream.
 func (s *NotModified) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NotModified to nil`)
+		return errors.New(`invalid: unable to decode NotModified to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -32465,7 +32413,7 @@ func (s NullableCodeOfConductSimple) WriteJSON(e *json.Encoder) {
 // ReadJSON reads NullableCodeOfConductSimple from json stream.
 func (s *NullableCodeOfConductSimple) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NullableCodeOfConductSimple to nil`)
+		return errors.New(`invalid: unable to decode NullableCodeOfConductSimple to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -32515,7 +32463,7 @@ func (s NullableCommunityHealthFile) WriteJSON(e *json.Encoder) {
 // ReadJSON reads NullableCommunityHealthFile from json stream.
 func (s *NullableCommunityHealthFile) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NullableCommunityHealthFile to nil`)
+		return errors.New(`invalid: unable to decode NullableCommunityHealthFile to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -32564,7 +32512,7 @@ func (s NullableGitUser) WriteJSON(e *json.Encoder) {
 // ReadJSON reads NullableGitUser from json stream.
 func (s *NullableGitUser) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NullableGitUser to nil`)
+		return errors.New(`invalid: unable to decode NullableGitUser to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -32671,7 +32619,7 @@ func (s NullableIntegration) WriteJSON(e *json.Encoder) {
 // ReadJSON reads NullableIntegration from json stream.
 func (s *NullableIntegration) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NullableIntegration to nil`)
+		return errors.New(`invalid: unable to decode NullableIntegration to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -32816,7 +32764,7 @@ func (s NullableIntegrationPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads NullableIntegrationPermissions from json stream.
 func (s *NullableIntegrationPermissions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NullableIntegrationPermissions to nil`)
+		return errors.New(`invalid: unable to decode NullableIntegrationPermissions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -32883,7 +32831,7 @@ func (s NullableLicenseSimple) WriteJSON(e *json.Encoder) {
 // ReadJSON reads NullableLicenseSimple from json stream.
 func (s *NullableLicenseSimple) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NullableLicenseSimple to nil`)
+		return errors.New(`invalid: unable to decode NullableLicenseSimple to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -32984,7 +32932,7 @@ func (s NullableMilestone) WriteJSON(e *json.Encoder) {
 // ReadJSON reads NullableMilestone from json stream.
 func (s *NullableMilestone) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NullableMilestone to nil`)
+		return errors.New(`invalid: unable to decode NullableMilestone to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -33089,7 +33037,7 @@ func (s NullableMilestoneState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads NullableMilestoneState from json reader.
 func (s *NullableMilestoneState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NullableMilestoneState to nil`)
+		return errors.New(`invalid: unable to decode NullableMilestoneState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -33445,7 +33393,7 @@ func (s NullableMinimalRepository) WriteJSON(e *json.Encoder) {
 // ReadJSON reads NullableMinimalRepository from json stream.
 func (s *NullableMinimalRepository) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NullableMinimalRepository to nil`)
+		return errors.New(`invalid: unable to decode NullableMinimalRepository to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -33963,7 +33911,7 @@ func (s NullableMinimalRepositoryLicense) WriteJSON(e *json.Encoder) {
 // ReadJSON reads NullableMinimalRepositoryLicense from json stream.
 func (s *NullableMinimalRepositoryLicense) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NullableMinimalRepositoryLicense to nil`)
+		return errors.New(`invalid: unable to decode NullableMinimalRepositoryLicense to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -34035,7 +33983,7 @@ func (s NullableMinimalRepositoryPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads NullableMinimalRepositoryPermissions from json stream.
 func (s *NullableMinimalRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NullableMinimalRepositoryPermissions to nil`)
+		return errors.New(`invalid: unable to decode NullableMinimalRepositoryPermissions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -34393,7 +34341,7 @@ func (s NullableRepository) WriteJSON(e *json.Encoder) {
 // ReadJSON reads NullableRepository from json stream.
 func (s *NullableRepository) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NullableRepository to nil`)
+		return errors.New(`invalid: unable to decode NullableRepository to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -34948,7 +34896,7 @@ func (s NullableRepositoryPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads NullableRepositoryPermissions from json stream.
 func (s *NullableRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NullableRepositoryPermissions to nil`)
+		return errors.New(`invalid: unable to decode NullableRepositoryPermissions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -35410,7 +35358,7 @@ func (s NullableRepositoryTemplateRepository) WriteJSON(e *json.Encoder) {
 // ReadJSON reads NullableRepositoryTemplateRepository from json stream.
 func (s *NullableRepositoryTemplateRepository) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NullableRepositoryTemplateRepository to nil`)
+		return errors.New(`invalid: unable to decode NullableRepositoryTemplateRepository to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -35936,7 +35884,7 @@ func (s NullableRepositoryTemplateRepositoryOwner) WriteJSON(e *json.Encoder) {
 // ReadJSON reads NullableRepositoryTemplateRepositoryOwner from json stream.
 func (s *NullableRepositoryTemplateRepositoryOwner) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NullableRepositoryTemplateRepositoryOwner to nil`)
+		return errors.New(`invalid: unable to decode NullableRepositoryTemplateRepositoryOwner to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -36073,7 +36021,7 @@ func (s NullableRepositoryTemplateRepositoryPermissions) WriteJSON(e *json.Encod
 // ReadJSON reads NullableRepositoryTemplateRepositoryPermissions from json stream.
 func (s *NullableRepositoryTemplateRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NullableRepositoryTemplateRepositoryPermissions to nil`)
+		return errors.New(`invalid: unable to decode NullableRepositoryTemplateRepositoryPermissions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -36152,7 +36100,7 @@ func (s NullableScopedInstallation) WriteJSON(e *json.Encoder) {
 // ReadJSON reads NullableScopedInstallation from json stream.
 func (s *NullableScopedInstallation) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NullableScopedInstallation to nil`)
+		return errors.New(`invalid: unable to decode NullableScopedInstallation to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -36212,7 +36160,7 @@ func (s NullableScopedInstallationRepositorySelection) WriteJSON(e *json.Encoder
 // ReadJSON reads NullableScopedInstallationRepositorySelection from json reader.
 func (s *NullableScopedInstallationRepositorySelection) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NullableScopedInstallationRepositorySelection to nil`)
+		return errors.New(`invalid: unable to decode NullableScopedInstallationRepositorySelection to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -36251,7 +36199,7 @@ func (s NullableSimpleCommit) WriteJSON(e *json.Encoder) {
 // ReadJSON reads NullableSimpleCommit from json stream.
 func (s *NullableSimpleCommit) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NullableSimpleCommit to nil`)
+		return errors.New(`invalid: unable to decode NullableSimpleCommit to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -36311,7 +36259,7 @@ func (s NullableSimpleCommitAuthor) WriteJSON(e *json.Encoder) {
 // ReadJSON reads NullableSimpleCommitAuthor from json stream.
 func (s *NullableSimpleCommitAuthor) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NullableSimpleCommitAuthor to nil`)
+		return errors.New(`invalid: unable to decode NullableSimpleCommitAuthor to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -36351,7 +36299,7 @@ func (s NullableSimpleCommitCommitter) WriteJSON(e *json.Encoder) {
 // ReadJSON reads NullableSimpleCommitCommitter from json stream.
 func (s *NullableSimpleCommitCommitter) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NullableSimpleCommitCommitter to nil`)
+		return errors.New(`invalid: unable to decode NullableSimpleCommitCommitter to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -36454,7 +36402,7 @@ func (s NullableSimpleUser) WriteJSON(e *json.Encoder) {
 // ReadJSON reads NullableSimpleUser from json stream.
 func (s *NullableSimpleUser) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NullableSimpleUser to nil`)
+		return errors.New(`invalid: unable to decode NullableSimpleUser to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -36637,7 +36585,7 @@ func (s NullableTeamSimple) WriteJSON(e *json.Encoder) {
 // ReadJSON reads NullableTeamSimple from json stream.
 func (s *NullableTeamSimple) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NullableTeamSimple to nil`)
+		return errors.New(`invalid: unable to decode NullableTeamSimple to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -36757,7 +36705,7 @@ func (s OAuthAuthorizationsCreateAuthorizationReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OAuthAuthorizationsCreateAuthorizationReq from json stream.
 func (s *OAuthAuthorizationsCreateAuthorizationReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsCreateAuthorizationReq to nil`)
+		return errors.New(`invalid: unable to decode OAuthAuthorizationsCreateAuthorizationReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -36819,7 +36767,7 @@ func (s OAuthAuthorizationsDeleteAuthorizationNoContent) WriteJSON(e *json.Encod
 // ReadJSON reads OAuthAuthorizationsDeleteAuthorizationNoContent from json stream.
 func (s *OAuthAuthorizationsDeleteAuthorizationNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsDeleteAuthorizationNoContent to nil`)
+		return errors.New(`invalid: unable to decode OAuthAuthorizationsDeleteAuthorizationNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -36851,7 +36799,7 @@ func (s OAuthAuthorizationsDeleteGrantNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OAuthAuthorizationsDeleteGrantNoContent from json stream.
 func (s *OAuthAuthorizationsDeleteGrantNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsDeleteGrantNoContent to nil`)
+		return errors.New(`invalid: unable to decode OAuthAuthorizationsDeleteGrantNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -36911,7 +36859,7 @@ func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Writ
 // ReadJSON reads OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq from json stream.
 func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq to nil`)
+		return errors.New(`invalid: unable to decode OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -36977,7 +36925,7 @@ func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) WriteJSON(e *json.
 // ReadJSON reads OAuthAuthorizationsGetOrCreateAuthorizationForAppReq from json stream.
 func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsGetOrCreateAuthorizationForAppReq to nil`)
+		return errors.New(`invalid: unable to decode OAuthAuthorizationsGetOrCreateAuthorizationForAppReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -37107,7 +37055,7 @@ func (s OAuthAuthorizationsUpdateAuthorizationReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OAuthAuthorizationsUpdateAuthorizationReq from json stream.
 func (s *OAuthAuthorizationsUpdateAuthorizationReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OAuthAuthorizationsUpdateAuthorizationReq to nil`)
+		return errors.New(`invalid: unable to decode OAuthAuthorizationsUpdateAuthorizationReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -37174,7 +37122,7 @@ func (o OptAPIOverviewSSHKeyFingerprints) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of APIOverviewSSHKeyFingerprints from json iterator.
 func (o *OptAPIOverviewSSHKeyFingerprints) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAPIOverviewSSHKeyFingerprints to nil`)
+		return errors.New(`invalid: unable to decode OptAPIOverviewSSHKeyFingerprints to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -37184,7 +37132,7 @@ func (o *OptAPIOverviewSSHKeyFingerprints) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAPIOverviewSSHKeyFingerprints", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAPIOverviewSSHKeyFingerprints`, d.Next())
 	}
 }
 
@@ -37196,7 +37144,7 @@ func (o OptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) WriteJSON(e *j
 // ReadJSON reads json value of ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility from json iterator.
 func (o *OptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility to nil`)
+		return errors.New(`invalid: unable to decode OptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37208,7 +37156,7 @@ func (o *OptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) ReadJSON(d *j
 		o.Value = ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility`, d.Next())
 	}
 }
 
@@ -37220,7 +37168,7 @@ func (o OptActionsListJobsForWorkflowRunFilter) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ActionsListJobsForWorkflowRunFilter from json iterator.
 func (o *OptActionsListJobsForWorkflowRunFilter) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptActionsListJobsForWorkflowRunFilter to nil`)
+		return errors.New(`invalid: unable to decode OptActionsListJobsForWorkflowRunFilter to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37232,7 +37180,7 @@ func (o *OptActionsListJobsForWorkflowRunFilter) ReadJSON(d *json.Decoder) error
 		o.Value = ActionsListJobsForWorkflowRunFilter(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptActionsListJobsForWorkflowRunFilter", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptActionsListJobsForWorkflowRunFilter`, d.Next())
 	}
 }
 
@@ -37244,7 +37192,7 @@ func (o OptActionsListWorkflowRunsForRepoStatus) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ActionsListWorkflowRunsForRepoStatus from json iterator.
 func (o *OptActionsListWorkflowRunsForRepoStatus) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptActionsListWorkflowRunsForRepoStatus to nil`)
+		return errors.New(`invalid: unable to decode OptActionsListWorkflowRunsForRepoStatus to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37256,7 +37204,7 @@ func (o *OptActionsListWorkflowRunsForRepoStatus) ReadJSON(d *json.Decoder) erro
 		o.Value = ActionsListWorkflowRunsForRepoStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptActionsListWorkflowRunsForRepoStatus", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptActionsListWorkflowRunsForRepoStatus`, d.Next())
 	}
 }
 
@@ -37268,7 +37216,7 @@ func (o OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) WriteJSON(e *j
 // ReadJSON reads json value of ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility from json iterator.
 func (o *OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility to nil`)
+		return errors.New(`invalid: unable to decode OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37280,7 +37228,7 @@ func (o *OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) ReadJSON(d *j
 		o.Value = ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility`, d.Next())
 	}
 }
 
@@ -37292,7 +37240,7 @@ func (o OptActivityListReposStarredByAuthenticatedUserDirection) WriteJSON(e *js
 // ReadJSON reads json value of ActivityListReposStarredByAuthenticatedUserDirection from json iterator.
 func (o *OptActivityListReposStarredByAuthenticatedUserDirection) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptActivityListReposStarredByAuthenticatedUserDirection to nil`)
+		return errors.New(`invalid: unable to decode OptActivityListReposStarredByAuthenticatedUserDirection to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37304,7 +37252,7 @@ func (o *OptActivityListReposStarredByAuthenticatedUserDirection) ReadJSON(d *js
 		o.Value = ActivityListReposStarredByAuthenticatedUserDirection(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptActivityListReposStarredByAuthenticatedUserDirection", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptActivityListReposStarredByAuthenticatedUserDirection`, d.Next())
 	}
 }
 
@@ -37316,7 +37264,7 @@ func (o OptActivityListReposStarredByAuthenticatedUserSort) WriteJSON(e *json.En
 // ReadJSON reads json value of ActivityListReposStarredByAuthenticatedUserSort from json iterator.
 func (o *OptActivityListReposStarredByAuthenticatedUserSort) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptActivityListReposStarredByAuthenticatedUserSort to nil`)
+		return errors.New(`invalid: unable to decode OptActivityListReposStarredByAuthenticatedUserSort to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37328,7 +37276,7 @@ func (o *OptActivityListReposStarredByAuthenticatedUserSort) ReadJSON(d *json.De
 		o.Value = ActivityListReposStarredByAuthenticatedUserSort(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptActivityListReposStarredByAuthenticatedUserSort", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptActivityListReposStarredByAuthenticatedUserSort`, d.Next())
 	}
 }
 
@@ -37340,7 +37288,7 @@ func (o OptActor) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of Actor from json iterator.
 func (o *OptActor) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptActor to nil`)
+		return errors.New(`invalid: unable to decode OptActor to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -37350,7 +37298,7 @@ func (o *OptActor) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptActor", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptActor`, d.Next())
 	}
 }
 
@@ -37361,14 +37309,14 @@ func (o OptAlertCreatedAt) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AlertCreatedAt from json iterator.
 func (o *OptAlertCreatedAt) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAlertCreatedAt to nil`)
+		return errors.New(`invalid: unable to decode OptAlertCreatedAt to nil`)
 	}
 	switch d.Next() {
 	case json.String:
 		o.Set = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAlertCreatedAt", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAlertCreatedAt`, d.Next())
 	}
 }
 
@@ -37379,14 +37327,14 @@ func (o OptAlertHTMLURL) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AlertHTMLURL from json iterator.
 func (o *OptAlertHTMLURL) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAlertHTMLURL to nil`)
+		return errors.New(`invalid: unable to decode OptAlertHTMLURL to nil`)
 	}
 	switch d.Next() {
 	case json.String:
 		o.Set = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAlertHTMLURL", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAlertHTMLURL`, d.Next())
 	}
 }
 
@@ -37397,14 +37345,14 @@ func (o OptAlertNumber) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AlertNumber from json iterator.
 func (o *OptAlertNumber) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAlertNumber to nil`)
+		return errors.New(`invalid: unable to decode OptAlertNumber to nil`)
 	}
 	switch d.Next() {
 	case json.String:
 		o.Set = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAlertNumber", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAlertNumber`, d.Next())
 	}
 }
 
@@ -37415,14 +37363,14 @@ func (o OptAlertURL) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AlertURL from json iterator.
 func (o *OptAlertURL) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAlertURL to nil`)
+		return errors.New(`invalid: unable to decode OptAlertURL to nil`)
 	}
 	switch d.Next() {
 	case json.String:
 		o.Set = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAlertURL", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAlertURL`, d.Next())
 	}
 }
 
@@ -37434,7 +37382,7 @@ func (o OptAllowedActions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AllowedActions from json iterator.
 func (o *OptAllowedActions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAllowedActions to nil`)
+		return errors.New(`invalid: unable to decode OptAllowedActions to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37446,7 +37394,7 @@ func (o *OptAllowedActions) ReadJSON(d *json.Decoder) error {
 		o.Value = AllowedActions(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAllowedActions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAllowedActions`, d.Next())
 	}
 }
 
@@ -37458,7 +37406,7 @@ func (o OptAppPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissions from json iterator.
 func (o *OptAppPermissions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissions to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissions to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -37468,7 +37416,7 @@ func (o *OptAppPermissions) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissions`, d.Next())
 	}
 }
 
@@ -37480,7 +37428,7 @@ func (o OptAppPermissionsActions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsActions from json iterator.
 func (o *OptAppPermissionsActions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsActions to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsActions to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37492,7 +37440,7 @@ func (o *OptAppPermissionsActions) ReadJSON(d *json.Decoder) error {
 		o.Value = AppPermissionsActions(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsActions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsActions`, d.Next())
 	}
 }
 
@@ -37504,7 +37452,7 @@ func (o OptAppPermissionsAdministration) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsAdministration from json iterator.
 func (o *OptAppPermissionsAdministration) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsAdministration to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsAdministration to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37516,7 +37464,7 @@ func (o *OptAppPermissionsAdministration) ReadJSON(d *json.Decoder) error {
 		o.Value = AppPermissionsAdministration(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsAdministration", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsAdministration`, d.Next())
 	}
 }
 
@@ -37528,7 +37476,7 @@ func (o OptAppPermissionsChecks) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsChecks from json iterator.
 func (o *OptAppPermissionsChecks) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsChecks to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsChecks to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37540,7 +37488,7 @@ func (o *OptAppPermissionsChecks) ReadJSON(d *json.Decoder) error {
 		o.Value = AppPermissionsChecks(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsChecks", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsChecks`, d.Next())
 	}
 }
 
@@ -37552,7 +37500,7 @@ func (o OptAppPermissionsContentReferences) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsContentReferences from json iterator.
 func (o *OptAppPermissionsContentReferences) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsContentReferences to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsContentReferences to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37564,7 +37512,7 @@ func (o *OptAppPermissionsContentReferences) ReadJSON(d *json.Decoder) error {
 		o.Value = AppPermissionsContentReferences(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsContentReferences", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsContentReferences`, d.Next())
 	}
 }
 
@@ -37576,7 +37524,7 @@ func (o OptAppPermissionsContents) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsContents from json iterator.
 func (o *OptAppPermissionsContents) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsContents to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsContents to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37588,7 +37536,7 @@ func (o *OptAppPermissionsContents) ReadJSON(d *json.Decoder) error {
 		o.Value = AppPermissionsContents(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsContents", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsContents`, d.Next())
 	}
 }
 
@@ -37600,7 +37548,7 @@ func (o OptAppPermissionsDeployments) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsDeployments from json iterator.
 func (o *OptAppPermissionsDeployments) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsDeployments to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsDeployments to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37612,7 +37560,7 @@ func (o *OptAppPermissionsDeployments) ReadJSON(d *json.Decoder) error {
 		o.Value = AppPermissionsDeployments(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsDeployments", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsDeployments`, d.Next())
 	}
 }
 
@@ -37624,7 +37572,7 @@ func (o OptAppPermissionsEnvironments) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsEnvironments from json iterator.
 func (o *OptAppPermissionsEnvironments) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsEnvironments to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsEnvironments to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37636,7 +37584,7 @@ func (o *OptAppPermissionsEnvironments) ReadJSON(d *json.Decoder) error {
 		o.Value = AppPermissionsEnvironments(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsEnvironments", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsEnvironments`, d.Next())
 	}
 }
 
@@ -37648,7 +37596,7 @@ func (o OptAppPermissionsIssues) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsIssues from json iterator.
 func (o *OptAppPermissionsIssues) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsIssues to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsIssues to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37660,7 +37608,7 @@ func (o *OptAppPermissionsIssues) ReadJSON(d *json.Decoder) error {
 		o.Value = AppPermissionsIssues(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsIssues", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsIssues`, d.Next())
 	}
 }
 
@@ -37672,7 +37620,7 @@ func (o OptAppPermissionsMembers) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsMembers from json iterator.
 func (o *OptAppPermissionsMembers) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsMembers to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsMembers to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37684,7 +37632,7 @@ func (o *OptAppPermissionsMembers) ReadJSON(d *json.Decoder) error {
 		o.Value = AppPermissionsMembers(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsMembers", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsMembers`, d.Next())
 	}
 }
 
@@ -37696,7 +37644,7 @@ func (o OptAppPermissionsMetadata) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsMetadata from json iterator.
 func (o *OptAppPermissionsMetadata) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsMetadata to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsMetadata to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37708,7 +37656,7 @@ func (o *OptAppPermissionsMetadata) ReadJSON(d *json.Decoder) error {
 		o.Value = AppPermissionsMetadata(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsMetadata", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsMetadata`, d.Next())
 	}
 }
 
@@ -37720,7 +37668,7 @@ func (o OptAppPermissionsOrganizationAdministration) WriteJSON(e *json.Encoder) 
 // ReadJSON reads json value of AppPermissionsOrganizationAdministration from json iterator.
 func (o *OptAppPermissionsOrganizationAdministration) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsOrganizationAdministration to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsOrganizationAdministration to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37732,7 +37680,7 @@ func (o *OptAppPermissionsOrganizationAdministration) ReadJSON(d *json.Decoder) 
 		o.Value = AppPermissionsOrganizationAdministration(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsOrganizationAdministration", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsOrganizationAdministration`, d.Next())
 	}
 }
 
@@ -37744,7 +37692,7 @@ func (o OptAppPermissionsOrganizationHooks) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsOrganizationHooks from json iterator.
 func (o *OptAppPermissionsOrganizationHooks) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsOrganizationHooks to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsOrganizationHooks to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37756,7 +37704,7 @@ func (o *OptAppPermissionsOrganizationHooks) ReadJSON(d *json.Decoder) error {
 		o.Value = AppPermissionsOrganizationHooks(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsOrganizationHooks", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsOrganizationHooks`, d.Next())
 	}
 }
 
@@ -37768,7 +37716,7 @@ func (o OptAppPermissionsOrganizationPackages) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsOrganizationPackages from json iterator.
 func (o *OptAppPermissionsOrganizationPackages) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsOrganizationPackages to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsOrganizationPackages to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37780,7 +37728,7 @@ func (o *OptAppPermissionsOrganizationPackages) ReadJSON(d *json.Decoder) error 
 		o.Value = AppPermissionsOrganizationPackages(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsOrganizationPackages", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsOrganizationPackages`, d.Next())
 	}
 }
 
@@ -37792,7 +37740,7 @@ func (o OptAppPermissionsOrganizationPlan) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsOrganizationPlan from json iterator.
 func (o *OptAppPermissionsOrganizationPlan) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsOrganizationPlan to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsOrganizationPlan to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37804,7 +37752,7 @@ func (o *OptAppPermissionsOrganizationPlan) ReadJSON(d *json.Decoder) error {
 		o.Value = AppPermissionsOrganizationPlan(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsOrganizationPlan", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsOrganizationPlan`, d.Next())
 	}
 }
 
@@ -37816,7 +37764,7 @@ func (o OptAppPermissionsOrganizationProjects) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsOrganizationProjects from json iterator.
 func (o *OptAppPermissionsOrganizationProjects) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsOrganizationProjects to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsOrganizationProjects to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37828,7 +37776,7 @@ func (o *OptAppPermissionsOrganizationProjects) ReadJSON(d *json.Decoder) error 
 		o.Value = AppPermissionsOrganizationProjects(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsOrganizationProjects", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsOrganizationProjects`, d.Next())
 	}
 }
 
@@ -37840,7 +37788,7 @@ func (o OptAppPermissionsOrganizationSecrets) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsOrganizationSecrets from json iterator.
 func (o *OptAppPermissionsOrganizationSecrets) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsOrganizationSecrets to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsOrganizationSecrets to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37852,7 +37800,7 @@ func (o *OptAppPermissionsOrganizationSecrets) ReadJSON(d *json.Decoder) error {
 		o.Value = AppPermissionsOrganizationSecrets(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsOrganizationSecrets", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsOrganizationSecrets`, d.Next())
 	}
 }
 
@@ -37864,7 +37812,7 @@ func (o OptAppPermissionsOrganizationSelfHostedRunners) WriteJSON(e *json.Encode
 // ReadJSON reads json value of AppPermissionsOrganizationSelfHostedRunners from json iterator.
 func (o *OptAppPermissionsOrganizationSelfHostedRunners) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsOrganizationSelfHostedRunners to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsOrganizationSelfHostedRunners to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37876,7 +37824,7 @@ func (o *OptAppPermissionsOrganizationSelfHostedRunners) ReadJSON(d *json.Decode
 		o.Value = AppPermissionsOrganizationSelfHostedRunners(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsOrganizationSelfHostedRunners", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsOrganizationSelfHostedRunners`, d.Next())
 	}
 }
 
@@ -37888,7 +37836,7 @@ func (o OptAppPermissionsOrganizationUserBlocking) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsOrganizationUserBlocking from json iterator.
 func (o *OptAppPermissionsOrganizationUserBlocking) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsOrganizationUserBlocking to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsOrganizationUserBlocking to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37900,7 +37848,7 @@ func (o *OptAppPermissionsOrganizationUserBlocking) ReadJSON(d *json.Decoder) er
 		o.Value = AppPermissionsOrganizationUserBlocking(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsOrganizationUserBlocking", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsOrganizationUserBlocking`, d.Next())
 	}
 }
 
@@ -37912,7 +37860,7 @@ func (o OptAppPermissionsPackages) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsPackages from json iterator.
 func (o *OptAppPermissionsPackages) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsPackages to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsPackages to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37924,7 +37872,7 @@ func (o *OptAppPermissionsPackages) ReadJSON(d *json.Decoder) error {
 		o.Value = AppPermissionsPackages(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsPackages", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsPackages`, d.Next())
 	}
 }
 
@@ -37936,7 +37884,7 @@ func (o OptAppPermissionsPages) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsPages from json iterator.
 func (o *OptAppPermissionsPages) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsPages to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsPages to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37948,7 +37896,7 @@ func (o *OptAppPermissionsPages) ReadJSON(d *json.Decoder) error {
 		o.Value = AppPermissionsPages(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsPages", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsPages`, d.Next())
 	}
 }
 
@@ -37960,7 +37908,7 @@ func (o OptAppPermissionsPullRequests) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsPullRequests from json iterator.
 func (o *OptAppPermissionsPullRequests) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsPullRequests to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsPullRequests to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37972,7 +37920,7 @@ func (o *OptAppPermissionsPullRequests) ReadJSON(d *json.Decoder) error {
 		o.Value = AppPermissionsPullRequests(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsPullRequests", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsPullRequests`, d.Next())
 	}
 }
 
@@ -37984,7 +37932,7 @@ func (o OptAppPermissionsRepositoryHooks) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsRepositoryHooks from json iterator.
 func (o *OptAppPermissionsRepositoryHooks) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsRepositoryHooks to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsRepositoryHooks to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -37996,7 +37944,7 @@ func (o *OptAppPermissionsRepositoryHooks) ReadJSON(d *json.Decoder) error {
 		o.Value = AppPermissionsRepositoryHooks(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsRepositoryHooks", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsRepositoryHooks`, d.Next())
 	}
 }
 
@@ -38008,7 +37956,7 @@ func (o OptAppPermissionsRepositoryProjects) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsRepositoryProjects from json iterator.
 func (o *OptAppPermissionsRepositoryProjects) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsRepositoryProjects to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsRepositoryProjects to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -38020,7 +37968,7 @@ func (o *OptAppPermissionsRepositoryProjects) ReadJSON(d *json.Decoder) error {
 		o.Value = AppPermissionsRepositoryProjects(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsRepositoryProjects", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsRepositoryProjects`, d.Next())
 	}
 }
 
@@ -38032,7 +37980,7 @@ func (o OptAppPermissionsSecretScanningAlerts) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsSecretScanningAlerts from json iterator.
 func (o *OptAppPermissionsSecretScanningAlerts) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsSecretScanningAlerts to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsSecretScanningAlerts to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -38044,7 +37992,7 @@ func (o *OptAppPermissionsSecretScanningAlerts) ReadJSON(d *json.Decoder) error 
 		o.Value = AppPermissionsSecretScanningAlerts(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsSecretScanningAlerts", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsSecretScanningAlerts`, d.Next())
 	}
 }
 
@@ -38056,7 +38004,7 @@ func (o OptAppPermissionsSecrets) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsSecrets from json iterator.
 func (o *OptAppPermissionsSecrets) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsSecrets to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsSecrets to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -38068,7 +38016,7 @@ func (o *OptAppPermissionsSecrets) ReadJSON(d *json.Decoder) error {
 		o.Value = AppPermissionsSecrets(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsSecrets", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsSecrets`, d.Next())
 	}
 }
 
@@ -38080,7 +38028,7 @@ func (o OptAppPermissionsSecurityEvents) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsSecurityEvents from json iterator.
 func (o *OptAppPermissionsSecurityEvents) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsSecurityEvents to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsSecurityEvents to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -38092,7 +38040,7 @@ func (o *OptAppPermissionsSecurityEvents) ReadJSON(d *json.Decoder) error {
 		o.Value = AppPermissionsSecurityEvents(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsSecurityEvents", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsSecurityEvents`, d.Next())
 	}
 }
 
@@ -38104,7 +38052,7 @@ func (o OptAppPermissionsSingleFile) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsSingleFile from json iterator.
 func (o *OptAppPermissionsSingleFile) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsSingleFile to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsSingleFile to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -38116,7 +38064,7 @@ func (o *OptAppPermissionsSingleFile) ReadJSON(d *json.Decoder) error {
 		o.Value = AppPermissionsSingleFile(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsSingleFile", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsSingleFile`, d.Next())
 	}
 }
 
@@ -38128,7 +38076,7 @@ func (o OptAppPermissionsStatuses) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsStatuses from json iterator.
 func (o *OptAppPermissionsStatuses) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsStatuses to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsStatuses to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -38140,7 +38088,7 @@ func (o *OptAppPermissionsStatuses) ReadJSON(d *json.Decoder) error {
 		o.Value = AppPermissionsStatuses(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsStatuses", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsStatuses`, d.Next())
 	}
 }
 
@@ -38152,7 +38100,7 @@ func (o OptAppPermissionsTeamDiscussions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsTeamDiscussions from json iterator.
 func (o *OptAppPermissionsTeamDiscussions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsTeamDiscussions to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsTeamDiscussions to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -38164,7 +38112,7 @@ func (o *OptAppPermissionsTeamDiscussions) ReadJSON(d *json.Decoder) error {
 		o.Value = AppPermissionsTeamDiscussions(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsTeamDiscussions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsTeamDiscussions`, d.Next())
 	}
 }
 
@@ -38176,7 +38124,7 @@ func (o OptAppPermissionsVulnerabilityAlerts) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsVulnerabilityAlerts from json iterator.
 func (o *OptAppPermissionsVulnerabilityAlerts) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsVulnerabilityAlerts to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsVulnerabilityAlerts to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -38188,7 +38136,7 @@ func (o *OptAppPermissionsVulnerabilityAlerts) ReadJSON(d *json.Decoder) error {
 		o.Value = AppPermissionsVulnerabilityAlerts(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsVulnerabilityAlerts", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsVulnerabilityAlerts`, d.Next())
 	}
 }
 
@@ -38200,7 +38148,7 @@ func (o OptAppPermissionsWorkflows) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppPermissionsWorkflows from json iterator.
 func (o *OptAppPermissionsWorkflows) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppPermissionsWorkflows to nil`)
+		return errors.New(`invalid: unable to decode OptAppPermissionsWorkflows to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -38212,7 +38160,7 @@ func (o *OptAppPermissionsWorkflows) ReadJSON(d *json.Decoder) error {
 		o.Value = AppPermissionsWorkflows(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppPermissionsWorkflows", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsWorkflows`, d.Next())
 	}
 }
 
@@ -38224,7 +38172,7 @@ func (o OptAppsListAccountsForPlanStubbedDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppsListAccountsForPlanStubbedDirection from json iterator.
 func (o *OptAppsListAccountsForPlanStubbedDirection) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppsListAccountsForPlanStubbedDirection to nil`)
+		return errors.New(`invalid: unable to decode OptAppsListAccountsForPlanStubbedDirection to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -38236,7 +38184,7 @@ func (o *OptAppsListAccountsForPlanStubbedDirection) ReadJSON(d *json.Decoder) e
 		o.Value = AppsListAccountsForPlanStubbedDirection(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppsListAccountsForPlanStubbedDirection", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppsListAccountsForPlanStubbedDirection`, d.Next())
 	}
 }
 
@@ -38248,7 +38196,7 @@ func (o OptAppsListAccountsForPlanStubbedSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AppsListAccountsForPlanStubbedSort from json iterator.
 func (o *OptAppsListAccountsForPlanStubbedSort) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAppsListAccountsForPlanStubbedSort to nil`)
+		return errors.New(`invalid: unable to decode OptAppsListAccountsForPlanStubbedSort to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -38260,7 +38208,7 @@ func (o *OptAppsListAccountsForPlanStubbedSort) ReadJSON(d *json.Decoder) error 
 		o.Value = AppsListAccountsForPlanStubbedSort(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAppsListAccountsForPlanStubbedSort", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAppsListAccountsForPlanStubbedSort`, d.Next())
 	}
 }
 
@@ -38272,7 +38220,7 @@ func (o OptAuditLogEventActorLocation) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AuditLogEventActorLocation from json iterator.
 func (o *OptAuditLogEventActorLocation) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAuditLogEventActorLocation to nil`)
+		return errors.New(`invalid: unable to decode OptAuditLogEventActorLocation to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -38282,7 +38230,7 @@ func (o *OptAuditLogEventActorLocation) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAuditLogEventActorLocation", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAuditLogEventActorLocation`, d.Next())
 	}
 }
 
@@ -38294,7 +38242,7 @@ func (o OptAuthenticationTokenRepositorySelection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AuthenticationTokenRepositorySelection from json iterator.
 func (o *OptAuthenticationTokenRepositorySelection) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAuthenticationTokenRepositorySelection to nil`)
+		return errors.New(`invalid: unable to decode OptAuthenticationTokenRepositorySelection to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -38306,7 +38254,7 @@ func (o *OptAuthenticationTokenRepositorySelection) ReadJSON(d *json.Decoder) er
 		o.Value = AuthenticationTokenRepositorySelection(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAuthenticationTokenRepositorySelection", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAuthenticationTokenRepositorySelection`, d.Next())
 	}
 }
 
@@ -38318,7 +38266,7 @@ func (o OptAuthorAssociation) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of AuthorAssociation from json iterator.
 func (o *OptAuthorAssociation) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptAuthorAssociation to nil`)
+		return errors.New(`invalid: unable to decode OptAuthorAssociation to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -38330,7 +38278,7 @@ func (o *OptAuthorAssociation) ReadJSON(d *json.Decoder) error {
 		o.Value = AuthorAssociation(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptAuthorAssociation", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptAuthorAssociation`, d.Next())
 	}
 }
 
@@ -38342,7 +38290,7 @@ func (o OptBool) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of bool from json iterator.
 func (o *OptBool) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptBool to nil`)
+		return errors.New(`invalid: unable to decode OptBool to nil`)
 	}
 	switch d.Next() {
 	case json.Bool:
@@ -38354,7 +38302,7 @@ func (o *OptBool) ReadJSON(d *json.Decoder) error {
 		o.Value = bool(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptBool", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptBool`, d.Next())
 	}
 }
 
@@ -38366,7 +38314,7 @@ func (o OptBranchProtection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of BranchProtection from json iterator.
 func (o *OptBranchProtection) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptBranchProtection to nil`)
+		return errors.New(`invalid: unable to decode OptBranchProtection to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -38376,7 +38324,7 @@ func (o *OptBranchProtection) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptBranchProtection", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptBranchProtection`, d.Next())
 	}
 }
 
@@ -38388,7 +38336,7 @@ func (o OptBranchProtectionAllowDeletions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of BranchProtectionAllowDeletions from json iterator.
 func (o *OptBranchProtectionAllowDeletions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptBranchProtectionAllowDeletions to nil`)
+		return errors.New(`invalid: unable to decode OptBranchProtectionAllowDeletions to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -38398,7 +38346,7 @@ func (o *OptBranchProtectionAllowDeletions) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptBranchProtectionAllowDeletions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptBranchProtectionAllowDeletions`, d.Next())
 	}
 }
 
@@ -38410,7 +38358,7 @@ func (o OptBranchProtectionAllowForcePushes) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of BranchProtectionAllowForcePushes from json iterator.
 func (o *OptBranchProtectionAllowForcePushes) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptBranchProtectionAllowForcePushes to nil`)
+		return errors.New(`invalid: unable to decode OptBranchProtectionAllowForcePushes to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -38420,7 +38368,7 @@ func (o *OptBranchProtectionAllowForcePushes) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptBranchProtectionAllowForcePushes", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptBranchProtectionAllowForcePushes`, d.Next())
 	}
 }
 
@@ -38432,7 +38380,7 @@ func (o OptBranchProtectionRequiredConversationResolution) WriteJSON(e *json.Enc
 // ReadJSON reads json value of BranchProtectionRequiredConversationResolution from json iterator.
 func (o *OptBranchProtectionRequiredConversationResolution) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptBranchProtectionRequiredConversationResolution to nil`)
+		return errors.New(`invalid: unable to decode OptBranchProtectionRequiredConversationResolution to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -38442,7 +38390,7 @@ func (o *OptBranchProtectionRequiredConversationResolution) ReadJSON(d *json.Dec
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptBranchProtectionRequiredConversationResolution", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptBranchProtectionRequiredConversationResolution`, d.Next())
 	}
 }
 
@@ -38454,7 +38402,7 @@ func (o OptBranchProtectionRequiredLinearHistory) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of BranchProtectionRequiredLinearHistory from json iterator.
 func (o *OptBranchProtectionRequiredLinearHistory) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptBranchProtectionRequiredLinearHistory to nil`)
+		return errors.New(`invalid: unable to decode OptBranchProtectionRequiredLinearHistory to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -38464,7 +38412,7 @@ func (o *OptBranchProtectionRequiredLinearHistory) ReadJSON(d *json.Decoder) err
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptBranchProtectionRequiredLinearHistory", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptBranchProtectionRequiredLinearHistory`, d.Next())
 	}
 }
 
@@ -38476,7 +38424,7 @@ func (o OptBranchProtectionRequiredSignatures) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of BranchProtectionRequiredSignatures from json iterator.
 func (o *OptBranchProtectionRequiredSignatures) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptBranchProtectionRequiredSignatures to nil`)
+		return errors.New(`invalid: unable to decode OptBranchProtectionRequiredSignatures to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -38486,7 +38434,7 @@ func (o *OptBranchProtectionRequiredSignatures) ReadJSON(d *json.Decoder) error 
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptBranchProtectionRequiredSignatures", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptBranchProtectionRequiredSignatures`, d.Next())
 	}
 }
 
@@ -38498,7 +38446,7 @@ func (o OptBranchProtectionRequiredStatusChecks) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of BranchProtectionRequiredStatusChecks from json iterator.
 func (o *OptBranchProtectionRequiredStatusChecks) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptBranchProtectionRequiredStatusChecks to nil`)
+		return errors.New(`invalid: unable to decode OptBranchProtectionRequiredStatusChecks to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -38508,7 +38456,7 @@ func (o *OptBranchProtectionRequiredStatusChecks) ReadJSON(d *json.Decoder) erro
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptBranchProtectionRequiredStatusChecks", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptBranchProtectionRequiredStatusChecks`, d.Next())
 	}
 }
 
@@ -38520,7 +38468,7 @@ func (o OptBranchRestrictionPolicy) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of BranchRestrictionPolicy from json iterator.
 func (o *OptBranchRestrictionPolicy) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptBranchRestrictionPolicy to nil`)
+		return errors.New(`invalid: unable to decode OptBranchRestrictionPolicy to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -38530,7 +38478,7 @@ func (o *OptBranchRestrictionPolicy) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptBranchRestrictionPolicy", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptBranchRestrictionPolicy`, d.Next())
 	}
 }
 
@@ -38542,7 +38490,7 @@ func (o OptBranchRestrictionPolicyAppsItemOwner) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of BranchRestrictionPolicyAppsItemOwner from json iterator.
 func (o *OptBranchRestrictionPolicyAppsItemOwner) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptBranchRestrictionPolicyAppsItemOwner to nil`)
+		return errors.New(`invalid: unable to decode OptBranchRestrictionPolicyAppsItemOwner to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -38552,7 +38500,7 @@ func (o *OptBranchRestrictionPolicyAppsItemOwner) ReadJSON(d *json.Decoder) erro
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptBranchRestrictionPolicyAppsItemOwner", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptBranchRestrictionPolicyAppsItemOwner`, d.Next())
 	}
 }
 
@@ -38564,7 +38512,7 @@ func (o OptBranchRestrictionPolicyAppsItemPermissions) WriteJSON(e *json.Encoder
 // ReadJSON reads json value of BranchRestrictionPolicyAppsItemPermissions from json iterator.
 func (o *OptBranchRestrictionPolicyAppsItemPermissions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptBranchRestrictionPolicyAppsItemPermissions to nil`)
+		return errors.New(`invalid: unable to decode OptBranchRestrictionPolicyAppsItemPermissions to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -38574,7 +38522,7 @@ func (o *OptBranchRestrictionPolicyAppsItemPermissions) ReadJSON(d *json.Decoder
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptBranchRestrictionPolicyAppsItemPermissions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptBranchRestrictionPolicyAppsItemPermissions`, d.Next())
 	}
 }
 
@@ -38586,7 +38534,7 @@ func (o OptChecksListForRefFilter) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ChecksListForRefFilter from json iterator.
 func (o *OptChecksListForRefFilter) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptChecksListForRefFilter to nil`)
+		return errors.New(`invalid: unable to decode OptChecksListForRefFilter to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -38598,7 +38546,7 @@ func (o *OptChecksListForRefFilter) ReadJSON(d *json.Decoder) error {
 		o.Value = ChecksListForRefFilter(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptChecksListForRefFilter", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptChecksListForRefFilter`, d.Next())
 	}
 }
 
@@ -38610,7 +38558,7 @@ func (o OptChecksListForRefStatus) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ChecksListForRefStatus from json iterator.
 func (o *OptChecksListForRefStatus) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptChecksListForRefStatus to nil`)
+		return errors.New(`invalid: unable to decode OptChecksListForRefStatus to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -38622,7 +38570,7 @@ func (o *OptChecksListForRefStatus) ReadJSON(d *json.Decoder) error {
 		o.Value = ChecksListForRefStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptChecksListForRefStatus", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptChecksListForRefStatus`, d.Next())
 	}
 }
 
@@ -38634,7 +38582,7 @@ func (o OptChecksListForSuiteFilter) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ChecksListForSuiteFilter from json iterator.
 func (o *OptChecksListForSuiteFilter) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptChecksListForSuiteFilter to nil`)
+		return errors.New(`invalid: unable to decode OptChecksListForSuiteFilter to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -38646,7 +38594,7 @@ func (o *OptChecksListForSuiteFilter) ReadJSON(d *json.Decoder) error {
 		o.Value = ChecksListForSuiteFilter(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptChecksListForSuiteFilter", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptChecksListForSuiteFilter`, d.Next())
 	}
 }
 
@@ -38658,7 +38606,7 @@ func (o OptChecksListForSuiteStatus) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ChecksListForSuiteStatus from json iterator.
 func (o *OptChecksListForSuiteStatus) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptChecksListForSuiteStatus to nil`)
+		return errors.New(`invalid: unable to decode OptChecksListForSuiteStatus to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -38670,7 +38618,7 @@ func (o *OptChecksListForSuiteStatus) ReadJSON(d *json.Decoder) error {
 		o.Value = ChecksListForSuiteStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptChecksListForSuiteStatus", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptChecksListForSuiteStatus`, d.Next())
 	}
 }
 
@@ -38682,7 +38630,7 @@ func (o OptCodeOfConduct) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of CodeOfConduct from json iterator.
 func (o *OptCodeOfConduct) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptCodeOfConduct to nil`)
+		return errors.New(`invalid: unable to decode OptCodeOfConduct to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -38692,7 +38640,7 @@ func (o *OptCodeOfConduct) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptCodeOfConduct", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptCodeOfConduct`, d.Next())
 	}
 }
 
@@ -38704,7 +38652,7 @@ func (o OptCodeOfConductSimple) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of CodeOfConductSimple from json iterator.
 func (o *OptCodeOfConductSimple) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptCodeOfConductSimple to nil`)
+		return errors.New(`invalid: unable to decode OptCodeOfConductSimple to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -38714,7 +38662,7 @@ func (o *OptCodeOfConductSimple) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptCodeOfConductSimple", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptCodeOfConductSimple`, d.Next())
 	}
 }
 
@@ -38725,14 +38673,14 @@ func (o OptCodeScanningAlertEnvironment) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of CodeScanningAlertEnvironment from json iterator.
 func (o *OptCodeScanningAlertEnvironment) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptCodeScanningAlertEnvironment to nil`)
+		return errors.New(`invalid: unable to decode OptCodeScanningAlertEnvironment to nil`)
 	}
 	switch d.Next() {
 	case json.String:
 		o.Set = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptCodeScanningAlertEnvironment", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptCodeScanningAlertEnvironment`, d.Next())
 	}
 }
 
@@ -38744,7 +38692,7 @@ func (o OptCodeScanningAlertInstanceMessage) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of CodeScanningAlertInstanceMessage from json iterator.
 func (o *OptCodeScanningAlertInstanceMessage) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptCodeScanningAlertInstanceMessage to nil`)
+		return errors.New(`invalid: unable to decode OptCodeScanningAlertInstanceMessage to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -38754,7 +38702,7 @@ func (o *OptCodeScanningAlertInstanceMessage) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptCodeScanningAlertInstanceMessage", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptCodeScanningAlertInstanceMessage`, d.Next())
 	}
 }
 
@@ -38766,7 +38714,7 @@ func (o OptCodeScanningAlertLocation) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of CodeScanningAlertLocation from json iterator.
 func (o *OptCodeScanningAlertLocation) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptCodeScanningAlertLocation to nil`)
+		return errors.New(`invalid: unable to decode OptCodeScanningAlertLocation to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -38776,7 +38724,7 @@ func (o *OptCodeScanningAlertLocation) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptCodeScanningAlertLocation", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptCodeScanningAlertLocation`, d.Next())
 	}
 }
 
@@ -38788,7 +38736,7 @@ func (o OptCodeScanningAlertState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of CodeScanningAlertState from json iterator.
 func (o *OptCodeScanningAlertState) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptCodeScanningAlertState to nil`)
+		return errors.New(`invalid: unable to decode OptCodeScanningAlertState to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -38800,7 +38748,7 @@ func (o *OptCodeScanningAlertState) ReadJSON(d *json.Decoder) error {
 		o.Value = CodeScanningAlertState(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptCodeScanningAlertState", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptCodeScanningAlertState`, d.Next())
 	}
 }
 
@@ -38811,14 +38759,14 @@ func (o OptCodeScanningAnalysisAnalysisKey) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of CodeScanningAnalysisAnalysisKey from json iterator.
 func (o *OptCodeScanningAnalysisAnalysisKey) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptCodeScanningAnalysisAnalysisKey to nil`)
+		return errors.New(`invalid: unable to decode OptCodeScanningAnalysisAnalysisKey to nil`)
 	}
 	switch d.Next() {
 	case json.String:
 		o.Set = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptCodeScanningAnalysisAnalysisKey", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptCodeScanningAnalysisAnalysisKey`, d.Next())
 	}
 }
 
@@ -38829,14 +38777,14 @@ func (o OptCodeScanningAnalysisCategory) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of CodeScanningAnalysisCategory from json iterator.
 func (o *OptCodeScanningAnalysisCategory) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptCodeScanningAnalysisCategory to nil`)
+		return errors.New(`invalid: unable to decode OptCodeScanningAnalysisCategory to nil`)
 	}
 	switch d.Next() {
 	case json.String:
 		o.Set = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptCodeScanningAnalysisCategory", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptCodeScanningAnalysisCategory`, d.Next())
 	}
 }
 
@@ -38847,14 +38795,14 @@ func (o OptCodeScanningAnalysisSarifID) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of CodeScanningAnalysisSarifID from json iterator.
 func (o *OptCodeScanningAnalysisSarifID) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptCodeScanningAnalysisSarifID to nil`)
+		return errors.New(`invalid: unable to decode OptCodeScanningAnalysisSarifID to nil`)
 	}
 	switch d.Next() {
 	case json.String:
 		o.Set = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptCodeScanningAnalysisSarifID", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptCodeScanningAnalysisSarifID`, d.Next())
 	}
 }
 
@@ -38865,14 +38813,14 @@ func (o OptCodeScanningAnalysisToolName) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of CodeScanningAnalysisToolName from json iterator.
 func (o *OptCodeScanningAnalysisToolName) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptCodeScanningAnalysisToolName to nil`)
+		return errors.New(`invalid: unable to decode OptCodeScanningAnalysisToolName to nil`)
 	}
 	switch d.Next() {
 	case json.String:
 		o.Set = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptCodeScanningAnalysisToolName", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptCodeScanningAnalysisToolName`, d.Next())
 	}
 }
 
@@ -38883,14 +38831,14 @@ func (o OptCodeScanningRef) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of CodeScanningRef from json iterator.
 func (o *OptCodeScanningRef) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptCodeScanningRef to nil`)
+		return errors.New(`invalid: unable to decode OptCodeScanningRef to nil`)
 	}
 	switch d.Next() {
 	case json.String:
 		o.Set = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptCodeScanningRef", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptCodeScanningRef`, d.Next())
 	}
 }
 
@@ -38902,7 +38850,7 @@ func (o OptCodeScanningSarifsStatusProcessingStatus) WriteJSON(e *json.Encoder) 
 // ReadJSON reads json value of CodeScanningSarifsStatusProcessingStatus from json iterator.
 func (o *OptCodeScanningSarifsStatusProcessingStatus) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptCodeScanningSarifsStatusProcessingStatus to nil`)
+		return errors.New(`invalid: unable to decode OptCodeScanningSarifsStatusProcessingStatus to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -38914,7 +38862,7 @@ func (o *OptCodeScanningSarifsStatusProcessingStatus) ReadJSON(d *json.Decoder) 
 		o.Value = CodeScanningSarifsStatusProcessingStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptCodeScanningSarifsStatusProcessingStatus", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptCodeScanningSarifsStatusProcessingStatus`, d.Next())
 	}
 }
 
@@ -38926,7 +38874,7 @@ func (o OptCollaboratorPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of CollaboratorPermissions from json iterator.
 func (o *OptCollaboratorPermissions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptCollaboratorPermissions to nil`)
+		return errors.New(`invalid: unable to decode OptCollaboratorPermissions to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -38936,7 +38884,7 @@ func (o *OptCollaboratorPermissions) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptCollaboratorPermissions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptCollaboratorPermissions`, d.Next())
 	}
 }
 
@@ -38948,7 +38896,7 @@ func (o OptCommitStats) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of CommitStats from json iterator.
 func (o *OptCommitStats) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptCommitStats to nil`)
+		return errors.New(`invalid: unable to decode OptCommitStats to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -38958,7 +38906,7 @@ func (o *OptCommitStats) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptCommitStats", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptCommitStats`, d.Next())
 	}
 }
 
@@ -38970,7 +38918,7 @@ func (o OptDeploymentReviewerType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of DeploymentReviewerType from json iterator.
 func (o *OptDeploymentReviewerType) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptDeploymentReviewerType to nil`)
+		return errors.New(`invalid: unable to decode OptDeploymentReviewerType to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -38982,7 +38930,7 @@ func (o *OptDeploymentReviewerType) ReadJSON(d *json.Decoder) error {
 		o.Value = DeploymentReviewerType(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptDeploymentReviewerType", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptDeploymentReviewerType`, d.Next())
 	}
 }
 
@@ -38994,7 +38942,7 @@ func (o OptDeploymentSimple) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of DeploymentSimple from json iterator.
 func (o *OptDeploymentSimple) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptDeploymentSimple to nil`)
+		return errors.New(`invalid: unable to decode OptDeploymentSimple to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -39004,7 +38952,7 @@ func (o *OptDeploymentSimple) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptDeploymentSimple", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptDeploymentSimple`, d.Next())
 	}
 }
 
@@ -39016,7 +38964,7 @@ func (o OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility)
 // ReadJSON reads json value of EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility from json iterator.
 func (o *OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility to nil`)
+		return errors.New(`invalid: unable to decode OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -39028,7 +38976,7 @@ func (o *OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility
 		o.Value = EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility`, d.Next())
 	}
 }
 
@@ -39040,7 +38988,7 @@ func (o OptEnterpriseAdminGetAuditLogInclude) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of EnterpriseAdminGetAuditLogInclude from json iterator.
 func (o *OptEnterpriseAdminGetAuditLogInclude) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptEnterpriseAdminGetAuditLogInclude to nil`)
+		return errors.New(`invalid: unable to decode OptEnterpriseAdminGetAuditLogInclude to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -39052,7 +39000,7 @@ func (o *OptEnterpriseAdminGetAuditLogInclude) ReadJSON(d *json.Decoder) error {
 		o.Value = EnterpriseAdminGetAuditLogInclude(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptEnterpriseAdminGetAuditLogInclude", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptEnterpriseAdminGetAuditLogInclude`, d.Next())
 	}
 }
 
@@ -39064,7 +39012,7 @@ func (o OptEnterpriseAdminGetAuditLogOrder) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of EnterpriseAdminGetAuditLogOrder from json iterator.
 func (o *OptEnterpriseAdminGetAuditLogOrder) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptEnterpriseAdminGetAuditLogOrder to nil`)
+		return errors.New(`invalid: unable to decode OptEnterpriseAdminGetAuditLogOrder to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -39076,7 +39024,7 @@ func (o *OptEnterpriseAdminGetAuditLogOrder) ReadJSON(d *json.Decoder) error {
 		o.Value = EnterpriseAdminGetAuditLogOrder(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptEnterpriseAdminGetAuditLogOrder", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptEnterpriseAdminGetAuditLogOrder`, d.Next())
 	}
 }
 
@@ -39088,7 +39036,7 @@ func (o OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility)
 // ReadJSON reads json value of EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility from json iterator.
 func (o *OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility to nil`)
+		return errors.New(`invalid: unable to decode OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -39100,7 +39048,7 @@ func (o *OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility
 		o.Value = EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility`, d.Next())
 	}
 }
 
@@ -39112,7 +39060,7 @@ func (o OptFileCommitCommitAuthor) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of FileCommitCommitAuthor from json iterator.
 func (o *OptFileCommitCommitAuthor) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptFileCommitCommitAuthor to nil`)
+		return errors.New(`invalid: unable to decode OptFileCommitCommitAuthor to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -39122,7 +39070,7 @@ func (o *OptFileCommitCommitAuthor) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptFileCommitCommitAuthor", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptFileCommitCommitAuthor`, d.Next())
 	}
 }
 
@@ -39134,7 +39082,7 @@ func (o OptFileCommitCommitCommitter) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of FileCommitCommitCommitter from json iterator.
 func (o *OptFileCommitCommitCommitter) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptFileCommitCommitCommitter to nil`)
+		return errors.New(`invalid: unable to decode OptFileCommitCommitCommitter to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -39144,7 +39092,7 @@ func (o *OptFileCommitCommitCommitter) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptFileCommitCommitCommitter", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptFileCommitCommitCommitter`, d.Next())
 	}
 }
 
@@ -39156,7 +39104,7 @@ func (o OptFileCommitCommitTree) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of FileCommitCommitTree from json iterator.
 func (o *OptFileCommitCommitTree) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptFileCommitCommitTree to nil`)
+		return errors.New(`invalid: unable to decode OptFileCommitCommitTree to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -39166,7 +39114,7 @@ func (o *OptFileCommitCommitTree) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptFileCommitCommitTree", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptFileCommitCommitTree`, d.Next())
 	}
 }
 
@@ -39178,7 +39126,7 @@ func (o OptFileCommitCommitVerification) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of FileCommitCommitVerification from json iterator.
 func (o *OptFileCommitCommitVerification) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptFileCommitCommitVerification to nil`)
+		return errors.New(`invalid: unable to decode OptFileCommitCommitVerification to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -39188,7 +39136,7 @@ func (o *OptFileCommitCommitVerification) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptFileCommitCommitVerification", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptFileCommitCommitVerification`, d.Next())
 	}
 }
 
@@ -39200,7 +39148,7 @@ func (o OptFileCommitContentLinks) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of FileCommitContentLinks from json iterator.
 func (o *OptFileCommitContentLinks) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptFileCommitContentLinks to nil`)
+		return errors.New(`invalid: unable to decode OptFileCommitContentLinks to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -39210,7 +39158,7 @@ func (o *OptFileCommitContentLinks) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptFileCommitContentLinks", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptFileCommitContentLinks`, d.Next())
 	}
 }
 
@@ -39222,7 +39170,7 @@ func (o OptFloat64) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of float64 from json iterator.
 func (o *OptFloat64) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptFloat64 to nil`)
+		return errors.New(`invalid: unable to decode OptFloat64 to nil`)
 	}
 	switch d.Next() {
 	case json.Number:
@@ -39234,7 +39182,7 @@ func (o *OptFloat64) ReadJSON(d *json.Decoder) error {
 		o.Value = float64(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptFloat64", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptFloat64`, d.Next())
 	}
 }
 
@@ -39246,7 +39194,7 @@ func (o OptForbiddenGistBlock) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ForbiddenGistBlock from json iterator.
 func (o *OptForbiddenGistBlock) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptForbiddenGistBlock to nil`)
+		return errors.New(`invalid: unable to decode OptForbiddenGistBlock to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -39256,7 +39204,7 @@ func (o *OptForbiddenGistBlock) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptForbiddenGistBlock", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptForbiddenGistBlock`, d.Next())
 	}
 }
 
@@ -39268,7 +39216,7 @@ func (o OptFullRepositoryPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of FullRepositoryPermissions from json iterator.
 func (o *OptFullRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptFullRepositoryPermissions to nil`)
+		return errors.New(`invalid: unable to decode OptFullRepositoryPermissions to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -39278,7 +39226,7 @@ func (o *OptFullRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptFullRepositoryPermissions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptFullRepositoryPermissions`, d.Next())
 	}
 }
 
@@ -39290,7 +39238,7 @@ func (o OptFullRepositorySecurityAndAnalysisAdvancedSecurity) WriteJSON(e *json.
 // ReadJSON reads json value of FullRepositorySecurityAndAnalysisAdvancedSecurity from json iterator.
 func (o *OptFullRepositorySecurityAndAnalysisAdvancedSecurity) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptFullRepositorySecurityAndAnalysisAdvancedSecurity to nil`)
+		return errors.New(`invalid: unable to decode OptFullRepositorySecurityAndAnalysisAdvancedSecurity to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -39300,7 +39248,7 @@ func (o *OptFullRepositorySecurityAndAnalysisAdvancedSecurity) ReadJSON(d *json.
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptFullRepositorySecurityAndAnalysisAdvancedSecurity", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptFullRepositorySecurityAndAnalysisAdvancedSecurity`, d.Next())
 	}
 }
 
@@ -39312,7 +39260,7 @@ func (o OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus) WriteJSON(e 
 // ReadJSON reads json value of FullRepositorySecurityAndAnalysisAdvancedSecurityStatus from json iterator.
 func (o *OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus to nil`)
+		return errors.New(`invalid: unable to decode OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -39324,7 +39272,7 @@ func (o *OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus) ReadJSON(d 
 		o.Value = FullRepositorySecurityAndAnalysisAdvancedSecurityStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus`, d.Next())
 	}
 }
 
@@ -39336,7 +39284,7 @@ func (o OptFullRepositorySecurityAndAnalysisSecretScanning) WriteJSON(e *json.En
 // ReadJSON reads json value of FullRepositorySecurityAndAnalysisSecretScanning from json iterator.
 func (o *OptFullRepositorySecurityAndAnalysisSecretScanning) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptFullRepositorySecurityAndAnalysisSecretScanning to nil`)
+		return errors.New(`invalid: unable to decode OptFullRepositorySecurityAndAnalysisSecretScanning to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -39346,7 +39294,7 @@ func (o *OptFullRepositorySecurityAndAnalysisSecretScanning) ReadJSON(d *json.De
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptFullRepositorySecurityAndAnalysisSecretScanning", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptFullRepositorySecurityAndAnalysisSecretScanning`, d.Next())
 	}
 }
 
@@ -39358,7 +39306,7 @@ func (o OptFullRepositorySecurityAndAnalysisSecretScanningStatus) WriteJSON(e *j
 // ReadJSON reads json value of FullRepositorySecurityAndAnalysisSecretScanningStatus from json iterator.
 func (o *OptFullRepositorySecurityAndAnalysisSecretScanningStatus) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptFullRepositorySecurityAndAnalysisSecretScanningStatus to nil`)
+		return errors.New(`invalid: unable to decode OptFullRepositorySecurityAndAnalysisSecretScanningStatus to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -39370,7 +39318,7 @@ func (o *OptFullRepositorySecurityAndAnalysisSecretScanningStatus) ReadJSON(d *j
 		o.Value = FullRepositorySecurityAndAnalysisSecretScanningStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptFullRepositorySecurityAndAnalysisSecretScanningStatus", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptFullRepositorySecurityAndAnalysisSecretScanningStatus`, d.Next())
 	}
 }
 
@@ -39382,7 +39330,7 @@ func (o OptGistHistoryChangeStatus) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of GistHistoryChangeStatus from json iterator.
 func (o *OptGistHistoryChangeStatus) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptGistHistoryChangeStatus to nil`)
+		return errors.New(`invalid: unable to decode OptGistHistoryChangeStatus to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -39392,7 +39340,7 @@ func (o *OptGistHistoryChangeStatus) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptGistHistoryChangeStatus", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptGistHistoryChangeStatus`, d.Next())
 	}
 }
 
@@ -39404,7 +39352,7 @@ func (o OptGitCreateCommitReqAuthor) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of GitCreateCommitReqAuthor from json iterator.
 func (o *OptGitCreateCommitReqAuthor) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptGitCreateCommitReqAuthor to nil`)
+		return errors.New(`invalid: unable to decode OptGitCreateCommitReqAuthor to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -39414,7 +39362,7 @@ func (o *OptGitCreateCommitReqAuthor) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptGitCreateCommitReqAuthor", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptGitCreateCommitReqAuthor`, d.Next())
 	}
 }
 
@@ -39426,7 +39374,7 @@ func (o OptGitCreateCommitReqCommitter) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of GitCreateCommitReqCommitter from json iterator.
 func (o *OptGitCreateCommitReqCommitter) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptGitCreateCommitReqCommitter to nil`)
+		return errors.New(`invalid: unable to decode OptGitCreateCommitReqCommitter to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -39436,7 +39384,7 @@ func (o *OptGitCreateCommitReqCommitter) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptGitCreateCommitReqCommitter", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptGitCreateCommitReqCommitter`, d.Next())
 	}
 }
 
@@ -39448,7 +39396,7 @@ func (o OptGitCreateTagReqTagger) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of GitCreateTagReqTagger from json iterator.
 func (o *OptGitCreateTagReqTagger) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptGitCreateTagReqTagger to nil`)
+		return errors.New(`invalid: unable to decode OptGitCreateTagReqTagger to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -39458,7 +39406,7 @@ func (o *OptGitCreateTagReqTagger) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptGitCreateTagReqTagger", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptGitCreateTagReqTagger`, d.Next())
 	}
 }
 
@@ -39470,7 +39418,7 @@ func (o OptGitCreateTreeReqTreeItemMode) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of GitCreateTreeReqTreeItemMode from json iterator.
 func (o *OptGitCreateTreeReqTreeItemMode) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptGitCreateTreeReqTreeItemMode to nil`)
+		return errors.New(`invalid: unable to decode OptGitCreateTreeReqTreeItemMode to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -39482,7 +39430,7 @@ func (o *OptGitCreateTreeReqTreeItemMode) ReadJSON(d *json.Decoder) error {
 		o.Value = GitCreateTreeReqTreeItemMode(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptGitCreateTreeReqTreeItemMode", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptGitCreateTreeReqTreeItemMode`, d.Next())
 	}
 }
 
@@ -39494,7 +39442,7 @@ func (o OptGitCreateTreeReqTreeItemType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of GitCreateTreeReqTreeItemType from json iterator.
 func (o *OptGitCreateTreeReqTreeItemType) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptGitCreateTreeReqTreeItemType to nil`)
+		return errors.New(`invalid: unable to decode OptGitCreateTreeReqTreeItemType to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -39506,7 +39454,7 @@ func (o *OptGitCreateTreeReqTreeItemType) ReadJSON(d *json.Decoder) error {
 		o.Value = GitCreateTreeReqTreeItemType(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptGitCreateTreeReqTreeItemType", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptGitCreateTreeReqTreeItemType`, d.Next())
 	}
 }
 
@@ -39518,7 +39466,7 @@ func (o OptInstallationTokenRepositorySelection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of InstallationTokenRepositorySelection from json iterator.
 func (o *OptInstallationTokenRepositorySelection) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptInstallationTokenRepositorySelection to nil`)
+		return errors.New(`invalid: unable to decode OptInstallationTokenRepositorySelection to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -39530,7 +39478,7 @@ func (o *OptInstallationTokenRepositorySelection) ReadJSON(d *json.Decoder) erro
 		o.Value = InstallationTokenRepositorySelection(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptInstallationTokenRepositorySelection", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptInstallationTokenRepositorySelection`, d.Next())
 	}
 }
 
@@ -39542,7 +39490,7 @@ func (o OptInt) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of int from json iterator.
 func (o *OptInt) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptInt to nil`)
+		return errors.New(`invalid: unable to decode OptInt to nil`)
 	}
 	switch d.Next() {
 	case json.Number:
@@ -39554,7 +39502,7 @@ func (o *OptInt) ReadJSON(d *json.Decoder) error {
 		o.Value = int(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptInt", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptInt`, d.Next())
 	}
 }
 
@@ -39566,7 +39514,7 @@ func (o OptInt64) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of int64 from json iterator.
 func (o *OptInt64) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptInt64 to nil`)
+		return errors.New(`invalid: unable to decode OptInt64 to nil`)
 	}
 	switch d.Next() {
 	case json.Number:
@@ -39578,7 +39526,7 @@ func (o *OptInt64) ReadJSON(d *json.Decoder) error {
 		o.Value = int64(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptInt64", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptInt64`, d.Next())
 	}
 }
 
@@ -39590,7 +39538,7 @@ func (o OptInteractionExpiry) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of InteractionExpiry from json iterator.
 func (o *OptInteractionExpiry) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptInteractionExpiry to nil`)
+		return errors.New(`invalid: unable to decode OptInteractionExpiry to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -39602,7 +39550,7 @@ func (o *OptInteractionExpiry) ReadJSON(d *json.Decoder) error {
 		o.Value = InteractionExpiry(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptInteractionExpiry", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptInteractionExpiry`, d.Next())
 	}
 }
 
@@ -39614,7 +39562,7 @@ func (o OptIssueComment) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of IssueComment from json iterator.
 func (o *OptIssueComment) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptIssueComment to nil`)
+		return errors.New(`invalid: unable to decode OptIssueComment to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -39624,7 +39572,7 @@ func (o *OptIssueComment) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptIssueComment", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptIssueComment`, d.Next())
 	}
 }
 
@@ -39636,7 +39584,7 @@ func (o OptIssueEventDismissedReview) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of IssueEventDismissedReview from json iterator.
 func (o *OptIssueEventDismissedReview) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptIssueEventDismissedReview to nil`)
+		return errors.New(`invalid: unable to decode OptIssueEventDismissedReview to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -39646,7 +39594,7 @@ func (o *OptIssueEventDismissedReview) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptIssueEventDismissedReview", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptIssueEventDismissedReview`, d.Next())
 	}
 }
 
@@ -39658,7 +39606,7 @@ func (o OptIssueEventLabel) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of IssueEventLabel from json iterator.
 func (o *OptIssueEventLabel) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptIssueEventLabel to nil`)
+		return errors.New(`invalid: unable to decode OptIssueEventLabel to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -39668,7 +39616,7 @@ func (o *OptIssueEventLabel) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptIssueEventLabel", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptIssueEventLabel`, d.Next())
 	}
 }
 
@@ -39680,7 +39628,7 @@ func (o OptIssueEventMilestone) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of IssueEventMilestone from json iterator.
 func (o *OptIssueEventMilestone) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptIssueEventMilestone to nil`)
+		return errors.New(`invalid: unable to decode OptIssueEventMilestone to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -39690,7 +39638,7 @@ func (o *OptIssueEventMilestone) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptIssueEventMilestone", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptIssueEventMilestone`, d.Next())
 	}
 }
 
@@ -39702,7 +39650,7 @@ func (o OptIssueEventProjectCard) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of IssueEventProjectCard from json iterator.
 func (o *OptIssueEventProjectCard) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptIssueEventProjectCard to nil`)
+		return errors.New(`invalid: unable to decode OptIssueEventProjectCard to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -39712,7 +39660,7 @@ func (o *OptIssueEventProjectCard) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptIssueEventProjectCard", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptIssueEventProjectCard`, d.Next())
 	}
 }
 
@@ -39724,7 +39672,7 @@ func (o OptIssueEventRename) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of IssueEventRename from json iterator.
 func (o *OptIssueEventRename) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptIssueEventRename to nil`)
+		return errors.New(`invalid: unable to decode OptIssueEventRename to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -39734,7 +39682,7 @@ func (o *OptIssueEventRename) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptIssueEventRename", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptIssueEventRename`, d.Next())
 	}
 }
 
@@ -39746,7 +39694,7 @@ func (o OptIssueSearchResultItemPullRequest) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of IssueSearchResultItemPullRequest from json iterator.
 func (o *OptIssueSearchResultItemPullRequest) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptIssueSearchResultItemPullRequest to nil`)
+		return errors.New(`invalid: unable to decode OptIssueSearchResultItemPullRequest to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -39756,7 +39704,7 @@ func (o *OptIssueSearchResultItemPullRequest) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptIssueSearchResultItemPullRequest", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptIssueSearchResultItemPullRequest`, d.Next())
 	}
 }
 
@@ -39768,7 +39716,7 @@ func (o OptIssueSimple) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of IssueSimple from json iterator.
 func (o *OptIssueSimple) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptIssueSimple to nil`)
+		return errors.New(`invalid: unable to decode OptIssueSimple to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -39778,7 +39726,7 @@ func (o *OptIssueSimple) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptIssueSimple", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptIssueSimple`, d.Next())
 	}
 }
 
@@ -39790,7 +39738,7 @@ func (o OptIssueSimplePullRequest) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of IssueSimplePullRequest from json iterator.
 func (o *OptIssueSimplePullRequest) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptIssueSimplePullRequest to nil`)
+		return errors.New(`invalid: unable to decode OptIssueSimplePullRequest to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -39800,7 +39748,7 @@ func (o *OptIssueSimplePullRequest) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptIssueSimplePullRequest", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptIssueSimplePullRequest`, d.Next())
 	}
 }
 
@@ -39812,7 +39760,7 @@ func (o OptIssuesCreateMilestoneReqState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of IssuesCreateMilestoneReqState from json iterator.
 func (o *OptIssuesCreateMilestoneReqState) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptIssuesCreateMilestoneReqState to nil`)
+		return errors.New(`invalid: unable to decode OptIssuesCreateMilestoneReqState to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -39824,7 +39772,7 @@ func (o *OptIssuesCreateMilestoneReqState) ReadJSON(d *json.Decoder) error {
 		o.Value = IssuesCreateMilestoneReqState(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptIssuesCreateMilestoneReqState", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptIssuesCreateMilestoneReqState`, d.Next())
 	}
 }
 
@@ -39836,7 +39784,7 @@ func (o OptIssuesListMilestonesDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of IssuesListMilestonesDirection from json iterator.
 func (o *OptIssuesListMilestonesDirection) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptIssuesListMilestonesDirection to nil`)
+		return errors.New(`invalid: unable to decode OptIssuesListMilestonesDirection to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -39848,7 +39796,7 @@ func (o *OptIssuesListMilestonesDirection) ReadJSON(d *json.Decoder) error {
 		o.Value = IssuesListMilestonesDirection(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptIssuesListMilestonesDirection", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptIssuesListMilestonesDirection`, d.Next())
 	}
 }
 
@@ -39860,7 +39808,7 @@ func (o OptIssuesListMilestonesSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of IssuesListMilestonesSort from json iterator.
 func (o *OptIssuesListMilestonesSort) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptIssuesListMilestonesSort to nil`)
+		return errors.New(`invalid: unable to decode OptIssuesListMilestonesSort to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -39872,7 +39820,7 @@ func (o *OptIssuesListMilestonesSort) ReadJSON(d *json.Decoder) error {
 		o.Value = IssuesListMilestonesSort(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptIssuesListMilestonesSort", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptIssuesListMilestonesSort`, d.Next())
 	}
 }
 
@@ -39884,7 +39832,7 @@ func (o OptIssuesListMilestonesState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of IssuesListMilestonesState from json iterator.
 func (o *OptIssuesListMilestonesState) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptIssuesListMilestonesState to nil`)
+		return errors.New(`invalid: unable to decode OptIssuesListMilestonesState to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -39896,7 +39844,7 @@ func (o *OptIssuesListMilestonesState) ReadJSON(d *json.Decoder) error {
 		o.Value = IssuesListMilestonesState(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptIssuesListMilestonesState", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptIssuesListMilestonesState`, d.Next())
 	}
 }
 
@@ -39908,7 +39856,7 @@ func (o OptIssuesLockReqLockReason) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of IssuesLockReqLockReason from json iterator.
 func (o *OptIssuesLockReqLockReason) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptIssuesLockReqLockReason to nil`)
+		return errors.New(`invalid: unable to decode OptIssuesLockReqLockReason to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -39920,7 +39868,7 @@ func (o *OptIssuesLockReqLockReason) ReadJSON(d *json.Decoder) error {
 		o.Value = IssuesLockReqLockReason(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptIssuesLockReqLockReason", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptIssuesLockReqLockReason`, d.Next())
 	}
 }
 
@@ -39932,7 +39880,7 @@ func (o OptIssuesUpdateMilestoneReqState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of IssuesUpdateMilestoneReqState from json iterator.
 func (o *OptIssuesUpdateMilestoneReqState) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptIssuesUpdateMilestoneReqState to nil`)
+		return errors.New(`invalid: unable to decode OptIssuesUpdateMilestoneReqState to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -39944,7 +39892,7 @@ func (o *OptIssuesUpdateMilestoneReqState) ReadJSON(d *json.Decoder) error {
 		o.Value = IssuesUpdateMilestoneReqState(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptIssuesUpdateMilestoneReqState", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptIssuesUpdateMilestoneReqState`, d.Next())
 	}
 }
 
@@ -39956,7 +39904,7 @@ func (o OptLinkWithType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of LinkWithType from json iterator.
 func (o *OptLinkWithType) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptLinkWithType to nil`)
+		return errors.New(`invalid: unable to decode OptLinkWithType to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -39966,7 +39914,7 @@ func (o *OptLinkWithType) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptLinkWithType", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptLinkWithType`, d.Next())
 	}
 }
 
@@ -39978,7 +39926,7 @@ func (o OptMarkdownRenderReqMode) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of MarkdownRenderReqMode from json iterator.
 func (o *OptMarkdownRenderReqMode) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptMarkdownRenderReqMode to nil`)
+		return errors.New(`invalid: unable to decode OptMarkdownRenderReqMode to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -39990,7 +39938,7 @@ func (o *OptMarkdownRenderReqMode) ReadJSON(d *json.Decoder) error {
 		o.Value = MarkdownRenderReqMode(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptMarkdownRenderReqMode", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptMarkdownRenderReqMode`, d.Next())
 	}
 }
 
@@ -40002,7 +39950,7 @@ func (o OptMarketplaceListingPlan) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of MarketplaceListingPlan from json iterator.
 func (o *OptMarketplaceListingPlan) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptMarketplaceListingPlan to nil`)
+		return errors.New(`invalid: unable to decode OptMarketplaceListingPlan to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -40012,7 +39960,7 @@ func (o *OptMarketplaceListingPlan) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptMarketplaceListingPlan", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptMarketplaceListingPlan`, d.Next())
 	}
 }
 
@@ -40024,7 +39972,7 @@ func (o OptMergedUpstreamMergeType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of MergedUpstreamMergeType from json iterator.
 func (o *OptMergedUpstreamMergeType) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptMergedUpstreamMergeType to nil`)
+		return errors.New(`invalid: unable to decode OptMergedUpstreamMergeType to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -40036,7 +39984,7 @@ func (o *OptMergedUpstreamMergeType) ReadJSON(d *json.Decoder) error {
 		o.Value = MergedUpstreamMergeType(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptMergedUpstreamMergeType", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptMergedUpstreamMergeType`, d.Next())
 	}
 }
 
@@ -40048,7 +39996,7 @@ func (o OptMigrationsStartImportReqVcs) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of MigrationsStartImportReqVcs from json iterator.
 func (o *OptMigrationsStartImportReqVcs) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptMigrationsStartImportReqVcs to nil`)
+		return errors.New(`invalid: unable to decode OptMigrationsStartImportReqVcs to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -40060,7 +40008,7 @@ func (o *OptMigrationsStartImportReqVcs) ReadJSON(d *json.Decoder) error {
 		o.Value = MigrationsStartImportReqVcs(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptMigrationsStartImportReqVcs", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptMigrationsStartImportReqVcs`, d.Next())
 	}
 }
 
@@ -40072,7 +40020,7 @@ func (o OptMinimalRepository) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of MinimalRepository from json iterator.
 func (o *OptMinimalRepository) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptMinimalRepository to nil`)
+		return errors.New(`invalid: unable to decode OptMinimalRepository to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -40082,7 +40030,7 @@ func (o *OptMinimalRepository) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptMinimalRepository", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptMinimalRepository`, d.Next())
 	}
 }
 
@@ -40094,7 +40042,7 @@ func (o OptMinimalRepositoryPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of MinimalRepositoryPermissions from json iterator.
 func (o *OptMinimalRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptMinimalRepositoryPermissions to nil`)
+		return errors.New(`invalid: unable to decode OptMinimalRepositoryPermissions to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -40104,7 +40052,7 @@ func (o *OptMinimalRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptMinimalRepositoryPermissions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptMinimalRepositoryPermissions`, d.Next())
 	}
 }
 
@@ -40120,7 +40068,7 @@ func (o OptNilBool) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of bool from json iterator.
 func (o *OptNilBool) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilBool to nil`)
+		return errors.New(`invalid: unable to decode OptNilBool to nil`)
 	}
 	switch d.Next() {
 	case json.Bool:
@@ -40142,7 +40090,7 @@ func (o *OptNilBool) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilBool", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilBool`, d.Next())
 	}
 }
 
@@ -40158,7 +40106,7 @@ func (o OptNilCodeScanningAlertDismissedReason) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of CodeScanningAlertDismissedReason from json iterator.
 func (o *OptNilCodeScanningAlertDismissedReason) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilCodeScanningAlertDismissedReason to nil`)
+		return errors.New(`invalid: unable to decode OptNilCodeScanningAlertDismissedReason to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -40180,7 +40128,7 @@ func (o *OptNilCodeScanningAlertDismissedReason) ReadJSON(d *json.Decoder) error
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilCodeScanningAlertDismissedReason", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilCodeScanningAlertDismissedReason`, d.Next())
 	}
 }
 
@@ -40196,7 +40144,7 @@ func (o OptNilCodeScanningAlertRuleSecuritySeverityLevel) WriteJSON(e *json.Enco
 // ReadJSON reads json value of CodeScanningAlertRuleSecuritySeverityLevel from json iterator.
 func (o *OptNilCodeScanningAlertRuleSecuritySeverityLevel) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilCodeScanningAlertRuleSecuritySeverityLevel to nil`)
+		return errors.New(`invalid: unable to decode OptNilCodeScanningAlertRuleSecuritySeverityLevel to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -40218,7 +40166,7 @@ func (o *OptNilCodeScanningAlertRuleSecuritySeverityLevel) ReadJSON(d *json.Deco
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilCodeScanningAlertRuleSecuritySeverityLevel", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilCodeScanningAlertRuleSecuritySeverityLevel`, d.Next())
 	}
 }
 
@@ -40234,7 +40182,7 @@ func (o OptNilCodeScanningAlertRuleSeverity) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of CodeScanningAlertRuleSeverity from json iterator.
 func (o *OptNilCodeScanningAlertRuleSeverity) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilCodeScanningAlertRuleSeverity to nil`)
+		return errors.New(`invalid: unable to decode OptNilCodeScanningAlertRuleSeverity to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -40256,7 +40204,7 @@ func (o *OptNilCodeScanningAlertRuleSeverity) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilCodeScanningAlertRuleSeverity", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilCodeScanningAlertRuleSeverity`, d.Next())
 	}
 }
 
@@ -40272,7 +40220,7 @@ func (o OptNilCodeScanningAlertRuleSummarySeverity) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of CodeScanningAlertRuleSummarySeverity from json iterator.
 func (o *OptNilCodeScanningAlertRuleSummarySeverity) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilCodeScanningAlertRuleSummarySeverity to nil`)
+		return errors.New(`invalid: unable to decode OptNilCodeScanningAlertRuleSummarySeverity to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -40294,7 +40242,7 @@ func (o *OptNilCodeScanningAlertRuleSummarySeverity) ReadJSON(d *json.Decoder) e
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilCodeScanningAlertRuleSummarySeverity", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilCodeScanningAlertRuleSummarySeverity`, d.Next())
 	}
 }
 
@@ -40309,7 +40257,7 @@ func (o OptNilCodeScanningAnalysisToolGUID) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of CodeScanningAnalysisToolGUID from json iterator.
 func (o *OptNilCodeScanningAnalysisToolGUID) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilCodeScanningAnalysisToolGUID to nil`)
+		return errors.New(`invalid: unable to decode OptNilCodeScanningAnalysisToolGUID to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -40326,7 +40274,7 @@ func (o *OptNilCodeScanningAnalysisToolGUID) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilCodeScanningAnalysisToolGUID", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilCodeScanningAnalysisToolGUID`, d.Next())
 	}
 }
 
@@ -40341,7 +40289,7 @@ func (o OptNilCodeScanningAnalysisToolVersion) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of CodeScanningAnalysisToolVersion from json iterator.
 func (o *OptNilCodeScanningAnalysisToolVersion) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilCodeScanningAnalysisToolVersion to nil`)
+		return errors.New(`invalid: unable to decode OptNilCodeScanningAnalysisToolVersion to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -40358,7 +40306,7 @@ func (o *OptNilCodeScanningAnalysisToolVersion) ReadJSON(d *json.Decoder) error 
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilCodeScanningAnalysisToolVersion", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilCodeScanningAnalysisToolVersion`, d.Next())
 	}
 }
 
@@ -40374,7 +40322,7 @@ func (o OptNilDeploymentBranchPolicy) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of DeploymentBranchPolicy from json iterator.
 func (o *OptNilDeploymentBranchPolicy) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilDeploymentBranchPolicy to nil`)
+		return errors.New(`invalid: unable to decode OptNilDeploymentBranchPolicy to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -40394,7 +40342,7 @@ func (o *OptNilDeploymentBranchPolicy) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilDeploymentBranchPolicy", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilDeploymentBranchPolicy`, d.Next())
 	}
 }
 
@@ -40410,7 +40358,7 @@ func (o OptNilFullRepositorySecurityAndAnalysis) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of FullRepositorySecurityAndAnalysis from json iterator.
 func (o *OptNilFullRepositorySecurityAndAnalysis) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilFullRepositorySecurityAndAnalysis to nil`)
+		return errors.New(`invalid: unable to decode OptNilFullRepositorySecurityAndAnalysis to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -40430,7 +40378,7 @@ func (o *OptNilFullRepositorySecurityAndAnalysis) ReadJSON(d *json.Decoder) erro
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilFullRepositorySecurityAndAnalysis", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilFullRepositorySecurityAndAnalysis`, d.Next())
 	}
 }
 
@@ -40445,7 +40393,7 @@ func (o OptNilGistHistoryArray) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of []GistHistory from json iterator.
 func (o *OptNilGistHistoryArray) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilGistHistoryArray to nil`)
+		return errors.New(`invalid: unable to decode OptNilGistHistoryArray to nil`)
 	}
 	switch d.Next() {
 	case json.Array:
@@ -40462,7 +40410,7 @@ func (o *OptNilGistHistoryArray) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilGistHistoryArray", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilGistHistoryArray`, d.Next())
 	}
 }
 
@@ -40478,7 +40426,7 @@ func (o OptNilGistSimpleForkOf) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of GistSimpleForkOf from json iterator.
 func (o *OptNilGistSimpleForkOf) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilGistSimpleForkOf to nil`)
+		return errors.New(`invalid: unable to decode OptNilGistSimpleForkOf to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -40498,7 +40446,7 @@ func (o *OptNilGistSimpleForkOf) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilGistSimpleForkOf", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilGistSimpleForkOf`, d.Next())
 	}
 }
 
@@ -40513,7 +40461,7 @@ func (o OptNilGistSimpleForksItemArray) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of []GistSimpleForksItem from json iterator.
 func (o *OptNilGistSimpleForksItemArray) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilGistSimpleForksItemArray to nil`)
+		return errors.New(`invalid: unable to decode OptNilGistSimpleForksItemArray to nil`)
 	}
 	switch d.Next() {
 	case json.Array:
@@ -40530,7 +40478,7 @@ func (o *OptNilGistSimpleForksItemArray) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilGistSimpleForksItemArray", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilGistSimpleForksItemArray`, d.Next())
 	}
 }
 
@@ -40546,7 +40494,7 @@ func (o OptNilInt) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of int from json iterator.
 func (o *OptNilInt) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilInt to nil`)
+		return errors.New(`invalid: unable to decode OptNilInt to nil`)
 	}
 	switch d.Next() {
 	case json.Number:
@@ -40568,7 +40516,7 @@ func (o *OptNilInt) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilInt", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilInt`, d.Next())
 	}
 }
 
@@ -40584,7 +40532,7 @@ func (o OptNilMarketplacePurchaseMarketplacePendingChange) WriteJSON(e *json.Enc
 // ReadJSON reads json value of MarketplacePurchaseMarketplacePendingChange from json iterator.
 func (o *OptNilMarketplacePurchaseMarketplacePendingChange) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilMarketplacePurchaseMarketplacePendingChange to nil`)
+		return errors.New(`invalid: unable to decode OptNilMarketplacePurchaseMarketplacePendingChange to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -40604,7 +40552,7 @@ func (o *OptNilMarketplacePurchaseMarketplacePendingChange) ReadJSON(d *json.Dec
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilMarketplacePurchaseMarketplacePendingChange", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilMarketplacePurchaseMarketplacePendingChange`, d.Next())
 	}
 }
 
@@ -40620,7 +40568,7 @@ func (o OptNilMinimalRepositoryLicense) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of MinimalRepositoryLicense from json iterator.
 func (o *OptNilMinimalRepositoryLicense) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilMinimalRepositoryLicense to nil`)
+		return errors.New(`invalid: unable to decode OptNilMinimalRepositoryLicense to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -40640,7 +40588,7 @@ func (o *OptNilMinimalRepositoryLicense) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilMinimalRepositoryLicense", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilMinimalRepositoryLicense`, d.Next())
 	}
 }
 
@@ -40656,7 +40604,7 @@ func (o OptNilNullableIntegration) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of NullableIntegration from json iterator.
 func (o *OptNilNullableIntegration) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilNullableIntegration to nil`)
+		return errors.New(`invalid: unable to decode OptNilNullableIntegration to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -40676,7 +40624,7 @@ func (o *OptNilNullableIntegration) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilNullableIntegration", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilNullableIntegration`, d.Next())
 	}
 }
 
@@ -40692,7 +40640,7 @@ func (o OptNilNullableMinimalRepository) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of NullableMinimalRepository from json iterator.
 func (o *OptNilNullableMinimalRepository) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilNullableMinimalRepository to nil`)
+		return errors.New(`invalid: unable to decode OptNilNullableMinimalRepository to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -40712,7 +40660,7 @@ func (o *OptNilNullableMinimalRepository) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilNullableMinimalRepository", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilNullableMinimalRepository`, d.Next())
 	}
 }
 
@@ -40728,7 +40676,7 @@ func (o OptNilNullableMinimalRepositoryLicense) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of NullableMinimalRepositoryLicense from json iterator.
 func (o *OptNilNullableMinimalRepositoryLicense) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilNullableMinimalRepositoryLicense to nil`)
+		return errors.New(`invalid: unable to decode OptNilNullableMinimalRepositoryLicense to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -40748,7 +40696,7 @@ func (o *OptNilNullableMinimalRepositoryLicense) ReadJSON(d *json.Decoder) error
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilNullableMinimalRepositoryLicense", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilNullableMinimalRepositoryLicense`, d.Next())
 	}
 }
 
@@ -40764,7 +40712,7 @@ func (o OptNilNullableRepository) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of NullableRepository from json iterator.
 func (o *OptNilNullableRepository) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilNullableRepository to nil`)
+		return errors.New(`invalid: unable to decode OptNilNullableRepository to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -40784,7 +40732,7 @@ func (o *OptNilNullableRepository) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilNullableRepository", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilNullableRepository`, d.Next())
 	}
 }
 
@@ -40800,7 +40748,7 @@ func (o OptNilNullableRepositoryTemplateRepository) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of NullableRepositoryTemplateRepository from json iterator.
 func (o *OptNilNullableRepositoryTemplateRepository) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilNullableRepositoryTemplateRepository to nil`)
+		return errors.New(`invalid: unable to decode OptNilNullableRepositoryTemplateRepository to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -40820,7 +40768,7 @@ func (o *OptNilNullableRepositoryTemplateRepository) ReadJSON(d *json.Decoder) e
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilNullableRepositoryTemplateRepository", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilNullableRepositoryTemplateRepository`, d.Next())
 	}
 }
 
@@ -40836,7 +40784,7 @@ func (o OptNilNullableScopedInstallation) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of NullableScopedInstallation from json iterator.
 func (o *OptNilNullableScopedInstallation) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilNullableScopedInstallation to nil`)
+		return errors.New(`invalid: unable to decode OptNilNullableScopedInstallation to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -40856,7 +40804,7 @@ func (o *OptNilNullableScopedInstallation) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilNullableScopedInstallation", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilNullableScopedInstallation`, d.Next())
 	}
 }
 
@@ -40872,7 +40820,7 @@ func (o OptNilNullableSimpleUser) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of NullableSimpleUser from json iterator.
 func (o *OptNilNullableSimpleUser) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilNullableSimpleUser to nil`)
+		return errors.New(`invalid: unable to decode OptNilNullableSimpleUser to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -40892,7 +40840,7 @@ func (o *OptNilNullableSimpleUser) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilNullableSimpleUser", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilNullableSimpleUser`, d.Next())
 	}
 }
 
@@ -40908,7 +40856,7 @@ func (o OptNilNullableTeamSimple) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of NullableTeamSimple from json iterator.
 func (o *OptNilNullableTeamSimple) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilNullableTeamSimple to nil`)
+		return errors.New(`invalid: unable to decode OptNilNullableTeamSimple to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -40928,7 +40876,7 @@ func (o *OptNilNullableTeamSimple) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilNullableTeamSimple", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilNullableTeamSimple`, d.Next())
 	}
 }
 
@@ -40944,7 +40892,7 @@ func (o OptNilPageProtectedDomainState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PageProtectedDomainState from json iterator.
 func (o *OptNilPageProtectedDomainState) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilPageProtectedDomainState to nil`)
+		return errors.New(`invalid: unable to decode OptNilPageProtectedDomainState to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -40966,7 +40914,7 @@ func (o *OptNilPageProtectedDomainState) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilPageProtectedDomainState", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilPageProtectedDomainState`, d.Next())
 	}
 }
 
@@ -40982,7 +40930,7 @@ func (o OptNilPagesHealthCheckAltDomain) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PagesHealthCheckAltDomain from json iterator.
 func (o *OptNilPagesHealthCheckAltDomain) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilPagesHealthCheckAltDomain to nil`)
+		return errors.New(`invalid: unable to decode OptNilPagesHealthCheckAltDomain to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -41002,7 +40950,7 @@ func (o *OptNilPagesHealthCheckAltDomain) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilPagesHealthCheckAltDomain", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilPagesHealthCheckAltDomain`, d.Next())
 	}
 }
 
@@ -41018,7 +40966,7 @@ func (o OptNilPullRequestReviewCommentStartSide) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PullRequestReviewCommentStartSide from json iterator.
 func (o *OptNilPullRequestReviewCommentStartSide) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilPullRequestReviewCommentStartSide to nil`)
+		return errors.New(`invalid: unable to decode OptNilPullRequestReviewCommentStartSide to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -41040,7 +40988,7 @@ func (o *OptNilPullRequestReviewCommentStartSide) ReadJSON(d *json.Decoder) erro
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilPullRequestReviewCommentStartSide", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilPullRequestReviewCommentStartSide`, d.Next())
 	}
 }
 
@@ -41055,7 +41003,7 @@ func (o OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) WriteJSON(e *
 // ReadJSON reads json value of []ReposCreateOrUpdateEnvironmentReqReviewersItem from json iterator.
 func (o *OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray to nil`)
+		return errors.New(`invalid: unable to decode OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray to nil`)
 	}
 	switch d.Next() {
 	case json.Array:
@@ -41072,7 +41020,7 @@ func (o *OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) ReadJSON(d *
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray`, d.Next())
 	}
 }
 
@@ -41088,7 +41036,7 @@ func (o OptNilReposUpdateReqSecurityAndAnalysis) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReposUpdateReqSecurityAndAnalysis from json iterator.
 func (o *OptNilReposUpdateReqSecurityAndAnalysis) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilReposUpdateReqSecurityAndAnalysis to nil`)
+		return errors.New(`invalid: unable to decode OptNilReposUpdateReqSecurityAndAnalysis to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -41108,7 +41056,7 @@ func (o *OptNilReposUpdateReqSecurityAndAnalysis) ReadJSON(d *json.Decoder) erro
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilReposUpdateReqSecurityAndAnalysis", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilReposUpdateReqSecurityAndAnalysis`, d.Next())
 	}
 }
 
@@ -41124,7 +41072,7 @@ func (o OptNilRepositoryTemplateRepository) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of RepositoryTemplateRepository from json iterator.
 func (o *OptNilRepositoryTemplateRepository) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilRepositoryTemplateRepository to nil`)
+		return errors.New(`invalid: unable to decode OptNilRepositoryTemplateRepository to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -41144,7 +41092,7 @@ func (o *OptNilRepositoryTemplateRepository) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilRepositoryTemplateRepository", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilRepositoryTemplateRepository`, d.Next())
 	}
 }
 
@@ -41160,7 +41108,7 @@ func (o OptNilReviewCommentStartSide) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReviewCommentStartSide from json iterator.
 func (o *OptNilReviewCommentStartSide) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilReviewCommentStartSide to nil`)
+		return errors.New(`invalid: unable to decode OptNilReviewCommentStartSide to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -41182,7 +41130,7 @@ func (o *OptNilReviewCommentStartSide) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilReviewCommentStartSide", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilReviewCommentStartSide`, d.Next())
 	}
 }
 
@@ -41198,7 +41146,7 @@ func (o OptNilSecretScanningAlertResolution) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of SecretScanningAlertResolution from json iterator.
 func (o *OptNilSecretScanningAlertResolution) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilSecretScanningAlertResolution to nil`)
+		return errors.New(`invalid: unable to decode OptNilSecretScanningAlertResolution to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -41220,7 +41168,7 @@ func (o *OptNilSecretScanningAlertResolution) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilSecretScanningAlertResolution", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilSecretScanningAlertResolution`, d.Next())
 	}
 }
 
@@ -41235,7 +41183,7 @@ func (o OptNilSimpleUserArray) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of []SimpleUser from json iterator.
 func (o *OptNilSimpleUserArray) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilSimpleUserArray to nil`)
+		return errors.New(`invalid: unable to decode OptNilSimpleUserArray to nil`)
 	}
 	switch d.Next() {
 	case json.Array:
@@ -41252,7 +41200,7 @@ func (o *OptNilSimpleUserArray) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilSimpleUserArray", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilSimpleUserArray`, d.Next())
 	}
 }
 
@@ -41268,7 +41216,7 @@ func (o OptNilString) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of string from json iterator.
 func (o *OptNilString) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilString to nil`)
+		return errors.New(`invalid: unable to decode OptNilString to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -41290,7 +41238,7 @@ func (o *OptNilString) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilString", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilString`, d.Next())
 	}
 }
 
@@ -41305,7 +41253,7 @@ func (o OptNilStringArray) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of []string from json iterator.
 func (o *OptNilStringArray) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilStringArray to nil`)
+		return errors.New(`invalid: unable to decode OptNilStringArray to nil`)
 	}
 	switch d.Next() {
 	case json.Array:
@@ -41322,7 +41270,7 @@ func (o *OptNilStringArray) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilStringArray", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilStringArray`, d.Next())
 	}
 }
 
@@ -41337,7 +41285,7 @@ func (o OptNilTeamArray) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of []Team from json iterator.
 func (o *OptNilTeamArray) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilTeamArray to nil`)
+		return errors.New(`invalid: unable to decode OptNilTeamArray to nil`)
 	}
 	switch d.Next() {
 	case json.Array:
@@ -41354,7 +41302,7 @@ func (o *OptNilTeamArray) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilTeamArray", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilTeamArray`, d.Next())
 	}
 }
 
@@ -41369,7 +41317,7 @@ func (o OptNilTeamSimpleArray) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of []TeamSimple from json iterator.
 func (o *OptNilTeamSimpleArray) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilTeamSimpleArray to nil`)
+		return errors.New(`invalid: unable to decode OptNilTeamSimpleArray to nil`)
 	}
 	switch d.Next() {
 	case json.Array:
@@ -41386,7 +41334,7 @@ func (o *OptNilTeamSimpleArray) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilTeamSimpleArray", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilTeamSimpleArray`, d.Next())
 	}
 }
 
@@ -41402,7 +41350,7 @@ func (o OptNilTime) WriteJSON(e *json.Encoder, format func(*json.Encoder, time.T
 // ReadJSON reads json value of time.Time from json iterator.
 func (o *OptNilTime) ReadJSON(d *json.Decoder, format func(*json.Decoder) (time.Time, error)) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilTime to nil`)
+		return errors.New(`invalid: unable to decode OptNilTime to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -41424,7 +41372,7 @@ func (o *OptNilTime) ReadJSON(d *json.Decoder, format func(*json.Decoder) (time.
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilTime", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilTime`, d.Next())
 	}
 }
 
@@ -41439,7 +41387,7 @@ func (o OptNilTopicSearchResultItemAliasesItemArray) WriteJSON(e *json.Encoder) 
 // ReadJSON reads json value of []TopicSearchResultItemAliasesItem from json iterator.
 func (o *OptNilTopicSearchResultItemAliasesItemArray) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilTopicSearchResultItemAliasesItemArray to nil`)
+		return errors.New(`invalid: unable to decode OptNilTopicSearchResultItemAliasesItemArray to nil`)
 	}
 	switch d.Next() {
 	case json.Array:
@@ -41456,7 +41404,7 @@ func (o *OptNilTopicSearchResultItemAliasesItemArray) ReadJSON(d *json.Decoder) 
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilTopicSearchResultItemAliasesItemArray", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilTopicSearchResultItemAliasesItemArray`, d.Next())
 	}
 }
 
@@ -41471,7 +41419,7 @@ func (o OptNilTopicSearchResultItemRelatedItemArray) WriteJSON(e *json.Encoder) 
 // ReadJSON reads json value of []TopicSearchResultItemRelatedItem from json iterator.
 func (o *OptNilTopicSearchResultItemRelatedItemArray) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilTopicSearchResultItemRelatedItemArray to nil`)
+		return errors.New(`invalid: unable to decode OptNilTopicSearchResultItemRelatedItemArray to nil`)
 	}
 	switch d.Next() {
 	case json.Array:
@@ -41488,7 +41436,7 @@ func (o *OptNilTopicSearchResultItemRelatedItemArray) ReadJSON(d *json.Decoder) 
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilTopicSearchResultItemRelatedItemArray", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilTopicSearchResultItemRelatedItemArray`, d.Next())
 	}
 }
 
@@ -41504,7 +41452,7 @@ func (o OptNilURL) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of url.URL from json iterator.
 func (o *OptNilURL) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNilURL to nil`)
+		return errors.New(`invalid: unable to decode OptNilURL to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -41526,7 +41474,7 @@ func (o *OptNilURL) ReadJSON(d *json.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNilURL", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNilURL`, d.Next())
 	}
 }
 
@@ -41538,7 +41486,7 @@ func (o OptNullableMinimalRepositoryPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of NullableMinimalRepositoryPermissions from json iterator.
 func (o *OptNullableMinimalRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNullableMinimalRepositoryPermissions to nil`)
+		return errors.New(`invalid: unable to decode OptNullableMinimalRepositoryPermissions to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -41548,7 +41496,7 @@ func (o *OptNullableMinimalRepositoryPermissions) ReadJSON(d *json.Decoder) erro
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNullableMinimalRepositoryPermissions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNullableMinimalRepositoryPermissions`, d.Next())
 	}
 }
 
@@ -41560,7 +41508,7 @@ func (o OptNullableRepositoryPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of NullableRepositoryPermissions from json iterator.
 func (o *OptNullableRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNullableRepositoryPermissions to nil`)
+		return errors.New(`invalid: unable to decode OptNullableRepositoryPermissions to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -41570,7 +41518,7 @@ func (o *OptNullableRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNullableRepositoryPermissions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNullableRepositoryPermissions`, d.Next())
 	}
 }
 
@@ -41582,7 +41530,7 @@ func (o OptNullableRepositoryTemplateRepositoryOwner) WriteJSON(e *json.Encoder)
 // ReadJSON reads json value of NullableRepositoryTemplateRepositoryOwner from json iterator.
 func (o *OptNullableRepositoryTemplateRepositoryOwner) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNullableRepositoryTemplateRepositoryOwner to nil`)
+		return errors.New(`invalid: unable to decode OptNullableRepositoryTemplateRepositoryOwner to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -41592,7 +41540,7 @@ func (o *OptNullableRepositoryTemplateRepositoryOwner) ReadJSON(d *json.Decoder)
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNullableRepositoryTemplateRepositoryOwner", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNullableRepositoryTemplateRepositoryOwner`, d.Next())
 	}
 }
 
@@ -41604,7 +41552,7 @@ func (o OptNullableRepositoryTemplateRepositoryPermissions) WriteJSON(e *json.En
 // ReadJSON reads json value of NullableRepositoryTemplateRepositoryPermissions from json iterator.
 func (o *OptNullableRepositoryTemplateRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptNullableRepositoryTemplateRepositoryPermissions to nil`)
+		return errors.New(`invalid: unable to decode OptNullableRepositoryTemplateRepositoryPermissions to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -41614,7 +41562,7 @@ func (o *OptNullableRepositoryTemplateRepositoryPermissions) ReadJSON(d *json.De
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptNullableRepositoryTemplateRepositoryPermissions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptNullableRepositoryTemplateRepositoryPermissions`, d.Next())
 	}
 }
 
@@ -41626,7 +41574,7 @@ func (o OptOrgMembershipPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of OrgMembershipPermissions from json iterator.
 func (o *OptOrgMembershipPermissions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptOrgMembershipPermissions to nil`)
+		return errors.New(`invalid: unable to decode OptOrgMembershipPermissions to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -41636,7 +41584,7 @@ func (o *OptOrgMembershipPermissions) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptOrgMembershipPermissions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptOrgMembershipPermissions`, d.Next())
 	}
 }
 
@@ -41648,7 +41596,7 @@ func (o OptOrganizationFullPlan) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of OrganizationFullPlan from json iterator.
 func (o *OptOrganizationFullPlan) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptOrganizationFullPlan to nil`)
+		return errors.New(`invalid: unable to decode OptOrganizationFullPlan to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -41658,7 +41606,7 @@ func (o *OptOrganizationFullPlan) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptOrganizationFullPlan", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptOrganizationFullPlan`, d.Next())
 	}
 }
 
@@ -41670,7 +41618,7 @@ func (o OptOrgsCreateInvitationReqRole) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of OrgsCreateInvitationReqRole from json iterator.
 func (o *OptOrgsCreateInvitationReqRole) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptOrgsCreateInvitationReqRole to nil`)
+		return errors.New(`invalid: unable to decode OptOrgsCreateInvitationReqRole to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -41682,7 +41630,7 @@ func (o *OptOrgsCreateInvitationReqRole) ReadJSON(d *json.Decoder) error {
 		o.Value = OrgsCreateInvitationReqRole(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptOrgsCreateInvitationReqRole", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptOrgsCreateInvitationReqRole`, d.Next())
 	}
 }
 
@@ -41694,7 +41642,7 @@ func (o OptOrgsGetAuditLogInclude) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of OrgsGetAuditLogInclude from json iterator.
 func (o *OptOrgsGetAuditLogInclude) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptOrgsGetAuditLogInclude to nil`)
+		return errors.New(`invalid: unable to decode OptOrgsGetAuditLogInclude to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -41706,7 +41654,7 @@ func (o *OptOrgsGetAuditLogInclude) ReadJSON(d *json.Decoder) error {
 		o.Value = OrgsGetAuditLogInclude(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptOrgsGetAuditLogInclude", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptOrgsGetAuditLogInclude`, d.Next())
 	}
 }
 
@@ -41718,7 +41666,7 @@ func (o OptOrgsGetAuditLogOrder) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of OrgsGetAuditLogOrder from json iterator.
 func (o *OptOrgsGetAuditLogOrder) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptOrgsGetAuditLogOrder to nil`)
+		return errors.New(`invalid: unable to decode OptOrgsGetAuditLogOrder to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -41730,7 +41678,7 @@ func (o *OptOrgsGetAuditLogOrder) ReadJSON(d *json.Decoder) error {
 		o.Value = OrgsGetAuditLogOrder(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptOrgsGetAuditLogOrder", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptOrgsGetAuditLogOrder`, d.Next())
 	}
 }
 
@@ -41742,7 +41690,7 @@ func (o OptOrgsListOutsideCollaboratorsFilter) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of OrgsListOutsideCollaboratorsFilter from json iterator.
 func (o *OptOrgsListOutsideCollaboratorsFilter) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptOrgsListOutsideCollaboratorsFilter to nil`)
+		return errors.New(`invalid: unable to decode OptOrgsListOutsideCollaboratorsFilter to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -41754,7 +41702,7 @@ func (o *OptOrgsListOutsideCollaboratorsFilter) ReadJSON(d *json.Decoder) error 
 		o.Value = OrgsListOutsideCollaboratorsFilter(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptOrgsListOutsideCollaboratorsFilter", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptOrgsListOutsideCollaboratorsFilter`, d.Next())
 	}
 }
 
@@ -41766,7 +41714,7 @@ func (o OptOrgsSetMembershipForUserReqRole) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of OrgsSetMembershipForUserReqRole from json iterator.
 func (o *OptOrgsSetMembershipForUserReqRole) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptOrgsSetMembershipForUserReqRole to nil`)
+		return errors.New(`invalid: unable to decode OptOrgsSetMembershipForUserReqRole to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -41778,7 +41726,7 @@ func (o *OptOrgsSetMembershipForUserReqRole) ReadJSON(d *json.Decoder) error {
 		o.Value = OrgsSetMembershipForUserReqRole(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptOrgsSetMembershipForUserReqRole", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptOrgsSetMembershipForUserReqRole`, d.Next())
 	}
 }
 
@@ -41790,7 +41738,7 @@ func (o OptOrgsUpdateReqDefaultRepositoryPermission) WriteJSON(e *json.Encoder) 
 // ReadJSON reads json value of OrgsUpdateReqDefaultRepositoryPermission from json iterator.
 func (o *OptOrgsUpdateReqDefaultRepositoryPermission) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptOrgsUpdateReqDefaultRepositoryPermission to nil`)
+		return errors.New(`invalid: unable to decode OptOrgsUpdateReqDefaultRepositoryPermission to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -41802,7 +41750,7 @@ func (o *OptOrgsUpdateReqDefaultRepositoryPermission) ReadJSON(d *json.Decoder) 
 		o.Value = OrgsUpdateReqDefaultRepositoryPermission(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptOrgsUpdateReqDefaultRepositoryPermission", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptOrgsUpdateReqDefaultRepositoryPermission`, d.Next())
 	}
 }
 
@@ -41814,7 +41762,7 @@ func (o OptOrgsUpdateReqMembersAllowedRepositoryCreationType) WriteJSON(e *json.
 // ReadJSON reads json value of OrgsUpdateReqMembersAllowedRepositoryCreationType from json iterator.
 func (o *OptOrgsUpdateReqMembersAllowedRepositoryCreationType) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptOrgsUpdateReqMembersAllowedRepositoryCreationType to nil`)
+		return errors.New(`invalid: unable to decode OptOrgsUpdateReqMembersAllowedRepositoryCreationType to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -41826,7 +41774,7 @@ func (o *OptOrgsUpdateReqMembersAllowedRepositoryCreationType) ReadJSON(d *json.
 		o.Value = OrgsUpdateReqMembersAllowedRepositoryCreationType(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptOrgsUpdateReqMembersAllowedRepositoryCreationType", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptOrgsUpdateReqMembersAllowedRepositoryCreationType`, d.Next())
 	}
 }
 
@@ -41838,7 +41786,7 @@ func (o OptOrgsUpdateWebhookReqConfig) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of OrgsUpdateWebhookReqConfig from json iterator.
 func (o *OptOrgsUpdateWebhookReqConfig) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptOrgsUpdateWebhookReqConfig to nil`)
+		return errors.New(`invalid: unable to decode OptOrgsUpdateWebhookReqConfig to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -41848,7 +41796,7 @@ func (o *OptOrgsUpdateWebhookReqConfig) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptOrgsUpdateWebhookReqConfig", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptOrgsUpdateWebhookReqConfig`, d.Next())
 	}
 }
 
@@ -41860,7 +41808,7 @@ func (o OptPackageVersionMetadata) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PackageVersionMetadata from json iterator.
 func (o *OptPackageVersionMetadata) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPackageVersionMetadata to nil`)
+		return errors.New(`invalid: unable to decode OptPackageVersionMetadata to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -41870,7 +41818,7 @@ func (o *OptPackageVersionMetadata) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPackageVersionMetadata", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPackageVersionMetadata`, d.Next())
 	}
 }
 
@@ -41882,7 +41830,7 @@ func (o OptPackageVersionMetadataContainer) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PackageVersionMetadataContainer from json iterator.
 func (o *OptPackageVersionMetadataContainer) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPackageVersionMetadataContainer to nil`)
+		return errors.New(`invalid: unable to decode OptPackageVersionMetadataContainer to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -41892,7 +41840,7 @@ func (o *OptPackageVersionMetadataContainer) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPackageVersionMetadataContainer", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPackageVersionMetadataContainer`, d.Next())
 	}
 }
 
@@ -41904,7 +41852,7 @@ func (o OptPackageVersionMetadataDocker) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PackageVersionMetadataDocker from json iterator.
 func (o *OptPackageVersionMetadataDocker) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPackageVersionMetadataDocker to nil`)
+		return errors.New(`invalid: unable to decode OptPackageVersionMetadataDocker to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -41914,7 +41862,7 @@ func (o *OptPackageVersionMetadataDocker) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPackageVersionMetadataDocker", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPackageVersionMetadataDocker`, d.Next())
 	}
 }
 
@@ -41926,7 +41874,7 @@ func (o OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState)
 // ReadJSON reads json value of PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState from json iterator.
 func (o *OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState to nil`)
+		return errors.New(`invalid: unable to decode OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -41938,7 +41886,7 @@ func (o *OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState
 		o.Value = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState`, d.Next())
 	}
 }
 
@@ -41950,7 +41898,7 @@ func (o OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState) WriteJSON(e *
 // ReadJSON reads json value of PackagesGetAllPackageVersionsForPackageOwnedByOrgState from json iterator.
 func (o *OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState to nil`)
+		return errors.New(`invalid: unable to decode OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -41962,7 +41910,7 @@ func (o *OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState) ReadJSON(d *
 		o.Value = PackagesGetAllPackageVersionsForPackageOwnedByOrgState(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState`, d.Next())
 	}
 }
 
@@ -41974,7 +41922,7 @@ func (o OptPackagesListPackagesForAuthenticatedUserVisibility) WriteJSON(e *json
 // ReadJSON reads json value of PackagesListPackagesForAuthenticatedUserVisibility from json iterator.
 func (o *OptPackagesListPackagesForAuthenticatedUserVisibility) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPackagesListPackagesForAuthenticatedUserVisibility to nil`)
+		return errors.New(`invalid: unable to decode OptPackagesListPackagesForAuthenticatedUserVisibility to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -41986,7 +41934,7 @@ func (o *OptPackagesListPackagesForAuthenticatedUserVisibility) ReadJSON(d *json
 		o.Value = PackagesListPackagesForAuthenticatedUserVisibility(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPackagesListPackagesForAuthenticatedUserVisibility", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPackagesListPackagesForAuthenticatedUserVisibility`, d.Next())
 	}
 }
 
@@ -41998,7 +41946,7 @@ func (o OptPackagesListPackagesForOrganizationVisibility) WriteJSON(e *json.Enco
 // ReadJSON reads json value of PackagesListPackagesForOrganizationVisibility from json iterator.
 func (o *OptPackagesListPackagesForOrganizationVisibility) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPackagesListPackagesForOrganizationVisibility to nil`)
+		return errors.New(`invalid: unable to decode OptPackagesListPackagesForOrganizationVisibility to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -42010,7 +41958,7 @@ func (o *OptPackagesListPackagesForOrganizationVisibility) ReadJSON(d *json.Deco
 		o.Value = PackagesListPackagesForOrganizationVisibility(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPackagesListPackagesForOrganizationVisibility", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPackagesListPackagesForOrganizationVisibility`, d.Next())
 	}
 }
 
@@ -42022,7 +41970,7 @@ func (o OptPackagesListPackagesForUserVisibility) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PackagesListPackagesForUserVisibility from json iterator.
 func (o *OptPackagesListPackagesForUserVisibility) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPackagesListPackagesForUserVisibility to nil`)
+		return errors.New(`invalid: unable to decode OptPackagesListPackagesForUserVisibility to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -42034,7 +41982,7 @@ func (o *OptPackagesListPackagesForUserVisibility) ReadJSON(d *json.Decoder) err
 		o.Value = PackagesListPackagesForUserVisibility(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPackagesListPackagesForUserVisibility", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPackagesListPackagesForUserVisibility`, d.Next())
 	}
 }
 
@@ -42046,7 +41994,7 @@ func (o OptPagesHTTPSCertificate) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PagesHTTPSCertificate from json iterator.
 func (o *OptPagesHTTPSCertificate) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPagesHTTPSCertificate to nil`)
+		return errors.New(`invalid: unable to decode OptPagesHTTPSCertificate to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -42056,7 +42004,7 @@ func (o *OptPagesHTTPSCertificate) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPagesHTTPSCertificate", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPagesHTTPSCertificate`, d.Next())
 	}
 }
 
@@ -42068,7 +42016,7 @@ func (o OptPagesHealthCheckDomain) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PagesHealthCheckDomain from json iterator.
 func (o *OptPagesHealthCheckDomain) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPagesHealthCheckDomain to nil`)
+		return errors.New(`invalid: unable to decode OptPagesHealthCheckDomain to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -42078,7 +42026,7 @@ func (o *OptPagesHealthCheckDomain) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPagesHealthCheckDomain", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPagesHealthCheckDomain`, d.Next())
 	}
 }
 
@@ -42090,7 +42038,7 @@ func (o OptPagesSourceHash) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PagesSourceHash from json iterator.
 func (o *OptPagesSourceHash) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPagesSourceHash to nil`)
+		return errors.New(`invalid: unable to decode OptPagesSourceHash to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -42100,7 +42048,7 @@ func (o *OptPagesSourceHash) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPagesSourceHash", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPagesSourceHash`, d.Next())
 	}
 }
 
@@ -42112,7 +42060,7 @@ func (o OptPrivateUserPlan) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PrivateUserPlan from json iterator.
 func (o *OptPrivateUserPlan) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPrivateUserPlan to nil`)
+		return errors.New(`invalid: unable to decode OptPrivateUserPlan to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -42122,7 +42070,7 @@ func (o *OptPrivateUserPlan) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPrivateUserPlan", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPrivateUserPlan`, d.Next())
 	}
 }
 
@@ -42134,7 +42082,7 @@ func (o OptProjectOrganizationPermission) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ProjectOrganizationPermission from json iterator.
 func (o *OptProjectOrganizationPermission) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptProjectOrganizationPermission to nil`)
+		return errors.New(`invalid: unable to decode OptProjectOrganizationPermission to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -42146,7 +42094,7 @@ func (o *OptProjectOrganizationPermission) ReadJSON(d *json.Decoder) error {
 		o.Value = ProjectOrganizationPermission(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptProjectOrganizationPermission", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptProjectOrganizationPermission`, d.Next())
 	}
 }
 
@@ -42158,7 +42106,7 @@ func (o OptProjectsAddCollaboratorReqPermission) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ProjectsAddCollaboratorReqPermission from json iterator.
 func (o *OptProjectsAddCollaboratorReqPermission) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptProjectsAddCollaboratorReqPermission to nil`)
+		return errors.New(`invalid: unable to decode OptProjectsAddCollaboratorReqPermission to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -42170,7 +42118,7 @@ func (o *OptProjectsAddCollaboratorReqPermission) ReadJSON(d *json.Decoder) erro
 		o.Value = ProjectsAddCollaboratorReqPermission(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptProjectsAddCollaboratorReqPermission", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptProjectsAddCollaboratorReqPermission`, d.Next())
 	}
 }
 
@@ -42182,7 +42130,7 @@ func (o OptProjectsListCardsArchivedState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ProjectsListCardsArchivedState from json iterator.
 func (o *OptProjectsListCardsArchivedState) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptProjectsListCardsArchivedState to nil`)
+		return errors.New(`invalid: unable to decode OptProjectsListCardsArchivedState to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -42194,7 +42142,7 @@ func (o *OptProjectsListCardsArchivedState) ReadJSON(d *json.Decoder) error {
 		o.Value = ProjectsListCardsArchivedState(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptProjectsListCardsArchivedState", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptProjectsListCardsArchivedState`, d.Next())
 	}
 }
 
@@ -42206,7 +42154,7 @@ func (o OptProjectsListForOrgState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ProjectsListForOrgState from json iterator.
 func (o *OptProjectsListForOrgState) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptProjectsListForOrgState to nil`)
+		return errors.New(`invalid: unable to decode OptProjectsListForOrgState to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -42218,7 +42166,7 @@ func (o *OptProjectsListForOrgState) ReadJSON(d *json.Decoder) error {
 		o.Value = ProjectsListForOrgState(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptProjectsListForOrgState", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptProjectsListForOrgState`, d.Next())
 	}
 }
 
@@ -42230,7 +42178,7 @@ func (o OptProjectsListForRepoState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ProjectsListForRepoState from json iterator.
 func (o *OptProjectsListForRepoState) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptProjectsListForRepoState to nil`)
+		return errors.New(`invalid: unable to decode OptProjectsListForRepoState to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -42242,7 +42190,7 @@ func (o *OptProjectsListForRepoState) ReadJSON(d *json.Decoder) error {
 		o.Value = ProjectsListForRepoState(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptProjectsListForRepoState", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptProjectsListForRepoState`, d.Next())
 	}
 }
 
@@ -42254,7 +42202,7 @@ func (o OptProjectsUpdateReqOrganizationPermission) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ProjectsUpdateReqOrganizationPermission from json iterator.
 func (o *OptProjectsUpdateReqOrganizationPermission) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptProjectsUpdateReqOrganizationPermission to nil`)
+		return errors.New(`invalid: unable to decode OptProjectsUpdateReqOrganizationPermission to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -42266,7 +42214,7 @@ func (o *OptProjectsUpdateReqOrganizationPermission) ReadJSON(d *json.Decoder) e
 		o.Value = ProjectsUpdateReqOrganizationPermission(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptProjectsUpdateReqOrganizationPermission", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptProjectsUpdateReqOrganizationPermission`, d.Next())
 	}
 }
 
@@ -42278,7 +42226,7 @@ func (o OptProtectedBranchAdminEnforced) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ProtectedBranchAdminEnforced from json iterator.
 func (o *OptProtectedBranchAdminEnforced) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptProtectedBranchAdminEnforced to nil`)
+		return errors.New(`invalid: unable to decode OptProtectedBranchAdminEnforced to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -42288,7 +42236,7 @@ func (o *OptProtectedBranchAdminEnforced) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptProtectedBranchAdminEnforced", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptProtectedBranchAdminEnforced`, d.Next())
 	}
 }
 
@@ -42300,7 +42248,7 @@ func (o OptProtectedBranchAllowDeletions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ProtectedBranchAllowDeletions from json iterator.
 func (o *OptProtectedBranchAllowDeletions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptProtectedBranchAllowDeletions to nil`)
+		return errors.New(`invalid: unable to decode OptProtectedBranchAllowDeletions to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -42310,7 +42258,7 @@ func (o *OptProtectedBranchAllowDeletions) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptProtectedBranchAllowDeletions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptProtectedBranchAllowDeletions`, d.Next())
 	}
 }
 
@@ -42322,7 +42270,7 @@ func (o OptProtectedBranchAllowForcePushes) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ProtectedBranchAllowForcePushes from json iterator.
 func (o *OptProtectedBranchAllowForcePushes) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptProtectedBranchAllowForcePushes to nil`)
+		return errors.New(`invalid: unable to decode OptProtectedBranchAllowForcePushes to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -42332,7 +42280,7 @@ func (o *OptProtectedBranchAllowForcePushes) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptProtectedBranchAllowForcePushes", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptProtectedBranchAllowForcePushes`, d.Next())
 	}
 }
 
@@ -42344,7 +42292,7 @@ func (o OptProtectedBranchEnforceAdmins) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ProtectedBranchEnforceAdmins from json iterator.
 func (o *OptProtectedBranchEnforceAdmins) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptProtectedBranchEnforceAdmins to nil`)
+		return errors.New(`invalid: unable to decode OptProtectedBranchEnforceAdmins to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -42354,7 +42302,7 @@ func (o *OptProtectedBranchEnforceAdmins) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptProtectedBranchEnforceAdmins", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptProtectedBranchEnforceAdmins`, d.Next())
 	}
 }
 
@@ -42366,7 +42314,7 @@ func (o OptProtectedBranchPullRequestReview) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ProtectedBranchPullRequestReview from json iterator.
 func (o *OptProtectedBranchPullRequestReview) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptProtectedBranchPullRequestReview to nil`)
+		return errors.New(`invalid: unable to decode OptProtectedBranchPullRequestReview to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -42376,7 +42324,7 @@ func (o *OptProtectedBranchPullRequestReview) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptProtectedBranchPullRequestReview", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptProtectedBranchPullRequestReview`, d.Next())
 	}
 }
 
@@ -42388,7 +42336,7 @@ func (o OptProtectedBranchPullRequestReviewDismissalRestrictions) WriteJSON(e *j
 // ReadJSON reads json value of ProtectedBranchPullRequestReviewDismissalRestrictions from json iterator.
 func (o *OptProtectedBranchPullRequestReviewDismissalRestrictions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptProtectedBranchPullRequestReviewDismissalRestrictions to nil`)
+		return errors.New(`invalid: unable to decode OptProtectedBranchPullRequestReviewDismissalRestrictions to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -42398,7 +42346,7 @@ func (o *OptProtectedBranchPullRequestReviewDismissalRestrictions) ReadJSON(d *j
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptProtectedBranchPullRequestReviewDismissalRestrictions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptProtectedBranchPullRequestReviewDismissalRestrictions`, d.Next())
 	}
 }
 
@@ -42410,7 +42358,7 @@ func (o OptProtectedBranchRequiredConversationResolution) WriteJSON(e *json.Enco
 // ReadJSON reads json value of ProtectedBranchRequiredConversationResolution from json iterator.
 func (o *OptProtectedBranchRequiredConversationResolution) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptProtectedBranchRequiredConversationResolution to nil`)
+		return errors.New(`invalid: unable to decode OptProtectedBranchRequiredConversationResolution to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -42420,7 +42368,7 @@ func (o *OptProtectedBranchRequiredConversationResolution) ReadJSON(d *json.Deco
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptProtectedBranchRequiredConversationResolution", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptProtectedBranchRequiredConversationResolution`, d.Next())
 	}
 }
 
@@ -42432,7 +42380,7 @@ func (o OptProtectedBranchRequiredLinearHistory) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ProtectedBranchRequiredLinearHistory from json iterator.
 func (o *OptProtectedBranchRequiredLinearHistory) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptProtectedBranchRequiredLinearHistory to nil`)
+		return errors.New(`invalid: unable to decode OptProtectedBranchRequiredLinearHistory to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -42442,7 +42390,7 @@ func (o *OptProtectedBranchRequiredLinearHistory) ReadJSON(d *json.Decoder) erro
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptProtectedBranchRequiredLinearHistory", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptProtectedBranchRequiredLinearHistory`, d.Next())
 	}
 }
 
@@ -42454,7 +42402,7 @@ func (o OptProtectedBranchRequiredPullRequestReviews) WriteJSON(e *json.Encoder)
 // ReadJSON reads json value of ProtectedBranchRequiredPullRequestReviews from json iterator.
 func (o *OptProtectedBranchRequiredPullRequestReviews) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptProtectedBranchRequiredPullRequestReviews to nil`)
+		return errors.New(`invalid: unable to decode OptProtectedBranchRequiredPullRequestReviews to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -42464,7 +42412,7 @@ func (o *OptProtectedBranchRequiredPullRequestReviews) ReadJSON(d *json.Decoder)
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptProtectedBranchRequiredPullRequestReviews", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptProtectedBranchRequiredPullRequestReviews`, d.Next())
 	}
 }
 
@@ -42476,7 +42424,7 @@ func (o OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Write
 // ReadJSON reads json value of ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions from json iterator.
 func (o *OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions to nil`)
+		return errors.New(`invalid: unable to decode OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -42486,7 +42434,7 @@ func (o *OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Read
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions`, d.Next())
 	}
 }
 
@@ -42498,7 +42446,7 @@ func (o OptProtectedBranchRequiredSignatures) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ProtectedBranchRequiredSignatures from json iterator.
 func (o *OptProtectedBranchRequiredSignatures) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptProtectedBranchRequiredSignatures to nil`)
+		return errors.New(`invalid: unable to decode OptProtectedBranchRequiredSignatures to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -42508,7 +42456,7 @@ func (o *OptProtectedBranchRequiredSignatures) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptProtectedBranchRequiredSignatures", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptProtectedBranchRequiredSignatures`, d.Next())
 	}
 }
 
@@ -42520,7 +42468,7 @@ func (o OptPublicUser) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PublicUser from json iterator.
 func (o *OptPublicUser) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPublicUser to nil`)
+		return errors.New(`invalid: unable to decode OptPublicUser to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -42530,7 +42478,7 @@ func (o *OptPublicUser) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPublicUser", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPublicUser`, d.Next())
 	}
 }
 
@@ -42542,7 +42490,7 @@ func (o OptPublicUserPlan) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PublicUserPlan from json iterator.
 func (o *OptPublicUserPlan) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPublicUserPlan to nil`)
+		return errors.New(`invalid: unable to decode OptPublicUserPlan to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -42552,7 +42500,7 @@ func (o *OptPublicUserPlan) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPublicUserPlan", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPublicUserPlan`, d.Next())
 	}
 }
 
@@ -42564,7 +42512,7 @@ func (o OptPullRequestBaseRepoPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PullRequestBaseRepoPermissions from json iterator.
 func (o *OptPullRequestBaseRepoPermissions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPullRequestBaseRepoPermissions to nil`)
+		return errors.New(`invalid: unable to decode OptPullRequestBaseRepoPermissions to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -42574,7 +42522,7 @@ func (o *OptPullRequestBaseRepoPermissions) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPullRequestBaseRepoPermissions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPullRequestBaseRepoPermissions`, d.Next())
 	}
 }
 
@@ -42586,7 +42534,7 @@ func (o OptPullRequestHeadRepoPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PullRequestHeadRepoPermissions from json iterator.
 func (o *OptPullRequestHeadRepoPermissions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPullRequestHeadRepoPermissions to nil`)
+		return errors.New(`invalid: unable to decode OptPullRequestHeadRepoPermissions to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -42596,7 +42544,7 @@ func (o *OptPullRequestHeadRepoPermissions) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPullRequestHeadRepoPermissions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPullRequestHeadRepoPermissions`, d.Next())
 	}
 }
 
@@ -42608,7 +42556,7 @@ func (o OptPullRequestReviewCommentSide) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PullRequestReviewCommentSide from json iterator.
 func (o *OptPullRequestReviewCommentSide) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPullRequestReviewCommentSide to nil`)
+		return errors.New(`invalid: unable to decode OptPullRequestReviewCommentSide to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -42620,7 +42568,7 @@ func (o *OptPullRequestReviewCommentSide) ReadJSON(d *json.Decoder) error {
 		o.Value = PullRequestReviewCommentSide(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPullRequestReviewCommentSide", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPullRequestReviewCommentSide`, d.Next())
 	}
 }
 
@@ -42632,7 +42580,7 @@ func (o OptPullsCreateReviewCommentReqSide) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PullsCreateReviewCommentReqSide from json iterator.
 func (o *OptPullsCreateReviewCommentReqSide) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPullsCreateReviewCommentReqSide to nil`)
+		return errors.New(`invalid: unable to decode OptPullsCreateReviewCommentReqSide to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -42644,7 +42592,7 @@ func (o *OptPullsCreateReviewCommentReqSide) ReadJSON(d *json.Decoder) error {
 		o.Value = PullsCreateReviewCommentReqSide(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPullsCreateReviewCommentReqSide", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPullsCreateReviewCommentReqSide`, d.Next())
 	}
 }
 
@@ -42656,7 +42604,7 @@ func (o OptPullsCreateReviewCommentReqStartSide) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PullsCreateReviewCommentReqStartSide from json iterator.
 func (o *OptPullsCreateReviewCommentReqStartSide) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPullsCreateReviewCommentReqStartSide to nil`)
+		return errors.New(`invalid: unable to decode OptPullsCreateReviewCommentReqStartSide to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -42668,7 +42616,7 @@ func (o *OptPullsCreateReviewCommentReqStartSide) ReadJSON(d *json.Decoder) erro
 		o.Value = PullsCreateReviewCommentReqStartSide(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPullsCreateReviewCommentReqStartSide", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPullsCreateReviewCommentReqStartSide`, d.Next())
 	}
 }
 
@@ -42680,7 +42628,7 @@ func (o OptPullsCreateReviewReqEvent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PullsCreateReviewReqEvent from json iterator.
 func (o *OptPullsCreateReviewReqEvent) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPullsCreateReviewReqEvent to nil`)
+		return errors.New(`invalid: unable to decode OptPullsCreateReviewReqEvent to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -42692,7 +42640,7 @@ func (o *OptPullsCreateReviewReqEvent) ReadJSON(d *json.Decoder) error {
 		o.Value = PullsCreateReviewReqEvent(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPullsCreateReviewReqEvent", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPullsCreateReviewReqEvent`, d.Next())
 	}
 }
 
@@ -42704,7 +42652,7 @@ func (o OptPullsListReviewCommentsDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PullsListReviewCommentsDirection from json iterator.
 func (o *OptPullsListReviewCommentsDirection) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPullsListReviewCommentsDirection to nil`)
+		return errors.New(`invalid: unable to decode OptPullsListReviewCommentsDirection to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -42716,7 +42664,7 @@ func (o *OptPullsListReviewCommentsDirection) ReadJSON(d *json.Decoder) error {
 		o.Value = PullsListReviewCommentsDirection(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPullsListReviewCommentsDirection", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPullsListReviewCommentsDirection`, d.Next())
 	}
 }
 
@@ -42728,7 +42676,7 @@ func (o OptPullsListReviewCommentsForRepoDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PullsListReviewCommentsForRepoDirection from json iterator.
 func (o *OptPullsListReviewCommentsForRepoDirection) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPullsListReviewCommentsForRepoDirection to nil`)
+		return errors.New(`invalid: unable to decode OptPullsListReviewCommentsForRepoDirection to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -42740,7 +42688,7 @@ func (o *OptPullsListReviewCommentsForRepoDirection) ReadJSON(d *json.Decoder) e
 		o.Value = PullsListReviewCommentsForRepoDirection(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPullsListReviewCommentsForRepoDirection", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPullsListReviewCommentsForRepoDirection`, d.Next())
 	}
 }
 
@@ -42752,7 +42700,7 @@ func (o OptPullsListReviewCommentsForRepoSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PullsListReviewCommentsForRepoSort from json iterator.
 func (o *OptPullsListReviewCommentsForRepoSort) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPullsListReviewCommentsForRepoSort to nil`)
+		return errors.New(`invalid: unable to decode OptPullsListReviewCommentsForRepoSort to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -42764,7 +42712,7 @@ func (o *OptPullsListReviewCommentsForRepoSort) ReadJSON(d *json.Decoder) error 
 		o.Value = PullsListReviewCommentsForRepoSort(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPullsListReviewCommentsForRepoSort", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPullsListReviewCommentsForRepoSort`, d.Next())
 	}
 }
 
@@ -42776,7 +42724,7 @@ func (o OptPullsListReviewCommentsSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PullsListReviewCommentsSort from json iterator.
 func (o *OptPullsListReviewCommentsSort) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPullsListReviewCommentsSort to nil`)
+		return errors.New(`invalid: unable to decode OptPullsListReviewCommentsSort to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -42788,7 +42736,7 @@ func (o *OptPullsListReviewCommentsSort) ReadJSON(d *json.Decoder) error {
 		o.Value = PullsListReviewCommentsSort(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPullsListReviewCommentsSort", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPullsListReviewCommentsSort`, d.Next())
 	}
 }
 
@@ -42800,7 +42748,7 @@ func (o OptPullsMergeReqMergeMethod) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PullsMergeReqMergeMethod from json iterator.
 func (o *OptPullsMergeReqMergeMethod) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPullsMergeReqMergeMethod to nil`)
+		return errors.New(`invalid: unable to decode OptPullsMergeReqMergeMethod to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -42812,7 +42760,7 @@ func (o *OptPullsMergeReqMergeMethod) ReadJSON(d *json.Decoder) error {
 		o.Value = PullsMergeReqMergeMethod(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPullsMergeReqMergeMethod", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPullsMergeReqMergeMethod`, d.Next())
 	}
 }
 
@@ -42824,7 +42772,7 @@ func (o OptPullsUpdateReqState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of PullsUpdateReqState from json iterator.
 func (o *OptPullsUpdateReqState) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptPullsUpdateReqState to nil`)
+		return errors.New(`invalid: unable to decode OptPullsUpdateReqState to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -42836,7 +42784,7 @@ func (o *OptPullsUpdateReqState) ReadJSON(d *json.Decoder) error {
 		o.Value = PullsUpdateReqState(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptPullsUpdateReqState", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptPullsUpdateReqState`, d.Next())
 	}
 }
 
@@ -42848,7 +42796,7 @@ func (o OptRateLimit) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of RateLimit from json iterator.
 func (o *OptRateLimit) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptRateLimit to nil`)
+		return errors.New(`invalid: unable to decode OptRateLimit to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -42858,7 +42806,7 @@ func (o *OptRateLimit) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptRateLimit", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptRateLimit`, d.Next())
 	}
 }
 
@@ -42870,7 +42818,7 @@ func (o OptReactionRollup) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReactionRollup from json iterator.
 func (o *OptReactionRollup) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReactionRollup to nil`)
+		return errors.New(`invalid: unable to decode OptReactionRollup to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -42880,7 +42828,7 @@ func (o *OptReactionRollup) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReactionRollup", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReactionRollup`, d.Next())
 	}
 }
 
@@ -42892,7 +42840,7 @@ func (o OptReactionsListForCommitCommentContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReactionsListForCommitCommentContent from json iterator.
 func (o *OptReactionsListForCommitCommentContent) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReactionsListForCommitCommentContent to nil`)
+		return errors.New(`invalid: unable to decode OptReactionsListForCommitCommentContent to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -42904,7 +42852,7 @@ func (o *OptReactionsListForCommitCommentContent) ReadJSON(d *json.Decoder) erro
 		o.Value = ReactionsListForCommitCommentContent(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReactionsListForCommitCommentContent", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReactionsListForCommitCommentContent`, d.Next())
 	}
 }
 
@@ -42916,7 +42864,7 @@ func (o OptReactionsListForIssueCommentContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReactionsListForIssueCommentContent from json iterator.
 func (o *OptReactionsListForIssueCommentContent) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReactionsListForIssueCommentContent to nil`)
+		return errors.New(`invalid: unable to decode OptReactionsListForIssueCommentContent to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -42928,7 +42876,7 @@ func (o *OptReactionsListForIssueCommentContent) ReadJSON(d *json.Decoder) error
 		o.Value = ReactionsListForIssueCommentContent(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReactionsListForIssueCommentContent", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReactionsListForIssueCommentContent`, d.Next())
 	}
 }
 
@@ -42940,7 +42888,7 @@ func (o OptReactionsListForIssueContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReactionsListForIssueContent from json iterator.
 func (o *OptReactionsListForIssueContent) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReactionsListForIssueContent to nil`)
+		return errors.New(`invalid: unable to decode OptReactionsListForIssueContent to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -42952,7 +42900,7 @@ func (o *OptReactionsListForIssueContent) ReadJSON(d *json.Decoder) error {
 		o.Value = ReactionsListForIssueContent(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReactionsListForIssueContent", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReactionsListForIssueContent`, d.Next())
 	}
 }
 
@@ -42964,7 +42912,7 @@ func (o OptReactionsListForPullRequestReviewCommentContent) WriteJSON(e *json.En
 // ReadJSON reads json value of ReactionsListForPullRequestReviewCommentContent from json iterator.
 func (o *OptReactionsListForPullRequestReviewCommentContent) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReactionsListForPullRequestReviewCommentContent to nil`)
+		return errors.New(`invalid: unable to decode OptReactionsListForPullRequestReviewCommentContent to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -42976,7 +42924,7 @@ func (o *OptReactionsListForPullRequestReviewCommentContent) ReadJSON(d *json.De
 		o.Value = ReactionsListForPullRequestReviewCommentContent(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReactionsListForPullRequestReviewCommentContent", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReactionsListForPullRequestReviewCommentContent`, d.Next())
 	}
 }
 
@@ -42988,7 +42936,7 @@ func (o OptReactionsListForTeamDiscussionCommentInOrgContent) WriteJSON(e *json.
 // ReadJSON reads json value of ReactionsListForTeamDiscussionCommentInOrgContent from json iterator.
 func (o *OptReactionsListForTeamDiscussionCommentInOrgContent) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReactionsListForTeamDiscussionCommentInOrgContent to nil`)
+		return errors.New(`invalid: unable to decode OptReactionsListForTeamDiscussionCommentInOrgContent to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -43000,7 +42948,7 @@ func (o *OptReactionsListForTeamDiscussionCommentInOrgContent) ReadJSON(d *json.
 		o.Value = ReactionsListForTeamDiscussionCommentInOrgContent(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReactionsListForTeamDiscussionCommentInOrgContent", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReactionsListForTeamDiscussionCommentInOrgContent`, d.Next())
 	}
 }
 
@@ -43012,7 +42960,7 @@ func (o OptReactionsListForTeamDiscussionCommentLegacyContent) WriteJSON(e *json
 // ReadJSON reads json value of ReactionsListForTeamDiscussionCommentLegacyContent from json iterator.
 func (o *OptReactionsListForTeamDiscussionCommentLegacyContent) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReactionsListForTeamDiscussionCommentLegacyContent to nil`)
+		return errors.New(`invalid: unable to decode OptReactionsListForTeamDiscussionCommentLegacyContent to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -43024,7 +42972,7 @@ func (o *OptReactionsListForTeamDiscussionCommentLegacyContent) ReadJSON(d *json
 		o.Value = ReactionsListForTeamDiscussionCommentLegacyContent(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReactionsListForTeamDiscussionCommentLegacyContent", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReactionsListForTeamDiscussionCommentLegacyContent`, d.Next())
 	}
 }
 
@@ -43036,7 +42984,7 @@ func (o OptReactionsListForTeamDiscussionInOrgContent) WriteJSON(e *json.Encoder
 // ReadJSON reads json value of ReactionsListForTeamDiscussionInOrgContent from json iterator.
 func (o *OptReactionsListForTeamDiscussionInOrgContent) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReactionsListForTeamDiscussionInOrgContent to nil`)
+		return errors.New(`invalid: unable to decode OptReactionsListForTeamDiscussionInOrgContent to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -43048,7 +42996,7 @@ func (o *OptReactionsListForTeamDiscussionInOrgContent) ReadJSON(d *json.Decoder
 		o.Value = ReactionsListForTeamDiscussionInOrgContent(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReactionsListForTeamDiscussionInOrgContent", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReactionsListForTeamDiscussionInOrgContent`, d.Next())
 	}
 }
 
@@ -43060,7 +43008,7 @@ func (o OptReactionsListForTeamDiscussionLegacyContent) WriteJSON(e *json.Encode
 // ReadJSON reads json value of ReactionsListForTeamDiscussionLegacyContent from json iterator.
 func (o *OptReactionsListForTeamDiscussionLegacyContent) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReactionsListForTeamDiscussionLegacyContent to nil`)
+		return errors.New(`invalid: unable to decode OptReactionsListForTeamDiscussionLegacyContent to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -43072,7 +43020,7 @@ func (o *OptReactionsListForTeamDiscussionLegacyContent) ReadJSON(d *json.Decode
 		o.Value = ReactionsListForTeamDiscussionLegacyContent(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReactionsListForTeamDiscussionLegacyContent", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReactionsListForTeamDiscussionLegacyContent`, d.Next())
 	}
 }
 
@@ -43084,7 +43032,7 @@ func (o OptRepoSearchResultItemPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of RepoSearchResultItemPermissions from json iterator.
 func (o *OptRepoSearchResultItemPermissions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptRepoSearchResultItemPermissions to nil`)
+		return errors.New(`invalid: unable to decode OptRepoSearchResultItemPermissions to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -43094,7 +43042,7 @@ func (o *OptRepoSearchResultItemPermissions) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptRepoSearchResultItemPermissions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptRepoSearchResultItemPermissions`, d.Next())
 	}
 }
 
@@ -43106,7 +43054,7 @@ func (o OptReposAddCollaboratorReqPermission) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReposAddCollaboratorReqPermission from json iterator.
 func (o *OptReposAddCollaboratorReqPermission) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposAddCollaboratorReqPermission to nil`)
+		return errors.New(`invalid: unable to decode OptReposAddCollaboratorReqPermission to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -43118,7 +43066,7 @@ func (o *OptReposAddCollaboratorReqPermission) ReadJSON(d *json.Decoder) error {
 		o.Value = ReposAddCollaboratorReqPermission(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposAddCollaboratorReqPermission", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposAddCollaboratorReqPermission`, d.Next())
 	}
 }
 
@@ -43130,7 +43078,7 @@ func (o OptReposCreateDeploymentStatusReqEnvironment) WriteJSON(e *json.Encoder)
 // ReadJSON reads json value of ReposCreateDeploymentStatusReqEnvironment from json iterator.
 func (o *OptReposCreateDeploymentStatusReqEnvironment) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposCreateDeploymentStatusReqEnvironment to nil`)
+		return errors.New(`invalid: unable to decode OptReposCreateDeploymentStatusReqEnvironment to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -43142,7 +43090,7 @@ func (o *OptReposCreateDeploymentStatusReqEnvironment) ReadJSON(d *json.Decoder)
 		o.Value = ReposCreateDeploymentStatusReqEnvironment(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposCreateDeploymentStatusReqEnvironment", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposCreateDeploymentStatusReqEnvironment`, d.Next())
 	}
 }
 
@@ -43154,7 +43102,7 @@ func (o OptReposCreateInOrgReqVisibility) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReposCreateInOrgReqVisibility from json iterator.
 func (o *OptReposCreateInOrgReqVisibility) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposCreateInOrgReqVisibility to nil`)
+		return errors.New(`invalid: unable to decode OptReposCreateInOrgReqVisibility to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -43166,7 +43114,7 @@ func (o *OptReposCreateInOrgReqVisibility) ReadJSON(d *json.Decoder) error {
 		o.Value = ReposCreateInOrgReqVisibility(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposCreateInOrgReqVisibility", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposCreateInOrgReqVisibility`, d.Next())
 	}
 }
 
@@ -43178,7 +43126,7 @@ func (o OptReposCreateOrUpdateFileContentsReqAuthor) WriteJSON(e *json.Encoder) 
 // ReadJSON reads json value of ReposCreateOrUpdateFileContentsReqAuthor from json iterator.
 func (o *OptReposCreateOrUpdateFileContentsReqAuthor) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposCreateOrUpdateFileContentsReqAuthor to nil`)
+		return errors.New(`invalid: unable to decode OptReposCreateOrUpdateFileContentsReqAuthor to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -43188,7 +43136,7 @@ func (o *OptReposCreateOrUpdateFileContentsReqAuthor) ReadJSON(d *json.Decoder) 
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposCreateOrUpdateFileContentsReqAuthor", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposCreateOrUpdateFileContentsReqAuthor`, d.Next())
 	}
 }
 
@@ -43200,7 +43148,7 @@ func (o OptReposCreateOrUpdateFileContentsReqCommitter) WriteJSON(e *json.Encode
 // ReadJSON reads json value of ReposCreateOrUpdateFileContentsReqCommitter from json iterator.
 func (o *OptReposCreateOrUpdateFileContentsReqCommitter) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposCreateOrUpdateFileContentsReqCommitter to nil`)
+		return errors.New(`invalid: unable to decode OptReposCreateOrUpdateFileContentsReqCommitter to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -43210,7 +43158,7 @@ func (o *OptReposCreateOrUpdateFileContentsReqCommitter) ReadJSON(d *json.Decode
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposCreateOrUpdateFileContentsReqCommitter", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposCreateOrUpdateFileContentsReqCommitter`, d.Next())
 	}
 }
 
@@ -43222,7 +43170,7 @@ func (o OptReposCreatePagesSiteReqSourcePath) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReposCreatePagesSiteReqSourcePath from json iterator.
 func (o *OptReposCreatePagesSiteReqSourcePath) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposCreatePagesSiteReqSourcePath to nil`)
+		return errors.New(`invalid: unable to decode OptReposCreatePagesSiteReqSourcePath to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -43234,7 +43182,7 @@ func (o *OptReposCreatePagesSiteReqSourcePath) ReadJSON(d *json.Decoder) error {
 		o.Value = ReposCreatePagesSiteReqSourcePath(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposCreatePagesSiteReqSourcePath", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposCreatePagesSiteReqSourcePath`, d.Next())
 	}
 }
 
@@ -43246,7 +43194,7 @@ func (o OptReposCreateWebhookReqConfig) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReposCreateWebhookReqConfig from json iterator.
 func (o *OptReposCreateWebhookReqConfig) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposCreateWebhookReqConfig to nil`)
+		return errors.New(`invalid: unable to decode OptReposCreateWebhookReqConfig to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -43256,7 +43204,7 @@ func (o *OptReposCreateWebhookReqConfig) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposCreateWebhookReqConfig", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposCreateWebhookReqConfig`, d.Next())
 	}
 }
 
@@ -43268,7 +43216,7 @@ func (o OptReposDeleteFileReqAuthor) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReposDeleteFileReqAuthor from json iterator.
 func (o *OptReposDeleteFileReqAuthor) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposDeleteFileReqAuthor to nil`)
+		return errors.New(`invalid: unable to decode OptReposDeleteFileReqAuthor to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -43278,7 +43226,7 @@ func (o *OptReposDeleteFileReqAuthor) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposDeleteFileReqAuthor", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposDeleteFileReqAuthor`, d.Next())
 	}
 }
 
@@ -43290,7 +43238,7 @@ func (o OptReposDeleteFileReqCommitter) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReposDeleteFileReqCommitter from json iterator.
 func (o *OptReposDeleteFileReqCommitter) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposDeleteFileReqCommitter to nil`)
+		return errors.New(`invalid: unable to decode OptReposDeleteFileReqCommitter to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -43300,7 +43248,7 @@ func (o *OptReposDeleteFileReqCommitter) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposDeleteFileReqCommitter", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposDeleteFileReqCommitter`, d.Next())
 	}
 }
 
@@ -43312,7 +43260,7 @@ func (o OptReposGetClonesPer) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReposGetClonesPer from json iterator.
 func (o *OptReposGetClonesPer) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposGetClonesPer to nil`)
+		return errors.New(`invalid: unable to decode OptReposGetClonesPer to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -43324,7 +43272,7 @@ func (o *OptReposGetClonesPer) ReadJSON(d *json.Decoder) error {
 		o.Value = ReposGetClonesPer(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposGetClonesPer", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposGetClonesPer`, d.Next())
 	}
 }
 
@@ -43336,7 +43284,7 @@ func (o OptReposGetViewsPer) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReposGetViewsPer from json iterator.
 func (o *OptReposGetViewsPer) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposGetViewsPer to nil`)
+		return errors.New(`invalid: unable to decode OptReposGetViewsPer to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -43348,7 +43296,7 @@ func (o *OptReposGetViewsPer) ReadJSON(d *json.Decoder) error {
 		o.Value = ReposGetViewsPer(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposGetViewsPer", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposGetViewsPer`, d.Next())
 	}
 }
 
@@ -43360,7 +43308,7 @@ func (o OptReposListCollaboratorsAffiliation) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReposListCollaboratorsAffiliation from json iterator.
 func (o *OptReposListCollaboratorsAffiliation) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposListCollaboratorsAffiliation to nil`)
+		return errors.New(`invalid: unable to decode OptReposListCollaboratorsAffiliation to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -43372,7 +43320,7 @@ func (o *OptReposListCollaboratorsAffiliation) ReadJSON(d *json.Decoder) error {
 		o.Value = ReposListCollaboratorsAffiliation(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposListCollaboratorsAffiliation", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposListCollaboratorsAffiliation`, d.Next())
 	}
 }
 
@@ -43384,7 +43332,7 @@ func (o OptReposListForOrgDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReposListForOrgDirection from json iterator.
 func (o *OptReposListForOrgDirection) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposListForOrgDirection to nil`)
+		return errors.New(`invalid: unable to decode OptReposListForOrgDirection to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -43396,7 +43344,7 @@ func (o *OptReposListForOrgDirection) ReadJSON(d *json.Decoder) error {
 		o.Value = ReposListForOrgDirection(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposListForOrgDirection", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposListForOrgDirection`, d.Next())
 	}
 }
 
@@ -43408,7 +43356,7 @@ func (o OptReposListForOrgSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReposListForOrgSort from json iterator.
 func (o *OptReposListForOrgSort) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposListForOrgSort to nil`)
+		return errors.New(`invalid: unable to decode OptReposListForOrgSort to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -43420,7 +43368,7 @@ func (o *OptReposListForOrgSort) ReadJSON(d *json.Decoder) error {
 		o.Value = ReposListForOrgSort(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposListForOrgSort", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposListForOrgSort`, d.Next())
 	}
 }
 
@@ -43432,7 +43380,7 @@ func (o OptReposListForOrgType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReposListForOrgType from json iterator.
 func (o *OptReposListForOrgType) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposListForOrgType to nil`)
+		return errors.New(`invalid: unable to decode OptReposListForOrgType to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -43444,7 +43392,7 @@ func (o *OptReposListForOrgType) ReadJSON(d *json.Decoder) error {
 		o.Value = ReposListForOrgType(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposListForOrgType", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposListForOrgType`, d.Next())
 	}
 }
 
@@ -43456,7 +43404,7 @@ func (o OptReposListForUserDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReposListForUserDirection from json iterator.
 func (o *OptReposListForUserDirection) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposListForUserDirection to nil`)
+		return errors.New(`invalid: unable to decode OptReposListForUserDirection to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -43468,7 +43416,7 @@ func (o *OptReposListForUserDirection) ReadJSON(d *json.Decoder) error {
 		o.Value = ReposListForUserDirection(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposListForUserDirection", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposListForUserDirection`, d.Next())
 	}
 }
 
@@ -43480,7 +43428,7 @@ func (o OptReposListForUserSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReposListForUserSort from json iterator.
 func (o *OptReposListForUserSort) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposListForUserSort to nil`)
+		return errors.New(`invalid: unable to decode OptReposListForUserSort to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -43492,7 +43440,7 @@ func (o *OptReposListForUserSort) ReadJSON(d *json.Decoder) error {
 		o.Value = ReposListForUserSort(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposListForUserSort", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposListForUserSort`, d.Next())
 	}
 }
 
@@ -43504,7 +43452,7 @@ func (o OptReposListForUserType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReposListForUserType from json iterator.
 func (o *OptReposListForUserType) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposListForUserType to nil`)
+		return errors.New(`invalid: unable to decode OptReposListForUserType to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -43516,7 +43464,7 @@ func (o *OptReposListForUserType) ReadJSON(d *json.Decoder) error {
 		o.Value = ReposListForUserType(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposListForUserType", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposListForUserType`, d.Next())
 	}
 }
 
@@ -43528,7 +43476,7 @@ func (o OptReposListForksSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReposListForksSort from json iterator.
 func (o *OptReposListForksSort) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposListForksSort to nil`)
+		return errors.New(`invalid: unable to decode OptReposListForksSort to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -43540,7 +43488,7 @@ func (o *OptReposListForksSort) ReadJSON(d *json.Decoder) error {
 		o.Value = ReposListForksSort(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposListForksSort", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposListForksSort`, d.Next())
 	}
 }
 
@@ -43552,7 +43500,7 @@ func (o OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRest
 // ReadJSON reads json value of ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions from json iterator.
 func (o *OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions to nil`)
+		return errors.New(`invalid: unable to decode OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -43562,7 +43510,7 @@ func (o *OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRes
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions`, d.Next())
 	}
 }
 
@@ -43574,7 +43522,7 @@ func (o OptReposUpdateInvitationReqPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReposUpdateInvitationReqPermissions from json iterator.
 func (o *OptReposUpdateInvitationReqPermissions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposUpdateInvitationReqPermissions to nil`)
+		return errors.New(`invalid: unable to decode OptReposUpdateInvitationReqPermissions to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -43586,7 +43534,7 @@ func (o *OptReposUpdateInvitationReqPermissions) ReadJSON(d *json.Decoder) error
 		o.Value = ReposUpdateInvitationReqPermissions(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposUpdateInvitationReqPermissions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposUpdateInvitationReqPermissions`, d.Next())
 	}
 }
 
@@ -43598,7 +43546,7 @@ func (o OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) Write
 // ReadJSON reads json value of ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions from json iterator.
 func (o *OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions to nil`)
+		return errors.New(`invalid: unable to decode OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -43608,7 +43556,7 @@ func (o *OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) Read
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions`, d.Next())
 	}
 }
 
@@ -43620,7 +43568,7 @@ func (o OptReposUpdateReqSecurityAndAnalysisAdvancedSecurity) WriteJSON(e *json.
 // ReadJSON reads json value of ReposUpdateReqSecurityAndAnalysisAdvancedSecurity from json iterator.
 func (o *OptReposUpdateReqSecurityAndAnalysisAdvancedSecurity) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposUpdateReqSecurityAndAnalysisAdvancedSecurity to nil`)
+		return errors.New(`invalid: unable to decode OptReposUpdateReqSecurityAndAnalysisAdvancedSecurity to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -43630,7 +43578,7 @@ func (o *OptReposUpdateReqSecurityAndAnalysisAdvancedSecurity) ReadJSON(d *json.
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposUpdateReqSecurityAndAnalysisAdvancedSecurity", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposUpdateReqSecurityAndAnalysisAdvancedSecurity`, d.Next())
 	}
 }
 
@@ -43642,7 +43590,7 @@ func (o OptReposUpdateReqSecurityAndAnalysisSecretScanning) WriteJSON(e *json.En
 // ReadJSON reads json value of ReposUpdateReqSecurityAndAnalysisSecretScanning from json iterator.
 func (o *OptReposUpdateReqSecurityAndAnalysisSecretScanning) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposUpdateReqSecurityAndAnalysisSecretScanning to nil`)
+		return errors.New(`invalid: unable to decode OptReposUpdateReqSecurityAndAnalysisSecretScanning to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -43652,7 +43600,7 @@ func (o *OptReposUpdateReqSecurityAndAnalysisSecretScanning) ReadJSON(d *json.De
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposUpdateReqSecurityAndAnalysisSecretScanning", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposUpdateReqSecurityAndAnalysisSecretScanning`, d.Next())
 	}
 }
 
@@ -43664,7 +43612,7 @@ func (o OptReposUpdateReqVisibility) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReposUpdateReqVisibility from json iterator.
 func (o *OptReposUpdateReqVisibility) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposUpdateReqVisibility to nil`)
+		return errors.New(`invalid: unable to decode OptReposUpdateReqVisibility to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -43676,7 +43624,7 @@ func (o *OptReposUpdateReqVisibility) ReadJSON(d *json.Decoder) error {
 		o.Value = ReposUpdateReqVisibility(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposUpdateReqVisibility", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposUpdateReqVisibility`, d.Next())
 	}
 }
 
@@ -43688,7 +43636,7 @@ func (o OptReposUpdateWebhookReqConfig) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReposUpdateWebhookReqConfig from json iterator.
 func (o *OptReposUpdateWebhookReqConfig) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReposUpdateWebhookReqConfig to nil`)
+		return errors.New(`invalid: unable to decode OptReposUpdateWebhookReqConfig to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -43698,7 +43646,7 @@ func (o *OptReposUpdateWebhookReqConfig) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReposUpdateWebhookReqConfig", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReposUpdateWebhookReqConfig`, d.Next())
 	}
 }
 
@@ -43710,7 +43658,7 @@ func (o OptRepository) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of Repository from json iterator.
 func (o *OptRepository) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptRepository to nil`)
+		return errors.New(`invalid: unable to decode OptRepository to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -43720,7 +43668,7 @@ func (o *OptRepository) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptRepository", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptRepository`, d.Next())
 	}
 }
 
@@ -43732,7 +43680,7 @@ func (o OptRepositoryPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of RepositoryPermissions from json iterator.
 func (o *OptRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptRepositoryPermissions to nil`)
+		return errors.New(`invalid: unable to decode OptRepositoryPermissions to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -43742,7 +43690,7 @@ func (o *OptRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptRepositoryPermissions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptRepositoryPermissions`, d.Next())
 	}
 }
 
@@ -43754,7 +43702,7 @@ func (o OptRepositoryTemplateRepositoryOwner) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of RepositoryTemplateRepositoryOwner from json iterator.
 func (o *OptRepositoryTemplateRepositoryOwner) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptRepositoryTemplateRepositoryOwner to nil`)
+		return errors.New(`invalid: unable to decode OptRepositoryTemplateRepositoryOwner to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -43764,7 +43712,7 @@ func (o *OptRepositoryTemplateRepositoryOwner) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptRepositoryTemplateRepositoryOwner", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptRepositoryTemplateRepositoryOwner`, d.Next())
 	}
 }
 
@@ -43776,7 +43724,7 @@ func (o OptRepositoryTemplateRepositoryPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of RepositoryTemplateRepositoryPermissions from json iterator.
 func (o *OptRepositoryTemplateRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptRepositoryTemplateRepositoryPermissions to nil`)
+		return errors.New(`invalid: unable to decode OptRepositoryTemplateRepositoryPermissions to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -43786,7 +43734,7 @@ func (o *OptRepositoryTemplateRepositoryPermissions) ReadJSON(d *json.Decoder) e
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptRepositoryTemplateRepositoryPermissions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptRepositoryTemplateRepositoryPermissions`, d.Next())
 	}
 }
 
@@ -43798,7 +43746,7 @@ func (o OptReviewCommentSide) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ReviewCommentSide from json iterator.
 func (o *OptReviewCommentSide) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptReviewCommentSide to nil`)
+		return errors.New(`invalid: unable to decode OptReviewCommentSide to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -43810,7 +43758,7 @@ func (o *OptReviewCommentSide) ReadJSON(d *json.Decoder) error {
 		o.Value = ReviewCommentSide(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptReviewCommentSide", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptReviewCommentSide`, d.Next())
 	}
 }
 
@@ -43822,7 +43770,7 @@ func (o OptRunnerLabelsItemType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of RunnerLabelsItemType from json iterator.
 func (o *OptRunnerLabelsItemType) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptRunnerLabelsItemType to nil`)
+		return errors.New(`invalid: unable to decode OptRunnerLabelsItemType to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -43834,7 +43782,7 @@ func (o *OptRunnerLabelsItemType) ReadJSON(d *json.Decoder) error {
 		o.Value = RunnerLabelsItemType(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptRunnerLabelsItemType", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptRunnerLabelsItemType`, d.Next())
 	}
 }
 
@@ -43846,7 +43794,7 @@ func (o OptScimEnterpriseGroupMeta) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ScimEnterpriseGroupMeta from json iterator.
 func (o *OptScimEnterpriseGroupMeta) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptScimEnterpriseGroupMeta to nil`)
+		return errors.New(`invalid: unable to decode OptScimEnterpriseGroupMeta to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -43856,7 +43804,7 @@ func (o *OptScimEnterpriseGroupMeta) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptScimEnterpriseGroupMeta", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptScimEnterpriseGroupMeta`, d.Next())
 	}
 }
 
@@ -43868,7 +43816,7 @@ func (o OptScimEnterpriseUserMeta) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ScimEnterpriseUserMeta from json iterator.
 func (o *OptScimEnterpriseUserMeta) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptScimEnterpriseUserMeta to nil`)
+		return errors.New(`invalid: unable to decode OptScimEnterpriseUserMeta to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -43878,7 +43826,7 @@ func (o *OptScimEnterpriseUserMeta) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptScimEnterpriseUserMeta", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptScimEnterpriseUserMeta`, d.Next())
 	}
 }
 
@@ -43890,7 +43838,7 @@ func (o OptScimEnterpriseUserName) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ScimEnterpriseUserName from json iterator.
 func (o *OptScimEnterpriseUserName) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptScimEnterpriseUserName to nil`)
+		return errors.New(`invalid: unable to decode OptScimEnterpriseUserName to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -43900,7 +43848,7 @@ func (o *OptScimEnterpriseUserName) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptScimEnterpriseUserName", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptScimEnterpriseUserName`, d.Next())
 	}
 }
 
@@ -43912,7 +43860,7 @@ func (o OptScimGroupListEnterpriseResourcesItemMeta) WriteJSON(e *json.Encoder) 
 // ReadJSON reads json value of ScimGroupListEnterpriseResourcesItemMeta from json iterator.
 func (o *OptScimGroupListEnterpriseResourcesItemMeta) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptScimGroupListEnterpriseResourcesItemMeta to nil`)
+		return errors.New(`invalid: unable to decode OptScimGroupListEnterpriseResourcesItemMeta to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -43922,7 +43870,7 @@ func (o *OptScimGroupListEnterpriseResourcesItemMeta) ReadJSON(d *json.Decoder) 
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptScimGroupListEnterpriseResourcesItemMeta", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptScimGroupListEnterpriseResourcesItemMeta`, d.Next())
 	}
 }
 
@@ -43934,7 +43882,7 @@ func (o OptScimUserListEnterpriseResourcesItemMeta) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ScimUserListEnterpriseResourcesItemMeta from json iterator.
 func (o *OptScimUserListEnterpriseResourcesItemMeta) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptScimUserListEnterpriseResourcesItemMeta to nil`)
+		return errors.New(`invalid: unable to decode OptScimUserListEnterpriseResourcesItemMeta to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -43944,7 +43892,7 @@ func (o *OptScimUserListEnterpriseResourcesItemMeta) ReadJSON(d *json.Decoder) e
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptScimUserListEnterpriseResourcesItemMeta", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptScimUserListEnterpriseResourcesItemMeta`, d.Next())
 	}
 }
 
@@ -43956,7 +43904,7 @@ func (o OptScimUserListEnterpriseResourcesItemName) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of ScimUserListEnterpriseResourcesItemName from json iterator.
 func (o *OptScimUserListEnterpriseResourcesItemName) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptScimUserListEnterpriseResourcesItemName to nil`)
+		return errors.New(`invalid: unable to decode OptScimUserListEnterpriseResourcesItemName to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -43966,7 +43914,7 @@ func (o *OptScimUserListEnterpriseResourcesItemName) ReadJSON(d *json.Decoder) e
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptScimUserListEnterpriseResourcesItemName", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptScimUserListEnterpriseResourcesItemName`, d.Next())
 	}
 }
 
@@ -43978,7 +43926,7 @@ func (o OptSearchCommitsOrder) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of SearchCommitsOrder from json iterator.
 func (o *OptSearchCommitsOrder) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptSearchCommitsOrder to nil`)
+		return errors.New(`invalid: unable to decode OptSearchCommitsOrder to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -43990,7 +43938,7 @@ func (o *OptSearchCommitsOrder) ReadJSON(d *json.Decoder) error {
 		o.Value = SearchCommitsOrder(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptSearchCommitsOrder", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptSearchCommitsOrder`, d.Next())
 	}
 }
 
@@ -44002,7 +43950,7 @@ func (o OptSearchCommitsSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of SearchCommitsSort from json iterator.
 func (o *OptSearchCommitsSort) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptSearchCommitsSort to nil`)
+		return errors.New(`invalid: unable to decode OptSearchCommitsSort to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44014,7 +43962,7 @@ func (o *OptSearchCommitsSort) ReadJSON(d *json.Decoder) error {
 		o.Value = SearchCommitsSort(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptSearchCommitsSort", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptSearchCommitsSort`, d.Next())
 	}
 }
 
@@ -44026,7 +43974,7 @@ func (o OptSecretScanningAlertState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of SecretScanningAlertState from json iterator.
 func (o *OptSecretScanningAlertState) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptSecretScanningAlertState to nil`)
+		return errors.New(`invalid: unable to decode OptSecretScanningAlertState to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44038,7 +43986,7 @@ func (o *OptSecretScanningAlertState) ReadJSON(d *json.Decoder) error {
 		o.Value = SecretScanningAlertState(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptSecretScanningAlertState", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptSecretScanningAlertState`, d.Next())
 	}
 }
 
@@ -44050,7 +43998,7 @@ func (o OptSecretScanningListAlertsForOrgState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of SecretScanningListAlertsForOrgState from json iterator.
 func (o *OptSecretScanningListAlertsForOrgState) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptSecretScanningListAlertsForOrgState to nil`)
+		return errors.New(`invalid: unable to decode OptSecretScanningListAlertsForOrgState to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44062,7 +44010,7 @@ func (o *OptSecretScanningListAlertsForOrgState) ReadJSON(d *json.Decoder) error
 		o.Value = SecretScanningListAlertsForOrgState(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptSecretScanningListAlertsForOrgState", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptSecretScanningListAlertsForOrgState`, d.Next())
 	}
 }
 
@@ -44074,7 +44022,7 @@ func (o OptSecretScanningListAlertsForRepoState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of SecretScanningListAlertsForRepoState from json iterator.
 func (o *OptSecretScanningListAlertsForRepoState) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptSecretScanningListAlertsForRepoState to nil`)
+		return errors.New(`invalid: unable to decode OptSecretScanningListAlertsForRepoState to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44086,7 +44034,7 @@ func (o *OptSecretScanningListAlertsForRepoState) ReadJSON(d *json.Decoder) erro
 		o.Value = SecretScanningListAlertsForRepoState(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptSecretScanningListAlertsForRepoState", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptSecretScanningListAlertsForRepoState`, d.Next())
 	}
 }
 
@@ -44097,14 +44045,14 @@ func (o OptSelectedActionsURL) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of SelectedActionsURL from json iterator.
 func (o *OptSelectedActionsURL) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptSelectedActionsURL to nil`)
+		return errors.New(`invalid: unable to decode OptSelectedActionsURL to nil`)
 	}
 	switch d.Next() {
 	case json.String:
 		o.Set = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptSelectedActionsURL", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptSelectedActionsURL`, d.Next())
 	}
 }
 
@@ -44116,7 +44064,7 @@ func (o OptSimpleUser) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of SimpleUser from json iterator.
 func (o *OptSimpleUser) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptSimpleUser to nil`)
+		return errors.New(`invalid: unable to decode OptSimpleUser to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -44126,7 +44074,7 @@ func (o *OptSimpleUser) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptSimpleUser", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptSimpleUser`, d.Next())
 	}
 }
 
@@ -44138,7 +44086,7 @@ func (o OptStatusCheckPolicy) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of StatusCheckPolicy from json iterator.
 func (o *OptStatusCheckPolicy) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptStatusCheckPolicy to nil`)
+		return errors.New(`invalid: unable to decode OptStatusCheckPolicy to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -44148,7 +44096,7 @@ func (o *OptStatusCheckPolicy) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptStatusCheckPolicy", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptStatusCheckPolicy`, d.Next())
 	}
 }
 
@@ -44160,7 +44108,7 @@ func (o OptString) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of string from json iterator.
 func (o *OptString) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptString to nil`)
+		return errors.New(`invalid: unable to decode OptString to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44172,7 +44120,7 @@ func (o *OptString) ReadJSON(d *json.Decoder) error {
 		o.Value = string(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptString", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptString`, d.Next())
 	}
 }
 
@@ -44184,7 +44132,7 @@ func (o OptTeam) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of Team from json iterator.
 func (o *OptTeam) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTeam to nil`)
+		return errors.New(`invalid: unable to decode OptTeam to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -44194,7 +44142,7 @@ func (o *OptTeam) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTeam", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTeam`, d.Next())
 	}
 }
 
@@ -44206,7 +44154,7 @@ func (o OptTeamFullPrivacy) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of TeamFullPrivacy from json iterator.
 func (o *OptTeamFullPrivacy) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTeamFullPrivacy to nil`)
+		return errors.New(`invalid: unable to decode OptTeamFullPrivacy to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44218,7 +44166,7 @@ func (o *OptTeamFullPrivacy) ReadJSON(d *json.Decoder) error {
 		o.Value = TeamFullPrivacy(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTeamFullPrivacy", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTeamFullPrivacy`, d.Next())
 	}
 }
 
@@ -44230,7 +44178,7 @@ func (o OptTeamPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of TeamPermissions from json iterator.
 func (o *OptTeamPermissions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTeamPermissions to nil`)
+		return errors.New(`invalid: unable to decode OptTeamPermissions to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -44240,7 +44188,7 @@ func (o *OptTeamPermissions) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTeamPermissions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTeamPermissions`, d.Next())
 	}
 }
 
@@ -44252,7 +44200,7 @@ func (o OptTeamRepositoryPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of TeamRepositoryPermissions from json iterator.
 func (o *OptTeamRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTeamRepositoryPermissions to nil`)
+		return errors.New(`invalid: unable to decode OptTeamRepositoryPermissions to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -44262,7 +44210,7 @@ func (o *OptTeamRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTeamRepositoryPermissions", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTeamRepositoryPermissions`, d.Next())
 	}
 }
 
@@ -44274,7 +44222,7 @@ func (o OptTeamsAddOrUpdateMembershipForUserInOrgReqRole) WriteJSON(e *json.Enco
 // ReadJSON reads json value of TeamsAddOrUpdateMembershipForUserInOrgReqRole from json iterator.
 func (o *OptTeamsAddOrUpdateMembershipForUserInOrgReqRole) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTeamsAddOrUpdateMembershipForUserInOrgReqRole to nil`)
+		return errors.New(`invalid: unable to decode OptTeamsAddOrUpdateMembershipForUserInOrgReqRole to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44286,7 +44234,7 @@ func (o *OptTeamsAddOrUpdateMembershipForUserInOrgReqRole) ReadJSON(d *json.Deco
 		o.Value = TeamsAddOrUpdateMembershipForUserInOrgReqRole(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTeamsAddOrUpdateMembershipForUserInOrgReqRole", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTeamsAddOrUpdateMembershipForUserInOrgReqRole`, d.Next())
 	}
 }
 
@@ -44298,7 +44246,7 @@ func (o OptTeamsAddOrUpdateMembershipForUserLegacyReqRole) WriteJSON(e *json.Enc
 // ReadJSON reads json value of TeamsAddOrUpdateMembershipForUserLegacyReqRole from json iterator.
 func (o *OptTeamsAddOrUpdateMembershipForUserLegacyReqRole) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTeamsAddOrUpdateMembershipForUserLegacyReqRole to nil`)
+		return errors.New(`invalid: unable to decode OptTeamsAddOrUpdateMembershipForUserLegacyReqRole to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44310,7 +44258,7 @@ func (o *OptTeamsAddOrUpdateMembershipForUserLegacyReqRole) ReadJSON(d *json.Dec
 		o.Value = TeamsAddOrUpdateMembershipForUserLegacyReqRole(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTeamsAddOrUpdateMembershipForUserLegacyReqRole", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTeamsAddOrUpdateMembershipForUserLegacyReqRole`, d.Next())
 	}
 }
 
@@ -44322,7 +44270,7 @@ func (o OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission) WriteJSON(e *js
 // ReadJSON reads json value of TeamsAddOrUpdateProjectPermissionsInOrgReqPermission from json iterator.
 func (o *OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission to nil`)
+		return errors.New(`invalid: unable to decode OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44334,7 +44282,7 @@ func (o *OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission) ReadJSON(d *js
 		o.Value = TeamsAddOrUpdateProjectPermissionsInOrgReqPermission(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission`, d.Next())
 	}
 }
 
@@ -44346,7 +44294,7 @@ func (o OptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission) WriteJSON(e *j
 // ReadJSON reads json value of TeamsAddOrUpdateProjectPermissionsLegacyReqPermission from json iterator.
 func (o *OptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission to nil`)
+		return errors.New(`invalid: unable to decode OptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44358,7 +44306,7 @@ func (o *OptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission) ReadJSON(d *j
 		o.Value = TeamsAddOrUpdateProjectPermissionsLegacyReqPermission(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission`, d.Next())
 	}
 }
 
@@ -44370,7 +44318,7 @@ func (o OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission) WriteJSON(e *json.
 // ReadJSON reads json value of TeamsAddOrUpdateRepoPermissionsInOrgReqPermission from json iterator.
 func (o *OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission to nil`)
+		return errors.New(`invalid: unable to decode OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44382,7 +44330,7 @@ func (o *OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission) ReadJSON(d *json.
 		o.Value = TeamsAddOrUpdateRepoPermissionsInOrgReqPermission(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission`, d.Next())
 	}
 }
 
@@ -44394,7 +44342,7 @@ func (o OptTeamsAddOrUpdateRepoPermissionsLegacyReqPermission) WriteJSON(e *json
 // ReadJSON reads json value of TeamsAddOrUpdateRepoPermissionsLegacyReqPermission from json iterator.
 func (o *OptTeamsAddOrUpdateRepoPermissionsLegacyReqPermission) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTeamsAddOrUpdateRepoPermissionsLegacyReqPermission to nil`)
+		return errors.New(`invalid: unable to decode OptTeamsAddOrUpdateRepoPermissionsLegacyReqPermission to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44406,7 +44354,7 @@ func (o *OptTeamsAddOrUpdateRepoPermissionsLegacyReqPermission) ReadJSON(d *json
 		o.Value = TeamsAddOrUpdateRepoPermissionsLegacyReqPermission(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTeamsAddOrUpdateRepoPermissionsLegacyReqPermission", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTeamsAddOrUpdateRepoPermissionsLegacyReqPermission`, d.Next())
 	}
 }
 
@@ -44418,7 +44366,7 @@ func (o OptTeamsCreateReqPermission) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of TeamsCreateReqPermission from json iterator.
 func (o *OptTeamsCreateReqPermission) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTeamsCreateReqPermission to nil`)
+		return errors.New(`invalid: unable to decode OptTeamsCreateReqPermission to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44430,7 +44378,7 @@ func (o *OptTeamsCreateReqPermission) ReadJSON(d *json.Decoder) error {
 		o.Value = TeamsCreateReqPermission(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTeamsCreateReqPermission", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTeamsCreateReqPermission`, d.Next())
 	}
 }
 
@@ -44442,7 +44390,7 @@ func (o OptTeamsCreateReqPrivacy) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of TeamsCreateReqPrivacy from json iterator.
 func (o *OptTeamsCreateReqPrivacy) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTeamsCreateReqPrivacy to nil`)
+		return errors.New(`invalid: unable to decode OptTeamsCreateReqPrivacy to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44454,7 +44402,7 @@ func (o *OptTeamsCreateReqPrivacy) ReadJSON(d *json.Decoder) error {
 		o.Value = TeamsCreateReqPrivacy(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTeamsCreateReqPrivacy", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTeamsCreateReqPrivacy`, d.Next())
 	}
 }
 
@@ -44466,7 +44414,7 @@ func (o OptTeamsListDiscussionCommentsInOrgDirection) WriteJSON(e *json.Encoder)
 // ReadJSON reads json value of TeamsListDiscussionCommentsInOrgDirection from json iterator.
 func (o *OptTeamsListDiscussionCommentsInOrgDirection) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTeamsListDiscussionCommentsInOrgDirection to nil`)
+		return errors.New(`invalid: unable to decode OptTeamsListDiscussionCommentsInOrgDirection to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44478,7 +44426,7 @@ func (o *OptTeamsListDiscussionCommentsInOrgDirection) ReadJSON(d *json.Decoder)
 		o.Value = TeamsListDiscussionCommentsInOrgDirection(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTeamsListDiscussionCommentsInOrgDirection", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTeamsListDiscussionCommentsInOrgDirection`, d.Next())
 	}
 }
 
@@ -44490,7 +44438,7 @@ func (o OptTeamsListDiscussionCommentsLegacyDirection) WriteJSON(e *json.Encoder
 // ReadJSON reads json value of TeamsListDiscussionCommentsLegacyDirection from json iterator.
 func (o *OptTeamsListDiscussionCommentsLegacyDirection) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTeamsListDiscussionCommentsLegacyDirection to nil`)
+		return errors.New(`invalid: unable to decode OptTeamsListDiscussionCommentsLegacyDirection to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44502,7 +44450,7 @@ func (o *OptTeamsListDiscussionCommentsLegacyDirection) ReadJSON(d *json.Decoder
 		o.Value = TeamsListDiscussionCommentsLegacyDirection(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTeamsListDiscussionCommentsLegacyDirection", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTeamsListDiscussionCommentsLegacyDirection`, d.Next())
 	}
 }
 
@@ -44514,7 +44462,7 @@ func (o OptTeamsListDiscussionsInOrgDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of TeamsListDiscussionsInOrgDirection from json iterator.
 func (o *OptTeamsListDiscussionsInOrgDirection) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTeamsListDiscussionsInOrgDirection to nil`)
+		return errors.New(`invalid: unable to decode OptTeamsListDiscussionsInOrgDirection to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44526,7 +44474,7 @@ func (o *OptTeamsListDiscussionsInOrgDirection) ReadJSON(d *json.Decoder) error 
 		o.Value = TeamsListDiscussionsInOrgDirection(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTeamsListDiscussionsInOrgDirection", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTeamsListDiscussionsInOrgDirection`, d.Next())
 	}
 }
 
@@ -44538,7 +44486,7 @@ func (o OptTeamsListDiscussionsLegacyDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of TeamsListDiscussionsLegacyDirection from json iterator.
 func (o *OptTeamsListDiscussionsLegacyDirection) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTeamsListDiscussionsLegacyDirection to nil`)
+		return errors.New(`invalid: unable to decode OptTeamsListDiscussionsLegacyDirection to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44550,7 +44498,7 @@ func (o *OptTeamsListDiscussionsLegacyDirection) ReadJSON(d *json.Decoder) error
 		o.Value = TeamsListDiscussionsLegacyDirection(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTeamsListDiscussionsLegacyDirection", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTeamsListDiscussionsLegacyDirection`, d.Next())
 	}
 }
 
@@ -44562,7 +44510,7 @@ func (o OptTeamsListMembersInOrgRole) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of TeamsListMembersInOrgRole from json iterator.
 func (o *OptTeamsListMembersInOrgRole) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTeamsListMembersInOrgRole to nil`)
+		return errors.New(`invalid: unable to decode OptTeamsListMembersInOrgRole to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44574,7 +44522,7 @@ func (o *OptTeamsListMembersInOrgRole) ReadJSON(d *json.Decoder) error {
 		o.Value = TeamsListMembersInOrgRole(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTeamsListMembersInOrgRole", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTeamsListMembersInOrgRole`, d.Next())
 	}
 }
 
@@ -44586,7 +44534,7 @@ func (o OptTeamsListMembersLegacyRole) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of TeamsListMembersLegacyRole from json iterator.
 func (o *OptTeamsListMembersLegacyRole) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTeamsListMembersLegacyRole to nil`)
+		return errors.New(`invalid: unable to decode OptTeamsListMembersLegacyRole to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44598,7 +44546,7 @@ func (o *OptTeamsListMembersLegacyRole) ReadJSON(d *json.Decoder) error {
 		o.Value = TeamsListMembersLegacyRole(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTeamsListMembersLegacyRole", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTeamsListMembersLegacyRole`, d.Next())
 	}
 }
 
@@ -44610,7 +44558,7 @@ func (o OptTeamsUpdateInOrgReqPermission) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of TeamsUpdateInOrgReqPermission from json iterator.
 func (o *OptTeamsUpdateInOrgReqPermission) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTeamsUpdateInOrgReqPermission to nil`)
+		return errors.New(`invalid: unable to decode OptTeamsUpdateInOrgReqPermission to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44622,7 +44570,7 @@ func (o *OptTeamsUpdateInOrgReqPermission) ReadJSON(d *json.Decoder) error {
 		o.Value = TeamsUpdateInOrgReqPermission(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTeamsUpdateInOrgReqPermission", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTeamsUpdateInOrgReqPermission`, d.Next())
 	}
 }
 
@@ -44634,7 +44582,7 @@ func (o OptTeamsUpdateInOrgReqPrivacy) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of TeamsUpdateInOrgReqPrivacy from json iterator.
 func (o *OptTeamsUpdateInOrgReqPrivacy) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTeamsUpdateInOrgReqPrivacy to nil`)
+		return errors.New(`invalid: unable to decode OptTeamsUpdateInOrgReqPrivacy to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44646,7 +44594,7 @@ func (o *OptTeamsUpdateInOrgReqPrivacy) ReadJSON(d *json.Decoder) error {
 		o.Value = TeamsUpdateInOrgReqPrivacy(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTeamsUpdateInOrgReqPrivacy", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTeamsUpdateInOrgReqPrivacy`, d.Next())
 	}
 }
 
@@ -44658,7 +44606,7 @@ func (o OptTeamsUpdateLegacyReqPermission) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of TeamsUpdateLegacyReqPermission from json iterator.
 func (o *OptTeamsUpdateLegacyReqPermission) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTeamsUpdateLegacyReqPermission to nil`)
+		return errors.New(`invalid: unable to decode OptTeamsUpdateLegacyReqPermission to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44670,7 +44618,7 @@ func (o *OptTeamsUpdateLegacyReqPermission) ReadJSON(d *json.Decoder) error {
 		o.Value = TeamsUpdateLegacyReqPermission(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTeamsUpdateLegacyReqPermission", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTeamsUpdateLegacyReqPermission`, d.Next())
 	}
 }
 
@@ -44682,7 +44630,7 @@ func (o OptTeamsUpdateLegacyReqPrivacy) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of TeamsUpdateLegacyReqPrivacy from json iterator.
 func (o *OptTeamsUpdateLegacyReqPrivacy) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTeamsUpdateLegacyReqPrivacy to nil`)
+		return errors.New(`invalid: unable to decode OptTeamsUpdateLegacyReqPrivacy to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44694,7 +44642,7 @@ func (o *OptTeamsUpdateLegacyReqPrivacy) ReadJSON(d *json.Decoder) error {
 		o.Value = TeamsUpdateLegacyReqPrivacy(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTeamsUpdateLegacyReqPrivacy", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTeamsUpdateLegacyReqPrivacy`, d.Next())
 	}
 }
 
@@ -44706,7 +44654,7 @@ func (o OptTime) WriteJSON(e *json.Encoder, format func(*json.Encoder, time.Time
 // ReadJSON reads json value of time.Time from json iterator.
 func (o *OptTime) ReadJSON(d *json.Decoder, format func(*json.Decoder) (time.Time, error)) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTime to nil`)
+		return errors.New(`invalid: unable to decode OptTime to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44718,7 +44666,7 @@ func (o *OptTime) ReadJSON(d *json.Decoder, format func(*json.Decoder) (time.Tim
 		o.Value = v
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTime", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTime`, d.Next())
 	}
 }
 
@@ -44730,7 +44678,7 @@ func (o OptTopicSearchResultItemAliasesItemTopicRelation) WriteJSON(e *json.Enco
 // ReadJSON reads json value of TopicSearchResultItemAliasesItemTopicRelation from json iterator.
 func (o *OptTopicSearchResultItemAliasesItemTopicRelation) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTopicSearchResultItemAliasesItemTopicRelation to nil`)
+		return errors.New(`invalid: unable to decode OptTopicSearchResultItemAliasesItemTopicRelation to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -44740,7 +44688,7 @@ func (o *OptTopicSearchResultItemAliasesItemTopicRelation) ReadJSON(d *json.Deco
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTopicSearchResultItemAliasesItemTopicRelation", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTopicSearchResultItemAliasesItemTopicRelation`, d.Next())
 	}
 }
 
@@ -44752,7 +44700,7 @@ func (o OptTopicSearchResultItemRelatedItemTopicRelation) WriteJSON(e *json.Enco
 // ReadJSON reads json value of TopicSearchResultItemRelatedItemTopicRelation from json iterator.
 func (o *OptTopicSearchResultItemRelatedItemTopicRelation) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptTopicSearchResultItemRelatedItemTopicRelation to nil`)
+		return errors.New(`invalid: unable to decode OptTopicSearchResultItemRelatedItemTopicRelation to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -44762,7 +44710,7 @@ func (o *OptTopicSearchResultItemRelatedItemTopicRelation) ReadJSON(d *json.Deco
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptTopicSearchResultItemRelatedItemTopicRelation", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptTopicSearchResultItemRelatedItemTopicRelation`, d.Next())
 	}
 }
 
@@ -44774,7 +44722,7 @@ func (o OptURL) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of url.URL from json iterator.
 func (o *OptURL) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptURL to nil`)
+		return errors.New(`invalid: unable to decode OptURL to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -44786,7 +44734,7 @@ func (o *OptURL) ReadJSON(d *json.Decoder) error {
 		o.Value = v
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptURL", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptURL`, d.Next())
 	}
 }
 
@@ -44798,7 +44746,7 @@ func (o OptVerification) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of Verification from json iterator.
 func (o *OptVerification) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptVerification to nil`)
+		return errors.New(`invalid: unable to decode OptVerification to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -44808,7 +44756,7 @@ func (o *OptVerification) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptVerification", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptVerification`, d.Next())
 	}
 }
 
@@ -44819,14 +44767,14 @@ func (o OptWaitTimer) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of WaitTimer from json iterator.
 func (o *OptWaitTimer) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptWaitTimer to nil`)
+		return errors.New(`invalid: unable to decode OptWaitTimer to nil`)
 	}
 	switch d.Next() {
 	case json.String:
 		o.Set = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptWaitTimer", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptWaitTimer`, d.Next())
 	}
 }
 
@@ -44837,14 +44785,14 @@ func (o OptWebhookConfigContentType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of WebhookConfigContentType from json iterator.
 func (o *OptWebhookConfigContentType) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptWebhookConfigContentType to nil`)
+		return errors.New(`invalid: unable to decode OptWebhookConfigContentType to nil`)
 	}
 	switch d.Next() {
 	case json.String:
 		o.Set = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptWebhookConfigContentType", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptWebhookConfigContentType`, d.Next())
 	}
 }
 
@@ -44855,14 +44803,14 @@ func (o OptWebhookConfigSecret) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of WebhookConfigSecret from json iterator.
 func (o *OptWebhookConfigSecret) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptWebhookConfigSecret to nil`)
+		return errors.New(`invalid: unable to decode OptWebhookConfigSecret to nil`)
 	}
 	switch d.Next() {
 	case json.String:
 		o.Set = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptWebhookConfigSecret", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptWebhookConfigSecret`, d.Next())
 	}
 }
 
@@ -44873,14 +44821,14 @@ func (o OptWebhookConfigURL) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of WebhookConfigURL from json iterator.
 func (o *OptWebhookConfigURL) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptWebhookConfigURL to nil`)
+		return errors.New(`invalid: unable to decode OptWebhookConfigURL to nil`)
 	}
 	switch d.Next() {
 	case json.String:
 		o.Set = true
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptWebhookConfigURL", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptWebhookConfigURL`, d.Next())
 	}
 }
 
@@ -44892,7 +44840,7 @@ func (o OptWorkflowRunUsageBillableMACOS) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of WorkflowRunUsageBillableMACOS from json iterator.
 func (o *OptWorkflowRunUsageBillableMACOS) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptWorkflowRunUsageBillableMACOS to nil`)
+		return errors.New(`invalid: unable to decode OptWorkflowRunUsageBillableMACOS to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -44902,7 +44850,7 @@ func (o *OptWorkflowRunUsageBillableMACOS) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptWorkflowRunUsageBillableMACOS", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptWorkflowRunUsageBillableMACOS`, d.Next())
 	}
 }
 
@@ -44914,7 +44862,7 @@ func (o OptWorkflowRunUsageBillableUBUNTU) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of WorkflowRunUsageBillableUBUNTU from json iterator.
 func (o *OptWorkflowRunUsageBillableUBUNTU) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptWorkflowRunUsageBillableUBUNTU to nil`)
+		return errors.New(`invalid: unable to decode OptWorkflowRunUsageBillableUBUNTU to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -44924,7 +44872,7 @@ func (o *OptWorkflowRunUsageBillableUBUNTU) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptWorkflowRunUsageBillableUBUNTU", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptWorkflowRunUsageBillableUBUNTU`, d.Next())
 	}
 }
 
@@ -44936,7 +44884,7 @@ func (o OptWorkflowRunUsageBillableWINDOWS) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of WorkflowRunUsageBillableWINDOWS from json iterator.
 func (o *OptWorkflowRunUsageBillableWINDOWS) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptWorkflowRunUsageBillableWINDOWS to nil`)
+		return errors.New(`invalid: unable to decode OptWorkflowRunUsageBillableWINDOWS to nil`)
 	}
 	switch d.Next() {
 	case json.Object:
@@ -44946,7 +44894,7 @@ func (o *OptWorkflowRunUsageBillableWINDOWS) ReadJSON(d *json.Decoder) error {
 		}
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptWorkflowRunUsageBillableWINDOWS", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptWorkflowRunUsageBillableWINDOWS`, d.Next())
 	}
 }
 
@@ -45003,7 +44951,7 @@ func (s OrgHook) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgHook from json stream.
 func (s *OrgHook) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgHook to nil`)
+		return errors.New(`invalid: unable to decode OrgHook to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -45116,7 +45064,7 @@ func (s OrgHookConfig) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgHookConfig from json stream.
 func (s *OrgHookConfig) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgHookConfig to nil`)
+		return errors.New(`invalid: unable to decode OrgHookConfig to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -45181,7 +45129,7 @@ func (s OrgMembership) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgMembership from json stream.
 func (s *OrgMembership) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgMembership to nil`)
+		return errors.New(`invalid: unable to decode OrgMembership to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -45239,7 +45187,7 @@ func (s OrgMembershipPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgMembershipPermissions from json stream.
 func (s *OrgMembershipPermissions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgMembershipPermissions to nil`)
+		return errors.New(`invalid: unable to decode OrgMembershipPermissions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -45264,7 +45212,7 @@ func (s OrgMembershipRole) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgMembershipRole from json reader.
 func (s *OrgMembershipRole) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgMembershipRole to nil`)
+		return errors.New(`invalid: unable to decode OrgMembershipRole to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -45282,7 +45230,7 @@ func (s OrgMembershipState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgMembershipState from json reader.
 func (s *OrgMembershipState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgMembershipState to nil`)
+		return errors.New(`invalid: unable to decode OrgMembershipState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -45320,7 +45268,7 @@ func (s OrganizationActionsSecret) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrganizationActionsSecret from json stream.
 func (s *OrganizationActionsSecret) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrganizationActionsSecret to nil`)
+		return errors.New(`invalid: unable to decode OrganizationActionsSecret to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -45366,7 +45314,7 @@ func (s OrganizationActionsSecretVisibility) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrganizationActionsSecretVisibility from json reader.
 func (s *OrganizationActionsSecretVisibility) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrganizationActionsSecretVisibility to nil`)
+		return errors.New(`invalid: unable to decode OrganizationActionsSecretVisibility to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -45573,7 +45521,7 @@ func (s OrganizationFull) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrganizationFull from json stream.
 func (s *OrganizationFull) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrganizationFull to nil`)
+		return errors.New(`invalid: unable to decode OrganizationFull to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -45864,7 +45812,7 @@ func (s OrganizationFullPlan) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrganizationFullPlan from json stream.
 func (s *OrganizationFullPlan) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrganizationFullPlan to nil`)
+		return errors.New(`invalid: unable to decode OrganizationFullPlan to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -45951,7 +45899,7 @@ func (s OrganizationInvitation) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrganizationInvitation from json stream.
 func (s *OrganizationInvitation) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrganizationInvitation to nil`)
+		return errors.New(`invalid: unable to decode OrganizationInvitation to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -46091,7 +46039,7 @@ func (s OrganizationSecretScanningAlert) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrganizationSecretScanningAlert from json stream.
 func (s *OrganizationSecretScanningAlert) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrganizationSecretScanningAlert to nil`)
+		return errors.New(`invalid: unable to decode OrganizationSecretScanningAlert to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -46209,7 +46157,7 @@ func (s OrganizationSimple) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrganizationSimple from json stream.
 func (s *OrganizationSimple) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrganizationSimple to nil`)
+		return errors.New(`invalid: unable to decode OrganizationSimple to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -46301,7 +46249,7 @@ func (s OrgsBlockUserNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsBlockUserNoContent from json stream.
 func (s *OrgsBlockUserNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsBlockUserNoContent to nil`)
+		return errors.New(`invalid: unable to decode OrgsBlockUserNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -46323,7 +46271,7 @@ func (s OrgsCancelInvitationNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsCancelInvitationNoContent from json stream.
 func (s *OrgsCancelInvitationNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsCancelInvitationNoContent to nil`)
+		return errors.New(`invalid: unable to decode OrgsCancelInvitationNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -46345,7 +46293,7 @@ func (s OrgsCheckBlockedUserNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsCheckBlockedUserNoContent from json stream.
 func (s *OrgsCheckBlockedUserNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsCheckBlockedUserNoContent to nil`)
+		return errors.New(`invalid: unable to decode OrgsCheckBlockedUserNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -46367,7 +46315,7 @@ func (s OrgsCheckMembershipForUserFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsCheckMembershipForUserFound from json stream.
 func (s *OrgsCheckMembershipForUserFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsCheckMembershipForUserFound to nil`)
+		return errors.New(`invalid: unable to decode OrgsCheckMembershipForUserFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -46389,7 +46337,7 @@ func (s OrgsCheckMembershipForUserNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsCheckMembershipForUserNoContent from json stream.
 func (s *OrgsCheckMembershipForUserNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsCheckMembershipForUserNoContent to nil`)
+		return errors.New(`invalid: unable to decode OrgsCheckMembershipForUserNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -46411,7 +46359,7 @@ func (s OrgsCheckMembershipForUserNotFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsCheckMembershipForUserNotFound from json stream.
 func (s *OrgsCheckMembershipForUserNotFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsCheckMembershipForUserNotFound to nil`)
+		return errors.New(`invalid: unable to decode OrgsCheckMembershipForUserNotFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -46433,7 +46381,7 @@ func (s OrgsCheckPublicMembershipForUserNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsCheckPublicMembershipForUserNoContent from json stream.
 func (s *OrgsCheckPublicMembershipForUserNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsCheckPublicMembershipForUserNoContent to nil`)
+		return errors.New(`invalid: unable to decode OrgsCheckPublicMembershipForUserNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -46455,7 +46403,7 @@ func (s OrgsCheckPublicMembershipForUserNotFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsCheckPublicMembershipForUserNotFound from json stream.
 func (s *OrgsCheckPublicMembershipForUserNotFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsCheckPublicMembershipForUserNotFound to nil`)
+		return errors.New(`invalid: unable to decode OrgsCheckPublicMembershipForUserNotFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -46477,7 +46425,7 @@ func (s OrgsConvertMemberToOutsideCollaboratorAccepted) WriteJSON(e *json.Encode
 // ReadJSON reads OrgsConvertMemberToOutsideCollaboratorAccepted from json stream.
 func (s *OrgsConvertMemberToOutsideCollaboratorAccepted) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsConvertMemberToOutsideCollaboratorAccepted to nil`)
+		return errors.New(`invalid: unable to decode OrgsConvertMemberToOutsideCollaboratorAccepted to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -46499,7 +46447,7 @@ func (s OrgsConvertMemberToOutsideCollaboratorForbidden) WriteJSON(e *json.Encod
 // ReadJSON reads OrgsConvertMemberToOutsideCollaboratorForbidden from json stream.
 func (s *OrgsConvertMemberToOutsideCollaboratorForbidden) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsConvertMemberToOutsideCollaboratorForbidden to nil`)
+		return errors.New(`invalid: unable to decode OrgsConvertMemberToOutsideCollaboratorForbidden to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -46521,7 +46469,7 @@ func (s OrgsConvertMemberToOutsideCollaboratorNoContent) WriteJSON(e *json.Encod
 // ReadJSON reads OrgsConvertMemberToOutsideCollaboratorNoContent from json stream.
 func (s *OrgsConvertMemberToOutsideCollaboratorNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsConvertMemberToOutsideCollaboratorNoContent to nil`)
+		return errors.New(`invalid: unable to decode OrgsConvertMemberToOutsideCollaboratorNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -46570,7 +46518,7 @@ func (s OrgsCreateInvitationReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsCreateInvitationReq from json stream.
 func (s *OrgsCreateInvitationReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsCreateInvitationReq to nil`)
+		return errors.New(`invalid: unable to decode OrgsCreateInvitationReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -46618,7 +46566,7 @@ func (s OrgsCreateInvitationReqRole) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsCreateInvitationReqRole from json reader.
 func (s *OrgsCreateInvitationReqRole) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsCreateInvitationReqRole to nil`)
+		return errors.New(`invalid: unable to decode OrgsCreateInvitationReqRole to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -46662,7 +46610,7 @@ func (s OrgsCreateWebhookReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsCreateWebhookReq from json stream.
 func (s *OrgsCreateWebhookReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsCreateWebhookReq to nil`)
+		return errors.New(`invalid: unable to decode OrgsCreateWebhookReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -46739,14 +46687,12 @@ func (s OrgsCreateWebhookReqConfig) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsCreateWebhookReqConfig from json stream.
 func (s *OrgsCreateWebhookReqConfig) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsCreateWebhookReqConfig to nil`)
+		return errors.New(`invalid: unable to decode OrgsCreateWebhookReqConfig to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
 		case "url":
-			if err := fmt.Errorf(`decoding of "WebhookConfigURL" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "WebhookConfigURL" (alias) is not implemented`)
 		case "content_type":
 			s.ContentType.Reset()
 			if err := s.ContentType.ReadJSON(d); err != nil {
@@ -46792,7 +46738,7 @@ func (s OrgsDeleteWebhookNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsDeleteWebhookNoContent from json stream.
 func (s *OrgsDeleteWebhookNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsDeleteWebhookNoContent to nil`)
+		return errors.New(`invalid: unable to decode OrgsDeleteWebhookNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -46811,7 +46757,7 @@ func (s OrgsGetAuditLogInclude) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsGetAuditLogInclude from json reader.
 func (s *OrgsGetAuditLogInclude) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsGetAuditLogInclude to nil`)
+		return errors.New(`invalid: unable to decode OrgsGetAuditLogInclude to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -46829,7 +46775,7 @@ func (s OrgsGetAuditLogOrder) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsGetAuditLogOrder from json reader.
 func (s *OrgsGetAuditLogOrder) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsGetAuditLogOrder to nil`)
+		return errors.New(`invalid: unable to decode OrgsGetAuditLogOrder to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -46885,7 +46831,7 @@ func (s OrgsListMembersFilter) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsListMembersFilter from json reader.
 func (s *OrgsListMembersFilter) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsListMembersFilter to nil`)
+		return errors.New(`invalid: unable to decode OrgsListMembersFilter to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -46906,7 +46852,7 @@ func (s OrgsListMembersFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsListMembersFound from json stream.
 func (s *OrgsListMembersFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsListMembersFound to nil`)
+		return errors.New(`invalid: unable to decode OrgsListMembersFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -46925,7 +46871,7 @@ func (s OrgsListMembersRole) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsListMembersRole from json reader.
 func (s *OrgsListMembersRole) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsListMembersRole to nil`)
+		return errors.New(`invalid: unable to decode OrgsListMembersRole to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -46943,7 +46889,7 @@ func (s OrgsListMembershipsForAuthenticatedUserState) WriteJSON(e *json.Encoder)
 // ReadJSON reads OrgsListMembershipsForAuthenticatedUserState from json reader.
 func (s *OrgsListMembershipsForAuthenticatedUserState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsListMembershipsForAuthenticatedUserState to nil`)
+		return errors.New(`invalid: unable to decode OrgsListMembershipsForAuthenticatedUserState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -46964,7 +46910,7 @@ func (s OrgsListOutsideCollaboratorsFilter) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsListOutsideCollaboratorsFilter from json reader.
 func (s *OrgsListOutsideCollaboratorsFilter) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsListOutsideCollaboratorsFilter to nil`)
+		return errors.New(`invalid: unable to decode OrgsListOutsideCollaboratorsFilter to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -46991,7 +46937,7 @@ func (s OrgsPingWebhookNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsPingWebhookNoContent from json stream.
 func (s *OrgsPingWebhookNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsPingWebhookNoContent to nil`)
+		return errors.New(`invalid: unable to decode OrgsPingWebhookNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -47013,7 +46959,7 @@ func (s OrgsRemoveMemberNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsRemoveMemberNoContent from json stream.
 func (s *OrgsRemoveMemberNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsRemoveMemberNoContent to nil`)
+		return errors.New(`invalid: unable to decode OrgsRemoveMemberNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -47043,7 +46989,7 @@ func (s OrgsRemoveMembershipForUserNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsRemoveMembershipForUserNoContent from json stream.
 func (s *OrgsRemoveMembershipForUserNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsRemoveMembershipForUserNoContent to nil`)
+		return errors.New(`invalid: unable to decode OrgsRemoveMembershipForUserNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -47065,7 +47011,7 @@ func (s OrgsRemoveOutsideCollaboratorNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsRemoveOutsideCollaboratorNoContent from json stream.
 func (s *OrgsRemoveOutsideCollaboratorNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsRemoveOutsideCollaboratorNoContent to nil`)
+		return errors.New(`invalid: unable to decode OrgsRemoveOutsideCollaboratorNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -47097,7 +47043,7 @@ func (s OrgsRemoveOutsideCollaboratorUnprocessableEntity) WriteJSON(e *json.Enco
 // ReadJSON reads OrgsRemoveOutsideCollaboratorUnprocessableEntity from json stream.
 func (s *OrgsRemoveOutsideCollaboratorUnprocessableEntity) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsRemoveOutsideCollaboratorUnprocessableEntity to nil`)
+		return errors.New(`invalid: unable to decode OrgsRemoveOutsideCollaboratorUnprocessableEntity to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -47129,7 +47075,7 @@ func (s OrgsRemovePublicMembershipForAuthenticatedUserNoContent) WriteJSON(e *js
 // ReadJSON reads OrgsRemovePublicMembershipForAuthenticatedUserNoContent from json stream.
 func (s *OrgsRemovePublicMembershipForAuthenticatedUserNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsRemovePublicMembershipForAuthenticatedUserNoContent to nil`)
+		return errors.New(`invalid: unable to decode OrgsRemovePublicMembershipForAuthenticatedUserNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -47151,7 +47097,7 @@ func (s OrgsRemoveSamlSSOAuthorizationNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsRemoveSamlSSOAuthorizationNoContent from json stream.
 func (s *OrgsRemoveSamlSSOAuthorizationNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsRemoveSamlSSOAuthorizationNoContent to nil`)
+		return errors.New(`invalid: unable to decode OrgsRemoveSamlSSOAuthorizationNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -47178,7 +47124,7 @@ func (s OrgsSetMembershipForUserReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsSetMembershipForUserReq from json stream.
 func (s *OrgsSetMembershipForUserReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsSetMembershipForUserReq to nil`)
+		return errors.New(`invalid: unable to decode OrgsSetMembershipForUserReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -47202,7 +47148,7 @@ func (s OrgsSetMembershipForUserReqRole) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsSetMembershipForUserReqRole from json reader.
 func (s *OrgsSetMembershipForUserReqRole) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsSetMembershipForUserReqRole to nil`)
+		return errors.New(`invalid: unable to decode OrgsSetMembershipForUserReqRole to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -47223,7 +47169,7 @@ func (s OrgsSetPublicMembershipForAuthenticatedUserNoContent) WriteJSON(e *json.
 // ReadJSON reads OrgsSetPublicMembershipForAuthenticatedUserNoContent from json stream.
 func (s *OrgsSetPublicMembershipForAuthenticatedUserNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsSetPublicMembershipForAuthenticatedUserNoContent to nil`)
+		return errors.New(`invalid: unable to decode OrgsSetPublicMembershipForAuthenticatedUserNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -47245,7 +47191,7 @@ func (s OrgsUnblockUserNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsUnblockUserNoContent from json stream.
 func (s *OrgsUnblockUserNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsUnblockUserNoContent to nil`)
+		return errors.New(`invalid: unable to decode OrgsUnblockUserNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -47270,7 +47216,7 @@ func (s OrgsUpdateMembershipForAuthenticatedUserReq) WriteJSON(e *json.Encoder) 
 // ReadJSON reads OrgsUpdateMembershipForAuthenticatedUserReq from json stream.
 func (s *OrgsUpdateMembershipForAuthenticatedUserReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsUpdateMembershipForAuthenticatedUserReq to nil`)
+		return errors.New(`invalid: unable to decode OrgsUpdateMembershipForAuthenticatedUserReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -47293,7 +47239,7 @@ func (s OrgsUpdateMembershipForAuthenticatedUserReqState) WriteJSON(e *json.Enco
 // ReadJSON reads OrgsUpdateMembershipForAuthenticatedUserReqState from json reader.
 func (s *OrgsUpdateMembershipForAuthenticatedUserReqState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsUpdateMembershipForAuthenticatedUserReqState to nil`)
+		return errors.New(`invalid: unable to decode OrgsUpdateMembershipForAuthenticatedUserReqState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -47409,7 +47355,7 @@ func (s OrgsUpdateReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsUpdateReq from json stream.
 func (s *OrgsUpdateReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsUpdateReq to nil`)
+		return errors.New(`invalid: unable to decode OrgsUpdateReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -47523,7 +47469,7 @@ func (s OrgsUpdateReqDefaultRepositoryPermission) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsUpdateReqDefaultRepositoryPermission from json reader.
 func (s *OrgsUpdateReqDefaultRepositoryPermission) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsUpdateReqDefaultRepositoryPermission to nil`)
+		return errors.New(`invalid: unable to decode OrgsUpdateReqDefaultRepositoryPermission to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -47541,7 +47487,7 @@ func (s OrgsUpdateReqMembersAllowedRepositoryCreationType) WriteJSON(e *json.Enc
 // ReadJSON reads OrgsUpdateReqMembersAllowedRepositoryCreationType from json reader.
 func (s *OrgsUpdateReqMembersAllowedRepositoryCreationType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsUpdateReqMembersAllowedRepositoryCreationType to nil`)
+		return errors.New(`invalid: unable to decode OrgsUpdateReqMembersAllowedRepositoryCreationType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -47582,7 +47528,7 @@ func (s OrgsUpdateWebhookConfigForOrgReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsUpdateWebhookConfigForOrgReq from json stream.
 func (s *OrgsUpdateWebhookConfigForOrgReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsUpdateWebhookConfigForOrgReq to nil`)
+		return errors.New(`invalid: unable to decode OrgsUpdateWebhookConfigForOrgReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -47653,7 +47599,7 @@ func (s OrgsUpdateWebhookReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsUpdateWebhookReq from json stream.
 func (s *OrgsUpdateWebhookReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsUpdateWebhookReq to nil`)
+		return errors.New(`invalid: unable to decode OrgsUpdateWebhookReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -47720,14 +47666,12 @@ func (s OrgsUpdateWebhookReqConfig) WriteJSON(e *json.Encoder) {
 // ReadJSON reads OrgsUpdateWebhookReqConfig from json stream.
 func (s *OrgsUpdateWebhookReqConfig) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode OrgsUpdateWebhookReqConfig to nil`)
+		return errors.New(`invalid: unable to decode OrgsUpdateWebhookReqConfig to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
 		case "url":
-			if err := fmt.Errorf(`decoding of "WebhookConfigURL" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "WebhookConfigURL" (alias) is not implemented`)
 		case "content_type":
 			s.ContentType.Reset()
 			if err := s.ContentType.ReadJSON(d); err != nil {
@@ -47800,7 +47744,7 @@ func (s Package) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Package from json stream.
 func (s *Package) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Package to nil`)
+		return errors.New(`invalid: unable to decode Package to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -47879,7 +47823,7 @@ func (s PackagePackageType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PackagePackageType from json reader.
 func (s *PackagePackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagePackageType to nil`)
+		return errors.New(`invalid: unable to decode PackagePackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -47943,7 +47887,7 @@ func (s PackageVersion) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PackageVersion from json stream.
 func (s *PackageVersion) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackageVersion to nil`)
+		return errors.New(`invalid: unable to decode PackageVersion to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -48039,7 +47983,7 @@ func (s PackageVersionMetadata) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PackageVersionMetadata from json stream.
 func (s *PackageVersionMetadata) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackageVersionMetadata to nil`)
+		return errors.New(`invalid: unable to decode PackageVersionMetadata to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -48085,7 +48029,7 @@ func (s PackageVersionMetadataContainer) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PackageVersionMetadataContainer from json stream.
 func (s *PackageVersionMetadataContainer) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackageVersionMetadataContainer to nil`)
+		return errors.New(`invalid: unable to decode PackageVersionMetadataContainer to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -48133,7 +48077,7 @@ func (s PackageVersionMetadataDocker) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PackageVersionMetadataDocker from json stream.
 func (s *PackageVersionMetadataDocker) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackageVersionMetadataDocker to nil`)
+		return errors.New(`invalid: unable to decode PackageVersionMetadataDocker to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -48166,7 +48110,7 @@ func (s PackageVersionMetadataPackageType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PackageVersionMetadataPackageType from json reader.
 func (s *PackageVersionMetadataPackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackageVersionMetadataPackageType to nil`)
+		return errors.New(`invalid: unable to decode PackageVersionMetadataPackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -48184,7 +48128,7 @@ func (s PackageVisibility) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PackageVisibility from json reader.
 func (s *PackageVisibility) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackageVisibility to nil`)
+		return errors.New(`invalid: unable to decode PackageVisibility to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -48214,7 +48158,7 @@ func (s PackagesBillingUsage) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PackagesBillingUsage from json stream.
 func (s *PackagesBillingUsage) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesBillingUsage to nil`)
+		return errors.New(`invalid: unable to decode PackagesBillingUsage to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -48270,7 +48214,7 @@ func (s PackagesDeletePackageForAuthenticatedUserNoContent) WriteJSON(e *json.En
 // ReadJSON reads PackagesDeletePackageForAuthenticatedUserNoContent from json stream.
 func (s *PackagesDeletePackageForAuthenticatedUserNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesDeletePackageForAuthenticatedUserNoContent to nil`)
+		return errors.New(`invalid: unable to decode PackagesDeletePackageForAuthenticatedUserNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -48289,7 +48233,7 @@ func (s PackagesDeletePackageForAuthenticatedUserPackageType) WriteJSON(e *json.
 // ReadJSON reads PackagesDeletePackageForAuthenticatedUserPackageType from json reader.
 func (s *PackagesDeletePackageForAuthenticatedUserPackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesDeletePackageForAuthenticatedUserPackageType to nil`)
+		return errors.New(`invalid: unable to decode PackagesDeletePackageForAuthenticatedUserPackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -48323,7 +48267,7 @@ func (s PackagesDeletePackageForOrgNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PackagesDeletePackageForOrgNoContent from json stream.
 func (s *PackagesDeletePackageForOrgNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesDeletePackageForOrgNoContent to nil`)
+		return errors.New(`invalid: unable to decode PackagesDeletePackageForOrgNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -48342,7 +48286,7 @@ func (s PackagesDeletePackageForOrgPackageType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PackagesDeletePackageForOrgPackageType from json reader.
 func (s *PackagesDeletePackageForOrgPackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesDeletePackageForOrgPackageType to nil`)
+		return errors.New(`invalid: unable to decode PackagesDeletePackageForOrgPackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -48378,7 +48322,7 @@ func (s PackagesDeletePackageForUserNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PackagesDeletePackageForUserNoContent from json stream.
 func (s *PackagesDeletePackageForUserNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesDeletePackageForUserNoContent to nil`)
+		return errors.New(`invalid: unable to decode PackagesDeletePackageForUserNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -48397,7 +48341,7 @@ func (s PackagesDeletePackageForUserPackageType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PackagesDeletePackageForUserPackageType from json reader.
 func (s *PackagesDeletePackageForUserPackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesDeletePackageForUserPackageType to nil`)
+		return errors.New(`invalid: unable to decode PackagesDeletePackageForUserPackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -48436,7 +48380,7 @@ func (s PackagesDeletePackageVersionForAuthenticatedUserNoContent) WriteJSON(e *
 // ReadJSON reads PackagesDeletePackageVersionForAuthenticatedUserNoContent from json stream.
 func (s *PackagesDeletePackageVersionForAuthenticatedUserNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesDeletePackageVersionForAuthenticatedUserNoContent to nil`)
+		return errors.New(`invalid: unable to decode PackagesDeletePackageVersionForAuthenticatedUserNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -48455,7 +48399,7 @@ func (s PackagesDeletePackageVersionForAuthenticatedUserPackageType) WriteJSON(e
 // ReadJSON reads PackagesDeletePackageVersionForAuthenticatedUserPackageType from json reader.
 func (s *PackagesDeletePackageVersionForAuthenticatedUserPackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesDeletePackageVersionForAuthenticatedUserPackageType to nil`)
+		return errors.New(`invalid: unable to decode PackagesDeletePackageVersionForAuthenticatedUserPackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -48491,7 +48435,7 @@ func (s PackagesDeletePackageVersionForOrgNoContent) WriteJSON(e *json.Encoder) 
 // ReadJSON reads PackagesDeletePackageVersionForOrgNoContent from json stream.
 func (s *PackagesDeletePackageVersionForOrgNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesDeletePackageVersionForOrgNoContent to nil`)
+		return errors.New(`invalid: unable to decode PackagesDeletePackageVersionForOrgNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -48510,7 +48454,7 @@ func (s PackagesDeletePackageVersionForOrgPackageType) WriteJSON(e *json.Encoder
 // ReadJSON reads PackagesDeletePackageVersionForOrgPackageType from json reader.
 func (s *PackagesDeletePackageVersionForOrgPackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesDeletePackageVersionForOrgPackageType to nil`)
+		return errors.New(`invalid: unable to decode PackagesDeletePackageVersionForOrgPackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -48546,7 +48490,7 @@ func (s PackagesDeletePackageVersionForUserNoContent) WriteJSON(e *json.Encoder)
 // ReadJSON reads PackagesDeletePackageVersionForUserNoContent from json stream.
 func (s *PackagesDeletePackageVersionForUserNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesDeletePackageVersionForUserNoContent to nil`)
+		return errors.New(`invalid: unable to decode PackagesDeletePackageVersionForUserNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -48565,7 +48509,7 @@ func (s PackagesDeletePackageVersionForUserPackageType) WriteJSON(e *json.Encode
 // ReadJSON reads PackagesDeletePackageVersionForUserPackageType from json reader.
 func (s *PackagesDeletePackageVersionForUserPackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesDeletePackageVersionForUserPackageType to nil`)
+		return errors.New(`invalid: unable to decode PackagesDeletePackageVersionForUserPackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -48607,7 +48551,7 @@ func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTy
 // ReadJSON reads PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType from json reader.
 func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType to nil`)
+		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -48625,7 +48569,7 @@ func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) Wr
 // ReadJSON reads PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState from json reader.
 func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState to nil`)
+		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -48667,7 +48611,7 @@ func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType) WriteJSON(
 // ReadJSON reads PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType from json reader.
 func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType to nil`)
+		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -48685,7 +48629,7 @@ func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgState) WriteJSON(e *jso
 // ReadJSON reads PackagesGetAllPackageVersionsForPackageOwnedByOrgState from json reader.
 func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByOrgState to nil`)
+		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByOrgState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -48727,7 +48671,7 @@ func (s PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType) WriteJSON
 // ReadJSON reads PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType from json reader.
 func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType to nil`)
+		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -48745,7 +48689,7 @@ func (s PackagesGetPackageForAuthenticatedUserPackageType) WriteJSON(e *json.Enc
 // ReadJSON reads PackagesGetPackageForAuthenticatedUserPackageType from json reader.
 func (s *PackagesGetPackageForAuthenticatedUserPackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesGetPackageForAuthenticatedUserPackageType to nil`)
+		return errors.New(`invalid: unable to decode PackagesGetPackageForAuthenticatedUserPackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -48763,7 +48707,7 @@ func (s PackagesGetPackageForOrganizationPackageType) WriteJSON(e *json.Encoder)
 // ReadJSON reads PackagesGetPackageForOrganizationPackageType from json reader.
 func (s *PackagesGetPackageForOrganizationPackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesGetPackageForOrganizationPackageType to nil`)
+		return errors.New(`invalid: unable to decode PackagesGetPackageForOrganizationPackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -48781,7 +48725,7 @@ func (s PackagesGetPackageForUserPackageType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PackagesGetPackageForUserPackageType from json reader.
 func (s *PackagesGetPackageForUserPackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesGetPackageForUserPackageType to nil`)
+		return errors.New(`invalid: unable to decode PackagesGetPackageForUserPackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -48799,7 +48743,7 @@ func (s PackagesGetPackageVersionForAuthenticatedUserPackageType) WriteJSON(e *j
 // ReadJSON reads PackagesGetPackageVersionForAuthenticatedUserPackageType from json reader.
 func (s *PackagesGetPackageVersionForAuthenticatedUserPackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesGetPackageVersionForAuthenticatedUserPackageType to nil`)
+		return errors.New(`invalid: unable to decode PackagesGetPackageVersionForAuthenticatedUserPackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -48817,7 +48761,7 @@ func (s PackagesGetPackageVersionForOrganizationPackageType) WriteJSON(e *json.E
 // ReadJSON reads PackagesGetPackageVersionForOrganizationPackageType from json reader.
 func (s *PackagesGetPackageVersionForOrganizationPackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesGetPackageVersionForOrganizationPackageType to nil`)
+		return errors.New(`invalid: unable to decode PackagesGetPackageVersionForOrganizationPackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -48835,7 +48779,7 @@ func (s PackagesGetPackageVersionForUserPackageType) WriteJSON(e *json.Encoder) 
 // ReadJSON reads PackagesGetPackageVersionForUserPackageType from json reader.
 func (s *PackagesGetPackageVersionForUserPackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesGetPackageVersionForUserPackageType to nil`)
+		return errors.New(`invalid: unable to decode PackagesGetPackageVersionForUserPackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -48853,7 +48797,7 @@ func (s PackagesListPackagesForAuthenticatedUserPackageType) WriteJSON(e *json.E
 // ReadJSON reads PackagesListPackagesForAuthenticatedUserPackageType from json reader.
 func (s *PackagesListPackagesForAuthenticatedUserPackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesListPackagesForAuthenticatedUserPackageType to nil`)
+		return errors.New(`invalid: unable to decode PackagesListPackagesForAuthenticatedUserPackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -48871,7 +48815,7 @@ func (s PackagesListPackagesForAuthenticatedUserVisibility) WriteJSON(e *json.En
 // ReadJSON reads PackagesListPackagesForAuthenticatedUserVisibility from json reader.
 func (s *PackagesListPackagesForAuthenticatedUserVisibility) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesListPackagesForAuthenticatedUserVisibility to nil`)
+		return errors.New(`invalid: unable to decode PackagesListPackagesForAuthenticatedUserVisibility to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -48904,7 +48848,7 @@ func (s PackagesListPackagesForOrganizationPackageType) WriteJSON(e *json.Encode
 // ReadJSON reads PackagesListPackagesForOrganizationPackageType from json reader.
 func (s *PackagesListPackagesForOrganizationPackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesListPackagesForOrganizationPackageType to nil`)
+		return errors.New(`invalid: unable to decode PackagesListPackagesForOrganizationPackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -48922,7 +48866,7 @@ func (s PackagesListPackagesForOrganizationVisibility) WriteJSON(e *json.Encoder
 // ReadJSON reads PackagesListPackagesForOrganizationVisibility from json reader.
 func (s *PackagesListPackagesForOrganizationVisibility) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesListPackagesForOrganizationVisibility to nil`)
+		return errors.New(`invalid: unable to decode PackagesListPackagesForOrganizationVisibility to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -48953,7 +48897,7 @@ func (s PackagesListPackagesForUserPackageType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PackagesListPackagesForUserPackageType from json reader.
 func (s *PackagesListPackagesForUserPackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesListPackagesForUserPackageType to nil`)
+		return errors.New(`invalid: unable to decode PackagesListPackagesForUserPackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -48971,7 +48915,7 @@ func (s PackagesListPackagesForUserVisibility) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PackagesListPackagesForUserVisibility from json reader.
 func (s *PackagesListPackagesForUserVisibility) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesListPackagesForUserVisibility to nil`)
+		return errors.New(`invalid: unable to decode PackagesListPackagesForUserVisibility to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -49009,7 +48953,7 @@ func (s PackagesRestorePackageForAuthenticatedUserNoContent) WriteJSON(e *json.E
 // ReadJSON reads PackagesRestorePackageForAuthenticatedUserNoContent from json stream.
 func (s *PackagesRestorePackageForAuthenticatedUserNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesRestorePackageForAuthenticatedUserNoContent to nil`)
+		return errors.New(`invalid: unable to decode PackagesRestorePackageForAuthenticatedUserNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -49028,7 +48972,7 @@ func (s PackagesRestorePackageForAuthenticatedUserPackageType) WriteJSON(e *json
 // ReadJSON reads PackagesRestorePackageForAuthenticatedUserPackageType from json reader.
 func (s *PackagesRestorePackageForAuthenticatedUserPackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesRestorePackageForAuthenticatedUserPackageType to nil`)
+		return errors.New(`invalid: unable to decode PackagesRestorePackageForAuthenticatedUserPackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -49064,7 +49008,7 @@ func (s PackagesRestorePackageForOrgNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PackagesRestorePackageForOrgNoContent from json stream.
 func (s *PackagesRestorePackageForOrgNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesRestorePackageForOrgNoContent to nil`)
+		return errors.New(`invalid: unable to decode PackagesRestorePackageForOrgNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -49083,7 +49027,7 @@ func (s PackagesRestorePackageForOrgPackageType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PackagesRestorePackageForOrgPackageType from json reader.
 func (s *PackagesRestorePackageForOrgPackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesRestorePackageForOrgPackageType to nil`)
+		return errors.New(`invalid: unable to decode PackagesRestorePackageForOrgPackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -49119,7 +49063,7 @@ func (s PackagesRestorePackageForUserNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PackagesRestorePackageForUserNoContent from json stream.
 func (s *PackagesRestorePackageForUserNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesRestorePackageForUserNoContent to nil`)
+		return errors.New(`invalid: unable to decode PackagesRestorePackageForUserNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -49138,7 +49082,7 @@ func (s PackagesRestorePackageForUserPackageType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PackagesRestorePackageForUserPackageType from json reader.
 func (s *PackagesRestorePackageForUserPackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesRestorePackageForUserPackageType to nil`)
+		return errors.New(`invalid: unable to decode PackagesRestorePackageForUserPackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -49177,7 +49121,7 @@ func (s PackagesRestorePackageVersionForAuthenticatedUserNoContent) WriteJSON(e 
 // ReadJSON reads PackagesRestorePackageVersionForAuthenticatedUserNoContent from json stream.
 func (s *PackagesRestorePackageVersionForAuthenticatedUserNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesRestorePackageVersionForAuthenticatedUserNoContent to nil`)
+		return errors.New(`invalid: unable to decode PackagesRestorePackageVersionForAuthenticatedUserNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -49196,7 +49140,7 @@ func (s PackagesRestorePackageVersionForAuthenticatedUserPackageType) WriteJSON(
 // ReadJSON reads PackagesRestorePackageVersionForAuthenticatedUserPackageType from json reader.
 func (s *PackagesRestorePackageVersionForAuthenticatedUserPackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesRestorePackageVersionForAuthenticatedUserPackageType to nil`)
+		return errors.New(`invalid: unable to decode PackagesRestorePackageVersionForAuthenticatedUserPackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -49232,7 +49176,7 @@ func (s PackagesRestorePackageVersionForOrgNoContent) WriteJSON(e *json.Encoder)
 // ReadJSON reads PackagesRestorePackageVersionForOrgNoContent from json stream.
 func (s *PackagesRestorePackageVersionForOrgNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesRestorePackageVersionForOrgNoContent to nil`)
+		return errors.New(`invalid: unable to decode PackagesRestorePackageVersionForOrgNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -49251,7 +49195,7 @@ func (s PackagesRestorePackageVersionForOrgPackageType) WriteJSON(e *json.Encode
 // ReadJSON reads PackagesRestorePackageVersionForOrgPackageType from json reader.
 func (s *PackagesRestorePackageVersionForOrgPackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesRestorePackageVersionForOrgPackageType to nil`)
+		return errors.New(`invalid: unable to decode PackagesRestorePackageVersionForOrgPackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -49287,7 +49231,7 @@ func (s PackagesRestorePackageVersionForUserNoContent) WriteJSON(e *json.Encoder
 // ReadJSON reads PackagesRestorePackageVersionForUserNoContent from json stream.
 func (s *PackagesRestorePackageVersionForUserNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesRestorePackageVersionForUserNoContent to nil`)
+		return errors.New(`invalid: unable to decode PackagesRestorePackageVersionForUserNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -49306,7 +49250,7 @@ func (s PackagesRestorePackageVersionForUserPackageType) WriteJSON(e *json.Encod
 // ReadJSON reads PackagesRestorePackageVersionForUserPackageType from json reader.
 func (s *PackagesRestorePackageVersionForUserPackageType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PackagesRestorePackageVersionForUserPackageType to nil`)
+		return errors.New(`invalid: unable to decode PackagesRestorePackageVersionForUserPackageType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -49372,7 +49316,7 @@ func (s Page) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Page from json stream.
 func (s *Page) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Page to nil`)
+		return errors.New(`invalid: unable to decode Page to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -49474,7 +49418,7 @@ func (s PageBuild) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PageBuild from json stream.
 func (s *PageBuild) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PageBuild to nil`)
+		return errors.New(`invalid: unable to decode PageBuild to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -49543,7 +49487,7 @@ func (s PageBuildError) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PageBuildError from json stream.
 func (s *PageBuildError) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PageBuildError to nil`)
+		return errors.New(`invalid: unable to decode PageBuildError to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -49575,7 +49519,7 @@ func (s PageBuildStatus) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PageBuildStatus from json stream.
 func (s *PageBuildStatus) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PageBuildStatus to nil`)
+		return errors.New(`invalid: unable to decode PageBuildStatus to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -49606,7 +49550,7 @@ func (s PageProtectedDomainState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PageProtectedDomainState from json reader.
 func (s *PageProtectedDomainState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PageProtectedDomainState to nil`)
+		return errors.New(`invalid: unable to decode PageProtectedDomainState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -49624,7 +49568,7 @@ func (s PageStatus) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PageStatus from json reader.
 func (s *PageStatus) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PageStatus to nil`)
+		return errors.New(`invalid: unable to decode PageStatus to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -49666,7 +49610,7 @@ func (s PagesHTTPSCertificate) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PagesHTTPSCertificate from json stream.
 func (s *PagesHTTPSCertificate) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PagesHTTPSCertificate to nil`)
+		return errors.New(`invalid: unable to decode PagesHTTPSCertificate to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -49714,7 +49658,7 @@ func (s PagesHTTPSCertificateState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PagesHTTPSCertificateState from json reader.
 func (s *PagesHTTPSCertificateState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PagesHTTPSCertificateState to nil`)
+		return errors.New(`invalid: unable to decode PagesHTTPSCertificateState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -49745,7 +49689,7 @@ func (s PagesHealthCheck) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PagesHealthCheck from json stream.
 func (s *PagesHealthCheck) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PagesHealthCheck to nil`)
+		return errors.New(`invalid: unable to decode PagesHealthCheck to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -49917,7 +49861,7 @@ func (s PagesHealthCheckAltDomain) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PagesHealthCheckAltDomain from json stream.
 func (s *PagesHealthCheckAltDomain) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PagesHealthCheckAltDomain to nil`)
+		return errors.New(`invalid: unable to decode PagesHealthCheckAltDomain to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -50219,7 +50163,7 @@ func (s PagesHealthCheckDomain) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PagesHealthCheckDomain from json stream.
 func (s *PagesHealthCheckDomain) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PagesHealthCheckDomain to nil`)
+		return errors.New(`invalid: unable to decode PagesHealthCheckDomain to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -50387,7 +50331,7 @@ func (s PagesSourceHash) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PagesSourceHash from json stream.
 func (s *PagesSourceHash) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PagesSourceHash to nil`)
+		return errors.New(`invalid: unable to decode PagesSourceHash to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -50441,7 +50385,7 @@ func (s ParticipationStats) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ParticipationStats from json stream.
 func (s *ParticipationStats) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ParticipationStats to nil`)
+		return errors.New(`invalid: unable to decode ParticipationStats to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -50512,7 +50456,7 @@ func (s PorterAuthor) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PorterAuthor from json stream.
 func (s *PorterAuthor) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PorterAuthor to nil`)
+		return errors.New(`invalid: unable to decode PorterAuthor to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -50588,7 +50532,7 @@ func (s PorterLargeFile) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PorterLargeFile from json stream.
 func (s *PorterLargeFile) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PorterLargeFile to nil`)
+		return errors.New(`invalid: unable to decode PorterLargeFile to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -50640,7 +50584,7 @@ func (s PreviewHeaderMissing) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PreviewHeaderMissing from json stream.
 func (s *PreviewHeaderMissing) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PreviewHeaderMissing to nil`)
+		return errors.New(`invalid: unable to decode PreviewHeaderMissing to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -50810,7 +50754,7 @@ func (s PrivateUser) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PrivateUser from json stream.
 func (s *PrivateUser) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PrivateUser to nil`)
+		return errors.New(`invalid: unable to decode PrivateUser to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -51075,7 +51019,7 @@ func (s PrivateUserPlan) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PrivateUserPlan from json stream.
 func (s *PrivateUserPlan) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PrivateUserPlan to nil`)
+		return errors.New(`invalid: unable to decode PrivateUserPlan to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -51170,7 +51114,7 @@ func (s Project) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Project from json stream.
 func (s *Project) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Project to nil`)
+		return errors.New(`invalid: unable to decode Project to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -51323,7 +51267,7 @@ func (s ProjectCard) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectCard from json stream.
 func (s *ProjectCard) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectCard to nil`)
+		return errors.New(`invalid: unable to decode ProjectCard to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -51439,7 +51383,7 @@ func (s ProjectColumn) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectColumn from json stream.
 func (s *ProjectColumn) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectColumn to nil`)
+		return errors.New(`invalid: unable to decode ProjectColumn to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -51506,7 +51450,7 @@ func (s ProjectOrganizationPermission) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectOrganizationPermission from json reader.
 func (s *ProjectOrganizationPermission) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectOrganizationPermission to nil`)
+		return errors.New(`invalid: unable to decode ProjectOrganizationPermission to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -51527,7 +51471,7 @@ func (s ProjectsAddCollaboratorNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsAddCollaboratorNoContent from json stream.
 func (s *ProjectsAddCollaboratorNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsAddCollaboratorNoContent to nil`)
+		return errors.New(`invalid: unable to decode ProjectsAddCollaboratorNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -51554,7 +51498,7 @@ func (s ProjectsAddCollaboratorReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsAddCollaboratorReq from json stream.
 func (s *ProjectsAddCollaboratorReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsAddCollaboratorReq to nil`)
+		return errors.New(`invalid: unable to decode ProjectsAddCollaboratorReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -51578,7 +51522,7 @@ func (s ProjectsAddCollaboratorReqPermission) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsAddCollaboratorReqPermission from json reader.
 func (s *ProjectsAddCollaboratorReqPermission) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsAddCollaboratorReqPermission to nil`)
+		return errors.New(`invalid: unable to decode ProjectsAddCollaboratorReqPermission to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -51601,11 +51545,11 @@ func (s ProjectsCreateCardReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads value from json reader.
 func (s *ProjectsCreateCardReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsCreateCardReq to nil`)
+		return errors.New(`invalid: unable to decode ProjectsCreateCardReq to nil`)
 	}
 	// Sum type fields.
 	if d.Next() != json.Object {
-		return fmt.Errorf("unexpected json type %q", d.Next())
+		return errors.Errorf("unexpected json type %q", d.Next())
 	}
 	var found bool
 	if err := d.Capture(func(d *json.Decoder) error {
@@ -51627,10 +51571,10 @@ func (s *ProjectsCreateCardReq) ReadJSON(d *json.Decoder) error {
 			return d.Skip()
 		})
 	}); err != nil {
-		return fmt.Errorf("capture: %w", err)
+		return errors.Wrap(err, "capture")
 	}
 	if !found {
-		return fmt.Errorf("unable to detect sum type variant")
+		return errors.New("unable to detect sum type variant")
 	}
 	switch s.Type {
 	case ProjectsCreateCardReq0ProjectsCreateCardReq:
@@ -51642,7 +51586,7 @@ func (s *ProjectsCreateCardReq) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 	default:
-		return fmt.Errorf("inferred invalid type: %s", s.Type)
+		return errors.Errorf("inferred invalid type: %s", s.Type)
 	}
 	return nil
 }
@@ -51661,7 +51605,7 @@ func (s ProjectsCreateCardReq0) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsCreateCardReq0 from json stream.
 func (s *ProjectsCreateCardReq0) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsCreateCardReq0 to nil`)
+		return errors.New(`invalid: unable to decode ProjectsCreateCardReq0 to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -51693,7 +51637,7 @@ func (s ProjectsCreateCardReq1) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsCreateCardReq1 from json stream.
 func (s *ProjectsCreateCardReq1) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsCreateCardReq1 to nil`)
+		return errors.New(`invalid: unable to decode ProjectsCreateCardReq1 to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -51736,7 +51680,7 @@ func (s ProjectsCreateColumnReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsCreateColumnReq from json stream.
 func (s *ProjectsCreateColumnReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsCreateColumnReq to nil`)
+		return errors.New(`invalid: unable to decode ProjectsCreateColumnReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -51782,7 +51726,7 @@ func (s ProjectsCreateForAuthenticatedUserReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsCreateForAuthenticatedUserReq from json stream.
 func (s *ProjectsCreateForAuthenticatedUserReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsCreateForAuthenticatedUserReq to nil`)
+		return errors.New(`invalid: unable to decode ProjectsCreateForAuthenticatedUserReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -51835,7 +51779,7 @@ func (s ProjectsCreateForOrgReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsCreateForOrgReq from json stream.
 func (s *ProjectsCreateForOrgReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsCreateForOrgReq to nil`)
+		return errors.New(`invalid: unable to decode ProjectsCreateForOrgReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -51888,7 +51832,7 @@ func (s ProjectsCreateForRepoReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsCreateForRepoReq from json stream.
 func (s *ProjectsCreateForRepoReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsCreateForRepoReq to nil`)
+		return errors.New(`invalid: unable to decode ProjectsCreateForRepoReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -51958,7 +51902,7 @@ func (s ProjectsDeleteCardForbidden) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsDeleteCardForbidden from json stream.
 func (s *ProjectsDeleteCardForbidden) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsDeleteCardForbidden to nil`)
+		return errors.New(`invalid: unable to decode ProjectsDeleteCardForbidden to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -52004,7 +51948,7 @@ func (s ProjectsDeleteCardNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsDeleteCardNoContent from json stream.
 func (s *ProjectsDeleteCardNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsDeleteCardNoContent to nil`)
+		return errors.New(`invalid: unable to decode ProjectsDeleteCardNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -52032,7 +51976,7 @@ func (s ProjectsDeleteColumnNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsDeleteColumnNoContent from json stream.
 func (s *ProjectsDeleteColumnNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsDeleteColumnNoContent to nil`)
+		return errors.New(`invalid: unable to decode ProjectsDeleteColumnNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -52076,7 +52020,7 @@ func (s ProjectsDeleteForbidden) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsDeleteForbidden from json stream.
 func (s *ProjectsDeleteForbidden) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsDeleteForbidden to nil`)
+		return errors.New(`invalid: unable to decode ProjectsDeleteForbidden to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -52122,7 +52066,7 @@ func (s ProjectsDeleteNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsDeleteNoContent from json stream.
 func (s *ProjectsDeleteNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsDeleteNoContent to nil`)
+		return errors.New(`invalid: unable to decode ProjectsDeleteNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -52171,7 +52115,7 @@ func (s ProjectsListCardsArchivedState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsListCardsArchivedState from json reader.
 func (s *ProjectsListCardsArchivedState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsListCardsArchivedState to nil`)
+		return errors.New(`invalid: unable to decode ProjectsListCardsArchivedState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -52192,7 +52136,7 @@ func (s ProjectsListCollaboratorsAffiliation) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsListCollaboratorsAffiliation from json reader.
 func (s *ProjectsListCollaboratorsAffiliation) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsListCollaboratorsAffiliation to nil`)
+		return errors.New(`invalid: unable to decode ProjectsListCollaboratorsAffiliation to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -52222,7 +52166,7 @@ func (s ProjectsListForOrgState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsListForOrgState from json reader.
 func (s *ProjectsListForOrgState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsListForOrgState to nil`)
+		return errors.New(`invalid: unable to decode ProjectsListForOrgState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -52255,7 +52199,7 @@ func (s ProjectsListForRepoState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsListForRepoState from json reader.
 func (s *ProjectsListForRepoState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsListForRepoState to nil`)
+		return errors.New(`invalid: unable to decode ProjectsListForRepoState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -52273,7 +52217,7 @@ func (s ProjectsListForUserState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsListForUserState from json reader.
 func (s *ProjectsListForUserState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsListForUserState to nil`)
+		return errors.New(`invalid: unable to decode ProjectsListForUserState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -52294,7 +52238,7 @@ func (s ProjectsMoveCardCreated) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsMoveCardCreated from json stream.
 func (s *ProjectsMoveCardCreated) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsMoveCardCreated to nil`)
+		return errors.New(`invalid: unable to decode ProjectsMoveCardCreated to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -52338,7 +52282,7 @@ func (s ProjectsMoveCardForbidden) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsMoveCardForbidden from json stream.
 func (s *ProjectsMoveCardForbidden) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsMoveCardForbidden to nil`)
+		return errors.New(`invalid: unable to decode ProjectsMoveCardForbidden to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -52402,7 +52346,7 @@ func (s ProjectsMoveCardForbiddenErrorsItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsMoveCardForbiddenErrorsItem from json stream.
 func (s *ProjectsMoveCardForbiddenErrorsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsMoveCardForbiddenErrorsItem to nil`)
+		return errors.New(`invalid: unable to decode ProjectsMoveCardForbiddenErrorsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -52452,7 +52396,7 @@ func (s ProjectsMoveCardReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsMoveCardReq from json stream.
 func (s *ProjectsMoveCardReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsMoveCardReq to nil`)
+		return errors.New(`invalid: unable to decode ProjectsMoveCardReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -52491,7 +52435,7 @@ func (s ProjectsMoveColumnCreated) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsMoveColumnCreated from json stream.
 func (s *ProjectsMoveColumnCreated) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsMoveColumnCreated to nil`)
+		return errors.New(`invalid: unable to decode ProjectsMoveColumnCreated to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -52516,7 +52460,7 @@ func (s ProjectsMoveColumnReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsMoveColumnReq from json stream.
 func (s *ProjectsMoveColumnReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsMoveColumnReq to nil`)
+		return errors.New(`invalid: unable to decode ProjectsMoveColumnReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -52544,7 +52488,7 @@ func (s ProjectsRemoveCollaboratorNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsRemoveCollaboratorNoContent from json stream.
 func (s *ProjectsRemoveCollaboratorNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsRemoveCollaboratorNoContent to nil`)
+		return errors.New(`invalid: unable to decode ProjectsRemoveCollaboratorNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -52591,7 +52535,7 @@ func (s ProjectsUpdateCardReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsUpdateCardReq from json stream.
 func (s *ProjectsUpdateCardReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsUpdateCardReq to nil`)
+		return errors.New(`invalid: unable to decode ProjectsUpdateCardReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -52632,7 +52576,7 @@ func (s ProjectsUpdateColumnReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsUpdateColumnReq from json stream.
 func (s *ProjectsUpdateColumnReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsUpdateColumnReq to nil`)
+		return errors.New(`invalid: unable to decode ProjectsUpdateColumnReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -52682,7 +52626,7 @@ func (s ProjectsUpdateForbidden) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsUpdateForbidden from json stream.
 func (s *ProjectsUpdateForbidden) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsUpdateForbidden to nil`)
+		return errors.New(`invalid: unable to decode ProjectsUpdateForbidden to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -52728,7 +52672,7 @@ func (s ProjectsUpdateNotFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsUpdateNotFound from json stream.
 func (s *ProjectsUpdateNotFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsUpdateNotFound to nil`)
+		return errors.New(`invalid: unable to decode ProjectsUpdateNotFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -52775,7 +52719,7 @@ func (s ProjectsUpdateReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsUpdateReq from json stream.
 func (s *ProjectsUpdateReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsUpdateReq to nil`)
+		return errors.New(`invalid: unable to decode ProjectsUpdateReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -52819,7 +52763,7 @@ func (s ProjectsUpdateReqOrganizationPermission) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProjectsUpdateReqOrganizationPermission from json reader.
 func (s *ProjectsUpdateReqOrganizationPermission) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProjectsUpdateReqOrganizationPermission to nil`)
+		return errors.New(`invalid: unable to decode ProjectsUpdateReqOrganizationPermission to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -52888,7 +52832,7 @@ func (s ProtectedBranch) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProtectedBranch from json stream.
 func (s *ProtectedBranch) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProtectedBranch to nil`)
+		return errors.New(`invalid: unable to decode ProtectedBranch to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -52967,7 +52911,7 @@ func (s ProtectedBranchAdminEnforced) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProtectedBranchAdminEnforced from json stream.
 func (s *ProtectedBranchAdminEnforced) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProtectedBranchAdminEnforced to nil`)
+		return errors.New(`invalid: unable to decode ProtectedBranchAdminEnforced to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -53004,7 +52948,7 @@ func (s ProtectedBranchAllowDeletions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProtectedBranchAllowDeletions from json stream.
 func (s *ProtectedBranchAllowDeletions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProtectedBranchAllowDeletions to nil`)
+		return errors.New(`invalid: unable to decode ProtectedBranchAllowDeletions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -53035,7 +52979,7 @@ func (s ProtectedBranchAllowForcePushes) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProtectedBranchAllowForcePushes from json stream.
 func (s *ProtectedBranchAllowForcePushes) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProtectedBranchAllowForcePushes to nil`)
+		return errors.New(`invalid: unable to decode ProtectedBranchAllowForcePushes to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -53069,7 +53013,7 @@ func (s ProtectedBranchEnforceAdmins) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProtectedBranchEnforceAdmins from json stream.
 func (s *ProtectedBranchEnforceAdmins) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProtectedBranchEnforceAdmins to nil`)
+		return errors.New(`invalid: unable to decode ProtectedBranchEnforceAdmins to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -53124,7 +53068,7 @@ func (s ProtectedBranchPullRequestReview) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProtectedBranchPullRequestReview from json stream.
 func (s *ProtectedBranchPullRequestReview) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProtectedBranchPullRequestReview to nil`)
+		return errors.New(`invalid: unable to decode ProtectedBranchPullRequestReview to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -53212,7 +53156,7 @@ func (s ProtectedBranchPullRequestReviewDismissalRestrictions) WriteJSON(e *json
 // ReadJSON reads ProtectedBranchPullRequestReviewDismissalRestrictions from json stream.
 func (s *ProtectedBranchPullRequestReviewDismissalRestrictions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProtectedBranchPullRequestReviewDismissalRestrictions to nil`)
+		return errors.New(`invalid: unable to decode ProtectedBranchPullRequestReviewDismissalRestrictions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -53278,7 +53222,7 @@ func (s ProtectedBranchRequiredConversationResolution) WriteJSON(e *json.Encoder
 // ReadJSON reads ProtectedBranchRequiredConversationResolution from json stream.
 func (s *ProtectedBranchRequiredConversationResolution) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProtectedBranchRequiredConversationResolution to nil`)
+		return errors.New(`invalid: unable to decode ProtectedBranchRequiredConversationResolution to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -53308,7 +53252,7 @@ func (s ProtectedBranchRequiredLinearHistory) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProtectedBranchRequiredLinearHistory from json stream.
 func (s *ProtectedBranchRequiredLinearHistory) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProtectedBranchRequiredLinearHistory to nil`)
+		return errors.New(`invalid: unable to decode ProtectedBranchRequiredLinearHistory to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -53359,7 +53303,7 @@ func (s ProtectedBranchRequiredPullRequestReviews) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProtectedBranchRequiredPullRequestReviews from json stream.
 func (s *ProtectedBranchRequiredPullRequestReviews) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProtectedBranchRequiredPullRequestReviews to nil`)
+		return errors.New(`invalid: unable to decode ProtectedBranchRequiredPullRequestReviews to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -53436,7 +53380,7 @@ func (s ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) WriteJSO
 // ReadJSON reads ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions from json stream.
 func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions to nil`)
+		return errors.New(`invalid: unable to decode ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -53506,7 +53450,7 @@ func (s ProtectedBranchRequiredSignatures) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ProtectedBranchRequiredSignatures from json stream.
 func (s *ProtectedBranchRequiredSignatures) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ProtectedBranchRequiredSignatures to nil`)
+		return errors.New(`invalid: unable to decode ProtectedBranchRequiredSignatures to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -53673,7 +53617,7 @@ func (s PublicUser) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PublicUser from json stream.
 func (s *PublicUser) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PublicUser to nil`)
+		return errors.New(`invalid: unable to decode PublicUser to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -53917,7 +53861,7 @@ func (s PublicUserPlan) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PublicUserPlan from json stream.
 func (s *PublicUserPlan) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PublicUserPlan to nil`)
+		return errors.New(`invalid: unable to decode PublicUserPlan to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -54126,7 +54070,7 @@ func (s PullRequest) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequest from json stream.
 func (s *PullRequest) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequest to nil`)
+		return errors.New(`invalid: unable to decode PullRequest to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -54421,7 +54365,7 @@ func (s PullRequestBase) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestBase from json stream.
 func (s *PullRequestBase) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestBase to nil`)
+		return errors.New(`invalid: unable to decode PullRequestBase to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -54735,7 +54679,7 @@ func (s PullRequestBaseRepo) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestBaseRepo from json stream.
 func (s *PullRequestBaseRepo) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestBaseRepo to nil`)
+		return errors.New(`invalid: unable to decode PullRequestBaseRepo to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -55286,7 +55230,7 @@ func (s PullRequestBaseRepoOwner) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestBaseRepoOwner from json stream.
 func (s *PullRequestBaseRepoOwner) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestBaseRepoOwner to nil`)
+		return errors.New(`invalid: unable to decode PullRequestBaseRepoOwner to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -55433,7 +55377,7 @@ func (s PullRequestBaseRepoPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestBaseRepoPermissions from json stream.
 func (s *PullRequestBaseRepoPermissions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestBaseRepoPermissions to nil`)
+		return errors.New(`invalid: unable to decode PullRequestBaseRepoPermissions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -55537,7 +55481,7 @@ func (s PullRequestBaseUser) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestBaseUser from json stream.
 func (s *PullRequestBaseUser) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestBaseUser to nil`)
+		return errors.New(`invalid: unable to decode PullRequestBaseUser to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -55680,7 +55624,7 @@ func (s PullRequestHead) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestHead from json stream.
 func (s *PullRequestHead) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestHead to nil`)
+		return errors.New(`invalid: unable to decode PullRequestHead to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -55994,7 +55938,7 @@ func (s PullRequestHeadRepo) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestHeadRepo from json stream.
 func (s *PullRequestHeadRepo) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestHeadRepo to nil`)
+		return errors.New(`invalid: unable to decode PullRequestHeadRepo to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -56506,7 +56450,7 @@ func (s PullRequestHeadRepoLicense) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestHeadRepoLicense from json stream.
 func (s *PullRequestHeadRepoLicense) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestHeadRepoLicense to nil`)
+		return errors.New(`invalid: unable to decode PullRequestHeadRepoLicense to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -56608,7 +56552,7 @@ func (s PullRequestHeadRepoOwner) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestHeadRepoOwner from json stream.
 func (s *PullRequestHeadRepoOwner) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestHeadRepoOwner to nil`)
+		return errors.New(`invalid: unable to decode PullRequestHeadRepoOwner to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -56755,7 +56699,7 @@ func (s PullRequestHeadRepoPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestHeadRepoPermissions from json stream.
 func (s *PullRequestHeadRepoPermissions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestHeadRepoPermissions to nil`)
+		return errors.New(`invalid: unable to decode PullRequestHeadRepoPermissions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -56859,7 +56803,7 @@ func (s PullRequestHeadUser) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestHeadUser from json stream.
 func (s *PullRequestHeadUser) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestHeadUser to nil`)
+		return errors.New(`invalid: unable to decode PullRequestHeadUser to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -57022,7 +56966,7 @@ func (s PullRequestLabelsItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestLabelsItem from json stream.
 func (s *PullRequestLabelsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestLabelsItem to nil`)
+		return errors.New(`invalid: unable to decode PullRequestLabelsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -57103,7 +57047,7 @@ func (s PullRequestLinks) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestLinks from json stream.
 func (s *PullRequestLinks) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestLinks to nil`)
+		return errors.New(`invalid: unable to decode PullRequestLinks to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -57166,7 +57110,7 @@ func (s PullRequestMergeResult) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestMergeResult from json stream.
 func (s *PullRequestMergeResult) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestMergeResult to nil`)
+		return errors.New(`invalid: unable to decode PullRequestMergeResult to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -57221,7 +57165,7 @@ func (s PullRequestMinimal) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestMinimal from json stream.
 func (s *PullRequestMinimal) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestMinimal to nil`)
+		return errors.New(`invalid: unable to decode PullRequestMinimal to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -57278,7 +57222,7 @@ func (s PullRequestMinimalBase) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestMinimalBase from json stream.
 func (s *PullRequestMinimalBase) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestMinimalBase to nil`)
+		return errors.New(`invalid: unable to decode PullRequestMinimalBase to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -57325,7 +57269,7 @@ func (s PullRequestMinimalBaseRepo) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestMinimalBaseRepo from json stream.
 func (s *PullRequestMinimalBaseRepo) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestMinimalBaseRepo to nil`)
+		return errors.New(`invalid: unable to decode PullRequestMinimalBaseRepo to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -57374,7 +57318,7 @@ func (s PullRequestMinimalHead) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestMinimalHead from json stream.
 func (s *PullRequestMinimalHead) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestMinimalHead to nil`)
+		return errors.New(`invalid: unable to decode PullRequestMinimalHead to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -57421,7 +57365,7 @@ func (s PullRequestMinimalHeadRepo) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestMinimalHeadRepo from json stream.
 func (s *PullRequestMinimalHeadRepo) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestMinimalHeadRepo to nil`)
+		return errors.New(`invalid: unable to decode PullRequestMinimalHeadRepo to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -57506,7 +57450,7 @@ func (s PullRequestReview) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestReview from json stream.
 func (s *PullRequestReview) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestReview to nil`)
+		return errors.New(`invalid: unable to decode PullRequestReview to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -57701,7 +57645,7 @@ func (s PullRequestReviewComment) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestReviewComment from json stream.
 func (s *PullRequestReviewComment) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestReviewComment to nil`)
+		return errors.New(`invalid: unable to decode PullRequestReviewComment to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -57882,7 +57826,7 @@ func (s PullRequestReviewCommentLinks) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestReviewCommentLinks from json stream.
 func (s *PullRequestReviewCommentLinks) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestReviewCommentLinks to nil`)
+		return errors.New(`invalid: unable to decode PullRequestReviewCommentLinks to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -57919,7 +57863,7 @@ func (s PullRequestReviewCommentLinksHTML) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestReviewCommentLinksHTML from json stream.
 func (s *PullRequestReviewCommentLinksHTML) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestReviewCommentLinksHTML to nil`)
+		return errors.New(`invalid: unable to decode PullRequestReviewCommentLinksHTML to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -57950,7 +57894,7 @@ func (s PullRequestReviewCommentLinksPullRequest) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestReviewCommentLinksPullRequest from json stream.
 func (s *PullRequestReviewCommentLinksPullRequest) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestReviewCommentLinksPullRequest to nil`)
+		return errors.New(`invalid: unable to decode PullRequestReviewCommentLinksPullRequest to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -57981,7 +57925,7 @@ func (s PullRequestReviewCommentLinksSelf) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestReviewCommentLinksSelf from json stream.
 func (s *PullRequestReviewCommentLinksSelf) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestReviewCommentLinksSelf to nil`)
+		return errors.New(`invalid: unable to decode PullRequestReviewCommentLinksSelf to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -58006,7 +57950,7 @@ func (s PullRequestReviewCommentSide) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestReviewCommentSide from json reader.
 func (s *PullRequestReviewCommentSide) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestReviewCommentSide to nil`)
+		return errors.New(`invalid: unable to decode PullRequestReviewCommentSide to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -58024,7 +57968,7 @@ func (s PullRequestReviewCommentStartSide) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestReviewCommentStartSide from json reader.
 func (s *PullRequestReviewCommentStartSide) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestReviewCommentStartSide to nil`)
+		return errors.New(`invalid: unable to decode PullRequestReviewCommentStartSide to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -58051,7 +57995,7 @@ func (s PullRequestReviewLinks) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestReviewLinks from json stream.
 func (s *PullRequestReviewLinks) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestReviewLinks to nil`)
+		return errors.New(`invalid: unable to decode PullRequestReviewLinks to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -58084,7 +58028,7 @@ func (s PullRequestReviewLinksHTML) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestReviewLinksHTML from json stream.
 func (s *PullRequestReviewLinksHTML) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestReviewLinksHTML to nil`)
+		return errors.New(`invalid: unable to decode PullRequestReviewLinksHTML to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -58115,7 +58059,7 @@ func (s PullRequestReviewLinksPullRequest) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestReviewLinksPullRequest from json stream.
 func (s *PullRequestReviewLinksPullRequest) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestReviewLinksPullRequest to nil`)
+		return errors.New(`invalid: unable to decode PullRequestReviewLinksPullRequest to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -58163,7 +58107,7 @@ func (s PullRequestReviewRequest) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestReviewRequest from json stream.
 func (s *PullRequestReviewRequest) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestReviewRequest to nil`)
+		return errors.New(`invalid: unable to decode PullRequestReviewRequest to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -58334,7 +58278,7 @@ func (s PullRequestSimple) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestSimple from json stream.
 func (s *PullRequestSimple) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestSimple to nil`)
+		return errors.New(`invalid: unable to decode PullRequestSimple to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -58564,7 +58508,7 @@ func (s PullRequestSimpleBase) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestSimpleBase from json stream.
 func (s *PullRequestSimpleBase) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestSimpleBase to nil`)
+		return errors.New(`invalid: unable to decode PullRequestSimpleBase to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -58627,7 +58571,7 @@ func (s PullRequestSimpleHead) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestSimpleHead from json stream.
 func (s *PullRequestSimpleHead) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestSimpleHead to nil`)
+		return errors.New(`invalid: unable to decode PullRequestSimpleHead to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -58710,7 +58654,7 @@ func (s PullRequestSimpleLabelsItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestSimpleLabelsItem from json stream.
 func (s *PullRequestSimpleLabelsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestSimpleLabelsItem to nil`)
+		return errors.New(`invalid: unable to decode PullRequestSimpleLabelsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -58791,7 +58735,7 @@ func (s PullRequestSimpleLinks) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestSimpleLinks from json stream.
 func (s *PullRequestSimpleLinks) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestSimpleLinks to nil`)
+		return errors.New(`invalid: unable to decode PullRequestSimpleLinks to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -58842,7 +58786,7 @@ func (s PullRequestState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullRequestState from json reader.
 func (s *PullRequestState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullRequestState to nil`)
+		return errors.New(`invalid: unable to decode PullRequestState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -58863,7 +58807,7 @@ func (s PullsCheckIfMergedNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsCheckIfMergedNoContent from json stream.
 func (s *PullsCheckIfMergedNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsCheckIfMergedNoContent to nil`)
+		return errors.New(`invalid: unable to decode PullsCheckIfMergedNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -58885,7 +58829,7 @@ func (s PullsCheckIfMergedNotFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsCheckIfMergedNotFound from json stream.
 func (s *PullsCheckIfMergedNotFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsCheckIfMergedNotFound to nil`)
+		return errors.New(`invalid: unable to decode PullsCheckIfMergedNotFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -58910,7 +58854,7 @@ func (s PullsCreateReplyForReviewCommentReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsCreateReplyForReviewCommentReq from json stream.
 func (s *PullsCreateReplyForReviewCommentReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsCreateReplyForReviewCommentReq to nil`)
+		return errors.New(`invalid: unable to decode PullsCreateReplyForReviewCommentReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -58969,7 +58913,7 @@ func (s PullsCreateReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsCreateReq from json stream.
 func (s *PullsCreateReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsCreateReq to nil`)
+		return errors.New(`invalid: unable to decode PullsCreateReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -59071,7 +59015,7 @@ func (s PullsCreateReviewCommentReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsCreateReviewCommentReq from json stream.
 func (s *PullsCreateReviewCommentReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsCreateReviewCommentReq to nil`)
+		return errors.New(`invalid: unable to decode PullsCreateReviewCommentReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -59136,7 +59080,7 @@ func (s PullsCreateReviewCommentReqSide) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsCreateReviewCommentReqSide from json reader.
 func (s *PullsCreateReviewCommentReqSide) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsCreateReviewCommentReqSide to nil`)
+		return errors.New(`invalid: unable to decode PullsCreateReviewCommentReqSide to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -59154,7 +59098,7 @@ func (s PullsCreateReviewCommentReqStartSide) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsCreateReviewCommentReqStartSide from json reader.
 func (s *PullsCreateReviewCommentReqStartSide) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsCreateReviewCommentReqStartSide to nil`)
+		return errors.New(`invalid: unable to decode PullsCreateReviewCommentReqStartSide to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -59202,7 +59146,7 @@ func (s PullsCreateReviewReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsCreateReviewReq from json stream.
 func (s *PullsCreateReviewReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsCreateReviewReq to nil`)
+		return errors.New(`invalid: unable to decode PullsCreateReviewReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -59282,7 +59226,7 @@ func (s PullsCreateReviewReqCommentsItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsCreateReviewReqCommentsItem from json stream.
 func (s *PullsCreateReviewReqCommentsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsCreateReviewReqCommentsItem to nil`)
+		return errors.New(`invalid: unable to decode PullsCreateReviewReqCommentsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -59338,7 +59282,7 @@ func (s PullsCreateReviewReqEvent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsCreateReviewReqEvent from json reader.
 func (s *PullsCreateReviewReqEvent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsCreateReviewReqEvent to nil`)
+		return errors.New(`invalid: unable to decode PullsCreateReviewReqEvent to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -59359,7 +59303,7 @@ func (s PullsDeleteReviewCommentNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsDeleteReviewCommentNoContent from json stream.
 func (s *PullsDeleteReviewCommentNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsDeleteReviewCommentNoContent to nil`)
+		return errors.New(`invalid: unable to decode PullsDeleteReviewCommentNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -59389,7 +59333,7 @@ func (s PullsDismissReviewReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsDismissReviewReq from json stream.
 func (s *PullsDismissReviewReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsDismissReviewReq to nil`)
+		return errors.New(`invalid: unable to decode PullsDismissReviewReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -59428,7 +59372,7 @@ func (s PullsListDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsListDirection from json reader.
 func (s *PullsListDirection) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsListDirection to nil`)
+		return errors.New(`invalid: unable to decode PullsListDirection to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -59446,7 +59390,7 @@ func (s PullsListReviewCommentsDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsListReviewCommentsDirection from json reader.
 func (s *PullsListReviewCommentsDirection) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsListReviewCommentsDirection to nil`)
+		return errors.New(`invalid: unable to decode PullsListReviewCommentsDirection to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -59464,7 +59408,7 @@ func (s PullsListReviewCommentsForRepoDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsListReviewCommentsForRepoDirection from json reader.
 func (s *PullsListReviewCommentsForRepoDirection) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsListReviewCommentsForRepoDirection to nil`)
+		return errors.New(`invalid: unable to decode PullsListReviewCommentsForRepoDirection to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -59482,7 +59426,7 @@ func (s PullsListReviewCommentsForRepoSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsListReviewCommentsForRepoSort from json reader.
 func (s *PullsListReviewCommentsForRepoSort) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsListReviewCommentsForRepoSort to nil`)
+		return errors.New(`invalid: unable to decode PullsListReviewCommentsForRepoSort to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -59500,7 +59444,7 @@ func (s PullsListReviewCommentsSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsListReviewCommentsSort from json reader.
 func (s *PullsListReviewCommentsSort) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsListReviewCommentsSort to nil`)
+		return errors.New(`invalid: unable to decode PullsListReviewCommentsSort to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -59518,7 +59462,7 @@ func (s PullsListSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsListSort from json reader.
 func (s *PullsListSort) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsListSort to nil`)
+		return errors.New(`invalid: unable to decode PullsListSort to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -59536,7 +59480,7 @@ func (s PullsListState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsListState from json reader.
 func (s *PullsListState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsListState to nil`)
+		return errors.New(`invalid: unable to decode PullsListState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -59567,7 +59511,7 @@ func (s PullsMergeConflict) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsMergeConflict from json stream.
 func (s *PullsMergeConflict) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsMergeConflict to nil`)
+		return errors.New(`invalid: unable to decode PullsMergeConflict to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -59609,7 +59553,7 @@ func (s PullsMergeMethodNotAllowed) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsMergeMethodNotAllowed from json stream.
 func (s *PullsMergeMethodNotAllowed) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsMergeMethodNotAllowed to nil`)
+		return errors.New(`invalid: unable to decode PullsMergeMethodNotAllowed to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -59661,7 +59605,7 @@ func (s PullsMergeReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsMergeReq from json stream.
 func (s *PullsMergeReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsMergeReq to nil`)
+		return errors.New(`invalid: unable to decode PullsMergeReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -59700,7 +59644,7 @@ func (s PullsMergeReqMergeMethod) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsMergeReqMergeMethod from json reader.
 func (s *PullsMergeReqMergeMethod) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsMergeReqMergeMethod to nil`)
+		return errors.New(`invalid: unable to decode PullsMergeReqMergeMethod to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -59743,7 +59687,7 @@ func (s PullsRemoveRequestedReviewersReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsRemoveRequestedReviewersReq from json stream.
 func (s *PullsRemoveRequestedReviewersReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsRemoveRequestedReviewersReq to nil`)
+		return errors.New(`invalid: unable to decode PullsRemoveRequestedReviewersReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -59807,7 +59751,7 @@ func (s PullsSubmitReviewReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsSubmitReviewReq from json stream.
 func (s *PullsSubmitReviewReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsSubmitReviewReq to nil`)
+		return errors.New(`invalid: unable to decode PullsSubmitReviewReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -59835,7 +59779,7 @@ func (s PullsSubmitReviewReqEvent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsSubmitReviewReqEvent from json reader.
 func (s *PullsSubmitReviewReqEvent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsSubmitReviewReqEvent to nil`)
+		return errors.New(`invalid: unable to decode PullsSubmitReviewReqEvent to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -59866,7 +59810,7 @@ func (s PullsUpdateBranchAccepted) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsUpdateBranchAccepted from json stream.
 func (s *PullsUpdateBranchAccepted) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsUpdateBranchAccepted to nil`)
+		return errors.New(`invalid: unable to decode PullsUpdateBranchAccepted to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -59903,7 +59847,7 @@ func (s PullsUpdateBranchReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsUpdateBranchReq from json stream.
 func (s *PullsUpdateBranchReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsUpdateBranchReq to nil`)
+		return errors.New(`invalid: unable to decode PullsUpdateBranchReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -59955,7 +59899,7 @@ func (s PullsUpdateReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsUpdateReq from json stream.
 func (s *PullsUpdateReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsUpdateReq to nil`)
+		return errors.New(`invalid: unable to decode PullsUpdateReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -59999,7 +59943,7 @@ func (s PullsUpdateReqState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsUpdateReqState from json reader.
 func (s *PullsUpdateReqState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsUpdateReqState to nil`)
+		return errors.New(`invalid: unable to decode PullsUpdateReqState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -60023,7 +59967,7 @@ func (s PullsUpdateReviewCommentReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsUpdateReviewCommentReq from json stream.
 func (s *PullsUpdateReviewCommentReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsUpdateReviewCommentReq to nil`)
+		return errors.New(`invalid: unable to decode PullsUpdateReviewCommentReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -60054,7 +59998,7 @@ func (s PullsUpdateReviewReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads PullsUpdateReviewReq from json stream.
 func (s *PullsUpdateReviewReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode PullsUpdateReviewReq to nil`)
+		return errors.New(`invalid: unable to decode PullsUpdateReviewReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -60094,7 +60038,7 @@ func (s RateLimit) WriteJSON(e *json.Encoder) {
 // ReadJSON reads RateLimit from json stream.
 func (s *RateLimit) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode RateLimit to nil`)
+		return errors.New(`invalid: unable to decode RateLimit to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -60146,7 +60090,7 @@ func (s RateLimitOverview) WriteJSON(e *json.Encoder) {
 // ReadJSON reads RateLimitOverview from json stream.
 func (s *RateLimitOverview) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode RateLimitOverview to nil`)
+		return errors.New(`invalid: unable to decode RateLimitOverview to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -60207,7 +60151,7 @@ func (s RateLimitOverviewResources) WriteJSON(e *json.Encoder) {
 // ReadJSON reads RateLimitOverviewResources from json stream.
 func (s *RateLimitOverviewResources) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode RateLimitOverviewResources to nil`)
+		return errors.New(`invalid: unable to decode RateLimitOverviewResources to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -60277,7 +60221,7 @@ func (s Reaction) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Reaction from json stream.
 func (s *Reaction) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Reaction to nil`)
+		return errors.New(`invalid: unable to decode Reaction to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -60322,7 +60266,7 @@ func (s ReactionContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReactionContent from json reader.
 func (s *ReactionContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionContent to nil`)
+		return errors.New(`invalid: unable to decode ReactionContent to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -60373,7 +60317,7 @@ func (s ReactionRollup) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReactionRollup from json stream.
 func (s *ReactionRollup) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionRollup to nil`)
+		return errors.New(`invalid: unable to decode ReactionRollup to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -60458,7 +60402,7 @@ func (s ReactionsCreateForCommitCommentReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReactionsCreateForCommitCommentReq from json stream.
 func (s *ReactionsCreateForCommitCommentReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsCreateForCommitCommentReq to nil`)
+		return errors.New(`invalid: unable to decode ReactionsCreateForCommitCommentReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -60481,7 +60425,7 @@ func (s ReactionsCreateForCommitCommentReqContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReactionsCreateForCommitCommentReqContent from json reader.
 func (s *ReactionsCreateForCommitCommentReqContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsCreateForCommitCommentReqContent to nil`)
+		return errors.New(`invalid: unable to decode ReactionsCreateForCommitCommentReqContent to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -60505,7 +60449,7 @@ func (s ReactionsCreateForIssueCommentReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReactionsCreateForIssueCommentReq from json stream.
 func (s *ReactionsCreateForIssueCommentReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsCreateForIssueCommentReq to nil`)
+		return errors.New(`invalid: unable to decode ReactionsCreateForIssueCommentReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -60528,7 +60472,7 @@ func (s ReactionsCreateForIssueCommentReqContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReactionsCreateForIssueCommentReqContent from json reader.
 func (s *ReactionsCreateForIssueCommentReqContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsCreateForIssueCommentReqContent to nil`)
+		return errors.New(`invalid: unable to decode ReactionsCreateForIssueCommentReqContent to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -60552,7 +60496,7 @@ func (s ReactionsCreateForIssueReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReactionsCreateForIssueReq from json stream.
 func (s *ReactionsCreateForIssueReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsCreateForIssueReq to nil`)
+		return errors.New(`invalid: unable to decode ReactionsCreateForIssueReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -60575,7 +60519,7 @@ func (s ReactionsCreateForIssueReqContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReactionsCreateForIssueReqContent from json reader.
 func (s *ReactionsCreateForIssueReqContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsCreateForIssueReqContent to nil`)
+		return errors.New(`invalid: unable to decode ReactionsCreateForIssueReqContent to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -60599,7 +60543,7 @@ func (s ReactionsCreateForPullRequestReviewCommentReq) WriteJSON(e *json.Encoder
 // ReadJSON reads ReactionsCreateForPullRequestReviewCommentReq from json stream.
 func (s *ReactionsCreateForPullRequestReviewCommentReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsCreateForPullRequestReviewCommentReq to nil`)
+		return errors.New(`invalid: unable to decode ReactionsCreateForPullRequestReviewCommentReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -60622,7 +60566,7 @@ func (s ReactionsCreateForPullRequestReviewCommentReqContent) WriteJSON(e *json.
 // ReadJSON reads ReactionsCreateForPullRequestReviewCommentReqContent from json reader.
 func (s *ReactionsCreateForPullRequestReviewCommentReqContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsCreateForPullRequestReviewCommentReqContent to nil`)
+		return errors.New(`invalid: unable to decode ReactionsCreateForPullRequestReviewCommentReqContent to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -60646,7 +60590,7 @@ func (s ReactionsCreateForReleaseReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReactionsCreateForReleaseReq from json stream.
 func (s *ReactionsCreateForReleaseReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsCreateForReleaseReq to nil`)
+		return errors.New(`invalid: unable to decode ReactionsCreateForReleaseReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -60669,7 +60613,7 @@ func (s ReactionsCreateForReleaseReqContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReactionsCreateForReleaseReqContent from json reader.
 func (s *ReactionsCreateForReleaseReqContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsCreateForReleaseReqContent to nil`)
+		return errors.New(`invalid: unable to decode ReactionsCreateForReleaseReqContent to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -60704,7 +60648,7 @@ func (s ReactionsCreateForTeamDiscussionCommentInOrgReq) WriteJSON(e *json.Encod
 // ReadJSON reads ReactionsCreateForTeamDiscussionCommentInOrgReq from json stream.
 func (s *ReactionsCreateForTeamDiscussionCommentInOrgReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsCreateForTeamDiscussionCommentInOrgReq to nil`)
+		return errors.New(`invalid: unable to decode ReactionsCreateForTeamDiscussionCommentInOrgReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -60727,7 +60671,7 @@ func (s ReactionsCreateForTeamDiscussionCommentInOrgReqContent) WriteJSON(e *jso
 // ReadJSON reads ReactionsCreateForTeamDiscussionCommentInOrgReqContent from json reader.
 func (s *ReactionsCreateForTeamDiscussionCommentInOrgReqContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsCreateForTeamDiscussionCommentInOrgReqContent to nil`)
+		return errors.New(`invalid: unable to decode ReactionsCreateForTeamDiscussionCommentInOrgReqContent to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -60751,7 +60695,7 @@ func (s ReactionsCreateForTeamDiscussionCommentLegacyReq) WriteJSON(e *json.Enco
 // ReadJSON reads ReactionsCreateForTeamDiscussionCommentLegacyReq from json stream.
 func (s *ReactionsCreateForTeamDiscussionCommentLegacyReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsCreateForTeamDiscussionCommentLegacyReq to nil`)
+		return errors.New(`invalid: unable to decode ReactionsCreateForTeamDiscussionCommentLegacyReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -60774,7 +60718,7 @@ func (s ReactionsCreateForTeamDiscussionCommentLegacyReqContent) WriteJSON(e *js
 // ReadJSON reads ReactionsCreateForTeamDiscussionCommentLegacyReqContent from json reader.
 func (s *ReactionsCreateForTeamDiscussionCommentLegacyReqContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsCreateForTeamDiscussionCommentLegacyReqContent to nil`)
+		return errors.New(`invalid: unable to decode ReactionsCreateForTeamDiscussionCommentLegacyReqContent to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -60808,7 +60752,7 @@ func (s ReactionsCreateForTeamDiscussionInOrgReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReactionsCreateForTeamDiscussionInOrgReq from json stream.
 func (s *ReactionsCreateForTeamDiscussionInOrgReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsCreateForTeamDiscussionInOrgReq to nil`)
+		return errors.New(`invalid: unable to decode ReactionsCreateForTeamDiscussionInOrgReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -60831,7 +60775,7 @@ func (s ReactionsCreateForTeamDiscussionInOrgReqContent) WriteJSON(e *json.Encod
 // ReadJSON reads ReactionsCreateForTeamDiscussionInOrgReqContent from json reader.
 func (s *ReactionsCreateForTeamDiscussionInOrgReqContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsCreateForTeamDiscussionInOrgReqContent to nil`)
+		return errors.New(`invalid: unable to decode ReactionsCreateForTeamDiscussionInOrgReqContent to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -60855,7 +60799,7 @@ func (s ReactionsCreateForTeamDiscussionLegacyReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReactionsCreateForTeamDiscussionLegacyReq from json stream.
 func (s *ReactionsCreateForTeamDiscussionLegacyReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsCreateForTeamDiscussionLegacyReq to nil`)
+		return errors.New(`invalid: unable to decode ReactionsCreateForTeamDiscussionLegacyReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -60878,7 +60822,7 @@ func (s ReactionsCreateForTeamDiscussionLegacyReqContent) WriteJSON(e *json.Enco
 // ReadJSON reads ReactionsCreateForTeamDiscussionLegacyReqContent from json reader.
 func (s *ReactionsCreateForTeamDiscussionLegacyReqContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsCreateForTeamDiscussionLegacyReqContent to nil`)
+		return errors.New(`invalid: unable to decode ReactionsCreateForTeamDiscussionLegacyReqContent to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -60899,7 +60843,7 @@ func (s ReactionsDeleteForCommitCommentNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReactionsDeleteForCommitCommentNoContent from json stream.
 func (s *ReactionsDeleteForCommitCommentNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsDeleteForCommitCommentNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReactionsDeleteForCommitCommentNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -60921,7 +60865,7 @@ func (s ReactionsDeleteForIssueCommentNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReactionsDeleteForIssueCommentNoContent from json stream.
 func (s *ReactionsDeleteForIssueCommentNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsDeleteForIssueCommentNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReactionsDeleteForIssueCommentNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -60943,7 +60887,7 @@ func (s ReactionsDeleteForIssueNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReactionsDeleteForIssueNoContent from json stream.
 func (s *ReactionsDeleteForIssueNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsDeleteForIssueNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReactionsDeleteForIssueNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -60965,7 +60909,7 @@ func (s ReactionsDeleteForPullRequestCommentNoContent) WriteJSON(e *json.Encoder
 // ReadJSON reads ReactionsDeleteForPullRequestCommentNoContent from json stream.
 func (s *ReactionsDeleteForPullRequestCommentNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsDeleteForPullRequestCommentNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReactionsDeleteForPullRequestCommentNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -60987,7 +60931,7 @@ func (s ReactionsDeleteForTeamDiscussionCommentNoContent) WriteJSON(e *json.Enco
 // ReadJSON reads ReactionsDeleteForTeamDiscussionCommentNoContent from json stream.
 func (s *ReactionsDeleteForTeamDiscussionCommentNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsDeleteForTeamDiscussionCommentNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReactionsDeleteForTeamDiscussionCommentNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -61009,7 +60953,7 @@ func (s ReactionsDeleteForTeamDiscussionNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReactionsDeleteForTeamDiscussionNoContent from json stream.
 func (s *ReactionsDeleteForTeamDiscussionNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsDeleteForTeamDiscussionNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReactionsDeleteForTeamDiscussionNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -61040,7 +60984,7 @@ func (s ReactionsDeleteLegacyNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReactionsDeleteLegacyNoContent from json stream.
 func (s *ReactionsDeleteLegacyNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsDeleteLegacyNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReactionsDeleteLegacyNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -61059,7 +61003,7 @@ func (s ReactionsListForCommitCommentContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReactionsListForCommitCommentContent from json reader.
 func (s *ReactionsListForCommitCommentContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsListForCommitCommentContent to nil`)
+		return errors.New(`invalid: unable to decode ReactionsListForCommitCommentContent to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -61086,7 +61030,7 @@ func (s ReactionsListForIssueCommentContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReactionsListForIssueCommentContent from json reader.
 func (s *ReactionsListForIssueCommentContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsListForIssueCommentContent to nil`)
+		return errors.New(`invalid: unable to decode ReactionsListForIssueCommentContent to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -61107,7 +61051,7 @@ func (s ReactionsListForIssueContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReactionsListForIssueContent from json reader.
 func (s *ReactionsListForIssueContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsListForIssueContent to nil`)
+		return errors.New(`invalid: unable to decode ReactionsListForIssueContent to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -61128,7 +61072,7 @@ func (s ReactionsListForPullRequestReviewCommentContent) WriteJSON(e *json.Encod
 // ReadJSON reads ReactionsListForPullRequestReviewCommentContent from json reader.
 func (s *ReactionsListForPullRequestReviewCommentContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsListForPullRequestReviewCommentContent to nil`)
+		return errors.New(`invalid: unable to decode ReactionsListForPullRequestReviewCommentContent to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -61151,7 +61095,7 @@ func (s ReactionsListForTeamDiscussionCommentInOrgContent) WriteJSON(e *json.Enc
 // ReadJSON reads ReactionsListForTeamDiscussionCommentInOrgContent from json reader.
 func (s *ReactionsListForTeamDiscussionCommentInOrgContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsListForTeamDiscussionCommentInOrgContent to nil`)
+		return errors.New(`invalid: unable to decode ReactionsListForTeamDiscussionCommentInOrgContent to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -61169,7 +61113,7 @@ func (s ReactionsListForTeamDiscussionCommentLegacyContent) WriteJSON(e *json.En
 // ReadJSON reads ReactionsListForTeamDiscussionCommentLegacyContent from json reader.
 func (s *ReactionsListForTeamDiscussionCommentLegacyContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsListForTeamDiscussionCommentLegacyContent to nil`)
+		return errors.New(`invalid: unable to decode ReactionsListForTeamDiscussionCommentLegacyContent to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -61187,7 +61131,7 @@ func (s ReactionsListForTeamDiscussionInOrgContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReactionsListForTeamDiscussionInOrgContent from json reader.
 func (s *ReactionsListForTeamDiscussionInOrgContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsListForTeamDiscussionInOrgContent to nil`)
+		return errors.New(`invalid: unable to decode ReactionsListForTeamDiscussionInOrgContent to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -61205,7 +61149,7 @@ func (s ReactionsListForTeamDiscussionLegacyContent) WriteJSON(e *json.Encoder) 
 // ReadJSON reads ReactionsListForTeamDiscussionLegacyContent from json reader.
 func (s *ReactionsListForTeamDiscussionLegacyContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReactionsListForTeamDiscussionLegacyContent to nil`)
+		return errors.New(`invalid: unable to decode ReactionsListForTeamDiscussionLegacyContent to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -61235,7 +61179,7 @@ func (s ReferrerTraffic) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReferrerTraffic from json stream.
 func (s *ReferrerTraffic) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReferrerTraffic to nil`)
+		return errors.New(`invalid: unable to decode ReferrerTraffic to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -61363,7 +61307,7 @@ func (s Release) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Release from json stream.
 func (s *Release) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Release to nil`)
+		return errors.New(`invalid: unable to decode Release to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -61552,7 +61496,7 @@ func (s ReleaseAsset) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReleaseAsset from json stream.
 func (s *ReleaseAsset) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReleaseAsset to nil`)
+		return errors.New(`invalid: unable to decode ReleaseAsset to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -61643,7 +61587,7 @@ func (s ReleaseAssetState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReleaseAssetState from json reader.
 func (s *ReleaseAssetState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReleaseAssetState to nil`)
+		return errors.New(`invalid: unable to decode ReleaseAssetState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -61948,7 +61892,7 @@ func (s RepoSearchResultItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads RepoSearchResultItem from json stream.
 func (s *RepoSearchResultItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode RepoSearchResultItem to nil`)
+		return errors.New(`invalid: unable to decode RepoSearchResultItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -62411,9 +62355,7 @@ func (s *RepoSearchResultItem) ReadJSON(d *json.Decoder) error {
 		case "text_matches":
 			s.TextMatches = nil
 			var elem SearchResultTextMatches
-			if err := fmt.Errorf(`decoding of "SearchResultTextMatches" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "SearchResultTextMatches" (alias) is not implemented`)
 			s.TextMatches = &elem
 		case "temp_clone_token":
 			s.TempCloneToken.Reset()
@@ -62487,7 +62429,7 @@ func (s RepoSearchResultItemPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads RepoSearchResultItemPermissions from json stream.
 func (s *RepoSearchResultItemPermissions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode RepoSearchResultItemPermissions to nil`)
+		return errors.New(`invalid: unable to decode RepoSearchResultItemPermissions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -62546,7 +62488,7 @@ func (s ReposAcceptInvitationNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposAcceptInvitationNoContent from json stream.
 func (s *ReposAcceptInvitationNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposAcceptInvitationNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposAcceptInvitationNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -62568,7 +62510,7 @@ func (s ReposAddCollaboratorNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposAddCollaboratorNoContent from json stream.
 func (s *ReposAddCollaboratorNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposAddCollaboratorNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposAddCollaboratorNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -62600,7 +62542,7 @@ func (s ReposAddCollaboratorReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposAddCollaboratorReq from json stream.
 func (s *ReposAddCollaboratorReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposAddCollaboratorReq to nil`)
+		return errors.New(`invalid: unable to decode ReposAddCollaboratorReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -62629,7 +62571,7 @@ func (s ReposAddCollaboratorReqPermission) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposAddCollaboratorReqPermission from json reader.
 func (s *ReposAddCollaboratorReqPermission) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposAddCollaboratorReqPermission to nil`)
+		return errors.New(`invalid: unable to decode ReposAddCollaboratorReqPermission to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -62650,7 +62592,7 @@ func (s ReposCheckCollaboratorNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCheckCollaboratorNoContent from json stream.
 func (s *ReposCheckCollaboratorNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCheckCollaboratorNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposCheckCollaboratorNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -62672,7 +62614,7 @@ func (s ReposCheckCollaboratorNotFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCheckCollaboratorNotFound from json stream.
 func (s *ReposCheckCollaboratorNotFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCheckCollaboratorNotFound to nil`)
+		return errors.New(`invalid: unable to decode ReposCheckCollaboratorNotFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -62694,7 +62636,7 @@ func (s ReposCheckVulnerabilityAlertsNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCheckVulnerabilityAlertsNoContent from json stream.
 func (s *ReposCheckVulnerabilityAlertsNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCheckVulnerabilityAlertsNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposCheckVulnerabilityAlertsNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -62716,7 +62658,7 @@ func (s ReposCheckVulnerabilityAlertsNotFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCheckVulnerabilityAlertsNotFound from json stream.
 func (s *ReposCheckVulnerabilityAlertsNotFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCheckVulnerabilityAlertsNotFound to nil`)
+		return errors.New(`invalid: unable to decode ReposCheckVulnerabilityAlertsNotFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -62752,7 +62694,7 @@ func (s ReposCreateAutolinkReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCreateAutolinkReq from json stream.
 func (s *ReposCreateAutolinkReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreateAutolinkReq to nil`)
+		return errors.New(`invalid: unable to decode ReposCreateAutolinkReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -62804,7 +62746,7 @@ func (s ReposCreateCommitCommentReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCreateCommitCommentReq from json stream.
 func (s *ReposCreateCommitCommentReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreateCommitCommentReq to nil`)
+		return errors.New(`invalid: unable to decode ReposCreateCommitCommentReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -62865,7 +62807,7 @@ func (s ReposCreateCommitStatusReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCreateCommitStatusReq from json stream.
 func (s *ReposCreateCommitStatusReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreateCommitStatusReq to nil`)
+		return errors.New(`invalid: unable to decode ReposCreateCommitStatusReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -62903,7 +62845,7 @@ func (s ReposCreateCommitStatusReqState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCreateCommitStatusReqState from json reader.
 func (s *ReposCreateCommitStatusReqState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreateCommitStatusReqState to nil`)
+		return errors.New(`invalid: unable to decode ReposCreateCommitStatusReqState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -62937,7 +62879,7 @@ func (s ReposCreateDeployKeyReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCreateDeployKeyReq from json stream.
 func (s *ReposCreateDeployKeyReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreateDeployKeyReq to nil`)
+		return errors.New(`invalid: unable to decode ReposCreateDeployKeyReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -63008,7 +62950,7 @@ func (s ReposCreateDeploymentStatusReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCreateDeploymentStatusReq from json stream.
 func (s *ReposCreateDeploymentStatusReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreateDeploymentStatusReq to nil`)
+		return errors.New(`invalid: unable to decode ReposCreateDeploymentStatusReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -63061,7 +63003,7 @@ func (s ReposCreateDeploymentStatusReqEnvironment) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCreateDeploymentStatusReqEnvironment from json reader.
 func (s *ReposCreateDeploymentStatusReqEnvironment) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreateDeploymentStatusReqEnvironment to nil`)
+		return errors.New(`invalid: unable to decode ReposCreateDeploymentStatusReqEnvironment to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -63079,7 +63021,7 @@ func (s ReposCreateDeploymentStatusReqState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCreateDeploymentStatusReqState from json reader.
 func (s *ReposCreateDeploymentStatusReqState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreateDeploymentStatusReqState to nil`)
+		return errors.New(`invalid: unable to decode ReposCreateDeploymentStatusReqState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -63100,7 +63042,7 @@ func (s ReposCreateDispatchEventNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCreateDispatchEventNoContent from json stream.
 func (s *ReposCreateDispatchEventNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreateDispatchEventNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposCreateDispatchEventNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -63130,7 +63072,7 @@ func (s ReposCreateDispatchEventReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCreateDispatchEventReq from json stream.
 func (s *ReposCreateDispatchEventReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreateDispatchEventReq to nil`)
+		return errors.New(`invalid: unable to decode ReposCreateDispatchEventReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -63165,7 +63107,7 @@ func (s ReposCreateDispatchEventReqClientPayload) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCreateDispatchEventReqClientPayload from json stream.
 func (s *ReposCreateDispatchEventReqClientPayload) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreateDispatchEventReqClientPayload to nil`)
+		return errors.New(`invalid: unable to decode ReposCreateDispatchEventReqClientPayload to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -63275,7 +63217,7 @@ func (s ReposCreateForAuthenticatedUserReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCreateForAuthenticatedUserReq from json stream.
 func (s *ReposCreateForAuthenticatedUserReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreateForAuthenticatedUserReq to nil`)
+		return errors.New(`invalid: unable to decode ReposCreateForAuthenticatedUserReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -63393,7 +63335,7 @@ func (s ReposCreateForkReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCreateForkReq from json stream.
 func (s *ReposCreateForkReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreateForkReq to nil`)
+		return errors.New(`invalid: unable to decode ReposCreateForkReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -63508,7 +63450,7 @@ func (s ReposCreateInOrgReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCreateInOrgReq from json stream.
 func (s *ReposCreateInOrgReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreateInOrgReq to nil`)
+		return errors.New(`invalid: unable to decode ReposCreateInOrgReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -63618,7 +63560,7 @@ func (s ReposCreateInOrgReqVisibility) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCreateInOrgReqVisibility from json reader.
 func (s *ReposCreateInOrgReqVisibility) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreateInOrgReqVisibility to nil`)
+		return errors.New(`invalid: unable to decode ReposCreateInOrgReqVisibility to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -63654,7 +63596,7 @@ func (s ReposCreateOrUpdateEnvironmentReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCreateOrUpdateEnvironmentReq from json stream.
 func (s *ReposCreateOrUpdateEnvironmentReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreateOrUpdateEnvironmentReq to nil`)
+		return errors.New(`invalid: unable to decode ReposCreateOrUpdateEnvironmentReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -63701,7 +63643,7 @@ func (s ReposCreateOrUpdateEnvironmentReqReviewersItem) WriteJSON(e *json.Encode
 // ReadJSON reads ReposCreateOrUpdateEnvironmentReqReviewersItem from json stream.
 func (s *ReposCreateOrUpdateEnvironmentReqReviewersItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreateOrUpdateEnvironmentReqReviewersItem to nil`)
+		return errors.New(`invalid: unable to decode ReposCreateOrUpdateEnvironmentReqReviewersItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -63759,7 +63701,7 @@ func (s ReposCreateOrUpdateFileContentsReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCreateOrUpdateFileContentsReq from json stream.
 func (s *ReposCreateOrUpdateFileContentsReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreateOrUpdateFileContentsReq to nil`)
+		return errors.New(`invalid: unable to decode ReposCreateOrUpdateFileContentsReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -63824,7 +63766,7 @@ func (s ReposCreateOrUpdateFileContentsReqAuthor) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCreateOrUpdateFileContentsReqAuthor from json stream.
 func (s *ReposCreateOrUpdateFileContentsReqAuthor) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreateOrUpdateFileContentsReqAuthor to nil`)
+		return errors.New(`invalid: unable to decode ReposCreateOrUpdateFileContentsReqAuthor to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -63874,7 +63816,7 @@ func (s ReposCreateOrUpdateFileContentsReqCommitter) WriteJSON(e *json.Encoder) 
 // ReadJSON reads ReposCreateOrUpdateFileContentsReqCommitter from json stream.
 func (s *ReposCreateOrUpdateFileContentsReqCommitter) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreateOrUpdateFileContentsReqCommitter to nil`)
+		return errors.New(`invalid: unable to decode ReposCreateOrUpdateFileContentsReqCommitter to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -63916,7 +63858,7 @@ func (s ReposCreatePagesSiteReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCreatePagesSiteReq from json stream.
 func (s *ReposCreatePagesSiteReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreatePagesSiteReq to nil`)
+		return errors.New(`invalid: unable to decode ReposCreatePagesSiteReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -63950,7 +63892,7 @@ func (s ReposCreatePagesSiteReqSource) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCreatePagesSiteReqSource from json stream.
 func (s *ReposCreatePagesSiteReqSource) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreatePagesSiteReqSource to nil`)
+		return errors.New(`invalid: unable to decode ReposCreatePagesSiteReqSource to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -63980,7 +63922,7 @@ func (s ReposCreatePagesSiteReqSourcePath) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCreatePagesSiteReqSourcePath from json reader.
 func (s *ReposCreatePagesSiteReqSourcePath) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreatePagesSiteReqSourcePath to nil`)
+		return errors.New(`invalid: unable to decode ReposCreatePagesSiteReqSourcePath to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -64034,7 +63976,7 @@ func (s ReposCreateReleaseReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCreateReleaseReq from json stream.
 func (s *ReposCreateReleaseReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreateReleaseReq to nil`)
+		return errors.New(`invalid: unable to decode ReposCreateReleaseReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64115,7 +64057,7 @@ func (s ReposCreateUsingTemplateReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCreateUsingTemplateReq from json stream.
 func (s *ReposCreateUsingTemplateReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreateUsingTemplateReq to nil`)
+		return errors.New(`invalid: unable to decode ReposCreateUsingTemplateReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64190,7 +64132,7 @@ func (s ReposCreateWebhookReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCreateWebhookReq from json stream.
 func (s *ReposCreateWebhookReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreateWebhookReq to nil`)
+		return errors.New(`invalid: unable to decode ReposCreateWebhookReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64271,7 +64213,7 @@ func (s ReposCreateWebhookReqConfig) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposCreateWebhookReqConfig from json stream.
 func (s *ReposCreateWebhookReqConfig) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposCreateWebhookReqConfig to nil`)
+		return errors.New(`invalid: unable to decode ReposCreateWebhookReqConfig to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64334,7 +64276,7 @@ func (s ReposDeclineInvitationNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposDeclineInvitationNoContent from json stream.
 func (s *ReposDeclineInvitationNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDeclineInvitationNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposDeclineInvitationNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64356,7 +64298,7 @@ func (s ReposDeleteAccessRestrictionsNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposDeleteAccessRestrictionsNoContent from json stream.
 func (s *ReposDeleteAccessRestrictionsNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDeleteAccessRestrictionsNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposDeleteAccessRestrictionsNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64378,7 +64320,7 @@ func (s ReposDeleteAdminBranchProtectionNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposDeleteAdminBranchProtectionNoContent from json stream.
 func (s *ReposDeleteAdminBranchProtectionNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDeleteAdminBranchProtectionNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposDeleteAdminBranchProtectionNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64400,7 +64342,7 @@ func (s ReposDeleteAnEnvironmentNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposDeleteAnEnvironmentNoContent from json stream.
 func (s *ReposDeleteAnEnvironmentNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDeleteAnEnvironmentNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposDeleteAnEnvironmentNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64428,7 +64370,7 @@ func (s ReposDeleteAutolinkNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposDeleteAutolinkNoContent from json stream.
 func (s *ReposDeleteAutolinkNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDeleteAutolinkNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposDeleteAutolinkNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64450,7 +64392,7 @@ func (s ReposDeleteBranchProtectionNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposDeleteBranchProtectionNoContent from json stream.
 func (s *ReposDeleteBranchProtectionNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDeleteBranchProtectionNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposDeleteBranchProtectionNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64472,7 +64414,7 @@ func (s ReposDeleteCommitCommentNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposDeleteCommitCommentNoContent from json stream.
 func (s *ReposDeleteCommitCommentNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDeleteCommitCommentNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposDeleteCommitCommentNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64494,7 +64436,7 @@ func (s ReposDeleteCommitSignatureProtectionNoContent) WriteJSON(e *json.Encoder
 // ReadJSON reads ReposDeleteCommitSignatureProtectionNoContent from json stream.
 func (s *ReposDeleteCommitSignatureProtectionNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDeleteCommitSignatureProtectionNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposDeleteCommitSignatureProtectionNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64516,7 +64458,7 @@ func (s ReposDeleteDeployKeyNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposDeleteDeployKeyNoContent from json stream.
 func (s *ReposDeleteDeployKeyNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDeleteDeployKeyNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposDeleteDeployKeyNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64538,7 +64480,7 @@ func (s ReposDeleteDeploymentNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposDeleteDeploymentNoContent from json stream.
 func (s *ReposDeleteDeploymentNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDeleteDeploymentNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposDeleteDeploymentNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64581,7 +64523,7 @@ func (s ReposDeleteFileReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposDeleteFileReq from json stream.
 func (s *ReposDeleteFileReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDeleteFileReq to nil`)
+		return errors.New(`invalid: unable to decode ReposDeleteFileReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64640,7 +64582,7 @@ func (s ReposDeleteFileReqAuthor) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposDeleteFileReqAuthor from json stream.
 func (s *ReposDeleteFileReqAuthor) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDeleteFileReqAuthor to nil`)
+		return errors.New(`invalid: unable to decode ReposDeleteFileReqAuthor to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64682,7 +64624,7 @@ func (s ReposDeleteFileReqCommitter) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposDeleteFileReqCommitter from json stream.
 func (s *ReposDeleteFileReqCommitter) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDeleteFileReqCommitter to nil`)
+		return errors.New(`invalid: unable to decode ReposDeleteFileReqCommitter to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64724,7 +64666,7 @@ func (s ReposDeleteForbidden) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposDeleteForbidden from json stream.
 func (s *ReposDeleteForbidden) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDeleteForbidden to nil`)
+		return errors.New(`invalid: unable to decode ReposDeleteForbidden to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64756,7 +64698,7 @@ func (s ReposDeleteInvitationNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposDeleteInvitationNoContent from json stream.
 func (s *ReposDeleteInvitationNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDeleteInvitationNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposDeleteInvitationNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64778,7 +64720,7 @@ func (s ReposDeleteNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposDeleteNoContent from json stream.
 func (s *ReposDeleteNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDeleteNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposDeleteNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64800,7 +64742,7 @@ func (s ReposDeletePagesSiteNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposDeletePagesSiteNoContent from json stream.
 func (s *ReposDeletePagesSiteNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDeletePagesSiteNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposDeletePagesSiteNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64822,7 +64764,7 @@ func (s ReposDeletePullRequestReviewProtectionNoContent) WriteJSON(e *json.Encod
 // ReadJSON reads ReposDeletePullRequestReviewProtectionNoContent from json stream.
 func (s *ReposDeletePullRequestReviewProtectionNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDeletePullRequestReviewProtectionNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposDeletePullRequestReviewProtectionNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64844,7 +64786,7 @@ func (s ReposDeleteReleaseAssetNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposDeleteReleaseAssetNoContent from json stream.
 func (s *ReposDeleteReleaseAssetNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDeleteReleaseAssetNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposDeleteReleaseAssetNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64866,7 +64808,7 @@ func (s ReposDeleteReleaseNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposDeleteReleaseNoContent from json stream.
 func (s *ReposDeleteReleaseNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDeleteReleaseNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposDeleteReleaseNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64888,7 +64830,7 @@ func (s ReposDeleteWebhookNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposDeleteWebhookNoContent from json stream.
 func (s *ReposDeleteWebhookNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDeleteWebhookNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposDeleteWebhookNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64910,7 +64852,7 @@ func (s ReposDisableAutomatedSecurityFixesNoContent) WriteJSON(e *json.Encoder) 
 // ReadJSON reads ReposDisableAutomatedSecurityFixesNoContent from json stream.
 func (s *ReposDisableAutomatedSecurityFixesNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDisableAutomatedSecurityFixesNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposDisableAutomatedSecurityFixesNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64932,7 +64874,7 @@ func (s ReposDisableLfsForRepoNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposDisableLfsForRepoNoContent from json stream.
 func (s *ReposDisableLfsForRepoNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDisableLfsForRepoNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposDisableLfsForRepoNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64954,7 +64896,7 @@ func (s ReposDisableVulnerabilityAlertsNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposDisableVulnerabilityAlertsNoContent from json stream.
 func (s *ReposDisableVulnerabilityAlertsNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDisableVulnerabilityAlertsNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposDisableVulnerabilityAlertsNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64976,7 +64918,7 @@ func (s ReposDownloadTarballArchiveFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposDownloadTarballArchiveFound from json stream.
 func (s *ReposDownloadTarballArchiveFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDownloadTarballArchiveFound to nil`)
+		return errors.New(`invalid: unable to decode ReposDownloadTarballArchiveFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -64998,7 +64940,7 @@ func (s ReposDownloadZipballArchiveFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposDownloadZipballArchiveFound from json stream.
 func (s *ReposDownloadZipballArchiveFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposDownloadZipballArchiveFound to nil`)
+		return errors.New(`invalid: unable to decode ReposDownloadZipballArchiveFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -65020,7 +64962,7 @@ func (s ReposEnableAutomatedSecurityFixesNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposEnableAutomatedSecurityFixesNoContent from json stream.
 func (s *ReposEnableAutomatedSecurityFixesNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposEnableAutomatedSecurityFixesNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposEnableAutomatedSecurityFixesNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -65042,7 +64984,7 @@ func (s ReposEnableLfsForRepoForbidden) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposEnableLfsForRepoForbidden from json stream.
 func (s *ReposEnableLfsForRepoForbidden) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposEnableLfsForRepoForbidden to nil`)
+		return errors.New(`invalid: unable to decode ReposEnableLfsForRepoForbidden to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -65064,7 +65006,7 @@ func (s ReposEnableVulnerabilityAlertsNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposEnableVulnerabilityAlertsNoContent from json stream.
 func (s *ReposEnableVulnerabilityAlertsNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposEnableVulnerabilityAlertsNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposEnableVulnerabilityAlertsNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -65106,7 +65048,7 @@ func (s ReposGetClonesPer) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposGetClonesPer from json reader.
 func (s *ReposGetClonesPer) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposGetClonesPer to nil`)
+		return errors.New(`invalid: unable to decode ReposGetClonesPer to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -65136,7 +65078,7 @@ func (s ReposGetPagesHealthCheckBadRequest) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposGetPagesHealthCheckBadRequest from json stream.
 func (s *ReposGetPagesHealthCheckBadRequest) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposGetPagesHealthCheckBadRequest to nil`)
+		return errors.New(`invalid: unable to decode ReposGetPagesHealthCheckBadRequest to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -65158,7 +65100,7 @@ func (s ReposGetPagesHealthCheckUnprocessableEntity) WriteJSON(e *json.Encoder) 
 // ReadJSON reads ReposGetPagesHealthCheckUnprocessableEntity from json stream.
 func (s *ReposGetPagesHealthCheckUnprocessableEntity) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposGetPagesHealthCheckUnprocessableEntity to nil`)
+		return errors.New(`invalid: unable to decode ReposGetPagesHealthCheckUnprocessableEntity to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -65196,7 +65138,7 @@ func (s ReposGetViewsPer) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposGetViewsPer from json reader.
 func (s *ReposGetViewsPer) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposGetViewsPer to nil`)
+		return errors.New(`invalid: unable to decode ReposGetViewsPer to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -65217,7 +65159,7 @@ func (s ReposListCollaboratorsAffiliation) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposListCollaboratorsAffiliation from json reader.
 func (s *ReposListCollaboratorsAffiliation) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposListCollaboratorsAffiliation to nil`)
+		return errors.New(`invalid: unable to decode ReposListCollaboratorsAffiliation to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -65265,7 +65207,7 @@ func (s ReposListContributorsNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposListContributorsNoContent from json stream.
 func (s *ReposListContributorsNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposListContributorsNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposListContributorsNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -65290,7 +65232,7 @@ func (s ReposListForAuthenticatedUserDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposListForAuthenticatedUserDirection from json reader.
 func (s *ReposListForAuthenticatedUserDirection) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposListForAuthenticatedUserDirection to nil`)
+		return errors.New(`invalid: unable to decode ReposListForAuthenticatedUserDirection to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -65308,7 +65250,7 @@ func (s ReposListForAuthenticatedUserSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposListForAuthenticatedUserSort from json reader.
 func (s *ReposListForAuthenticatedUserSort) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposListForAuthenticatedUserSort to nil`)
+		return errors.New(`invalid: unable to decode ReposListForAuthenticatedUserSort to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -65326,7 +65268,7 @@ func (s ReposListForAuthenticatedUserType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposListForAuthenticatedUserType from json reader.
 func (s *ReposListForAuthenticatedUserType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposListForAuthenticatedUserType to nil`)
+		return errors.New(`invalid: unable to decode ReposListForAuthenticatedUserType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -65344,7 +65286,7 @@ func (s ReposListForAuthenticatedUserVisibility) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposListForAuthenticatedUserVisibility from json reader.
 func (s *ReposListForAuthenticatedUserVisibility) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposListForAuthenticatedUserVisibility to nil`)
+		return errors.New(`invalid: unable to decode ReposListForAuthenticatedUserVisibility to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -65362,7 +65304,7 @@ func (s ReposListForOrgDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposListForOrgDirection from json reader.
 func (s *ReposListForOrgDirection) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposListForOrgDirection to nil`)
+		return errors.New(`invalid: unable to decode ReposListForOrgDirection to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -65380,7 +65322,7 @@ func (s ReposListForOrgSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposListForOrgSort from json reader.
 func (s *ReposListForOrgSort) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposListForOrgSort to nil`)
+		return errors.New(`invalid: unable to decode ReposListForOrgSort to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -65398,7 +65340,7 @@ func (s ReposListForOrgType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposListForOrgType from json reader.
 func (s *ReposListForOrgType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposListForOrgType to nil`)
+		return errors.New(`invalid: unable to decode ReposListForOrgType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -65416,7 +65358,7 @@ func (s ReposListForUserDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposListForUserDirection from json reader.
 func (s *ReposListForUserDirection) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposListForUserDirection to nil`)
+		return errors.New(`invalid: unable to decode ReposListForUserDirection to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -65434,7 +65376,7 @@ func (s ReposListForUserSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposListForUserSort from json reader.
 func (s *ReposListForUserSort) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposListForUserSort to nil`)
+		return errors.New(`invalid: unable to decode ReposListForUserSort to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -65452,7 +65394,7 @@ func (s ReposListForUserType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposListForUserType from json reader.
 func (s *ReposListForUserType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposListForUserType to nil`)
+		return errors.New(`invalid: unable to decode ReposListForUserType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -65473,7 +65415,7 @@ func (s ReposListForksSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposListForksSort from json reader.
 func (s *ReposListForksSort) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposListForksSort to nil`)
+		return errors.New(`invalid: unable to decode ReposListForksSort to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -65521,7 +65463,7 @@ func (s ReposMergeConflict) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposMergeConflict from json stream.
 func (s *ReposMergeConflict) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposMergeConflict to nil`)
+		return errors.New(`invalid: unable to decode ReposMergeConflict to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -65543,7 +65485,7 @@ func (s ReposMergeNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposMergeNoContent from json stream.
 func (s *ReposMergeNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposMergeNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposMergeNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -65565,7 +65507,7 @@ func (s ReposMergeNotFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposMergeNotFound from json stream.
 func (s *ReposMergeNotFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposMergeNotFound to nil`)
+		return errors.New(`invalid: unable to decode ReposMergeNotFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -65598,7 +65540,7 @@ func (s ReposMergeReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposMergeReq from json stream.
 func (s *ReposMergeReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposMergeReq to nil`)
+		return errors.New(`invalid: unable to decode ReposMergeReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -65637,7 +65579,7 @@ func (s ReposMergeUpstreamConflict) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposMergeUpstreamConflict from json stream.
 func (s *ReposMergeUpstreamConflict) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposMergeUpstreamConflict to nil`)
+		return errors.New(`invalid: unable to decode ReposMergeUpstreamConflict to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -65662,7 +65604,7 @@ func (s ReposMergeUpstreamReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposMergeUpstreamReq from json stream.
 func (s *ReposMergeUpstreamReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposMergeUpstreamReq to nil`)
+		return errors.New(`invalid: unable to decode ReposMergeUpstreamReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -65690,7 +65632,7 @@ func (s ReposMergeUpstreamUnprocessableEntity) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposMergeUpstreamUnprocessableEntity from json stream.
 func (s *ReposMergeUpstreamUnprocessableEntity) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposMergeUpstreamUnprocessableEntity to nil`)
+		return errors.New(`invalid: unable to decode ReposMergeUpstreamUnprocessableEntity to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -65712,7 +65654,7 @@ func (s ReposPingWebhookNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposPingWebhookNoContent from json stream.
 func (s *ReposPingWebhookNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposPingWebhookNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposPingWebhookNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -65734,7 +65676,7 @@ func (s ReposRemoveCollaboratorNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposRemoveCollaboratorNoContent from json stream.
 func (s *ReposRemoveCollaboratorNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposRemoveCollaboratorNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposRemoveCollaboratorNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -65756,7 +65698,7 @@ func (s ReposRemoveStatusCheckProtectionNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposRemoveStatusCheckProtectionNoContent from json stream.
 func (s *ReposRemoveStatusCheckProtectionNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposRemoveStatusCheckProtectionNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposRemoveStatusCheckProtectionNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -65781,7 +65723,7 @@ func (s ReposRenameBranchReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposRenameBranchReq from json stream.
 func (s *ReposRenameBranchReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposRenameBranchReq to nil`)
+		return errors.New(`invalid: unable to decode ReposRenameBranchReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -65819,7 +65761,7 @@ func (s ReposReplaceAllTopicsReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposReplaceAllTopicsReq from json stream.
 func (s *ReposReplaceAllTopicsReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposReplaceAllTopicsReq to nil`)
+		return errors.New(`invalid: unable to decode ReposReplaceAllTopicsReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -65855,7 +65797,7 @@ func (s ReposTestPushWebhookNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposTestPushWebhookNoContent from json stream.
 func (s *ReposTestPushWebhookNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposTestPushWebhookNoContent to nil`)
+		return errors.New(`invalid: unable to decode ReposTestPushWebhookNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -65892,7 +65834,7 @@ func (s ReposTransferReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposTransferReq from json stream.
 func (s *ReposTransferReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposTransferReq to nil`)
+		return errors.New(`invalid: unable to decode ReposTransferReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -65974,7 +65916,7 @@ func (s ReposUpdateBranchProtectionReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposUpdateBranchProtectionReq from json stream.
 func (s *ReposUpdateBranchProtectionReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposUpdateBranchProtectionReq to nil`)
+		return errors.New(`invalid: unable to decode ReposUpdateBranchProtectionReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -66052,7 +65994,7 @@ func (s ReposUpdateBranchProtectionReqRequiredPullRequestReviews) WriteJSON(e *j
 // ReadJSON reads ReposUpdateBranchProtectionReqRequiredPullRequestReviews from json stream.
 func (s *ReposUpdateBranchProtectionReqRequiredPullRequestReviews) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposUpdateBranchProtectionReqRequiredPullRequestReviews to nil`)
+		return errors.New(`invalid: unable to decode ReposUpdateBranchProtectionReqRequiredPullRequestReviews to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -66118,7 +66060,7 @@ func (s ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestric
 // ReadJSON reads ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions from json stream.
 func (s *ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions to nil`)
+		return errors.New(`invalid: unable to decode ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -66181,7 +66123,7 @@ func (s ReposUpdateBranchProtectionReqRequiredStatusChecks) WriteJSON(e *json.En
 // ReadJSON reads ReposUpdateBranchProtectionReqRequiredStatusChecks from json stream.
 func (s *ReposUpdateBranchProtectionReqRequiredStatusChecks) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposUpdateBranchProtectionReqRequiredStatusChecks to nil`)
+		return errors.New(`invalid: unable to decode ReposUpdateBranchProtectionReqRequiredStatusChecks to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -66255,7 +66197,7 @@ func (s ReposUpdateBranchProtectionReqRestrictions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposUpdateBranchProtectionReqRestrictions from json stream.
 func (s *ReposUpdateBranchProtectionReqRestrictions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposUpdateBranchProtectionReqRestrictions to nil`)
+		return errors.New(`invalid: unable to decode ReposUpdateBranchProtectionReqRestrictions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -66322,7 +66264,7 @@ func (s ReposUpdateCommitCommentReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposUpdateCommitCommentReq from json stream.
 func (s *ReposUpdateCommitCommentReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposUpdateCommitCommentReq to nil`)
+		return errors.New(`invalid: unable to decode ReposUpdateCommitCommentReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -66355,7 +66297,7 @@ func (s ReposUpdateInvitationReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposUpdateInvitationReq from json stream.
 func (s *ReposUpdateInvitationReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposUpdateInvitationReq to nil`)
+		return errors.New(`invalid: unable to decode ReposUpdateInvitationReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -66379,7 +66321,7 @@ func (s ReposUpdateInvitationReqPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposUpdateInvitationReqPermissions from json reader.
 func (s *ReposUpdateInvitationReqPermissions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposUpdateInvitationReqPermissions to nil`)
+		return errors.New(`invalid: unable to decode ReposUpdateInvitationReqPermissions to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -66420,7 +66362,7 @@ func (s ReposUpdatePullRequestReviewProtectionReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposUpdatePullRequestReviewProtectionReq from json stream.
 func (s *ReposUpdatePullRequestReviewProtectionReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposUpdatePullRequestReviewProtectionReq to nil`)
+		return errors.New(`invalid: unable to decode ReposUpdatePullRequestReviewProtectionReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -66486,7 +66428,7 @@ func (s ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) WriteJSO
 // ReadJSON reads ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions from json stream.
 func (s *ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions to nil`)
+		return errors.New(`invalid: unable to decode ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -66551,7 +66493,7 @@ func (s ReposUpdateReleaseAssetReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposUpdateReleaseAssetReq from json stream.
 func (s *ReposUpdateReleaseAssetReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposUpdateReleaseAssetReq to nil`)
+		return errors.New(`invalid: unable to decode ReposUpdateReleaseAssetReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -66623,7 +66565,7 @@ func (s ReposUpdateReleaseReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposUpdateReleaseReq from json stream.
 func (s *ReposUpdateReleaseReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposUpdateReleaseReq to nil`)
+		return errors.New(`invalid: unable to decode ReposUpdateReleaseReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -66770,7 +66712,7 @@ func (s ReposUpdateReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposUpdateReq from json stream.
 func (s *ReposUpdateReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposUpdateReq to nil`)
+		return errors.New(`invalid: unable to decode ReposUpdateReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -66892,7 +66834,7 @@ func (s ReposUpdateReqSecurityAndAnalysis) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposUpdateReqSecurityAndAnalysis from json stream.
 func (s *ReposUpdateReqSecurityAndAnalysis) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposUpdateReqSecurityAndAnalysis to nil`)
+		return errors.New(`invalid: unable to decode ReposUpdateReqSecurityAndAnalysis to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -66929,7 +66871,7 @@ func (s ReposUpdateReqSecurityAndAnalysisAdvancedSecurity) WriteJSON(e *json.Enc
 // ReadJSON reads ReposUpdateReqSecurityAndAnalysisAdvancedSecurity from json stream.
 func (s *ReposUpdateReqSecurityAndAnalysisAdvancedSecurity) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposUpdateReqSecurityAndAnalysisAdvancedSecurity to nil`)
+		return errors.New(`invalid: unable to decode ReposUpdateReqSecurityAndAnalysisAdvancedSecurity to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -66961,7 +66903,7 @@ func (s ReposUpdateReqSecurityAndAnalysisSecretScanning) WriteJSON(e *json.Encod
 // ReadJSON reads ReposUpdateReqSecurityAndAnalysisSecretScanning from json stream.
 func (s *ReposUpdateReqSecurityAndAnalysisSecretScanning) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposUpdateReqSecurityAndAnalysisSecretScanning to nil`)
+		return errors.New(`invalid: unable to decode ReposUpdateReqSecurityAndAnalysisSecretScanning to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -66985,7 +66927,7 @@ func (s ReposUpdateReqVisibility) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposUpdateReqVisibility from json reader.
 func (s *ReposUpdateReqVisibility) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposUpdateReqVisibility to nil`)
+		return errors.New(`invalid: unable to decode ReposUpdateReqVisibility to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -67023,7 +66965,7 @@ func (s ReposUpdateStatusCheckProtectionReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposUpdateStatusCheckProtectionReq from json stream.
 func (s *ReposUpdateStatusCheckProtectionReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposUpdateStatusCheckProtectionReq to nil`)
+		return errors.New(`invalid: unable to decode ReposUpdateStatusCheckProtectionReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -67084,7 +67026,7 @@ func (s ReposUpdateWebhookConfigForRepoReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposUpdateWebhookConfigForRepoReq from json stream.
 func (s *ReposUpdateWebhookConfigForRepoReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposUpdateWebhookConfigForRepoReq to nil`)
+		return errors.New(`invalid: unable to decode ReposUpdateWebhookConfigForRepoReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -67174,7 +67116,7 @@ func (s ReposUpdateWebhookReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposUpdateWebhookReq from json stream.
 func (s *ReposUpdateWebhookReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposUpdateWebhookReq to nil`)
+		return errors.New(`invalid: unable to decode ReposUpdateWebhookReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -67274,14 +67216,12 @@ func (s ReposUpdateWebhookReqConfig) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReposUpdateWebhookReqConfig from json stream.
 func (s *ReposUpdateWebhookReqConfig) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReposUpdateWebhookReqConfig to nil`)
+		return errors.New(`invalid: unable to decode ReposUpdateWebhookReqConfig to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
 		case "url":
-			if err := fmt.Errorf(`decoding of "WebhookConfigURL" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "WebhookConfigURL" (alias) is not implemented`)
 		case "content_type":
 			s.ContentType.Reset()
 			if err := s.ContentType.ReadJSON(d); err != nil {
@@ -67638,7 +67578,7 @@ func (s Repository) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Repository from json stream.
 func (s *Repository) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Repository to nil`)
+		return errors.New(`invalid: unable to decode Repository to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -68180,7 +68120,7 @@ func (s RepositoryCollaboratorPermission) WriteJSON(e *json.Encoder) {
 // ReadJSON reads RepositoryCollaboratorPermission from json stream.
 func (s *RepositoryCollaboratorPermission) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode RepositoryCollaboratorPermission to nil`)
+		return errors.New(`invalid: unable to decode RepositoryCollaboratorPermission to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -68244,7 +68184,7 @@ func (s RepositoryInvitation) WriteJSON(e *json.Encoder) {
 // ReadJSON reads RepositoryInvitation from json stream.
 func (s *RepositoryInvitation) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode RepositoryInvitation to nil`)
+		return errors.New(`invalid: unable to decode RepositoryInvitation to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -68314,7 +68254,7 @@ func (s RepositoryInvitationPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads RepositoryInvitationPermissions from json reader.
 func (s *RepositoryInvitationPermissions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode RepositoryInvitationPermissions to nil`)
+		return errors.New(`invalid: unable to decode RepositoryInvitationPermissions to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -68354,7 +68294,7 @@ func (s RepositoryPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads RepositoryPermissions from json stream.
 func (s *RepositoryPermissions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode RepositoryPermissions to nil`)
+		return errors.New(`invalid: unable to decode RepositoryPermissions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -68422,7 +68362,7 @@ func (s RepositorySubscription) WriteJSON(e *json.Encoder) {
 // ReadJSON reads RepositorySubscription from json stream.
 func (s *RepositorySubscription) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode RepositorySubscription to nil`)
+		return errors.New(`invalid: unable to decode RepositorySubscription to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -68890,7 +68830,7 @@ func (s RepositoryTemplateRepository) WriteJSON(e *json.Encoder) {
 // ReadJSON reads RepositoryTemplateRepository from json stream.
 func (s *RepositoryTemplateRepository) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode RepositoryTemplateRepository to nil`)
+		return errors.New(`invalid: unable to decode RepositoryTemplateRepository to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -69416,7 +69356,7 @@ func (s RepositoryTemplateRepositoryOwner) WriteJSON(e *json.Encoder) {
 // ReadJSON reads RepositoryTemplateRepositoryOwner from json stream.
 func (s *RepositoryTemplateRepositoryOwner) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode RepositoryTemplateRepositoryOwner to nil`)
+		return errors.New(`invalid: unable to decode RepositoryTemplateRepositoryOwner to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -69553,7 +69493,7 @@ func (s RepositoryTemplateRepositoryPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads RepositoryTemplateRepositoryPermissions from json stream.
 func (s *RepositoryTemplateRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode RepositoryTemplateRepositoryPermissions to nil`)
+		return errors.New(`invalid: unable to decode RepositoryTemplateRepositoryPermissions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -69704,7 +69644,7 @@ func (s ReviewComment) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReviewComment from json stream.
 func (s *ReviewComment) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReviewComment to nil`)
+		return errors.New(`invalid: unable to decode ReviewComment to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -69883,7 +69823,7 @@ func (s ReviewCommentLinks) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReviewCommentLinks from json stream.
 func (s *ReviewCommentLinks) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReviewCommentLinks to nil`)
+		return errors.New(`invalid: unable to decode ReviewCommentLinks to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -69914,7 +69854,7 @@ func (s ReviewCommentSide) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReviewCommentSide from json reader.
 func (s *ReviewCommentSide) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReviewCommentSide to nil`)
+		return errors.New(`invalid: unable to decode ReviewCommentSide to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -69932,7 +69872,7 @@ func (s ReviewCommentStartSide) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ReviewCommentStartSide from json reader.
 func (s *ReviewCommentStartSide) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ReviewCommentStartSide to nil`)
+		return errors.New(`invalid: unable to decode ReviewCommentStartSide to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -69978,7 +69918,7 @@ func (s Runner) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Runner from json stream.
 func (s *Runner) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Runner to nil`)
+		return errors.New(`invalid: unable to decode Runner to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -70064,7 +70004,7 @@ func (s RunnerApplication) WriteJSON(e *json.Encoder) {
 // ReadJSON reads RunnerApplication from json stream.
 func (s *RunnerApplication) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode RunnerApplication to nil`)
+		return errors.New(`invalid: unable to decode RunnerApplication to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -70143,7 +70083,7 @@ func (s RunnerGroupsEnterprise) WriteJSON(e *json.Encoder) {
 // ReadJSON reads RunnerGroupsEnterprise from json stream.
 func (s *RunnerGroupsEnterprise) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode RunnerGroupsEnterprise to nil`)
+		return errors.New(`invalid: unable to decode RunnerGroupsEnterprise to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -70237,7 +70177,7 @@ func (s RunnerGroupsOrg) WriteJSON(e *json.Encoder) {
 // ReadJSON reads RunnerGroupsOrg from json stream.
 func (s *RunnerGroupsOrg) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode RunnerGroupsOrg to nil`)
+		return errors.New(`invalid: unable to decode RunnerGroupsOrg to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -70326,7 +70266,7 @@ func (s RunnerLabelsItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads RunnerLabelsItem from json stream.
 func (s *RunnerLabelsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode RunnerLabelsItem to nil`)
+		return errors.New(`invalid: unable to decode RunnerLabelsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -70360,7 +70300,7 @@ func (s RunnerLabelsItemType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads RunnerLabelsItemType from json reader.
 func (s *RunnerLabelsItemType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode RunnerLabelsItemType to nil`)
+		return errors.New(`invalid: unable to decode RunnerLabelsItemType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -70393,7 +70333,7 @@ func (s ScimDeleteUserFromOrgNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ScimDeleteUserFromOrgNoContent from json stream.
 func (s *ScimDeleteUserFromOrgNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimDeleteUserFromOrgNoContent to nil`)
+		return errors.New(`invalid: unable to decode ScimDeleteUserFromOrgNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -70455,7 +70395,7 @@ func (s ScimEnterpriseGroup) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ScimEnterpriseGroup from json stream.
 func (s *ScimEnterpriseGroup) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimEnterpriseGroup to nil`)
+		return errors.New(`invalid: unable to decode ScimEnterpriseGroup to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -70539,7 +70479,7 @@ func (s ScimEnterpriseGroupMembersItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ScimEnterpriseGroupMembersItem from json stream.
 func (s *ScimEnterpriseGroupMembersItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimEnterpriseGroupMembersItem to nil`)
+		return errors.New(`invalid: unable to decode ScimEnterpriseGroupMembersItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -70596,7 +70536,7 @@ func (s ScimEnterpriseGroupMeta) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ScimEnterpriseGroupMeta from json stream.
 func (s *ScimEnterpriseGroupMeta) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimEnterpriseGroupMeta to nil`)
+		return errors.New(`invalid: unable to decode ScimEnterpriseGroupMeta to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -70700,7 +70640,7 @@ func (s ScimEnterpriseUser) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ScimEnterpriseUser from json stream.
 func (s *ScimEnterpriseUser) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimEnterpriseUser to nil`)
+		return errors.New(`invalid: unable to decode ScimEnterpriseUser to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -70806,7 +70746,7 @@ func (s ScimEnterpriseUserEmailsItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ScimEnterpriseUserEmailsItem from json stream.
 func (s *ScimEnterpriseUserEmailsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimEnterpriseUserEmailsItem to nil`)
+		return errors.New(`invalid: unable to decode ScimEnterpriseUserEmailsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -70848,7 +70788,7 @@ func (s ScimEnterpriseUserGroupsItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ScimEnterpriseUserGroupsItem from json stream.
 func (s *ScimEnterpriseUserGroupsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimEnterpriseUserGroupsItem to nil`)
+		return errors.New(`invalid: unable to decode ScimEnterpriseUserGroupsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -70895,7 +70835,7 @@ func (s ScimEnterpriseUserMeta) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ScimEnterpriseUserMeta from json stream.
 func (s *ScimEnterpriseUserMeta) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimEnterpriseUserMeta to nil`)
+		return errors.New(`invalid: unable to decode ScimEnterpriseUserMeta to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -70947,7 +70887,7 @@ func (s ScimEnterpriseUserName) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ScimEnterpriseUserName from json stream.
 func (s *ScimEnterpriseUserName) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimEnterpriseUserName to nil`)
+		return errors.New(`invalid: unable to decode ScimEnterpriseUserName to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -71016,7 +70956,7 @@ func (s ScimError) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ScimError from json stream.
 func (s *ScimError) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimError to nil`)
+		return errors.New(`invalid: unable to decode ScimError to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -71106,7 +71046,7 @@ func (s ScimGroupListEnterprise) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ScimGroupListEnterprise from json stream.
 func (s *ScimGroupListEnterprise) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimGroupListEnterprise to nil`)
+		return errors.New(`invalid: unable to decode ScimGroupListEnterprise to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -71212,7 +71152,7 @@ func (s ScimGroupListEnterpriseResourcesItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ScimGroupListEnterpriseResourcesItem from json stream.
 func (s *ScimGroupListEnterpriseResourcesItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimGroupListEnterpriseResourcesItem to nil`)
+		return errors.New(`invalid: unable to decode ScimGroupListEnterpriseResourcesItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -71296,7 +71236,7 @@ func (s ScimGroupListEnterpriseResourcesItemMembersItem) WriteJSON(e *json.Encod
 // ReadJSON reads ScimGroupListEnterpriseResourcesItemMembersItem from json stream.
 func (s *ScimGroupListEnterpriseResourcesItemMembersItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimGroupListEnterpriseResourcesItemMembersItem to nil`)
+		return errors.New(`invalid: unable to decode ScimGroupListEnterpriseResourcesItemMembersItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -71353,7 +71293,7 @@ func (s ScimGroupListEnterpriseResourcesItemMeta) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ScimGroupListEnterpriseResourcesItemMeta from json stream.
 func (s *ScimGroupListEnterpriseResourcesItemMeta) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimGroupListEnterpriseResourcesItemMeta to nil`)
+		return errors.New(`invalid: unable to decode ScimGroupListEnterpriseResourcesItemMeta to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -71450,7 +71390,7 @@ func (s ScimProvisionAndInviteUserReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ScimProvisionAndInviteUserReq from json stream.
 func (s *ScimProvisionAndInviteUserReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimProvisionAndInviteUserReq to nil`)
+		return errors.New(`invalid: unable to decode ScimProvisionAndInviteUserReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -71550,7 +71490,7 @@ func (s ScimProvisionAndInviteUserReqEmailsItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ScimProvisionAndInviteUserReqEmailsItem from json stream.
 func (s *ScimProvisionAndInviteUserReqEmailsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimProvisionAndInviteUserReqEmailsItem to nil`)
+		return errors.New(`invalid: unable to decode ScimProvisionAndInviteUserReqEmailsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -71599,7 +71539,7 @@ func (s ScimProvisionAndInviteUserReqName) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ScimProvisionAndInviteUserReqName from json stream.
 func (s *ScimProvisionAndInviteUserReqName) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimProvisionAndInviteUserReqName to nil`)
+		return errors.New(`invalid: unable to decode ScimProvisionAndInviteUserReqName to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -71693,7 +71633,7 @@ func (s ScimSetInformationForProvisionedUserReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ScimSetInformationForProvisionedUserReq from json stream.
 func (s *ScimSetInformationForProvisionedUserReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimSetInformationForProvisionedUserReq to nil`)
+		return errors.New(`invalid: unable to decode ScimSetInformationForProvisionedUserReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -71793,7 +71733,7 @@ func (s ScimSetInformationForProvisionedUserReqEmailsItem) WriteJSON(e *json.Enc
 // ReadJSON reads ScimSetInformationForProvisionedUserReqEmailsItem from json stream.
 func (s *ScimSetInformationForProvisionedUserReqEmailsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimSetInformationForProvisionedUserReqEmailsItem to nil`)
+		return errors.New(`invalid: unable to decode ScimSetInformationForProvisionedUserReqEmailsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -71842,7 +71782,7 @@ func (s ScimSetInformationForProvisionedUserReqName) WriteJSON(e *json.Encoder) 
 // ReadJSON reads ScimSetInformationForProvisionedUserReqName from json stream.
 func (s *ScimSetInformationForProvisionedUserReqName) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimSetInformationForProvisionedUserReqName to nil`)
+		return errors.New(`invalid: unable to decode ScimSetInformationForProvisionedUserReqName to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -71910,7 +71850,7 @@ func (s ScimUserListEnterprise) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ScimUserListEnterprise from json stream.
 func (s *ScimUserListEnterprise) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimUserListEnterprise to nil`)
+		return errors.New(`invalid: unable to decode ScimUserListEnterprise to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -72038,7 +71978,7 @@ func (s ScimUserListEnterpriseResourcesItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ScimUserListEnterpriseResourcesItem from json stream.
 func (s *ScimUserListEnterpriseResourcesItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimUserListEnterpriseResourcesItem to nil`)
+		return errors.New(`invalid: unable to decode ScimUserListEnterpriseResourcesItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -72144,7 +72084,7 @@ func (s ScimUserListEnterpriseResourcesItemEmailsItem) WriteJSON(e *json.Encoder
 // ReadJSON reads ScimUserListEnterpriseResourcesItemEmailsItem from json stream.
 func (s *ScimUserListEnterpriseResourcesItemEmailsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimUserListEnterpriseResourcesItemEmailsItem to nil`)
+		return errors.New(`invalid: unable to decode ScimUserListEnterpriseResourcesItemEmailsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -72186,7 +72126,7 @@ func (s ScimUserListEnterpriseResourcesItemGroupsItem) WriteJSON(e *json.Encoder
 // ReadJSON reads ScimUserListEnterpriseResourcesItemGroupsItem from json stream.
 func (s *ScimUserListEnterpriseResourcesItemGroupsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimUserListEnterpriseResourcesItemGroupsItem to nil`)
+		return errors.New(`invalid: unable to decode ScimUserListEnterpriseResourcesItemGroupsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -72233,7 +72173,7 @@ func (s ScimUserListEnterpriseResourcesItemMeta) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ScimUserListEnterpriseResourcesItemMeta from json stream.
 func (s *ScimUserListEnterpriseResourcesItemMeta) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimUserListEnterpriseResourcesItemMeta to nil`)
+		return errors.New(`invalid: unable to decode ScimUserListEnterpriseResourcesItemMeta to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -72285,7 +72225,7 @@ func (s ScimUserListEnterpriseResourcesItemName) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ScimUserListEnterpriseResourcesItemName from json stream.
 func (s *ScimUserListEnterpriseResourcesItemName) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ScimUserListEnterpriseResourcesItemName to nil`)
+		return errors.New(`invalid: unable to decode ScimUserListEnterpriseResourcesItemName to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -72333,7 +72273,7 @@ func (s SearchCodeOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SearchCodeOK from json stream.
 func (s *SearchCodeOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchCodeOK to nil`)
+		return errors.New(`invalid: unable to decode SearchCodeOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -72376,7 +72316,7 @@ func (s SearchCodeOrder) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SearchCodeOrder from json reader.
 func (s *SearchCodeOrder) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchCodeOrder to nil`)
+		return errors.New(`invalid: unable to decode SearchCodeOrder to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -72394,7 +72334,7 @@ func (s SearchCodeSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SearchCodeSort from json reader.
 func (s *SearchCodeSort) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchCodeSort to nil`)
+		return errors.New(`invalid: unable to decode SearchCodeSort to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -72431,7 +72371,7 @@ func (s SearchCommitsOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SearchCommitsOK from json stream.
 func (s *SearchCommitsOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchCommitsOK to nil`)
+		return errors.New(`invalid: unable to decode SearchCommitsOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -72474,7 +72414,7 @@ func (s SearchCommitsOrder) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SearchCommitsOrder from json reader.
 func (s *SearchCommitsOrder) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchCommitsOrder to nil`)
+		return errors.New(`invalid: unable to decode SearchCommitsOrder to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -72492,7 +72432,7 @@ func (s SearchCommitsSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SearchCommitsSort from json reader.
 func (s *SearchCommitsSort) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchCommitsSort to nil`)
+		return errors.New(`invalid: unable to decode SearchCommitsSort to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -72529,7 +72469,7 @@ func (s SearchIssuesAndPullRequestsOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SearchIssuesAndPullRequestsOK from json stream.
 func (s *SearchIssuesAndPullRequestsOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchIssuesAndPullRequestsOK to nil`)
+		return errors.New(`invalid: unable to decode SearchIssuesAndPullRequestsOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -72572,7 +72512,7 @@ func (s SearchIssuesAndPullRequestsOrder) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SearchIssuesAndPullRequestsOrder from json reader.
 func (s *SearchIssuesAndPullRequestsOrder) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchIssuesAndPullRequestsOrder to nil`)
+		return errors.New(`invalid: unable to decode SearchIssuesAndPullRequestsOrder to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -72590,7 +72530,7 @@ func (s SearchIssuesAndPullRequestsSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SearchIssuesAndPullRequestsSort from json reader.
 func (s *SearchIssuesAndPullRequestsSort) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchIssuesAndPullRequestsSort to nil`)
+		return errors.New(`invalid: unable to decode SearchIssuesAndPullRequestsSort to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -72627,7 +72567,7 @@ func (s SearchLabelsOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SearchLabelsOK from json stream.
 func (s *SearchLabelsOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchLabelsOK to nil`)
+		return errors.New(`invalid: unable to decode SearchLabelsOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -72670,7 +72610,7 @@ func (s SearchLabelsOrder) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SearchLabelsOrder from json reader.
 func (s *SearchLabelsOrder) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchLabelsOrder to nil`)
+		return errors.New(`invalid: unable to decode SearchLabelsOrder to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -72688,7 +72628,7 @@ func (s SearchLabelsSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SearchLabelsSort from json reader.
 func (s *SearchLabelsSort) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchLabelsSort to nil`)
+		return errors.New(`invalid: unable to decode SearchLabelsSort to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -72725,7 +72665,7 @@ func (s SearchReposOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SearchReposOK from json stream.
 func (s *SearchReposOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchReposOK to nil`)
+		return errors.New(`invalid: unable to decode SearchReposOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -72768,7 +72708,7 @@ func (s SearchReposOrder) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SearchReposOrder from json reader.
 func (s *SearchReposOrder) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchReposOrder to nil`)
+		return errors.New(`invalid: unable to decode SearchReposOrder to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -72786,7 +72726,7 @@ func (s SearchReposSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SearchReposSort from json reader.
 func (s *SearchReposSort) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchReposSort to nil`)
+		return errors.New(`invalid: unable to decode SearchReposSort to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -72842,7 +72782,7 @@ func (s SearchResultTextMatchesItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SearchResultTextMatchesItem from json stream.
 func (s *SearchResultTextMatchesItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchResultTextMatchesItem to nil`)
+		return errors.New(`invalid: unable to decode SearchResultTextMatchesItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -72913,7 +72853,7 @@ func (s SearchResultTextMatchesItemMatchesItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SearchResultTextMatchesItemMatchesItem from json stream.
 func (s *SearchResultTextMatchesItemMatchesItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchResultTextMatchesItemMatchesItem to nil`)
+		return errors.New(`invalid: unable to decode SearchResultTextMatchesItemMatchesItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -72970,7 +72910,7 @@ func (s SearchTopicsOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SearchTopicsOK from json stream.
 func (s *SearchTopicsOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchTopicsOK to nil`)
+		return errors.New(`invalid: unable to decode SearchTopicsOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -73032,7 +72972,7 @@ func (s SearchUsersOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SearchUsersOK from json stream.
 func (s *SearchUsersOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchUsersOK to nil`)
+		return errors.New(`invalid: unable to decode SearchUsersOK to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -73075,7 +73015,7 @@ func (s SearchUsersOrder) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SearchUsersOrder from json reader.
 func (s *SearchUsersOrder) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchUsersOrder to nil`)
+		return errors.New(`invalid: unable to decode SearchUsersOrder to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -73093,7 +73033,7 @@ func (s SearchUsersSort) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SearchUsersSort from json reader.
 func (s *SearchUsersSort) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SearchUsersSort to nil`)
+		return errors.New(`invalid: unable to decode SearchUsersSort to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -73169,7 +73109,7 @@ func (s SecretScanningAlert) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SecretScanningAlert from json stream.
 func (s *SecretScanningAlert) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SecretScanningAlert to nil`)
+		return errors.New(`invalid: unable to decode SecretScanningAlert to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -73243,7 +73183,7 @@ func (s SecretScanningAlertResolution) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SecretScanningAlertResolution from json reader.
 func (s *SecretScanningAlertResolution) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SecretScanningAlertResolution to nil`)
+		return errors.New(`invalid: unable to decode SecretScanningAlertResolution to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -73261,7 +73201,7 @@ func (s SecretScanningAlertState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SecretScanningAlertState from json reader.
 func (s *SecretScanningAlertState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SecretScanningAlertState to nil`)
+		return errors.New(`invalid: unable to decode SecretScanningAlertState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -73282,7 +73222,7 @@ func (s SecretScanningGetAlertNotFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SecretScanningGetAlertNotFound from json stream.
 func (s *SecretScanningGetAlertNotFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SecretScanningGetAlertNotFound to nil`)
+		return errors.New(`invalid: unable to decode SecretScanningGetAlertNotFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -73304,7 +73244,7 @@ func (s SecretScanningListAlertsForOrgState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SecretScanningListAlertsForOrgState from json reader.
 func (s *SecretScanningListAlertsForOrgState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SecretScanningListAlertsForOrgState to nil`)
+		return errors.New(`invalid: unable to decode SecretScanningListAlertsForOrgState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -73325,7 +73265,7 @@ func (s SecretScanningListAlertsForRepoNotFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SecretScanningListAlertsForRepoNotFound from json stream.
 func (s *SecretScanningListAlertsForRepoNotFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SecretScanningListAlertsForRepoNotFound to nil`)
+		return errors.New(`invalid: unable to decode SecretScanningListAlertsForRepoNotFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -73347,7 +73287,7 @@ func (s SecretScanningListAlertsForRepoState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SecretScanningListAlertsForRepoState from json reader.
 func (s *SecretScanningListAlertsForRepoState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SecretScanningListAlertsForRepoState to nil`)
+		return errors.New(`invalid: unable to decode SecretScanningListAlertsForRepoState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -73368,7 +73308,7 @@ func (s SecretScanningUpdateAlertNotFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SecretScanningUpdateAlertNotFound from json stream.
 func (s *SecretScanningUpdateAlertNotFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SecretScanningUpdateAlertNotFound to nil`)
+		return errors.New(`invalid: unable to decode SecretScanningUpdateAlertNotFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -73398,7 +73338,7 @@ func (s SecretScanningUpdateAlertReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SecretScanningUpdateAlertReq from json stream.
 func (s *SecretScanningUpdateAlertReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SecretScanningUpdateAlertReq to nil`)
+		return errors.New(`invalid: unable to decode SecretScanningUpdateAlertReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -73429,7 +73369,7 @@ func (s SecretScanningUpdateAlertUnprocessableEntity) WriteJSON(e *json.Encoder)
 // ReadJSON reads SecretScanningUpdateAlertUnprocessableEntity from json stream.
 func (s *SecretScanningUpdateAlertUnprocessableEntity) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SecretScanningUpdateAlertUnprocessableEntity to nil`)
+		return errors.New(`invalid: unable to decode SecretScanningUpdateAlertUnprocessableEntity to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -73473,7 +73413,7 @@ func (s SelectedActions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SelectedActions from json stream.
 func (s *SelectedActions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SelectedActions to nil`)
+		return errors.New(`invalid: unable to decode SelectedActions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -73537,7 +73477,7 @@ func (s ServiceUnavailable) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ServiceUnavailable from json stream.
 func (s *ServiceUnavailable) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ServiceUnavailable to nil`)
+		return errors.New(`invalid: unable to decode ServiceUnavailable to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -73580,7 +73520,7 @@ func (s ShortBlob) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ShortBlob from json stream.
 func (s *ShortBlob) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ShortBlob to nil`)
+		return errors.New(`invalid: unable to decode ShortBlob to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -73633,7 +73573,7 @@ func (s ShortBranch) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ShortBranch from json stream.
 func (s *ShortBranch) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ShortBranch to nil`)
+		return errors.New(`invalid: unable to decode ShortBranch to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -73687,7 +73627,7 @@ func (s ShortBranchCommit) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ShortBranchCommit from json stream.
 func (s *ShortBranchCommit) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ShortBranchCommit to nil`)
+		return errors.New(`invalid: unable to decode ShortBranchCommit to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -73739,7 +73679,7 @@ func (s SimpleCommit) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SimpleCommit from json stream.
 func (s *SimpleCommit) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SimpleCommit to nil`)
+		return errors.New(`invalid: unable to decode SimpleCommit to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -73799,7 +73739,7 @@ func (s SimpleCommitAuthor) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SimpleCommitAuthor from json stream.
 func (s *SimpleCommitAuthor) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SimpleCommitAuthor to nil`)
+		return errors.New(`invalid: unable to decode SimpleCommitAuthor to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -73839,7 +73779,7 @@ func (s SimpleCommitCommitter) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SimpleCommitCommitter from json stream.
 func (s *SimpleCommitCommitter) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SimpleCommitCommitter to nil`)
+		return errors.New(`invalid: unable to decode SimpleCommitCommitter to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -73908,7 +73848,7 @@ func (s SimpleCommitStatus) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SimpleCommitStatus from json stream.
 func (s *SimpleCommitStatus) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SimpleCommitStatus to nil`)
+		return errors.New(`invalid: unable to decode SimpleCommitStatus to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -74060,7 +74000,7 @@ func (s SimpleUser) WriteJSON(e *json.Encoder) {
 // ReadJSON reads SimpleUser from json stream.
 func (s *SimpleUser) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode SimpleUser to nil`)
+		return errors.New(`invalid: unable to decode SimpleUser to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -74209,7 +74149,7 @@ func (s StarredRepository) WriteJSON(e *json.Encoder) {
 // ReadJSON reads StarredRepository from json stream.
 func (s *StarredRepository) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode StarredRepository to nil`)
+		return errors.New(`invalid: unable to decode StarredRepository to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -74274,7 +74214,7 @@ func (s Status) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Status from json stream.
 func (s *Status) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Status to nil`)
+		return errors.New(`invalid: unable to decode Status to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -74377,7 +74317,7 @@ func (s StatusCheckPolicy) WriteJSON(e *json.Encoder) {
 // ReadJSON reads StatusCheckPolicy from json stream.
 func (s *StatusCheckPolicy) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode StatusCheckPolicy to nil`)
+		return errors.New(`invalid: unable to decode StatusCheckPolicy to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -74446,7 +74386,7 @@ func (s Tag) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Tag from json stream.
 func (s *Tag) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Tag to nil`)
+		return errors.New(`invalid: unable to decode Tag to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -74502,7 +74442,7 @@ func (s TagCommit) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TagCommit from json stream.
 func (s *TagCommit) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TagCommit to nil`)
+		return errors.New(`invalid: unable to decode TagCommit to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -74579,7 +74519,7 @@ func (s Team) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Team from json stream.
 func (s *Team) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Team to nil`)
+		return errors.New(`invalid: unable to decode Team to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -74729,7 +74669,7 @@ func (s TeamDiscussion) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamDiscussion from json stream.
 func (s *TeamDiscussion) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamDiscussion to nil`)
+		return errors.New(`invalid: unable to decode TeamDiscussion to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -74895,7 +74835,7 @@ func (s TeamDiscussionComment) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamDiscussionComment from json stream.
 func (s *TeamDiscussionComment) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamDiscussionComment to nil`)
+		return errors.New(`invalid: unable to decode TeamDiscussionComment to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -75050,7 +74990,7 @@ func (s TeamFull) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamFull from json stream.
 func (s *TeamFull) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamFull to nil`)
+		return errors.New(`invalid: unable to decode TeamFull to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -75170,7 +75110,7 @@ func (s TeamFullPrivacy) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamFullPrivacy from json reader.
 func (s *TeamFullPrivacy) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamFullPrivacy to nil`)
+		return errors.New(`invalid: unable to decode TeamFullPrivacy to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -75200,7 +75140,7 @@ func (s TeamMembership) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamMembership from json stream.
 func (s *TeamMembership) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamMembership to nil`)
+		return errors.New(`invalid: unable to decode TeamMembership to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -75233,7 +75173,7 @@ func (s TeamMembershipRole) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamMembershipRole from json reader.
 func (s *TeamMembershipRole) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamMembershipRole to nil`)
+		return errors.New(`invalid: unable to decode TeamMembershipRole to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -75251,7 +75191,7 @@ func (s TeamMembershipState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamMembershipState from json reader.
 func (s *TeamMembershipState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamMembershipState to nil`)
+		return errors.New(`invalid: unable to decode TeamMembershipState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -75287,7 +75227,7 @@ func (s TeamPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamPermissions from json stream.
 func (s *TeamPermissions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamPermissions to nil`)
+		return errors.New(`invalid: unable to decode TeamPermissions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -75391,7 +75331,7 @@ func (s TeamProject) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamProject from json stream.
 func (s *TeamProject) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamProject to nil`)
+		return errors.New(`invalid: unable to decode TeamProject to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -75510,7 +75450,7 @@ func (s TeamProjectPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamProjectPermissions from json stream.
 func (s *TeamProjectPermissions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamProjectPermissions to nil`)
+		return errors.New(`invalid: unable to decode TeamProjectPermissions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -75851,7 +75791,7 @@ func (s TeamRepository) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamRepository from json stream.
 func (s *TeamRepository) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamRepository to nil`)
+		return errors.New(`invalid: unable to decode TeamRepository to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -76396,7 +76336,7 @@ func (s TeamRepositoryPermissions) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamRepositoryPermissions from json stream.
 func (s *TeamRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamRepositoryPermissions to nil`)
+		return errors.New(`invalid: unable to decode TeamRepositoryPermissions to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -76486,7 +76426,7 @@ func (s TeamSimple) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamSimple from json stream.
 func (s *TeamSimple) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamSimple to nil`)
+		return errors.New(`invalid: unable to decode TeamSimple to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -76576,7 +76516,7 @@ func (s TeamsAddMemberLegacyNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsAddMemberLegacyNoContent from json stream.
 func (s *TeamsAddMemberLegacyNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsAddMemberLegacyNoContent to nil`)
+		return errors.New(`invalid: unable to decode TeamsAddMemberLegacyNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -76598,7 +76538,7 @@ func (s TeamsAddMemberLegacyNotFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsAddMemberLegacyNotFound from json stream.
 func (s *TeamsAddMemberLegacyNotFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsAddMemberLegacyNotFound to nil`)
+		return errors.New(`invalid: unable to decode TeamsAddMemberLegacyNotFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -76620,7 +76560,7 @@ func (s TeamsAddMemberLegacyUnprocessableEntity) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsAddMemberLegacyUnprocessableEntity from json stream.
 func (s *TeamsAddMemberLegacyUnprocessableEntity) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsAddMemberLegacyUnprocessableEntity to nil`)
+		return errors.New(`invalid: unable to decode TeamsAddMemberLegacyUnprocessableEntity to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -76642,7 +76582,7 @@ func (s TeamsAddOrUpdateMembershipForUserInOrgForbidden) WriteJSON(e *json.Encod
 // ReadJSON reads TeamsAddOrUpdateMembershipForUserInOrgForbidden from json stream.
 func (s *TeamsAddOrUpdateMembershipForUserInOrgForbidden) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserInOrgForbidden to nil`)
+		return errors.New(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserInOrgForbidden to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -76669,7 +76609,7 @@ func (s TeamsAddOrUpdateMembershipForUserInOrgReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsAddOrUpdateMembershipForUserInOrgReq from json stream.
 func (s *TeamsAddOrUpdateMembershipForUserInOrgReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserInOrgReq to nil`)
+		return errors.New(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserInOrgReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -76693,7 +76633,7 @@ func (s TeamsAddOrUpdateMembershipForUserInOrgReqRole) WriteJSON(e *json.Encoder
 // ReadJSON reads TeamsAddOrUpdateMembershipForUserInOrgReqRole from json reader.
 func (s *TeamsAddOrUpdateMembershipForUserInOrgReqRole) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserInOrgReqRole to nil`)
+		return errors.New(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserInOrgReqRole to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -76714,7 +76654,7 @@ func (s TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity) WriteJSON(e *
 // ReadJSON reads TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity from json stream.
 func (s *TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity to nil`)
+		return errors.New(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -76736,7 +76676,7 @@ func (s TeamsAddOrUpdateMembershipForUserLegacyForbidden) WriteJSON(e *json.Enco
 // ReadJSON reads TeamsAddOrUpdateMembershipForUserLegacyForbidden from json stream.
 func (s *TeamsAddOrUpdateMembershipForUserLegacyForbidden) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserLegacyForbidden to nil`)
+		return errors.New(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserLegacyForbidden to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -76763,7 +76703,7 @@ func (s TeamsAddOrUpdateMembershipForUserLegacyReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsAddOrUpdateMembershipForUserLegacyReq from json stream.
 func (s *TeamsAddOrUpdateMembershipForUserLegacyReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserLegacyReq to nil`)
+		return errors.New(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserLegacyReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -76787,7 +76727,7 @@ func (s TeamsAddOrUpdateMembershipForUserLegacyReqRole) WriteJSON(e *json.Encode
 // ReadJSON reads TeamsAddOrUpdateMembershipForUserLegacyReqRole from json reader.
 func (s *TeamsAddOrUpdateMembershipForUserLegacyReqRole) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserLegacyReqRole to nil`)
+		return errors.New(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserLegacyReqRole to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -76808,7 +76748,7 @@ func (s TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity) WriteJSON(e 
 // ReadJSON reads TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity from json stream.
 func (s *TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity to nil`)
+		return errors.New(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -76840,7 +76780,7 @@ func (s TeamsAddOrUpdateProjectPermissionsInOrgForbidden) WriteJSON(e *json.Enco
 // ReadJSON reads TeamsAddOrUpdateProjectPermissionsInOrgForbidden from json stream.
 func (s *TeamsAddOrUpdateProjectPermissionsInOrgForbidden) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsInOrgForbidden to nil`)
+		return errors.New(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsInOrgForbidden to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -76872,7 +76812,7 @@ func (s TeamsAddOrUpdateProjectPermissionsInOrgNoContent) WriteJSON(e *json.Enco
 // ReadJSON reads TeamsAddOrUpdateProjectPermissionsInOrgNoContent from json stream.
 func (s *TeamsAddOrUpdateProjectPermissionsInOrgNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsInOrgNoContent to nil`)
+		return errors.New(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsInOrgNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -76899,7 +76839,7 @@ func (s TeamsAddOrUpdateProjectPermissionsInOrgReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsAddOrUpdateProjectPermissionsInOrgReq from json stream.
 func (s *TeamsAddOrUpdateProjectPermissionsInOrgReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsInOrgReq to nil`)
+		return errors.New(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsInOrgReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -76923,7 +76863,7 @@ func (s TeamsAddOrUpdateProjectPermissionsInOrgReqPermission) WriteJSON(e *json.
 // ReadJSON reads TeamsAddOrUpdateProjectPermissionsInOrgReqPermission from json reader.
 func (s *TeamsAddOrUpdateProjectPermissionsInOrgReqPermission) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsInOrgReqPermission to nil`)
+		return errors.New(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsInOrgReqPermission to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -76954,7 +76894,7 @@ func (s TeamsAddOrUpdateProjectPermissionsLegacyForbidden) WriteJSON(e *json.Enc
 // ReadJSON reads TeamsAddOrUpdateProjectPermissionsLegacyForbidden from json stream.
 func (s *TeamsAddOrUpdateProjectPermissionsLegacyForbidden) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsLegacyForbidden to nil`)
+		return errors.New(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsLegacyForbidden to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -76986,7 +76926,7 @@ func (s TeamsAddOrUpdateProjectPermissionsLegacyNoContent) WriteJSON(e *json.Enc
 // ReadJSON reads TeamsAddOrUpdateProjectPermissionsLegacyNoContent from json stream.
 func (s *TeamsAddOrUpdateProjectPermissionsLegacyNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsLegacyNoContent to nil`)
+		return errors.New(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsLegacyNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77013,7 +76953,7 @@ func (s TeamsAddOrUpdateProjectPermissionsLegacyReq) WriteJSON(e *json.Encoder) 
 // ReadJSON reads TeamsAddOrUpdateProjectPermissionsLegacyReq from json stream.
 func (s *TeamsAddOrUpdateProjectPermissionsLegacyReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsLegacyReq to nil`)
+		return errors.New(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsLegacyReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77037,7 +76977,7 @@ func (s TeamsAddOrUpdateProjectPermissionsLegacyReqPermission) WriteJSON(e *json
 // ReadJSON reads TeamsAddOrUpdateProjectPermissionsLegacyReqPermission from json reader.
 func (s *TeamsAddOrUpdateProjectPermissionsLegacyReqPermission) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsLegacyReqPermission to nil`)
+		return errors.New(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsLegacyReqPermission to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -77058,7 +76998,7 @@ func (s TeamsAddOrUpdateRepoPermissionsInOrgNoContent) WriteJSON(e *json.Encoder
 // ReadJSON reads TeamsAddOrUpdateRepoPermissionsInOrgNoContent from json stream.
 func (s *TeamsAddOrUpdateRepoPermissionsInOrgNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateRepoPermissionsInOrgNoContent to nil`)
+		return errors.New(`invalid: unable to decode TeamsAddOrUpdateRepoPermissionsInOrgNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77085,7 +77025,7 @@ func (s TeamsAddOrUpdateRepoPermissionsInOrgReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsAddOrUpdateRepoPermissionsInOrgReq from json stream.
 func (s *TeamsAddOrUpdateRepoPermissionsInOrgReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateRepoPermissionsInOrgReq to nil`)
+		return errors.New(`invalid: unable to decode TeamsAddOrUpdateRepoPermissionsInOrgReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77109,7 +77049,7 @@ func (s TeamsAddOrUpdateRepoPermissionsInOrgReqPermission) WriteJSON(e *json.Enc
 // ReadJSON reads TeamsAddOrUpdateRepoPermissionsInOrgReqPermission from json reader.
 func (s *TeamsAddOrUpdateRepoPermissionsInOrgReqPermission) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateRepoPermissionsInOrgReqPermission to nil`)
+		return errors.New(`invalid: unable to decode TeamsAddOrUpdateRepoPermissionsInOrgReqPermission to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -77130,7 +77070,7 @@ func (s TeamsAddOrUpdateRepoPermissionsLegacyNoContent) WriteJSON(e *json.Encode
 // ReadJSON reads TeamsAddOrUpdateRepoPermissionsLegacyNoContent from json stream.
 func (s *TeamsAddOrUpdateRepoPermissionsLegacyNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateRepoPermissionsLegacyNoContent to nil`)
+		return errors.New(`invalid: unable to decode TeamsAddOrUpdateRepoPermissionsLegacyNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77157,7 +77097,7 @@ func (s TeamsAddOrUpdateRepoPermissionsLegacyReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsAddOrUpdateRepoPermissionsLegacyReq from json stream.
 func (s *TeamsAddOrUpdateRepoPermissionsLegacyReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateRepoPermissionsLegacyReq to nil`)
+		return errors.New(`invalid: unable to decode TeamsAddOrUpdateRepoPermissionsLegacyReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77181,7 +77121,7 @@ func (s TeamsAddOrUpdateRepoPermissionsLegacyReqPermission) WriteJSON(e *json.En
 // ReadJSON reads TeamsAddOrUpdateRepoPermissionsLegacyReqPermission from json reader.
 func (s *TeamsAddOrUpdateRepoPermissionsLegacyReqPermission) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsAddOrUpdateRepoPermissionsLegacyReqPermission to nil`)
+		return errors.New(`invalid: unable to decode TeamsAddOrUpdateRepoPermissionsLegacyReqPermission to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -77202,7 +77142,7 @@ func (s TeamsCheckPermissionsForProjectInOrgNotFound) WriteJSON(e *json.Encoder)
 // ReadJSON reads TeamsCheckPermissionsForProjectInOrgNotFound from json stream.
 func (s *TeamsCheckPermissionsForProjectInOrgNotFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsCheckPermissionsForProjectInOrgNotFound to nil`)
+		return errors.New(`invalid: unable to decode TeamsCheckPermissionsForProjectInOrgNotFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77224,7 +77164,7 @@ func (s TeamsCheckPermissionsForProjectLegacyNotFound) WriteJSON(e *json.Encoder
 // ReadJSON reads TeamsCheckPermissionsForProjectLegacyNotFound from json stream.
 func (s *TeamsCheckPermissionsForProjectLegacyNotFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsCheckPermissionsForProjectLegacyNotFound to nil`)
+		return errors.New(`invalid: unable to decode TeamsCheckPermissionsForProjectLegacyNotFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77246,7 +77186,7 @@ func (s TeamsCheckPermissionsForRepoInOrgNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsCheckPermissionsForRepoInOrgNoContent from json stream.
 func (s *TeamsCheckPermissionsForRepoInOrgNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsCheckPermissionsForRepoInOrgNoContent to nil`)
+		return errors.New(`invalid: unable to decode TeamsCheckPermissionsForRepoInOrgNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77268,7 +77208,7 @@ func (s TeamsCheckPermissionsForRepoInOrgNotFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsCheckPermissionsForRepoInOrgNotFound from json stream.
 func (s *TeamsCheckPermissionsForRepoInOrgNotFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsCheckPermissionsForRepoInOrgNotFound to nil`)
+		return errors.New(`invalid: unable to decode TeamsCheckPermissionsForRepoInOrgNotFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77290,7 +77230,7 @@ func (s TeamsCheckPermissionsForRepoLegacyNoContent) WriteJSON(e *json.Encoder) 
 // ReadJSON reads TeamsCheckPermissionsForRepoLegacyNoContent from json stream.
 func (s *TeamsCheckPermissionsForRepoLegacyNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsCheckPermissionsForRepoLegacyNoContent to nil`)
+		return errors.New(`invalid: unable to decode TeamsCheckPermissionsForRepoLegacyNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77312,7 +77252,7 @@ func (s TeamsCheckPermissionsForRepoLegacyNotFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsCheckPermissionsForRepoLegacyNotFound from json stream.
 func (s *TeamsCheckPermissionsForRepoLegacyNotFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsCheckPermissionsForRepoLegacyNotFound to nil`)
+		return errors.New(`invalid: unable to decode TeamsCheckPermissionsForRepoLegacyNotFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77337,7 +77277,7 @@ func (s TeamsCreateDiscussionCommentInOrgReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsCreateDiscussionCommentInOrgReq from json stream.
 func (s *TeamsCreateDiscussionCommentInOrgReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsCreateDiscussionCommentInOrgReq to nil`)
+		return errors.New(`invalid: unable to decode TeamsCreateDiscussionCommentInOrgReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77368,7 +77308,7 @@ func (s TeamsCreateDiscussionCommentLegacyReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsCreateDiscussionCommentLegacyReq from json stream.
 func (s *TeamsCreateDiscussionCommentLegacyReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsCreateDiscussionCommentLegacyReq to nil`)
+		return errors.New(`invalid: unable to decode TeamsCreateDiscussionCommentLegacyReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77407,7 +77347,7 @@ func (s TeamsCreateDiscussionInOrgReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsCreateDiscussionInOrgReq from json stream.
 func (s *TeamsCreateDiscussionInOrgReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsCreateDiscussionInOrgReq to nil`)
+		return errors.New(`invalid: unable to decode TeamsCreateDiscussionInOrgReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77457,7 +77397,7 @@ func (s TeamsCreateDiscussionLegacyReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsCreateDiscussionLegacyReq from json stream.
 func (s *TeamsCreateDiscussionLegacyReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsCreateDiscussionLegacyReq to nil`)
+		return errors.New(`invalid: unable to decode TeamsCreateDiscussionLegacyReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77508,7 +77448,7 @@ func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) WriteJSON(e *json.Encode
 // ReadJSON reads TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq from json stream.
 func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq to nil`)
+		return errors.New(`invalid: unable to decode TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77551,7 +77491,7 @@ func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem) WriteJSON(e *j
 // ReadJSON reads TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem from json stream.
 func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem to nil`)
+		return errors.New(`invalid: unable to decode TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77606,7 +77546,7 @@ func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) WriteJSON(e *json.Encod
 // ReadJSON reads TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq from json stream.
 func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq to nil`)
+		return errors.New(`invalid: unable to decode TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77669,7 +77609,7 @@ func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem) WriteJSON(e *
 // ReadJSON reads TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem from json stream.
 func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem to nil`)
+		return errors.New(`invalid: unable to decode TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77771,7 +77711,7 @@ func (s TeamsCreateReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsCreateReq from json stream.
 func (s *TeamsCreateReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsCreateReq to nil`)
+		return errors.New(`invalid: unable to decode TeamsCreateReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77844,7 +77784,7 @@ func (s TeamsCreateReqPermission) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsCreateReqPermission from json reader.
 func (s *TeamsCreateReqPermission) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsCreateReqPermission to nil`)
+		return errors.New(`invalid: unable to decode TeamsCreateReqPermission to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -77862,7 +77802,7 @@ func (s TeamsCreateReqPrivacy) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsCreateReqPrivacy from json reader.
 func (s *TeamsCreateReqPrivacy) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsCreateReqPrivacy to nil`)
+		return errors.New(`invalid: unable to decode TeamsCreateReqPrivacy to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -77883,7 +77823,7 @@ func (s TeamsDeleteDiscussionCommentInOrgNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsDeleteDiscussionCommentInOrgNoContent from json stream.
 func (s *TeamsDeleteDiscussionCommentInOrgNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsDeleteDiscussionCommentInOrgNoContent to nil`)
+		return errors.New(`invalid: unable to decode TeamsDeleteDiscussionCommentInOrgNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77905,7 +77845,7 @@ func (s TeamsDeleteDiscussionCommentLegacyNoContent) WriteJSON(e *json.Encoder) 
 // ReadJSON reads TeamsDeleteDiscussionCommentLegacyNoContent from json stream.
 func (s *TeamsDeleteDiscussionCommentLegacyNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsDeleteDiscussionCommentLegacyNoContent to nil`)
+		return errors.New(`invalid: unable to decode TeamsDeleteDiscussionCommentLegacyNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77927,7 +77867,7 @@ func (s TeamsDeleteDiscussionInOrgNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsDeleteDiscussionInOrgNoContent from json stream.
 func (s *TeamsDeleteDiscussionInOrgNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsDeleteDiscussionInOrgNoContent to nil`)
+		return errors.New(`invalid: unable to decode TeamsDeleteDiscussionInOrgNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77949,7 +77889,7 @@ func (s TeamsDeleteDiscussionLegacyNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsDeleteDiscussionLegacyNoContent from json stream.
 func (s *TeamsDeleteDiscussionLegacyNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsDeleteDiscussionLegacyNoContent to nil`)
+		return errors.New(`invalid: unable to decode TeamsDeleteDiscussionLegacyNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77971,7 +77911,7 @@ func (s TeamsDeleteInOrgNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsDeleteInOrgNoContent from json stream.
 func (s *TeamsDeleteInOrgNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsDeleteInOrgNoContent to nil`)
+		return errors.New(`invalid: unable to decode TeamsDeleteInOrgNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -77993,7 +77933,7 @@ func (s TeamsDeleteLegacyNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsDeleteLegacyNoContent from json stream.
 func (s *TeamsDeleteLegacyNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsDeleteLegacyNoContent to nil`)
+		return errors.New(`invalid: unable to decode TeamsDeleteLegacyNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -78015,7 +77955,7 @@ func (s TeamsGetMemberLegacyNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsGetMemberLegacyNoContent from json stream.
 func (s *TeamsGetMemberLegacyNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsGetMemberLegacyNoContent to nil`)
+		return errors.New(`invalid: unable to decode TeamsGetMemberLegacyNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -78037,7 +77977,7 @@ func (s TeamsGetMemberLegacyNotFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsGetMemberLegacyNotFound from json stream.
 func (s *TeamsGetMemberLegacyNotFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsGetMemberLegacyNotFound to nil`)
+		return errors.New(`invalid: unable to decode TeamsGetMemberLegacyNotFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -78059,7 +77999,7 @@ func (s TeamsGetMembershipForUserInOrgNotFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsGetMembershipForUserInOrgNotFound from json stream.
 func (s *TeamsGetMembershipForUserInOrgNotFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsGetMembershipForUserInOrgNotFound to nil`)
+		return errors.New(`invalid: unable to decode TeamsGetMembershipForUserInOrgNotFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -78078,7 +78018,7 @@ func (s TeamsListDiscussionCommentsInOrgDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsListDiscussionCommentsInOrgDirection from json reader.
 func (s *TeamsListDiscussionCommentsInOrgDirection) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsListDiscussionCommentsInOrgDirection to nil`)
+		return errors.New(`invalid: unable to decode TeamsListDiscussionCommentsInOrgDirection to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -78096,7 +78036,7 @@ func (s TeamsListDiscussionCommentsLegacyDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsListDiscussionCommentsLegacyDirection from json reader.
 func (s *TeamsListDiscussionCommentsLegacyDirection) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsListDiscussionCommentsLegacyDirection to nil`)
+		return errors.New(`invalid: unable to decode TeamsListDiscussionCommentsLegacyDirection to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -78114,7 +78054,7 @@ func (s TeamsListDiscussionsInOrgDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsListDiscussionsInOrgDirection from json reader.
 func (s *TeamsListDiscussionsInOrgDirection) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsListDiscussionsInOrgDirection to nil`)
+		return errors.New(`invalid: unable to decode TeamsListDiscussionsInOrgDirection to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -78132,7 +78072,7 @@ func (s TeamsListDiscussionsLegacyDirection) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsListDiscussionsLegacyDirection from json reader.
 func (s *TeamsListDiscussionsLegacyDirection) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsListDiscussionsLegacyDirection to nil`)
+		return errors.New(`invalid: unable to decode TeamsListDiscussionsLegacyDirection to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -78171,7 +78111,7 @@ func (s TeamsListMembersInOrgRole) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsListMembersInOrgRole from json reader.
 func (s *TeamsListMembersInOrgRole) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsListMembersInOrgRole to nil`)
+		return errors.New(`invalid: unable to decode TeamsListMembersInOrgRole to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -78192,7 +78132,7 @@ func (s TeamsListMembersLegacyRole) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsListMembersLegacyRole from json reader.
 func (s *TeamsListMembersLegacyRole) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsListMembersLegacyRole to nil`)
+		return errors.New(`invalid: unable to decode TeamsListMembersLegacyRole to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -78222,7 +78162,7 @@ func (s TeamsRemoveMemberLegacyNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsRemoveMemberLegacyNoContent from json stream.
 func (s *TeamsRemoveMemberLegacyNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsRemoveMemberLegacyNoContent to nil`)
+		return errors.New(`invalid: unable to decode TeamsRemoveMemberLegacyNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -78244,7 +78184,7 @@ func (s TeamsRemoveMemberLegacyNotFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsRemoveMemberLegacyNotFound from json stream.
 func (s *TeamsRemoveMemberLegacyNotFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsRemoveMemberLegacyNotFound to nil`)
+		return errors.New(`invalid: unable to decode TeamsRemoveMemberLegacyNotFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -78266,7 +78206,7 @@ func (s TeamsRemoveMembershipForUserInOrgForbidden) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsRemoveMembershipForUserInOrgForbidden from json stream.
 func (s *TeamsRemoveMembershipForUserInOrgForbidden) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsRemoveMembershipForUserInOrgForbidden to nil`)
+		return errors.New(`invalid: unable to decode TeamsRemoveMembershipForUserInOrgForbidden to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -78288,7 +78228,7 @@ func (s TeamsRemoveMembershipForUserInOrgNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsRemoveMembershipForUserInOrgNoContent from json stream.
 func (s *TeamsRemoveMembershipForUserInOrgNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsRemoveMembershipForUserInOrgNoContent to nil`)
+		return errors.New(`invalid: unable to decode TeamsRemoveMembershipForUserInOrgNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -78310,7 +78250,7 @@ func (s TeamsRemoveMembershipForUserLegacyForbidden) WriteJSON(e *json.Encoder) 
 // ReadJSON reads TeamsRemoveMembershipForUserLegacyForbidden from json stream.
 func (s *TeamsRemoveMembershipForUserLegacyForbidden) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsRemoveMembershipForUserLegacyForbidden to nil`)
+		return errors.New(`invalid: unable to decode TeamsRemoveMembershipForUserLegacyForbidden to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -78332,7 +78272,7 @@ func (s TeamsRemoveMembershipForUserLegacyNoContent) WriteJSON(e *json.Encoder) 
 // ReadJSON reads TeamsRemoveMembershipForUserLegacyNoContent from json stream.
 func (s *TeamsRemoveMembershipForUserLegacyNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsRemoveMembershipForUserLegacyNoContent to nil`)
+		return errors.New(`invalid: unable to decode TeamsRemoveMembershipForUserLegacyNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -78354,7 +78294,7 @@ func (s TeamsRemoveProjectInOrgNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsRemoveProjectInOrgNoContent from json stream.
 func (s *TeamsRemoveProjectInOrgNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsRemoveProjectInOrgNoContent to nil`)
+		return errors.New(`invalid: unable to decode TeamsRemoveProjectInOrgNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -78376,7 +78316,7 @@ func (s TeamsRemoveProjectLegacyNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsRemoveProjectLegacyNoContent from json stream.
 func (s *TeamsRemoveProjectLegacyNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsRemoveProjectLegacyNoContent to nil`)
+		return errors.New(`invalid: unable to decode TeamsRemoveProjectLegacyNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -78398,7 +78338,7 @@ func (s TeamsRemoveRepoInOrgNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsRemoveRepoInOrgNoContent from json stream.
 func (s *TeamsRemoveRepoInOrgNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsRemoveRepoInOrgNoContent to nil`)
+		return errors.New(`invalid: unable to decode TeamsRemoveRepoInOrgNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -78420,7 +78360,7 @@ func (s TeamsRemoveRepoLegacyNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsRemoveRepoLegacyNoContent from json stream.
 func (s *TeamsRemoveRepoLegacyNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsRemoveRepoLegacyNoContent to nil`)
+		return errors.New(`invalid: unable to decode TeamsRemoveRepoLegacyNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -78445,7 +78385,7 @@ func (s TeamsUpdateDiscussionCommentInOrgReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsUpdateDiscussionCommentInOrgReq from json stream.
 func (s *TeamsUpdateDiscussionCommentInOrgReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsUpdateDiscussionCommentInOrgReq to nil`)
+		return errors.New(`invalid: unable to decode TeamsUpdateDiscussionCommentInOrgReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -78476,7 +78416,7 @@ func (s TeamsUpdateDiscussionCommentLegacyReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsUpdateDiscussionCommentLegacyReq from json stream.
 func (s *TeamsUpdateDiscussionCommentLegacyReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsUpdateDiscussionCommentLegacyReq to nil`)
+		return errors.New(`invalid: unable to decode TeamsUpdateDiscussionCommentLegacyReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -78514,7 +78454,7 @@ func (s TeamsUpdateDiscussionInOrgReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsUpdateDiscussionInOrgReq from json stream.
 func (s *TeamsUpdateDiscussionInOrgReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsUpdateDiscussionInOrgReq to nil`)
+		return errors.New(`invalid: unable to decode TeamsUpdateDiscussionInOrgReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -78556,7 +78496,7 @@ func (s TeamsUpdateDiscussionLegacyReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsUpdateDiscussionLegacyReq from json stream.
 func (s *TeamsUpdateDiscussionLegacyReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsUpdateDiscussionLegacyReq to nil`)
+		return errors.New(`invalid: unable to decode TeamsUpdateDiscussionLegacyReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -78613,7 +78553,7 @@ func (s TeamsUpdateInOrgReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsUpdateInOrgReq from json stream.
 func (s *TeamsUpdateInOrgReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsUpdateInOrgReq to nil`)
+		return errors.New(`invalid: unable to decode TeamsUpdateInOrgReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -78657,7 +78597,7 @@ func (s TeamsUpdateInOrgReqPermission) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsUpdateInOrgReqPermission from json reader.
 func (s *TeamsUpdateInOrgReqPermission) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsUpdateInOrgReqPermission to nil`)
+		return errors.New(`invalid: unable to decode TeamsUpdateInOrgReqPermission to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -78675,7 +78615,7 @@ func (s TeamsUpdateInOrgReqPrivacy) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsUpdateInOrgReqPrivacy from json reader.
 func (s *TeamsUpdateInOrgReqPrivacy) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsUpdateInOrgReqPrivacy to nil`)
+		return errors.New(`invalid: unable to decode TeamsUpdateInOrgReqPrivacy to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -78719,7 +78659,7 @@ func (s TeamsUpdateLegacyReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsUpdateLegacyReq from json stream.
 func (s *TeamsUpdateLegacyReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsUpdateLegacyReq to nil`)
+		return errors.New(`invalid: unable to decode TeamsUpdateLegacyReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -78764,7 +78704,7 @@ func (s TeamsUpdateLegacyReqPermission) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsUpdateLegacyReqPermission from json reader.
 func (s *TeamsUpdateLegacyReqPermission) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsUpdateLegacyReqPermission to nil`)
+		return errors.New(`invalid: unable to decode TeamsUpdateLegacyReqPermission to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -78782,7 +78722,7 @@ func (s TeamsUpdateLegacyReqPrivacy) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TeamsUpdateLegacyReqPrivacy from json reader.
 func (s *TeamsUpdateLegacyReqPrivacy) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TeamsUpdateLegacyReqPrivacy to nil`)
+		return errors.New(`invalid: unable to decode TeamsUpdateLegacyReqPrivacy to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -78830,7 +78770,7 @@ func (s Thread) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Thread from json stream.
 func (s *Thread) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Thread to nil`)
+		return errors.New(`invalid: unable to decode Thread to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -78912,7 +78852,7 @@ func (s ThreadSubject) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ThreadSubject from json stream.
 func (s *ThreadSubject) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ThreadSubject to nil`)
+		return errors.New(`invalid: unable to decode ThreadSubject to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -78983,7 +78923,7 @@ func (s ThreadSubscription) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ThreadSubscription from json stream.
 func (s *ThreadSubscription) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ThreadSubscription to nil`)
+		return errors.New(`invalid: unable to decode ThreadSubscription to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -79051,7 +78991,7 @@ func (s Topic) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Topic from json stream.
 func (s *Topic) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Topic to nil`)
+		return errors.New(`invalid: unable to decode Topic to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -79145,7 +79085,7 @@ func (s TopicSearchResultItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TopicSearchResultItem from json stream.
 func (s *TopicSearchResultItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TopicSearchResultItem to nil`)
+		return errors.New(`invalid: unable to decode TopicSearchResultItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -79218,9 +79158,7 @@ func (s *TopicSearchResultItem) ReadJSON(d *json.Decoder) error {
 		case "text_matches":
 			s.TextMatches = nil
 			var elem SearchResultTextMatches
-			if err := fmt.Errorf(`decoding of "SearchResultTextMatches" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "SearchResultTextMatches" (alias) is not implemented`)
 			s.TextMatches = &elem
 		case "related":
 			s.Related.Reset()
@@ -79255,7 +79193,7 @@ func (s TopicSearchResultItemAliasesItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TopicSearchResultItemAliasesItem from json stream.
 func (s *TopicSearchResultItemAliasesItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TopicSearchResultItemAliasesItem to nil`)
+		return errors.New(`invalid: unable to decode TopicSearchResultItemAliasesItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -79302,7 +79240,7 @@ func (s TopicSearchResultItemAliasesItemTopicRelation) WriteJSON(e *json.Encoder
 // ReadJSON reads TopicSearchResultItemAliasesItemTopicRelation from json stream.
 func (s *TopicSearchResultItemAliasesItemTopicRelation) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TopicSearchResultItemAliasesItemTopicRelation to nil`)
+		return errors.New(`invalid: unable to decode TopicSearchResultItemAliasesItemTopicRelation to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -79349,7 +79287,7 @@ func (s TopicSearchResultItemRelatedItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads TopicSearchResultItemRelatedItem from json stream.
 func (s *TopicSearchResultItemRelatedItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TopicSearchResultItemRelatedItem to nil`)
+		return errors.New(`invalid: unable to decode TopicSearchResultItemRelatedItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -79396,7 +79334,7 @@ func (s TopicSearchResultItemRelatedItemTopicRelation) WriteJSON(e *json.Encoder
 // ReadJSON reads TopicSearchResultItemRelatedItemTopicRelation from json stream.
 func (s *TopicSearchResultItemRelatedItemTopicRelation) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode TopicSearchResultItemRelatedItemTopicRelation to nil`)
+		return errors.New(`invalid: unable to decode TopicSearchResultItemRelatedItemTopicRelation to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -79447,7 +79385,7 @@ func (s Traffic) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Traffic from json stream.
 func (s *Traffic) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Traffic to nil`)
+		return errors.New(`invalid: unable to decode Traffic to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -79511,7 +79449,7 @@ func (s UserMarketplacePurchase) WriteJSON(e *json.Encoder) {
 // ReadJSON reads UserMarketplacePurchase from json stream.
 func (s *UserMarketplacePurchase) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode UserMarketplacePurchase to nil`)
+		return errors.New(`invalid: unable to decode UserMarketplacePurchase to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -79701,7 +79639,7 @@ func (s UserSearchResultItem) WriteJSON(e *json.Encoder) {
 // ReadJSON reads UserSearchResultItem from json stream.
 func (s *UserSearchResultItem) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode UserSearchResultItem to nil`)
+		return errors.New(`invalid: unable to decode UserSearchResultItem to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -79875,9 +79813,7 @@ func (s *UserSearchResultItem) ReadJSON(d *json.Decoder) error {
 		case "text_matches":
 			s.TextMatches = nil
 			var elem SearchResultTextMatches
-			if err := fmt.Errorf(`decoding of "SearchResultTextMatches" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "SearchResultTextMatches" (alias) is not implemented`)
 			s.TextMatches = &elem
 		case "blog":
 			s.Blog.Reset()
@@ -79912,7 +79848,7 @@ func (s UsersBlockNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads UsersBlockNoContent from json stream.
 func (s *UsersBlockNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode UsersBlockNoContent to nil`)
+		return errors.New(`invalid: unable to decode UsersBlockNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -79943,7 +79879,7 @@ func (s UsersCheckBlockedNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads UsersCheckBlockedNoContent from json stream.
 func (s *UsersCheckBlockedNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode UsersCheckBlockedNoContent to nil`)
+		return errors.New(`invalid: unable to decode UsersCheckBlockedNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -79965,7 +79901,7 @@ func (s UsersCheckFollowingForUserNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads UsersCheckFollowingForUserNoContent from json stream.
 func (s *UsersCheckFollowingForUserNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode UsersCheckFollowingForUserNoContent to nil`)
+		return errors.New(`invalid: unable to decode UsersCheckFollowingForUserNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -79987,7 +79923,7 @@ func (s UsersCheckFollowingForUserNotFound) WriteJSON(e *json.Encoder) {
 // ReadJSON reads UsersCheckFollowingForUserNotFound from json stream.
 func (s *UsersCheckFollowingForUserNotFound) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode UsersCheckFollowingForUserNotFound to nil`)
+		return errors.New(`invalid: unable to decode UsersCheckFollowingForUserNotFound to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -80025,7 +79961,7 @@ func (s UsersCheckPersonIsFollowedByAuthenticatedNoContent) WriteJSON(e *json.En
 // ReadJSON reads UsersCheckPersonIsFollowedByAuthenticatedNoContent from json stream.
 func (s *UsersCheckPersonIsFollowedByAuthenticatedNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode UsersCheckPersonIsFollowedByAuthenticatedNoContent to nil`)
+		return errors.New(`invalid: unable to decode UsersCheckPersonIsFollowedByAuthenticatedNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -80050,7 +79986,7 @@ func (s UsersCreateGpgKeyForAuthenticatedReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads UsersCreateGpgKeyForAuthenticatedReq from json stream.
 func (s *UsersCreateGpgKeyForAuthenticatedReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode UsersCreateGpgKeyForAuthenticatedReq to nil`)
+		return errors.New(`invalid: unable to decode UsersCreateGpgKeyForAuthenticatedReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -80086,7 +80022,7 @@ func (s UsersCreatePublicSSHKeyForAuthenticatedReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads UsersCreatePublicSSHKeyForAuthenticatedReq from json stream.
 func (s *UsersCreatePublicSSHKeyForAuthenticatedReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode UsersCreatePublicSSHKeyForAuthenticatedReq to nil`)
+		return errors.New(`invalid: unable to decode UsersCreatePublicSSHKeyForAuthenticatedReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -80119,7 +80055,7 @@ func (s UsersDeleteGpgKeyForAuthenticatedNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads UsersDeleteGpgKeyForAuthenticatedNoContent from json stream.
 func (s *UsersDeleteGpgKeyForAuthenticatedNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode UsersDeleteGpgKeyForAuthenticatedNoContent to nil`)
+		return errors.New(`invalid: unable to decode UsersDeleteGpgKeyForAuthenticatedNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -80157,7 +80093,7 @@ func (s UsersDeletePublicSSHKeyForAuthenticatedNoContent) WriteJSON(e *json.Enco
 // ReadJSON reads UsersDeletePublicSSHKeyForAuthenticatedNoContent from json stream.
 func (s *UsersDeletePublicSSHKeyForAuthenticatedNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode UsersDeletePublicSSHKeyForAuthenticatedNoContent to nil`)
+		return errors.New(`invalid: unable to decode UsersDeletePublicSSHKeyForAuthenticatedNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -80188,7 +80124,7 @@ func (s UsersFollowNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads UsersFollowNoContent from json stream.
 func (s *UsersFollowNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode UsersFollowNoContent to nil`)
+		return errors.New(`invalid: unable to decode UsersFollowNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -80218,11 +80154,11 @@ func (s UsersGetAuthenticatedOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads value from json reader.
 func (s *UsersGetAuthenticatedOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode UsersGetAuthenticatedOK to nil`)
+		return errors.New(`invalid: unable to decode UsersGetAuthenticatedOK to nil`)
 	}
 	// Sum type fields.
 	if d.Next() != json.Object {
-		return fmt.Errorf("unexpected json type %q", d.Next())
+		return errors.Errorf("unexpected json type %q", d.Next())
 	}
 	var found bool
 	if err := d.Capture(func(d *json.Decoder) error {
@@ -80361,10 +80297,10 @@ func (s *UsersGetAuthenticatedOK) ReadJSON(d *json.Decoder) error {
 			return d.Skip()
 		})
 	}); err != nil {
-		return fmt.Errorf("capture: %w", err)
+		return errors.Wrap(err, "capture")
 	}
 	if !found {
-		return fmt.Errorf("unable to detect sum type variant")
+		return errors.New("unable to detect sum type variant")
 	}
 	switch s.Type {
 	case PrivateUserUsersGetAuthenticatedOK:
@@ -80376,7 +80312,7 @@ func (s *UsersGetAuthenticatedOK) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 	default:
-		return fmt.Errorf("inferred invalid type: %s", s.Type)
+		return errors.Errorf("inferred invalid type: %s", s.Type)
 	}
 	return nil
 }
@@ -80394,11 +80330,11 @@ func (s UsersGetByUsernameOK) WriteJSON(e *json.Encoder) {
 // ReadJSON reads value from json reader.
 func (s *UsersGetByUsernameOK) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode UsersGetByUsernameOK to nil`)
+		return errors.New(`invalid: unable to decode UsersGetByUsernameOK to nil`)
 	}
 	// Sum type fields.
 	if d.Next() != json.Object {
-		return fmt.Errorf("unexpected json type %q", d.Next())
+		return errors.Errorf("unexpected json type %q", d.Next())
 	}
 	var found bool
 	if err := d.Capture(func(d *json.Decoder) error {
@@ -80537,10 +80473,10 @@ func (s *UsersGetByUsernameOK) ReadJSON(d *json.Decoder) error {
 			return d.Skip()
 		})
 	}); err != nil {
-		return fmt.Errorf("capture: %w", err)
+		return errors.Wrap(err, "capture")
 	}
 	if !found {
-		return fmt.Errorf("unable to detect sum type variant")
+		return errors.New("unable to detect sum type variant")
 	}
 	switch s.Type {
 	case PrivateUserUsersGetByUsernameOK:
@@ -80552,7 +80488,7 @@ func (s *UsersGetByUsernameOK) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 	default:
-		return fmt.Errorf("inferred invalid type: %s", s.Type)
+		return errors.Errorf("inferred invalid type: %s", s.Type)
 	}
 	return nil
 }
@@ -80565,7 +80501,7 @@ func (s UsersGetContextForUserSubjectType) WriteJSON(e *json.Encoder) {
 // ReadJSON reads UsersGetContextForUserSubjectType from json reader.
 func (s *UsersGetContextForUserSubjectType) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode UsersGetContextForUserSubjectType to nil`)
+		return errors.New(`invalid: unable to decode UsersGetContextForUserSubjectType to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -80744,7 +80680,7 @@ func (s UsersSetPrimaryEmailVisibilityForAuthenticatedReq) WriteJSON(e *json.Enc
 // ReadJSON reads UsersSetPrimaryEmailVisibilityForAuthenticatedReq from json stream.
 func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode UsersSetPrimaryEmailVisibilityForAuthenticatedReq to nil`)
+		return errors.New(`invalid: unable to decode UsersSetPrimaryEmailVisibilityForAuthenticatedReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -80767,7 +80703,7 @@ func (s UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility) WriteJSON(e
 // ReadJSON reads UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility from json reader.
 func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility to nil`)
+		return errors.New(`invalid: unable to decode UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {
@@ -80797,7 +80733,7 @@ func (s UsersUnblockNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads UsersUnblockNoContent from json stream.
 func (s *UsersUnblockNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode UsersUnblockNoContent to nil`)
+		return errors.New(`invalid: unable to decode UsersUnblockNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -80828,7 +80764,7 @@ func (s UsersUnfollowNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads UsersUnfollowNoContent from json stream.
 func (s *UsersUnfollowNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode UsersUnfollowNoContent to nil`)
+		return errors.New(`invalid: unable to decode UsersUnfollowNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -80890,7 +80826,7 @@ func (s UsersUpdateAuthenticatedReq) WriteJSON(e *json.Encoder) {
 // ReadJSON reads UsersUpdateAuthenticatedReq from json stream.
 func (s *UsersUpdateAuthenticatedReq) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode UsersUpdateAuthenticatedReq to nil`)
+		return errors.New(`invalid: unable to decode UsersUpdateAuthenticatedReq to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -80970,7 +80906,7 @@ func (s ValidationErrorSimple) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ValidationErrorSimple from json stream.
 func (s *ValidationErrorSimple) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ValidationErrorSimple to nil`)
+		return errors.New(`invalid: unable to decode ValidationErrorSimple to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -81030,7 +80966,7 @@ func (s Verification) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Verification from json stream.
 func (s *Verification) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Verification to nil`)
+		return errors.New(`invalid: unable to decode Verification to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -81088,7 +81024,7 @@ func (s ViewTraffic) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ViewTraffic from json stream.
 func (s *ViewTraffic) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ViewTraffic to nil`)
+		return errors.New(`invalid: unable to decode ViewTraffic to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -81157,7 +81093,7 @@ func (s WebhookConfig) WriteJSON(e *json.Encoder) {
 // ReadJSON reads WebhookConfig from json stream.
 func (s *WebhookConfig) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode WebhookConfig to nil`)
+		return errors.New(`invalid: unable to decode WebhookConfig to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -81206,7 +81142,7 @@ func (s WebhookConfigInsecureSsl) WriteJSON(e *json.Encoder) {
 // ReadJSON reads value from json reader.
 func (s *WebhookConfigInsecureSsl) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode WebhookConfigInsecureSsl to nil`)
+		return errors.New(`invalid: unable to decode WebhookConfigInsecureSsl to nil`)
 	}
 	// Sum type primitive.
 	switch t := d.Next(); t {
@@ -81225,7 +81161,7 @@ func (s *WebhookConfigInsecureSsl) ReadJSON(d *json.Decoder) error {
 		}
 		s.Type = Float64WebhookConfigInsecureSsl
 	default:
-		return fmt.Errorf("unexpected json type %q", t)
+		return errors.Errorf("unexpected json type %q", t)
 	}
 	return nil
 }
@@ -81282,7 +81218,7 @@ func (s Workflow) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Workflow from json stream.
 func (s *Workflow) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Workflow to nil`)
+		return errors.New(`invalid: unable to decode Workflow to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -81480,7 +81416,7 @@ func (s WorkflowRun) WriteJSON(e *json.Encoder) {
 // ReadJSON reads WorkflowRun from json stream.
 func (s *WorkflowRun) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode WorkflowRun to nil`)
+		return errors.New(`invalid: unable to decode WorkflowRun to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -81678,7 +81614,7 @@ func (s WorkflowRunUsage) WriteJSON(e *json.Encoder) {
 // ReadJSON reads WorkflowRunUsage from json stream.
 func (s *WorkflowRunUsage) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode WorkflowRunUsage to nil`)
+		return errors.New(`invalid: unable to decode WorkflowRunUsage to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -81724,7 +81660,7 @@ func (s WorkflowRunUsageBillable) WriteJSON(e *json.Encoder) {
 // ReadJSON reads WorkflowRunUsageBillable from json stream.
 func (s *WorkflowRunUsageBillable) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode WorkflowRunUsageBillable to nil`)
+		return errors.New(`invalid: unable to decode WorkflowRunUsageBillable to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -81767,7 +81703,7 @@ func (s WorkflowRunUsageBillableMACOS) WriteJSON(e *json.Encoder) {
 // ReadJSON reads WorkflowRunUsageBillableMACOS from json stream.
 func (s *WorkflowRunUsageBillableMACOS) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode WorkflowRunUsageBillableMACOS to nil`)
+		return errors.New(`invalid: unable to decode WorkflowRunUsageBillableMACOS to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -81807,7 +81743,7 @@ func (s WorkflowRunUsageBillableUBUNTU) WriteJSON(e *json.Encoder) {
 // ReadJSON reads WorkflowRunUsageBillableUBUNTU from json stream.
 func (s *WorkflowRunUsageBillableUBUNTU) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode WorkflowRunUsageBillableUBUNTU to nil`)
+		return errors.New(`invalid: unable to decode WorkflowRunUsageBillableUBUNTU to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -81847,7 +81783,7 @@ func (s WorkflowRunUsageBillableWINDOWS) WriteJSON(e *json.Encoder) {
 // ReadJSON reads WorkflowRunUsageBillableWINDOWS from json stream.
 func (s *WorkflowRunUsageBillableWINDOWS) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode WorkflowRunUsageBillableWINDOWS to nil`)
+		return errors.New(`invalid: unable to decode WorkflowRunUsageBillableWINDOWS to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -81878,7 +81814,7 @@ func (s WorkflowState) WriteJSON(e *json.Encoder) {
 // ReadJSON reads WorkflowState from json reader.
 func (s *WorkflowState) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode WorkflowState to nil`)
+		return errors.New(`invalid: unable to decode WorkflowState to nil`)
 	}
 	v, err := d.Str()
 	if err != nil {

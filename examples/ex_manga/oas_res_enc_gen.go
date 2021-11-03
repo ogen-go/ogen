@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -72,7 +72,7 @@ func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter, span trac
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -80,7 +80,7 @@ func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter, span trac
 		w.WriteHeader(403)
 		return nil
 	default:
-		return fmt.Errorf("/api/gallery/{book_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/api/gallery/{book_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -89,12 +89,12 @@ func encodeGetPageCoverImageResponse(response GetPageCoverImageRes, w http.Respo
 	case *GetPageCoverImageOKImage:
 		w.Header().Set("Content-Type", "image/*")
 		w.WriteHeader(200)
-		return fmt.Errorf("image/* encoder not implemented")
+		return errors.New(`image/* encoder not implemented`)
 	case *GetPageCoverImageForbidden:
 		w.WriteHeader(403)
 		return nil
 	default:
-		return fmt.Errorf("/galleries/{media_id}/cover.{format}: unexpected response type: %T", response)
+		return errors.Errorf(`/galleries/{media_id}/cover.{format}: unexpected response type: %T`, response)
 	}
 }
 
@@ -103,12 +103,12 @@ func encodeGetPageImageResponse(response GetPageImageRes, w http.ResponseWriter,
 	case *GetPageImageOKImage:
 		w.Header().Set("Content-Type", "image/*")
 		w.WriteHeader(200)
-		return fmt.Errorf("image/* encoder not implemented")
+		return errors.New(`image/* encoder not implemented`)
 	case *GetPageImageForbidden:
 		w.WriteHeader(403)
 		return nil
 	default:
-		return fmt.Errorf("/galleries/{media_id}/{page}.{format}: unexpected response type: %T", response)
+		return errors.Errorf(`/galleries/{media_id}/{page}.{format}: unexpected response type: %T`, response)
 	}
 }
 
@@ -117,12 +117,12 @@ func encodeGetPageThumbnailImageResponse(response GetPageThumbnailImageRes, w ht
 	case *GetPageThumbnailImageOKImage:
 		w.Header().Set("Content-Type", "image/*")
 		w.WriteHeader(200)
-		return fmt.Errorf("image/* encoder not implemented")
+		return errors.New(`image/* encoder not implemented`)
 	case *GetPageThumbnailImageForbidden:
 		w.WriteHeader(403)
 		return nil
 	default:
-		return fmt.Errorf("/galleries/{media_id}/{page}t.{format}: unexpected response type: %T", response)
+		return errors.Errorf(`/galleries/{media_id}/{page}t.{format}: unexpected response type: %T`, response)
 	}
 }
 
@@ -137,7 +137,7 @@ func encodeSearchResponse(response SearchRes, w http.ResponseWriter, span trace.
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -145,7 +145,7 @@ func encodeSearchResponse(response SearchRes, w http.ResponseWriter, span trace.
 		w.WriteHeader(403)
 		return nil
 	default:
-		return fmt.Errorf("/api/galleries/search: unexpected response type: %T", response)
+		return errors.Errorf(`/api/galleries/search: unexpected response type: %T`, response)
 	}
 }
 
@@ -160,7 +160,7 @@ func encodeSearchByTagIDResponse(response SearchByTagIDRes, w http.ResponseWrite
 		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -168,6 +168,6 @@ func encodeSearchByTagIDResponse(response SearchByTagIDRes, w http.ResponseWrite
 		w.WriteHeader(403)
 		return nil
 	default:
-		return fmt.Errorf("/api/galleries/tagged: unexpected response type: %T", response)
+		return errors.Errorf(`/api/galleries/tagged: unexpected response type: %T`, response)
 	}
 }

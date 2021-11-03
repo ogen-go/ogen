@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -87,11 +87,11 @@ func decodeFoobarPostRequest(r *http.Request, span trace.Span) (req Pet, err err
 			}
 			return nil
 		}(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -122,15 +122,15 @@ func decodePetCreateRequest(r *http.Request, span trace.Span) (req PetCreateReq,
 			}
 			return nil
 		}(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
+			return req, errors.Wrap(err, "validate")
 		}
 		return &request, nil
 	case "text/plain":
 		var request PetCreateReqTextPlain
 		_ = request
-		return req, fmt.Errorf("text/plain decoder not implemented")
+		return req, errors.New("text/plain decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -148,9 +148,7 @@ func decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (req 
 		defer json.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := fmt.Errorf(`decoding of "PetName" (alias) is not implemented`); err != nil {
-				return err
-			}
+			return errors.New(`decoding of "PetName" (alias) is not implemented`)
 			return nil
 		}(); err != nil {
 			return req, err
@@ -172,11 +170,11 @@ func decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -217,10 +215,10 @@ func decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req strin
 			}
 			return nil
 		}(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }

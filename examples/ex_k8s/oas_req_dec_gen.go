@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -71,9 +71,9 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationRequest(r *h
 	case "*/*":
 		var request IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -88,9 +88,9 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest(r 
 	case "*/*":
 		var request IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -105,9 +105,9 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionRequest(r *http.Request,
 	case "*/*":
 		var request IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -122,9 +122,9 @@ func decodeCreateApiregistrationV1APIServiceRequest(r *http.Request, span trace.
 	case "*/*":
 		var request IoK8sKubeAggregatorPkgApisApiregistrationV1APIService
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -139,9 +139,9 @@ func decodeCreateAuthenticationV1TokenReviewRequest(r *http.Request, span trace.
 	case "*/*":
 		var request IoK8sAPIAuthenticationV1TokenReview
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -156,9 +156,9 @@ func decodeCreateAuthorizationV1SelfSubjectAccessReviewRequest(r *http.Request, 
 	case "*/*":
 		var request IoK8sAPIAuthorizationV1SelfSubjectAccessReview
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -173,9 +173,9 @@ func decodeCreateAuthorizationV1SelfSubjectRulesReviewRequest(r *http.Request, s
 	case "*/*":
 		var request IoK8sAPIAuthorizationV1SelfSubjectRulesReview
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -190,9 +190,9 @@ func decodeCreateAuthorizationV1SubjectAccessReviewRequest(r *http.Request, span
 	case "*/*":
 		var request IoK8sAPIAuthorizationV1SubjectAccessReview
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -207,9 +207,9 @@ func decodeCreateCertificatesV1CertificateSigningRequestRequest(r *http.Request,
 	case "*/*":
 		var request IoK8sAPICertificatesV1CertificateSigningRequest
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -224,9 +224,9 @@ func decodeCreateCoreV1NamespaceRequest(r *http.Request, span trace.Span) (req I
 	case "*/*":
 		var request IoK8sAPICoreV1Namespace
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -241,9 +241,9 @@ func decodeCreateCoreV1NodeRequest(r *http.Request, span trace.Span) (req IoK8sA
 	case "*/*":
 		var request IoK8sAPICoreV1Node
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -258,9 +258,9 @@ func decodeCreateCoreV1PersistentVolumeRequest(r *http.Request, span trace.Span)
 	case "*/*":
 		var request IoK8sAPICoreV1PersistentVolume
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -275,9 +275,9 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaRequest(r *http.Request, s
 	case "*/*":
 		var request IoK8sAPIFlowcontrolV1beta1FlowSchema
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -292,9 +292,9 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(r 
 	case "*/*":
 		var request IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -309,9 +309,9 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaRequest(r *http.Request, s
 	case "*/*":
 		var request IoK8sAPIFlowcontrolV1beta2FlowSchema
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -326,9 +326,9 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(r 
 	case "*/*":
 		var request IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -343,9 +343,9 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionRequest(r *http.Request,
 	case "*/*":
 		var request IoK8sAPIApiserverinternalV1alpha1StorageVersion
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -360,9 +360,9 @@ func decodeCreateNetworkingV1IngressClassRequest(r *http.Request, span trace.Spa
 	case "*/*":
 		var request IoK8sAPINetworkingV1IngressClass
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -377,9 +377,9 @@ func decodeCreateNodeV1RuntimeClassRequest(r *http.Request, span trace.Span) (re
 	case "*/*":
 		var request IoK8sAPINodeV1RuntimeClass
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -394,9 +394,9 @@ func decodeCreateNodeV1alpha1RuntimeClassRequest(r *http.Request, span trace.Spa
 	case "*/*":
 		var request IoK8sAPINodeV1alpha1RuntimeClass
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -411,9 +411,9 @@ func decodeCreateNodeV1beta1RuntimeClassRequest(r *http.Request, span trace.Span
 	case "*/*":
 		var request IoK8sAPINodeV1beta1RuntimeClass
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -428,9 +428,9 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyRequest(r *http.Request, span tra
 	case "*/*":
 		var request IoK8sAPIPolicyV1beta1PodSecurityPolicy
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -445,9 +445,9 @@ func decodeCreateRbacAuthorizationV1ClusterRoleRequest(r *http.Request, span tra
 	case "*/*":
 		var request IoK8sAPIRbacV1ClusterRole
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -462,9 +462,9 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingRequest(r *http.Request, s
 	case "*/*":
 		var request IoK8sAPIRbacV1ClusterRoleBinding
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -479,9 +479,9 @@ func decodeCreateSchedulingV1PriorityClassRequest(r *http.Request, span trace.Sp
 	case "*/*":
 		var request IoK8sAPISchedulingV1PriorityClass
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -496,9 +496,9 @@ func decodeCreateStorageV1CSIDriverRequest(r *http.Request, span trace.Span) (re
 	case "*/*":
 		var request IoK8sAPIStorageV1CSIDriver
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -513,9 +513,9 @@ func decodeCreateStorageV1CSINodeRequest(r *http.Request, span trace.Span) (req 
 	case "*/*":
 		var request IoK8sAPIStorageV1CSINode
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -530,9 +530,9 @@ func decodeCreateStorageV1StorageClassRequest(r *http.Request, span trace.Span) 
 	case "*/*":
 		var request IoK8sAPIStorageV1StorageClass
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -547,9 +547,9 @@ func decodeCreateStorageV1VolumeAttachmentRequest(r *http.Request, span trace.Sp
 	case "*/*":
 		var request IoK8sAPIStorageV1VolumeAttachment
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -564,9 +564,9 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRe
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -581,9 +581,9 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -598,9 +598,9 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionRequest(r *htt
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -615,9 +615,9 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceRequest(r *http.Request, s
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -632,9 +632,9 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestRequest(r *htt
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -649,9 +649,9 @@ func decodeDeleteCoreV1CollectionNodeRequest(r *http.Request, span trace.Span) (
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -666,9 +666,9 @@ func decodeDeleteCoreV1CollectionPersistentVolumeRequest(r *http.Request, span t
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -683,9 +683,9 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRequest(r *http.
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -700,9 +700,9 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -717,9 +717,9 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRequest(r *http.
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -734,9 +734,9 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -751,9 +751,9 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionRequest(r *htt
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -768,9 +768,9 @@ func decodeDeleteNetworkingV1CollectionIngressClassRequest(r *http.Request, span
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -785,9 +785,9 @@ func decodeDeleteNodeV1CollectionRuntimeClassRequest(r *http.Request, span trace
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -802,9 +802,9 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassRequest(r *http.Request, span
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -819,9 +819,9 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassRequest(r *http.Request, span 
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -836,9 +836,9 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyRequest(r *http.Request
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -853,9 +853,9 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleRequest(r *http.Request
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -870,9 +870,9 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingRequest(r *http.
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -887,9 +887,9 @@ func decodeDeleteSchedulingV1CollectionPriorityClassRequest(r *http.Request, spa
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -904,9 +904,9 @@ func decodeDeleteStorageV1CollectionCSIDriverRequest(r *http.Request, span trace
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -921,9 +921,9 @@ func decodeDeleteStorageV1CollectionCSINodeRequest(r *http.Request, span trace.S
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -938,9 +938,9 @@ func decodeDeleteStorageV1CollectionStorageClassRequest(r *http.Request, span tr
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -955,8 +955,8 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentRequest(r *http.Request, spa
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
 		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
+		return req, errors.New("*/* decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }

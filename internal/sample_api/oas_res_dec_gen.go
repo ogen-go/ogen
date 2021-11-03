@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -87,12 +87,12 @@ func decodeFoobarGetResponse(resp *http.Response, span trace.Span) (res FoobarGe
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 404:
 		return &NotFound{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -123,7 +123,7 @@ func decodeFoobarPostResponse(resp *http.Response, span trace.Span) (res FoobarP
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 404:
 		return &NotFound{}, nil
@@ -147,7 +147,7 @@ func decodeFoobarPostResponse(resp *http.Response, span trace.Span) (res FoobarP
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -192,10 +192,10 @@ func decodePetCreateResponse(resp *http.Response, span trace.Span) (res Pet, err
 
 			return response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -236,10 +236,10 @@ func decodePetFriendsNamesByIDResponse(resp *http.Response, span trace.Span) (re
 
 			return response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -270,7 +270,7 @@ func decodePetGetResponse(resp *http.Response, span trace.Span) (res PetGetRes, 
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -292,7 +292,7 @@ func decodePetGetResponse(resp *http.Response, span trace.Span) (res PetGetRes, 
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -324,10 +324,10 @@ func decodePetGetByNameResponse(resp *http.Response, span trace.Span) (res Pet, 
 
 			return response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -360,10 +360,10 @@ func decodePetNameByIDResponse(resp *http.Response, span trace.Span) (res string
 
 			return response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 

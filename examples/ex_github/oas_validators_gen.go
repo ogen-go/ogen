@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -172,7 +172,7 @@ func (s ActionsListArtifactsForRepoOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Artifacts == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Artifacts // validation expected, but not supported
 		return nil
@@ -191,7 +191,7 @@ func (s ActionsListEnvironmentSecretsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Secrets == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Secrets // validation expected, but not supported
 		return nil
@@ -210,7 +210,7 @@ func (s ActionsListJobsForWorkflowRunOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Jobs == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Jobs {
@@ -245,7 +245,7 @@ func (s ActionsListOrgSecretsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Secrets == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Secrets {
@@ -280,7 +280,7 @@ func (s ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Repositories == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Repositories // validation expected, but not supported
 		return nil
@@ -299,7 +299,7 @@ func (s ActionsListRepoSecretsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Secrets == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Secrets // validation expected, but not supported
 		return nil
@@ -318,7 +318,7 @@ func (s ActionsListRepoWorkflowsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Workflows == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Workflows {
@@ -353,7 +353,7 @@ func (s ActionsListSelectedReposForOrgSecretOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Repositories == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Repositories // validation expected, but not supported
 		return nil
@@ -372,7 +372,7 @@ func (s ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) Valid
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Repositories == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Repositories // validation expected, but not supported
 		return nil
@@ -391,7 +391,7 @@ func (s ActionsListSelfHostedRunnerGroupsForOrgOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.RunnerGroups == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.RunnerGroups // validation expected, but not supported
 		return nil
@@ -410,7 +410,7 @@ func (s ActionsListSelfHostedRunnersForOrgOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Runners == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Runners {
@@ -445,7 +445,7 @@ func (s ActionsListSelfHostedRunnersForRepoOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Runners == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Runners {
@@ -480,7 +480,7 @@ func (s ActionsListSelfHostedRunnersInGroupForOrgOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Runners == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Runners {
@@ -515,7 +515,7 @@ func (s ActionsListWorkflowRunArtifactsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Artifacts == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Artifacts // validation expected, but not supported
 		return nil
@@ -534,7 +534,7 @@ func (s ActionsListWorkflowRunsForRepoOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.WorkflowRuns == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.WorkflowRuns // validation expected, but not supported
 		return nil
@@ -594,7 +594,7 @@ func (s ActionsReviewPendingDeploymentsForRunReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.EnvironmentIds == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.EnvironmentIds // validation expected, but not supported
 		return nil
@@ -663,7 +663,7 @@ func (s ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.SelectedRepositoryIds == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.SelectedRepositoryIds // validation expected, but not supported
 		return nil
@@ -682,7 +682,7 @@ func (s ActionsSetSelectedReposForOrgSecretReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.SelectedRepositoryIds == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.SelectedRepositoryIds // validation expected, but not supported
 		return nil
@@ -701,7 +701,7 @@ func (s ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) Valid
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.SelectedRepositoryIds == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.SelectedRepositoryIds // validation expected, but not supported
 		return nil
@@ -720,7 +720,7 @@ func (s ActionsSetSelfHostedRunnersInGroupForOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Runners == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Runners // validation expected, but not supported
 		return nil
@@ -1056,7 +1056,7 @@ func (s ApplicationGrant) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Scopes == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Scopes // validation expected, but not supported
 		return nil
@@ -1139,7 +1139,7 @@ func (s AppsListInstallationReposForAuthenticatedUserOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Repositories == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Repositories // validation expected, but not supported
 		return nil
@@ -1164,7 +1164,7 @@ func (s AppsListReposAccessibleToInstallationOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Repositories == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Repositories // validation expected, but not supported
 		return nil
@@ -1287,7 +1287,7 @@ func (s BranchProtectionRequiredStatusChecks) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Contexts == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Contexts // validation expected, but not supported
 		return nil
@@ -1306,7 +1306,7 @@ func (s BranchRestrictionPolicy) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Users == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Users // validation expected, but not supported
 		return nil
@@ -1318,7 +1318,7 @@ func (s BranchRestrictionPolicy) Validate() error {
 	}
 	if err := func() error {
 		if s.Teams == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Teams // validation expected, but not supported
 		return nil
@@ -1330,7 +1330,7 @@ func (s BranchRestrictionPolicy) Validate() error {
 	}
 	if err := func() error {
 		if s.Apps == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Apps // validation expected, but not supported
 		return nil
@@ -1461,7 +1461,7 @@ func (s ChecksListForRefOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.CheckRuns == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.CheckRuns {
@@ -1496,7 +1496,7 @@ func (s ChecksListForSuiteOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.CheckRuns == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.CheckRuns {
@@ -1531,7 +1531,7 @@ func (s ChecksListSuitesForRefOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.CheckSuites == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.CheckSuites {
@@ -1566,7 +1566,7 @@ func (s CloneTraffic) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Clones == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Clones // validation expected, but not supported
 		return nil
@@ -1901,7 +1901,7 @@ func (s CombinedCommitStatus) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Statuses == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Statuses // validation expected, but not supported
 		return nil
@@ -1920,7 +1920,7 @@ func (s Commit) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Parents == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Parents // validation expected, but not supported
 		return nil
@@ -1939,7 +1939,7 @@ func (s CommitActivity) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Days == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Days // validation expected, but not supported
 		return nil
@@ -2005,7 +2005,7 @@ func (s CommitComparison) Validate() error {
 	}
 	if err := func() error {
 		if s.Commits == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Commits {
@@ -2065,7 +2065,7 @@ func (s CommitSearchResultItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Parents == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Parents // validation expected, but not supported
 		return nil
@@ -2138,7 +2138,7 @@ func (s ContributorActivity) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Weeks == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Weeks // validation expected, but not supported
 		return nil
@@ -2275,7 +2275,7 @@ func (s EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) Valid
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Organizations == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Organizations // validation expected, but not supported
 		return nil
@@ -2294,7 +2294,7 @@ func (s EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Organizations == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Organizations // validation expected, but not supported
 		return nil
@@ -2313,7 +2313,7 @@ func (s EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) Validate() err
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.RunnerGroups == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.RunnerGroups // validation expected, but not supported
 		return nil
@@ -2364,7 +2364,7 @@ func (s EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) Validate() e
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Runners == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Runners {
@@ -2399,7 +2399,7 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Schemas // validation expected, but not supported
 		return nil
@@ -2418,7 +2418,7 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Schemas // validation expected, but not supported
 		return nil
@@ -2430,7 +2430,7 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReq) Validate() error {
 	}
 	if err := func() error {
 		if s.Emails == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Emails // validation expected, but not supported
 		return nil
@@ -2474,7 +2474,7 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) Validate(
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Schemas // validation expected, but not supported
 		return nil
@@ -2493,7 +2493,7 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) Validate()
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Schemas // validation expected, but not supported
 		return nil
@@ -2505,7 +2505,7 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) Validate()
 	}
 	if err := func() error {
 		if s.Emails == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Emails // validation expected, but not supported
 		return nil
@@ -2524,7 +2524,7 @@ func (s EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) Valid
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.SelectedOrganizationIds == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.SelectedOrganizationIds // validation expected, but not supported
 		return nil
@@ -2543,7 +2543,7 @@ func (s EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.SelectedOrganizationIds == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.SelectedOrganizationIds // validation expected, but not supported
 		return nil
@@ -2562,7 +2562,7 @@ func (s EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) Validate() e
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Runners == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Runners // validation expected, but not supported
 		return nil
@@ -2581,7 +2581,7 @@ func (s EnterpriseAdminUpdateAttributeForEnterpriseUserReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Schemas // validation expected, but not supported
 		return nil
@@ -2593,7 +2593,7 @@ func (s EnterpriseAdminUpdateAttributeForEnterpriseUserReq) Validate() error {
 	}
 	if err := func() error {
 		if s.Operations == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Operations // validation expected, but not supported
 		return nil
@@ -2628,7 +2628,7 @@ func (s EnvironmentApprovals) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Environments == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Environments // validation expected, but not supported
 		return nil
@@ -2915,7 +2915,7 @@ func (s GitCommit) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Parents == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Parents // validation expected, but not supported
 		return nil
@@ -2950,7 +2950,7 @@ func (s GitCreateTreeReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Tree == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Tree {
@@ -3054,7 +3054,7 @@ func (s GitTree) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Tree == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Tree // validation expected, but not supported
 		return nil
@@ -3076,7 +3076,7 @@ func (s GpgKey) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Emails == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Emails // validation expected, but not supported
 		return nil
@@ -3088,7 +3088,7 @@ func (s GpgKey) Validate() error {
 	}
 	if err := func() error {
 		if s.Subkeys == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Subkeys // validation expected, but not supported
 		return nil
@@ -3107,7 +3107,7 @@ func (s Hook) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Events == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Events // validation expected, but not supported
 		return nil
@@ -3126,7 +3126,7 @@ func (s Hovercard) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Contexts == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Contexts // validation expected, but not supported
 		return nil
@@ -3186,7 +3186,7 @@ func (s Integration) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Events == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Events // validation expected, but not supported
 		return nil
@@ -3314,7 +3314,7 @@ func (s IssueSearchResultItem) Validate() error {
 	}
 	if err := func() error {
 		if s.Labels == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Labels // validation expected, but not supported
 		return nil
@@ -3369,7 +3369,7 @@ func (s IssueSimple) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Labels == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Labels // validation expected, but not supported
 		return nil
@@ -3563,7 +3563,7 @@ func (s License) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Permissions == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Permissions // validation expected, but not supported
 		return nil
@@ -3575,7 +3575,7 @@ func (s License) Validate() error {
 	}
 	if err := func() error {
 		if s.Conditions == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Conditions // validation expected, but not supported
 		return nil
@@ -3587,7 +3587,7 @@ func (s License) Validate() error {
 	}
 	if err := func() error {
 		if s.Limitations == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Limitations // validation expected, but not supported
 		return nil
@@ -3650,7 +3650,7 @@ func (s MarketplaceListingPlan) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Bullets == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Bullets // validation expected, but not supported
 		return nil
@@ -3744,7 +3744,7 @@ func (s Migration) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Repositories == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Repositories // validation expected, but not supported
 		return nil
@@ -3814,7 +3814,7 @@ func (s MigrationsStartForAuthenticatedUserReq) Validate() error {
 	}
 	if err := func() error {
 		if s.Repositories == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Repositories // validation expected, but not supported
 		return nil
@@ -3833,7 +3833,7 @@ func (s MigrationsStartForOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Repositories == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Repositories // validation expected, but not supported
 		return nil
@@ -3907,7 +3907,7 @@ func (s NullableIntegration) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Events == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Events // validation expected, but not supported
 		return nil
@@ -4095,7 +4095,7 @@ func (s OrgHook) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Events == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Events // validation expected, but not supported
 		return nil
@@ -4365,7 +4365,7 @@ func (s PackageVersionMetadataContainer) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Tags == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Tags // validation expected, but not supported
 		return nil
@@ -4442,7 +4442,7 @@ func (s PagesHTTPSCertificate) Validate() error {
 	}
 	if err := func() error {
 		if s.Domains == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Domains // validation expected, but not supported
 		return nil
@@ -4461,7 +4461,7 @@ func (s ParticipationStats) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.All == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.All // validation expected, but not supported
 		return nil
@@ -4473,7 +4473,7 @@ func (s ParticipationStats) Validate() error {
 	}
 	if err := func() error {
 		if s.Owner == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Owner // validation expected, but not supported
 		return nil
@@ -4686,7 +4686,7 @@ func (s ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Validate
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Users == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Users // validation expected, but not supported
 		return nil
@@ -4698,7 +4698,7 @@ func (s ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Validate
 	}
 	if err := func() error {
 		if s.Teams == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Teams // validation expected, but not supported
 		return nil
@@ -4742,7 +4742,7 @@ func (s PullRequest) Validate() error {
 	}
 	if err := func() error {
 		if s.Labels == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Labels // validation expected, but not supported
 		return nil
@@ -4865,7 +4865,7 @@ func (s PullRequestReviewRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Users == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Users // validation expected, but not supported
 		return nil
@@ -4877,7 +4877,7 @@ func (s PullRequestReviewRequest) Validate() error {
 	}
 	if err := func() error {
 		if s.Teams == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Teams // validation expected, but not supported
 		return nil
@@ -4896,7 +4896,7 @@ func (s PullRequestSimple) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Labels == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Labels // validation expected, but not supported
 		return nil
@@ -5029,7 +5029,7 @@ func (s PullsRemoveRequestedReviewersReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Reviewers == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Reviewers // validation expected, but not supported
 		return nil
@@ -5264,7 +5264,7 @@ func (s Release) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Assets == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Assets {
@@ -5556,7 +5556,7 @@ func (s ReposReplaceAllTopicsReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Names == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Names // validation expected, but not supported
 		return nil
@@ -5600,7 +5600,7 @@ func (s ReposUpdateBranchProtectionReqRequiredStatusChecks) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Contexts == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Contexts // validation expected, but not supported
 		return nil
@@ -5619,7 +5619,7 @@ func (s ReposUpdateBranchProtectionReqRestrictions) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Users == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Users // validation expected, but not supported
 		return nil
@@ -5631,7 +5631,7 @@ func (s ReposUpdateBranchProtectionReqRestrictions) Validate() error {
 	}
 	if err := func() error {
 		if s.Teams == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Teams // validation expected, but not supported
 		return nil
@@ -5732,7 +5732,7 @@ func (s Runner) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Labels == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Labels {
@@ -5783,7 +5783,7 @@ func (s ScimEnterpriseGroup) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Schemas // validation expected, but not supported
 		return nil
@@ -5802,7 +5802,7 @@ func (s ScimEnterpriseUser) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Schemas // validation expected, but not supported
 		return nil
@@ -5821,7 +5821,7 @@ func (s ScimGroupListEnterprise) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Schemas // validation expected, but not supported
 		return nil
@@ -5833,7 +5833,7 @@ func (s ScimGroupListEnterprise) Validate() error {
 	}
 	if err := func() error {
 		if s.Resources == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Resources {
@@ -5868,7 +5868,7 @@ func (s ScimGroupListEnterpriseResourcesItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Schemas // validation expected, but not supported
 		return nil
@@ -5887,7 +5887,7 @@ func (s ScimProvisionAndInviteUserReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Emails == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		if err := (validate.Array{
 			MinLength:    1,
@@ -5913,7 +5913,7 @@ func (s ScimSetInformationForProvisionedUserReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Emails == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		if err := (validate.Array{
 			MinLength:    1,
@@ -5939,7 +5939,7 @@ func (s ScimUserListEnterprise) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Schemas // validation expected, but not supported
 		return nil
@@ -5951,7 +5951,7 @@ func (s ScimUserListEnterprise) Validate() error {
 	}
 	if err := func() error {
 		if s.Resources == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Resources {
@@ -5986,7 +5986,7 @@ func (s ScimUserListEnterpriseResourcesItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Schemas // validation expected, but not supported
 		return nil
@@ -6005,7 +6005,7 @@ func (s SearchCodeOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -6040,7 +6040,7 @@ func (s SearchCommitsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -6075,7 +6075,7 @@ func (s SearchIssuesAndPullRequestsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -6110,7 +6110,7 @@ func (s SearchLabelsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -6145,7 +6145,7 @@ func (s SearchReposOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -6183,7 +6183,7 @@ func (s SearchTopicsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -6218,7 +6218,7 @@ func (s SearchUsersOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
@@ -6325,7 +6325,7 @@ func (s StatusCheckPolicy) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Contexts == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Contexts // validation expected, but not supported
 		return nil
@@ -6492,7 +6492,7 @@ func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Groups == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Groups // validation expected, but not supported
 		return nil
@@ -6601,7 +6601,7 @@ func (s Topic) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Names == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Names // validation expected, but not supported
 		return nil
@@ -6774,7 +6774,7 @@ func (s ViewTraffic) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Views == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Views // validation expected, but not supported
 		return nil

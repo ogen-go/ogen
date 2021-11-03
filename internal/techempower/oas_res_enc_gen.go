@@ -5,7 +5,6 @@ package techempower
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -69,7 +69,7 @@ func encodeCachingResponse(response WorldObjects, w http.ResponseWriter, span tr
 	defer more.Reset()
 	// Unsupported kind "alias".
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -85,7 +85,7 @@ func encodeDBResponse(response WorldObject, w http.ResponseWriter, span trace.Sp
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -101,7 +101,7 @@ func encodeJSONResponse(response HelloWorld, w http.ResponseWriter, span trace.S
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -116,7 +116,7 @@ func encodeQueriesResponse(response WorldObjects, w http.ResponseWriter, span tr
 	defer more.Reset()
 	// Unsupported kind "alias".
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -131,7 +131,7 @@ func encodeUpdatesResponse(response WorldObjects, w http.ResponseWriter, span tr
 	defer more.Reset()
 	// Unsupported kind "alias".
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil

@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -75,7 +75,7 @@ func encodeCreateSnapshotResponse(response CreateSnapshotRes, w http.ResponseWri
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -89,12 +89,12 @@ func encodeCreateSnapshotResponse(response CreateSnapshotRes, w http.ResponseWri
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/snapshot/create: unexpected response type: %T", response)
+		return errors.Errorf(`/snapshot/create: unexpected response type: %T`, response)
 	}
 }
 
@@ -113,7 +113,7 @@ func encodeCreateSyncActionResponse(response CreateSyncActionRes, w http.Respons
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -127,12 +127,12 @@ func encodeCreateSyncActionResponse(response CreateSyncActionRes, w http.Respons
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/actions: unexpected response type: %T", response)
+		return errors.Errorf(`/actions: unexpected response type: %T`, response)
 	}
 }
 
@@ -148,7 +148,7 @@ func encodeDescribeBalloonConfigResponse(response DescribeBalloonConfigRes, w ht
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -162,7 +162,7 @@ func encodeDescribeBalloonConfigResponse(response DescribeBalloonConfigRes, w ht
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -176,12 +176,12 @@ func encodeDescribeBalloonConfigResponse(response DescribeBalloonConfigRes, w ht
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/balloon: unexpected response type: %T", response)
+		return errors.Errorf(`/balloon: unexpected response type: %T`, response)
 	}
 }
 
@@ -197,7 +197,7 @@ func encodeDescribeBalloonStatsResponse(response DescribeBalloonStatsRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -211,7 +211,7 @@ func encodeDescribeBalloonStatsResponse(response DescribeBalloonStatsRes, w http
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -225,12 +225,12 @@ func encodeDescribeBalloonStatsResponse(response DescribeBalloonStatsRes, w http
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/balloon/statistics: unexpected response type: %T", response)
+		return errors.Errorf(`/balloon/statistics: unexpected response type: %T`, response)
 	}
 }
 
@@ -246,7 +246,7 @@ func encodeDescribeInstanceResponse(response DescribeInstanceRes, w http.Respons
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -260,12 +260,12 @@ func encodeDescribeInstanceResponse(response DescribeInstanceRes, w http.Respons
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/: unexpected response type: %T", response)
+		return errors.Errorf(`/: unexpected response type: %T`, response)
 	}
 }
 
@@ -281,7 +281,7 @@ func encodeGetExportVmConfigResponse(response GetExportVmConfigRes, w http.Respo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -295,12 +295,12 @@ func encodeGetExportVmConfigResponse(response GetExportVmConfigRes, w http.Respo
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/vm/config: unexpected response type: %T", response)
+		return errors.Errorf(`/vm/config: unexpected response type: %T`, response)
 	}
 }
 
@@ -316,7 +316,7 @@ func encodeGetMachineConfigurationResponse(response GetMachineConfigurationRes, 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -330,12 +330,12 @@ func encodeGetMachineConfigurationResponse(response GetMachineConfigurationRes, 
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/machine-config: unexpected response type: %T", response)
+		return errors.Errorf(`/machine-config: unexpected response type: %T`, response)
 	}
 }
 
@@ -354,7 +354,7 @@ func encodeLoadSnapshotResponse(response LoadSnapshotRes, w http.ResponseWriter,
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -368,12 +368,12 @@ func encodeLoadSnapshotResponse(response LoadSnapshotRes, w http.ResponseWriter,
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/snapshot/load: unexpected response type: %T", response)
+		return errors.Errorf(`/snapshot/load: unexpected response type: %T`, response)
 	}
 }
 
@@ -392,7 +392,7 @@ func encodeMmdsConfigPutResponse(response MmdsConfigPutRes, w http.ResponseWrite
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -406,12 +406,12 @@ func encodeMmdsConfigPutResponse(response MmdsConfigPutRes, w http.ResponseWrite
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/mmds/config: unexpected response type: %T", response)
+		return errors.Errorf(`/mmds/config: unexpected response type: %T`, response)
 	}
 }
 
@@ -427,7 +427,7 @@ func encodeMmdsGetResponse(response MmdsGetRes, w http.ResponseWriter, span trac
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -441,7 +441,7 @@ func encodeMmdsGetResponse(response MmdsGetRes, w http.ResponseWriter, span trac
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -455,12 +455,12 @@ func encodeMmdsGetResponse(response MmdsGetRes, w http.ResponseWriter, span trac
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/mmds: unexpected response type: %T", response)
+		return errors.Errorf(`/mmds: unexpected response type: %T`, response)
 	}
 }
 
@@ -479,7 +479,7 @@ func encodeMmdsPatchResponse(response MmdsPatchRes, w http.ResponseWriter, span 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -493,12 +493,12 @@ func encodeMmdsPatchResponse(response MmdsPatchRes, w http.ResponseWriter, span 
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/mmds: unexpected response type: %T", response)
+		return errors.Errorf(`/mmds: unexpected response type: %T`, response)
 	}
 }
 
@@ -517,7 +517,7 @@ func encodeMmdsPutResponse(response MmdsPutRes, w http.ResponseWriter, span trac
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -531,12 +531,12 @@ func encodeMmdsPutResponse(response MmdsPutRes, w http.ResponseWriter, span trac
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/mmds: unexpected response type: %T", response)
+		return errors.Errorf(`/mmds: unexpected response type: %T`, response)
 	}
 }
 
@@ -555,7 +555,7 @@ func encodePatchBalloonResponse(response PatchBalloonRes, w http.ResponseWriter,
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -569,12 +569,12 @@ func encodePatchBalloonResponse(response PatchBalloonRes, w http.ResponseWriter,
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/balloon: unexpected response type: %T", response)
+		return errors.Errorf(`/balloon: unexpected response type: %T`, response)
 	}
 }
 
@@ -593,7 +593,7 @@ func encodePatchBalloonStatsIntervalResponse(response PatchBalloonStatsIntervalR
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -607,12 +607,12 @@ func encodePatchBalloonStatsIntervalResponse(response PatchBalloonStatsIntervalR
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/balloon/statistics: unexpected response type: %T", response)
+		return errors.Errorf(`/balloon/statistics: unexpected response type: %T`, response)
 	}
 }
 
@@ -631,7 +631,7 @@ func encodePatchGuestDriveByIDResponse(response PatchGuestDriveByIDRes, w http.R
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -645,12 +645,12 @@ func encodePatchGuestDriveByIDResponse(response PatchGuestDriveByIDRes, w http.R
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/drives/{drive_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/drives/{drive_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -669,7 +669,7 @@ func encodePatchGuestNetworkInterfaceByIDResponse(response PatchGuestNetworkInte
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -683,12 +683,12 @@ func encodePatchGuestNetworkInterfaceByIDResponse(response PatchGuestNetworkInte
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/network-interfaces/{iface_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/network-interfaces/{iface_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -707,7 +707,7 @@ func encodePatchMachineConfigurationResponse(response PatchMachineConfigurationR
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -721,12 +721,12 @@ func encodePatchMachineConfigurationResponse(response PatchMachineConfigurationR
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/machine-config: unexpected response type: %T", response)
+		return errors.Errorf(`/machine-config: unexpected response type: %T`, response)
 	}
 }
 
@@ -745,7 +745,7 @@ func encodePatchVmResponse(response PatchVmRes, w http.ResponseWriter, span trac
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -759,12 +759,12 @@ func encodePatchVmResponse(response PatchVmRes, w http.ResponseWriter, span trac
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/vm: unexpected response type: %T", response)
+		return errors.Errorf(`/vm: unexpected response type: %T`, response)
 	}
 }
 
@@ -783,7 +783,7 @@ func encodePutBalloonResponse(response PutBalloonRes, w http.ResponseWriter, spa
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -797,12 +797,12 @@ func encodePutBalloonResponse(response PutBalloonRes, w http.ResponseWriter, spa
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/balloon: unexpected response type: %T", response)
+		return errors.Errorf(`/balloon: unexpected response type: %T`, response)
 	}
 }
 
@@ -821,7 +821,7 @@ func encodePutGuestBootSourceResponse(response PutGuestBootSourceRes, w http.Res
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -835,12 +835,12 @@ func encodePutGuestBootSourceResponse(response PutGuestBootSourceRes, w http.Res
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/boot-source: unexpected response type: %T", response)
+		return errors.Errorf(`/boot-source: unexpected response type: %T`, response)
 	}
 }
 
@@ -859,7 +859,7 @@ func encodePutGuestDriveByIDResponse(response PutGuestDriveByIDRes, w http.Respo
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -873,12 +873,12 @@ func encodePutGuestDriveByIDResponse(response PutGuestDriveByIDRes, w http.Respo
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/drives/{drive_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/drives/{drive_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -897,7 +897,7 @@ func encodePutGuestNetworkInterfaceByIDResponse(response PutGuestNetworkInterfac
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -911,12 +911,12 @@ func encodePutGuestNetworkInterfaceByIDResponse(response PutGuestNetworkInterfac
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/network-interfaces/{iface_id}: unexpected response type: %T", response)
+		return errors.Errorf(`/network-interfaces/{iface_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -935,7 +935,7 @@ func encodePutGuestVsockResponse(response PutGuestVsockRes, w http.ResponseWrite
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -949,12 +949,12 @@ func encodePutGuestVsockResponse(response PutGuestVsockRes, w http.ResponseWrite
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/vsock: unexpected response type: %T", response)
+		return errors.Errorf(`/vsock: unexpected response type: %T`, response)
 	}
 }
 
@@ -973,7 +973,7 @@ func encodePutLoggerResponse(response PutLoggerRes, w http.ResponseWriter, span 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -987,12 +987,12 @@ func encodePutLoggerResponse(response PutLoggerRes, w http.ResponseWriter, span 
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/logger: unexpected response type: %T", response)
+		return errors.Errorf(`/logger: unexpected response type: %T`, response)
 	}
 }
 
@@ -1011,7 +1011,7 @@ func encodePutMachineConfigurationResponse(response PutMachineConfigurationRes, 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1025,12 +1025,12 @@ func encodePutMachineConfigurationResponse(response PutMachineConfigurationRes, 
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/machine-config: unexpected response type: %T", response)
+		return errors.Errorf(`/machine-config: unexpected response type: %T`, response)
 	}
 }
 
@@ -1049,7 +1049,7 @@ func encodePutMetricsResponse(response PutMetricsRes, w http.ResponseWriter, spa
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -1063,11 +1063,11 @@ func encodePutMetricsResponse(response PutMetricsRes, w http.ResponseWriter, spa
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/metrics: unexpected response type: %T", response)
+		return errors.Errorf(`/metrics: unexpected response type: %T`, response)
 	}
 }

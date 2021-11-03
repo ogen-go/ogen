@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -72,7 +72,7 @@ func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter, span 
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -80,7 +80,7 @@ func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter, span 
 		w.WriteHeader(404)
 		return nil
 	default:
-		return fmt.Errorf("/foobar: unexpected response type: %T", response)
+		return errors.Errorf(`/foobar: unexpected response type: %T`, response)
 	}
 }
 
@@ -96,7 +96,7 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -113,12 +113,12 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/foobar: unexpected response type: %T", response)
+		return errors.Errorf(`/foobar: unexpected response type: %T`, response)
 	}
 }
 
@@ -137,7 +137,7 @@ func encodePetCreateResponse(response Pet, w http.ResponseWriter, span trace.Spa
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -160,7 +160,7 @@ func encodePetFriendsNamesByIDResponse(response []string, w http.ResponseWriter,
 	e.ArrEnd()
 	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -178,7 +178,7 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.
 		more.More()
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
@@ -192,12 +192,12 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.
 		more.More()
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
-			return fmt.Errorf("write: %w", err)
+			return errors.Wrap(err, "write")
 		}
 
 		return nil
 	default:
-		return fmt.Errorf("/pet: unexpected response type: %T", response)
+		return errors.Errorf(`/pet: unexpected response type: %T`, response)
 	}
 }
 
@@ -211,7 +211,7 @@ func encodePetGetByNameResponse(response Pet, w http.ResponseWriter, span trace.
 	more.More()
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil
@@ -227,7 +227,7 @@ func encodePetNameByIDResponse(response string, w http.ResponseWriter, span trac
 	more.More()
 	e.Str(response)
 	if _, err := e.WriteTo(w); err != nil {
-		return fmt.Errorf("write: %w", err)
+		return errors.Wrap(err, "write")
 	}
 
 	return nil

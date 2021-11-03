@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -87,12 +87,12 @@ func decodeGetBookResponse(resp *http.Response, span trace.Span) (res GetBookRes
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 403:
 		return &GetBookForbidden{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -107,14 +107,14 @@ func decodeGetPageCoverImageResponse(resp *http.Response, span trace.Span) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "image/*":
-			return res, fmt.Errorf("image/* decoder not implemented")
+			return res, errors.New("image/* decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 403:
 		return &GetPageCoverImageForbidden{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -129,14 +129,14 @@ func decodeGetPageImageResponse(resp *http.Response, span trace.Span) (res GetPa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "image/*":
-			return res, fmt.Errorf("image/* decoder not implemented")
+			return res, errors.New("image/* decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 403:
 		return &GetPageImageForbidden{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -151,14 +151,14 @@ func decodeGetPageThumbnailImageResponse(resp *http.Response, span trace.Span) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "image/*":
-			return res, fmt.Errorf("image/* decoder not implemented")
+			return res, errors.New("image/* decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 403:
 		return &GetPageThumbnailImageForbidden{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -179,9 +179,7 @@ func decodeSearchResponse(resp *http.Response, span trace.Span) (res SearchRes, 
 
 			var response SearchOKApplicationJSON
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "SearchOKApplicationJSON" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "SearchOKApplicationJSON" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -189,12 +187,12 @@ func decodeSearchResponse(resp *http.Response, span trace.Span) (res SearchRes, 
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 403:
 		return &SearchForbidden{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -215,9 +213,7 @@ func decodeSearchByTagIDResponse(resp *http.Response, span trace.Span) (res Sear
 
 			var response SearchByTagIDOKApplicationJSON
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "SearchByTagIDOKApplicationJSON" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "SearchByTagIDOKApplicationJSON" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -225,11 +221,11 @@ func decodeSearchByTagIDResponse(resp *http.Response, span trace.Span) (res Sear
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 403:
 		return &SearchByTagIDForbidden{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }

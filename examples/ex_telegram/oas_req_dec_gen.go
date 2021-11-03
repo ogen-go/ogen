@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -85,13 +85,13 @@ func decodeAnswerCallbackQueryPostRequest(r *http.Request, span trace.Span) (req
 	case "application/x-www-form-urlencoded":
 		var request AnswerCallbackQueryPostReqApplicationXWwwFormUrlencoded
 		_ = request
-		return req, fmt.Errorf("application/x-www-form-urlencoded decoder not implemented")
+		return req, errors.New("application/x-www-form-urlencoded decoder not implemented")
 	case "multipart/form-data":
 		var request AnswerCallbackQueryPostReqMultipartFormData
 		_ = request
-		return req, fmt.Errorf("multipart/form-data decoder not implemented")
+		return req, errors.New("multipart/form-data decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -120,13 +120,13 @@ func decodeAnswerPreCheckoutQueryPostRequest(r *http.Request, span trace.Span) (
 	case "application/x-www-form-urlencoded":
 		var request AnswerPreCheckoutQueryPostReqApplicationXWwwFormUrlencoded
 		_ = request
-		return req, fmt.Errorf("application/x-www-form-urlencoded decoder not implemented")
+		return req, errors.New("application/x-www-form-urlencoded decoder not implemented")
 	case "multipart/form-data":
 		var request AnswerPreCheckoutQueryPostReqMultipartFormData
 		_ = request
-		return req, fmt.Errorf("multipart/form-data decoder not implemented")
+		return req, errors.New("multipart/form-data decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -157,19 +157,19 @@ func decodeAnswerShippingQueryPostRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
+			return req, errors.Wrap(err, "validate")
 		}
 		return &request, nil
 	case "application/x-www-form-urlencoded":
 		var request AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded
 		_ = request
-		return req, fmt.Errorf("application/x-www-form-urlencoded decoder not implemented")
+		return req, errors.New("application/x-www-form-urlencoded decoder not implemented")
 	case "multipart/form-data":
 		var request AnswerShippingQueryPostReqMultipartFormData
 		_ = request
-		return req, fmt.Errorf("multipart/form-data decoder not implemented")
+		return req, errors.New("multipart/form-data decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -198,13 +198,13 @@ func decodeDeleteStickerFromSetPostRequest(r *http.Request, span trace.Span) (re
 	case "application/x-www-form-urlencoded":
 		var request DeleteStickerFromSetPostReqApplicationXWwwFormUrlencoded
 		_ = request
-		return req, fmt.Errorf("application/x-www-form-urlencoded decoder not implemented")
+		return req, errors.New("application/x-www-form-urlencoded decoder not implemented")
 	case "multipart/form-data":
 		var request DeleteStickerFromSetPostReqMultipartFormData
 		_ = request
-		return req, fmt.Errorf("multipart/form-data decoder not implemented")
+		return req, errors.New("multipart/form-data decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -233,13 +233,13 @@ func decodeDeleteWebhookPostRequest(r *http.Request, span trace.Span) (req Delet
 	case "application/x-www-form-urlencoded":
 		var request DeleteWebhookPostReqApplicationXWwwFormUrlencoded
 		_ = request
-		return req, fmt.Errorf("application/x-www-form-urlencoded decoder not implemented")
+		return req, errors.New("application/x-www-form-urlencoded decoder not implemented")
 	case "multipart/form-data":
 		var request DeleteWebhookPostReqMultipartFormData
 		_ = request
-		return req, fmt.Errorf("multipart/form-data decoder not implemented")
+		return req, errors.New("multipart/form-data decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -268,13 +268,13 @@ func decodeGetFilePostRequest(r *http.Request, span trace.Span) (req GetFilePost
 	case "application/x-www-form-urlencoded":
 		var request GetFilePostReqApplicationXWwwFormUrlencoded
 		_ = request
-		return req, fmt.Errorf("application/x-www-form-urlencoded decoder not implemented")
+		return req, errors.New("application/x-www-form-urlencoded decoder not implemented")
 	case "multipart/form-data":
 		var request GetFilePostReqMultipartFormData
 		_ = request
-		return req, fmt.Errorf("multipart/form-data decoder not implemented")
+		return req, errors.New("multipart/form-data decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -303,13 +303,13 @@ func decodeGetGameHighScoresPostRequest(r *http.Request, span trace.Span) (req G
 	case "application/x-www-form-urlencoded":
 		var request GetGameHighScoresPostReqApplicationXWwwFormUrlencoded
 		_ = request
-		return req, fmt.Errorf("application/x-www-form-urlencoded decoder not implemented")
+		return req, errors.New("application/x-www-form-urlencoded decoder not implemented")
 	case "multipart/form-data":
 		var request GetGameHighScoresPostReqMultipartFormData
 		_ = request
-		return req, fmt.Errorf("multipart/form-data decoder not implemented")
+		return req, errors.New("multipart/form-data decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -338,13 +338,13 @@ func decodeGetStickerSetPostRequest(r *http.Request, span trace.Span) (req GetSt
 	case "application/x-www-form-urlencoded":
 		var request GetStickerSetPostReqApplicationXWwwFormUrlencoded
 		_ = request
-		return req, fmt.Errorf("application/x-www-form-urlencoded decoder not implemented")
+		return req, errors.New("application/x-www-form-urlencoded decoder not implemented")
 	case "multipart/form-data":
 		var request GetStickerSetPostReqMultipartFormData
 		_ = request
-		return req, fmt.Errorf("multipart/form-data decoder not implemented")
+		return req, errors.New("multipart/form-data decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -375,19 +375,19 @@ func decodeGetUpdatesPostRequest(r *http.Request, span trace.Span) (req GetUpdat
 			}
 			return nil
 		}(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
+			return req, errors.Wrap(err, "validate")
 		}
 		return &request, nil
 	case "application/x-www-form-urlencoded":
 		var request GetUpdatesPostReqApplicationXWwwFormUrlencoded
 		_ = request
-		return req, fmt.Errorf("application/x-www-form-urlencoded decoder not implemented")
+		return req, errors.New("application/x-www-form-urlencoded decoder not implemented")
 	case "multipart/form-data":
 		var request GetUpdatesPostReqMultipartFormData
 		_ = request
-		return req, fmt.Errorf("multipart/form-data decoder not implemented")
+		return req, errors.New("multipart/form-data decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -418,19 +418,19 @@ func decodeGetUserProfilePhotosPostRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
+			return req, errors.Wrap(err, "validate")
 		}
 		return &request, nil
 	case "application/x-www-form-urlencoded":
 		var request GetUserProfilePhotosPostReqApplicationXWwwFormUrlencoded
 		_ = request
-		return req, fmt.Errorf("application/x-www-form-urlencoded decoder not implemented")
+		return req, errors.New("application/x-www-form-urlencoded decoder not implemented")
 	case "multipart/form-data":
 		var request GetUserProfilePhotosPostReqMultipartFormData
 		_ = request
-		return req, fmt.Errorf("multipart/form-data decoder not implemented")
+		return req, errors.New("multipart/form-data decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -461,19 +461,19 @@ func decodeSendGamePostRequest(r *http.Request, span trace.Span) (req SendGamePo
 			}
 			return nil
 		}(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
+			return req, errors.Wrap(err, "validate")
 		}
 		return &request, nil
 	case "application/x-www-form-urlencoded":
 		var request SendGamePostReqApplicationXWwwFormUrlencoded
 		_ = request
-		return req, fmt.Errorf("application/x-www-form-urlencoded decoder not implemented")
+		return req, errors.New("application/x-www-form-urlencoded decoder not implemented")
 	case "multipart/form-data":
 		var request SendGamePostReqMultipartFormData
 		_ = request
-		return req, fmt.Errorf("multipart/form-data decoder not implemented")
+		return req, errors.New("multipart/form-data decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -504,19 +504,19 @@ func decodeSendInvoicePostRequest(r *http.Request, span trace.Span) (req SendInv
 			}
 			return nil
 		}(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
+			return req, errors.Wrap(err, "validate")
 		}
 		return &request, nil
 	case "application/x-www-form-urlencoded":
 		var request SendInvoicePostReqApplicationXWwwFormUrlencoded
 		_ = request
-		return req, fmt.Errorf("application/x-www-form-urlencoded decoder not implemented")
+		return req, errors.New("application/x-www-form-urlencoded decoder not implemented")
 	case "multipart/form-data":
 		var request SendInvoicePostReqMultipartFormData
 		_ = request
-		return req, fmt.Errorf("multipart/form-data decoder not implemented")
+		return req, errors.New("multipart/form-data decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -547,19 +547,19 @@ func decodeSetMyCommandsPostRequest(r *http.Request, span trace.Span) (req SetMy
 			}
 			return nil
 		}(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
+			return req, errors.Wrap(err, "validate")
 		}
 		return &request, nil
 	case "application/x-www-form-urlencoded":
 		var request SetMyCommandsPostReqApplicationXWwwFormUrlencoded
 		_ = request
-		return req, fmt.Errorf("application/x-www-form-urlencoded decoder not implemented")
+		return req, errors.New("application/x-www-form-urlencoded decoder not implemented")
 	case "multipart/form-data":
 		var request SetMyCommandsPostReqMultipartFormData
 		_ = request
-		return req, fmt.Errorf("multipart/form-data decoder not implemented")
+		return req, errors.New("multipart/form-data decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -588,13 +588,13 @@ func decodeSetStickerPositionInSetPostRequest(r *http.Request, span trace.Span) 
 	case "application/x-www-form-urlencoded":
 		var request SetStickerPositionInSetPostReqApplicationXWwwFormUrlencoded
 		_ = request
-		return req, fmt.Errorf("application/x-www-form-urlencoded decoder not implemented")
+		return req, errors.New("application/x-www-form-urlencoded decoder not implemented")
 	case "multipart/form-data":
 		var request SetStickerPositionInSetPostReqMultipartFormData
 		_ = request
-		return req, fmt.Errorf("multipart/form-data decoder not implemented")
+		return req, errors.New("multipart/form-data decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -609,9 +609,9 @@ func decodeSetWebhookPostRequest(r *http.Request, span trace.Span) (req SetWebho
 	case "multipart/form-data":
 		var request SetWebhookPostReq
 		_ = request
-		return req, fmt.Errorf("multipart/form-data decoder not implemented")
+		return req, errors.New("multipart/form-data decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -626,8 +626,8 @@ func decodeUploadStickerFilePostRequest(r *http.Request, span trace.Span) (req U
 	case "multipart/form-data":
 		var request UploadStickerFilePostReq
 		_ = request
-		return req, fmt.Errorf("multipart/form-data decoder not implemented")
+		return req, errors.New("multipart/form-data decoder not implemented")
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }

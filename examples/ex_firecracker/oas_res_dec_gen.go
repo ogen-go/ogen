@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -89,7 +89,7 @@ func decodeCreateSnapshotResponse(resp *http.Response, span trace.Span) (res Cre
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -111,7 +111,7 @@ func decodeCreateSnapshotResponse(resp *http.Response, span trace.Span) (res Cre
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -145,7 +145,7 @@ func decodeCreateSyncActionResponse(resp *http.Response, span trace.Span) (res C
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -167,7 +167,7 @@ func decodeCreateSyncActionResponse(resp *http.Response, span trace.Span) (res C
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -199,7 +199,7 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response, span trace.Span) (
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 400:
 		switch resp.Header.Get("Content-Type") {
@@ -220,7 +220,7 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response, span trace.Span) (
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -242,7 +242,7 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response, span trace.Span) (
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -274,7 +274,7 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response, span trace.Span) (r
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 400:
 		switch resp.Header.Get("Content-Type") {
@@ -295,7 +295,7 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response, span trace.Span) (r
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -317,7 +317,7 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response, span trace.Span) (r
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -349,7 +349,7 @@ func decodeDescribeInstanceResponse(resp *http.Response, span trace.Span) (res D
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -371,7 +371,7 @@ func decodeDescribeInstanceResponse(resp *http.Response, span trace.Span) (res D
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -403,7 +403,7 @@ func decodeGetExportVmConfigResponse(resp *http.Response, span trace.Span) (res 
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -425,7 +425,7 @@ func decodeGetExportVmConfigResponse(resp *http.Response, span trace.Span) (res 
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -457,7 +457,7 @@ func decodeGetMachineConfigurationResponse(resp *http.Response, span trace.Span)
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -479,7 +479,7 @@ func decodeGetMachineConfigurationResponse(resp *http.Response, span trace.Span)
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -513,7 +513,7 @@ func decodeLoadSnapshotResponse(resp *http.Response, span trace.Span) (res LoadS
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -535,7 +535,7 @@ func decodeLoadSnapshotResponse(resp *http.Response, span trace.Span) (res LoadS
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -569,7 +569,7 @@ func decodeMmdsConfigPutResponse(resp *http.Response, span trace.Span) (res Mmds
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -591,7 +591,7 @@ func decodeMmdsConfigPutResponse(resp *http.Response, span trace.Span) (res Mmds
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -623,7 +623,7 @@ func decodeMmdsGetResponse(resp *http.Response, span trace.Span) (res MmdsGetRes
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 404:
 		switch resp.Header.Get("Content-Type") {
@@ -644,7 +644,7 @@ func decodeMmdsGetResponse(resp *http.Response, span trace.Span) (res MmdsGetRes
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -666,7 +666,7 @@ func decodeMmdsGetResponse(resp *http.Response, span trace.Span) (res MmdsGetRes
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -700,7 +700,7 @@ func decodeMmdsPatchResponse(resp *http.Response, span trace.Span) (res MmdsPatc
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -722,7 +722,7 @@ func decodeMmdsPatchResponse(resp *http.Response, span trace.Span) (res MmdsPatc
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -756,7 +756,7 @@ func decodeMmdsPutResponse(resp *http.Response, span trace.Span) (res MmdsPutRes
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -778,7 +778,7 @@ func decodeMmdsPutResponse(resp *http.Response, span trace.Span) (res MmdsPutRes
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -812,7 +812,7 @@ func decodePatchBalloonResponse(resp *http.Response, span trace.Span) (res Patch
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -834,7 +834,7 @@ func decodePatchBalloonResponse(resp *http.Response, span trace.Span) (res Patch
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -868,7 +868,7 @@ func decodePatchBalloonStatsIntervalResponse(resp *http.Response, span trace.Spa
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -890,7 +890,7 @@ func decodePatchBalloonStatsIntervalResponse(resp *http.Response, span trace.Spa
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -924,7 +924,7 @@ func decodePatchGuestDriveByIDResponse(resp *http.Response, span trace.Span) (re
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -946,7 +946,7 @@ func decodePatchGuestDriveByIDResponse(resp *http.Response, span trace.Span) (re
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -980,7 +980,7 @@ func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response, span trac
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -1002,7 +1002,7 @@ func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response, span trac
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -1036,7 +1036,7 @@ func decodePatchMachineConfigurationResponse(resp *http.Response, span trace.Spa
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -1058,7 +1058,7 @@ func decodePatchMachineConfigurationResponse(resp *http.Response, span trace.Spa
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -1092,7 +1092,7 @@ func decodePatchVmResponse(resp *http.Response, span trace.Span) (res PatchVmRes
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -1114,7 +1114,7 @@ func decodePatchVmResponse(resp *http.Response, span trace.Span) (res PatchVmRes
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -1148,7 +1148,7 @@ func decodePutBalloonResponse(resp *http.Response, span trace.Span) (res PutBall
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -1170,7 +1170,7 @@ func decodePutBalloonResponse(resp *http.Response, span trace.Span) (res PutBall
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -1204,7 +1204,7 @@ func decodePutGuestBootSourceResponse(resp *http.Response, span trace.Span) (res
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -1226,7 +1226,7 @@ func decodePutGuestBootSourceResponse(resp *http.Response, span trace.Span) (res
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -1260,7 +1260,7 @@ func decodePutGuestDriveByIDResponse(resp *http.Response, span trace.Span) (res 
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -1282,7 +1282,7 @@ func decodePutGuestDriveByIDResponse(resp *http.Response, span trace.Span) (res 
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -1316,7 +1316,7 @@ func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response, span trace.
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -1338,7 +1338,7 @@ func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response, span trace.
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -1372,7 +1372,7 @@ func decodePutGuestVsockResponse(resp *http.Response, span trace.Span) (res PutG
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -1394,7 +1394,7 @@ func decodePutGuestVsockResponse(resp *http.Response, span trace.Span) (res PutG
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -1428,7 +1428,7 @@ func decodePutLoggerResponse(resp *http.Response, span trace.Span) (res PutLogge
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -1450,7 +1450,7 @@ func decodePutLoggerResponse(resp *http.Response, span trace.Span) (res PutLogge
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -1484,7 +1484,7 @@ func decodePutMachineConfigurationResponse(resp *http.Response, span trace.Span)
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -1506,7 +1506,7 @@ func decodePutMachineConfigurationResponse(resp *http.Response, span trace.Span)
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -1540,7 +1540,7 @@ func decodePutMetricsResponse(resp *http.Response, span trace.Span) (res PutMetr
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -1562,7 +1562,7 @@ func decodePutMetricsResponse(resp *http.Response, span trace.Span) (res PutMetr
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }

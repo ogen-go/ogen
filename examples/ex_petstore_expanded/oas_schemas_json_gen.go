@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -71,7 +71,7 @@ func (s DeletePetNoContent) WriteJSON(e *json.Encoder) {
 // ReadJSON reads DeletePetNoContent from json stream.
 func (s *DeletePetNoContent) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode DeletePetNoContent to nil`)
+		return errors.New(`invalid: unable to decode DeletePetNoContent to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -99,7 +99,7 @@ func (s Error) WriteJSON(e *json.Encoder) {
 // ReadJSON reads Error from json stream.
 func (s *Error) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Error to nil`)
+		return errors.New(`invalid: unable to decode Error to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -133,7 +133,7 @@ func (s ErrorStatusCode) WriteJSON(e *json.Encoder) {
 // ReadJSON reads ErrorStatusCode from json stream.
 func (s *ErrorStatusCode) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode ErrorStatusCode to nil`)
+		return errors.New(`invalid: unable to decode ErrorStatusCode to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -163,7 +163,7 @@ func (s NewPet) WriteJSON(e *json.Encoder) {
 // ReadJSON reads NewPet from json stream.
 func (s *NewPet) ReadJSON(d *json.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode NewPet to nil`)
+		return errors.New(`invalid: unable to decode NewPet to nil`)
 	}
 	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
 		switch string(k) {
@@ -193,7 +193,7 @@ func (o OptString) WriteJSON(e *json.Encoder) {
 // ReadJSON reads json value of string from json iterator.
 func (o *OptString) ReadJSON(d *json.Decoder) error {
 	if o == nil {
-		return fmt.Errorf(`invalid: unable to decode OptString to nil`)
+		return errors.New(`invalid: unable to decode OptString to nil`)
 	}
 	switch d.Next() {
 	case json.String:
@@ -205,6 +205,6 @@ func (o *OptString) ReadJSON(d *json.Decoder) error {
 		o.Value = string(v)
 		return nil
 	default:
-		return fmt.Errorf("unexpected type %q while reading OptString", d.Next())
+		return errors.Errorf(`unexpected type %q while reading OptString`, d.Next())
 	}
 }

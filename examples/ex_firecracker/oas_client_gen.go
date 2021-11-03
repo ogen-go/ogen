@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -96,14 +96,13 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 
 // CreateSnapshot implements createSnapshot operation.
 func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParams) (res CreateSnapshotRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateSnapshot`,
@@ -137,13 +136,13 @@ func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParam
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateSnapshotResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -151,14 +150,13 @@ func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParam
 
 // CreateSyncAction implements createSyncAction operation.
 func (c *Client) CreateSyncAction(ctx context.Context, request InstanceActionInfo) (res CreateSyncActionRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateSyncAction`,
@@ -192,13 +190,13 @@ func (c *Client) CreateSyncAction(ctx context.Context, request InstanceActionInf
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateSyncActionResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -230,13 +228,13 @@ func (c *Client) DescribeBalloonConfig(ctx context.Context) (res DescribeBalloon
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDescribeBalloonConfigResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -268,13 +266,13 @@ func (c *Client) DescribeBalloonStats(ctx context.Context) (res DescribeBalloonS
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDescribeBalloonStatsResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -306,13 +304,13 @@ func (c *Client) DescribeInstance(ctx context.Context) (res DescribeInstanceRes,
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDescribeInstanceResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -344,13 +342,13 @@ func (c *Client) GetExportVmConfig(ctx context.Context) (res GetExportVmConfigRe
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetExportVmConfigResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -382,13 +380,13 @@ func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineCon
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetMachineConfigurationResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -428,13 +426,13 @@ func (c *Client) LoadSnapshot(ctx context.Context, request SnapshotLoadParams) (
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeLoadSnapshotResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -472,13 +470,13 @@ func (c *Client) MmdsConfigPut(ctx context.Context, request MmdsConfig) (res Mmd
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeMmdsConfigPutResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -508,13 +506,13 @@ func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeMmdsGetResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -552,13 +550,13 @@ func (c *Client) MmdsPatch(ctx context.Context, request MmdsPatchReq) (res MmdsP
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeMmdsPatchResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -596,13 +594,13 @@ func (c *Client) MmdsPut(ctx context.Context, request MmdsPutReq) (res MmdsPutRe
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeMmdsPutResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -642,13 +640,13 @@ func (c *Client) PatchBalloon(ctx context.Context, request BalloonUpdate) (res P
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePatchBalloonResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -688,13 +686,13 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request BalloonS
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePatchBalloonStatsIntervalResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -702,14 +700,13 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request BalloonS
 
 // PatchGuestDriveByID implements patchGuestDriveByID operation.
 func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, params PatchGuestDriveByIDParams) (res PatchGuestDriveByIDRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PatchGuestDriveByID`,
@@ -742,11 +739,10 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, 
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.DriveID))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode path: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -758,13 +754,13 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePatchGuestDriveByIDResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -772,14 +768,13 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, 
 
 // PatchGuestNetworkInterfaceByID implements patchGuestNetworkInterfaceByID operation.
 func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request PartialNetworkInterface, params PatchGuestNetworkInterfaceByIDParams) (res PatchGuestNetworkInterfaceByIDRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PatchGuestNetworkInterfaceByID`,
@@ -812,11 +807,10 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request Par
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.IfaceID))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode path: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -828,13 +822,13 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request Par
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePatchGuestNetworkInterfaceByIDResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -842,14 +836,13 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request Par
 
 // PatchMachineConfiguration implements patchMachineConfiguration operation.
 func (c *Client) PatchMachineConfiguration(ctx context.Context, request MachineConfiguration) (res PatchMachineConfigurationRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PatchMachineConfiguration`,
@@ -883,13 +876,13 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, request MachineC
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePatchMachineConfigurationResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -897,14 +890,13 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, request MachineC
 
 // PatchVm implements patchVm operation.
 func (c *Client) PatchVm(ctx context.Context, request VM) (res PatchVmRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PatchVm`,
@@ -938,13 +930,13 @@ func (c *Client) PatchVm(ctx context.Context, request VM) (res PatchVmRes, err e
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePatchVmResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -984,13 +976,13 @@ func (c *Client) PutBalloon(ctx context.Context, request Balloon) (res PutBalloo
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePutBalloonResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1030,13 +1022,13 @@ func (c *Client) PutGuestBootSource(ctx context.Context, request BootSource) (re
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePutGuestBootSourceResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1044,14 +1036,13 @@ func (c *Client) PutGuestBootSource(ctx context.Context, request BootSource) (re
 
 // PutGuestDriveByID implements putGuestDriveByID operation.
 func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params PutGuestDriveByIDParams) (res PutGuestDriveByIDRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PutGuestDriveByID`,
@@ -1084,11 +1075,10 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params Pu
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.DriveID))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode path: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -1100,13 +1090,13 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params Pu
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePutGuestDriveByIDResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1114,14 +1104,13 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params Pu
 
 // PutGuestNetworkInterfaceByID implements putGuestNetworkInterfaceByID operation.
 func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request NetworkInterface, params PutGuestNetworkInterfaceByIDParams) (res PutGuestNetworkInterfaceByIDRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PutGuestNetworkInterfaceByID`,
@@ -1154,11 +1143,10 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request Netwo
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.IfaceID))
-		}(); encErr != nil {
-			err = fmt.Errorf("encode path: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -1170,13 +1158,13 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request Netwo
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePutGuestNetworkInterfaceByIDResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1184,14 +1172,13 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request Netwo
 
 // PutGuestVsock implements putGuestVsock operation.
 func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuestVsockRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PutGuestVsock`,
@@ -1225,13 +1212,13 @@ func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuest
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePutGuestVsockResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1239,14 +1226,13 @@ func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuest
 
 // PutLogger implements putLogger operation.
 func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PutLogger`,
@@ -1280,13 +1266,13 @@ func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRe
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePutLoggerResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1294,14 +1280,13 @@ func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRe
 
 // PutMachineConfiguration implements putMachineConfiguration operation.
 func (c *Client) PutMachineConfiguration(ctx context.Context, request MachineConfiguration) (res PutMachineConfigurationRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PutMachineConfiguration`,
@@ -1335,13 +1320,13 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, request MachineCon
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePutMachineConfigurationResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1381,13 +1366,13 @@ func (c *Client) PutMetrics(ctx context.Context, request Metrics) (res PutMetric
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePutMetricsResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil

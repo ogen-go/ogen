@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -87,7 +87,7 @@ func decodeAnswerCallbackQueryPostResponse(resp *http.Response, span trace.Span)
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -109,7 +109,7 @@ func decodeAnswerCallbackQueryPostResponse(resp *http.Response, span trace.Span)
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -141,7 +141,7 @@ func decodeAnswerPreCheckoutQueryPostResponse(resp *http.Response, span trace.Sp
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -163,7 +163,7 @@ func decodeAnswerPreCheckoutQueryPostResponse(resp *http.Response, span trace.Sp
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -195,7 +195,7 @@ func decodeAnswerShippingQueryPostResponse(resp *http.Response, span trace.Span)
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -217,7 +217,7 @@ func decodeAnswerShippingQueryPostResponse(resp *http.Response, span trace.Span)
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -249,7 +249,7 @@ func decodeClosePostResponse(resp *http.Response, span trace.Span) (res ClosePos
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -271,7 +271,7 @@ func decodeClosePostResponse(resp *http.Response, span trace.Span) (res ClosePos
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -303,7 +303,7 @@ func decodeDeleteStickerFromSetPostResponse(resp *http.Response, span trace.Span
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -325,7 +325,7 @@ func decodeDeleteStickerFromSetPostResponse(resp *http.Response, span trace.Span
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -357,7 +357,7 @@ func decodeDeleteWebhookPostResponse(resp *http.Response, span trace.Span) (res 
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -379,7 +379,7 @@ func decodeDeleteWebhookPostResponse(resp *http.Response, span trace.Span) (res 
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -411,7 +411,7 @@ func decodeGetFilePostResponse(resp *http.Response, span trace.Span) (res GetFil
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -433,7 +433,7 @@ func decodeGetFilePostResponse(resp *http.Response, span trace.Span) (res GetFil
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -465,7 +465,7 @@ func decodeGetGameHighScoresPostResponse(resp *http.Response, span trace.Span) (
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -487,7 +487,7 @@ func decodeGetGameHighScoresPostResponse(resp *http.Response, span trace.Span) (
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -519,7 +519,7 @@ func decodeGetMePostResponse(resp *http.Response, span trace.Span) (res GetMePos
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -541,7 +541,7 @@ func decodeGetMePostResponse(resp *http.Response, span trace.Span) (res GetMePos
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -573,7 +573,7 @@ func decodeGetMyCommandsPostResponse(resp *http.Response, span trace.Span) (res 
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -595,7 +595,7 @@ func decodeGetMyCommandsPostResponse(resp *http.Response, span trace.Span) (res 
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -627,7 +627,7 @@ func decodeGetStickerSetPostResponse(resp *http.Response, span trace.Span) (res 
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -649,7 +649,7 @@ func decodeGetStickerSetPostResponse(resp *http.Response, span trace.Span) (res 
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -681,7 +681,7 @@ func decodeGetUpdatesPostResponse(resp *http.Response, span trace.Span) (res Get
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -703,7 +703,7 @@ func decodeGetUpdatesPostResponse(resp *http.Response, span trace.Span) (res Get
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -735,7 +735,7 @@ func decodeGetUserProfilePhotosPostResponse(resp *http.Response, span trace.Span
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -757,7 +757,7 @@ func decodeGetUserProfilePhotosPostResponse(resp *http.Response, span trace.Span
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -789,7 +789,7 @@ func decodeGetWebhookInfoPostResponse(resp *http.Response, span trace.Span) (res
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -811,7 +811,7 @@ func decodeGetWebhookInfoPostResponse(resp *http.Response, span trace.Span) (res
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -843,7 +843,7 @@ func decodeLogOutPostResponse(resp *http.Response, span trace.Span) (res LogOutP
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -865,7 +865,7 @@ func decodeLogOutPostResponse(resp *http.Response, span trace.Span) (res LogOutP
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -897,7 +897,7 @@ func decodeSendGamePostResponse(resp *http.Response, span trace.Span) (res SendG
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -919,7 +919,7 @@ func decodeSendGamePostResponse(resp *http.Response, span trace.Span) (res SendG
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -951,7 +951,7 @@ func decodeSendInvoicePostResponse(resp *http.Response, span trace.Span) (res Se
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -973,7 +973,7 @@ func decodeSendInvoicePostResponse(resp *http.Response, span trace.Span) (res Se
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -1005,7 +1005,7 @@ func decodeSetMyCommandsPostResponse(resp *http.Response, span trace.Span) (res 
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -1027,7 +1027,7 @@ func decodeSetMyCommandsPostResponse(resp *http.Response, span trace.Span) (res 
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -1059,7 +1059,7 @@ func decodeSetStickerPositionInSetPostResponse(resp *http.Response, span trace.S
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -1081,7 +1081,7 @@ func decodeSetStickerPositionInSetPostResponse(resp *http.Response, span trace.S
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -1113,7 +1113,7 @@ func decodeSetWebhookPostResponse(resp *http.Response, span trace.Span) (res Set
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -1135,7 +1135,7 @@ func decodeSetWebhookPostResponse(resp *http.Response, span trace.Span) (res Set
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -1167,7 +1167,7 @@ func decodeUploadStickerFilePostResponse(resp *http.Response, span trace.Span) (
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -1189,7 +1189,7 @@ func decodeUploadStickerFilePostResponse(resp *http.Response, span trace.Span) (
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }

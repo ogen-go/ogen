@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -87,11 +87,11 @@ func decodeCreateSnapshotRequest(r *http.Request, span trace.Span) (req Snapshot
 			}
 			return nil
 		}(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -122,11 +122,11 @@ func decodeCreateSyncActionRequest(r *http.Request, span trace.Span) (req Instan
 			}
 			return nil
 		}(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -153,7 +153,7 @@ func decodeLoadSnapshotRequest(r *http.Request, span trace.Span) (req SnapshotLo
 		}
 		return request, nil
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -180,7 +180,7 @@ func decodeMmdsConfigPutRequest(r *http.Request, span trace.Span) (req MmdsConfi
 		}
 		return request, nil
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -207,7 +207,7 @@ func decodeMmdsPatchRequest(r *http.Request, span trace.Span) (req MmdsPatchReq,
 		}
 		return request, nil
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -234,7 +234,7 @@ func decodeMmdsPutRequest(r *http.Request, span trace.Span) (req MmdsPutReq, err
 		}
 		return request, nil
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -261,7 +261,7 @@ func decodePatchBalloonRequest(r *http.Request, span trace.Span) (req BalloonUpd
 		}
 		return request, nil
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -288,7 +288,7 @@ func decodePatchBalloonStatsIntervalRequest(r *http.Request, span trace.Span) (r
 		}
 		return request, nil
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -319,11 +319,11 @@ func decodePatchGuestDriveByIDRequest(r *http.Request, span trace.Span) (req Par
 			}
 			return nil
 		}(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -354,11 +354,11 @@ func decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -389,11 +389,11 @@ func decodePatchMachineConfigurationRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -424,11 +424,11 @@ func decodePatchVmRequest(r *http.Request, span trace.Span) (req VM, err error) 
 			}
 			return nil
 		}(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -455,7 +455,7 @@ func decodePutBalloonRequest(r *http.Request, span trace.Span) (req Balloon, err
 		}
 		return request, nil
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -482,7 +482,7 @@ func decodePutGuestBootSourceRequest(r *http.Request, span trace.Span) (req Boot
 		}
 		return request, nil
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -513,11 +513,11 @@ func decodePutGuestDriveByIDRequest(r *http.Request, span trace.Span) (req Drive
 			}
 			return nil
 		}(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -548,11 +548,11 @@ func decodePutGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -583,11 +583,11 @@ func decodePutGuestVsockRequest(r *http.Request, span trace.Span) (req Vsock, er
 			}
 			return nil
 		}(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -618,11 +618,11 @@ func decodePutLoggerRequest(r *http.Request, span trace.Span) (req Logger, err e
 			}
 			return nil
 		}(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -653,11 +653,11 @@ func decodePutMachineConfigurationRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
@@ -684,6 +684,6 @@ func decodePutMetricsRequest(r *http.Request, span trace.Span) (req Metrics, err
 		}
 		return request, nil
 	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }

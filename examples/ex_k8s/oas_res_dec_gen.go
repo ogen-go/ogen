@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -77,9 +77,7 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 
 			var response CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -87,11 +85,11 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -102,9 +100,7 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 
 			var response CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -112,11 +108,11 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -127,9 +123,7 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 
 			var response CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -137,16 +131,16 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -167,9 +161,7 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 
 			var response CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -177,11 +169,11 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -192,9 +184,7 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 
 			var response CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -202,11 +192,11 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -217,9 +207,7 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 
 			var response CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -227,16 +215,16 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -257,9 +245,7 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp *http.Resp
 
 			var response CreateApiextensionsV1CustomResourceDefinitionApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateApiextensionsV1CustomResourceDefinitionApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateApiextensionsV1CustomResourceDefinitionApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -267,11 +253,11 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp *http.Resp
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -282,9 +268,7 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp *http.Resp
 
 			var response CreateApiextensionsV1CustomResourceDefinitionApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateApiextensionsV1CustomResourceDefinitionApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateApiextensionsV1CustomResourceDefinitionApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -292,11 +276,11 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp *http.Resp
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -307,9 +291,7 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp *http.Resp
 
 			var response CreateApiextensionsV1CustomResourceDefinitionApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateApiextensionsV1CustomResourceDefinitionApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateApiextensionsV1CustomResourceDefinitionApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -317,16 +299,16 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp *http.Resp
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateApiextensionsV1CustomResourceDefinitionUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -347,9 +329,7 @@ func decodeCreateApiregistrationV1APIServiceResponse(resp *http.Response, span t
 
 			var response CreateApiregistrationV1APIServiceApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateApiregistrationV1APIServiceApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateApiregistrationV1APIServiceApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -357,11 +337,11 @@ func decodeCreateApiregistrationV1APIServiceResponse(resp *http.Response, span t
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -372,9 +352,7 @@ func decodeCreateApiregistrationV1APIServiceResponse(resp *http.Response, span t
 
 			var response CreateApiregistrationV1APIServiceApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateApiregistrationV1APIServiceApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateApiregistrationV1APIServiceApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -382,11 +360,11 @@ func decodeCreateApiregistrationV1APIServiceResponse(resp *http.Response, span t
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -397,9 +375,7 @@ func decodeCreateApiregistrationV1APIServiceResponse(resp *http.Response, span t
 
 			var response CreateApiregistrationV1APIServiceApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateApiregistrationV1APIServiceApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateApiregistrationV1APIServiceApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -407,16 +383,16 @@ func decodeCreateApiregistrationV1APIServiceResponse(resp *http.Response, span t
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateApiregistrationV1APIServiceUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -437,9 +413,7 @@ func decodeCreateAuthenticationV1TokenReviewResponse(resp *http.Response, span t
 
 			var response CreateAuthenticationV1TokenReviewApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateAuthenticationV1TokenReviewApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateAuthenticationV1TokenReviewApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -447,11 +421,11 @@ func decodeCreateAuthenticationV1TokenReviewResponse(resp *http.Response, span t
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -462,9 +436,7 @@ func decodeCreateAuthenticationV1TokenReviewResponse(resp *http.Response, span t
 
 			var response CreateAuthenticationV1TokenReviewApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateAuthenticationV1TokenReviewApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateAuthenticationV1TokenReviewApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -472,11 +444,11 @@ func decodeCreateAuthenticationV1TokenReviewResponse(resp *http.Response, span t
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -487,9 +459,7 @@ func decodeCreateAuthenticationV1TokenReviewResponse(resp *http.Response, span t
 
 			var response CreateAuthenticationV1TokenReviewApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateAuthenticationV1TokenReviewApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateAuthenticationV1TokenReviewApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -497,16 +467,16 @@ func decodeCreateAuthenticationV1TokenReviewResponse(resp *http.Response, span t
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateAuthenticationV1TokenReviewUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -527,9 +497,7 @@ func decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp *http.Respo
 
 			var response CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -537,11 +505,11 @@ func decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp *http.Respo
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -552,9 +520,7 @@ func decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp *http.Respo
 
 			var response CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -562,11 +528,11 @@ func decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp *http.Respo
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -577,9 +543,7 @@ func decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp *http.Respo
 
 			var response CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -587,16 +551,16 @@ func decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp *http.Respo
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -617,9 +581,7 @@ func decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp *http.Respon
 
 			var response CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -627,11 +589,11 @@ func decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp *http.Respon
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -642,9 +604,7 @@ func decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp *http.Respon
 
 			var response CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -652,11 +612,11 @@ func decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp *http.Respon
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -667,9 +627,7 @@ func decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp *http.Respon
 
 			var response CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -677,16 +635,16 @@ func decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp *http.Respon
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -707,9 +665,7 @@ func decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp *http.Response,
 
 			var response CreateAuthorizationV1SubjectAccessReviewApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateAuthorizationV1SubjectAccessReviewApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateAuthorizationV1SubjectAccessReviewApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -717,11 +673,11 @@ func decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp *http.Response,
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -732,9 +688,7 @@ func decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp *http.Response,
 
 			var response CreateAuthorizationV1SubjectAccessReviewApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateAuthorizationV1SubjectAccessReviewApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateAuthorizationV1SubjectAccessReviewApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -742,11 +696,11 @@ func decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp *http.Response,
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -757,9 +711,7 @@ func decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp *http.Response,
 
 			var response CreateAuthorizationV1SubjectAccessReviewApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateAuthorizationV1SubjectAccessReviewApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateAuthorizationV1SubjectAccessReviewApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -767,16 +719,16 @@ func decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp *http.Response,
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateAuthorizationV1SubjectAccessReviewUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -797,9 +749,7 @@ func decodeCreateCertificatesV1CertificateSigningRequestResponse(resp *http.Resp
 
 			var response CreateCertificatesV1CertificateSigningRequestApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateCertificatesV1CertificateSigningRequestApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateCertificatesV1CertificateSigningRequestApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -807,11 +757,11 @@ func decodeCreateCertificatesV1CertificateSigningRequestResponse(resp *http.Resp
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -822,9 +772,7 @@ func decodeCreateCertificatesV1CertificateSigningRequestResponse(resp *http.Resp
 
 			var response CreateCertificatesV1CertificateSigningRequestApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateCertificatesV1CertificateSigningRequestApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateCertificatesV1CertificateSigningRequestApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -832,11 +780,11 @@ func decodeCreateCertificatesV1CertificateSigningRequestResponse(resp *http.Resp
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -847,9 +795,7 @@ func decodeCreateCertificatesV1CertificateSigningRequestResponse(resp *http.Resp
 
 			var response CreateCertificatesV1CertificateSigningRequestApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateCertificatesV1CertificateSigningRequestApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateCertificatesV1CertificateSigningRequestApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -857,16 +803,16 @@ func decodeCreateCertificatesV1CertificateSigningRequestResponse(resp *http.Resp
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateCertificatesV1CertificateSigningRequestUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -887,9 +833,7 @@ func decodeCreateCoreV1NamespaceResponse(resp *http.Response, span trace.Span) (
 
 			var response CreateCoreV1NamespaceApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateCoreV1NamespaceApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateCoreV1NamespaceApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -897,11 +841,11 @@ func decodeCreateCoreV1NamespaceResponse(resp *http.Response, span trace.Span) (
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -912,9 +856,7 @@ func decodeCreateCoreV1NamespaceResponse(resp *http.Response, span trace.Span) (
 
 			var response CreateCoreV1NamespaceApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateCoreV1NamespaceApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateCoreV1NamespaceApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -922,11 +864,11 @@ func decodeCreateCoreV1NamespaceResponse(resp *http.Response, span trace.Span) (
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -937,9 +879,7 @@ func decodeCreateCoreV1NamespaceResponse(resp *http.Response, span trace.Span) (
 
 			var response CreateCoreV1NamespaceApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateCoreV1NamespaceApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateCoreV1NamespaceApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -947,16 +887,16 @@ func decodeCreateCoreV1NamespaceResponse(resp *http.Response, span trace.Span) (
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateCoreV1NamespaceUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -977,9 +917,7 @@ func decodeCreateCoreV1NodeResponse(resp *http.Response, span trace.Span) (res C
 
 			var response CreateCoreV1NodeApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateCoreV1NodeApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateCoreV1NodeApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -987,11 +925,11 @@ func decodeCreateCoreV1NodeResponse(resp *http.Response, span trace.Span) (res C
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -1002,9 +940,7 @@ func decodeCreateCoreV1NodeResponse(resp *http.Response, span trace.Span) (res C
 
 			var response CreateCoreV1NodeApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateCoreV1NodeApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateCoreV1NodeApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1012,11 +948,11 @@ func decodeCreateCoreV1NodeResponse(resp *http.Response, span trace.Span) (res C
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -1027,9 +963,7 @@ func decodeCreateCoreV1NodeResponse(resp *http.Response, span trace.Span) (res C
 
 			var response CreateCoreV1NodeApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateCoreV1NodeApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateCoreV1NodeApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1037,16 +971,16 @@ func decodeCreateCoreV1NodeResponse(resp *http.Response, span trace.Span) (res C
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateCoreV1NodeUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -1067,9 +1001,7 @@ func decodeCreateCoreV1PersistentVolumeResponse(resp *http.Response, span trace.
 
 			var response CreateCoreV1PersistentVolumeApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateCoreV1PersistentVolumeApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateCoreV1PersistentVolumeApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1077,11 +1009,11 @@ func decodeCreateCoreV1PersistentVolumeResponse(resp *http.Response, span trace.
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -1092,9 +1024,7 @@ func decodeCreateCoreV1PersistentVolumeResponse(resp *http.Response, span trace.
 
 			var response CreateCoreV1PersistentVolumeApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateCoreV1PersistentVolumeApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateCoreV1PersistentVolumeApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1102,11 +1032,11 @@ func decodeCreateCoreV1PersistentVolumeResponse(resp *http.Response, span trace.
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -1117,9 +1047,7 @@ func decodeCreateCoreV1PersistentVolumeResponse(resp *http.Response, span trace.
 
 			var response CreateCoreV1PersistentVolumeApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateCoreV1PersistentVolumeApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateCoreV1PersistentVolumeApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1127,16 +1055,16 @@ func decodeCreateCoreV1PersistentVolumeResponse(resp *http.Response, span trace.
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateCoreV1PersistentVolumeUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -1157,9 +1085,7 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respon
 
 			var response CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1167,11 +1093,11 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respon
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -1182,9 +1108,7 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respon
 
 			var response CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1192,11 +1116,11 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respon
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -1207,9 +1131,7 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respon
 
 			var response CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1217,16 +1139,16 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respon
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -1247,9 +1169,7 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 
 			var response CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1257,11 +1177,11 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -1272,9 +1192,7 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 
 			var response CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1282,11 +1200,11 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -1297,9 +1215,7 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 
 			var response CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1307,16 +1223,16 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -1337,9 +1253,7 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respon
 
 			var response CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1347,11 +1261,11 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respon
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -1362,9 +1276,7 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respon
 
 			var response CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1372,11 +1284,11 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respon
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -1387,9 +1299,7 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respon
 
 			var response CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1397,16 +1307,16 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respon
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -1427,9 +1337,7 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 
 			var response CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1437,11 +1345,11 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -1452,9 +1360,7 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 
 			var response CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1462,11 +1368,11 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -1477,9 +1383,7 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 
 			var response CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1487,16 +1391,16 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -1517,9 +1421,7 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp *http.Resp
 
 			var response CreateInternalApiserverV1alpha1StorageVersionApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateInternalApiserverV1alpha1StorageVersionApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateInternalApiserverV1alpha1StorageVersionApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1527,11 +1429,11 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp *http.Resp
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -1542,9 +1444,7 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp *http.Resp
 
 			var response CreateInternalApiserverV1alpha1StorageVersionApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateInternalApiserverV1alpha1StorageVersionApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateInternalApiserverV1alpha1StorageVersionApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1552,11 +1452,11 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp *http.Resp
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -1567,9 +1467,7 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp *http.Resp
 
 			var response CreateInternalApiserverV1alpha1StorageVersionApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateInternalApiserverV1alpha1StorageVersionApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateInternalApiserverV1alpha1StorageVersionApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1577,16 +1475,16 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp *http.Resp
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateInternalApiserverV1alpha1StorageVersionUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -1607,9 +1505,7 @@ func decodeCreateNetworkingV1IngressClassResponse(resp *http.Response, span trac
 
 			var response CreateNetworkingV1IngressClassApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateNetworkingV1IngressClassApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateNetworkingV1IngressClassApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1617,11 +1513,11 @@ func decodeCreateNetworkingV1IngressClassResponse(resp *http.Response, span trac
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -1632,9 +1528,7 @@ func decodeCreateNetworkingV1IngressClassResponse(resp *http.Response, span trac
 
 			var response CreateNetworkingV1IngressClassApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateNetworkingV1IngressClassApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateNetworkingV1IngressClassApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1642,11 +1536,11 @@ func decodeCreateNetworkingV1IngressClassResponse(resp *http.Response, span trac
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -1657,9 +1551,7 @@ func decodeCreateNetworkingV1IngressClassResponse(resp *http.Response, span trac
 
 			var response CreateNetworkingV1IngressClassApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateNetworkingV1IngressClassApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateNetworkingV1IngressClassApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1667,16 +1559,16 @@ func decodeCreateNetworkingV1IngressClassResponse(resp *http.Response, span trac
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateNetworkingV1IngressClassUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -1697,9 +1589,7 @@ func decodeCreateNodeV1RuntimeClassResponse(resp *http.Response, span trace.Span
 
 			var response CreateNodeV1RuntimeClassApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateNodeV1RuntimeClassApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateNodeV1RuntimeClassApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1707,11 +1597,11 @@ func decodeCreateNodeV1RuntimeClassResponse(resp *http.Response, span trace.Span
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -1722,9 +1612,7 @@ func decodeCreateNodeV1RuntimeClassResponse(resp *http.Response, span trace.Span
 
 			var response CreateNodeV1RuntimeClassApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateNodeV1RuntimeClassApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateNodeV1RuntimeClassApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1732,11 +1620,11 @@ func decodeCreateNodeV1RuntimeClassResponse(resp *http.Response, span trace.Span
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -1747,9 +1635,7 @@ func decodeCreateNodeV1RuntimeClassResponse(resp *http.Response, span trace.Span
 
 			var response CreateNodeV1RuntimeClassApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateNodeV1RuntimeClassApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateNodeV1RuntimeClassApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1757,16 +1643,16 @@ func decodeCreateNodeV1RuntimeClassResponse(resp *http.Response, span trace.Span
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateNodeV1RuntimeClassUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -1787,9 +1673,7 @@ func decodeCreateNodeV1alpha1RuntimeClassResponse(resp *http.Response, span trac
 
 			var response CreateNodeV1alpha1RuntimeClassApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateNodeV1alpha1RuntimeClassApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateNodeV1alpha1RuntimeClassApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1797,11 +1681,11 @@ func decodeCreateNodeV1alpha1RuntimeClassResponse(resp *http.Response, span trac
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -1812,9 +1696,7 @@ func decodeCreateNodeV1alpha1RuntimeClassResponse(resp *http.Response, span trac
 
 			var response CreateNodeV1alpha1RuntimeClassApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateNodeV1alpha1RuntimeClassApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateNodeV1alpha1RuntimeClassApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1822,11 +1704,11 @@ func decodeCreateNodeV1alpha1RuntimeClassResponse(resp *http.Response, span trac
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -1837,9 +1719,7 @@ func decodeCreateNodeV1alpha1RuntimeClassResponse(resp *http.Response, span trac
 
 			var response CreateNodeV1alpha1RuntimeClassApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateNodeV1alpha1RuntimeClassApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateNodeV1alpha1RuntimeClassApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1847,16 +1727,16 @@ func decodeCreateNodeV1alpha1RuntimeClassResponse(resp *http.Response, span trac
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateNodeV1alpha1RuntimeClassUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -1877,9 +1757,7 @@ func decodeCreateNodeV1beta1RuntimeClassResponse(resp *http.Response, span trace
 
 			var response CreateNodeV1beta1RuntimeClassApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateNodeV1beta1RuntimeClassApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateNodeV1beta1RuntimeClassApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1887,11 +1765,11 @@ func decodeCreateNodeV1beta1RuntimeClassResponse(resp *http.Response, span trace
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -1902,9 +1780,7 @@ func decodeCreateNodeV1beta1RuntimeClassResponse(resp *http.Response, span trace
 
 			var response CreateNodeV1beta1RuntimeClassApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateNodeV1beta1RuntimeClassApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateNodeV1beta1RuntimeClassApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1912,11 +1788,11 @@ func decodeCreateNodeV1beta1RuntimeClassResponse(resp *http.Response, span trace
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -1927,9 +1803,7 @@ func decodeCreateNodeV1beta1RuntimeClassResponse(resp *http.Response, span trace
 
 			var response CreateNodeV1beta1RuntimeClassApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateNodeV1beta1RuntimeClassApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateNodeV1beta1RuntimeClassApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1937,16 +1811,16 @@ func decodeCreateNodeV1beta1RuntimeClassResponse(resp *http.Response, span trace
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateNodeV1beta1RuntimeClassUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -1967,9 +1841,7 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp *http.Response, spa
 
 			var response CreatePolicyV1beta1PodSecurityPolicyApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreatePolicyV1beta1PodSecurityPolicyApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreatePolicyV1beta1PodSecurityPolicyApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -1977,11 +1849,11 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp *http.Response, spa
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -1992,9 +1864,7 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp *http.Response, spa
 
 			var response CreatePolicyV1beta1PodSecurityPolicyApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreatePolicyV1beta1PodSecurityPolicyApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreatePolicyV1beta1PodSecurityPolicyApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2002,11 +1872,11 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp *http.Response, spa
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -2017,9 +1887,7 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp *http.Response, spa
 
 			var response CreatePolicyV1beta1PodSecurityPolicyApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreatePolicyV1beta1PodSecurityPolicyApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreatePolicyV1beta1PodSecurityPolicyApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2027,16 +1895,16 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp *http.Response, spa
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreatePolicyV1beta1PodSecurityPolicyUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -2057,9 +1925,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp *http.Response, spa
 
 			var response CreateRbacAuthorizationV1ClusterRoleApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateRbacAuthorizationV1ClusterRoleApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateRbacAuthorizationV1ClusterRoleApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2067,11 +1933,11 @@ func decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp *http.Response, spa
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -2082,9 +1948,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp *http.Response, spa
 
 			var response CreateRbacAuthorizationV1ClusterRoleApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateRbacAuthorizationV1ClusterRoleApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateRbacAuthorizationV1ClusterRoleApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2092,11 +1956,11 @@ func decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp *http.Response, spa
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -2107,9 +1971,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp *http.Response, spa
 
 			var response CreateRbacAuthorizationV1ClusterRoleApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateRbacAuthorizationV1ClusterRoleApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateRbacAuthorizationV1ClusterRoleApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2117,16 +1979,16 @@ func decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp *http.Response, spa
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateRbacAuthorizationV1ClusterRoleUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -2147,9 +2009,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respon
 
 			var response CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2157,11 +2017,11 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respon
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -2172,9 +2032,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respon
 
 			var response CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2182,11 +2040,11 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respon
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -2197,9 +2055,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respon
 
 			var response CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2207,16 +2063,16 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respon
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -2237,9 +2093,7 @@ func decodeCreateSchedulingV1PriorityClassResponse(resp *http.Response, span tra
 
 			var response CreateSchedulingV1PriorityClassApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateSchedulingV1PriorityClassApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateSchedulingV1PriorityClassApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2247,11 +2101,11 @@ func decodeCreateSchedulingV1PriorityClassResponse(resp *http.Response, span tra
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -2262,9 +2116,7 @@ func decodeCreateSchedulingV1PriorityClassResponse(resp *http.Response, span tra
 
 			var response CreateSchedulingV1PriorityClassApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateSchedulingV1PriorityClassApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateSchedulingV1PriorityClassApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2272,11 +2124,11 @@ func decodeCreateSchedulingV1PriorityClassResponse(resp *http.Response, span tra
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -2287,9 +2139,7 @@ func decodeCreateSchedulingV1PriorityClassResponse(resp *http.Response, span tra
 
 			var response CreateSchedulingV1PriorityClassApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateSchedulingV1PriorityClassApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateSchedulingV1PriorityClassApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2297,16 +2147,16 @@ func decodeCreateSchedulingV1PriorityClassResponse(resp *http.Response, span tra
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateSchedulingV1PriorityClassUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -2327,9 +2177,7 @@ func decodeCreateStorageV1CSIDriverResponse(resp *http.Response, span trace.Span
 
 			var response CreateStorageV1CSIDriverApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateStorageV1CSIDriverApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateStorageV1CSIDriverApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2337,11 +2185,11 @@ func decodeCreateStorageV1CSIDriverResponse(resp *http.Response, span trace.Span
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -2352,9 +2200,7 @@ func decodeCreateStorageV1CSIDriverResponse(resp *http.Response, span trace.Span
 
 			var response CreateStorageV1CSIDriverApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateStorageV1CSIDriverApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateStorageV1CSIDriverApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2362,11 +2208,11 @@ func decodeCreateStorageV1CSIDriverResponse(resp *http.Response, span trace.Span
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -2377,9 +2223,7 @@ func decodeCreateStorageV1CSIDriverResponse(resp *http.Response, span trace.Span
 
 			var response CreateStorageV1CSIDriverApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateStorageV1CSIDriverApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateStorageV1CSIDriverApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2387,16 +2231,16 @@ func decodeCreateStorageV1CSIDriverResponse(resp *http.Response, span trace.Span
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateStorageV1CSIDriverUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -2417,9 +2261,7 @@ func decodeCreateStorageV1CSINodeResponse(resp *http.Response, span trace.Span) 
 
 			var response CreateStorageV1CSINodeApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateStorageV1CSINodeApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateStorageV1CSINodeApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2427,11 +2269,11 @@ func decodeCreateStorageV1CSINodeResponse(resp *http.Response, span trace.Span) 
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -2442,9 +2284,7 @@ func decodeCreateStorageV1CSINodeResponse(resp *http.Response, span trace.Span) 
 
 			var response CreateStorageV1CSINodeApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateStorageV1CSINodeApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateStorageV1CSINodeApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2452,11 +2292,11 @@ func decodeCreateStorageV1CSINodeResponse(resp *http.Response, span trace.Span) 
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -2467,9 +2307,7 @@ func decodeCreateStorageV1CSINodeResponse(resp *http.Response, span trace.Span) 
 
 			var response CreateStorageV1CSINodeApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateStorageV1CSINodeApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateStorageV1CSINodeApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2477,16 +2315,16 @@ func decodeCreateStorageV1CSINodeResponse(resp *http.Response, span trace.Span) 
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateStorageV1CSINodeUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -2507,9 +2345,7 @@ func decodeCreateStorageV1StorageClassResponse(resp *http.Response, span trace.S
 
 			var response CreateStorageV1StorageClassApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateStorageV1StorageClassApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateStorageV1StorageClassApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2517,11 +2353,11 @@ func decodeCreateStorageV1StorageClassResponse(resp *http.Response, span trace.S
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -2532,9 +2368,7 @@ func decodeCreateStorageV1StorageClassResponse(resp *http.Response, span trace.S
 
 			var response CreateStorageV1StorageClassApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateStorageV1StorageClassApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateStorageV1StorageClassApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2542,11 +2376,11 @@ func decodeCreateStorageV1StorageClassResponse(resp *http.Response, span trace.S
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -2557,9 +2391,7 @@ func decodeCreateStorageV1StorageClassResponse(resp *http.Response, span trace.S
 
 			var response CreateStorageV1StorageClassApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateStorageV1StorageClassApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateStorageV1StorageClassApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2567,16 +2399,16 @@ func decodeCreateStorageV1StorageClassResponse(resp *http.Response, span trace.S
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateStorageV1StorageClassUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -2597,9 +2429,7 @@ func decodeCreateStorageV1VolumeAttachmentResponse(resp *http.Response, span tra
 
 			var response CreateStorageV1VolumeAttachmentApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateStorageV1VolumeAttachmentApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateStorageV1VolumeAttachmentApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2607,11 +2437,11 @@ func decodeCreateStorageV1VolumeAttachmentResponse(resp *http.Response, span tra
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -2622,9 +2452,7 @@ func decodeCreateStorageV1VolumeAttachmentResponse(resp *http.Response, span tra
 
 			var response CreateStorageV1VolumeAttachmentApplicationJSONCreated
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateStorageV1VolumeAttachmentApplicationJSONCreated" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateStorageV1VolumeAttachmentApplicationJSONCreated" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2632,11 +2460,11 @@ func decodeCreateStorageV1VolumeAttachmentResponse(resp *http.Response, span tra
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -2647,9 +2475,7 @@ func decodeCreateStorageV1VolumeAttachmentResponse(resp *http.Response, span tra
 
 			var response CreateStorageV1VolumeAttachmentApplicationJSONAccepted
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "CreateStorageV1VolumeAttachmentApplicationJSONAccepted" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "CreateStorageV1VolumeAttachmentApplicationJSONAccepted" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2657,16 +2483,16 @@ func decodeCreateStorageV1VolumeAttachmentResponse(resp *http.Response, span tra
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &CreateStorageV1VolumeAttachmentUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -2687,9 +2513,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRe
 
 			var response DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2697,16 +2521,16 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRe
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -2727,9 +2551,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 
 			var response DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2737,16 +2559,16 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -2767,9 +2589,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(resp 
 
 			var response DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2777,16 +2597,16 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(resp 
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -2807,9 +2627,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceResponse(resp *http.Respon
 
 			var response DeleteApiregistrationV1CollectionAPIServiceApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "DeleteApiregistrationV1CollectionAPIServiceApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "DeleteApiregistrationV1CollectionAPIServiceApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2817,16 +2635,16 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceResponse(resp *http.Respon
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &DeleteApiregistrationV1CollectionAPIServiceUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -2847,9 +2665,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(resp 
 
 			var response DeleteCertificatesV1CollectionCertificateSigningRequestApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "DeleteCertificatesV1CollectionCertificateSigningRequestApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "DeleteCertificatesV1CollectionCertificateSigningRequestApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2857,16 +2673,16 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(resp 
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -2887,9 +2703,7 @@ func decodeDeleteCoreV1CollectionNodeResponse(resp *http.Response, span trace.Sp
 
 			var response DeleteCoreV1CollectionNodeApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "DeleteCoreV1CollectionNodeApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "DeleteCoreV1CollectionNodeApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2897,16 +2711,16 @@ func decodeDeleteCoreV1CollectionNodeResponse(resp *http.Response, span trace.Sp
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &DeleteCoreV1CollectionNodeUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -2927,9 +2741,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeResponse(resp *http.Response, s
 
 			var response DeleteCoreV1CollectionPersistentVolumeApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "DeleteCoreV1CollectionPersistentVolumeApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "DeleteCoreV1CollectionPersistentVolumeApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2937,16 +2749,16 @@ func decodeDeleteCoreV1CollectionPersistentVolumeResponse(resp *http.Response, s
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &DeleteCoreV1CollectionPersistentVolumeUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -2967,9 +2779,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(resp *h
 
 			var response DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2977,16 +2787,16 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(resp *h
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -3007,9 +2817,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 
 			var response DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3017,16 +2825,16 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -3047,9 +2855,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(resp *h
 
 			var response DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3057,16 +2863,16 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(resp *h
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -3087,9 +2893,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 
 			var response DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3097,16 +2901,16 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -3127,9 +2931,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(resp 
 
 			var response DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3137,16 +2939,16 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(resp 
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -3167,9 +2969,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassResponse(resp *http.Response,
 
 			var response DeleteNetworkingV1CollectionIngressClassApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "DeleteNetworkingV1CollectionIngressClassApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "DeleteNetworkingV1CollectionIngressClassApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3177,16 +2977,16 @@ func decodeDeleteNetworkingV1CollectionIngressClassResponse(resp *http.Response,
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &DeleteNetworkingV1CollectionIngressClassUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -3207,9 +3007,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassResponse(resp *http.Response, span 
 
 			var response DeleteNodeV1CollectionRuntimeClassApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "DeleteNodeV1CollectionRuntimeClassApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "DeleteNodeV1CollectionRuntimeClassApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3217,16 +3015,16 @@ func decodeDeleteNodeV1CollectionRuntimeClassResponse(resp *http.Response, span 
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &DeleteNodeV1CollectionRuntimeClassUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -3247,9 +3045,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(resp *http.Response,
 
 			var response DeleteNodeV1alpha1CollectionRuntimeClassApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "DeleteNodeV1alpha1CollectionRuntimeClassApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "DeleteNodeV1alpha1CollectionRuntimeClassApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3257,16 +3053,16 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(resp *http.Response,
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -3287,9 +3083,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassResponse(resp *http.Response, 
 
 			var response DeleteNodeV1beta1CollectionRuntimeClassApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "DeleteNodeV1beta1CollectionRuntimeClassApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "DeleteNodeV1beta1CollectionRuntimeClassApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3297,16 +3091,16 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassResponse(resp *http.Response, 
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &DeleteNodeV1beta1CollectionRuntimeClassUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -3327,9 +3121,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(resp *http.Res
 
 			var response DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3337,16 +3129,16 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(resp *http.Res
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -3367,9 +3159,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(resp *http.Res
 
 			var response DeleteRbacAuthorizationV1CollectionClusterRoleApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "DeleteRbacAuthorizationV1CollectionClusterRoleApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "DeleteRbacAuthorizationV1CollectionClusterRoleApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3377,16 +3167,16 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(resp *http.Res
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -3407,9 +3197,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(resp *h
 
 			var response DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3417,16 +3205,16 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(resp *h
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -3447,9 +3235,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassResponse(resp *http.Response
 
 			var response DeleteSchedulingV1CollectionPriorityClassApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "DeleteSchedulingV1CollectionPriorityClassApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "DeleteSchedulingV1CollectionPriorityClassApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3457,16 +3243,16 @@ func decodeDeleteSchedulingV1CollectionPriorityClassResponse(resp *http.Response
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &DeleteSchedulingV1CollectionPriorityClassUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -3487,9 +3273,7 @@ func decodeDeleteStorageV1CollectionCSIDriverResponse(resp *http.Response, span 
 
 			var response DeleteStorageV1CollectionCSIDriverApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "DeleteStorageV1CollectionCSIDriverApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "DeleteStorageV1CollectionCSIDriverApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3497,16 +3281,16 @@ func decodeDeleteStorageV1CollectionCSIDriverResponse(resp *http.Response, span 
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &DeleteStorageV1CollectionCSIDriverUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -3527,9 +3311,7 @@ func decodeDeleteStorageV1CollectionCSINodeResponse(resp *http.Response, span tr
 
 			var response DeleteStorageV1CollectionCSINodeApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "DeleteStorageV1CollectionCSINodeApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "DeleteStorageV1CollectionCSINodeApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3537,16 +3319,16 @@ func decodeDeleteStorageV1CollectionCSINodeResponse(resp *http.Response, span tr
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &DeleteStorageV1CollectionCSINodeUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -3567,9 +3349,7 @@ func decodeDeleteStorageV1CollectionStorageClassResponse(resp *http.Response, sp
 
 			var response DeleteStorageV1CollectionStorageClassApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "DeleteStorageV1CollectionStorageClassApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "DeleteStorageV1CollectionStorageClassApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3577,16 +3357,16 @@ func decodeDeleteStorageV1CollectionStorageClassResponse(resp *http.Response, sp
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &DeleteStorageV1CollectionStorageClassUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -3607,9 +3387,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentResponse(resp *http.Response
 
 			var response DeleteStorageV1CollectionVolumeAttachmentApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "DeleteStorageV1CollectionVolumeAttachmentApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "DeleteStorageV1CollectionVolumeAttachmentApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3617,16 +3395,16 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentResponse(resp *http.Response
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &DeleteStorageV1CollectionVolumeAttachmentUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -3647,9 +3425,7 @@ func decodeGetAPIVersionsResponse(resp *http.Response, span trace.Span) (res Get
 
 			var response GetAPIVersionsApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetAPIVersionsApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetAPIVersionsApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3657,16 +3433,16 @@ func decodeGetAPIVersionsResponse(resp *http.Response, span trace.Span) (res Get
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetAPIVersionsUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -3687,9 +3463,7 @@ func decodeGetAdmissionregistrationAPIGroupResponse(resp *http.Response, span tr
 
 			var response GetAdmissionregistrationAPIGroupApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetAdmissionregistrationAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetAdmissionregistrationAPIGroupApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3697,16 +3471,16 @@ func decodeGetAdmissionregistrationAPIGroupResponse(resp *http.Response, span tr
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetAdmissionregistrationAPIGroupUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -3727,9 +3501,7 @@ func decodeGetAdmissionregistrationV1APIResourcesResponse(resp *http.Response, s
 
 			var response GetAdmissionregistrationV1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetAdmissionregistrationV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetAdmissionregistrationV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3737,16 +3509,16 @@ func decodeGetAdmissionregistrationV1APIResourcesResponse(resp *http.Response, s
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetAdmissionregistrationV1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -3767,9 +3539,7 @@ func decodeGetApiextensionsAPIGroupResponse(resp *http.Response, span trace.Span
 
 			var response GetApiextensionsAPIGroupApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetApiextensionsAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetApiextensionsAPIGroupApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3777,16 +3547,16 @@ func decodeGetApiextensionsAPIGroupResponse(resp *http.Response, span trace.Span
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetApiextensionsAPIGroupUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -3807,9 +3577,7 @@ func decodeGetApiextensionsV1APIResourcesResponse(resp *http.Response, span trac
 
 			var response GetApiextensionsV1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetApiextensionsV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetApiextensionsV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3817,16 +3585,16 @@ func decodeGetApiextensionsV1APIResourcesResponse(resp *http.Response, span trac
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetApiextensionsV1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -3847,9 +3615,7 @@ func decodeGetApiregistrationAPIGroupResponse(resp *http.Response, span trace.Sp
 
 			var response GetApiregistrationAPIGroupApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetApiregistrationAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetApiregistrationAPIGroupApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3857,16 +3623,16 @@ func decodeGetApiregistrationAPIGroupResponse(resp *http.Response, span trace.Sp
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetApiregistrationAPIGroupUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -3887,9 +3653,7 @@ func decodeGetApiregistrationV1APIResourcesResponse(resp *http.Response, span tr
 
 			var response GetApiregistrationV1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetApiregistrationV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetApiregistrationV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3897,16 +3661,16 @@ func decodeGetApiregistrationV1APIResourcesResponse(resp *http.Response, span tr
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetApiregistrationV1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -3927,9 +3691,7 @@ func decodeGetAppsAPIGroupResponse(resp *http.Response, span trace.Span) (res Ge
 
 			var response GetAppsAPIGroupApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetAppsAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetAppsAPIGroupApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3937,16 +3699,16 @@ func decodeGetAppsAPIGroupResponse(resp *http.Response, span trace.Span) (res Ge
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetAppsAPIGroupUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -3967,9 +3729,7 @@ func decodeGetAppsV1APIResourcesResponse(resp *http.Response, span trace.Span) (
 
 			var response GetAppsV1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetAppsV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetAppsV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3977,16 +3737,16 @@ func decodeGetAppsV1APIResourcesResponse(resp *http.Response, span trace.Span) (
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetAppsV1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -4007,9 +3767,7 @@ func decodeGetAuthenticationAPIGroupResponse(resp *http.Response, span trace.Spa
 
 			var response GetAuthenticationAPIGroupApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetAuthenticationAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetAuthenticationAPIGroupApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4017,16 +3775,16 @@ func decodeGetAuthenticationAPIGroupResponse(resp *http.Response, span trace.Spa
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetAuthenticationAPIGroupUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -4047,9 +3805,7 @@ func decodeGetAuthenticationV1APIResourcesResponse(resp *http.Response, span tra
 
 			var response GetAuthenticationV1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetAuthenticationV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetAuthenticationV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4057,16 +3813,16 @@ func decodeGetAuthenticationV1APIResourcesResponse(resp *http.Response, span tra
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetAuthenticationV1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -4087,9 +3843,7 @@ func decodeGetAuthorizationAPIGroupResponse(resp *http.Response, span trace.Span
 
 			var response GetAuthorizationAPIGroupApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetAuthorizationAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetAuthorizationAPIGroupApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4097,16 +3851,16 @@ func decodeGetAuthorizationAPIGroupResponse(resp *http.Response, span trace.Span
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetAuthorizationAPIGroupUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -4127,9 +3881,7 @@ func decodeGetAuthorizationV1APIResourcesResponse(resp *http.Response, span trac
 
 			var response GetAuthorizationV1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetAuthorizationV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetAuthorizationV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4137,16 +3889,16 @@ func decodeGetAuthorizationV1APIResourcesResponse(resp *http.Response, span trac
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetAuthorizationV1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -4167,9 +3919,7 @@ func decodeGetAutoscalingAPIGroupResponse(resp *http.Response, span trace.Span) 
 
 			var response GetAutoscalingAPIGroupApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetAutoscalingAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetAutoscalingAPIGroupApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4177,16 +3927,16 @@ func decodeGetAutoscalingAPIGroupResponse(resp *http.Response, span trace.Span) 
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetAutoscalingAPIGroupUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -4207,9 +3957,7 @@ func decodeGetAutoscalingV1APIResourcesResponse(resp *http.Response, span trace.
 
 			var response GetAutoscalingV1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetAutoscalingV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetAutoscalingV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4217,16 +3965,16 @@ func decodeGetAutoscalingV1APIResourcesResponse(resp *http.Response, span trace.
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetAutoscalingV1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -4247,9 +3995,7 @@ func decodeGetAutoscalingV2beta1APIResourcesResponse(resp *http.Response, span t
 
 			var response GetAutoscalingV2beta1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetAutoscalingV2beta1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetAutoscalingV2beta1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4257,16 +4003,16 @@ func decodeGetAutoscalingV2beta1APIResourcesResponse(resp *http.Response, span t
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetAutoscalingV2beta1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -4287,9 +4033,7 @@ func decodeGetAutoscalingV2beta2APIResourcesResponse(resp *http.Response, span t
 
 			var response GetAutoscalingV2beta2APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetAutoscalingV2beta2APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetAutoscalingV2beta2APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4297,16 +4041,16 @@ func decodeGetAutoscalingV2beta2APIResourcesResponse(resp *http.Response, span t
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetAutoscalingV2beta2APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -4327,9 +4071,7 @@ func decodeGetBatchAPIGroupResponse(resp *http.Response, span trace.Span) (res G
 
 			var response GetBatchAPIGroupApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetBatchAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetBatchAPIGroupApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4337,16 +4079,16 @@ func decodeGetBatchAPIGroupResponse(resp *http.Response, span trace.Span) (res G
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetBatchAPIGroupUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -4367,9 +4109,7 @@ func decodeGetBatchV1APIResourcesResponse(resp *http.Response, span trace.Span) 
 
 			var response GetBatchV1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetBatchV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetBatchV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4377,16 +4117,16 @@ func decodeGetBatchV1APIResourcesResponse(resp *http.Response, span trace.Span) 
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetBatchV1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -4407,9 +4147,7 @@ func decodeGetBatchV1beta1APIResourcesResponse(resp *http.Response, span trace.S
 
 			var response GetBatchV1beta1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetBatchV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetBatchV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4417,16 +4155,16 @@ func decodeGetBatchV1beta1APIResourcesResponse(resp *http.Response, span trace.S
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetBatchV1beta1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -4447,9 +4185,7 @@ func decodeGetCertificatesAPIGroupResponse(resp *http.Response, span trace.Span)
 
 			var response GetCertificatesAPIGroupApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetCertificatesAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetCertificatesAPIGroupApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4457,16 +4193,16 @@ func decodeGetCertificatesAPIGroupResponse(resp *http.Response, span trace.Span)
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetCertificatesAPIGroupUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -4487,9 +4223,7 @@ func decodeGetCertificatesV1APIResourcesResponse(resp *http.Response, span trace
 
 			var response GetCertificatesV1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetCertificatesV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetCertificatesV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4497,16 +4231,16 @@ func decodeGetCertificatesV1APIResourcesResponse(resp *http.Response, span trace
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetCertificatesV1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -4537,12 +4271,12 @@ func decodeGetCodeVersionResponse(resp *http.Response, span trace.Span) (res Get
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetCodeVersionUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -4563,9 +4297,7 @@ func decodeGetCoordinationAPIGroupResponse(resp *http.Response, span trace.Span)
 
 			var response GetCoordinationAPIGroupApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetCoordinationAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetCoordinationAPIGroupApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4573,16 +4305,16 @@ func decodeGetCoordinationAPIGroupResponse(resp *http.Response, span trace.Span)
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetCoordinationAPIGroupUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -4603,9 +4335,7 @@ func decodeGetCoordinationV1APIResourcesResponse(resp *http.Response, span trace
 
 			var response GetCoordinationV1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetCoordinationV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetCoordinationV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4613,16 +4343,16 @@ func decodeGetCoordinationV1APIResourcesResponse(resp *http.Response, span trace
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetCoordinationV1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -4643,9 +4373,7 @@ func decodeGetCoreAPIVersionsResponse(resp *http.Response, span trace.Span) (res
 
 			var response GetCoreAPIVersionsApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetCoreAPIVersionsApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetCoreAPIVersionsApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4653,16 +4381,16 @@ func decodeGetCoreAPIVersionsResponse(resp *http.Response, span trace.Span) (res
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetCoreAPIVersionsUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -4683,9 +4411,7 @@ func decodeGetCoreV1APIResourcesResponse(resp *http.Response, span trace.Span) (
 
 			var response GetCoreV1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetCoreV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetCoreV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4693,16 +4419,16 @@ func decodeGetCoreV1APIResourcesResponse(resp *http.Response, span trace.Span) (
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetCoreV1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -4723,9 +4449,7 @@ func decodeGetDiscoveryAPIGroupResponse(resp *http.Response, span trace.Span) (r
 
 			var response GetDiscoveryAPIGroupApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetDiscoveryAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetDiscoveryAPIGroupApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4733,16 +4457,16 @@ func decodeGetDiscoveryAPIGroupResponse(resp *http.Response, span trace.Span) (r
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetDiscoveryAPIGroupUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -4763,9 +4487,7 @@ func decodeGetDiscoveryV1APIResourcesResponse(resp *http.Response, span trace.Sp
 
 			var response GetDiscoveryV1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetDiscoveryV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetDiscoveryV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4773,16 +4495,16 @@ func decodeGetDiscoveryV1APIResourcesResponse(resp *http.Response, span trace.Sp
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetDiscoveryV1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -4803,9 +4525,7 @@ func decodeGetDiscoveryV1beta1APIResourcesResponse(resp *http.Response, span tra
 
 			var response GetDiscoveryV1beta1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetDiscoveryV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetDiscoveryV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4813,16 +4533,16 @@ func decodeGetDiscoveryV1beta1APIResourcesResponse(resp *http.Response, span tra
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetDiscoveryV1beta1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -4843,9 +4563,7 @@ func decodeGetEventsAPIGroupResponse(resp *http.Response, span trace.Span) (res 
 
 			var response GetEventsAPIGroupApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetEventsAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetEventsAPIGroupApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4853,16 +4571,16 @@ func decodeGetEventsAPIGroupResponse(resp *http.Response, span trace.Span) (res 
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetEventsAPIGroupUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -4883,9 +4601,7 @@ func decodeGetEventsV1APIResourcesResponse(resp *http.Response, span trace.Span)
 
 			var response GetEventsV1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetEventsV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetEventsV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4893,16 +4609,16 @@ func decodeGetEventsV1APIResourcesResponse(resp *http.Response, span trace.Span)
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetEventsV1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -4923,9 +4639,7 @@ func decodeGetEventsV1beta1APIResourcesResponse(resp *http.Response, span trace.
 
 			var response GetEventsV1beta1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetEventsV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetEventsV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4933,16 +4647,16 @@ func decodeGetEventsV1beta1APIResourcesResponse(resp *http.Response, span trace.
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetEventsV1beta1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -4963,9 +4677,7 @@ func decodeGetFlowcontrolApiserverAPIGroupResponse(resp *http.Response, span tra
 
 			var response GetFlowcontrolApiserverAPIGroupApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetFlowcontrolApiserverAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetFlowcontrolApiserverAPIGroupApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4973,16 +4685,16 @@ func decodeGetFlowcontrolApiserverAPIGroupResponse(resp *http.Response, span tra
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetFlowcontrolApiserverAPIGroupUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5003,9 +4715,7 @@ func decodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(resp *http.Respons
 
 			var response GetFlowcontrolApiserverV1beta1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetFlowcontrolApiserverV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetFlowcontrolApiserverV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5013,16 +4723,16 @@ func decodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(resp *http.Respons
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5043,9 +4753,7 @@ func decodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(resp *http.Respons
 
 			var response GetFlowcontrolApiserverV1beta2APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetFlowcontrolApiserverV1beta2APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetFlowcontrolApiserverV1beta2APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5053,16 +4761,16 @@ func decodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(resp *http.Respons
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5083,9 +4791,7 @@ func decodeGetInternalApiserverAPIGroupResponse(resp *http.Response, span trace.
 
 			var response GetInternalApiserverAPIGroupApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetInternalApiserverAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetInternalApiserverAPIGroupApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5093,16 +4799,16 @@ func decodeGetInternalApiserverAPIGroupResponse(resp *http.Response, span trace.
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetInternalApiserverAPIGroupUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5123,9 +4829,7 @@ func decodeGetInternalApiserverV1alpha1APIResourcesResponse(resp *http.Response,
 
 			var response GetInternalApiserverV1alpha1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetInternalApiserverV1alpha1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetInternalApiserverV1alpha1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5133,16 +4837,16 @@ func decodeGetInternalApiserverV1alpha1APIResourcesResponse(resp *http.Response,
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetInternalApiserverV1alpha1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5163,9 +4867,7 @@ func decodeGetNetworkingAPIGroupResponse(resp *http.Response, span trace.Span) (
 
 			var response GetNetworkingAPIGroupApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetNetworkingAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetNetworkingAPIGroupApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5173,16 +4875,16 @@ func decodeGetNetworkingAPIGroupResponse(resp *http.Response, span trace.Span) (
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetNetworkingAPIGroupUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5203,9 +4905,7 @@ func decodeGetNetworkingV1APIResourcesResponse(resp *http.Response, span trace.S
 
 			var response GetNetworkingV1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetNetworkingV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetNetworkingV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5213,16 +4913,16 @@ func decodeGetNetworkingV1APIResourcesResponse(resp *http.Response, span trace.S
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetNetworkingV1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5243,9 +4943,7 @@ func decodeGetNodeAPIGroupResponse(resp *http.Response, span trace.Span) (res Ge
 
 			var response GetNodeAPIGroupApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetNodeAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetNodeAPIGroupApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5253,16 +4951,16 @@ func decodeGetNodeAPIGroupResponse(resp *http.Response, span trace.Span) (res Ge
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetNodeAPIGroupUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5283,9 +4981,7 @@ func decodeGetNodeV1APIResourcesResponse(resp *http.Response, span trace.Span) (
 
 			var response GetNodeV1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetNodeV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetNodeV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5293,16 +4989,16 @@ func decodeGetNodeV1APIResourcesResponse(resp *http.Response, span trace.Span) (
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetNodeV1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5323,9 +5019,7 @@ func decodeGetNodeV1alpha1APIResourcesResponse(resp *http.Response, span trace.S
 
 			var response GetNodeV1alpha1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetNodeV1alpha1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetNodeV1alpha1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5333,16 +5027,16 @@ func decodeGetNodeV1alpha1APIResourcesResponse(resp *http.Response, span trace.S
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetNodeV1alpha1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5363,9 +5057,7 @@ func decodeGetNodeV1beta1APIResourcesResponse(resp *http.Response, span trace.Sp
 
 			var response GetNodeV1beta1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetNodeV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetNodeV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5373,16 +5065,16 @@ func decodeGetNodeV1beta1APIResourcesResponse(resp *http.Response, span trace.Sp
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetNodeV1beta1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5403,9 +5095,7 @@ func decodeGetPolicyAPIGroupResponse(resp *http.Response, span trace.Span) (res 
 
 			var response GetPolicyAPIGroupApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetPolicyAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetPolicyAPIGroupApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5413,16 +5103,16 @@ func decodeGetPolicyAPIGroupResponse(resp *http.Response, span trace.Span) (res 
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetPolicyAPIGroupUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5443,9 +5133,7 @@ func decodeGetPolicyV1APIResourcesResponse(resp *http.Response, span trace.Span)
 
 			var response GetPolicyV1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetPolicyV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetPolicyV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5453,16 +5141,16 @@ func decodeGetPolicyV1APIResourcesResponse(resp *http.Response, span trace.Span)
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetPolicyV1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5483,9 +5171,7 @@ func decodeGetPolicyV1beta1APIResourcesResponse(resp *http.Response, span trace.
 
 			var response GetPolicyV1beta1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetPolicyV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetPolicyV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5493,16 +5179,16 @@ func decodeGetPolicyV1beta1APIResourcesResponse(resp *http.Response, span trace.
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetPolicyV1beta1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5523,9 +5209,7 @@ func decodeGetRbacAuthorizationAPIGroupResponse(resp *http.Response, span trace.
 
 			var response GetRbacAuthorizationAPIGroupApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetRbacAuthorizationAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetRbacAuthorizationAPIGroupApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5533,16 +5217,16 @@ func decodeGetRbacAuthorizationAPIGroupResponse(resp *http.Response, span trace.
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetRbacAuthorizationAPIGroupUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5563,9 +5247,7 @@ func decodeGetRbacAuthorizationV1APIResourcesResponse(resp *http.Response, span 
 
 			var response GetRbacAuthorizationV1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetRbacAuthorizationV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetRbacAuthorizationV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5573,16 +5255,16 @@ func decodeGetRbacAuthorizationV1APIResourcesResponse(resp *http.Response, span 
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetRbacAuthorizationV1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5603,9 +5285,7 @@ func decodeGetSchedulingAPIGroupResponse(resp *http.Response, span trace.Span) (
 
 			var response GetSchedulingAPIGroupApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetSchedulingAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetSchedulingAPIGroupApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5613,16 +5293,16 @@ func decodeGetSchedulingAPIGroupResponse(resp *http.Response, span trace.Span) (
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetSchedulingAPIGroupUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5643,9 +5323,7 @@ func decodeGetSchedulingV1APIResourcesResponse(resp *http.Response, span trace.S
 
 			var response GetSchedulingV1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetSchedulingV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetSchedulingV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5653,16 +5331,16 @@ func decodeGetSchedulingV1APIResourcesResponse(resp *http.Response, span trace.S
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetSchedulingV1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5683,9 +5361,7 @@ func decodeGetServiceAccountIssuerOpenIDConfigurationResponse(resp *http.Respons
 
 			var response GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5693,12 +5369,12 @@ func decodeGetServiceAccountIssuerOpenIDConfigurationResponse(resp *http.Respons
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetServiceAccountIssuerOpenIDConfigurationUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5713,14 +5389,14 @@ func decodeGetServiceAccountIssuerOpenIDKeysetResponse(resp *http.Response, span
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/jwk-set+json":
-			return res, fmt.Errorf("application/jwk-set+json decoder not implemented")
+			return res, errors.New("application/jwk-set+json decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetServiceAccountIssuerOpenIDKeysetUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5741,9 +5417,7 @@ func decodeGetStorageAPIGroupResponse(resp *http.Response, span trace.Span) (res
 
 			var response GetStorageAPIGroupApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetStorageAPIGroupApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetStorageAPIGroupApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5751,16 +5425,16 @@ func decodeGetStorageAPIGroupResponse(resp *http.Response, span trace.Span) (res
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetStorageAPIGroupUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5781,9 +5455,7 @@ func decodeGetStorageV1APIResourcesResponse(resp *http.Response, span trace.Span
 
 			var response GetStorageV1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetStorageV1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetStorageV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5791,16 +5463,16 @@ func decodeGetStorageV1APIResourcesResponse(resp *http.Response, span trace.Span
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetStorageV1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5821,9 +5493,7 @@ func decodeGetStorageV1alpha1APIResourcesResponse(resp *http.Response, span trac
 
 			var response GetStorageV1alpha1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetStorageV1alpha1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetStorageV1alpha1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5831,16 +5501,16 @@ func decodeGetStorageV1alpha1APIResourcesResponse(resp *http.Response, span trac
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetStorageV1alpha1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5861,9 +5531,7 @@ func decodeGetStorageV1beta1APIResourcesResponse(resp *http.Response, span trace
 
 			var response GetStorageV1beta1APIResourcesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "GetStorageV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "GetStorageV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5871,16 +5539,16 @@ func decodeGetStorageV1beta1APIResourcesResponse(resp *http.Response, span trace
 
 			return &response, nil
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &GetStorageV1beta1APIResourcesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5901,9 +5569,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp 
 
 			var response ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5911,20 +5577,20 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp 
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5945,9 +5611,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 
 			var response ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5955,20 +5619,20 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -5989,9 +5653,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionResponse(resp *http.Respon
 
 			var response ListApiextensionsV1CustomResourceDefinitionApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListApiextensionsV1CustomResourceDefinitionApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListApiextensionsV1CustomResourceDefinitionApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5999,20 +5661,20 @@ func decodeListApiextensionsV1CustomResourceDefinitionResponse(resp *http.Respon
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListApiextensionsV1CustomResourceDefinitionUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -6033,9 +5695,7 @@ func decodeListApiregistrationV1APIServiceResponse(resp *http.Response, span tra
 
 			var response ListApiregistrationV1APIServiceApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListApiregistrationV1APIServiceApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListApiregistrationV1APIServiceApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6043,20 +5703,20 @@ func decodeListApiregistrationV1APIServiceResponse(resp *http.Response, span tra
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListApiregistrationV1APIServiceUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -6077,9 +5737,7 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesResponse(resp *http.Respo
 
 			var response ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6087,20 +5745,20 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesResponse(resp *http.Respo
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListAppsV1ControllerRevisionForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -6121,9 +5779,7 @@ func decodeListAppsV1DaemonSetForAllNamespacesResponse(resp *http.Response, span
 
 			var response ListAppsV1DaemonSetForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListAppsV1DaemonSetForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListAppsV1DaemonSetForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6131,20 +5787,20 @@ func decodeListAppsV1DaemonSetForAllNamespacesResponse(resp *http.Response, span
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListAppsV1DaemonSetForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -6165,9 +5821,7 @@ func decodeListAppsV1DeploymentForAllNamespacesResponse(resp *http.Response, spa
 
 			var response ListAppsV1DeploymentForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListAppsV1DeploymentForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListAppsV1DeploymentForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6175,20 +5829,20 @@ func decodeListAppsV1DeploymentForAllNamespacesResponse(resp *http.Response, spa
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListAppsV1DeploymentForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -6209,9 +5863,7 @@ func decodeListAppsV1ReplicaSetForAllNamespacesResponse(resp *http.Response, spa
 
 			var response ListAppsV1ReplicaSetForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListAppsV1ReplicaSetForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListAppsV1ReplicaSetForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6219,20 +5871,20 @@ func decodeListAppsV1ReplicaSetForAllNamespacesResponse(resp *http.Response, spa
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListAppsV1ReplicaSetForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -6253,9 +5905,7 @@ func decodeListAppsV1StatefulSetForAllNamespacesResponse(resp *http.Response, sp
 
 			var response ListAppsV1StatefulSetForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListAppsV1StatefulSetForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListAppsV1StatefulSetForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6263,20 +5913,20 @@ func decodeListAppsV1StatefulSetForAllNamespacesResponse(resp *http.Response, sp
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListAppsV1StatefulSetForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -6297,9 +5947,7 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 
 			var response ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6307,20 +5955,20 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -6341,9 +5989,7 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 
 			var response ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6351,20 +5997,20 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -6385,9 +6031,7 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 
 			var response ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6395,20 +6039,20 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -6429,9 +6073,7 @@ func decodeListBatchV1CronJobForAllNamespacesResponse(resp *http.Response, span 
 
 			var response ListBatchV1CronJobForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListBatchV1CronJobForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListBatchV1CronJobForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6439,20 +6081,20 @@ func decodeListBatchV1CronJobForAllNamespacesResponse(resp *http.Response, span 
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListBatchV1CronJobForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -6473,9 +6115,7 @@ func decodeListBatchV1JobForAllNamespacesResponse(resp *http.Response, span trac
 
 			var response ListBatchV1JobForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListBatchV1JobForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListBatchV1JobForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6483,20 +6123,20 @@ func decodeListBatchV1JobForAllNamespacesResponse(resp *http.Response, span trac
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListBatchV1JobForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -6517,9 +6157,7 @@ func decodeListBatchV1beta1CronJobForAllNamespacesResponse(resp *http.Response, 
 
 			var response ListBatchV1beta1CronJobForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListBatchV1beta1CronJobForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListBatchV1beta1CronJobForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6527,20 +6165,20 @@ func decodeListBatchV1beta1CronJobForAllNamespacesResponse(resp *http.Response, 
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListBatchV1beta1CronJobForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -6561,9 +6199,7 @@ func decodeListCertificatesV1CertificateSigningRequestResponse(resp *http.Respon
 
 			var response ListCertificatesV1CertificateSigningRequestApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListCertificatesV1CertificateSigningRequestApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListCertificatesV1CertificateSigningRequestApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6571,20 +6207,20 @@ func decodeListCertificatesV1CertificateSigningRequestResponse(resp *http.Respon
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListCertificatesV1CertificateSigningRequestUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -6605,9 +6241,7 @@ func decodeListCoordinationV1LeaseForAllNamespacesResponse(resp *http.Response, 
 
 			var response ListCoordinationV1LeaseForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListCoordinationV1LeaseForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListCoordinationV1LeaseForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6615,20 +6249,20 @@ func decodeListCoordinationV1LeaseForAllNamespacesResponse(resp *http.Response, 
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListCoordinationV1LeaseForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -6649,9 +6283,7 @@ func decodeListCoreV1ComponentStatusResponse(resp *http.Response, span trace.Spa
 
 			var response ListCoreV1ComponentStatusApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListCoreV1ComponentStatusApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListCoreV1ComponentStatusApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6659,20 +6291,20 @@ func decodeListCoreV1ComponentStatusResponse(resp *http.Response, span trace.Spa
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListCoreV1ComponentStatusUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -6693,9 +6325,7 @@ func decodeListCoreV1ConfigMapForAllNamespacesResponse(resp *http.Response, span
 
 			var response ListCoreV1ConfigMapForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListCoreV1ConfigMapForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListCoreV1ConfigMapForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6703,20 +6333,20 @@ func decodeListCoreV1ConfigMapForAllNamespacesResponse(resp *http.Response, span
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListCoreV1ConfigMapForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -6737,9 +6367,7 @@ func decodeListCoreV1EndpointsForAllNamespacesResponse(resp *http.Response, span
 
 			var response ListCoreV1EndpointsForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListCoreV1EndpointsForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListCoreV1EndpointsForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6747,20 +6375,20 @@ func decodeListCoreV1EndpointsForAllNamespacesResponse(resp *http.Response, span
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListCoreV1EndpointsForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -6781,9 +6409,7 @@ func decodeListCoreV1EventForAllNamespacesResponse(resp *http.Response, span tra
 
 			var response ListCoreV1EventForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListCoreV1EventForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListCoreV1EventForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6791,20 +6417,20 @@ func decodeListCoreV1EventForAllNamespacesResponse(resp *http.Response, span tra
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListCoreV1EventForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -6825,9 +6451,7 @@ func decodeListCoreV1LimitRangeForAllNamespacesResponse(resp *http.Response, spa
 
 			var response ListCoreV1LimitRangeForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListCoreV1LimitRangeForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListCoreV1LimitRangeForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6835,20 +6459,20 @@ func decodeListCoreV1LimitRangeForAllNamespacesResponse(resp *http.Response, spa
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListCoreV1LimitRangeForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -6869,9 +6493,7 @@ func decodeListCoreV1NamespaceResponse(resp *http.Response, span trace.Span) (re
 
 			var response ListCoreV1NamespaceApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListCoreV1NamespaceApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListCoreV1NamespaceApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6879,20 +6501,20 @@ func decodeListCoreV1NamespaceResponse(resp *http.Response, span trace.Span) (re
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListCoreV1NamespaceUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -6913,9 +6535,7 @@ func decodeListCoreV1NodeResponse(resp *http.Response, span trace.Span) (res Lis
 
 			var response ListCoreV1NodeApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListCoreV1NodeApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListCoreV1NodeApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6923,20 +6543,20 @@ func decodeListCoreV1NodeResponse(resp *http.Response, span trace.Span) (res Lis
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListCoreV1NodeUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -6957,9 +6577,7 @@ func decodeListCoreV1PersistentVolumeResponse(resp *http.Response, span trace.Sp
 
 			var response ListCoreV1PersistentVolumeApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListCoreV1PersistentVolumeApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListCoreV1PersistentVolumeApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6967,20 +6585,20 @@ func decodeListCoreV1PersistentVolumeResponse(resp *http.Response, span trace.Sp
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListCoreV1PersistentVolumeUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -7001,9 +6619,7 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(resp *http.Re
 
 			var response ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7011,20 +6627,20 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(resp *http.Re
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -7045,9 +6661,7 @@ func decodeListCoreV1PodForAllNamespacesResponse(resp *http.Response, span trace
 
 			var response ListCoreV1PodForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListCoreV1PodForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListCoreV1PodForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7055,20 +6669,20 @@ func decodeListCoreV1PodForAllNamespacesResponse(resp *http.Response, span trace
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListCoreV1PodForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -7089,9 +6703,7 @@ func decodeListCoreV1PodTemplateForAllNamespacesResponse(resp *http.Response, sp
 
 			var response ListCoreV1PodTemplateForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListCoreV1PodTemplateForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListCoreV1PodTemplateForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7099,20 +6711,20 @@ func decodeListCoreV1PodTemplateForAllNamespacesResponse(resp *http.Response, sp
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListCoreV1PodTemplateForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -7133,9 +6745,7 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesResponse(resp *http.Re
 
 			var response ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7143,20 +6753,20 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesResponse(resp *http.Re
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListCoreV1ReplicationControllerForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -7177,9 +6787,7 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesResponse(resp *http.Response, 
 
 			var response ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7187,20 +6795,20 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesResponse(resp *http.Response, 
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListCoreV1ResourceQuotaForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -7221,9 +6829,7 @@ func decodeListCoreV1SecretForAllNamespacesResponse(resp *http.Response, span tr
 
 			var response ListCoreV1SecretForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListCoreV1SecretForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListCoreV1SecretForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7231,20 +6837,20 @@ func decodeListCoreV1SecretForAllNamespacesResponse(resp *http.Response, span tr
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListCoreV1SecretForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -7265,9 +6871,7 @@ func decodeListCoreV1ServiceAccountForAllNamespacesResponse(resp *http.Response,
 
 			var response ListCoreV1ServiceAccountForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListCoreV1ServiceAccountForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListCoreV1ServiceAccountForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7275,20 +6879,20 @@ func decodeListCoreV1ServiceAccountForAllNamespacesResponse(resp *http.Response,
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListCoreV1ServiceAccountForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -7309,9 +6913,7 @@ func decodeListCoreV1ServiceForAllNamespacesResponse(resp *http.Response, span t
 
 			var response ListCoreV1ServiceForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListCoreV1ServiceForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListCoreV1ServiceForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7319,20 +6921,20 @@ func decodeListCoreV1ServiceForAllNamespacesResponse(resp *http.Response, span t
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListCoreV1ServiceForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -7353,9 +6955,7 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(resp *http.Respo
 
 			var response ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7363,20 +6963,20 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(resp *http.Respo
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -7397,9 +6997,7 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(resp *http.
 
 			var response ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7407,20 +7005,20 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(resp *http.
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -7441,9 +7039,7 @@ func decodeListEventsV1EventForAllNamespacesResponse(resp *http.Response, span t
 
 			var response ListEventsV1EventForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListEventsV1EventForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListEventsV1EventForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7451,20 +7047,20 @@ func decodeListEventsV1EventForAllNamespacesResponse(resp *http.Response, span t
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListEventsV1EventForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -7485,9 +7081,7 @@ func decodeListEventsV1beta1EventForAllNamespacesResponse(resp *http.Response, s
 
 			var response ListEventsV1beta1EventForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListEventsV1beta1EventForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListEventsV1beta1EventForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7495,20 +7089,20 @@ func decodeListEventsV1beta1EventForAllNamespacesResponse(resp *http.Response, s
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListEventsV1beta1EventForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -7529,9 +7123,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response
 
 			var response ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7539,20 +7131,20 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -7573,9 +7165,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 
 			var response ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7583,20 +7173,20 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -7617,9 +7207,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response
 
 			var response ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7627,20 +7215,20 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -7661,9 +7249,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 
 			var response ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7671,20 +7257,20 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -7705,9 +7291,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionResponse(resp *http.Respon
 
 			var response ListInternalApiserverV1alpha1StorageVersionApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListInternalApiserverV1alpha1StorageVersionApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListInternalApiserverV1alpha1StorageVersionApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7715,20 +7299,20 @@ func decodeListInternalApiserverV1alpha1StorageVersionResponse(resp *http.Respon
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListInternalApiserverV1alpha1StorageVersionUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -7749,9 +7333,7 @@ func decodeListNetworkingV1IngressClassResponse(resp *http.Response, span trace.
 
 			var response ListNetworkingV1IngressClassApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListNetworkingV1IngressClassApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListNetworkingV1IngressClassApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7759,20 +7341,20 @@ func decodeListNetworkingV1IngressClassResponse(resp *http.Response, span trace.
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListNetworkingV1IngressClassUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -7793,9 +7375,7 @@ func decodeListNetworkingV1IngressForAllNamespacesResponse(resp *http.Response, 
 
 			var response ListNetworkingV1IngressForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListNetworkingV1IngressForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListNetworkingV1IngressForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7803,20 +7383,20 @@ func decodeListNetworkingV1IngressForAllNamespacesResponse(resp *http.Response, 
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListNetworkingV1IngressForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -7837,9 +7417,7 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(resp *http.Resp
 
 			var response ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7847,20 +7425,20 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(resp *http.Resp
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -7881,9 +7459,7 @@ func decodeListNodeV1RuntimeClassResponse(resp *http.Response, span trace.Span) 
 
 			var response ListNodeV1RuntimeClassApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListNodeV1RuntimeClassApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListNodeV1RuntimeClassApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7891,20 +7467,20 @@ func decodeListNodeV1RuntimeClassResponse(resp *http.Response, span trace.Span) 
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListNodeV1RuntimeClassUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -7925,9 +7501,7 @@ func decodeListNodeV1alpha1RuntimeClassResponse(resp *http.Response, span trace.
 
 			var response ListNodeV1alpha1RuntimeClassApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListNodeV1alpha1RuntimeClassApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListNodeV1alpha1RuntimeClassApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7935,20 +7509,20 @@ func decodeListNodeV1alpha1RuntimeClassResponse(resp *http.Response, span trace.
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListNodeV1alpha1RuntimeClassUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -7969,9 +7543,7 @@ func decodeListNodeV1beta1RuntimeClassResponse(resp *http.Response, span trace.S
 
 			var response ListNodeV1beta1RuntimeClassApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListNodeV1beta1RuntimeClassApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListNodeV1beta1RuntimeClassApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7979,20 +7551,20 @@ func decodeListNodeV1beta1RuntimeClassResponse(resp *http.Response, span trace.S
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListNodeV1beta1RuntimeClassUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -8013,9 +7585,7 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Re
 
 			var response ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8023,20 +7593,20 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Re
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -8057,9 +7627,7 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(resp *ht
 
 			var response ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8067,20 +7635,20 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(resp *ht
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -8101,9 +7669,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response, span 
 
 			var response ListPolicyV1beta1PodSecurityPolicyApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListPolicyV1beta1PodSecurityPolicyApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListPolicyV1beta1PodSecurityPolicyApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8111,20 +7677,20 @@ func decodeListPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response, span 
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListPolicyV1beta1PodSecurityPolicyUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -8145,9 +7711,7 @@ func decodeListRbacAuthorizationV1ClusterRoleResponse(resp *http.Response, span 
 
 			var response ListRbacAuthorizationV1ClusterRoleApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListRbacAuthorizationV1ClusterRoleApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListRbacAuthorizationV1ClusterRoleApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8155,20 +7719,20 @@ func decodeListRbacAuthorizationV1ClusterRoleResponse(resp *http.Response, span 
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListRbacAuthorizationV1ClusterRoleUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -8189,9 +7753,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response
 
 			var response ListRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8199,20 +7761,20 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListRbacAuthorizationV1ClusterRoleBindingUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -8233,9 +7795,7 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(resp *http
 
 			var response ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8243,20 +7803,20 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(resp *http
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -8277,9 +7837,7 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesResponse(resp *http.Respon
 
 			var response ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8287,20 +7845,20 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesResponse(resp *http.Respon
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -8321,9 +7879,7 @@ func decodeListSchedulingV1PriorityClassResponse(resp *http.Response, span trace
 
 			var response ListSchedulingV1PriorityClassApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListSchedulingV1PriorityClassApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListSchedulingV1PriorityClassApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8331,20 +7887,20 @@ func decodeListSchedulingV1PriorityClassResponse(resp *http.Response, span trace
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListSchedulingV1PriorityClassUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -8365,9 +7921,7 @@ func decodeListStorageV1CSIDriverResponse(resp *http.Response, span trace.Span) 
 
 			var response ListStorageV1CSIDriverApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListStorageV1CSIDriverApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListStorageV1CSIDriverApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8375,20 +7929,20 @@ func decodeListStorageV1CSIDriverResponse(resp *http.Response, span trace.Span) 
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListStorageV1CSIDriverUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -8409,9 +7963,7 @@ func decodeListStorageV1CSINodeResponse(resp *http.Response, span trace.Span) (r
 
 			var response ListStorageV1CSINodeApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListStorageV1CSINodeApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListStorageV1CSINodeApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8419,20 +7971,20 @@ func decodeListStorageV1CSINodeResponse(resp *http.Response, span trace.Span) (r
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListStorageV1CSINodeUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -8453,9 +8005,7 @@ func decodeListStorageV1StorageClassResponse(resp *http.Response, span trace.Spa
 
 			var response ListStorageV1StorageClassApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListStorageV1StorageClassApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListStorageV1StorageClassApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8463,20 +8013,20 @@ func decodeListStorageV1StorageClassResponse(resp *http.Response, span trace.Spa
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListStorageV1StorageClassUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -8497,9 +8047,7 @@ func decodeListStorageV1VolumeAttachmentResponse(resp *http.Response, span trace
 
 			var response ListStorageV1VolumeAttachmentApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListStorageV1VolumeAttachmentApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListStorageV1VolumeAttachmentApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8507,20 +8055,20 @@ func decodeListStorageV1VolumeAttachmentResponse(resp *http.Response, span trace
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListStorageV1VolumeAttachmentUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -8541,9 +8089,7 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(resp *h
 
 			var response ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8551,20 +8097,20 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(resp *h
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -8585,9 +8131,7 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(resp *ht
 
 			var response ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8595,20 +8139,20 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(resp *ht
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -8623,7 +8167,7 @@ func decodeLogFileListHandlerResponse(resp *http.Response, span trace.Span) (res
 	case 401:
 		return LogFileListHandlerUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -8644,9 +8188,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 
 			var response WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8654,20 +8196,20 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -8688,9 +8230,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 
 			var response WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8698,20 +8238,20 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -8732,9 +8272,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListResponse(resp *http.R
 
 			var response WatchApiextensionsV1CustomResourceDefinitionListApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchApiextensionsV1CustomResourceDefinitionListApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchApiextensionsV1CustomResourceDefinitionListApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8742,20 +8280,20 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListResponse(resp *http.R
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchApiextensionsV1CustomResourceDefinitionListUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -8776,9 +8314,7 @@ func decodeWatchApiregistrationV1APIServiceListResponse(resp *http.Response, spa
 
 			var response WatchApiregistrationV1APIServiceListApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchApiregistrationV1APIServiceListApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchApiregistrationV1APIServiceListApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8786,20 +8322,20 @@ func decodeWatchApiregistrationV1APIServiceListResponse(resp *http.Response, spa
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchApiregistrationV1APIServiceListUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -8820,9 +8356,7 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(resp *http.
 
 			var response WatchAppsV1ControllerRevisionListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchAppsV1ControllerRevisionListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchAppsV1ControllerRevisionListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8830,20 +8364,20 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(resp *http.
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -8864,9 +8398,7 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesResponse(resp *http.Response,
 
 			var response WatchAppsV1DaemonSetListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchAppsV1DaemonSetListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchAppsV1DaemonSetListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8874,20 +8406,20 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesResponse(resp *http.Response,
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchAppsV1DaemonSetListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -8908,9 +8440,7 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesResponse(resp *http.Response
 
 			var response WatchAppsV1DeploymentListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchAppsV1DeploymentListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchAppsV1DeploymentListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8918,20 +8448,20 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesResponse(resp *http.Response
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchAppsV1DeploymentListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -8952,9 +8482,7 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(resp *http.Response
 
 			var response WatchAppsV1ReplicaSetListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchAppsV1ReplicaSetListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchAppsV1ReplicaSetListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8962,20 +8490,20 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(resp *http.Response
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -8996,9 +8524,7 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesResponse(resp *http.Respons
 
 			var response WatchAppsV1StatefulSetListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchAppsV1StatefulSetListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchAppsV1StatefulSetListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9006,20 +8532,20 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesResponse(resp *http.Respons
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchAppsV1StatefulSetListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -9040,9 +8566,7 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 
 			var response WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9050,20 +8574,20 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -9084,9 +8608,7 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 
 			var response WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9094,20 +8616,20 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -9128,9 +8650,7 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 
 			var response WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9138,20 +8658,20 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -9172,9 +8692,7 @@ func decodeWatchBatchV1CronJobListForAllNamespacesResponse(resp *http.Response, 
 
 			var response WatchBatchV1CronJobListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchBatchV1CronJobListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchBatchV1CronJobListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9182,20 +8700,20 @@ func decodeWatchBatchV1CronJobListForAllNamespacesResponse(resp *http.Response, 
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchBatchV1CronJobListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -9216,9 +8734,7 @@ func decodeWatchBatchV1JobListForAllNamespacesResponse(resp *http.Response, span
 
 			var response WatchBatchV1JobListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchBatchV1JobListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchBatchV1JobListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9226,20 +8742,20 @@ func decodeWatchBatchV1JobListForAllNamespacesResponse(resp *http.Response, span
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchBatchV1JobListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -9260,9 +8776,7 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(resp *http.Respo
 
 			var response WatchBatchV1beta1CronJobListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchBatchV1beta1CronJobListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchBatchV1beta1CronJobListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9270,20 +8784,20 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(resp *http.Respo
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -9304,9 +8818,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestListResponse(resp *http.R
 
 			var response WatchCertificatesV1CertificateSigningRequestListApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchCertificatesV1CertificateSigningRequestListApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchCertificatesV1CertificateSigningRequestListApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9314,20 +8826,20 @@ func decodeWatchCertificatesV1CertificateSigningRequestListResponse(resp *http.R
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchCertificatesV1CertificateSigningRequestListUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -9348,9 +8860,7 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesResponse(resp *http.Respo
 
 			var response WatchCoordinationV1LeaseListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchCoordinationV1LeaseListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchCoordinationV1LeaseListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9358,20 +8868,20 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesResponse(resp *http.Respo
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchCoordinationV1LeaseListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -9392,9 +8902,7 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesResponse(resp *http.Response,
 
 			var response WatchCoreV1ConfigMapListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchCoreV1ConfigMapListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchCoreV1ConfigMapListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9402,20 +8910,20 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesResponse(resp *http.Response,
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchCoreV1ConfigMapListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -9436,9 +8944,7 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesResponse(resp *http.Response,
 
 			var response WatchCoreV1EndpointsListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchCoreV1EndpointsListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchCoreV1EndpointsListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9446,20 +8952,20 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesResponse(resp *http.Response,
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchCoreV1EndpointsListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -9480,9 +8986,7 @@ func decodeWatchCoreV1EventListForAllNamespacesResponse(resp *http.Response, spa
 
 			var response WatchCoreV1EventListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchCoreV1EventListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchCoreV1EventListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9490,20 +8994,20 @@ func decodeWatchCoreV1EventListForAllNamespacesResponse(resp *http.Response, spa
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchCoreV1EventListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -9524,9 +9028,7 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesResponse(resp *http.Response
 
 			var response WatchCoreV1LimitRangeListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchCoreV1LimitRangeListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchCoreV1LimitRangeListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9534,20 +9036,20 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesResponse(resp *http.Response
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchCoreV1LimitRangeListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -9568,9 +9070,7 @@ func decodeWatchCoreV1NamespaceListResponse(resp *http.Response, span trace.Span
 
 			var response WatchCoreV1NamespaceListApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchCoreV1NamespaceListApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchCoreV1NamespaceListApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9578,20 +9078,20 @@ func decodeWatchCoreV1NamespaceListResponse(resp *http.Response, span trace.Span
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchCoreV1NamespaceListUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -9612,9 +9112,7 @@ func decodeWatchCoreV1NodeListResponse(resp *http.Response, span trace.Span) (re
 
 			var response WatchCoreV1NodeListApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchCoreV1NodeListApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchCoreV1NodeListApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9622,20 +9120,20 @@ func decodeWatchCoreV1NodeListResponse(resp *http.Response, span trace.Span) (re
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchCoreV1NodeListUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -9656,9 +9154,7 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(resp *ht
 
 			var response WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9666,20 +9162,20 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(resp *ht
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -9700,9 +9196,7 @@ func decodeWatchCoreV1PersistentVolumeListResponse(resp *http.Response, span tra
 
 			var response WatchCoreV1PersistentVolumeListApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchCoreV1PersistentVolumeListApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchCoreV1PersistentVolumeListApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9710,20 +9204,20 @@ func decodeWatchCoreV1PersistentVolumeListResponse(resp *http.Response, span tra
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchCoreV1PersistentVolumeListUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -9744,9 +9238,7 @@ func decodeWatchCoreV1PodListForAllNamespacesResponse(resp *http.Response, span 
 
 			var response WatchCoreV1PodListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchCoreV1PodListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchCoreV1PodListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9754,20 +9246,20 @@ func decodeWatchCoreV1PodListForAllNamespacesResponse(resp *http.Response, span 
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchCoreV1PodListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -9788,9 +9280,7 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesResponse(resp *http.Respons
 
 			var response WatchCoreV1PodTemplateListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchCoreV1PodTemplateListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchCoreV1PodTemplateListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9798,20 +9288,20 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesResponse(resp *http.Respons
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchCoreV1PodTemplateListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -9832,9 +9322,7 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(resp *ht
 
 			var response WatchCoreV1ReplicationControllerListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchCoreV1ReplicationControllerListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchCoreV1ReplicationControllerListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9842,20 +9330,20 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(resp *ht
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -9876,9 +9364,7 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(resp *http.Respo
 
 			var response WatchCoreV1ResourceQuotaListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchCoreV1ResourceQuotaListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchCoreV1ResourceQuotaListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9886,20 +9372,20 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(resp *http.Respo
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -9920,9 +9406,7 @@ func decodeWatchCoreV1SecretListForAllNamespacesResponse(resp *http.Response, sp
 
 			var response WatchCoreV1SecretListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchCoreV1SecretListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchCoreV1SecretListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9930,20 +9414,20 @@ func decodeWatchCoreV1SecretListForAllNamespacesResponse(resp *http.Response, sp
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchCoreV1SecretListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -9964,9 +9448,7 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(resp *http.Resp
 
 			var response WatchCoreV1ServiceAccountListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchCoreV1ServiceAccountListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchCoreV1ServiceAccountListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9974,20 +9456,20 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(resp *http.Resp
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -10008,9 +9490,7 @@ func decodeWatchCoreV1ServiceListForAllNamespacesResponse(resp *http.Response, s
 
 			var response WatchCoreV1ServiceListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchCoreV1ServiceListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchCoreV1ServiceListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10018,20 +9498,20 @@ func decodeWatchCoreV1ServiceListForAllNamespacesResponse(resp *http.Response, s
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchCoreV1ServiceListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -10052,9 +9532,7 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(resp *http.
 
 			var response WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10062,20 +9540,20 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(resp *http.
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -10096,9 +9574,7 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(resp *
 
 			var response WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10106,20 +9582,20 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(resp *
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -10140,9 +9616,7 @@ func decodeWatchEventsV1EventListForAllNamespacesResponse(resp *http.Response, s
 
 			var response WatchEventsV1EventListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchEventsV1EventListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchEventsV1EventListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10150,20 +9624,20 @@ func decodeWatchEventsV1EventListForAllNamespacesResponse(resp *http.Response, s
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchEventsV1EventListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -10184,9 +9658,7 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesResponse(resp *http.Respon
 
 			var response WatchEventsV1beta1EventListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchEventsV1beta1EventListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchEventsV1beta1EventListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10194,20 +9666,20 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesResponse(resp *http.Respon
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchEventsV1beta1EventListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -10228,9 +9700,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(resp *http.Res
 
 			var response WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10238,20 +9708,20 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(resp *http.Res
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -10272,9 +9742,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 
 			var response WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10282,20 +9750,20 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -10316,9 +9784,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(resp *http.Res
 
 			var response WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10326,20 +9792,20 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(resp *http.Res
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -10360,9 +9826,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 
 			var response WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10370,20 +9834,20 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -10404,9 +9868,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListResponse(resp *http.R
 
 			var response WatchInternalApiserverV1alpha1StorageVersionListApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchInternalApiserverV1alpha1StorageVersionListApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchInternalApiserverV1alpha1StorageVersionListApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10414,20 +9876,20 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListResponse(resp *http.R
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchInternalApiserverV1alpha1StorageVersionListUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -10448,9 +9910,7 @@ func decodeWatchNetworkingV1IngressClassListResponse(resp *http.Response, span t
 
 			var response WatchNetworkingV1IngressClassListApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchNetworkingV1IngressClassListApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchNetworkingV1IngressClassListApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10458,20 +9918,20 @@ func decodeWatchNetworkingV1IngressClassListResponse(resp *http.Response, span t
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchNetworkingV1IngressClassListUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -10492,9 +9952,7 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesResponse(resp *http.Respo
 
 			var response WatchNetworkingV1IngressListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchNetworkingV1IngressListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchNetworkingV1IngressListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10502,20 +9960,20 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesResponse(resp *http.Respo
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchNetworkingV1IngressListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -10536,9 +9994,7 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(resp *http
 
 			var response WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10546,20 +10002,20 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(resp *http
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -10580,9 +10036,7 @@ func decodeWatchNodeV1RuntimeClassListResponse(resp *http.Response, span trace.S
 
 			var response WatchNodeV1RuntimeClassListApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchNodeV1RuntimeClassListApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchNodeV1RuntimeClassListApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10590,20 +10044,20 @@ func decodeWatchNodeV1RuntimeClassListResponse(resp *http.Response, span trace.S
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchNodeV1RuntimeClassListUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -10624,9 +10078,7 @@ func decodeWatchNodeV1alpha1RuntimeClassListResponse(resp *http.Response, span t
 
 			var response WatchNodeV1alpha1RuntimeClassListApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchNodeV1alpha1RuntimeClassListApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchNodeV1alpha1RuntimeClassListApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10634,20 +10086,20 @@ func decodeWatchNodeV1alpha1RuntimeClassListResponse(resp *http.Response, span t
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchNodeV1alpha1RuntimeClassListUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -10668,9 +10120,7 @@ func decodeWatchNodeV1beta1RuntimeClassListResponse(resp *http.Response, span tr
 
 			var response WatchNodeV1beta1RuntimeClassListApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchNodeV1beta1RuntimeClassListApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchNodeV1beta1RuntimeClassListApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10678,20 +10128,20 @@ func decodeWatchNodeV1beta1RuntimeClassListResponse(resp *http.Response, span tr
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchNodeV1beta1RuntimeClassListUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -10712,9 +10162,7 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(resp *ht
 
 			var response WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10722,20 +10170,20 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(resp *ht
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -10756,9 +10204,7 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 
 			var response WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10766,20 +10212,20 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -10800,9 +10246,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListResponse(resp *http.Response, 
 
 			var response WatchPolicyV1beta1PodSecurityPolicyListApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchPolicyV1beta1PodSecurityPolicyListApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchPolicyV1beta1PodSecurityPolicyListApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10810,20 +10254,20 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListResponse(resp *http.Response, 
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchPolicyV1beta1PodSecurityPolicyListUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -10844,9 +10288,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(resp *http.Res
 
 			var response WatchRbacAuthorizationV1ClusterRoleBindingListApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchRbacAuthorizationV1ClusterRoleBindingListApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchRbacAuthorizationV1ClusterRoleBindingListApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10854,20 +10296,20 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(resp *http.Res
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -10888,9 +10330,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListResponse(resp *http.Response, 
 
 			var response WatchRbacAuthorizationV1ClusterRoleListApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchRbacAuthorizationV1ClusterRoleListApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchRbacAuthorizationV1ClusterRoleListApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10898,20 +10338,20 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListResponse(resp *http.Response, 
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchRbacAuthorizationV1ClusterRoleListUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -10932,9 +10372,7 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(resp 
 
 			var response WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10942,20 +10380,20 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(resp 
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -10976,9 +10414,7 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(resp *http.R
 
 			var response WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10986,20 +10422,20 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(resp *http.R
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -11020,9 +10456,7 @@ func decodeWatchSchedulingV1PriorityClassListResponse(resp *http.Response, span 
 
 			var response WatchSchedulingV1PriorityClassListApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchSchedulingV1PriorityClassListApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchSchedulingV1PriorityClassListApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11030,20 +10464,20 @@ func decodeWatchSchedulingV1PriorityClassListResponse(resp *http.Response, span 
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchSchedulingV1PriorityClassListUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -11064,9 +10498,7 @@ func decodeWatchStorageV1CSIDriverListResponse(resp *http.Response, span trace.S
 
 			var response WatchStorageV1CSIDriverListApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchStorageV1CSIDriverListApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchStorageV1CSIDriverListApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11074,20 +10506,20 @@ func decodeWatchStorageV1CSIDriverListResponse(resp *http.Response, span trace.S
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchStorageV1CSIDriverListUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -11108,9 +10540,7 @@ func decodeWatchStorageV1CSINodeListResponse(resp *http.Response, span trace.Spa
 
 			var response WatchStorageV1CSINodeListApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchStorageV1CSINodeListApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchStorageV1CSINodeListApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11118,20 +10548,20 @@ func decodeWatchStorageV1CSINodeListResponse(resp *http.Response, span trace.Spa
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchStorageV1CSINodeListUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -11152,9 +10582,7 @@ func decodeWatchStorageV1StorageClassListResponse(resp *http.Response, span trac
 
 			var response WatchStorageV1StorageClassListApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchStorageV1StorageClassListApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchStorageV1StorageClassListApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11162,20 +10590,20 @@ func decodeWatchStorageV1StorageClassListResponse(resp *http.Response, span trac
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchStorageV1StorageClassListUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -11196,9 +10624,7 @@ func decodeWatchStorageV1VolumeAttachmentListResponse(resp *http.Response, span 
 
 			var response WatchStorageV1VolumeAttachmentListApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchStorageV1VolumeAttachmentListApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchStorageV1VolumeAttachmentListApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11206,20 +10632,20 @@ func decodeWatchStorageV1VolumeAttachmentListResponse(resp *http.Response, span 
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchStorageV1VolumeAttachmentListUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -11240,9 +10666,7 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 
 			var response WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11250,20 +10674,20 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -11284,9 +10708,7 @@ func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(res
 
 			var response WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationJSONOK
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationJSONOK" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11294,19 +10716,19 @@ func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(res
 
 			return &response, nil
 		case "application/json;stream=watch":
-			return res, fmt.Errorf("application/json;stream=watch decoder not implemented")
+			return res, errors.New("application/json;stream=watch decoder not implemented")
 		case "application/vnd.kubernetes.protobuf":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf decoder not implemented")
 		case "application/vnd.kubernetes.protobuf;stream=watch":
-			return res, fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
+			return res, errors.New("application/vnd.kubernetes.protobuf;stream=watch decoder not implemented")
 		case "application/yaml":
-			return res, fmt.Errorf("application/yaml decoder not implemented")
+			return res, errors.New("application/yaml decoder not implemented")
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 401:
 		return &WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized{}, nil
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }

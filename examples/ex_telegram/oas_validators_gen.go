@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -217,7 +217,7 @@ func (s Game) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Photo == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Photo // validation expected, but not supported
 		return nil
@@ -261,7 +261,7 @@ func (s GetGameHighScoresPostOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Result == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Result // validation expected, but not supported
 		return nil
@@ -280,7 +280,7 @@ func (s GetMyCommandsPostOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Result == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Result // validation expected, but not supported
 		return nil
@@ -317,7 +317,7 @@ func (s GetUpdatesPostOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Result == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Result {
@@ -466,13 +466,13 @@ func (s InlineKeyboardMarkup) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.InlineKeyboard == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.InlineKeyboard {
 			if err := func() error {
 				if elem == nil {
-					return fmt.Errorf("required, can't be nil")
+					return errors.New("required, can't be nil")
 				}
 				_ = elem // validation expected, but not supported
 				return nil
@@ -683,7 +683,7 @@ func (s PassportData) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Data == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Data {
@@ -718,7 +718,7 @@ func (s Poll) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Options == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Options // validation expected, but not supported
 		return nil
@@ -762,7 +762,7 @@ func (s PollAnswer) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.OptionIds == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.OptionIds // validation expected, but not supported
 		return nil
@@ -865,7 +865,7 @@ func (s SendInvoicePostReqApplicationJSON) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Prices == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Prices // validation expected, but not supported
 		return nil
@@ -893,7 +893,7 @@ func (s SendInvoicePostReqApplicationXWwwFormUrlencoded) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Prices == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Prices // validation expected, but not supported
 		return nil
@@ -921,7 +921,7 @@ func (s SendInvoicePostReqMultipartFormData) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Prices == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Prices // validation expected, but not supported
 		return nil
@@ -949,7 +949,7 @@ func (s SetMyCommandsPostReqApplicationJSON) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Commands == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Commands // validation expected, but not supported
 		return nil
@@ -968,7 +968,7 @@ func (s SetMyCommandsPostReqApplicationXWwwFormUrlencoded) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Commands == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Commands // validation expected, but not supported
 		return nil
@@ -987,7 +987,7 @@ func (s SetMyCommandsPostReqMultipartFormData) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Commands == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Commands // validation expected, but not supported
 		return nil
@@ -1006,7 +1006,7 @@ func (s ShippingOption) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Prices == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		_ = s.Prices // validation expected, but not supported
 		return nil
@@ -1041,7 +1041,7 @@ func (s StickerSet) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Stickers == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Stickers {
@@ -1146,13 +1146,13 @@ func (s UserProfilePhotos) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Photos == nil {
-			return fmt.Errorf("required, can't be nil")
+			return errors.New("required, can't be nil")
 		}
 		var failures []validate.FieldError
 		for i, elem := range s.Photos {
 			if err := func() error {
 				if elem == nil {
-					return fmt.Errorf("required, can't be nil")
+					return errors.New("required, can't be nil")
 				}
 				_ = elem // validation expected, but not supported
 				return nil

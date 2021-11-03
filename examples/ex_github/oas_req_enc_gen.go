@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -735,11 +735,11 @@ func encodeMarkdownRenderRequest(req MarkdownRenderReq, span trace.Span) (data *
 func encodeMarkdownRenderRawRequest(req MarkdownRenderRawReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	switch req := req.(type) {
 	case *MarkdownRenderRawReqTextPlain:
-		return nil, "", fmt.Errorf("text/plain encoder not implemented")
+		return nil, "", errors.New(`text/plain encoder not implemented`)
 	case *MarkdownRenderRawReqTextXMarkdown:
-		return nil, "", fmt.Errorf("text/x-markdown encoder not implemented")
+		return nil, "", errors.New(`text/x-markdown encoder not implemented`)
 	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
+		return nil, "", errors.Errorf("unexpected request type: %T", req)
 	}
 }
 
@@ -1240,7 +1240,7 @@ func encodeReposUpdateWebhookConfigForRepoRequest(req ReposUpdateWebhookConfigFo
 }
 
 func encodeReposUploadReleaseAssetRequest(req string, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
-	return nil, "", fmt.Errorf("*/* encoder not implemented")
+	return nil, "", errors.New(`*/* encoder not implemented`)
 }
 
 func encodeSecretScanningUpdateAlertRequest(req SecretScanningUpdateAlertReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {

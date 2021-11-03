@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -90,7 +90,7 @@ func decodeCreatePetsResponse(resp *http.Response, span trace.Span) (res CreateP
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -112,9 +112,7 @@ func decodeListPetsResponse(resp *http.Response, span trace.Span) (res ListPetsR
 
 			var response Pets
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "Pets" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "Pets" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -122,7 +120,7 @@ func decodeListPetsResponse(resp *http.Response, span trace.Span) (res ListPetsR
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -144,7 +142,7 @@ func decodeListPetsResponse(resp *http.Response, span trace.Span) (res ListPetsR
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }
@@ -176,7 +174,7 @@ func decodeShowPetByIdResponse(resp *http.Response, span trace.Span) (res ShowPe
 
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -198,7 +196,7 @@ func decodeShowPetByIdResponse(resp *http.Response, span trace.Span) (res ShowPe
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	}
 }

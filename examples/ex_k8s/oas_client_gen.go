@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -96,14 +96,13 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 
 // CreateAdmissionregistrationV1MutatingWebhookConfiguration implements createAdmissionregistrationV1MutatingWebhookConfiguration operation.
 func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, request IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration, params CreateAdmissionregistrationV1MutatingWebhookConfigurationParams) (res CreateAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateAdmissionregistrationV1MutatingWebhookConfiguration`,
@@ -137,14 +136,13 @@ func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -154,14 +152,13 @@ func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldManager"] = e.Result()
 	}
@@ -174,13 +171,13 @@ func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx c
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -188,14 +185,13 @@ func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx c
 
 // CreateAdmissionregistrationV1ValidatingWebhookConfiguration implements createAdmissionregistrationV1ValidatingWebhookConfiguration operation.
 func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, request IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration, params CreateAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res CreateAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateAdmissionregistrationV1ValidatingWebhookConfiguration`,
@@ -229,14 +225,13 @@ func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -246,14 +241,13 @@ func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldManager"] = e.Result()
 	}
@@ -266,13 +260,13 @@ func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -280,14 +274,13 @@ func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx
 
 // CreateApiextensionsV1CustomResourceDefinition implements createApiextensionsV1CustomResourceDefinition operation.
 func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Context, request IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition, params CreateApiextensionsV1CustomResourceDefinitionParams) (res CreateApiextensionsV1CustomResourceDefinitionRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateApiextensionsV1CustomResourceDefinition`,
@@ -321,14 +314,13 @@ func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -338,14 +330,13 @@ func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldManager"] = e.Result()
 	}
@@ -358,13 +349,13 @@ func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Conte
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -404,14 +395,13 @@ func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, request 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -421,14 +411,13 @@ func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, request 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldManager"] = e.Result()
 	}
@@ -441,13 +430,13 @@ func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, request 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateApiregistrationV1APIServiceResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -487,13 +476,13 @@ func (c *Client) CreateAuthenticationV1TokenReview(ctx context.Context, request 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateAuthenticationV1TokenReviewResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -533,13 +522,13 @@ func (c *Client) CreateAuthorizationV1SelfSubjectAccessReview(ctx context.Contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -547,14 +536,13 @@ func (c *Client) CreateAuthorizationV1SelfSubjectAccessReview(ctx context.Contex
 
 // CreateAuthorizationV1SelfSubjectRulesReview implements createAuthorizationV1SelfSubjectRulesReview operation.
 func (c *Client) CreateAuthorizationV1SelfSubjectRulesReview(ctx context.Context, request IoK8sAPIAuthorizationV1SelfSubjectRulesReview) (res CreateAuthorizationV1SelfSubjectRulesReviewRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateAuthorizationV1SelfSubjectRulesReview`,
@@ -588,13 +576,13 @@ func (c *Client) CreateAuthorizationV1SelfSubjectRulesReview(ctx context.Context
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -634,13 +622,13 @@ func (c *Client) CreateAuthorizationV1SubjectAccessReview(ctx context.Context, r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -648,14 +636,13 @@ func (c *Client) CreateAuthorizationV1SubjectAccessReview(ctx context.Context, r
 
 // CreateCertificatesV1CertificateSigningRequest implements createCertificatesV1CertificateSigningRequest operation.
 func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Context, request IoK8sAPICertificatesV1CertificateSigningRequest, params CreateCertificatesV1CertificateSigningRequestParams) (res CreateCertificatesV1CertificateSigningRequestRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateCertificatesV1CertificateSigningRequest`,
@@ -689,14 +676,13 @@ func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -706,14 +692,13 @@ func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldManager"] = e.Result()
 	}
@@ -726,13 +711,13 @@ func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Conte
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateCertificatesV1CertificateSigningRequestResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -772,14 +757,13 @@ func (c *Client) CreateCoreV1Namespace(ctx context.Context, request IoK8sAPICore
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -789,14 +773,13 @@ func (c *Client) CreateCoreV1Namespace(ctx context.Context, request IoK8sAPICore
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldManager"] = e.Result()
 	}
@@ -809,13 +792,13 @@ func (c *Client) CreateCoreV1Namespace(ctx context.Context, request IoK8sAPICore
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateCoreV1NamespaceResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -855,14 +838,13 @@ func (c *Client) CreateCoreV1Node(ctx context.Context, request IoK8sAPICoreV1Nod
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -872,14 +854,13 @@ func (c *Client) CreateCoreV1Node(ctx context.Context, request IoK8sAPICoreV1Nod
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldManager"] = e.Result()
 	}
@@ -892,13 +873,13 @@ func (c *Client) CreateCoreV1Node(ctx context.Context, request IoK8sAPICoreV1Nod
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateCoreV1NodeResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -906,14 +887,13 @@ func (c *Client) CreateCoreV1Node(ctx context.Context, request IoK8sAPICoreV1Nod
 
 // CreateCoreV1PersistentVolume implements createCoreV1PersistentVolume operation.
 func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, request IoK8sAPICoreV1PersistentVolume, params CreateCoreV1PersistentVolumeParams) (res CreateCoreV1PersistentVolumeRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateCoreV1PersistentVolume`,
@@ -947,14 +927,13 @@ func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, request IoK8s
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -964,14 +943,13 @@ func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, request IoK8s
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldManager"] = e.Result()
 	}
@@ -984,13 +962,13 @@ func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, request IoK8s
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateCoreV1PersistentVolumeResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -998,14 +976,13 @@ func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, request IoK8s
 
 // CreateFlowcontrolApiserverV1beta1FlowSchema implements createFlowcontrolApiserverV1beta1FlowSchema operation.
 func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, request IoK8sAPIFlowcontrolV1beta1FlowSchema, params CreateFlowcontrolApiserverV1beta1FlowSchemaParams) (res CreateFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateFlowcontrolApiserverV1beta1FlowSchema`,
@@ -1039,14 +1016,13 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -1056,14 +1032,13 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldManager"] = e.Result()
 	}
@@ -1076,13 +1051,13 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1122,14 +1097,13 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -1139,14 +1113,13 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldManager"] = e.Result()
 	}
@@ -1159,13 +1132,13 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1173,14 +1146,13 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx
 
 // CreateFlowcontrolApiserverV1beta2FlowSchema implements createFlowcontrolApiserverV1beta2FlowSchema operation.
 func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, request IoK8sAPIFlowcontrolV1beta2FlowSchema, params CreateFlowcontrolApiserverV1beta2FlowSchemaParams) (res CreateFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateFlowcontrolApiserverV1beta2FlowSchema`,
@@ -1214,14 +1186,13 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -1231,14 +1202,13 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldManager"] = e.Result()
 	}
@@ -1251,13 +1221,13 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1297,14 +1267,13 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -1314,14 +1283,13 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldManager"] = e.Result()
 	}
@@ -1334,13 +1302,13 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1380,14 +1348,13 @@ func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -1397,14 +1364,13 @@ func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldManager"] = e.Result()
 	}
@@ -1417,13 +1383,13 @@ func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Conte
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1463,14 +1429,13 @@ func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, request IoK
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -1480,14 +1445,13 @@ func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, request IoK
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldManager"] = e.Result()
 	}
@@ -1500,13 +1464,13 @@ func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, request IoK
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateNetworkingV1IngressClassResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1546,14 +1510,13 @@ func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, request IoK8sAPIN
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -1563,14 +1526,13 @@ func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, request IoK8sAPIN
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldManager"] = e.Result()
 	}
@@ -1583,13 +1545,13 @@ func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, request IoK8sAPIN
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateNodeV1RuntimeClassResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1629,14 +1591,13 @@ func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, request IoK
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -1646,14 +1607,13 @@ func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, request IoK
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldManager"] = e.Result()
 	}
@@ -1666,13 +1626,13 @@ func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, request IoK
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateNodeV1alpha1RuntimeClassResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1712,14 +1672,13 @@ func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, request IoK8
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -1729,14 +1688,13 @@ func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, request IoK8
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldManager"] = e.Result()
 	}
@@ -1749,13 +1707,13 @@ func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, request IoK8
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateNodeV1beta1RuntimeClassResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1763,14 +1721,13 @@ func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, request IoK8
 
 // CreatePolicyV1beta1PodSecurityPolicy implements createPolicyV1beta1PodSecurityPolicy operation.
 func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, request IoK8sAPIPolicyV1beta1PodSecurityPolicy, params CreatePolicyV1beta1PodSecurityPolicyParams) (res CreatePolicyV1beta1PodSecurityPolicyRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreatePolicyV1beta1PodSecurityPolicy`,
@@ -1804,14 +1761,13 @@ func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, reque
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -1821,14 +1777,13 @@ func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, reque
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldManager"] = e.Result()
 	}
@@ -1841,13 +1796,13 @@ func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, reque
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1855,14 +1810,13 @@ func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, reque
 
 // CreateRbacAuthorizationV1ClusterRole implements createRbacAuthorizationV1ClusterRole operation.
 func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, request IoK8sAPIRbacV1ClusterRole, params CreateRbacAuthorizationV1ClusterRoleParams) (res CreateRbacAuthorizationV1ClusterRoleRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateRbacAuthorizationV1ClusterRole`,
@@ -1896,14 +1850,13 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, reque
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -1913,14 +1866,13 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, reque
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldManager"] = e.Result()
 	}
@@ -1933,13 +1885,13 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, reque
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -1979,14 +1931,13 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -1996,14 +1947,13 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldManager"] = e.Result()
 	}
@@ -2016,13 +1966,13 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2062,14 +2012,13 @@ func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, request Io
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -2079,14 +2028,13 @@ func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, request Io
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldManager"] = e.Result()
 	}
@@ -2099,13 +2047,13 @@ func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, request Io
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateSchedulingV1PriorityClassResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2145,14 +2093,13 @@ func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, request IoK8sAPIS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -2162,14 +2109,13 @@ func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, request IoK8sAPIS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldManager"] = e.Result()
 	}
@@ -2182,13 +2128,13 @@ func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, request IoK8sAPIS
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateStorageV1CSIDriverResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2196,14 +2142,13 @@ func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, request IoK8sAPIS
 
 // CreateStorageV1CSINode implements createStorageV1CSINode operation.
 func (c *Client) CreateStorageV1CSINode(ctx context.Context, request IoK8sAPIStorageV1CSINode, params CreateStorageV1CSINodeParams) (res CreateStorageV1CSINodeRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateStorageV1CSINode`,
@@ -2237,14 +2182,13 @@ func (c *Client) CreateStorageV1CSINode(ctx context.Context, request IoK8sAPISto
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -2254,14 +2198,13 @@ func (c *Client) CreateStorageV1CSINode(ctx context.Context, request IoK8sAPISto
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldManager"] = e.Result()
 	}
@@ -2274,13 +2217,13 @@ func (c *Client) CreateStorageV1CSINode(ctx context.Context, request IoK8sAPISto
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateStorageV1CSINodeResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2288,14 +2231,13 @@ func (c *Client) CreateStorageV1CSINode(ctx context.Context, request IoK8sAPISto
 
 // CreateStorageV1StorageClass implements createStorageV1StorageClass operation.
 func (c *Client) CreateStorageV1StorageClass(ctx context.Context, request IoK8sAPIStorageV1StorageClass, params CreateStorageV1StorageClassParams) (res CreateStorageV1StorageClassRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateStorageV1StorageClass`,
@@ -2329,14 +2271,13 @@ func (c *Client) CreateStorageV1StorageClass(ctx context.Context, request IoK8sA
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -2346,14 +2287,13 @@ func (c *Client) CreateStorageV1StorageClass(ctx context.Context, request IoK8sA
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldManager"] = e.Result()
 	}
@@ -2366,13 +2306,13 @@ func (c *Client) CreateStorageV1StorageClass(ctx context.Context, request IoK8sA
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateStorageV1StorageClassResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2380,14 +2320,13 @@ func (c *Client) CreateStorageV1StorageClass(ctx context.Context, request IoK8sA
 
 // CreateStorageV1VolumeAttachment implements createStorageV1VolumeAttachment operation.
 func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, request IoK8sAPIStorageV1VolumeAttachment, params CreateStorageV1VolumeAttachmentParams) (res CreateStorageV1VolumeAttachmentRes, err error) {
-	if verr := func() error {
+	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
-	}(); verr != nil {
-		err = fmt.Errorf("validate: %w", verr)
-		return
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateStorageV1VolumeAttachment`,
@@ -2421,14 +2360,13 @@ func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, request Io
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -2438,14 +2376,13 @@ func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, request Io
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldManager.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldManager"] = e.Result()
 	}
@@ -2458,13 +2395,13 @@ func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, request Io
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateStorageV1VolumeAttachmentResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2504,14 +2441,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -2521,14 +2457,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -2538,14 +2473,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -2555,14 +2489,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["gracePeriodSeconds"] = e.Result()
 	}
@@ -2572,14 +2505,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -2589,14 +2521,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -2606,14 +2537,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["orphanDependents"] = e.Result()
 	}
@@ -2623,14 +2553,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["propagationPolicy"] = e.Result()
 	}
@@ -2640,14 +2569,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -2657,14 +2585,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -2674,14 +2601,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -2694,13 +2620,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2740,14 +2666,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -2757,14 +2682,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -2774,14 +2698,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -2791,14 +2714,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["gracePeriodSeconds"] = e.Result()
 	}
@@ -2808,14 +2730,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -2825,14 +2746,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -2842,14 +2762,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["orphanDependents"] = e.Result()
 	}
@@ -2859,14 +2778,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["propagationPolicy"] = e.Result()
 	}
@@ -2876,14 +2794,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -2893,14 +2810,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -2910,14 +2826,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -2930,13 +2845,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -2976,14 +2891,13 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -2993,14 +2907,13 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -3010,14 +2923,13 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -3027,14 +2939,13 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["gracePeriodSeconds"] = e.Result()
 	}
@@ -3044,14 +2955,13 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -3061,14 +2971,13 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -3078,14 +2987,13 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["orphanDependents"] = e.Result()
 	}
@@ -3095,14 +3003,13 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["propagationPolicy"] = e.Result()
 	}
@@ -3112,14 +3019,13 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -3129,14 +3035,13 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -3146,14 +3051,13 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -3166,13 +3070,13 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -3212,14 +3116,13 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -3229,14 +3132,13 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -3246,14 +3148,13 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -3263,14 +3164,13 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["gracePeriodSeconds"] = e.Result()
 	}
@@ -3280,14 +3180,13 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -3297,14 +3196,13 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -3314,14 +3212,13 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["orphanDependents"] = e.Result()
 	}
@@ -3331,14 +3228,13 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["propagationPolicy"] = e.Result()
 	}
@@ -3348,14 +3244,13 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -3365,14 +3260,13 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -3382,14 +3276,13 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -3402,13 +3295,13 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteApiregistrationV1CollectionAPIServiceResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -3448,14 +3341,13 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -3465,14 +3357,13 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -3482,14 +3373,13 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -3499,14 +3389,13 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["gracePeriodSeconds"] = e.Result()
 	}
@@ -3516,14 +3405,13 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -3533,14 +3421,13 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -3550,14 +3437,13 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["orphanDependents"] = e.Result()
 	}
@@ -3567,14 +3453,13 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["propagationPolicy"] = e.Result()
 	}
@@ -3584,14 +3469,13 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -3601,14 +3485,13 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -3618,14 +3501,13 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -3638,13 +3520,13 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -3684,14 +3566,13 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -3701,14 +3582,13 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -3718,14 +3598,13 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -3735,14 +3614,13 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["gracePeriodSeconds"] = e.Result()
 	}
@@ -3752,14 +3630,13 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -3769,14 +3646,13 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -3786,14 +3662,13 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["orphanDependents"] = e.Result()
 	}
@@ -3803,14 +3678,13 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["propagationPolicy"] = e.Result()
 	}
@@ -3820,14 +3694,13 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -3837,14 +3710,13 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -3854,14 +3726,13 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -3874,13 +3745,13 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, request IoK8sAp
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteCoreV1CollectionNodeResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -3920,14 +3791,13 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -3937,14 +3807,13 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -3954,14 +3823,13 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -3971,14 +3839,13 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["gracePeriodSeconds"] = e.Result()
 	}
@@ -3988,14 +3855,13 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -4005,14 +3871,13 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -4022,14 +3887,13 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["orphanDependents"] = e.Result()
 	}
@@ -4039,14 +3903,13 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["propagationPolicy"] = e.Result()
 	}
@@ -4056,14 +3919,13 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -4073,14 +3935,13 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -4090,14 +3951,13 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -4110,13 +3970,13 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteCoreV1CollectionPersistentVolumeResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -4156,14 +4016,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -4173,14 +4032,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -4190,14 +4048,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -4207,14 +4064,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["gracePeriodSeconds"] = e.Result()
 	}
@@ -4224,14 +4080,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -4241,14 +4096,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -4258,14 +4112,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["orphanDependents"] = e.Result()
 	}
@@ -4275,14 +4128,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["propagationPolicy"] = e.Result()
 	}
@@ -4292,14 +4144,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -4309,14 +4160,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -4326,14 +4176,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -4346,13 +4195,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -4392,14 +4241,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -4409,14 +4257,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -4426,14 +4273,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -4443,14 +4289,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["gracePeriodSeconds"] = e.Result()
 	}
@@ -4460,14 +4305,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -4477,14 +4321,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -4494,14 +4337,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["orphanDependents"] = e.Result()
 	}
@@ -4511,14 +4353,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["propagationPolicy"] = e.Result()
 	}
@@ -4528,14 +4369,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -4545,14 +4385,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -4562,14 +4401,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -4582,13 +4420,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -4628,14 +4466,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -4645,14 +4482,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -4662,14 +4498,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -4679,14 +4514,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["gracePeriodSeconds"] = e.Result()
 	}
@@ -4696,14 +4530,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -4713,14 +4546,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -4730,14 +4562,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["orphanDependents"] = e.Result()
 	}
@@ -4747,14 +4578,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["propagationPolicy"] = e.Result()
 	}
@@ -4764,14 +4594,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -4781,14 +4610,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -4798,14 +4626,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -4818,13 +4645,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -4864,14 +4691,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -4881,14 +4707,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -4898,14 +4723,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -4915,14 +4739,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["gracePeriodSeconds"] = e.Result()
 	}
@@ -4932,14 +4755,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -4949,14 +4771,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -4966,14 +4787,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["orphanDependents"] = e.Result()
 	}
@@ -4983,14 +4803,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["propagationPolicy"] = e.Result()
 	}
@@ -5000,14 +4819,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -5017,14 +4835,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -5034,14 +4851,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -5054,13 +4870,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -5100,14 +4916,13 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -5117,14 +4932,13 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -5134,14 +4948,13 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -5151,14 +4964,13 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["gracePeriodSeconds"] = e.Result()
 	}
@@ -5168,14 +4980,13 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -5185,14 +4996,13 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -5202,14 +5012,13 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["orphanDependents"] = e.Result()
 	}
@@ -5219,14 +5028,13 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["propagationPolicy"] = e.Result()
 	}
@@ -5236,14 +5044,13 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -5253,14 +5060,13 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -5270,14 +5076,13 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -5290,13 +5095,13 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -5336,14 +5141,13 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -5353,14 +5157,13 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -5370,14 +5173,13 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -5387,14 +5189,13 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["gracePeriodSeconds"] = e.Result()
 	}
@@ -5404,14 +5205,13 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -5421,14 +5221,13 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -5438,14 +5237,13 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["orphanDependents"] = e.Result()
 	}
@@ -5455,14 +5253,13 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["propagationPolicy"] = e.Result()
 	}
@@ -5472,14 +5269,13 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -5489,14 +5285,13 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -5506,14 +5301,13 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -5526,13 +5320,13 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteNetworkingV1CollectionIngressClassResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -5572,14 +5366,13 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -5589,14 +5382,13 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -5606,14 +5398,13 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -5623,14 +5414,13 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["gracePeriodSeconds"] = e.Result()
 	}
@@ -5640,14 +5430,13 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -5657,14 +5446,13 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -5674,14 +5462,13 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["orphanDependents"] = e.Result()
 	}
@@ -5691,14 +5478,13 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["propagationPolicy"] = e.Result()
 	}
@@ -5708,14 +5494,13 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -5725,14 +5510,13 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -5742,14 +5526,13 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -5762,13 +5545,13 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, request
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteNodeV1CollectionRuntimeClassResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -5808,14 +5591,13 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -5825,14 +5607,13 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -5842,14 +5623,13 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -5859,14 +5639,13 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["gracePeriodSeconds"] = e.Result()
 	}
@@ -5876,14 +5655,13 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -5893,14 +5671,13 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -5910,14 +5687,13 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["orphanDependents"] = e.Result()
 	}
@@ -5927,14 +5703,13 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["propagationPolicy"] = e.Result()
 	}
@@ -5944,14 +5719,13 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -5961,14 +5735,13 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -5978,14 +5751,13 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -5998,13 +5770,13 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -6044,14 +5816,13 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -6061,14 +5832,13 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -6078,14 +5848,13 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -6095,14 +5864,13 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["gracePeriodSeconds"] = e.Result()
 	}
@@ -6112,14 +5880,13 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -6129,14 +5896,13 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -6146,14 +5912,13 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["orphanDependents"] = e.Result()
 	}
@@ -6163,14 +5928,13 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["propagationPolicy"] = e.Result()
 	}
@@ -6180,14 +5944,13 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -6197,14 +5960,13 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -6214,14 +5976,13 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -6234,13 +5995,13 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteNodeV1beta1CollectionRuntimeClassResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -6280,14 +6041,13 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -6297,14 +6057,13 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -6314,14 +6073,13 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -6331,14 +6089,13 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["gracePeriodSeconds"] = e.Result()
 	}
@@ -6348,14 +6105,13 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -6365,14 +6121,13 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -6382,14 +6137,13 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["orphanDependents"] = e.Result()
 	}
@@ -6399,14 +6153,13 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["propagationPolicy"] = e.Result()
 	}
@@ -6416,14 +6169,13 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -6433,14 +6185,13 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -6450,14 +6201,13 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -6470,13 +6220,13 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -6516,14 +6266,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -6533,14 +6282,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -6550,14 +6298,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -6567,14 +6314,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["gracePeriodSeconds"] = e.Result()
 	}
@@ -6584,14 +6330,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -6601,14 +6346,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -6618,14 +6362,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["orphanDependents"] = e.Result()
 	}
@@ -6635,14 +6378,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["propagationPolicy"] = e.Result()
 	}
@@ -6652,14 +6394,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -6669,14 +6410,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -6686,14 +6426,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -6706,13 +6445,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -6752,14 +6491,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -6769,14 +6507,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -6786,14 +6523,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -6803,14 +6539,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["gracePeriodSeconds"] = e.Result()
 	}
@@ -6820,14 +6555,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -6837,14 +6571,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -6854,14 +6587,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["orphanDependents"] = e.Result()
 	}
@@ -6871,14 +6603,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["propagationPolicy"] = e.Result()
 	}
@@ -6888,14 +6619,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -6905,14 +6635,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -6922,14 +6651,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -6942,13 +6670,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -6988,14 +6716,13 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -7005,14 +6732,13 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -7022,14 +6748,13 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -7039,14 +6764,13 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["gracePeriodSeconds"] = e.Result()
 	}
@@ -7056,14 +6780,13 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -7073,14 +6796,13 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -7090,14 +6812,13 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["orphanDependents"] = e.Result()
 	}
@@ -7107,14 +6828,13 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["propagationPolicy"] = e.Result()
 	}
@@ -7124,14 +6844,13 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -7141,14 +6860,13 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -7158,14 +6876,13 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -7178,13 +6895,13 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteSchedulingV1CollectionPriorityClassResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -7224,14 +6941,13 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -7241,14 +6957,13 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -7258,14 +6973,13 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -7275,14 +6989,13 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["gracePeriodSeconds"] = e.Result()
 	}
@@ -7292,14 +7005,13 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -7309,14 +7021,13 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -7326,14 +7037,13 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["orphanDependents"] = e.Result()
 	}
@@ -7343,14 +7053,13 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["propagationPolicy"] = e.Result()
 	}
@@ -7360,14 +7069,13 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -7377,14 +7085,13 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -7394,14 +7101,13 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -7414,13 +7120,13 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, request
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteStorageV1CollectionCSIDriverResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -7460,14 +7166,13 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -7477,14 +7182,13 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -7494,14 +7198,13 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -7511,14 +7214,13 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["gracePeriodSeconds"] = e.Result()
 	}
@@ -7528,14 +7230,13 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -7545,14 +7246,13 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -7562,14 +7262,13 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["orphanDependents"] = e.Result()
 	}
@@ -7579,14 +7278,13 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["propagationPolicy"] = e.Result()
 	}
@@ -7596,14 +7294,13 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -7613,14 +7310,13 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -7630,14 +7326,13 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -7650,13 +7345,13 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, request I
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteStorageV1CollectionCSINodeResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -7696,14 +7391,13 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -7713,14 +7407,13 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -7730,14 +7423,13 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -7747,14 +7439,13 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["gracePeriodSeconds"] = e.Result()
 	}
@@ -7764,14 +7455,13 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -7781,14 +7471,13 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -7798,14 +7487,13 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["orphanDependents"] = e.Result()
 	}
@@ -7815,14 +7503,13 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["propagationPolicy"] = e.Result()
 	}
@@ -7832,14 +7519,13 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -7849,14 +7535,13 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -7866,14 +7551,13 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -7886,13 +7570,13 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, requ
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteStorageV1CollectionStorageClassResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -7932,14 +7616,13 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -7949,14 +7632,13 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.DryRun.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["dryRun"] = e.Result()
 	}
@@ -7966,14 +7648,13 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -7983,14 +7664,13 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.GracePeriodSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["gracePeriodSeconds"] = e.Result()
 	}
@@ -8000,14 +7680,13 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -8017,14 +7696,13 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -8034,14 +7712,13 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.OrphanDependents.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["orphanDependents"] = e.Result()
 	}
@@ -8051,14 +7728,13 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.PropagationPolicy.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["propagationPolicy"] = e.Result()
 	}
@@ -8068,14 +7744,13 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -8085,14 +7760,13 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -8102,14 +7776,13 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -8122,13 +7795,13 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteStorageV1CollectionVolumeAttachmentResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -8160,13 +7833,13 @@ func (c *Client) GetAPIVersions(ctx context.Context) (res GetAPIVersionsRes, err
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetAPIVersionsResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -8198,13 +7871,13 @@ func (c *Client) GetAdmissionregistrationAPIGroup(ctx context.Context) (res GetA
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetAdmissionregistrationAPIGroupResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -8236,13 +7909,13 @@ func (c *Client) GetAdmissionregistrationV1APIResources(ctx context.Context) (re
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetAdmissionregistrationV1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -8274,13 +7947,13 @@ func (c *Client) GetApiextensionsAPIGroup(ctx context.Context) (res GetApiextens
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetApiextensionsAPIGroupResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -8312,13 +7985,13 @@ func (c *Client) GetApiextensionsV1APIResources(ctx context.Context) (res GetApi
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetApiextensionsV1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -8350,13 +8023,13 @@ func (c *Client) GetApiregistrationAPIGroup(ctx context.Context) (res GetApiregi
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetApiregistrationAPIGroupResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -8388,13 +8061,13 @@ func (c *Client) GetApiregistrationV1APIResources(ctx context.Context) (res GetA
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetApiregistrationV1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -8426,13 +8099,13 @@ func (c *Client) GetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRes, e
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetAppsAPIGroupResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -8464,13 +8137,13 @@ func (c *Client) GetAppsV1APIResources(ctx context.Context) (res GetAppsV1APIRes
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetAppsV1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -8502,13 +8175,13 @@ func (c *Client) GetAuthenticationAPIGroup(ctx context.Context) (res GetAuthenti
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetAuthenticationAPIGroupResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -8540,13 +8213,13 @@ func (c *Client) GetAuthenticationV1APIResources(ctx context.Context) (res GetAu
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetAuthenticationV1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -8578,13 +8251,13 @@ func (c *Client) GetAuthorizationAPIGroup(ctx context.Context) (res GetAuthoriza
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetAuthorizationAPIGroupResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -8616,13 +8289,13 @@ func (c *Client) GetAuthorizationV1APIResources(ctx context.Context) (res GetAut
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetAuthorizationV1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -8654,13 +8327,13 @@ func (c *Client) GetAutoscalingAPIGroup(ctx context.Context) (res GetAutoscaling
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetAutoscalingAPIGroupResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -8692,13 +8365,13 @@ func (c *Client) GetAutoscalingV1APIResources(ctx context.Context) (res GetAutos
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetAutoscalingV1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -8730,13 +8403,13 @@ func (c *Client) GetAutoscalingV2beta1APIResources(ctx context.Context) (res Get
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetAutoscalingV2beta1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -8768,13 +8441,13 @@ func (c *Client) GetAutoscalingV2beta2APIResources(ctx context.Context) (res Get
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetAutoscalingV2beta2APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -8806,13 +8479,13 @@ func (c *Client) GetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroupRes,
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetBatchAPIGroupResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -8844,13 +8517,13 @@ func (c *Client) GetBatchV1APIResources(ctx context.Context) (res GetBatchV1APIR
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetBatchV1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -8882,13 +8555,13 @@ func (c *Client) GetBatchV1beta1APIResources(ctx context.Context) (res GetBatchV
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetBatchV1beta1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -8920,13 +8593,13 @@ func (c *Client) GetCertificatesAPIGroup(ctx context.Context) (res GetCertificat
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetCertificatesAPIGroupResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -8958,13 +8631,13 @@ func (c *Client) GetCertificatesV1APIResources(ctx context.Context) (res GetCert
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetCertificatesV1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -8996,13 +8669,13 @@ func (c *Client) GetCodeVersion(ctx context.Context) (res GetCodeVersionRes, err
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetCodeVersionResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9034,13 +8707,13 @@ func (c *Client) GetCoordinationAPIGroup(ctx context.Context) (res GetCoordinati
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetCoordinationAPIGroupResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9072,13 +8745,13 @@ func (c *Client) GetCoordinationV1APIResources(ctx context.Context) (res GetCoor
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetCoordinationV1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9110,13 +8783,13 @@ func (c *Client) GetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVersions
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetCoreAPIVersionsResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9148,13 +8821,13 @@ func (c *Client) GetCoreV1APIResources(ctx context.Context) (res GetCoreV1APIRes
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetCoreV1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9186,13 +8859,13 @@ func (c *Client) GetDiscoveryAPIGroup(ctx context.Context) (res GetDiscoveryAPIG
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetDiscoveryAPIGroupResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9224,13 +8897,13 @@ func (c *Client) GetDiscoveryV1APIResources(ctx context.Context) (res GetDiscove
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetDiscoveryV1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9262,13 +8935,13 @@ func (c *Client) GetDiscoveryV1beta1APIResources(ctx context.Context) (res GetDi
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetDiscoveryV1beta1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9300,13 +8973,13 @@ func (c *Client) GetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGroupRe
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetEventsAPIGroupResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9338,13 +9011,13 @@ func (c *Client) GetEventsV1APIResources(ctx context.Context) (res GetEventsV1AP
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetEventsV1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9376,13 +9049,13 @@ func (c *Client) GetEventsV1beta1APIResources(ctx context.Context) (res GetEvent
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetEventsV1beta1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9414,13 +9087,13 @@ func (c *Client) GetFlowcontrolApiserverAPIGroup(ctx context.Context) (res GetFl
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetFlowcontrolApiserverAPIGroupResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9452,13 +9125,13 @@ func (c *Client) GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9490,13 +9163,13 @@ func (c *Client) GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9528,13 +9201,13 @@ func (c *Client) GetInternalApiserverAPIGroup(ctx context.Context) (res GetInter
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetInternalApiserverAPIGroupResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9566,13 +9239,13 @@ func (c *Client) GetInternalApiserverV1alpha1APIResources(ctx context.Context) (
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetInternalApiserverV1alpha1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9604,13 +9277,13 @@ func (c *Client) GetNetworkingAPIGroup(ctx context.Context) (res GetNetworkingAP
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetNetworkingAPIGroupResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9642,13 +9315,13 @@ func (c *Client) GetNetworkingV1APIResources(ctx context.Context) (res GetNetwor
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetNetworkingV1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9680,13 +9353,13 @@ func (c *Client) GetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRes, e
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetNodeAPIGroupResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9718,13 +9391,13 @@ func (c *Client) GetNodeV1APIResources(ctx context.Context) (res GetNodeV1APIRes
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetNodeV1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9756,13 +9429,13 @@ func (c *Client) GetNodeV1alpha1APIResources(ctx context.Context) (res GetNodeV1
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetNodeV1alpha1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9794,13 +9467,13 @@ func (c *Client) GetNodeV1beta1APIResources(ctx context.Context) (res GetNodeV1b
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetNodeV1beta1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9832,13 +9505,13 @@ func (c *Client) GetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGroupRe
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetPolicyAPIGroupResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9870,13 +9543,13 @@ func (c *Client) GetPolicyV1APIResources(ctx context.Context) (res GetPolicyV1AP
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetPolicyV1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9908,13 +9581,13 @@ func (c *Client) GetPolicyV1beta1APIResources(ctx context.Context) (res GetPolic
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetPolicyV1beta1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9946,13 +9619,13 @@ func (c *Client) GetRbacAuthorizationAPIGroup(ctx context.Context) (res GetRbacA
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetRbacAuthorizationAPIGroupResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -9984,13 +9657,13 @@ func (c *Client) GetRbacAuthorizationV1APIResources(ctx context.Context) (res Ge
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetRbacAuthorizationV1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -10022,13 +9695,13 @@ func (c *Client) GetSchedulingAPIGroup(ctx context.Context) (res GetSchedulingAP
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetSchedulingAPIGroupResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -10060,13 +9733,13 @@ func (c *Client) GetSchedulingV1APIResources(ctx context.Context) (res GetSchedu
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetSchedulingV1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -10098,13 +9771,13 @@ func (c *Client) GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetServiceAccountIssuerOpenIDConfigurationResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -10136,13 +9809,13 @@ func (c *Client) GetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (res G
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetServiceAccountIssuerOpenIDKeysetResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -10174,13 +9847,13 @@ func (c *Client) GetStorageAPIGroup(ctx context.Context) (res GetStorageAPIGroup
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetStorageAPIGroupResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -10212,13 +9885,13 @@ func (c *Client) GetStorageV1APIResources(ctx context.Context) (res GetStorageV1
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetStorageV1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -10250,13 +9923,13 @@ func (c *Client) GetStorageV1alpha1APIResources(ctx context.Context) (res GetSto
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetStorageV1alpha1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -10288,13 +9961,13 @@ func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (res GetStor
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetStorageV1beta1APIResourcesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -10328,14 +10001,13 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["allowWatchBookmarks"] = e.Result()
 	}
@@ -10345,14 +10017,13 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -10362,14 +10033,13 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -10379,14 +10049,13 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -10396,14 +10065,13 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -10413,14 +10081,13 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -10430,14 +10097,13 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -10447,14 +10113,13 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -10464,14 +10129,13 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Watch.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["watch"] = e.Result()
 	}
@@ -10482,13 +10146,13 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -10522,14 +10186,13 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["allowWatchBookmarks"] = e.Result()
 	}
@@ -10539,14 +10202,13 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -10556,14 +10218,13 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -10573,14 +10234,13 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -10590,14 +10250,13 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -10607,14 +10266,13 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -10624,14 +10282,13 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -10641,14 +10298,13 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -10658,14 +10314,13 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Watch.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["watch"] = e.Result()
 	}
@@ -10676,13 +10331,13 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -10716,14 +10371,13 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["allowWatchBookmarks"] = e.Result()
 	}
@@ -10733,14 +10387,13 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -10750,14 +10403,13 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -10767,14 +10419,13 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -10784,14 +10435,13 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -10801,14 +10451,13 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -10818,14 +10467,13 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -10835,14 +10483,13 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -10852,14 +10499,13 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Watch.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["watch"] = e.Result()
 	}
@@ -10870,13 +10516,13 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListApiextensionsV1CustomResourceDefinitionResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -10910,14 +10556,13 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["allowWatchBookmarks"] = e.Result()
 	}
@@ -10927,14 +10572,13 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -10944,14 +10588,13 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -10961,14 +10604,13 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -10978,14 +10620,13 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -10995,14 +10636,13 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -11012,14 +10652,13 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -11029,14 +10668,13 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -11046,14 +10684,13 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Watch.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["watch"] = e.Result()
 	}
@@ -11064,13 +10701,13 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListApiregistrationV1APIServiceResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -11102,13 +10739,13 @@ func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListAppsV1ControllerRevisionForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -11140,13 +10777,13 @@ func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context) (res L
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListAppsV1DaemonSetForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -11178,13 +10815,13 @@ func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context) (res 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListAppsV1DeploymentForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -11216,13 +10853,13 @@ func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context) (res 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListAppsV1ReplicaSetForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -11254,13 +10891,13 @@ func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context) (res
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListAppsV1StatefulSetForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -11292,13 +10929,13 @@ func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx co
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -11330,13 +10967,13 @@ func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(c
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -11368,13 +11005,13 @@ func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(c
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -11406,13 +11043,13 @@ func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context) (res Li
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListBatchV1CronJobForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -11444,13 +11081,13 @@ func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context) (res ListBa
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListBatchV1JobForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -11482,13 +11119,13 @@ func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context) (r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListBatchV1beta1CronJobForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -11522,14 +11159,13 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["allowWatchBookmarks"] = e.Result()
 	}
@@ -11539,14 +11175,13 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -11556,14 +11191,13 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -11573,14 +11207,13 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -11590,14 +11223,13 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -11607,14 +11239,13 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -11624,14 +11255,13 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -11641,14 +11271,13 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -11658,14 +11287,13 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Watch.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["watch"] = e.Result()
 	}
@@ -11676,13 +11304,13 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListCertificatesV1CertificateSigningRequestResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -11714,13 +11342,13 @@ func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context) (r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListCoordinationV1LeaseForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -11752,13 +11380,13 @@ func (c *Client) ListCoreV1ComponentStatus(ctx context.Context) (res ListCoreV1C
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListCoreV1ComponentStatusResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -11790,13 +11418,13 @@ func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context) (res L
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListCoreV1ConfigMapForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -11828,13 +11456,13 @@ func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context) (res L
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListCoreV1EndpointsForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -11866,13 +11494,13 @@ func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context) (res ListC
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListCoreV1EventForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -11904,13 +11532,13 @@ func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context) (res 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListCoreV1LimitRangeForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -11944,14 +11572,13 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["allowWatchBookmarks"] = e.Result()
 	}
@@ -11961,14 +11588,13 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -11978,14 +11604,13 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -11995,14 +11620,13 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -12012,14 +11636,13 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -12029,14 +11652,13 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -12046,14 +11668,13 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -12063,14 +11684,13 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -12080,14 +11700,13 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Watch.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["watch"] = e.Result()
 	}
@@ -12098,13 +11717,13 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListCoreV1NamespaceResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -12138,14 +11757,13 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["allowWatchBookmarks"] = e.Result()
 	}
@@ -12155,14 +11773,13 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -12172,14 +11789,13 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -12189,14 +11805,13 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -12206,14 +11821,13 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -12223,14 +11837,13 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -12240,14 +11853,13 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -12257,14 +11869,13 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -12274,14 +11885,13 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Watch.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["watch"] = e.Result()
 	}
@@ -12292,13 +11902,13 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListCoreV1NodeResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -12332,14 +11942,13 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["allowWatchBookmarks"] = e.Result()
 	}
@@ -12349,14 +11958,13 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -12366,14 +11974,13 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -12383,14 +11990,13 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -12400,14 +12006,13 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -12417,14 +12022,13 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -12434,14 +12038,13 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -12451,14 +12054,13 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -12468,14 +12070,13 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Watch.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["watch"] = e.Result()
 	}
@@ -12486,13 +12087,13 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListCoreV1PersistentVolumeResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -12524,13 +12125,13 @@ func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Con
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -12562,13 +12163,13 @@ func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context) (res ListCor
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListCoreV1PodForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -12600,13 +12201,13 @@ func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context) (res
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListCoreV1PodTemplateForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -12638,13 +12239,13 @@ func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Con
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListCoreV1ReplicationControllerForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -12676,13 +12277,13 @@ func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context) (r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListCoreV1ResourceQuotaForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -12714,13 +12315,13 @@ func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context) (res List
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListCoreV1SecretForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -12752,13 +12353,13 @@ func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context) (
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListCoreV1ServiceAccountForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -12790,13 +12391,13 @@ func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context) (res Lis
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListCoreV1ServiceForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -12828,13 +12429,13 @@ func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -12866,13 +12467,13 @@ func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.C
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -12904,13 +12505,13 @@ func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context) (res Lis
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListEventsV1EventForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -12942,13 +12543,13 @@ func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context) (re
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListEventsV1beta1EventForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -12982,14 +12583,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["allowWatchBookmarks"] = e.Result()
 	}
@@ -12999,14 +12599,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -13016,14 +12615,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -13033,14 +12631,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -13050,14 +12647,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -13067,14 +12663,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -13084,14 +12679,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -13101,14 +12695,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -13118,14 +12711,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Watch.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["watch"] = e.Result()
 	}
@@ -13136,13 +12728,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -13176,14 +12768,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["allowWatchBookmarks"] = e.Result()
 	}
@@ -13193,14 +12784,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -13210,14 +12800,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -13227,14 +12816,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -13244,14 +12832,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -13261,14 +12848,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -13278,14 +12864,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -13295,14 +12880,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -13312,14 +12896,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Watch.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["watch"] = e.Result()
 	}
@@ -13330,13 +12913,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -13370,14 +12953,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["allowWatchBookmarks"] = e.Result()
 	}
@@ -13387,14 +12969,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -13404,14 +12985,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -13421,14 +13001,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -13438,14 +13017,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -13455,14 +13033,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -13472,14 +13049,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -13489,14 +13065,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -13506,14 +13081,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Watch.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["watch"] = e.Result()
 	}
@@ -13524,13 +13098,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -13564,14 +13138,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["allowWatchBookmarks"] = e.Result()
 	}
@@ -13581,14 +13154,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -13598,14 +13170,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -13615,14 +13186,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -13632,14 +13202,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -13649,14 +13218,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -13666,14 +13234,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -13683,14 +13250,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -13700,14 +13266,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Watch.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["watch"] = e.Result()
 	}
@@ -13718,13 +13283,13 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -13758,14 +13323,13 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["allowWatchBookmarks"] = e.Result()
 	}
@@ -13775,14 +13339,13 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -13792,14 +13355,13 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -13809,14 +13371,13 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -13826,14 +13387,13 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -13843,14 +13403,13 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -13860,14 +13419,13 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -13877,14 +13435,13 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -13894,14 +13451,13 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Watch.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["watch"] = e.Result()
 	}
@@ -13912,13 +13468,13 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListInternalApiserverV1alpha1StorageVersionResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -13952,14 +13508,13 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["allowWatchBookmarks"] = e.Result()
 	}
@@ -13969,14 +13524,13 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -13986,14 +13540,13 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -14003,14 +13556,13 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -14020,14 +13572,13 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -14037,14 +13588,13 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -14054,14 +13604,13 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -14071,14 +13620,13 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -14088,14 +13636,13 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Watch.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["watch"] = e.Result()
 	}
@@ -14106,13 +13653,13 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListNetworkingV1IngressClassResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -14144,13 +13691,13 @@ func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context) (r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListNetworkingV1IngressForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -14182,13 +13729,13 @@ func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Conte
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -14222,14 +13769,13 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["allowWatchBookmarks"] = e.Result()
 	}
@@ -14239,14 +13785,13 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -14256,14 +13801,13 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -14273,14 +13817,13 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -14290,14 +13833,13 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -14307,14 +13849,13 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -14324,14 +13865,13 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -14341,14 +13881,13 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -14358,14 +13897,13 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Watch.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["watch"] = e.Result()
 	}
@@ -14376,13 +13914,13 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListNodeV1RuntimeClassResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -14416,14 +13954,13 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["allowWatchBookmarks"] = e.Result()
 	}
@@ -14433,14 +13970,13 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -14450,14 +13986,13 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -14467,14 +14002,13 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -14484,14 +14018,13 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -14501,14 +14034,13 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -14518,14 +14050,13 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -14535,14 +14066,13 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -14552,14 +14082,13 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Watch.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["watch"] = e.Result()
 	}
@@ -14570,13 +14099,13 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListNodeV1alpha1RuntimeClassResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -14610,14 +14139,13 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["allowWatchBookmarks"] = e.Result()
 	}
@@ -14627,14 +14155,13 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -14644,14 +14171,13 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -14661,14 +14187,13 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -14678,14 +14203,13 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -14695,14 +14219,13 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -14712,14 +14235,13 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -14729,14 +14251,13 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -14746,14 +14267,13 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Watch.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["watch"] = e.Result()
 	}
@@ -14764,13 +14284,13 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListNodeV1beta1RuntimeClassResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -14802,13 +14322,13 @@ func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Con
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -14840,13 +14360,13 @@ func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -14880,14 +14400,13 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["allowWatchBookmarks"] = e.Result()
 	}
@@ -14897,14 +14416,13 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -14914,14 +14432,13 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -14931,14 +14448,13 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -14948,14 +14464,13 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -14965,14 +14480,13 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -14982,14 +14496,13 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -14999,14 +14512,13 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -15016,14 +14528,13 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Watch.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["watch"] = e.Result()
 	}
@@ -15034,13 +14545,13 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListPolicyV1beta1PodSecurityPolicyResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -15074,14 +14585,13 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["allowWatchBookmarks"] = e.Result()
 	}
@@ -15091,14 +14601,13 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -15108,14 +14617,13 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -15125,14 +14633,13 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -15142,14 +14649,13 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -15159,14 +14665,13 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -15176,14 +14681,13 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -15193,14 +14697,13 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -15210,14 +14713,13 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Watch.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["watch"] = e.Result()
 	}
@@ -15228,13 +14730,13 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListRbacAuthorizationV1ClusterRoleResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -15268,14 +14770,13 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["allowWatchBookmarks"] = e.Result()
 	}
@@ -15285,14 +14786,13 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -15302,14 +14802,13 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -15319,14 +14818,13 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -15336,14 +14834,13 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -15353,14 +14850,13 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -15370,14 +14866,13 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -15387,14 +14882,13 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -15404,14 +14898,13 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Watch.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["watch"] = e.Result()
 	}
@@ -15422,13 +14915,13 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListRbacAuthorizationV1ClusterRoleBindingResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -15460,13 +14953,13 @@ func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -15498,13 +14991,13 @@ func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListRbacAuthorizationV1RoleForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -15538,14 +15031,13 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["allowWatchBookmarks"] = e.Result()
 	}
@@ -15555,14 +15047,13 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -15572,14 +15063,13 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -15589,14 +15079,13 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -15606,14 +15095,13 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -15623,14 +15111,13 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -15640,14 +15127,13 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -15657,14 +15143,13 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -15674,14 +15159,13 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Watch.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["watch"] = e.Result()
 	}
@@ -15692,13 +15176,13 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListSchedulingV1PriorityClassResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -15732,14 +15216,13 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["allowWatchBookmarks"] = e.Result()
 	}
@@ -15749,14 +15232,13 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -15766,14 +15248,13 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -15783,14 +15264,13 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -15800,14 +15280,13 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -15817,14 +15296,13 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -15834,14 +15312,13 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -15851,14 +15328,13 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -15868,14 +15344,13 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Watch.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["watch"] = e.Result()
 	}
@@ -15886,13 +15361,13 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListStorageV1CSIDriverResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -15926,14 +15401,13 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["allowWatchBookmarks"] = e.Result()
 	}
@@ -15943,14 +15417,13 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -15960,14 +15433,13 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -15977,14 +15449,13 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -15994,14 +15465,13 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -16011,14 +15481,13 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -16028,14 +15497,13 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -16045,14 +15513,13 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -16062,14 +15529,13 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Watch.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["watch"] = e.Result()
 	}
@@ -16080,13 +15546,13 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListStorageV1CSINodeResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -16120,14 +15586,13 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["allowWatchBookmarks"] = e.Result()
 	}
@@ -16137,14 +15602,13 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -16154,14 +15618,13 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -16171,14 +15634,13 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -16188,14 +15650,13 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -16205,14 +15666,13 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -16222,14 +15682,13 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -16239,14 +15698,13 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -16256,14 +15714,13 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Watch.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["watch"] = e.Result()
 	}
@@ -16274,13 +15731,13 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListStorageV1StorageClassResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -16314,14 +15771,13 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.AllowWatchBookmarks.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["allowWatchBookmarks"] = e.Result()
 	}
@@ -16331,14 +15787,13 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Continue.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["continue"] = e.Result()
 	}
@@ -16348,14 +15803,13 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.FieldSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["fieldSelector"] = e.Result()
 	}
@@ -16365,14 +15819,13 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.LabelSelector.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["labelSelector"] = e.Result()
 	}
@@ -16382,14 +15835,13 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["limit"] = e.Result()
 	}
@@ -16399,14 +15851,13 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersion.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersion"] = e.Result()
 	}
@@ -16416,14 +15867,13 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.ResourceVersionMatch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["resourceVersionMatch"] = e.Result()
 	}
@@ -16433,14 +15883,13 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.TimeoutSeconds.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["timeoutSeconds"] = e.Result()
 	}
@@ -16450,14 +15899,13 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		})
-		if encErr := func() error {
+		if err := func() error {
 			if val, ok := params.Watch.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
 			}
 			return nil
-		}(); encErr != nil {
-			err = fmt.Errorf("encode query: %w", encErr)
-			return
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
 		}
 		q["watch"] = e.Result()
 	}
@@ -16468,13 +15916,13 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListStorageV1VolumeAttachmentResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -16506,13 +15954,13 @@ func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx conte
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -16544,13 +15992,13 @@ func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -16582,13 +16030,13 @@ func (c *Client) LogFileListHandler(ctx context.Context) (res LogFileListHandler
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeLogFileListHandlerResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -16620,13 +16068,13 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ct
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -16658,13 +16106,13 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -16696,13 +16144,13 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Co
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchApiextensionsV1CustomResourceDefinitionListResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -16734,13 +16182,13 @@ func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context) (res 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchApiregistrationV1APIServiceListResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -16772,13 +16220,13 @@ func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.C
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -16810,13 +16258,13 @@ func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context) (
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchAppsV1DaemonSetListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -16848,13 +16296,13 @@ func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context) 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchAppsV1DeploymentListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -16886,13 +16334,13 @@ func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context) 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -16924,13 +16372,13 @@ func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchAppsV1StatefulSetListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -16962,13 +16410,13 @@ func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(c
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17000,13 +16448,13 @@ func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespa
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17038,13 +16486,13 @@ func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespa
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17076,13 +16524,13 @@ func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context) (r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchBatchV1CronJobListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17114,13 +16562,13 @@ func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context) (res W
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchBatchV1JobListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17152,13 +16600,13 @@ func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17190,13 +16638,13 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Co
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchCertificatesV1CertificateSigningRequestListResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17228,13 +16676,13 @@ func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchCoordinationV1LeaseListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17266,13 +16714,13 @@ func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context) (
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchCoreV1ConfigMapListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17304,13 +16752,13 @@ func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context) (
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchCoreV1EndpointsListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17342,13 +16790,13 @@ func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context) (res 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchCoreV1EventListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17380,13 +16828,13 @@ func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context) 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchCoreV1LimitRangeListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17418,13 +16866,13 @@ func (c *Client) WatchCoreV1NamespaceList(ctx context.Context) (res WatchCoreV1N
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchCoreV1NamespaceListResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17456,13 +16904,13 @@ func (c *Client) WatchCoreV1NodeList(ctx context.Context) (res WatchCoreV1NodeLi
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchCoreV1NodeListResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17494,13 +16942,13 @@ func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17532,13 +16980,13 @@ func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context) (res Watch
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchCoreV1PersistentVolumeListResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17570,13 +17018,13 @@ func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context) (res Wa
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchCoreV1PodListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17608,13 +17056,13 @@ func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchCoreV1PodTemplateListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17646,13 +17094,13 @@ func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17684,13 +17132,13 @@ func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17722,13 +17170,13 @@ func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context) (res
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchCoreV1SecretListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17760,13 +17208,13 @@ func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Conte
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17798,13 +17246,13 @@ func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context) (re
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchCoreV1ServiceListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17836,13 +17284,13 @@ func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.C
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17874,13 +17322,13 @@ func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx cont
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17912,13 +17360,13 @@ func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context) (re
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchEventsV1EventListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17950,13 +17398,13 @@ func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchEventsV1beta1EventListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -17988,13 +17436,13 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Cont
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -18026,13 +17474,13 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -18064,13 +17512,13 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Cont
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -18102,13 +17550,13 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -18140,13 +17588,13 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Co
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchInternalApiserverV1alpha1StorageVersionListResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -18178,13 +17626,13 @@ func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context) (res Wat
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchNetworkingV1IngressClassListResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -18216,13 +17664,13 @@ func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchNetworkingV1IngressListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -18254,13 +17702,13 @@ func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -18292,13 +17740,13 @@ func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context) (res WatchNode
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchNodeV1RuntimeClassListResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -18330,13 +17778,13 @@ func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context) (res Wat
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchNodeV1alpha1RuntimeClassListResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -18368,13 +17816,13 @@ func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context) (res Watc
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchNodeV1beta1RuntimeClassListResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -18406,13 +17854,13 @@ func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -18444,13 +17892,13 @@ func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx c
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -18482,13 +17930,13 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context) (r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchPolicyV1beta1PodSecurityPolicyListResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -18520,13 +17968,13 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Cont
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -18558,13 +18006,13 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context) (r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchRbacAuthorizationV1ClusterRoleListResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -18596,13 +18044,13 @@ func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx con
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -18634,13 +18082,13 @@ func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Co
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -18672,13 +18120,13 @@ func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context) (res Wa
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchSchedulingV1PriorityClassListResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -18710,13 +18158,13 @@ func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context) (res WatchStor
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchStorageV1CSIDriverListResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -18748,13 +18196,13 @@ func (c *Client) WatchStorageV1CSINodeList(ctx context.Context) (res WatchStorag
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchStorageV1CSINodeListResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -18786,13 +18234,13 @@ func (c *Client) WatchStorageV1StorageClassList(ctx context.Context) (res WatchS
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchStorageV1StorageClassListResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -18824,13 +18272,13 @@ func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context) (res Wa
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchStorageV1VolumeAttachmentListResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -18862,13 +18310,13 @@ func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
@@ -18900,13 +18348,13 @@ func (c *Client) WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx c
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
+		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
+		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil

@@ -5,7 +5,6 @@ package techempower
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"math"
@@ -20,6 +19,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -77,9 +77,7 @@ func decodeCachingResponse(resp *http.Response, span trace.Span) (res WorldObjec
 
 			var response WorldObjects
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WorldObjects" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WorldObjects" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -87,10 +85,10 @@ func decodeCachingResponse(resp *http.Response, span trace.Span) (res WorldObjec
 
 			return response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -121,10 +119,10 @@ func decodeDBResponse(resp *http.Response, span trace.Span) (res WorldObject, er
 
 			return response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -155,10 +153,10 @@ func decodeJSONResponse(resp *http.Response, span trace.Span) (res HelloWorld, e
 
 			return response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -179,9 +177,7 @@ func decodeQueriesResponse(resp *http.Response, span trace.Span) (res WorldObjec
 
 			var response WorldObjects
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WorldObjects" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WorldObjects" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -189,10 +185,10 @@ func decodeQueriesResponse(resp *http.Response, span trace.Span) (res WorldObjec
 
 			return response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
@@ -213,9 +209,7 @@ func decodeUpdatesResponse(resp *http.Response, span trace.Span) (res WorldObjec
 
 			var response WorldObjects
 			if err := func() error {
-				if err := fmt.Errorf(`decoding of "WorldObjects" (alias) is not implemented`); err != nil {
-					return err
-				}
+				return errors.New(`decoding of "WorldObjects" (alias) is not implemented`)
 				return nil
 			}(); err != nil {
 				return res, err
@@ -223,9 +217,9 @@ func decodeUpdatesResponse(resp *http.Response, span trace.Span) (res WorldObjec
 
 			return response, nil
 		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
