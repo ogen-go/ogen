@@ -42,8 +42,8 @@ github.com/mattn/go-isatty v0.0.14 h1:yVuAays6BHfxijgZPzw+3Zlu5yQgKGP2/hcQbHb7S9
 github.com/mattn/go-isatty v0.0.14/go.mod h1:7GGIvUiUoEMVVmxf/4nioHXj79iQHKdU27kJ6hsGG94=
 github.com/ogen-go/errors v0.4.0 h1:fHO9CV4AAekpt4jtLFNx1NTsMWLTF9SfT+L8PT1VL8M=
 github.com/ogen-go/errors v0.4.0/go.mod h1:JRD2VpTPGlkV3ryzVKC6hnCL9b0BD2HMcn+1KgDy4QU=
-github.com/ogen-go/jx v0.13.3 h1:xr5sdAPFmOUiLekuRASYiyeWtNUEebdbCV4x6CCksoM=
-github.com/ogen-go/jx v0.13.3/go.mod h1:KpIek5rlHZ2WKcrhbCOaiJti28JZbLbMElrlF2sa6qg=
+github.com/ogen-go/jx v0.14.0 h1:jEM2V3XzXrkePIbaLD3a8Lwz3ddwGlCNzCKdQXSn858=
+github.com/ogen-go/jx v0.14.0/go.mod h1:KpIek5rlHZ2WKcrhbCOaiJti28JZbLbMElrlF2sa6qg=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
