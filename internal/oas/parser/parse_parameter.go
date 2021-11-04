@@ -37,7 +37,6 @@ func (p *parser) parseParams(params []ogen.Parameter) ([]*oas.Parameter, error) 
 
 		unique[ploc] = struct{}{}
 		result = append(result, param)
-
 	}
 
 	return result, nil

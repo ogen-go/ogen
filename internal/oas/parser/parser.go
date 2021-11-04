@@ -53,11 +53,16 @@ func Parse(spec *ogen.Spec, opts Options) ([]*oas.Operation, error) {
 func (p *parser) parse() error {
 	for path, item := range p.spec.Paths {
 		if item.Ref != "" {
-			return errors.New("referenced paths are not supported")
+			return errors.Errorf("%s: referenced pathItem not supported", path)
+		}
+
+		itemParams, err := p.parseParams(item.Parameters)
+		if err != nil {
+			return errors.Wrapf(err, "%s: parameters", path)
 		}
 
 		if err := forEachOps(item, func(method string, op ogen.Operation) error {
-			parsedOp, err := p.parseOp(path, strings.ToUpper(method), op)
+			parsedOp, err := p.parseOp(path, strings.ToUpper(method), op, itemParams)
 			if err != nil {
 				var paramNotSpecified *ErrPathParameterNotSpecified
 				if errors.As(err, &paramNotSpecified) {
@@ -78,16 +83,19 @@ func (p *parser) parse() error {
 	return nil
 }
 
-func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation) (_ *oas.Operation, err error) {
+func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation, itemParams []*oas.Parameter) (_ *oas.Operation, err error) {
 	op := &oas.Operation{
 		OperationID: spec.OperationID,
 		HTTPMethod:  httpMethod,
 	}
 
-	op.Parameters, err = p.parseParams(spec.Parameters)
+	opParams, err := p.parseParams(spec.Parameters)
 	if err != nil {
 		return nil, errors.Wrap(err, "parameters")
 	}
+
+	// Merge operation parameters with pathItem parameters.
+	op.Parameters = mergeParams(opParams, itemParams)
 
 	op.PathParts, err = parsePath(path, op.Parameters)
 	if err != nil {
@@ -109,4 +117,26 @@ func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation) (_ *oas.O
 	}
 
 	return op, nil
+}
+
+func mergeParams(opParams, itemParams []*oas.Parameter) []*oas.Parameter {
+	lookupOp := func(pname string) bool {
+		for _, param := range opParams {
+			if param.Name == pname {
+				return true
+			}
+		}
+		return false
+	}
+
+	for _, itemParam := range itemParams {
+		// Param defined in operation take precedense over param defined in pathItem.
+		if lookupOp(itemParam.Name) {
+			continue
+		}
+
+		opParams = append(opParams, itemParam)
+	}
+
+	return opParams
 }
