@@ -50,8 +50,13 @@ func (p *parser) parse() error {
 			return errors.Errorf("%s: referenced pathItem not supported", path)
 		}
 
+		itemParams, err := p.parseParams(item.Parameters)
+		if err != nil {
+			return errors.Wrapf(err, "%s: parameters", path)
+		}
+
 		if err := forEachOps(item, func(method string, op ogen.Operation) error {
-			parsedOp, err := p.parseOp(path, strings.ToUpper(method), op, item.Parameters)
+			parsedOp, err := p.parseOp(path, strings.ToUpper(method), op, itemParams)
 			if err != nil {
 				return errors.Wrapf(err, "%s", strings.ToLower(method))
 			}
@@ -66,16 +71,19 @@ func (p *parser) parse() error {
 	return nil
 }
 
-func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation, itemParameters []ogen.Parameter) (_ *oas.Operation, err error) {
+func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation, itemParams []*oas.Parameter) (_ *oas.Operation, err error) {
 	op := &oas.Operation{
 		OperationID: spec.OperationID,
 		HTTPMethod:  httpMethod,
 	}
 
-	op.Parameters, err = p.parseParams(mergeParams(spec.Parameters, itemParameters))
+	opParams, err := p.parseParams(spec.Parameters)
 	if err != nil {
 		return nil, errors.Wrap(err, "parameters")
 	}
+
+	// Merge operation parameters with pathItem parameters.
+	op.Parameters = mergeParams(opParams, itemParams)
 
 	op.PathParts, err = parsePath(path, op.Parameters)
 	if err != nil {
@@ -99,30 +107,24 @@ func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation, itemParam
 	return op, nil
 }
 
-func mergeParams(opParams, itemParams []ogen.Parameter) []ogen.Parameter {
-	if len(itemParams) == 0 {
-		return opParams
-	}
-
-	lookupOp := func(name, in string) bool {
+func mergeParams(opParams, itemParams []*oas.Parameter) []*oas.Parameter {
+	lookupOp := func(pname string) bool {
 		for _, param := range opParams {
-			if param.Name == name && param.In == in {
+			if param.Name == pname {
 				return true
 			}
 		}
 		return false
 	}
 
-	result := make([]ogen.Parameter, 0, len(opParams)+len(itemParams))
-	result = append(result, opParams...)
-	for _, param := range itemParams {
+	for _, itemParam := range itemParams {
 		// Param defined in operation take precedense over param defined in pathItem.
-		if lookupOp(param.Name, param.In) {
+		if lookupOp(itemParam.Name) {
 			continue
 		}
 
-		result = append(result, param)
+		opParams = append(opParams, itemParam)
 	}
 
-	return result
+	return opParams
 }
