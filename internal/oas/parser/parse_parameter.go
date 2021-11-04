@@ -10,14 +10,34 @@ import (
 )
 
 func (p *parser) parseParams(params []ogen.Parameter) ([]*oas.Parameter, error) {
-	var result []*oas.Parameter
-	for _, param := range params {
-		parsed, err := p.parseParameter(param)
+	// Unique parameter is defined by a combination of a name and location.
+	type pnameLoc struct {
+		name     string
+		location oas.ParameterLocation
+	}
+
+	var (
+		result = make([]*oas.Parameter, 0, len(params))
+		unique = make(map[pnameLoc]struct{})
+	)
+
+	for _, spec := range params {
+		param, err := p.parseParameter(spec)
 		if err != nil {
-			return nil, errors.Wrapf(err, "parse parameter %q", param.Name)
+			return nil, errors.Wrapf(err, "parse parameter %q", spec.Name)
 		}
 
-		result = append(result, parsed)
+		ploc := pnameLoc{
+			name:     param.Name,
+			location: param.In,
+		}
+		if _, ok := unique[ploc]; ok {
+			return nil, errors.Errorf("duplicate parameter: '%s' in '%s'", param.Name, param.In)
+		}
+
+		unique[ploc] = struct{}{}
+		result = append(result, param)
+
 	}
 
 	return result, nil
