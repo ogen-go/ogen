@@ -1,8 +1,6 @@
 package gen
 
 import (
-	"sort"
-
 	"github.com/ogen-go/errors"
 
 	"github.com/ogen-go/ogen/internal/ir"
@@ -15,11 +13,10 @@ func (g *Generator) generateRequest(opName string, body *oas.RequestBody) (*ir.R
 		types = make(map[ir.ContentType]*ir.Type)
 	)
 
-	contentTypes := make([]string, 0, len(body.Contents))
-	for contentType := range body.Contents {
-		contentTypes = append(contentTypes, contentType)
+	contentTypes, err := sortContentTypes(body.Contents)
+	if err != nil {
+		return nil, err
 	}
-	sort.Strings(contentTypes)
 
 	for _, contentType := range contentTypes {
 		var (

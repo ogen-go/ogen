@@ -116,11 +116,10 @@ func (g *Generator) responseToIR(name, doc string, resp *oas.Response) (ret *ir.
 
 	types := make(map[ir.ContentType]*ir.Type, len(resp.Contents))
 
-	contentTypes := make([]string, 0, len(resp.Contents))
-	for contentType := range resp.Contents {
-		contentTypes = append(contentTypes, contentType)
+	contentTypes, err := sortContentTypes(resp.Contents)
+	if err != nil {
+		return nil, err
 	}
-	sort.Strings(contentTypes)
 
 	for _, contentType := range contentTypes {
 		schema := resp.Contents[contentType]

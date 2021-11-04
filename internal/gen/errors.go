@@ -1,6 +1,7 @@
 package gen
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/ogen-go/errors"
@@ -14,6 +15,14 @@ func (e *ErrNotImplemented) Error() string {
 	return e.Name + " not implemented"
 }
 
+type ErrUnsupportedContentTypes struct {
+	ContentTypes []string
+}
+
+func (e *ErrUnsupportedContentTypes) Error() string {
+	return fmt.Sprintf("unsupported content types: [%s]", strings.Join(e.ContentTypes, ", "))
+}
+
 func (g *Generator) shouldFail(err error) bool {
 	var notImplementedErr *ErrNotImplemented
 	if errors.As(err, &notImplementedErr) {
@@ -23,6 +32,16 @@ func (g *Generator) shouldFail(err error) bool {
 				return false
 			}
 			if s == notImplementedErr.Name {
+				return false
+			}
+		}
+	}
+
+	var ctypesErr *ErrUnsupportedContentTypes
+	if errors.As(err, &ctypesErr) {
+		for _, s := range g.opt.IgnoreNotImplemented {
+			s = strings.TrimSpace(s)
+			if s == "all" || s == "unsupportedContentTypes" {
 				return false
 			}
 		}
