@@ -252,21 +252,14 @@ func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDefStatusCode, err
 }
 
 // PetCreate implements petCreate operation.
-func (c *Client) PetCreate(ctx context.Context, request PetCreateReq) (res Pet, err error) {
-	switch request := request.(type) {
-	case *Pet:
-		if err := func() error {
-			if err := request.Validate(); err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return res, errors.Wrap(err, "validate")
+func (c *Client) PetCreate(ctx context.Context, request Pet) (res Pet, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
 		}
-	case *PetCreateReqTextPlain:
-		// Validation is not required for this type.
-	default:
-		return res, errors.Errorf("unexpected request type: %T", request)
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetCreate`,

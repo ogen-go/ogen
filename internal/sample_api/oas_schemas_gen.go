@@ -614,12 +614,7 @@ type Pet struct {
 
 func (*Pet) foobarGetRes()  {}
 func (*Pet) foobarPostRes() {}
-func (*Pet) petCreateReq()  {}
 func (*Pet) petGetRes()     {}
-
-type PetCreateReqTextPlain struct{}
-
-func (*PetCreateReqTextPlain) petCreateReq() {}
 
 type PetGetDef struct {
 	Message string `json:"message"`

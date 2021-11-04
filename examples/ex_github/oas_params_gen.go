@@ -1365,10 +1365,6 @@ type LicensesGetForRepoParams struct {
 	Repo  string
 }
 
-type MetaGetOctocatParams struct {
-	S OptString
-}
-
 type MigrationsCancelImportParams struct {
 	Owner string
 	Repo  string
@@ -2822,14 +2818,6 @@ type ReposUpdateWebhookConfigForRepoParams struct {
 	Owner  string
 	Repo   string
 	HookID int
-}
-
-type ReposUploadReleaseAssetParams struct {
-	Owner     string
-	Repo      string
-	ReleaseID int
-	Name      string
-	Label     OptString
 }
 
 type ScimDeleteUserFromOrgParams struct {

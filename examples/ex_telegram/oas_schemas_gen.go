@@ -88,28 +88,6 @@ type AnswerCallbackQueryPostReqApplicationJSON struct {
 	CacheTime       OptInt    `json:"cache_time"`
 }
 
-func (*AnswerCallbackQueryPostReqApplicationJSON) answerCallbackQueryPostReq() {}
-
-type AnswerCallbackQueryPostReqApplicationXWwwFormUrlencoded struct {
-	CallbackQueryID string    `json:"callback_query_id"`
-	Text            OptString `json:"text"`
-	ShowAlert       OptBool   `json:"show_alert"`
-	URL             OptString `json:"url"`
-	CacheTime       OptInt    `json:"cache_time"`
-}
-
-func (*AnswerCallbackQueryPostReqApplicationXWwwFormUrlencoded) answerCallbackQueryPostReq() {}
-
-type AnswerCallbackQueryPostReqMultipartFormData struct {
-	CallbackQueryID string    `json:"callback_query_id"`
-	Text            OptString `json:"text"`
-	ShowAlert       OptBool   `json:"show_alert"`
-	URL             OptString `json:"url"`
-	CacheTime       OptInt    `json:"cache_time"`
-}
-
-func (*AnswerCallbackQueryPostReqMultipartFormData) answerCallbackQueryPostReq() {}
-
 type AnswerPreCheckoutQueryPostOK struct {
 	Ok     bool `json:"ok"`
 	Result bool `json:"result"`
@@ -122,24 +100,6 @@ type AnswerPreCheckoutQueryPostReqApplicationJSON struct {
 	Ok                 bool      `json:"ok"`
 	ErrorMessage       OptString `json:"error_message"`
 }
-
-func (*AnswerPreCheckoutQueryPostReqApplicationJSON) answerPreCheckoutQueryPostReq() {}
-
-type AnswerPreCheckoutQueryPostReqApplicationXWwwFormUrlencoded struct {
-	PreCheckoutQueryID string    `json:"pre_checkout_query_id"`
-	Ok                 bool      `json:"ok"`
-	ErrorMessage       OptString `json:"error_message"`
-}
-
-func (*AnswerPreCheckoutQueryPostReqApplicationXWwwFormUrlencoded) answerPreCheckoutQueryPostReq() {}
-
-type AnswerPreCheckoutQueryPostReqMultipartFormData struct {
-	PreCheckoutQueryID string    `json:"pre_checkout_query_id"`
-	Ok                 bool      `json:"ok"`
-	ErrorMessage       OptString `json:"error_message"`
-}
-
-func (*AnswerPreCheckoutQueryPostReqMultipartFormData) answerPreCheckoutQueryPostReq() {}
 
 type AnswerShippingQueryPostOK struct {
 	Ok     bool `json:"ok"`
@@ -154,26 +114,6 @@ type AnswerShippingQueryPostReqApplicationJSON struct {
 	ShippingOptions []ShippingOption `json:"shipping_options"`
 	ErrorMessage    OptString        `json:"error_message"`
 }
-
-func (*AnswerShippingQueryPostReqApplicationJSON) answerShippingQueryPostReq() {}
-
-type AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded struct {
-	ShippingQueryID string           `json:"shipping_query_id"`
-	Ok              bool             `json:"ok"`
-	ShippingOptions []ShippingOption `json:"shipping_options"`
-	ErrorMessage    OptString        `json:"error_message"`
-}
-
-func (*AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded) answerShippingQueryPostReq() {}
-
-type AnswerShippingQueryPostReqMultipartFormData struct {
-	ShippingQueryID string           `json:"shipping_query_id"`
-	Ok              bool             `json:"ok"`
-	ShippingOptions []ShippingOption `json:"shipping_options"`
-	ErrorMessage    OptString        `json:"error_message"`
-}
-
-func (*AnswerShippingQueryPostReqMultipartFormData) answerShippingQueryPostReq() {}
 
 // Ref: #/components/schemas/Audio
 type Audio struct {
@@ -302,20 +242,6 @@ type DeleteStickerFromSetPostReqApplicationJSON struct {
 	Sticker string `json:"sticker"`
 }
 
-func (*DeleteStickerFromSetPostReqApplicationJSON) deleteStickerFromSetPostReq() {}
-
-type DeleteStickerFromSetPostReqApplicationXWwwFormUrlencoded struct {
-	Sticker string `json:"sticker"`
-}
-
-func (*DeleteStickerFromSetPostReqApplicationXWwwFormUrlencoded) deleteStickerFromSetPostReq() {}
-
-type DeleteStickerFromSetPostReqMultipartFormData struct {
-	Sticker string `json:"sticker"`
-}
-
-func (*DeleteStickerFromSetPostReqMultipartFormData) deleteStickerFromSetPostReq() {}
-
 type DeleteWebhookPostOK struct {
 	Ok     bool `json:"ok"`
 	Result bool `json:"result"`
@@ -326,20 +252,6 @@ func (*DeleteWebhookPostOK) deleteWebhookPostRes() {}
 type DeleteWebhookPostReqApplicationJSON struct {
 	DropPendingUpdates OptBool `json:"drop_pending_updates"`
 }
-
-func (*DeleteWebhookPostReqApplicationJSON) deleteWebhookPostReq() {}
-
-type DeleteWebhookPostReqApplicationXWwwFormUrlencoded struct {
-	DropPendingUpdates OptBool `json:"drop_pending_updates"`
-}
-
-func (*DeleteWebhookPostReqApplicationXWwwFormUrlencoded) deleteWebhookPostReq() {}
-
-type DeleteWebhookPostReqMultipartFormData struct {
-	DropPendingUpdates OptBool `json:"drop_pending_updates"`
-}
-
-func (*DeleteWebhookPostReqMultipartFormData) deleteWebhookPostReq() {}
 
 // Ref: #/components/schemas/Dice
 type Dice struct {
@@ -429,8 +341,6 @@ func (*ErrorStatusCode) sendGamePostRes()                {}
 func (*ErrorStatusCode) sendInvoicePostRes()             {}
 func (*ErrorStatusCode) setMyCommandsPostRes()           {}
 func (*ErrorStatusCode) setStickerPositionInSetPostRes() {}
-func (*ErrorStatusCode) setWebhookPostRes()              {}
-func (*ErrorStatusCode) uploadStickerFilePostRes()       {}
 
 // Ref: #/components/schemas/File
 type File struct {
@@ -468,20 +378,6 @@ type GetFilePostReqApplicationJSON struct {
 	FileID string `json:"file_id"`
 }
 
-func (*GetFilePostReqApplicationJSON) getFilePostReq() {}
-
-type GetFilePostReqApplicationXWwwFormUrlencoded struct {
-	FileID string `json:"file_id"`
-}
-
-func (*GetFilePostReqApplicationXWwwFormUrlencoded) getFilePostReq() {}
-
-type GetFilePostReqMultipartFormData struct {
-	FileID string `json:"file_id"`
-}
-
-func (*GetFilePostReqMultipartFormData) getFilePostReq() {}
-
 type GetGameHighScoresPostOK struct {
 	Ok     bool            `json:"ok"`
 	Result []GameHighScore `json:"result"`
@@ -495,26 +391,6 @@ type GetGameHighScoresPostReqApplicationJSON struct {
 	MessageID       OptInt    `json:"message_id"`
 	InlineMessageID OptString `json:"inline_message_id"`
 }
-
-func (*GetGameHighScoresPostReqApplicationJSON) getGameHighScoresPostReq() {}
-
-type GetGameHighScoresPostReqApplicationXWwwFormUrlencoded struct {
-	UserID          int       `json:"user_id"`
-	ChatID          OptInt    `json:"chat_id"`
-	MessageID       OptInt    `json:"message_id"`
-	InlineMessageID OptString `json:"inline_message_id"`
-}
-
-func (*GetGameHighScoresPostReqApplicationXWwwFormUrlencoded) getGameHighScoresPostReq() {}
-
-type GetGameHighScoresPostReqMultipartFormData struct {
-	UserID          int       `json:"user_id"`
-	ChatID          OptInt    `json:"chat_id"`
-	MessageID       OptInt    `json:"message_id"`
-	InlineMessageID OptString `json:"inline_message_id"`
-}
-
-func (*GetGameHighScoresPostReqMultipartFormData) getGameHighScoresPostReq() {}
 
 type GetMePostOK struct {
 	Ok     bool `json:"ok"`
@@ -541,20 +417,6 @@ type GetStickerSetPostReqApplicationJSON struct {
 	Name string `json:"name"`
 }
 
-func (*GetStickerSetPostReqApplicationJSON) getStickerSetPostReq() {}
-
-type GetStickerSetPostReqApplicationXWwwFormUrlencoded struct {
-	Name string `json:"name"`
-}
-
-func (*GetStickerSetPostReqApplicationXWwwFormUrlencoded) getStickerSetPostReq() {}
-
-type GetStickerSetPostReqMultipartFormData struct {
-	Name string `json:"name"`
-}
-
-func (*GetStickerSetPostReqMultipartFormData) getStickerSetPostReq() {}
-
 type GetUpdatesPostOK struct {
 	Ok     bool     `json:"ok"`
 	Result []Update `json:"result"`
@@ -569,26 +431,6 @@ type GetUpdatesPostReqApplicationJSON struct {
 	AllowedUpdates []string `json:"allowed_updates"`
 }
 
-func (*GetUpdatesPostReqApplicationJSON) getUpdatesPostReq() {}
-
-type GetUpdatesPostReqApplicationXWwwFormUrlencoded struct {
-	Offset         OptInt   `json:"offset"`
-	Limit          OptInt   `json:"limit"`
-	Timeout        OptInt   `json:"timeout"`
-	AllowedUpdates []string `json:"allowed_updates"`
-}
-
-func (*GetUpdatesPostReqApplicationXWwwFormUrlencoded) getUpdatesPostReq() {}
-
-type GetUpdatesPostReqMultipartFormData struct {
-	Offset         OptInt   `json:"offset"`
-	Limit          OptInt   `json:"limit"`
-	Timeout        OptInt   `json:"timeout"`
-	AllowedUpdates []string `json:"allowed_updates"`
-}
-
-func (*GetUpdatesPostReqMultipartFormData) getUpdatesPostReq() {}
-
 type GetUserProfilePhotosPostOK struct {
 	Ok     bool              `json:"ok"`
 	Result UserProfilePhotos `json:"result"`
@@ -601,24 +443,6 @@ type GetUserProfilePhotosPostReqApplicationJSON struct {
 	Offset OptInt `json:"offset"`
 	Limit  OptInt `json:"limit"`
 }
-
-func (*GetUserProfilePhotosPostReqApplicationJSON) getUserProfilePhotosPostReq() {}
-
-type GetUserProfilePhotosPostReqApplicationXWwwFormUrlencoded struct {
-	UserID int    `json:"user_id"`
-	Offset OptInt `json:"offset"`
-	Limit  OptInt `json:"limit"`
-}
-
-func (*GetUserProfilePhotosPostReqApplicationXWwwFormUrlencoded) getUserProfilePhotosPostReq() {}
-
-type GetUserProfilePhotosPostReqMultipartFormData struct {
-	UserID int    `json:"user_id"`
-	Offset OptInt `json:"offset"`
-	Limit  OptInt `json:"limit"`
-}
-
-func (*GetUserProfilePhotosPostReqMultipartFormData) getUserProfilePhotosPostReq() {}
 
 type GetWebhookInfoPostOK struct {
 	Ok     bool        `json:"ok"`
@@ -652,11 +476,6 @@ type InlineQuery struct {
 	Query    string      `json:"query"`
 	Offset   string      `json:"offset"`
 }
-
-type InputFile string
-
-func (a *InputFile) wrap(v string)  { *a = InputFile(v) }
-func (a *InputFile) unwrap() string { return string(*a) }
 
 // Ref: #/components/schemas/Invoice
 type Invoice struct {
@@ -1440,44 +1259,6 @@ func (o *OptInlineQuery) SetTo(v InlineQuery) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptInlineQuery) Get() (v InlineQuery, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// NewOptInputFile returns new OptInputFile with value set to v.
-func NewOptInputFile(v InputFile) OptInputFile {
-	return OptInputFile{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptInputFile is optional InputFile.
-type OptInputFile struct {
-	Value InputFile
-	Set   bool
-}
-
-// IsSet returns true if OptInputFile was set.
-func (o OptInputFile) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptInputFile) Reset() {
-	var v InputFile
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptInputFile) SetTo(v InputFile) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptInputFile) Get() (v InputFile, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2535,30 +2316,6 @@ type SendGamePostReqApplicationJSON struct {
 	ReplyMarkup              OptInlineKeyboardMarkup `json:"reply_markup"`
 }
 
-func (*SendGamePostReqApplicationJSON) sendGamePostReq() {}
-
-type SendGamePostReqApplicationXWwwFormUrlencoded struct {
-	ChatID                   int                     `json:"chat_id"`
-	GameShortName            string                  `json:"game_short_name"`
-	DisableNotification      OptBool                 `json:"disable_notification"`
-	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
-	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
-	ReplyMarkup              OptInlineKeyboardMarkup `json:"reply_markup"`
-}
-
-func (*SendGamePostReqApplicationXWwwFormUrlencoded) sendGamePostReq() {}
-
-type SendGamePostReqMultipartFormData struct {
-	ChatID                   int                     `json:"chat_id"`
-	GameShortName            string                  `json:"game_short_name"`
-	DisableNotification      OptBool                 `json:"disable_notification"`
-	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
-	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
-	ReplyMarkup              OptInlineKeyboardMarkup `json:"reply_markup"`
-}
-
-func (*SendGamePostReqMultipartFormData) sendGamePostReq() {}
-
 type SendInvoicePostOK struct {
 	Ok     bool    `json:"ok"`
 	Result Message `json:"result"`
@@ -2593,66 +2350,6 @@ type SendInvoicePostReqApplicationJSON struct {
 	ReplyMarkup               OptInlineKeyboardMarkup `json:"reply_markup"`
 }
 
-func (*SendInvoicePostReqApplicationJSON) sendInvoicePostReq() {}
-
-type SendInvoicePostReqApplicationXWwwFormUrlencoded struct {
-	ChatID                    int                     `json:"chat_id"`
-	Title                     string                  `json:"title"`
-	Description               string                  `json:"description"`
-	Payload                   string                  `json:"payload"`
-	ProviderToken             string                  `json:"provider_token"`
-	StartParameter            string                  `json:"start_parameter"`
-	Currency                  string                  `json:"currency"`
-	Prices                    []LabeledPrice          `json:"prices"`
-	ProviderData              OptString               `json:"provider_data"`
-	PhotoURL                  OptString               `json:"photo_url"`
-	PhotoSize                 OptInt                  `json:"photo_size"`
-	PhotoWidth                OptInt                  `json:"photo_width"`
-	PhotoHeight               OptInt                  `json:"photo_height"`
-	NeedName                  OptBool                 `json:"need_name"`
-	NeedPhoneNumber           OptBool                 `json:"need_phone_number"`
-	NeedEmail                 OptBool                 `json:"need_email"`
-	NeedShippingAddress       OptBool                 `json:"need_shipping_address"`
-	SendPhoneNumberToProvider OptBool                 `json:"send_phone_number_to_provider"`
-	SendEmailToProvider       OptBool                 `json:"send_email_to_provider"`
-	IsFlexible                OptBool                 `json:"is_flexible"`
-	DisableNotification       OptBool                 `json:"disable_notification"`
-	ReplyToMessageID          OptInt                  `json:"reply_to_message_id"`
-	AllowSendingWithoutReply  OptBool                 `json:"allow_sending_without_reply"`
-	ReplyMarkup               OptInlineKeyboardMarkup `json:"reply_markup"`
-}
-
-func (*SendInvoicePostReqApplicationXWwwFormUrlencoded) sendInvoicePostReq() {}
-
-type SendInvoicePostReqMultipartFormData struct {
-	ChatID                    int                     `json:"chat_id"`
-	Title                     string                  `json:"title"`
-	Description               string                  `json:"description"`
-	Payload                   string                  `json:"payload"`
-	ProviderToken             string                  `json:"provider_token"`
-	StartParameter            string                  `json:"start_parameter"`
-	Currency                  string                  `json:"currency"`
-	Prices                    []LabeledPrice          `json:"prices"`
-	ProviderData              OptString               `json:"provider_data"`
-	PhotoURL                  OptString               `json:"photo_url"`
-	PhotoSize                 OptInt                  `json:"photo_size"`
-	PhotoWidth                OptInt                  `json:"photo_width"`
-	PhotoHeight               OptInt                  `json:"photo_height"`
-	NeedName                  OptBool                 `json:"need_name"`
-	NeedPhoneNumber           OptBool                 `json:"need_phone_number"`
-	NeedEmail                 OptBool                 `json:"need_email"`
-	NeedShippingAddress       OptBool                 `json:"need_shipping_address"`
-	SendPhoneNumberToProvider OptBool                 `json:"send_phone_number_to_provider"`
-	SendEmailToProvider       OptBool                 `json:"send_email_to_provider"`
-	IsFlexible                OptBool                 `json:"is_flexible"`
-	DisableNotification       OptBool                 `json:"disable_notification"`
-	ReplyToMessageID          OptInt                  `json:"reply_to_message_id"`
-	AllowSendingWithoutReply  OptBool                 `json:"allow_sending_without_reply"`
-	ReplyMarkup               OptInlineKeyboardMarkup `json:"reply_markup"`
-}
-
-func (*SendInvoicePostReqMultipartFormData) sendInvoicePostReq() {}
-
 type SetGameScorePostReqApplicationJSON struct {
 	UserID             int       `json:"user_id"`
 	Score              int       `json:"score"`
@@ -2662,32 +2359,6 @@ type SetGameScorePostReqApplicationJSON struct {
 	MessageID          OptInt    `json:"message_id"`
 	InlineMessageID    OptString `json:"inline_message_id"`
 }
-
-func (*SetGameScorePostReqApplicationJSON) setGameScorePostReq() {}
-
-type SetGameScorePostReqApplicationXWwwFormUrlencoded struct {
-	UserID             int       `json:"user_id"`
-	Score              int       `json:"score"`
-	Force              OptBool   `json:"force"`
-	DisableEditMessage OptBool   `json:"disable_edit_message"`
-	ChatID             OptInt    `json:"chat_id"`
-	MessageID          OptInt    `json:"message_id"`
-	InlineMessageID    OptString `json:"inline_message_id"`
-}
-
-func (*SetGameScorePostReqApplicationXWwwFormUrlencoded) setGameScorePostReq() {}
-
-type SetGameScorePostReqMultipartFormData struct {
-	UserID             int       `json:"user_id"`
-	Score              int       `json:"score"`
-	Force              OptBool   `json:"force"`
-	DisableEditMessage OptBool   `json:"disable_edit_message"`
-	ChatID             OptInt    `json:"chat_id"`
-	MessageID          OptInt    `json:"message_id"`
-	InlineMessageID    OptString `json:"inline_message_id"`
-}
-
-func (*SetGameScorePostReqMultipartFormData) setGameScorePostReq() {}
 
 type SetMyCommandsPostOK struct {
 	Ok     bool `json:"ok"`
@@ -2700,20 +2371,6 @@ type SetMyCommandsPostReqApplicationJSON struct {
 	Commands []BotCommand `json:"commands"`
 }
 
-func (*SetMyCommandsPostReqApplicationJSON) setMyCommandsPostReq() {}
-
-type SetMyCommandsPostReqApplicationXWwwFormUrlencoded struct {
-	Commands []BotCommand `json:"commands"`
-}
-
-func (*SetMyCommandsPostReqApplicationXWwwFormUrlencoded) setMyCommandsPostReq() {}
-
-type SetMyCommandsPostReqMultipartFormData struct {
-	Commands []BotCommand `json:"commands"`
-}
-
-func (*SetMyCommandsPostReqMultipartFormData) setMyCommandsPostReq() {}
-
 type SetStickerPositionInSetPostOK struct {
 	Ok     bool `json:"ok"`
 	Result bool `json:"result"`
@@ -2724,39 +2381,6 @@ func (*SetStickerPositionInSetPostOK) setStickerPositionInSetPostRes() {}
 type SetStickerPositionInSetPostReqApplicationJSON struct {
 	Sticker  string `json:"sticker"`
 	Position int    `json:"position"`
-}
-
-func (*SetStickerPositionInSetPostReqApplicationJSON) setStickerPositionInSetPostReq() {}
-
-type SetStickerPositionInSetPostReqApplicationXWwwFormUrlencoded struct {
-	Sticker  string `json:"sticker"`
-	Position int    `json:"position"`
-}
-
-func (*SetStickerPositionInSetPostReqApplicationXWwwFormUrlencoded) setStickerPositionInSetPostReq() {
-}
-
-type SetStickerPositionInSetPostReqMultipartFormData struct {
-	Sticker  string `json:"sticker"`
-	Position int    `json:"position"`
-}
-
-func (*SetStickerPositionInSetPostReqMultipartFormData) setStickerPositionInSetPostReq() {}
-
-type SetWebhookPostOK struct {
-	Ok     bool `json:"ok"`
-	Result bool `json:"result"`
-}
-
-func (*SetWebhookPostOK) setWebhookPostRes() {}
-
-type SetWebhookPostReq struct {
-	URL                string       `json:"url"`
-	Certificate        OptInputFile `json:"certificate"`
-	IPAddress          OptString    `json:"ip_address"`
-	MaxConnections     OptInt       `json:"max_connections"`
-	AllowedUpdates     []string     `json:"allowed_updates"`
-	DropPendingUpdates OptBool      `json:"drop_pending_updates"`
 }
 
 // Ref: #/components/schemas/ShippingAddress
@@ -2833,18 +2457,6 @@ type Update struct {
 	PreCheckoutQuery   OptPreCheckoutQuery   `json:"pre_checkout_query"`
 	Poll               OptPoll               `json:"poll"`
 	PollAnswer         OptPollAnswer         `json:"poll_answer"`
-}
-
-type UploadStickerFilePostOK struct {
-	Ok     bool `json:"ok"`
-	Result File `json:"result"`
-}
-
-func (*UploadStickerFilePostOK) uploadStickerFilePostRes() {}
-
-type UploadStickerFilePostReq struct {
-	UserID     int       `json:"user_id"`
-	PNGSticker InputFile `json:"png_sticker"`
 }
 
 // Ref: #/components/schemas/User

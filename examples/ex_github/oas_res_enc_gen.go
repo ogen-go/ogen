@@ -1622,10 +1622,6 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 		}
 
 		return nil
-	case *ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON:
-		w.Header().Set("Content-Type", "application/vnd.github.v3.star+json")
-		w.WriteHeader(200)
-		return errors.New(`application/vnd.github.v3.star+json encoder not implemented`)
 	case *NotModified:
 		w.WriteHeader(304)
 		return nil
@@ -3019,10 +3015,6 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		}
 
 		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(400)
-		return errors.New(`application/scim+json encoder not implemented`)
 	case *CodeScanningDeleteAnalysisApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
@@ -3145,10 +3137,6 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 		}
 
 		return nil
-	case *CodeScanningGetAnalysisOKApplicationJSONSarif:
-		w.Header().Set("Content-Type", "application/json+sarif")
-		w.WriteHeader(200)
-		return errors.New(`application/json+sarif encoder not implemented`)
 	case *CodeScanningGetAnalysisApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
@@ -5640,34 +5628,6 @@ func encodeLicensesGetForRepoResponse(response LicenseContent, w http.ResponseWr
 	return nil
 }
 
-func encodeMarkdownRenderResponse(response MarkdownRenderRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *MarkdownRenderOKTextHTML:
-		w.Header().Set("Content-Type", "text/html")
-		w.WriteHeader(200)
-		return errors.New(`text/html encoder not implemented`)
-	case *NotModified:
-		w.WriteHeader(304)
-		return nil
-	default:
-		return errors.Errorf(`/markdown: unexpected response type: %T`, response)
-	}
-}
-
-func encodeMarkdownRenderRawResponse(response MarkdownRenderRawRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *MarkdownRenderRawOKTextHTML:
-		w.Header().Set("Content-Type", "text/html")
-		w.WriteHeader(200)
-		return errors.New(`text/html encoder not implemented`)
-	case *NotModified:
-		w.WriteHeader(304)
-		return nil
-	default:
-		return errors.Errorf(`/markdown/raw: unexpected response type: %T`, response)
-	}
-}
-
 func encodeMetaGetResponse(response MetaGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *APIOverview:
@@ -5690,18 +5650,6 @@ func encodeMetaGetResponse(response MetaGetRes, w http.ResponseWriter, span trac
 	default:
 		return errors.Errorf(`/meta: unexpected response type: %T`, response)
 	}
-}
-
-func encodeMetaGetOctocatResponse(response string, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/octocat-stream")
-	w.WriteHeader(200)
-	return errors.New(`application/octocat-stream encoder not implemented`)
-}
-
-func encodeMetaGetZenResponse(response string, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "text/plain")
-	w.WriteHeader(200)
-	return errors.New(`text/plain encoder not implemented`)
 }
 
 func encodeMetaRootResponse(response MetaRootOK, w http.ResponseWriter, span trace.Span) error {
@@ -12786,10 +12734,6 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		}
 
 		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(400)
-		return errors.New(`application/scim+json encoder not implemented`)
 	case *ReposListCommitsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
@@ -13015,10 +12959,6 @@ func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWri
 		}
 
 		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(400)
-		return errors.New(`application/scim+json encoder not implemented`)
 	default:
 		return errors.Errorf(`/repos/{owner}/{repo}/forks: unexpected response type: %T`, response)
 	}
@@ -13683,22 +13623,6 @@ func encodeReposUpdateWebhookConfigForRepoResponse(response WebhookConfig, w htt
 	return nil
 }
 
-func encodeReposUploadReleaseAssetResponse(response ReleaseAsset, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(e)
-	if _, err := e.WriteTo(w); err != nil {
-		return errors.Wrap(err, "write")
-	}
-
-	return nil
-}
-
 func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ScimDeleteUserFromOrgNoContent:
@@ -13720,10 +13644,6 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w ht
 		}
 
 		return nil
-	case *ScimDeleteUserFromOrgApplicationScimJSONForbidden:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(403)
-		return errors.New(`application/scim+json encoder not implemented`)
 	case *ScimDeleteUserFromOrgApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
@@ -13737,10 +13657,6 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w ht
 		}
 
 		return nil
-	case *ScimDeleteUserFromOrgApplicationScimJSONNotFound:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(404)
-		return errors.New(`application/scim+json encoder not implemented`)
 	default:
 		return errors.Errorf(`/scim/v2/organizations/{org}/Users/{scim_user_id}: unexpected response type: %T`, response)
 	}

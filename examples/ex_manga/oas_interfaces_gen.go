@@ -5,18 +5,6 @@ type GetBookRes interface {
 	getBookRes()
 }
 
-type GetPageCoverImageRes interface {
-	getPageCoverImageRes()
-}
-
-type GetPageImageRes interface {
-	getPageImageRes()
-}
-
-type GetPageThumbnailImageRes interface {
-	getPageThumbnailImageRes()
-}
-
 type SearchByTagIDRes interface {
 	searchByTagIDRes()
 }

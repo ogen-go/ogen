@@ -760,9 +760,6 @@ func (s ActivityListPublicEventsOKApplicationJSON) Validate() error {
 func (s ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) Validate() error {
 	return nil
 }
-func (s ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON) Validate() error {
-	return nil
-}
 func (s ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON) Validate() error {
 	return nil
 }

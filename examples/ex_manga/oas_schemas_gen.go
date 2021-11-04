@@ -80,42 +80,6 @@ type GetBookForbidden struct{}
 
 func (*GetBookForbidden) getBookRes() {}
 
-// GetPageCoverImageForbidden is response for GetPageCoverImage operation.
-type GetPageCoverImageForbidden struct{}
-
-func (*GetPageCoverImageForbidden) getPageCoverImageRes() {}
-
-type GetPageCoverImageOKImage string
-
-func (a *GetPageCoverImageOKImage) wrap(v string)  { *a = GetPageCoverImageOKImage(v) }
-func (a *GetPageCoverImageOKImage) unwrap() string { return string(*a) }
-
-func (*GetPageCoverImageOKImage) getPageCoverImageRes() {}
-
-// GetPageImageForbidden is response for GetPageImage operation.
-type GetPageImageForbidden struct{}
-
-func (*GetPageImageForbidden) getPageImageRes() {}
-
-type GetPageImageOKImage string
-
-func (a *GetPageImageOKImage) wrap(v string)  { *a = GetPageImageOKImage(v) }
-func (a *GetPageImageOKImage) unwrap() string { return string(*a) }
-
-func (*GetPageImageOKImage) getPageImageRes() {}
-
-// GetPageThumbnailImageForbidden is response for GetPageThumbnailImage operation.
-type GetPageThumbnailImageForbidden struct{}
-
-func (*GetPageThumbnailImageForbidden) getPageThumbnailImageRes() {}
-
-type GetPageThumbnailImageOKImage string
-
-func (a *GetPageThumbnailImageOKImage) wrap(v string)  { *a = GetPageThumbnailImageOKImage(v) }
-func (a *GetPageThumbnailImageOKImage) unwrap() string { return string(*a) }
-
-func (*GetPageThumbnailImageOKImage) getPageThumbnailImageRes() {}
-
 // Ref: #/components/schemas/Image
 type Image struct {
 	T OptString `json:"t"`

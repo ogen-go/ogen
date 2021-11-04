@@ -9,10 +9,6 @@ type FoobarPostRes interface {
 	foobarPostRes()
 }
 
-type PetCreateReq interface {
-	petCreateReq()
-}
-
 type PetGetRes interface {
 	petGetRes()
 }

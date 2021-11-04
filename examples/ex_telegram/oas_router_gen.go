@@ -80,6 +80,4 @@ func Register(r chi.Router, s Server, opts ...Option) {
 	r.MethodFunc("POST", "/sendInvoice", NewSendInvoicePostHandler(s, opts...))
 	r.MethodFunc("POST", "/setMyCommands", NewSetMyCommandsPostHandler(s, opts...))
 	r.MethodFunc("POST", "/setStickerPositionInSet", NewSetStickerPositionInSetPostHandler(s, opts...))
-	r.MethodFunc("POST", "/setWebhook", NewSetWebhookPostHandler(s, opts...))
-	r.MethodFunc("POST", "/uploadStickerFile", NewUploadStickerFilePostHandler(s, opts...))
 }

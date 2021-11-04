@@ -3094,8 +3094,6 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 			}
 
 			return &response, nil
-		case "application/vnd.github.v3.star+json":
-			return res, errors.New("application/vnd.github.v3.star+json decoder not implemented")
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -5396,8 +5394,6 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response, span trace.Sp
 			}
 
 			return &response, nil
-		case "application/scim+json":
-			return res, errors.New("application/scim+json decoder not implemented")
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -5584,8 +5580,6 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response, span trace.Span)
 			}
 
 			return &response, nil
-		case "application/json+sarif":
-			return res, errors.New("application/json+sarif decoder not implemented")
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -9764,50 +9758,6 @@ func decodeLicensesGetForRepoResponse(resp *http.Response, span trace.Span) (res
 	}
 }
 
-func decodeMarkdownRenderResponse(resp *http.Response, span trace.Span) (res MarkdownRenderRes, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, resp.Body); err != nil {
-		return res, err
-	}
-
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "text/html":
-			return res, errors.New("text/html decoder not implemented")
-		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 304:
-		return &NotModified{}, nil
-	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodeMarkdownRenderRawResponse(resp *http.Response, span trace.Span) (res MarkdownRenderRawRes, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, resp.Body); err != nil {
-		return res, err
-	}
-
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "text/html":
-			return res, errors.New("text/html decoder not implemented")
-		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 304:
-		return &NotModified{}, nil
-	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
 func decodeMetaGetResponse(resp *http.Response, span trace.Span) (res MetaGetRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
@@ -9839,46 +9789,6 @@ func decodeMetaGetResponse(resp *http.Response, span trace.Span) (res MetaGetRes
 		}
 	case 304:
 		return &NotModified{}, nil
-	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodeMetaGetOctocatResponse(resp *http.Response, span trace.Span) (res string, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, resp.Body); err != nil {
-		return res, err
-	}
-
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/octocat-stream":
-			return res, errors.New("application/octocat-stream decoder not implemented")
-		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodeMetaGetZenResponse(resp *http.Response, span trace.Span) (res string, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, resp.Body); err != nil {
-		return res, err
-	}
-
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "text/plain":
-			return res, errors.New("text/plain decoder not implemented")
-		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
 	default:
 		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -21070,8 +20980,6 @@ func decodeReposListCommitsResponse(resp *http.Response, span trace.Span) (res R
 			}
 
 			return &response, nil
-		case "application/scim+json":
-			return res, errors.New("application/scim+json decoder not implemented")
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -21433,8 +21341,6 @@ func decodeReposListForksResponse(resp *http.Response, span trace.Span) (res Rep
 			}
 
 			return &response, nil
-		case "application/scim+json":
-			return res, errors.New("application/scim+json decoder not implemented")
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -22570,40 +22476,6 @@ func decodeReposUpdateWebhookConfigForRepoResponse(resp *http.Response, span tra
 	}
 }
 
-func decodeReposUploadReleaseAssetResponse(resp *http.Response, span trace.Span) (res ReleaseAsset, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, resp.Body); err != nil {
-		return res, err
-	}
-
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			d := json.GetDecoder()
-			defer json.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
-			var response ReleaseAsset
-			if err := func() error {
-				if err := response.ReadJSON(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
-			}
-
-			return response, nil
-		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
 func decodeScimDeleteUserFromOrgResponse(resp *http.Response, span trace.Span) (res ScimDeleteUserFromOrgRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
@@ -22632,8 +22504,6 @@ func decodeScimDeleteUserFromOrgResponse(resp *http.Response, span trace.Span) (
 			}
 
 			return &response, nil
-		case "application/scim+json":
-			return res, errors.New("application/scim+json decoder not implemented")
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -22653,8 +22523,6 @@ func decodeScimDeleteUserFromOrgResponse(resp *http.Response, span trace.Span) (
 			}
 
 			return &response, nil
-		case "application/scim+json":
-			return res, errors.New("application/scim+json decoder not implemented")
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}

@@ -716,33 +716,6 @@ func encodeIssuesUpdateMilestoneRequest(req IssuesUpdateMilestoneReq, span trace
 	return buf, "application/json", nil
 }
 
-func encodeMarkdownRenderRequest(req MarkdownRenderReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	req.WriteJSON(e)
-	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
-		return nil, "", err
-	}
-
-	return buf, "application/json", nil
-}
-
-func encodeMarkdownRenderRawRequest(req MarkdownRenderRawReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
-	switch req := req.(type) {
-	case *MarkdownRenderRawReqTextPlain:
-		return nil, "", errors.New(`text/plain encoder not implemented`)
-	case *MarkdownRenderRawReqTextXMarkdown:
-		return nil, "", errors.New(`text/x-markdown encoder not implemented`)
-	default:
-		return nil, "", errors.Errorf("unexpected request type: %T", req)
-	}
-}
-
 func encodeMigrationsUpdateImportRequest(req MigrationsUpdateImportReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	e := json.GetEncoder()
@@ -1237,10 +1210,6 @@ func encodeReposUpdateWebhookConfigForRepoRequest(req ReposUpdateWebhookConfigFo
 	}
 
 	return buf, "application/json", nil
-}
-
-func encodeReposUploadReleaseAssetRequest(req string, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
-	return nil, "", errors.New(`*/* encoder not implemented`)
 }
 
 func encodeSecretScanningUpdateAlertRequest(req SecretScanningUpdateAlertReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {

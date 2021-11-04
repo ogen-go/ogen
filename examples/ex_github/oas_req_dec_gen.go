@@ -1391,62 +1391,6 @@ func decodeIssuesUpdateMilestoneRequest(r *http.Request, span trace.Span) (req I
 	}
 }
 
-func decodeMarkdownRenderRequest(r *http.Request, span trace.Span) (req MarkdownRenderReq, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request MarkdownRenderReq
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
-		d.ResetBytes(buf.Bytes())
-		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return req, err
-		}
-		if err := func() error {
-			if err := request.Validate(); err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
-		}
-		return request, nil
-	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeMarkdownRenderRawRequest(r *http.Request, span trace.Span) (req MarkdownRenderRawReq, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
-	switch r.Header.Get("Content-Type") {
-	case "text/plain":
-		var request MarkdownRenderRawReqTextPlain
-		_ = request
-		return req, errors.New("text/plain decoder not implemented")
-	case "text/x-markdown":
-		var request MarkdownRenderRawReqTextXMarkdown
-		_ = request
-		return req, errors.New("text/x-markdown decoder not implemented")
-	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
 func decodeMigrationsUpdateImportRequest(r *http.Request, span trace.Span) (req MigrationsUpdateImportReq, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
@@ -2375,23 +2319,6 @@ func decodeReposUpdateWebhookConfigForRepoRequest(r *http.Request, span trace.Sp
 			return req, err
 		}
 		return request, nil
-	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeReposUploadReleaseAssetRequest(r *http.Request, span trace.Span) (req string, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
-	switch r.Header.Get("Content-Type") {
-	case "*/*":
-		var request string
-		_ = request
-		return req, errors.New("*/* decoder not implemented")
 	default:
 		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}

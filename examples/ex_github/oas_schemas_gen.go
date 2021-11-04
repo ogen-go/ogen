@@ -1113,18 +1113,6 @@ func (a *ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) unwrap() 
 func (*ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) activityListReposStarredByAuthenticatedUserRes() {
 }
 
-type ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON []StarredRepository
-
-func (a *ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON) wrap(v []StarredRepository) {
-	*a = ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON(v)
-}
-func (a *ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON) unwrap() []StarredRepository {
-	return []StarredRepository(*a)
-}
-
-func (*ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON) activityListReposStarredByAuthenticatedUserRes() {
-}
-
 type ActivityListReposStarredByAuthenticatedUserSort string
 
 const (
@@ -3074,15 +3062,6 @@ func (a *CodeScanningGetAnalysisApplicationJSONNotFound) wrap(v BasicError) {
 func (a *CodeScanningGetAnalysisApplicationJSONNotFound) unwrap() BasicError { return BasicError(*a) }
 
 func (*CodeScanningGetAnalysisApplicationJSONNotFound) codeScanningGetAnalysisRes() {}
-
-type CodeScanningGetAnalysisOKApplicationJSONSarif string
-
-func (a *CodeScanningGetAnalysisOKApplicationJSONSarif) wrap(v string) {
-	*a = CodeScanningGetAnalysisOKApplicationJSONSarif(v)
-}
-func (a *CodeScanningGetAnalysisOKApplicationJSONSarif) unwrap() string { return string(*a) }
-
-func (*CodeScanningGetAnalysisOKApplicationJSONSarif) codeScanningGetAnalysisRes() {}
 
 // CodeScanningGetSarifNotFound is response for CodeScanningGetSarif operation.
 type CodeScanningGetSarifNotFound struct{}
@@ -5913,34 +5892,6 @@ type LinkWithType struct {
 	Type string `json:"type"`
 }
 
-type MarkdownRenderOKTextHTML string
-
-func (a *MarkdownRenderOKTextHTML) wrap(v string)  { *a = MarkdownRenderOKTextHTML(v) }
-func (a *MarkdownRenderOKTextHTML) unwrap() string { return string(*a) }
-
-func (*MarkdownRenderOKTextHTML) markdownRenderRes() {}
-
-type MarkdownRenderRawOKTextHTML string
-
-func (a *MarkdownRenderRawOKTextHTML) wrap(v string)  { *a = MarkdownRenderRawOKTextHTML(v) }
-func (a *MarkdownRenderRawOKTextHTML) unwrap() string { return string(*a) }
-
-func (*MarkdownRenderRawOKTextHTML) markdownRenderRawRes() {}
-
-type MarkdownRenderRawReqTextPlain string
-
-func (a *MarkdownRenderRawReqTextPlain) wrap(v string)  { *a = MarkdownRenderRawReqTextPlain(v) }
-func (a *MarkdownRenderRawReqTextPlain) unwrap() string { return string(*a) }
-
-func (*MarkdownRenderRawReqTextPlain) markdownRenderRawReq() {}
-
-type MarkdownRenderRawReqTextXMarkdown string
-
-func (a *MarkdownRenderRawReqTextXMarkdown) wrap(v string)  { *a = MarkdownRenderRawReqTextXMarkdown(v) }
-func (a *MarkdownRenderRawReqTextXMarkdown) unwrap() string { return string(*a) }
-
-func (*MarkdownRenderRawReqTextXMarkdown) markdownRenderRawReq() {}
-
 type MarkdownRenderReq struct {
 	Text    string                   `json:"text"`
 	Mode    OptMarkdownRenderReqMode `json:"mode"`
@@ -7553,8 +7504,6 @@ func (*NotModified) gitignoreGetAllTemplatesRes()                          {}
 func (*NotModified) gitignoreGetTemplateRes()                              {}
 func (*NotModified) licensesGetAllCommonlyUsedRes()                        {}
 func (*NotModified) licensesGetRes()                                       {}
-func (*NotModified) markdownRenderRawRes()                                 {}
-func (*NotModified) markdownRenderRes()                                    {}
 func (*NotModified) metaGetRes()                                           {}
 func (*NotModified) migrationsDeleteArchiveForAuthenticatedUserRes()       {}
 func (*NotModified) migrationsGetArchiveForAuthenticatedUserRes()          {}
@@ -26651,24 +26600,6 @@ func (a *ScimDeleteUserFromOrgApplicationJSONNotFound) unwrap() ScimError { retu
 
 func (*ScimDeleteUserFromOrgApplicationJSONNotFound) scimDeleteUserFromOrgRes() {}
 
-type ScimDeleteUserFromOrgApplicationScimJSONForbidden ScimError
-
-func (a *ScimDeleteUserFromOrgApplicationScimJSONForbidden) wrap(v ScimError) {
-	*a = ScimDeleteUserFromOrgApplicationScimJSONForbidden(v)
-}
-func (a *ScimDeleteUserFromOrgApplicationScimJSONForbidden) unwrap() ScimError { return ScimError(*a) }
-
-func (*ScimDeleteUserFromOrgApplicationScimJSONForbidden) scimDeleteUserFromOrgRes() {}
-
-type ScimDeleteUserFromOrgApplicationScimJSONNotFound ScimError
-
-func (a *ScimDeleteUserFromOrgApplicationScimJSONNotFound) wrap(v ScimError) {
-	*a = ScimDeleteUserFromOrgApplicationScimJSONNotFound(v)
-}
-func (a *ScimDeleteUserFromOrgApplicationScimJSONNotFound) unwrap() ScimError { return ScimError(*a) }
-
-func (*ScimDeleteUserFromOrgApplicationScimJSONNotFound) scimDeleteUserFromOrgRes() {}
-
 // ScimDeleteUserFromOrgNoContent is response for ScimDeleteUserFromOrg operation.
 type ScimDeleteUserFromOrgNoContent struct{}
 
@@ -26741,10 +26672,6 @@ type ScimError struct {
 	ScimType         OptNilString `json:"scimType"`
 	Schemas          []string     `json:"schemas"`
 }
-
-func (*ScimError) codeScanningDeleteAnalysisRes() {}
-func (*ScimError) reposListCommitsRes()           {}
-func (*ScimError) reposListForksRes()             {}
 
 // Ref: #/components/schemas/scim-group-list-enterprise
 type ScimGroupListEnterprise struct {
@@ -27237,12 +27164,6 @@ type SimpleUser struct {
 	Type              string       `json:"type"`
 	SiteAdmin         bool         `json:"site_admin"`
 	StarredAt         OptString    `json:"starred_at"`
-}
-
-// Ref: #/components/schemas/starred-repository
-type StarredRepository struct {
-	StarredAt time.Time  `json:"starred_at"`
-	Repo      Repository `json:"repo"`
 }
 
 // Ref: #/components/schemas/status

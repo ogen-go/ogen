@@ -76,27 +76,20 @@ func encodeFoobarPostRequest(req Pet, span trace.Span) (data *bytes.Buffer, cont
 	return buf, "application/json", nil
 }
 
-func encodePetCreateRequest(req PetCreateReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
-	switch req := req.(type) {
-	case *Pet:
-		buf := json.GetBuffer()
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
-		req.WriteJSON(e)
-		if _, err := e.WriteTo(buf); err != nil {
-			json.PutBuffer(buf)
-			return nil, "", err
-		}
-
-		return buf, "application/json", nil
-	case *PetCreateReqTextPlain:
-		return nil, "", errors.New(`text/plain encoder not implemented`)
-	default:
-		return nil, "", errors.Errorf("unexpected request type: %T", req)
+func encodePetCreateRequest(req Pet, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
 	}
+
+	return buf, "application/json", nil
 }
 
 func encodePetUpdateNameAliasPostRequest(req PetName, span trace.Span) (data *bytes.Buffer, contentType string, err error) {

@@ -562,62 +562,6 @@ func NewSetStickerPositionInSetPostHandler(s Server, opts ...Option) func(w http
 	}
 }
 
-func NewSetWebhookPostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `SetWebhookPost`,
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		request, err := decodeSetWebhookPostRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
-
-		response, err := s.SetWebhookPost(ctx, request)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
-
-		if err := encodeSetWebhookPostResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
-	}
-}
-
-func NewUploadStickerFilePostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `UploadStickerFilePost`,
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		request, err := decodeUploadStickerFilePostRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
-
-		response, err := s.UploadStickerFilePost(ctx, request)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
-
-		if err := encodeUploadStickerFilePostResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
-	}
-}
-
 func respondError(w http.ResponseWriter, code int, err error) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(code)

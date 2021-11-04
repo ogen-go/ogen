@@ -63,45 +63,41 @@ var (
 // Server handles operations described by OpenAPI v3 specification.
 type Server interface {
 	// AnswerCallbackQueryPost implements  operation.
-	AnswerCallbackQueryPost(ctx context.Context, req AnswerCallbackQueryPostReq) (AnswerCallbackQueryPostRes, error)
+	AnswerCallbackQueryPost(ctx context.Context, req AnswerCallbackQueryPostReqApplicationJSON) (AnswerCallbackQueryPostRes, error)
 	// AnswerPreCheckoutQueryPost implements  operation.
-	AnswerPreCheckoutQueryPost(ctx context.Context, req AnswerPreCheckoutQueryPostReq) (AnswerPreCheckoutQueryPostRes, error)
+	AnswerPreCheckoutQueryPost(ctx context.Context, req AnswerPreCheckoutQueryPostReqApplicationJSON) (AnswerPreCheckoutQueryPostRes, error)
 	// AnswerShippingQueryPost implements  operation.
-	AnswerShippingQueryPost(ctx context.Context, req AnswerShippingQueryPostReq) (AnswerShippingQueryPostRes, error)
+	AnswerShippingQueryPost(ctx context.Context, req AnswerShippingQueryPostReqApplicationJSON) (AnswerShippingQueryPostRes, error)
 	// ClosePost implements  operation.
 	ClosePost(ctx context.Context) (ClosePostRes, error)
 	// DeleteStickerFromSetPost implements  operation.
-	DeleteStickerFromSetPost(ctx context.Context, req DeleteStickerFromSetPostReq) (DeleteStickerFromSetPostRes, error)
+	DeleteStickerFromSetPost(ctx context.Context, req DeleteStickerFromSetPostReqApplicationJSON) (DeleteStickerFromSetPostRes, error)
 	// DeleteWebhookPost implements  operation.
-	DeleteWebhookPost(ctx context.Context, req DeleteWebhookPostReq) (DeleteWebhookPostRes, error)
+	DeleteWebhookPost(ctx context.Context, req DeleteWebhookPostReqApplicationJSON) (DeleteWebhookPostRes, error)
 	// GetFilePost implements  operation.
-	GetFilePost(ctx context.Context, req GetFilePostReq) (GetFilePostRes, error)
+	GetFilePost(ctx context.Context, req GetFilePostReqApplicationJSON) (GetFilePostRes, error)
 	// GetGameHighScoresPost implements  operation.
-	GetGameHighScoresPost(ctx context.Context, req GetGameHighScoresPostReq) (GetGameHighScoresPostRes, error)
+	GetGameHighScoresPost(ctx context.Context, req GetGameHighScoresPostReqApplicationJSON) (GetGameHighScoresPostRes, error)
 	// GetMePost implements  operation.
 	GetMePost(ctx context.Context) (GetMePostRes, error)
 	// GetMyCommandsPost implements  operation.
 	GetMyCommandsPost(ctx context.Context) (GetMyCommandsPostRes, error)
 	// GetStickerSetPost implements  operation.
-	GetStickerSetPost(ctx context.Context, req GetStickerSetPostReq) (GetStickerSetPostRes, error)
+	GetStickerSetPost(ctx context.Context, req GetStickerSetPostReqApplicationJSON) (GetStickerSetPostRes, error)
 	// GetUpdatesPost implements  operation.
-	GetUpdatesPost(ctx context.Context, req GetUpdatesPostReq) (GetUpdatesPostRes, error)
+	GetUpdatesPost(ctx context.Context, req GetUpdatesPostReqApplicationJSON) (GetUpdatesPostRes, error)
 	// GetUserProfilePhotosPost implements  operation.
-	GetUserProfilePhotosPost(ctx context.Context, req GetUserProfilePhotosPostReq) (GetUserProfilePhotosPostRes, error)
+	GetUserProfilePhotosPost(ctx context.Context, req GetUserProfilePhotosPostReqApplicationJSON) (GetUserProfilePhotosPostRes, error)
 	// GetWebhookInfoPost implements  operation.
 	GetWebhookInfoPost(ctx context.Context) (GetWebhookInfoPostRes, error)
 	// LogOutPost implements  operation.
 	LogOutPost(ctx context.Context) (LogOutPostRes, error)
 	// SendGamePost implements  operation.
-	SendGamePost(ctx context.Context, req SendGamePostReq) (SendGamePostRes, error)
+	SendGamePost(ctx context.Context, req SendGamePostReqApplicationJSON) (SendGamePostRes, error)
 	// SendInvoicePost implements  operation.
-	SendInvoicePost(ctx context.Context, req SendInvoicePostReq) (SendInvoicePostRes, error)
+	SendInvoicePost(ctx context.Context, req SendInvoicePostReqApplicationJSON) (SendInvoicePostRes, error)
 	// SetMyCommandsPost implements  operation.
-	SetMyCommandsPost(ctx context.Context, req SetMyCommandsPostReq) (SetMyCommandsPostRes, error)
+	SetMyCommandsPost(ctx context.Context, req SetMyCommandsPostReqApplicationJSON) (SetMyCommandsPostRes, error)
 	// SetStickerPositionInSetPost implements  operation.
-	SetStickerPositionInSetPost(ctx context.Context, req SetStickerPositionInSetPostReq) (SetStickerPositionInSetPostRes, error)
-	// SetWebhookPost implements  operation.
-	SetWebhookPost(ctx context.Context, req SetWebhookPostReq) (SetWebhookPostRes, error)
-	// UploadStickerFilePost implements  operation.
-	UploadStickerFilePost(ctx context.Context, req UploadStickerFilePostReq) (UploadStickerFilePostRes, error)
+	SetStickerPositionInSetPost(ctx context.Context, req SetStickerPositionInSetPostReqApplicationJSON) (SetStickerPositionInSetPostRes, error)
 }

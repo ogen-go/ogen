@@ -345,18 +345,6 @@ type LicensesGetRes interface {
 	licensesGetRes()
 }
 
-type MarkdownRenderRawReq interface {
-	markdownRenderRawReq()
-}
-
-type MarkdownRenderRawRes interface {
-	markdownRenderRawRes()
-}
-
-type MarkdownRenderRes interface {
-	markdownRenderRes()
-}
-
 type MetaGetRes interface {
 	metaGetRes()
 }

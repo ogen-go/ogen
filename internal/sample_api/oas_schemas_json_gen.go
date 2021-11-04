@@ -953,28 +953,6 @@ func (s *Pet) ReadJSON(d *json.Decoder) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PetCreateReqTextPlain) WriteJSON(e *json.Encoder) {
-	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	e.ObjEnd()
-}
-
-// ReadJSON reads PetCreateReqTextPlain from json stream.
-func (s *PetCreateReqTextPlain) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode PetCreateReqTextPlain to nil`)
-	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	})
-}
-
-// WriteJSON implements json.Marshaler.
 func (s PetGetDef) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
 	more := json.NewMore(e)

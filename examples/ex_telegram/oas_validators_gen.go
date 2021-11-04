@@ -92,70 +92,6 @@ func (s AnswerShippingQueryPostReqApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range s.ShippingOptions {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "shipping_options",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s AnswerShippingQueryPostReqMultipartFormData) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range s.ShippingOptions {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "shipping_options",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
 func (s CallbackQuery) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -364,38 +300,6 @@ func (s GetUpdatesPostReqApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s GetUpdatesPostReqApplicationXWwwFormUrlencoded) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		_ = s.Limit // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "limit",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s GetUpdatesPostReqMultipartFormData) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		_ = s.Limit // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "limit",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
 func (s GetUserProfilePhotosPostOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -415,38 +319,6 @@ func (s GetUserProfilePhotosPostOK) Validate() error {
 	return nil
 }
 func (s GetUserProfilePhotosPostReqApplicationJSON) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		_ = s.Limit // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "limit",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s GetUserProfilePhotosPostReqApplicationXWwwFormUrlencoded) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		_ = s.Limit // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "limit",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s GetUserProfilePhotosPostReqMultipartFormData) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Limit // validation expected, but not supported
@@ -811,38 +683,6 @@ func (s SendGamePostReqApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s SendGamePostReqApplicationXWwwFormUrlencoded) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		_ = s.ReplyMarkup // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "reply_markup",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s SendGamePostReqMultipartFormData) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		_ = s.ReplyMarkup // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "reply_markup",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
 func (s SendInvoicePostOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -889,101 +729,7 @@ func (s SendInvoicePostReqApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s SendInvoicePostReqApplicationXWwwFormUrlencoded) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if s.Prices == nil {
-			return errors.New("required, can't be nil")
-		}
-		_ = s.Prices // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "prices",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.ReplyMarkup // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "reply_markup",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s SendInvoicePostReqMultipartFormData) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if s.Prices == nil {
-			return errors.New("required, can't be nil")
-		}
-		_ = s.Prices // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "prices",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		_ = s.ReplyMarkup // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "reply_markup",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
 func (s SetMyCommandsPostReqApplicationJSON) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if s.Commands == nil {
-			return errors.New("required, can't be nil")
-		}
-		_ = s.Commands // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "commands",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s SetMyCommandsPostReqApplicationXWwwFormUrlencoded) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if s.Commands == nil {
-			return errors.New("required, can't be nil")
-		}
-		_ = s.Commands // validation expected, but not supported
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "commands",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s SetMyCommandsPostReqMultipartFormData) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Commands == nil {

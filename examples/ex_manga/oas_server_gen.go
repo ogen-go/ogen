@@ -64,12 +64,6 @@ var (
 type Server interface {
 	// GetBook implements getBook operation.
 	GetBook(ctx context.Context, params GetBookParams) (GetBookRes, error)
-	// GetPageCoverImage implements getPageCoverImage operation.
-	GetPageCoverImage(ctx context.Context, params GetPageCoverImageParams) (GetPageCoverImageRes, error)
-	// GetPageImage implements getPageImage operation.
-	GetPageImage(ctx context.Context, params GetPageImageParams) (GetPageImageRes, error)
-	// GetPageThumbnailImage implements getPageThumbnailImage operation.
-	GetPageThumbnailImage(ctx context.Context, params GetPageThumbnailImageParams) (GetPageThumbnailImageRes, error)
 	// Search implements search operation.
 	Search(ctx context.Context, params SearchParams) (SearchRes, error)
 	// SearchByTagID implements searchByTagID operation.

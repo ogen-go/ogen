@@ -69,7 +69,7 @@ type Server interface {
 	// FoobarPut implements  operation.
 	FoobarPut(ctx context.Context) (FoobarPutDefStatusCode, error)
 	// PetCreate implements petCreate operation.
-	PetCreate(ctx context.Context, req PetCreateReq) (Pet, error)
+	PetCreate(ctx context.Context, req Pet) (Pet, error)
 	// PetFriendsNamesByID implements petFriendsNamesByID operation.
 	PetFriendsNamesByID(ctx context.Context, params PetFriendsNamesByIDParams) ([]string, error)
 	// PetGet implements petGet operation.

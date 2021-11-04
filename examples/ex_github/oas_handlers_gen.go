@@ -7206,64 +7206,6 @@ func NewLicensesGetForRepoHandler(s Server, opts ...Option) func(w http.Response
 	}
 }
 
-func NewMarkdownRenderHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `MarkdownRender`,
-			trace.WithAttributes(otelogen.OperationID(`markdown/render`)),
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		request, err := decodeMarkdownRenderRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
-
-		response, err := s.MarkdownRender(ctx, request)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
-
-		if err := encodeMarkdownRenderResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
-	}
-}
-
-func NewMarkdownRenderRawHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `MarkdownRenderRaw`,
-			trace.WithAttributes(otelogen.OperationID(`markdown/render-raw`)),
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		request, err := decodeMarkdownRenderRawRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
-
-		response, err := s.MarkdownRenderRaw(ctx, request)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
-
-		if err := encodeMarkdownRenderRawResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
-	}
-}
-
 func NewMetaGetHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -7281,58 +7223,6 @@ func NewMetaGetHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *
 		}
 
 		if err := encodeMetaGetResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
-	}
-}
-
-func NewMetaGetOctocatHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `MetaGetOctocat`,
-			trace.WithAttributes(otelogen.OperationID(`meta/get-octocat`)),
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		params, err := decodeMetaGetOctocatParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
-
-		response, err := s.MetaGetOctocat(ctx, params)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
-
-		if err := encodeMetaGetOctocatResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
-	}
-}
-
-func NewMetaGetZenHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `MetaGetZen`,
-			trace.WithAttributes(otelogen.OperationID(`meta/get-zen`)),
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-
-		response, err := s.MetaGetZen(ctx)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
-
-		if err := encodeMetaGetZenResponse(response, w, span); err != nil {
 			span.RecordError(err)
 			return
 		}
@@ -14548,41 +14438,6 @@ func NewReposUpdateWebhookConfigForRepoHandler(s Server, opts ...Option) func(w 
 		}
 
 		if err := encodeReposUpdateWebhookConfigForRepoResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
-	}
-}
-
-func NewReposUploadReleaseAssetHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `ReposUploadReleaseAsset`,
-			trace.WithAttributes(otelogen.OperationID(`repos/upload-release-asset`)),
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		params, err := decodeReposUploadReleaseAssetParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
-		request, err := decodeReposUploadReleaseAssetRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
-
-		response, err := s.ReposUploadReleaseAsset(ctx, request, params)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
-
-		if err := encodeReposUploadReleaseAssetResponse(response, w, span); err != nil {
 			span.RecordError(err)
 			return
 		}

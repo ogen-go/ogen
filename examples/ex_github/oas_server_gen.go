@@ -542,16 +542,8 @@ type Server interface {
 	LicensesGetAllCommonlyUsed(ctx context.Context, params LicensesGetAllCommonlyUsedParams) (LicensesGetAllCommonlyUsedRes, error)
 	// LicensesGetForRepo implements licenses/get-for-repo operation.
 	LicensesGetForRepo(ctx context.Context, params LicensesGetForRepoParams) (LicenseContent, error)
-	// MarkdownRender implements markdown/render operation.
-	MarkdownRender(ctx context.Context, req MarkdownRenderReq) (MarkdownRenderRes, error)
-	// MarkdownRenderRaw implements markdown/render-raw operation.
-	MarkdownRenderRaw(ctx context.Context, req MarkdownRenderRawReq) (MarkdownRenderRawRes, error)
 	// MetaGet implements meta/get operation.
 	MetaGet(ctx context.Context) (MetaGetRes, error)
-	// MetaGetOctocat implements meta/get-octocat operation.
-	MetaGetOctocat(ctx context.Context, params MetaGetOctocatParams) (string, error)
-	// MetaGetZen implements meta/get-zen operation.
-	MetaGetZen(ctx context.Context) (string, error)
 	// MetaRoot implements meta/root operation.
 	MetaRoot(ctx context.Context) (MetaRootOK, error)
 	// MigrationsCancelImport implements migrations/cancel-import operation.
@@ -1038,8 +1030,6 @@ type Server interface {
 	ReposUpdateReleaseAsset(ctx context.Context, req ReposUpdateReleaseAssetReq, params ReposUpdateReleaseAssetParams) (ReleaseAsset, error)
 	// ReposUpdateWebhookConfigForRepo implements repos/update-webhook-config-for-repo operation.
 	ReposUpdateWebhookConfigForRepo(ctx context.Context, req ReposUpdateWebhookConfigForRepoReq, params ReposUpdateWebhookConfigForRepoParams) (WebhookConfig, error)
-	// ReposUploadReleaseAsset implements repos/upload-release-asset operation.
-	ReposUploadReleaseAsset(ctx context.Context, req string, params ReposUploadReleaseAssetParams) (ReleaseAsset, error)
 	// ScimDeleteUserFromOrg implements scim/delete-user-from-org operation.
 	ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUserFromOrgParams) (ScimDeleteUserFromOrgRes, error)
 	// SearchCommits implements search/commits operation.

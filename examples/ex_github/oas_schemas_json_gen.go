@@ -3571,12 +3571,6 @@ func (ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) ReadJSON(d *
 	return nil
 }
 
-func (ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON) WriteJSON(e *json.Encoder) {
-}
-func (ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON) ReadJSON(d *json.Decoder) error {
-	return nil
-}
-
 // WriteJSON implements json.Marshaler.
 func (s ActivityListReposStarredByAuthenticatedUserSort) WriteJSON(e *json.Encoder) {
 	e.Str(string(s))
@@ -11468,9 +11462,6 @@ func (CodeScanningGetAnalysisApplicationJSONForbidden) ReadJSON(d *json.Decoder)
 
 func (CodeScanningGetAnalysisApplicationJSONNotFound) WriteJSON(e *json.Encoder)      {}
 func (CodeScanningGetAnalysisApplicationJSONNotFound) ReadJSON(d *json.Decoder) error { return nil }
-
-func (CodeScanningGetAnalysisOKApplicationJSONSarif) WriteJSON(e *json.Encoder)      {}
-func (CodeScanningGetAnalysisOKApplicationJSONSarif) ReadJSON(d *json.Decoder) error { return nil }
 
 // WriteJSON implements json.Marshaler.
 func (s CodeScanningGetSarifNotFound) WriteJSON(e *json.Encoder) {
@@ -28140,18 +28131,6 @@ func (s *LinkWithType) ReadJSON(d *json.Decoder) error {
 		return nil
 	})
 }
-
-func (MarkdownRenderOKTextHTML) WriteJSON(e *json.Encoder)      {}
-func (MarkdownRenderOKTextHTML) ReadJSON(d *json.Decoder) error { return nil }
-
-func (MarkdownRenderRawOKTextHTML) WriteJSON(e *json.Encoder)      {}
-func (MarkdownRenderRawOKTextHTML) ReadJSON(d *json.Decoder) error { return nil }
-
-func (MarkdownRenderRawReqTextPlain) WriteJSON(e *json.Encoder)      {}
-func (MarkdownRenderRawReqTextPlain) ReadJSON(d *json.Decoder) error { return nil }
-
-func (MarkdownRenderRawReqTextXMarkdown) WriteJSON(e *json.Encoder)      {}
-func (MarkdownRenderRawReqTextXMarkdown) ReadJSON(d *json.Decoder) error { return nil }
 
 // WriteJSON implements json.Marshaler.
 func (s MarkdownRenderReq) WriteJSON(e *json.Encoder) {
@@ -70316,12 +70295,6 @@ func (ScimDeleteUserFromOrgApplicationJSONForbidden) ReadJSON(d *json.Decoder) e
 func (ScimDeleteUserFromOrgApplicationJSONNotFound) WriteJSON(e *json.Encoder)      {}
 func (ScimDeleteUserFromOrgApplicationJSONNotFound) ReadJSON(d *json.Decoder) error { return nil }
 
-func (ScimDeleteUserFromOrgApplicationScimJSONForbidden) WriteJSON(e *json.Encoder)      {}
-func (ScimDeleteUserFromOrgApplicationScimJSONForbidden) ReadJSON(d *json.Decoder) error { return nil }
-
-func (ScimDeleteUserFromOrgApplicationScimJSONNotFound) WriteJSON(e *json.Encoder)      {}
-func (ScimDeleteUserFromOrgApplicationScimJSONNotFound) ReadJSON(d *json.Decoder) error { return nil }
-
 // WriteJSON implements json.Marshaler.
 func (s ScimDeleteUserFromOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
@@ -74123,44 +74096,6 @@ func (s *SimpleUser) ReadJSON(d *json.Decoder) error {
 		case "starred_at":
 			s.StarredAt.Reset()
 			if err := s.StarredAt.ReadJSON(d); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	})
-}
-
-// WriteJSON implements json.Marshaler.
-func (s StarredRepository) WriteJSON(e *json.Encoder) {
-	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("starred_at")
-	json.WriteDateTime(e, s.StarredAt)
-	more.More()
-	e.ObjField("repo")
-	s.Repo.WriteJSON(e)
-	e.ObjEnd()
-}
-
-// ReadJSON reads StarredRepository from json stream.
-func (s *StarredRepository) ReadJSON(d *json.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode StarredRepository to nil`)
-	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
-		switch string(k) {
-		case "starred_at":
-			v, err := json.ReadDateTime(d)
-			s.StarredAt = v
-			if err != nil {
-				return err
-			}
-		case "repo":
-			if err := s.Repo.ReadJSON(d); err != nil {
 				return err
 			}
 		default:

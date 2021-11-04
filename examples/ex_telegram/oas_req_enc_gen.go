@@ -60,360 +60,226 @@ var (
 	_ = regexp.MustCompile
 )
 
-func encodeAnswerCallbackQueryPostRequest(req AnswerCallbackQueryPostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
-	switch req := req.(type) {
-	case *AnswerCallbackQueryPostReqApplicationJSON:
-		buf := json.GetBuffer()
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
-		req.WriteJSON(e)
-		if _, err := e.WriteTo(buf); err != nil {
-			json.PutBuffer(buf)
-			return nil, "", err
-		}
-
-		return buf, "application/json", nil
-	case *AnswerCallbackQueryPostReqApplicationXWwwFormUrlencoded:
-		return nil, "", errors.New(`application/x-www-form-urlencoded encoder not implemented`)
-	case *AnswerCallbackQueryPostReqMultipartFormData:
-		return nil, "", errors.New(`multipart/form-data encoder not implemented`)
-	default:
-		return nil, "", errors.Errorf("unexpected request type: %T", req)
+func encodeAnswerCallbackQueryPostRequest(req AnswerCallbackQueryPostReqApplicationJSON, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
 	}
+
+	return buf, "application/json", nil
 }
 
-func encodeAnswerPreCheckoutQueryPostRequest(req AnswerPreCheckoutQueryPostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
-	switch req := req.(type) {
-	case *AnswerPreCheckoutQueryPostReqApplicationJSON:
-		buf := json.GetBuffer()
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
-		req.WriteJSON(e)
-		if _, err := e.WriteTo(buf); err != nil {
-			json.PutBuffer(buf)
-			return nil, "", err
-		}
-
-		return buf, "application/json", nil
-	case *AnswerPreCheckoutQueryPostReqApplicationXWwwFormUrlencoded:
-		return nil, "", errors.New(`application/x-www-form-urlencoded encoder not implemented`)
-	case *AnswerPreCheckoutQueryPostReqMultipartFormData:
-		return nil, "", errors.New(`multipart/form-data encoder not implemented`)
-	default:
-		return nil, "", errors.Errorf("unexpected request type: %T", req)
+func encodeAnswerPreCheckoutQueryPostRequest(req AnswerPreCheckoutQueryPostReqApplicationJSON, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
 	}
+
+	return buf, "application/json", nil
 }
 
-func encodeAnswerShippingQueryPostRequest(req AnswerShippingQueryPostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
-	switch req := req.(type) {
-	case *AnswerShippingQueryPostReqApplicationJSON:
-		buf := json.GetBuffer()
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
-		req.WriteJSON(e)
-		if _, err := e.WriteTo(buf); err != nil {
-			json.PutBuffer(buf)
-			return nil, "", err
-		}
-
-		return buf, "application/json", nil
-	case *AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded:
-		return nil, "", errors.New(`application/x-www-form-urlencoded encoder not implemented`)
-	case *AnswerShippingQueryPostReqMultipartFormData:
-		return nil, "", errors.New(`multipart/form-data encoder not implemented`)
-	default:
-		return nil, "", errors.Errorf("unexpected request type: %T", req)
+func encodeAnswerShippingQueryPostRequest(req AnswerShippingQueryPostReqApplicationJSON, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
 	}
+
+	return buf, "application/json", nil
 }
 
-func encodeDeleteStickerFromSetPostRequest(req DeleteStickerFromSetPostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
-	switch req := req.(type) {
-	case *DeleteStickerFromSetPostReqApplicationJSON:
-		buf := json.GetBuffer()
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
-		req.WriteJSON(e)
-		if _, err := e.WriteTo(buf); err != nil {
-			json.PutBuffer(buf)
-			return nil, "", err
-		}
-
-		return buf, "application/json", nil
-	case *DeleteStickerFromSetPostReqApplicationXWwwFormUrlencoded:
-		return nil, "", errors.New(`application/x-www-form-urlencoded encoder not implemented`)
-	case *DeleteStickerFromSetPostReqMultipartFormData:
-		return nil, "", errors.New(`multipart/form-data encoder not implemented`)
-	default:
-		return nil, "", errors.Errorf("unexpected request type: %T", req)
+func encodeDeleteStickerFromSetPostRequest(req DeleteStickerFromSetPostReqApplicationJSON, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
 	}
+
+	return buf, "application/json", nil
 }
 
-func encodeDeleteWebhookPostRequest(req DeleteWebhookPostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
-	switch req := req.(type) {
-	case *DeleteWebhookPostReqApplicationJSON:
-		buf := json.GetBuffer()
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
-		req.WriteJSON(e)
-		if _, err := e.WriteTo(buf); err != nil {
-			json.PutBuffer(buf)
-			return nil, "", err
-		}
-
-		return buf, "application/json", nil
-	case *DeleteWebhookPostReqApplicationXWwwFormUrlencoded:
-		return nil, "", errors.New(`application/x-www-form-urlencoded encoder not implemented`)
-	case *DeleteWebhookPostReqMultipartFormData:
-		return nil, "", errors.New(`multipart/form-data encoder not implemented`)
-	default:
-		return nil, "", errors.Errorf("unexpected request type: %T", req)
+func encodeDeleteWebhookPostRequest(req DeleteWebhookPostReqApplicationJSON, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
 	}
+
+	return buf, "application/json", nil
 }
 
-func encodeGetFilePostRequest(req GetFilePostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
-	switch req := req.(type) {
-	case *GetFilePostReqApplicationJSON:
-		buf := json.GetBuffer()
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
-		req.WriteJSON(e)
-		if _, err := e.WriteTo(buf); err != nil {
-			json.PutBuffer(buf)
-			return nil, "", err
-		}
-
-		return buf, "application/json", nil
-	case *GetFilePostReqApplicationXWwwFormUrlencoded:
-		return nil, "", errors.New(`application/x-www-form-urlencoded encoder not implemented`)
-	case *GetFilePostReqMultipartFormData:
-		return nil, "", errors.New(`multipart/form-data encoder not implemented`)
-	default:
-		return nil, "", errors.Errorf("unexpected request type: %T", req)
+func encodeGetFilePostRequest(req GetFilePostReqApplicationJSON, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
 	}
+
+	return buf, "application/json", nil
 }
 
-func encodeGetGameHighScoresPostRequest(req GetGameHighScoresPostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
-	switch req := req.(type) {
-	case *GetGameHighScoresPostReqApplicationJSON:
-		buf := json.GetBuffer()
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
-		req.WriteJSON(e)
-		if _, err := e.WriteTo(buf); err != nil {
-			json.PutBuffer(buf)
-			return nil, "", err
-		}
-
-		return buf, "application/json", nil
-	case *GetGameHighScoresPostReqApplicationXWwwFormUrlencoded:
-		return nil, "", errors.New(`application/x-www-form-urlencoded encoder not implemented`)
-	case *GetGameHighScoresPostReqMultipartFormData:
-		return nil, "", errors.New(`multipart/form-data encoder not implemented`)
-	default:
-		return nil, "", errors.Errorf("unexpected request type: %T", req)
+func encodeGetGameHighScoresPostRequest(req GetGameHighScoresPostReqApplicationJSON, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
 	}
+
+	return buf, "application/json", nil
 }
 
-func encodeGetStickerSetPostRequest(req GetStickerSetPostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
-	switch req := req.(type) {
-	case *GetStickerSetPostReqApplicationJSON:
-		buf := json.GetBuffer()
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
-		req.WriteJSON(e)
-		if _, err := e.WriteTo(buf); err != nil {
-			json.PutBuffer(buf)
-			return nil, "", err
-		}
-
-		return buf, "application/json", nil
-	case *GetStickerSetPostReqApplicationXWwwFormUrlencoded:
-		return nil, "", errors.New(`application/x-www-form-urlencoded encoder not implemented`)
-	case *GetStickerSetPostReqMultipartFormData:
-		return nil, "", errors.New(`multipart/form-data encoder not implemented`)
-	default:
-		return nil, "", errors.Errorf("unexpected request type: %T", req)
+func encodeGetStickerSetPostRequest(req GetStickerSetPostReqApplicationJSON, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
 	}
+
+	return buf, "application/json", nil
 }
 
-func encodeGetUpdatesPostRequest(req GetUpdatesPostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
-	switch req := req.(type) {
-	case *GetUpdatesPostReqApplicationJSON:
-		buf := json.GetBuffer()
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
-		req.WriteJSON(e)
-		if _, err := e.WriteTo(buf); err != nil {
-			json.PutBuffer(buf)
-			return nil, "", err
-		}
-
-		return buf, "application/json", nil
-	case *GetUpdatesPostReqApplicationXWwwFormUrlencoded:
-		return nil, "", errors.New(`application/x-www-form-urlencoded encoder not implemented`)
-	case *GetUpdatesPostReqMultipartFormData:
-		return nil, "", errors.New(`multipart/form-data encoder not implemented`)
-	default:
-		return nil, "", errors.Errorf("unexpected request type: %T", req)
+func encodeGetUpdatesPostRequest(req GetUpdatesPostReqApplicationJSON, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
 	}
+
+	return buf, "application/json", nil
 }
 
-func encodeGetUserProfilePhotosPostRequest(req GetUserProfilePhotosPostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
-	switch req := req.(type) {
-	case *GetUserProfilePhotosPostReqApplicationJSON:
-		buf := json.GetBuffer()
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
-		req.WriteJSON(e)
-		if _, err := e.WriteTo(buf); err != nil {
-			json.PutBuffer(buf)
-			return nil, "", err
-		}
-
-		return buf, "application/json", nil
-	case *GetUserProfilePhotosPostReqApplicationXWwwFormUrlencoded:
-		return nil, "", errors.New(`application/x-www-form-urlencoded encoder not implemented`)
-	case *GetUserProfilePhotosPostReqMultipartFormData:
-		return nil, "", errors.New(`multipart/form-data encoder not implemented`)
-	default:
-		return nil, "", errors.Errorf("unexpected request type: %T", req)
+func encodeGetUserProfilePhotosPostRequest(req GetUserProfilePhotosPostReqApplicationJSON, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
 	}
+
+	return buf, "application/json", nil
 }
 
-func encodeSendGamePostRequest(req SendGamePostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
-	switch req := req.(type) {
-	case *SendGamePostReqApplicationJSON:
-		buf := json.GetBuffer()
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
-		req.WriteJSON(e)
-		if _, err := e.WriteTo(buf); err != nil {
-			json.PutBuffer(buf)
-			return nil, "", err
-		}
-
-		return buf, "application/json", nil
-	case *SendGamePostReqApplicationXWwwFormUrlencoded:
-		return nil, "", errors.New(`application/x-www-form-urlencoded encoder not implemented`)
-	case *SendGamePostReqMultipartFormData:
-		return nil, "", errors.New(`multipart/form-data encoder not implemented`)
-	default:
-		return nil, "", errors.Errorf("unexpected request type: %T", req)
+func encodeSendGamePostRequest(req SendGamePostReqApplicationJSON, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
 	}
+
+	return buf, "application/json", nil
 }
 
-func encodeSendInvoicePostRequest(req SendInvoicePostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
-	switch req := req.(type) {
-	case *SendInvoicePostReqApplicationJSON:
-		buf := json.GetBuffer()
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
-		req.WriteJSON(e)
-		if _, err := e.WriteTo(buf); err != nil {
-			json.PutBuffer(buf)
-			return nil, "", err
-		}
-
-		return buf, "application/json", nil
-	case *SendInvoicePostReqApplicationXWwwFormUrlencoded:
-		return nil, "", errors.New(`application/x-www-form-urlencoded encoder not implemented`)
-	case *SendInvoicePostReqMultipartFormData:
-		return nil, "", errors.New(`multipart/form-data encoder not implemented`)
-	default:
-		return nil, "", errors.Errorf("unexpected request type: %T", req)
+func encodeSendInvoicePostRequest(req SendInvoicePostReqApplicationJSON, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
 	}
+
+	return buf, "application/json", nil
 }
 
-func encodeSetMyCommandsPostRequest(req SetMyCommandsPostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
-	switch req := req.(type) {
-	case *SetMyCommandsPostReqApplicationJSON:
-		buf := json.GetBuffer()
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
-		req.WriteJSON(e)
-		if _, err := e.WriteTo(buf); err != nil {
-			json.PutBuffer(buf)
-			return nil, "", err
-		}
-
-		return buf, "application/json", nil
-	case *SetMyCommandsPostReqApplicationXWwwFormUrlencoded:
-		return nil, "", errors.New(`application/x-www-form-urlencoded encoder not implemented`)
-	case *SetMyCommandsPostReqMultipartFormData:
-		return nil, "", errors.New(`multipart/form-data encoder not implemented`)
-	default:
-		return nil, "", errors.Errorf("unexpected request type: %T", req)
+func encodeSetMyCommandsPostRequest(req SetMyCommandsPostReqApplicationJSON, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
 	}
+
+	return buf, "application/json", nil
 }
 
-func encodeSetStickerPositionInSetPostRequest(req SetStickerPositionInSetPostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
-	switch req := req.(type) {
-	case *SetStickerPositionInSetPostReqApplicationJSON:
-		buf := json.GetBuffer()
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
-		req.WriteJSON(e)
-		if _, err := e.WriteTo(buf); err != nil {
-			json.PutBuffer(buf)
-			return nil, "", err
-		}
-
-		return buf, "application/json", nil
-	case *SetStickerPositionInSetPostReqApplicationXWwwFormUrlencoded:
-		return nil, "", errors.New(`application/x-www-form-urlencoded encoder not implemented`)
-	case *SetStickerPositionInSetPostReqMultipartFormData:
-		return nil, "", errors.New(`multipart/form-data encoder not implemented`)
-	default:
-		return nil, "", errors.Errorf("unexpected request type: %T", req)
+func encodeSetStickerPositionInSetPostRequest(req SetStickerPositionInSetPostReqApplicationJSON, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	e := json.GetEncoder()
+	defer json.PutEncoder(e)
+	more := json.NewMore(e)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(e)
+	if _, err := e.WriteTo(buf); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
 	}
-}
 
-func encodeSetWebhookPostRequest(req SetWebhookPostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
-	return nil, "", errors.New(`multipart/form-data encoder not implemented`)
-}
-
-func encodeUploadStickerFilePostRequest(req UploadStickerFilePostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
-	return nil, "", errors.New(`multipart/form-data encoder not implemented`)
+	return buf, "application/json", nil
 }
