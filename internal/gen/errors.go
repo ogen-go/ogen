@@ -41,7 +41,7 @@ func (g *Generator) shouldFail(err error) bool {
 	if errors.As(err, &ctypesErr) {
 		for _, s := range g.opt.IgnoreNotImplemented {
 			s = strings.TrimSpace(s)
-			if s == "all" || s == "unsupportedContentTypes" {
+			if s == "all" || s == "unsupported content types" {
 				return false
 			}
 		}

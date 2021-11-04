@@ -57,14 +57,25 @@ func TestGenerate(t *testing.T) {
 	}
 
 	t.Run("Pet store", g("petstore.yaml"))
-	t.Run("Pet store expanded", g("petstore-expanded.yaml", "allOf"))
+	t.Run("Pet store expanded", g("petstore-expanded.yaml",
+		"allOf",
+	))
 	t.Run("Firecracker", g("firecracker.json"))
 	t.Run("Sample", g("sample.json"))
-	t.Run("Manga gallery", g("manga.json"))
+	t.Run("Manga gallery", g("manga.json",
+		"unsupported content types",
+	))
 	t.Run("TechEmpower", g("techempower.json"))
-	t.Run("telegram bot api", g("telegram_bot_api.json", "anyOf"))
-	t.Run("gotd botapi", g("gotd_bot_api.json"))
-	t.Run("Kubernetes", g("k8s.json"))
+	t.Run("telegram bot api", g("telegram_bot_api.json",
+		"anyOf",
+		"unsupported content types",
+	))
+	t.Run("gotd botapi", g("gotd_bot_api.json",
+		"unsupported content types",
+	))
+	t.Run("Kubernetes", g("k8s.json",
+		"unsupported content types",
+	))
 	t.Run("GitHub", g("api.github.com.json",
 		"complex parameter types",
 		"anyOf",
@@ -72,5 +83,6 @@ func TestGenerate(t *testing.T) {
 		"discriminator inference",
 		"sum types with same names",
 		"sum type parameter",
+		"unsupported content types",
 	))
 }

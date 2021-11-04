@@ -169,11 +169,6 @@
               "schema": {
                 "$ref": "#/components/schemas/Pet"
               }
-            },
-            "text/plain": {
-              "schema": {
-                "type": "object"
-              }
             }
           }
         },

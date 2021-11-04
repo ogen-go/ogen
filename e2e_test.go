@@ -93,14 +93,9 @@ func (s sampleAPIServer) PetGet(ctx context.Context, params api.PetGetParams) (a
 	panic("implement me")
 }
 
-func (s *sampleAPIServer) PetCreate(ctx context.Context, req api.PetCreateReq) (pet api.Pet, err error) {
-	switch p := req.(type) {
-	case *api.Pet:
-		s.pet = *p
-		return s.pet, nil
-	default:
-		panic("not implemented")
-	}
+func (s *sampleAPIServer) PetCreate(ctx context.Context, req api.Pet) (pet api.Pet, err error) {
+	s.pet = req
+	return req, nil
 }
 
 func (s *sampleAPIServer) PetGetByName(ctx context.Context, params api.PetGetByNameParams) (api.Pet, error) {
@@ -245,7 +240,7 @@ func TestIntegration(t *testing.T) {
 		}
 
 		t.Run("PetCreate", func(t *testing.T) {
-			got, err := client.PetCreate(ctx, &pet)
+			got, err := client.PetCreate(ctx, pet)
 			require.NoError(t, err)
 			assertPet(t, pet, got)
 
