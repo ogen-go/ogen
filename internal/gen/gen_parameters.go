@@ -41,6 +41,24 @@ func (g *Generator) generateParameters(opName string, params []*oas.Parameter) (
 		})
 	}
 
+	// Params in different locations may have the same names,
+	// so we need to resolve name collision in such case.
+	for i, p := range result {
+		for j, pp := range result {
+			if i == j {
+				continue
+			}
+
+			if p.Name == pp.Name {
+				if p.Spec.In == pp.Spec.In {
+					panic("unreachable")
+				}
+				p.Name = string(p.Spec.In) + p.Name
+				pp.Name = string(pp.Spec.In) + pp.Name
+			}
+		}
+	}
+
 	return result, nil
 }
 
