@@ -33,12 +33,6 @@ func testGenerate(t *testing.T, name string, ignore ...string) {
 	opt := gen.Options{
 		IgnoreNotImplemented: ignore,
 	}
-	for _, s := range ignore {
-		if s == "unspecified params" {
-			t.Log("IgnoreUnspecifiedParams: true")
-			opt.IgnoreUnspecifiedParams = true
-		}
-	}
 	t.Run("Gen", func(t *testing.T) {
 		g, err := gen.NewGenerator(spec, opt)
 		require.NoError(t, err)
@@ -70,7 +64,7 @@ func TestGenerate(t *testing.T) {
 	t.Run("TechEmpower", g("techempower.json"))
 	t.Run("telegram bot api", g("telegram_bot_api.json", "anyOf"))
 	t.Run("gotd botapi", g("gotd_bot_api.json"))
-	t.Run("Kubernetes", g("k8s.json", "unspecified params"))
+	t.Run("Kubernetes", g("k8s.json"))
 	t.Run("GitHub", g("api.github.com.json",
 		"complex parameter types",
 		"anyOf",
