@@ -6,8 +6,6 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/ogen-go/errors"
-
 	"github.com/ogen-go/ogen/internal/ir"
 	"github.com/ogen-go/ogen/internal/oas"
 )
@@ -51,23 +49,14 @@ func templateFunctions() template.FuncMap {
 		"hasPrefix":  strings.HasPrefix,
 		"hasSuffix":  strings.HasSuffix,
 		"pascalMP":   pascalMP,
-		"dict": func(values ...interface{}) (map[string]interface{}, error) {
-			if len(values)%2 != 0 {
-				return nil, errors.New("invalid dict call")
-			}
-			dict := make(map[string]interface{}, len(values)/2)
-			for i := 0; i < len(values); i += 2 {
-				key, ok := values[i].(string)
-				if !ok {
-					return nil, errors.New("dict keys must be strings")
-				}
-				dict[key] = values[i+1]
-			}
-			return dict, nil
-		},
-		"sprintf": fmt.Sprintf,
 
 		// Helpers for recursive encoding and decoding.
+		"elem": func(t *ir.Type, v string) Elem {
+			return Elem{
+				Type: t,
+				Var:  v,
+			}
+		},
 		"pointer_elem": func(parent Elem) Elem {
 			return Elem{
 				Type: parent.Type.PointerTo,
@@ -115,19 +104,6 @@ func templateFunctions() template.FuncMap {
 				Var:  fmt.Sprintf("s.%s", f.Name),
 				Tag:  f.Tag,
 				More: true,
-			}
-		},
-		// Element of sum type.
-		"sum_elem": func(t *ir.Type) Elem {
-			return Elem{
-				Type: t,
-				Var:  fmt.Sprintf("s.%s", t.Name),
-			}
-		},
-		"var_elem": func(varname string, t *ir.Type) Elem {
-			return Elem{
-				Var:  varname,
-				Type: t,
 			}
 		},
 	}

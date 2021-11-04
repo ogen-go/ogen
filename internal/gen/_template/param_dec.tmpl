@@ -22,17 +22,14 @@ func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 			})
 
 			if err := func() error {
-				{{- template "decode_uri" dict
-					"type" $p.Type
-					"var" (sprintf "params.%s" $p.Name)
-				}}
+				{{- template "decode_uri" elem $p.Type  (printf "params.%s" $p.Name) }}
 			}(); err != nil {
 				return params, errors.Wrap(err, `parse parameter {{ $p.Spec.Name }} located in {{ lower $p.Spec.In }}`)
 			}
 
 			{{- if $p.Type.NeedValidation }}
 			if err := func() error {
-				{{- template "validate" var_elem (sprintf "params.%s" $p.Name ) $p.Type }}
+				{{- template "validate" elem $p.Type (printf "params.%s" $p.Name) }}
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter {{ $p.Spec.Name }} ({{ lower $p.Spec.In }}`)
 			}
@@ -53,10 +50,7 @@ func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 			})
 
 			if err := func() error {
-				{{- template "decode_uri" dict
-					"type" $p.Type
-					"var" (sprintf "params.%s" $p.Name)
-				}}
+				{{- template "decode_uri" elem $p.Type (printf "params.%s" $p.Name) }}
 			}(); err != nil {
 				return params, err
 			}
@@ -73,10 +67,7 @@ func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 			})
 
 			if err := func() error {
-				{{- template "decode_uri" dict
-					"type" $p.Type
-					"var" (sprintf "params.%s" $p.Name)
-				}}
+				{{- template "decode_uri" elem $p.Type (printf "params.%s" $p.Name) }}
 			}(); err != nil {
 				return params, errors.Wrap(err, `parse {{ lower $p.Spec.In }}: param '{{ $p.Spec.Name }}`)
 			}

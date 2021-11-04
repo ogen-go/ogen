@@ -14,10 +14,7 @@ u.Path += "{{ $part.Raw }}"
         Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
     })
     if err := func() error {
-        {{- template "encode_uri" dict
-            "type" $param.Type
-            "var" (sprintf "params.%s" $param.Name)
-        }}
+        {{- template "encode_uri" elem $param.Type (printf "params.%s" $param.Name) }}
     }(); err != nil {
         return res, errors.Wrap(err, "encode path")
     }
@@ -39,10 +36,7 @@ q := u.Query()
         Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
     })
     if err := func() error {
-        {{- template "encode_uri" dict
-            "type" $param.Type
-            "var" (sprintf "params.%s" $param.Name)
-        }}
+        {{- template "encode_uri" elem $param.Type (printf "params.%s" $param.Name) }}
     }(); err != nil {
         return res, errors.Wrap(err, "encode query")
     }

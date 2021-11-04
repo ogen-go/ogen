@@ -137,7 +137,7 @@ func (s {{ $t.Name }}) WriteJSON(e *json.Encoder) {
     switch s.Type {
     {{- range $s := $t.SumOf }}
     case {{ $s.Name }}{{ $t.Name }}:
-        {{- template "enc_json" sum_elem $s -}}
+        {{- template "enc_json" elem $s (printf "s.%s" $s.Name) -}}
     {{- end }}
     }
 }
@@ -153,7 +153,7 @@ func (s *{{ $t.Name }}) ReadJSON(d *json.Decoder) error {
     switch t := d.Next(); t {
     {{- range $s := $t.SumOf }}
     case json.{{ $s.JSON.Type }}:
-        {{- template "dec_json" sum_elem $s }}
+        {{- template "dec_json" elem $s (printf "s.%s" $s.Name) }}
         s.Type = {{ $s.Name }}{{ $t.Name }}
     {{- end }}
     default:
@@ -207,7 +207,7 @@ func (s *{{ $t.Name }}) ReadJSON(d *json.Decoder) error {
     switch s.Type {
     {{- range $s := $t.SumOf }}
     case {{ $s.Name }}{{ $t.Name }}:
-        {{- template "dec_json" sum_elem $s }}
+        {{- template "dec_json" elem $s (printf "s.%s" $s.Name) }}
     {{- end}}
     default:
         return errors.Errorf("inferred invalid type: %s", s.Type)
