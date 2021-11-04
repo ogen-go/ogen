@@ -69,7 +69,8 @@ type ConnectCoreV1DeleteNamespacedPodProxyParams struct {
 type ConnectCoreV1DeleteNamespacedPodProxyWithPathParams struct {
 	Name      string
 	Namespace string
-	Path      string
+	PathPath  string
+	QueryPath OptString
 }
 
 type ConnectCoreV1DeleteNamespacedServiceProxyParams struct {
@@ -81,7 +82,8 @@ type ConnectCoreV1DeleteNamespacedServiceProxyParams struct {
 type ConnectCoreV1DeleteNamespacedServiceProxyWithPathParams struct {
 	Name      string
 	Namespace string
-	Path      string
+	PathPath  string
+	QueryPath OptString
 }
 
 type ConnectCoreV1DeleteNodeProxyParams struct {
@@ -90,8 +92,9 @@ type ConnectCoreV1DeleteNodeProxyParams struct {
 }
 
 type ConnectCoreV1DeleteNodeProxyWithPathParams struct {
-	Name string
-	Path string
+	Name      string
+	PathPath  string
+	QueryPath OptString
 }
 
 type ConnectCoreV1GetNamespacedPodAttachParams struct {
@@ -130,7 +133,8 @@ type ConnectCoreV1GetNamespacedPodProxyParams struct {
 type ConnectCoreV1GetNamespacedPodProxyWithPathParams struct {
 	Name      string
 	Namespace string
-	Path      string
+	PathPath  string
+	QueryPath OptString
 }
 
 type ConnectCoreV1GetNamespacedServiceProxyParams struct {
@@ -142,7 +146,8 @@ type ConnectCoreV1GetNamespacedServiceProxyParams struct {
 type ConnectCoreV1GetNamespacedServiceProxyWithPathParams struct {
 	Name      string
 	Namespace string
-	Path      string
+	PathPath  string
+	QueryPath OptString
 }
 
 type ConnectCoreV1GetNodeProxyParams struct {
@@ -151,8 +156,9 @@ type ConnectCoreV1GetNodeProxyParams struct {
 }
 
 type ConnectCoreV1GetNodeProxyWithPathParams struct {
-	Name string
-	Path string
+	Name      string
+	PathPath  string
+	QueryPath OptString
 }
 
 type ConnectCoreV1HeadNamespacedPodProxyParams struct {
@@ -164,7 +170,8 @@ type ConnectCoreV1HeadNamespacedPodProxyParams struct {
 type ConnectCoreV1HeadNamespacedPodProxyWithPathParams struct {
 	Name      string
 	Namespace string
-	Path      string
+	PathPath  string
+	QueryPath OptString
 }
 
 type ConnectCoreV1HeadNamespacedServiceProxyParams struct {
@@ -176,7 +183,8 @@ type ConnectCoreV1HeadNamespacedServiceProxyParams struct {
 type ConnectCoreV1HeadNamespacedServiceProxyWithPathParams struct {
 	Name      string
 	Namespace string
-	Path      string
+	PathPath  string
+	QueryPath OptString
 }
 
 type ConnectCoreV1HeadNodeProxyParams struct {
@@ -185,8 +193,9 @@ type ConnectCoreV1HeadNodeProxyParams struct {
 }
 
 type ConnectCoreV1HeadNodeProxyWithPathParams struct {
-	Name string
-	Path string
+	Name      string
+	PathPath  string
+	QueryPath OptString
 }
 
 type ConnectCoreV1OptionsNamespacedPodProxyParams struct {
@@ -198,7 +207,8 @@ type ConnectCoreV1OptionsNamespacedPodProxyParams struct {
 type ConnectCoreV1OptionsNamespacedPodProxyWithPathParams struct {
 	Name      string
 	Namespace string
-	Path      string
+	PathPath  string
+	QueryPath OptString
 }
 
 type ConnectCoreV1OptionsNamespacedServiceProxyParams struct {
@@ -210,7 +220,8 @@ type ConnectCoreV1OptionsNamespacedServiceProxyParams struct {
 type ConnectCoreV1OptionsNamespacedServiceProxyWithPathParams struct {
 	Name      string
 	Namespace string
-	Path      string
+	PathPath  string
+	QueryPath OptString
 }
 
 type ConnectCoreV1OptionsNodeProxyParams struct {
@@ -219,8 +230,9 @@ type ConnectCoreV1OptionsNodeProxyParams struct {
 }
 
 type ConnectCoreV1OptionsNodeProxyWithPathParams struct {
-	Name string
-	Path string
+	Name      string
+	PathPath  string
+	QueryPath OptString
 }
 
 type ConnectCoreV1PatchNamespacedPodProxyParams struct {
@@ -232,7 +244,8 @@ type ConnectCoreV1PatchNamespacedPodProxyParams struct {
 type ConnectCoreV1PatchNamespacedPodProxyWithPathParams struct {
 	Name      string
 	Namespace string
-	Path      string
+	PathPath  string
+	QueryPath OptString
 }
 
 type ConnectCoreV1PatchNamespacedServiceProxyParams struct {
@@ -244,7 +257,8 @@ type ConnectCoreV1PatchNamespacedServiceProxyParams struct {
 type ConnectCoreV1PatchNamespacedServiceProxyWithPathParams struct {
 	Name      string
 	Namespace string
-	Path      string
+	PathPath  string
+	QueryPath OptString
 }
 
 type ConnectCoreV1PatchNodeProxyParams struct {
@@ -253,8 +267,9 @@ type ConnectCoreV1PatchNodeProxyParams struct {
 }
 
 type ConnectCoreV1PatchNodeProxyWithPathParams struct {
-	Name string
-	Path string
+	Name      string
+	PathPath  string
+	QueryPath OptString
 }
 
 type ConnectCoreV1PostNamespacedPodAttachParams struct {
@@ -293,7 +308,8 @@ type ConnectCoreV1PostNamespacedPodProxyParams struct {
 type ConnectCoreV1PostNamespacedPodProxyWithPathParams struct {
 	Name      string
 	Namespace string
-	Path      string
+	PathPath  string
+	QueryPath OptString
 }
 
 type ConnectCoreV1PostNamespacedServiceProxyParams struct {
@@ -305,7 +321,8 @@ type ConnectCoreV1PostNamespacedServiceProxyParams struct {
 type ConnectCoreV1PostNamespacedServiceProxyWithPathParams struct {
 	Name      string
 	Namespace string
-	Path      string
+	PathPath  string
+	QueryPath OptString
 }
 
 type ConnectCoreV1PostNodeProxyParams struct {
@@ -314,8 +331,9 @@ type ConnectCoreV1PostNodeProxyParams struct {
 }
 
 type ConnectCoreV1PostNodeProxyWithPathParams struct {
-	Name string
-	Path string
+	Name      string
+	PathPath  string
+	QueryPath OptString
 }
 
 type ConnectCoreV1PutNamespacedPodProxyParams struct {
@@ -327,7 +345,8 @@ type ConnectCoreV1PutNamespacedPodProxyParams struct {
 type ConnectCoreV1PutNamespacedPodProxyWithPathParams struct {
 	Name      string
 	Namespace string
-	Path      string
+	PathPath  string
+	QueryPath OptString
 }
 
 type ConnectCoreV1PutNamespacedServiceProxyParams struct {
@@ -339,7 +358,8 @@ type ConnectCoreV1PutNamespacedServiceProxyParams struct {
 type ConnectCoreV1PutNamespacedServiceProxyWithPathParams struct {
 	Name      string
 	Namespace string
-	Path      string
+	PathPath  string
+	QueryPath OptString
 }
 
 type ConnectCoreV1PutNodeProxyParams struct {
@@ -348,8 +368,9 @@ type ConnectCoreV1PutNodeProxyParams struct {
 }
 
 type ConnectCoreV1PutNodeProxyWithPathParams struct {
-	Name string
-	Path string
+	Name      string
+	PathPath  string
+	QueryPath OptString
 }
 
 type CreateAdmissionregistrationV1MutatingWebhookConfigurationParams struct {

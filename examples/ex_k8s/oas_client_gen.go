@@ -239,12 +239,31 @@ func (c *Client) ConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx context.Conte
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.Path))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
+
+	q := u.Query()
+	{
+		// Encode "path" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.QueryPath.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["path"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
 	defer ht.PutRequest(r)
@@ -408,12 +427,31 @@ func (c *Client) ConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx context.C
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.Path))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
+
+	q := u.Query()
+	{
+		// Encode "path" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.QueryPath.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["path"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
 	defer ht.PutRequest(r)
@@ -547,12 +585,31 @@ func (c *Client) ConnectCoreV1DeleteNodeProxyWithPath(ctx context.Context, param
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.Path))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
+
+	q := u.Query()
+	{
+		// Encode "path" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.QueryPath.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["path"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
 	defer ht.PutRequest(r)
@@ -1121,12 +1178,31 @@ func (c *Client) ConnectCoreV1GetNamespacedPodProxyWithPath(ctx context.Context,
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.Path))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
+
+	q := u.Query()
+	{
+		// Encode "path" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.QueryPath.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["path"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -1290,12 +1366,31 @@ func (c *Client) ConnectCoreV1GetNamespacedServiceProxyWithPath(ctx context.Cont
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.Path))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
+
+	q := u.Query()
+	{
+		// Encode "path" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.QueryPath.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["path"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -1429,12 +1524,31 @@ func (c *Client) ConnectCoreV1GetNodeProxyWithPath(ctx context.Context, params C
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.Path))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
+
+	q := u.Query()
+	{
+		// Encode "path" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.QueryPath.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["path"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -1598,12 +1712,31 @@ func (c *Client) ConnectCoreV1HeadNamespacedPodProxyWithPath(ctx context.Context
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.Path))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
+
+	q := u.Query()
+	{
+		// Encode "path" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.QueryPath.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["path"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "HEAD", u, nil)
 	defer ht.PutRequest(r)
@@ -1767,12 +1900,31 @@ func (c *Client) ConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx context.Con
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.Path))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
+
+	q := u.Query()
+	{
+		// Encode "path" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.QueryPath.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["path"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "HEAD", u, nil)
 	defer ht.PutRequest(r)
@@ -1906,12 +2058,31 @@ func (c *Client) ConnectCoreV1HeadNodeProxyWithPath(ctx context.Context, params 
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.Path))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
+
+	q := u.Query()
+	{
+		// Encode "path" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.QueryPath.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["path"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "HEAD", u, nil)
 	defer ht.PutRequest(r)
@@ -2075,12 +2246,31 @@ func (c *Client) ConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx context.Cont
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.Path))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
+
+	q := u.Query()
+	{
+		// Encode "path" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.QueryPath.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["path"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "OPTIONS", u, nil)
 	defer ht.PutRequest(r)
@@ -2244,12 +2434,31 @@ func (c *Client) ConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx context.
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.Path))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
+
+	q := u.Query()
+	{
+		// Encode "path" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.QueryPath.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["path"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "OPTIONS", u, nil)
 	defer ht.PutRequest(r)
@@ -2383,12 +2592,31 @@ func (c *Client) ConnectCoreV1OptionsNodeProxyWithPath(ctx context.Context, para
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.Path))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
+
+	q := u.Query()
+	{
+		// Encode "path" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.QueryPath.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["path"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "OPTIONS", u, nil)
 	defer ht.PutRequest(r)
@@ -2552,12 +2780,31 @@ func (c *Client) ConnectCoreV1PatchNamespacedPodProxyWithPath(ctx context.Contex
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.Path))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
+
+	q := u.Query()
+	{
+		// Encode "path" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.QueryPath.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["path"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
 	defer ht.PutRequest(r)
@@ -2721,12 +2968,31 @@ func (c *Client) ConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx context.Co
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.Path))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
+
+	q := u.Query()
+	{
+		// Encode "path" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.QueryPath.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["path"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
 	defer ht.PutRequest(r)
@@ -2860,12 +3126,31 @@ func (c *Client) ConnectCoreV1PatchNodeProxyWithPath(ctx context.Context, params
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.Path))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
+
+	q := u.Query()
+	{
+		// Encode "path" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.QueryPath.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["path"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
 	defer ht.PutRequest(r)
@@ -3434,12 +3719,31 @@ func (c *Client) ConnectCoreV1PostNamespacedPodProxyWithPath(ctx context.Context
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.Path))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
+
+	q := u.Query()
+	{
+		// Encode "path" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.QueryPath.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["path"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	defer ht.PutRequest(r)
@@ -3603,12 +3907,31 @@ func (c *Client) ConnectCoreV1PostNamespacedServiceProxyWithPath(ctx context.Con
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.Path))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
+
+	q := u.Query()
+	{
+		// Encode "path" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.QueryPath.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["path"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	defer ht.PutRequest(r)
@@ -3742,12 +4065,31 @@ func (c *Client) ConnectCoreV1PostNodeProxyWithPath(ctx context.Context, params 
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.Path))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
+
+	q := u.Query()
+	{
+		// Encode "path" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.QueryPath.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["path"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	defer ht.PutRequest(r)
@@ -3911,12 +4253,31 @@ func (c *Client) ConnectCoreV1PutNamespacedPodProxyWithPath(ctx context.Context,
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.Path))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
+
+	q := u.Query()
+	{
+		// Encode "path" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.QueryPath.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["path"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	defer ht.PutRequest(r)
@@ -4080,12 +4441,31 @@ func (c *Client) ConnectCoreV1PutNamespacedServiceProxyWithPath(ctx context.Cont
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.Path))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
+
+	q := u.Query()
+	{
+		// Encode "path" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.QueryPath.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["path"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	defer ht.PutRequest(r)
@@ -4219,12 +4599,31 @@ func (c *Client) ConnectCoreV1PutNodeProxyWithPath(ctx context.Context, params C
 			Explode: false,
 		})
 		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.Path))
+			return e.EncodeValue(conv.StringToString(params.PathPath))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
+
+	q := u.Query()
+	{
+		// Encode "path" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.QueryPath.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["path"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	defer ht.PutRequest(r)
