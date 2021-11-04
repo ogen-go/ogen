@@ -56,9 +56,9 @@ func (p *parser) parse() error {
 		}
 
 		if err := forEachOps(item, func(method string, op ogen.Operation) error {
-			parsedOp, err := p.parseOp(path, strings.ToUpper(method), op, itemParams)
+			parsedOp, err := p.parseOp(path, method, op, itemParams)
 			if err != nil {
-				return errors.Wrapf(err, "%s", strings.ToLower(method))
+				return errors.Wrap(err, method)
 			}
 
 			p.operations = append(p.operations, parsedOp)
@@ -74,7 +74,7 @@ func (p *parser) parse() error {
 func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation, itemParams []*oas.Parameter) (_ *oas.Operation, err error) {
 	op := &oas.Operation{
 		OperationID: spec.OperationID,
-		HTTPMethod:  httpMethod,
+		HTTPMethod:  strings.ToUpper(httpMethod),
 	}
 
 	opParams, err := p.parseParams(spec.Parameters)
