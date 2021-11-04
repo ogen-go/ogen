@@ -29,15 +29,12 @@ type Generator struct {
 }
 
 type Options struct {
-	SpecificMethodPath      string
-	IgnoreUnspecifiedParams bool
-	IgnoreNotImplemented    []string
+	SpecificMethodPath   string
+	IgnoreNotImplemented []string
 }
 
 func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
-	operations, err := parser.Parse(spec, parser.Options{
-		IgnoreUnspecifiedParams: opts.IgnoreUnspecifiedParams,
-	})
+	operations, err := parser.Parse(spec)
 	if err != nil {
 		return nil, err
 	}

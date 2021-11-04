@@ -1,22 +1,10 @@
 package parser
 
 import (
-	"fmt"
-
 	"github.com/ogen-go/errors"
 
 	"github.com/ogen-go/ogen/internal/oas"
 )
-
-// ErrPathParameterNotSpecified indicates that the path parameter
-// is not declared in the Operation parameters section.
-type ErrPathParameterNotSpecified struct {
-	ParamName string
-}
-
-func (e ErrPathParameterNotSpecified) Error() string {
-	return fmt.Sprintf("path parameter %q not found in parameters", e.ParamName)
-}
 
 type pathParser struct {
 	path   string           // immutable
@@ -91,9 +79,7 @@ func (p *pathParser) push() error {
 
 	param, found := p.lookupParam(string(p.part))
 	if !found {
-		return &ErrPathParameterNotSpecified{
-			ParamName: string(p.part),
-		}
+		return errors.Errorf("parameter not specified: %s", p.part)
 	}
 
 	p.parts = append(p.parts, oas.PathPart{Param: param})

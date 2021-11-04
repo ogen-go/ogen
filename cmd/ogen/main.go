@@ -39,9 +39,8 @@ func main() {
 		specificMethod = flag.String("specific-method", "", "Generate specific method by its path")
 		clean          = flag.Bool("clean", false, "Clean generated files before generation")
 
-		debugSkipUnspecifiedParams = flag.Bool("debug.skipUnspecifiedParams", false, "Ignore methods where path params are not specified")
-		debugIgnoreNotImplemented  = flag.String("debug.ignoreNotImplemented", "", "Ignore methods having functionality which is not implemented (all, oneOf, anyOf, allOf, nullable types, complex parameter types)")
-		debugNoerr                 = flag.Bool("debug.noerr", false, "Ignore all errors")
+		debugIgnoreNotImplemented = flag.String("debug.ignoreNotImplemented", "", "Ignore methods having functionality which is not implemented (all, oneOf, anyOf, allOf, nullable types, complex parameter types)")
+		debugNoerr                = flag.Bool("debug.noerr", false, "Ignore all errors")
 	)
 
 	flag.Parse()
@@ -90,13 +89,11 @@ func main() {
 	}
 
 	opts := gen.Options{
-		SpecificMethodPath:      *specificMethod,
-		IgnoreUnspecifiedParams: *debugSkipUnspecifiedParams,
-		IgnoreNotImplemented:    strings.Split(*debugIgnoreNotImplemented, ","),
+		SpecificMethodPath:   *specificMethod,
+		IgnoreNotImplemented: strings.Split(*debugIgnoreNotImplemented, ","),
 	}
 
 	if *debugNoerr {
-		opts.IgnoreUnspecifiedParams = true
 		opts.IgnoreNotImplemented = []string{"all"}
 	}
 

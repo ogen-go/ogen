@@ -10,7 +10,6 @@ import (
 )
 
 type parser struct {
-	ops Options
 	// schema specification, immutable.
 	spec *ogen.Spec
 	// parsed operations.
@@ -24,14 +23,9 @@ type parser struct {
 	}
 }
 
-type Options struct {
-	IgnoreUnspecifiedParams bool
-}
-
-func Parse(spec *ogen.Spec, opts Options) ([]*oas.Operation, error) {
+func Parse(spec *ogen.Spec) ([]*oas.Operation, error) {
 	spec.Init()
 	p := &parser{
-		ops:  opts,
 		spec: spec,
 		refs: struct {
 			schemas       map[string]*oas.Schema
@@ -64,12 +58,6 @@ func (p *parser) parse() error {
 		if err := forEachOps(item, func(method string, op ogen.Operation) error {
 			parsedOp, err := p.parseOp(path, strings.ToUpper(method), op, itemParams)
 			if err != nil {
-				var paramNotSpecified *ErrPathParameterNotSpecified
-				if errors.As(err, &paramNotSpecified) {
-					if p.ops.IgnoreUnspecifiedParams {
-						return nil
-					}
-				}
 				return errors.Wrapf(err, "%s", strings.ToLower(method))
 			}
 
