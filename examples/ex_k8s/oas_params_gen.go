@@ -60,129 +60,760 @@ var (
 	_ = regexp.MustCompile
 )
 
+type ConnectCoreV1DeleteNamespacedPodProxyParams struct {
+	Name      string
+	Namespace string
+	Path      OptString
+}
+
+type ConnectCoreV1DeleteNamespacedPodProxyWithPathParams struct {
+	Name      string
+	Namespace string
+	Path      string
+}
+
+type ConnectCoreV1DeleteNamespacedServiceProxyParams struct {
+	Name      string
+	Namespace string
+	Path      OptString
+}
+
+type ConnectCoreV1DeleteNamespacedServiceProxyWithPathParams struct {
+	Name      string
+	Namespace string
+	Path      string
+}
+
+type ConnectCoreV1DeleteNodeProxyParams struct {
+	Name string
+	Path OptString
+}
+
+type ConnectCoreV1DeleteNodeProxyWithPathParams struct {
+	Name string
+	Path string
+}
+
+type ConnectCoreV1GetNamespacedPodAttachParams struct {
+	Container OptString
+	Name      string
+	Namespace string
+	Stderr    OptBool
+	Stdin     OptBool
+	Stdout    OptBool
+	Tty       OptBool
+}
+
+type ConnectCoreV1GetNamespacedPodExecParams struct {
+	Command   OptString
+	Container OptString
+	Name      string
+	Namespace string
+	Stderr    OptBool
+	Stdin     OptBool
+	Stdout    OptBool
+	Tty       OptBool
+}
+
+type ConnectCoreV1GetNamespacedPodPortforwardParams struct {
+	Name      string
+	Namespace string
+	Ports     OptInt
+}
+
+type ConnectCoreV1GetNamespacedPodProxyParams struct {
+	Name      string
+	Namespace string
+	Path      OptString
+}
+
+type ConnectCoreV1GetNamespacedPodProxyWithPathParams struct {
+	Name      string
+	Namespace string
+	Path      string
+}
+
+type ConnectCoreV1GetNamespacedServiceProxyParams struct {
+	Name      string
+	Namespace string
+	Path      OptString
+}
+
+type ConnectCoreV1GetNamespacedServiceProxyWithPathParams struct {
+	Name      string
+	Namespace string
+	Path      string
+}
+
+type ConnectCoreV1GetNodeProxyParams struct {
+	Name string
+	Path OptString
+}
+
+type ConnectCoreV1GetNodeProxyWithPathParams struct {
+	Name string
+	Path string
+}
+
+type ConnectCoreV1HeadNamespacedPodProxyParams struct {
+	Name      string
+	Namespace string
+	Path      OptString
+}
+
+type ConnectCoreV1HeadNamespacedPodProxyWithPathParams struct {
+	Name      string
+	Namespace string
+	Path      string
+}
+
+type ConnectCoreV1HeadNamespacedServiceProxyParams struct {
+	Name      string
+	Namespace string
+	Path      OptString
+}
+
+type ConnectCoreV1HeadNamespacedServiceProxyWithPathParams struct {
+	Name      string
+	Namespace string
+	Path      string
+}
+
+type ConnectCoreV1HeadNodeProxyParams struct {
+	Name string
+	Path OptString
+}
+
+type ConnectCoreV1HeadNodeProxyWithPathParams struct {
+	Name string
+	Path string
+}
+
+type ConnectCoreV1OptionsNamespacedPodProxyParams struct {
+	Name      string
+	Namespace string
+	Path      OptString
+}
+
+type ConnectCoreV1OptionsNamespacedPodProxyWithPathParams struct {
+	Name      string
+	Namespace string
+	Path      string
+}
+
+type ConnectCoreV1OptionsNamespacedServiceProxyParams struct {
+	Name      string
+	Namespace string
+	Path      OptString
+}
+
+type ConnectCoreV1OptionsNamespacedServiceProxyWithPathParams struct {
+	Name      string
+	Namespace string
+	Path      string
+}
+
+type ConnectCoreV1OptionsNodeProxyParams struct {
+	Name string
+	Path OptString
+}
+
+type ConnectCoreV1OptionsNodeProxyWithPathParams struct {
+	Name string
+	Path string
+}
+
+type ConnectCoreV1PatchNamespacedPodProxyParams struct {
+	Name      string
+	Namespace string
+	Path      OptString
+}
+
+type ConnectCoreV1PatchNamespacedPodProxyWithPathParams struct {
+	Name      string
+	Namespace string
+	Path      string
+}
+
+type ConnectCoreV1PatchNamespacedServiceProxyParams struct {
+	Name      string
+	Namespace string
+	Path      OptString
+}
+
+type ConnectCoreV1PatchNamespacedServiceProxyWithPathParams struct {
+	Name      string
+	Namespace string
+	Path      string
+}
+
+type ConnectCoreV1PatchNodeProxyParams struct {
+	Name string
+	Path OptString
+}
+
+type ConnectCoreV1PatchNodeProxyWithPathParams struct {
+	Name string
+	Path string
+}
+
+type ConnectCoreV1PostNamespacedPodAttachParams struct {
+	Container OptString
+	Name      string
+	Namespace string
+	Stderr    OptBool
+	Stdin     OptBool
+	Stdout    OptBool
+	Tty       OptBool
+}
+
+type ConnectCoreV1PostNamespacedPodExecParams struct {
+	Command   OptString
+	Container OptString
+	Name      string
+	Namespace string
+	Stderr    OptBool
+	Stdin     OptBool
+	Stdout    OptBool
+	Tty       OptBool
+}
+
+type ConnectCoreV1PostNamespacedPodPortforwardParams struct {
+	Name      string
+	Namespace string
+	Ports     OptInt
+}
+
+type ConnectCoreV1PostNamespacedPodProxyParams struct {
+	Name      string
+	Namespace string
+	Path      OptString
+}
+
+type ConnectCoreV1PostNamespacedPodProxyWithPathParams struct {
+	Name      string
+	Namespace string
+	Path      string
+}
+
+type ConnectCoreV1PostNamespacedServiceProxyParams struct {
+	Name      string
+	Namespace string
+	Path      OptString
+}
+
+type ConnectCoreV1PostNamespacedServiceProxyWithPathParams struct {
+	Name      string
+	Namespace string
+	Path      string
+}
+
+type ConnectCoreV1PostNodeProxyParams struct {
+	Name string
+	Path OptString
+}
+
+type ConnectCoreV1PostNodeProxyWithPathParams struct {
+	Name string
+	Path string
+}
+
+type ConnectCoreV1PutNamespacedPodProxyParams struct {
+	Name      string
+	Namespace string
+	Path      OptString
+}
+
+type ConnectCoreV1PutNamespacedPodProxyWithPathParams struct {
+	Name      string
+	Namespace string
+	Path      string
+}
+
+type ConnectCoreV1PutNamespacedServiceProxyParams struct {
+	Name      string
+	Namespace string
+	Path      OptString
+}
+
+type ConnectCoreV1PutNamespacedServiceProxyWithPathParams struct {
+	Name      string
+	Namespace string
+	Path      string
+}
+
+type ConnectCoreV1PutNodeProxyParams struct {
+	Name string
+	Path OptString
+}
+
+type ConnectCoreV1PutNodeProxyWithPathParams struct {
+	Name string
+	Path string
+}
+
 type CreateAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
 	DryRun       OptString
 	FieldManager OptString
+	Pretty       OptString
 }
 
 type CreateAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
 	DryRun       OptString
 	FieldManager OptString
+	Pretty       OptString
 }
 
 type CreateApiextensionsV1CustomResourceDefinitionParams struct {
 	DryRun       OptString
 	FieldManager OptString
+	Pretty       OptString
 }
 
 type CreateApiregistrationV1APIServiceParams struct {
 	DryRun       OptString
 	FieldManager OptString
+	Pretty       OptString
+}
+
+type CreateAppsV1NamespacedControllerRevisionParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateAppsV1NamespacedDaemonSetParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateAppsV1NamespacedDeploymentParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateAppsV1NamespacedReplicaSetParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateAppsV1NamespacedStatefulSetParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateAuthenticationV1TokenReviewParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Pretty       OptString
+}
+
+type CreateAuthorizationV1NamespacedLocalSubjectAccessReviewParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateAuthorizationV1SelfSubjectAccessReviewParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Pretty       OptString
+}
+
+type CreateAuthorizationV1SelfSubjectRulesReviewParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Pretty       OptString
+}
+
+type CreateAuthorizationV1SubjectAccessReviewParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Pretty       OptString
+}
+
+type CreateAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateBatchV1NamespacedCronJobParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateBatchV1NamespacedJobParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateBatchV1beta1NamespacedCronJobParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
 }
 
 type CreateCertificatesV1CertificateSigningRequestParams struct {
 	DryRun       OptString
 	FieldManager OptString
+	Pretty       OptString
+}
+
+type CreateCoordinationV1NamespacedLeaseParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
 }
 
 type CreateCoreV1NamespaceParams struct {
 	DryRun       OptString
 	FieldManager OptString
+	Pretty       OptString
+}
+
+type CreateCoreV1NamespacedBindingParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateCoreV1NamespacedConfigMapParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateCoreV1NamespacedEndpointsParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateCoreV1NamespacedEventParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateCoreV1NamespacedLimitRangeParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateCoreV1NamespacedPersistentVolumeClaimParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateCoreV1NamespacedPodParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateCoreV1NamespacedPodBindingParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateCoreV1NamespacedPodEvictionParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateCoreV1NamespacedPodTemplateParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateCoreV1NamespacedReplicationControllerParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateCoreV1NamespacedResourceQuotaParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateCoreV1NamespacedSecretParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateCoreV1NamespacedServiceParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateCoreV1NamespacedServiceAccountParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateCoreV1NamespacedServiceAccountTokenParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
 }
 
 type CreateCoreV1NodeParams struct {
 	DryRun       OptString
 	FieldManager OptString
+	Pretty       OptString
 }
 
 type CreateCoreV1PersistentVolumeParams struct {
 	DryRun       OptString
 	FieldManager OptString
+	Pretty       OptString
+}
+
+type CreateDiscoveryV1NamespacedEndpointSliceParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateDiscoveryV1beta1NamespacedEndpointSliceParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateEventsV1NamespacedEventParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateEventsV1beta1NamespacedEventParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
 }
 
 type CreateFlowcontrolApiserverV1beta1FlowSchemaParams struct {
 	DryRun       OptString
 	FieldManager OptString
+	Pretty       OptString
 }
 
 type CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
 	DryRun       OptString
 	FieldManager OptString
+	Pretty       OptString
 }
 
 type CreateFlowcontrolApiserverV1beta2FlowSchemaParams struct {
 	DryRun       OptString
 	FieldManager OptString
+	Pretty       OptString
 }
 
 type CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
 	DryRun       OptString
 	FieldManager OptString
+	Pretty       OptString
 }
 
 type CreateInternalApiserverV1alpha1StorageVersionParams struct {
 	DryRun       OptString
 	FieldManager OptString
+	Pretty       OptString
 }
 
 type CreateNetworkingV1IngressClassParams struct {
 	DryRun       OptString
 	FieldManager OptString
+	Pretty       OptString
+}
+
+type CreateNetworkingV1NamespacedIngressParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateNetworkingV1NamespacedNetworkPolicyParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
 }
 
 type CreateNodeV1RuntimeClassParams struct {
 	DryRun       OptString
 	FieldManager OptString
+	Pretty       OptString
 }
 
 type CreateNodeV1alpha1RuntimeClassParams struct {
 	DryRun       OptString
 	FieldManager OptString
+	Pretty       OptString
 }
 
 type CreateNodeV1beta1RuntimeClassParams struct {
 	DryRun       OptString
 	FieldManager OptString
+	Pretty       OptString
+}
+
+type CreatePolicyV1NamespacedPodDisruptionBudgetParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreatePolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
 }
 
 type CreatePolicyV1beta1PodSecurityPolicyParams struct {
 	DryRun       OptString
 	FieldManager OptString
+	Pretty       OptString
 }
 
 type CreateRbacAuthorizationV1ClusterRoleParams struct {
 	DryRun       OptString
 	FieldManager OptString
+	Pretty       OptString
 }
 
 type CreateRbacAuthorizationV1ClusterRoleBindingParams struct {
 	DryRun       OptString
 	FieldManager OptString
+	Pretty       OptString
+}
+
+type CreateRbacAuthorizationV1NamespacedRoleParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateRbacAuthorizationV1NamespacedRoleBindingParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
 }
 
 type CreateSchedulingV1PriorityClassParams struct {
 	DryRun       OptString
 	FieldManager OptString
+	Pretty       OptString
 }
 
 type CreateStorageV1CSIDriverParams struct {
 	DryRun       OptString
 	FieldManager OptString
+	Pretty       OptString
 }
 
 type CreateStorageV1CSINodeParams struct {
 	DryRun       OptString
 	FieldManager OptString
+	Pretty       OptString
 }
 
 type CreateStorageV1StorageClassParams struct {
 	DryRun       OptString
 	FieldManager OptString
+	Pretty       OptString
 }
 
 type CreateStorageV1VolumeAttachmentParams struct {
 	DryRun       OptString
 	FieldManager OptString
+	Pretty       OptString
+}
+
+type CreateStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
+}
+
+type CreateStorageV1beta1NamespacedCSIStorageCapacityParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Namespace    string
+	Pretty       OptString
 }
 
 type DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationParams struct {
@@ -197,6 +828,7 @@ type DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationParams s
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
+	Pretty               OptString
 }
 
 type DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationParams struct {
@@ -211,6 +843,25 @@ type DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationParams
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
+	Pretty               OptString
+}
+
+type DeleteAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Pretty             OptString
+}
+
+type DeleteAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Pretty             OptString
 }
 
 type DeleteApiextensionsV1CollectionCustomResourceDefinitionParams struct {
@@ -225,6 +876,25 @@ type DeleteApiextensionsV1CollectionCustomResourceDefinitionParams struct {
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
+	Pretty               OptString
+}
+
+type DeleteApiextensionsV1CustomResourceDefinitionParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Pretty             OptString
+}
+
+type DeleteApiregistrationV1APIServiceParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Pretty             OptString
 }
 
 type DeleteApiregistrationV1CollectionAPIServiceParams struct {
@@ -239,6 +909,302 @@ type DeleteApiregistrationV1CollectionAPIServiceParams struct {
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
+	Pretty               OptString
+}
+
+type DeleteAppsV1CollectionNamespacedControllerRevisionParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteAppsV1CollectionNamespacedDaemonSetParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteAppsV1CollectionNamespacedDeploymentParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteAppsV1CollectionNamespacedReplicaSetParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteAppsV1CollectionNamespacedStatefulSetParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteAppsV1NamespacedControllerRevisionParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteAppsV1NamespacedDaemonSetParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteAppsV1NamespacedDeploymentParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteAppsV1NamespacedReplicaSetParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteAppsV1NamespacedStatefulSetParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteAutoscalingV2beta1CollectionNamespacedHorizontalPodAutoscalerParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteAutoscalingV2beta2CollectionNamespacedHorizontalPodAutoscalerParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteBatchV1CollectionNamespacedCronJobParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteBatchV1CollectionNamespacedJobParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteBatchV1NamespacedCronJobParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteBatchV1NamespacedJobParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteBatchV1beta1CollectionNamespacedCronJobParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteBatchV1beta1NamespacedCronJobParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteCertificatesV1CertificateSigningRequestParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Pretty             OptString
 }
 
 type DeleteCertificatesV1CollectionCertificateSigningRequestParams struct {
@@ -253,6 +1219,225 @@ type DeleteCertificatesV1CollectionCertificateSigningRequestParams struct {
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
+	Pretty               OptString
+}
+
+type DeleteCoordinationV1CollectionNamespacedLeaseParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteCoordinationV1NamespacedLeaseParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteCoreV1CollectionNamespacedConfigMapParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteCoreV1CollectionNamespacedEndpointsParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteCoreV1CollectionNamespacedEventParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteCoreV1CollectionNamespacedLimitRangeParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteCoreV1CollectionNamespacedPersistentVolumeClaimParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteCoreV1CollectionNamespacedPodParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteCoreV1CollectionNamespacedPodTemplateParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteCoreV1CollectionNamespacedReplicationControllerParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteCoreV1CollectionNamespacedResourceQuotaParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteCoreV1CollectionNamespacedSecretParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteCoreV1CollectionNamespacedServiceParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteCoreV1CollectionNamespacedServiceAccountParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
 }
 
 type DeleteCoreV1CollectionNodeParams struct {
@@ -267,6 +1452,7 @@ type DeleteCoreV1CollectionNodeParams struct {
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
+	Pretty               OptString
 }
 
 type DeleteCoreV1CollectionPersistentVolumeParams struct {
@@ -281,6 +1467,258 @@ type DeleteCoreV1CollectionPersistentVolumeParams struct {
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
+	Pretty               OptString
+}
+
+type DeleteCoreV1NamespaceParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Pretty             OptString
+}
+
+type DeleteCoreV1NamespacedConfigMapParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteCoreV1NamespacedEndpointsParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteCoreV1NamespacedEventParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteCoreV1NamespacedLimitRangeParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteCoreV1NamespacedPersistentVolumeClaimParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteCoreV1NamespacedPodParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteCoreV1NamespacedPodTemplateParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteCoreV1NamespacedReplicationControllerParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteCoreV1NamespacedResourceQuotaParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteCoreV1NamespacedSecretParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteCoreV1NamespacedServiceParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteCoreV1NamespacedServiceAccountParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteCoreV1NodeParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Pretty             OptString
+}
+
+type DeleteCoreV1PersistentVolumeParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Pretty             OptString
+}
+
+type DeleteDiscoveryV1CollectionNamespacedEndpointSliceParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteDiscoveryV1NamespacedEndpointSliceParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteDiscoveryV1beta1CollectionNamespacedEndpointSliceParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteDiscoveryV1beta1NamespacedEndpointSliceParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteEventsV1CollectionNamespacedEventParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteEventsV1NamespacedEventParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteEventsV1beta1CollectionNamespacedEventParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteEventsV1beta1NamespacedEventParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
 }
 
 type DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams struct {
@@ -295,6 +1733,7 @@ type DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams struct {
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
+	Pretty               OptString
 }
 
 type DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationParams struct {
@@ -309,6 +1748,25 @@ type DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationParams
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
+	Pretty               OptString
+}
+
+type DeleteFlowcontrolApiserverV1beta1FlowSchemaParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Pretty             OptString
+}
+
+type DeleteFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Pretty             OptString
 }
 
 type DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams struct {
@@ -323,6 +1781,7 @@ type DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams struct {
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
+	Pretty               OptString
 }
 
 type DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationParams struct {
@@ -337,6 +1796,25 @@ type DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationParams
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
+	Pretty               OptString
+}
+
+type DeleteFlowcontrolApiserverV1beta2FlowSchemaParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Pretty             OptString
+}
+
+type DeleteFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Pretty             OptString
 }
 
 type DeleteInternalApiserverV1alpha1CollectionStorageVersionParams struct {
@@ -351,6 +1829,16 @@ type DeleteInternalApiserverV1alpha1CollectionStorageVersionParams struct {
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
+	Pretty               OptString
+}
+
+type DeleteInternalApiserverV1alpha1StorageVersionParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Pretty             OptString
 }
 
 type DeleteNetworkingV1CollectionIngressClassParams struct {
@@ -365,6 +1853,68 @@ type DeleteNetworkingV1CollectionIngressClassParams struct {
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
+	Pretty               OptString
+}
+
+type DeleteNetworkingV1CollectionNamespacedIngressParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteNetworkingV1CollectionNamespacedNetworkPolicyParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteNetworkingV1IngressClassParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Pretty             OptString
+}
+
+type DeleteNetworkingV1NamespacedIngressParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteNetworkingV1NamespacedNetworkPolicyParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
 }
 
 type DeleteNodeV1CollectionRuntimeClassParams struct {
@@ -379,6 +1929,16 @@ type DeleteNodeV1CollectionRuntimeClassParams struct {
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
+	Pretty               OptString
+}
+
+type DeleteNodeV1RuntimeClassParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Pretty             OptString
 }
 
 type DeleteNodeV1alpha1CollectionRuntimeClassParams struct {
@@ -393,6 +1953,16 @@ type DeleteNodeV1alpha1CollectionRuntimeClassParams struct {
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
+	Pretty               OptString
+}
+
+type DeleteNodeV1alpha1RuntimeClassParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Pretty             OptString
 }
 
 type DeleteNodeV1beta1CollectionRuntimeClassParams struct {
@@ -407,6 +1977,58 @@ type DeleteNodeV1beta1CollectionRuntimeClassParams struct {
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
+	Pretty               OptString
+}
+
+type DeleteNodeV1beta1RuntimeClassParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Pretty             OptString
+}
+
+type DeletePolicyV1CollectionNamespacedPodDisruptionBudgetParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeletePolicyV1NamespacedPodDisruptionBudgetParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeletePolicyV1beta1CollectionNamespacedPodDisruptionBudgetParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
 }
 
 type DeletePolicyV1beta1CollectionPodSecurityPolicyParams struct {
@@ -421,6 +2043,44 @@ type DeletePolicyV1beta1CollectionPodSecurityPolicyParams struct {
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
+	Pretty               OptString
+}
+
+type DeletePolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeletePolicyV1beta1PodSecurityPolicyParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Pretty             OptString
+}
+
+type DeleteRbacAuthorizationV1ClusterRoleParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Pretty             OptString
+}
+
+type DeleteRbacAuthorizationV1ClusterRoleBindingParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Pretty             OptString
 }
 
 type DeleteRbacAuthorizationV1CollectionClusterRoleParams struct {
@@ -435,6 +2095,7 @@ type DeleteRbacAuthorizationV1CollectionClusterRoleParams struct {
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
+	Pretty               OptString
 }
 
 type DeleteRbacAuthorizationV1CollectionClusterRoleBindingParams struct {
@@ -449,6 +2110,59 @@ type DeleteRbacAuthorizationV1CollectionClusterRoleBindingParams struct {
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
+	Pretty               OptString
+}
+
+type DeleteRbacAuthorizationV1CollectionNamespacedRoleParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteRbacAuthorizationV1CollectionNamespacedRoleBindingParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteRbacAuthorizationV1NamespacedRoleParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteRbacAuthorizationV1NamespacedRoleBindingParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
 }
 
 type DeleteSchedulingV1CollectionPriorityClassParams struct {
@@ -463,6 +2177,34 @@ type DeleteSchedulingV1CollectionPriorityClassParams struct {
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
+	Pretty               OptString
+}
+
+type DeleteSchedulingV1PriorityClassParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Pretty             OptString
+}
+
+type DeleteStorageV1CSIDriverParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Pretty             OptString
+}
+
+type DeleteStorageV1CSINodeParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Pretty             OptString
 }
 
 type DeleteStorageV1CollectionCSIDriverParams struct {
@@ -477,6 +2219,7 @@ type DeleteStorageV1CollectionCSIDriverParams struct {
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
+	Pretty               OptString
 }
 
 type DeleteStorageV1CollectionCSINodeParams struct {
@@ -491,6 +2234,7 @@ type DeleteStorageV1CollectionCSINodeParams struct {
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
+	Pretty               OptString
 }
 
 type DeleteStorageV1CollectionStorageClassParams struct {
@@ -505,6 +2249,7 @@ type DeleteStorageV1CollectionStorageClassParams struct {
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
+	Pretty               OptString
 }
 
 type DeleteStorageV1CollectionVolumeAttachmentParams struct {
@@ -519,6 +2264,77 @@ type DeleteStorageV1CollectionVolumeAttachmentParams struct {
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
+	Pretty               OptString
+}
+
+type DeleteStorageV1StorageClassParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Pretty             OptString
+}
+
+type DeleteStorageV1VolumeAttachmentParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Pretty             OptString
+}
+
+type DeleteStorageV1alpha1CollectionNamespacedCSIStorageCapacityParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
+}
+
+type DeleteStorageV1beta1CollectionNamespacedCSIStorageCapacityParams struct {
+	Continue             OptString
+	DryRun               OptString
+	FieldSelector        OptString
+	GracePeriodSeconds   OptInt
+	LabelSelector        OptString
+	Limit                OptInt
+	OrphanDependents     OptBool
+	PropagationPolicy    OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Namespace            string
+	Pretty               OptString
+}
+
+type DeleteStorageV1beta1NamespacedCSIStorageCapacityParams struct {
+	DryRun             OptString
+	GracePeriodSeconds OptInt
+	OrphanDependents   OptBool
+	PropagationPolicy  OptString
+	Name               string
+	Namespace          string
+	Pretty             OptString
 }
 
 type ListAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
@@ -531,6 +2347,7 @@ type ListAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
 	Watch                OptBool
+	Pretty               OptString
 }
 
 type ListAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
@@ -543,6 +2360,7 @@ type ListAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
 	Watch                OptBool
+	Pretty               OptString
 }
 
 type ListApiextensionsV1CustomResourceDefinitionParams struct {
@@ -555,6 +2373,7 @@ type ListApiextensionsV1CustomResourceDefinitionParams struct {
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
 	Watch                OptBool
+	Pretty               OptString
 }
 
 type ListApiregistrationV1APIServiceParams struct {
@@ -567,6 +2386,304 @@ type ListApiregistrationV1APIServiceParams struct {
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
 	Watch                OptBool
+	Pretty               OptString
+}
+
+type ListAppsV1ControllerRevisionForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListAppsV1DaemonSetForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListAppsV1DeploymentForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListAppsV1NamespacedControllerRevisionParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListAppsV1NamespacedDaemonSetParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListAppsV1NamespacedDeploymentParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListAppsV1NamespacedReplicaSetParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListAppsV1NamespacedStatefulSetParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListAppsV1ReplicaSetForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListAppsV1StatefulSetForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListBatchV1CronJobForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListBatchV1JobForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListBatchV1NamespacedCronJobParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListBatchV1NamespacedJobParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListBatchV1beta1CronJobForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListBatchV1beta1NamespacedCronJobParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
 }
 
 type ListCertificatesV1CertificateSigningRequestParams struct {
@@ -575,6 +2692,99 @@ type ListCertificatesV1CertificateSigningRequestParams struct {
 	FieldSelector        OptString
 	LabelSelector        OptString
 	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Pretty               OptString
+}
+
+type ListCoordinationV1LeaseForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListCoordinationV1NamespacedLeaseParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListCoreV1ComponentStatusParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListCoreV1ConfigMapForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListCoreV1EndpointsForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListCoreV1EventForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListCoreV1LimitRangeForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
@@ -591,6 +2801,175 @@ type ListCoreV1NamespaceParams struct {
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
 	Watch                OptBool
+	Pretty               OptString
+}
+
+type ListCoreV1NamespacedConfigMapParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListCoreV1NamespacedEndpointsParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListCoreV1NamespacedEventParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListCoreV1NamespacedLimitRangeParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListCoreV1NamespacedPersistentVolumeClaimParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListCoreV1NamespacedPodParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListCoreV1NamespacedPodTemplateParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListCoreV1NamespacedReplicationControllerParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListCoreV1NamespacedResourceQuotaParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListCoreV1NamespacedSecretParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListCoreV1NamespacedServiceParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListCoreV1NamespacedServiceAccountParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
 }
 
 type ListCoreV1NodeParams struct {
@@ -603,6 +2982,7 @@ type ListCoreV1NodeParams struct {
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
 	Watch                OptBool
+	Pretty               OptString
 }
 
 type ListCoreV1PersistentVolumeParams struct {
@@ -615,6 +2995,219 @@ type ListCoreV1PersistentVolumeParams struct {
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
 	Watch                OptBool
+	Pretty               OptString
+}
+
+type ListCoreV1PersistentVolumeClaimForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListCoreV1PodForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListCoreV1PodTemplateForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListCoreV1ReplicationControllerForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListCoreV1ResourceQuotaForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListCoreV1SecretForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListCoreV1ServiceAccountForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListCoreV1ServiceForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListDiscoveryV1EndpointSliceForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListDiscoveryV1NamespacedEndpointSliceParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListDiscoveryV1beta1NamespacedEndpointSliceParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListEventsV1EventForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListEventsV1NamespacedEventParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListEventsV1beta1EventForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListEventsV1beta1NamespacedEventParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
 }
 
 type ListFlowcontrolApiserverV1beta1FlowSchemaParams struct {
@@ -627,6 +3220,7 @@ type ListFlowcontrolApiserverV1beta1FlowSchemaParams struct {
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
 	Watch                OptBool
+	Pretty               OptString
 }
 
 type ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
@@ -639,6 +3233,7 @@ type ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
 	Watch                OptBool
+	Pretty               OptString
 }
 
 type ListFlowcontrolApiserverV1beta2FlowSchemaParams struct {
@@ -651,6 +3246,7 @@ type ListFlowcontrolApiserverV1beta2FlowSchemaParams struct {
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
 	Watch                OptBool
+	Pretty               OptString
 }
 
 type ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
@@ -663,6 +3259,7 @@ type ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
 	Watch                OptBool
+	Pretty               OptString
 }
 
 type ListInternalApiserverV1alpha1StorageVersionParams struct {
@@ -675,6 +3272,7 @@ type ListInternalApiserverV1alpha1StorageVersionParams struct {
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
 	Watch                OptBool
+	Pretty               OptString
 }
 
 type ListNetworkingV1IngressClassParams struct {
@@ -683,6 +3281,61 @@ type ListNetworkingV1IngressClassParams struct {
 	FieldSelector        OptString
 	LabelSelector        OptString
 	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Pretty               OptString
+}
+
+type ListNetworkingV1IngressForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListNetworkingV1NamespacedIngressParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListNetworkingV1NamespacedNetworkPolicyParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListNetworkingV1NetworkPolicyForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
@@ -699,6 +3352,7 @@ type ListNodeV1RuntimeClassParams struct {
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
 	Watch                OptBool
+	Pretty               OptString
 }
 
 type ListNodeV1alpha1RuntimeClassParams struct {
@@ -711,6 +3365,7 @@ type ListNodeV1alpha1RuntimeClassParams struct {
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
 	Watch                OptBool
+	Pretty               OptString
 }
 
 type ListNodeV1beta1RuntimeClassParams struct {
@@ -719,6 +3374,61 @@ type ListNodeV1beta1RuntimeClassParams struct {
 	FieldSelector        OptString
 	LabelSelector        OptString
 	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Pretty               OptString
+}
+
+type ListPolicyV1NamespacedPodDisruptionBudgetParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListPolicyV1PodDisruptionBudgetForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListPolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
@@ -735,6 +3445,7 @@ type ListPolicyV1beta1PodSecurityPolicyParams struct {
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
 	Watch                OptBool
+	Pretty               OptString
 }
 
 type ListRbacAuthorizationV1ClusterRoleParams struct {
@@ -747,6 +3458,7 @@ type ListRbacAuthorizationV1ClusterRoleParams struct {
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
 	Watch                OptBool
+	Pretty               OptString
 }
 
 type ListRbacAuthorizationV1ClusterRoleBindingParams struct {
@@ -755,6 +3467,61 @@ type ListRbacAuthorizationV1ClusterRoleBindingParams struct {
 	FieldSelector        OptString
 	LabelSelector        OptString
 	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Pretty               OptString
+}
+
+type ListRbacAuthorizationV1NamespacedRoleParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListRbacAuthorizationV1NamespacedRoleBindingParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListRbacAuthorizationV1RoleBindingForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListRbacAuthorizationV1RoleForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
@@ -771,6 +3538,7 @@ type ListSchedulingV1PriorityClassParams struct {
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
 	Watch                OptBool
+	Pretty               OptString
 }
 
 type ListStorageV1CSIDriverParams struct {
@@ -783,6 +3551,7 @@ type ListStorageV1CSIDriverParams struct {
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
 	Watch                OptBool
+	Pretty               OptString
 }
 
 type ListStorageV1CSINodeParams struct {
@@ -795,6 +3564,7 @@ type ListStorageV1CSINodeParams struct {
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
 	Watch                OptBool
+	Pretty               OptString
 }
 
 type ListStorageV1StorageClassParams struct {
@@ -807,6 +3577,7 @@ type ListStorageV1StorageClassParams struct {
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt
 	Watch                OptBool
+	Pretty               OptString
 }
 
 type ListStorageV1VolumeAttachmentParams struct {
@@ -815,6 +3586,4395 @@ type ListStorageV1VolumeAttachmentParams struct {
 	FieldSelector        OptString
 	LabelSelector        OptString
 	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Pretty               OptString
+}
+
+type ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type ListStorageV1beta1NamespacedCSIStorageCapacityParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+	Namespace            string
+	Pretty               OptString
+}
+
+type LogFileHandlerParams struct {
+	Logpath string
+}
+
+type PatchAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchApiextensionsV1CustomResourceDefinitionParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchApiextensionsV1CustomResourceDefinitionStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchApiregistrationV1APIServiceParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchApiregistrationV1APIServiceStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchAppsV1NamespacedControllerRevisionParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchAppsV1NamespacedDaemonSetParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchAppsV1NamespacedDaemonSetStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchAppsV1NamespacedDeploymentParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchAppsV1NamespacedDeploymentScaleParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchAppsV1NamespacedDeploymentStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchAppsV1NamespacedReplicaSetParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchAppsV1NamespacedReplicaSetScaleParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchAppsV1NamespacedReplicaSetStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchAppsV1NamespacedStatefulSetParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchAppsV1NamespacedStatefulSetScaleParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchAppsV1NamespacedStatefulSetStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchBatchV1NamespacedCronJobParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchBatchV1NamespacedCronJobStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchBatchV1NamespacedJobParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchBatchV1NamespacedJobStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchBatchV1beta1NamespacedCronJobParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchBatchV1beta1NamespacedCronJobStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchCertificatesV1CertificateSigningRequestParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchCertificatesV1CertificateSigningRequestApprovalParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchCertificatesV1CertificateSigningRequestStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchCoordinationV1NamespacedLeaseParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchCoreV1NamespaceParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchCoreV1NamespaceStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchCoreV1NamespacedConfigMapParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchCoreV1NamespacedEndpointsParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchCoreV1NamespacedEventParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchCoreV1NamespacedLimitRangeParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchCoreV1NamespacedPersistentVolumeClaimParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchCoreV1NamespacedPersistentVolumeClaimStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchCoreV1NamespacedPodParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchCoreV1NamespacedPodEphemeralcontainersParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchCoreV1NamespacedPodStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchCoreV1NamespacedPodTemplateParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchCoreV1NamespacedReplicationControllerParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchCoreV1NamespacedReplicationControllerScaleParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchCoreV1NamespacedReplicationControllerStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchCoreV1NamespacedResourceQuotaParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchCoreV1NamespacedResourceQuotaStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchCoreV1NamespacedSecretParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchCoreV1NamespacedServiceParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchCoreV1NamespacedServiceAccountParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchCoreV1NamespacedServiceStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchCoreV1NodeParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchCoreV1NodeStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchCoreV1PersistentVolumeParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchCoreV1PersistentVolumeStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchDiscoveryV1NamespacedEndpointSliceParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchDiscoveryV1beta1NamespacedEndpointSliceParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchEventsV1NamespacedEventParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchEventsV1beta1NamespacedEventParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchFlowcontrolApiserverV1beta1FlowSchemaParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchFlowcontrolApiserverV1beta1FlowSchemaStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchFlowcontrolApiserverV1beta2FlowSchemaParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchFlowcontrolApiserverV1beta2FlowSchemaStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchInternalApiserverV1alpha1StorageVersionParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchInternalApiserverV1alpha1StorageVersionStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchNetworkingV1IngressClassParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchNetworkingV1NamespacedIngressParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchNetworkingV1NamespacedIngressStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchNetworkingV1NamespacedNetworkPolicyParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchNodeV1RuntimeClassParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchNodeV1alpha1RuntimeClassParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchNodeV1beta1RuntimeClassParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchPolicyV1NamespacedPodDisruptionBudgetParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchPolicyV1NamespacedPodDisruptionBudgetStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchPolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchPolicyV1beta1PodSecurityPolicyParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchRbacAuthorizationV1ClusterRoleParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchRbacAuthorizationV1ClusterRoleBindingParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchRbacAuthorizationV1NamespacedRoleParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchRbacAuthorizationV1NamespacedRoleBindingParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchSchedulingV1PriorityClassParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchStorageV1CSIDriverParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchStorageV1CSINodeParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchStorageV1StorageClassParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchStorageV1VolumeAttachmentParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchStorageV1VolumeAttachmentStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Pretty       OptString
+}
+
+type PatchStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type PatchStorageV1beta1NamespacedCSIStorageCapacityParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Force        OptBool
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReadAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadApiextensionsV1CustomResourceDefinitionParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadApiextensionsV1CustomResourceDefinitionStatusParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadApiregistrationV1APIServiceParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadApiregistrationV1APIServiceStatusParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadAppsV1NamespacedControllerRevisionParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadAppsV1NamespacedDaemonSetParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadAppsV1NamespacedDaemonSetStatusParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadAppsV1NamespacedDeploymentParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadAppsV1NamespacedDeploymentScaleParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadAppsV1NamespacedDeploymentStatusParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadAppsV1NamespacedReplicaSetParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadAppsV1NamespacedReplicaSetScaleParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadAppsV1NamespacedReplicaSetStatusParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadAppsV1NamespacedStatefulSetParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadAppsV1NamespacedStatefulSetScaleParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadAppsV1NamespacedStatefulSetStatusParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadBatchV1NamespacedCronJobParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadBatchV1NamespacedCronJobStatusParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadBatchV1NamespacedJobParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadBatchV1NamespacedJobStatusParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadBatchV1beta1NamespacedCronJobParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadBatchV1beta1NamespacedCronJobStatusParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadCertificatesV1CertificateSigningRequestParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadCertificatesV1CertificateSigningRequestApprovalParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadCertificatesV1CertificateSigningRequestStatusParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadCoordinationV1NamespacedLeaseParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadCoreV1ComponentStatusParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadCoreV1NamespaceParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadCoreV1NamespaceStatusParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadCoreV1NamespacedConfigMapParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadCoreV1NamespacedEndpointsParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadCoreV1NamespacedEventParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadCoreV1NamespacedLimitRangeParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadCoreV1NamespacedPersistentVolumeClaimParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadCoreV1NamespacedPersistentVolumeClaimStatusParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadCoreV1NamespacedPodParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadCoreV1NamespacedPodEphemeralcontainersParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadCoreV1NamespacedPodLogParams struct {
+	Container                    OptString
+	Follow                       OptBool
+	InsecureSkipTLSVerifyBackend OptBool
+	LimitBytes                   OptInt
+	Name                         string
+	Namespace                    string
+	Pretty                       OptString
+	Previous                     OptBool
+	SinceSeconds                 OptInt
+	TailLines                    OptInt
+	Timestamps                   OptBool
+}
+
+type ReadCoreV1NamespacedPodStatusParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadCoreV1NamespacedPodTemplateParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadCoreV1NamespacedReplicationControllerParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadCoreV1NamespacedReplicationControllerScaleParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadCoreV1NamespacedReplicationControllerStatusParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadCoreV1NamespacedResourceQuotaParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadCoreV1NamespacedResourceQuotaStatusParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadCoreV1NamespacedSecretParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadCoreV1NamespacedServiceParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadCoreV1NamespacedServiceAccountParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadCoreV1NamespacedServiceStatusParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadCoreV1NodeParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadCoreV1NodeStatusParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadCoreV1PersistentVolumeParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadCoreV1PersistentVolumeStatusParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadDiscoveryV1NamespacedEndpointSliceParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadDiscoveryV1beta1NamespacedEndpointSliceParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadEventsV1NamespacedEventParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadEventsV1beta1NamespacedEventParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadFlowcontrolApiserverV1beta1FlowSchemaParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadFlowcontrolApiserverV1beta2FlowSchemaParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadInternalApiserverV1alpha1StorageVersionParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadInternalApiserverV1alpha1StorageVersionStatusParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadNetworkingV1IngressClassParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadNetworkingV1NamespacedIngressParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadNetworkingV1NamespacedIngressStatusParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadNetworkingV1NamespacedNetworkPolicyParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadNodeV1RuntimeClassParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadNodeV1alpha1RuntimeClassParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadNodeV1beta1RuntimeClassParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadPolicyV1NamespacedPodDisruptionBudgetParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadPolicyV1beta1PodSecurityPolicyParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadRbacAuthorizationV1ClusterRoleParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadRbacAuthorizationV1ClusterRoleBindingParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadRbacAuthorizationV1NamespacedRoleParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadRbacAuthorizationV1NamespacedRoleBindingParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadSchedulingV1PriorityClassParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadStorageV1CSIDriverParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadStorageV1CSINodeParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadStorageV1StorageClassParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadStorageV1VolumeAttachmentParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadStorageV1VolumeAttachmentStatusParams struct {
+	Name   string
+	Pretty OptString
+}
+
+type ReadStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReadStorageV1beta1NamespacedCSIStorageCapacityParams struct {
+	Name      string
+	Namespace string
+	Pretty    OptString
+}
+
+type ReplaceAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceApiextensionsV1CustomResourceDefinitionParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceApiextensionsV1CustomResourceDefinitionStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceApiregistrationV1APIServiceParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceApiregistrationV1APIServiceStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceAppsV1NamespacedControllerRevisionParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceAppsV1NamespacedDaemonSetParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceAppsV1NamespacedDaemonSetStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceAppsV1NamespacedDeploymentParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceAppsV1NamespacedDeploymentScaleParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceAppsV1NamespacedDeploymentStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceAppsV1NamespacedReplicaSetParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceAppsV1NamespacedReplicaSetScaleParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceAppsV1NamespacedReplicaSetStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceAppsV1NamespacedStatefulSetParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceAppsV1NamespacedStatefulSetScaleParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceAppsV1NamespacedStatefulSetStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceBatchV1NamespacedCronJobParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceBatchV1NamespacedCronJobStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceBatchV1NamespacedJobParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceBatchV1NamespacedJobStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceBatchV1beta1NamespacedCronJobParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceBatchV1beta1NamespacedCronJobStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceCertificatesV1CertificateSigningRequestParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceCertificatesV1CertificateSigningRequestApprovalParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceCertificatesV1CertificateSigningRequestStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceCoordinationV1NamespacedLeaseParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1NamespaceParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1NamespaceFinalizeParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1NamespaceStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1NamespacedConfigMapParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1NamespacedEndpointsParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1NamespacedEventParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1NamespacedLimitRangeParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1NamespacedPersistentVolumeClaimParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1NamespacedPersistentVolumeClaimStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1NamespacedPodParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1NamespacedPodEphemeralcontainersParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1NamespacedPodStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1NamespacedPodTemplateParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1NamespacedReplicationControllerParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1NamespacedReplicationControllerScaleParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1NamespacedReplicationControllerStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1NamespacedResourceQuotaParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1NamespacedResourceQuotaStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1NamespacedSecretParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1NamespacedServiceParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1NamespacedServiceAccountParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1NamespacedServiceStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1NodeParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1NodeStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1PersistentVolumeParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceCoreV1PersistentVolumeStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceDiscoveryV1NamespacedEndpointSliceParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceDiscoveryV1beta1NamespacedEndpointSliceParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceEventsV1NamespacedEventParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceEventsV1beta1NamespacedEventParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceFlowcontrolApiserverV1beta1FlowSchemaParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceFlowcontrolApiserverV1beta1FlowSchemaStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceFlowcontrolApiserverV1beta2FlowSchemaParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceFlowcontrolApiserverV1beta2FlowSchemaStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceInternalApiserverV1alpha1StorageVersionParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceInternalApiserverV1alpha1StorageVersionStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceNetworkingV1IngressClassParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceNetworkingV1NamespacedIngressParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceNetworkingV1NamespacedIngressStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceNetworkingV1NamespacedNetworkPolicyParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceNodeV1RuntimeClassParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceNodeV1alpha1RuntimeClassParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceNodeV1beta1RuntimeClassParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplacePolicyV1NamespacedPodDisruptionBudgetParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplacePolicyV1NamespacedPodDisruptionBudgetStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplacePolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplacePolicyV1beta1NamespacedPodDisruptionBudgetStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplacePolicyV1beta1PodSecurityPolicyParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceRbacAuthorizationV1ClusterRoleParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceRbacAuthorizationV1ClusterRoleBindingParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceRbacAuthorizationV1NamespacedRoleParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceRbacAuthorizationV1NamespacedRoleBindingParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceSchedulingV1PriorityClassParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceStorageV1CSIDriverParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceStorageV1CSINodeParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceStorageV1StorageClassParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceStorageV1VolumeAttachmentParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceStorageV1VolumeAttachmentStatusParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Pretty       OptString
+}
+
+type ReplaceStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type ReplaceStorageV1beta1NamespacedCSIStorageCapacityParams struct {
+	DryRun       OptString
+	FieldManager OptString
+	Name         string
+	Namespace    string
+	Pretty       OptString
+}
+
+type WatchAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchApiextensionsV1CustomResourceDefinitionParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchApiextensionsV1CustomResourceDefinitionListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchApiregistrationV1APIServiceParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchApiregistrationV1APIServiceListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAppsV1ControllerRevisionListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAppsV1DaemonSetListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAppsV1DeploymentListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAppsV1NamespacedControllerRevisionParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAppsV1NamespacedControllerRevisionListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAppsV1NamespacedDaemonSetParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAppsV1NamespacedDaemonSetListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAppsV1NamespacedDeploymentParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAppsV1NamespacedDeploymentListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAppsV1NamespacedReplicaSetParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAppsV1NamespacedReplicaSetListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAppsV1NamespacedStatefulSetParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAppsV1NamespacedStatefulSetListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAppsV1ReplicaSetListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAppsV1StatefulSetListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchBatchV1CronJobListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchBatchV1JobListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchBatchV1NamespacedCronJobParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchBatchV1NamespacedCronJobListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchBatchV1NamespacedJobParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchBatchV1NamespacedJobListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchBatchV1beta1CronJobListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchBatchV1beta1NamespacedCronJobParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchBatchV1beta1NamespacedCronJobListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCertificatesV1CertificateSigningRequestParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCertificatesV1CertificateSigningRequestListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoordinationV1LeaseListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoordinationV1NamespacedLeaseParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoordinationV1NamespacedLeaseListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1ConfigMapListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1EndpointsListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1EventListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1LimitRangeListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespaceParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespaceListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespacedConfigMapParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespacedConfigMapListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespacedEndpointsParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespacedEndpointsListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespacedEventParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespacedEventListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespacedLimitRangeParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespacedLimitRangeListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespacedPersistentVolumeClaimParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespacedPersistentVolumeClaimListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespacedPodParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespacedPodListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespacedPodTemplateParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespacedPodTemplateListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespacedReplicationControllerParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespacedReplicationControllerListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespacedResourceQuotaParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespacedResourceQuotaListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespacedSecretParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespacedSecretListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespacedServiceParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespacedServiceAccountParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespacedServiceAccountListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NamespacedServiceListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NodeParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1NodeListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1PersistentVolumeParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1PersistentVolumeListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1PodListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1PodTemplateListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1ReplicationControllerListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1ResourceQuotaListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1SecretListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1ServiceAccountListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchCoreV1ServiceListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchDiscoveryV1EndpointSliceListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchDiscoveryV1NamespacedEndpointSliceParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchDiscoveryV1NamespacedEndpointSliceListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchDiscoveryV1beta1NamespacedEndpointSliceParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchDiscoveryV1beta1NamespacedEndpointSliceListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchEventsV1EventListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchEventsV1NamespacedEventParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchEventsV1NamespacedEventListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchEventsV1beta1EventListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchEventsV1beta1NamespacedEventParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchEventsV1beta1NamespacedEventListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchFlowcontrolApiserverV1beta1FlowSchemaParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchFlowcontrolApiserverV1beta1FlowSchemaListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchFlowcontrolApiserverV1beta2FlowSchemaParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchFlowcontrolApiserverV1beta2FlowSchemaListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchInternalApiserverV1alpha1StorageVersionParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchInternalApiserverV1alpha1StorageVersionListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchNetworkingV1IngressClassParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchNetworkingV1IngressClassListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchNetworkingV1IngressListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchNetworkingV1NamespacedIngressParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchNetworkingV1NamespacedIngressListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchNetworkingV1NamespacedNetworkPolicyParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchNetworkingV1NamespacedNetworkPolicyListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchNetworkingV1NetworkPolicyListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchNodeV1RuntimeClassParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchNodeV1RuntimeClassListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchNodeV1alpha1RuntimeClassParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchNodeV1alpha1RuntimeClassListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchNodeV1beta1RuntimeClassParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchNodeV1beta1RuntimeClassListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchPolicyV1NamespacedPodDisruptionBudgetParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchPolicyV1NamespacedPodDisruptionBudgetListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchPolicyV1beta1PodSecurityPolicyParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchPolicyV1beta1PodSecurityPolicyListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchRbacAuthorizationV1ClusterRoleParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchRbacAuthorizationV1ClusterRoleBindingParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchRbacAuthorizationV1ClusterRoleBindingListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchRbacAuthorizationV1ClusterRoleListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchRbacAuthorizationV1NamespacedRoleParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchRbacAuthorizationV1NamespacedRoleBindingParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchRbacAuthorizationV1NamespacedRoleBindingListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchRbacAuthorizationV1NamespacedRoleListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchRbacAuthorizationV1RoleListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchSchedulingV1PriorityClassParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchSchedulingV1PriorityClassListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchStorageV1CSIDriverParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchStorageV1CSIDriverListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchStorageV1CSINodeParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchStorageV1CSINodeListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchStorageV1StorageClassParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchStorageV1StorageClassListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchStorageV1VolumeAttachmentParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchStorageV1VolumeAttachmentListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchStorageV1beta1NamespacedCSIStorageCapacityParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Name                 string
+	Namespace            string
+	Pretty               OptString
+	ResourceVersion      OptString
+	ResourceVersionMatch OptString
+	TimeoutSeconds       OptInt
+	Watch                OptBool
+}
+
+type WatchStorageV1beta1NamespacedCSIStorageCapacityListParams struct {
+	AllowWatchBookmarks  OptBool
+	Continue             OptString
+	FieldSelector        OptString
+	LabelSelector        OptString
+	Limit                OptInt
+	Namespace            string
+	Pretty               OptString
 	ResourceVersion      OptString
 	ResourceVersionMatch OptString
 	TimeoutSeconds       OptInt

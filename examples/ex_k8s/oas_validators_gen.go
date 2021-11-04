@@ -141,6 +141,114 @@ func (s CreateApiextensionsV1CustomResourceDefinitionApplicationYamlCreated) Val
 func (s CreateApiextensionsV1CustomResourceDefinitionApplicationYamlOK) Validate() error {
 	return nil
 }
+func (s CreateAppsV1NamespacedDaemonSetApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedDaemonSetApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedDaemonSetApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedDaemonSetApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedDaemonSetApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedDaemonSetApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedDaemonSetApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedDaemonSetApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedDaemonSetApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedDeploymentApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedDeploymentApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedDeploymentApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedDeploymentApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedDeploymentApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedDeploymentApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedDeploymentApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedDeploymentApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedDeploymentApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedReplicaSetApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedReplicaSetApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedReplicaSetApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedReplicaSetApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedReplicaSetApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedReplicaSetApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedReplicaSetApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedReplicaSetApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedReplicaSetApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedStatefulSetApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedStatefulSetApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedStatefulSetApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedStatefulSetApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedStatefulSetApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedStatefulSetApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedStatefulSetApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedStatefulSetApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateAppsV1NamespacedStatefulSetApplicationYamlOK) Validate() error {
+	return nil
+}
 func (s CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONAccepted) Validate() error {
 	return nil
 }
@@ -166,6 +274,141 @@ func (s CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlCreated) Valid
 	return nil
 }
 func (s CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateBatchV1NamespacedCronJobApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateBatchV1NamespacedCronJobApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateBatchV1NamespacedCronJobApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateBatchV1NamespacedCronJobApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateBatchV1NamespacedCronJobApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateBatchV1NamespacedCronJobApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateBatchV1NamespacedCronJobApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateBatchV1NamespacedCronJobApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateBatchV1NamespacedCronJobApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateBatchV1NamespacedJobApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateBatchV1NamespacedJobApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateBatchV1NamespacedJobApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateBatchV1NamespacedJobApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateBatchV1NamespacedJobApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateBatchV1NamespacedJobApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateBatchV1NamespacedJobApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateBatchV1NamespacedJobApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateBatchV1NamespacedJobApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateBatchV1beta1NamespacedCronJobApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateBatchV1beta1NamespacedCronJobApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateBatchV1beta1NamespacedCronJobApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateBatchV1beta1NamespacedCronJobApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateBatchV1beta1NamespacedCronJobApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateBatchV1beta1NamespacedCronJobApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateBatchV1beta1NamespacedCronJobApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateBatchV1beta1NamespacedCronJobApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateBatchV1beta1NamespacedCronJobApplicationYamlOK) Validate() error {
 	return nil
 }
 func (s CreateCertificatesV1CertificateSigningRequestApplicationJSONAccepted) Validate() error {
@@ -195,6 +438,141 @@ func (s CreateCertificatesV1CertificateSigningRequestApplicationYamlCreated) Val
 func (s CreateCertificatesV1CertificateSigningRequestApplicationYamlOK) Validate() error {
 	return nil
 }
+func (s CreateCoreV1NamespacedLimitRangeApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedLimitRangeApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedLimitRangeApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedLimitRangeApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedLimitRangeApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedLimitRangeApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedLimitRangeApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedLimitRangeApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedLimitRangeApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedPodApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedPodApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedPodApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedPodApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedPodApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedPodApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedPodApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedPodApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedPodApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedPodTemplateApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedPodTemplateApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedPodTemplateApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedPodTemplateApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedPodTemplateApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedPodTemplateApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedPodTemplateApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedPodTemplateApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedPodTemplateApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedReplicationControllerApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedReplicationControllerApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedReplicationControllerApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedReplicationControllerApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedReplicationControllerApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedReplicationControllerApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedReplicationControllerApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedReplicationControllerApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedReplicationControllerApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedServiceAccountTokenApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedServiceAccountTokenApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedServiceAccountTokenApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedServiceAccountTokenApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedServiceAccountTokenApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedServiceAccountTokenApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedServiceAccountTokenApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedServiceAccountTokenApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateCoreV1NamespacedServiceAccountTokenApplicationYamlOK) Validate() error {
+	return nil
+}
 func (s CreateCoreV1PersistentVolumeApplicationJSONAccepted) Validate() error {
 	return nil
 }
@@ -220,6 +598,60 @@ func (s CreateCoreV1PersistentVolumeApplicationYamlCreated) Validate() error {
 	return nil
 }
 func (s CreateCoreV1PersistentVolumeApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateDiscoveryV1NamespacedEndpointSliceApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateDiscoveryV1NamespacedEndpointSliceApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateDiscoveryV1NamespacedEndpointSliceApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateDiscoveryV1NamespacedEndpointSliceApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateDiscoveryV1NamespacedEndpointSliceApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateDiscoveryV1NamespacedEndpointSliceApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateDiscoveryV1NamespacedEndpointSliceApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateDiscoveryV1NamespacedEndpointSliceApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateDiscoveryV1NamespacedEndpointSliceApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateDiscoveryV1beta1NamespacedEndpointSliceApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateDiscoveryV1beta1NamespacedEndpointSliceApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateDiscoveryV1beta1NamespacedEndpointSliceApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateDiscoveryV1beta1NamespacedEndpointSliceApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateDiscoveryV1beta1NamespacedEndpointSliceApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateDiscoveryV1beta1NamespacedEndpointSliceApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateDiscoveryV1beta1NamespacedEndpointSliceApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateDiscoveryV1beta1NamespacedEndpointSliceApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateDiscoveryV1beta1NamespacedEndpointSliceApplicationYamlOK) Validate() error {
 	return nil
 }
 func (s CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONAccepted) Validate() error {
@@ -276,6 +708,33 @@ func (s CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlCreated) Valid
 func (s CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK) Validate() error {
 	return nil
 }
+func (s CreateNetworkingV1NamespacedIngressApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateNetworkingV1NamespacedIngressApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateNetworkingV1NamespacedIngressApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateNetworkingV1NamespacedIngressApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateNetworkingV1NamespacedIngressApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateNetworkingV1NamespacedIngressApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateNetworkingV1NamespacedIngressApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateNetworkingV1NamespacedIngressApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateNetworkingV1NamespacedIngressApplicationYamlOK) Validate() error {
+	return nil
+}
 func (s CreatePolicyV1beta1PodSecurityPolicyApplicationJSONAccepted) Validate() error {
 	return nil
 }
@@ -328,6 +787,33 @@ func (s CreateRbacAuthorizationV1ClusterRoleApplicationYamlCreated) Validate() e
 	return nil
 }
 func (s CreateRbacAuthorizationV1ClusterRoleApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateRbacAuthorizationV1NamespacedRoleApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateRbacAuthorizationV1NamespacedRoleApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateRbacAuthorizationV1NamespacedRoleApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateRbacAuthorizationV1NamespacedRoleApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateRbacAuthorizationV1NamespacedRoleApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateRbacAuthorizationV1NamespacedRoleApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateRbacAuthorizationV1NamespacedRoleApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateRbacAuthorizationV1NamespacedRoleApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateRbacAuthorizationV1NamespacedRoleApplicationYamlOK) Validate() error {
 	return nil
 }
 func (s CreateStorageV1CSINodeApplicationJSONAccepted) Validate() error {
@@ -409,6 +895,132 @@ func (s CreateStorageV1VolumeAttachmentApplicationYamlCreated) Validate() error 
 	return nil
 }
 func (s CreateStorageV1VolumeAttachmentApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s DeleteCoreV1NamespacedPodApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s DeleteCoreV1NamespacedPodApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s DeleteCoreV1NamespacedPodApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s DeleteCoreV1NamespacedPodApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s DeleteCoreV1NamespacedPodApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s DeleteCoreV1NamespacedPodApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s DeleteCoreV1NamespacedPodTemplateApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s DeleteCoreV1NamespacedPodTemplateApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s DeleteCoreV1NamespacedPodTemplateApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s DeleteCoreV1NamespacedPodTemplateApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s DeleteCoreV1NamespacedPodTemplateApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s DeleteCoreV1NamespacedPodTemplateApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s DeleteCoreV1PersistentVolumeApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s DeleteCoreV1PersistentVolumeApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s DeleteCoreV1PersistentVolumeApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s DeleteCoreV1PersistentVolumeApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s DeleteCoreV1PersistentVolumeApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s DeleteCoreV1PersistentVolumeApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s DeletePolicyV1beta1PodSecurityPolicyApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s DeletePolicyV1beta1PodSecurityPolicyApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s DeletePolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s DeletePolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s DeletePolicyV1beta1PodSecurityPolicyApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s DeletePolicyV1beta1PodSecurityPolicyApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s DeleteStorageV1CSINodeApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s DeleteStorageV1CSINodeApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s DeleteStorageV1CSINodeApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s DeleteStorageV1CSINodeApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s DeleteStorageV1CSINodeApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s DeleteStorageV1CSINodeApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s DeleteStorageV1StorageClassApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s DeleteStorageV1StorageClassApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s DeleteStorageV1StorageClassApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s DeleteStorageV1StorageClassApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s DeleteStorageV1StorageClassApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s DeleteStorageV1StorageClassApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s DeleteStorageV1VolumeAttachmentApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s DeleteStorageV1VolumeAttachmentApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s DeleteStorageV1VolumeAttachmentApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s DeleteStorageV1VolumeAttachmentApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s DeleteStorageV1VolumeAttachmentApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s DeleteStorageV1VolumeAttachmentApplicationYamlOK) Validate() error {
 	return nil
 }
 func (s GetAPIVersionsApplicationJSONOK) Validate() error {
@@ -1373,6 +1985,43 @@ func (s IoK8sAPIAppsV1StatefulSetSpec) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "template",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s IoK8sAPIAuthenticationV1TokenRequest) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if err := s.Spec.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "spec",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s IoK8sAPIAuthenticationV1TokenRequestSpec) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Audiences == nil {
+			return errors.New("required, can't be nil")
+		}
+		_ = s.Audiences // validation expected, but not supported
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "audiences",
 			Error: err,
 		})
 	}
@@ -4733,6 +5382,81 @@ func (s ListAppsV1DeploymentForAllNamespacesApplicationVndKubernetesProtobufStre
 func (s ListAppsV1DeploymentForAllNamespacesApplicationYamlOK) Validate() error {
 	return nil
 }
+func (s ListAppsV1NamespacedControllerRevisionApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1NamespacedControllerRevisionApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1NamespacedControllerRevisionApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1NamespacedControllerRevisionApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1NamespacedControllerRevisionApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1NamespacedDaemonSetApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1NamespacedDaemonSetApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1NamespacedDaemonSetApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1NamespacedDaemonSetApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1NamespacedDaemonSetApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1NamespacedDeploymentApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1NamespacedDeploymentApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1NamespacedDeploymentApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1NamespacedDeploymentApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1NamespacedDeploymentApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1NamespacedReplicaSetApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1NamespacedReplicaSetApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1NamespacedReplicaSetApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1NamespacedReplicaSetApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1NamespacedReplicaSetApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1NamespacedStatefulSetApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1NamespacedStatefulSetApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1NamespacedStatefulSetApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1NamespacedStatefulSetApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1NamespacedStatefulSetApplicationYamlOK) Validate() error {
+	return nil
+}
 func (s ListAppsV1ReplicaSetForAllNamespacesApplicationJSONOK) Validate() error {
 	return nil
 }
@@ -4778,6 +5502,21 @@ func (s ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationVndKu
 func (s ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK) Validate() error {
 	return nil
 }
+func (s ListAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationYamlOK) Validate() error {
+	return nil
+}
 func (s ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK) Validate() error {
 	return nil
 }
@@ -4793,6 +5532,21 @@ func (s ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplication
 func (s ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK) Validate() error {
 	return nil
 }
+func (s ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationYamlOK) Validate() error {
+	return nil
+}
 func (s ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK) Validate() error {
 	return nil
 }
@@ -4806,6 +5560,21 @@ func (s ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplication
 	return nil
 }
 func (s ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationYamlOK) Validate() error {
 	return nil
 }
 func (s ListBatchV1CronJobForAllNamespacesApplicationJSONOK) Validate() error {
@@ -4838,6 +5607,36 @@ func (s ListBatchV1JobForAllNamespacesApplicationVndKubernetesProtobufStreamWatc
 func (s ListBatchV1JobForAllNamespacesApplicationYamlOK) Validate() error {
 	return nil
 }
+func (s ListBatchV1NamespacedCronJobApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1NamespacedCronJobApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1NamespacedCronJobApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1NamespacedCronJobApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1NamespacedCronJobApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1NamespacedJobApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1NamespacedJobApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1NamespacedJobApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1NamespacedJobApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1NamespacedJobApplicationYamlOK) Validate() error {
+	return nil
+}
 func (s ListBatchV1beta1CronJobForAllNamespacesApplicationJSONOK) Validate() error {
 	return nil
 }
@@ -4851,6 +5650,21 @@ func (s ListBatchV1beta1CronJobForAllNamespacesApplicationVndKubernetesProtobufS
 	return nil
 }
 func (s ListBatchV1beta1CronJobForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1beta1NamespacedCronJobApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1beta1NamespacedCronJobApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1beta1NamespacedCronJobApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1beta1NamespacedCronJobApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1beta1NamespacedCronJobApplicationYamlOK) Validate() error {
 	return nil
 }
 func (s ListCertificatesV1CertificateSigningRequestApplicationJSONOK) Validate() error {
@@ -4881,6 +5695,21 @@ func (s ListCoordinationV1LeaseForAllNamespacesApplicationVndKubernetesProtobufS
 	return nil
 }
 func (s ListCoordinationV1LeaseForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoordinationV1NamespacedLeaseApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoordinationV1NamespacedLeaseApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoordinationV1NamespacedLeaseApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoordinationV1NamespacedLeaseApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoordinationV1NamespacedLeaseApplicationYamlOK) Validate() error {
 	return nil
 }
 func (s ListCoreV1ComponentStatusApplicationJSONOK) Validate() error {
@@ -4971,6 +5800,186 @@ func (s ListCoreV1NamespaceApplicationVndKubernetesProtobufStreamWatchOK) Valida
 	return nil
 }
 func (s ListCoreV1NamespaceApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedConfigMapApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedConfigMapApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedConfigMapApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedConfigMapApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedConfigMapApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedEndpointsApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedEndpointsApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedEndpointsApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedEndpointsApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedEndpointsApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedEventApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedEventApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedEventApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedEventApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedEventApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedLimitRangeApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedLimitRangeApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedLimitRangeApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedLimitRangeApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedLimitRangeApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedPersistentVolumeClaimApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedPersistentVolumeClaimApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedPersistentVolumeClaimApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedPersistentVolumeClaimApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedPersistentVolumeClaimApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedPodApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedPodApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedPodApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedPodApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedPodApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedPodTemplateApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedPodTemplateApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedPodTemplateApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedPodTemplateApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedPodTemplateApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedReplicationControllerApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedReplicationControllerApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedReplicationControllerApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedReplicationControllerApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedReplicationControllerApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedResourceQuotaApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedResourceQuotaApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedResourceQuotaApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedResourceQuotaApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedResourceQuotaApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedSecretApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedSecretApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedSecretApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedSecretApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedSecretApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedServiceAccountApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedServiceAccountApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedServiceAccountApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedServiceAccountApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedServiceAccountApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedServiceApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedServiceApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedServiceApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedServiceApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespacedServiceApplicationYamlOK) Validate() error {
 	return nil
 }
 func (s ListCoreV1NodeApplicationJSONOK) Validate() error {
@@ -5138,6 +6147,21 @@ func (s ListDiscoveryV1EndpointSliceForAllNamespacesApplicationVndKubernetesProt
 func (s ListDiscoveryV1EndpointSliceForAllNamespacesApplicationYamlOK) Validate() error {
 	return nil
 }
+func (s ListDiscoveryV1NamespacedEndpointSliceApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListDiscoveryV1NamespacedEndpointSliceApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListDiscoveryV1NamespacedEndpointSliceApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListDiscoveryV1NamespacedEndpointSliceApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListDiscoveryV1NamespacedEndpointSliceApplicationYamlOK) Validate() error {
+	return nil
+}
 func (s ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONOK) Validate() error {
 	return nil
 }
@@ -5151,6 +6175,21 @@ func (s ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationVndKubernete
 	return nil
 }
 func (s ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListDiscoveryV1beta1NamespacedEndpointSliceApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListDiscoveryV1beta1NamespacedEndpointSliceApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListDiscoveryV1beta1NamespacedEndpointSliceApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListDiscoveryV1beta1NamespacedEndpointSliceApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListDiscoveryV1beta1NamespacedEndpointSliceApplicationYamlOK) Validate() error {
 	return nil
 }
 func (s ListEventsV1EventForAllNamespacesApplicationJSONOK) Validate() error {
@@ -5168,6 +6207,21 @@ func (s ListEventsV1EventForAllNamespacesApplicationVndKubernetesProtobufStreamW
 func (s ListEventsV1EventForAllNamespacesApplicationYamlOK) Validate() error {
 	return nil
 }
+func (s ListEventsV1NamespacedEventApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListEventsV1NamespacedEventApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListEventsV1NamespacedEventApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListEventsV1NamespacedEventApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListEventsV1NamespacedEventApplicationYamlOK) Validate() error {
+	return nil
+}
 func (s ListEventsV1beta1EventForAllNamespacesApplicationJSONOK) Validate() error {
 	return nil
 }
@@ -5181,6 +6235,21 @@ func (s ListEventsV1beta1EventForAllNamespacesApplicationVndKubernetesProtobufSt
 	return nil
 }
 func (s ListEventsV1beta1EventForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListEventsV1beta1NamespacedEventApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListEventsV1beta1NamespacedEventApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListEventsV1beta1NamespacedEventApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListEventsV1beta1NamespacedEventApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListEventsV1beta1NamespacedEventApplicationYamlOK) Validate() error {
 	return nil
 }
 func (s ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK) Validate() error {
@@ -5288,6 +6357,36 @@ func (s ListNetworkingV1IngressForAllNamespacesApplicationVndKubernetesProtobufS
 func (s ListNetworkingV1IngressForAllNamespacesApplicationYamlOK) Validate() error {
 	return nil
 }
+func (s ListNetworkingV1NamespacedIngressApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListNetworkingV1NamespacedIngressApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListNetworkingV1NamespacedIngressApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListNetworkingV1NamespacedIngressApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListNetworkingV1NamespacedIngressApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListNetworkingV1NamespacedNetworkPolicyApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListNetworkingV1NamespacedNetworkPolicyApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListNetworkingV1NamespacedNetworkPolicyApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListNetworkingV1NamespacedNetworkPolicyApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListNetworkingV1NamespacedNetworkPolicyApplicationYamlOK) Validate() error {
+	return nil
+}
 func (s ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONOK) Validate() error {
 	return nil
 }
@@ -5348,6 +6447,21 @@ func (s ListNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufStreamWatchOK
 func (s ListNodeV1beta1RuntimeClassApplicationYamlOK) Validate() error {
 	return nil
 }
+func (s ListPolicyV1NamespacedPodDisruptionBudgetApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListPolicyV1NamespacedPodDisruptionBudgetApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListPolicyV1NamespacedPodDisruptionBudgetApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListPolicyV1NamespacedPodDisruptionBudgetApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListPolicyV1NamespacedPodDisruptionBudgetApplicationYamlOK) Validate() error {
+	return nil
+}
 func (s ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONOK) Validate() error {
 	return nil
 }
@@ -5361,6 +6475,21 @@ func (s ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesP
 	return nil
 }
 func (s ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListPolicyV1beta1NamespacedPodDisruptionBudgetApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListPolicyV1beta1NamespacedPodDisruptionBudgetApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListPolicyV1beta1NamespacedPodDisruptionBudgetApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListPolicyV1beta1NamespacedPodDisruptionBudgetApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListPolicyV1beta1NamespacedPodDisruptionBudgetApplicationYamlOK) Validate() error {
 	return nil
 }
 func (s ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONOK) Validate() error {
@@ -5421,6 +6550,36 @@ func (s ListRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobu
 	return nil
 }
 func (s ListRbacAuthorizationV1ClusterRoleBindingApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1NamespacedRoleApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1NamespacedRoleApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1NamespacedRoleApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1NamespacedRoleApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1NamespacedRoleApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1NamespacedRoleBindingApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1NamespacedRoleBindingApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1NamespacedRoleBindingApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1NamespacedRoleBindingApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1NamespacedRoleBindingApplicationYamlOK) Validate() error {
 	return nil
 }
 func (s ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONOK) Validate() error {
@@ -5543,6 +6702,21 @@ func (s ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationVndKuber
 func (s ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationYamlOK) Validate() error {
 	return nil
 }
+func (s ListStorageV1alpha1NamespacedCSIStorageCapacityApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1alpha1NamespacedCSIStorageCapacityApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1alpha1NamespacedCSIStorageCapacityApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1alpha1NamespacedCSIStorageCapacityApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1alpha1NamespacedCSIStorageCapacityApplicationYamlOK) Validate() error {
+	return nil
+}
 func (s ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONOK) Validate() error {
 	return nil
 }
@@ -5556,5 +6730,2225 @@ func (s ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationVndKubern
 	return nil
 }
 func (s ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1beta1NamespacedCSIStorageCapacityApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1beta1NamespacedCSIStorageCapacityApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1beta1NamespacedCSIStorageCapacityApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1beta1NamespacedCSIStorageCapacityApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1beta1NamespacedCSIStorageCapacityApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchApiextensionsV1CustomResourceDefinitionApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchApiextensionsV1CustomResourceDefinitionApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchApiextensionsV1CustomResourceDefinitionApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchApiextensionsV1CustomResourceDefinitionApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchApiextensionsV1CustomResourceDefinitionStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchApiextensionsV1CustomResourceDefinitionStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchApiextensionsV1CustomResourceDefinitionStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchApiextensionsV1CustomResourceDefinitionStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchApiextensionsV1CustomResourceDefinitionStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchApiextensionsV1CustomResourceDefinitionStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedDaemonSetApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedDaemonSetApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedDaemonSetApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedDaemonSetApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedDaemonSetApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedDaemonSetApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedDaemonSetStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedDaemonSetStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedDaemonSetStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedDaemonSetStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedDaemonSetStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedDaemonSetStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedDeploymentApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedDeploymentApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedDeploymentApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedDeploymentApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedDeploymentApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedDeploymentApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedDeploymentStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedDeploymentStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedDeploymentStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedDeploymentStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedDeploymentStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedDeploymentStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedReplicaSetApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedReplicaSetApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedReplicaSetApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedReplicaSetApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedReplicaSetApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedReplicaSetApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedReplicaSetStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedReplicaSetStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedReplicaSetStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedReplicaSetStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedReplicaSetStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedReplicaSetStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedStatefulSetApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedStatefulSetApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedStatefulSetApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedStatefulSetApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedStatefulSetApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedStatefulSetApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedStatefulSetStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedStatefulSetStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedStatefulSetStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedStatefulSetStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedStatefulSetStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchAppsV1NamespacedStatefulSetStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchBatchV1NamespacedCronJobApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchBatchV1NamespacedCronJobApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchBatchV1NamespacedCronJobApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchBatchV1NamespacedCronJobApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchBatchV1NamespacedCronJobApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchBatchV1NamespacedCronJobApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchBatchV1NamespacedCronJobStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchBatchV1NamespacedCronJobStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchBatchV1NamespacedCronJobStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchBatchV1NamespacedCronJobStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchBatchV1NamespacedCronJobStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchBatchV1NamespacedCronJobStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchBatchV1NamespacedJobApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchBatchV1NamespacedJobApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchBatchV1NamespacedJobApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchBatchV1NamespacedJobApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchBatchV1NamespacedJobApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchBatchV1NamespacedJobApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchBatchV1NamespacedJobStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchBatchV1NamespacedJobStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchBatchV1NamespacedJobStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchBatchV1NamespacedJobStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchBatchV1NamespacedJobStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchBatchV1NamespacedJobStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchBatchV1beta1NamespacedCronJobApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchBatchV1beta1NamespacedCronJobApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchBatchV1beta1NamespacedCronJobApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchBatchV1beta1NamespacedCronJobApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchBatchV1beta1NamespacedCronJobApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchBatchV1beta1NamespacedCronJobApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchBatchV1beta1NamespacedCronJobStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchBatchV1beta1NamespacedCronJobStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchBatchV1beta1NamespacedCronJobStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchBatchV1beta1NamespacedCronJobStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchBatchV1beta1NamespacedCronJobStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchBatchV1beta1NamespacedCronJobStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchCertificatesV1CertificateSigningRequestApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchCertificatesV1CertificateSigningRequestApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchCertificatesV1CertificateSigningRequestApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchCertificatesV1CertificateSigningRequestApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchCertificatesV1CertificateSigningRequestApprovalApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchCertificatesV1CertificateSigningRequestApprovalApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchCertificatesV1CertificateSigningRequestApprovalApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchCertificatesV1CertificateSigningRequestApprovalApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchCertificatesV1CertificateSigningRequestApprovalApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchCertificatesV1CertificateSigningRequestApprovalApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchCertificatesV1CertificateSigningRequestStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchCertificatesV1CertificateSigningRequestStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchCertificatesV1CertificateSigningRequestStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchCertificatesV1CertificateSigningRequestStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchCertificatesV1CertificateSigningRequestStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchCertificatesV1CertificateSigningRequestStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedLimitRangeApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedLimitRangeApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedLimitRangeApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedLimitRangeApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedLimitRangeApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedLimitRangeApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedPodApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedPodApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedPodApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedPodApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedPodApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedPodApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedPodEphemeralcontainersApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedPodEphemeralcontainersApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedPodEphemeralcontainersApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedPodEphemeralcontainersApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedPodEphemeralcontainersApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedPodEphemeralcontainersApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedPodStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedPodStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedPodStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedPodStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedPodStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedPodStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedPodTemplateApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedPodTemplateApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedPodTemplateApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedPodTemplateApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedPodTemplateApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedPodTemplateApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedReplicationControllerApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedReplicationControllerApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedReplicationControllerApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedReplicationControllerApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedReplicationControllerApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedReplicationControllerApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedReplicationControllerStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedReplicationControllerStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedReplicationControllerStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedReplicationControllerStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedReplicationControllerStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1NamespacedReplicationControllerStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1PersistentVolumeApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1PersistentVolumeApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1PersistentVolumeApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1PersistentVolumeApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1PersistentVolumeApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1PersistentVolumeApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1PersistentVolumeStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1PersistentVolumeStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1PersistentVolumeStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1PersistentVolumeStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchCoreV1PersistentVolumeStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchCoreV1PersistentVolumeStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchDiscoveryV1NamespacedEndpointSliceApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchDiscoveryV1NamespacedEndpointSliceApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchDiscoveryV1NamespacedEndpointSliceApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchDiscoveryV1NamespacedEndpointSliceApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchDiscoveryV1NamespacedEndpointSliceApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchDiscoveryV1NamespacedEndpointSliceApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchNetworkingV1NamespacedIngressApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchNetworkingV1NamespacedIngressApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchNetworkingV1NamespacedIngressApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchNetworkingV1NamespacedIngressApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchNetworkingV1NamespacedIngressApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchNetworkingV1NamespacedIngressApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchNetworkingV1NamespacedIngressStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchNetworkingV1NamespacedIngressStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchNetworkingV1NamespacedIngressStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchNetworkingV1NamespacedIngressStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchNetworkingV1NamespacedIngressStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchNetworkingV1NamespacedIngressStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchPolicyV1beta1PodSecurityPolicyApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchPolicyV1beta1PodSecurityPolicyApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchPolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchPolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchPolicyV1beta1PodSecurityPolicyApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchPolicyV1beta1PodSecurityPolicyApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchRbacAuthorizationV1ClusterRoleApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchRbacAuthorizationV1ClusterRoleApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchRbacAuthorizationV1ClusterRoleApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchRbacAuthorizationV1ClusterRoleApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchRbacAuthorizationV1NamespacedRoleApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchRbacAuthorizationV1NamespacedRoleApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchRbacAuthorizationV1NamespacedRoleApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchRbacAuthorizationV1NamespacedRoleApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchRbacAuthorizationV1NamespacedRoleApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchRbacAuthorizationV1NamespacedRoleApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchStorageV1CSINodeApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchStorageV1CSINodeApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchStorageV1CSINodeApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchStorageV1CSINodeApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchStorageV1CSINodeApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchStorageV1CSINodeApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchStorageV1StorageClassApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchStorageV1StorageClassApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchStorageV1StorageClassApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchStorageV1StorageClassApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchStorageV1StorageClassApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchStorageV1StorageClassApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchStorageV1VolumeAttachmentApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchStorageV1VolumeAttachmentApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchStorageV1VolumeAttachmentApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchStorageV1VolumeAttachmentApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchStorageV1VolumeAttachmentApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchStorageV1VolumeAttachmentApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s PatchStorageV1VolumeAttachmentStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s PatchStorageV1VolumeAttachmentStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s PatchStorageV1VolumeAttachmentStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s PatchStorageV1VolumeAttachmentStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s PatchStorageV1VolumeAttachmentStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s PatchStorageV1VolumeAttachmentStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadApiextensionsV1CustomResourceDefinitionApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadApiextensionsV1CustomResourceDefinitionApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadApiextensionsV1CustomResourceDefinitionStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadApiextensionsV1CustomResourceDefinitionStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadApiextensionsV1CustomResourceDefinitionStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadAppsV1NamespacedDaemonSetApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadAppsV1NamespacedDaemonSetApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadAppsV1NamespacedDaemonSetApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadAppsV1NamespacedDaemonSetStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadAppsV1NamespacedDaemonSetStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadAppsV1NamespacedDaemonSetStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadAppsV1NamespacedDeploymentApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadAppsV1NamespacedDeploymentApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadAppsV1NamespacedDeploymentApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadAppsV1NamespacedDeploymentStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadAppsV1NamespacedDeploymentStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadAppsV1NamespacedDeploymentStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadAppsV1NamespacedReplicaSetApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadAppsV1NamespacedReplicaSetApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadAppsV1NamespacedReplicaSetApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadAppsV1NamespacedReplicaSetStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadAppsV1NamespacedReplicaSetStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadAppsV1NamespacedReplicaSetStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadAppsV1NamespacedStatefulSetApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadAppsV1NamespacedStatefulSetApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadAppsV1NamespacedStatefulSetApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadAppsV1NamespacedStatefulSetStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadAppsV1NamespacedStatefulSetStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadAppsV1NamespacedStatefulSetStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadBatchV1NamespacedCronJobApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadBatchV1NamespacedCronJobApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadBatchV1NamespacedCronJobApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadBatchV1NamespacedCronJobStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadBatchV1NamespacedCronJobStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadBatchV1NamespacedCronJobStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadBatchV1NamespacedJobApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadBatchV1NamespacedJobApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadBatchV1NamespacedJobApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadBatchV1NamespacedJobStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadBatchV1NamespacedJobStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadBatchV1NamespacedJobStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadBatchV1beta1NamespacedCronJobApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadBatchV1beta1NamespacedCronJobApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadBatchV1beta1NamespacedCronJobApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadBatchV1beta1NamespacedCronJobStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadBatchV1beta1NamespacedCronJobStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadBatchV1beta1NamespacedCronJobStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadCertificatesV1CertificateSigningRequestApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadCertificatesV1CertificateSigningRequestApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadCertificatesV1CertificateSigningRequestApprovalApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadCertificatesV1CertificateSigningRequestApprovalApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadCertificatesV1CertificateSigningRequestApprovalApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadCertificatesV1CertificateSigningRequestStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadCertificatesV1CertificateSigningRequestStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadCertificatesV1CertificateSigningRequestStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1NamespacedLimitRangeApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1NamespacedLimitRangeApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1NamespacedLimitRangeApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1NamespacedPodApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1NamespacedPodApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1NamespacedPodApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1NamespacedPodEphemeralcontainersApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1NamespacedPodEphemeralcontainersApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1NamespacedPodEphemeralcontainersApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1NamespacedPodStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1NamespacedPodStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1NamespacedPodStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1NamespacedPodTemplateApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1NamespacedPodTemplateApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1NamespacedPodTemplateApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1NamespacedReplicationControllerApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1NamespacedReplicationControllerApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1NamespacedReplicationControllerApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1NamespacedReplicationControllerStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1NamespacedReplicationControllerStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1NamespacedReplicationControllerStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1PersistentVolumeApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1PersistentVolumeApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1PersistentVolumeApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1PersistentVolumeStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1PersistentVolumeStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadCoreV1PersistentVolumeStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadDiscoveryV1NamespacedEndpointSliceApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadDiscoveryV1NamespacedEndpointSliceApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadDiscoveryV1NamespacedEndpointSliceApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadDiscoveryV1beta1NamespacedEndpointSliceApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadDiscoveryV1beta1NamespacedEndpointSliceApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadDiscoveryV1beta1NamespacedEndpointSliceApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadNetworkingV1NamespacedIngressApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadNetworkingV1NamespacedIngressApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadNetworkingV1NamespacedIngressApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadNetworkingV1NamespacedIngressStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadNetworkingV1NamespacedIngressStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadNetworkingV1NamespacedIngressStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadPolicyV1beta1PodSecurityPolicyApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadPolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadPolicyV1beta1PodSecurityPolicyApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadRbacAuthorizationV1ClusterRoleApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadRbacAuthorizationV1ClusterRoleApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadRbacAuthorizationV1NamespacedRoleApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadRbacAuthorizationV1NamespacedRoleApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadRbacAuthorizationV1NamespacedRoleApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadStorageV1CSINodeApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadStorageV1CSINodeApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadStorageV1CSINodeApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadStorageV1StorageClassApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadStorageV1StorageClassApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadStorageV1StorageClassApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadStorageV1VolumeAttachmentApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadStorageV1VolumeAttachmentApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadStorageV1VolumeAttachmentApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReadStorageV1VolumeAttachmentStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReadStorageV1VolumeAttachmentStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReadStorageV1VolumeAttachmentStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceApiextensionsV1CustomResourceDefinitionApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceApiextensionsV1CustomResourceDefinitionApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceApiextensionsV1CustomResourceDefinitionApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceApiextensionsV1CustomResourceDefinitionApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceApiextensionsV1CustomResourceDefinitionStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceApiextensionsV1CustomResourceDefinitionStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceApiextensionsV1CustomResourceDefinitionStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceApiextensionsV1CustomResourceDefinitionStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceApiextensionsV1CustomResourceDefinitionStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceApiextensionsV1CustomResourceDefinitionStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedDaemonSetApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedDaemonSetApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedDaemonSetApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedDaemonSetApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedDaemonSetApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedDaemonSetApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedDaemonSetStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedDaemonSetStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedDaemonSetStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedDaemonSetStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedDaemonSetStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedDaemonSetStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedDeploymentApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedDeploymentApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedDeploymentApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedDeploymentApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedDeploymentApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedDeploymentApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedDeploymentStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedDeploymentStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedDeploymentStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedDeploymentStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedDeploymentStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedDeploymentStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedReplicaSetApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedReplicaSetApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedReplicaSetApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedReplicaSetApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedReplicaSetApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedReplicaSetApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedReplicaSetStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedReplicaSetStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedReplicaSetStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedReplicaSetStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedReplicaSetStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedReplicaSetStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedStatefulSetApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedStatefulSetApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedStatefulSetApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedStatefulSetApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedStatefulSetApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedStatefulSetApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedStatefulSetStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedStatefulSetStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedStatefulSetStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedStatefulSetStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedStatefulSetStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAppsV1NamespacedStatefulSetStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1NamespacedCronJobApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1NamespacedCronJobApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1NamespacedCronJobApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1NamespacedCronJobApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1NamespacedCronJobApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1NamespacedCronJobApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1NamespacedCronJobStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1NamespacedCronJobStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1NamespacedCronJobStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1NamespacedCronJobStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1NamespacedCronJobStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1NamespacedCronJobStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1NamespacedJobApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1NamespacedJobApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1NamespacedJobApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1NamespacedJobApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1NamespacedJobApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1NamespacedJobApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1NamespacedJobStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1NamespacedJobStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1NamespacedJobStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1NamespacedJobStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1NamespacedJobStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1NamespacedJobStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1beta1NamespacedCronJobApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1beta1NamespacedCronJobApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1beta1NamespacedCronJobApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1beta1NamespacedCronJobApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1beta1NamespacedCronJobApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1beta1NamespacedCronJobApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1beta1NamespacedCronJobStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1beta1NamespacedCronJobStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1beta1NamespacedCronJobStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1beta1NamespacedCronJobStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1beta1NamespacedCronJobStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceBatchV1beta1NamespacedCronJobStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceCertificatesV1CertificateSigningRequestApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCertificatesV1CertificateSigningRequestApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceCertificatesV1CertificateSigningRequestApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCertificatesV1CertificateSigningRequestApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceCertificatesV1CertificateSigningRequestApprovalApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCertificatesV1CertificateSigningRequestApprovalApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceCertificatesV1CertificateSigningRequestApprovalApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCertificatesV1CertificateSigningRequestApprovalApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceCertificatesV1CertificateSigningRequestApprovalApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCertificatesV1CertificateSigningRequestApprovalApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceCertificatesV1CertificateSigningRequestStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCertificatesV1CertificateSigningRequestStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceCertificatesV1CertificateSigningRequestStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCertificatesV1CertificateSigningRequestStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceCertificatesV1CertificateSigningRequestStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCertificatesV1CertificateSigningRequestStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedLimitRangeApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedLimitRangeApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedLimitRangeApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedLimitRangeApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedLimitRangeApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedLimitRangeApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedPodApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedPodApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedPodApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedPodApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedPodApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedPodApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedPodEphemeralcontainersApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedPodEphemeralcontainersApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedPodEphemeralcontainersApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedPodEphemeralcontainersApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedPodEphemeralcontainersApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedPodEphemeralcontainersApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedPodStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedPodStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedPodStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedPodStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedPodStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedPodStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedPodTemplateApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedPodTemplateApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedPodTemplateApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedPodTemplateApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedPodTemplateApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedPodTemplateApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedReplicationControllerApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedReplicationControllerApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedReplicationControllerApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedReplicationControllerApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedReplicationControllerApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedReplicationControllerApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedReplicationControllerStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedReplicationControllerStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedReplicationControllerStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedReplicationControllerStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedReplicationControllerStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1NamespacedReplicationControllerStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1PersistentVolumeApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1PersistentVolumeApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1PersistentVolumeApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1PersistentVolumeApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1PersistentVolumeApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1PersistentVolumeApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1PersistentVolumeStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1PersistentVolumeStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1PersistentVolumeStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1PersistentVolumeStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1PersistentVolumeStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceCoreV1PersistentVolumeStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceDiscoveryV1NamespacedEndpointSliceApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceDiscoveryV1NamespacedEndpointSliceApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceDiscoveryV1NamespacedEndpointSliceApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceDiscoveryV1NamespacedEndpointSliceApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceDiscoveryV1NamespacedEndpointSliceApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceDiscoveryV1NamespacedEndpointSliceApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceDiscoveryV1beta1NamespacedEndpointSliceApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceDiscoveryV1beta1NamespacedEndpointSliceApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceDiscoveryV1beta1NamespacedEndpointSliceApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceDiscoveryV1beta1NamespacedEndpointSliceApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceDiscoveryV1beta1NamespacedEndpointSliceApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceDiscoveryV1beta1NamespacedEndpointSliceApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceNetworkingV1NamespacedIngressApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceNetworkingV1NamespacedIngressApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceNetworkingV1NamespacedIngressApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceNetworkingV1NamespacedIngressApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceNetworkingV1NamespacedIngressApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceNetworkingV1NamespacedIngressApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceNetworkingV1NamespacedIngressStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceNetworkingV1NamespacedIngressStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceNetworkingV1NamespacedIngressStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceNetworkingV1NamespacedIngressStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceNetworkingV1NamespacedIngressStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceNetworkingV1NamespacedIngressStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplacePolicyV1beta1PodSecurityPolicyApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplacePolicyV1beta1PodSecurityPolicyApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplacePolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplacePolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplacePolicyV1beta1PodSecurityPolicyApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplacePolicyV1beta1PodSecurityPolicyApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceRbacAuthorizationV1ClusterRoleApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceRbacAuthorizationV1ClusterRoleApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceRbacAuthorizationV1ClusterRoleApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceRbacAuthorizationV1ClusterRoleApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceRbacAuthorizationV1NamespacedRoleApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceRbacAuthorizationV1NamespacedRoleApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceRbacAuthorizationV1NamespacedRoleApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceRbacAuthorizationV1NamespacedRoleApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceRbacAuthorizationV1NamespacedRoleApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceRbacAuthorizationV1NamespacedRoleApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceStorageV1CSINodeApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceStorageV1CSINodeApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceStorageV1CSINodeApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceStorageV1CSINodeApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceStorageV1CSINodeApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceStorageV1CSINodeApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceStorageV1StorageClassApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceStorageV1StorageClassApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceStorageV1StorageClassApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceStorageV1StorageClassApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceStorageV1StorageClassApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceStorageV1StorageClassApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceStorageV1VolumeAttachmentApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceStorageV1VolumeAttachmentApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceStorageV1VolumeAttachmentApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceStorageV1VolumeAttachmentApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceStorageV1VolumeAttachmentApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceStorageV1VolumeAttachmentApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ReplaceStorageV1VolumeAttachmentStatusApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s ReplaceStorageV1VolumeAttachmentStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ReplaceStorageV1VolumeAttachmentStatusApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s ReplaceStorageV1VolumeAttachmentStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ReplaceStorageV1VolumeAttachmentStatusApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s ReplaceStorageV1VolumeAttachmentStatusApplicationYamlOK) Validate() error {
 	return nil
 }
