@@ -108,22 +108,22 @@ func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation, itemParam
 }
 
 func mergeParams(opParams, itemParams []*oas.Parameter) []*oas.Parameter {
-	lookupOp := func(pname string) bool {
+	lookupOp := func(name string, in oas.ParameterLocation) bool {
 		for _, param := range opParams {
-			if param.Name == pname {
+			if param.Name == name && param.In == in {
 				return true
 			}
 		}
 		return false
 	}
 
-	for _, itemParam := range itemParams {
+	for _, param := range itemParams {
 		// Param defined in operation take precedense over param defined in pathItem.
-		if lookupOp(itemParam.Name) {
+		if lookupOp(param.Name, param.In) {
 			continue
 		}
 
-		opParams = append(opParams, itemParam)
+		opParams = append(opParams, param)
 	}
 
 	return opParams
