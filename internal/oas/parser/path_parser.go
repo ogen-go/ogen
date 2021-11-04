@@ -79,7 +79,7 @@ func (p *pathParser) push() error {
 
 	param, found := p.lookupParam(string(p.part))
 	if !found {
-		return errors.Errorf("parameter not specified: %s", p.part)
+		return errors.Errorf("parameter not specified: %s", string(p.part))
 	}
 
 	p.parts = append(p.parts, oas.PathPart{Param: param})
