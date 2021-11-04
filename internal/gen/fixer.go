@@ -10,6 +10,7 @@ import (
 
 func (g *Generator) fix() {
 	for _, op := range g.operations {
+		g.fixEqualRequests(op)
 		g.fixEqualResponses(op)
 	}
 }
@@ -136,4 +137,79 @@ func cloneResponse(r *ir.Response) *ir.Response {
 		newR.StatusCode[code] = newStatResp
 	}
 	return newR
+}
+
+func (g *Generator) fixEqualRequests(op *ir.Operation) {
+	if op.Request == nil {
+		return
+	}
+	if !op.Request.Type.Is(ir.KindInterface) {
+		return
+	}
+
+	// We can modify request contents.
+	// To prevent changes affecting to other operations
+	// (in case of referenced requestBodies), we copy requestBody.
+	op.Request = cloneRequest(op.Request)
+
+	type candidate struct {
+		renameTo string
+		ctype    string
+		typ      *ir.Type
+	}
+	var candidates []candidate
+
+	var contents []string
+	for ct := range op.Request.Contents {
+		contents = append(contents, string(ct))
+	}
+	sort.Strings(contents)
+
+	for _, lcontent := range contents {
+		lschema := op.Request.Contents[ir.ContentType(lcontent)]
+		for _, rcontent := range contents {
+			if lcontent == rcontent {
+				continue
+			}
+
+			rschema := op.Request.Contents[ir.ContentType(rcontent)]
+			if reflect.DeepEqual(lschema, rschema) {
+				candidates = append(candidates, candidate{
+					renameTo: pascal(op.Name, lcontent),
+					ctype:    lcontent,
+					typ:      lschema,
+				})
+				candidates = append(candidates, candidate{
+					renameTo: pascal(op.Name, rcontent),
+					ctype:    rcontent,
+					typ:      rschema,
+				})
+			}
+		}
+	}
+
+	for _, candidate := range candidates {
+		candidate.typ.Unimplement(op.Request.Type)
+		alias := ir.Alias(candidate.renameTo, candidate.typ)
+		alias.Implement(op.Request.Type)
+
+		// TODO: Fix duplicates.
+		// g.saveType(alias)
+		g.types[alias.Name] = alias
+
+		op.Request.Contents[ir.ContentType(candidate.ctype)] = alias
+	}
+}
+
+func cloneRequest(r *ir.Request) *ir.Request {
+	contents := make(map[ir.ContentType]*ir.Type)
+	for contentType, typ := range r.Contents {
+		contents[contentType] = typ
+	}
+	return &ir.Request{
+		Type:     r.Type,
+		Contents: contents,
+		Required: r.Required,
+		Spec:     r.Spec,
+	}
 }

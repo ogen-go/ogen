@@ -46,7 +46,7 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
     {{- if $op.Request }}{{/* Request validation */}}
         {{- if eq $op.Request.Type.Kind "interface" }}
             switch request := request.(type) {
-            {{- range $type:= $op.Request.Type.ListImplementations }}
+            {{- range $_, $type:= $op.Request.Contents }}
             case *{{ $type.Go }}:
                 {{- if $type.NeedValidation }}
                     if err := func() error {
