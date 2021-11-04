@@ -18,25 +18,14 @@ func (g *Generator) generateOperation(spec *oas.Operation) (_ *ir.Operation, err
 		op.Name = pascal(spec.OperationID)
 	}
 
-	// Convert []oas.Parameter to []ir.Parameter.
+	// Convert []oas.Parameter to []*ir.Parameter.
 	op.Params, err = g.generateParameters(op.Name, spec.Parameters)
 	if err != nil {
 		return nil, errors.Wrap(err, "parameters")
 	}
 
-	// Convert []oas.PathPart to []ir.PathPart.
-	for _, part := range spec.PathParts {
-		if part.Raw != "" {
-			op.PathParts = append(op.PathParts, &ir.PathPart{Raw: part.Raw})
-			continue
-		}
-
-		param, found := findParam(op.Params, part.Param.Name)
-		if !found {
-			panic("unreachable")
-		}
-		op.PathParts = append(op.PathParts, &ir.PathPart{Param: param})
-	}
+	// Convert []oas.PathPart to []*ir.PathPart
+	op.PathParts = convertPathParts(op.Spec.PathParts, op.PathParams())
 
 	if spec.RequestBody != nil {
 		op.Request, err = g.generateRequest(op.Name, spec.RequestBody)
@@ -53,11 +42,30 @@ func (g *Generator) generateOperation(spec *oas.Operation) (_ *ir.Operation, err
 	return op, nil
 }
 
-func findParam(params []*ir.Parameter, specName string) (*ir.Parameter, bool) {
-	for _, p := range params {
-		if p.Spec.Name == specName {
-			return p, true
+func convertPathParts(parts []oas.PathPart, params []*ir.Parameter) []*ir.PathPart {
+	find := func(pname string) (*ir.Parameter, bool) {
+		for _, p := range params {
+			if p.Spec.Name == pname && p.Spec.In == oas.LocationPath {
+				return p, true
+			}
 		}
+		return nil, false
 	}
-	return nil, false
+
+	result := make([]*ir.PathPart, 0, len(parts))
+	for _, part := range parts {
+		if part.Raw != "" {
+			result = append(result, &ir.PathPart{Raw: part.Raw})
+			continue
+		}
+
+		param, found := find(part.Param.Name)
+		if !found {
+			panic("unreachable")
+		}
+
+		result = append(result, &ir.PathPart{Param: param})
+	}
+
+	return result
 }

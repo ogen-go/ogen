@@ -8,7 +8,7 @@ import (
 )
 
 func (g *Generator) generateParameters(opName string, params []*oas.Parameter) ([]*ir.Parameter, error) {
-	var result []*ir.Parameter
+	result := make([]*ir.Parameter, 0, len(params))
 	for _, p := range params {
 		if p.In == oas.LocationCookie {
 			err := &ErrNotImplemented{"cookie params"}
