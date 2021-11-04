@@ -63,7 +63,7 @@ func TestPathParser(t *testing.T) {
 			Name:      "test4",
 			Path:      "/foo/{bar}/{baz}",
 			Params:    []*oas.Parameter{bar},
-			ExpectErr: `path parameter not specified: 'baz'`,
+			ExpectErr: `path parameter not specified: "baz"`,
 		},
 	}
 

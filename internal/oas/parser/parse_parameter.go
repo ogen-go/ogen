@@ -32,7 +32,7 @@ func (p *parser) parseParams(params []ogen.Parameter) ([]*oas.Parameter, error) 
 			location: param.In,
 		}
 		if _, ok := unique[ploc]; ok {
-			return nil, errors.Errorf("duplicate parameter: '%s' in '%s'", param.Name, param.In)
+			return nil, errors.Errorf("duplicate parameter: %q in %q", param.Name, param.In)
 		}
 
 		unique[ploc] = struct{}{}
