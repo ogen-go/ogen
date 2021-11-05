@@ -1004,9 +1004,6 @@ type InlineKeyboardMarkup struct {
 
 type InlineQueryResult string
 
-func (a *InlineQueryResult) wrap(v string)  { *a = InlineQueryResult(v) }
-func (a *InlineQueryResult) unwrap() string { return string(*a) }
-
 // Ref: #/components/schemas/InputMedia
 // InputMedia represents sum type.
 type InputMedia struct {

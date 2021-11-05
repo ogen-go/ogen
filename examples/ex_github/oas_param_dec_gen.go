@@ -12407,7 +12407,7 @@ func decodeCodeScanningGetAlertParams(r *http.Request) (CodeScanningGetAlertPara
 				}(); err != nil {
 					return err
 				}
-				params.AlertNumber.wrap(ParamsAlertNumberUnderlying)
+				params.AlertNumber = AlertNumber(ParamsAlertNumberUnderlying)
 				return nil
 			}(); err != nil {
 				return params, err
@@ -12708,7 +12708,7 @@ func decodeCodeScanningListAlertInstancesParams(r *http.Request) (CodeScanningLi
 				}(); err != nil {
 					return err
 				}
-				params.AlertNumber.wrap(ParamsAlertNumberUnderlying)
+				params.AlertNumber = AlertNumber(ParamsAlertNumberUnderlying)
 				return nil
 			}(); err != nil {
 				return params, err
@@ -12817,7 +12817,7 @@ func decodeCodeScanningListAlertInstancesParams(r *http.Request) (CodeScanningLi
 					}(); err != nil {
 						return err
 					}
-					ParamsRefValue.wrap(ParamsRefValueUnderlying)
+					ParamsRefValue = CodeScanningRef(ParamsRefValueUnderlying)
 					return nil
 				}(); err != nil {
 					return err
@@ -12926,7 +12926,7 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 					}(); err != nil {
 						return err
 					}
-					ParamsToolNameValue.wrap(ParamsToolNameValueUnderlying)
+					ParamsToolNameValue = CodeScanningAnalysisToolName(ParamsToolNameValueUnderlying)
 					return nil
 				}(); err != nil {
 					return err
@@ -12968,7 +12968,7 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 					}(); err != nil {
 						return err
 					}
-					ParamsToolGUIDValue.wrap(ParamsToolGUIDValueUnderlying)
+					ParamsToolGUIDValue = CodeScanningAnalysisToolGUID(ParamsToolGUIDValueUnderlying)
 					return nil
 				}(); err != nil {
 					return err
@@ -13080,7 +13080,7 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 					}(); err != nil {
 						return err
 					}
-					ParamsRefValue.wrap(ParamsRefValueUnderlying)
+					ParamsRefValue = CodeScanningRef(ParamsRefValueUnderlying)
 					return nil
 				}(); err != nil {
 					return err
@@ -13230,7 +13230,7 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 					}(); err != nil {
 						return err
 					}
-					ParamsToolNameValue.wrap(ParamsToolNameValueUnderlying)
+					ParamsToolNameValue = CodeScanningAnalysisToolName(ParamsToolNameValueUnderlying)
 					return nil
 				}(); err != nil {
 					return err
@@ -13272,7 +13272,7 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 					}(); err != nil {
 						return err
 					}
-					ParamsToolGUIDValue.wrap(ParamsToolGUIDValueUnderlying)
+					ParamsToolGUIDValue = CodeScanningAnalysisToolGUID(ParamsToolGUIDValueUnderlying)
 					return nil
 				}(); err != nil {
 					return err
@@ -13384,7 +13384,7 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 					}(); err != nil {
 						return err
 					}
-					ParamsRefValue.wrap(ParamsRefValueUnderlying)
+					ParamsRefValue = CodeScanningRef(ParamsRefValueUnderlying)
 					return nil
 				}(); err != nil {
 					return err
@@ -13426,7 +13426,7 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 					}(); err != nil {
 						return err
 					}
-					ParamsSarifIDValue.wrap(ParamsSarifIDValueUnderlying)
+					ParamsSarifIDValue = CodeScanningAnalysisSarifID(ParamsSarifIDValueUnderlying)
 					return nil
 				}(); err != nil {
 					return err
@@ -13534,7 +13534,7 @@ func decodeCodeScanningUpdateAlertParams(r *http.Request) (CodeScanningUpdateAle
 				}(); err != nil {
 					return err
 				}
-				params.AlertNumber.wrap(ParamsAlertNumberUnderlying)
+				params.AlertNumber = AlertNumber(ParamsAlertNumberUnderlying)
 				return nil
 			}(); err != nil {
 				return params, err
@@ -46552,7 +46552,7 @@ func decodeSecretScanningGetAlertParams(r *http.Request) (SecretScanningGetAlert
 				}(); err != nil {
 					return err
 				}
-				params.AlertNumber.wrap(ParamsAlertNumberUnderlying)
+				params.AlertNumber = AlertNumber(ParamsAlertNumberUnderlying)
 				return nil
 			}(); err != nil {
 				return params, err
@@ -47052,7 +47052,7 @@ func decodeSecretScanningUpdateAlertParams(r *http.Request) (SecretScanningUpdat
 				}(); err != nil {
 					return err
 				}
-				params.AlertNumber.wrap(ParamsAlertNumberUnderlying)
+				params.AlertNumber = AlertNumber(ParamsAlertNumberUnderlying)
 				return nil
 			}(); err != nil {
 				return params, err

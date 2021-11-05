@@ -168,7 +168,4 @@ func (*Pet) showPetByIdRes() {}
 
 type Pets []Pet
 
-func (a *Pets) wrap(v []Pet)  { *a = Pets(v) }
-func (a *Pets) unwrap() []Pet { return []Pet(*a) }
-
 func (*Pets) listPetsRes() {}

@@ -11348,7 +11348,7 @@ func (c *Client) CodeScanningGetAlert(ctx context.Context, params CodeScanningGe
 			Explode: false,
 		})
 		if err := func() error {
-			if unwrapped := params.AlertNumber.unwrap(); true {
+			if unwrapped := int(params.AlertNumber); true {
 				return e.EncodeValue(conv.IntToString(unwrapped))
 			}
 			return nil
@@ -11597,7 +11597,7 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 			Explode: false,
 		})
 		if err := func() error {
-			if unwrapped := params.AlertNumber.unwrap(); true {
+			if unwrapped := int(params.AlertNumber); true {
 				return e.EncodeValue(conv.IntToString(unwrapped))
 			}
 			return nil
@@ -11649,7 +11649,7 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 		})
 		if err := func() error {
 			if val, ok := params.Ref.Get(); ok {
-				if unwrapped := val.unwrap(); true {
+				if unwrapped := string(val); true {
 					return e.EncodeValue(conv.StringToString(unwrapped))
 				}
 				return nil
@@ -11739,7 +11739,7 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 		})
 		if err := func() error {
 			if val, ok := params.ToolName.Get(); ok {
-				if unwrapped := val.unwrap(); true {
+				if unwrapped := string(val); true {
 					return e.EncodeValue(conv.StringToString(unwrapped))
 				}
 				return nil
@@ -11758,7 +11758,7 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 		})
 		if err := func() error {
 			if val, ok := params.ToolGUID.Get(); ok {
-				if unwrapped := val.unwrap(); true {
+				if unwrapped := string(val); true {
 					return e.EncodeValue(conv.StringToString(unwrapped))
 				}
 				return nil
@@ -11809,7 +11809,7 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 		})
 		if err := func() error {
 			if val, ok := params.Ref.Get(); ok {
-				if unwrapped := val.unwrap(); true {
+				if unwrapped := string(val); true {
 					return e.EncodeValue(conv.StringToString(unwrapped))
 				}
 				return nil
@@ -11915,7 +11915,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 		})
 		if err := func() error {
 			if val, ok := params.ToolName.Get(); ok {
-				if unwrapped := val.unwrap(); true {
+				if unwrapped := string(val); true {
 					return e.EncodeValue(conv.StringToString(unwrapped))
 				}
 				return nil
@@ -11934,7 +11934,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 		})
 		if err := func() error {
 			if val, ok := params.ToolGUID.Get(); ok {
-				if unwrapped := val.unwrap(); true {
+				if unwrapped := string(val); true {
 					return e.EncodeValue(conv.StringToString(unwrapped))
 				}
 				return nil
@@ -11985,7 +11985,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 		})
 		if err := func() error {
 			if val, ok := params.Ref.Get(); ok {
-				if unwrapped := val.unwrap(); true {
+				if unwrapped := string(val); true {
 					return e.EncodeValue(conv.StringToString(unwrapped))
 				}
 				return nil
@@ -12004,7 +12004,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 		})
 		if err := func() error {
 			if val, ok := params.SarifID.Get(); ok {
-				if unwrapped := val.unwrap(); true {
+				if unwrapped := string(val); true {
 					return e.EncodeValue(conv.StringToString(unwrapped))
 				}
 				return nil
@@ -12106,7 +12106,7 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanni
 			Explode: false,
 		})
 		if err := func() error {
-			if unwrapped := params.AlertNumber.unwrap(); true {
+			if unwrapped := int(params.AlertNumber); true {
 				return e.EncodeValue(conv.IntToString(unwrapped))
 			}
 			return nil
@@ -40592,7 +40592,7 @@ func (c *Client) SecretScanningGetAlert(ctx context.Context, params SecretScanni
 			Explode: false,
 		})
 		if err := func() error {
-			if unwrapped := params.AlertNumber.unwrap(); true {
+			if unwrapped := int(params.AlertNumber); true {
 				return e.EncodeValue(conv.IntToString(unwrapped))
 			}
 			return nil
@@ -40946,7 +40946,7 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 			Explode: false,
 		})
 		if err := func() error {
-			if unwrapped := params.AlertNumber.unwrap(); true {
+			if unwrapped := int(params.AlertNumber); true {
 				return e.EncodeValue(conv.IntToString(unwrapped))
 			}
 			return nil

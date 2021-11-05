@@ -329,11 +329,6 @@ func (*SearchByTagIDForbidden) searchByTagIDRes() {}
 
 type SearchByTagIDOKApplicationJSON []SearchResponse
 
-func (a *SearchByTagIDOKApplicationJSON) wrap(v []SearchResponse) {
-	*a = SearchByTagIDOKApplicationJSON(v)
-}
-func (a *SearchByTagIDOKApplicationJSON) unwrap() []SearchResponse { return []SearchResponse(*a) }
-
 func (*SearchByTagIDOKApplicationJSON) searchByTagIDRes() {}
 
 // SearchForbidden is response for Search operation.
@@ -342,9 +337,6 @@ type SearchForbidden struct{}
 func (*SearchForbidden) searchRes() {}
 
 type SearchOKApplicationJSON []SearchResponse
-
-func (a *SearchOKApplicationJSON) wrap(v []SearchResponse)  { *a = SearchOKApplicationJSON(v) }
-func (a *SearchOKApplicationJSON) unwrap() []SearchResponse { return []SearchResponse(*a) }
 
 func (*SearchOKApplicationJSON) searchRes() {}
 

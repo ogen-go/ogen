@@ -321,13 +321,6 @@ func (*GetSchedulingV1APIResourcesUnauthorized) getSchedulingV1APIResourcesRes()
 
 type GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON string
 
-func (a *GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON) wrap(v string) {
-	*a = GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON(v)
-}
-func (a *GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON) unwrap() string {
-	return string(*a)
-}
-
 func (*GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON) getServiceAccountIssuerOpenIDConfigurationRes() {
 }
 
@@ -4791,11 +4784,6 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion struct {
 
 type IoK8sApimachineryPkgAPIResourceQuantity string
 
-func (a *IoK8sApimachineryPkgAPIResourceQuantity) wrap(v string) {
-	*a = IoK8sApimachineryPkgAPIResourceQuantity(v)
-}
-func (a *IoK8sApimachineryPkgAPIResourceQuantity) unwrap() string { return string(*a) }
-
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.APIGroup
 type IoK8sApimachineryPkgApisMetaV1APIGroup struct {
 	ApiVersion                 OptString                                                 `json:"apiVersion"`
@@ -4958,11 +4946,6 @@ type IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry struct {
 
 type IoK8sApimachineryPkgApisMetaV1MicroTime time.Time
 
-func (a *IoK8sApimachineryPkgApisMetaV1MicroTime) wrap(v time.Time) {
-	*a = IoK8sApimachineryPkgApisMetaV1MicroTime(v)
-}
-func (a *IoK8sApimachineryPkgApisMetaV1MicroTime) unwrap() time.Time { return time.Time(*a) }
-
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
 type IoK8sApimachineryPkgApisMetaV1ObjectMeta struct {
 	Annotations                *IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations `json:"annotations"`
@@ -5004,11 +4987,6 @@ type IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR struct {
 }
 
 type IoK8sApimachineryPkgApisMetaV1Time time.Time
-
-func (a *IoK8sApimachineryPkgApisMetaV1Time) wrap(v time.Time) {
-	*a = IoK8sApimachineryPkgApisMetaV1Time(v)
-}
-func (a *IoK8sApimachineryPkgApisMetaV1Time) unwrap() time.Time { return time.Time(*a) }
 
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.WatchEvent
 type IoK8sApimachineryPkgApisMetaV1WatchEvent struct {
@@ -5225,11 +5203,6 @@ func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchStorageV1beta1NamespacedCS
 type IoK8sApimachineryPkgRuntimeRawExtension struct{}
 
 type IoK8sApimachineryPkgUtilIntstrIntOrString string
-
-func (a *IoK8sApimachineryPkgUtilIntstrIntOrString) wrap(v string) {
-	*a = IoK8sApimachineryPkgUtilIntstrIntOrString(v)
-}
-func (a *IoK8sApimachineryPkgUtilIntstrIntOrString) unwrap() string { return string(*a) }
 
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.version.Info
 type IoK8sApimachineryPkgVersionInfo struct {
@@ -15495,11 +15468,6 @@ func (*ReadCoreV1NamespacedPodEphemeralcontainersUnauthorized) readCoreV1Namespa
 }
 
 type ReadCoreV1NamespacedPodLogOKApplicationJSON string
-
-func (a *ReadCoreV1NamespacedPodLogOKApplicationJSON) wrap(v string) {
-	*a = ReadCoreV1NamespacedPodLogOKApplicationJSON(v)
-}
-func (a *ReadCoreV1NamespacedPodLogOKApplicationJSON) unwrap() string { return string(*a) }
 
 func (*ReadCoreV1NamespacedPodLogOKApplicationJSON) readCoreV1NamespacedPodLogRes() {}
 

@@ -136,9 +136,6 @@ type BotCommand struct {
 
 type CallbackGame string
 
-func (a *CallbackGame) wrap(v string)  { *a = CallbackGame(v) }
-func (a *CallbackGame) unwrap() string { return string(*a) }
-
 // Ref: #/components/schemas/CallbackQuery
 type CallbackQuery struct {
 	ID              string     `json:"id"`

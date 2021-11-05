@@ -637,9 +637,6 @@ const (
 
 type PetName string
 
-func (a *PetName) wrap(v string)  { *a = PetName(v) }
-func (a *PetName) unwrap() string { return string(*a) }
-
 type PetType string
 
 const (
