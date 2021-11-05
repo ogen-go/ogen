@@ -76,7 +76,7 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
     }(); err != nil {
         return err
     }
-    {{ $var }}.wrap({{ $tmpVar }})
+    {{ $var }} = {{ $t.Go }}({{ $tmpVar }})
     return nil
 {{- else if eq $t.Kind "generic" }}
     {{- $tmpVar := pascalMP (printf "%sValue" $var ) }}

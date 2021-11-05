@@ -40,7 +40,7 @@ func (v {{ $t.Go }}) encodeURI(e uri.Encoder) error {
         return nil
     })
 {{- else if eq $t.Kind "alias" }}
-    if unwrapped := {{ $var }}.unwrap(); true {
+    if unwrapped := {{ $t.AliasTo.Go }}({{ $var }}); true {
         {{- template "encode_uri" elem $t.AliasTo "unwrapped" }}
     }
     return nil

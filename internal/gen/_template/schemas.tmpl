@@ -37,9 +37,6 @@ type {{ $.Name }} struct {
 {{/* Define alias */}}
 {{- else if $.IsAlias }}
 type {{ $.Name }} {{ $.AliasTo.Go }}
-
-func (a *{{ $.Go }}) wrap(v {{ $.AliasTo.Go }}) { *a = {{ $.Go }}(v) }
-func (a *{{ $.Go }}) unwrap() {{ $.AliasTo.Go }} { return {{ $.AliasTo.Go }}(*a) }
 {{/* Define alias */}}
 
 {{/* Define enum */}}
