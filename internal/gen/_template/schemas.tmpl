@@ -34,6 +34,13 @@ type {{ $.Name }} struct {
 {{- end }}
 {{/* Define struct */}}
 
+{{/* Define embedded */}}
+{{- else if $.Embedded }}
+type {{ $.Name }} struct {
+    {{ $.Go }}
+}
+{{/* Define embedded */}}
+
 {{/* Define alias */}}
 {{- else if $.IsAlias }}
 type {{ $.Name }} {{ $.AliasTo.Go }}

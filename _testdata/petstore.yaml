@@ -44,6 +44,13 @@ paths:
       operationId: createPets
       tags:
         - pets
+      requestBody:
+        description: Pet to add to the store
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
       responses:
         201:
           description: Null response
@@ -73,6 +80,35 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Pet"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /pets/{petId}/avatar:
+    post:
+      summary: Upload and process pet avatar
+      operationId: uploadPetAvatar
+      tags:
+        - pets
+      parameters:
+        - name: petId
+          in: path
+          required: true
+          description: The id of the pet to retrieve
+          schema:
+            type: string
+      requestBody:
+        description: Avatat to upload
+        required: true
+        content:
+          application/octet-stream: {}
+      responses:
+        200:
+          description: Improved pet avatar
+          content:
+            application/octet-stream: {}
         default:
           description: unexpected error
           content:

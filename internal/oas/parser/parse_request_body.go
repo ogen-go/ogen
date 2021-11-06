@@ -1,6 +1,8 @@
 package parser
 
 import (
+	"reflect"
+
 	"github.com/ogen-go/errors"
 
 	"github.com/ogen-go/ogen"
@@ -21,6 +23,16 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody) (*oas.RequestBody, err
 	reqBody.Required = body.Required
 
 	for contentType, media := range body.Content {
+		if reflect.DeepEqual(media.Schema, ogen.Schema{}) {
+			schema, err := defaultSchema(contentType)
+			if err != nil {
+				return nil, errors.Wrapf(err, "content: %s: parse empty schema", contentType)
+			}
+
+			reqBody.Contents[contentType] = schema
+			continue
+		}
+
 		schema, err := p.parseSchema(media.Schema)
 		if err != nil {
 			return nil, errors.Wrapf(err, "content: %s: parse schema", contentType)

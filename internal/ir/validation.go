@@ -65,6 +65,8 @@ func (t *Type) needValidation(path *walkpath) (result bool) {
 			}
 		}
 		return false
+	case KindRawBinary:
+		return false
 	default:
 		panic("unreachable")
 	}

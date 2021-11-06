@@ -39,10 +39,38 @@ type Content struct {
 // ContentType of body.
 type ContentType string
 
-// ContentTypeJSON is ContentType for json.
-const ContentTypeJSON ContentType = "application/json"
+const (
+	// ContentTypeJSON is ContentType for json.
+	ContentTypeJSON ContentType = "application/json"
+	// ContentTypeOctetStream is ContentType for binary.
+	ContentTypeOctetStream ContentType = "application/octet-stream"
+)
 
 func (t ContentType) JSON() bool { return t == ContentTypeJSON }
+
+func (t ContentType) OctetStream() bool { return t == ContentTypeOctetStream }
+
+func (t ContentType) EncodedDataTypeGo() string {
+	switch t {
+	case ContentTypeJSON:
+		return "*bytes.Buffer"
+	case ContentTypeOctetStream:
+		return "io.ReadCloser"
+	default:
+		return "io.ReadCloser"
+	}
+}
+
+func (t ContentType) Name() string {
+	switch t {
+	case ContentTypeJSON:
+		return "JSON"
+	case ContentTypeOctetStream:
+		return "OctetStream"
+	default:
+		return ""
+	}
+}
 
 type Response struct {
 	Type       *Type

@@ -10,11 +10,13 @@ func sortContentTypes(contents map[string]*oas.Schema) ([]string, error) {
 	contentTypes := make([]string, 0, len(contents))
 	unsupported := make([]string, 0)
 	for contentType := range contents {
-		if contentType != "application/json" {
+		switch contentType {
+		case "application/json", "application/octet-stream":
+			contentTypes = append(contentTypes, contentType)
+		default:
 			unsupported = append(unsupported, contentType)
 			continue
 		}
-		contentTypes = append(contentTypes, contentType)
 	}
 
 	if len(contentTypes) == 0 && len(unsupported) > 0 {

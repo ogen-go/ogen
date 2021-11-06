@@ -20,6 +20,7 @@ const (
 	KindInterface Kind = "interface"
 	KindGeneric   Kind = "generic"
 	KindSum       Kind = "sum"
+	KindRawBinary Kind = "raw-binary"
 )
 
 type SumSpecMap struct {
@@ -54,6 +55,7 @@ type Type struct {
 	GenericOf        *Type               // only for generic
 	GenericVariant   GenericVariant      // only for generic
 	Validators       Validators
+	Embedded         bool
 }
 
 type EnumVariant struct {
@@ -108,7 +110,7 @@ func (t *Type) Is(vs ...Kind) bool {
 }
 
 func (t *Type) Implement(i *Type) {
-	if !t.Is(KindStruct, KindAlias, KindSum) || !i.Is(KindInterface) {
+	if !t.Is(KindStruct, KindAlias, KindSum, KindRawBinary) || !i.Is(KindInterface) {
 		panic("unreachable")
 	}
 
@@ -147,6 +149,8 @@ func (t *Type) Go() string {
 		return "*" + t.PointerTo.Go()
 	case KindStruct, KindAlias, KindInterface, KindGeneric, KindEnum, KindSum:
 		return t.Name
+	case KindRawBinary:
+		return "io.ReadCloser"
 	default:
 		panic(fmt.Sprintf("unexpected kind: %s", t.Kind))
 	}
@@ -157,7 +161,7 @@ func (t *Type) Methods() []string {
 	switch t.Kind {
 	case KindInterface:
 		ms = t.InterfaceMethods
-	case KindStruct, KindAlias, KindEnum, KindGeneric, KindSum:
+	case KindStruct, KindAlias, KindEnum, KindGeneric, KindSum, KindRawBinary:
 		for i := range t.Implements {
 			for m := range i.InterfaceMethods {
 				ms[m] = struct{}{}

@@ -11,6 +11,8 @@ const (
 	Number  SchemaType = "number"
 	String  SchemaType = "string"
 	Boolean SchemaType = "boolean"
+
+	RawBinary SchemaType = "raw-binary" // custom, non-standard
 )
 
 // Discriminator discriminates types for OneOf, AllOf, AnyOf.

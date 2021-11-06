@@ -7,7 +7,7 @@ defer more.Reset()
 {{ template "enc_json" req_enc_elem $ }}
 if _, err := e.WriteTo(buf); err != nil {
     json.PutBuffer(buf)
-    return nil, "", err
+    return nil, err
 }
 {{ end }}
 
@@ -19,36 +19,18 @@ if _, err := e.WriteTo(buf); err != nil {
 {{/* Range over all methods */}}
 {{- range $op := $.Operations }}
 {{- if $op.Request }}
-func encode{{ $op.Name }}Request(req {{ $op.Request.Type.Go }}, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
-    {{- $requestsLength := len $op.Request.Contents }}
-    {{- if eq $requestsLength 1 }}
-    {{- range $contentType, $type := $op.Request.Contents }}
-
+{{- range $contentType, $type := $op.Request.Contents }}
+func encode{{ $op.Name }}Request{{ $contentType.Name }}(req {{ $op.Request.Type.Go }}, span trace.Span) (data {{ $contentType.EncodedDataTypeGo }}, err error) {
     {{- if $contentType.JSON }}
     {{- template "req_enc_json" $type }}
-    return buf, "{{ $contentType }}", nil
+    return buf, nil
+    {{- else if $contentType.OctetStream }}
+    return req, nil
     {{- else }}
-    return nil, "", errors.New(`{{ $contentType }} encoder not implemented`)
-    {{- end }}
-
-    {{- end }}
-    {{- else }}
-    {{- /* Multiple requests */}}
-    switch req := req.(type) {
-    {{- range $contentType, $type := $op.Request.Contents }}
-    case *{{ $type.Go }}:
-        {{- if $contentType.JSON }}
-        {{- template "req_enc_json" $type }}
-        return buf, "{{ $contentType }}", nil
-        {{- else }}
-        return nil, "", errors.New(`{{ $contentType }} encoder not implemented`)
-        {{- end }}
-    {{- end }}
-    default:
-        return nil, "", errors.Errorf("unexpected request type: %T", req)
-    }
+    return nil, errors.New(`{{ $contentType }} encoder not implemented`)
     {{- end }}
 }
+{{- end }}
 {{- end }}
 {{ end }}
 {{/* Range over all methods */}}

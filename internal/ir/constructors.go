@@ -44,3 +44,9 @@ func Pointer(typ *Type, sem NilSemantic) *Type {
 		NilSemantic: sem,
 	}
 }
+
+func RawBinary() *Type {
+	return &Type{
+		Kind: KindRawBinary,
+	}
+}
