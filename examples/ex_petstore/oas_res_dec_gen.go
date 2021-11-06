@@ -95,49 +95,6 @@ func decodeCreatePetsResponse(resp *http.Response, span trace.Span) (res CreateP
 	}
 }
 
-func decodeDownloadPetAvatarResponse(resp *http.Response, span trace.Span) (res DownloadPetAvatarRes, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, resp.Body); err != nil {
-		return res, err
-	}
-
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/octet-stream":
-			response := &DownloadPetAvatarOKApplicationOctetStream{resp.Body}
-			return response, nil
-		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 404:
-		return &DownloadPetAvatarNotFound{}, nil
-	default:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			d := json.GetDecoder()
-			defer json.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
-			var response ErrorStatusCode
-			if err := func() error {
-				if err := response.ReadJSON(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
-			}
-
-			response.StatusCode = resp.StatusCode
-			return &response, nil
-		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	}
-}
-
 func decodeListPetsResponse(resp *http.Response, span trace.Span) (res ListPetsRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
@@ -219,43 +176,6 @@ func decodeShowPetByIdResponse(resp *http.Response, span trace.Span) (res ShowPe
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
-	default:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			d := json.GetDecoder()
-			defer json.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
-			var response ErrorStatusCode
-			if err := func() error {
-				if err := response.ReadJSON(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
-			}
-
-			response.StatusCode = resp.StatusCode
-			return &response, nil
-		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	}
-}
-
-func decodeUploadPetAvatarResponse(resp *http.Response, span trace.Span) (res UploadPetAvatarRes, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, resp.Body); err != nil {
-		return res, err
-	}
-
-	switch resp.StatusCode {
-	case 200:
-		return &UploadPetAvatarOK{}, nil
-	case 404:
-		return &UploadPetAvatarNotFound{}, nil
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":

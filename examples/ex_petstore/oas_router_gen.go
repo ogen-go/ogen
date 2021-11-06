@@ -62,8 +62,6 @@ var (
 
 func Register(r chi.Router, s Server, opts ...Option) {
 	r.MethodFunc("POST", "/pets", NewCreatePetsHandler(s, opts...))
-	r.MethodFunc("GET", "/pets/{petId}/avatar", NewDownloadPetAvatarHandler(s, opts...))
 	r.MethodFunc("GET", "/pets", NewListPetsHandler(s, opts...))
 	r.MethodFunc("GET", "/pets/{petId}", NewShowPetByIdHandler(s, opts...))
-	r.MethodFunc("POST", "/pets/{petId}/avatar", NewUploadPetAvatarHandler(s, opts...))
 }

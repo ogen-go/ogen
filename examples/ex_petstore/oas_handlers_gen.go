@@ -68,14 +68,8 @@ func NewCreatePetsHandler(s Server, opts ...Option) func(w http.ResponseWriter, 
 			trace.WithSpanKind(trace.SpanKindServer),
 		)
 		defer span.End()
-		request, err := decodeCreatePetsRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
 
-		response, err := s.CreatePets(ctx, request)
+		response, err := s.CreatePets(ctx)
 		if err != nil {
 			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
@@ -83,35 +77,6 @@ func NewCreatePetsHandler(s Server, opts ...Option) func(w http.ResponseWriter, 
 		}
 
 		if err := encodeCreatePetsResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
-	}
-}
-
-func NewDownloadPetAvatarHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `DownloadPetAvatar`,
-			trace.WithAttributes(otelogen.OperationID(`download pet avatar`)),
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		params, err := decodeDownloadPetAvatarParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
-
-		response, err := s.DownloadPetAvatar(ctx, params)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
-
-		if err := encodeDownloadPetAvatarResponse(response, w, span); err != nil {
 			span.RecordError(err)
 			return
 		}
@@ -170,41 +135,6 @@ func NewShowPetByIdHandler(s Server, opts ...Option) func(w http.ResponseWriter,
 		}
 
 		if err := encodeShowPetByIdResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
-	}
-}
-
-func NewUploadPetAvatarHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `UploadPetAvatar`,
-			trace.WithAttributes(otelogen.OperationID(`upload pet avatar`)),
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		params, err := decodeUploadPetAvatarParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
-		request, err := decodeUploadPetAvatarRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
-
-		response, err := s.UploadPetAvatar(ctx, request, params)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
-
-		if err := encodeUploadPetAvatarResponse(response, w, span); err != nil {
 			span.RecordError(err)
 			return
 		}

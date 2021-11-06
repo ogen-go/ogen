@@ -65,17 +65,6 @@ type CreatePetsCreated struct{}
 
 func (*CreatePetsCreated) createPetsRes() {}
 
-// DownloadPetAvatarNotFound is response for DownloadPetAvatar operation.
-type DownloadPetAvatarNotFound struct{}
-
-func (*DownloadPetAvatarNotFound) downloadPetAvatarRes() {}
-
-type DownloadPetAvatarOKApplicationOctetStream struct {
-	io.ReadCloser
-}
-
-func (*DownloadPetAvatarOKApplicationOctetStream) downloadPetAvatarRes() {}
-
 // Ref: #/components/schemas/Error
 type Error struct {
 	Code    int32  `json:"code"`
@@ -88,11 +77,9 @@ type ErrorStatusCode struct {
 	Response   Error
 }
 
-func (*ErrorStatusCode) createPetsRes()        {}
-func (*ErrorStatusCode) downloadPetAvatarRes() {}
-func (*ErrorStatusCode) listPetsRes()          {}
-func (*ErrorStatusCode) showPetByIdRes()       {}
-func (*ErrorStatusCode) uploadPetAvatarRes()   {}
+func (*ErrorStatusCode) createPetsRes()  {}
+func (*ErrorStatusCode) listPetsRes()    {}
+func (*ErrorStatusCode) showPetByIdRes() {}
 
 // NewOptInt32 returns new OptInt32 with value set to v.
 func NewOptInt32(v int32) OptInt32 {
@@ -182,13 +169,3 @@ func (*Pet) showPetByIdRes() {}
 type Pets []Pet
 
 func (*Pets) listPetsRes() {}
-
-// UploadPetAvatarNotFound is response for UploadPetAvatar operation.
-type UploadPetAvatarNotFound struct{}
-
-func (*UploadPetAvatarNotFound) uploadPetAvatarRes() {}
-
-// UploadPetAvatarOK is response for UploadPetAvatar operation.
-type UploadPetAvatarOK struct{}
-
-func (*UploadPetAvatarOK) uploadPetAvatarRes() {}

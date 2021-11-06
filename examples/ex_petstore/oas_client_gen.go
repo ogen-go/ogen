@@ -95,7 +95,7 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 }
 
 // CreatePets implements createPets operation.
-func (c *Client) CreatePets(ctx context.Context, request Pet) (res CreatePetsRes, err error) {
+func (c *Client) CreatePets(ctx context.Context) (res CreatePetsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreatePets`,
 		trace.WithAttributes(otelogen.OperationID(`createPets`)),
@@ -112,23 +112,11 @@ func (c *Client) CreatePets(ctx context.Context, request Pet) (res CreatePetsRes
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
-	contentType = "application/json"
-	buf, err := encodeCreatePetsRequestJSON(request, span)
-	if err != nil {
-		return res, err
-	}
-	defer json.PutBuffer(buf)
-	reqBody = buf
-
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pets"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	r := ht.NewRequest(ctx, "POST", u, nil)
 	defer ht.PutRequest(r)
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -137,59 +125,6 @@ func (c *Client) CreatePets(ctx context.Context, request Pet) (res CreatePetsRes
 	defer resp.Body.Close()
 
 	result, err := decodeCreatePetsResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
-	}
-
-	return result, nil
-}
-
-// DownloadPetAvatar implements download pet avatar operation.
-func (c *Client) DownloadPetAvatar(ctx context.Context, params DownloadPetAvatarParams) (res DownloadPetAvatarRes, err error) {
-	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `DownloadPetAvatar`,
-		trace.WithAttributes(otelogen.OperationID(`download pet avatar`)),
-		trace.WithSpanKind(trace.SpanKindClient),
-	)
-	defer func() {
-		if err != nil {
-			span.RecordError(err)
-			c.errors.Add(ctx, 1)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
-		}
-		span.End()
-	}()
-	c.requests.Add(ctx, 1)
-	u := uri.Clone(c.serverURL)
-	u.Path += "/pets/"
-	{
-		// Encode "petId" parameter.
-		e := uri.NewPathEncoder(uri.PathEncoderConfig{
-			Param:   "petId",
-			Style:   uri.PathStyleSimple,
-			Explode: false,
-		})
-		if err := func() error {
-			return e.EncodeValue(conv.Int64ToString(params.PetId))
-		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
-		}
-		u.Path += e.Result()
-	}
-	u.Path += "/avatar"
-
-	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
-
-	resp, err := c.cfg.Client.Do(r)
-	if err != nil {
-		return res, errors.Wrap(err, "do request")
-	}
-	defer resp.Body.Close()
-
-	result, err := decodeDownloadPetAvatarResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -299,70 +234,6 @@ func (c *Client) ShowPetById(ctx context.Context, params ShowPetByIdParams) (res
 	defer resp.Body.Close()
 
 	result, err := decodeShowPetByIdResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
-	}
-
-	return result, nil
-}
-
-// UploadPetAvatar implements upload pet avatar operation.
-func (c *Client) UploadPetAvatar(ctx context.Context, request io.ReadCloser, params UploadPetAvatarParams) (res UploadPetAvatarRes, err error) {
-	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `UploadPetAvatar`,
-		trace.WithAttributes(otelogen.OperationID(`upload pet avatar`)),
-		trace.WithSpanKind(trace.SpanKindClient),
-	)
-	defer func() {
-		if err != nil {
-			span.RecordError(err)
-			c.errors.Add(ctx, 1)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
-		}
-		span.End()
-	}()
-	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
-	contentType = "application/octet-stream"
-	buf, err := encodeUploadPetAvatarRequestOctetStream(request, span)
-	if err != nil {
-		return res, err
-	}
-	reqBody = buf
-
-	u := uri.Clone(c.serverURL)
-	u.Path += "/pets/"
-	{
-		// Encode "petId" parameter.
-		e := uri.NewPathEncoder(uri.PathEncoderConfig{
-			Param:   "petId",
-			Style:   uri.PathStyleSimple,
-			Explode: false,
-		})
-		if err := func() error {
-			return e.EncodeValue(conv.Int64ToString(params.PetId))
-		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
-		}
-		u.Path += e.Result()
-	}
-	u.Path += "/avatar"
-
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
-	defer ht.PutRequest(r)
-
-	r.Header.Set("Content-Type", contentType)
-
-	resp, err := c.cfg.Client.Do(r)
-	if err != nil {
-		return res, errors.Wrap(err, "do request")
-	}
-	defer resp.Body.Close()
-
-	result, err := decodeUploadPetAvatarResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

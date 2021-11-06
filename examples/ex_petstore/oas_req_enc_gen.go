@@ -59,23 +59,3 @@ var (
 	_ = metric.NewNoopMeterProvider
 	_ = regexp.MustCompile
 )
-
-func encodeCreatePetsRequestJSON(req Pet, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	req.WriteJSON(e)
-	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
-		return nil, err
-	}
-
-	return buf, nil
-}
-
-func encodeUploadPetAvatarRequestOctetStream(req io.ReadCloser, span trace.Span) (data io.ReadCloser, err error) {
-	return req, nil
-}
