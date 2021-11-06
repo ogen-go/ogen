@@ -1,5 +1,11 @@
 {{ define "res_dec_json" }}
 {{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+buf := json.GetBuffer()
+defer json.PutBuffer(buf)
+if _, err := io.Copy(buf, resp.Body); err != nil {
+    return res, err
+}
+
 d := json.GetDecoder()
 defer json.PutDecoder(d)
 d.ResetBytes(buf.Bytes())
@@ -21,12 +27,6 @@ if err := func() error {
 {{- range $op := $.Operations }}{{/* Range over all methods */}}
 
 func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ $op.Response.Type.Go }}, err error) {
-    buf := json.GetBuffer()
-    defer json.PutBuffer(buf)
-    if _, err := io.Copy(buf, resp.Body); err != nil {
-        return res, err
-    }
-
     switch resp.StatusCode {
     {{- range $statusCode, $response := $op.Response.StatusCode }}{{/* Range over responses */}}
     case {{ $statusCode }}:
@@ -40,7 +40,12 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
             {{- template "res_dec_json" $type }}
             return {{ if eq $op.Response.Type.Kind "interface" }}&{{ end }}response, nil
             {{- else if $contentType.OctetStream }}
-            response := {{ if $type.Embedded }}&{{$type.Name}}{resp.Body}{{ else }}resp.Body{{ end }}
+            b, err := io.ReadAll(resp.Body)
+            if err != nil {
+                return nil, err
+            }
+
+            response := {{ if $type.Embedded }}&{{$type.Name}}{io.NopCloser(bytes.NewReader(b))}{{ else }}io.NopCloser(bytes.NewReader(b)){{ end }}
             return response, nil
             {{- else }}
             return res, errors.New("{{ $contentType }} decoder not implemented")
