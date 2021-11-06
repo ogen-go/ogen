@@ -87,34 +87,57 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
   /pets/{petId}/avatar:
-    post:
-      summary: Upload and process pet avatar
-      operationId: uploadPetAvatar
-      tags:
-        - pets
+    get:
+      summary: Download pet avatar
+      operationId: download pet avatar
       parameters:
         - name: petId
           in: path
+          description: ID of pet to delete
           required: true
-          description: The id of the pet to retrieve
           schema:
-            type: string
-      requestBody:
-        description: Avatat to upload
-        required: true
-        content:
-          application/octet-stream: {}
+            type: integer
+            format: int64
       responses:
-        200:
-          description: Improved pet avatar
+        '200':
+          description: pet avatar
           content:
-            application/octet-stream: {}
+            application/octet-stream: { }
+        '404':
+          description: pet not found
         default:
           description: unexpected error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Upload pet avatar
+      operationId: upload pet avatar
+      parameters:
+        - name: petId
+          in: path
+          description: ID of pet to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Avatar to upload
+        required: true
+        content:
+          application/octet-stream: {}
+      responses:
+        '200':
+          description: avatar uploaded
+        '404':
+          description: pet not found
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     Pet:
