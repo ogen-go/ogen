@@ -37,7 +37,7 @@ type {{ $.Name }} struct {
 {{/* Define stream */}}
 {{- else if $.IsStream }}
 type {{ $.Name }} struct {
-    io.ReadCloser
+    io.Reader
 }
 {{/* Define stream */}}
 

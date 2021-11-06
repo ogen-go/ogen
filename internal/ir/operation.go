@@ -55,9 +55,9 @@ func (t ContentType) EncodedDataTypeGo() string {
 	case ContentTypeJSON:
 		return "*bytes.Buffer"
 	case ContentTypeOctetStream:
-		return "io.ReadCloser"
+		return "io.Reader"
 	default:
-		return "io.ReadCloser"
+		return "io.Reader"
 	}
 }
 

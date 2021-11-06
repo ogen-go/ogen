@@ -123,6 +123,6 @@ func encodePetUpdateNamePostRequestJSON(req string, span trace.Span) (data *byte
 	return buf, nil
 }
 
-func encodePetUploadAvatarByIDRequestOctetStream(req Stream, span trace.Span) (data io.ReadCloser, err error) {
+func encodePetUploadAvatarByIDRequestOctetStream(req Stream, span trace.Span) (data io.Reader, err error) {
 	return req, nil
 }
