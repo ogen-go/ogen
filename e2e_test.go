@@ -1,9 +1,12 @@
 package ogen
 
 import (
+	"bytes"
 	"context"
 	_ "embed"
+	"io"
 	"net"
+	"net/http"
 	"net/http/httptest"
 	"net/url"
 	"testing"
@@ -21,6 +24,14 @@ import (
 	"github.com/ogen-go/ogen/internal/techempower"
 	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/validate"
+)
+
+var (
+	petExistingID int64 = 1337
+	petNotFoundID int64 = 404
+	petErrorID    int64 = 500
+
+	petAvatar = []byte("pet avatar")
 )
 
 type techEmpowerServer struct{}
@@ -100,6 +111,38 @@ func (s *sampleAPIServer) PetCreate(ctx context.Context, req api.Pet) (pet api.P
 
 func (s *sampleAPIServer) PetGetByName(ctx context.Context, params api.PetGetByNameParams) (api.Pet, error) {
 	return s.pet, nil
+}
+
+func (s *sampleAPIServer) PetGetAvatarByID(ctx context.Context, params api.PetGetAvatarByIDParams) (api.PetGetAvatarByIDRes, error) {
+	switch params.PetID {
+	case petNotFoundID:
+		return &api.NotFound{}, nil
+	case petErrorID:
+		return &api.ErrorStatusCode{
+			StatusCode: http.StatusInternalServerError,
+			Response:   api.Error{Message: "error"},
+		}, nil
+	default:
+		return &api.PetGetAvatarByIDOKApplicationOctetStream{
+			ReadCloser: io.NopCloser(bytes.NewReader(petAvatar)),
+		}, nil
+	}
+}
+
+func (s *sampleAPIServer) PetUploadAvatarByID(ctx context.Context, req io.ReadCloser, params api.PetUploadAvatarByIDParams) (api.PetUploadAvatarByIDRes, error) {
+	switch params.PetID {
+	case petNotFoundID:
+		return &api.NotFound{}, nil
+	case petErrorID:
+		return &api.ErrorStatusCode{
+			StatusCode: http.StatusInternalServerError,
+			Response:   api.Error{Message: "error"},
+		}, nil
+	default:
+		_, _ = io.ReadAll(req)
+		_ = req.Close()
+		return &api.PetUploadAvatarByIDOK{}, nil
+	}
 }
 
 //go:embed _testdata/pet.json
@@ -253,6 +296,59 @@ func TestIntegration(t *testing.T) {
 				got, err := client.PetFriendsNamesByID(ctx, api.PetFriendsNamesByIDParams{ID: int(pet.ID)})
 				require.NoError(t, err)
 				assert.Equal(t, []string{friend.Name}, got)
+			})
+		})
+
+		t.Run("PetUploadAvatar", func(t *testing.T) {
+			t.Run("OK", func(t *testing.T) {
+				got, err := client.PetUploadAvatarByID(ctx, io.NopCloser(bytes.NewReader(petAvatar)), api.PetUploadAvatarByIDParams{
+					PetID: petExistingID,
+				})
+				require.NoError(t, err)
+				assert.IsType(t, &api.PetUploadAvatarByIDOK{}, got)
+			})
+			t.Run("NotFound", func(t *testing.T) {
+				got, err := client.PetUploadAvatarByID(ctx, io.NopCloser(bytes.NewReader(petAvatar)), api.PetUploadAvatarByIDParams{
+					PetID: petNotFoundID,
+				})
+				require.NoError(t, err)
+				assert.IsType(t, &api.NotFound{}, got)
+			})
+			t.Run("Error", func(t *testing.T) {
+				got, err := client.PetUploadAvatarByID(ctx, io.NopCloser(bytes.NewReader(petAvatar)), api.PetUploadAvatarByIDParams{
+					PetID: petErrorID,
+				})
+				require.NoError(t, err)
+				assert.IsType(t, &api.ErrorStatusCode{}, got)
+			})
+		})
+		t.Run("PetGetAvatar", func(t *testing.T) {
+			t.Run("OK", func(t *testing.T) {
+				got, err := client.PetGetAvatarByID(ctx, api.PetGetAvatarByIDParams{
+					PetID: petExistingID,
+				})
+				require.NoError(t, err)
+				assert.IsType(t, &api.PetGetAvatarByIDOKApplicationOctetStream{}, got)
+
+				raw := got.(*api.PetGetAvatarByIDOKApplicationOctetStream)
+				avatar, err := io.ReadAll(raw)
+				require.NoError(t, err)
+
+				require.Equal(t, petAvatar, avatar)
+			})
+			t.Run("NotFound", func(t *testing.T) {
+				got, err := client.PetGetAvatarByID(ctx, api.PetGetAvatarByIDParams{
+					PetID: petNotFoundID,
+				})
+				require.NoError(t, err)
+				assert.IsType(t, &api.NotFound{}, got)
+			})
+			t.Run("Error", func(t *testing.T) {
+				got, err := client.PetGetAvatarByID(ctx, api.PetGetAvatarByIDParams{
+					PetID: petErrorID,
+				})
+				require.NoError(t, err)
+				assert.IsType(t, &api.ErrorStatusCode{}, got)
 			})
 		})
 	})
