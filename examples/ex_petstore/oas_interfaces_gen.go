@@ -5,10 +5,18 @@ type CreatePetsRes interface {
 	createPetsRes()
 }
 
+type DownloadPetAvatarRes interface {
+	downloadPetAvatarRes()
+}
+
 type ListPetsRes interface {
 	listPetsRes()
 }
 
 type ShowPetByIdRes interface {
 	showPetByIdRes()
+}
+
+type UploadPetAvatarRes interface {
+	uploadPetAvatarRes()
 }

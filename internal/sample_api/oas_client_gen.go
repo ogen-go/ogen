@@ -187,16 +187,20 @@ func (c *Client) FoobarPost(ctx context.Context, request Pet) (res FoobarPostRes
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeFoobarPostRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeFoobarPostRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/foobar"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -277,16 +281,20 @@ func (c *Client) PetCreate(ctx context.Context, request Pet) (res Pet, err error
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePetCreateRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodePetCreateRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -608,16 +616,20 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request PetName) (r
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePetUpdateNameAliasPostRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodePetUpdateNameAliasPostRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/updateNameAlias"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -668,16 +680,20 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request string) (res Pet
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePetUpdateNamePostRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodePetUpdateNamePostRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/updateName"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)

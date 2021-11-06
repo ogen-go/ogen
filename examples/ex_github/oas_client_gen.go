@@ -532,11 +532,15 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsCreateOrUpdateEnvironmentSecretRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeActionsCreateOrUpdateEnvironmentSecretRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repositories/"
@@ -585,7 +589,7 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -630,11 +634,15 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request Act
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsCreateOrUpdateOrgSecretRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeActionsCreateOrUpdateOrgSecretRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -668,7 +676,7 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request Act
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -713,11 +721,15 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request Ac
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsCreateOrUpdateRepoSecretRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeActionsCreateOrUpdateRepoSecretRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -766,7 +778,7 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request Ac
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1053,11 +1065,15 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsCreateSelfHostedRunnerGroupForOrgRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeActionsCreateSelfHostedRunnerGroupForOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -1077,7 +1093,7 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 	}
 	u.Path += "/actions/runner-groups"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -5639,11 +5655,15 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsSetAllowedActionsOrganizationRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeActionsSetAllowedActionsOrganizationRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -5663,7 +5683,7 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 	}
 	u.Path += "/actions/permissions/selected-actions"
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -5700,11 +5720,15 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsSetAllowedActionsRepositoryRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeActionsSetAllowedActionsRepositoryRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -5739,7 +5763,7 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 	}
 	u.Path += "/actions/permissions/selected-actions"
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -5784,11 +5808,15 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsSetGithubActionsPermissionsOrganizationRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeActionsSetGithubActionsPermissionsOrganizationRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -5808,7 +5836,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 	}
 	u.Path += "/actions/permissions"
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -5853,11 +5881,15 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsSetGithubActionsPermissionsRepositoryRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeActionsSetGithubActionsPermissionsRepositoryRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -5892,7 +5924,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 	}
 	u.Path += "/actions/permissions"
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -5937,11 +5969,15 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -5976,7 +6012,7 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 	}
 	u.Path += "/repositories"
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -6021,11 +6057,15 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsSetSelectedReposForOrgSecretRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeActionsSetSelectedReposForOrgSecretRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -6060,7 +6100,7 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 	}
 	u.Path += "/repositories"
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -6105,11 +6145,15 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -6129,7 +6173,7 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 	}
 	u.Path += "/actions/permissions/repositories"
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -6174,11 +6218,15 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsSetSelfHostedRunnersInGroupForOrgRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeActionsSetSelfHostedRunnersInGroupForOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -6213,7 +6261,7 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 	}
 	u.Path += "/runners"
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -6258,11 +6306,15 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeActionsUpdateSelfHostedRunnerGroupForOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -6296,7 +6348,7 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -8089,16 +8141,20 @@ func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request Ac
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActivityMarkNotificationsAsReadRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeActivityMarkNotificationsAsReadRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/notifications"
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -8135,11 +8191,15 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, reques
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActivityMarkRepoNotificationsAsReadRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeActivityMarkRepoNotificationsAsReadRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -8174,7 +8234,7 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, reques
 	}
 	u.Path += "/notifications"
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -8263,11 +8323,15 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request Activi
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActivitySetRepoSubscriptionRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeActivitySetRepoSubscriptionRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -8302,7 +8366,7 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request Activi
 	}
 	u.Path += "/subscription"
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -8339,11 +8403,15 @@ func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request Acti
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeActivitySetThreadSubscriptionRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeActivitySetThreadSubscriptionRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/notifications/threads/"
@@ -8363,7 +8431,7 @@ func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request Acti
 	}
 	u.Path += "/subscription"
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -9669,16 +9737,20 @@ func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request Apps
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeAppsUpdateWebhookConfigForAppRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeAppsUpdateWebhookConfigForAppRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/app/hook/config"
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -10192,11 +10264,15 @@ func (c *Client) ChecksCreateSuite(ctx context.Context, request ChecksCreateSuit
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeChecksCreateSuiteRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeChecksCreateSuiteRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -10231,7 +10307,7 @@ func (c *Client) ChecksCreateSuite(ctx context.Context, request ChecksCreateSuit
 	}
 	u.Path += "/check-suites"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -11131,11 +11207,15 @@ func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request ChecksS
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeChecksSetSuitesPreferencesRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeChecksSetSuitesPreferencesRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -11170,7 +11250,7 @@ func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request ChecksS
 	}
 	u.Path += "/check-suites/preferences"
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -12060,11 +12140,15 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanni
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCodeScanningUpdateAlertRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeCodeScanningUpdateAlertRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -12116,7 +12200,7 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanni
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -12161,11 +12245,15 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanni
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCodeScanningUploadSarifRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeCodeScanningUploadSarifRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -12200,7 +12288,7 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanni
 	}
 	u.Path += "/code-scanning/sarifs"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -12643,11 +12731,15 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
@@ -12667,7 +12759,7 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 	}
 	u.Path += "/actions/runner-groups"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -14422,11 +14514,15 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Co
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/scim/v2/enterprises/"
@@ -14446,7 +14542,7 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Co
 	}
 	u.Path += "/Groups"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -14491,11 +14587,15 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/scim/v2/enterprises/"
@@ -14515,7 +14615,7 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 	}
 	u.Path += "/Users"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -14716,11 +14816,15 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeEnterpriseAdminSetAllowedActionsEnterpriseRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
@@ -14740,7 +14844,7 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 	}
 	u.Path += "/actions/permissions/selected-actions"
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -14785,11 +14889,15 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
@@ -14809,7 +14917,7 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 	}
 	u.Path += "/actions/permissions"
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -14854,11 +14962,15 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/scim/v2/enterprises/"
@@ -14892,7 +15004,7 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -14937,11 +15049,15 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/scim/v2/enterprises/"
@@ -14975,7 +15091,7 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -15020,11 +15136,15 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
@@ -15059,7 +15179,7 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 	}
 	u.Path += "/organizations"
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -15104,11 +15224,15 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
@@ -15128,7 +15252,7 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 	}
 	u.Path += "/actions/permissions/organizations"
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -15173,11 +15297,15 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
@@ -15212,7 +15340,7 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 	}
 	u.Path += "/runners"
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -15257,11 +15385,15 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/scim/v2/enterprises/"
@@ -15295,7 +15427,7 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -15340,11 +15472,15 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
@@ -15378,7 +15514,7 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -15476,11 +15612,15 @@ func (c *Client) GistsCreateComment(ctx context.Context, request GistsCreateComm
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGistsCreateCommentRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeGistsCreateCommentRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
@@ -15500,7 +15640,7 @@ func (c *Client) GistsCreateComment(ctx context.Context, request GistsCreateComm
 	}
 	u.Path += "/comments"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -16331,11 +16471,15 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateComm
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGistsUpdateCommentRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeGistsUpdateCommentRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
@@ -16369,7 +16513,7 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateComm
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -17026,11 +17170,15 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeInteractionsSetRestrictionsForRepoRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeInteractionsSetRestrictionsForRepoRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -17065,7 +17213,7 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 	}
 	u.Path += "/interaction-limits"
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -17102,11 +17250,15 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, request IssuesAddAssign
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeIssuesAddAssigneesRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeIssuesAddAssigneesRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -17156,7 +17308,7 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, request IssuesAddAssign
 	}
 	u.Path += "/assignees"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -18659,11 +18811,15 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, request IssuesRemove
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeIssuesRemoveAssigneesRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeIssuesRemoveAssigneesRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -18713,7 +18869,7 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, request IssuesRemove
 	}
 	u.Path += "/assignees"
 
-	r := ht.NewRequest(ctx, "DELETE", u, buf)
+	r := ht.NewRequest(ctx, "DELETE", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -18930,11 +19086,15 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request IssuesUpdateLabe
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeIssuesUpdateLabelRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeIssuesUpdateLabelRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -18983,7 +19143,7 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request IssuesUpdateLabe
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -19028,11 +19188,15 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request IssuesUpdate
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeIssuesUpdateMilestoneRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeIssuesUpdateMilestoneRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -19081,7 +19245,7 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request IssuesUpdate
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -20630,11 +20794,15 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, request MigrationsU
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeMigrationsUpdateImportRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeMigrationsUpdateImportRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -20669,7 +20837,7 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, request MigrationsU
 	}
 	u.Path += "/import"
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -23337,11 +23505,15 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request Orgs
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeOrgsUpdateWebhookConfigForOrgRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeOrgsUpdateWebhookConfigForOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -23376,7 +23548,7 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request Orgs
 	}
 	u.Path += "/config"
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -25573,11 +25745,15 @@ func (c *Client) ProjectsCreateColumn(ctx context.Context, request ProjectsCreat
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeProjectsCreateColumnRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeProjectsCreateColumnRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/"
@@ -25597,7 +25773,7 @@ func (c *Client) ProjectsCreateColumn(ctx context.Context, request ProjectsCreat
 	}
 	u.Path += "/columns"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -25634,16 +25810,20 @@ func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, request
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeProjectsCreateForAuthenticatedUserRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeProjectsCreateForAuthenticatedUserRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/projects"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -25680,11 +25860,15 @@ func (c *Client) ProjectsCreateForOrg(ctx context.Context, request ProjectsCreat
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeProjectsCreateForOrgRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeProjectsCreateForOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -25704,7 +25888,7 @@ func (c *Client) ProjectsCreateForOrg(ctx context.Context, request ProjectsCreat
 	}
 	u.Path += "/projects"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -25741,11 +25925,15 @@ func (c *Client) ProjectsCreateForRepo(ctx context.Context, request ProjectsCrea
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeProjectsCreateForRepoRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeProjectsCreateForRepoRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -25780,7 +25968,7 @@ func (c *Client) ProjectsCreateForRepo(ctx context.Context, request ProjectsCrea
 	}
 	u.Path += "/projects"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -26552,11 +26740,15 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveCol
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeProjectsMoveColumnRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeProjectsMoveColumnRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/columns/"
@@ -26576,7 +26768,7 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveCol
 	}
 	u.Path += "/moves"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -26621,11 +26813,15 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request ProjectsUpdateReq, 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeProjectsUpdateRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeProjectsUpdateRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/"
@@ -26644,7 +26840,7 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request ProjectsUpdateReq, 
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -26681,11 +26877,15 @@ func (c *Client) ProjectsUpdateCard(ctx context.Context, request ProjectsUpdateC
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeProjectsUpdateCardRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeProjectsUpdateCardRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/columns/cards/"
@@ -26704,7 +26904,7 @@ func (c *Client) ProjectsUpdateCard(ctx context.Context, request ProjectsUpdateC
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -26741,11 +26941,15 @@ func (c *Client) ProjectsUpdateColumn(ctx context.Context, request ProjectsUpdat
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeProjectsUpdateColumnRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeProjectsUpdateColumnRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/columns/"
@@ -26764,7 +26968,7 @@ func (c *Client) ProjectsUpdateColumn(ctx context.Context, request ProjectsUpdat
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -26884,11 +27088,15 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePullsCreateReplyForReviewCommentRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodePullsCreateReplyForReviewCommentRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -26953,7 +27161,7 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 	}
 	u.Path += "/replies"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -26998,11 +27206,15 @@ func (c *Client) PullsCreateReview(ctx context.Context, request PullsCreateRevie
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePullsCreateReviewRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodePullsCreateReviewRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -27052,7 +27264,7 @@ func (c *Client) PullsCreateReview(ctx context.Context, request PullsCreateRevie
 	}
 	u.Path += "/reviews"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -27268,11 +27480,15 @@ func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissRev
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePullsDismissReviewRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodePullsDismissReviewRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -27337,7 +27553,7 @@ func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissRev
 	}
 	u.Path += "/dismissals"
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -28447,11 +28663,15 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePullsSubmitReviewRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodePullsSubmitReviewRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -28516,7 +28736,7 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 	}
 	u.Path += "/events"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -28553,11 +28773,15 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateRevie
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePullsUpdateReviewRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodePullsUpdateReviewRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -28621,7 +28845,7 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateRevie
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -28658,11 +28882,15 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpda
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePullsUpdateReviewCommentRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodePullsUpdateReviewCommentRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -28711,7 +28939,7 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpda
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -28794,11 +29022,15 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReactionsCreateForTeamDiscussionCommentInOrgRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeReactionsCreateForTeamDiscussionCommentInOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -28863,7 +29095,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 	}
 	u.Path += "/reactions"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -28908,11 +29140,15 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReactionsCreateForTeamDiscussionCommentLegacyRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeReactionsCreateForTeamDiscussionCommentLegacyRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -28962,7 +29198,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 	}
 	u.Path += "/reactions"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -29007,11 +29243,15 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReactionsCreateForTeamDiscussionInOrgRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeReactionsCreateForTeamDiscussionInOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -29061,7 +29301,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 	}
 	u.Path += "/reactions"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -29106,11 +29346,15 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReactionsCreateForTeamDiscussionLegacyRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeReactionsCreateForTeamDiscussionLegacyRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -29145,7 +29389,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 	}
 	u.Path += "/reactions"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -31313,11 +31557,15 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreat
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReposCreateCommitStatusRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeReposCreateCommitStatusRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -31366,7 +31614,7 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreat
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -31403,11 +31651,15 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCrea
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReposCreateUsingTemplateRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeReposCreateUsingTemplateRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -31442,7 +31694,7 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCrea
 	}
 	u.Path += "/generate"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -39005,11 +39257,15 @@ func (c *Client) ReposMergeUpstream(ctx context.Context, request ReposMergeUpstr
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReposMergeUpstreamRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeReposMergeUpstreamRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -39044,7 +39300,7 @@ func (c *Client) ReposMergeUpstream(ctx context.Context, request ReposMergeUpstr
 	}
 	u.Path += "/merge-upstream"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -39337,11 +39593,15 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplace
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReposReplaceAllTopicsRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeReposReplaceAllTopicsRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -39376,7 +39636,7 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplace
 	}
 	u.Path += "/topics"
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -39647,11 +39907,15 @@ func (c *Client) ReposTransfer(ctx context.Context, request ReposTransferReq, pa
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReposTransferRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeReposTransferRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -39686,7 +39950,7 @@ func (c *Client) ReposTransfer(ctx context.Context, request ReposTransferReq, pa
 	}
 	u.Path += "/transfer"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -39731,11 +39995,15 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposU
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReposUpdateBranchProtectionRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeReposUpdateBranchProtectionRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -39785,7 +40053,7 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposU
 	}
 	u.Path += "/protection"
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -39822,11 +40090,15 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpda
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReposUpdateCommitCommentRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeReposUpdateCommitCommentRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -39875,7 +40147,7 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpda
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -39920,11 +40192,15 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request ReposUpdateI
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReposUpdateInvitationRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeReposUpdateInvitationRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -39973,7 +40249,7 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request ReposUpdateI
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -40010,11 +40286,15 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request ReposUpdateRele
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReposUpdateReleaseRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeReposUpdateReleaseRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -40063,7 +40343,7 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request ReposUpdateRele
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -40100,11 +40380,15 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request ReposUpdat
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReposUpdateReleaseAssetRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeReposUpdateReleaseAssetRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -40153,7 +40437,7 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request ReposUpdat
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -40190,11 +40474,15 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Re
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeReposUpdateWebhookConfigForRepoRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeReposUpdateWebhookConfigForRepoRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -40244,7 +40532,7 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Re
 	}
 	u.Path += "/config"
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -40900,11 +41188,15 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSecretScanningUpdateAlertRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeSecretScanningUpdateAlertRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -40956,7 +41248,7 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -41068,11 +41360,15 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsAddOrUpdateMembershipForUserInOrgRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeTeamsAddOrUpdateMembershipForUserInOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -41121,7 +41417,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -41166,11 +41462,15 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsAddOrUpdateMembershipForUserLegacyRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeTeamsAddOrUpdateMembershipForUserLegacyRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -41204,7 +41504,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -41249,11 +41549,15 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeTeamsAddOrUpdateProjectPermissionsInOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -41302,7 +41606,7 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -41347,11 +41651,15 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeTeamsAddOrUpdateRepoPermissionsInOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -41415,7 +41723,7 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, buf)
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -41780,11 +42088,15 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsCreateDiscussionCommentInOrgRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeTeamsCreateDiscussionCommentInOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -41834,7 +42146,7 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 	}
 	u.Path += "/comments"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -41871,11 +42183,15 @@ func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsCreateDiscussionCommentLegacyRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeTeamsCreateDiscussionCommentLegacyRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -41910,7 +42226,7 @@ func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request
 	}
 	u.Path += "/comments"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -41947,11 +42263,15 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request TeamsCr
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsCreateDiscussionInOrgRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeTeamsCreateDiscussionInOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -41986,7 +42306,7 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request TeamsCr
 	}
 	u.Path += "/discussions"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -42023,11 +42343,15 @@ func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request TeamsC
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsCreateDiscussionLegacyRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeTeamsCreateDiscussionLegacyRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -42047,7 +42371,7 @@ func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request TeamsC
 	}
 	u.Path += "/discussions"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -42084,11 +42408,15 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -42123,7 +42451,7 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 	}
 	u.Path += "/team-sync/group-mappings"
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -45456,11 +45784,15 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsUpdateDiscussionCommentInOrgRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeTeamsUpdateDiscussionCommentInOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -45524,7 +45856,7 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -45561,11 +45893,15 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsUpdateDiscussionCommentLegacyRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeTeamsUpdateDiscussionCommentLegacyRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -45614,7 +45950,7 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -45651,11 +45987,15 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request TeamsUp
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsUpdateDiscussionInOrgRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeTeamsUpdateDiscussionInOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -45704,7 +46044,7 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request TeamsUp
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -45741,11 +46081,15 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request TeamsU
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsUpdateDiscussionLegacyRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeTeamsUpdateDiscussionLegacyRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -45779,7 +46123,7 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request TeamsU
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -45824,11 +46168,15 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request TeamsUpdateInOrgR
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeTeamsUpdateInOrgRequest(request, span)
+	var contentType string
+	var reqBody io.Reader
+	contentType = "application/json"
+	buf, err := encodeTeamsUpdateInOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -45862,7 +46210,7 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request TeamsUpdateInOrgR
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, buf)
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)

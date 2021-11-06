@@ -61,15 +61,14 @@ var (
 )
 
 func decodeCreateSnapshotRequest(r *http.Request, span trace.Span) (req SnapshotCreateParams, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request SnapshotCreateParams
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
 		d := json.GetDecoder()
 		defer json.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -96,15 +95,14 @@ func decodeCreateSnapshotRequest(r *http.Request, span trace.Span) (req Snapshot
 }
 
 func decodeCreateSyncActionRequest(r *http.Request, span trace.Span) (req InstanceActionInfo, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request InstanceActionInfo
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
 		d := json.GetDecoder()
 		defer json.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -131,15 +129,14 @@ func decodeCreateSyncActionRequest(r *http.Request, span trace.Span) (req Instan
 }
 
 func decodeLoadSnapshotRequest(r *http.Request, span trace.Span) (req SnapshotLoadParams, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request SnapshotLoadParams
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
 		d := json.GetDecoder()
 		defer json.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -158,15 +155,14 @@ func decodeLoadSnapshotRequest(r *http.Request, span trace.Span) (req SnapshotLo
 }
 
 func decodeMmdsConfigPutRequest(r *http.Request, span trace.Span) (req MmdsConfig, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request MmdsConfig
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
 		d := json.GetDecoder()
 		defer json.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -185,15 +181,14 @@ func decodeMmdsConfigPutRequest(r *http.Request, span trace.Span) (req MmdsConfi
 }
 
 func decodeMmdsPatchRequest(r *http.Request, span trace.Span) (req MmdsPatchReq, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request MmdsPatchReq
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
 		d := json.GetDecoder()
 		defer json.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -212,15 +207,14 @@ func decodeMmdsPatchRequest(r *http.Request, span trace.Span) (req MmdsPatchReq,
 }
 
 func decodeMmdsPutRequest(r *http.Request, span trace.Span) (req MmdsPutReq, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request MmdsPutReq
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
 		d := json.GetDecoder()
 		defer json.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -239,15 +233,14 @@ func decodeMmdsPutRequest(r *http.Request, span trace.Span) (req MmdsPutReq, err
 }
 
 func decodePatchBalloonRequest(r *http.Request, span trace.Span) (req BalloonUpdate, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request BalloonUpdate
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
 		d := json.GetDecoder()
 		defer json.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -266,15 +259,14 @@ func decodePatchBalloonRequest(r *http.Request, span trace.Span) (req BalloonUpd
 }
 
 func decodePatchBalloonStatsIntervalRequest(r *http.Request, span trace.Span) (req BalloonStatsUpdate, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request BalloonStatsUpdate
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
 		d := json.GetDecoder()
 		defer json.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -293,15 +285,14 @@ func decodePatchBalloonStatsIntervalRequest(r *http.Request, span trace.Span) (r
 }
 
 func decodePatchGuestDriveByIDRequest(r *http.Request, span trace.Span) (req PartialDrive, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request PartialDrive
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
 		d := json.GetDecoder()
 		defer json.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -328,15 +319,14 @@ func decodePatchGuestDriveByIDRequest(r *http.Request, span trace.Span) (req Par
 }
 
 func decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Span) (req PartialNetworkInterface, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request PartialNetworkInterface
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
 		d := json.GetDecoder()
 		defer json.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -363,15 +353,14 @@ func decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Spa
 }
 
 func decodePatchMachineConfigurationRequest(r *http.Request, span trace.Span) (req MachineConfiguration, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request MachineConfiguration
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
 		d := json.GetDecoder()
 		defer json.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -398,15 +387,14 @@ func decodePatchMachineConfigurationRequest(r *http.Request, span trace.Span) (r
 }
 
 func decodePatchVmRequest(r *http.Request, span trace.Span) (req VM, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request VM
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
 		d := json.GetDecoder()
 		defer json.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -433,15 +421,14 @@ func decodePatchVmRequest(r *http.Request, span trace.Span) (req VM, err error) 
 }
 
 func decodePutBalloonRequest(r *http.Request, span trace.Span) (req Balloon, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Balloon
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
 		d := json.GetDecoder()
 		defer json.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -460,15 +447,14 @@ func decodePutBalloonRequest(r *http.Request, span trace.Span) (req Balloon, err
 }
 
 func decodePutGuestBootSourceRequest(r *http.Request, span trace.Span) (req BootSource, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request BootSource
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
 		d := json.GetDecoder()
 		defer json.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -487,15 +473,14 @@ func decodePutGuestBootSourceRequest(r *http.Request, span trace.Span) (req Boot
 }
 
 func decodePutGuestDriveByIDRequest(r *http.Request, span trace.Span) (req Drive, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Drive
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
 		d := json.GetDecoder()
 		defer json.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -522,15 +507,14 @@ func decodePutGuestDriveByIDRequest(r *http.Request, span trace.Span) (req Drive
 }
 
 func decodePutGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Span) (req NetworkInterface, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request NetworkInterface
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
 		d := json.GetDecoder()
 		defer json.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -557,15 +541,14 @@ func decodePutGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Span)
 }
 
 func decodePutGuestVsockRequest(r *http.Request, span trace.Span) (req Vsock, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Vsock
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
 		d := json.GetDecoder()
 		defer json.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -592,15 +575,14 @@ func decodePutGuestVsockRequest(r *http.Request, span trace.Span) (req Vsock, er
 }
 
 func decodePutLoggerRequest(r *http.Request, span trace.Span) (req Logger, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Logger
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
 		d := json.GetDecoder()
 		defer json.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -627,15 +609,14 @@ func decodePutLoggerRequest(r *http.Request, span trace.Span) (req Logger, err e
 }
 
 func decodePutMachineConfigurationRequest(r *http.Request, span trace.Span) (req MachineConfiguration, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request MachineConfiguration
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
 		d := json.GetDecoder()
 		defer json.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -662,15 +643,14 @@ func decodePutMachineConfigurationRequest(r *http.Request, span trace.Span) (req
 }
 
 func decodePutMetricsRequest(r *http.Request, span trace.Span) (req Metrics, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Metrics
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
 		d := json.GetDecoder()
 		defer json.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())

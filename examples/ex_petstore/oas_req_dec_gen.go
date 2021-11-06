@@ -59,3 +59,40 @@ var (
 	_ = metric.NewNoopMeterProvider
 	_ = regexp.MustCompile
 )
+
+func decodeCreatePetsRequest(r *http.Request, span trace.Span) (req Pet, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request Pet
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
+		d := json.GetDecoder()
+		defer json.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, err
+		}
+		return request, nil
+	default:
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeUploadPetAvatarRequest(r *http.Request, span trace.Span) (req io.ReadCloser, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/octet-stream":
+		var request io.ReadCloser
+		_ = request
+		return r.Body, nil
+	default:
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}

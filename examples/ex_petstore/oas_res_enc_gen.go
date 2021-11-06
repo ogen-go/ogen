@@ -84,6 +84,38 @@ func encodeCreatePetsResponse(response CreatePetsRes, w http.ResponseWriter, spa
 	}
 }
 
+func encodeDownloadPetAvatarResponse(response DownloadPetAvatarRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *DownloadPetAvatarOKApplicationOctetStream:
+		w.Header().Set("Content-Type", "application/octet-stream")
+		w.WriteHeader(200)
+		if _, err := io.Copy(w, response); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *DownloadPetAvatarNotFound:
+		w.WriteHeader(404)
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/pets/{petId}/avatar: unexpected response type: %T`, response)
+	}
+}
+
 func encodeListPetsResponse(response ListPetsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Pets:
@@ -150,5 +182,32 @@ func encodeShowPetByIdResponse(response ShowPetByIdRes, w http.ResponseWriter, s
 		return nil
 	default:
 		return errors.Errorf(`/pets/{petId}: unexpected response type: %T`, response)
+	}
+}
+
+func encodeUploadPetAvatarResponse(response UploadPetAvatarRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *UploadPetAvatarOK:
+		w.WriteHeader(200)
+		return nil
+	case *UploadPetAvatarNotFound:
+		w.WriteHeader(404)
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/pets/{petId}/avatar: unexpected response type: %T`, response)
 	}
 }

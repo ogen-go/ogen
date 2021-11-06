@@ -60,10 +60,18 @@ var (
 	_ = regexp.MustCompile
 )
 
+type DownloadPetAvatarParams struct {
+	PetId int64
+}
+
 type ListPetsParams struct {
 	Limit OptInt32
 }
 
 type ShowPetByIdParams struct {
 	PetId string
+}
+
+type UploadPetAvatarParams struct {
+	PetId int64
 }

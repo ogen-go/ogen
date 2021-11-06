@@ -83,6 +83,28 @@ func (s *CreatePetsCreated) ReadJSON(d *json.Decoder) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s DownloadPetAvatarNotFound) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	e.ObjEnd()
+}
+
+// ReadJSON reads DownloadPetAvatarNotFound from json stream.
+func (s *DownloadPetAvatarNotFound) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode DownloadPetAvatarNotFound to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
+// WriteJSON implements json.Marshaler.
 func (s Error) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
 	more := json.NewMore(e)
@@ -244,3 +266,47 @@ func (s *Pet) ReadJSON(d *json.Decoder) error {
 
 func (Pets) WriteJSON(e *json.Encoder)      {}
 func (Pets) ReadJSON(d *json.Decoder) error { return nil }
+
+// WriteJSON implements json.Marshaler.
+func (s UploadPetAvatarNotFound) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	e.ObjEnd()
+}
+
+// ReadJSON reads UploadPetAvatarNotFound from json stream.
+func (s *UploadPetAvatarNotFound) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UploadPetAvatarNotFound to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
+// WriteJSON implements json.Marshaler.
+func (s UploadPetAvatarOK) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	e.ObjEnd()
+}
+
+// ReadJSON reads UploadPetAvatarOK from json stream.
+func (s *UploadPetAvatarOK) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UploadPetAvatarOK to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}

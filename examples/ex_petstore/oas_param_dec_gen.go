@@ -60,6 +60,42 @@ var (
 	_ = regexp.MustCompile
 )
 
+func decodeDownloadPetAvatarParams(r *http.Request) (DownloadPetAvatarParams, error) {
+	var params DownloadPetAvatarParams
+	// Decode param "petId" located in "Path".
+	{
+		param := chi.URLParam(r, "petId")
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "petId",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt64(s)
+				if err != nil {
+					return err
+				}
+
+				params.PetId = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path parameter petId not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeListPetsParams(r *http.Request) (ListPetsParams, error) {
 	var params ListPetsParams
 	// Decode param "limit" located in "Query".
@@ -120,6 +156,42 @@ func decodeShowPetByIdParams(r *http.Request) (ShowPetByIdParams, error) {
 				}
 
 				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.PetId = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path parameter petId not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeUploadPetAvatarParams(r *http.Request) (UploadPetAvatarParams, error) {
+	var params UploadPetAvatarParams
+	// Decode param "petId" located in "Path".
+	{
+		param := chi.URLParam(r, "petId")
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "petId",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt64(s)
 				if err != nil {
 					return err
 				}
