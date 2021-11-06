@@ -35,7 +35,7 @@ type {{ $.Name }} struct {
 {{/* Define struct */}}
 
 {{/* Define embedded */}}
-{{- else if $.Embedded }}
+{{- else if $.IsEmbedded }}
 type {{ $.Name }} struct {
     {{ $.Go }}
 }

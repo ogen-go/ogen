@@ -326,7 +326,7 @@ func defaultSchema(contentType string) (*oas.Schema, error) {
 	switch contentType {
 	case "application/octet-stream":
 		return &oas.Schema{
-			Type: oas.RawBinary,
+			Type: oas.Stream,
 		}, nil
 	default:
 		return nil, errors.Errorf("unsupported content-type: %q", contentType)

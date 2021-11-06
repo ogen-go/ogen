@@ -76,8 +76,7 @@ func (g *Generator) generateResponses(opName string, responses *oas.OperationRes
 		case ir.KindPrimitive, ir.KindArray:
 			typ = ir.Alias(pascal(opName, resName), typ)
 			g.saveType(typ)
-		case ir.KindRawBinary:
-			typ.Embedded = true
+		case ir.KindEmbedded:
 			typ.Name = pascal(opName, resName)
 			g.saveType(typ)
 		default:
