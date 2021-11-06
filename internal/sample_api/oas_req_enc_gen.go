@@ -122,3 +122,7 @@ func encodePetUpdateNamePostRequestJSON(req string, span trace.Span) (data *byte
 
 	return buf, nil
 }
+
+func encodePetUploadAvatarByIDRequestOctetStream(req io.ReadCloser, span trace.Span) (data io.ReadCloser, err error) {
+	return req, nil
+}

@@ -76,10 +76,18 @@ type PetGetParams struct {
 	Token  string
 }
 
+type PetGetAvatarByIDParams struct {
+	PetID int64
+}
+
 type PetGetByNameParams struct {
 	Name string
 }
 
 type PetNameByIDParams struct {
 	ID int
+}
+
+type PetUploadAvatarByIDParams struct {
+	PetID int64
 }

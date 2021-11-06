@@ -74,6 +74,8 @@ type Server interface {
 	PetFriendsNamesByID(ctx context.Context, params PetFriendsNamesByIDParams) ([]string, error)
 	// PetGet implements petGet operation.
 	PetGet(ctx context.Context, params PetGetParams) (PetGetRes, error)
+	// PetGetAvatarByID implements petGetAvatarByID operation.
+	PetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDParams) (PetGetAvatarByIDRes, error)
 	// PetGetByName implements petGetByName operation.
 	PetGetByName(ctx context.Context, params PetGetByNameParams) (Pet, error)
 	// PetNameByID implements petNameByID operation.
@@ -82,4 +84,6 @@ type Server interface {
 	PetUpdateNameAliasPost(ctx context.Context, req PetName) (PetUpdateNameAliasPostDefStatusCode, error)
 	// PetUpdateNamePost implements  operation.
 	PetUpdateNamePost(ctx context.Context, req string) (PetUpdateNamePostDefStatusCode, error)
+	// PetUploadAvatarByID implements petUploadAvatarByID operation.
+	PetUploadAvatarByID(ctx context.Context, req io.ReadCloser, params PetUploadAvatarByIDParams) (PetUploadAvatarByIDRes, error)
 }

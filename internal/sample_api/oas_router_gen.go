@@ -67,8 +67,10 @@ func Register(r chi.Router, s Server, opts ...Option) {
 	r.MethodFunc("POST", "/pet", NewPetCreateHandler(s, opts...))
 	r.MethodFunc("GET", "/pet/friendNames/{id}", NewPetFriendsNamesByIDHandler(s, opts...))
 	r.MethodFunc("GET", "/pet", NewPetGetHandler(s, opts...))
+	r.MethodFunc("GET", "/pet/avatar", NewPetGetAvatarByIDHandler(s, opts...))
 	r.MethodFunc("GET", "/pet/{name}", NewPetGetByNameHandler(s, opts...))
 	r.MethodFunc("GET", "/pet/name/{id}", NewPetNameByIDHandler(s, opts...))
 	r.MethodFunc("POST", "/pet/updateNameAlias", NewPetUpdateNameAliasPostHandler(s, opts...))
 	r.MethodFunc("POST", "/pet/updateName", NewPetUpdateNamePostHandler(s, opts...))
+	r.MethodFunc("POST", "/pet/avatar", NewPetUploadAvatarByIDHandler(s, opts...))
 }

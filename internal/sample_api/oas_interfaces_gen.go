@@ -9,6 +9,14 @@ type FoobarPostRes interface {
 	foobarPostRes()
 }
 
+type PetGetAvatarByIDRes interface {
+	petGetAvatarByIDRes()
+}
+
 type PetGetRes interface {
 	petGetRes()
+}
+
+type PetUploadAvatarByIDRes interface {
+	petUploadAvatarByIDRes()
 }

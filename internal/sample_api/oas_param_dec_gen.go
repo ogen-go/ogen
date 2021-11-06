@@ -315,6 +315,41 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 	return params, nil
 }
 
+func decodePetGetAvatarByIDParams(r *http.Request) (PetGetAvatarByIDParams, error) {
+	var params PetGetAvatarByIDParams
+	// Decode param "petID" located in "Query".
+	{
+		values, ok := r.URL.Query()["petID"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt64(s)
+				if err != nil {
+					return err
+				}
+
+				params.PetID = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `parse parameter petID located in query`)
+			}
+		} else {
+			return params, errors.New(`query parameter petID not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodePetGetByNameParams(r *http.Request) (PetGetByNameParams, error) {
 	var params PetGetByNameParams
 	// Decode param "name" located in "Path".
@@ -382,6 +417,41 @@ func decodePetNameByIDParams(r *http.Request) (PetNameByIDParams, error) {
 			}
 		} else {
 			return params, errors.New(`path parameter id not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodePetUploadAvatarByIDParams(r *http.Request) (PetUploadAvatarByIDParams, error) {
+	var params PetUploadAvatarByIDParams
+	// Decode param "petID" located in "Query".
+	{
+		values, ok := r.URL.Query()["petID"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt64(s)
+				if err != nil {
+					return err
+				}
+
+				params.PetID = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `parse parameter petID located in query`)
+			}
+		} else {
+			return params, errors.New(`query parameter petID not specified`)
 		}
 	}
 	return params, nil

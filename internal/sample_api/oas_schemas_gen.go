@@ -159,7 +159,9 @@ type ErrorStatusCode struct {
 	Response   Error
 }
 
-func (*ErrorStatusCode) foobarPostRes() {}
+func (*ErrorStatusCode) foobarPostRes()          {}
+func (*ErrorStatusCode) petGetAvatarByIDRes()    {}
+func (*ErrorStatusCode) petUploadAvatarByIDRes() {}
 
 // FoobarPutDef is default response for FoobarPut operation.
 type FoobarPutDef struct{}
@@ -268,8 +270,10 @@ func (o NilString) Get() (v string, ok bool) {
 // Ref: #/components/responses/NotFound
 type NotFound struct{}
 
-func (*NotFound) foobarGetRes()  {}
-func (*NotFound) foobarPostRes() {}
+func (*NotFound) foobarGetRes()           {}
+func (*NotFound) foobarPostRes()          {}
+func (*NotFound) petGetAvatarByIDRes()    {}
+func (*NotFound) petUploadAvatarByIDRes() {}
 
 // NewOptData returns new OptData with value set to v.
 func NewOptData(v Data) OptData {
@@ -616,6 +620,12 @@ func (*Pet) foobarGetRes()  {}
 func (*Pet) foobarPostRes() {}
 func (*Pet) petGetRes()     {}
 
+type PetGetAvatarByIDOKApplicationOctetStream struct {
+	io.ReadCloser
+}
+
+func (*PetGetAvatarByIDOKApplicationOctetStream) petGetAvatarByIDRes() {}
+
 type PetGetDef struct {
 	Message string `json:"message"`
 }
@@ -661,3 +671,8 @@ type PetUpdateNamePostDefStatusCode struct {
 	StatusCode int
 	Response   PetUpdateNamePostDef
 }
+
+// PetUploadAvatarByIDOK is response for PetUploadAvatarByID operation.
+type PetUploadAvatarByIDOK struct{}
+
+func (*PetUploadAvatarByIDOK) petUploadAvatarByIDRes() {}
