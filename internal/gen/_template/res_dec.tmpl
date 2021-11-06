@@ -45,7 +45,7 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
                 return nil, err
             }
 
-            response := {{ if $type.IsEmbedded }}&{{$type.Name}}{io.NopCloser(bytes.NewReader(b))}{{ else }}io.NopCloser(bytes.NewReader(b)){{ end }}
+            response := &{{$type.Name}}{io.NopCloser(bytes.NewReader(b))}
             return response, nil
             {{- else }}
             return res, errors.New("{{ $contentType }} decoder not implemented")

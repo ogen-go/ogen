@@ -76,7 +76,7 @@ func (g *Generator) generateResponses(opName string, responses *oas.OperationRes
 		case ir.KindPrimitive, ir.KindArray:
 			typ = ir.Alias(pascal(opName, resName), typ)
 			g.saveType(typ)
-		case ir.KindEmbedded:
+		case ir.KindStream:
 			typ.Name = pascal(opName, resName)
 			g.saveType(typ)
 		default:
@@ -131,6 +131,16 @@ func (g *Generator) responseToIR(name, doc string, resp *oas.Response) (ret *ir.
 		typeName := name
 		if len(resp.Contents) > 1 {
 			typeName = pascal(name, contentType)
+		}
+
+		if schema == nil {
+			switch contentType {
+			case "application/octet-stream":
+				types[ir.ContentType(contentType)] = ir.Stream()
+				continue
+			default:
+				return nil, errors.Errorf("unsupported empty schema for content-type %q", contentType)
+			}
 		}
 
 		typ, err := g.generateSchema(typeName, schema)

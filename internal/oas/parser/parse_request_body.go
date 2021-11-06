@@ -24,13 +24,12 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody) (*oas.RequestBody, err
 
 	for contentType, media := range body.Content {
 		if reflect.DeepEqual(media.Schema, ogen.Schema{}) {
-			schema, err := defaultSchema(contentType)
-			if err != nil {
-				return nil, errors.Wrapf(err, "content: %s: parse empty schema", contentType)
+			switch contentType {
+			case "application/octet-stream":
+				reqBody.Contents[contentType] = nil
+				continue
+			default:
 			}
-
-			reqBody.Contents[contentType] = schema
-			continue
 		}
 
 		schema, err := p.parseSchema(media.Schema)

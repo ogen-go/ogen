@@ -297,8 +297,6 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 			}
 		}
 		return side(sum), nil
-	case oas.Stream:
-		return ir.Embedded(), nil
 	default:
 		panic("unreachable")
 	}

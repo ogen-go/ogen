@@ -39,7 +39,7 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
         {{- /* Decode json */ -}}
         {{- else if $contentType.OctetStream }}
         _ = request
-        return r.Body, nil
+        return {{ $op.Request.Type.Go }}{r.Body}, nil
         {{- else }}
         _ = request
         return req, errors.New("{{ $contentType }} decoder not implemented")

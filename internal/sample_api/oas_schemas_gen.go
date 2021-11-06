@@ -676,3 +676,7 @@ type PetUpdateNamePostDefStatusCode struct {
 type PetUploadAvatarByIDOK struct{}
 
 func (*PetUploadAvatarByIDOK) petUploadAvatarByIDRes() {}
+
+type Stream struct {
+	io.ReadCloser
+}

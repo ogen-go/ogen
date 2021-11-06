@@ -85,5 +85,5 @@ type Server interface {
 	// PetUpdateNamePost implements  operation.
 	PetUpdateNamePost(ctx context.Context, req string) (PetUpdateNamePostDefStatusCode, error)
 	// PetUploadAvatarByID implements petUploadAvatarByID operation.
-	PetUploadAvatarByID(ctx context.Context, req io.ReadCloser, params PetUploadAvatarByIDParams) (PetUploadAvatarByIDRes, error)
+	PetUploadAvatarByID(ctx context.Context, req Stream, params PetUploadAvatarByIDParams) (PetUploadAvatarByIDRes, error)
 }

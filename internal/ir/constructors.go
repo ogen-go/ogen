@@ -45,8 +45,9 @@ func Pointer(typ *Type, sem NilSemantic) *Type {
 	}
 }
 
-func Embedded() *Type {
+func Stream() *Type {
 	return &Type{
-		Kind: KindEmbedded,
+		Kind: KindStream,
+		Name: "Stream",
 	}
 }

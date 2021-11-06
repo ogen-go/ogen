@@ -20,7 +20,7 @@ const (
 	KindInterface Kind = "interface"
 	KindGeneric   Kind = "generic"
 	KindSum       Kind = "sum"
-	KindEmbedded  Kind = "embedded"
+	KindStream    Kind = "stream"
 )
 
 type SumSpecMap struct {
@@ -109,7 +109,7 @@ func (t *Type) Is(vs ...Kind) bool {
 }
 
 func (t *Type) Implement(i *Type) {
-	if !t.Is(KindStruct, KindAlias, KindSum, KindEmbedded) || !i.Is(KindInterface) {
+	if !t.Is(KindStruct, KindAlias, KindSum, KindStream) || !i.Is(KindInterface) {
 		panic("unreachable")
 	}
 
@@ -146,10 +146,8 @@ func (t *Type) Go() string {
 		return "[]" + t.Item.Go()
 	case KindPointer:
 		return "*" + t.PointerTo.Go()
-	case KindStruct, KindAlias, KindInterface, KindGeneric, KindEnum, KindSum:
+	case KindStruct, KindAlias, KindInterface, KindGeneric, KindEnum, KindSum, KindStream:
 		return t.Name
-	case KindEmbedded:
-		return "io.ReadCloser"
 	default:
 		panic(fmt.Sprintf("unexpected kind: %s", t.Kind))
 	}
@@ -160,7 +158,7 @@ func (t *Type) Methods() []string {
 	switch t.Kind {
 	case KindInterface:
 		ms = t.InterfaceMethods
-	case KindStruct, KindAlias, KindEnum, KindGeneric, KindSum, KindEmbedded:
+	case KindStruct, KindAlias, KindEnum, KindGeneric, KindSum, KindStream:
 		for i := range t.Implements {
 			for m := range i.InterfaceMethods {
 				ms[m] = struct{}{}

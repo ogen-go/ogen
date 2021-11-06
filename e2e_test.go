@@ -129,7 +129,9 @@ func (s *sampleAPIServer) PetGetAvatarByID(ctx context.Context, params api.PetGe
 	}
 }
 
-func (s *sampleAPIServer) PetUploadAvatarByID(ctx context.Context, req io.ReadCloser, params api.PetUploadAvatarByIDParams) (api.PetUploadAvatarByIDRes, error) {
+func (s *sampleAPIServer) PetUploadAvatarByID(ctx context.Context, req api.Stream, params api.PetUploadAvatarByIDParams) (api.PetUploadAvatarByIDRes, error) {
+	defer req.Close()
+
 	switch params.PetID {
 	case petNotFoundID:
 		return &api.NotFound{}, nil
@@ -139,8 +141,21 @@ func (s *sampleAPIServer) PetUploadAvatarByID(ctx context.Context, req io.ReadCl
 			Response:   api.Error{Message: "error"},
 		}, nil
 	default:
-		_, _ = io.ReadAll(req)
-		_ = req.Close()
+		avatar, err := io.ReadAll(req)
+		if err != nil {
+			return &api.ErrorStatusCode{
+				StatusCode: http.StatusInternalServerError,
+				Response:   api.Error{Message: err.Error()},
+			}, nil
+		}
+
+		if string(avatar) != string(petAvatar) {
+			return &api.ErrorStatusCode{
+				StatusCode: http.StatusInternalServerError,
+				Response:   api.Error{Message: "unexpected avatar"},
+			}, nil
+		}
+
 		return &api.PetUploadAvatarByIDOK{}, nil
 	}
 }
@@ -301,21 +316,30 @@ func TestIntegration(t *testing.T) {
 
 		t.Run("PetUploadAvatar", func(t *testing.T) {
 			t.Run("OK", func(t *testing.T) {
-				got, err := client.PetUploadAvatarByID(ctx, io.NopCloser(bytes.NewReader(petAvatar)), api.PetUploadAvatarByIDParams{
+				stream := api.Stream{
+					ReadCloser: io.NopCloser(bytes.NewReader(petAvatar)),
+				}
+				got, err := client.PetUploadAvatarByID(ctx, stream, api.PetUploadAvatarByIDParams{
 					PetID: petExistingID,
 				})
 				require.NoError(t, err)
 				assert.IsType(t, &api.PetUploadAvatarByIDOK{}, got)
 			})
 			t.Run("NotFound", func(t *testing.T) {
-				got, err := client.PetUploadAvatarByID(ctx, io.NopCloser(bytes.NewReader(petAvatar)), api.PetUploadAvatarByIDParams{
+				stream := api.Stream{
+					ReadCloser: io.NopCloser(bytes.NewReader(petAvatar)),
+				}
+				got, err := client.PetUploadAvatarByID(ctx, stream, api.PetUploadAvatarByIDParams{
 					PetID: petNotFoundID,
 				})
 				require.NoError(t, err)
 				assert.IsType(t, &api.NotFound{}, got)
 			})
 			t.Run("Error", func(t *testing.T) {
-				got, err := client.PetUploadAvatarByID(ctx, io.NopCloser(bytes.NewReader(petAvatar)), api.PetUploadAvatarByIDParams{
+				stream := api.Stream{
+					ReadCloser: io.NopCloser(bytes.NewReader(petAvatar)),
+				}
+				got, err := client.PetUploadAvatarByID(ctx, stream, api.PetUploadAvatarByIDParams{
 					PetID: petErrorID,
 				})
 				require.NoError(t, err)

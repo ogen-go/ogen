@@ -321,14 +321,3 @@ func validateTypeFormat(typ, format string) error {
 		return errors.Errorf("unexpected type: %q", typ)
 	}
 }
-
-func defaultSchema(contentType string) (*oas.Schema, error) {
-	switch contentType {
-	case "application/octet-stream":
-		return &oas.Schema{
-			Type: oas.Stream,
-		}, nil
-	default:
-		return nil, errors.Errorf("unsupported content-type: %q", contentType)
-	}
-}

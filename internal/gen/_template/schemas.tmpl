@@ -34,12 +34,12 @@ type {{ $.Name }} struct {
 {{- end }}
 {{/* Define struct */}}
 
-{{/* Define embedded */}}
-{{- else if $.IsEmbedded }}
+{{/* Define stream */}}
+{{- else if $.IsStream }}
 type {{ $.Name }} struct {
-    {{ $.Go }}
+    io.ReadCloser
 }
-{{/* Define embedded */}}
+{{/* Define stream */}}
 
 {{/* Define alias */}}
 {{- else if $.IsAlias }}

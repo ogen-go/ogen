@@ -11,9 +11,6 @@ const (
 	Number  SchemaType = "number"
 	String  SchemaType = "string"
 	Boolean SchemaType = "boolean"
-
-	// Stream is custom type for raw byte stream.
-	Stream SchemaType = "x-stream"
 )
 
 // Discriminator discriminates types for OneOf, AllOf, AnyOf.

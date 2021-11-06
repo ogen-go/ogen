@@ -767,7 +767,7 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request string) (res Pet
 }
 
 // PetUploadAvatarByID implements petUploadAvatarByID operation.
-func (c *Client) PetUploadAvatarByID(ctx context.Context, request io.ReadCloser, params PetUploadAvatarByIDParams) (res PetUploadAvatarByIDRes, err error) {
+func (c *Client) PetUploadAvatarByID(ctx context.Context, request Stream, params PetUploadAvatarByIDParams) (res PetUploadAvatarByIDRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetUploadAvatarByID`,
 		trace.WithAttributes(otelogen.OperationID(`petUploadAvatarByID`)),
