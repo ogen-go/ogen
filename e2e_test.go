@@ -150,7 +150,7 @@ func (s *sampleAPIServer) PetUploadAvatarByID(ctx context.Context, req api.Strea
 
 		if string(avatar) != string(petAvatar) {
 			return &api.ErrorStatusCode{
-				StatusCode: http.StatusInternalServerError,
+				StatusCode: http.StatusBadRequest,
 				Response:   api.Error{Message: "unexpected avatar"},
 			}, nil
 		}
