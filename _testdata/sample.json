@@ -312,6 +312,17 @@
           }
         }
       }
+    },
+    "/error": {
+      "get": {
+        "description": "Returns error",
+        "operationId": "errorGet",
+        "responses": {
+          "default": {
+            "$ref": "#/components/responses/Error"
+          }
+        }
+      }
     }
   },
   "components": {

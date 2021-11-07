@@ -61,6 +61,7 @@ var (
 )
 
 func Register(r chi.Router, s Server, opts ...Option) {
+	r.MethodFunc("GET", "/error", NewErrorGetHandler(s, opts...))
 	r.MethodFunc("GET", "/foobar", NewFoobarGetHandler(s, opts...))
 	r.MethodFunc("POST", "/foobar", NewFoobarPostHandler(s, opts...))
 	r.MethodFunc("PUT", "/foobar", NewFoobarPutHandler(s, opts...))

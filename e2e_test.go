@@ -4,6 +4,7 @@ import (
 	"context"
 	_ "embed"
 	"net"
+	"net/http"
 	"net/http/httptest"
 	"net/url"
 	"testing"
@@ -100,6 +101,15 @@ func (s *sampleAPIServer) PetCreate(ctx context.Context, req api.Pet) (pet api.P
 
 func (s *sampleAPIServer) PetGetByName(ctx context.Context, params api.PetGetByNameParams) (api.Pet, error) {
 	return s.pet, nil
+}
+
+func (s *sampleAPIServer) ErrorGet(ctx context.Context) (api.ErrorStatusCode, error) {
+	return api.ErrorStatusCode{
+		StatusCode: http.StatusInternalServerError,
+		Response: api.Error{
+			Message: "test_error",
+		},
+	}, nil
 }
 
 //go:embed _testdata/pet.json
@@ -254,6 +264,19 @@ func TestIntegration(t *testing.T) {
 				require.NoError(t, err)
 				assert.Equal(t, []string{friend.Name}, got)
 			})
+		})
+
+		t.Run("ErrorGet", func(t *testing.T) {
+			got, err := client.ErrorGet(ctx)
+			require.NoError(t, err)
+
+			errStatusCode := api.ErrorStatusCode{
+				StatusCode: http.StatusInternalServerError,
+				Response: api.Error{
+					Message: "test_error",
+				},
+			}
+			assert.Equal(t, errStatusCode, got)
 		})
 	})
 	t.Run("TechEmpower", func(t *testing.T) {

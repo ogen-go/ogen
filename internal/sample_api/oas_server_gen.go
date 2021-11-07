@@ -62,6 +62,8 @@ var (
 
 // Server handles operations described by OpenAPI v3 specification.
 type Server interface {
+	// ErrorGet implements errorGet operation.
+	ErrorGet(ctx context.Context) (ErrorStatusCode, error)
 	// FoobarGet implements foobarGet operation.
 	FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarGetRes, error)
 	// FoobarPost implements foobarPost operation.

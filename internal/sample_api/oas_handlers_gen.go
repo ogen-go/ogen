@@ -60,6 +60,29 @@ var (
 	_ = regexp.MustCompile
 )
 
+func NewErrorGetHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
+	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `ErrorGet`,
+			trace.WithAttributes(otelogen.OperationID(`errorGet`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+
+		response, err := s.ErrorGet(ctx)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodeErrorGetResponse(response, w, span); err != nil {
+			span.RecordError(err)
+			return
+		}
+	}
+}
+
 func NewFoobarGetHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {

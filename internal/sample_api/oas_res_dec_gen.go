@@ -60,6 +60,39 @@ var (
 	_ = regexp.MustCompile
 )
 
+func decodeErrorGetResponse(resp *http.Response, span trace.Span) (res ErrorStatusCode, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
+	switch resp.StatusCode {
+	default:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			d := json.GetDecoder()
+			defer json.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ErrorStatusCode
+			if err := func() error {
+				if err := response.ReadJSON(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			response.StatusCode = resp.StatusCode
+			return response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	}
+}
+
 func decodeFoobarGetResponse(resp *http.Response, span trace.Span) (res FoobarGetRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
