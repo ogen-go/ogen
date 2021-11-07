@@ -6,10 +6,10 @@
 
 type config struct {
 	TracerProvider trace.TracerProvider
-	Tracer		   trace.Tracer
+	Trace          trace.Tracer
 	MeterProvider  metric.MeterProvider
-	Meter		   metric.Meter
-	Client		   HTTPClient
+	Meter          metric.Meter
+	Client         HTTPClient
 }
 
 func newConfig(opts ...Option) config {
