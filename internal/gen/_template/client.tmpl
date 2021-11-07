@@ -10,9 +10,9 @@ type HTTPClient interface {
 
 type Client struct {
 	serverURL *url.URL
-	cfg	   config
+	cfg	      config
 	requests  metric.Int64Counter
-	errors	metric.Int64Counter
+	errors	  metric.Int64Counter
 	duration  metric.Int64Histogram
 }
 
