@@ -22,6 +22,7 @@ func AcquireRequest() *http.Request {
 func PutRequest(r *http.Request) {
 	// Reset public.
 	r.Body = nil
+	r.GetBody = nil
 	r.ContentLength = 0
 	r.Form = nil
 	r.MultipartForm = nil
