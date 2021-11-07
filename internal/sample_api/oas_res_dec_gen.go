@@ -308,15 +308,9 @@ func decodePetGetAvatarByIDResponse(resp *http.Response, span trace.Span) (res P
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/octet-stream":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return nil, err
-			}
-
-			response := &PetGetAvatarByIDOKApplicationOctetStream{
-				Data: bytes.NewReader(b),
-			}
-			return response, nil
+			return &PetGetAvatarByIDOKApplicationOctetStream{
+				Data: resp.Body,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}

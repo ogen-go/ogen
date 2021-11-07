@@ -84,6 +84,60 @@ func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter, span trac
 	}
 }
 
+func encodeGetPageCoverImageResponse(response GetPageCoverImageRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *GetPageCoverImageOKImage:
+		w.Header().Set("Content-Type", "image/*")
+		w.WriteHeader(200)
+		if _, err := io.Copy(w, response); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *GetPageCoverImageForbidden:
+		w.WriteHeader(403)
+		return nil
+	default:
+		return errors.Errorf(`/galleries/{media_id}/cover.{format}: unexpected response type: %T`, response)
+	}
+}
+
+func encodeGetPageImageResponse(response GetPageImageRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *GetPageImageOKImage:
+		w.Header().Set("Content-Type", "image/*")
+		w.WriteHeader(200)
+		if _, err := io.Copy(w, response); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *GetPageImageForbidden:
+		w.WriteHeader(403)
+		return nil
+	default:
+		return errors.Errorf(`/galleries/{media_id}/{page}.{format}: unexpected response type: %T`, response)
+	}
+}
+
+func encodeGetPageThumbnailImageResponse(response GetPageThumbnailImageRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *GetPageThumbnailImageOKImage:
+		w.Header().Set("Content-Type", "image/*")
+		w.WriteHeader(200)
+		if _, err := io.Copy(w, response); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *GetPageThumbnailImageForbidden:
+		w.WriteHeader(403)
+		return nil
+	default:
+		return errors.Errorf(`/galleries/{media_id}/{page}t.{format}: unexpected response type: %T`, response)
+	}
+}
+
 func encodeSearchResponse(response SearchRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchOKApplicationJSON:

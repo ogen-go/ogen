@@ -209,6 +209,72 @@ func (s *GetBookForbidden) ReadJSON(d *json.Decoder) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s GetPageCoverImageForbidden) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	e.ObjEnd()
+}
+
+// ReadJSON reads GetPageCoverImageForbidden from json stream.
+func (s *GetPageCoverImageForbidden) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GetPageCoverImageForbidden to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
+// WriteJSON implements json.Marshaler.
+func (s GetPageImageForbidden) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	e.ObjEnd()
+}
+
+// ReadJSON reads GetPageImageForbidden from json stream.
+func (s *GetPageImageForbidden) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GetPageImageForbidden to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
+// WriteJSON implements json.Marshaler.
+func (s GetPageThumbnailImageForbidden) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	e.ObjEnd()
+}
+
+// ReadJSON reads GetPageThumbnailImageForbidden from json stream.
+func (s *GetPageThumbnailImageForbidden) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GetPageThumbnailImageForbidden to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
+// WriteJSON implements json.Marshaler.
 func (s Image) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
 	more := json.NewMore(e)

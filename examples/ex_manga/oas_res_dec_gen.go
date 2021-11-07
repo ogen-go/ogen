@@ -96,6 +96,60 @@ func decodeGetBookResponse(resp *http.Response, span trace.Span) (res GetBookRes
 	}
 }
 
+func decodeGetPageCoverImageResponse(resp *http.Response, span trace.Span) (res GetPageCoverImageRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "image/*":
+			return &GetPageCoverImageOKImage{
+				Data: resp.Body,
+			}, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		return &GetPageCoverImageForbidden{}, nil
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeGetPageImageResponse(resp *http.Response, span trace.Span) (res GetPageImageRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "image/*":
+			return &GetPageImageOKImage{
+				Data: resp.Body,
+			}, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		return &GetPageImageForbidden{}, nil
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeGetPageThumbnailImageResponse(resp *http.Response, span trace.Span) (res GetPageThumbnailImageRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "image/*":
+			return &GetPageThumbnailImageOKImage{
+				Data: resp.Body,
+			}, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		return &GetPageThumbnailImageForbidden{}, nil
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeSearchResponse(resp *http.Response, span trace.Span) (res SearchRes, err error) {
 	switch resp.StatusCode {
 	case 200:

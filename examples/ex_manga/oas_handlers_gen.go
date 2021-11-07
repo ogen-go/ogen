@@ -89,6 +89,93 @@ func NewGetBookHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *
 	}
 }
 
+func NewGetPageCoverImageHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
+	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `GetPageCoverImage`,
+			trace.WithAttributes(otelogen.OperationID(`getPageCoverImage`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+		params, err := decodeGetPageCoverImageParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
+
+		response, err := s.GetPageCoverImage(ctx, params)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodeGetPageCoverImageResponse(response, w, span); err != nil {
+			span.RecordError(err)
+			return
+		}
+	}
+}
+
+func NewGetPageImageHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
+	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `GetPageImage`,
+			trace.WithAttributes(otelogen.OperationID(`getPageImage`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+		params, err := decodeGetPageImageParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
+
+		response, err := s.GetPageImage(ctx, params)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodeGetPageImageResponse(response, w, span); err != nil {
+			span.RecordError(err)
+			return
+		}
+	}
+}
+
+func NewGetPageThumbnailImageHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
+	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `GetPageThumbnailImage`,
+			trace.WithAttributes(otelogen.OperationID(`getPageThumbnailImage`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+		params, err := decodeGetPageThumbnailImageParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
+
+		response, err := s.GetPageThumbnailImage(ctx, params)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodeGetPageThumbnailImageResponse(response, w, span); err != nil {
+			span.RecordError(err)
+			return
+		}
+	}
+}
+
 func NewSearchHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {

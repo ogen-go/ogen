@@ -96,6 +96,269 @@ func decodeGetBookParams(r *http.Request) (GetBookParams, error) {
 	return params, nil
 }
 
+func decodeGetPageCoverImageParams(r *http.Request) (GetPageCoverImageParams, error) {
+	var params GetPageCoverImageParams
+	// Decode param "media_id" located in "Path".
+	{
+		param := chi.URLParam(r, "media_id")
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "media_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.MediaID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path parameter media_id not specified`)
+		}
+	}
+	// Decode param "format" located in "Path".
+	{
+		param := chi.URLParam(r, "format")
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "format",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Format = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path parameter format not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeGetPageImageParams(r *http.Request) (GetPageImageParams, error) {
+	var params GetPageImageParams
+	// Decode param "media_id" located in "Path".
+	{
+		param := chi.URLParam(r, "media_id")
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "media_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.MediaID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path parameter media_id not specified`)
+		}
+	}
+	// Decode param "page" located in "Path".
+	{
+		param := chi.URLParam(r, "page")
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "page",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.Page = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path parameter page not specified`)
+		}
+	}
+	// Decode param "format" located in "Path".
+	{
+		param := chi.URLParam(r, "format")
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "format",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Format = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path parameter format not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeGetPageThumbnailImageParams(r *http.Request) (GetPageThumbnailImageParams, error) {
+	var params GetPageThumbnailImageParams
+	// Decode param "media_id" located in "Path".
+	{
+		param := chi.URLParam(r, "media_id")
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "media_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.MediaID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path parameter media_id not specified`)
+		}
+	}
+	// Decode param "page" located in "Path".
+	{
+		param := chi.URLParam(r, "page")
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "page",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.Page = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path parameter page not specified`)
+		}
+	}
+	// Decode param "format" located in "Path".
+	{
+		param := chi.URLParam(r, "format")
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "format",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Format = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path parameter format not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeSearchParams(r *http.Request) (SearchParams, error) {
 	var params SearchParams
 	// Decode param "query" located in "Query".

@@ -64,6 +64,23 @@ type GetBookParams struct {
 	BookID int
 }
 
+type GetPageCoverImageParams struct {
+	MediaID int
+	Format  string
+}
+
+type GetPageImageParams struct {
+	MediaID int
+	Page    int
+	Format  string
+}
+
+type GetPageThumbnailImageParams struct {
+	MediaID int
+	Page    int
+	Format  string
+}
+
 type SearchParams struct {
 	Query string
 	Page  OptInt

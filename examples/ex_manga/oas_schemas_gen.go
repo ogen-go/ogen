@@ -80,6 +80,51 @@ type GetBookForbidden struct{}
 
 func (*GetBookForbidden) getBookRes() {}
 
+// GetPageCoverImageForbidden is response for GetPageCoverImage operation.
+type GetPageCoverImageForbidden struct{}
+
+func (*GetPageCoverImageForbidden) getPageCoverImageRes() {}
+
+type GetPageCoverImageOKImage struct {
+	Data io.Reader
+}
+
+func (s GetPageCoverImageOKImage) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*GetPageCoverImageOKImage) getPageCoverImageRes() {}
+
+// GetPageImageForbidden is response for GetPageImage operation.
+type GetPageImageForbidden struct{}
+
+func (*GetPageImageForbidden) getPageImageRes() {}
+
+type GetPageImageOKImage struct {
+	Data io.Reader
+}
+
+func (s GetPageImageOKImage) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*GetPageImageOKImage) getPageImageRes() {}
+
+// GetPageThumbnailImageForbidden is response for GetPageThumbnailImage operation.
+type GetPageThumbnailImageForbidden struct{}
+
+func (*GetPageThumbnailImageForbidden) getPageThumbnailImageRes() {}
+
+type GetPageThumbnailImageOKImage struct {
+	Data io.Reader
+}
+
+func (s GetPageThumbnailImageOKImage) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*GetPageThumbnailImageOKImage) getPageThumbnailImageRes() {}
+
 // Ref: #/components/schemas/Image
 type Image struct {
 	T OptString `json:"t"`
