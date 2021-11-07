@@ -12,13 +12,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	"github.com/ogen-go/errors"
 	"github.com/ogen-go/jx"
 	"github.com/stretchr/testify/require"
 	"github.com/valyala/fasthttp"
 	"go.opentelemetry.io/otel/trace"
-	"github.com/ogen-go/errors"
 
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -215,10 +214,8 @@ func BenchmarkIntegration(b *testing.B) {
 		// Using TechEmpower as most popular general purpose framework benchmark.
 		// https://github.com/TechEmpower/FrameworkBenchmarks/wiki/Project-Information-Framework-Tests-Overview#test-types
 
-		mux := chi.NewRouter()
 		srv := techEmpowerServer{}
-		techempower.Register(mux, srv)
-		s := httptest.NewServer(mux)
+		s := httptest.NewServer(techempower.NewServer(srv))
 		defer s.Close()
 
 		httpClient := &http.Client{

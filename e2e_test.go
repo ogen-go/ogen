@@ -13,7 +13,6 @@ import (
 	"testing"
 	"time"
 
-	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -181,9 +180,7 @@ func TestIntegration(t *testing.T) {
 			require.Equal(t, "invalid: id (value -1 less than 0), name (len 1 less than minimum 4)", validateErr.Error())
 		})
 
-		mux := chi.NewRouter()
-		api.Register(mux, &sampleAPIServer{})
-		s := httptest.NewServer(mux)
+		s := httptest.NewServer(api.NewServer(&sampleAPIServer{}))
 		defer s.Close()
 
 		client, err := api.NewClient(s.URL)
@@ -380,9 +377,7 @@ func TestIntegration(t *testing.T) {
 		// https://github.com/TechEmpower/FrameworkBenchmarks/wiki/Project-Information-Framework-Tests-Overview#test-types
 		t.Parallel()
 
-		mux := chi.NewRouter()
-		techempower.Register(mux, techEmpowerServer{})
-		s := httptest.NewServer(mux)
+		s := httptest.NewServer(techempower.NewServer(techEmpowerServer{}))
 		defer s.Close()
 
 		client, err := techempower.NewClient(s.URL)
