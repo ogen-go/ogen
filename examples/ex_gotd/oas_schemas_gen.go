@@ -62,81 +62,81 @@ var (
 
 // Ref: #/components/schemas/addStickerToSet
 type AddStickerToSet struct {
-	UserID       int             `json:"user_id"`
+	Emojis       string          `json:"emojis"`
+	MaskPosition OptMaskPosition `json:"mask_position"`
 	Name         string          `json:"name"`
 	PNGSticker   OptString       `json:"png_sticker"`
 	TgsSticker   OptString       `json:"tgs_sticker"`
-	Emojis       string          `json:"emojis"`
-	MaskPosition OptMaskPosition `json:"mask_position"`
+	UserID       int             `json:"user_id"`
 }
 
 // Ref: #/components/schemas/Animation
 type Animation struct {
-	FileID       string       `json:"file_id"`
-	FileUniqueID string       `json:"file_unique_id"`
-	Width        int          `json:"width"`
-	Height       int          `json:"height"`
 	Duration     int          `json:"duration"`
-	Thumb        OptPhotoSize `json:"thumb"`
+	FileID       string       `json:"file_id"`
 	FileName     OptString    `json:"file_name"`
-	MimeType     OptString    `json:"mime_type"`
 	FileSize     OptInt       `json:"file_size"`
+	FileUniqueID string       `json:"file_unique_id"`
+	Height       int          `json:"height"`
+	MimeType     OptString    `json:"mime_type"`
+	Thumb        OptPhotoSize `json:"thumb"`
+	Width        int          `json:"width"`
 }
 
 // Ref: #/components/schemas/answerCallbackQuery
 type AnswerCallbackQuery struct {
-	CallbackQueryID string    `json:"callback_query_id"`
-	Text            OptString `json:"text"`
-	ShowAlert       OptBool   `json:"show_alert"`
-	URL             OptURL    `json:"url"`
 	CacheTime       OptInt    `json:"cache_time"`
+	CallbackQueryID string    `json:"callback_query_id"`
+	ShowAlert       OptBool   `json:"show_alert"`
+	Text            OptString `json:"text"`
+	URL             OptURL    `json:"url"`
 }
 
 // Ref: #/components/schemas/answerInlineQuery
 type AnswerInlineQuery struct {
-	InlineQueryID     string              `json:"inline_query_id"`
-	Results           []InlineQueryResult `json:"results"`
 	CacheTime         OptInt              `json:"cache_time"`
+	InlineQueryID     string              `json:"inline_query_id"`
 	IsPersonal        OptBool             `json:"is_personal"`
 	NextOffset        OptString           `json:"next_offset"`
-	SwitchPmText      OptString           `json:"switch_pm_text"`
+	Results           []InlineQueryResult `json:"results"`
 	SwitchPmParameter OptString           `json:"switch_pm_parameter"`
+	SwitchPmText      OptString           `json:"switch_pm_text"`
 }
 
 // Ref: #/components/schemas/answerPreCheckoutQuery
 type AnswerPreCheckoutQuery struct {
-	PreCheckoutQueryID string    `json:"pre_checkout_query_id"`
-	Ok                 bool      `json:"ok"`
 	ErrorMessage       OptString `json:"error_message"`
+	Ok                 bool      `json:"ok"`
+	PreCheckoutQueryID string    `json:"pre_checkout_query_id"`
 }
 
 // Ref: #/components/schemas/answerShippingQuery
 type AnswerShippingQuery struct {
-	ShippingQueryID string           `json:"shipping_query_id"`
+	ErrorMessage    OptString        `json:"error_message"`
 	Ok              bool             `json:"ok"`
 	ShippingOptions []ShippingOption `json:"shipping_options"`
-	ErrorMessage    OptString        `json:"error_message"`
+	ShippingQueryID string           `json:"shipping_query_id"`
 }
 
 // Ref: #/components/schemas/Audio
 type Audio struct {
-	FileID       string       `json:"file_id"`
-	FileUniqueID string       `json:"file_unique_id"`
 	Duration     int          `json:"duration"`
-	Performer    OptString    `json:"performer"`
-	Title        OptString    `json:"title"`
+	FileID       string       `json:"file_id"`
 	FileName     OptString    `json:"file_name"`
-	MimeType     OptString    `json:"mime_type"`
 	FileSize     OptInt       `json:"file_size"`
+	FileUniqueID string       `json:"file_unique_id"`
+	MimeType     OptString    `json:"mime_type"`
+	Performer    OptString    `json:"performer"`
 	Thumb        OptPhotoSize `json:"thumb"`
+	Title        OptString    `json:"title"`
 }
 
 // Ref: #/components/schemas/banChatMember
 type BanChatMember struct {
 	ChatID         ID      `json:"chat_id"`
-	UserID         int     `json:"user_id"`
-	UntilDate      OptInt  `json:"until_date"`
 	RevokeMessages OptBool `json:"revoke_messages"`
+	UntilDate      OptInt  `json:"until_date"`
+	UserID         int     `json:"user_id"`
 }
 
 // Ref: #/components/schemas/BotCommand
@@ -371,20 +371,20 @@ type BotCommandScopeAllPrivateChats struct {
 
 // Ref: #/components/schemas/BotCommandScopeChat
 type BotCommandScopeChat struct {
-	Type   string `json:"type"`
 	ChatID ID     `json:"chat_id"`
+	Type   string `json:"type"`
 }
 
 // Ref: #/components/schemas/BotCommandScopeChatAdministrators
 type BotCommandScopeChatAdministrators struct {
-	Type   string `json:"type"`
 	ChatID ID     `json:"chat_id"`
+	Type   string `json:"type"`
 }
 
 // Ref: #/components/schemas/BotCommandScopeChatMember
 type BotCommandScopeChatMember struct {
-	Type   string `json:"type"`
 	ChatID ID     `json:"chat_id"`
+	Type   string `json:"type"`
 	UserID int    `json:"user_id"`
 }
 
@@ -398,73 +398,73 @@ type CallbackGame struct{}
 
 // Ref: #/components/schemas/Chat
 type Chat struct {
-	ID                    int                `json:"id"`
-	Type                  string             `json:"type"`
-	Title                 OptString          `json:"title"`
-	Username              OptString          `json:"username"`
-	FirstName             OptString          `json:"first_name"`
-	LastName              OptString          `json:"last_name"`
-	Photo                 OptChatPhoto       `json:"photo"`
 	Bio                   OptString          `json:"bio"`
-	Description           OptString          `json:"description"`
-	InviteLink            OptString          `json:"invite_link"`
-	PinnedMessage         *Message           `json:"pinned_message"`
-	Permissions           OptChatPermissions `json:"permissions"`
-	SlowModeDelay         OptInt             `json:"slow_mode_delay"`
-	MessageAutoDeleteTime OptInt             `json:"message_auto_delete_time"`
-	StickerSetName        OptString          `json:"sticker_set_name"`
 	CanSetStickerSet      OptBool            `json:"can_set_sticker_set"`
+	Description           OptString          `json:"description"`
+	FirstName             OptString          `json:"first_name"`
+	ID                    int                `json:"id"`
+	InviteLink            OptString          `json:"invite_link"`
+	LastName              OptString          `json:"last_name"`
 	LinkedChatID          OptInt             `json:"linked_chat_id"`
 	Location              OptChatLocation    `json:"location"`
+	MessageAutoDeleteTime OptInt             `json:"message_auto_delete_time"`
+	Permissions           OptChatPermissions `json:"permissions"`
+	Photo                 OptChatPhoto       `json:"photo"`
+	PinnedMessage         *Message           `json:"pinned_message"`
+	SlowModeDelay         OptInt             `json:"slow_mode_delay"`
+	StickerSetName        OptString          `json:"sticker_set_name"`
+	Title                 OptString          `json:"title"`
+	Type                  string             `json:"type"`
+	Username              OptString          `json:"username"`
 }
 
 // Ref: #/components/schemas/ChatLocation
 type ChatLocation struct {
-	Location Location `json:"location"`
 	Address  string   `json:"address"`
+	Location Location `json:"location"`
 }
 
 // Ref: #/components/schemas/ChatPermissions
 type ChatPermissions struct {
-	CanSendMessages       OptBool `json:"can_send_messages"`
-	CanSendMediaMessages  OptBool `json:"can_send_media_messages"`
-	CanSendPolls          OptBool `json:"can_send_polls"`
-	CanSendOtherMessages  OptBool `json:"can_send_other_messages"`
 	CanAddWebPagePreviews OptBool `json:"can_add_web_page_previews"`
 	CanChangeInfo         OptBool `json:"can_change_info"`
 	CanInviteUsers        OptBool `json:"can_invite_users"`
 	CanPinMessages        OptBool `json:"can_pin_messages"`
+	CanSendMediaMessages  OptBool `json:"can_send_media_messages"`
+	CanSendMessages       OptBool `json:"can_send_messages"`
+	CanSendOtherMessages  OptBool `json:"can_send_other_messages"`
+	CanSendPolls          OptBool `json:"can_send_polls"`
 }
 
 // Ref: #/components/schemas/ChatPhoto
 type ChatPhoto struct {
-	SmallFileID       string `json:"small_file_id"`
-	SmallFileUniqueID string `json:"small_file_unique_id"`
 	BigFileID         string `json:"big_file_id"`
 	BigFileUniqueID   string `json:"big_file_unique_id"`
+	SmallFileID       string `json:"small_file_id"`
+	SmallFileUniqueID string `json:"small_file_unique_id"`
 }
 
 // Ref: #/components/schemas/Contact
 type Contact struct {
-	PhoneNumber string    `json:"phone_number"`
 	FirstName   string    `json:"first_name"`
 	LastName    OptString `json:"last_name"`
+	PhoneNumber string    `json:"phone_number"`
 	UserID      OptInt    `json:"user_id"`
 	Vcard       OptString `json:"vcard"`
 }
 
 // Ref: #/components/schemas/copyMessage
 type CopyMessage struct {
+	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
+	Caption                  OptString               `json:"caption"`
+	CaptionEntities          []MessageEntity         `json:"caption_entities"`
 	ChatID                   ID                      `json:"chat_id"`
+	DisableNotification      OptBool                 `json:"disable_notification"`
 	FromChatID               ID                      `json:"from_chat_id"`
 	MessageID                int                     `json:"message_id"`
-	Caption                  OptString               `json:"caption"`
 	ParseMode                OptString               `json:"parse_mode"`
-	CaptionEntities          []MessageEntity         `json:"caption_entities"`
-	DisableNotification      OptBool                 `json:"disable_notification"`
-	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
-	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
 	ReplyMarkup              *CopyMessageReplyMarkup `json:"reply_markup"`
+	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
 }
 
 // CopyMessageReplyMarkup represents sum type.
@@ -600,14 +600,14 @@ type CreateChatInviteLink struct {
 
 // Ref: #/components/schemas/createNewStickerSet
 type CreateNewStickerSet struct {
-	UserID        int             `json:"user_id"`
+	ContainsMasks OptBool         `json:"contains_masks"`
+	Emojis        string          `json:"emojis"`
+	MaskPosition  OptMaskPosition `json:"mask_position"`
 	Name          string          `json:"name"`
-	Title         string          `json:"title"`
 	PNGSticker    OptString       `json:"png_sticker"`
 	TgsSticker    OptString       `json:"tgs_sticker"`
-	Emojis        string          `json:"emojis"`
-	ContainsMasks OptBool         `json:"contains_masks"`
-	MaskPosition  OptMaskPosition `json:"mask_position"`
+	Title         string          `json:"title"`
+	UserID        int             `json:"user_id"`
 }
 
 // Ref: #/components/schemas/deleteChatPhoto
@@ -628,8 +628,8 @@ type DeleteMessage struct {
 
 // Ref: #/components/schemas/deleteMyCommands
 type DeleteMyCommands struct {
-	Scope        *BotCommandScope `json:"scope"`
 	LanguageCode OptString        `json:"language_code"`
+	Scope        *BotCommandScope `json:"scope"`
 }
 
 // Ref: #/components/schemas/deleteStickerFromSet
@@ -651,41 +651,41 @@ type Dice struct {
 // Ref: #/components/schemas/Document
 type Document struct {
 	FileID       string       `json:"file_id"`
-	FileUniqueID string       `json:"file_unique_id"`
-	Thumb        OptPhotoSize `json:"thumb"`
 	FileName     OptString    `json:"file_name"`
-	MimeType     OptString    `json:"mime_type"`
 	FileSize     OptInt       `json:"file_size"`
+	FileUniqueID string       `json:"file_unique_id"`
+	MimeType     OptString    `json:"mime_type"`
+	Thumb        OptPhotoSize `json:"thumb"`
 }
 
 // Ref: #/components/schemas/editChatInviteLink
 type EditChatInviteLink struct {
 	ChatID      ID     `json:"chat_id"`
-	InviteLink  string `json:"invite_link"`
 	ExpireDate  OptInt `json:"expire_date"`
+	InviteLink  string `json:"invite_link"`
 	MemberLimit OptInt `json:"member_limit"`
 }
 
 // Ref: #/components/schemas/editMessageCaption
 type EditMessageCaption struct {
-	ChatID          *ID                     `json:"chat_id"`
-	MessageID       OptInt                  `json:"message_id"`
-	InlineMessageID OptString               `json:"inline_message_id"`
 	Caption         OptString               `json:"caption"`
-	ParseMode       OptString               `json:"parse_mode"`
 	CaptionEntities []MessageEntity         `json:"caption_entities"`
+	ChatID          *ID                     `json:"chat_id"`
+	InlineMessageID OptString               `json:"inline_message_id"`
+	MessageID       OptInt                  `json:"message_id"`
+	ParseMode       OptString               `json:"parse_mode"`
 	ReplyMarkup     OptInlineKeyboardMarkup `json:"reply_markup"`
 }
 
 // Ref: #/components/schemas/editMessageLiveLocation
 type EditMessageLiveLocation struct {
 	ChatID               *ID                     `json:"chat_id"`
-	MessageID            OptInt                  `json:"message_id"`
+	Heading              OptInt                  `json:"heading"`
+	HorizontalAccuracy   OptFloat64              `json:"horizontal_accuracy"`
 	InlineMessageID      OptString               `json:"inline_message_id"`
 	Latitude             float64                 `json:"latitude"`
 	Longitude            float64                 `json:"longitude"`
-	HorizontalAccuracy   OptFloat64              `json:"horizontal_accuracy"`
-	Heading              OptInt                  `json:"heading"`
+	MessageID            OptInt                  `json:"message_id"`
 	ProximityAlertRadius OptInt                  `json:"proximity_alert_radius"`
 	ReplyMarkup          OptInlineKeyboardMarkup `json:"reply_markup"`
 }
@@ -693,30 +693,30 @@ type EditMessageLiveLocation struct {
 // Ref: #/components/schemas/editMessageMedia
 type EditMessageMedia struct {
 	ChatID          *ID                     `json:"chat_id"`
-	MessageID       OptInt                  `json:"message_id"`
 	InlineMessageID OptString               `json:"inline_message_id"`
 	Media           InputMedia              `json:"media"`
+	MessageID       OptInt                  `json:"message_id"`
 	ReplyMarkup     OptInlineKeyboardMarkup `json:"reply_markup"`
 }
 
 // Ref: #/components/schemas/editMessageReplyMarkup
 type EditMessageReplyMarkup struct {
 	ChatID          *ID                     `json:"chat_id"`
-	MessageID       OptInt                  `json:"message_id"`
 	InlineMessageID OptString               `json:"inline_message_id"`
+	MessageID       OptInt                  `json:"message_id"`
 	ReplyMarkup     OptInlineKeyboardMarkup `json:"reply_markup"`
 }
 
 // Ref: #/components/schemas/editMessageText
 type EditMessageText struct {
 	ChatID                *ID                     `json:"chat_id"`
-	MessageID             OptInt                  `json:"message_id"`
-	InlineMessageID       OptString               `json:"inline_message_id"`
-	Text                  string                  `json:"text"`
-	ParseMode             OptString               `json:"parse_mode"`
-	Entities              []MessageEntity         `json:"entities"`
 	DisableWebPagePreview OptBool                 `json:"disable_web_page_preview"`
+	Entities              []MessageEntity         `json:"entities"`
+	InlineMessageID       OptString               `json:"inline_message_id"`
+	MessageID             OptInt                  `json:"message_id"`
+	ParseMode             OptString               `json:"parse_mode"`
 	ReplyMarkup           OptInlineKeyboardMarkup `json:"reply_markup"`
+	Text                  string                  `json:"text"`
 }
 
 // Ref: #/components/schemas/EncryptedCredentials
@@ -728,16 +728,16 @@ type EncryptedCredentials struct {
 
 // Ref: #/components/schemas/EncryptedPassportElement
 type EncryptedPassportElement struct {
-	Type        string          `json:"type"`
 	Data        OptString       `json:"data"`
-	PhoneNumber OptString       `json:"phone_number"`
 	Email       OptString       `json:"email"`
 	Files       []PassportFile  `json:"files"`
 	FrontSide   OptPassportFile `json:"front_side"`
+	Hash        string          `json:"hash"`
+	PhoneNumber OptString       `json:"phone_number"`
 	ReverseSide OptPassportFile `json:"reverse_side"`
 	Selfie      OptPassportFile `json:"selfie"`
 	Translation []PassportFile  `json:"translation"`
-	Hash        string          `json:"hash"`
+	Type        string          `json:"type"`
 }
 
 // Ref: #/components/schemas/Error
@@ -845,19 +845,19 @@ type ForceReply struct {
 // Ref: #/components/schemas/forwardMessage
 type ForwardMessage struct {
 	ChatID              ID      `json:"chat_id"`
-	FromChatID          ID      `json:"from_chat_id"`
 	DisableNotification OptBool `json:"disable_notification"`
+	FromChatID          ID      `json:"from_chat_id"`
 	MessageID           int     `json:"message_id"`
 }
 
 // Ref: #/components/schemas/Game
 type Game struct {
-	Title        string          `json:"title"`
+	Animation    OptAnimation    `json:"animation"`
 	Description  string          `json:"description"`
 	Photo        []PhotoSize     `json:"photo"`
 	Text         OptString       `json:"text"`
 	TextEntities []MessageEntity `json:"text_entities"`
-	Animation    OptAnimation    `json:"animation"`
+	Title        string          `json:"title"`
 }
 
 // Ref: #/components/schemas/getChat
@@ -888,16 +888,16 @@ type GetFile struct {
 
 // Ref: #/components/schemas/getGameHighScores
 type GetGameHighScores struct {
-	UserID          int       `json:"user_id"`
 	ChatID          OptInt    `json:"chat_id"`
-	MessageID       OptInt    `json:"message_id"`
 	InlineMessageID OptString `json:"inline_message_id"`
+	MessageID       OptInt    `json:"message_id"`
+	UserID          int       `json:"user_id"`
 }
 
 // Ref: #/components/schemas/getMyCommands
 type GetMyCommands struct {
-	Scope        *BotCommandScope `json:"scope"`
 	LanguageCode OptString        `json:"language_code"`
+	Scope        *BotCommandScope `json:"scope"`
 }
 
 // Ref: #/components/schemas/getStickerSet
@@ -907,17 +907,17 @@ type GetStickerSet struct {
 
 // Ref: #/components/schemas/getUpdates
 type GetUpdates struct {
-	Offset         OptInt   `json:"offset"`
-	Limit          OptInt   `json:"limit"`
-	Timeout        OptInt   `json:"timeout"`
 	AllowedUpdates []string `json:"allowed_updates"`
+	Limit          OptInt   `json:"limit"`
+	Offset         OptInt   `json:"offset"`
+	Timeout        OptInt   `json:"timeout"`
 }
 
 // Ref: #/components/schemas/getUserProfilePhotos
 type GetUserProfilePhotos struct {
-	UserID int    `json:"user_id"`
-	Offset OptInt `json:"offset"`
 	Limit  OptInt `json:"limit"`
+	Offset OptInt `json:"offset"`
+	UserID int    `json:"user_id"`
 }
 
 // Ref: #/components/schemas/ID
@@ -987,14 +987,14 @@ func NewIntID(v int) ID {
 
 // Ref: #/components/schemas/InlineKeyboardButton
 type InlineKeyboardButton struct {
-	Text                         string        `json:"text"`
-	URL                          OptURL        `json:"url"`
-	LoginURL                     OptLoginUrl   `json:"login_url"`
 	CallbackData                 OptString     `json:"callback_data"`
+	CallbackGame                 *CallbackGame `json:"callback_game"`
+	LoginURL                     OptLoginUrl   `json:"login_url"`
+	Pay                          OptBool       `json:"pay"`
 	SwitchInlineQuery            OptString     `json:"switch_inline_query"`
 	SwitchInlineQueryCurrentChat OptString     `json:"switch_inline_query_current_chat"`
-	CallbackGame                 *CallbackGame `json:"callback_game"`
-	Pay                          OptBool       `json:"pay"`
+	Text                         string        `json:"text"`
+	URL                          OptURL        `json:"url"`
 }
 
 // Ref: #/components/schemas/InlineKeyboardMarkup
@@ -1149,79 +1149,79 @@ func NewInputMediaVideoInputMedia(v InputMediaVideo) InputMedia {
 
 // Ref: #/components/schemas/InputMediaAnimation
 type InputMediaAnimation struct {
-	Type            string          `json:"type"`
-	Media           string          `json:"media"`
-	Thumb           OptString       `json:"thumb"`
 	Caption         OptString       `json:"caption"`
-	ParseMode       OptString       `json:"parse_mode"`
 	CaptionEntities []MessageEntity `json:"caption_entities"`
-	Width           OptInt          `json:"width"`
-	Height          OptInt          `json:"height"`
 	Duration        OptInt          `json:"duration"`
+	Height          OptInt          `json:"height"`
+	Media           string          `json:"media"`
+	ParseMode       OptString       `json:"parse_mode"`
+	Thumb           OptString       `json:"thumb"`
+	Type            string          `json:"type"`
+	Width           OptInt          `json:"width"`
 }
 
 // Ref: #/components/schemas/InputMediaAudio
 type InputMediaAudio struct {
-	Type            string          `json:"type"`
-	Media           string          `json:"media"`
-	Thumb           OptString       `json:"thumb"`
 	Caption         OptString       `json:"caption"`
-	ParseMode       OptString       `json:"parse_mode"`
 	CaptionEntities []MessageEntity `json:"caption_entities"`
 	Duration        OptInt          `json:"duration"`
+	Media           string          `json:"media"`
+	ParseMode       OptString       `json:"parse_mode"`
 	Performer       OptString       `json:"performer"`
+	Thumb           OptString       `json:"thumb"`
 	Title           OptString       `json:"title"`
+	Type            string          `json:"type"`
 }
 
 // Ref: #/components/schemas/InputMediaDocument
 type InputMediaDocument struct {
-	Type                        string          `json:"type"`
-	Media                       string          `json:"media"`
-	Thumb                       OptString       `json:"thumb"`
 	Caption                     OptString       `json:"caption"`
-	ParseMode                   OptString       `json:"parse_mode"`
 	CaptionEntities             []MessageEntity `json:"caption_entities"`
 	DisableContentTypeDetection OptBool         `json:"disable_content_type_detection"`
+	Media                       string          `json:"media"`
+	ParseMode                   OptString       `json:"parse_mode"`
+	Thumb                       OptString       `json:"thumb"`
+	Type                        string          `json:"type"`
 }
 
 // Ref: #/components/schemas/InputMediaPhoto
 type InputMediaPhoto struct {
-	Type            string          `json:"type"`
-	Media           string          `json:"media"`
 	Caption         OptString       `json:"caption"`
-	ParseMode       OptString       `json:"parse_mode"`
 	CaptionEntities []MessageEntity `json:"caption_entities"`
+	Media           string          `json:"media"`
+	ParseMode       OptString       `json:"parse_mode"`
+	Type            string          `json:"type"`
 }
 
 // Ref: #/components/schemas/InputMediaVideo
 type InputMediaVideo struct {
-	Type              string          `json:"type"`
-	Media             string          `json:"media"`
-	Thumb             OptString       `json:"thumb"`
 	Caption           OptString       `json:"caption"`
-	ParseMode         OptString       `json:"parse_mode"`
 	CaptionEntities   []MessageEntity `json:"caption_entities"`
-	Width             OptInt          `json:"width"`
-	Height            OptInt          `json:"height"`
 	Duration          OptInt          `json:"duration"`
+	Height            OptInt          `json:"height"`
+	Media             string          `json:"media"`
+	ParseMode         OptString       `json:"parse_mode"`
 	SupportsStreaming OptBool         `json:"supports_streaming"`
+	Thumb             OptString       `json:"thumb"`
+	Type              string          `json:"type"`
+	Width             OptInt          `json:"width"`
 }
 
 // Ref: #/components/schemas/Invoice
 type Invoice struct {
-	Title          string `json:"title"`
+	Currency       string `json:"currency"`
 	Description    string `json:"description"`
 	StartParameter string `json:"start_parameter"`
-	Currency       string `json:"currency"`
+	Title          string `json:"title"`
 	TotalAmount    int    `json:"total_amount"`
 }
 
 // Ref: #/components/schemas/KeyboardButton
 type KeyboardButton struct {
-	Text            string                    `json:"text"`
 	RequestContact  OptBool                   `json:"request_contact"`
 	RequestLocation OptBool                   `json:"request_location"`
 	RequestPoll     OptKeyboardButtonPollType `json:"request_poll"`
+	Text            string                    `json:"text"`
 }
 
 // Ref: #/components/schemas/KeyboardButtonPollType
@@ -1231,8 +1231,8 @@ type KeyboardButtonPollType struct {
 
 // Ref: #/components/schemas/LabeledPrice
 type LabeledPrice struct {
-	Label  string `json:"label"`
 	Amount int    `json:"amount"`
+	Label  string `json:"label"`
 }
 
 // Ref: #/components/schemas/leaveChat
@@ -1242,88 +1242,88 @@ type LeaveChat struct {
 
 // Ref: #/components/schemas/Location
 type Location struct {
-	Longitude            float64    `json:"longitude"`
-	Latitude             float64    `json:"latitude"`
-	HorizontalAccuracy   OptFloat64 `json:"horizontal_accuracy"`
-	LivePeriod           OptInt     `json:"live_period"`
 	Heading              OptInt     `json:"heading"`
+	HorizontalAccuracy   OptFloat64 `json:"horizontal_accuracy"`
+	Latitude             float64    `json:"latitude"`
+	LivePeriod           OptInt     `json:"live_period"`
+	Longitude            float64    `json:"longitude"`
 	ProximityAlertRadius OptInt     `json:"proximity_alert_radius"`
 }
 
 // Ref: #/components/schemas/LoginUrl
 type LoginUrl struct {
-	URL                url.URL   `json:"url"`
-	ForwardText        OptString `json:"forward_text"`
 	BotUsername        OptString `json:"bot_username"`
+	ForwardText        OptString `json:"forward_text"`
 	RequestWriteAccess OptBool   `json:"request_write_access"`
+	URL                url.URL   `json:"url"`
 }
 
 // Ref: #/components/schemas/MaskPosition
 type MaskPosition struct {
 	Point  string  `json:"point"`
+	Scale  float64 `json:"scale"`
 	XShift float64 `json:"x_shift"`
 	YShift float64 `json:"y_shift"`
-	Scale  float64 `json:"scale"`
 }
 
 // Ref: #/components/schemas/Message
 type Message struct {
-	MessageID                     int                              `json:"message_id"`
-	From                          OptUser                          `json:"from"`
-	SenderChat                    OptChat                          `json:"sender_chat"`
-	Date                          int                              `json:"date"`
+	Animation                     OptAnimation                     `json:"animation"`
+	Audio                         OptAudio                         `json:"audio"`
+	AuthorSignature               OptString                        `json:"author_signature"`
+	Caption                       OptString                        `json:"caption"`
+	CaptionEntities               []MessageEntity                  `json:"caption_entities"`
+	ChannelChatCreated            OptBool                          `json:"channel_chat_created"`
 	Chat                          Chat                             `json:"chat"`
+	ConnectedWebsite              OptString                        `json:"connected_website"`
+	Contact                       OptContact                       `json:"contact"`
+	Date                          int                              `json:"date"`
+	DeleteChatPhoto               OptBool                          `json:"delete_chat_photo"`
+	Dice                          OptDice                          `json:"dice"`
+	Document                      OptDocument                      `json:"document"`
+	EditDate                      OptInt                           `json:"edit_date"`
+	Entities                      []MessageEntity                  `json:"entities"`
+	ForwardDate                   OptInt                           `json:"forward_date"`
 	ForwardFrom                   OptUser                          `json:"forward_from"`
 	ForwardFromChat               OptChat                          `json:"forward_from_chat"`
 	ForwardFromMessageID          OptInt                           `json:"forward_from_message_id"`
-	ForwardSignature              OptString                        `json:"forward_signature"`
 	ForwardSenderName             OptString                        `json:"forward_sender_name"`
-	ForwardDate                   OptInt                           `json:"forward_date"`
-	ReplyToMessage                *Message                         `json:"reply_to_message"`
-	ViaBot                        OptUser                          `json:"via_bot"`
-	EditDate                      OptInt                           `json:"edit_date"`
+	ForwardSignature              OptString                        `json:"forward_signature"`
+	From                          OptUser                          `json:"from"`
+	Game                          OptGame                          `json:"game"`
+	GroupChatCreated              OptBool                          `json:"group_chat_created"`
+	Invoice                       OptInvoice                       `json:"invoice"`
+	LeftChatMember                OptUser                          `json:"left_chat_member"`
+	Location                      OptLocation                      `json:"location"`
 	MediaGroupID                  OptString                        `json:"media_group_id"`
-	AuthorSignature               OptString                        `json:"author_signature"`
-	Text                          OptString                        `json:"text"`
-	Entities                      []MessageEntity                  `json:"entities"`
-	Animation                     OptAnimation                     `json:"animation"`
-	Audio                         OptAudio                         `json:"audio"`
-	Document                      OptDocument                      `json:"document"`
+	MessageAutoDeleteTimerChanged OptMessageAutoDeleteTimerChanged `json:"message_auto_delete_timer_changed"`
+	MessageID                     int                              `json:"message_id"`
+	MigrateFromChatID             OptInt                           `json:"migrate_from_chat_id"`
+	MigrateToChatID               OptInt                           `json:"migrate_to_chat_id"`
+	NewChatMembers                []User                           `json:"new_chat_members"`
+	NewChatPhoto                  []PhotoSize                      `json:"new_chat_photo"`
+	NewChatTitle                  OptString                        `json:"new_chat_title"`
+	PassportData                  OptPassportData                  `json:"passport_data"`
 	Photo                         []PhotoSize                      `json:"photo"`
+	PinnedMessage                 *Message                         `json:"pinned_message"`
+	Poll                          OptPoll                          `json:"poll"`
+	ProximityAlertTriggered       OptProximityAlertTriggered       `json:"proximity_alert_triggered"`
+	ReplyMarkup                   OptInlineKeyboardMarkup          `json:"reply_markup"`
+	ReplyToMessage                *Message                         `json:"reply_to_message"`
+	SenderChat                    OptChat                          `json:"sender_chat"`
 	Sticker                       OptSticker                       `json:"sticker"`
+	SuccessfulPayment             OptSuccessfulPayment             `json:"successful_payment"`
+	SupergroupChatCreated         OptBool                          `json:"supergroup_chat_created"`
+	Text                          OptString                        `json:"text"`
+	Venue                         OptVenue                         `json:"venue"`
+	ViaBot                        OptUser                          `json:"via_bot"`
 	Video                         OptVideo                         `json:"video"`
 	VideoNote                     OptVideoNote                     `json:"video_note"`
 	Voice                         OptVoice                         `json:"voice"`
-	Caption                       OptString                        `json:"caption"`
-	CaptionEntities               []MessageEntity                  `json:"caption_entities"`
-	Contact                       OptContact                       `json:"contact"`
-	Dice                          OptDice                          `json:"dice"`
-	Game                          OptGame                          `json:"game"`
-	Poll                          OptPoll                          `json:"poll"`
-	Venue                         OptVenue                         `json:"venue"`
-	Location                      OptLocation                      `json:"location"`
-	NewChatMembers                []User                           `json:"new_chat_members"`
-	LeftChatMember                OptUser                          `json:"left_chat_member"`
-	NewChatTitle                  OptString                        `json:"new_chat_title"`
-	NewChatPhoto                  []PhotoSize                      `json:"new_chat_photo"`
-	DeleteChatPhoto               OptBool                          `json:"delete_chat_photo"`
-	GroupChatCreated              OptBool                          `json:"group_chat_created"`
-	SupergroupChatCreated         OptBool                          `json:"supergroup_chat_created"`
-	ChannelChatCreated            OptBool                          `json:"channel_chat_created"`
-	MessageAutoDeleteTimerChanged OptMessageAutoDeleteTimerChanged `json:"message_auto_delete_timer_changed"`
-	MigrateToChatID               OptInt                           `json:"migrate_to_chat_id"`
-	MigrateFromChatID             OptInt                           `json:"migrate_from_chat_id"`
-	PinnedMessage                 *Message                         `json:"pinned_message"`
-	Invoice                       OptInvoice                       `json:"invoice"`
-	SuccessfulPayment             OptSuccessfulPayment             `json:"successful_payment"`
-	ConnectedWebsite              OptString                        `json:"connected_website"`
-	PassportData                  OptPassportData                  `json:"passport_data"`
-	ProximityAlertTriggered       OptProximityAlertTriggered       `json:"proximity_alert_triggered"`
-	VoiceChatScheduled            OptVoiceChatScheduled            `json:"voice_chat_scheduled"`
-	VoiceChatStarted              *VoiceChatStarted                `json:"voice_chat_started"`
 	VoiceChatEnded                OptVoiceChatEnded                `json:"voice_chat_ended"`
 	VoiceChatParticipantsInvited  OptVoiceChatParticipantsInvited  `json:"voice_chat_participants_invited"`
-	ReplyMarkup                   OptInlineKeyboardMarkup          `json:"reply_markup"`
+	VoiceChatScheduled            OptVoiceChatScheduled            `json:"voice_chat_scheduled"`
+	VoiceChatStarted              *VoiceChatStarted                `json:"voice_chat_started"`
 }
 
 // Ref: #/components/schemas/MessageAutoDeleteTimerChanged
@@ -1333,12 +1333,12 @@ type MessageAutoDeleteTimerChanged struct {
 
 // Ref: #/components/schemas/MessageEntity
 type MessageEntity struct {
-	Type     string    `json:"type"`
-	Offset   int       `json:"offset"`
+	Language OptString `json:"language"`
 	Length   int       `json:"length"`
+	Offset   int       `json:"offset"`
+	Type     string    `json:"type"`
 	URL      OptURL    `json:"url"`
 	User     OptUser   `json:"user"`
-	Language OptString `json:"language"`
 }
 
 // NewOptAnimation returns new OptAnimation with value set to v.
@@ -2939,16 +2939,16 @@ func (o OptVoiceChatScheduled) Get() (v VoiceChatScheduled, ok bool) {
 
 // Ref: #/components/schemas/OrderInfo
 type OrderInfo struct {
+	Email           OptString          `json:"email"`
 	Name            OptString          `json:"name"`
 	PhoneNumber     OptString          `json:"phone_number"`
-	Email           OptString          `json:"email"`
 	ShippingAddress OptShippingAddress `json:"shipping_address"`
 }
 
 // Ref: #/components/schemas/PassportData
 type PassportData struct {
-	Data        []EncryptedPassportElement `json:"data"`
 	Credentials EncryptedCredentials       `json:"credentials"`
+	Data        []EncryptedPassportElement `json:"data"`
 }
 
 // Ref: #/components/schemas/PassportElementError
@@ -3218,116 +3218,116 @@ func NewPassportElementErrorUnspecifiedPassportElementError(v PassportElementErr
 
 // Ref: #/components/schemas/PassportElementErrorDataField
 type PassportElementErrorDataField struct {
+	DataHash  string `json:"data_hash"`
+	FieldName string `json:"field_name"`
+	Message   string `json:"message"`
 	Source    string `json:"source"`
 	Type      string `json:"type"`
-	FieldName string `json:"field_name"`
-	DataHash  string `json:"data_hash"`
-	Message   string `json:"message"`
 }
 
 // Ref: #/components/schemas/PassportElementErrorFile
 type PassportElementErrorFile struct {
-	Source   string `json:"source"`
-	Type     string `json:"type"`
 	FileHash string `json:"file_hash"`
 	Message  string `json:"message"`
+	Source   string `json:"source"`
+	Type     string `json:"type"`
 }
 
 // Ref: #/components/schemas/PassportElementErrorFiles
 type PassportElementErrorFiles struct {
-	Source     string   `json:"source"`
-	Type       string   `json:"type"`
 	FileHashes []string `json:"file_hashes"`
 	Message    string   `json:"message"`
+	Source     string   `json:"source"`
+	Type       string   `json:"type"`
 }
 
 // Ref: #/components/schemas/PassportElementErrorFrontSide
 type PassportElementErrorFrontSide struct {
-	Source   string `json:"source"`
-	Type     string `json:"type"`
 	FileHash string `json:"file_hash"`
 	Message  string `json:"message"`
+	Source   string `json:"source"`
+	Type     string `json:"type"`
 }
 
 // Ref: #/components/schemas/PassportElementErrorReverseSide
 type PassportElementErrorReverseSide struct {
-	Source   string `json:"source"`
-	Type     string `json:"type"`
 	FileHash string `json:"file_hash"`
 	Message  string `json:"message"`
+	Source   string `json:"source"`
+	Type     string `json:"type"`
 }
 
 // Ref: #/components/schemas/PassportElementErrorSelfie
 type PassportElementErrorSelfie struct {
-	Source   string `json:"source"`
-	Type     string `json:"type"`
 	FileHash string `json:"file_hash"`
 	Message  string `json:"message"`
+	Source   string `json:"source"`
+	Type     string `json:"type"`
 }
 
 // Ref: #/components/schemas/PassportElementErrorTranslationFile
 type PassportElementErrorTranslationFile struct {
-	Source   string `json:"source"`
-	Type     string `json:"type"`
 	FileHash string `json:"file_hash"`
 	Message  string `json:"message"`
+	Source   string `json:"source"`
+	Type     string `json:"type"`
 }
 
 // Ref: #/components/schemas/PassportElementErrorTranslationFiles
 type PassportElementErrorTranslationFiles struct {
-	Source     string   `json:"source"`
-	Type       string   `json:"type"`
 	FileHashes []string `json:"file_hashes"`
 	Message    string   `json:"message"`
+	Source     string   `json:"source"`
+	Type       string   `json:"type"`
 }
 
 // Ref: #/components/schemas/PassportElementErrorUnspecified
 type PassportElementErrorUnspecified struct {
-	Source      string `json:"source"`
-	Type        string `json:"type"`
 	ElementHash string `json:"element_hash"`
 	Message     string `json:"message"`
+	Source      string `json:"source"`
+	Type        string `json:"type"`
 }
 
 // Ref: #/components/schemas/PassportFile
 type PassportFile struct {
-	FileID       string `json:"file_id"`
-	FileUniqueID string `json:"file_unique_id"`
-	FileSize     int    `json:"file_size"`
 	FileDate     int    `json:"file_date"`
+	FileID       string `json:"file_id"`
+	FileSize     int    `json:"file_size"`
+	FileUniqueID string `json:"file_unique_id"`
 }
 
 // Ref: #/components/schemas/PhotoSize
 type PhotoSize struct {
 	FileID       string `json:"file_id"`
-	FileUniqueID string `json:"file_unique_id"`
-	Width        int    `json:"width"`
-	Height       int    `json:"height"`
 	FileSize     OptInt `json:"file_size"`
+	FileUniqueID string `json:"file_unique_id"`
+	Height       int    `json:"height"`
+	Width        int    `json:"width"`
 }
 
 // Ref: #/components/schemas/pinChatMessage
 type PinChatMessage struct {
 	ChatID              ID      `json:"chat_id"`
-	MessageID           int     `json:"message_id"`
 	DisableNotification OptBool `json:"disable_notification"`
+	MessageID           int     `json:"message_id"`
 }
 
 // Ref: #/components/schemas/Poll
 type Poll struct {
-	ID                    string          `json:"id"`
-	Question              string          `json:"question"`
-	Options               []PollOption    `json:"options"`
-	TotalVoterCount       int             `json:"total_voter_count"`
-	IsClosed              bool            `json:"is_closed"`
-	IsAnonymous           bool            `json:"is_anonymous"`
-	Type                  string          `json:"type"`
 	AllowsMultipleAnswers bool            `json:"allows_multiple_answers"`
+	CloseDate             OptInt          `json:"close_date"`
 	CorrectOptionID       OptInt          `json:"correct_option_id"`
 	Explanation           OptString       `json:"explanation"`
 	ExplanationEntities   []MessageEntity `json:"explanation_entities"`
+	ID                    string          `json:"id"`
+	IsAnonymous           bool            `json:"is_anonymous"`
+	IsClosed              bool            `json:"is_closed"`
 	OpenPeriod            OptInt          `json:"open_period"`
-	CloseDate             OptInt          `json:"close_date"`
+	Options               []PollOption    `json:"options"`
+	Question              string          `json:"question"`
+	TotalVoterCount       int             `json:"total_voter_count"`
+	Type                  string          `json:"type"`
 }
 
 // Ref: #/components/schemas/PollOption
@@ -3338,34 +3338,34 @@ type PollOption struct {
 
 // Ref: #/components/schemas/promoteChatMember
 type PromoteChatMember struct {
-	ChatID              ID      `json:"chat_id"`
-	UserID              int     `json:"user_id"`
-	IsAnonymous         OptBool `json:"is_anonymous"`
-	CanManageChat       OptBool `json:"can_manage_chat"`
-	CanPostMessages     OptBool `json:"can_post_messages"`
-	CanEditMessages     OptBool `json:"can_edit_messages"`
-	CanDeleteMessages   OptBool `json:"can_delete_messages"`
-	CanManageVoiceChats OptBool `json:"can_manage_voice_chats"`
-	CanRestrictMembers  OptBool `json:"can_restrict_members"`
-	CanPromoteMembers   OptBool `json:"can_promote_members"`
 	CanChangeInfo       OptBool `json:"can_change_info"`
+	CanDeleteMessages   OptBool `json:"can_delete_messages"`
+	CanEditMessages     OptBool `json:"can_edit_messages"`
 	CanInviteUsers      OptBool `json:"can_invite_users"`
+	CanManageChat       OptBool `json:"can_manage_chat"`
+	CanManageVoiceChats OptBool `json:"can_manage_voice_chats"`
 	CanPinMessages      OptBool `json:"can_pin_messages"`
+	CanPostMessages     OptBool `json:"can_post_messages"`
+	CanPromoteMembers   OptBool `json:"can_promote_members"`
+	CanRestrictMembers  OptBool `json:"can_restrict_members"`
+	ChatID              ID      `json:"chat_id"`
+	IsAnonymous         OptBool `json:"is_anonymous"`
+	UserID              int     `json:"user_id"`
 }
 
 // Ref: #/components/schemas/ProximityAlertTriggered
 type ProximityAlertTriggered struct {
+	Distance int  `json:"distance"`
 	Traveler User `json:"traveler"`
 	Watcher  User `json:"watcher"`
-	Distance int  `json:"distance"`
 }
 
 // Ref: #/components/schemas/ReplyKeyboardMarkup
 type ReplyKeyboardMarkup struct {
-	Keyboard              [][]KeyboardButton `json:"keyboard"`
-	ResizeKeyboard        OptBool            `json:"resize_keyboard"`
-	OneTimeKeyboard       OptBool            `json:"one_time_keyboard"`
 	InputFieldPlaceholder OptString          `json:"input_field_placeholder"`
+	Keyboard              [][]KeyboardButton `json:"keyboard"`
+	OneTimeKeyboard       OptBool            `json:"one_time_keyboard"`
+	ResizeKeyboard        OptBool            `json:"resize_keyboard"`
 	Selective             OptBool            `json:"selective"`
 }
 
@@ -3384,9 +3384,9 @@ type Response struct {
 // Ref: #/components/schemas/restrictChatMember
 type RestrictChatMember struct {
 	ChatID      ID              `json:"chat_id"`
-	UserID      int             `json:"user_id"`
 	Permissions ChatPermissions `json:"permissions"`
 	UntilDate   OptInt          `json:"until_date"`
+	UserID      int             `json:"user_id"`
 }
 
 // Ref: #/components/schemas/Result
@@ -3493,19 +3493,19 @@ type RevokeChatInviteLink struct {
 
 // Ref: #/components/schemas/sendAnimation
 type SendAnimation struct {
-	ChatID                   ID                        `json:"chat_id"`
-	Animation                string                    `json:"animation"`
-	Duration                 OptInt                    `json:"duration"`
-	Width                    OptInt                    `json:"width"`
-	Height                   OptInt                    `json:"height"`
-	Thumb                    OptString                 `json:"thumb"`
-	Caption                  OptString                 `json:"caption"`
-	ParseMode                OptString                 `json:"parse_mode"`
-	CaptionEntities          []MessageEntity           `json:"caption_entities"`
-	DisableNotification      OptBool                   `json:"disable_notification"`
-	ReplyToMessageID         OptInt                    `json:"reply_to_message_id"`
 	AllowSendingWithoutReply OptBool                   `json:"allow_sending_without_reply"`
+	Animation                string                    `json:"animation"`
+	Caption                  OptString                 `json:"caption"`
+	CaptionEntities          []MessageEntity           `json:"caption_entities"`
+	ChatID                   ID                        `json:"chat_id"`
+	DisableNotification      OptBool                   `json:"disable_notification"`
+	Duration                 OptInt                    `json:"duration"`
+	Height                   OptInt                    `json:"height"`
+	ParseMode                OptString                 `json:"parse_mode"`
 	ReplyMarkup              *SendAnimationReplyMarkup `json:"reply_markup"`
+	ReplyToMessageID         OptInt                    `json:"reply_to_message_id"`
+	Thumb                    OptString                 `json:"thumb"`
+	Width                    OptInt                    `json:"width"`
 }
 
 // SendAnimationReplyMarkup represents sum type.
@@ -3634,19 +3634,19 @@ func NewForceReplySendAnimationReplyMarkup(v ForceReply) SendAnimationReplyMarku
 
 // Ref: #/components/schemas/sendAudio
 type SendAudio struct {
-	ChatID                   ID                    `json:"chat_id"`
+	AllowSendingWithoutReply OptBool               `json:"allow_sending_without_reply"`
 	Audio                    string                `json:"audio"`
 	Caption                  OptString             `json:"caption"`
-	ParseMode                OptString             `json:"parse_mode"`
 	CaptionEntities          []MessageEntity       `json:"caption_entities"`
-	Duration                 OptInt                `json:"duration"`
-	Performer                OptString             `json:"performer"`
-	Title                    OptString             `json:"title"`
-	Thumb                    OptString             `json:"thumb"`
+	ChatID                   ID                    `json:"chat_id"`
 	DisableNotification      OptBool               `json:"disable_notification"`
-	ReplyToMessageID         OptInt                `json:"reply_to_message_id"`
-	AllowSendingWithoutReply OptBool               `json:"allow_sending_without_reply"`
+	Duration                 OptInt                `json:"duration"`
+	ParseMode                OptString             `json:"parse_mode"`
+	Performer                OptString             `json:"performer"`
 	ReplyMarkup              *SendAudioReplyMarkup `json:"reply_markup"`
+	ReplyToMessageID         OptInt                `json:"reply_to_message_id"`
+	Thumb                    OptString             `json:"thumb"`
+	Title                    OptString             `json:"title"`
 }
 
 // SendAudioReplyMarkup represents sum type.
@@ -3773,21 +3773,21 @@ func NewForceReplySendAudioReplyMarkup(v ForceReply) SendAudioReplyMarkup {
 
 // Ref: #/components/schemas/sendChatAction
 type SendChatAction struct {
-	ChatID ID     `json:"chat_id"`
 	Action string `json:"action"`
+	ChatID ID     `json:"chat_id"`
 }
 
 // Ref: #/components/schemas/sendContact
 type SendContact struct {
+	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
 	ChatID                   ID                      `json:"chat_id"`
-	PhoneNumber              string                  `json:"phone_number"`
+	DisableNotification      OptBool                 `json:"disable_notification"`
 	FirstName                string                  `json:"first_name"`
 	LastName                 OptString               `json:"last_name"`
-	Vcard                    OptString               `json:"vcard"`
-	DisableNotification      OptBool                 `json:"disable_notification"`
-	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
-	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
+	PhoneNumber              string                  `json:"phone_number"`
 	ReplyMarkup              *SendContactReplyMarkup `json:"reply_markup"`
+	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
+	Vcard                    OptString               `json:"vcard"`
 }
 
 // SendContactReplyMarkup represents sum type.
@@ -3916,12 +3916,12 @@ func NewForceReplySendContactReplyMarkup(v ForceReply) SendContactReplyMarkup {
 
 // Ref: #/components/schemas/sendDice
 type SendDice struct {
-	ChatID                   ID                   `json:"chat_id"`
-	Emoji                    OptString            `json:"emoji"`
-	DisableNotification      OptBool              `json:"disable_notification"`
-	ReplyToMessageID         OptInt               `json:"reply_to_message_id"`
 	AllowSendingWithoutReply OptBool              `json:"allow_sending_without_reply"`
+	ChatID                   ID                   `json:"chat_id"`
+	DisableNotification      OptBool              `json:"disable_notification"`
+	Emoji                    OptString            `json:"emoji"`
 	ReplyMarkup              *SendDiceReplyMarkup `json:"reply_markup"`
+	ReplyToMessageID         OptInt               `json:"reply_to_message_id"`
 }
 
 // SendDiceReplyMarkup represents sum type.
@@ -4048,17 +4048,17 @@ func NewForceReplySendDiceReplyMarkup(v ForceReply) SendDiceReplyMarkup {
 
 // Ref: #/components/schemas/sendDocument
 type SendDocument struct {
-	ChatID                      ID                       `json:"chat_id"`
-	Document                    string                   `json:"document"`
-	Thumb                       OptString                `json:"thumb"`
+	AllowSendingWithoutReply    OptBool                  `json:"allow_sending_without_reply"`
 	Caption                     OptString                `json:"caption"`
-	ParseMode                   OptString                `json:"parse_mode"`
 	CaptionEntities             []MessageEntity          `json:"caption_entities"`
+	ChatID                      ID                       `json:"chat_id"`
 	DisableContentTypeDetection OptBool                  `json:"disable_content_type_detection"`
 	DisableNotification         OptBool                  `json:"disable_notification"`
-	ReplyToMessageID            OptInt                   `json:"reply_to_message_id"`
-	AllowSendingWithoutReply    OptBool                  `json:"allow_sending_without_reply"`
+	Document                    string                   `json:"document"`
+	ParseMode                   OptString                `json:"parse_mode"`
 	ReplyMarkup                 *SendDocumentReplyMarkup `json:"reply_markup"`
+	ReplyToMessageID            OptInt                   `json:"reply_to_message_id"`
+	Thumb                       OptString                `json:"thumb"`
 }
 
 // SendDocumentReplyMarkup represents sum type.
@@ -4187,57 +4187,57 @@ func NewForceReplySendDocumentReplyMarkup(v ForceReply) SendDocumentReplyMarkup 
 
 // Ref: #/components/schemas/sendGame
 type SendGame struct {
-	ChatID                   int                     `json:"chat_id"`
-	GameShortName            string                  `json:"game_short_name"`
-	DisableNotification      OptBool                 `json:"disable_notification"`
-	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
 	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
+	ChatID                   int                     `json:"chat_id"`
+	DisableNotification      OptBool                 `json:"disable_notification"`
+	GameShortName            string                  `json:"game_short_name"`
 	ReplyMarkup              OptInlineKeyboardMarkup `json:"reply_markup"`
+	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
 }
 
 // Ref: #/components/schemas/sendInvoice
 type SendInvoice struct {
+	AllowSendingWithoutReply  OptBool                 `json:"allow_sending_without_reply"`
 	ChatID                    ID                      `json:"chat_id"`
-	Title                     string                  `json:"title"`
-	Description               string                  `json:"description"`
-	Payload                   string                  `json:"payload"`
-	ProviderToken             string                  `json:"provider_token"`
 	Currency                  string                  `json:"currency"`
-	Prices                    []LabeledPrice          `json:"prices"`
+	Description               string                  `json:"description"`
+	DisableNotification       OptBool                 `json:"disable_notification"`
+	IsFlexible                OptBool                 `json:"is_flexible"`
 	MaxTipAmount              OptInt                  `json:"max_tip_amount"`
-	SuggestedTipAmounts       []int                   `json:"suggested_tip_amounts"`
-	StartParameter            OptString               `json:"start_parameter"`
-	ProviderData              OptString               `json:"provider_data"`
-	PhotoURL                  OptURL                  `json:"photo_url"`
-	PhotoSize                 OptInt                  `json:"photo_size"`
-	PhotoWidth                OptInt                  `json:"photo_width"`
-	PhotoHeight               OptInt                  `json:"photo_height"`
+	NeedEmail                 OptBool                 `json:"need_email"`
 	NeedName                  OptBool                 `json:"need_name"`
 	NeedPhoneNumber           OptBool                 `json:"need_phone_number"`
-	NeedEmail                 OptBool                 `json:"need_email"`
 	NeedShippingAddress       OptBool                 `json:"need_shipping_address"`
-	SendPhoneNumberToProvider OptBool                 `json:"send_phone_number_to_provider"`
-	SendEmailToProvider       OptBool                 `json:"send_email_to_provider"`
-	IsFlexible                OptBool                 `json:"is_flexible"`
-	DisableNotification       OptBool                 `json:"disable_notification"`
-	ReplyToMessageID          OptInt                  `json:"reply_to_message_id"`
-	AllowSendingWithoutReply  OptBool                 `json:"allow_sending_without_reply"`
+	Payload                   string                  `json:"payload"`
+	PhotoHeight               OptInt                  `json:"photo_height"`
+	PhotoSize                 OptInt                  `json:"photo_size"`
+	PhotoURL                  OptURL                  `json:"photo_url"`
+	PhotoWidth                OptInt                  `json:"photo_width"`
+	Prices                    []LabeledPrice          `json:"prices"`
+	ProviderData              OptString               `json:"provider_data"`
+	ProviderToken             string                  `json:"provider_token"`
 	ReplyMarkup               OptInlineKeyboardMarkup `json:"reply_markup"`
+	ReplyToMessageID          OptInt                  `json:"reply_to_message_id"`
+	SendEmailToProvider       OptBool                 `json:"send_email_to_provider"`
+	SendPhoneNumberToProvider OptBool                 `json:"send_phone_number_to_provider"`
+	StartParameter            OptString               `json:"start_parameter"`
+	SuggestedTipAmounts       []int                   `json:"suggested_tip_amounts"`
+	Title                     string                  `json:"title"`
 }
 
 // Ref: #/components/schemas/sendLocation
 type SendLocation struct {
-	ChatID                   ID                       `json:"chat_id"`
-	Latitude                 float64                  `json:"latitude"`
-	Longitude                float64                  `json:"longitude"`
-	HorizontalAccuracy       OptFloat64               `json:"horizontal_accuracy"`
-	LivePeriod               OptInt                   `json:"live_period"`
-	Heading                  OptInt                   `json:"heading"`
-	ProximityAlertRadius     OptInt                   `json:"proximity_alert_radius"`
-	DisableNotification      OptBool                  `json:"disable_notification"`
-	ReplyToMessageID         OptInt                   `json:"reply_to_message_id"`
 	AllowSendingWithoutReply OptBool                  `json:"allow_sending_without_reply"`
+	ChatID                   ID                       `json:"chat_id"`
+	DisableNotification      OptBool                  `json:"disable_notification"`
+	Heading                  OptInt                   `json:"heading"`
+	HorizontalAccuracy       OptFloat64               `json:"horizontal_accuracy"`
+	Latitude                 float64                  `json:"latitude"`
+	LivePeriod               OptInt                   `json:"live_period"`
+	Longitude                float64                  `json:"longitude"`
+	ProximityAlertRadius     OptInt                   `json:"proximity_alert_radius"`
 	ReplyMarkup              *SendLocationReplyMarkup `json:"reply_markup"`
+	ReplyToMessageID         OptInt                   `json:"reply_to_message_id"`
 }
 
 // SendLocationReplyMarkup represents sum type.
@@ -4366,11 +4366,11 @@ func NewForceReplySendLocationReplyMarkup(v ForceReply) SendLocationReplyMarkup 
 
 // Ref: #/components/schemas/sendMediaGroup
 type SendMediaGroup struct {
-	ChatID                   ID                        `json:"chat_id"`
-	Media                    []SendMediaGroupMediaItem `json:"media"`
-	DisableNotification      OptBool                   `json:"disable_notification"`
-	ReplyToMessageID         OptInt                    `json:"reply_to_message_id"`
 	AllowSendingWithoutReply OptBool                   `json:"allow_sending_without_reply"`
+	ChatID                   ID                        `json:"chat_id"`
+	DisableNotification      OptBool                   `json:"disable_notification"`
+	Media                    []SendMediaGroupMediaItem `json:"media"`
+	ReplyToMessageID         OptInt                    `json:"reply_to_message_id"`
 }
 
 // SendMediaGroupMediaItem represents sum type.
@@ -4499,15 +4499,15 @@ func NewInputMediaVideoSendMediaGroupMediaItem(v InputMediaVideo) SendMediaGroup
 
 // Ref: #/components/schemas/sendMessage
 type SendMessage struct {
-	ChatID                   ID                      `json:"chat_id"`
-	Text                     string                  `json:"text"`
-	ParseMode                OptString               `json:"parse_mode"`
-	Entities                 []MessageEntity         `json:"entities"`
-	DisableWebPagePreview    OptBool                 `json:"disable_web_page_preview"`
-	DisableNotification      OptBool                 `json:"disable_notification"`
-	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
 	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
+	ChatID                   ID                      `json:"chat_id"`
+	DisableNotification      OptBool                 `json:"disable_notification"`
+	DisableWebPagePreview    OptBool                 `json:"disable_web_page_preview"`
+	Entities                 []MessageEntity         `json:"entities"`
+	ParseMode                OptString               `json:"parse_mode"`
 	ReplyMarkup              *SendMessageReplyMarkup `json:"reply_markup"`
+	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
+	Text                     string                  `json:"text"`
 }
 
 // SendMessageReplyMarkup represents sum type.
@@ -4636,15 +4636,15 @@ func NewForceReplySendMessageReplyMarkup(v ForceReply) SendMessageReplyMarkup {
 
 // Ref: #/components/schemas/sendPhoto
 type SendPhoto struct {
-	ChatID                   ID                    `json:"chat_id"`
-	Photo                    string                `json:"photo"`
-	Caption                  OptString             `json:"caption"`
-	ParseMode                OptString             `json:"parse_mode"`
-	CaptionEntities          []MessageEntity       `json:"caption_entities"`
-	DisableNotification      OptBool               `json:"disable_notification"`
-	ReplyToMessageID         OptInt                `json:"reply_to_message_id"`
 	AllowSendingWithoutReply OptBool               `json:"allow_sending_without_reply"`
+	Caption                  OptString             `json:"caption"`
+	CaptionEntities          []MessageEntity       `json:"caption_entities"`
+	ChatID                   ID                    `json:"chat_id"`
+	DisableNotification      OptBool               `json:"disable_notification"`
+	ParseMode                OptString             `json:"parse_mode"`
+	Photo                    string                `json:"photo"`
 	ReplyMarkup              *SendPhotoReplyMarkup `json:"reply_markup"`
+	ReplyToMessageID         OptInt                `json:"reply_to_message_id"`
 }
 
 // SendPhotoReplyMarkup represents sum type.
@@ -4771,23 +4771,23 @@ func NewForceReplySendPhotoReplyMarkup(v ForceReply) SendPhotoReplyMarkup {
 
 // Ref: #/components/schemas/sendPoll
 type SendPoll struct {
-	ChatID                   ID                   `json:"chat_id"`
-	Question                 string               `json:"question"`
-	Options                  []string             `json:"options"`
-	IsAnonymous              OptBool              `json:"is_anonymous"`
-	Type                     OptString            `json:"type"`
-	AllowsMultipleAnswers    OptBool              `json:"allows_multiple_answers"`
-	CorrectOptionID          OptInt               `json:"correct_option_id"`
-	Explanation              OptString            `json:"explanation"`
-	ExplanationParseMode     OptString            `json:"explanation_parse_mode"`
-	ExplanationEntities      []MessageEntity      `json:"explanation_entities"`
-	OpenPeriod               OptInt               `json:"open_period"`
-	CloseDate                OptInt               `json:"close_date"`
-	IsClosed                 OptBool              `json:"is_closed"`
-	DisableNotification      OptBool              `json:"disable_notification"`
-	ReplyToMessageID         OptInt               `json:"reply_to_message_id"`
 	AllowSendingWithoutReply OptBool              `json:"allow_sending_without_reply"`
+	AllowsMultipleAnswers    OptBool              `json:"allows_multiple_answers"`
+	ChatID                   ID                   `json:"chat_id"`
+	CloseDate                OptInt               `json:"close_date"`
+	CorrectOptionID          OptInt               `json:"correct_option_id"`
+	DisableNotification      OptBool              `json:"disable_notification"`
+	Explanation              OptString            `json:"explanation"`
+	ExplanationEntities      []MessageEntity      `json:"explanation_entities"`
+	ExplanationParseMode     OptString            `json:"explanation_parse_mode"`
+	IsAnonymous              OptBool              `json:"is_anonymous"`
+	IsClosed                 OptBool              `json:"is_closed"`
+	OpenPeriod               OptInt               `json:"open_period"`
+	Options                  []string             `json:"options"`
+	Question                 string               `json:"question"`
 	ReplyMarkup              *SendPollReplyMarkup `json:"reply_markup"`
+	ReplyToMessageID         OptInt               `json:"reply_to_message_id"`
+	Type                     OptString            `json:"type"`
 }
 
 // SendPollReplyMarkup represents sum type.
@@ -4914,12 +4914,12 @@ func NewForceReplySendPollReplyMarkup(v ForceReply) SendPollReplyMarkup {
 
 // Ref: #/components/schemas/sendSticker
 type SendSticker struct {
-	ChatID                   ID                      `json:"chat_id"`
-	Sticker                  string                  `json:"sticker"`
-	DisableNotification      OptBool                 `json:"disable_notification"`
-	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
 	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
+	ChatID                   ID                      `json:"chat_id"`
+	DisableNotification      OptBool                 `json:"disable_notification"`
 	ReplyMarkup              *SendStickerReplyMarkup `json:"reply_markup"`
+	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
+	Sticker                  string                  `json:"sticker"`
 }
 
 // SendStickerReplyMarkup represents sum type.
@@ -5048,19 +5048,19 @@ func NewForceReplySendStickerReplyMarkup(v ForceReply) SendStickerReplyMarkup {
 
 // Ref: #/components/schemas/sendVenue
 type SendVenue struct {
-	ChatID                   ID                    `json:"chat_id"`
-	Latitude                 float64               `json:"latitude"`
-	Longitude                float64               `json:"longitude"`
-	Title                    string                `json:"title"`
 	Address                  string                `json:"address"`
+	AllowSendingWithoutReply OptBool               `json:"allow_sending_without_reply"`
+	ChatID                   ID                    `json:"chat_id"`
+	DisableNotification      OptBool               `json:"disable_notification"`
 	FoursquareID             OptString             `json:"foursquare_id"`
 	FoursquareType           OptString             `json:"foursquare_type"`
 	GooglePlaceID            OptString             `json:"google_place_id"`
 	GooglePlaceType          OptString             `json:"google_place_type"`
-	DisableNotification      OptBool               `json:"disable_notification"`
-	ReplyToMessageID         OptInt                `json:"reply_to_message_id"`
-	AllowSendingWithoutReply OptBool               `json:"allow_sending_without_reply"`
+	Latitude                 float64               `json:"latitude"`
+	Longitude                float64               `json:"longitude"`
 	ReplyMarkup              *SendVenueReplyMarkup `json:"reply_markup"`
+	ReplyToMessageID         OptInt                `json:"reply_to_message_id"`
+	Title                    string                `json:"title"`
 }
 
 // SendVenueReplyMarkup represents sum type.
@@ -5187,33 +5187,33 @@ func NewForceReplySendVenueReplyMarkup(v ForceReply) SendVenueReplyMarkup {
 
 // Ref: #/components/schemas/sendVideo
 type SendVideo struct {
-	ChatID                   ID                    `json:"chat_id"`
-	Video                    string                `json:"video"`
-	Duration                 OptInt                `json:"duration"`
-	Width                    OptInt                `json:"width"`
-	Height                   OptInt                `json:"height"`
-	Thumb                    OptString             `json:"thumb"`
-	Caption                  OptString             `json:"caption"`
-	ParseMode                OptString             `json:"parse_mode"`
-	CaptionEntities          []MessageEntity       `json:"caption_entities"`
-	SupportsStreaming        OptBool               `json:"supports_streaming"`
-	DisableNotification      OptBool               `json:"disable_notification"`
-	ReplyToMessageID         OptInt                `json:"reply_to_message_id"`
 	AllowSendingWithoutReply OptBool               `json:"allow_sending_without_reply"`
+	Caption                  OptString             `json:"caption"`
+	CaptionEntities          []MessageEntity       `json:"caption_entities"`
+	ChatID                   ID                    `json:"chat_id"`
+	DisableNotification      OptBool               `json:"disable_notification"`
+	Duration                 OptInt                `json:"duration"`
+	Height                   OptInt                `json:"height"`
+	ParseMode                OptString             `json:"parse_mode"`
 	ReplyMarkup              *SendVideoReplyMarkup `json:"reply_markup"`
+	ReplyToMessageID         OptInt                `json:"reply_to_message_id"`
+	SupportsStreaming        OptBool               `json:"supports_streaming"`
+	Thumb                    OptString             `json:"thumb"`
+	Video                    string                `json:"video"`
+	Width                    OptInt                `json:"width"`
 }
 
 // Ref: #/components/schemas/sendVideoNote
 type SendVideoNote struct {
+	AllowSendingWithoutReply OptBool                   `json:"allow_sending_without_reply"`
 	ChatID                   ID                        `json:"chat_id"`
-	VideoNote                string                    `json:"video_note"`
+	DisableNotification      OptBool                   `json:"disable_notification"`
 	Duration                 OptInt                    `json:"duration"`
 	Length                   OptInt                    `json:"length"`
-	Thumb                    OptString                 `json:"thumb"`
-	DisableNotification      OptBool                   `json:"disable_notification"`
-	ReplyToMessageID         OptInt                    `json:"reply_to_message_id"`
-	AllowSendingWithoutReply OptBool                   `json:"allow_sending_without_reply"`
 	ReplyMarkup              *SendVideoNoteReplyMarkup `json:"reply_markup"`
+	ReplyToMessageID         OptInt                    `json:"reply_to_message_id"`
+	Thumb                    OptString                 `json:"thumb"`
+	VideoNote                string                    `json:"video_note"`
 }
 
 // SendVideoNoteReplyMarkup represents sum type.
@@ -5464,16 +5464,16 @@ func NewForceReplySendVideoReplyMarkup(v ForceReply) SendVideoReplyMarkup {
 
 // Ref: #/components/schemas/sendVoice
 type SendVoice struct {
-	ChatID                   ID                    `json:"chat_id"`
-	Voice                    string                `json:"voice"`
-	Caption                  OptString             `json:"caption"`
-	ParseMode                OptString             `json:"parse_mode"`
-	CaptionEntities          []MessageEntity       `json:"caption_entities"`
-	Duration                 OptInt                `json:"duration"`
-	DisableNotification      OptBool               `json:"disable_notification"`
-	ReplyToMessageID         OptInt                `json:"reply_to_message_id"`
 	AllowSendingWithoutReply OptBool               `json:"allow_sending_without_reply"`
+	Caption                  OptString             `json:"caption"`
+	CaptionEntities          []MessageEntity       `json:"caption_entities"`
+	ChatID                   ID                    `json:"chat_id"`
+	DisableNotification      OptBool               `json:"disable_notification"`
+	Duration                 OptInt                `json:"duration"`
+	ParseMode                OptString             `json:"parse_mode"`
 	ReplyMarkup              *SendVoiceReplyMarkup `json:"reply_markup"`
+	ReplyToMessageID         OptInt                `json:"reply_to_message_id"`
+	Voice                    string                `json:"voice"`
 }
 
 // SendVoiceReplyMarkup represents sum type.
@@ -5601,8 +5601,8 @@ func NewForceReplySendVoiceReplyMarkup(v ForceReply) SendVoiceReplyMarkup {
 // Ref: #/components/schemas/setChatAdministratorCustomTitle
 type SetChatAdministratorCustomTitle struct {
 	ChatID      ID     `json:"chat_id"`
-	UserID      int    `json:"user_id"`
 	CustomTitle string `json:"custom_title"`
+	UserID      int    `json:"user_id"`
 }
 
 // Ref: #/components/schemas/setChatDescription
@@ -5637,87 +5637,87 @@ type SetChatTitle struct {
 
 // Ref: #/components/schemas/setGameScore
 type SetGameScore struct {
-	UserID             int       `json:"user_id"`
-	Score              int       `json:"score"`
-	Force              OptBool   `json:"force"`
-	DisableEditMessage OptBool   `json:"disable_edit_message"`
 	ChatID             OptInt    `json:"chat_id"`
-	MessageID          OptInt    `json:"message_id"`
+	DisableEditMessage OptBool   `json:"disable_edit_message"`
+	Force              OptBool   `json:"force"`
 	InlineMessageID    OptString `json:"inline_message_id"`
+	MessageID          OptInt    `json:"message_id"`
+	Score              int       `json:"score"`
+	UserID             int       `json:"user_id"`
 }
 
 // Ref: #/components/schemas/setMyCommands
 type SetMyCommands struct {
 	Commands     []BotCommand     `json:"commands"`
-	Scope        *BotCommandScope `json:"scope"`
 	LanguageCode OptString        `json:"language_code"`
+	Scope        *BotCommandScope `json:"scope"`
 }
 
 // Ref: #/components/schemas/setPassportDataErrors
 type SetPassportDataErrors struct {
-	UserID int                    `json:"user_id"`
 	Errors []PassportElementError `json:"errors"`
+	UserID int                    `json:"user_id"`
 }
 
 // Ref: #/components/schemas/setStickerPositionInSet
 type SetStickerPositionInSet struct {
-	Sticker  string `json:"sticker"`
 	Position int    `json:"position"`
+	Sticker  string `json:"sticker"`
 }
 
 // Ref: #/components/schemas/setStickerSetThumb
 type SetStickerSetThumb struct {
 	Name   string    `json:"name"`
-	UserID int       `json:"user_id"`
 	Thumb  OptString `json:"thumb"`
+	UserID int       `json:"user_id"`
 }
 
 // Ref: #/components/schemas/setWebhook
 type SetWebhook struct {
-	URL                url.URL   `json:"url"`
+	AllowedUpdates     []string  `json:"allowed_updates"`
 	Certificate        OptString `json:"certificate"`
+	DropPendingUpdates OptBool   `json:"drop_pending_updates"`
 	IPAddress          OptString `json:"ip_address"`
 	MaxConnections     OptInt    `json:"max_connections"`
-	AllowedUpdates     []string  `json:"allowed_updates"`
-	DropPendingUpdates OptBool   `json:"drop_pending_updates"`
+	URL                url.URL   `json:"url"`
 }
 
 // Ref: #/components/schemas/ShippingAddress
 type ShippingAddress struct {
-	CountryCode string `json:"country_code"`
-	State       string `json:"state"`
 	City        string `json:"city"`
+	CountryCode string `json:"country_code"`
+	PostCode    string `json:"post_code"`
+	State       string `json:"state"`
 	StreetLine1 string `json:"street_line1"`
 	StreetLine2 string `json:"street_line2"`
-	PostCode    string `json:"post_code"`
 }
 
 // Ref: #/components/schemas/ShippingOption
 type ShippingOption struct {
 	ID     string         `json:"id"`
-	Title  string         `json:"title"`
 	Prices []LabeledPrice `json:"prices"`
+	Title  string         `json:"title"`
 }
 
 // Ref: #/components/schemas/Sticker
 type Sticker struct {
+	Emoji        OptString       `json:"emoji"`
 	FileID       string          `json:"file_id"`
+	FileSize     OptInt          `json:"file_size"`
 	FileUniqueID string          `json:"file_unique_id"`
-	Width        int             `json:"width"`
 	Height       int             `json:"height"`
 	IsAnimated   bool            `json:"is_animated"`
-	Thumb        OptPhotoSize    `json:"thumb"`
-	Emoji        OptString       `json:"emoji"`
-	SetName      OptString       `json:"set_name"`
 	MaskPosition OptMaskPosition `json:"mask_position"`
-	FileSize     OptInt          `json:"file_size"`
+	SetName      OptString       `json:"set_name"`
+	Thumb        OptPhotoSize    `json:"thumb"`
+	Width        int             `json:"width"`
 }
 
 // Ref: #/components/schemas/stopMessageLiveLocation
 type StopMessageLiveLocation struct {
 	ChatID          *ID                     `json:"chat_id"`
-	MessageID       OptInt                  `json:"message_id"`
 	InlineMessageID OptString               `json:"inline_message_id"`
+	MessageID       OptInt                  `json:"message_id"`
 	ReplyMarkup     OptInlineKeyboardMarkup `json:"reply_markup"`
 }
 
@@ -5731,19 +5731,19 @@ type StopPoll struct {
 // Ref: #/components/schemas/SuccessfulPayment
 type SuccessfulPayment struct {
 	Currency                string       `json:"currency"`
-	TotalAmount             int          `json:"total_amount"`
 	InvoicePayload          string       `json:"invoice_payload"`
-	ShippingOptionID        OptString    `json:"shipping_option_id"`
 	OrderInfo               OptOrderInfo `json:"order_info"`
-	TelegramPaymentChargeID string       `json:"telegram_payment_charge_id"`
 	ProviderPaymentChargeID string       `json:"provider_payment_charge_id"`
+	ShippingOptionID        OptString    `json:"shipping_option_id"`
+	TelegramPaymentChargeID string       `json:"telegram_payment_charge_id"`
+	TotalAmount             int          `json:"total_amount"`
 }
 
 // Ref: #/components/schemas/unbanChatMember
 type UnbanChatMember struct {
 	ChatID       ID      `json:"chat_id"`
-	UserID       int     `json:"user_id"`
 	OnlyIfBanned OptBool `json:"only_if_banned"`
+	UserID       int     `json:"user_id"`
 }
 
 // Ref: #/components/schemas/unpinAllChatMessages
@@ -5759,64 +5759,64 @@ type UnpinChatMessage struct {
 
 // Ref: #/components/schemas/uploadStickerFile
 type UploadStickerFile struct {
-	UserID     int    `json:"user_id"`
 	PNGSticker string `json:"png_sticker"`
+	UserID     int    `json:"user_id"`
 }
 
 // Ref: #/components/schemas/User
 type User struct {
-	ID                      int       `json:"id"`
-	IsBot                   bool      `json:"is_bot"`
-	FirstName               string    `json:"first_name"`
-	LastName                OptString `json:"last_name"`
-	Username                OptString `json:"username"`
-	LanguageCode            OptString `json:"language_code"`
 	CanJoinGroups           OptBool   `json:"can_join_groups"`
 	CanReadAllGroupMessages OptBool   `json:"can_read_all_group_messages"`
+	FirstName               string    `json:"first_name"`
+	ID                      int       `json:"id"`
+	IsBot                   bool      `json:"is_bot"`
+	LanguageCode            OptString `json:"language_code"`
+	LastName                OptString `json:"last_name"`
 	SupportsInlineQueries   OptBool   `json:"supports_inline_queries"`
+	Username                OptString `json:"username"`
 }
 
 // Ref: #/components/schemas/Venue
 type Venue struct {
-	Location        Location  `json:"location"`
-	Title           string    `json:"title"`
 	Address         string    `json:"address"`
 	FoursquareID    OptString `json:"foursquare_id"`
 	FoursquareType  OptString `json:"foursquare_type"`
 	GooglePlaceID   OptString `json:"google_place_id"`
 	GooglePlaceType OptString `json:"google_place_type"`
+	Location        Location  `json:"location"`
+	Title           string    `json:"title"`
 }
 
 // Ref: #/components/schemas/Video
 type Video struct {
-	FileID       string       `json:"file_id"`
-	FileUniqueID string       `json:"file_unique_id"`
-	Width        int          `json:"width"`
-	Height       int          `json:"height"`
 	Duration     int          `json:"duration"`
-	Thumb        OptPhotoSize `json:"thumb"`
+	FileID       string       `json:"file_id"`
 	FileName     OptString    `json:"file_name"`
-	MimeType     OptString    `json:"mime_type"`
 	FileSize     OptInt       `json:"file_size"`
+	FileUniqueID string       `json:"file_unique_id"`
+	Height       int          `json:"height"`
+	MimeType     OptString    `json:"mime_type"`
+	Thumb        OptPhotoSize `json:"thumb"`
+	Width        int          `json:"width"`
 }
 
 // Ref: #/components/schemas/VideoNote
 type VideoNote struct {
+	Duration     int          `json:"duration"`
 	FileID       string       `json:"file_id"`
+	FileSize     OptInt       `json:"file_size"`
 	FileUniqueID string       `json:"file_unique_id"`
 	Length       int          `json:"length"`
-	Duration     int          `json:"duration"`
 	Thumb        OptPhotoSize `json:"thumb"`
-	FileSize     OptInt       `json:"file_size"`
 }
 
 // Ref: #/components/schemas/Voice
 type Voice struct {
-	FileID       string    `json:"file_id"`
-	FileUniqueID string    `json:"file_unique_id"`
 	Duration     int       `json:"duration"`
-	MimeType     OptString `json:"mime_type"`
+	FileID       string    `json:"file_id"`
 	FileSize     OptInt    `json:"file_size"`
+	FileUniqueID string    `json:"file_unique_id"`
+	MimeType     OptString `json:"mime_type"`
 }
 
 // Ref: #/components/schemas/VoiceChatEnded
