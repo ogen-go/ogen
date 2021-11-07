@@ -38,6 +38,7 @@ func main() {
 	flag.Parse()
 
 	traceProvider := trace.NewNoopTracerProvider()
-	h := techempower.NewJSONHandler(&server{}, techempower.WithTracerProvider(traceProvider))
+	s := techempower.NewServer(&server{}, techempower.WithTracerProvider(traceProvider))
+	h := s.HandleJSONRequest
 	log.Fatal(http.ListenAndServe(arg.Addr, http.HandlerFunc(h)))
 }
