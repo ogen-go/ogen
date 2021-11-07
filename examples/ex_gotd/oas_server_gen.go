@@ -213,3 +213,101 @@ type Server interface {
 	// UploadStickerFile implements uploadStickerFile operation.
 	UploadStickerFile(ctx context.Context, req UploadStickerFile) (UploadStickerFileRes, error)
 }
+
+type HTTPServer struct {
+	s   Server
+	mux *chi.Mux
+	cfg config
+}
+
+func NewServer(s Server, opts ...Option) *HTTPServer {
+	srv := &HTTPServer{
+		s:   s,
+		mux: chi.NewMux(),
+		cfg: newConfig(opts...),
+	}
+	srv.setupRoutes()
+	return srv
+}
+
+func (s *HTTPServer) setupRoutes() {
+	s.mux.MethodFunc("POST", "/addStickerToSet", s.HandleAddStickerToSetRequest)
+	s.mux.MethodFunc("POST", "/answerCallbackQuery", s.HandleAnswerCallbackQueryRequest)
+	s.mux.MethodFunc("POST", "/answerInlineQuery", s.HandleAnswerInlineQueryRequest)
+	s.mux.MethodFunc("POST", "/answerPreCheckoutQuery", s.HandleAnswerPreCheckoutQueryRequest)
+	s.mux.MethodFunc("POST", "/answerShippingQuery", s.HandleAnswerShippingQueryRequest)
+	s.mux.MethodFunc("POST", "/banChatMember", s.HandleBanChatMemberRequest)
+	s.mux.MethodFunc("POST", "/copyMessage", s.HandleCopyMessageRequest)
+	s.mux.MethodFunc("POST", "/createChatInviteLink", s.HandleCreateChatInviteLinkRequest)
+	s.mux.MethodFunc("POST", "/createNewStickerSet", s.HandleCreateNewStickerSetRequest)
+	s.mux.MethodFunc("POST", "/deleteChatPhoto", s.HandleDeleteChatPhotoRequest)
+	s.mux.MethodFunc("POST", "/deleteChatStickerSet", s.HandleDeleteChatStickerSetRequest)
+	s.mux.MethodFunc("POST", "/deleteMessage", s.HandleDeleteMessageRequest)
+	s.mux.MethodFunc("POST", "/deleteMyCommands", s.HandleDeleteMyCommandsRequest)
+	s.mux.MethodFunc("POST", "/deleteStickerFromSet", s.HandleDeleteStickerFromSetRequest)
+	s.mux.MethodFunc("POST", "/deleteWebhook", s.HandleDeleteWebhookRequest)
+	s.mux.MethodFunc("POST", "/editChatInviteLink", s.HandleEditChatInviteLinkRequest)
+	s.mux.MethodFunc("POST", "/editMessageCaption", s.HandleEditMessageCaptionRequest)
+	s.mux.MethodFunc("POST", "/editMessageLiveLocation", s.HandleEditMessageLiveLocationRequest)
+	s.mux.MethodFunc("POST", "/editMessageMedia", s.HandleEditMessageMediaRequest)
+	s.mux.MethodFunc("POST", "/editMessageReplyMarkup", s.HandleEditMessageReplyMarkupRequest)
+	s.mux.MethodFunc("POST", "/editMessageText", s.HandleEditMessageTextRequest)
+	s.mux.MethodFunc("POST", "/exportChatInviteLink", s.HandleExportChatInviteLinkRequest)
+	s.mux.MethodFunc("POST", "/forwardMessage", s.HandleForwardMessageRequest)
+	s.mux.MethodFunc("POST", "/getChat", s.HandleGetChatRequest)
+	s.mux.MethodFunc("POST", "/getChatAdministrators", s.HandleGetChatAdministratorsRequest)
+	s.mux.MethodFunc("POST", "/getChatMember", s.HandleGetChatMemberRequest)
+	s.mux.MethodFunc("POST", "/getChatMemberCount", s.HandleGetChatMemberCountRequest)
+	s.mux.MethodFunc("POST", "/getFile", s.HandleGetFileRequest)
+	s.mux.MethodFunc("POST", "/getGameHighScores", s.HandleGetGameHighScoresRequest)
+	s.mux.MethodFunc("POST", "/getMe", s.HandleGetMeRequest)
+	s.mux.MethodFunc("POST", "/getMyCommands", s.HandleGetMyCommandsRequest)
+	s.mux.MethodFunc("POST", "/getStickerSet", s.HandleGetStickerSetRequest)
+	s.mux.MethodFunc("POST", "/getUpdates", s.HandleGetUpdatesRequest)
+	s.mux.MethodFunc("POST", "/getUserProfilePhotos", s.HandleGetUserProfilePhotosRequest)
+	s.mux.MethodFunc("POST", "/leaveChat", s.HandleLeaveChatRequest)
+	s.mux.MethodFunc("POST", "/pinChatMessage", s.HandlePinChatMessageRequest)
+	s.mux.MethodFunc("POST", "/promoteChatMember", s.HandlePromoteChatMemberRequest)
+	s.mux.MethodFunc("POST", "/restrictChatMember", s.HandleRestrictChatMemberRequest)
+	s.mux.MethodFunc("POST", "/revokeChatInviteLink", s.HandleRevokeChatInviteLinkRequest)
+	s.mux.MethodFunc("POST", "/sendAnimation", s.HandleSendAnimationRequest)
+	s.mux.MethodFunc("POST", "/sendAudio", s.HandleSendAudioRequest)
+	s.mux.MethodFunc("POST", "/sendChatAction", s.HandleSendChatActionRequest)
+	s.mux.MethodFunc("POST", "/sendContact", s.HandleSendContactRequest)
+	s.mux.MethodFunc("POST", "/sendDice", s.HandleSendDiceRequest)
+	s.mux.MethodFunc("POST", "/sendDocument", s.HandleSendDocumentRequest)
+	s.mux.MethodFunc("POST", "/sendGame", s.HandleSendGameRequest)
+	s.mux.MethodFunc("POST", "/sendInvoice", s.HandleSendInvoiceRequest)
+	s.mux.MethodFunc("POST", "/sendLocation", s.HandleSendLocationRequest)
+	s.mux.MethodFunc("POST", "/sendMediaGroup", s.HandleSendMediaGroupRequest)
+	s.mux.MethodFunc("POST", "/sendMessage", s.HandleSendMessageRequest)
+	s.mux.MethodFunc("POST", "/sendPhoto", s.HandleSendPhotoRequest)
+	s.mux.MethodFunc("POST", "/sendPoll", s.HandleSendPollRequest)
+	s.mux.MethodFunc("POST", "/sendSticker", s.HandleSendStickerRequest)
+	s.mux.MethodFunc("POST", "/sendVenue", s.HandleSendVenueRequest)
+	s.mux.MethodFunc("POST", "/sendVideo", s.HandleSendVideoRequest)
+	s.mux.MethodFunc("POST", "/sendVideoNote", s.HandleSendVideoNoteRequest)
+	s.mux.MethodFunc("POST", "/sendVoice", s.HandleSendVoiceRequest)
+	s.mux.MethodFunc("POST", "/setChatAdministratorCustomTitle", s.HandleSetChatAdministratorCustomTitleRequest)
+	s.mux.MethodFunc("POST", "/setChatDescription", s.HandleSetChatDescriptionRequest)
+	s.mux.MethodFunc("POST", "/setChatPermissions", s.HandleSetChatPermissionsRequest)
+	s.mux.MethodFunc("POST", "/setChatPhoto", s.HandleSetChatPhotoRequest)
+	s.mux.MethodFunc("POST", "/setChatStickerSet", s.HandleSetChatStickerSetRequest)
+	s.mux.MethodFunc("POST", "/setChatTitle", s.HandleSetChatTitleRequest)
+	s.mux.MethodFunc("POST", "/setGameScore", s.HandleSetGameScoreRequest)
+	s.mux.MethodFunc("POST", "/setMyCommands", s.HandleSetMyCommandsRequest)
+	s.mux.MethodFunc("POST", "/setPassportDataErrors", s.HandleSetPassportDataErrorsRequest)
+	s.mux.MethodFunc("POST", "/setStickerPositionInSet", s.HandleSetStickerPositionInSetRequest)
+	s.mux.MethodFunc("POST", "/setStickerSetThumb", s.HandleSetStickerSetThumbRequest)
+	s.mux.MethodFunc("POST", "/setWebhook", s.HandleSetWebhookRequest)
+	s.mux.MethodFunc("POST", "/stopMessageLiveLocation", s.HandleStopMessageLiveLocationRequest)
+	s.mux.MethodFunc("POST", "/stopPoll", s.HandleStopPollRequest)
+	s.mux.MethodFunc("POST", "/unbanChatMember", s.HandleUnbanChatMemberRequest)
+	s.mux.MethodFunc("POST", "/unpinAllChatMessages", s.HandleUnpinAllChatMessagesRequest)
+	s.mux.MethodFunc("POST", "/unpinChatMessage", s.HandleUnpinChatMessageRequest)
+	s.mux.MethodFunc("POST", "/uploadStickerFile", s.HandleUploadStickerFileRequest)
+}
+
+func (s *HTTPServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	s.mux.ServeHTTP(w, r)
+}

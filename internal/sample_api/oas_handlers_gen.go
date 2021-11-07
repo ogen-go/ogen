@@ -60,348 +60,312 @@ var (
 	_ = regexp.MustCompile
 )
 
-func NewFoobarGetHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `FoobarGet`,
-			trace.WithAttributes(otelogen.OperationID(`foobarGet`)),
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		params, err := decodeFoobarGetParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandleFoobarGetRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `FoobarGet`,
+		trace.WithAttributes(otelogen.OperationID(`foobarGet`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeFoobarGetParams(r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.FoobarGet(ctx, params)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.FoobarGet(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeFoobarGetResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeFoobarGetResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewFoobarPostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `FoobarPost`,
-			trace.WithAttributes(otelogen.OperationID(`foobarPost`)),
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		request, err := decodeFoobarPostRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandleFoobarPostRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `FoobarPost`,
+		trace.WithAttributes(otelogen.OperationID(`foobarPost`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeFoobarPostRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.FoobarPost(ctx, request)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.FoobarPost(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeFoobarPostResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeFoobarPostResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewFoobarPutHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `FoobarPut`,
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
+func (s *HTTPServer) HandleFoobarPutRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `FoobarPut`,
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
 
-		response, err := s.FoobarPut(ctx)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.FoobarPut(ctx)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeFoobarPutResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeFoobarPutResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewPetCreateHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `PetCreate`,
-			trace.WithAttributes(otelogen.OperationID(`petCreate`)),
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		request, err := decodePetCreateRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandlePetCreateRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetCreate`,
+		trace.WithAttributes(otelogen.OperationID(`petCreate`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodePetCreateRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.PetCreate(ctx, request)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.PetCreate(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodePetCreateResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodePetCreateResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewPetFriendsNamesByIDHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `PetFriendsNamesByID`,
-			trace.WithAttributes(otelogen.OperationID(`petFriendsNamesByID`)),
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		params, err := decodePetFriendsNamesByIDParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandlePetFriendsNamesByIDRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetFriendsNamesByID`,
+		trace.WithAttributes(otelogen.OperationID(`petFriendsNamesByID`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodePetFriendsNamesByIDParams(r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.PetFriendsNamesByID(ctx, params)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.PetFriendsNamesByID(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodePetFriendsNamesByIDResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodePetFriendsNamesByIDResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewPetGetHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `PetGet`,
-			trace.WithAttributes(otelogen.OperationID(`petGet`)),
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		params, err := decodePetGetParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandlePetGetRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetGet`,
+		trace.WithAttributes(otelogen.OperationID(`petGet`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodePetGetParams(r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.PetGet(ctx, params)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.PetGet(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodePetGetResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodePetGetResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewPetGetAvatarByIDHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `PetGetAvatarByID`,
-			trace.WithAttributes(otelogen.OperationID(`petGetAvatarByID`)),
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		params, err := decodePetGetAvatarByIDParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandlePetGetAvatarByIDRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetGetAvatarByID`,
+		trace.WithAttributes(otelogen.OperationID(`petGetAvatarByID`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodePetGetAvatarByIDParams(r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.PetGetAvatarByID(ctx, params)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.PetGetAvatarByID(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodePetGetAvatarByIDResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodePetGetAvatarByIDResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewPetGetByNameHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `PetGetByName`,
-			trace.WithAttributes(otelogen.OperationID(`petGetByName`)),
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		params, err := decodePetGetByNameParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandlePetGetByNameRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetGetByName`,
+		trace.WithAttributes(otelogen.OperationID(`petGetByName`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodePetGetByNameParams(r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.PetGetByName(ctx, params)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.PetGetByName(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodePetGetByNameResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodePetGetByNameResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewPetNameByIDHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `PetNameByID`,
-			trace.WithAttributes(otelogen.OperationID(`petNameByID`)),
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		params, err := decodePetNameByIDParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandlePetNameByIDRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetNameByID`,
+		trace.WithAttributes(otelogen.OperationID(`petNameByID`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodePetNameByIDParams(r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.PetNameByID(ctx, params)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.PetNameByID(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodePetNameByIDResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodePetNameByIDResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewPetUpdateNameAliasPostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `PetUpdateNameAliasPost`,
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		request, err := decodePetUpdateNameAliasPostRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandlePetUpdateNameAliasPostRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetUpdateNameAliasPost`,
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodePetUpdateNameAliasPostRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.PetUpdateNameAliasPost(ctx, request)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.PetUpdateNameAliasPost(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodePetUpdateNameAliasPostResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodePetUpdateNameAliasPostResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewPetUpdateNamePostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `PetUpdateNamePost`,
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		request, err := decodePetUpdateNamePostRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandlePetUpdateNamePostRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetUpdateNamePost`,
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodePetUpdateNamePostRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.PetUpdateNamePost(ctx, request)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.PetUpdateNamePost(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodePetUpdateNamePostResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodePetUpdateNamePostResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewPetUploadAvatarByIDHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `PetUploadAvatarByID`,
-			trace.WithAttributes(otelogen.OperationID(`petUploadAvatarByID`)),
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		params, err := decodePetUploadAvatarByIDParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
-		request, err := decodePetUploadAvatarByIDRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandlePetUploadAvatarByIDRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetUploadAvatarByID`,
+		trace.WithAttributes(otelogen.OperationID(`petUploadAvatarByID`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodePetUploadAvatarByIDParams(r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodePetUploadAvatarByIDRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.PetUploadAvatarByID(ctx, request, params)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.PetUploadAvatarByID(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodePetUploadAvatarByIDResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodePetUploadAvatarByIDResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 

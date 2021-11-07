@@ -60,84 +60,75 @@ var (
 	_ = regexp.MustCompile
 )
 
-func NewCreatePetsHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `CreatePets`,
-			trace.WithAttributes(otelogen.OperationID(`createPets`)),
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
+func (s *HTTPServer) HandleCreatePetsRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `CreatePets`,
+		trace.WithAttributes(otelogen.OperationID(`createPets`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
 
-		response, err := s.CreatePets(ctx)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.CreatePets(ctx)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeCreatePetsResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeCreatePetsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewListPetsHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `ListPets`,
-			trace.WithAttributes(otelogen.OperationID(`listPets`)),
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		params, err := decodeListPetsParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandleListPetsRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListPets`,
+		trace.WithAttributes(otelogen.OperationID(`listPets`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeListPetsParams(r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.ListPets(ctx, params)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.ListPets(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeListPetsResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeListPetsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewShowPetByIdHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `ShowPetById`,
-			trace.WithAttributes(otelogen.OperationID(`showPetById`)),
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		params, err := decodeShowPetByIdParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandleShowPetByIdRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ShowPetById`,
+		trace.WithAttributes(otelogen.OperationID(`showPetById`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeShowPetByIdParams(r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.ShowPetById(ctx, params)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.ShowPetById(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeShowPetByIdResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeShowPetByIdResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 

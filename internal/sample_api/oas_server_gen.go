@@ -87,3 +87,38 @@ type Server interface {
 	// PetUploadAvatarByID implements petUploadAvatarByID operation.
 	PetUploadAvatarByID(ctx context.Context, req Stream, params PetUploadAvatarByIDParams) (PetUploadAvatarByIDRes, error)
 }
+
+type HTTPServer struct {
+	s   Server
+	mux *chi.Mux
+	cfg config
+}
+
+func NewServer(s Server, opts ...Option) *HTTPServer {
+	srv := &HTTPServer{
+		s:   s,
+		mux: chi.NewMux(),
+		cfg: newConfig(opts...),
+	}
+	srv.setupRoutes()
+	return srv
+}
+
+func (s *HTTPServer) setupRoutes() {
+	s.mux.MethodFunc("GET", "/foobar", s.HandleFoobarGetRequest)
+	s.mux.MethodFunc("POST", "/foobar", s.HandleFoobarPostRequest)
+	s.mux.MethodFunc("PUT", "/foobar", s.HandleFoobarPutRequest)
+	s.mux.MethodFunc("POST", "/pet", s.HandlePetCreateRequest)
+	s.mux.MethodFunc("GET", "/pet/friendNames/{id}", s.HandlePetFriendsNamesByIDRequest)
+	s.mux.MethodFunc("GET", "/pet", s.HandlePetGetRequest)
+	s.mux.MethodFunc("GET", "/pet/avatar", s.HandlePetGetAvatarByIDRequest)
+	s.mux.MethodFunc("GET", "/pet/{name}", s.HandlePetGetByNameRequest)
+	s.mux.MethodFunc("GET", "/pet/name/{id}", s.HandlePetNameByIDRequest)
+	s.mux.MethodFunc("POST", "/pet/updateNameAlias", s.HandlePetUpdateNameAliasPostRequest)
+	s.mux.MethodFunc("POST", "/pet/updateName", s.HandlePetUpdateNamePostRequest)
+	s.mux.MethodFunc("POST", "/pet/avatar", s.HandlePetUploadAvatarByIDRequest)
+}
+
+func (s *HTTPServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	s.mux.ServeHTTP(w, r)
+}

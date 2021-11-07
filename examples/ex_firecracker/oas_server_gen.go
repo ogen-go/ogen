@@ -115,3 +115,52 @@ type Server interface {
 	// PutMetrics implements putMetrics operation.
 	PutMetrics(ctx context.Context, req Metrics) (PutMetricsRes, error)
 }
+
+type HTTPServer struct {
+	s   Server
+	mux *chi.Mux
+	cfg config
+}
+
+func NewServer(s Server, opts ...Option) *HTTPServer {
+	srv := &HTTPServer{
+		s:   s,
+		mux: chi.NewMux(),
+		cfg: newConfig(opts...),
+	}
+	srv.setupRoutes()
+	return srv
+}
+
+func (s *HTTPServer) setupRoutes() {
+	s.mux.MethodFunc("PUT", "/snapshot/create", s.HandleCreateSnapshotRequest)
+	s.mux.MethodFunc("PUT", "/actions", s.HandleCreateSyncActionRequest)
+	s.mux.MethodFunc("GET", "/balloon", s.HandleDescribeBalloonConfigRequest)
+	s.mux.MethodFunc("GET", "/balloon/statistics", s.HandleDescribeBalloonStatsRequest)
+	s.mux.MethodFunc("GET", "/", s.HandleDescribeInstanceRequest)
+	s.mux.MethodFunc("GET", "/vm/config", s.HandleGetExportVmConfigRequest)
+	s.mux.MethodFunc("GET", "/machine-config", s.HandleGetMachineConfigurationRequest)
+	s.mux.MethodFunc("PUT", "/snapshot/load", s.HandleLoadSnapshotRequest)
+	s.mux.MethodFunc("PUT", "/mmds/config", s.HandleMmdsConfigPutRequest)
+	s.mux.MethodFunc("GET", "/mmds", s.HandleMmdsGetRequest)
+	s.mux.MethodFunc("PATCH", "/mmds", s.HandleMmdsPatchRequest)
+	s.mux.MethodFunc("PUT", "/mmds", s.HandleMmdsPutRequest)
+	s.mux.MethodFunc("PATCH", "/balloon", s.HandlePatchBalloonRequest)
+	s.mux.MethodFunc("PATCH", "/balloon/statistics", s.HandlePatchBalloonStatsIntervalRequest)
+	s.mux.MethodFunc("PATCH", "/drives/{drive_id}", s.HandlePatchGuestDriveByIDRequest)
+	s.mux.MethodFunc("PATCH", "/network-interfaces/{iface_id}", s.HandlePatchGuestNetworkInterfaceByIDRequest)
+	s.mux.MethodFunc("PATCH", "/machine-config", s.HandlePatchMachineConfigurationRequest)
+	s.mux.MethodFunc("PATCH", "/vm", s.HandlePatchVmRequest)
+	s.mux.MethodFunc("PUT", "/balloon", s.HandlePutBalloonRequest)
+	s.mux.MethodFunc("PUT", "/boot-source", s.HandlePutGuestBootSourceRequest)
+	s.mux.MethodFunc("PUT", "/drives/{drive_id}", s.HandlePutGuestDriveByIDRequest)
+	s.mux.MethodFunc("PUT", "/network-interfaces/{iface_id}", s.HandlePutGuestNetworkInterfaceByIDRequest)
+	s.mux.MethodFunc("PUT", "/vsock", s.HandlePutGuestVsockRequest)
+	s.mux.MethodFunc("PUT", "/logger", s.HandlePutLoggerRequest)
+	s.mux.MethodFunc("PUT", "/machine-config", s.HandlePutMachineConfigurationRequest)
+	s.mux.MethodFunc("PUT", "/metrics", s.HandlePutMetricsRequest)
+}
+
+func (s *HTTPServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	s.mux.ServeHTTP(w, r)
+}

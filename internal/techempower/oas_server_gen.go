@@ -73,3 +73,31 @@ type Server interface {
 	// Updates implements Updates operation.
 	Updates(ctx context.Context, params UpdatesParams) (WorldObjects, error)
 }
+
+type HTTPServer struct {
+	s   Server
+	mux *chi.Mux
+	cfg config
+}
+
+func NewServer(s Server, opts ...Option) *HTTPServer {
+	srv := &HTTPServer{
+		s:   s,
+		mux: chi.NewMux(),
+		cfg: newConfig(opts...),
+	}
+	srv.setupRoutes()
+	return srv
+}
+
+func (s *HTTPServer) setupRoutes() {
+	s.mux.MethodFunc("GET", "/cached-worlds", s.HandleCachingRequest)
+	s.mux.MethodFunc("GET", "/db", s.HandleDBRequest)
+	s.mux.MethodFunc("GET", "/json", s.HandleJSONRequest)
+	s.mux.MethodFunc("GET", "/queries", s.HandleQueriesRequest)
+	s.mux.MethodFunc("GET", "/updates", s.HandleUpdatesRequest)
+}
+
+func (s *HTTPServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	s.mux.ServeHTTP(w, r)
+}

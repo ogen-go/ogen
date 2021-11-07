@@ -101,3 +101,45 @@ type Server interface {
 	// SetStickerPositionInSetPost implements  operation.
 	SetStickerPositionInSetPost(ctx context.Context, req SetStickerPositionInSetPostReqApplicationJSON) (SetStickerPositionInSetPostRes, error)
 }
+
+type HTTPServer struct {
+	s   Server
+	mux *chi.Mux
+	cfg config
+}
+
+func NewServer(s Server, opts ...Option) *HTTPServer {
+	srv := &HTTPServer{
+		s:   s,
+		mux: chi.NewMux(),
+		cfg: newConfig(opts...),
+	}
+	srv.setupRoutes()
+	return srv
+}
+
+func (s *HTTPServer) setupRoutes() {
+	s.mux.MethodFunc("POST", "/answerCallbackQuery", s.HandleAnswerCallbackQueryPostRequest)
+	s.mux.MethodFunc("POST", "/answerPreCheckoutQuery", s.HandleAnswerPreCheckoutQueryPostRequest)
+	s.mux.MethodFunc("POST", "/answerShippingQuery", s.HandleAnswerShippingQueryPostRequest)
+	s.mux.MethodFunc("POST", "/close", s.HandleClosePostRequest)
+	s.mux.MethodFunc("POST", "/deleteStickerFromSet", s.HandleDeleteStickerFromSetPostRequest)
+	s.mux.MethodFunc("POST", "/deleteWebhook", s.HandleDeleteWebhookPostRequest)
+	s.mux.MethodFunc("POST", "/getFile", s.HandleGetFilePostRequest)
+	s.mux.MethodFunc("POST", "/getGameHighScores", s.HandleGetGameHighScoresPostRequest)
+	s.mux.MethodFunc("POST", "/getMe", s.HandleGetMePostRequest)
+	s.mux.MethodFunc("POST", "/getMyCommands", s.HandleGetMyCommandsPostRequest)
+	s.mux.MethodFunc("POST", "/getStickerSet", s.HandleGetStickerSetPostRequest)
+	s.mux.MethodFunc("POST", "/getUpdates", s.HandleGetUpdatesPostRequest)
+	s.mux.MethodFunc("POST", "/getUserProfilePhotos", s.HandleGetUserProfilePhotosPostRequest)
+	s.mux.MethodFunc("POST", "/getWebhookInfo", s.HandleGetWebhookInfoPostRequest)
+	s.mux.MethodFunc("POST", "/logOut", s.HandleLogOutPostRequest)
+	s.mux.MethodFunc("POST", "/sendGame", s.HandleSendGamePostRequest)
+	s.mux.MethodFunc("POST", "/sendInvoice", s.HandleSendInvoicePostRequest)
+	s.mux.MethodFunc("POST", "/setMyCommands", s.HandleSetMyCommandsPostRequest)
+	s.mux.MethodFunc("POST", "/setStickerPositionInSet", s.HandleSetStickerPositionInSetPostRequest)
+}
+
+func (s *HTTPServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	s.mux.ServeHTTP(w, r)
+}

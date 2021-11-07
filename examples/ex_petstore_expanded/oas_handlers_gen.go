@@ -60,32 +60,29 @@ var (
 	_ = regexp.MustCompile
 )
 
-func NewDeletePetHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `DeletePet`,
-			trace.WithAttributes(otelogen.OperationID(`deletePet`)),
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		params, err := decodeDeletePetParams(r)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandleDeletePetRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `DeletePet`,
+		trace.WithAttributes(otelogen.OperationID(`deletePet`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeDeletePetParams(r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.DeletePet(ctx, params)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.DeletePet(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeDeletePetResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeDeletePetResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 

@@ -69,3 +69,29 @@ type Server interface {
 	// ShowPetById implements showPetById operation.
 	ShowPetById(ctx context.Context, params ShowPetByIdParams) (ShowPetByIdRes, error)
 }
+
+type HTTPServer struct {
+	s   Server
+	mux *chi.Mux
+	cfg config
+}
+
+func NewServer(s Server, opts ...Option) *HTTPServer {
+	srv := &HTTPServer{
+		s:   s,
+		mux: chi.NewMux(),
+		cfg: newConfig(opts...),
+	}
+	srv.setupRoutes()
+	return srv
+}
+
+func (s *HTTPServer) setupRoutes() {
+	s.mux.MethodFunc("POST", "/pets", s.HandleCreatePetsRequest)
+	s.mux.MethodFunc("GET", "/pets", s.HandleListPetsRequest)
+	s.mux.MethodFunc("GET", "/pets/{petId}", s.HandleShowPetByIdRequest)
+}
+
+func (s *HTTPServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	s.mux.ServeHTTP(w, r)
+}

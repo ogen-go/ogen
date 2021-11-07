@@ -60,505 +60,448 @@ var (
 	_ = regexp.MustCompile
 )
 
-func NewAnswerCallbackQueryPostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `AnswerCallbackQueryPost`,
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		request, err := decodeAnswerCallbackQueryPostRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandleAnswerCallbackQueryPostRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `AnswerCallbackQueryPost`,
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeAnswerCallbackQueryPostRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.AnswerCallbackQueryPost(ctx, request)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.AnswerCallbackQueryPost(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeAnswerCallbackQueryPostResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeAnswerCallbackQueryPostResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewAnswerPreCheckoutQueryPostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `AnswerPreCheckoutQueryPost`,
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		request, err := decodeAnswerPreCheckoutQueryPostRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandleAnswerPreCheckoutQueryPostRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `AnswerPreCheckoutQueryPost`,
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeAnswerPreCheckoutQueryPostRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.AnswerPreCheckoutQueryPost(ctx, request)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.AnswerPreCheckoutQueryPost(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeAnswerPreCheckoutQueryPostResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeAnswerPreCheckoutQueryPostResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewAnswerShippingQueryPostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `AnswerShippingQueryPost`,
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		request, err := decodeAnswerShippingQueryPostRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandleAnswerShippingQueryPostRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `AnswerShippingQueryPost`,
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeAnswerShippingQueryPostRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.AnswerShippingQueryPost(ctx, request)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.AnswerShippingQueryPost(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeAnswerShippingQueryPostResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeAnswerShippingQueryPostResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewClosePostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `ClosePost`,
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
+func (s *HTTPServer) HandleClosePostRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ClosePost`,
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
 
-		response, err := s.ClosePost(ctx)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.ClosePost(ctx)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeClosePostResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeClosePostResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewDeleteStickerFromSetPostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `DeleteStickerFromSetPost`,
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		request, err := decodeDeleteStickerFromSetPostRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandleDeleteStickerFromSetPostRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `DeleteStickerFromSetPost`,
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeDeleteStickerFromSetPostRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.DeleteStickerFromSetPost(ctx, request)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.DeleteStickerFromSetPost(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeDeleteStickerFromSetPostResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeDeleteStickerFromSetPostResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewDeleteWebhookPostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `DeleteWebhookPost`,
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		request, err := decodeDeleteWebhookPostRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandleDeleteWebhookPostRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `DeleteWebhookPost`,
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeDeleteWebhookPostRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.DeleteWebhookPost(ctx, request)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.DeleteWebhookPost(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeDeleteWebhookPostResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeDeleteWebhookPostResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewGetFilePostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `GetFilePost`,
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		request, err := decodeGetFilePostRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandleGetFilePostRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetFilePost`,
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeGetFilePostRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.GetFilePost(ctx, request)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.GetFilePost(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeGetFilePostResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeGetFilePostResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewGetGameHighScoresPostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `GetGameHighScoresPost`,
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		request, err := decodeGetGameHighScoresPostRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandleGetGameHighScoresPostRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetGameHighScoresPost`,
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeGetGameHighScoresPostRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.GetGameHighScoresPost(ctx, request)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.GetGameHighScoresPost(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeGetGameHighScoresPostResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeGetGameHighScoresPostResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewGetMePostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `GetMePost`,
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
+func (s *HTTPServer) HandleGetMePostRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetMePost`,
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
 
-		response, err := s.GetMePost(ctx)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.GetMePost(ctx)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeGetMePostResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeGetMePostResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewGetMyCommandsPostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `GetMyCommandsPost`,
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
+func (s *HTTPServer) HandleGetMyCommandsPostRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetMyCommandsPost`,
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
 
-		response, err := s.GetMyCommandsPost(ctx)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.GetMyCommandsPost(ctx)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeGetMyCommandsPostResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeGetMyCommandsPostResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewGetStickerSetPostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `GetStickerSetPost`,
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		request, err := decodeGetStickerSetPostRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandleGetStickerSetPostRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetStickerSetPost`,
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeGetStickerSetPostRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.GetStickerSetPost(ctx, request)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.GetStickerSetPost(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeGetStickerSetPostResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeGetStickerSetPostResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewGetUpdatesPostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `GetUpdatesPost`,
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		request, err := decodeGetUpdatesPostRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandleGetUpdatesPostRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetUpdatesPost`,
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeGetUpdatesPostRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.GetUpdatesPost(ctx, request)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.GetUpdatesPost(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeGetUpdatesPostResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeGetUpdatesPostResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewGetUserProfilePhotosPostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `GetUserProfilePhotosPost`,
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		request, err := decodeGetUserProfilePhotosPostRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandleGetUserProfilePhotosPostRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetUserProfilePhotosPost`,
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeGetUserProfilePhotosPostRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.GetUserProfilePhotosPost(ctx, request)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.GetUserProfilePhotosPost(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeGetUserProfilePhotosPostResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeGetUserProfilePhotosPostResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewGetWebhookInfoPostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `GetWebhookInfoPost`,
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
+func (s *HTTPServer) HandleGetWebhookInfoPostRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetWebhookInfoPost`,
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
 
-		response, err := s.GetWebhookInfoPost(ctx)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.GetWebhookInfoPost(ctx)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeGetWebhookInfoPostResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeGetWebhookInfoPostResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewLogOutPostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `LogOutPost`,
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
+func (s *HTTPServer) HandleLogOutPostRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `LogOutPost`,
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
 
-		response, err := s.LogOutPost(ctx)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.LogOutPost(ctx)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeLogOutPostResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeLogOutPostResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewSendGamePostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `SendGamePost`,
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		request, err := decodeSendGamePostRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandleSendGamePostRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `SendGamePost`,
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeSendGamePostRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.SendGamePost(ctx, request)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.SendGamePost(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeSendGamePostResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeSendGamePostResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewSendInvoicePostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `SendInvoicePost`,
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		request, err := decodeSendInvoicePostRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandleSendInvoicePostRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `SendInvoicePost`,
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeSendInvoicePostRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.SendInvoicePost(ctx, request)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.SendInvoicePost(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeSendInvoicePostResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeSendInvoicePostResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewSetMyCommandsPostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `SetMyCommandsPost`,
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		request, err := decodeSetMyCommandsPostRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandleSetMyCommandsPostRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `SetMyCommandsPost`,
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeSetMyCommandsPostRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.SetMyCommandsPost(ctx, request)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.SetMyCommandsPost(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeSetMyCommandsPostResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeSetMyCommandsPostResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 
-func NewSetStickerPositionInSetPostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
-	cfg := newConfig(opts...)
-	return func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := cfg.Tracer.Start(r.Context(), `SetStickerPositionInSetPost`,
-			trace.WithSpanKind(trace.SpanKindServer),
-		)
-		defer span.End()
-		request, err := decodeSetStickerPositionInSetPostRequest(r, span)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
+func (s *HTTPServer) HandleSetStickerPositionInSetPostRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `SetStickerPositionInSetPost`,
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeSetStickerPositionInSetPostRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
 
-		response, err := s.SetStickerPositionInSetPost(ctx, request)
-		if err != nil {
-			span.RecordError(err)
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
+	response, err := s.s.SetStickerPositionInSetPost(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
 
-		if err := encodeSetStickerPositionInSetPostResponse(response, w, span); err != nil {
-			span.RecordError(err)
-			return
-		}
+	if err := encodeSetStickerPositionInSetPostResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
 	}
 }
 

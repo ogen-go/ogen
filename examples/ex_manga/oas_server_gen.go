@@ -75,3 +75,32 @@ type Server interface {
 	// SearchByTagID implements searchByTagID operation.
 	SearchByTagID(ctx context.Context, params SearchByTagIDParams) (SearchByTagIDRes, error)
 }
+
+type HTTPServer struct {
+	s   Server
+	mux *chi.Mux
+	cfg config
+}
+
+func NewServer(s Server, opts ...Option) *HTTPServer {
+	srv := &HTTPServer{
+		s:   s,
+		mux: chi.NewMux(),
+		cfg: newConfig(opts...),
+	}
+	srv.setupRoutes()
+	return srv
+}
+
+func (s *HTTPServer) setupRoutes() {
+	s.mux.MethodFunc("GET", "/api/gallery/{book_id}", s.HandleGetBookRequest)
+	s.mux.MethodFunc("GET", "/galleries/{media_id}/cover.{format}", s.HandleGetPageCoverImageRequest)
+	s.mux.MethodFunc("GET", "/galleries/{media_id}/{page}.{format}", s.HandleGetPageImageRequest)
+	s.mux.MethodFunc("GET", "/galleries/{media_id}/{page}t.{format}", s.HandleGetPageThumbnailImageRequest)
+	s.mux.MethodFunc("GET", "/api/galleries/search", s.HandleSearchRequest)
+	s.mux.MethodFunc("GET", "/api/galleries/tagged", s.HandleSearchByTagIDRequest)
+}
+
+func (s *HTTPServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	s.mux.ServeHTTP(w, r)
+}
