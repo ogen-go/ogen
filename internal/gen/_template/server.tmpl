@@ -12,4 +12,29 @@ type Server interface {
 {{- end }}
 }
 
+type HTTPServer struct {
+    s   Server
+    mux *chi.Mux
+    cfg config
+}
+
+func NewServer(s Server, opts ...Option) *HTTPServer {
+    srv := &HTTPServer{
+        s:   s,
+        mux: chi.NewMux(),
+        cfg: newConfig(opts...),
+    }
+    srv.setupRoutes()
+    return srv
+}
+
+func (s *HTTPServer) setupRoutes() {
+    {{- range $op := $.Operations }}
+    s.mux.MethodFunc("{{ $op.Spec.HTTPMethod }}", "{{ $op.Spec.Path }}", s.Handle{{ $op.Name }}Request)
+    {{- end }}
+}
+
+func (s *HTTPServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+    s.mux.ServeHTTP(w, r)
+}
 {{ end }}

@@ -75,7 +75,6 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		"params",
 		"param_dec",
 		"handlers",
-		"router",
 		"req_enc",
 		"req_dec",
 		"res_enc",
