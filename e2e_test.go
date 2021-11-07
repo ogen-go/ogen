@@ -124,7 +124,7 @@ func (s *sampleAPIServer) PetGetAvatarByID(ctx context.Context, params api.PetGe
 		}, nil
 	default:
 		return &api.PetGetAvatarByIDOKApplicationOctetStream{
-			Reader: bytes.NewReader(petAvatar),
+			Data: bytes.NewReader(petAvatar),
 		}, nil
 	}
 }
@@ -315,7 +315,7 @@ func TestIntegration(t *testing.T) {
 		t.Run("PetUploadAvatar", func(t *testing.T) {
 			t.Run("OK", func(t *testing.T) {
 				stream := api.Stream{
-					Reader: io.NopCloser(bytes.NewReader(petAvatar)),
+					Data: io.NopCloser(bytes.NewReader(petAvatar)),
 				}
 				got, err := client.PetUploadAvatarByID(ctx, stream, api.PetUploadAvatarByIDParams{
 					PetID: petExistingID,
@@ -325,7 +325,7 @@ func TestIntegration(t *testing.T) {
 			})
 			t.Run("NotFound", func(t *testing.T) {
 				stream := api.Stream{
-					Reader: io.NopCloser(bytes.NewReader(petAvatar)),
+					Data: io.NopCloser(bytes.NewReader(petAvatar)),
 				}
 				got, err := client.PetUploadAvatarByID(ctx, stream, api.PetUploadAvatarByIDParams{
 					PetID: petNotFoundID,
@@ -335,7 +335,7 @@ func TestIntegration(t *testing.T) {
 			})
 			t.Run("Error", func(t *testing.T) {
 				stream := api.Stream{
-					Reader: bytes.NewReader(petAvatar),
+					Data: bytes.NewReader(petAvatar),
 				}
 				got, err := client.PetUploadAvatarByID(ctx, stream, api.PetUploadAvatarByIDParams{
 					PetID: petErrorID,

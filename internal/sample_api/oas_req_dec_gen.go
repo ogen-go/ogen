@@ -220,7 +220,9 @@ func decodePetUploadAvatarByIDRequest(r *http.Request, span trace.Span) (req Str
 	case "application/octet-stream":
 		var request Stream
 		_ = request
-		return Stream{r.Body}, nil
+		return Stream{
+			Data: r.Body,
+		}, nil
 	default:
 		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}

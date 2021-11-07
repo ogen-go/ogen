@@ -621,7 +621,11 @@ func (*Pet) foobarPostRes() {}
 func (*Pet) petGetRes()     {}
 
 type PetGetAvatarByIDOKApplicationOctetStream struct {
-	io.Reader
+	Data io.Reader
+}
+
+func (s PetGetAvatarByIDOKApplicationOctetStream) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
 }
 
 func (*PetGetAvatarByIDOKApplicationOctetStream) petGetAvatarByIDRes() {}
@@ -678,5 +682,9 @@ type PetUploadAvatarByIDOK struct{}
 func (*PetUploadAvatarByIDOK) petUploadAvatarByIDRes() {}
 
 type Stream struct {
-	io.Reader
+	Data io.Reader
+}
+
+func (s Stream) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
 }
