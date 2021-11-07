@@ -1,87 +1,87 @@
 {{- define "validate" }}
-    {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
-    {{- $t := $.Type }}
-    {{- $va := $t.Validators }}
-    {{- $validated := false }}
-    {{- if eq $t.NilSemantic "invalid" }}
-        if {{ $.Var }} == nil {
-            {{- /*TODO: continue validation instead return*/ -}}
-            return errors.New("required, can't be nil")
-        }
-    {{- end }}
-    {{- if or ($t.IsStruct) ($t.IsAlias) }}
-    {{- $validated = true }}
-    if err := {{ $.Var }}.Validate(); err != nil {
-        return err
-    }
-    {{- else if $t.IsArray }}
-    {{- if $va.Array.Set }}
-    {{- $validated = true }}
-        {{- $v := $va.Array }}
-        if err := (validate.Array{
-            MinLength:    {{ $v.MinLength }},
-            MinLengthSet: {{ $v.MinLengthSet }},
-            MaxLength:    {{ $v.MaxLength }},
-            MaxLengthSet: {{ $v.MaxLengthSet }},
-        }).ValidateLength(len({{ $.Var }})); err != nil {
-            return err
-        }
-    {{- end }}
-    {{- if $t.Item.NeedValidation }}
-    var failures []validate.FieldError
-    {{- $validated = true }}
-    for i, elem := range {{ $.Var }} {
-        if err := func() error {
-            {{- template "validate" array_elem $.Type.Item }}
-        }(); err != nil {
-            failures = append(failures, validate.FieldError{
-                Name:  fmt.Sprintf("[%d]", i),
-                Error: err,
-            })
-        }
-    }
-    if len(failures) > 0 {
-        return &validate.Error{Fields: failures}
-    }
-    {{- end }}
-    {{- end }}
-    {{- if $va.String.Set }}
-    {{- $validated = true }}
-        {{- $v := $va.String }}
-        if err := (validate.String{
-            MinLength:    {{ $v.MinLength }},
-            MinLengthSet: {{ $v.MinLengthSet }},
-            MaxLength:    {{ $v.MaxLength }},
-            MaxLengthSet: {{ $v.MaxLengthSet }},
-            Email:        {{ $v.Email }},
-            Hostname:     {{ $v.Hostname }},
-            {{- if $v.Regex }}
-            Regex:        regexp.MustCompile(`{{ $v.Regex }}`),
-            {{- else }}
-            Regex: nil,
-            {{- end }}
-        }).Validate(string({{ $.Var }})); err != nil {
-            return err
-        }
-    {{- end }}
-    {{- if $va.Int.Set }}
-    {{- $validated = true }}
-        {{- $v := $va.Int }}
-        if err := (validate.Int{
-            MinSet:         {{ $v.MinSet }},
-            Min:            {{ $v.Min }},
-            MaxSet:         {{ $v.MaxSet }},
-            Max:            {{ $v.Max }},
-            MinExclusive:   {{ $v.MinExclusive }},
-            MaxExclusive:   {{ $v.MaxExclusive }},
-        }).Validate(int64({{ $.Var }})); err != nil {
-            return err
-        }
-    {{- end }}
-    {{- if not $validated }}
-    _ = {{ $.Var }} // validation expected, but not supported
-    {{- end }}
-    return nil
+	{{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
+	{{- $t := $.Type }}
+	{{- $va := $t.Validators }}
+	{{- $validated := false }}
+	{{- if eq $t.NilSemantic "invalid" }}
+		if {{ $.Var }} == nil {
+			{{- /*TODO: continue validation instead return*/ -}}
+			return errors.New("required, can't be nil")
+		}
+	{{- end }}
+	{{- if or ($t.IsStruct) ($t.IsAlias) }}
+	{{- $validated = true }}
+	if err := {{ $.Var }}.Validate(); err != nil {
+		return err
+	}
+	{{- else if $t.IsArray }}
+	{{- if $va.Array.Set }}
+	{{- $validated = true }}
+		{{- $v := $va.Array }}
+		if err := (validate.Array{
+			MinLength:	{{ $v.MinLength }},
+			MinLengthSet: {{ $v.MinLengthSet }},
+			MaxLength:	{{ $v.MaxLength }},
+			MaxLengthSet: {{ $v.MaxLengthSet }},
+		}).ValidateLength(len({{ $.Var }})); err != nil {
+			return err
+		}
+	{{- end }}
+	{{- if $t.Item.NeedValidation }}
+	var failures []validate.FieldError
+	{{- $validated = true }}
+	for i, elem := range {{ $.Var }} {
+		if err := func() error {
+			{{- template "validate" array_elem $.Type.Item }}
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name:  fmt.Sprintf("[%d]", i),
+				Error: err,
+			})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	{{- end }}
+	{{- end }}
+	{{- if $va.String.Set }}
+	{{- $validated = true }}
+		{{- $v := $va.String }}
+		if err := (validate.String{
+			MinLength:	{{ $v.MinLength }},
+			MinLengthSet: {{ $v.MinLengthSet }},
+			MaxLength:	{{ $v.MaxLength }},
+			MaxLengthSet: {{ $v.MaxLengthSet }},
+			Email:		{{ $v.Email }},
+			Hostname:	 {{ $v.Hostname }},
+			{{- if $v.Regex }}
+			Regex:		regexp.MustCompile(`{{ $v.Regex }}`),
+			{{- else }}
+			Regex: nil,
+			{{- end }}
+		}).Validate(string({{ $.Var }})); err != nil {
+			return err
+		}
+	{{- end }}
+	{{- if $va.Int.Set }}
+	{{- $validated = true }}
+		{{- $v := $va.Int }}
+		if err := (validate.Int{
+			MinSet:		 {{ $v.MinSet }},
+			Min:			{{ $v.Min }},
+			MaxSet:		 {{ $v.MaxSet }},
+			Max:			{{ $v.Max }},
+			MinExclusive:   {{ $v.MinExclusive }},
+			MaxExclusive:   {{ $v.MaxExclusive }},
+		}).Validate(int64({{ $.Var }})); err != nil {
+			return err
+		}
+	{{- end }}
+	{{- if not $validated }}
+	_ = {{ $.Var }} // validation expected, but not supported
+	{{- end }}
+	return nil
 {{- end }}
 
 {{ define "validators" }}
@@ -94,27 +94,27 @@
 {{- if $t.NeedValidation }}{{/*Need validation*/}}
 {{- if $t.IsStruct }}{{/*If struct*/}}
 func (s {{ $t.Name }}) Validate() error {
-    var failures []validate.FieldError
-    {{- range $f := $t.Fields }}{{/*Range fields*/}}
-    {{- if $f.Type.NeedValidation }}
-        if err := func() error {
-            {{- template "validate" field_elem $f }}
-        }(); err != nil {
-            failures = append(failures, validate.FieldError{
-                Name: "{{ $f.Spec.Name }}",
-                Error: err,
-            })
-        }
-    {{- end }}
-    {{- end }}{{/*Range fields*/}}
-    if len(failures) > 0 {
-        return &validate.Error{Fields: failures}
-    }
-    return nil
+	var failures []validate.FieldError
+	{{- range $f := $t.Fields }}{{/*Range fields*/}}
+	{{- if $f.Type.NeedValidation }}
+		if err := func() error {
+			{{- template "validate" field_elem $f }}
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name: "{{ $f.Spec.Name }}",
+				Error: err,
+			})
+		}
+	{{- end }}
+	{{- end }}{{/*Range fields*/}}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
 }
 {{- else if $t.IsAlias }}
 func (s {{ $t.Name }}) Validate() error {
-    return nil
+	return nil
 }
 {{- end }}
 {{- end }}

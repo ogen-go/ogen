@@ -7,23 +7,23 @@
 {{- range $op := $.Operations }}{{/* Range over all methods */}}
 
 func encode{{ $op.Name }}Response(response {{ $op.Response.Type.Go }}, w http.ResponseWriter, span trace.Span) error {
-    {{- $typesCount := len $op.ListResponseTypes }}
-    {{- if eq $typesCount 1 }}
+	{{- $typesCount := len $op.ListResponseTypes }}
+	{{- if eq $typesCount 1 }}
 
-    {{- range $info := $op.ListResponseTypes }}
-        {{- template "respond" $info }}
-    {{- end }}
+	{{- range $info := $op.ListResponseTypes }}
+		{{- template "respond" $info }}
+	{{- end }}
 
-    {{- else }}
-    switch response := response.(type) {
-    {{- range $info := $op.ListResponseTypes }}
-    case *{{ $info.Type.Name }}:
-        {{- template "respond" $info }}
-    {{- end }}
-    default:
-        return errors.Errorf(`{{ $op.Spec.Path}}: unexpected response type: %T`, response)
-    }
-    {{- end }}
+	{{- else }}
+	switch response := response.(type) {
+	{{- range $info := $op.ListResponseTypes }}
+	case *{{ $info.Type.Name }}:
+		{{- template "respond" $info }}
+	{{- end }}
+	default:
+		return errors.Errorf(`{{ $op.Spec.Path}}: unexpected response type: %T`, response)
+	}
+	{{- end }}
 }
 
 
@@ -51,13 +51,13 @@ more := json.NewMore(e)
 defer more.Reset()
 {{ template "enc_json" res_elem $ }}
 if _, err := e.WriteTo(w); err != nil {
-    return errors.Wrap(err, "write")
+	return errors.Wrap(err, "write")
 }
 
 return nil
 {{- else if $.Type.IsStream }}
 if _, err := io.Copy(w, response); err != nil {
-    return errors.Wrap(err, "write")
+	return errors.Wrap(err, "write")
 }
 
 return nil

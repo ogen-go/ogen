@@ -7,34 +7,34 @@
 // Server handles operations described by OpenAPI v3 specification.
 type Server interface {
 {{- range $op := $.Operations }}
-    // {{ $op.Name }} implements {{ $op.Spec.OperationID }} operation.
-    {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) ({{ $op.Response.Type.Go }}, error)
+	// {{ $op.Name }} implements {{ $op.Spec.OperationID }} operation.
+	{{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) ({{ $op.Response.Type.Go }}, error)
 {{- end }}
 }
 
 type HTTPServer struct {
-    s   Server
-    mux *chi.Mux
-    cfg config
+	s   Server
+	mux *chi.Mux
+	cfg config
 }
 
 func NewServer(s Server, opts ...Option) *HTTPServer {
-    srv := &HTTPServer{
-        s:   s,
-        mux: chi.NewMux(),
-        cfg: newConfig(opts...),
-    }
-    srv.setupRoutes()
-    return srv
+	srv := &HTTPServer{
+		s:   s,
+		mux: chi.NewMux(),
+		cfg: newConfig(opts...),
+	}
+	srv.setupRoutes()
+	return srv
 }
 
 func (s *HTTPServer) setupRoutes() {
-    {{- range $op := $.Operations }}
-    s.mux.MethodFunc("{{ $op.Spec.HTTPMethod }}", "{{ $op.Spec.Path }}", s.Handle{{ $op.Name }}Request)
-    {{- end }}
+	{{- range $op := $.Operations }}
+	s.mux.MethodFunc("{{ $op.Spec.HTTPMethod }}", "{{ $op.Spec.Path }}", s.Handle{{ $op.Name }}Request)
+	{{- end }}
 }
 
 func (s *HTTPServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-    s.mux.ServeHTTP(w, r)
+	s.mux.ServeHTTP(w, r)
 }
 {{ end }}

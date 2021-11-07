@@ -3,7 +3,7 @@
 buf := json.GetBuffer()
 defer json.PutBuffer(buf)
 if _, err := io.Copy(buf, resp.Body); err != nil {
-    return res, err
+	return res, err
 }
 
 d := json.GetDecoder()
@@ -12,10 +12,10 @@ d.ResetBytes(buf.Bytes())
 
 var response {{ $.Go }}
 if err := func() error {
-    {{- template "dec_json" req_elem $ }}
-    return nil
+	{{- template "dec_json" req_elem $ }}
+	return nil
 }(); err != nil {
-    return res, err
+	return res, err
 }
 {{ end }}
 
@@ -27,61 +27,61 @@ if err := func() error {
 {{- range $op := $.Operations }}{{/* Range over all methods */}}
 
 func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ $op.Response.Type.Go }}, err error) {
-    switch resp.StatusCode {
-    {{- range $statusCode, $response := $op.Response.StatusCode }}{{/* Range over responses */}}
-    case {{ $statusCode }}:
-        {{- if $response.NoContent }}{{/* Decode NoContent response */}}
-        return {{ if eq $op.Response.Type.Kind "interface" }}&{{ end }}{{ $response.NoContent.Name }}{}, nil
-        {{- else }}{{/* Decode content response */}}
-        switch resp.Header.Get("Content-Type") {
-        {{- range $contentType, $type := $response.Contents }}{{/* Range over contents */}}
-        case "{{ $contentType }}":
-            {{- if $contentType.JSON }}{{/* Decode */}}
-            {{- template "res_dec_json" $type }}
-            return {{ if eq $op.Response.Type.Kind "interface" }}&{{ end }}response, nil
-            {{- else if $type.IsStream }}
-            b, err := io.ReadAll(resp.Body)
-            if err != nil {
-                return nil, err
-            }
+	switch resp.StatusCode {
+	{{- range $statusCode, $response := $op.Response.StatusCode }}{{/* Range over responses */}}
+	case {{ $statusCode }}:
+		{{- if $response.NoContent }}{{/* Decode NoContent response */}}
+		return {{ if eq $op.Response.Type.Kind "interface" }}&{{ end }}{{ $response.NoContent.Name }}{}, nil
+		{{- else }}{{/* Decode content response */}}
+		switch resp.Header.Get("Content-Type") {
+		{{- range $contentType, $type := $response.Contents }}{{/* Range over contents */}}
+		case "{{ $contentType }}":
+			{{- if $contentType.JSON }}{{/* Decode */}}
+			{{- template "res_dec_json" $type }}
+			return {{ if eq $op.Response.Type.Kind "interface" }}&{{ end }}response, nil
+			{{- else if $type.IsStream }}
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return nil, err
+			}
 
-            return &{{$type.Name}}{
-                Data: bytes.NewReader(b),
-            }, nil
-            {{- else }}
-            return res, errors.New("{{ $contentType }} decoder not implemented")
-            {{- end }}{{/* Decode */}}
-        {{- end }}{{/* Range over contents */}}
-        default:
-            return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-        }
-        {{- end }}{{/* Decode content response */}}
-    {{- end }}{{/* Range over responses */}}
-    default:
-        {{- $def := $op.Response.Default }}
-        {{- if $def }}{{/* Decode default response */}}
-        {{- if $def.NoContent }}{{/* Decode NoContent response */}}
-        return {{ if eq $op.Response.Type.Kind "interface" }}&{{ end }}{{ $def.NoContent.Name }}{StatusCode: resp.StatusCode}, nil
-        {{- else }}{{/* Decode content response */}}
-        switch resp.Header.Get("Content-Type") {
-        {{- range $contentType, $type := $def.Contents }}{{/* Range over contents */}}
-        case "{{ $contentType }}":
-            {{- if $contentType.JSON }}{{/* Decode */}}
-            {{- template "res_dec_json" $type }}
-            response.StatusCode = resp.StatusCode
-            return {{ if eq $op.Response.Type.Kind "interface" }}&{{ end }}response, nil
-            {{- else }}
-            return res, errors.New("{{ $contentType }} decoder not implemented")
-            {{- end }}{{/* Decode */}}
-        {{- end }}{{/* Range over contents */}}
-        default:
-            return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-        }
-        {{- end }}{{/* Decode content response */}}
-        {{- else }}
-        return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
-        {{- end }}{{- /* Decode default response */}}
-    }
+			return &{{$type.Name}}{
+				Data: bytes.NewReader(b),
+			}, nil
+			{{- else }}
+			return res, errors.New("{{ $contentType }} decoder not implemented")
+			{{- end }}{{/* Decode */}}
+		{{- end }}{{/* Range over contents */}}
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+		{{- end }}{{/* Decode content response */}}
+	{{- end }}{{/* Range over responses */}}
+	default:
+		{{- $def := $op.Response.Default }}
+		{{- if $def }}{{/* Decode default response */}}
+		{{- if $def.NoContent }}{{/* Decode NoContent response */}}
+		return {{ if eq $op.Response.Type.Kind "interface" }}&{{ end }}{{ $def.NoContent.Name }}{StatusCode: resp.StatusCode}, nil
+		{{- else }}{{/* Decode content response */}}
+		switch resp.Header.Get("Content-Type") {
+		{{- range $contentType, $type := $def.Contents }}{{/* Range over contents */}}
+		case "{{ $contentType }}":
+			{{- if $contentType.JSON }}{{/* Decode */}}
+			{{- template "res_dec_json" $type }}
+			response.StatusCode = resp.StatusCode
+			return {{ if eq $op.Response.Type.Kind "interface" }}&{{ end }}response, nil
+			{{- else }}
+			return res, errors.New("{{ $contentType }} decoder not implemented")
+			{{- end }}{{/* Decode */}}
+		{{- end }}{{/* Range over contents */}}
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+		{{- end }}{{/* Decode content response */}}
+		{{- else }}
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		{{- end }}{{- /* Decode default response */}}
+	}
 }
 
 {{- end }}{{/* Range over all methods */}}

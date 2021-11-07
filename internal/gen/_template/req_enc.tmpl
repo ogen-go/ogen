@@ -6,8 +6,8 @@ more := json.NewMore(e)
 defer more.Reset()
 {{ template "enc_json" req_enc_elem $ }}
 if _, err := e.WriteTo(buf); err != nil {
-    json.PutBuffer(buf)
-    return nil, err
+	json.PutBuffer(buf)
+	return nil, err
 }
 {{ end }}
 
@@ -21,14 +21,14 @@ if _, err := e.WriteTo(buf); err != nil {
 {{- if $op.Request }}
 {{- range $contentType, $type := $op.Request.Contents }}
 func encode{{ $op.Name }}Request{{ $contentType.Name }}(req {{ $op.Request.Type.Go }}, span trace.Span) (data {{ $contentType.EncodedDataTypeGo }}, err error) {
-    {{- if $type.IsStream }}
-    return req, nil
-    {{- else if $contentType.JSON }}
-    {{- template "req_enc_json" $type }}
-    return buf, nil
-    {{- else }}
-    return nil, errors.New(`{{ $contentType }} encoder not implemented`)
-    {{- end }}
+	{{- if $type.IsStream }}
+	return req, nil
+	{{- else if $contentType.JSON }}
+	{{- template "req_enc_json" $type }}
+	return buf, nil
+	{{- else }}
+	return nil, errors.New(`{{ $contentType }} encoder not implemented`)
+	{{- end }}
 }
 {{- end }}
 {{- end }}

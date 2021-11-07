@@ -4,16 +4,16 @@
 {{- range $t, $_ := $.URITypes }}
 {{- if eq $t.Kind "struct" }}
 func (v {{ $t.Go }}) encodeURI(e uri.Encoder) error {
-    {{- range $f := $t.Fields }}
-    {{- if $f.Spec }}
-        if err := e.EncodeField("{{ $f.Spec.Name }}", func(e uri.Encoder) error {
-            {{- template "encode_uri" elem $f.Type (printf "v.%s" $f.Name) }}
-        }); err != nil {
-            return errors.Wrap(err, `field {{ $f.Spec.Name }}`)
-        }
-    {{- end }}
-    {{- end }}
-    return nil
+	{{- range $f := $t.Fields }}
+	{{- if $f.Spec }}
+		if err := e.EncodeField("{{ $f.Spec.Name }}", func(e uri.Encoder) error {
+			{{- template "encode_uri" elem $f.Type (printf "v.%s" $f.Name) }}
+		}); err != nil {
+			return errors.Wrap(err, `field {{ $f.Spec.Name }}`)
+		}
+	{{- end }}
+	{{- end }}
+	return nil
 }
 
 {{- end }}
@@ -25,46 +25,46 @@ func (v {{ $t.Go }}) encodeURI(e uri.Encoder) error {
 {{- $t := $.Type }}
 {{- $var := $.Var }}
 {{- if eq $t.Kind "primitive" }}
-    return e.EncodeValue(conv.{{ $t.ToString }}({{ $var }}))
+	return e.EncodeValue(conv.{{ $t.ToString }}({{ $var }}))
 {{- else if eq $t.Kind "enum" }}
-    return e.EncodeValue(conv.{{ $t.ToString }}({{ $t.Primitive.String }}({{ $var }})))
+	return e.EncodeValue(conv.{{ $t.ToString }}({{ $t.Primitive.String }}({{ $var }})))
 {{- else if eq $t.Kind "array" }}
-    return e.EncodeArray(func(e uri.Encoder) error {
-        for i, item := range {{ $var }} {
-            if err := func() error {
-                {{- template "encode_uri" elem $t.Item "item" }}
-            }(); err != nil {
-                return errors.Wrapf(err, "[%d]", i)
-            }
-        }
-        return nil
-    })
+	return e.EncodeArray(func(e uri.Encoder) error {
+		for i, item := range {{ $var }} {
+			if err := func() error {
+				{{- template "encode_uri" elem $t.Item "item" }}
+			}(); err != nil {
+				return errors.Wrapf(err, "[%d]", i)
+			}
+		}
+		return nil
+	})
 {{- else if eq $t.Kind "alias" }}
-    if unwrapped := {{ $t.AliasTo.Go }}({{ $var }}); true {
-        {{- template "encode_uri" elem $t.AliasTo "unwrapped" }}
-    }
-    return nil
+	if unwrapped := {{ $t.AliasTo.Go }}({{ $var }}); true {
+		{{- template "encode_uri" elem $t.AliasTo "unwrapped" }}
+	}
+	return nil
 {{- else if eq $t.Kind "generic" }}
-    if val, ok := {{ $var }}.Get(); ok {
-        {{- template "encode_uri" elem $t.GenericOf "val" }}
-    }
-    return nil
+	if val, ok := {{ $var }}.Get(); ok {
+		{{- template "encode_uri" elem $t.GenericOf "val" }}
+	}
+	return nil
 {{- else if eq $t.Kind "pointer" }}
-    if v := {{ $var }}; v != nil {
-        {{- template "encode_uri" elem $t.PointerTo "(*v)" }}
-    }
-    return nil
+	if v := {{ $var }}; v != nil {
+		{{- template "encode_uri" elem $t.PointerTo "(*v)" }}
+	}
+	return nil
 {{- else if eq $t.Kind "struct" }}
-    return {{ $var }}.encodeURI(e)
+	return {{ $var }}.encodeURI(e)
 {{- else if eq $t.Kind "sum" }}
-    switch t := {{ $var }}.Type; t {
-    {{- range $of := $t.SumOf }}
-    case {{ $of.Name }}{{ $t.Name }}:
-        {{- template "encode_uri" elem $of (printf "%s.%s" $var $of.Name) }}
-    {{- end }}
-    default:
-        panic(fmt.Sprintf("unexpected type: %T", t))
-    }
+	switch t := {{ $var }}.Type; t {
+	{{- range $of := $t.SumOf }}
+	case {{ $of.Name }}{{ $t.Name }}:
+		{{- template "encode_uri" elem $of (printf "%s.%s" $var $of.Name) }}
+	{{- end }}
+	default:
+		panic(fmt.Sprintf("unexpected type: %T", t))
+	}
 {{- else }}
 Unexpected kind {{ $t.Kind }}
 {{- end }}

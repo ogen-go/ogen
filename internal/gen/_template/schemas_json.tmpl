@@ -8,31 +8,31 @@
 {{ if $t.IsStruct }}
 // WriteJSON implements json.Marshaler.
 func (s {{ $t.Name }}) WriteJSON(e *json.Encoder) {
-    e.ObjStart()
-    more := json.NewMore(e)
-    defer more.Reset()
-    {{- range $f := $t.JSON.Fields }}
-        {{ template "enc_json" field_elem $f -}}
-    {{- end }}
-    e.ObjEnd()
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	{{- range $f := $t.JSON.Fields }}
+		{{ template "enc_json" field_elem $f -}}
+	{{- end }}
+	e.ObjEnd()
 }
 
 // ReadJSON reads {{ $t.Name }} from json stream.
 func (s *{{ $t.Name }}) ReadJSON(d *json.Decoder) error {
-    if s == nil {
-        return errors.New(`invalid: unable to decode {{ $t.Name }} to nil`)
-    }
-    return d.ObjBytes(func(d *json.Decoder, k []byte) error {
-        switch string(k) {
-    {{- range $f := $t.JSON.Fields }}
-    case "{{ $f.Tag.JSON }}":
-        {{- template "dec_json" field_elem $f }}
-    {{- end }}
-        default:
-            return d.Skip()
-        }
-        return nil
-    })
+	if s == nil {
+		return errors.New(`invalid: unable to decode {{ $t.Name }} to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+	{{- range $f := $t.JSON.Fields }}
+	case "{{ $f.Tag.JSON }}":
+		{{- template "dec_json" field_elem $f }}
+	{{- end }}
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
 }
 {{- else if $t.IsGeneric }}
 {{ $g := $t.GenericOf }}
@@ -40,93 +40,93 @@ func (s *{{ $t.Name }}) ReadJSON(d *json.Decoder) error {
 // WriteJSON writes json value of {{ $g.Go }} to json stream.
 func (o {{ $t.Name }}) WriteJSON(e *json.Encoder{{ if $g.Format }}, format func(*json.Encoder, {{ $g.Go }}){{ end }}) {
 {{- if $v.Nullable }}
-    if o.Null {
-        e.Null()
-        return
-    }
+	if o.Null {
+		e.Null()
+		return
+	}
 {{- end }}
 {{- if $g.Format }}
-    format(e, o.Value)
+	format(e, o.Value)
 {{- else if $g.JSON.Format }}
-    json.Write{{ $g.JSON.Format }}(e, o.Value)
+	json.Write{{ $g.JSON.Format }}(e, o.Value)
 {{- else if $g.JSON.Write }}
-    e.{{ $g.JSON.Write }}({{ $g.Primitive }}(o.Value))
+	e.{{ $g.JSON.Write }}({{ $g.Primitive }}(o.Value))
 {{- else if $g.IsStruct }}
-    o.Value.WriteJSON(e)
+	o.Value.WriteJSON(e)
 {{- end }}
 }
 
 // ReadJSON reads json value of {{ $g.Go }} from json iterator.
 func (o *{{ $t.Name }}) ReadJSON(d *json.Decoder{{ if $g.Format }}, format func(*json.Decoder) ({{ $g.Go }}, error){{ end }}) error {
-    if o == nil {
-        return errors.New(`invalid: unable to decode {{ $t.Name }} to nil`)
-    }
-    switch d.Next() {
-    case json.{{ $g.JSON.Type }}:
-    {{- if $v.Optional }}
-        o.Set = true
-    {{- end }}
-    {{- if $v.Nullable }}
-        o.Null = false
-    {{- end }}
-    {{- if $g.Format }}
-        v, err := format(d)
-        if err != nil {
-            return err
-        }
-        o.Value = v
-    {{- else if $g.JSON.Format }}
-        v, err := json.Read{{ $g.JSON.Format }}(d)
-        if err != nil {
-            return err
-        }
-        o.Value = v
-    {{- else if $g.JSON.Read }}
-        v, err := d.{{ $g.JSON.Read }}()
-        if err != nil {
-            return err
-        }
-        o.Value = {{ $g.Go }}(v)
-    {{- else if $g.IsStruct }}
-        if err := o.Value.ReadJSON(d); err != nil {
-            return err
-        }
-    {{- end }}
-        return nil
-    {{- if $v.Nullable }}
-    case json.Nil:
-        if err := d.Null(); err != nil {
-            return err
-        }
-        var v {{ $g.Go }}
-        o.Value = v
-        {{- if $v.Optional }}
-        o.Set = true
-        {{- end }}
-        o.Null = true
-        return nil
-    {{- end }}
-    default:
-        return errors.Errorf(`unexpected type %q while reading {{ $t.Name }}`, d.Next())
-    }
+	if o == nil {
+		return errors.New(`invalid: unable to decode {{ $t.Name }} to nil`)
+	}
+	switch d.Next() {
+	case json.{{ $g.JSON.Type }}:
+	{{- if $v.Optional }}
+		o.Set = true
+	{{- end }}
+	{{- if $v.Nullable }}
+		o.Null = false
+	{{- end }}
+	{{- if $g.Format }}
+		v, err := format(d)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+	{{- else if $g.JSON.Format }}
+		v, err := json.Read{{ $g.JSON.Format }}(d)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+	{{- else if $g.JSON.Read }}
+		v, err := d.{{ $g.JSON.Read }}()
+		if err != nil {
+			return err
+		}
+		o.Value = {{ $g.Go }}(v)
+	{{- else if $g.IsStruct }}
+		if err := o.Value.ReadJSON(d); err != nil {
+			return err
+		}
+	{{- end }}
+		return nil
+	{{- if $v.Nullable }}
+	case json.Nil:
+		if err := d.Null(); err != nil {
+			return err
+		}
+		var v {{ $g.Go }}
+		o.Value = v
+		{{- if $v.Optional }}
+		o.Set = true
+		{{- end }}
+		o.Null = true
+		return nil
+	{{- end }}
+	default:
+		return errors.Errorf(`unexpected type %q while reading {{ $t.Name }}`, d.Next())
+	}
 }
 {{- else if $t.IsEnum }}
 // WriteJSON implements json.Marshaler.
 func (s {{ $t.Name }}) WriteJSON(e *json.Encoder) {
-    e.{{ $t.JSON.Write }}({{ $t.Primitive }}(s))
+	e.{{ $t.JSON.Write }}({{ $t.Primitive }}(s))
 }
 
 // ReadJSON reads {{ $t.Name }} from json reader.
 func (s *{{ $t.Name }}) ReadJSON(d *json.Decoder) error {
-    if s == nil {
-        return errors.New(`invalid: unable to decode {{ $t.Name }} to nil`)
-    }
-    v, err := d.{{ $t.JSON.Read }}()
-    if err != nil {
-        return err
-    }
-    *s = {{ $t.Name }}(v)
-    return nil
+	if s == nil {
+		return errors.New(`invalid: unable to decode {{ $t.Name }} to nil`)
+	}
+	v, err := d.{{ $t.JSON.Read }}()
+	if err != nil {
+		return err
+	}
+	*s = {{ $t.Name }}(v)
+	return nil
 }
 {{- else if $t.IsAlias }}
 func ({{ $t.Name }}) WriteJSON(e *json.Encoder) {}
@@ -134,88 +134,88 @@ func ({{ $t.Name }}) ReadJSON(d *json.Decoder) error { return nil }
 {{- else if $t.IsSum }}
 // WriteJSON implements json.Marshaler.
 func (s {{ $t.Name }}) WriteJSON(e *json.Encoder) {
-    switch s.Type {
-    {{- range $s := $t.SumOf }}
-    case {{ $s.Name }}{{ $t.Name }}:
-        {{- template "enc_json" elem $s (printf "s.%s" $s.Name) -}}
-    {{- end }}
-    }
+	switch s.Type {
+	{{- range $s := $t.SumOf }}
+	case {{ $s.Name }}{{ $t.Name }}:
+		{{- template "enc_json" elem $s (printf "s.%s" $s.Name) -}}
+	{{- end }}
+	}
 }
 
 {{ $d := $t.JSON.Sum -}}
 // ReadJSON reads value from json reader.
 func (s *{{ $t.Name }}) ReadJSON(d *json.Decoder) error {
-    if s == nil {
-        return errors.New(`invalid: unable to decode {{ $t.Name }} to nil`)
-    }
-    // Sum type {{ $d }}.
-    {{- if $d.Primitive }}
-    switch t := d.Next(); t {
-    {{- range $s := $t.SumOf }}
-    case json.{{ $s.JSON.Type }}:
-        {{- template "dec_json" elem $s (printf "s.%s" $s.Name) }}
-        s.Type = {{ $s.Name }}{{ $t.Name }}
-    {{- end }}
-    default:
-        return errors.Errorf("unexpected json type %q", t)
-    }
-    {{- else if or ($d.Fields) ($d.Discriminator) }}
-    if d.Next() != json.Object {
-        return errors.Errorf("unexpected json type %q", d.Next())
-    }
-    var found bool
-    if err := d.Capture(func(d *json.Decoder) error {
-        return d.ObjBytes(func(d *json.Decoder, key []byte) error {
-            if found {
-                return d.Skip()
-            }
-            switch string(key) {
-            {{- if $d.Discriminator -}}
-            case "{{ $t.SumSpec.Discriminator }}":
-                typ, err := d.Str()
-                if err != nil {
-                    return err
-                }
-                switch typ {
-                {{- range $m:= $t.SumSpec.Mapping }}
-                case "{{ $m.Key }}":
-                    s.Type = {{ $m.Type }}{{ $t.Name }}
-                    found = true
-                {{- end }}
-                default:
-                    return errors.Errorf("unknown type %s", typ)
-                }
-                return nil
-            {{- else }}
-            {{- range $s := $t.SumOf }}
-            {{- range $f := $s.SumSpec.Unique }}
-            case "{{ $f.Tag.JSON }}":
-                found = true
-                s.Type = {{ $s.Name }}{{ $t.Name }}
-            {{- end }}
-            {{- end }}
-            {{- end }}
-            }
-            return d.Skip()
-        })
-    }); err != nil {
-        return errors.Wrap(err, "capture")
-    }
-    if !found {
-        return errors.New("unable to detect sum type variant")
-    }
-    switch s.Type {
-    {{- range $s := $t.SumOf }}
-    case {{ $s.Name }}{{ $t.Name }}:
-        {{- template "dec_json" elem $s (printf "s.%s" $s.Name) }}
-    {{- end}}
-    default:
-        return errors.Errorf("inferred invalid type: %s", s.Type)
-    }
-    {{- else if $d.Discriminator  }}
+	if s == nil {
+		return errors.New(`invalid: unable to decode {{ $t.Name }} to nil`)
+	}
+	// Sum type {{ $d }}.
+	{{- if $d.Primitive }}
+	switch t := d.Next(); t {
+	{{- range $s := $t.SumOf }}
+	case json.{{ $s.JSON.Type }}:
+		{{- template "dec_json" elem $s (printf "s.%s" $s.Name) }}
+		s.Type = {{ $s.Name }}{{ $t.Name }}
+	{{- end }}
+	default:
+		return errors.Errorf("unexpected json type %q", t)
+	}
+	{{- else if or ($d.Fields) ($d.Discriminator) }}
+	if d.Next() != json.Object {
+		return errors.Errorf("unexpected json type %q", d.Next())
+	}
+	var found bool
+	if err := d.Capture(func(d *json.Decoder) error {
+		return d.ObjBytes(func(d *json.Decoder, key []byte) error {
+			if found {
+				return d.Skip()
+			}
+			switch string(key) {
+			{{- if $d.Discriminator -}}
+			case "{{ $t.SumSpec.Discriminator }}":
+				typ, err := d.Str()
+				if err != nil {
+					return err
+				}
+				switch typ {
+				{{- range $m:= $t.SumSpec.Mapping }}
+				case "{{ $m.Key }}":
+					s.Type = {{ $m.Type }}{{ $t.Name }}
+					found = true
+				{{- end }}
+				default:
+					return errors.Errorf("unknown type %s", typ)
+				}
+				return nil
+			{{- else }}
+			{{- range $s := $t.SumOf }}
+			{{- range $f := $s.SumSpec.Unique }}
+			case "{{ $f.Tag.JSON }}":
+				found = true
+				s.Type = {{ $s.Name }}{{ $t.Name }}
+			{{- end }}
+			{{- end }}
+			{{- end }}
+			}
+			return d.Skip()
+		})
+	}); err != nil {
+		return errors.Wrap(err, "capture")
+	}
+	if !found {
+		return errors.New("unable to detect sum type variant")
+	}
+	switch s.Type {
+	{{- range $s := $t.SumOf }}
+	case {{ $s.Name }}{{ $t.Name }}:
+		{{- template "dec_json" elem $s (printf "s.%s" $s.Name) }}
+	{{- end}}
+	default:
+		return errors.Errorf("inferred invalid type: %s", s.Type)
+	}
+	{{- else if $d.Discriminator  }}
 
-    {{- end }}
-    return nil
+	{{- end }}
+	return nil
 }
 {{- end }}
 

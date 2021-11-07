@@ -4,21 +4,21 @@
 {{- range $t, $_ := $.URITypes }}
 {{- if eq $t.Kind "struct" }}
 func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
-    if v == nil {
-        return errors.New(`unable to decode {{ $t.Go }} to nil`)
-    }
-    return d.DecodeFields(func(name string, d uri.Decoder) error {
-        switch name {
-        {{- range $f := $t.Fields }}
-        {{- if $f.Spec }}
-        case "{{ $f.Spec.Name }}":
-            {{- template "decode_uri" elem $f.Type (printf "v.%s" $f.Name) }}
-        {{- end }}
-        {{- end }}
-        default:
-            return errors.Errorf(`unexpected field %q`, name)
-        }
-    })
+	if v == nil {
+		return errors.New(`unable to decode {{ $t.Go }} to nil`)
+	}
+	return d.DecodeFields(func(name string, d uri.Decoder) error {
+		switch name {
+		{{- range $f := $t.Fields }}
+		{{- if $f.Spec }}
+		case "{{ $f.Spec.Name }}":
+			{{- template "decode_uri" elem $f.Type (printf "v.%s" $f.Name) }}
+		{{- end }}
+		{{- end }}
+		default:
+			return errors.Errorf(`unexpected field %q`, name)
+		}
+	})
 }
 
 {{- end }}
@@ -31,78 +31,78 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 {{- $t := $.Type }}
 {{- $var := $.Var }}
 {{- if eq $t.Kind "primitive" }}
-    s, err := d.DecodeValue()
-    if err != nil {
-        return err
-    }
+	s, err := d.DecodeValue()
+	if err != nil {
+		return err
+	}
 
-    c, err := conv.{{ $t.FromString }}(s)
-    if err != nil {
-        return err
-    }
+	c, err := conv.{{ $t.FromString }}(s)
+	if err != nil {
+		return err
+	}
 
-    {{ $var }} = c
-    return nil
+	{{ $var }} = c
+	return nil
 {{- else if eq $t.Kind "enum" }}
-    s, err := d.DecodeValue()
-    if err != nil {
-        return err
-    }
+	s, err := d.DecodeValue()
+	if err != nil {
+		return err
+	}
 
-    c, err := conv.{{ $t.FromString }}(s)
-    if err != nil {
-        return err
-    }
+	c, err := conv.{{ $t.FromString }}(s)
+	if err != nil {
+		return err
+	}
 
-    {{ $var }} = {{ $t.Go }}(c)
-    return nil
+	{{ $var }} = {{ $t.Go }}(c)
+	return nil
 {{- else if eq $t.Kind "array" }}
-    return d.DecodeArray(func(d uri.Decoder) error {
-        {{- $tmpVar := pascalMP (printf "%sItem" $var ) }}
-        var {{ $tmpVar }} {{ $t.Item.Go }}
-        if err := func() error {
-            {{- template "decode_uri" elem $t.Item $tmpVar }}
-        }(); err != nil {
-            return err
-        }
-        {{ $var }} = append({{ $var }}, {{ $tmpVar }})
-        return nil
-    })
+	return d.DecodeArray(func(d uri.Decoder) error {
+		{{- $tmpVar := pascalMP (printf "%sItem" $var ) }}
+		var {{ $tmpVar }} {{ $t.Item.Go }}
+		if err := func() error {
+			{{- template "decode_uri" elem $t.Item $tmpVar }}
+		}(); err != nil {
+			return err
+		}
+		{{ $var }} = append({{ $var }}, {{ $tmpVar }})
+		return nil
+	})
 {{- else if eq $t.Kind "alias" }}
-    {{- $tmpVar := pascalMP (printf "%sUnderlying" $var ) }}
-    var {{ $tmpVar }} {{ $t.AliasTo.Go }}
-    if err := func() error {
-        {{- template "decode_uri" elem $t.AliasTo $tmpVar }}
-    }(); err != nil {
-        return err
-    }
-    {{ $var }} = {{ $t.Go }}({{ $tmpVar }})
-    return nil
+	{{- $tmpVar := pascalMP (printf "%sUnderlying" $var ) }}
+	var {{ $tmpVar }} {{ $t.AliasTo.Go }}
+	if err := func() error {
+		{{- template "decode_uri" elem $t.AliasTo $tmpVar }}
+	}(); err != nil {
+		return err
+	}
+	{{ $var }} = {{ $t.Go }}({{ $tmpVar }})
+	return nil
 {{- else if eq $t.Kind "generic" }}
-    {{- $tmpVar := pascalMP (printf "%sValue" $var ) }}
-    var {{ $tmpVar }} {{ $t.GenericOf.Go }}
-    if err := func() error {
-        {{- template "decode_uri" elem $t.GenericOf $tmpVar }}
-    }(); err != nil {
-        return err
-    }
-    {{ $var }}.SetTo({{ $tmpVar }})
-    return nil
+	{{- $tmpVar := pascalMP (printf "%sValue" $var ) }}
+	var {{ $tmpVar }} {{ $t.GenericOf.Go }}
+	if err := func() error {
+		{{- template "decode_uri" elem $t.GenericOf $tmpVar }}
+	}(); err != nil {
+		return err
+	}
+	{{ $var }}.SetTo({{ $tmpVar }})
+	return nil
 {{- else if eq $t.Kind "pointer" }}
-    {{- $tmpVar := pascalMP (printf "%sValue" $var ) }}
-    var {{ $tmpVar }} {{ $t.PointerTo.Go }}
-    if err := func() error {
-        {{- template "decode_uri" elem $t.PointerTo $tmpVar }}
-    }(); err != nil {
-        return err
-    }
-    {{ $var }} = &{{ $tmpVar }}
-    return nil
+	{{- $tmpVar := pascalMP (printf "%sValue" $var ) }}
+	var {{ $tmpVar }} {{ $t.PointerTo.Go }}
+	if err := func() error {
+		{{- template "decode_uri" elem $t.PointerTo $tmpVar }}
+	}(); err != nil {
+		return err
+	}
+	{{ $var }} = &{{ $tmpVar }}
+	return nil
 {{- else if eq $t.Kind "struct" }}
-    return {{ $var }}.decodeURI(d)
+	return {{ $var }}.decodeURI(d)
 {{- else if eq $t.Kind "sum" }}
-    // sum not supported
-    return nil
+	// sum not supported
+	return nil
 {{- else }}
 Unexpected kind {{ $t.Kind }}
 {{- end }}

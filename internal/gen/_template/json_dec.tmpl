@@ -11,12 +11,12 @@ var {{ $.NextVar }} {{ $.Type.PointerTo.Go }}
 {{- $t := $.Type -}}
 {{ $.Var }} = nil
 if err := d.Arr(func(d *json.Decoder) error {
-  var {{ $.NextVar }} {{ $t.Item.Go }}
-  {{- template "dec_json" sub_array_elem $ $t.Item }}
-  {{ $.Var }} = append({{ $.Var }}, {{ $.NextVar }})
-  return nil
+	var {{ $.NextVar }} {{ $t.Item.Go }}
+	{{- template "dec_json" sub_array_elem $ $t.Item }}
+	{{ $.Var }} = append({{ $.Var }}, {{ $.NextVar }})
+	return nil
 }); err != nil {
-  return err
+	return err
 }
 {{- end -}}
 
@@ -24,46 +24,46 @@ if err := d.Arr(func(d *json.Decoder) error {
 {{- $t := $.Type -}}
 {{- $g := $t.GenericOf }}
 {{- if $t.GenericVariant.Optional }}
-    {{ $.Var }}.Reset()
+	{{ $.Var }}.Reset()
 {{- end }}
 {{- if $g.Format }}
-  if err := {{ $.Var }}.ReadJSON(d, json.Read{{ $g.JSON.Format }}); err != nil {
-    return err
-  }
+	if err := {{ $.Var }}.ReadJSON(d, json.Read{{ $g.JSON.Format }}); err != nil {
+		return err
+	}
 {{- else }}
-  if err := {{ $.Var }}.ReadJSON(d); err != nil {
-    return err
-  }
+	if err := {{ $.Var }}.ReadJSON(d); err != nil {
+		return err
+	}
 {{- end }}
 {{- end -}}
 
 
 {{- define "dec_json" -}}
-  {{- $t := $.Type -}}
-  {{- $j := $t.JSON -}}
-  {{- if $t.IsPointer }}
-    {{- template "dec_json_pointer" $ }}
-  {{- else if $t.IsArray }}
-    {{ template "dec_json_array" $ }}
-  {{- else if $t.GenericOf }}
-    {{- template "dec_json_generic" $ }}
-  {{- else if or ($t.IsStruct) ($t.IsEnum) ($t.IsSum) }}
-    if err := {{ $.Var }}.ReadJSON(d); err != nil {
-      return err
-    }
-  {{- else if $j.Read }}
-    v, err := d.{{ $j.Read }}()
-    {{ $.Var }} = {{ $t.Go }}(v)
-    if err != nil {
-      return err
-    }
-  {{- else if $j.Format }}
-    v, err := json.Read{{ $j.Format }}(d)
-    {{ $.Var }} = v
-    if err != nil {
-       return err
-    }
-  {{- else  }}
-    return errors.New(`decoding of "{{ $t.Go }}" ({{ $t.Kind }}) is not implemented`)
-  {{- end }}
+	{{- $t := $.Type -}}
+	{{- $j := $t.JSON -}}
+	{{- if $t.IsPointer }}
+		{{- template "dec_json_pointer" $ }}
+	{{- else if $t.IsArray }}
+		{{ template "dec_json_array" $ }}
+	{{- else if $t.GenericOf }}
+		{{- template "dec_json_generic" $ }}
+	{{- else if or ($t.IsStruct) ($t.IsEnum) ($t.IsSum) }}
+		if err := {{ $.Var }}.ReadJSON(d); err != nil {
+			return err
+		}
+	{{- else if $j.Read }}
+		v, err := d.{{ $j.Read }}()
+		{{ $.Var }} = {{ $t.Go }}(v)
+		if err != nil {
+			return err
+		}
+	{{- else if $j.Format }}
+		v, err := json.Read{{ $j.Format }}(d)
+		{{ $.Var }} = v
+		if err != nil {
+			 return err
+		}
+	{{- else  }}
+		return errors.New(`decoding of "{{ $t.Go }}" ({{ $t.Kind }}) is not implemented`)
+	{{- end }}
 {{- end -}}

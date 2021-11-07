@@ -7,18 +7,18 @@ u.Path += "{{ $part.Raw }}"
 {{- else }}
 {
 	{{- $param := $part.Param }}
-    // Encode "{{ $param.Spec.Name }}" parameter.
-    e := uri.NewPathEncoder(uri.PathEncoderConfig{
-        Param: "{{ $param.Spec.Name }}",
-        Style: uri.PathStyle{{ pascalMP $param.Spec.Style }},
-        Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
-    })
-    if err := func() error {
-        {{- template "encode_uri" elem $param.Type (printf "params.%s" $param.Name) }}
-    }(); err != nil {
-        return res, errors.Wrap(err, "encode path")
-    }
-    u.Path += e.Result()
+	// Encode "{{ $param.Spec.Name }}" parameter.
+	e := uri.NewPathEncoder(uri.PathEncoderConfig{
+		Param: "{{ $param.Spec.Name }}",
+		Style: uri.PathStyle{{ pascalMP $param.Spec.Style }},
+		Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
+	})
+	if err := func() error {
+		{{- template "encode_uri" elem $param.Type (printf "params.%s" $param.Name) }}
+	}(); err != nil {
+		return res, errors.Wrap(err, "encode path")
+	}
+	u.Path += e.Result()
 }
 {{- end }}
 {{- end }}
@@ -30,17 +30,17 @@ u.Path += "{{ $part.Raw }}"
 q := u.Query()
 {{- range $param := $.QueryParams }}{{/* Range over params */}}
 {
-    // Encode "{{ $param.Spec.Name }}" parameter.
-    e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-        Style: uri.QueryStyle{{ pascalMP $param.Spec.Style }},
-        Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
-    })
-    if err := func() error {
-        {{- template "encode_uri" elem $param.Type (printf "params.%s" $param.Name) }}
-    }(); err != nil {
-        return res, errors.Wrap(err, "encode query")
-    }
-    q["{{ $param.Spec.Name }}"] = e.Result()
+	// Encode "{{ $param.Spec.Name }}" parameter.
+	e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+		Style: uri.QueryStyle{{ pascalMP $param.Spec.Style }},
+		Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
+	})
+	if err := func() error {
+		{{- template "encode_uri" elem $param.Type (printf "params.%s" $param.Name) }}
+	}(); err != nil {
+		return res, errors.Wrap(err, "encode query")
+	}
+	q["{{ $param.Spec.Name }}"] = e.Result()
 }
 {{- end }}{{/* Range over params */}}
 u.RawQuery = q.Encode()

@@ -1,7 +1,7 @@
 {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
 
 {{/* Encode field key and comma if needed,
-   or just comma if in array */}}
+	 or just comma if in array */}}
 {{- define "enc_json_start" -}}
 {{- if $.More  -}}
 more.More()
@@ -16,46 +16,46 @@ e.ObjField("{{ $.Tag.JSON }}")
 {{- $g := $.Type.GenericOf -}}
 {{- $v := $.Type.GenericVariant -}}
 {{- if $v.Optional -}}
-  if {{ $.Var }}.Set {
-    {{- template "enc_json_start" $ }}
-    {{ $.Var }}.WriteJSON(e{{ if $g.Format }}, json.Write{{ $g.JSON.Format }}{{ end }})
-  }
+	if {{ $.Var }}.Set {
+		{{- template "enc_json_start" $ }}
+		{{ $.Var }}.WriteJSON(e{{ if $g.Format }}, json.Write{{ $g.JSON.Format }}{{ end }})
+	}
 {{- else -}}
-  {{- template "enc_json_start" $ }}
-  {{ $.Var }}.WriteJSON(e{{ if $g.Format }}, json.Write{{ $g.JSON.Format }}{{ end }})
+	{{- template "enc_json_start" $ }}
+	{{ $.Var }}.WriteJSON(e{{ if $g.Format }}, json.Write{{ $g.JSON.Format }}{{ end }})
 {{- end -}}
 {{- end }}
 
 
 {{/* Encode array with all elements */}}
 {{- define "enc_json_array_elems" }}
-  more.Down()
-  e.ArrStart()
-  for _, elem := range {{ $.Var }} {
-    {{- template "enc_json" array_elem $.Type.Item }}
-  }
-  e.ArrEnd()
-  more.Up()
+	more.Down()
+	e.ArrStart()
+	for _, elem := range {{ $.Var }} {
+		{{- template "enc_json" array_elem $.Type.Item }}
+	}
+	e.ArrEnd()
+	more.Up()
 {{- end }}
 
 {{/* Encode array with respect for nil semantic */}}
 {{- define "enc_json_array" -}}
 {{- $t := $.Type }}
 {{- if eq $t.NilSemantic "invalid" -}}
-  {{- template "enc_json_start" $ -}}
-  {{- template "enc_json_array_elems" $ -}}
+	{{- template "enc_json_start" $ -}}
+	{{- template "enc_json_array_elems" $ -}}
 {{- else if eq $t.NilSemantic "optional" -}}
-  if {{ $.Var }} != nil {
-    {{- template "enc_json_start" $ -}}
-    {{- template "enc_json_array_elems" $ -}}
-  }
+	if {{ $.Var }} != nil {
+		{{- template "enc_json_start" $ -}}
+		{{- template "enc_json_array_elems" $ -}}
+	}
 {{- else if eq $t.NilSemantic "null" -}}
-  {{- template "enc_json_start" $ }}
-  if {{ $.Var }} == nil {
-    e.Null()
-  } else {
-    {{- template "enc_json_array_elems" $ -}}
-  }
+	{{- template "enc_json_start" $ }}
+	if {{ $.Var }} == nil {
+		e.Null()
+	} else {
+		{{- template "enc_json_array_elems" $ -}}
+	}
 {{- else -}}
 Unexpected nil semantic
 {{- end -}}
@@ -65,41 +65,41 @@ Unexpected nil semantic
 {{- define "enc_json_value" -}}
 {{- $t := $.Type -}}
 {{- if or (eq $t.NilSemantic "invalid") (eq $t.NilSemantic "optional") -}}
-  if {{ $.Var }} != nil {
-    {{- template "enc_json_start" $ }}
-    {{ $.Var }}.WriteJSON(e)
-  }
+	if {{ $.Var }} != nil {
+		{{- template "enc_json_start" $ }}
+		{{ $.Var }}.WriteJSON(e)
+	}
 {{- else if eq $t.NilSemantic "null" -}}
-  {{- template "enc_json_start" $ }}
-  if {{ $.Var }} == nil {
-    e.Null()
-  } else {
-    {{ $.Var }}.WriteJSON(e)
-  }
+	{{- template "enc_json_start" $ }}
+	if {{ $.Var }} == nil {
+		e.Null()
+	} else {
+		{{ $.Var }}.WriteJSON(e)
+	}
 {{- else -}}
-  {{- template "enc_json_start" $ }}
-  {{ $.Var }}.WriteJSON(e)
+	{{- template "enc_json_start" $ }}
+	{{ $.Var }}.WriteJSON(e)
 {{- end -}}
 {{- end }}
 
 {{/* Encode any Elem as json */}}
 {{- define "enc_json" -}}
-    {{- $t := $.Type }}
-    {{- $j := $t.JSON }}
-    {{- if or ($t.IsStruct) ($t.IsEnum) ($t.IsPointer) ($t.IsSum) -}}
-        {{- template "enc_json_value" $ }}
-    {{- else if $t.IsGeneric -}}
-        {{- template "enc_json_generic" $ }}
-    {{- else if $t.IsArray -}}
-        {{- template "enc_json_array" $ }}
-    {{- else if $j.Format -}}
-        {{- template "enc_json_start" $ }}
-        json.Write{{ $j.Format }}(e, {{ $.Var }})
-    {{- else if $j.Write -}}
-        {{- template "enc_json_start" $ }}
-        e.{{ $j.Write }}({{ $.Var }})
-    {{- else -}}
-        {{- if $.Sub -}}_ = {{ $.Var }}{{- end -}}
-        // Unsupported kind "{{ $t.Kind  }}".
-    {{- end }}
+	{{- $t := $.Type }}
+	{{- $j := $t.JSON }}
+	{{- if or ($t.IsStruct) ($t.IsEnum) ($t.IsPointer) ($t.IsSum) -}}
+			{{- template "enc_json_value" $ }}
+	{{- else if $t.IsGeneric -}}
+			{{- template "enc_json_generic" $ }}
+	{{- else if $t.IsArray -}}
+			{{- template "enc_json_array" $ }}
+	{{- else if $j.Format -}}
+			{{- template "enc_json_start" $ }}
+			json.Write{{ $j.Format }}(e, {{ $.Var }})
+	{{- else if $j.Write -}}
+			{{- template "enc_json_start" $ }}
+			e.{{ $j.Write }}({{ $.Var }})
+	{{- else -}}
+			{{- if $.Sub -}}_ = {{ $.Var }}{{- end -}}
+			// Unsupported kind "{{ $t.Kind  }}".
+	{{- end }}
 {{- end -}}

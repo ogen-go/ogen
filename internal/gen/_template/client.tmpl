@@ -5,37 +5,37 @@
 {{ template "header" $ }}
 
 type HTTPClient interface {
-    Do(req *http.Request) (*http.Response, error)
+	Do(req *http.Request) (*http.Response, error)
 }
 
 type Client struct {
-    serverURL *url.URL
-    cfg       config
-    requests  metric.Int64Counter
-    errors    metric.Int64Counter
-    duration  metric.Int64Histogram
+	serverURL *url.URL
+	cfg	   config
+	requests  metric.Int64Counter
+	errors	metric.Int64Counter
+	duration  metric.Int64Histogram
 }
 
 // NewClient initializes new Client defined by OAS.
 func NewClient(serverURL string, opts ...Option) (*Client, error) {
-    u, err := url.Parse(serverURL)
-    if err != nil {
-        return nil, err
-    }
-    c := &Client{
-        cfg:       newConfig(opts...),
-        serverURL: u,
-    }
-    if c.requests, err = c.cfg.Meter.NewInt64Counter(otelogen.ClientRequestCount); err != nil {
-        return nil, err
-    }
-    if c.errors, err = c.cfg.Meter.NewInt64Counter(otelogen.ClientErrorsCount); err != nil {
-        return nil, err
-    }
-    if c.duration, err = c.cfg.Meter.NewInt64Histogram(otelogen.ClientDuration); err != nil {
-        return nil, err
-    }
-    return c, nil
+	u, err := url.Parse(serverURL)
+	if err != nil {
+		return nil, err
+	}
+	c := &Client{
+		cfg:	   newConfig(opts...),
+		serverURL: u,
+	}
+	if c.requests, err = c.cfg.Meter.NewInt64Counter(otelogen.ClientRequestCount); err != nil {
+		return nil, err
+	}
+	if c.errors, err = c.cfg.Meter.NewInt64Counter(otelogen.ClientErrorsCount); err != nil {
+		return nil, err
+	}
+	if c.duration, err = c.cfg.Meter.NewInt64Histogram(otelogen.ClientDuration); err != nil {
+		return nil, err
+	}
+	return c, nil
 }
 
 {{ range $op := $.Operations }}
@@ -43,116 +43,116 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 // {{ $op.Name }} implements {{ $op.Spec.OperationID }} operation.
 {{- end }}
 func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, request {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Response.Type.Go }}, err error) {
-    {{- if $op.Request }}{{/* Request validation */}}
-        {{- if eq $op.Request.Type.Kind "interface" }}
-            switch request := request.(type) {
-            {{- range $_, $type:= $op.Request.Contents }}
-            case *{{ $type.Go }}:
-                {{- if $type.NeedValidation }}
-                    if err := func() error {
-                        {{- template "validate" req_dec_elem $type }}
-                    }(); err != nil {
-                        return res, errors.Wrap(err, "validate")
-                    }
-                {{- else }}
-                // Validation is not required for this type.
-                {{- end }}
-            {{- end }}
-            default:
-                return res, errors.Errorf("unexpected request type: %T", request)
-            }
-        {{- else }}
-            {{- if $op.Request.Type.NeedValidation }}
-                if err := func() error {
-                    {{- template "validate" req_dec_elem $op.Request.Type }}
-                }(); err != nil {
-                    return res, errors.Wrap(err, "validate")
-                }
-            {{- end }}
-        {{- end }}
-    {{- end }}{{/* Request validation */}}
-    startTime := time.Now()
-    ctx, span := c.cfg.Tracer.Start(ctx, `{{ $op.Name }}`,
-        {{- if $op.Spec.OperationID }}
-        trace.WithAttributes(otelogen.OperationID(`{{ $op.Spec.OperationID }}`)),
-        {{- end }}
-        trace.WithSpanKind(trace.SpanKindClient),
-    )
-    defer func() {
-        if err != nil {
-            span.RecordError(err)
-            c.errors.Add(ctx, 1)
-        } else {
-            elapsedDuration := time.Since(startTime)
-            c.duration.Record(ctx, elapsedDuration.Microseconds())
-        }
-        span.End()
-    }()
-    c.requests.Add(ctx, 1)
+	{{- if $op.Request }}{{/* Request validation */}}
+		{{- if eq $op.Request.Type.Kind "interface" }}
+			switch request := request.(type) {
+			{{- range $_, $type:= $op.Request.Contents }}
+			case *{{ $type.Go }}:
+				{{- if $type.NeedValidation }}
+					if err := func() error {
+						{{- template "validate" req_dec_elem $type }}
+					}(); err != nil {
+						return res, errors.Wrap(err, "validate")
+					}
+				{{- else }}
+				// Validation is not required for this type.
+				{{- end }}
+			{{- end }}
+			default:
+				return res, errors.Errorf("unexpected request type: %T", request)
+			}
+		{{- else }}
+			{{- if $op.Request.Type.NeedValidation }}
+				if err := func() error {
+					{{- template "validate" req_dec_elem $op.Request.Type }}
+				}(); err != nil {
+					return res, errors.Wrap(err, "validate")
+				}
+			{{- end }}
+		{{- end }}
+	{{- end }}{{/* Request validation */}}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `{{ $op.Name }}`,
+		{{- if $op.Spec.OperationID }}
+		trace.WithAttributes(otelogen.OperationID(`{{ $op.Spec.OperationID }}`)),
+		{{- end }}
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
 
-    {{- if $op.Request }}
-    var (
-        contentType string
-        reqBody io.Reader
-    )
+	{{- if $op.Request }}
+	var (
+		contentType string
+		reqBody io.Reader
+	)
 
-    {{- $requestsLength := len $op.Request.Contents }}
-    {{- if eq $requestsLength 1 }}
-    {{- range $contentType, $type := $op.Request.Contents }}
-    contentType = "{{$contentType}}"
-    buf, err := encode{{ $op.Name }}Request{{ $contentType.Name }}(request, span)
-    if err != nil {
-        return res, err
-    }
-    {{- if $contentType.JSON }}
-    defer json.PutBuffer(buf)
-    {{- end }}
-    reqBody = buf
-    {{- end }}
-    {{- else }}
-    {{- /* Multiple requests */}}
-    switch req := req.(type) {
-    {{- range $contentType, $type := $op.Request.Contents }}
-    case *{{ $type.Go }}:
-        contentType = "{{$contentType}}"
-        buf, err := encode{{ $op.Name }}Request{{ $contentType.Name }}(request, span)
-        if err != nil {
-            return res, err
-        }
-        {{- if $contentType.JSON }}
-        defer json.PutBuffer(buf)
-        {{- end }}
-        reqBody = buf
-    {{- end }}
-    default:
-        return nil, "", errors.Errorf("unexpected request type: %T", req)
-    }
-    {{- end }}
-    {{ end }}
+	{{- $requestsLength := len $op.Request.Contents }}
+	{{- if eq $requestsLength 1 }}
+	{{- range $contentType, $type := $op.Request.Contents }}
+	contentType = "{{$contentType}}"
+	buf, err := encode{{ $op.Name }}Request{{ $contentType.Name }}(request, span)
+	if err != nil {
+		return res, err
+	}
+	{{- if $contentType.JSON }}
+	defer json.PutBuffer(buf)
+	{{- end }}
+	reqBody = buf
+	{{- end }}
+	{{- else }}
+	{{- /* Multiple requests */}}
+	switch req := req.(type) {
+	{{- range $contentType, $type := $op.Request.Contents }}
+	case *{{ $type.Go }}:
+		contentType = "{{$contentType}}"
+		buf, err := encode{{ $op.Name }}Request{{ $contentType.Name }}(request, span)
+		if err != nil {
+			return res, err
+		}
+		{{- if $contentType.JSON }}
+		defer json.PutBuffer(buf)
+		{{- end }}
+		reqBody = buf
+	{{- end }}
+	default:
+		return nil, "", errors.Errorf("unexpected request type: %T", req)
+	}
+	{{- end }}
+	{{ end }}
 
-    {{- template "params_encode_path" $op }}
-    {{- template "params_encode_query" $op }}
+	{{- template "params_encode_path" $op }}
+	{{- template "params_encode_query" $op }}
 
-    r := ht.NewRequest(ctx, "{{ $op.Spec.HTTPMethod }}", u, {{ if $op.Request }}reqBody{{ else }}nil{{ end }})
-    defer ht.PutRequest(r)
+	r := ht.NewRequest(ctx, "{{ $op.Spec.HTTPMethod }}", u, {{ if $op.Request }}reqBody{{ else }}nil{{ end }})
+	defer ht.PutRequest(r)
 
-    {{ if $op.Request }}r.Header.Set("Content-Type", contentType){{ end }}
+	{{ if $op.Request }}r.Header.Set("Content-Type", contentType){{ end }}
 
-    {{- template "encode_header_params" $op }}
-    {{- template "encode_cookie_params" $op }}
+	{{- template "encode_header_params" $op }}
+	{{- template "encode_cookie_params" $op }}
 
-    resp, err := c.cfg.Client.Do(r)
-    if err != nil {
-        return res, errors.Wrap(err, "do request")
-    }
-    defer resp.Body.Close()
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
 
-    result, err := decode{{ $op.Name }}Response(resp, span)
-    if err != nil {
-        return res, errors.Wrap(err, "decode response")
-    }
+	result, err := decode{{ $op.Name }}Response(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
 
-    return result, nil
+	return result, nil
 }
 {{ end }}
 {{ end }}
@@ -164,15 +164,15 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 value := conv.{{ $param.Type.ToString }}(params.{{ $param.Name }})
 {{- if eq $param.Type.Kind "array" }}
 r.AddCookie(&http.Cookie{
-    Name: "{{ $param.Spec.Name }}",
-    Value: strings.Join(value, "/"),
-    MaxAge: 1337,
+	Name: "{{ $param.Spec.Name }}",
+	Value: strings.Join(value, "/"),
+	MaxAge: 1337,
 })
 {{- else }}
 r.AddCookie(&http.Cookie{
-    Name: "{{ $param.Spec.Name }}",
-    Value: value,
-    MaxAge: 1337,
+	Name: "{{ $param.Spec.Name }}",
+	Value: value,
+	MaxAge: 1337,
 })
 {{- end }}
 }
@@ -183,17 +183,17 @@ r.AddCookie(&http.Cookie{
 {{ define "encode_header_params" }}
 {{- range $p := $.HeaderParams }}{{/* Range over params */}}
 {
-    e := uri.NewHeaderEncoder(uri.HeaderEncoderConfig{
-        Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
-    })
-    if err := func() error {
-        {{- template "encode_uri" elem $p.Type (printf "params.%s" $p.Name) }}
-    }(); err != nil {
-        return res, errors.Wrap(err, `encode header param {{ $p.Spec.Name }}`)
-    }
-    if v, ok := e.Result(); ok {
-        r.Header.Set("{{ $p.Spec.Name }}", v)
-    }
+	e := uri.NewHeaderEncoder(uri.HeaderEncoderConfig{
+		Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
+	})
+	if err := func() error {
+		{{- template "encode_uri" elem $p.Type (printf "params.%s" $p.Name) }}
+	}(); err != nil {
+		return res, errors.Wrap(err, `encode header param {{ $p.Spec.Name }}`)
+	}
+	if v, ok := e.Result(); ok {
+		r.Header.Set("{{ $p.Spec.Name }}", v)
+	}
 }
 {{- end }}{{/* Range over params */}}
 {{ end }}

@@ -7,46 +7,46 @@
 {{- range $op := $.Operations }}
 {{- if $op.Request }}
 func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.Request.Type.Go }}, err error) {
-    switch r.Header.Get("Content-Type") {
-    {{- /* Range over all request types */ -}}
-    {{- range $contentType, $t := $op.Request.Contents }}
-    case "{{ $contentType }}":
-        {{- if $t.IsStream }}
-        return {{ $op.Request.Type.Go }}{Data: r.Body}, nil
-        {{- /* Decode json */ -}}
-        {{- else if $contentType.JSON }}
-        var request {{ $t.Go }}
-        buf := json.GetBuffer()
-        defer json.PutBuffer(buf)
-        if _, err := io.Copy(buf, r.Body); err != nil {
-            return req, err
-        }
-        d := json.GetDecoder()
-        defer json.PutDecoder(d)
-        d.ResetBytes(buf.Bytes())
-        if err := func() error {
-            {{- template "dec_json" req_dec_elem $t }}
-            return nil
-        }(); err != nil {
-            return req, err
-        }
-        {{- if $t.NeedValidation }}
-        if err := func() error {
-            {{- template "validate" req_dec_elem $t }}
-        }(); err != nil {
-            return req, errors.Wrap(err, "validate")
-        }
-        {{- end }}
-        return {{ if or ($op.Request.Type.IsPointer) ($op.Request.Type.IsInterface) }}&{{ end }}request, nil
-        {{- else }}
-        _ = request
-        return req, errors.New("{{ $contentType }} decoder not implemented")
-        {{- end }}
-    {{- end }}
-    {{- /* Range over all request types */}}
-    default:
-        return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-    }
+	switch r.Header.Get("Content-Type") {
+	{{- /* Range over all request types */ -}}
+	{{- range $contentType, $t := $op.Request.Contents }}
+	case "{{ $contentType }}":
+		{{- if $t.IsStream }}
+		return {{ $op.Request.Type.Go }}{Data: r.Body}, nil
+		{{- /* Decode json */ -}}
+		{{- else if $contentType.JSON }}
+		var request {{ $t.Go }}
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
+		d := json.GetDecoder()
+		defer json.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			{{- template "dec_json" req_dec_elem $t }}
+			return nil
+		}(); err != nil {
+			return req, err
+		}
+		{{- if $t.NeedValidation }}
+		if err := func() error {
+			{{- template "validate" req_dec_elem $t }}
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate")
+		}
+		{{- end }}
+		return {{ if or ($op.Request.Type.IsPointer) ($op.Request.Type.IsInterface) }}&{{ end }}request, nil
+		{{- else }}
+		_ = request
+		return req, errors.New("{{ $contentType }} decoder not implemented")
+		{{- end }}
+	{{- end }}
+	{{- /* Range over all request types */}}
+	default:
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
 }
 {{- end }}
 {{ end }}

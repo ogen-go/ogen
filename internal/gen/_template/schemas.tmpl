@@ -16,9 +16,9 @@
 // {{ $.Doc }}
 {{- end }}
 {{- if $.Schema }}
-    {{- if $.Schema.Ref }}
-    // Ref: {{ $.Schema.Ref }}
-    {{- end }}
+	{{- if $.Schema.Ref }}
+	// Ref: {{ $.Schema.Ref }}
+	{{- end }}
 {{- end }}
 
 {{- /* Define struct */ -}}
@@ -28,7 +28,7 @@ type {{ $.Name }} struct{}
 {{- else }}
 type {{ $.Name }} struct {
 {{- range $f := $.Fields }}
-    {{ $f.Name }} {{ $f.Type.Go }} {{ if $f.Tag.JSON }}`json:"{{ $f.Tag.JSON }}"`{{ end }}
+	{{ $f.Name }} {{ $f.Type.Go }} {{ if $f.Tag.JSON }}`json:"{{ $f.Tag.JSON }}"`{{ end }}
 {{- end }}
 }
 {{- end }}
@@ -37,11 +37,11 @@ type {{ $.Name }} struct {
 {{/* Define stream */}}
 {{- else if $.IsStream }}
 type {{ $.Name }} struct {
-    Data io.Reader
+	Data io.Reader
 }
 
 func (s {{ $.Name }}) Read(p []byte) (n int, err error) {
-    return s.Data.Read(p)
+	return s.Data.Read(p)
 }
 {{/* Define stream */}}
 
@@ -64,9 +64,9 @@ const (
 {{- else if $.IsSum }}
 // {{ $.Name }} represents sum type.
 type {{ $.Name }} struct {
-    Type {{ $.Name }}Type // switch on this field
+	Type {{ $.Name }}Type // switch on this field
 {{- range $s := $.SumOf }}
-    {{ $s.Name }} {{ $s.Go }}
+	{{ $s.Name }} {{ $s.Go }}
 {{- end }}
 }
 
@@ -76,7 +76,7 @@ type {{ $.Name }}Type string
 // Possible values for {{ $.Name }}Type.
 const (
 {{- range $s := $.SumOf }}
-    {{ $s.Name }}{{ $.Name }} {{ $.Name }}Type = "{{ $s.Go }}"
+	{{ $s.Name }}{{ $.Name }} {{ $.Name }}Type = "{{ $s.Go }}"
 {{- end }}
 )
 
@@ -88,23 +88,23 @@ func (s {{ $.Go }}) Is{{ $s.Name }}() bool { return s.Type == {{ $s.Name }}{{ $.
 {{- range $s := $.SumOf }}
 // Set{{ $s.Name }} sets {{ $.Name }} to {{ $s.Go }}.
 func (s *{{ $.Go }}) Set{{ $s.Name }}(v {{ $s.Go }}) {
-    s.Type = {{ $s.Name }}{{ $.Name }}
-    s.{{ $s.Name }} = v
+	s.Type = {{ $s.Name }}{{ $.Name }}
+	s.{{ $s.Name }} = v
 }
 
 // Get{{ $s.Name }} returns {{ $s.Go }} and true boolean if {{ $.Go }} is {{ $s.Go }}.
 func (s {{ $.Go }}) Get{{ $s.Name }}()(v {{ $s.Go }}, ok bool) {
-    if !s.Is{{ $s.Name }}() {
-        return v, false
-    }
-    return s.{{ $s.Name }}, true
+	if !s.Is{{ $s.Name }}() {
+		return v, false
+	}
+	return s.{{ $s.Name }}, true
 }
 
 // New{{ $s.Name }}{{ $.Name }} returns new {{ $.Go }} from {{ $s.Go }}.
 func New{{ $s.Name }}{{ $.Name }}(v {{ $s.Go }}) {{ $.Go }} {
-    var s {{ $.Name }}
-    s.Set{{ $s.Name }}(v)
-    return s
+	var s {{ $.Name }}
+	s.Set{{ $s.Name }}(v)
+	return s
 }
 {{- end }}
 
@@ -120,22 +120,22 @@ func New{{ $s.Name }}{{ $.Name }}(v {{ $s.Go }}) {{ $.Go }} {
 
 // New{{ $.Name }} returns new {{ $.Name }} with value set to v.
 func New{{ $.Name }}(v {{ $g.Go }}) {{ $.Name }} {
-    return {{ $.Name }} {
-        Value: v,
-    {{- if $v.Optional }}
-        Set: true,
-    {{- end }}
-    }
+	return {{ $.Name }} {
+		Value: v,
+	{{- if $v.Optional }}
+		Set: true,
+	{{- end }}
+	}
 }
 
 // {{ $.Name }} is{{ if $v.Optional }} optional{{ end }}{{ if $v.Nullable }} nullable{{ end }} {{ $g.Go }}.
 type {{ $.Name }} struct {
-    Value {{ $g.Go }}
+	Value {{ $g.Go }}
 {{- if $v.Optional }}
-    Set bool
+	Set bool
 {{- end }}
 {{- if $v.Nullable }}
-    Null bool
+	Null bool
 {{- end }}
 }
 
@@ -145,11 +145,11 @@ func (o {{ $.Name }}) IsSet() bool { return o.Set }
 
 // Reset unsets value.
 func (o *{{ $.Name }}) Reset() {
-    var v {{ $g.Go }}
-    o.Value = v
-    o.Set = false
+	var v {{ $g.Go }}
+	o.Value = v
+	o.Set = false
 {{- if $v.Nullable }}
-    o.Null = false
+	o.Null = false
 {{- end }}
 }
 {{- end }}
@@ -157,12 +157,12 @@ func (o *{{ $.Name }}) Reset() {
 // SetTo sets value to v.
 func (o *{{ $.Name }}) SetTo(v {{ $g.Go }}) {
 {{- if $v.Optional }}
-    o.Set = true
+	o.Set = true
 {{- end }}
 {{- if $v.Nullable }}
-    o.Null = false
+	o.Null = false
 {{- end }}
-    o.Value = v
+	o.Value = v
 }
 
 {{- if $v.Nullable  }}
@@ -173,16 +173,16 @@ func (o {{ $.Name }}) IsNull() bool { return o.Null }
 // Get returns value and boolean that denotes whether value was set.
 func (o {{ $.Name }}) Get() (v {{ $g.Go }}, ok bool) {
 {{- if $v.Nullable }}
-    if o.Null {
-        return v, false
-    }
+	if o.Null {
+		return v, false
+	}
 {{- end }}
 {{- if $v.Optional }}
-    if !o.Set {
-        return v, false
-    }
+	if !o.Set {
+		return v, false
+	}
 {{- end }}
-    return o.Value, true
+	return o.Value, true
 }
 {{/* end define generic */}}
 {{- else }}
