@@ -532,8 +532,10 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeActionsCreateOrUpdateEnvironmentSecretRequestJSON(request, span)
 	if err != nil {
@@ -634,8 +636,10 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request Act
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeActionsCreateOrUpdateOrgSecretRequestJSON(request, span)
 	if err != nil {
@@ -721,8 +725,10 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request Ac
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeActionsCreateOrUpdateRepoSecretRequestJSON(request, span)
 	if err != nil {
@@ -1065,8 +1071,10 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeActionsCreateSelfHostedRunnerGroupForOrgRequestJSON(request, span)
 	if err != nil {
@@ -5655,8 +5663,10 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeActionsSetAllowedActionsOrganizationRequestJSON(request, span)
 	if err != nil {
@@ -5720,8 +5730,10 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeActionsSetAllowedActionsRepositoryRequestJSON(request, span)
 	if err != nil {
@@ -5808,8 +5820,10 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeActionsSetGithubActionsPermissionsOrganizationRequestJSON(request, span)
 	if err != nil {
@@ -5881,8 +5895,10 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeActionsSetGithubActionsPermissionsRepositoryRequestJSON(request, span)
 	if err != nil {
@@ -5969,8 +5985,10 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequestJSON(request, span)
 	if err != nil {
@@ -6057,8 +6075,10 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeActionsSetSelectedReposForOrgSecretRequestJSON(request, span)
 	if err != nil {
@@ -6145,8 +6165,10 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestJSON(request, span)
 	if err != nil {
@@ -6218,8 +6240,10 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeActionsSetSelfHostedRunnersInGroupForOrgRequestJSON(request, span)
 	if err != nil {
@@ -6306,8 +6330,10 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeActionsUpdateSelfHostedRunnerGroupForOrgRequestJSON(request, span)
 	if err != nil {
@@ -8141,8 +8167,10 @@ func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request Ac
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeActivityMarkNotificationsAsReadRequestJSON(request, span)
 	if err != nil {
@@ -8191,8 +8219,10 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, reques
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeActivityMarkRepoNotificationsAsReadRequestJSON(request, span)
 	if err != nil {
@@ -8323,8 +8353,10 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request Activi
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeActivitySetRepoSubscriptionRequestJSON(request, span)
 	if err != nil {
@@ -8403,8 +8435,10 @@ func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request Acti
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeActivitySetThreadSubscriptionRequestJSON(request, span)
 	if err != nil {
@@ -9737,8 +9771,10 @@ func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request Apps
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeAppsUpdateWebhookConfigForAppRequestJSON(request, span)
 	if err != nil {
@@ -10264,8 +10300,10 @@ func (c *Client) ChecksCreateSuite(ctx context.Context, request ChecksCreateSuit
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeChecksCreateSuiteRequestJSON(request, span)
 	if err != nil {
@@ -11207,8 +11245,10 @@ func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request ChecksS
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeChecksSetSuitesPreferencesRequestJSON(request, span)
 	if err != nil {
@@ -12140,8 +12180,10 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanni
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeCodeScanningUpdateAlertRequestJSON(request, span)
 	if err != nil {
@@ -12245,8 +12287,10 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanni
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeCodeScanningUploadSarifRequestJSON(request, span)
 	if err != nil {
@@ -12731,8 +12775,10 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestJSON(request, span)
 	if err != nil {
@@ -14514,8 +14560,10 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Co
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequestJSON(request, span)
 	if err != nil {
@@ -14587,8 +14635,10 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequestJSON(request, span)
 	if err != nil {
@@ -14816,8 +14866,10 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeEnterpriseAdminSetAllowedActionsEnterpriseRequestJSON(request, span)
 	if err != nil {
@@ -14889,8 +14941,10 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequestJSON(request, span)
 	if err != nil {
@@ -14962,8 +15016,10 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequestJSON(request, span)
 	if err != nil {
@@ -15049,8 +15105,10 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequestJSON(request, span)
 	if err != nil {
@@ -15136,8 +15194,10 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestJSON(request, span)
 	if err != nil {
@@ -15224,8 +15284,10 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestJSON(request, span)
 	if err != nil {
@@ -15297,8 +15359,10 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestJSON(request, span)
 	if err != nil {
@@ -15385,8 +15449,10 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequestJSON(request, span)
 	if err != nil {
@@ -15472,8 +15538,10 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestJSON(request, span)
 	if err != nil {
@@ -15612,8 +15680,10 @@ func (c *Client) GistsCreateComment(ctx context.Context, request GistsCreateComm
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeGistsCreateCommentRequestJSON(request, span)
 	if err != nil {
@@ -16471,8 +16541,10 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateComm
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeGistsUpdateCommentRequestJSON(request, span)
 	if err != nil {
@@ -17170,8 +17242,10 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeInteractionsSetRestrictionsForRepoRequestJSON(request, span)
 	if err != nil {
@@ -17250,8 +17324,10 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, request IssuesAddAssign
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeIssuesAddAssigneesRequestJSON(request, span)
 	if err != nil {
@@ -18811,8 +18887,10 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, request IssuesRemove
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeIssuesRemoveAssigneesRequestJSON(request, span)
 	if err != nil {
@@ -19086,8 +19164,10 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request IssuesUpdateLabe
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeIssuesUpdateLabelRequestJSON(request, span)
 	if err != nil {
@@ -19188,8 +19268,10 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request IssuesUpdate
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeIssuesUpdateMilestoneRequestJSON(request, span)
 	if err != nil {
@@ -20794,8 +20876,10 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, request MigrationsU
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeMigrationsUpdateImportRequestJSON(request, span)
 	if err != nil {
@@ -23505,8 +23589,10 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request Orgs
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeOrgsUpdateWebhookConfigForOrgRequestJSON(request, span)
 	if err != nil {
@@ -25745,8 +25831,10 @@ func (c *Client) ProjectsCreateColumn(ctx context.Context, request ProjectsCreat
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeProjectsCreateColumnRequestJSON(request, span)
 	if err != nil {
@@ -25810,8 +25898,10 @@ func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, request
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeProjectsCreateForAuthenticatedUserRequestJSON(request, span)
 	if err != nil {
@@ -25860,8 +25950,10 @@ func (c *Client) ProjectsCreateForOrg(ctx context.Context, request ProjectsCreat
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeProjectsCreateForOrgRequestJSON(request, span)
 	if err != nil {
@@ -25925,8 +26017,10 @@ func (c *Client) ProjectsCreateForRepo(ctx context.Context, request ProjectsCrea
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeProjectsCreateForRepoRequestJSON(request, span)
 	if err != nil {
@@ -26740,8 +26834,10 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveCol
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeProjectsMoveColumnRequestJSON(request, span)
 	if err != nil {
@@ -26813,8 +26909,10 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request ProjectsUpdateReq, 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeProjectsUpdateRequestJSON(request, span)
 	if err != nil {
@@ -26877,8 +26975,10 @@ func (c *Client) ProjectsUpdateCard(ctx context.Context, request ProjectsUpdateC
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeProjectsUpdateCardRequestJSON(request, span)
 	if err != nil {
@@ -26941,8 +27041,10 @@ func (c *Client) ProjectsUpdateColumn(ctx context.Context, request ProjectsUpdat
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeProjectsUpdateColumnRequestJSON(request, span)
 	if err != nil {
@@ -27088,8 +27190,10 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodePullsCreateReplyForReviewCommentRequestJSON(request, span)
 	if err != nil {
@@ -27206,8 +27310,10 @@ func (c *Client) PullsCreateReview(ctx context.Context, request PullsCreateRevie
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodePullsCreateReviewRequestJSON(request, span)
 	if err != nil {
@@ -27480,8 +27586,10 @@ func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissRev
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodePullsDismissReviewRequestJSON(request, span)
 	if err != nil {
@@ -28663,8 +28771,10 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodePullsSubmitReviewRequestJSON(request, span)
 	if err != nil {
@@ -28773,8 +28883,10 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateRevie
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodePullsUpdateReviewRequestJSON(request, span)
 	if err != nil {
@@ -28882,8 +28994,10 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpda
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodePullsUpdateReviewCommentRequestJSON(request, span)
 	if err != nil {
@@ -29022,8 +29136,10 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeReactionsCreateForTeamDiscussionCommentInOrgRequestJSON(request, span)
 	if err != nil {
@@ -29140,8 +29256,10 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeReactionsCreateForTeamDiscussionCommentLegacyRequestJSON(request, span)
 	if err != nil {
@@ -29243,8 +29361,10 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeReactionsCreateForTeamDiscussionInOrgRequestJSON(request, span)
 	if err != nil {
@@ -29346,8 +29466,10 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeReactionsCreateForTeamDiscussionLegacyRequestJSON(request, span)
 	if err != nil {
@@ -31557,8 +31679,10 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreat
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeReposCreateCommitStatusRequestJSON(request, span)
 	if err != nil {
@@ -31651,8 +31775,10 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCrea
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeReposCreateUsingTemplateRequestJSON(request, span)
 	if err != nil {
@@ -39257,8 +39383,10 @@ func (c *Client) ReposMergeUpstream(ctx context.Context, request ReposMergeUpstr
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeReposMergeUpstreamRequestJSON(request, span)
 	if err != nil {
@@ -39593,8 +39721,10 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplace
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeReposReplaceAllTopicsRequestJSON(request, span)
 	if err != nil {
@@ -39907,8 +40037,10 @@ func (c *Client) ReposTransfer(ctx context.Context, request ReposTransferReq, pa
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeReposTransferRequestJSON(request, span)
 	if err != nil {
@@ -39995,8 +40127,10 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposU
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeReposUpdateBranchProtectionRequestJSON(request, span)
 	if err != nil {
@@ -40090,8 +40224,10 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpda
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeReposUpdateCommitCommentRequestJSON(request, span)
 	if err != nil {
@@ -40192,8 +40328,10 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request ReposUpdateI
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeReposUpdateInvitationRequestJSON(request, span)
 	if err != nil {
@@ -40286,8 +40424,10 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request ReposUpdateRele
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeReposUpdateReleaseRequestJSON(request, span)
 	if err != nil {
@@ -40380,8 +40520,10 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request ReposUpdat
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeReposUpdateReleaseAssetRequestJSON(request, span)
 	if err != nil {
@@ -40474,8 +40616,10 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Re
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeReposUpdateWebhookConfigForRepoRequestJSON(request, span)
 	if err != nil {
@@ -41188,8 +41332,10 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeSecretScanningUpdateAlertRequestJSON(request, span)
 	if err != nil {
@@ -41360,8 +41506,10 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeTeamsAddOrUpdateMembershipForUserInOrgRequestJSON(request, span)
 	if err != nil {
@@ -41462,8 +41610,10 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeTeamsAddOrUpdateMembershipForUserLegacyRequestJSON(request, span)
 	if err != nil {
@@ -41549,8 +41699,10 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeTeamsAddOrUpdateProjectPermissionsInOrgRequestJSON(request, span)
 	if err != nil {
@@ -41651,8 +41803,10 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeTeamsAddOrUpdateRepoPermissionsInOrgRequestJSON(request, span)
 	if err != nil {
@@ -42088,8 +42242,10 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeTeamsCreateDiscussionCommentInOrgRequestJSON(request, span)
 	if err != nil {
@@ -42183,8 +42339,10 @@ func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeTeamsCreateDiscussionCommentLegacyRequestJSON(request, span)
 	if err != nil {
@@ -42263,8 +42421,10 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request TeamsCr
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeTeamsCreateDiscussionInOrgRequestJSON(request, span)
 	if err != nil {
@@ -42343,8 +42503,10 @@ func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request TeamsC
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeTeamsCreateDiscussionLegacyRequestJSON(request, span)
 	if err != nil {
@@ -42408,8 +42570,10 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequestJSON(request, span)
 	if err != nil {
@@ -45784,8 +45948,10 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeTeamsUpdateDiscussionCommentInOrgRequestJSON(request, span)
 	if err != nil {
@@ -45893,8 +46059,10 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeTeamsUpdateDiscussionCommentLegacyRequestJSON(request, span)
 	if err != nil {
@@ -45987,8 +46155,10 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request TeamsUp
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeTeamsUpdateDiscussionInOrgRequestJSON(request, span)
 	if err != nil {
@@ -46081,8 +46251,10 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request TeamsU
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeTeamsUpdateDiscussionLegacyRequestJSON(request, span)
 	if err != nil {
@@ -46168,8 +46340,10 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request TeamsUpdateInOrgR
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeTeamsUpdateInOrgRequestJSON(request, span)
 	if err != nil {

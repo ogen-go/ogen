@@ -120,8 +120,10 @@ func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParam
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeCreateSnapshotRequestJSON(request, span)
 	if err != nil {
@@ -178,8 +180,10 @@ func (c *Client) CreateSyncAction(ctx context.Context, request InstanceActionInf
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeCreateSyncActionRequestJSON(request, span)
 	if err != nil {
@@ -418,8 +422,10 @@ func (c *Client) LoadSnapshot(ctx context.Context, request SnapshotLoadParams) (
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeLoadSnapshotRequestJSON(request, span)
 	if err != nil {
@@ -466,8 +472,10 @@ func (c *Client) MmdsConfigPut(ctx context.Context, request MmdsConfig) (res Mmd
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeMmdsConfigPutRequestJSON(request, span)
 	if err != nil {
@@ -550,8 +558,10 @@ func (c *Client) MmdsPatch(ctx context.Context, request MmdsPatchReq) (res MmdsP
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeMmdsPatchRequestJSON(request, span)
 	if err != nil {
@@ -598,8 +608,10 @@ func (c *Client) MmdsPut(ctx context.Context, request MmdsPutReq) (res MmdsPutRe
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeMmdsPutRequestJSON(request, span)
 	if err != nil {
@@ -648,8 +660,10 @@ func (c *Client) PatchBalloon(ctx context.Context, request BalloonUpdate) (res P
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodePatchBalloonRequestJSON(request, span)
 	if err != nil {
@@ -698,8 +712,10 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request BalloonS
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodePatchBalloonStatsIntervalRequestJSON(request, span)
 	if err != nil {
@@ -756,8 +772,10 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodePatchGuestDriveByIDRequestJSON(request, span)
 	if err != nil {
@@ -828,8 +846,10 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request Par
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodePatchGuestNetworkInterfaceByIDRequestJSON(request, span)
 	if err != nil {
@@ -900,8 +920,10 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, request MachineC
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodePatchMachineConfigurationRequestJSON(request, span)
 	if err != nil {
@@ -958,8 +980,10 @@ func (c *Client) PatchVm(ctx context.Context, request VM) (res PatchVmRes, err e
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodePatchVmRequestJSON(request, span)
 	if err != nil {
@@ -1008,8 +1032,10 @@ func (c *Client) PutBalloon(ctx context.Context, request Balloon) (res PutBalloo
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodePutBalloonRequestJSON(request, span)
 	if err != nil {
@@ -1058,8 +1084,10 @@ func (c *Client) PutGuestBootSource(ctx context.Context, request BootSource) (re
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodePutGuestBootSourceRequestJSON(request, span)
 	if err != nil {
@@ -1116,8 +1144,10 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params Pu
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodePutGuestDriveByIDRequestJSON(request, span)
 	if err != nil {
@@ -1188,8 +1218,10 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request Netwo
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodePutGuestNetworkInterfaceByIDRequestJSON(request, span)
 	if err != nil {
@@ -1260,8 +1292,10 @@ func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuest
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodePutGuestVsockRequestJSON(request, span)
 	if err != nil {
@@ -1318,8 +1352,10 @@ func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRe
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodePutLoggerRequestJSON(request, span)
 	if err != nil {
@@ -1376,8 +1412,10 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, request MachineCon
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodePutMachineConfigurationRequestJSON(request, span)
 	if err != nil {
@@ -1426,8 +1464,10 @@ func (c *Client) PutMetrics(ctx context.Context, request Metrics) (res PutMetric
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodePutMetricsRequestJSON(request, span)
 	if err != nil {

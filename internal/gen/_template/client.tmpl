@@ -91,8 +91,10 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
     c.requests.Add(ctx, 1)
 
     {{- if $op.Request }}
-    var contentType string
-    var reqBody io.Reader
+    var (
+        contentType string
+        reqBody io.Reader
+    )
 
     {{- $requestsLength := len $op.Request.Contents }}
     {{- if eq $requestsLength 1 }}

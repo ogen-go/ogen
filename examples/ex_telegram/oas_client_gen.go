@@ -110,8 +110,10 @@ func (c *Client) AnswerCallbackQueryPost(ctx context.Context, request AnswerCall
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeAnswerCallbackQueryPostRequestJSON(request, span)
 	if err != nil {
@@ -158,8 +160,10 @@ func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, request AnswerP
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeAnswerPreCheckoutQueryPostRequestJSON(request, span)
 	if err != nil {
@@ -214,8 +218,10 @@ func (c *Client) AnswerShippingQueryPost(ctx context.Context, request AnswerShip
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeAnswerShippingQueryPostRequestJSON(request, span)
 	if err != nil {
@@ -298,8 +304,10 @@ func (c *Client) DeleteStickerFromSetPost(ctx context.Context, request DeleteSti
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeDeleteStickerFromSetPostRequestJSON(request, span)
 	if err != nil {
@@ -346,8 +354,10 @@ func (c *Client) DeleteWebhookPost(ctx context.Context, request DeleteWebhookPos
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeDeleteWebhookPostRequestJSON(request, span)
 	if err != nil {
@@ -394,8 +404,10 @@ func (c *Client) GetFilePost(ctx context.Context, request GetFilePostReqApplicat
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeGetFilePostRequestJSON(request, span)
 	if err != nil {
@@ -442,8 +454,10 @@ func (c *Client) GetGameHighScoresPost(ctx context.Context, request GetGameHighS
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeGetGameHighScoresPostRequestJSON(request, span)
 	if err != nil {
@@ -562,8 +576,10 @@ func (c *Client) GetStickerSetPost(ctx context.Context, request GetStickerSetPos
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeGetStickerSetPostRequestJSON(request, span)
 	if err != nil {
@@ -618,8 +634,10 @@ func (c *Client) GetUpdatesPost(ctx context.Context, request GetUpdatesPostReqAp
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeGetUpdatesPostRequestJSON(request, span)
 	if err != nil {
@@ -674,8 +692,10 @@ func (c *Client) GetUserProfilePhotosPost(ctx context.Context, request GetUserPr
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeGetUserProfilePhotosPostRequestJSON(request, span)
 	if err != nil {
@@ -802,8 +822,10 @@ func (c *Client) SendGamePost(ctx context.Context, request SendGamePostReqApplic
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeSendGamePostRequestJSON(request, span)
 	if err != nil {
@@ -858,8 +880,10 @@ func (c *Client) SendInvoicePost(ctx context.Context, request SendInvoicePostReq
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeSendInvoicePostRequestJSON(request, span)
 	if err != nil {
@@ -914,8 +938,10 @@ func (c *Client) SetMyCommandsPost(ctx context.Context, request SetMyCommandsPos
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeSetMyCommandsPostRequestJSON(request, span)
 	if err != nil {
@@ -962,8 +988,10 @@ func (c *Client) SetStickerPositionInSetPost(ctx context.Context, request SetSti
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	var contentType string
-	var reqBody io.Reader
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
 	contentType = "application/json"
 	buf, err := encodeSetStickerPositionInSetPostRequestJSON(request, span)
 	if err != nil {
