@@ -44,3 +44,10 @@ func Pointer(typ *Type, sem NilSemantic) *Type {
 		NilSemantic: sem,
 	}
 }
+
+func Stream() *Type {
+	return &Type{
+		Kind: KindStream,
+		Name: "Stream",
+	}
+}

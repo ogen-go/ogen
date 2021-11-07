@@ -55,6 +55,12 @@ if _, err := e.WriteTo(w); err != nil {
 }
 
 return nil
+{{- else if $.ContentType.OctetStream }}
+if _, err := io.Copy(w, response); err != nil {
+    return errors.Wrap(err, "write")
+}
+
+return nil
 {{- else }}
 return errors.New(`{{ $.ContentType }} encoder not implemented`)
 {{- end }}{{- /* Encode content */ -}}

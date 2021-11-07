@@ -227,6 +227,35 @@ func NewPetGetHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *h
 	}
 }
 
+func NewPetGetAvatarByIDHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
+	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `PetGetAvatarByID`,
+			trace.WithAttributes(otelogen.OperationID(`petGetAvatarByID`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+		params, err := decodePetGetAvatarByIDParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
+
+		response, err := s.PetGetAvatarByID(ctx, params)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodePetGetAvatarByIDResponse(response, w, span); err != nil {
+			span.RecordError(err)
+			return
+		}
+	}
+}
+
 func NewPetGetByNameHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -335,6 +364,41 @@ func NewPetUpdateNamePostHandler(s Server, opts ...Option) func(w http.ResponseW
 		}
 
 		if err := encodePetUpdateNamePostResponse(response, w, span); err != nil {
+			span.RecordError(err)
+			return
+		}
+	}
+}
+
+func NewPetUploadAvatarByIDHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
+	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `PetUploadAvatarByID`,
+			trace.WithAttributes(otelogen.OperationID(`petUploadAvatarByID`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+		params, err := decodePetUploadAvatarByIDParams(r)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
+		request, err := decodePetUploadAvatarByIDRequest(r, span)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
+
+		response, err := s.PetUploadAvatarByID(ctx, request, params)
+		if err != nil {
+			span.RecordError(err)
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodePetUploadAvatarByIDResponse(response, w, span); err != nil {
 			span.RecordError(err)
 			return
 		}

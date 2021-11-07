@@ -61,15 +61,14 @@ var (
 )
 
 func decodeFoobarPostRequest(r *http.Request, span trace.Span) (req Pet, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Pet
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
 		d := json.GetDecoder()
 		defer json.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -96,15 +95,14 @@ func decodeFoobarPostRequest(r *http.Request, span trace.Span) (req Pet, err err
 }
 
 func decodePetCreateRequest(r *http.Request, span trace.Span) (req Pet, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Pet
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
 		d := json.GetDecoder()
 		defer json.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -131,15 +129,14 @@ func decodePetCreateRequest(r *http.Request, span trace.Span) (req Pet, err erro
 }
 
 func decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (req PetName, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request PetName
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
 		d := json.GetDecoder()
 		defer json.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -175,15 +172,14 @@ func decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (req 
 }
 
 func decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req string, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, r.Body); err != nil {
-		return req, err
-	}
-
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request string
+		buf := json.GetBuffer()
+		defer json.PutBuffer(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
 		d := json.GetDecoder()
 		defer json.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -214,6 +210,19 @@ func decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req strin
 			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
+	default:
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodePetUploadAvatarByIDRequest(r *http.Request, span trace.Span) (req Stream, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/octet-stream":
+		var request Stream
+		_ = request
+		return Stream{
+			Data: r.Body,
+		}, nil
 	default:
 		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}

@@ -60,7 +60,7 @@ var (
 	_ = regexp.MustCompile
 )
 
-func encodeFoobarPostRequest(req Pet, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
+func encodeFoobarPostRequestJSON(req Pet, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := json.GetBuffer()
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
@@ -70,13 +70,13 @@ func encodeFoobarPostRequest(req Pet, span trace.Span) (data *bytes.Buffer, cont
 	req.WriteJSON(e)
 	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
-		return nil, "", err
+		return nil, err
 	}
 
-	return buf, "application/json", nil
+	return buf, nil
 }
 
-func encodePetCreateRequest(req Pet, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
+func encodePetCreateRequestJSON(req Pet, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := json.GetBuffer()
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
@@ -86,13 +86,13 @@ func encodePetCreateRequest(req Pet, span trace.Span) (data *bytes.Buffer, conte
 	req.WriteJSON(e)
 	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
-		return nil, "", err
+		return nil, err
 	}
 
-	return buf, "application/json", nil
+	return buf, nil
 }
 
-func encodePetUpdateNameAliasPostRequest(req PetName, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
+func encodePetUpdateNameAliasPostRequestJSON(req PetName, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := json.GetBuffer()
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
@@ -101,13 +101,13 @@ func encodePetUpdateNameAliasPostRequest(req PetName, span trace.Span) (data *by
 	// Unsupported kind "alias".
 	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
-		return nil, "", err
+		return nil, err
 	}
 
-	return buf, "application/json", nil
+	return buf, nil
 }
 
-func encodePetUpdateNamePostRequest(req string, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
+func encodePetUpdateNamePostRequestJSON(req string, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := json.GetBuffer()
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
@@ -117,8 +117,12 @@ func encodePetUpdateNamePostRequest(req string, span trace.Span) (data *bytes.Bu
 	e.Str(req)
 	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
-		return nil, "", err
+		return nil, err
 	}
 
-	return buf, "application/json", nil
+	return buf, nil
+}
+
+func encodePetUploadAvatarByIDRequestOctetStream(req Stream, span trace.Span) (data io.Reader, err error) {
+	return req, nil
 }

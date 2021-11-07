@@ -61,18 +61,18 @@ var (
 )
 
 func decodeCreatePetsResponse(resp *http.Response, span trace.Span) (res CreatePetsRes, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, resp.Body); err != nil {
-		return res, err
-	}
-
 	switch resp.StatusCode {
 	case 201:
 		return &CreatePetsCreated{}, nil
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
 			d := json.GetDecoder()
 			defer json.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
@@ -96,16 +96,16 @@ func decodeCreatePetsResponse(resp *http.Response, span trace.Span) (res CreateP
 }
 
 func decodeListPetsResponse(resp *http.Response, span trace.Span) (res ListPetsRes, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, resp.Body); err != nil {
-		return res, err
-	}
-
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
 			d := json.GetDecoder()
 			defer json.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
@@ -125,6 +125,12 @@ func decodeListPetsResponse(resp *http.Response, span trace.Span) (res ListPetsR
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
 			d := json.GetDecoder()
 			defer json.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
@@ -148,16 +154,16 @@ func decodeListPetsResponse(resp *http.Response, span trace.Span) (res ListPetsR
 }
 
 func decodeShowPetByIdResponse(resp *http.Response, span trace.Span) (res ShowPetByIdRes, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, resp.Body); err != nil {
-		return res, err
-	}
-
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
 			d := json.GetDecoder()
 			defer json.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
@@ -179,6 +185,12 @@ func decodeShowPetByIdResponse(resp *http.Response, span trace.Span) (res ShowPe
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
 			d := json.GetDecoder()
 			defer json.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())

@@ -201,6 +201,38 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.
 	}
 }
 
+func encodePetGetAvatarByIDResponse(response PetGetAvatarByIDRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *PetGetAvatarByIDOKApplicationOctetStream:
+		w.Header().Set("Content-Type", "application/octet-stream")
+		w.WriteHeader(200)
+		if _, err := io.Copy(w, response); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotFound:
+		w.WriteHeader(404)
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/pet/avatar: unexpected response type: %T`, response)
+	}
+}
+
 func encodePetGetByNameResponse(response Pet, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -241,4 +273,31 @@ func encodePetUpdateNameAliasPostResponse(response PetUpdateNameAliasPostDefStat
 func encodePetUpdateNamePostResponse(response PetUpdateNamePostDefStatusCode, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(response.StatusCode)
 	return nil
+}
+
+func encodePetUploadAvatarByIDResponse(response PetUploadAvatarByIDRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *PetUploadAvatarByIDOK:
+		w.WriteHeader(200)
+		return nil
+	case *NotFound:
+		w.WriteHeader(404)
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := json.GetEncoder()
+		defer json.PutEncoder(e)
+		more := json.NewMore(e)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/pet/avatar: unexpected response type: %T`, response)
+	}
 }

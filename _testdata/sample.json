@@ -186,6 +186,70 @@
         }
       }
     },
+    "/pet/avatar": {
+      "get": {
+        "description": "Returns pet avatar by id",
+        "operationId": "petGetAvatarByID",
+        "parameters": [
+          {
+            "name": "petID",
+            "in": "query",
+            "description": "ID of pet",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A pet avatar",
+            "content": {
+              "application/octet-stream": {}
+              }
+            },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
+          }
+        }
+      },
+      "post": {
+        "description": "Uploads pet avatar by id",
+        "operationId": "petUploadAvatarByID",
+        "parameters": [
+          {
+            "name": "petID",
+            "in": "query",
+            "description": "ID of pet",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/octet-stream": {}
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "A pet avatar uploaded"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
+          }
+        }
+      }
+    },
     "/pet/{name}": {
       "get": {
         "description": "Returns pet by name from the system that the user has access to",

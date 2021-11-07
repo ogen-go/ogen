@@ -1,6 +1,7 @@
 package parser
 
 import (
+	"reflect"
 	"strconv"
 
 	"github.com/ogen-go/errors"
@@ -56,6 +57,15 @@ func (p *parser) parseResponse(resp ogen.Response) (*oas.Response, error) {
 
 	response := createAstResponse()
 	for contentType, media := range resp.Content {
+		if reflect.DeepEqual(media.Schema, ogen.Schema{}) {
+			switch contentType {
+			case "application/octet-stream":
+				response.Contents[contentType] = nil
+				continue
+			default:
+			}
+		}
+
 		schema, err := p.parseSchema(media.Schema)
 		if err != nil {
 			return nil, errors.Wrapf(err, "content: %s: schema", contentType)

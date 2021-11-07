@@ -112,16 +112,22 @@ func (c *Client) AddStickerToSet(ctx context.Context, request AddStickerToSet) (
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeAddStickerToSetRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeAddStickerToSetRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/addStickerToSet"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -166,16 +172,22 @@ func (c *Client) AnswerCallbackQuery(ctx context.Context, request AnswerCallback
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeAnswerCallbackQueryRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeAnswerCallbackQueryRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/answerCallbackQuery"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -220,16 +232,22 @@ func (c *Client) AnswerInlineQuery(ctx context.Context, request AnswerInlineQuer
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeAnswerInlineQueryRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeAnswerInlineQueryRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/answerInlineQuery"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -266,16 +284,22 @@ func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, request AnswerPreCh
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeAnswerPreCheckoutQueryRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeAnswerPreCheckoutQueryRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/answerPreCheckoutQuery"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -320,16 +344,22 @@ func (c *Client) AnswerShippingQuery(ctx context.Context, request AnswerShipping
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeAnswerShippingQueryRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeAnswerShippingQueryRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/answerShippingQuery"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -366,16 +396,22 @@ func (c *Client) BanChatMember(ctx context.Context, request BanChatMember) (res 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeBanChatMemberRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeBanChatMemberRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/banChatMember"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -420,16 +456,22 @@ func (c *Client) CopyMessage(ctx context.Context, request CopyMessage) (res Copy
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCopyMessageRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeCopyMessageRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/copyMessage"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -466,16 +508,22 @@ func (c *Client) CreateChatInviteLink(ctx context.Context, request CreateChatInv
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateChatInviteLinkRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeCreateChatInviteLinkRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/createChatInviteLink"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -520,16 +568,22 @@ func (c *Client) CreateNewStickerSet(ctx context.Context, request CreateNewStick
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeCreateNewStickerSetRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeCreateNewStickerSetRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/createNewStickerSet"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -566,16 +620,22 @@ func (c *Client) DeleteChatPhoto(ctx context.Context, request DeleteChatPhoto) (
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteChatPhotoRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeDeleteChatPhotoRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/deleteChatPhoto"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -612,16 +672,22 @@ func (c *Client) DeleteChatStickerSet(ctx context.Context, request DeleteChatSti
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteChatStickerSetRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeDeleteChatStickerSetRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/deleteChatStickerSet"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -658,16 +724,22 @@ func (c *Client) DeleteMessage(ctx context.Context, request DeleteMessage) (res 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteMessageRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeDeleteMessageRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/deleteMessage"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -704,16 +776,22 @@ func (c *Client) DeleteMyCommands(ctx context.Context, request DeleteMyCommands)
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteMyCommandsRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeDeleteMyCommandsRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/deleteMyCommands"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -750,16 +828,22 @@ func (c *Client) DeleteStickerFromSet(ctx context.Context, request DeleteSticker
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteStickerFromSetRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeDeleteStickerFromSetRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/deleteStickerFromSet"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -796,16 +880,22 @@ func (c *Client) DeleteWebhook(ctx context.Context, request DeleteWebhook) (res 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeDeleteWebhookRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeDeleteWebhookRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/deleteWebhook"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -842,16 +932,22 @@ func (c *Client) EditChatInviteLink(ctx context.Context, request EditChatInviteL
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEditChatInviteLinkRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeEditChatInviteLinkRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/editChatInviteLink"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -896,16 +992,22 @@ func (c *Client) EditMessageCaption(ctx context.Context, request EditMessageCapt
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEditMessageCaptionRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeEditMessageCaptionRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/editMessageCaption"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -950,16 +1052,22 @@ func (c *Client) EditMessageLiveLocation(ctx context.Context, request EditMessag
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEditMessageLiveLocationRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeEditMessageLiveLocationRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/editMessageLiveLocation"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1004,16 +1112,22 @@ func (c *Client) EditMessageMedia(ctx context.Context, request EditMessageMedia)
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEditMessageMediaRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeEditMessageMediaRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/editMessageMedia"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1058,16 +1172,22 @@ func (c *Client) EditMessageReplyMarkup(ctx context.Context, request EditMessage
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEditMessageReplyMarkupRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeEditMessageReplyMarkupRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/editMessageReplyMarkup"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1112,16 +1232,22 @@ func (c *Client) EditMessageText(ctx context.Context, request EditMessageText) (
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeEditMessageTextRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeEditMessageTextRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/editMessageText"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1158,16 +1284,22 @@ func (c *Client) ExportChatInviteLink(ctx context.Context, request ExportChatInv
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeExportChatInviteLinkRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeExportChatInviteLinkRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/exportChatInviteLink"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1204,16 +1336,22 @@ func (c *Client) ForwardMessage(ctx context.Context, request ForwardMessage) (re
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeForwardMessageRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeForwardMessageRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/forwardMessage"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1250,16 +1388,22 @@ func (c *Client) GetChat(ctx context.Context, request GetChat) (res GetChatRes, 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGetChatRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeGetChatRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getChat"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1296,16 +1440,22 @@ func (c *Client) GetChatAdministrators(ctx context.Context, request GetChatAdmin
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGetChatAdministratorsRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeGetChatAdministratorsRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getChatAdministrators"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1342,16 +1492,22 @@ func (c *Client) GetChatMember(ctx context.Context, request GetChatMember) (res 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGetChatMemberRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeGetChatMemberRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getChatMember"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1388,16 +1544,22 @@ func (c *Client) GetChatMemberCount(ctx context.Context, request GetChatMemberCo
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGetChatMemberCountRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeGetChatMemberCountRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getChatMemberCount"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1434,16 +1596,22 @@ func (c *Client) GetFile(ctx context.Context, request GetFile) (res GetFileRes, 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGetFileRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeGetFileRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getFile"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1480,16 +1648,22 @@ func (c *Client) GetGameHighScores(ctx context.Context, request GetGameHighScore
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGetGameHighScoresRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeGetGameHighScoresRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getGameHighScores"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1564,16 +1738,22 @@ func (c *Client) GetMyCommands(ctx context.Context, request GetMyCommands) (res 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGetMyCommandsRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeGetMyCommandsRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getMyCommands"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1610,16 +1790,22 @@ func (c *Client) GetStickerSet(ctx context.Context, request GetStickerSet) (res 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGetStickerSetRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeGetStickerSetRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getStickerSet"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1664,16 +1850,22 @@ func (c *Client) GetUpdates(ctx context.Context, request GetUpdates) (res GetUpd
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGetUpdatesRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeGetUpdatesRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getUpdates"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1718,16 +1910,22 @@ func (c *Client) GetUserProfilePhotos(ctx context.Context, request GetUserProfil
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeGetUserProfilePhotosRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeGetUserProfilePhotosRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getUserProfilePhotos"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1764,16 +1962,22 @@ func (c *Client) LeaveChat(ctx context.Context, request LeaveChat) (res LeaveCha
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeLeaveChatRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeLeaveChatRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/leaveChat"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1810,16 +2014,22 @@ func (c *Client) PinChatMessage(ctx context.Context, request PinChatMessage) (re
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePinChatMessageRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodePinChatMessageRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pinChatMessage"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1856,16 +2066,22 @@ func (c *Client) PromoteChatMember(ctx context.Context, request PromoteChatMembe
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePromoteChatMemberRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodePromoteChatMemberRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/promoteChatMember"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1902,16 +2118,22 @@ func (c *Client) RestrictChatMember(ctx context.Context, request RestrictChatMem
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeRestrictChatMemberRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeRestrictChatMemberRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/restrictChatMember"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1948,16 +2170,22 @@ func (c *Client) RevokeChatInviteLink(ctx context.Context, request RevokeChatInv
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeRevokeChatInviteLinkRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeRevokeChatInviteLinkRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/revokeChatInviteLink"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2002,16 +2230,22 @@ func (c *Client) SendAnimation(ctx context.Context, request SendAnimation) (res 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendAnimationRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendAnimationRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendAnimation"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2056,16 +2290,22 @@ func (c *Client) SendAudio(ctx context.Context, request SendAudio) (res SendAudi
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendAudioRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendAudioRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendAudio"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2102,16 +2342,22 @@ func (c *Client) SendChatAction(ctx context.Context, request SendChatAction) (re
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendChatActionRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendChatActionRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendChatAction"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2156,16 +2402,22 @@ func (c *Client) SendContact(ctx context.Context, request SendContact) (res Send
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendContactRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendContactRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendContact"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2210,16 +2462,22 @@ func (c *Client) SendDice(ctx context.Context, request SendDice) (res SendDiceRe
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendDiceRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendDiceRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendDice"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2264,16 +2522,22 @@ func (c *Client) SendDocument(ctx context.Context, request SendDocument) (res Se
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendDocumentRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendDocumentRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendDocument"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2318,16 +2582,22 @@ func (c *Client) SendGame(ctx context.Context, request SendGame) (res SendGameRe
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendGameRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendGameRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendGame"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2372,16 +2642,22 @@ func (c *Client) SendInvoice(ctx context.Context, request SendInvoice) (res Send
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendInvoiceRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendInvoiceRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendInvoice"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2426,16 +2702,22 @@ func (c *Client) SendLocation(ctx context.Context, request SendLocation) (res Se
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendLocationRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendLocationRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendLocation"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2480,16 +2762,22 @@ func (c *Client) SendMediaGroup(ctx context.Context, request SendMediaGroup) (re
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendMediaGroupRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendMediaGroupRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendMediaGroup"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2534,16 +2822,22 @@ func (c *Client) SendMessage(ctx context.Context, request SendMessage) (res Send
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendMessageRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendMessageRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendMessage"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2588,16 +2882,22 @@ func (c *Client) SendPhoto(ctx context.Context, request SendPhoto) (res SendPhot
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendPhotoRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendPhotoRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendPhoto"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2642,16 +2942,22 @@ func (c *Client) SendPoll(ctx context.Context, request SendPoll) (res SendPollRe
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendPollRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendPollRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendPoll"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2696,16 +3002,22 @@ func (c *Client) SendSticker(ctx context.Context, request SendSticker) (res Send
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendStickerRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendStickerRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendSticker"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2750,16 +3062,22 @@ func (c *Client) SendVenue(ctx context.Context, request SendVenue) (res SendVenu
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendVenueRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendVenueRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendVenue"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2804,16 +3122,22 @@ func (c *Client) SendVideo(ctx context.Context, request SendVideo) (res SendVide
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendVideoRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendVideoRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendVideo"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2858,16 +3182,22 @@ func (c *Client) SendVideoNote(ctx context.Context, request SendVideoNote) (res 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendVideoNoteRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendVideoNoteRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendVideoNote"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2912,16 +3242,22 @@ func (c *Client) SendVoice(ctx context.Context, request SendVoice) (res SendVoic
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSendVoiceRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendVoiceRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendVoice"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2966,16 +3302,22 @@ func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, request Se
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetChatAdministratorCustomTitleRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSetChatAdministratorCustomTitleRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setChatAdministratorCustomTitle"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -3020,16 +3362,22 @@ func (c *Client) SetChatDescription(ctx context.Context, request SetChatDescript
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetChatDescriptionRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSetChatDescriptionRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setChatDescription"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -3066,16 +3414,22 @@ func (c *Client) SetChatPermissions(ctx context.Context, request SetChatPermissi
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetChatPermissionsRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSetChatPermissionsRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setChatPermissions"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -3112,16 +3466,22 @@ func (c *Client) SetChatPhoto(ctx context.Context, request SetChatPhoto) (res Se
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetChatPhotoRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSetChatPhotoRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setChatPhoto"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -3158,16 +3518,22 @@ func (c *Client) SetChatStickerSet(ctx context.Context, request SetChatStickerSe
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetChatStickerSetRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSetChatStickerSetRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setChatStickerSet"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -3212,16 +3578,22 @@ func (c *Client) SetChatTitle(ctx context.Context, request SetChatTitle) (res Se
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetChatTitleRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSetChatTitleRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setChatTitle"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -3258,16 +3630,22 @@ func (c *Client) SetGameScore(ctx context.Context, request SetGameScore) (res Se
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetGameScoreRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSetGameScoreRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setGameScore"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -3312,16 +3690,22 @@ func (c *Client) SetMyCommands(ctx context.Context, request SetMyCommands) (res 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetMyCommandsRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSetMyCommandsRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setMyCommands"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -3366,16 +3750,22 @@ func (c *Client) SetPassportDataErrors(ctx context.Context, request SetPassportD
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetPassportDataErrorsRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSetPassportDataErrorsRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setPassportDataErrors"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -3412,16 +3802,22 @@ func (c *Client) SetStickerPositionInSet(ctx context.Context, request SetSticker
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetStickerPositionInSetRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSetStickerPositionInSetRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setStickerPositionInSet"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -3458,16 +3854,22 @@ func (c *Client) SetStickerSetThumb(ctx context.Context, request SetStickerSetTh
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetStickerSetThumbRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSetStickerSetThumbRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setStickerSetThumb"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -3504,16 +3906,22 @@ func (c *Client) SetWebhook(ctx context.Context, request SetWebhook) (res SetWeb
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeSetWebhookRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSetWebhookRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setWebhook"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -3558,16 +3966,22 @@ func (c *Client) StopMessageLiveLocation(ctx context.Context, request StopMessag
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeStopMessageLiveLocationRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeStopMessageLiveLocationRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/stopMessageLiveLocation"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -3612,16 +4026,22 @@ func (c *Client) StopPoll(ctx context.Context, request StopPoll) (res StopPollRe
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeStopPollRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeStopPollRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/stopPoll"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -3658,16 +4078,22 @@ func (c *Client) UnbanChatMember(ctx context.Context, request UnbanChatMember) (
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeUnbanChatMemberRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeUnbanChatMemberRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/unbanChatMember"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -3704,16 +4130,22 @@ func (c *Client) UnpinAllChatMessages(ctx context.Context, request UnpinAllChatM
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeUnpinAllChatMessagesRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeUnpinAllChatMessagesRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/unpinAllChatMessages"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -3750,16 +4182,22 @@ func (c *Client) UnpinChatMessage(ctx context.Context, request UnpinChatMessage)
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeUnpinChatMessageRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeUnpinChatMessageRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/unpinChatMessage"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -3796,16 +4234,22 @@ func (c *Client) UploadStickerFile(ctx context.Context, request UploadStickerFil
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeUploadStickerFileRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeUploadStickerFileRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/uploadStickerFile"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)

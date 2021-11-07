@@ -187,16 +187,22 @@ func (c *Client) FoobarPost(ctx context.Context, request Pet) (res FoobarPostRes
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodeFoobarPostRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeFoobarPostRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/foobar"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -277,16 +283,22 @@ func (c *Client) PetCreate(ctx context.Context, request Pet) (res Pet, err error
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePetCreateRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodePetCreateRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -469,6 +481,60 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 	return result, nil
 }
 
+// PetGetAvatarByID implements petGetAvatarByID operation.
+func (c *Client) PetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDParams) (res PetGetAvatarByIDRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `PetGetAvatarByID`,
+		trace.WithAttributes(otelogen.OperationID(`petGetAvatarByID`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/pet/avatar"
+
+	q := u.Query()
+	{
+		// Encode "petID" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.Int64ToString(params.PetID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["petID"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodePetGetAvatarByIDResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // PetGetByName implements petGetByName operation.
 func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (res Pet, err error) {
 	startTime := time.Now()
@@ -608,16 +674,22 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request PetName) (r
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePetUpdateNameAliasPostRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodePetUpdateNameAliasPostRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/updateNameAlias"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -668,16 +740,22 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request string) (res Pet
 		span.End()
 	}()
 	c.requests.Add(ctx, 1)
-	buf, contentType, err := encodePetUpdateNamePostRequest(request, span)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodePetUpdateNamePostRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
 	defer json.PutBuffer(buf)
+	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/updateName"
 
-	r := ht.NewRequest(ctx, "POST", u, buf)
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -689,6 +767,73 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request string) (res Pet
 	defer resp.Body.Close()
 
 	result, err := decodePetUpdateNamePostResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// PetUploadAvatarByID implements petUploadAvatarByID operation.
+func (c *Client) PetUploadAvatarByID(ctx context.Context, request Stream, params PetUploadAvatarByIDParams) (res PetUploadAvatarByIDRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `PetUploadAvatarByID`,
+		trace.WithAttributes(otelogen.OperationID(`petUploadAvatarByID`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/octet-stream"
+	buf, err := encodePetUploadAvatarByIDRequestOctetStream(request, span)
+	if err != nil {
+		return res, err
+	}
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/pet/avatar"
+
+	q := u.Query()
+	{
+		// Encode "petID" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.Int64ToString(params.PetID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["petID"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodePetUploadAvatarByIDResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

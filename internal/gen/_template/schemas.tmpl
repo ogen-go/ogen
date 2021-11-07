@@ -34,6 +34,17 @@ type {{ $.Name }} struct {
 {{- end }}
 {{/* Define struct */}}
 
+{{/* Define stream */}}
+{{- else if $.IsStream }}
+type {{ $.Name }} struct {
+    Data io.Reader
+}
+
+func (s {{ $.Name }}) Read(p []byte) (n int, err error) {
+    return s.Data.Read(p)
+}
+{{/* Define stream */}}
+
 {{/* Define alias */}}
 {{- else if $.IsAlias }}
 type {{ $.Name }} {{ $.AliasTo.Go }}

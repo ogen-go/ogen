@@ -1131,3 +1131,25 @@ func (s *PetUpdateNamePostDefStatusCode) ReadJSON(d *json.Decoder) error {
 		return nil
 	})
 }
+
+// WriteJSON implements json.Marshaler.
+func (s PetUploadAvatarByIDOK) WriteJSON(e *json.Encoder) {
+	e.ObjStart()
+	more := json.NewMore(e)
+	defer more.Reset()
+	e.ObjEnd()
+}
+
+// ReadJSON reads PetUploadAvatarByIDOK from json stream.
+func (s *PetUploadAvatarByIDOK) ReadJSON(d *json.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PetUploadAvatarByIDOK to nil`)
+	}
+	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
