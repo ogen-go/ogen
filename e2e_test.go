@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	_ "embed"
+	"fmt"
 	"io"
 	"net"
 	"net/http"
@@ -321,7 +322,7 @@ func TestIntegration(t *testing.T) {
 					PetID: petExistingID,
 				})
 				require.NoError(t, err)
-				assert.IsType(t, &api.PetUploadAvatarByIDOK{}, got)
+				assert.IsType(t, &api.PetUploadAvatarByIDOK{}, got, fmt.Sprintf("receive response %v", got))
 			})
 			t.Run("NotFound", func(t *testing.T) {
 				stream := api.Stream{
@@ -331,7 +332,7 @@ func TestIntegration(t *testing.T) {
 					PetID: petNotFoundID,
 				})
 				require.NoError(t, err)
-				assert.IsType(t, &api.NotFound{}, got)
+				assert.IsType(t, &api.NotFound{}, got, fmt.Sprintf("receive response %v", got))
 			})
 			t.Run("Error", func(t *testing.T) {
 				stream := api.Stream{
@@ -341,7 +342,7 @@ func TestIntegration(t *testing.T) {
 					PetID: petErrorID,
 				})
 				require.NoError(t, err)
-				assert.IsType(t, &api.ErrorStatusCode{}, got)
+				assert.IsType(t, &api.ErrorStatusCode{}, got, fmt.Sprintf("receive response %v", got))
 			})
 		})
 		t.Run("PetGetAvatar", func(t *testing.T) {
@@ -350,7 +351,7 @@ func TestIntegration(t *testing.T) {
 					PetID: petExistingID,
 				})
 				require.NoError(t, err)
-				assert.IsType(t, &api.PetGetAvatarByIDOKApplicationOctetStream{}, got)
+				assert.IsType(t, &api.PetGetAvatarByIDOKApplicationOctetStream{}, got, fmt.Sprintf("receive response %v", got))
 
 				raw := got.(*api.PetGetAvatarByIDOKApplicationOctetStream)
 				avatar, err := io.ReadAll(raw)
@@ -363,14 +364,14 @@ func TestIntegration(t *testing.T) {
 					PetID: petNotFoundID,
 				})
 				require.NoError(t, err)
-				assert.IsType(t, &api.NotFound{}, got)
+				assert.IsType(t, &api.NotFound{}, got, fmt.Sprintf("receive response %v", got))
 			})
 			t.Run("Error", func(t *testing.T) {
 				got, err := client.PetGetAvatarByID(ctx, api.PetGetAvatarByIDParams{
 					PetID: petErrorID,
 				})
 				require.NoError(t, err)
-				assert.IsType(t, &api.ErrorStatusCode{}, got)
+				assert.IsType(t, &api.ErrorStatusCode{}, got, fmt.Sprintf("receive response %v", got))
 			})
 		})
 	})
