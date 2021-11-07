@@ -40,8 +40,13 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
             {{- template "res_dec_json" $type }}
             return {{ if eq $op.Response.Type.Kind "interface" }}&{{ end }}response, nil
             {{- else if $type.IsStream }}
+            b, err := io.ReadAll(resp.Body)
+            if err != nil {
+                return nil, err
+            }
+
             return &{{$type.Name}}{
-                Data: resp.Body,
+                Data: bytes.NewReader(b),
             }, nil
             {{- else }}
             return res, errors.New("{{ $contentType }} decoder not implemented")
