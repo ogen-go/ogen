@@ -101,8 +101,13 @@ func decodeGetPageCoverImageResponse(resp *http.Response, span trace.Span) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "image/*":
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return nil, err
+			}
+
 			return &GetPageCoverImageOKImage{
-				Data: resp.Body,
+				Data: bytes.NewReader(b),
 			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
@@ -119,8 +124,13 @@ func decodeGetPageImageResponse(resp *http.Response, span trace.Span) (res GetPa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "image/*":
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return nil, err
+			}
+
 			return &GetPageImageOKImage{
-				Data: resp.Body,
+				Data: bytes.NewReader(b),
 			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
@@ -137,8 +147,13 @@ func decodeGetPageThumbnailImageResponse(resp *http.Response, span trace.Span) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "image/*":
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return nil, err
+			}
+
 			return &GetPageThumbnailImageOKImage{
-				Data: resp.Body,
+				Data: bytes.NewReader(b),
 			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
