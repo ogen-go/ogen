@@ -1,7 +1,6 @@
 package parser
 
 import (
-	"sort"
 	"strings"
 
 	"github.com/ogen-go/errors"
@@ -135,33 +134,16 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			MinProperties: schema.MinProperties,
 			MaxProperties: schema.MaxProperties,
 		})
-
-		// Ensure that order is stable.
-		propKeys := schema.XPropertiesOrder
-		for _, k := range schema.XPropertiesOrder {
-			if _, ok := schema.Properties[k]; ok {
-				continue
-			}
-			return nil, errors.Errorf("invalid x-properties-order: missing %s", k)
-		}
-		if len(propKeys) == 0 {
-			for k := range schema.Properties {
-				propKeys = append(propKeys, k)
-			}
-			sort.Strings(propKeys)
-		}
-
-		for _, propName := range propKeys {
-			propSchema := schema.Properties[propName]
-			prop, err := g.generate(propSchema, "")
+		for _, propSpec := range schema.Properties {
+			prop, err := g.generate(propSpec.Schema, "")
 			if err != nil {
-				return nil, errors.Wrapf(err, "%s", propName)
+				return nil, errors.Wrapf(err, "%s", propSpec.Name)
 			}
 
 			s.Properties = append(s.Properties, oas.Property{
-				Name:     propName,
+				Name:     propSpec.Name,
 				Schema:   prop,
-				Required: required(propName),
+				Required: required(propSpec.Name),
 			})
 		}
 		return s, nil

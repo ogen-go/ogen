@@ -231,7 +231,7 @@ type Schema struct {
 
 	// Property definitions MUST be a Schema Object and not a standard JSON Schema
 	// (inline or referenced).
-	Properties map[string]Schema `json:"properties,omitempty"`
+	Properties Properties `json:"properties,omitempty"`
 
 	// The value of this keyword MUST be an array.
 	// This array MUST have at least one element.
@@ -394,68 +394,53 @@ type Schema struct {
 
 	// Default value.
 	Default json.RawMessage `json:"default,omitempty"` // TODO: support
-
-	// XPropertiesOrder is slice of keys for Properties ordering.
-	// Keeps ordering after marshal-unmarshal only in ogen.
-	XPropertiesOrder []string `json:"x-properties-order,omitempty"`
 }
 
-func (s *Schema) UnmarshalJSON(data []byte) error {
-	// Hack for custom double-pass decoding.
-	v := struct {
-		Ref              string            `json:"$ref,omitempty"`
-		Description      string            `json:"description,omitempty"`
-		Type             string            `json:"type,omitempty"`
-		Format           string            `json:"format,omitempty"`
-		Properties       map[string]Schema `json:"properties,omitempty"`
-		Required         []string          `json:"required,omitempty"`
-		Items            *Schema           `json:"items,omitempty"`
-		Nullable         bool              `json:"nullable,omitempty"`
-		AllOf            []Schema          `json:"allOf,omitempty"`
-		OneOf            []Schema          `json:"oneOf,omitempty"`
-		AnyOf            []Schema          `json:"anyOf,omitempty"`
-		Discriminator    *Discriminator    `json:"discriminator,omitempty"`
-		Enum             []json.RawMessage `json:"enum,omitempty"`
-		MultipleOf       *int              `json:"multipleOf,omitempty"`
-		Maximum          *int64            `json:"maximum,omitempty"`
-		ExclusiveMaximum bool              `json:"exclusiveMaximum,omitempty"`
-		Minimum          *int64            `json:"minimum,omitempty"`
-		ExclusiveMinimum bool              `json:"exclusiveMinimum,omitempty"`
-		MaxLength        *uint64           `json:"maxLength,omitempty"`
-		MinLength        *int64            `json:"minLength,omitempty"`
-		Pattern          string            `json:"pattern,omitempty"`
-		MaxItems         *uint64           `json:"maxItems,omitempty"`
-		MinItems         *uint64           `json:"minItems,omitempty"`
-		UniqueItems      bool              `json:"uniqueItems,omitempty"`
-		MaxProperties    *uint64           `json:"maxProperties,omitempty"`
-		MinProperties    *uint64           `json:"minProperties,omitempty"`
-		Default          json.RawMessage   `json:"default,omitempty"`
-		XPropertiesOrder []string          `json:"x-properties-order,omitempty"`
-	}{}
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
+type Property struct {
+	Name   string
+	Schema Schema
+}
 
-	*s = v
-	if len(s.XPropertiesOrder) > 0 {
-		// Already explicitly set.
-		return nil
-	}
+type Properties []Property
 
-	// Saving properties ordering.
-	if err := jx.DecodeBytes(data).Obj(func(d *jx.Decoder, key string) error {
-		switch key {
-		case "properties":
-			return d.Obj(func(d *jx.Decoder, key string) error {
-				s.XPropertiesOrder = append(s.XPropertiesOrder, key)
-				return d.Skip()
-			})
-		default:
-			return d.Skip()
+func (p Properties) MarshalJSON() ([]byte, error) {
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	e.ObjStart()
+	for i, prop := range p {
+		e.ObjField(prop.Name)
+		b, err := json.Marshal(prop.Schema)
+		if err != nil {
+			return nil, err
 		}
-	}); err != nil {
-		return err
-	}
 
-	return nil
+		e.RawBytes(b)
+		if i != len(p)-1 {
+			e.More()
+		}
+	}
+	e.ObjEnd()
+	return e.Bytes(), nil
+}
+
+func (p *Properties) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return d.Obj(func(d *jx.Decoder, key string) error {
+		var propSchema Schema
+		b, err := d.Raw()
+		if err != nil {
+			return err
+		}
+
+		if err := json.Unmarshal(b, &propSchema); err != nil {
+			return err
+		}
+
+		*p = append(*p, Property{
+			Name:   key,
+			Schema: propSchema,
+		})
+		return nil
+	})
 }

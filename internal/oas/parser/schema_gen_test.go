@@ -16,9 +16,15 @@ func TestSchemaSimple(t *testing.T) {
 
 	out, err := gen.Generate(ogen.Schema{
 		Type: "object",
-		Properties: map[string]ogen.Schema{
-			"id":   {Type: "integer"},
-			"name": {Type: "string"},
+		Properties: []ogen.Property{
+			{
+				Name:   "id",
+				Schema: ogen.Schema{Type: "integer"},
+			},
+			{
+				Name:   "name",
+				Schema: ogen.Schema{Type: "string"},
+			},
 		},
 		Required: []string{"id", "name"},
 	})
@@ -49,13 +55,22 @@ func TestSchemaRecursive(t *testing.T) {
 			Schemas: map[string]ogen.Schema{
 				"Pet": {
 					Type: "object",
-					Properties: map[string]ogen.Schema{
-						"id":   {Type: "integer"},
-						"name": {Type: "string"},
-						"friends": {
-							Type: "array",
-							Items: &ogen.Schema{
-								Ref: "#/components/schemas/Pet",
+					Properties: []ogen.Property{
+						{
+							Name:   "id",
+							Schema: ogen.Schema{Type: "integer"},
+						},
+						{
+							Name:   "name",
+							Schema: ogen.Schema{Type: "string"},
+						},
+						{
+							Name: "friends",
+							Schema: ogen.Schema{
+								Type: "array",
+								Items: &ogen.Schema{
+									Ref: "#/components/schemas/Pet",
+								},
 							},
 						},
 					},
@@ -71,14 +86,6 @@ func TestSchemaRecursive(t *testing.T) {
 	}
 	pet.Properties = []oas.Property{
 		{
-			Name: "friends",
-			Schema: &oas.Schema{
-				Type: oas.Array,
-				Item: pet,
-			},
-			Required: true,
-		},
-		{
 			Name:     "id",
 			Schema:   &oas.Schema{Type: oas.Integer},
 			Required: true,
@@ -86,6 +93,14 @@ func TestSchemaRecursive(t *testing.T) {
 		{
 			Name:     "name",
 			Schema:   &oas.Schema{Type: oas.String},
+			Required: true,
+		},
+		{
+			Name: "friends",
+			Schema: &oas.Schema{
+				Type: oas.Array,
+				Item: pet,
+			},
 			Required: true,
 		},
 	}
@@ -96,14 +111,6 @@ func TestSchemaRecursive(t *testing.T) {
 			Ref:  "#/components/schemas/Pet",
 			Properties: []oas.Property{
 				{
-					Name: "friends",
-					Schema: &oas.Schema{
-						Type: oas.Array,
-						Item: pet,
-					},
-					Required: true,
-				},
-				{
 					Name:     "id",
 					Schema:   &oas.Schema{Type: oas.Integer},
 					Required: true,
@@ -111,6 +118,14 @@ func TestSchemaRecursive(t *testing.T) {
 				{
 					Name:     "name",
 					Schema:   &oas.Schema{Type: oas.String},
+					Required: true,
+				},
+				{
+					Name: "friends",
+					Schema: &oas.Schema{
+						Type: oas.Array,
+						Item: pet,
+					},
 					Required: true,
 				},
 			},
@@ -136,6 +151,11 @@ func TestSchemaSideEffects(t *testing.T) {
 			Type: oas.Object,
 			Properties: []oas.Property{
 				{
+					Name:     "name",
+					Schema:   &oas.Schema{Type: oas.String},
+					Required: true,
+				},
+				{
 					Name:     "age",
 					Schema:   &oas.Schema{Type: oas.Integer},
 					Required: true,
@@ -143,11 +163,6 @@ func TestSchemaSideEffects(t *testing.T) {
 				{
 					Name:     "id",
 					Schema:   &oas.Schema{Type: oas.Integer},
-					Required: true,
-				},
-				{
-					Name:     "name",
-					Schema:   &oas.Schema{Type: oas.String},
 					Required: true,
 				},
 			},
@@ -176,16 +191,31 @@ func TestSchemaSideEffects(t *testing.T) {
 
 	out, err := gen.Generate(ogen.Schema{
 		Type: "object",
-		Properties: map[string]ogen.Schema{
-			"name": {Type: "string"},
-			"owner": {
-				Type: "object",
-				Properties: map[string]ogen.Schema{
-					"name": {Type: "string"},
-					"id":   {Type: "integer"},
-					"age":  {Type: "integer"},
+		Properties: []ogen.Property{
+			{
+				Name:   "name",
+				Schema: ogen.Schema{Type: "string"},
+			},
+			{
+				Name: "owner",
+				Schema: ogen.Schema{
+					Type: "object",
+					Properties: []ogen.Property{
+						{
+							Name:   "name",
+							Schema: ogen.Schema{Type: "string"},
+						},
+						{
+							Name:   "age",
+							Schema: ogen.Schema{Type: "integer"},
+						},
+						{
+							Name:   "id",
+							Schema: ogen.Schema{Type: "integer"},
+						},
+					},
+					Required: []string{"name", "id", "age"},
 				},
-				Required: []string{"name", "id", "age"},
 			},
 		},
 		Required: []string{"id", "name", "owner"},
@@ -237,9 +267,12 @@ func TestSchemaReferencedArray(t *testing.T) {
 
 	out, err := gen.Generate(ogen.Schema{
 		Type: "object",
-		Properties: map[string]ogen.Schema{
-			"pets": {
-				Ref: "#/components/schemas/Pets",
+		Properties: []ogen.Property{
+			{
+				Name: "pets",
+				Schema: ogen.Schema{
+					Ref: "#/components/schemas/Pets",
+				},
 			},
 		},
 		Required: []string{"pets"},
