@@ -15,6 +15,7 @@ const (
 	FormatIPv4     Format = "ipv4"
 	FormatIPv6     Format = "ipv6"
 	FormatByte     Format = "byte"
+	FormatBinary   Format = "binary"
 	FormatPassword Format = "password"
 	FormatInt64    Format = "int64"
 	FormatInt32    Format = "int32"

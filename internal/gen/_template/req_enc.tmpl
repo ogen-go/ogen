@@ -21,11 +21,11 @@ if _, err := e.WriteTo(buf); err != nil {
 {{- if $op.Request }}
 {{- range $contentType, $type := $op.Request.Contents }}
 func encode{{ $op.Name }}Request{{ $contentType.Name }}(req {{ $op.Request.Type.Go }}, span trace.Span) (data {{ $contentType.EncodedDataTypeGo }}, err error) {
-    {{- if $contentType.JSON }}
+    {{- if $type.IsStream }}
+    return req, nil
+    {{- else if $contentType.JSON }}
     {{- template "req_enc_json" $type }}
     return buf, nil
-    {{- else if $contentType.OctetStream }}
-    return req, nil
     {{- else }}
     return nil, errors.New(`{{ $contentType }} encoder not implemented`)
     {{- end }}

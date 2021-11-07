@@ -128,9 +128,9 @@ func (g *Generator) responseToIR(name, doc string, resp *oas.Response) (ret *ir.
 
 	for _, contentType := range contentTypes {
 		schema := resp.Contents[contentType]
-		typeName := name
-		if len(resp.Contents) > 1 {
-			typeName = pascal(name, contentType)
+		if isBinary(schema) {
+			types[ir.ContentType(contentType)] = ir.Stream()
+			continue
 		}
 
 		if schema == nil {
@@ -141,6 +141,11 @@ func (g *Generator) responseToIR(name, doc string, resp *oas.Response) (ret *ir.
 			default:
 				return nil, errors.Errorf("unsupported empty schema for content-type %q", contentType)
 			}
+		}
+
+		typeName := name
+		if len(resp.Contents) > 1 {
+			typeName = pascal(name, contentType)
 		}
 
 		typ, err := g.generateSchema(typeName, schema)

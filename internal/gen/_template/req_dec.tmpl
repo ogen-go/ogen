@@ -11,9 +11,11 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
     {{- /* Range over all request types */ -}}
     {{- range $contentType, $t := $op.Request.Contents }}
     case "{{ $contentType }}":
-        var request {{ $t.Go }}
+        {{- if $t.IsStream }}
+        return {{ $op.Request.Type.Go }}{Data: r.Body}, nil
         {{- /* Decode json */ -}}
-        {{- if $contentType.JSON }}
+        {{- else if $contentType.JSON }}
+        var request {{ $t.Go }}
         buf := json.GetBuffer()
         defer json.PutBuffer(buf)
         if _, err := io.Copy(buf, r.Body); err != nil {
@@ -36,12 +38,6 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
         }
         {{- end }}
         return {{ if or ($op.Request.Type.IsPointer) ($op.Request.Type.IsInterface) }}&{{ end }}request, nil
-        {{- /* Decode json */ -}}
-        {{- else if $contentType.OctetStream }}
-        _ = request
-        return {{ $op.Request.Type.Go }}{
-            Data: r.Body,
-        }, nil
         {{- else }}
         _ = request
         return req, errors.New("{{ $contentType }} decoder not implemented")

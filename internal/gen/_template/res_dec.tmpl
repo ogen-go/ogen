@@ -39,16 +39,10 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
             {{- if $contentType.JSON }}{{/* Decode */}}
             {{- template "res_dec_json" $type }}
             return {{ if eq $op.Response.Type.Kind "interface" }}&{{ end }}response, nil
-            {{- else if $contentType.OctetStream }}
-            b, err := io.ReadAll(resp.Body)
-            if err != nil {
-                return nil, err
-            }
-
-            response := &{{$type.Name}}{
-                Data: bytes.NewReader(b),
-            }
-            return response, nil
+            {{- else if $type.IsStream }}
+            return &{{$type.Name}}{
+                Data: resp.Body,
+            }, nil
             {{- else }}
             return res, errors.New("{{ $contentType }} decoder not implemented")
             {{- end }}{{/* Decode */}}

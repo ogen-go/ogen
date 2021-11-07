@@ -27,6 +27,11 @@ func (g *Generator) generateRequest(opName string, body *oas.RequestBody) (*ir.R
 			sName = pascal(name, contentType)
 		}
 
+		if isBinary(schema) {
+			types[ir.ContentType(contentType)] = ir.Stream()
+			continue
+		}
+
 		if schema == nil {
 			switch contentType {
 			case "application/octet-stream":

@@ -229,7 +229,10 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 		}), nil
 
 	case "":
-		return extendInfo(&oas.Schema{Type: oas.String}), nil
+		return extendInfo(&oas.Schema{
+			Type:   oas.String,
+			Format: oas.Format(schema.Format),
+		}), nil
 
 	default:
 		return nil, errors.Errorf("unexpected schema type: %q", schema.Type)

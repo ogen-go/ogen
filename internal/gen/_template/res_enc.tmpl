@@ -55,7 +55,7 @@ if _, err := e.WriteTo(w); err != nil {
 }
 
 return nil
-{{- else if $.ContentType.OctetStream }}
+{{- else if $.Type.IsStream }}
 if _, err := io.Copy(w, response); err != nil {
     return errors.Wrap(err, "write")
 }
