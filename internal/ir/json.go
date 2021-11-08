@@ -29,7 +29,7 @@ func (j JSON) Fields() (fields []*Field) {
 
 // Format returns format name for handling json encoding or decoding.
 //
-// Mostly used for encoding or decoding of string formats, like `json.WriteUUID`,
+// Mostly used for encoding or decoding of string formats, like `json.EncodeUUID`,
 // where UUID is Format.
 func (j JSON) Format() string {
 	if j.t.Schema == nil {
@@ -100,13 +100,10 @@ func (j JSON) raw() bool {
 	}
 }
 
-// f is name of json method for decoding and encoding to use.
+// Fn returns jx.Encoder or jx.Decoder method name.
 //
-// For example. if Type can be encoded via j.WriteString, the "String" value
-// is returned.
-//
-// Blank string is returned otherwise.
-func (j JSON) f() string {
+// If blank, value cannot be encoded with single method call.
+func (j JSON) Fn() string {
 	if !j.raw() {
 		return ""
 	}
@@ -115,12 +112,6 @@ func (j JSON) f() string {
 	}
 	return capitalize(j.t.Primitive.String())
 }
-
-// JSONWrite returns function name from json package that writes value.
-func (j JSON) Write() string { return j.f() }
-
-// JSONRead returns function name from json package that reads value.
-func (j JSON) Read() string { return j.f() }
 
 // Sum returns specification for parsing value as sum type.
 func (j JSON) Sum() SumJSON {

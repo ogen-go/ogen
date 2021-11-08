@@ -1,10 +1,10 @@
 {{ define "req_enc_json"}}
-buf := json.GetBuffer()
-e := json.GetEncoder()
-defer json.PutEncoder(e)
+buf := getBuf()
+e := jx.GetEncoder()
+defer jx.PutEncoder(e)
 {{ template "enc_json" req_enc_elem $ }}
 if _, err := e.WriteTo(buf); err != nil {
-	json.PutBuffer(buf)
+	putBuf(buf)
 	return nil, err
 }
 {{ end }}

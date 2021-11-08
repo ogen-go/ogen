@@ -14,6 +14,7 @@ import (
 	"net"
 	"net/http"
 	"net/url"
+	"sync"
 	"sort"
 	"strconv"
 	"strings"
@@ -32,6 +33,7 @@ import (
 	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 )
 
 // No-op definition for keeping imports.
@@ -61,6 +63,8 @@ var (
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
 	_ = regexp.MustCompile
+	_ = jx.Null
+	_ = sync.Pool{}
 )
 
 {{ end }}

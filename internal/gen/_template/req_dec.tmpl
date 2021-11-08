@@ -16,13 +16,13 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
 		{{- /* Decode json */ -}}
 		{{- else if $contentType.JSON }}
 		var request {{ $t.Go }}
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
 			{{- template "dec_json" req_dec_elem $t }}

@@ -82,8 +82,7 @@ func BenchmarkMarshal(b *testing.B) {
 			b.Run("Encoder", func(b *testing.B) {
 				d.Setup(b)
 
-				e := GetEncoder()
-				defer PutEncoder(e)
+				e := jx.GetEncoder()
 
 				for i := 0; i < b.N; i++ {
 					e.Reset()
@@ -111,12 +110,11 @@ func BenchmarkMarshal(b *testing.B) {
 
 func BenchmarkUnmarshal(b *testing.B) {
 	b.Run("World", func(b *testing.B) {
-		d := testWorld(b)
+		wd := testWorld(b)
 
 		b.Run("std", func(b *testing.B) {
-			d.Setup(b)
-
-			data := d.Bytes()
+			wd.Setup(b)
+			data := wd.Bytes()
 
 			for i := 0; i < b.N; i++ {
 				var v World
@@ -127,16 +125,16 @@ func BenchmarkUnmarshal(b *testing.B) {
 			}
 		})
 		b.Run("jsoniter", func(b *testing.B) {
-			d.Setup(b)
+			wd.Setup(b)
 
-			r := jx.GetDecoder()
-			data := d.Bytes()
+			d := jx.GetDecoder()
+			data := wd.Bytes()
 
 			for i := 0; i < b.N; i++ {
-				r.ResetBytes(data)
+				d.ResetBytes(data)
 
 				var v World
-				if err := r.ObjBytes(func(r *Decoder, k []byte) error {
+				if err := d.ObjBytes(func(r *jx.Decoder, k []byte) error {
 					switch string(k) {
 					case "id":
 						n, err := r.Int64()

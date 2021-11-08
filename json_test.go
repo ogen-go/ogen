@@ -6,10 +6,9 @@ import (
 	"testing"
 	"time"
 
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/require"
-
-	"github.com/go-faster/jx"
 
 	"github.com/ogen-go/ogen/conv"
 	api "github.com/ogen-go/ogen/internal/sample_api"
@@ -18,28 +17,28 @@ import (
 )
 
 func decodeObject(t testing.TB, data []byte, v json.Unmarshaler) {
-	r := json.GetDecoder()
-	r.ResetBytes(data)
-	defer json.PutDecoder(r)
+	d := jx.GetDecoder()
+	d.ResetBytes(data)
+	defer jx.PutDecoder(d)
 	if rs, ok := v.(json.Resettable); ok {
 		rs.Reset()
 	}
-	require.NoError(t, r.ObjBytes(func(r *json.Decoder, _ []byte) error {
-		return v.ReadJSON(r)
+	require.NoError(t, d.ObjBytes(func(d *jx.Decoder, _ []byte) error {
+		return v.Decode(d)
 	}))
 }
 
 func encodeObject(v json.Marshaler) []byte {
-	s := json.GetEncoder()
-	s.ObjStart()
+	e := jx.GetEncoder()
+	e.ObjStart()
 	if settable, ok := v.(json.Settable); ok && !settable.IsSet() {
-		s.ObjEnd()
-		return s.Bytes()
+		e.ObjEnd()
+		return e.Bytes()
 	}
-	s.FieldStart("key")
-	v.WriteJSON(s)
-	s.ObjEnd()
-	return s.Bytes()
+	e.FieldStart("key")
+	v.Encode(e)
+	e.ObjEnd()
+	return e.Bytes()
 }
 
 func TestJSONGenerics(t *testing.T) {
@@ -126,12 +125,12 @@ func TestTechEmpowerJSON(t *testing.T) {
 		ID:           10,
 		RandomNumber: 2134,
 	}
-	e := json.GetEncoder()
-	hw.WriteJSON(e)
+	e := jx.GetEncoder()
+	hw.Encode(e)
 	var parsed techempower.WorldObject
-	i := json.GetDecoder()
-	i.ResetBytes(e.Bytes())
+	d := jx.GetDecoder()
+	d.ResetBytes(e.Bytes())
 	t.Log(e)
-	require.NoError(t, parsed.ReadJSON(i))
+	require.NoError(t, parsed.Decode(d))
 	require.Equal(t, hw, parsed)
 }

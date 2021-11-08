@@ -10,7 +10,7 @@ var {{ $.NextVar }} {{ $.Type.PointerTo.Go }}
 {{- define "dec_json_array" }}
 {{- $t := $.Type -}}
 {{ $.Var }} = nil
-if err := d.Arr(func(d *json.Decoder) error {
+if err := d.Arr(func(d *jx.Decoder) error {
 	var {{ $.NextVar }} {{ $t.Item.Go }}
 	{{- template "dec_json" sub_array_elem $ $t.Item }}
 	{{ $.Var }} = append({{ $.Var }}, {{ $.NextVar }})
@@ -27,11 +27,11 @@ if err := d.Arr(func(d *json.Decoder) error {
 	{{ $.Var }}.Reset()
 {{- end }}
 {{- if $g.Format }}
-	if err := {{ $.Var }}.ReadJSON(d, json.Read{{ $g.JSON.Format }}); err != nil {
+	if err := {{ $.Var }}.Decode(d, json.Decode{{ $g.JSON.Format }}); err != nil {
 		return err
 	}
 {{- else }}
-	if err := {{ $.Var }}.ReadJSON(d); err != nil {
+	if err := {{ $.Var }}.Decode(d); err != nil {
 		return err
 	}
 {{- end }}
@@ -48,17 +48,17 @@ if err := d.Arr(func(d *json.Decoder) error {
 	{{- else if $t.GenericOf }}
 		{{- template "dec_json_generic" $ }}
 	{{- else if or ($t.IsStruct) ($t.IsEnum) ($t.IsSum) }}
-		if err := {{ $.Var }}.ReadJSON(d); err != nil {
+		if err := {{ $.Var }}.Decode(d); err != nil {
 			return err
 		}
-	{{- else if $j.Read }}
-		v, err := d.{{ $j.Read }}()
+	{{- else if $j.Fn }}
+		v, err := d.{{ $j.Fn }}()
 		{{ $.Var }} = {{ $t.Go }}(v)
 		if err != nil {
 			return err
 		}
 	{{- else if $j.Format }}
-		v, err := json.Read{{ $j.Format }}(d)
+		v, err := json.Decode{{ $j.Format }}(d)
 		{{ $.Var }} = v
 		if err != nil {
 			 return err

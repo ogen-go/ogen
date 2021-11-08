@@ -4,9 +4,11 @@ import (
 	"net"
 
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 )
 
-func ReadIP(i *Decoder) (v net.IP, err error) {
+// DecodeIP decodes net.IP.
+func DecodeIP(i *jx.Decoder) (v net.IP, err error) {
 	s, err := i.Str()
 	if err != nil {
 		return nil, err
@@ -18,6 +20,7 @@ func ReadIP(i *Decoder) (v net.IP, err error) {
 	return v, nil
 }
 
-func WriteIP(s *Encoder, v net.IP) {
+// EncodeIP encodes net.IP.
+func EncodeIP(s *jx.Encoder, v net.IP) {
 	s.Str(v.String())
 }

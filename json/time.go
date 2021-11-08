@@ -2,6 +2,8 @@ package json
 
 import (
 	"time"
+
+	"github.com/go-faster/jx"
 )
 
 const (
@@ -9,7 +11,7 @@ const (
 	timeLayout = "15:04:05"
 )
 
-func ReadDate(i *Decoder) (v time.Time, err error) {
+func DecodeDate(i *jx.Decoder) (v time.Time, err error) {
 	s, err := i.Str()
 	if err != nil {
 		return v, err
@@ -17,11 +19,11 @@ func ReadDate(i *Decoder) (v time.Time, err error) {
 	return time.Parse(dateLayout, s)
 }
 
-func WriteDate(s *Encoder, v time.Time) {
+func EncodeDate(s *jx.Encoder, v time.Time) {
 	s.Str(v.Format(dateLayout))
 }
 
-func ReadTime(i *Decoder) (v time.Time, err error) {
+func DecodeTime(i *jx.Decoder) (v time.Time, err error) {
 	s, err := i.Str()
 	if err != nil {
 		return v, err
@@ -29,11 +31,11 @@ func ReadTime(i *Decoder) (v time.Time, err error) {
 	return time.Parse(timeLayout, s)
 }
 
-func WriteTime(s *Encoder, v time.Time) {
+func EncodeTime(s *jx.Encoder, v time.Time) {
 	s.Str(v.Format(timeLayout))
 }
 
-func ReadDateTime(i *Decoder) (v time.Time, err error) {
+func DecodeDateTime(i *jx.Decoder) (v time.Time, err error) {
 	s, err := i.Str()
 	if err != nil {
 		return v, err
@@ -41,11 +43,11 @@ func ReadDateTime(i *Decoder) (v time.Time, err error) {
 	return time.Parse(time.RFC3339, s)
 }
 
-func WriteDateTime(s *Encoder, v time.Time) {
+func EncodeDateTime(s *jx.Encoder, v time.Time) {
 	s.Str(v.Format(time.RFC3339))
 }
 
-func ReadDuration(i *Decoder) (v time.Duration, err error) {
+func DecodeDuration(i *jx.Decoder) (v time.Duration, err error) {
 	s, err := i.Str()
 	if err != nil {
 		return v, err
@@ -53,6 +55,6 @@ func ReadDuration(i *Decoder) (v time.Duration, err error) {
 	return time.ParseDuration(s)
 }
 
-func WriteDuration(s *Encoder, v time.Duration) {
+func EncodeDuration(s *jx.Encoder, v time.Duration) {
 	s.Str(v.String())
 }

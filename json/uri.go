@@ -2,9 +2,12 @@ package json
 
 import (
 	"net/url"
+
+	"github.com/go-faster/jx"
 )
 
-func ReadURI(i *Decoder) (v url.URL, err error) {
+// DecodeURI decodes url.URL from json.
+func DecodeURI(i *jx.Decoder) (v url.URL, err error) {
 	s, err := i.Str()
 	if err != nil {
 		return v, err
@@ -16,6 +19,7 @@ func ReadURI(i *Decoder) (v url.URL, err error) {
 	return *u, nil
 }
 
-func WriteURI(s *Encoder, v url.URL) {
+// EncodeURI encodes url.URL to json.
+func EncodeURI(s *jx.Encoder, v url.URL) {
 	s.Str(v.String())
 }

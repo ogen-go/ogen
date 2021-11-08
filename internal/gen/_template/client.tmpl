@@ -102,7 +102,7 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 		return res, err
 	}
 	{{- if $contentType.JSON }}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	{{- end }}
 	reqBody = buf
 	{{- end }}
@@ -117,7 +117,7 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 			return res, err
 		}
 		{{- if $contentType.JSON }}
-		defer json.PutBuffer(buf)
+		defer putBuf(buf)
 		{{- end }}
 		reqBody = buf
 	{{- end }}

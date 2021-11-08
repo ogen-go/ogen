@@ -15,11 +15,11 @@ e.FieldStart("{{ $.Tag.JSON }}")
 {{- if $v.Optional -}}
 	if {{ $.Var }}.Set {
 		{{- template "enc_json_start" $ }}
-		{{ $.Var }}.WriteJSON(e{{ if $g.Format }}, json.Write{{ $g.JSON.Format }}{{ end }})
+		{{ $.Var }}.Encode(e{{ if $g.Format }}, json.Encode{{ $g.JSON.Format }}{{ end }})
 	}
 {{- else -}}
 	{{- template "enc_json_start" $ }}
-	{{ $.Var }}.WriteJSON(e{{ if $g.Format }}, json.Write{{ $g.JSON.Format }}{{ end }})
+	{{ $.Var }}.Encode(e{{ if $g.Format }}, json.Encode{{ $g.JSON.Format }}{{ end }})
 {{- end -}}
 {{- end }}
 
@@ -56,24 +56,24 @@ Unexpected nil semantic
 {{- end -}}
 {{- end }}
 
-{{/* Encode value that implements json.Encoder with respect to nil semantic */}}
+{{/* Encode value that implements jx.Encoder with respect to nil semantic */}}
 {{- define "enc_json_value" -}}
 {{- $t := $.Type -}}
 {{- if or (eq $t.NilSemantic "invalid") (eq $t.NilSemantic "optional") -}}
 	if {{ $.Var }} != nil {
 		{{- template "enc_json_start" $ }}
-		{{ $.Var }}.WriteJSON(e)
+		{{ $.Var }}.Encode(e)
 	}
 {{- else if eq $t.NilSemantic "null" -}}
 	{{- template "enc_json_start" $ }}
 	if {{ $.Var }} == nil {
 		e.Null()
 	} else {
-		{{ $.Var }}.WriteJSON(e)
+		{{ $.Var }}.Encode(e)
 	}
 {{- else -}}
 	{{- template "enc_json_start" $ }}
-	{{ $.Var }}.WriteJSON(e)
+	{{ $.Var }}.Encode(e)
 {{- end -}}
 {{- end }}
 
@@ -89,10 +89,10 @@ Unexpected nil semantic
 			{{- template "enc_json_array" $ }}
 	{{- else if $j.Format -}}
 			{{- template "enc_json_start" $ }}
-			json.Write{{ $j.Format }}(e, {{ $.Var }})
-	{{- else if $j.Write -}}
+			json.Encode{{ $j.Format }}(e, {{ $.Var }})
+	{{- else if $j.Fn -}}
 			{{- template "enc_json_start" $ }}
-			e.{{ $j.Write }}({{ $.Var }})
+			e.{{ $j.Fn }}({{ $.Var }})
 	{{- else -}}
 			{{- if $.Sub -}}_ = {{ $.Var }}{{- end -}}
 			// Unsupported kind "{{ $t.Kind  }}".

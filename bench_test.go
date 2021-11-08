@@ -288,24 +288,24 @@ func BenchmarkJSON(b *testing.B) {
 			dataBytes := int64(len(data))
 
 			b.Run("Encode", func(b *testing.B) {
-				e := json.GetEncoder()
+				var e jx.Encoder
 				b.ReportAllocs()
 				b.SetBytes(dataBytes)
 
 				for i := 0; i < b.N; i++ {
 					e.Reset()
-					h.WriteJSON(e)
+					h.Encode(&e)
 				}
 			})
 			b.Run("Decode", func(b *testing.B) {
 				var v techempower.HelloWorld
 				b.ReportAllocs()
 				b.SetBytes(dataBytes)
-				j := json.GetDecoder()
+				d := jx.GetDecoder()
 
 				for i := 0; i < b.N; i++ {
-					j.ResetBytes(data)
-					if err := v.ReadJSON(j); err != nil {
+					d.ResetBytes(data)
+					if err := v.Decode(d); err != nil {
 						b.Fatal(err)
 					}
 				}
@@ -320,24 +320,24 @@ func BenchmarkJSON(b *testing.B) {
 			dataBytes := int64(len(data))
 
 			b.Run("Encode", func(b *testing.B) {
-				e := json.GetEncoder()
+				var e jx.Encoder
 				b.ReportAllocs()
 				b.SetBytes(dataBytes)
 
 				for i := 0; i < b.N; i++ {
 					e.Reset()
-					h.WriteJSON(e)
+					h.Encode(&e)
 				}
 			})
 			b.Run("Decode", func(b *testing.B) {
 				var v techempower.WorldObject
 				b.ReportAllocs()
 				b.SetBytes(dataBytes)
-				j := json.GetDecoder()
+				j := jx.GetDecoder()
 
 				for i := 0; i < b.N; i++ {
 					j.ResetBytes(data)
-					if err := v.ReadJSON(j); err != nil {
+					if err := v.Decode(j); err != nil {
 						b.Fatal(err)
 					}
 				}
@@ -366,12 +366,12 @@ func BenchmarkJSON(b *testing.B) {
 			data := json.Encode(pet)
 			dataBytes := int64(len(data))
 			b.Run("Encode", func(b *testing.B) {
-				e := json.GetEncoder()
+				var e jx.Encoder
 				b.ReportAllocs()
 				b.SetBytes(dataBytes)
 				for i := 0; i < b.N; i++ {
 					e.Reset()
-					pet.WriteJSON(e)
+					pet.Encode(&e)
 				}
 			})
 		})
