@@ -60,8 +60,8 @@ var (
 	_ = regexp.MustCompile
 )
 
-// Server handles operations described by OpenAPI v3 specification.
-type Server interface {
+// Handler handles operations described by OpenAPI v3 specification.
+type Handler interface {
 	// CreatePets implements createPets operation.
 	CreatePets(ctx context.Context) (CreatePetsRes, error)
 	// ListPets implements listPets operation.
@@ -70,15 +70,17 @@ type Server interface {
 	ShowPetById(ctx context.Context, params ShowPetByIdParams) (ShowPetByIdRes, error)
 }
 
-type HTTPServer struct {
-	s   Server
+// Server implements http server based on OpenAPI v3 specification and
+// calls Handler to handle requests.
+type Server struct {
+	h   Handler
 	mux *chi.Mux
 	cfg config
 }
 
-func NewServer(s Server, opts ...Option) *HTTPServer {
-	srv := &HTTPServer{
-		s:   s,
+func NewServer(h Handler, opts ...Option) *Server {
+	srv := &Server{
+		h:   h,
 		mux: chi.NewMux(),
 		cfg: newConfig(opts...),
 	}
@@ -86,12 +88,12 @@ func NewServer(s Server, opts ...Option) *HTTPServer {
 	return srv
 }
 
-func (s *HTTPServer) setupRoutes() {
+func (s *Server) setupRoutes() {
 	s.mux.MethodFunc("POST", "/pets", s.HandleCreatePetsRequest)
 	s.mux.MethodFunc("GET", "/pets", s.HandleListPetsRequest)
 	s.mux.MethodFunc("GET", "/pets/{petId}", s.HandleShowPetByIdRequest)
 }
 
-func (s *HTTPServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	s.mux.ServeHTTP(w, r)
 }

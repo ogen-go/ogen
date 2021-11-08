@@ -60,8 +60,8 @@ var (
 	_ = regexp.MustCompile
 )
 
-// Server handles operations described by OpenAPI v3 specification.
-type Server interface {
+// Handler handles operations described by OpenAPI v3 specification.
+type Handler interface {
 	// AddStickerToSet implements addStickerToSet operation.
 	AddStickerToSet(ctx context.Context, req AddStickerToSet) (AddStickerToSetRes, error)
 	// AnswerCallbackQuery implements answerCallbackQuery operation.
@@ -214,15 +214,17 @@ type Server interface {
 	UploadStickerFile(ctx context.Context, req UploadStickerFile) (UploadStickerFileRes, error)
 }
 
-type HTTPServer struct {
-	s   Server
+// Server implements http server based on OpenAPI v3 specification and
+// calls Handler to handle requests.
+type Server struct {
+	h   Handler
 	mux *chi.Mux
 	cfg config
 }
 
-func NewServer(s Server, opts ...Option) *HTTPServer {
-	srv := &HTTPServer{
-		s:   s,
+func NewServer(h Handler, opts ...Option) *Server {
+	srv := &Server{
+		h:   h,
 		mux: chi.NewMux(),
 		cfg: newConfig(opts...),
 	}
@@ -230,7 +232,7 @@ func NewServer(s Server, opts ...Option) *HTTPServer {
 	return srv
 }
 
-func (s *HTTPServer) setupRoutes() {
+func (s *Server) setupRoutes() {
 	s.mux.MethodFunc("POST", "/addStickerToSet", s.HandleAddStickerToSetRequest)
 	s.mux.MethodFunc("POST", "/answerCallbackQuery", s.HandleAnswerCallbackQueryRequest)
 	s.mux.MethodFunc("POST", "/answerInlineQuery", s.HandleAnswerInlineQueryRequest)
@@ -308,6 +310,6 @@ func (s *HTTPServer) setupRoutes() {
 	s.mux.MethodFunc("POST", "/uploadStickerFile", s.HandleUploadStickerFileRequest)
 }
 
-func (s *HTTPServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	s.mux.ServeHTTP(w, r)
 }

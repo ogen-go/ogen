@@ -60,7 +60,7 @@ var (
 	_ = regexp.MustCompile
 )
 
-func (s *HTTPServer) HandleCreateSnapshotRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleCreateSnapshotRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CreateSnapshot`,
 		trace.WithAttributes(otelogen.OperationID(`createSnapshot`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -73,7 +73,7 @@ func (s *HTTPServer) HandleCreateSnapshotRequest(w http.ResponseWriter, r *http.
 		return
 	}
 
-	response, err := s.s.CreateSnapshot(ctx, request)
+	response, err := s.h.CreateSnapshot(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -86,7 +86,7 @@ func (s *HTTPServer) HandleCreateSnapshotRequest(w http.ResponseWriter, r *http.
 	}
 }
 
-func (s *HTTPServer) HandleCreateSyncActionRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleCreateSyncActionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CreateSyncAction`,
 		trace.WithAttributes(otelogen.OperationID(`createSyncAction`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -99,7 +99,7 @@ func (s *HTTPServer) HandleCreateSyncActionRequest(w http.ResponseWriter, r *htt
 		return
 	}
 
-	response, err := s.s.CreateSyncAction(ctx, request)
+	response, err := s.h.CreateSyncAction(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -112,14 +112,14 @@ func (s *HTTPServer) HandleCreateSyncActionRequest(w http.ResponseWriter, r *htt
 	}
 }
 
-func (s *HTTPServer) HandleDescribeBalloonConfigRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleDescribeBalloonConfigRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `DescribeBalloonConfig`,
 		trace.WithAttributes(otelogen.OperationID(`describeBalloonConfig`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.DescribeBalloonConfig(ctx)
+	response, err := s.h.DescribeBalloonConfig(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -132,14 +132,14 @@ func (s *HTTPServer) HandleDescribeBalloonConfigRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleDescribeBalloonStatsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleDescribeBalloonStatsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `DescribeBalloonStats`,
 		trace.WithAttributes(otelogen.OperationID(`describeBalloonStats`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.DescribeBalloonStats(ctx)
+	response, err := s.h.DescribeBalloonStats(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -152,14 +152,14 @@ func (s *HTTPServer) HandleDescribeBalloonStatsRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleDescribeInstanceRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleDescribeInstanceRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `DescribeInstance`,
 		trace.WithAttributes(otelogen.OperationID(`describeInstance`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.DescribeInstance(ctx)
+	response, err := s.h.DescribeInstance(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -172,14 +172,14 @@ func (s *HTTPServer) HandleDescribeInstanceRequest(w http.ResponseWriter, r *htt
 	}
 }
 
-func (s *HTTPServer) HandleGetExportVmConfigRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGetExportVmConfigRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetExportVmConfig`,
 		trace.WithAttributes(otelogen.OperationID(`getExportVmConfig`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.GetExportVmConfig(ctx)
+	response, err := s.h.GetExportVmConfig(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -192,14 +192,14 @@ func (s *HTTPServer) HandleGetExportVmConfigRequest(w http.ResponseWriter, r *ht
 	}
 }
 
-func (s *HTTPServer) HandleGetMachineConfigurationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGetMachineConfigurationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetMachineConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`getMachineConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.GetMachineConfiguration(ctx)
+	response, err := s.h.GetMachineConfiguration(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -212,7 +212,7 @@ func (s *HTTPServer) HandleGetMachineConfigurationRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleLoadSnapshotRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleLoadSnapshotRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `LoadSnapshot`,
 		trace.WithAttributes(otelogen.OperationID(`loadSnapshot`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -225,7 +225,7 @@ func (s *HTTPServer) HandleLoadSnapshotRequest(w http.ResponseWriter, r *http.Re
 		return
 	}
 
-	response, err := s.s.LoadSnapshot(ctx, request)
+	response, err := s.h.LoadSnapshot(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -238,7 +238,7 @@ func (s *HTTPServer) HandleLoadSnapshotRequest(w http.ResponseWriter, r *http.Re
 	}
 }
 
-func (s *HTTPServer) HandleMmdsConfigPutRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleMmdsConfigPutRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MmdsConfigPut`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -250,7 +250,7 @@ func (s *HTTPServer) HandleMmdsConfigPutRequest(w http.ResponseWriter, r *http.R
 		return
 	}
 
-	response, err := s.s.MmdsConfigPut(ctx, request)
+	response, err := s.h.MmdsConfigPut(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -263,13 +263,13 @@ func (s *HTTPServer) HandleMmdsConfigPutRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
-func (s *HTTPServer) HandleMmdsGetRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleMmdsGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MmdsGet`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.MmdsGet(ctx)
+	response, err := s.h.MmdsGet(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -282,7 +282,7 @@ func (s *HTTPServer) HandleMmdsGetRequest(w http.ResponseWriter, r *http.Request
 	}
 }
 
-func (s *HTTPServer) HandleMmdsPatchRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleMmdsPatchRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MmdsPatch`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -294,7 +294,7 @@ func (s *HTTPServer) HandleMmdsPatchRequest(w http.ResponseWriter, r *http.Reque
 		return
 	}
 
-	response, err := s.s.MmdsPatch(ctx, request)
+	response, err := s.h.MmdsPatch(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -307,7 +307,7 @@ func (s *HTTPServer) HandleMmdsPatchRequest(w http.ResponseWriter, r *http.Reque
 	}
 }
 
-func (s *HTTPServer) HandleMmdsPutRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleMmdsPutRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MmdsPut`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -319,7 +319,7 @@ func (s *HTTPServer) HandleMmdsPutRequest(w http.ResponseWriter, r *http.Request
 		return
 	}
 
-	response, err := s.s.MmdsPut(ctx, request)
+	response, err := s.h.MmdsPut(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -332,7 +332,7 @@ func (s *HTTPServer) HandleMmdsPutRequest(w http.ResponseWriter, r *http.Request
 	}
 }
 
-func (s *HTTPServer) HandlePatchBalloonRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePatchBalloonRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PatchBalloon`,
 		trace.WithAttributes(otelogen.OperationID(`patchBalloon`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -345,7 +345,7 @@ func (s *HTTPServer) HandlePatchBalloonRequest(w http.ResponseWriter, r *http.Re
 		return
 	}
 
-	response, err := s.s.PatchBalloon(ctx, request)
+	response, err := s.h.PatchBalloon(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -358,7 +358,7 @@ func (s *HTTPServer) HandlePatchBalloonRequest(w http.ResponseWriter, r *http.Re
 	}
 }
 
-func (s *HTTPServer) HandlePatchBalloonStatsIntervalRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePatchBalloonStatsIntervalRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PatchBalloonStatsInterval`,
 		trace.WithAttributes(otelogen.OperationID(`patchBalloonStatsInterval`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -371,7 +371,7 @@ func (s *HTTPServer) HandlePatchBalloonStatsIntervalRequest(w http.ResponseWrite
 		return
 	}
 
-	response, err := s.s.PatchBalloonStatsInterval(ctx, request)
+	response, err := s.h.PatchBalloonStatsInterval(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -384,7 +384,7 @@ func (s *HTTPServer) HandlePatchBalloonStatsIntervalRequest(w http.ResponseWrite
 	}
 }
 
-func (s *HTTPServer) HandlePatchGuestDriveByIDRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePatchGuestDriveByIDRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PatchGuestDriveByID`,
 		trace.WithAttributes(otelogen.OperationID(`patchGuestDriveByID`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -403,7 +403,7 @@ func (s *HTTPServer) HandlePatchGuestDriveByIDRequest(w http.ResponseWriter, r *
 		return
 	}
 
-	response, err := s.s.PatchGuestDriveByID(ctx, request, params)
+	response, err := s.h.PatchGuestDriveByID(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -416,7 +416,7 @@ func (s *HTTPServer) HandlePatchGuestDriveByIDRequest(w http.ResponseWriter, r *
 	}
 }
 
-func (s *HTTPServer) HandlePatchGuestNetworkInterfaceByIDRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePatchGuestNetworkInterfaceByIDRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PatchGuestNetworkInterfaceByID`,
 		trace.WithAttributes(otelogen.OperationID(`patchGuestNetworkInterfaceByID`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -435,7 +435,7 @@ func (s *HTTPServer) HandlePatchGuestNetworkInterfaceByIDRequest(w http.Response
 		return
 	}
 
-	response, err := s.s.PatchGuestNetworkInterfaceByID(ctx, request, params)
+	response, err := s.h.PatchGuestNetworkInterfaceByID(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -448,7 +448,7 @@ func (s *HTTPServer) HandlePatchGuestNetworkInterfaceByIDRequest(w http.Response
 	}
 }
 
-func (s *HTTPServer) HandlePatchMachineConfigurationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePatchMachineConfigurationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PatchMachineConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`patchMachineConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -461,7 +461,7 @@ func (s *HTTPServer) HandlePatchMachineConfigurationRequest(w http.ResponseWrite
 		return
 	}
 
-	response, err := s.s.PatchMachineConfiguration(ctx, request)
+	response, err := s.h.PatchMachineConfiguration(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -474,7 +474,7 @@ func (s *HTTPServer) HandlePatchMachineConfigurationRequest(w http.ResponseWrite
 	}
 }
 
-func (s *HTTPServer) HandlePatchVmRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePatchVmRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PatchVm`,
 		trace.WithAttributes(otelogen.OperationID(`patchVm`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -487,7 +487,7 @@ func (s *HTTPServer) HandlePatchVmRequest(w http.ResponseWriter, r *http.Request
 		return
 	}
 
-	response, err := s.s.PatchVm(ctx, request)
+	response, err := s.h.PatchVm(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -500,7 +500,7 @@ func (s *HTTPServer) HandlePatchVmRequest(w http.ResponseWriter, r *http.Request
 	}
 }
 
-func (s *HTTPServer) HandlePutBalloonRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePutBalloonRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PutBalloon`,
 		trace.WithAttributes(otelogen.OperationID(`putBalloon`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -513,7 +513,7 @@ func (s *HTTPServer) HandlePutBalloonRequest(w http.ResponseWriter, r *http.Requ
 		return
 	}
 
-	response, err := s.s.PutBalloon(ctx, request)
+	response, err := s.h.PutBalloon(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -526,7 +526,7 @@ func (s *HTTPServer) HandlePutBalloonRequest(w http.ResponseWriter, r *http.Requ
 	}
 }
 
-func (s *HTTPServer) HandlePutGuestBootSourceRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePutGuestBootSourceRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PutGuestBootSource`,
 		trace.WithAttributes(otelogen.OperationID(`putGuestBootSource`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -539,7 +539,7 @@ func (s *HTTPServer) HandlePutGuestBootSourceRequest(w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.s.PutGuestBootSource(ctx, request)
+	response, err := s.h.PutGuestBootSource(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -552,7 +552,7 @@ func (s *HTTPServer) HandlePutGuestBootSourceRequest(w http.ResponseWriter, r *h
 	}
 }
 
-func (s *HTTPServer) HandlePutGuestDriveByIDRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePutGuestDriveByIDRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PutGuestDriveByID`,
 		trace.WithAttributes(otelogen.OperationID(`putGuestDriveByID`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -571,7 +571,7 @@ func (s *HTTPServer) HandlePutGuestDriveByIDRequest(w http.ResponseWriter, r *ht
 		return
 	}
 
-	response, err := s.s.PutGuestDriveByID(ctx, request, params)
+	response, err := s.h.PutGuestDriveByID(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -584,7 +584,7 @@ func (s *HTTPServer) HandlePutGuestDriveByIDRequest(w http.ResponseWriter, r *ht
 	}
 }
 
-func (s *HTTPServer) HandlePutGuestNetworkInterfaceByIDRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePutGuestNetworkInterfaceByIDRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PutGuestNetworkInterfaceByID`,
 		trace.WithAttributes(otelogen.OperationID(`putGuestNetworkInterfaceByID`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -603,7 +603,7 @@ func (s *HTTPServer) HandlePutGuestNetworkInterfaceByIDRequest(w http.ResponseWr
 		return
 	}
 
-	response, err := s.s.PutGuestNetworkInterfaceByID(ctx, request, params)
+	response, err := s.h.PutGuestNetworkInterfaceByID(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -616,7 +616,7 @@ func (s *HTTPServer) HandlePutGuestNetworkInterfaceByIDRequest(w http.ResponseWr
 	}
 }
 
-func (s *HTTPServer) HandlePutGuestVsockRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePutGuestVsockRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PutGuestVsock`,
 		trace.WithAttributes(otelogen.OperationID(`putGuestVsock`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -629,7 +629,7 @@ func (s *HTTPServer) HandlePutGuestVsockRequest(w http.ResponseWriter, r *http.R
 		return
 	}
 
-	response, err := s.s.PutGuestVsock(ctx, request)
+	response, err := s.h.PutGuestVsock(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -642,7 +642,7 @@ func (s *HTTPServer) HandlePutGuestVsockRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
-func (s *HTTPServer) HandlePutLoggerRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePutLoggerRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PutLogger`,
 		trace.WithAttributes(otelogen.OperationID(`putLogger`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -655,7 +655,7 @@ func (s *HTTPServer) HandlePutLoggerRequest(w http.ResponseWriter, r *http.Reque
 		return
 	}
 
-	response, err := s.s.PutLogger(ctx, request)
+	response, err := s.h.PutLogger(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -668,7 +668,7 @@ func (s *HTTPServer) HandlePutLoggerRequest(w http.ResponseWriter, r *http.Reque
 	}
 }
 
-func (s *HTTPServer) HandlePutMachineConfigurationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePutMachineConfigurationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PutMachineConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`putMachineConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -681,7 +681,7 @@ func (s *HTTPServer) HandlePutMachineConfigurationRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.PutMachineConfiguration(ctx, request)
+	response, err := s.h.PutMachineConfiguration(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -694,7 +694,7 @@ func (s *HTTPServer) HandlePutMachineConfigurationRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandlePutMetricsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePutMetricsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PutMetrics`,
 		trace.WithAttributes(otelogen.OperationID(`putMetrics`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -707,7 +707,7 @@ func (s *HTTPServer) HandlePutMetricsRequest(w http.ResponseWriter, r *http.Requ
 		return
 	}
 
-	response, err := s.s.PutMetrics(ctx, request)
+	response, err := s.h.PutMetrics(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)

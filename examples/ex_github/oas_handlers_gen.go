@@ -60,7 +60,7 @@ var (
 	_ = regexp.MustCompile
 )
 
-func (s *HTTPServer) HandleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/add-repo-access-to-self-hosted-runner-group-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -73,7 +73,7 @@ func (s *HTTPServer) HandleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgReque
 		return
 	}
 
-	response, err := s.s.ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
+	response, err := s.h.ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -86,7 +86,7 @@ func (s *HTTPServer) HandleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgReque
 	}
 }
 
-func (s *HTTPServer) HandleActionsAddSelectedRepoToOrgSecretRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsAddSelectedRepoToOrgSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsAddSelectedRepoToOrgSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/add-selected-repo-to-org-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -99,7 +99,7 @@ func (s *HTTPServer) HandleActionsAddSelectedRepoToOrgSecretRequest(w http.Respo
 		return
 	}
 
-	response, err := s.s.ActionsAddSelectedRepoToOrgSecret(ctx, params)
+	response, err := s.h.ActionsAddSelectedRepoToOrgSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -112,7 +112,7 @@ func (s *HTTPServer) HandleActionsAddSelectedRepoToOrgSecretRequest(w http.Respo
 	}
 }
 
-func (s *HTTPServer) HandleActionsAddSelfHostedRunnerToGroupForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsAddSelfHostedRunnerToGroupForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsAddSelfHostedRunnerToGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/add-self-hosted-runner-to-group-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -125,7 +125,7 @@ func (s *HTTPServer) HandleActionsAddSelfHostedRunnerToGroupForOrgRequest(w http
 		return
 	}
 
-	response, err := s.s.ActionsAddSelfHostedRunnerToGroupForOrg(ctx, params)
+	response, err := s.h.ActionsAddSelfHostedRunnerToGroupForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -138,7 +138,7 @@ func (s *HTTPServer) HandleActionsAddSelfHostedRunnerToGroupForOrgRequest(w http
 	}
 }
 
-func (s *HTTPServer) HandleActionsApproveWorkflowRunRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsApproveWorkflowRunRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsApproveWorkflowRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/approve-workflow-run`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -151,7 +151,7 @@ func (s *HTTPServer) HandleActionsApproveWorkflowRunRequest(w http.ResponseWrite
 		return
 	}
 
-	response, err := s.s.ActionsApproveWorkflowRun(ctx, params)
+	response, err := s.h.ActionsApproveWorkflowRun(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -164,7 +164,7 @@ func (s *HTTPServer) HandleActionsApproveWorkflowRunRequest(w http.ResponseWrite
 	}
 }
 
-func (s *HTTPServer) HandleActionsCancelWorkflowRunRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsCancelWorkflowRunRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCancelWorkflowRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/cancel-workflow-run`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -177,7 +177,7 @@ func (s *HTTPServer) HandleActionsCancelWorkflowRunRequest(w http.ResponseWriter
 		return
 	}
 
-	response, err := s.s.ActionsCancelWorkflowRun(ctx, params)
+	response, err := s.h.ActionsCancelWorkflowRun(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -190,7 +190,7 @@ func (s *HTTPServer) HandleActionsCancelWorkflowRunRequest(w http.ResponseWriter
 	}
 }
 
-func (s *HTTPServer) HandleActionsCreateOrUpdateEnvironmentSecretRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsCreateOrUpdateEnvironmentSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCreateOrUpdateEnvironmentSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-or-update-environment-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -209,7 +209,7 @@ func (s *HTTPServer) HandleActionsCreateOrUpdateEnvironmentSecretRequest(w http.
 		return
 	}
 
-	response, err := s.s.ActionsCreateOrUpdateEnvironmentSecret(ctx, request, params)
+	response, err := s.h.ActionsCreateOrUpdateEnvironmentSecret(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -222,7 +222,7 @@ func (s *HTTPServer) HandleActionsCreateOrUpdateEnvironmentSecretRequest(w http.
 	}
 }
 
-func (s *HTTPServer) HandleActionsCreateOrUpdateOrgSecretRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsCreateOrUpdateOrgSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCreateOrUpdateOrgSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-or-update-org-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -241,7 +241,7 @@ func (s *HTTPServer) HandleActionsCreateOrUpdateOrgSecretRequest(w http.Response
 		return
 	}
 
-	response, err := s.s.ActionsCreateOrUpdateOrgSecret(ctx, request, params)
+	response, err := s.h.ActionsCreateOrUpdateOrgSecret(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -254,7 +254,7 @@ func (s *HTTPServer) HandleActionsCreateOrUpdateOrgSecretRequest(w http.Response
 	}
 }
 
-func (s *HTTPServer) HandleActionsCreateOrUpdateRepoSecretRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsCreateOrUpdateRepoSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCreateOrUpdateRepoSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-or-update-repo-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -273,7 +273,7 @@ func (s *HTTPServer) HandleActionsCreateOrUpdateRepoSecretRequest(w http.Respons
 		return
 	}
 
-	response, err := s.s.ActionsCreateOrUpdateRepoSecret(ctx, request, params)
+	response, err := s.h.ActionsCreateOrUpdateRepoSecret(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -286,7 +286,7 @@ func (s *HTTPServer) HandleActionsCreateOrUpdateRepoSecretRequest(w http.Respons
 	}
 }
 
-func (s *HTTPServer) HandleActionsCreateRegistrationTokenForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsCreateRegistrationTokenForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCreateRegistrationTokenForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-registration-token-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -299,7 +299,7 @@ func (s *HTTPServer) HandleActionsCreateRegistrationTokenForOrgRequest(w http.Re
 		return
 	}
 
-	response, err := s.s.ActionsCreateRegistrationTokenForOrg(ctx, params)
+	response, err := s.h.ActionsCreateRegistrationTokenForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -312,7 +312,7 @@ func (s *HTTPServer) HandleActionsCreateRegistrationTokenForOrgRequest(w http.Re
 	}
 }
 
-func (s *HTTPServer) HandleActionsCreateRegistrationTokenForRepoRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsCreateRegistrationTokenForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCreateRegistrationTokenForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-registration-token-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -325,7 +325,7 @@ func (s *HTTPServer) HandleActionsCreateRegistrationTokenForRepoRequest(w http.R
 		return
 	}
 
-	response, err := s.s.ActionsCreateRegistrationTokenForRepo(ctx, params)
+	response, err := s.h.ActionsCreateRegistrationTokenForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -338,7 +338,7 @@ func (s *HTTPServer) HandleActionsCreateRegistrationTokenForRepoRequest(w http.R
 	}
 }
 
-func (s *HTTPServer) HandleActionsCreateRemoveTokenForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsCreateRemoveTokenForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCreateRemoveTokenForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-remove-token-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -351,7 +351,7 @@ func (s *HTTPServer) HandleActionsCreateRemoveTokenForOrgRequest(w http.Response
 		return
 	}
 
-	response, err := s.s.ActionsCreateRemoveTokenForOrg(ctx, params)
+	response, err := s.h.ActionsCreateRemoveTokenForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -364,7 +364,7 @@ func (s *HTTPServer) HandleActionsCreateRemoveTokenForOrgRequest(w http.Response
 	}
 }
 
-func (s *HTTPServer) HandleActionsCreateRemoveTokenForRepoRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsCreateRemoveTokenForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCreateRemoveTokenForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-remove-token-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -377,7 +377,7 @@ func (s *HTTPServer) HandleActionsCreateRemoveTokenForRepoRequest(w http.Respons
 		return
 	}
 
-	response, err := s.s.ActionsCreateRemoveTokenForRepo(ctx, params)
+	response, err := s.h.ActionsCreateRemoveTokenForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -390,7 +390,7 @@ func (s *HTTPServer) HandleActionsCreateRemoveTokenForRepoRequest(w http.Respons
 	}
 }
 
-func (s *HTTPServer) HandleActionsCreateSelfHostedRunnerGroupForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsCreateSelfHostedRunnerGroupForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCreateSelfHostedRunnerGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-self-hosted-runner-group-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -409,7 +409,7 @@ func (s *HTTPServer) HandleActionsCreateSelfHostedRunnerGroupForOrgRequest(w htt
 		return
 	}
 
-	response, err := s.s.ActionsCreateSelfHostedRunnerGroupForOrg(ctx, request, params)
+	response, err := s.h.ActionsCreateSelfHostedRunnerGroupForOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -422,7 +422,7 @@ func (s *HTTPServer) HandleActionsCreateSelfHostedRunnerGroupForOrgRequest(w htt
 	}
 }
 
-func (s *HTTPServer) HandleActionsDeleteArtifactRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsDeleteArtifactRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteArtifact`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-artifact`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -435,7 +435,7 @@ func (s *HTTPServer) HandleActionsDeleteArtifactRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.ActionsDeleteArtifact(ctx, params)
+	response, err := s.h.ActionsDeleteArtifact(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -448,7 +448,7 @@ func (s *HTTPServer) HandleActionsDeleteArtifactRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleActionsDeleteEnvironmentSecretRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsDeleteEnvironmentSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteEnvironmentSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-environment-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -461,7 +461,7 @@ func (s *HTTPServer) HandleActionsDeleteEnvironmentSecretRequest(w http.Response
 		return
 	}
 
-	response, err := s.s.ActionsDeleteEnvironmentSecret(ctx, params)
+	response, err := s.h.ActionsDeleteEnvironmentSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -474,7 +474,7 @@ func (s *HTTPServer) HandleActionsDeleteEnvironmentSecretRequest(w http.Response
 	}
 }
 
-func (s *HTTPServer) HandleActionsDeleteOrgSecretRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsDeleteOrgSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteOrgSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-org-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -487,7 +487,7 @@ func (s *HTTPServer) HandleActionsDeleteOrgSecretRequest(w http.ResponseWriter, 
 		return
 	}
 
-	response, err := s.s.ActionsDeleteOrgSecret(ctx, params)
+	response, err := s.h.ActionsDeleteOrgSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -500,7 +500,7 @@ func (s *HTTPServer) HandleActionsDeleteOrgSecretRequest(w http.ResponseWriter, 
 	}
 }
 
-func (s *HTTPServer) HandleActionsDeleteRepoSecretRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsDeleteRepoSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteRepoSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-repo-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -513,7 +513,7 @@ func (s *HTTPServer) HandleActionsDeleteRepoSecretRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.ActionsDeleteRepoSecret(ctx, params)
+	response, err := s.h.ActionsDeleteRepoSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -526,7 +526,7 @@ func (s *HTTPServer) HandleActionsDeleteRepoSecretRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleActionsDeleteSelfHostedRunnerFromOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsDeleteSelfHostedRunnerFromOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteSelfHostedRunnerFromOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-self-hosted-runner-from-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -539,7 +539,7 @@ func (s *HTTPServer) HandleActionsDeleteSelfHostedRunnerFromOrgRequest(w http.Re
 		return
 	}
 
-	response, err := s.s.ActionsDeleteSelfHostedRunnerFromOrg(ctx, params)
+	response, err := s.h.ActionsDeleteSelfHostedRunnerFromOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -552,7 +552,7 @@ func (s *HTTPServer) HandleActionsDeleteSelfHostedRunnerFromOrgRequest(w http.Re
 	}
 }
 
-func (s *HTTPServer) HandleActionsDeleteSelfHostedRunnerFromRepoRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsDeleteSelfHostedRunnerFromRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteSelfHostedRunnerFromRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-self-hosted-runner-from-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -565,7 +565,7 @@ func (s *HTTPServer) HandleActionsDeleteSelfHostedRunnerFromRepoRequest(w http.R
 		return
 	}
 
-	response, err := s.s.ActionsDeleteSelfHostedRunnerFromRepo(ctx, params)
+	response, err := s.h.ActionsDeleteSelfHostedRunnerFromRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -578,7 +578,7 @@ func (s *HTTPServer) HandleActionsDeleteSelfHostedRunnerFromRepoRequest(w http.R
 	}
 }
 
-func (s *HTTPServer) HandleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteSelfHostedRunnerGroupFromOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-self-hosted-runner-group-from-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -591,7 +591,7 @@ func (s *HTTPServer) HandleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(w ht
 		return
 	}
 
-	response, err := s.s.ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx, params)
+	response, err := s.h.ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -604,7 +604,7 @@ func (s *HTTPServer) HandleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(w ht
 	}
 }
 
-func (s *HTTPServer) HandleActionsDeleteWorkflowRunRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsDeleteWorkflowRunRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteWorkflowRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-workflow-run`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -617,7 +617,7 @@ func (s *HTTPServer) HandleActionsDeleteWorkflowRunRequest(w http.ResponseWriter
 		return
 	}
 
-	response, err := s.s.ActionsDeleteWorkflowRun(ctx, params)
+	response, err := s.h.ActionsDeleteWorkflowRun(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -630,7 +630,7 @@ func (s *HTTPServer) HandleActionsDeleteWorkflowRunRequest(w http.ResponseWriter
 	}
 }
 
-func (s *HTTPServer) HandleActionsDeleteWorkflowRunLogsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsDeleteWorkflowRunLogsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteWorkflowRunLogs`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-workflow-run-logs`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -643,7 +643,7 @@ func (s *HTTPServer) HandleActionsDeleteWorkflowRunLogsRequest(w http.ResponseWr
 		return
 	}
 
-	response, err := s.s.ActionsDeleteWorkflowRunLogs(ctx, params)
+	response, err := s.h.ActionsDeleteWorkflowRunLogs(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -656,7 +656,7 @@ func (s *HTTPServer) HandleActionsDeleteWorkflowRunLogsRequest(w http.ResponseWr
 	}
 }
 
-func (s *HTTPServer) HandleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDisableSelectedRepositoryGithubActionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/disable-selected-repository-github-actions-organization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -669,7 +669,7 @@ func (s *HTTPServer) HandleActionsDisableSelectedRepositoryGithubActionsOrganiza
 		return
 	}
 
-	response, err := s.s.ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx, params)
+	response, err := s.h.ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -682,7 +682,7 @@ func (s *HTTPServer) HandleActionsDisableSelectedRepositoryGithubActionsOrganiza
 	}
 }
 
-func (s *HTTPServer) HandleActionsDownloadArtifactRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsDownloadArtifactRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDownloadArtifact`,
 		trace.WithAttributes(otelogen.OperationID(`actions/download-artifact`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -695,7 +695,7 @@ func (s *HTTPServer) HandleActionsDownloadArtifactRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.ActionsDownloadArtifact(ctx, params)
+	response, err := s.h.ActionsDownloadArtifact(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -708,7 +708,7 @@ func (s *HTTPServer) HandleActionsDownloadArtifactRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleActionsDownloadJobLogsForWorkflowRunRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsDownloadJobLogsForWorkflowRunRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDownloadJobLogsForWorkflowRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/download-job-logs-for-workflow-run`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -721,7 +721,7 @@ func (s *HTTPServer) HandleActionsDownloadJobLogsForWorkflowRunRequest(w http.Re
 		return
 	}
 
-	response, err := s.s.ActionsDownloadJobLogsForWorkflowRun(ctx, params)
+	response, err := s.h.ActionsDownloadJobLogsForWorkflowRun(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -734,7 +734,7 @@ func (s *HTTPServer) HandleActionsDownloadJobLogsForWorkflowRunRequest(w http.Re
 	}
 }
 
-func (s *HTTPServer) HandleActionsDownloadWorkflowRunLogsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsDownloadWorkflowRunLogsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDownloadWorkflowRunLogs`,
 		trace.WithAttributes(otelogen.OperationID(`actions/download-workflow-run-logs`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -747,7 +747,7 @@ func (s *HTTPServer) HandleActionsDownloadWorkflowRunLogsRequest(w http.Response
 		return
 	}
 
-	response, err := s.s.ActionsDownloadWorkflowRunLogs(ctx, params)
+	response, err := s.h.ActionsDownloadWorkflowRunLogs(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -760,7 +760,7 @@ func (s *HTTPServer) HandleActionsDownloadWorkflowRunLogsRequest(w http.Response
 	}
 }
 
-func (s *HTTPServer) HandleActionsEnableSelectedRepositoryGithubActionsOrganizationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsEnableSelectedRepositoryGithubActionsOrganizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsEnableSelectedRepositoryGithubActionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/enable-selected-repository-github-actions-organization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -773,7 +773,7 @@ func (s *HTTPServer) HandleActionsEnableSelectedRepositoryGithubActionsOrganizat
 		return
 	}
 
-	response, err := s.s.ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx, params)
+	response, err := s.h.ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -786,7 +786,7 @@ func (s *HTTPServer) HandleActionsEnableSelectedRepositoryGithubActionsOrganizat
 	}
 }
 
-func (s *HTTPServer) HandleActionsGetAllowedActionsOrganizationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsGetAllowedActionsOrganizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetAllowedActionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-allowed-actions-organization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -799,7 +799,7 @@ func (s *HTTPServer) HandleActionsGetAllowedActionsOrganizationRequest(w http.Re
 		return
 	}
 
-	response, err := s.s.ActionsGetAllowedActionsOrganization(ctx, params)
+	response, err := s.h.ActionsGetAllowedActionsOrganization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -812,7 +812,7 @@ func (s *HTTPServer) HandleActionsGetAllowedActionsOrganizationRequest(w http.Re
 	}
 }
 
-func (s *HTTPServer) HandleActionsGetAllowedActionsRepositoryRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsGetAllowedActionsRepositoryRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetAllowedActionsRepository`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-allowed-actions-repository`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -825,7 +825,7 @@ func (s *HTTPServer) HandleActionsGetAllowedActionsRepositoryRequest(w http.Resp
 		return
 	}
 
-	response, err := s.s.ActionsGetAllowedActionsRepository(ctx, params)
+	response, err := s.h.ActionsGetAllowedActionsRepository(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -838,7 +838,7 @@ func (s *HTTPServer) HandleActionsGetAllowedActionsRepositoryRequest(w http.Resp
 	}
 }
 
-func (s *HTTPServer) HandleActionsGetArtifactRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsGetArtifactRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetArtifact`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-artifact`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -851,7 +851,7 @@ func (s *HTTPServer) HandleActionsGetArtifactRequest(w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.s.ActionsGetArtifact(ctx, params)
+	response, err := s.h.ActionsGetArtifact(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -864,7 +864,7 @@ func (s *HTTPServer) HandleActionsGetArtifactRequest(w http.ResponseWriter, r *h
 	}
 }
 
-func (s *HTTPServer) HandleActionsGetEnvironmentPublicKeyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsGetEnvironmentPublicKeyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetEnvironmentPublicKey`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-environment-public-key`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -877,7 +877,7 @@ func (s *HTTPServer) HandleActionsGetEnvironmentPublicKeyRequest(w http.Response
 		return
 	}
 
-	response, err := s.s.ActionsGetEnvironmentPublicKey(ctx, params)
+	response, err := s.h.ActionsGetEnvironmentPublicKey(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -890,7 +890,7 @@ func (s *HTTPServer) HandleActionsGetEnvironmentPublicKeyRequest(w http.Response
 	}
 }
 
-func (s *HTTPServer) HandleActionsGetEnvironmentSecretRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsGetEnvironmentSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetEnvironmentSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-environment-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -903,7 +903,7 @@ func (s *HTTPServer) HandleActionsGetEnvironmentSecretRequest(w http.ResponseWri
 		return
 	}
 
-	response, err := s.s.ActionsGetEnvironmentSecret(ctx, params)
+	response, err := s.h.ActionsGetEnvironmentSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -916,7 +916,7 @@ func (s *HTTPServer) HandleActionsGetEnvironmentSecretRequest(w http.ResponseWri
 	}
 }
 
-func (s *HTTPServer) HandleActionsGetGithubActionsPermissionsOrganizationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsGetGithubActionsPermissionsOrganizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetGithubActionsPermissionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-github-actions-permissions-organization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -929,7 +929,7 @@ func (s *HTTPServer) HandleActionsGetGithubActionsPermissionsOrganizationRequest
 		return
 	}
 
-	response, err := s.s.ActionsGetGithubActionsPermissionsOrganization(ctx, params)
+	response, err := s.h.ActionsGetGithubActionsPermissionsOrganization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -942,7 +942,7 @@ func (s *HTTPServer) HandleActionsGetGithubActionsPermissionsOrganizationRequest
 	}
 }
 
-func (s *HTTPServer) HandleActionsGetGithubActionsPermissionsRepositoryRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsGetGithubActionsPermissionsRepositoryRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetGithubActionsPermissionsRepository`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-github-actions-permissions-repository`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -955,7 +955,7 @@ func (s *HTTPServer) HandleActionsGetGithubActionsPermissionsRepositoryRequest(w
 		return
 	}
 
-	response, err := s.s.ActionsGetGithubActionsPermissionsRepository(ctx, params)
+	response, err := s.h.ActionsGetGithubActionsPermissionsRepository(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -968,7 +968,7 @@ func (s *HTTPServer) HandleActionsGetGithubActionsPermissionsRepositoryRequest(w
 	}
 }
 
-func (s *HTTPServer) HandleActionsGetJobForWorkflowRunRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsGetJobForWorkflowRunRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetJobForWorkflowRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-job-for-workflow-run`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -981,7 +981,7 @@ func (s *HTTPServer) HandleActionsGetJobForWorkflowRunRequest(w http.ResponseWri
 		return
 	}
 
-	response, err := s.s.ActionsGetJobForWorkflowRun(ctx, params)
+	response, err := s.h.ActionsGetJobForWorkflowRun(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -994,7 +994,7 @@ func (s *HTTPServer) HandleActionsGetJobForWorkflowRunRequest(w http.ResponseWri
 	}
 }
 
-func (s *HTTPServer) HandleActionsGetOrgPublicKeyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsGetOrgPublicKeyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetOrgPublicKey`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-org-public-key`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1007,7 +1007,7 @@ func (s *HTTPServer) HandleActionsGetOrgPublicKeyRequest(w http.ResponseWriter, 
 		return
 	}
 
-	response, err := s.s.ActionsGetOrgPublicKey(ctx, params)
+	response, err := s.h.ActionsGetOrgPublicKey(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1020,7 +1020,7 @@ func (s *HTTPServer) HandleActionsGetOrgPublicKeyRequest(w http.ResponseWriter, 
 	}
 }
 
-func (s *HTTPServer) HandleActionsGetOrgSecretRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsGetOrgSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetOrgSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-org-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1033,7 +1033,7 @@ func (s *HTTPServer) HandleActionsGetOrgSecretRequest(w http.ResponseWriter, r *
 		return
 	}
 
-	response, err := s.s.ActionsGetOrgSecret(ctx, params)
+	response, err := s.h.ActionsGetOrgSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1046,7 +1046,7 @@ func (s *HTTPServer) HandleActionsGetOrgSecretRequest(w http.ResponseWriter, r *
 	}
 }
 
-func (s *HTTPServer) HandleActionsGetRepoPublicKeyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsGetRepoPublicKeyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetRepoPublicKey`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-repo-public-key`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1059,7 +1059,7 @@ func (s *HTTPServer) HandleActionsGetRepoPublicKeyRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.ActionsGetRepoPublicKey(ctx, params)
+	response, err := s.h.ActionsGetRepoPublicKey(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1072,7 +1072,7 @@ func (s *HTTPServer) HandleActionsGetRepoPublicKeyRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleActionsGetRepoSecretRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsGetRepoSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetRepoSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-repo-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1085,7 +1085,7 @@ func (s *HTTPServer) HandleActionsGetRepoSecretRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.ActionsGetRepoSecret(ctx, params)
+	response, err := s.h.ActionsGetRepoSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1098,7 +1098,7 @@ func (s *HTTPServer) HandleActionsGetRepoSecretRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleActionsGetReviewsForRunRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsGetReviewsForRunRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetReviewsForRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-reviews-for-run`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1111,7 +1111,7 @@ func (s *HTTPServer) HandleActionsGetReviewsForRunRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.ActionsGetReviewsForRun(ctx, params)
+	response, err := s.h.ActionsGetReviewsForRun(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1124,7 +1124,7 @@ func (s *HTTPServer) HandleActionsGetReviewsForRunRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleActionsGetSelfHostedRunnerForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsGetSelfHostedRunnerForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetSelfHostedRunnerForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-self-hosted-runner-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1137,7 +1137,7 @@ func (s *HTTPServer) HandleActionsGetSelfHostedRunnerForOrgRequest(w http.Respon
 		return
 	}
 
-	response, err := s.s.ActionsGetSelfHostedRunnerForOrg(ctx, params)
+	response, err := s.h.ActionsGetSelfHostedRunnerForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1150,7 +1150,7 @@ func (s *HTTPServer) HandleActionsGetSelfHostedRunnerForOrgRequest(w http.Respon
 	}
 }
 
-func (s *HTTPServer) HandleActionsGetSelfHostedRunnerForRepoRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsGetSelfHostedRunnerForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetSelfHostedRunnerForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-self-hosted-runner-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1163,7 +1163,7 @@ func (s *HTTPServer) HandleActionsGetSelfHostedRunnerForRepoRequest(w http.Respo
 		return
 	}
 
-	response, err := s.s.ActionsGetSelfHostedRunnerForRepo(ctx, params)
+	response, err := s.h.ActionsGetSelfHostedRunnerForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1176,7 +1176,7 @@ func (s *HTTPServer) HandleActionsGetSelfHostedRunnerForRepoRequest(w http.Respo
 	}
 }
 
-func (s *HTTPServer) HandleActionsGetSelfHostedRunnerGroupForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsGetSelfHostedRunnerGroupForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetSelfHostedRunnerGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-self-hosted-runner-group-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1189,7 +1189,7 @@ func (s *HTTPServer) HandleActionsGetSelfHostedRunnerGroupForOrgRequest(w http.R
 		return
 	}
 
-	response, err := s.s.ActionsGetSelfHostedRunnerGroupForOrg(ctx, params)
+	response, err := s.h.ActionsGetSelfHostedRunnerGroupForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1202,7 +1202,7 @@ func (s *HTTPServer) HandleActionsGetSelfHostedRunnerGroupForOrgRequest(w http.R
 	}
 }
 
-func (s *HTTPServer) HandleActionsGetWorkflowRunRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsGetWorkflowRunRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetWorkflowRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-workflow-run`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1215,7 +1215,7 @@ func (s *HTTPServer) HandleActionsGetWorkflowRunRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.ActionsGetWorkflowRun(ctx, params)
+	response, err := s.h.ActionsGetWorkflowRun(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1228,7 +1228,7 @@ func (s *HTTPServer) HandleActionsGetWorkflowRunRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleActionsGetWorkflowRunUsageRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsGetWorkflowRunUsageRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetWorkflowRunUsage`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-workflow-run-usage`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1241,7 +1241,7 @@ func (s *HTTPServer) HandleActionsGetWorkflowRunUsageRequest(w http.ResponseWrit
 		return
 	}
 
-	response, err := s.s.ActionsGetWorkflowRunUsage(ctx, params)
+	response, err := s.h.ActionsGetWorkflowRunUsage(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1254,7 +1254,7 @@ func (s *HTTPServer) HandleActionsGetWorkflowRunUsageRequest(w http.ResponseWrit
 	}
 }
 
-func (s *HTTPServer) HandleActionsListArtifactsForRepoRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsListArtifactsForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListArtifactsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-artifacts-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1267,7 +1267,7 @@ func (s *HTTPServer) HandleActionsListArtifactsForRepoRequest(w http.ResponseWri
 		return
 	}
 
-	response, err := s.s.ActionsListArtifactsForRepo(ctx, params)
+	response, err := s.h.ActionsListArtifactsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1280,7 +1280,7 @@ func (s *HTTPServer) HandleActionsListArtifactsForRepoRequest(w http.ResponseWri
 	}
 }
 
-func (s *HTTPServer) HandleActionsListEnvironmentSecretsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsListEnvironmentSecretsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListEnvironmentSecrets`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-environment-secrets`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1293,7 +1293,7 @@ func (s *HTTPServer) HandleActionsListEnvironmentSecretsRequest(w http.ResponseW
 		return
 	}
 
-	response, err := s.s.ActionsListEnvironmentSecrets(ctx, params)
+	response, err := s.h.ActionsListEnvironmentSecrets(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1306,7 +1306,7 @@ func (s *HTTPServer) HandleActionsListEnvironmentSecretsRequest(w http.ResponseW
 	}
 }
 
-func (s *HTTPServer) HandleActionsListJobsForWorkflowRunRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsListJobsForWorkflowRunRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListJobsForWorkflowRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-jobs-for-workflow-run`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1319,7 +1319,7 @@ func (s *HTTPServer) HandleActionsListJobsForWorkflowRunRequest(w http.ResponseW
 		return
 	}
 
-	response, err := s.s.ActionsListJobsForWorkflowRun(ctx, params)
+	response, err := s.h.ActionsListJobsForWorkflowRun(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1332,7 +1332,7 @@ func (s *HTTPServer) HandleActionsListJobsForWorkflowRunRequest(w http.ResponseW
 	}
 }
 
-func (s *HTTPServer) HandleActionsListOrgSecretsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsListOrgSecretsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListOrgSecrets`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-org-secrets`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1345,7 +1345,7 @@ func (s *HTTPServer) HandleActionsListOrgSecretsRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.ActionsListOrgSecrets(ctx, params)
+	response, err := s.h.ActionsListOrgSecrets(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1358,7 +1358,7 @@ func (s *HTTPServer) HandleActionsListOrgSecretsRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListRepoAccessToSelfHostedRunnerGroupInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-repo-access-to-self-hosted-runner-group-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1371,7 +1371,7 @@ func (s *HTTPServer) HandleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequ
 		return
 	}
 
-	response, err := s.s.ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
+	response, err := s.h.ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1384,7 +1384,7 @@ func (s *HTTPServer) HandleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequ
 	}
 }
 
-func (s *HTTPServer) HandleActionsListRepoSecretsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsListRepoSecretsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListRepoSecrets`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-repo-secrets`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1397,7 +1397,7 @@ func (s *HTTPServer) HandleActionsListRepoSecretsRequest(w http.ResponseWriter, 
 		return
 	}
 
-	response, err := s.s.ActionsListRepoSecrets(ctx, params)
+	response, err := s.h.ActionsListRepoSecrets(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1410,7 +1410,7 @@ func (s *HTTPServer) HandleActionsListRepoSecretsRequest(w http.ResponseWriter, 
 	}
 }
 
-func (s *HTTPServer) HandleActionsListRepoWorkflowsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsListRepoWorkflowsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListRepoWorkflows`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-repo-workflows`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1423,7 +1423,7 @@ func (s *HTTPServer) HandleActionsListRepoWorkflowsRequest(w http.ResponseWriter
 		return
 	}
 
-	response, err := s.s.ActionsListRepoWorkflows(ctx, params)
+	response, err := s.h.ActionsListRepoWorkflows(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1436,7 +1436,7 @@ func (s *HTTPServer) HandleActionsListRepoWorkflowsRequest(w http.ResponseWriter
 	}
 }
 
-func (s *HTTPServer) HandleActionsListRunnerApplicationsForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsListRunnerApplicationsForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListRunnerApplicationsForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-runner-applications-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1449,7 +1449,7 @@ func (s *HTTPServer) HandleActionsListRunnerApplicationsForOrgRequest(w http.Res
 		return
 	}
 
-	response, err := s.s.ActionsListRunnerApplicationsForOrg(ctx, params)
+	response, err := s.h.ActionsListRunnerApplicationsForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1462,7 +1462,7 @@ func (s *HTTPServer) HandleActionsListRunnerApplicationsForOrgRequest(w http.Res
 	}
 }
 
-func (s *HTTPServer) HandleActionsListRunnerApplicationsForRepoRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsListRunnerApplicationsForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListRunnerApplicationsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-runner-applications-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1475,7 +1475,7 @@ func (s *HTTPServer) HandleActionsListRunnerApplicationsForRepoRequest(w http.Re
 		return
 	}
 
-	response, err := s.s.ActionsListRunnerApplicationsForRepo(ctx, params)
+	response, err := s.h.ActionsListRunnerApplicationsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1488,7 +1488,7 @@ func (s *HTTPServer) HandleActionsListRunnerApplicationsForRepoRequest(w http.Re
 	}
 }
 
-func (s *HTTPServer) HandleActionsListSelectedReposForOrgSecretRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsListSelectedReposForOrgSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListSelectedReposForOrgSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-selected-repos-for-org-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1501,7 +1501,7 @@ func (s *HTTPServer) HandleActionsListSelectedReposForOrgSecretRequest(w http.Re
 		return
 	}
 
-	response, err := s.s.ActionsListSelectedReposForOrgSecret(ctx, params)
+	response, err := s.h.ActionsListSelectedReposForOrgSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1514,7 +1514,7 @@ func (s *HTTPServer) HandleActionsListSelectedReposForOrgSecretRequest(w http.Re
 	}
 }
 
-func (s *HTTPServer) HandleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListSelectedRepositoriesEnabledGithubActionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-selected-repositories-enabled-github-actions-organization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1527,7 +1527,7 @@ func (s *HTTPServer) HandleActionsListSelectedRepositoriesEnabledGithubActionsOr
 		return
 	}
 
-	response, err := s.s.ActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx, params)
+	response, err := s.h.ActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1540,7 +1540,7 @@ func (s *HTTPServer) HandleActionsListSelectedRepositoriesEnabledGithubActionsOr
 	}
 }
 
-func (s *HTTPServer) HandleActionsListSelfHostedRunnerGroupsForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsListSelfHostedRunnerGroupsForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListSelfHostedRunnerGroupsForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-self-hosted-runner-groups-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1553,7 +1553,7 @@ func (s *HTTPServer) HandleActionsListSelfHostedRunnerGroupsForOrgRequest(w http
 		return
 	}
 
-	response, err := s.s.ActionsListSelfHostedRunnerGroupsForOrg(ctx, params)
+	response, err := s.h.ActionsListSelfHostedRunnerGroupsForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1566,7 +1566,7 @@ func (s *HTTPServer) HandleActionsListSelfHostedRunnerGroupsForOrgRequest(w http
 	}
 }
 
-func (s *HTTPServer) HandleActionsListSelfHostedRunnersForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsListSelfHostedRunnersForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListSelfHostedRunnersForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-self-hosted-runners-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1579,7 +1579,7 @@ func (s *HTTPServer) HandleActionsListSelfHostedRunnersForOrgRequest(w http.Resp
 		return
 	}
 
-	response, err := s.s.ActionsListSelfHostedRunnersForOrg(ctx, params)
+	response, err := s.h.ActionsListSelfHostedRunnersForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1592,7 +1592,7 @@ func (s *HTTPServer) HandleActionsListSelfHostedRunnersForOrgRequest(w http.Resp
 	}
 }
 
-func (s *HTTPServer) HandleActionsListSelfHostedRunnersForRepoRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsListSelfHostedRunnersForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListSelfHostedRunnersForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-self-hosted-runners-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1605,7 +1605,7 @@ func (s *HTTPServer) HandleActionsListSelfHostedRunnersForRepoRequest(w http.Res
 		return
 	}
 
-	response, err := s.s.ActionsListSelfHostedRunnersForRepo(ctx, params)
+	response, err := s.h.ActionsListSelfHostedRunnersForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1618,7 +1618,7 @@ func (s *HTTPServer) HandleActionsListSelfHostedRunnersForRepoRequest(w http.Res
 	}
 }
 
-func (s *HTTPServer) HandleActionsListSelfHostedRunnersInGroupForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsListSelfHostedRunnersInGroupForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListSelfHostedRunnersInGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-self-hosted-runners-in-group-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1631,7 +1631,7 @@ func (s *HTTPServer) HandleActionsListSelfHostedRunnersInGroupForOrgRequest(w ht
 		return
 	}
 
-	response, err := s.s.ActionsListSelfHostedRunnersInGroupForOrg(ctx, params)
+	response, err := s.h.ActionsListSelfHostedRunnersInGroupForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1644,7 +1644,7 @@ func (s *HTTPServer) HandleActionsListSelfHostedRunnersInGroupForOrgRequest(w ht
 	}
 }
 
-func (s *HTTPServer) HandleActionsListWorkflowRunArtifactsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsListWorkflowRunArtifactsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListWorkflowRunArtifacts`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-workflow-run-artifacts`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1657,7 +1657,7 @@ func (s *HTTPServer) HandleActionsListWorkflowRunArtifactsRequest(w http.Respons
 		return
 	}
 
-	response, err := s.s.ActionsListWorkflowRunArtifacts(ctx, params)
+	response, err := s.h.ActionsListWorkflowRunArtifacts(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1670,7 +1670,7 @@ func (s *HTTPServer) HandleActionsListWorkflowRunArtifactsRequest(w http.Respons
 	}
 }
 
-func (s *HTTPServer) HandleActionsListWorkflowRunsForRepoRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsListWorkflowRunsForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListWorkflowRunsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-workflow-runs-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1683,7 +1683,7 @@ func (s *HTTPServer) HandleActionsListWorkflowRunsForRepoRequest(w http.Response
 		return
 	}
 
-	response, err := s.s.ActionsListWorkflowRunsForRepo(ctx, params)
+	response, err := s.h.ActionsListWorkflowRunsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1696,7 +1696,7 @@ func (s *HTTPServer) HandleActionsListWorkflowRunsForRepoRequest(w http.Response
 	}
 }
 
-func (s *HTTPServer) HandleActionsReRunWorkflowRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsReRunWorkflowRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsReRunWorkflow`,
 		trace.WithAttributes(otelogen.OperationID(`actions/re-run-workflow`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1709,7 +1709,7 @@ func (s *HTTPServer) HandleActionsReRunWorkflowRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.ActionsReRunWorkflow(ctx, params)
+	response, err := s.h.ActionsReRunWorkflow(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1722,7 +1722,7 @@ func (s *HTTPServer) HandleActionsReRunWorkflowRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/remove-repo-access-to-self-hosted-runner-group-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1735,7 +1735,7 @@ func (s *HTTPServer) HandleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRe
 		return
 	}
 
-	response, err := s.s.ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
+	response, err := s.h.ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1748,7 +1748,7 @@ func (s *HTTPServer) HandleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRe
 	}
 }
 
-func (s *HTTPServer) HandleActionsRemoveSelectedRepoFromOrgSecretRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsRemoveSelectedRepoFromOrgSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsRemoveSelectedRepoFromOrgSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/remove-selected-repo-from-org-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1761,7 +1761,7 @@ func (s *HTTPServer) HandleActionsRemoveSelectedRepoFromOrgSecretRequest(w http.
 		return
 	}
 
-	response, err := s.s.ActionsRemoveSelectedRepoFromOrgSecret(ctx, params)
+	response, err := s.h.ActionsRemoveSelectedRepoFromOrgSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1774,7 +1774,7 @@ func (s *HTTPServer) HandleActionsRemoveSelectedRepoFromOrgSecretRequest(w http.
 	}
 }
 
-func (s *HTTPServer) HandleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsRemoveSelfHostedRunnerFromGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/remove-self-hosted-runner-from-group-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1787,7 +1787,7 @@ func (s *HTTPServer) HandleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(w
 		return
 	}
 
-	response, err := s.s.ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx, params)
+	response, err := s.h.ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1800,7 +1800,7 @@ func (s *HTTPServer) HandleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(w
 	}
 }
 
-func (s *HTTPServer) HandleActionsRetryWorkflowRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsRetryWorkflowRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsRetryWorkflow`,
 		trace.WithAttributes(otelogen.OperationID(`actions/retry-workflow`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1813,7 +1813,7 @@ func (s *HTTPServer) HandleActionsRetryWorkflowRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.ActionsRetryWorkflow(ctx, params)
+	response, err := s.h.ActionsRetryWorkflow(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1826,7 +1826,7 @@ func (s *HTTPServer) HandleActionsRetryWorkflowRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleActionsSetAllowedActionsOrganizationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsSetAllowedActionsOrganizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsSetAllowedActionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-allowed-actions-organization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1845,7 +1845,7 @@ func (s *HTTPServer) HandleActionsSetAllowedActionsOrganizationRequest(w http.Re
 		return
 	}
 
-	response, err := s.s.ActionsSetAllowedActionsOrganization(ctx, request, params)
+	response, err := s.h.ActionsSetAllowedActionsOrganization(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1858,7 +1858,7 @@ func (s *HTTPServer) HandleActionsSetAllowedActionsOrganizationRequest(w http.Re
 	}
 }
 
-func (s *HTTPServer) HandleActionsSetAllowedActionsRepositoryRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsSetAllowedActionsRepositoryRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsSetAllowedActionsRepository`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-allowed-actions-repository`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1877,7 +1877,7 @@ func (s *HTTPServer) HandleActionsSetAllowedActionsRepositoryRequest(w http.Resp
 		return
 	}
 
-	response, err := s.s.ActionsSetAllowedActionsRepository(ctx, request, params)
+	response, err := s.h.ActionsSetAllowedActionsRepository(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1890,7 +1890,7 @@ func (s *HTTPServer) HandleActionsSetAllowedActionsRepositoryRequest(w http.Resp
 	}
 }
 
-func (s *HTTPServer) HandleActionsSetGithubActionsPermissionsOrganizationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsSetGithubActionsPermissionsOrganizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsSetGithubActionsPermissionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-github-actions-permissions-organization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1909,7 +1909,7 @@ func (s *HTTPServer) HandleActionsSetGithubActionsPermissionsOrganizationRequest
 		return
 	}
 
-	response, err := s.s.ActionsSetGithubActionsPermissionsOrganization(ctx, request, params)
+	response, err := s.h.ActionsSetGithubActionsPermissionsOrganization(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1922,7 +1922,7 @@ func (s *HTTPServer) HandleActionsSetGithubActionsPermissionsOrganizationRequest
 	}
 }
 
-func (s *HTTPServer) HandleActionsSetGithubActionsPermissionsRepositoryRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsSetGithubActionsPermissionsRepositoryRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsSetGithubActionsPermissionsRepository`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-github-actions-permissions-repository`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1941,7 +1941,7 @@ func (s *HTTPServer) HandleActionsSetGithubActionsPermissionsRepositoryRequest(w
 		return
 	}
 
-	response, err := s.s.ActionsSetGithubActionsPermissionsRepository(ctx, request, params)
+	response, err := s.h.ActionsSetGithubActionsPermissionsRepository(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1954,7 +1954,7 @@ func (s *HTTPServer) HandleActionsSetGithubActionsPermissionsRepositoryRequest(w
 	}
 }
 
-func (s *HTTPServer) HandleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-repo-access-to-self-hosted-runner-group-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1973,7 +1973,7 @@ func (s *HTTPServer) HandleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReque
 		return
 	}
 
-	response, err := s.s.ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx, request, params)
+	response, err := s.h.ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -1986,7 +1986,7 @@ func (s *HTTPServer) HandleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReque
 	}
 }
 
-func (s *HTTPServer) HandleActionsSetSelectedReposForOrgSecretRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsSetSelectedReposForOrgSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsSetSelectedReposForOrgSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-selected-repos-for-org-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2005,7 +2005,7 @@ func (s *HTTPServer) HandleActionsSetSelectedReposForOrgSecretRequest(w http.Res
 		return
 	}
 
-	response, err := s.s.ActionsSetSelectedReposForOrgSecret(ctx, request, params)
+	response, err := s.h.ActionsSetSelectedReposForOrgSecret(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2018,7 +2018,7 @@ func (s *HTTPServer) HandleActionsSetSelectedReposForOrgSecretRequest(w http.Res
 	}
 }
 
-func (s *HTTPServer) HandleActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-selected-repositories-enabled-github-actions-organization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2037,7 +2037,7 @@ func (s *HTTPServer) HandleActionsSetSelectedRepositoriesEnabledGithubActionsOrg
 		return
 	}
 
-	response, err := s.s.ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx, request, params)
+	response, err := s.h.ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2050,7 +2050,7 @@ func (s *HTTPServer) HandleActionsSetSelectedRepositoriesEnabledGithubActionsOrg
 	}
 }
 
-func (s *HTTPServer) HandleActionsSetSelfHostedRunnersInGroupForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsSetSelfHostedRunnersInGroupForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsSetSelfHostedRunnersInGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-self-hosted-runners-in-group-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2069,7 +2069,7 @@ func (s *HTTPServer) HandleActionsSetSelfHostedRunnersInGroupForOrgRequest(w htt
 		return
 	}
 
-	response, err := s.s.ActionsSetSelfHostedRunnersInGroupForOrg(ctx, request, params)
+	response, err := s.h.ActionsSetSelfHostedRunnersInGroupForOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2082,7 +2082,7 @@ func (s *HTTPServer) HandleActionsSetSelfHostedRunnersInGroupForOrgRequest(w htt
 	}
 }
 
-func (s *HTTPServer) HandleActionsUpdateSelfHostedRunnerGroupForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActionsUpdateSelfHostedRunnerGroupForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsUpdateSelfHostedRunnerGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/update-self-hosted-runner-group-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2101,7 +2101,7 @@ func (s *HTTPServer) HandleActionsUpdateSelfHostedRunnerGroupForOrgRequest(w htt
 		return
 	}
 
-	response, err := s.s.ActionsUpdateSelfHostedRunnerGroupForOrg(ctx, request, params)
+	response, err := s.h.ActionsUpdateSelfHostedRunnerGroupForOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2114,7 +2114,7 @@ func (s *HTTPServer) HandleActionsUpdateSelfHostedRunnerGroupForOrgRequest(w htt
 	}
 }
 
-func (s *HTTPServer) HandleActivityCheckRepoIsStarredByAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityCheckRepoIsStarredByAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityCheckRepoIsStarredByAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/check-repo-is-starred-by-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2127,7 +2127,7 @@ func (s *HTTPServer) HandleActivityCheckRepoIsStarredByAuthenticatedUserRequest(
 		return
 	}
 
-	response, err := s.s.ActivityCheckRepoIsStarredByAuthenticatedUser(ctx, params)
+	response, err := s.h.ActivityCheckRepoIsStarredByAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2140,7 +2140,7 @@ func (s *HTTPServer) HandleActivityCheckRepoIsStarredByAuthenticatedUserRequest(
 	}
 }
 
-func (s *HTTPServer) HandleActivityDeleteRepoSubscriptionRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityDeleteRepoSubscriptionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityDeleteRepoSubscription`,
 		trace.WithAttributes(otelogen.OperationID(`activity/delete-repo-subscription`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2153,7 +2153,7 @@ func (s *HTTPServer) HandleActivityDeleteRepoSubscriptionRequest(w http.Response
 		return
 	}
 
-	response, err := s.s.ActivityDeleteRepoSubscription(ctx, params)
+	response, err := s.h.ActivityDeleteRepoSubscription(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2166,7 +2166,7 @@ func (s *HTTPServer) HandleActivityDeleteRepoSubscriptionRequest(w http.Response
 	}
 }
 
-func (s *HTTPServer) HandleActivityDeleteThreadSubscriptionRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityDeleteThreadSubscriptionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityDeleteThreadSubscription`,
 		trace.WithAttributes(otelogen.OperationID(`activity/delete-thread-subscription`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2179,7 +2179,7 @@ func (s *HTTPServer) HandleActivityDeleteThreadSubscriptionRequest(w http.Respon
 		return
 	}
 
-	response, err := s.s.ActivityDeleteThreadSubscription(ctx, params)
+	response, err := s.h.ActivityDeleteThreadSubscription(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2192,14 +2192,14 @@ func (s *HTTPServer) HandleActivityDeleteThreadSubscriptionRequest(w http.Respon
 	}
 }
 
-func (s *HTTPServer) HandleActivityGetFeedsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityGetFeedsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityGetFeeds`,
 		trace.WithAttributes(otelogen.OperationID(`activity/get-feeds`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.ActivityGetFeeds(ctx)
+	response, err := s.h.ActivityGetFeeds(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2212,7 +2212,7 @@ func (s *HTTPServer) HandleActivityGetFeedsRequest(w http.ResponseWriter, r *htt
 	}
 }
 
-func (s *HTTPServer) HandleActivityGetRepoSubscriptionRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityGetRepoSubscriptionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityGetRepoSubscription`,
 		trace.WithAttributes(otelogen.OperationID(`activity/get-repo-subscription`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2225,7 +2225,7 @@ func (s *HTTPServer) HandleActivityGetRepoSubscriptionRequest(w http.ResponseWri
 		return
 	}
 
-	response, err := s.s.ActivityGetRepoSubscription(ctx, params)
+	response, err := s.h.ActivityGetRepoSubscription(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2238,7 +2238,7 @@ func (s *HTTPServer) HandleActivityGetRepoSubscriptionRequest(w http.ResponseWri
 	}
 }
 
-func (s *HTTPServer) HandleActivityGetThreadRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityGetThreadRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityGetThread`,
 		trace.WithAttributes(otelogen.OperationID(`activity/get-thread`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2251,7 +2251,7 @@ func (s *HTTPServer) HandleActivityGetThreadRequest(w http.ResponseWriter, r *ht
 		return
 	}
 
-	response, err := s.s.ActivityGetThread(ctx, params)
+	response, err := s.h.ActivityGetThread(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2264,7 +2264,7 @@ func (s *HTTPServer) HandleActivityGetThreadRequest(w http.ResponseWriter, r *ht
 	}
 }
 
-func (s *HTTPServer) HandleActivityGetThreadSubscriptionForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityGetThreadSubscriptionForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityGetThreadSubscriptionForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/get-thread-subscription-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2277,7 +2277,7 @@ func (s *HTTPServer) HandleActivityGetThreadSubscriptionForAuthenticatedUserRequ
 		return
 	}
 
-	response, err := s.s.ActivityGetThreadSubscriptionForAuthenticatedUser(ctx, params)
+	response, err := s.h.ActivityGetThreadSubscriptionForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2290,7 +2290,7 @@ func (s *HTTPServer) HandleActivityGetThreadSubscriptionForAuthenticatedUserRequ
 	}
 }
 
-func (s *HTTPServer) HandleActivityListEventsForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityListEventsForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListEventsForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-events-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2303,7 +2303,7 @@ func (s *HTTPServer) HandleActivityListEventsForAuthenticatedUserRequest(w http.
 		return
 	}
 
-	response, err := s.s.ActivityListEventsForAuthenticatedUser(ctx, params)
+	response, err := s.h.ActivityListEventsForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2316,7 +2316,7 @@ func (s *HTTPServer) HandleActivityListEventsForAuthenticatedUserRequest(w http.
 	}
 }
 
-func (s *HTTPServer) HandleActivityListOrgEventsForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityListOrgEventsForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListOrgEventsForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-org-events-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2329,7 +2329,7 @@ func (s *HTTPServer) HandleActivityListOrgEventsForAuthenticatedUserRequest(w ht
 		return
 	}
 
-	response, err := s.s.ActivityListOrgEventsForAuthenticatedUser(ctx, params)
+	response, err := s.h.ActivityListOrgEventsForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2342,7 +2342,7 @@ func (s *HTTPServer) HandleActivityListOrgEventsForAuthenticatedUserRequest(w ht
 	}
 }
 
-func (s *HTTPServer) HandleActivityListPublicEventsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityListPublicEventsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListPublicEvents`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-public-events`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2355,7 +2355,7 @@ func (s *HTTPServer) HandleActivityListPublicEventsRequest(w http.ResponseWriter
 		return
 	}
 
-	response, err := s.s.ActivityListPublicEvents(ctx, params)
+	response, err := s.h.ActivityListPublicEvents(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2368,7 +2368,7 @@ func (s *HTTPServer) HandleActivityListPublicEventsRequest(w http.ResponseWriter
 	}
 }
 
-func (s *HTTPServer) HandleActivityListPublicEventsForRepoNetworkRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityListPublicEventsForRepoNetworkRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListPublicEventsForRepoNetwork`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-public-events-for-repo-network`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2381,7 +2381,7 @@ func (s *HTTPServer) HandleActivityListPublicEventsForRepoNetworkRequest(w http.
 		return
 	}
 
-	response, err := s.s.ActivityListPublicEventsForRepoNetwork(ctx, params)
+	response, err := s.h.ActivityListPublicEventsForRepoNetwork(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2394,7 +2394,7 @@ func (s *HTTPServer) HandleActivityListPublicEventsForRepoNetworkRequest(w http.
 	}
 }
 
-func (s *HTTPServer) HandleActivityListPublicEventsForUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityListPublicEventsForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListPublicEventsForUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-public-events-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2407,7 +2407,7 @@ func (s *HTTPServer) HandleActivityListPublicEventsForUserRequest(w http.Respons
 		return
 	}
 
-	response, err := s.s.ActivityListPublicEventsForUser(ctx, params)
+	response, err := s.h.ActivityListPublicEventsForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2420,7 +2420,7 @@ func (s *HTTPServer) HandleActivityListPublicEventsForUserRequest(w http.Respons
 	}
 }
 
-func (s *HTTPServer) HandleActivityListPublicOrgEventsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityListPublicOrgEventsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListPublicOrgEvents`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-public-org-events`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2433,7 +2433,7 @@ func (s *HTTPServer) HandleActivityListPublicOrgEventsRequest(w http.ResponseWri
 		return
 	}
 
-	response, err := s.s.ActivityListPublicOrgEvents(ctx, params)
+	response, err := s.h.ActivityListPublicOrgEvents(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2446,7 +2446,7 @@ func (s *HTTPServer) HandleActivityListPublicOrgEventsRequest(w http.ResponseWri
 	}
 }
 
-func (s *HTTPServer) HandleActivityListReceivedEventsForUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityListReceivedEventsForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListReceivedEventsForUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-received-events-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2459,7 +2459,7 @@ func (s *HTTPServer) HandleActivityListReceivedEventsForUserRequest(w http.Respo
 		return
 	}
 
-	response, err := s.s.ActivityListReceivedEventsForUser(ctx, params)
+	response, err := s.h.ActivityListReceivedEventsForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2472,7 +2472,7 @@ func (s *HTTPServer) HandleActivityListReceivedEventsForUserRequest(w http.Respo
 	}
 }
 
-func (s *HTTPServer) HandleActivityListReceivedPublicEventsForUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityListReceivedPublicEventsForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListReceivedPublicEventsForUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-received-public-events-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2485,7 +2485,7 @@ func (s *HTTPServer) HandleActivityListReceivedPublicEventsForUserRequest(w http
 		return
 	}
 
-	response, err := s.s.ActivityListReceivedPublicEventsForUser(ctx, params)
+	response, err := s.h.ActivityListReceivedPublicEventsForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2498,7 +2498,7 @@ func (s *HTTPServer) HandleActivityListReceivedPublicEventsForUserRequest(w http
 	}
 }
 
-func (s *HTTPServer) HandleActivityListRepoEventsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityListRepoEventsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListRepoEvents`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-repo-events`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2511,7 +2511,7 @@ func (s *HTTPServer) HandleActivityListRepoEventsRequest(w http.ResponseWriter, 
 		return
 	}
 
-	response, err := s.s.ActivityListRepoEvents(ctx, params)
+	response, err := s.h.ActivityListRepoEvents(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2524,7 +2524,7 @@ func (s *HTTPServer) HandleActivityListRepoEventsRequest(w http.ResponseWriter, 
 	}
 }
 
-func (s *HTTPServer) HandleActivityListRepoNotificationsForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityListRepoNotificationsForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListRepoNotificationsForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-repo-notifications-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2537,7 +2537,7 @@ func (s *HTTPServer) HandleActivityListRepoNotificationsForAuthenticatedUserRequ
 		return
 	}
 
-	response, err := s.s.ActivityListRepoNotificationsForAuthenticatedUser(ctx, params)
+	response, err := s.h.ActivityListRepoNotificationsForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2550,7 +2550,7 @@ func (s *HTTPServer) HandleActivityListRepoNotificationsForAuthenticatedUserRequ
 	}
 }
 
-func (s *HTTPServer) HandleActivityListReposStarredByAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityListReposStarredByAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListReposStarredByAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-repos-starred-by-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2563,7 +2563,7 @@ func (s *HTTPServer) HandleActivityListReposStarredByAuthenticatedUserRequest(w 
 		return
 	}
 
-	response, err := s.s.ActivityListReposStarredByAuthenticatedUser(ctx, params)
+	response, err := s.h.ActivityListReposStarredByAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2576,7 +2576,7 @@ func (s *HTTPServer) HandleActivityListReposStarredByAuthenticatedUserRequest(w 
 	}
 }
 
-func (s *HTTPServer) HandleActivityListReposWatchedByUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityListReposWatchedByUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListReposWatchedByUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-repos-watched-by-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2589,7 +2589,7 @@ func (s *HTTPServer) HandleActivityListReposWatchedByUserRequest(w http.Response
 		return
 	}
 
-	response, err := s.s.ActivityListReposWatchedByUser(ctx, params)
+	response, err := s.h.ActivityListReposWatchedByUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2602,7 +2602,7 @@ func (s *HTTPServer) HandleActivityListReposWatchedByUserRequest(w http.Response
 	}
 }
 
-func (s *HTTPServer) HandleActivityListWatchedReposForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityListWatchedReposForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListWatchedReposForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-watched-repos-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2615,7 +2615,7 @@ func (s *HTTPServer) HandleActivityListWatchedReposForAuthenticatedUserRequest(w
 		return
 	}
 
-	response, err := s.s.ActivityListWatchedReposForAuthenticatedUser(ctx, params)
+	response, err := s.h.ActivityListWatchedReposForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2628,7 +2628,7 @@ func (s *HTTPServer) HandleActivityListWatchedReposForAuthenticatedUserRequest(w
 	}
 }
 
-func (s *HTTPServer) HandleActivityListWatchersForRepoRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityListWatchersForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListWatchersForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-watchers-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2641,7 +2641,7 @@ func (s *HTTPServer) HandleActivityListWatchersForRepoRequest(w http.ResponseWri
 		return
 	}
 
-	response, err := s.s.ActivityListWatchersForRepo(ctx, params)
+	response, err := s.h.ActivityListWatchersForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2654,7 +2654,7 @@ func (s *HTTPServer) HandleActivityListWatchersForRepoRequest(w http.ResponseWri
 	}
 }
 
-func (s *HTTPServer) HandleActivityMarkNotificationsAsReadRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityMarkNotificationsAsReadRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityMarkNotificationsAsRead`,
 		trace.WithAttributes(otelogen.OperationID(`activity/mark-notifications-as-read`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2667,7 +2667,7 @@ func (s *HTTPServer) HandleActivityMarkNotificationsAsReadRequest(w http.Respons
 		return
 	}
 
-	response, err := s.s.ActivityMarkNotificationsAsRead(ctx, request)
+	response, err := s.h.ActivityMarkNotificationsAsRead(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2680,7 +2680,7 @@ func (s *HTTPServer) HandleActivityMarkNotificationsAsReadRequest(w http.Respons
 	}
 }
 
-func (s *HTTPServer) HandleActivityMarkRepoNotificationsAsReadRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityMarkRepoNotificationsAsReadRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityMarkRepoNotificationsAsRead`,
 		trace.WithAttributes(otelogen.OperationID(`activity/mark-repo-notifications-as-read`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2699,7 +2699,7 @@ func (s *HTTPServer) HandleActivityMarkRepoNotificationsAsReadRequest(w http.Res
 		return
 	}
 
-	response, err := s.s.ActivityMarkRepoNotificationsAsRead(ctx, request, params)
+	response, err := s.h.ActivityMarkRepoNotificationsAsRead(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2712,7 +2712,7 @@ func (s *HTTPServer) HandleActivityMarkRepoNotificationsAsReadRequest(w http.Res
 	}
 }
 
-func (s *HTTPServer) HandleActivityMarkThreadAsReadRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityMarkThreadAsReadRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityMarkThreadAsRead`,
 		trace.WithAttributes(otelogen.OperationID(`activity/mark-thread-as-read`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2725,7 +2725,7 @@ func (s *HTTPServer) HandleActivityMarkThreadAsReadRequest(w http.ResponseWriter
 		return
 	}
 
-	response, err := s.s.ActivityMarkThreadAsRead(ctx, params)
+	response, err := s.h.ActivityMarkThreadAsRead(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2738,7 +2738,7 @@ func (s *HTTPServer) HandleActivityMarkThreadAsReadRequest(w http.ResponseWriter
 	}
 }
 
-func (s *HTTPServer) HandleActivitySetRepoSubscriptionRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivitySetRepoSubscriptionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivitySetRepoSubscription`,
 		trace.WithAttributes(otelogen.OperationID(`activity/set-repo-subscription`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2757,7 +2757,7 @@ func (s *HTTPServer) HandleActivitySetRepoSubscriptionRequest(w http.ResponseWri
 		return
 	}
 
-	response, err := s.s.ActivitySetRepoSubscription(ctx, request, params)
+	response, err := s.h.ActivitySetRepoSubscription(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2770,7 +2770,7 @@ func (s *HTTPServer) HandleActivitySetRepoSubscriptionRequest(w http.ResponseWri
 	}
 }
 
-func (s *HTTPServer) HandleActivitySetThreadSubscriptionRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivitySetThreadSubscriptionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivitySetThreadSubscription`,
 		trace.WithAttributes(otelogen.OperationID(`activity/set-thread-subscription`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2789,7 +2789,7 @@ func (s *HTTPServer) HandleActivitySetThreadSubscriptionRequest(w http.ResponseW
 		return
 	}
 
-	response, err := s.s.ActivitySetThreadSubscription(ctx, request, params)
+	response, err := s.h.ActivitySetThreadSubscription(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2802,7 +2802,7 @@ func (s *HTTPServer) HandleActivitySetThreadSubscriptionRequest(w http.ResponseW
 	}
 }
 
-func (s *HTTPServer) HandleActivityStarRepoForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityStarRepoForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityStarRepoForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/star-repo-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2815,7 +2815,7 @@ func (s *HTTPServer) HandleActivityStarRepoForAuthenticatedUserRequest(w http.Re
 		return
 	}
 
-	response, err := s.s.ActivityStarRepoForAuthenticatedUser(ctx, params)
+	response, err := s.h.ActivityStarRepoForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2828,7 +2828,7 @@ func (s *HTTPServer) HandleActivityStarRepoForAuthenticatedUserRequest(w http.Re
 	}
 }
 
-func (s *HTTPServer) HandleActivityUnstarRepoForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleActivityUnstarRepoForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityUnstarRepoForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/unstar-repo-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2841,7 +2841,7 @@ func (s *HTTPServer) HandleActivityUnstarRepoForAuthenticatedUserRequest(w http.
 		return
 	}
 
-	response, err := s.s.ActivityUnstarRepoForAuthenticatedUser(ctx, params)
+	response, err := s.h.ActivityUnstarRepoForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2854,7 +2854,7 @@ func (s *HTTPServer) HandleActivityUnstarRepoForAuthenticatedUserRequest(w http.
 	}
 }
 
-func (s *HTTPServer) HandleAppsAddRepoToInstallationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleAppsAddRepoToInstallationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsAddRepoToInstallation`,
 		trace.WithAttributes(otelogen.OperationID(`apps/add-repo-to-installation`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2867,7 +2867,7 @@ func (s *HTTPServer) HandleAppsAddRepoToInstallationRequest(w http.ResponseWrite
 		return
 	}
 
-	response, err := s.s.AppsAddRepoToInstallation(ctx, params)
+	response, err := s.h.AppsAddRepoToInstallation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2880,7 +2880,7 @@ func (s *HTTPServer) HandleAppsAddRepoToInstallationRequest(w http.ResponseWrite
 	}
 }
 
-func (s *HTTPServer) HandleAppsDeleteInstallationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleAppsDeleteInstallationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsDeleteInstallation`,
 		trace.WithAttributes(otelogen.OperationID(`apps/delete-installation`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2893,7 +2893,7 @@ func (s *HTTPServer) HandleAppsDeleteInstallationRequest(w http.ResponseWriter, 
 		return
 	}
 
-	response, err := s.s.AppsDeleteInstallation(ctx, params)
+	response, err := s.h.AppsDeleteInstallation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2906,14 +2906,14 @@ func (s *HTTPServer) HandleAppsDeleteInstallationRequest(w http.ResponseWriter, 
 	}
 }
 
-func (s *HTTPServer) HandleAppsGetAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleAppsGetAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsGetAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`apps/get-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.AppsGetAuthenticated(ctx)
+	response, err := s.h.AppsGetAuthenticated(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2926,7 +2926,7 @@ func (s *HTTPServer) HandleAppsGetAuthenticatedRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleAppsGetBySlugRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleAppsGetBySlugRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsGetBySlug`,
 		trace.WithAttributes(otelogen.OperationID(`apps/get-by-slug`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2939,7 +2939,7 @@ func (s *HTTPServer) HandleAppsGetBySlugRequest(w http.ResponseWriter, r *http.R
 		return
 	}
 
-	response, err := s.s.AppsGetBySlug(ctx, params)
+	response, err := s.h.AppsGetBySlug(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2952,7 +2952,7 @@ func (s *HTTPServer) HandleAppsGetBySlugRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
-func (s *HTTPServer) HandleAppsGetSubscriptionPlanForAccountRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleAppsGetSubscriptionPlanForAccountRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsGetSubscriptionPlanForAccount`,
 		trace.WithAttributes(otelogen.OperationID(`apps/get-subscription-plan-for-account`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2965,7 +2965,7 @@ func (s *HTTPServer) HandleAppsGetSubscriptionPlanForAccountRequest(w http.Respo
 		return
 	}
 
-	response, err := s.s.AppsGetSubscriptionPlanForAccount(ctx, params)
+	response, err := s.h.AppsGetSubscriptionPlanForAccount(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -2978,7 +2978,7 @@ func (s *HTTPServer) HandleAppsGetSubscriptionPlanForAccountRequest(w http.Respo
 	}
 }
 
-func (s *HTTPServer) HandleAppsGetSubscriptionPlanForAccountStubbedRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleAppsGetSubscriptionPlanForAccountStubbedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsGetSubscriptionPlanForAccountStubbed`,
 		trace.WithAttributes(otelogen.OperationID(`apps/get-subscription-plan-for-account-stubbed`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2991,7 +2991,7 @@ func (s *HTTPServer) HandleAppsGetSubscriptionPlanForAccountStubbedRequest(w htt
 		return
 	}
 
-	response, err := s.s.AppsGetSubscriptionPlanForAccountStubbed(ctx, params)
+	response, err := s.h.AppsGetSubscriptionPlanForAccountStubbed(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3004,14 +3004,14 @@ func (s *HTTPServer) HandleAppsGetSubscriptionPlanForAccountStubbedRequest(w htt
 	}
 }
 
-func (s *HTTPServer) HandleAppsGetWebhookConfigForAppRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleAppsGetWebhookConfigForAppRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsGetWebhookConfigForApp`,
 		trace.WithAttributes(otelogen.OperationID(`apps/get-webhook-config-for-app`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.AppsGetWebhookConfigForApp(ctx)
+	response, err := s.h.AppsGetWebhookConfigForApp(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3024,7 +3024,7 @@ func (s *HTTPServer) HandleAppsGetWebhookConfigForAppRequest(w http.ResponseWrit
 	}
 }
 
-func (s *HTTPServer) HandleAppsListAccountsForPlanStubbedRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleAppsListAccountsForPlanStubbedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsListAccountsForPlanStubbed`,
 		trace.WithAttributes(otelogen.OperationID(`apps/list-accounts-for-plan-stubbed`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3037,7 +3037,7 @@ func (s *HTTPServer) HandleAppsListAccountsForPlanStubbedRequest(w http.Response
 		return
 	}
 
-	response, err := s.s.AppsListAccountsForPlanStubbed(ctx, params)
+	response, err := s.h.AppsListAccountsForPlanStubbed(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3050,7 +3050,7 @@ func (s *HTTPServer) HandleAppsListAccountsForPlanStubbedRequest(w http.Response
 	}
 }
 
-func (s *HTTPServer) HandleAppsListInstallationReposForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleAppsListInstallationReposForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsListInstallationReposForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`apps/list-installation-repos-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3063,7 +3063,7 @@ func (s *HTTPServer) HandleAppsListInstallationReposForAuthenticatedUserRequest(
 		return
 	}
 
-	response, err := s.s.AppsListInstallationReposForAuthenticatedUser(ctx, params)
+	response, err := s.h.AppsListInstallationReposForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3076,7 +3076,7 @@ func (s *HTTPServer) HandleAppsListInstallationReposForAuthenticatedUserRequest(
 	}
 }
 
-func (s *HTTPServer) HandleAppsListPlansRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleAppsListPlansRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsListPlans`,
 		trace.WithAttributes(otelogen.OperationID(`apps/list-plans`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3089,7 +3089,7 @@ func (s *HTTPServer) HandleAppsListPlansRequest(w http.ResponseWriter, r *http.R
 		return
 	}
 
-	response, err := s.s.AppsListPlans(ctx, params)
+	response, err := s.h.AppsListPlans(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3102,7 +3102,7 @@ func (s *HTTPServer) HandleAppsListPlansRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
-func (s *HTTPServer) HandleAppsListPlansStubbedRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleAppsListPlansStubbedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsListPlansStubbed`,
 		trace.WithAttributes(otelogen.OperationID(`apps/list-plans-stubbed`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3115,7 +3115,7 @@ func (s *HTTPServer) HandleAppsListPlansStubbedRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.AppsListPlansStubbed(ctx, params)
+	response, err := s.h.AppsListPlansStubbed(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3128,7 +3128,7 @@ func (s *HTTPServer) HandleAppsListPlansStubbedRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleAppsListReposAccessibleToInstallationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleAppsListReposAccessibleToInstallationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsListReposAccessibleToInstallation`,
 		trace.WithAttributes(otelogen.OperationID(`apps/list-repos-accessible-to-installation`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3141,7 +3141,7 @@ func (s *HTTPServer) HandleAppsListReposAccessibleToInstallationRequest(w http.R
 		return
 	}
 
-	response, err := s.s.AppsListReposAccessibleToInstallation(ctx, params)
+	response, err := s.h.AppsListReposAccessibleToInstallation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3154,7 +3154,7 @@ func (s *HTTPServer) HandleAppsListReposAccessibleToInstallationRequest(w http.R
 	}
 }
 
-func (s *HTTPServer) HandleAppsListSubscriptionsForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleAppsListSubscriptionsForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsListSubscriptionsForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`apps/list-subscriptions-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3167,7 +3167,7 @@ func (s *HTTPServer) HandleAppsListSubscriptionsForAuthenticatedUserRequest(w ht
 		return
 	}
 
-	response, err := s.s.AppsListSubscriptionsForAuthenticatedUser(ctx, params)
+	response, err := s.h.AppsListSubscriptionsForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3180,7 +3180,7 @@ func (s *HTTPServer) HandleAppsListSubscriptionsForAuthenticatedUserRequest(w ht
 	}
 }
 
-func (s *HTTPServer) HandleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsListSubscriptionsForAuthenticatedUserStubbed`,
 		trace.WithAttributes(otelogen.OperationID(`apps/list-subscriptions-for-authenticated-user-stubbed`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3193,7 +3193,7 @@ func (s *HTTPServer) HandleAppsListSubscriptionsForAuthenticatedUserStubbedReque
 		return
 	}
 
-	response, err := s.s.AppsListSubscriptionsForAuthenticatedUserStubbed(ctx, params)
+	response, err := s.h.AppsListSubscriptionsForAuthenticatedUserStubbed(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3206,7 +3206,7 @@ func (s *HTTPServer) HandleAppsListSubscriptionsForAuthenticatedUserStubbedReque
 	}
 }
 
-func (s *HTTPServer) HandleAppsRemoveRepoFromInstallationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleAppsRemoveRepoFromInstallationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsRemoveRepoFromInstallation`,
 		trace.WithAttributes(otelogen.OperationID(`apps/remove-repo-from-installation`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3219,7 +3219,7 @@ func (s *HTTPServer) HandleAppsRemoveRepoFromInstallationRequest(w http.Response
 		return
 	}
 
-	response, err := s.s.AppsRemoveRepoFromInstallation(ctx, params)
+	response, err := s.h.AppsRemoveRepoFromInstallation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3232,14 +3232,14 @@ func (s *HTTPServer) HandleAppsRemoveRepoFromInstallationRequest(w http.Response
 	}
 }
 
-func (s *HTTPServer) HandleAppsRevokeInstallationAccessTokenRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleAppsRevokeInstallationAccessTokenRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsRevokeInstallationAccessToken`,
 		trace.WithAttributes(otelogen.OperationID(`apps/revoke-installation-access-token`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.AppsRevokeInstallationAccessToken(ctx)
+	response, err := s.h.AppsRevokeInstallationAccessToken(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3252,7 +3252,7 @@ func (s *HTTPServer) HandleAppsRevokeInstallationAccessTokenRequest(w http.Respo
 	}
 }
 
-func (s *HTTPServer) HandleAppsSuspendInstallationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleAppsSuspendInstallationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsSuspendInstallation`,
 		trace.WithAttributes(otelogen.OperationID(`apps/suspend-installation`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3265,7 +3265,7 @@ func (s *HTTPServer) HandleAppsSuspendInstallationRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.AppsSuspendInstallation(ctx, params)
+	response, err := s.h.AppsSuspendInstallation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3278,7 +3278,7 @@ func (s *HTTPServer) HandleAppsSuspendInstallationRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleAppsUnsuspendInstallationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleAppsUnsuspendInstallationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsUnsuspendInstallation`,
 		trace.WithAttributes(otelogen.OperationID(`apps/unsuspend-installation`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3291,7 +3291,7 @@ func (s *HTTPServer) HandleAppsUnsuspendInstallationRequest(w http.ResponseWrite
 		return
 	}
 
-	response, err := s.s.AppsUnsuspendInstallation(ctx, params)
+	response, err := s.h.AppsUnsuspendInstallation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3304,7 +3304,7 @@ func (s *HTTPServer) HandleAppsUnsuspendInstallationRequest(w http.ResponseWrite
 	}
 }
 
-func (s *HTTPServer) HandleAppsUpdateWebhookConfigForAppRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleAppsUpdateWebhookConfigForAppRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsUpdateWebhookConfigForApp`,
 		trace.WithAttributes(otelogen.OperationID(`apps/update-webhook-config-for-app`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3317,7 +3317,7 @@ func (s *HTTPServer) HandleAppsUpdateWebhookConfigForAppRequest(w http.ResponseW
 		return
 	}
 
-	response, err := s.s.AppsUpdateWebhookConfigForApp(ctx, request)
+	response, err := s.h.AppsUpdateWebhookConfigForApp(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3330,7 +3330,7 @@ func (s *HTTPServer) HandleAppsUpdateWebhookConfigForAppRequest(w http.ResponseW
 	}
 }
 
-func (s *HTTPServer) HandleBillingGetGithubActionsBillingGheRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleBillingGetGithubActionsBillingGheRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetGithubActionsBillingGhe`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-github-actions-billing-ghe`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3343,7 +3343,7 @@ func (s *HTTPServer) HandleBillingGetGithubActionsBillingGheRequest(w http.Respo
 		return
 	}
 
-	response, err := s.s.BillingGetGithubActionsBillingGhe(ctx, params)
+	response, err := s.h.BillingGetGithubActionsBillingGhe(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3356,7 +3356,7 @@ func (s *HTTPServer) HandleBillingGetGithubActionsBillingGheRequest(w http.Respo
 	}
 }
 
-func (s *HTTPServer) HandleBillingGetGithubActionsBillingOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleBillingGetGithubActionsBillingOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetGithubActionsBillingOrg`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-github-actions-billing-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3369,7 +3369,7 @@ func (s *HTTPServer) HandleBillingGetGithubActionsBillingOrgRequest(w http.Respo
 		return
 	}
 
-	response, err := s.s.BillingGetGithubActionsBillingOrg(ctx, params)
+	response, err := s.h.BillingGetGithubActionsBillingOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3382,7 +3382,7 @@ func (s *HTTPServer) HandleBillingGetGithubActionsBillingOrgRequest(w http.Respo
 	}
 }
 
-func (s *HTTPServer) HandleBillingGetGithubActionsBillingUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleBillingGetGithubActionsBillingUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetGithubActionsBillingUser`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-github-actions-billing-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3395,7 +3395,7 @@ func (s *HTTPServer) HandleBillingGetGithubActionsBillingUserRequest(w http.Resp
 		return
 	}
 
-	response, err := s.s.BillingGetGithubActionsBillingUser(ctx, params)
+	response, err := s.h.BillingGetGithubActionsBillingUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3408,7 +3408,7 @@ func (s *HTTPServer) HandleBillingGetGithubActionsBillingUserRequest(w http.Resp
 	}
 }
 
-func (s *HTTPServer) HandleBillingGetGithubPackagesBillingGheRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleBillingGetGithubPackagesBillingGheRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetGithubPackagesBillingGhe`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-github-packages-billing-ghe`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3421,7 +3421,7 @@ func (s *HTTPServer) HandleBillingGetGithubPackagesBillingGheRequest(w http.Resp
 		return
 	}
 
-	response, err := s.s.BillingGetGithubPackagesBillingGhe(ctx, params)
+	response, err := s.h.BillingGetGithubPackagesBillingGhe(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3434,7 +3434,7 @@ func (s *HTTPServer) HandleBillingGetGithubPackagesBillingGheRequest(w http.Resp
 	}
 }
 
-func (s *HTTPServer) HandleBillingGetGithubPackagesBillingOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleBillingGetGithubPackagesBillingOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetGithubPackagesBillingOrg`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-github-packages-billing-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3447,7 +3447,7 @@ func (s *HTTPServer) HandleBillingGetGithubPackagesBillingOrgRequest(w http.Resp
 		return
 	}
 
-	response, err := s.s.BillingGetGithubPackagesBillingOrg(ctx, params)
+	response, err := s.h.BillingGetGithubPackagesBillingOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3460,7 +3460,7 @@ func (s *HTTPServer) HandleBillingGetGithubPackagesBillingOrgRequest(w http.Resp
 	}
 }
 
-func (s *HTTPServer) HandleBillingGetGithubPackagesBillingUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleBillingGetGithubPackagesBillingUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetGithubPackagesBillingUser`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-github-packages-billing-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3473,7 +3473,7 @@ func (s *HTTPServer) HandleBillingGetGithubPackagesBillingUserRequest(w http.Res
 		return
 	}
 
-	response, err := s.s.BillingGetGithubPackagesBillingUser(ctx, params)
+	response, err := s.h.BillingGetGithubPackagesBillingUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3486,7 +3486,7 @@ func (s *HTTPServer) HandleBillingGetGithubPackagesBillingUserRequest(w http.Res
 	}
 }
 
-func (s *HTTPServer) HandleBillingGetSharedStorageBillingGheRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleBillingGetSharedStorageBillingGheRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetSharedStorageBillingGhe`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-shared-storage-billing-ghe`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3499,7 +3499,7 @@ func (s *HTTPServer) HandleBillingGetSharedStorageBillingGheRequest(w http.Respo
 		return
 	}
 
-	response, err := s.s.BillingGetSharedStorageBillingGhe(ctx, params)
+	response, err := s.h.BillingGetSharedStorageBillingGhe(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3512,7 +3512,7 @@ func (s *HTTPServer) HandleBillingGetSharedStorageBillingGheRequest(w http.Respo
 	}
 }
 
-func (s *HTTPServer) HandleBillingGetSharedStorageBillingOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleBillingGetSharedStorageBillingOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetSharedStorageBillingOrg`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-shared-storage-billing-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3525,7 +3525,7 @@ func (s *HTTPServer) HandleBillingGetSharedStorageBillingOrgRequest(w http.Respo
 		return
 	}
 
-	response, err := s.s.BillingGetSharedStorageBillingOrg(ctx, params)
+	response, err := s.h.BillingGetSharedStorageBillingOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3538,7 +3538,7 @@ func (s *HTTPServer) HandleBillingGetSharedStorageBillingOrgRequest(w http.Respo
 	}
 }
 
-func (s *HTTPServer) HandleBillingGetSharedStorageBillingUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleBillingGetSharedStorageBillingUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetSharedStorageBillingUser`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-shared-storage-billing-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3551,7 +3551,7 @@ func (s *HTTPServer) HandleBillingGetSharedStorageBillingUserRequest(w http.Resp
 		return
 	}
 
-	response, err := s.s.BillingGetSharedStorageBillingUser(ctx, params)
+	response, err := s.h.BillingGetSharedStorageBillingUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3564,7 +3564,7 @@ func (s *HTTPServer) HandleBillingGetSharedStorageBillingUserRequest(w http.Resp
 	}
 }
 
-func (s *HTTPServer) HandleChecksCreateSuiteRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleChecksCreateSuiteRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksCreateSuite`,
 		trace.WithAttributes(otelogen.OperationID(`checks/create-suite`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3583,7 +3583,7 @@ func (s *HTTPServer) HandleChecksCreateSuiteRequest(w http.ResponseWriter, r *ht
 		return
 	}
 
-	response, err := s.s.ChecksCreateSuite(ctx, request, params)
+	response, err := s.h.ChecksCreateSuite(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3596,7 +3596,7 @@ func (s *HTTPServer) HandleChecksCreateSuiteRequest(w http.ResponseWriter, r *ht
 	}
 }
 
-func (s *HTTPServer) HandleChecksGetRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleChecksGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksGet`,
 		trace.WithAttributes(otelogen.OperationID(`checks/get`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3609,7 +3609,7 @@ func (s *HTTPServer) HandleChecksGetRequest(w http.ResponseWriter, r *http.Reque
 		return
 	}
 
-	response, err := s.s.ChecksGet(ctx, params)
+	response, err := s.h.ChecksGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3622,7 +3622,7 @@ func (s *HTTPServer) HandleChecksGetRequest(w http.ResponseWriter, r *http.Reque
 	}
 }
 
-func (s *HTTPServer) HandleChecksGetSuiteRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleChecksGetSuiteRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksGetSuite`,
 		trace.WithAttributes(otelogen.OperationID(`checks/get-suite`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3635,7 +3635,7 @@ func (s *HTTPServer) HandleChecksGetSuiteRequest(w http.ResponseWriter, r *http.
 		return
 	}
 
-	response, err := s.s.ChecksGetSuite(ctx, params)
+	response, err := s.h.ChecksGetSuite(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3648,7 +3648,7 @@ func (s *HTTPServer) HandleChecksGetSuiteRequest(w http.ResponseWriter, r *http.
 	}
 }
 
-func (s *HTTPServer) HandleChecksListAnnotationsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleChecksListAnnotationsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksListAnnotations`,
 		trace.WithAttributes(otelogen.OperationID(`checks/list-annotations`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3661,7 +3661,7 @@ func (s *HTTPServer) HandleChecksListAnnotationsRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.ChecksListAnnotations(ctx, params)
+	response, err := s.h.ChecksListAnnotations(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3674,7 +3674,7 @@ func (s *HTTPServer) HandleChecksListAnnotationsRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleChecksListForRefRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleChecksListForRefRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksListForRef`,
 		trace.WithAttributes(otelogen.OperationID(`checks/list-for-ref`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3687,7 +3687,7 @@ func (s *HTTPServer) HandleChecksListForRefRequest(w http.ResponseWriter, r *htt
 		return
 	}
 
-	response, err := s.s.ChecksListForRef(ctx, params)
+	response, err := s.h.ChecksListForRef(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3700,7 +3700,7 @@ func (s *HTTPServer) HandleChecksListForRefRequest(w http.ResponseWriter, r *htt
 	}
 }
 
-func (s *HTTPServer) HandleChecksListForSuiteRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleChecksListForSuiteRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksListForSuite`,
 		trace.WithAttributes(otelogen.OperationID(`checks/list-for-suite`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3713,7 +3713,7 @@ func (s *HTTPServer) HandleChecksListForSuiteRequest(w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.s.ChecksListForSuite(ctx, params)
+	response, err := s.h.ChecksListForSuite(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3726,7 +3726,7 @@ func (s *HTTPServer) HandleChecksListForSuiteRequest(w http.ResponseWriter, r *h
 	}
 }
 
-func (s *HTTPServer) HandleChecksListSuitesForRefRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleChecksListSuitesForRefRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksListSuitesForRef`,
 		trace.WithAttributes(otelogen.OperationID(`checks/list-suites-for-ref`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3739,7 +3739,7 @@ func (s *HTTPServer) HandleChecksListSuitesForRefRequest(w http.ResponseWriter, 
 		return
 	}
 
-	response, err := s.s.ChecksListSuitesForRef(ctx, params)
+	response, err := s.h.ChecksListSuitesForRef(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3752,7 +3752,7 @@ func (s *HTTPServer) HandleChecksListSuitesForRefRequest(w http.ResponseWriter, 
 	}
 }
 
-func (s *HTTPServer) HandleChecksRerequestSuiteRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleChecksRerequestSuiteRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksRerequestSuite`,
 		trace.WithAttributes(otelogen.OperationID(`checks/rerequest-suite`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3765,7 +3765,7 @@ func (s *HTTPServer) HandleChecksRerequestSuiteRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.ChecksRerequestSuite(ctx, params)
+	response, err := s.h.ChecksRerequestSuite(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3778,7 +3778,7 @@ func (s *HTTPServer) HandleChecksRerequestSuiteRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleChecksSetSuitesPreferencesRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleChecksSetSuitesPreferencesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksSetSuitesPreferences`,
 		trace.WithAttributes(otelogen.OperationID(`checks/set-suites-preferences`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3797,7 +3797,7 @@ func (s *HTTPServer) HandleChecksSetSuitesPreferencesRequest(w http.ResponseWrit
 		return
 	}
 
-	response, err := s.s.ChecksSetSuitesPreferences(ctx, request, params)
+	response, err := s.h.ChecksSetSuitesPreferences(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3810,7 +3810,7 @@ func (s *HTTPServer) HandleChecksSetSuitesPreferencesRequest(w http.ResponseWrit
 	}
 }
 
-func (s *HTTPServer) HandleCodeScanningDeleteAnalysisRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleCodeScanningDeleteAnalysisRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningDeleteAnalysis`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/delete-analysis`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3823,7 +3823,7 @@ func (s *HTTPServer) HandleCodeScanningDeleteAnalysisRequest(w http.ResponseWrit
 		return
 	}
 
-	response, err := s.s.CodeScanningDeleteAnalysis(ctx, params)
+	response, err := s.h.CodeScanningDeleteAnalysis(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3836,7 +3836,7 @@ func (s *HTTPServer) HandleCodeScanningDeleteAnalysisRequest(w http.ResponseWrit
 	}
 }
 
-func (s *HTTPServer) HandleCodeScanningGetAlertRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleCodeScanningGetAlertRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningGetAlert`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/get-alert`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3849,7 +3849,7 @@ func (s *HTTPServer) HandleCodeScanningGetAlertRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.CodeScanningGetAlert(ctx, params)
+	response, err := s.h.CodeScanningGetAlert(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3862,7 +3862,7 @@ func (s *HTTPServer) HandleCodeScanningGetAlertRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleCodeScanningGetAnalysisRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleCodeScanningGetAnalysisRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningGetAnalysis`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/get-analysis`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3875,7 +3875,7 @@ func (s *HTTPServer) HandleCodeScanningGetAnalysisRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.CodeScanningGetAnalysis(ctx, params)
+	response, err := s.h.CodeScanningGetAnalysis(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3888,7 +3888,7 @@ func (s *HTTPServer) HandleCodeScanningGetAnalysisRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleCodeScanningGetSarifRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleCodeScanningGetSarifRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningGetSarif`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/get-sarif`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3901,7 +3901,7 @@ func (s *HTTPServer) HandleCodeScanningGetSarifRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.CodeScanningGetSarif(ctx, params)
+	response, err := s.h.CodeScanningGetSarif(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3914,7 +3914,7 @@ func (s *HTTPServer) HandleCodeScanningGetSarifRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleCodeScanningListAlertInstancesRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleCodeScanningListAlertInstancesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningListAlertInstances`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/list-alert-instances`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3927,7 +3927,7 @@ func (s *HTTPServer) HandleCodeScanningListAlertInstancesRequest(w http.Response
 		return
 	}
 
-	response, err := s.s.CodeScanningListAlertInstances(ctx, params)
+	response, err := s.h.CodeScanningListAlertInstances(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3940,7 +3940,7 @@ func (s *HTTPServer) HandleCodeScanningListAlertInstancesRequest(w http.Response
 	}
 }
 
-func (s *HTTPServer) HandleCodeScanningListAlertsForRepoRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleCodeScanningListAlertsForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningListAlertsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/list-alerts-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3953,7 +3953,7 @@ func (s *HTTPServer) HandleCodeScanningListAlertsForRepoRequest(w http.ResponseW
 		return
 	}
 
-	response, err := s.s.CodeScanningListAlertsForRepo(ctx, params)
+	response, err := s.h.CodeScanningListAlertsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3966,7 +3966,7 @@ func (s *HTTPServer) HandleCodeScanningListAlertsForRepoRequest(w http.ResponseW
 	}
 }
 
-func (s *HTTPServer) HandleCodeScanningListRecentAnalysesRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleCodeScanningListRecentAnalysesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningListRecentAnalyses`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/list-recent-analyses`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3979,7 +3979,7 @@ func (s *HTTPServer) HandleCodeScanningListRecentAnalysesRequest(w http.Response
 		return
 	}
 
-	response, err := s.s.CodeScanningListRecentAnalyses(ctx, params)
+	response, err := s.h.CodeScanningListRecentAnalyses(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -3992,7 +3992,7 @@ func (s *HTTPServer) HandleCodeScanningListRecentAnalysesRequest(w http.Response
 	}
 }
 
-func (s *HTTPServer) HandleCodeScanningUpdateAlertRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleCodeScanningUpdateAlertRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningUpdateAlert`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/update-alert`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4011,7 +4011,7 @@ func (s *HTTPServer) HandleCodeScanningUpdateAlertRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.CodeScanningUpdateAlert(ctx, request, params)
+	response, err := s.h.CodeScanningUpdateAlert(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4024,7 +4024,7 @@ func (s *HTTPServer) HandleCodeScanningUpdateAlertRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleCodeScanningUploadSarifRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleCodeScanningUploadSarifRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningUploadSarif`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/upload-sarif`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4043,7 +4043,7 @@ func (s *HTTPServer) HandleCodeScanningUploadSarifRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.CodeScanningUploadSarif(ctx, request, params)
+	response, err := s.h.CodeScanningUploadSarif(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4056,14 +4056,14 @@ func (s *HTTPServer) HandleCodeScanningUploadSarifRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleCodesOfConductGetAllCodesOfConductRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleCodesOfConductGetAllCodesOfConductRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodesOfConductGetAllCodesOfConduct`,
 		trace.WithAttributes(otelogen.OperationID(`codes-of-conduct/get-all-codes-of-conduct`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.CodesOfConductGetAllCodesOfConduct(ctx)
+	response, err := s.h.CodesOfConductGetAllCodesOfConduct(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4076,7 +4076,7 @@ func (s *HTTPServer) HandleCodesOfConductGetAllCodesOfConductRequest(w http.Resp
 	}
 }
 
-func (s *HTTPServer) HandleCodesOfConductGetConductCodeRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleCodesOfConductGetConductCodeRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodesOfConductGetConductCode`,
 		trace.WithAttributes(otelogen.OperationID(`codes-of-conduct/get-conduct-code`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4089,7 +4089,7 @@ func (s *HTTPServer) HandleCodesOfConductGetConductCodeRequest(w http.ResponseWr
 		return
 	}
 
-	response, err := s.s.CodesOfConductGetConductCode(ctx, params)
+	response, err := s.h.CodesOfConductGetConductCode(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4102,14 +4102,14 @@ func (s *HTTPServer) HandleCodesOfConductGetConductCodeRequest(w http.ResponseWr
 	}
 }
 
-func (s *HTTPServer) HandleEmojisGetRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEmojisGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EmojisGet`,
 		trace.WithAttributes(otelogen.OperationID(`emojis/get`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.EmojisGet(ctx)
+	response, err := s.h.EmojisGet(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4122,7 +4122,7 @@ func (s *HTTPServer) HandleEmojisGetRequest(w http.ResponseWriter, r *http.Reque
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4135,7 +4135,7 @@ func (s *HTTPServer) HandleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInE
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
+	response, err := s.h.EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4148,7 +4148,7 @@ func (s *HTTPServer) HandleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInE
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/add-self-hosted-runner-to-group-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4161,7 +4161,7 @@ func (s *HTTPServer) HandleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpris
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx, params)
+	response, err := s.h.EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4174,7 +4174,7 @@ func (s *HTTPServer) HandleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpris
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminCreateRegistrationTokenForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/create-registration-token-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4187,7 +4187,7 @@ func (s *HTTPServer) HandleEnterpriseAdminCreateRegistrationTokenForEnterpriseRe
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx, params)
+	response, err := s.h.EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4200,7 +4200,7 @@ func (s *HTTPServer) HandleEnterpriseAdminCreateRegistrationTokenForEnterpriseRe
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminCreateRemoveTokenForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/create-remove-token-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4213,7 +4213,7 @@ func (s *HTTPServer) HandleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminCreateRemoveTokenForEnterprise(ctx, params)
+	response, err := s.h.EnterpriseAdminCreateRemoveTokenForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4226,7 +4226,7 @@ func (s *HTTPServer) HandleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/create-self-hosted-runner-group-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4245,7 +4245,7 @@ func (s *HTTPServer) HandleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpri
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx, request, params)
+	response, err := s.h.EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4258,7 +4258,7 @@ func (s *HTTPServer) HandleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpri
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminDeleteScimGroupFromEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/delete-scim-group-from-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4271,7 +4271,7 @@ func (s *HTTPServer) HandleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(w
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminDeleteScimGroupFromEnterprise(ctx, params)
+	response, err := s.h.EnterpriseAdminDeleteScimGroupFromEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4284,7 +4284,7 @@ func (s *HTTPServer) HandleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(w
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/delete-self-hosted-runner-from-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4297,7 +4297,7 @@ func (s *HTTPServer) HandleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRe
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx, params)
+	response, err := s.h.EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4310,7 +4310,7 @@ func (s *HTTPServer) HandleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRe
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/delete-self-hosted-runner-group-from-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4323,7 +4323,7 @@ func (s *HTTPServer) HandleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpr
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx, params)
+	response, err := s.h.EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4336,7 +4336,7 @@ func (s *HTTPServer) HandleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpr
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminDeleteUserFromEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminDeleteUserFromEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminDeleteUserFromEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/delete-user-from-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4349,7 +4349,7 @@ func (s *HTTPServer) HandleEnterpriseAdminDeleteUserFromEnterpriseRequest(w http
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminDeleteUserFromEnterprise(ctx, params)
+	response, err := s.h.EnterpriseAdminDeleteUserFromEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4362,7 +4362,7 @@ func (s *HTTPServer) HandleEnterpriseAdminDeleteUserFromEnterpriseRequest(w http
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/disable-selected-organization-github-actions-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4375,7 +4375,7 @@ func (s *HTTPServer) HandleEnterpriseAdminDisableSelectedOrganizationGithubActio
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx, params)
+	response, err := s.h.EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4388,7 +4388,7 @@ func (s *HTTPServer) HandleEnterpriseAdminDisableSelectedOrganizationGithubActio
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/enable-selected-organization-github-actions-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4401,7 +4401,7 @@ func (s *HTTPServer) HandleEnterpriseAdminEnableSelectedOrganizationGithubAction
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx, params)
+	response, err := s.h.EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4414,7 +4414,7 @@ func (s *HTTPServer) HandleEnterpriseAdminEnableSelectedOrganizationGithubAction
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminGetAllowedActionsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminGetAllowedActionsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminGetAllowedActionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/get-allowed-actions-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4427,7 +4427,7 @@ func (s *HTTPServer) HandleEnterpriseAdminGetAllowedActionsEnterpriseRequest(w h
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminGetAllowedActionsEnterprise(ctx, params)
+	response, err := s.h.EnterpriseAdminGetAllowedActionsEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4440,7 +4440,7 @@ func (s *HTTPServer) HandleEnterpriseAdminGetAllowedActionsEnterpriseRequest(w h
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminGetAuditLogRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminGetAuditLogRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminGetAuditLog`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/get-audit-log`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4453,7 +4453,7 @@ func (s *HTTPServer) HandleEnterpriseAdminGetAuditLogRequest(w http.ResponseWrit
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminGetAuditLog(ctx, params)
+	response, err := s.h.EnterpriseAdminGetAuditLog(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4466,7 +4466,7 @@ func (s *HTTPServer) HandleEnterpriseAdminGetAuditLogRequest(w http.ResponseWrit
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminGetGithubActionsPermissionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/get-github-actions-permissions-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4479,7 +4479,7 @@ func (s *HTTPServer) HandleEnterpriseAdminGetGithubActionsPermissionsEnterpriseR
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx, params)
+	response, err := s.h.EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4492,7 +4492,7 @@ func (s *HTTPServer) HandleEnterpriseAdminGetGithubActionsPermissionsEnterpriseR
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminGetProvisioningInformationForEnterpriseGroup`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/get-provisioning-information-for-enterprise-group`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4505,7 +4505,7 @@ func (s *HTTPServer) HandleEnterpriseAdminGetProvisioningInformationForEnterpris
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx, params)
+	response, err := s.h.EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4518,7 +4518,7 @@ func (s *HTTPServer) HandleEnterpriseAdminGetProvisioningInformationForEnterpris
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminGetProvisioningInformationForEnterpriseUser`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/get-provisioning-information-for-enterprise-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4531,7 +4531,7 @@ func (s *HTTPServer) HandleEnterpriseAdminGetProvisioningInformationForEnterpris
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx, params)
+	response, err := s.h.EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4544,7 +4544,7 @@ func (s *HTTPServer) HandleEnterpriseAdminGetProvisioningInformationForEnterpris
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminGetSelfHostedRunnerForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/get-self-hosted-runner-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4557,7 +4557,7 @@ func (s *HTTPServer) HandleEnterpriseAdminGetSelfHostedRunnerForEnterpriseReques
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx, params)
+	response, err := s.h.EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4570,7 +4570,7 @@ func (s *HTTPServer) HandleEnterpriseAdminGetSelfHostedRunnerForEnterpriseReques
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/get-self-hosted-runner-group-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4583,7 +4583,7 @@ func (s *HTTPServer) HandleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseR
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx, params)
+	response, err := s.h.EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4596,7 +4596,7 @@ func (s *HTTPServer) HandleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseR
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4609,7 +4609,7 @@ func (s *HTTPServer) HandleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupIn
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
+	response, err := s.h.EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4622,7 +4622,7 @@ func (s *HTTPServer) HandleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupIn
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminListProvisionedGroupsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-provisioned-groups-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4635,7 +4635,7 @@ func (s *HTTPServer) HandleEnterpriseAdminListProvisionedGroupsEnterpriseRequest
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminListProvisionedGroupsEnterprise(ctx, params)
+	response, err := s.h.EnterpriseAdminListProvisionedGroupsEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4648,7 +4648,7 @@ func (s *HTTPServer) HandleEnterpriseAdminListProvisionedGroupsEnterpriseRequest
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminListProvisionedIdentitiesEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-provisioned-identities-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4661,7 +4661,7 @@ func (s *HTTPServer) HandleEnterpriseAdminListProvisionedIdentitiesEnterpriseReq
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx, params)
+	response, err := s.h.EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4674,7 +4674,7 @@ func (s *HTTPServer) HandleEnterpriseAdminListProvisionedIdentitiesEnterpriseReq
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminListRunnerApplicationsForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-runner-applications-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4687,7 +4687,7 @@ func (s *HTTPServer) HandleEnterpriseAdminListRunnerApplicationsForEnterpriseReq
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminListRunnerApplicationsForEnterprise(ctx, params)
+	response, err := s.h.EnterpriseAdminListRunnerApplicationsForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4700,7 +4700,7 @@ func (s *HTTPServer) HandleEnterpriseAdminListRunnerApplicationsForEnterpriseReq
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4713,7 +4713,7 @@ func (s *HTTPServer) HandleEnterpriseAdminListSelectedOrganizationsEnabledGithub
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, params)
+	response, err := s.h.EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4726,7 +4726,7 @@ func (s *HTTPServer) HandleEnterpriseAdminListSelectedOrganizationsEnabledGithub
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-self-hosted-runner-groups-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4739,7 +4739,7 @@ func (s *HTTPServer) HandleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpris
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx, params)
+	response, err := s.h.EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4752,7 +4752,7 @@ func (s *HTTPServer) HandleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpris
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminListSelfHostedRunnersForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-self-hosted-runners-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4765,7 +4765,7 @@ func (s *HTTPServer) HandleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequ
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx, params)
+	response, err := s.h.EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4778,7 +4778,7 @@ func (s *HTTPServer) HandleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequ
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-self-hosted-runners-in-group-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4791,7 +4791,7 @@ func (s *HTTPServer) HandleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpr
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx, params)
+	response, err := s.h.EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4804,7 +4804,7 @@ func (s *HTTPServer) HandleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpr
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminProvisionAndInviteEnterpriseGroup`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/provision-and-invite-enterprise-group`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4823,7 +4823,7 @@ func (s *HTTPServer) HandleEnterpriseAdminProvisionAndInviteEnterpriseGroupReque
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx, request, params)
+	response, err := s.h.EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4836,7 +4836,7 @@ func (s *HTTPServer) HandleEnterpriseAdminProvisionAndInviteEnterpriseGroupReque
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminProvisionAndInviteEnterpriseUser`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/provision-and-invite-enterprise-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4855,7 +4855,7 @@ func (s *HTTPServer) HandleEnterpriseAdminProvisionAndInviteEnterpriseUserReques
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx, request, params)
+	response, err := s.h.EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4868,7 +4868,7 @@ func (s *HTTPServer) HandleEnterpriseAdminProvisionAndInviteEnterpriseUserReques
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4881,7 +4881,7 @@ func (s *HTTPServer) HandleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroup
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
+	response, err := s.h.EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4894,7 +4894,7 @@ func (s *HTTPServer) HandleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroup
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4907,7 +4907,7 @@ func (s *HTTPServer) HandleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnte
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx, params)
+	response, err := s.h.EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4920,7 +4920,7 @@ func (s *HTTPServer) HandleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnte
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminSetAllowedActionsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminSetAllowedActionsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminSetAllowedActionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-allowed-actions-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4939,7 +4939,7 @@ func (s *HTTPServer) HandleEnterpriseAdminSetAllowedActionsEnterpriseRequest(w h
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminSetAllowedActionsEnterprise(ctx, request, params)
+	response, err := s.h.EnterpriseAdminSetAllowedActionsEnterprise(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4952,7 +4952,7 @@ func (s *HTTPServer) HandleEnterpriseAdminSetAllowedActionsEnterpriseRequest(w h
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminSetGithubActionsPermissionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-github-actions-permissions-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4971,7 +4971,7 @@ func (s *HTTPServer) HandleEnterpriseAdminSetGithubActionsPermissionsEnterpriseR
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx, request, params)
+	response, err := s.h.EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -4984,7 +4984,7 @@ func (s *HTTPServer) HandleEnterpriseAdminSetGithubActionsPermissionsEnterpriseR
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminSetInformationForProvisionedEnterpriseGroup`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-information-for-provisioned-enterprise-group`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5003,7 +5003,7 @@ func (s *HTTPServer) HandleEnterpriseAdminSetInformationForProvisionedEnterprise
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx, request, params)
+	response, err := s.h.EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5016,7 +5016,7 @@ func (s *HTTPServer) HandleEnterpriseAdminSetInformationForProvisionedEnterprise
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminSetInformationForProvisionedEnterpriseUser`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-information-for-provisioned-enterprise-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5035,7 +5035,7 @@ func (s *HTTPServer) HandleEnterpriseAdminSetInformationForProvisionedEnterprise
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx, request, params)
+	response, err := s.h.EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5048,7 +5048,7 @@ func (s *HTTPServer) HandleEnterpriseAdminSetInformationForProvisionedEnterprise
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5067,7 +5067,7 @@ func (s *HTTPServer) HandleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInE
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, request, params)
+	response, err := s.h.EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5080,7 +5080,7 @@ func (s *HTTPServer) HandleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInE
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5099,7 +5099,7 @@ func (s *HTTPServer) HandleEnterpriseAdminSetSelectedOrganizationsEnabledGithubA
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, request, params)
+	response, err := s.h.EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5112,7 +5112,7 @@ func (s *HTTPServer) HandleEnterpriseAdminSetSelectedOrganizationsEnabledGithubA
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-self-hosted-runners-in-group-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5131,7 +5131,7 @@ func (s *HTTPServer) HandleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpri
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx, request, params)
+	response, err := s.h.EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5144,7 +5144,7 @@ func (s *HTTPServer) HandleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpri
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminUpdateAttributeForEnterpriseUser`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/update-attribute-for-enterprise-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5163,7 +5163,7 @@ func (s *HTTPServer) HandleEnterpriseAdminUpdateAttributeForEnterpriseUserReques
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx, request, params)
+	response, err := s.h.EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5176,7 +5176,7 @@ func (s *HTTPServer) HandleEnterpriseAdminUpdateAttributeForEnterpriseUserReques
 	}
 }
 
-func (s *HTTPServer) HandleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/update-self-hosted-runner-group-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5195,7 +5195,7 @@ func (s *HTTPServer) HandleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpri
 		return
 	}
 
-	response, err := s.s.EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx, request, params)
+	response, err := s.h.EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5208,7 +5208,7 @@ func (s *HTTPServer) HandleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpri
 	}
 }
 
-func (s *HTTPServer) HandleGistsCheckIsStarredRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGistsCheckIsStarredRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsCheckIsStarred`,
 		trace.WithAttributes(otelogen.OperationID(`gists/check-is-starred`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5221,7 +5221,7 @@ func (s *HTTPServer) HandleGistsCheckIsStarredRequest(w http.ResponseWriter, r *
 		return
 	}
 
-	response, err := s.s.GistsCheckIsStarred(ctx, params)
+	response, err := s.h.GistsCheckIsStarred(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5234,7 +5234,7 @@ func (s *HTTPServer) HandleGistsCheckIsStarredRequest(w http.ResponseWriter, r *
 	}
 }
 
-func (s *HTTPServer) HandleGistsCreateCommentRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGistsCreateCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsCreateComment`,
 		trace.WithAttributes(otelogen.OperationID(`gists/create-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5253,7 +5253,7 @@ func (s *HTTPServer) HandleGistsCreateCommentRequest(w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.s.GistsCreateComment(ctx, request, params)
+	response, err := s.h.GistsCreateComment(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5266,7 +5266,7 @@ func (s *HTTPServer) HandleGistsCreateCommentRequest(w http.ResponseWriter, r *h
 	}
 }
 
-func (s *HTTPServer) HandleGistsDeleteRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGistsDeleteRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsDelete`,
 		trace.WithAttributes(otelogen.OperationID(`gists/delete`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5279,7 +5279,7 @@ func (s *HTTPServer) HandleGistsDeleteRequest(w http.ResponseWriter, r *http.Req
 		return
 	}
 
-	response, err := s.s.GistsDelete(ctx, params)
+	response, err := s.h.GistsDelete(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5292,7 +5292,7 @@ func (s *HTTPServer) HandleGistsDeleteRequest(w http.ResponseWriter, r *http.Req
 	}
 }
 
-func (s *HTTPServer) HandleGistsDeleteCommentRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGistsDeleteCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsDeleteComment`,
 		trace.WithAttributes(otelogen.OperationID(`gists/delete-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5305,7 +5305,7 @@ func (s *HTTPServer) HandleGistsDeleteCommentRequest(w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.s.GistsDeleteComment(ctx, params)
+	response, err := s.h.GistsDeleteComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5318,7 +5318,7 @@ func (s *HTTPServer) HandleGistsDeleteCommentRequest(w http.ResponseWriter, r *h
 	}
 }
 
-func (s *HTTPServer) HandleGistsGetRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGistsGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsGet`,
 		trace.WithAttributes(otelogen.OperationID(`gists/get`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5331,7 +5331,7 @@ func (s *HTTPServer) HandleGistsGetRequest(w http.ResponseWriter, r *http.Reques
 		return
 	}
 
-	response, err := s.s.GistsGet(ctx, params)
+	response, err := s.h.GistsGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5344,7 +5344,7 @@ func (s *HTTPServer) HandleGistsGetRequest(w http.ResponseWriter, r *http.Reques
 	}
 }
 
-func (s *HTTPServer) HandleGistsGetCommentRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGistsGetCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsGetComment`,
 		trace.WithAttributes(otelogen.OperationID(`gists/get-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5357,7 +5357,7 @@ func (s *HTTPServer) HandleGistsGetCommentRequest(w http.ResponseWriter, r *http
 		return
 	}
 
-	response, err := s.s.GistsGetComment(ctx, params)
+	response, err := s.h.GistsGetComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5370,7 +5370,7 @@ func (s *HTTPServer) HandleGistsGetCommentRequest(w http.ResponseWriter, r *http
 	}
 }
 
-func (s *HTTPServer) HandleGistsListRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGistsListRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsList`,
 		trace.WithAttributes(otelogen.OperationID(`gists/list`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5383,7 +5383,7 @@ func (s *HTTPServer) HandleGistsListRequest(w http.ResponseWriter, r *http.Reque
 		return
 	}
 
-	response, err := s.s.GistsList(ctx, params)
+	response, err := s.h.GistsList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5396,7 +5396,7 @@ func (s *HTTPServer) HandleGistsListRequest(w http.ResponseWriter, r *http.Reque
 	}
 }
 
-func (s *HTTPServer) HandleGistsListCommentsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGistsListCommentsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsListComments`,
 		trace.WithAttributes(otelogen.OperationID(`gists/list-comments`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5409,7 +5409,7 @@ func (s *HTTPServer) HandleGistsListCommentsRequest(w http.ResponseWriter, r *ht
 		return
 	}
 
-	response, err := s.s.GistsListComments(ctx, params)
+	response, err := s.h.GistsListComments(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5422,7 +5422,7 @@ func (s *HTTPServer) HandleGistsListCommentsRequest(w http.ResponseWriter, r *ht
 	}
 }
 
-func (s *HTTPServer) HandleGistsListCommitsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGistsListCommitsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsListCommits`,
 		trace.WithAttributes(otelogen.OperationID(`gists/list-commits`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5435,7 +5435,7 @@ func (s *HTTPServer) HandleGistsListCommitsRequest(w http.ResponseWriter, r *htt
 		return
 	}
 
-	response, err := s.s.GistsListCommits(ctx, params)
+	response, err := s.h.GistsListCommits(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5448,7 +5448,7 @@ func (s *HTTPServer) HandleGistsListCommitsRequest(w http.ResponseWriter, r *htt
 	}
 }
 
-func (s *HTTPServer) HandleGistsListForksRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGistsListForksRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsListForks`,
 		trace.WithAttributes(otelogen.OperationID(`gists/list-forks`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5461,7 +5461,7 @@ func (s *HTTPServer) HandleGistsListForksRequest(w http.ResponseWriter, r *http.
 		return
 	}
 
-	response, err := s.s.GistsListForks(ctx, params)
+	response, err := s.h.GistsListForks(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5474,7 +5474,7 @@ func (s *HTTPServer) HandleGistsListForksRequest(w http.ResponseWriter, r *http.
 	}
 }
 
-func (s *HTTPServer) HandleGistsListStarredRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGistsListStarredRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsListStarred`,
 		trace.WithAttributes(otelogen.OperationID(`gists/list-starred`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5487,7 +5487,7 @@ func (s *HTTPServer) HandleGistsListStarredRequest(w http.ResponseWriter, r *htt
 		return
 	}
 
-	response, err := s.s.GistsListStarred(ctx, params)
+	response, err := s.h.GistsListStarred(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5500,7 +5500,7 @@ func (s *HTTPServer) HandleGistsListStarredRequest(w http.ResponseWriter, r *htt
 	}
 }
 
-func (s *HTTPServer) HandleGistsStarRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGistsStarRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsStar`,
 		trace.WithAttributes(otelogen.OperationID(`gists/star`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5513,7 +5513,7 @@ func (s *HTTPServer) HandleGistsStarRequest(w http.ResponseWriter, r *http.Reque
 		return
 	}
 
-	response, err := s.s.GistsStar(ctx, params)
+	response, err := s.h.GistsStar(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5526,7 +5526,7 @@ func (s *HTTPServer) HandleGistsStarRequest(w http.ResponseWriter, r *http.Reque
 	}
 }
 
-func (s *HTTPServer) HandleGistsUnstarRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGistsUnstarRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsUnstar`,
 		trace.WithAttributes(otelogen.OperationID(`gists/unstar`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5539,7 +5539,7 @@ func (s *HTTPServer) HandleGistsUnstarRequest(w http.ResponseWriter, r *http.Req
 		return
 	}
 
-	response, err := s.s.GistsUnstar(ctx, params)
+	response, err := s.h.GistsUnstar(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5552,7 +5552,7 @@ func (s *HTTPServer) HandleGistsUnstarRequest(w http.ResponseWriter, r *http.Req
 	}
 }
 
-func (s *HTTPServer) HandleGistsUpdateCommentRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGistsUpdateCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsUpdateComment`,
 		trace.WithAttributes(otelogen.OperationID(`gists/update-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5571,7 +5571,7 @@ func (s *HTTPServer) HandleGistsUpdateCommentRequest(w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.s.GistsUpdateComment(ctx, request, params)
+	response, err := s.h.GistsUpdateComment(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5584,7 +5584,7 @@ func (s *HTTPServer) HandleGistsUpdateCommentRequest(w http.ResponseWriter, r *h
 	}
 }
 
-func (s *HTTPServer) HandleGitGetCommitRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGitGetCommitRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitGetCommit`,
 		trace.WithAttributes(otelogen.OperationID(`git/get-commit`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5597,7 +5597,7 @@ func (s *HTTPServer) HandleGitGetCommitRequest(w http.ResponseWriter, r *http.Re
 		return
 	}
 
-	response, err := s.s.GitGetCommit(ctx, params)
+	response, err := s.h.GitGetCommit(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5610,7 +5610,7 @@ func (s *HTTPServer) HandleGitGetCommitRequest(w http.ResponseWriter, r *http.Re
 	}
 }
 
-func (s *HTTPServer) HandleGitGetRefRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGitGetRefRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitGetRef`,
 		trace.WithAttributes(otelogen.OperationID(`git/get-ref`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5623,7 +5623,7 @@ func (s *HTTPServer) HandleGitGetRefRequest(w http.ResponseWriter, r *http.Reque
 		return
 	}
 
-	response, err := s.s.GitGetRef(ctx, params)
+	response, err := s.h.GitGetRef(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5636,7 +5636,7 @@ func (s *HTTPServer) HandleGitGetRefRequest(w http.ResponseWriter, r *http.Reque
 	}
 }
 
-func (s *HTTPServer) HandleGitGetTagRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGitGetTagRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitGetTag`,
 		trace.WithAttributes(otelogen.OperationID(`git/get-tag`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5649,7 +5649,7 @@ func (s *HTTPServer) HandleGitGetTagRequest(w http.ResponseWriter, r *http.Reque
 		return
 	}
 
-	response, err := s.s.GitGetTag(ctx, params)
+	response, err := s.h.GitGetTag(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5662,7 +5662,7 @@ func (s *HTTPServer) HandleGitGetTagRequest(w http.ResponseWriter, r *http.Reque
 	}
 }
 
-func (s *HTTPServer) HandleGitListMatchingRefsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGitListMatchingRefsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitListMatchingRefs`,
 		trace.WithAttributes(otelogen.OperationID(`git/list-matching-refs`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5675,7 +5675,7 @@ func (s *HTTPServer) HandleGitListMatchingRefsRequest(w http.ResponseWriter, r *
 		return
 	}
 
-	response, err := s.s.GitListMatchingRefs(ctx, params)
+	response, err := s.h.GitListMatchingRefs(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5688,14 +5688,14 @@ func (s *HTTPServer) HandleGitListMatchingRefsRequest(w http.ResponseWriter, r *
 	}
 }
 
-func (s *HTTPServer) HandleGitignoreGetAllTemplatesRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGitignoreGetAllTemplatesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitignoreGetAllTemplates`,
 		trace.WithAttributes(otelogen.OperationID(`gitignore/get-all-templates`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.GitignoreGetAllTemplates(ctx)
+	response, err := s.h.GitignoreGetAllTemplates(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5708,7 +5708,7 @@ func (s *HTTPServer) HandleGitignoreGetAllTemplatesRequest(w http.ResponseWriter
 	}
 }
 
-func (s *HTTPServer) HandleGitignoreGetTemplateRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGitignoreGetTemplateRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitignoreGetTemplate`,
 		trace.WithAttributes(otelogen.OperationID(`gitignore/get-template`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5721,7 +5721,7 @@ func (s *HTTPServer) HandleGitignoreGetTemplateRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.GitignoreGetTemplate(ctx, params)
+	response, err := s.h.GitignoreGetTemplate(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5734,14 +5734,14 @@ func (s *HTTPServer) HandleGitignoreGetTemplateRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleInteractionsRemoveRestrictionsForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleInteractionsRemoveRestrictionsForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `InteractionsRemoveRestrictionsForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`interactions/remove-restrictions-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.InteractionsRemoveRestrictionsForAuthenticatedUser(ctx)
+	response, err := s.h.InteractionsRemoveRestrictionsForAuthenticatedUser(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5754,7 +5754,7 @@ func (s *HTTPServer) HandleInteractionsRemoveRestrictionsForAuthenticatedUserReq
 	}
 }
 
-func (s *HTTPServer) HandleInteractionsRemoveRestrictionsForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleInteractionsRemoveRestrictionsForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `InteractionsRemoveRestrictionsForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`interactions/remove-restrictions-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5767,7 +5767,7 @@ func (s *HTTPServer) HandleInteractionsRemoveRestrictionsForOrgRequest(w http.Re
 		return
 	}
 
-	response, err := s.s.InteractionsRemoveRestrictionsForOrg(ctx, params)
+	response, err := s.h.InteractionsRemoveRestrictionsForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5780,7 +5780,7 @@ func (s *HTTPServer) HandleInteractionsRemoveRestrictionsForOrgRequest(w http.Re
 	}
 }
 
-func (s *HTTPServer) HandleInteractionsRemoveRestrictionsForRepoRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleInteractionsRemoveRestrictionsForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `InteractionsRemoveRestrictionsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`interactions/remove-restrictions-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5793,7 +5793,7 @@ func (s *HTTPServer) HandleInteractionsRemoveRestrictionsForRepoRequest(w http.R
 		return
 	}
 
-	response, err := s.s.InteractionsRemoveRestrictionsForRepo(ctx, params)
+	response, err := s.h.InteractionsRemoveRestrictionsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5806,7 +5806,7 @@ func (s *HTTPServer) HandleInteractionsRemoveRestrictionsForRepoRequest(w http.R
 	}
 }
 
-func (s *HTTPServer) HandleInteractionsSetRestrictionsForRepoRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleInteractionsSetRestrictionsForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `InteractionsSetRestrictionsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`interactions/set-restrictions-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5825,7 +5825,7 @@ func (s *HTTPServer) HandleInteractionsSetRestrictionsForRepoRequest(w http.Resp
 		return
 	}
 
-	response, err := s.s.InteractionsSetRestrictionsForRepo(ctx, request, params)
+	response, err := s.h.InteractionsSetRestrictionsForRepo(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5838,7 +5838,7 @@ func (s *HTTPServer) HandleInteractionsSetRestrictionsForRepoRequest(w http.Resp
 	}
 }
 
-func (s *HTTPServer) HandleIssuesAddAssigneesRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleIssuesAddAssigneesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesAddAssignees`,
 		trace.WithAttributes(otelogen.OperationID(`issues/add-assignees`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5857,7 +5857,7 @@ func (s *HTTPServer) HandleIssuesAddAssigneesRequest(w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.s.IssuesAddAssignees(ctx, request, params)
+	response, err := s.h.IssuesAddAssignees(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5870,7 +5870,7 @@ func (s *HTTPServer) HandleIssuesAddAssigneesRequest(w http.ResponseWriter, r *h
 	}
 }
 
-func (s *HTTPServer) HandleIssuesCheckUserCanBeAssignedRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleIssuesCheckUserCanBeAssignedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesCheckUserCanBeAssigned`,
 		trace.WithAttributes(otelogen.OperationID(`issues/check-user-can-be-assigned`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5883,7 +5883,7 @@ func (s *HTTPServer) HandleIssuesCheckUserCanBeAssignedRequest(w http.ResponseWr
 		return
 	}
 
-	response, err := s.s.IssuesCheckUserCanBeAssigned(ctx, params)
+	response, err := s.h.IssuesCheckUserCanBeAssigned(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5896,7 +5896,7 @@ func (s *HTTPServer) HandleIssuesCheckUserCanBeAssignedRequest(w http.ResponseWr
 	}
 }
 
-func (s *HTTPServer) HandleIssuesDeleteCommentRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleIssuesDeleteCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesDeleteComment`,
 		trace.WithAttributes(otelogen.OperationID(`issues/delete-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5909,7 +5909,7 @@ func (s *HTTPServer) HandleIssuesDeleteCommentRequest(w http.ResponseWriter, r *
 		return
 	}
 
-	response, err := s.s.IssuesDeleteComment(ctx, params)
+	response, err := s.h.IssuesDeleteComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5922,7 +5922,7 @@ func (s *HTTPServer) HandleIssuesDeleteCommentRequest(w http.ResponseWriter, r *
 	}
 }
 
-func (s *HTTPServer) HandleIssuesDeleteLabelRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleIssuesDeleteLabelRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesDeleteLabel`,
 		trace.WithAttributes(otelogen.OperationID(`issues/delete-label`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5935,7 +5935,7 @@ func (s *HTTPServer) HandleIssuesDeleteLabelRequest(w http.ResponseWriter, r *ht
 		return
 	}
 
-	response, err := s.s.IssuesDeleteLabel(ctx, params)
+	response, err := s.h.IssuesDeleteLabel(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5948,7 +5948,7 @@ func (s *HTTPServer) HandleIssuesDeleteLabelRequest(w http.ResponseWriter, r *ht
 	}
 }
 
-func (s *HTTPServer) HandleIssuesDeleteMilestoneRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleIssuesDeleteMilestoneRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesDeleteMilestone`,
 		trace.WithAttributes(otelogen.OperationID(`issues/delete-milestone`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5961,7 +5961,7 @@ func (s *HTTPServer) HandleIssuesDeleteMilestoneRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.IssuesDeleteMilestone(ctx, params)
+	response, err := s.h.IssuesDeleteMilestone(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -5974,7 +5974,7 @@ func (s *HTTPServer) HandleIssuesDeleteMilestoneRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleIssuesGetCommentRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleIssuesGetCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesGetComment`,
 		trace.WithAttributes(otelogen.OperationID(`issues/get-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5987,7 +5987,7 @@ func (s *HTTPServer) HandleIssuesGetCommentRequest(w http.ResponseWriter, r *htt
 		return
 	}
 
-	response, err := s.s.IssuesGetComment(ctx, params)
+	response, err := s.h.IssuesGetComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6000,7 +6000,7 @@ func (s *HTTPServer) HandleIssuesGetCommentRequest(w http.ResponseWriter, r *htt
 	}
 }
 
-func (s *HTTPServer) HandleIssuesGetEventRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleIssuesGetEventRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesGetEvent`,
 		trace.WithAttributes(otelogen.OperationID(`issues/get-event`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6013,7 +6013,7 @@ func (s *HTTPServer) HandleIssuesGetEventRequest(w http.ResponseWriter, r *http.
 		return
 	}
 
-	response, err := s.s.IssuesGetEvent(ctx, params)
+	response, err := s.h.IssuesGetEvent(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6026,7 +6026,7 @@ func (s *HTTPServer) HandleIssuesGetEventRequest(w http.ResponseWriter, r *http.
 	}
 }
 
-func (s *HTTPServer) HandleIssuesGetLabelRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleIssuesGetLabelRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesGetLabel`,
 		trace.WithAttributes(otelogen.OperationID(`issues/get-label`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6039,7 +6039,7 @@ func (s *HTTPServer) HandleIssuesGetLabelRequest(w http.ResponseWriter, r *http.
 		return
 	}
 
-	response, err := s.s.IssuesGetLabel(ctx, params)
+	response, err := s.h.IssuesGetLabel(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6052,7 +6052,7 @@ func (s *HTTPServer) HandleIssuesGetLabelRequest(w http.ResponseWriter, r *http.
 	}
 }
 
-func (s *HTTPServer) HandleIssuesGetMilestoneRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleIssuesGetMilestoneRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesGetMilestone`,
 		trace.WithAttributes(otelogen.OperationID(`issues/get-milestone`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6065,7 +6065,7 @@ func (s *HTTPServer) HandleIssuesGetMilestoneRequest(w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.s.IssuesGetMilestone(ctx, params)
+	response, err := s.h.IssuesGetMilestone(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6078,7 +6078,7 @@ func (s *HTTPServer) HandleIssuesGetMilestoneRequest(w http.ResponseWriter, r *h
 	}
 }
 
-func (s *HTTPServer) HandleIssuesListAssigneesRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleIssuesListAssigneesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListAssignees`,
 		trace.WithAttributes(otelogen.OperationID(`issues/list-assignees`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6091,7 +6091,7 @@ func (s *HTTPServer) HandleIssuesListAssigneesRequest(w http.ResponseWriter, r *
 		return
 	}
 
-	response, err := s.s.IssuesListAssignees(ctx, params)
+	response, err := s.h.IssuesListAssignees(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6104,7 +6104,7 @@ func (s *HTTPServer) HandleIssuesListAssigneesRequest(w http.ResponseWriter, r *
 	}
 }
 
-func (s *HTTPServer) HandleIssuesListCommentsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleIssuesListCommentsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListComments`,
 		trace.WithAttributes(otelogen.OperationID(`issues/list-comments`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6117,7 +6117,7 @@ func (s *HTTPServer) HandleIssuesListCommentsRequest(w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.s.IssuesListComments(ctx, params)
+	response, err := s.h.IssuesListComments(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6130,7 +6130,7 @@ func (s *HTTPServer) HandleIssuesListCommentsRequest(w http.ResponseWriter, r *h
 	}
 }
 
-func (s *HTTPServer) HandleIssuesListLabelsForMilestoneRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleIssuesListLabelsForMilestoneRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListLabelsForMilestone`,
 		trace.WithAttributes(otelogen.OperationID(`issues/list-labels-for-milestone`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6143,7 +6143,7 @@ func (s *HTTPServer) HandleIssuesListLabelsForMilestoneRequest(w http.ResponseWr
 		return
 	}
 
-	response, err := s.s.IssuesListLabelsForMilestone(ctx, params)
+	response, err := s.h.IssuesListLabelsForMilestone(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6156,7 +6156,7 @@ func (s *HTTPServer) HandleIssuesListLabelsForMilestoneRequest(w http.ResponseWr
 	}
 }
 
-func (s *HTTPServer) HandleIssuesListLabelsForRepoRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleIssuesListLabelsForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListLabelsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`issues/list-labels-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6169,7 +6169,7 @@ func (s *HTTPServer) HandleIssuesListLabelsForRepoRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.IssuesListLabelsForRepo(ctx, params)
+	response, err := s.h.IssuesListLabelsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6182,7 +6182,7 @@ func (s *HTTPServer) HandleIssuesListLabelsForRepoRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleIssuesListLabelsOnIssueRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleIssuesListLabelsOnIssueRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListLabelsOnIssue`,
 		trace.WithAttributes(otelogen.OperationID(`issues/list-labels-on-issue`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6195,7 +6195,7 @@ func (s *HTTPServer) HandleIssuesListLabelsOnIssueRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.IssuesListLabelsOnIssue(ctx, params)
+	response, err := s.h.IssuesListLabelsOnIssue(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6208,7 +6208,7 @@ func (s *HTTPServer) HandleIssuesListLabelsOnIssueRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleIssuesListMilestonesRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleIssuesListMilestonesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListMilestones`,
 		trace.WithAttributes(otelogen.OperationID(`issues/list-milestones`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6221,7 +6221,7 @@ func (s *HTTPServer) HandleIssuesListMilestonesRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.IssuesListMilestones(ctx, params)
+	response, err := s.h.IssuesListMilestones(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6234,7 +6234,7 @@ func (s *HTTPServer) HandleIssuesListMilestonesRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleIssuesRemoveAllLabelsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleIssuesRemoveAllLabelsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesRemoveAllLabels`,
 		trace.WithAttributes(otelogen.OperationID(`issues/remove-all-labels`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6247,7 +6247,7 @@ func (s *HTTPServer) HandleIssuesRemoveAllLabelsRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.IssuesRemoveAllLabels(ctx, params)
+	response, err := s.h.IssuesRemoveAllLabels(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6260,7 +6260,7 @@ func (s *HTTPServer) HandleIssuesRemoveAllLabelsRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleIssuesRemoveAssigneesRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleIssuesRemoveAssigneesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesRemoveAssignees`,
 		trace.WithAttributes(otelogen.OperationID(`issues/remove-assignees`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6279,7 +6279,7 @@ func (s *HTTPServer) HandleIssuesRemoveAssigneesRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.IssuesRemoveAssignees(ctx, request, params)
+	response, err := s.h.IssuesRemoveAssignees(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6292,7 +6292,7 @@ func (s *HTTPServer) HandleIssuesRemoveAssigneesRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleIssuesRemoveLabelRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleIssuesRemoveLabelRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesRemoveLabel`,
 		trace.WithAttributes(otelogen.OperationID(`issues/remove-label`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6305,7 +6305,7 @@ func (s *HTTPServer) HandleIssuesRemoveLabelRequest(w http.ResponseWriter, r *ht
 		return
 	}
 
-	response, err := s.s.IssuesRemoveLabel(ctx, params)
+	response, err := s.h.IssuesRemoveLabel(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6318,7 +6318,7 @@ func (s *HTTPServer) HandleIssuesRemoveLabelRequest(w http.ResponseWriter, r *ht
 	}
 }
 
-func (s *HTTPServer) HandleIssuesUnlockRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleIssuesUnlockRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesUnlock`,
 		trace.WithAttributes(otelogen.OperationID(`issues/unlock`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6331,7 +6331,7 @@ func (s *HTTPServer) HandleIssuesUnlockRequest(w http.ResponseWriter, r *http.Re
 		return
 	}
 
-	response, err := s.s.IssuesUnlock(ctx, params)
+	response, err := s.h.IssuesUnlock(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6344,7 +6344,7 @@ func (s *HTTPServer) HandleIssuesUnlockRequest(w http.ResponseWriter, r *http.Re
 	}
 }
 
-func (s *HTTPServer) HandleIssuesUpdateLabelRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleIssuesUpdateLabelRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesUpdateLabel`,
 		trace.WithAttributes(otelogen.OperationID(`issues/update-label`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6363,7 +6363,7 @@ func (s *HTTPServer) HandleIssuesUpdateLabelRequest(w http.ResponseWriter, r *ht
 		return
 	}
 
-	response, err := s.s.IssuesUpdateLabel(ctx, request, params)
+	response, err := s.h.IssuesUpdateLabel(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6376,7 +6376,7 @@ func (s *HTTPServer) HandleIssuesUpdateLabelRequest(w http.ResponseWriter, r *ht
 	}
 }
 
-func (s *HTTPServer) HandleIssuesUpdateMilestoneRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleIssuesUpdateMilestoneRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesUpdateMilestone`,
 		trace.WithAttributes(otelogen.OperationID(`issues/update-milestone`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6395,7 +6395,7 @@ func (s *HTTPServer) HandleIssuesUpdateMilestoneRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.IssuesUpdateMilestone(ctx, request, params)
+	response, err := s.h.IssuesUpdateMilestone(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6408,7 +6408,7 @@ func (s *HTTPServer) HandleIssuesUpdateMilestoneRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleLicensesGetRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleLicensesGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `LicensesGet`,
 		trace.WithAttributes(otelogen.OperationID(`licenses/get`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6421,7 +6421,7 @@ func (s *HTTPServer) HandleLicensesGetRequest(w http.ResponseWriter, r *http.Req
 		return
 	}
 
-	response, err := s.s.LicensesGet(ctx, params)
+	response, err := s.h.LicensesGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6434,7 +6434,7 @@ func (s *HTTPServer) HandleLicensesGetRequest(w http.ResponseWriter, r *http.Req
 	}
 }
 
-func (s *HTTPServer) HandleLicensesGetAllCommonlyUsedRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleLicensesGetAllCommonlyUsedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `LicensesGetAllCommonlyUsed`,
 		trace.WithAttributes(otelogen.OperationID(`licenses/get-all-commonly-used`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6447,7 +6447,7 @@ func (s *HTTPServer) HandleLicensesGetAllCommonlyUsedRequest(w http.ResponseWrit
 		return
 	}
 
-	response, err := s.s.LicensesGetAllCommonlyUsed(ctx, params)
+	response, err := s.h.LicensesGetAllCommonlyUsed(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6460,7 +6460,7 @@ func (s *HTTPServer) HandleLicensesGetAllCommonlyUsedRequest(w http.ResponseWrit
 	}
 }
 
-func (s *HTTPServer) HandleLicensesGetForRepoRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleLicensesGetForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `LicensesGetForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`licenses/get-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6473,7 +6473,7 @@ func (s *HTTPServer) HandleLicensesGetForRepoRequest(w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.s.LicensesGetForRepo(ctx, params)
+	response, err := s.h.LicensesGetForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6486,14 +6486,14 @@ func (s *HTTPServer) HandleLicensesGetForRepoRequest(w http.ResponseWriter, r *h
 	}
 }
 
-func (s *HTTPServer) HandleMetaGetRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleMetaGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MetaGet`,
 		trace.WithAttributes(otelogen.OperationID(`meta/get`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.MetaGet(ctx)
+	response, err := s.h.MetaGet(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6506,14 +6506,14 @@ func (s *HTTPServer) HandleMetaGetRequest(w http.ResponseWriter, r *http.Request
 	}
 }
 
-func (s *HTTPServer) HandleMetaRootRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleMetaRootRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MetaRoot`,
 		trace.WithAttributes(otelogen.OperationID(`meta/root`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.MetaRoot(ctx)
+	response, err := s.h.MetaRoot(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6526,7 +6526,7 @@ func (s *HTTPServer) HandleMetaRootRequest(w http.ResponseWriter, r *http.Reques
 	}
 }
 
-func (s *HTTPServer) HandleMigrationsCancelImportRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleMigrationsCancelImportRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsCancelImport`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/cancel-import`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6539,7 +6539,7 @@ func (s *HTTPServer) HandleMigrationsCancelImportRequest(w http.ResponseWriter, 
 		return
 	}
 
-	response, err := s.s.MigrationsCancelImport(ctx, params)
+	response, err := s.h.MigrationsCancelImport(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6552,7 +6552,7 @@ func (s *HTTPServer) HandleMigrationsCancelImportRequest(w http.ResponseWriter, 
 	}
 }
 
-func (s *HTTPServer) HandleMigrationsDeleteArchiveForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleMigrationsDeleteArchiveForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsDeleteArchiveForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/delete-archive-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6565,7 +6565,7 @@ func (s *HTTPServer) HandleMigrationsDeleteArchiveForAuthenticatedUserRequest(w 
 		return
 	}
 
-	response, err := s.s.MigrationsDeleteArchiveForAuthenticatedUser(ctx, params)
+	response, err := s.h.MigrationsDeleteArchiveForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6578,7 +6578,7 @@ func (s *HTTPServer) HandleMigrationsDeleteArchiveForAuthenticatedUserRequest(w 
 	}
 }
 
-func (s *HTTPServer) HandleMigrationsDeleteArchiveForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleMigrationsDeleteArchiveForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsDeleteArchiveForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/delete-archive-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6591,7 +6591,7 @@ func (s *HTTPServer) HandleMigrationsDeleteArchiveForOrgRequest(w http.ResponseW
 		return
 	}
 
-	response, err := s.s.MigrationsDeleteArchiveForOrg(ctx, params)
+	response, err := s.h.MigrationsDeleteArchiveForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6604,7 +6604,7 @@ func (s *HTTPServer) HandleMigrationsDeleteArchiveForOrgRequest(w http.ResponseW
 	}
 }
 
-func (s *HTTPServer) HandleMigrationsDownloadArchiveForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleMigrationsDownloadArchiveForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsDownloadArchiveForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/download-archive-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6617,7 +6617,7 @@ func (s *HTTPServer) HandleMigrationsDownloadArchiveForOrgRequest(w http.Respons
 		return
 	}
 
-	response, err := s.s.MigrationsDownloadArchiveForOrg(ctx, params)
+	response, err := s.h.MigrationsDownloadArchiveForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6630,7 +6630,7 @@ func (s *HTTPServer) HandleMigrationsDownloadArchiveForOrgRequest(w http.Respons
 	}
 }
 
-func (s *HTTPServer) HandleMigrationsGetArchiveForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleMigrationsGetArchiveForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsGetArchiveForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/get-archive-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6643,7 +6643,7 @@ func (s *HTTPServer) HandleMigrationsGetArchiveForAuthenticatedUserRequest(w htt
 		return
 	}
 
-	response, err := s.s.MigrationsGetArchiveForAuthenticatedUser(ctx, params)
+	response, err := s.h.MigrationsGetArchiveForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6656,7 +6656,7 @@ func (s *HTTPServer) HandleMigrationsGetArchiveForAuthenticatedUserRequest(w htt
 	}
 }
 
-func (s *HTTPServer) HandleMigrationsGetCommitAuthorsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleMigrationsGetCommitAuthorsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsGetCommitAuthors`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/get-commit-authors`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6669,7 +6669,7 @@ func (s *HTTPServer) HandleMigrationsGetCommitAuthorsRequest(w http.ResponseWrit
 		return
 	}
 
-	response, err := s.s.MigrationsGetCommitAuthors(ctx, params)
+	response, err := s.h.MigrationsGetCommitAuthors(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6682,7 +6682,7 @@ func (s *HTTPServer) HandleMigrationsGetCommitAuthorsRequest(w http.ResponseWrit
 	}
 }
 
-func (s *HTTPServer) HandleMigrationsGetImportStatusRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleMigrationsGetImportStatusRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsGetImportStatus`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/get-import-status`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6695,7 +6695,7 @@ func (s *HTTPServer) HandleMigrationsGetImportStatusRequest(w http.ResponseWrite
 		return
 	}
 
-	response, err := s.s.MigrationsGetImportStatus(ctx, params)
+	response, err := s.h.MigrationsGetImportStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6708,7 +6708,7 @@ func (s *HTTPServer) HandleMigrationsGetImportStatusRequest(w http.ResponseWrite
 	}
 }
 
-func (s *HTTPServer) HandleMigrationsGetLargeFilesRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleMigrationsGetLargeFilesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsGetLargeFiles`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/get-large-files`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6721,7 +6721,7 @@ func (s *HTTPServer) HandleMigrationsGetLargeFilesRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.MigrationsGetLargeFiles(ctx, params)
+	response, err := s.h.MigrationsGetLargeFiles(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6734,7 +6734,7 @@ func (s *HTTPServer) HandleMigrationsGetLargeFilesRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleMigrationsGetStatusForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleMigrationsGetStatusForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsGetStatusForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/get-status-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6747,7 +6747,7 @@ func (s *HTTPServer) HandleMigrationsGetStatusForAuthenticatedUserRequest(w http
 		return
 	}
 
-	response, err := s.s.MigrationsGetStatusForAuthenticatedUser(ctx, params)
+	response, err := s.h.MigrationsGetStatusForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6760,7 +6760,7 @@ func (s *HTTPServer) HandleMigrationsGetStatusForAuthenticatedUserRequest(w http
 	}
 }
 
-func (s *HTTPServer) HandleMigrationsGetStatusForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleMigrationsGetStatusForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsGetStatusForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/get-status-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6773,7 +6773,7 @@ func (s *HTTPServer) HandleMigrationsGetStatusForOrgRequest(w http.ResponseWrite
 		return
 	}
 
-	response, err := s.s.MigrationsGetStatusForOrg(ctx, params)
+	response, err := s.h.MigrationsGetStatusForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6786,7 +6786,7 @@ func (s *HTTPServer) HandleMigrationsGetStatusForOrgRequest(w http.ResponseWrite
 	}
 }
 
-func (s *HTTPServer) HandleMigrationsListForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleMigrationsListForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsListForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/list-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6799,7 +6799,7 @@ func (s *HTTPServer) HandleMigrationsListForAuthenticatedUserRequest(w http.Resp
 		return
 	}
 
-	response, err := s.s.MigrationsListForAuthenticatedUser(ctx, params)
+	response, err := s.h.MigrationsListForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6812,7 +6812,7 @@ func (s *HTTPServer) HandleMigrationsListForAuthenticatedUserRequest(w http.Resp
 	}
 }
 
-func (s *HTTPServer) HandleMigrationsListForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleMigrationsListForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsListForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/list-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6825,7 +6825,7 @@ func (s *HTTPServer) HandleMigrationsListForOrgRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.MigrationsListForOrg(ctx, params)
+	response, err := s.h.MigrationsListForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6838,7 +6838,7 @@ func (s *HTTPServer) HandleMigrationsListForOrgRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleMigrationsListReposForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleMigrationsListReposForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsListReposForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/list-repos-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6851,7 +6851,7 @@ func (s *HTTPServer) HandleMigrationsListReposForOrgRequest(w http.ResponseWrite
 		return
 	}
 
-	response, err := s.s.MigrationsListReposForOrg(ctx, params)
+	response, err := s.h.MigrationsListReposForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6864,7 +6864,7 @@ func (s *HTTPServer) HandleMigrationsListReposForOrgRequest(w http.ResponseWrite
 	}
 }
 
-func (s *HTTPServer) HandleMigrationsListReposForUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleMigrationsListReposForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsListReposForUser`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/list-repos-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6877,7 +6877,7 @@ func (s *HTTPServer) HandleMigrationsListReposForUserRequest(w http.ResponseWrit
 		return
 	}
 
-	response, err := s.s.MigrationsListReposForUser(ctx, params)
+	response, err := s.h.MigrationsListReposForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6890,7 +6890,7 @@ func (s *HTTPServer) HandleMigrationsListReposForUserRequest(w http.ResponseWrit
 	}
 }
 
-func (s *HTTPServer) HandleMigrationsUnlockRepoForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleMigrationsUnlockRepoForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsUnlockRepoForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/unlock-repo-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6903,7 +6903,7 @@ func (s *HTTPServer) HandleMigrationsUnlockRepoForAuthenticatedUserRequest(w htt
 		return
 	}
 
-	response, err := s.s.MigrationsUnlockRepoForAuthenticatedUser(ctx, params)
+	response, err := s.h.MigrationsUnlockRepoForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6916,7 +6916,7 @@ func (s *HTTPServer) HandleMigrationsUnlockRepoForAuthenticatedUserRequest(w htt
 	}
 }
 
-func (s *HTTPServer) HandleMigrationsUnlockRepoForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleMigrationsUnlockRepoForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsUnlockRepoForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/unlock-repo-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6929,7 +6929,7 @@ func (s *HTTPServer) HandleMigrationsUnlockRepoForOrgRequest(w http.ResponseWrit
 		return
 	}
 
-	response, err := s.s.MigrationsUnlockRepoForOrg(ctx, params)
+	response, err := s.h.MigrationsUnlockRepoForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6942,7 +6942,7 @@ func (s *HTTPServer) HandleMigrationsUnlockRepoForOrgRequest(w http.ResponseWrit
 	}
 }
 
-func (s *HTTPServer) HandleMigrationsUpdateImportRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleMigrationsUpdateImportRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsUpdateImport`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/update-import`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6961,7 +6961,7 @@ func (s *HTTPServer) HandleMigrationsUpdateImportRequest(w http.ResponseWriter, 
 		return
 	}
 
-	response, err := s.s.MigrationsUpdateImport(ctx, request, params)
+	response, err := s.h.MigrationsUpdateImport(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -6974,7 +6974,7 @@ func (s *HTTPServer) HandleMigrationsUpdateImportRequest(w http.ResponseWriter, 
 	}
 }
 
-func (s *HTTPServer) HandleOAuthAuthorizationsDeleteAuthorizationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOAuthAuthorizationsDeleteAuthorizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsDeleteAuthorization`,
 		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/delete-authorization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6987,7 +6987,7 @@ func (s *HTTPServer) HandleOAuthAuthorizationsDeleteAuthorizationRequest(w http.
 		return
 	}
 
-	response, err := s.s.OAuthAuthorizationsDeleteAuthorization(ctx, params)
+	response, err := s.h.OAuthAuthorizationsDeleteAuthorization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7000,7 +7000,7 @@ func (s *HTTPServer) HandleOAuthAuthorizationsDeleteAuthorizationRequest(w http.
 	}
 }
 
-func (s *HTTPServer) HandleOAuthAuthorizationsDeleteGrantRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOAuthAuthorizationsDeleteGrantRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsDeleteGrant`,
 		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/delete-grant`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7013,7 +7013,7 @@ func (s *HTTPServer) HandleOAuthAuthorizationsDeleteGrantRequest(w http.Response
 		return
 	}
 
-	response, err := s.s.OAuthAuthorizationsDeleteGrant(ctx, params)
+	response, err := s.h.OAuthAuthorizationsDeleteGrant(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7026,7 +7026,7 @@ func (s *HTTPServer) HandleOAuthAuthorizationsDeleteGrantRequest(w http.Response
 	}
 }
 
-func (s *HTTPServer) HandleOAuthAuthorizationsGetAuthorizationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOAuthAuthorizationsGetAuthorizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsGetAuthorization`,
 		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/get-authorization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7039,7 +7039,7 @@ func (s *HTTPServer) HandleOAuthAuthorizationsGetAuthorizationRequest(w http.Res
 		return
 	}
 
-	response, err := s.s.OAuthAuthorizationsGetAuthorization(ctx, params)
+	response, err := s.h.OAuthAuthorizationsGetAuthorization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7052,7 +7052,7 @@ func (s *HTTPServer) HandleOAuthAuthorizationsGetAuthorizationRequest(w http.Res
 	}
 }
 
-func (s *HTTPServer) HandleOAuthAuthorizationsGetGrantRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOAuthAuthorizationsGetGrantRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsGetGrant`,
 		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/get-grant`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7065,7 +7065,7 @@ func (s *HTTPServer) HandleOAuthAuthorizationsGetGrantRequest(w http.ResponseWri
 		return
 	}
 
-	response, err := s.s.OAuthAuthorizationsGetGrant(ctx, params)
+	response, err := s.h.OAuthAuthorizationsGetGrant(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7078,7 +7078,7 @@ func (s *HTTPServer) HandleOAuthAuthorizationsGetGrantRequest(w http.ResponseWri
 	}
 }
 
-func (s *HTTPServer) HandleOAuthAuthorizationsListAuthorizationsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOAuthAuthorizationsListAuthorizationsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsListAuthorizations`,
 		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/list-authorizations`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7091,7 +7091,7 @@ func (s *HTTPServer) HandleOAuthAuthorizationsListAuthorizationsRequest(w http.R
 		return
 	}
 
-	response, err := s.s.OAuthAuthorizationsListAuthorizations(ctx, params)
+	response, err := s.h.OAuthAuthorizationsListAuthorizations(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7104,7 +7104,7 @@ func (s *HTTPServer) HandleOAuthAuthorizationsListAuthorizationsRequest(w http.R
 	}
 }
 
-func (s *HTTPServer) HandleOAuthAuthorizationsListGrantsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOAuthAuthorizationsListGrantsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsListGrants`,
 		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/list-grants`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7117,7 +7117,7 @@ func (s *HTTPServer) HandleOAuthAuthorizationsListGrantsRequest(w http.ResponseW
 		return
 	}
 
-	response, err := s.s.OAuthAuthorizationsListGrants(ctx, params)
+	response, err := s.h.OAuthAuthorizationsListGrants(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7130,7 +7130,7 @@ func (s *HTTPServer) HandleOAuthAuthorizationsListGrantsRequest(w http.ResponseW
 	}
 }
 
-func (s *HTTPServer) HandleOrgsCheckBlockedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsCheckBlockedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsCheckBlockedUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/check-blocked-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7143,7 +7143,7 @@ func (s *HTTPServer) HandleOrgsCheckBlockedUserRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.OrgsCheckBlockedUser(ctx, params)
+	response, err := s.h.OrgsCheckBlockedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7156,7 +7156,7 @@ func (s *HTTPServer) HandleOrgsCheckBlockedUserRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleOrgsCheckMembershipForUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsCheckMembershipForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsCheckMembershipForUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/check-membership-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7169,7 +7169,7 @@ func (s *HTTPServer) HandleOrgsCheckMembershipForUserRequest(w http.ResponseWrit
 		return
 	}
 
-	response, err := s.s.OrgsCheckMembershipForUser(ctx, params)
+	response, err := s.h.OrgsCheckMembershipForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7182,7 +7182,7 @@ func (s *HTTPServer) HandleOrgsCheckMembershipForUserRequest(w http.ResponseWrit
 	}
 }
 
-func (s *HTTPServer) HandleOrgsCheckPublicMembershipForUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsCheckPublicMembershipForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsCheckPublicMembershipForUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/check-public-membership-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7195,7 +7195,7 @@ func (s *HTTPServer) HandleOrgsCheckPublicMembershipForUserRequest(w http.Respon
 		return
 	}
 
-	response, err := s.s.OrgsCheckPublicMembershipForUser(ctx, params)
+	response, err := s.h.OrgsCheckPublicMembershipForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7208,7 +7208,7 @@ func (s *HTTPServer) HandleOrgsCheckPublicMembershipForUserRequest(w http.Respon
 	}
 }
 
-func (s *HTTPServer) HandleOrgsConvertMemberToOutsideCollaboratorRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsConvertMemberToOutsideCollaboratorRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsConvertMemberToOutsideCollaborator`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/convert-member-to-outside-collaborator`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7221,7 +7221,7 @@ func (s *HTTPServer) HandleOrgsConvertMemberToOutsideCollaboratorRequest(w http.
 		return
 	}
 
-	response, err := s.s.OrgsConvertMemberToOutsideCollaborator(ctx, params)
+	response, err := s.h.OrgsConvertMemberToOutsideCollaborator(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7234,7 +7234,7 @@ func (s *HTTPServer) HandleOrgsConvertMemberToOutsideCollaboratorRequest(w http.
 	}
 }
 
-func (s *HTTPServer) HandleOrgsDeleteWebhookRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsDeleteWebhookRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsDeleteWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/delete-webhook`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7247,7 +7247,7 @@ func (s *HTTPServer) HandleOrgsDeleteWebhookRequest(w http.ResponseWriter, r *ht
 		return
 	}
 
-	response, err := s.s.OrgsDeleteWebhook(ctx, params)
+	response, err := s.h.OrgsDeleteWebhook(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7260,7 +7260,7 @@ func (s *HTTPServer) HandleOrgsDeleteWebhookRequest(w http.ResponseWriter, r *ht
 	}
 }
 
-func (s *HTTPServer) HandleOrgsGetRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsGet`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/get`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7273,7 +7273,7 @@ func (s *HTTPServer) HandleOrgsGetRequest(w http.ResponseWriter, r *http.Request
 		return
 	}
 
-	response, err := s.s.OrgsGet(ctx, params)
+	response, err := s.h.OrgsGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7286,7 +7286,7 @@ func (s *HTTPServer) HandleOrgsGetRequest(w http.ResponseWriter, r *http.Request
 	}
 }
 
-func (s *HTTPServer) HandleOrgsGetAuditLogRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsGetAuditLogRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsGetAuditLog`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/get-audit-log`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7299,7 +7299,7 @@ func (s *HTTPServer) HandleOrgsGetAuditLogRequest(w http.ResponseWriter, r *http
 		return
 	}
 
-	response, err := s.s.OrgsGetAuditLog(ctx, params)
+	response, err := s.h.OrgsGetAuditLog(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7312,7 +7312,7 @@ func (s *HTTPServer) HandleOrgsGetAuditLogRequest(w http.ResponseWriter, r *http
 	}
 }
 
-func (s *HTTPServer) HandleOrgsGetMembershipForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsGetMembershipForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsGetMembershipForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/get-membership-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7325,7 +7325,7 @@ func (s *HTTPServer) HandleOrgsGetMembershipForAuthenticatedUserRequest(w http.R
 		return
 	}
 
-	response, err := s.s.OrgsGetMembershipForAuthenticatedUser(ctx, params)
+	response, err := s.h.OrgsGetMembershipForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7338,7 +7338,7 @@ func (s *HTTPServer) HandleOrgsGetMembershipForAuthenticatedUserRequest(w http.R
 	}
 }
 
-func (s *HTTPServer) HandleOrgsGetMembershipForUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsGetMembershipForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsGetMembershipForUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/get-membership-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7351,7 +7351,7 @@ func (s *HTTPServer) HandleOrgsGetMembershipForUserRequest(w http.ResponseWriter
 		return
 	}
 
-	response, err := s.s.OrgsGetMembershipForUser(ctx, params)
+	response, err := s.h.OrgsGetMembershipForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7364,7 +7364,7 @@ func (s *HTTPServer) HandleOrgsGetMembershipForUserRequest(w http.ResponseWriter
 	}
 }
 
-func (s *HTTPServer) HandleOrgsGetWebhookRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsGetWebhookRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsGetWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/get-webhook`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7377,7 +7377,7 @@ func (s *HTTPServer) HandleOrgsGetWebhookRequest(w http.ResponseWriter, r *http.
 		return
 	}
 
-	response, err := s.s.OrgsGetWebhook(ctx, params)
+	response, err := s.h.OrgsGetWebhook(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7390,7 +7390,7 @@ func (s *HTTPServer) HandleOrgsGetWebhookRequest(w http.ResponseWriter, r *http.
 	}
 }
 
-func (s *HTTPServer) HandleOrgsGetWebhookConfigForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsGetWebhookConfigForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsGetWebhookConfigForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/get-webhook-config-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7403,7 +7403,7 @@ func (s *HTTPServer) HandleOrgsGetWebhookConfigForOrgRequest(w http.ResponseWrit
 		return
 	}
 
-	response, err := s.s.OrgsGetWebhookConfigForOrg(ctx, params)
+	response, err := s.h.OrgsGetWebhookConfigForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7416,7 +7416,7 @@ func (s *HTTPServer) HandleOrgsGetWebhookConfigForOrgRequest(w http.ResponseWrit
 	}
 }
 
-func (s *HTTPServer) HandleOrgsListRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsListRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsList`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7429,7 +7429,7 @@ func (s *HTTPServer) HandleOrgsListRequest(w http.ResponseWriter, r *http.Reques
 		return
 	}
 
-	response, err := s.s.OrgsList(ctx, params)
+	response, err := s.h.OrgsList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7442,7 +7442,7 @@ func (s *HTTPServer) HandleOrgsListRequest(w http.ResponseWriter, r *http.Reques
 	}
 }
 
-func (s *HTTPServer) HandleOrgsListBlockedUsersRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsListBlockedUsersRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListBlockedUsers`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-blocked-users`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7455,7 +7455,7 @@ func (s *HTTPServer) HandleOrgsListBlockedUsersRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.OrgsListBlockedUsers(ctx, params)
+	response, err := s.h.OrgsListBlockedUsers(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7468,7 +7468,7 @@ func (s *HTTPServer) HandleOrgsListBlockedUsersRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleOrgsListFailedInvitationsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsListFailedInvitationsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListFailedInvitations`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-failed-invitations`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7481,7 +7481,7 @@ func (s *HTTPServer) HandleOrgsListFailedInvitationsRequest(w http.ResponseWrite
 		return
 	}
 
-	response, err := s.s.OrgsListFailedInvitations(ctx, params)
+	response, err := s.h.OrgsListFailedInvitations(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7494,7 +7494,7 @@ func (s *HTTPServer) HandleOrgsListFailedInvitationsRequest(w http.ResponseWrite
 	}
 }
 
-func (s *HTTPServer) HandleOrgsListForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsListForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7507,7 +7507,7 @@ func (s *HTTPServer) HandleOrgsListForAuthenticatedUserRequest(w http.ResponseWr
 		return
 	}
 
-	response, err := s.s.OrgsListForAuthenticatedUser(ctx, params)
+	response, err := s.h.OrgsListForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7520,7 +7520,7 @@ func (s *HTTPServer) HandleOrgsListForAuthenticatedUserRequest(w http.ResponseWr
 	}
 }
 
-func (s *HTTPServer) HandleOrgsListForUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsListForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListForUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7533,7 +7533,7 @@ func (s *HTTPServer) HandleOrgsListForUserRequest(w http.ResponseWriter, r *http
 		return
 	}
 
-	response, err := s.s.OrgsListForUser(ctx, params)
+	response, err := s.h.OrgsListForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7546,7 +7546,7 @@ func (s *HTTPServer) HandleOrgsListForUserRequest(w http.ResponseWriter, r *http
 	}
 }
 
-func (s *HTTPServer) HandleOrgsListInvitationTeamsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsListInvitationTeamsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListInvitationTeams`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-invitation-teams`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7559,7 +7559,7 @@ func (s *HTTPServer) HandleOrgsListInvitationTeamsRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.OrgsListInvitationTeams(ctx, params)
+	response, err := s.h.OrgsListInvitationTeams(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7572,7 +7572,7 @@ func (s *HTTPServer) HandleOrgsListInvitationTeamsRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleOrgsListOutsideCollaboratorsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsListOutsideCollaboratorsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListOutsideCollaborators`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-outside-collaborators`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7585,7 +7585,7 @@ func (s *HTTPServer) HandleOrgsListOutsideCollaboratorsRequest(w http.ResponseWr
 		return
 	}
 
-	response, err := s.s.OrgsListOutsideCollaborators(ctx, params)
+	response, err := s.h.OrgsListOutsideCollaborators(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7598,7 +7598,7 @@ func (s *HTTPServer) HandleOrgsListOutsideCollaboratorsRequest(w http.ResponseWr
 	}
 }
 
-func (s *HTTPServer) HandleOrgsListPendingInvitationsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsListPendingInvitationsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListPendingInvitations`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-pending-invitations`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7611,7 +7611,7 @@ func (s *HTTPServer) HandleOrgsListPendingInvitationsRequest(w http.ResponseWrit
 		return
 	}
 
-	response, err := s.s.OrgsListPendingInvitations(ctx, params)
+	response, err := s.h.OrgsListPendingInvitations(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7624,7 +7624,7 @@ func (s *HTTPServer) HandleOrgsListPendingInvitationsRequest(w http.ResponseWrit
 	}
 }
 
-func (s *HTTPServer) HandleOrgsListPublicMembersRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsListPublicMembersRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListPublicMembers`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-public-members`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7637,7 +7637,7 @@ func (s *HTTPServer) HandleOrgsListPublicMembersRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.OrgsListPublicMembers(ctx, params)
+	response, err := s.h.OrgsListPublicMembers(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7650,7 +7650,7 @@ func (s *HTTPServer) HandleOrgsListPublicMembersRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleOrgsListSamlSSOAuthorizationsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsListSamlSSOAuthorizationsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListSamlSSOAuthorizations`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-saml-sso-authorizations`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7663,7 +7663,7 @@ func (s *HTTPServer) HandleOrgsListSamlSSOAuthorizationsRequest(w http.ResponseW
 		return
 	}
 
-	response, err := s.s.OrgsListSamlSSOAuthorizations(ctx, params)
+	response, err := s.h.OrgsListSamlSSOAuthorizations(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7676,7 +7676,7 @@ func (s *HTTPServer) HandleOrgsListSamlSSOAuthorizationsRequest(w http.ResponseW
 	}
 }
 
-func (s *HTTPServer) HandleOrgsListWebhooksRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsListWebhooksRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListWebhooks`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-webhooks`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7689,7 +7689,7 @@ func (s *HTTPServer) HandleOrgsListWebhooksRequest(w http.ResponseWriter, r *htt
 		return
 	}
 
-	response, err := s.s.OrgsListWebhooks(ctx, params)
+	response, err := s.h.OrgsListWebhooks(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7702,7 +7702,7 @@ func (s *HTTPServer) HandleOrgsListWebhooksRequest(w http.ResponseWriter, r *htt
 	}
 }
 
-func (s *HTTPServer) HandleOrgsPingWebhookRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsPingWebhookRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsPingWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/ping-webhook`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7715,7 +7715,7 @@ func (s *HTTPServer) HandleOrgsPingWebhookRequest(w http.ResponseWriter, r *http
 		return
 	}
 
-	response, err := s.s.OrgsPingWebhook(ctx, params)
+	response, err := s.h.OrgsPingWebhook(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7728,7 +7728,7 @@ func (s *HTTPServer) HandleOrgsPingWebhookRequest(w http.ResponseWriter, r *http
 	}
 }
 
-func (s *HTTPServer) HandleOrgsRemoveMemberRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsRemoveMemberRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsRemoveMember`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/remove-member`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7741,7 +7741,7 @@ func (s *HTTPServer) HandleOrgsRemoveMemberRequest(w http.ResponseWriter, r *htt
 		return
 	}
 
-	response, err := s.s.OrgsRemoveMember(ctx, params)
+	response, err := s.h.OrgsRemoveMember(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7754,7 +7754,7 @@ func (s *HTTPServer) HandleOrgsRemoveMemberRequest(w http.ResponseWriter, r *htt
 	}
 }
 
-func (s *HTTPServer) HandleOrgsRemoveMembershipForUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsRemoveMembershipForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsRemoveMembershipForUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/remove-membership-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7767,7 +7767,7 @@ func (s *HTTPServer) HandleOrgsRemoveMembershipForUserRequest(w http.ResponseWri
 		return
 	}
 
-	response, err := s.s.OrgsRemoveMembershipForUser(ctx, params)
+	response, err := s.h.OrgsRemoveMembershipForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7780,7 +7780,7 @@ func (s *HTTPServer) HandleOrgsRemoveMembershipForUserRequest(w http.ResponseWri
 	}
 }
 
-func (s *HTTPServer) HandleOrgsRemoveOutsideCollaboratorRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsRemoveOutsideCollaboratorRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsRemoveOutsideCollaborator`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/remove-outside-collaborator`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7793,7 +7793,7 @@ func (s *HTTPServer) HandleOrgsRemoveOutsideCollaboratorRequest(w http.ResponseW
 		return
 	}
 
-	response, err := s.s.OrgsRemoveOutsideCollaborator(ctx, params)
+	response, err := s.h.OrgsRemoveOutsideCollaborator(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7806,7 +7806,7 @@ func (s *HTTPServer) HandleOrgsRemoveOutsideCollaboratorRequest(w http.ResponseW
 	}
 }
 
-func (s *HTTPServer) HandleOrgsRemovePublicMembershipForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsRemovePublicMembershipForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsRemovePublicMembershipForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/remove-public-membership-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7819,7 +7819,7 @@ func (s *HTTPServer) HandleOrgsRemovePublicMembershipForAuthenticatedUserRequest
 		return
 	}
 
-	response, err := s.s.OrgsRemovePublicMembershipForAuthenticatedUser(ctx, params)
+	response, err := s.h.OrgsRemovePublicMembershipForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7832,7 +7832,7 @@ func (s *HTTPServer) HandleOrgsRemovePublicMembershipForAuthenticatedUserRequest
 	}
 }
 
-func (s *HTTPServer) HandleOrgsRemoveSamlSSOAuthorizationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsRemoveSamlSSOAuthorizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsRemoveSamlSSOAuthorization`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/remove-saml-sso-authorization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7845,7 +7845,7 @@ func (s *HTTPServer) HandleOrgsRemoveSamlSSOAuthorizationRequest(w http.Response
 		return
 	}
 
-	response, err := s.s.OrgsRemoveSamlSSOAuthorization(ctx, params)
+	response, err := s.h.OrgsRemoveSamlSSOAuthorization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7858,7 +7858,7 @@ func (s *HTTPServer) HandleOrgsRemoveSamlSSOAuthorizationRequest(w http.Response
 	}
 }
 
-func (s *HTTPServer) HandleOrgsSetPublicMembershipForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsSetPublicMembershipForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsSetPublicMembershipForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/set-public-membership-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7871,7 +7871,7 @@ func (s *HTTPServer) HandleOrgsSetPublicMembershipForAuthenticatedUserRequest(w 
 		return
 	}
 
-	response, err := s.s.OrgsSetPublicMembershipForAuthenticatedUser(ctx, params)
+	response, err := s.h.OrgsSetPublicMembershipForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7884,7 +7884,7 @@ func (s *HTTPServer) HandleOrgsSetPublicMembershipForAuthenticatedUserRequest(w 
 	}
 }
 
-func (s *HTTPServer) HandleOrgsUnblockUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsUnblockUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsUnblockUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/unblock-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7897,7 +7897,7 @@ func (s *HTTPServer) HandleOrgsUnblockUserRequest(w http.ResponseWriter, r *http
 		return
 	}
 
-	response, err := s.s.OrgsUnblockUser(ctx, params)
+	response, err := s.h.OrgsUnblockUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7910,7 +7910,7 @@ func (s *HTTPServer) HandleOrgsUnblockUserRequest(w http.ResponseWriter, r *http
 	}
 }
 
-func (s *HTTPServer) HandleOrgsUpdateWebhookConfigForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleOrgsUpdateWebhookConfigForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsUpdateWebhookConfigForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/update-webhook-config-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7929,7 +7929,7 @@ func (s *HTTPServer) HandleOrgsUpdateWebhookConfigForOrgRequest(w http.ResponseW
 		return
 	}
 
-	response, err := s.s.OrgsUpdateWebhookConfigForOrg(ctx, request, params)
+	response, err := s.h.OrgsUpdateWebhookConfigForOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7942,7 +7942,7 @@ func (s *HTTPServer) HandleOrgsUpdateWebhookConfigForOrgRequest(w http.ResponseW
 	}
 }
 
-func (s *HTTPServer) HandlePackagesDeletePackageForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePackagesDeletePackageForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesDeletePackageForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/delete-package-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7955,7 +7955,7 @@ func (s *HTTPServer) HandlePackagesDeletePackageForAuthenticatedUserRequest(w ht
 		return
 	}
 
-	response, err := s.s.PackagesDeletePackageForAuthenticatedUser(ctx, params)
+	response, err := s.h.PackagesDeletePackageForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7968,7 +7968,7 @@ func (s *HTTPServer) HandlePackagesDeletePackageForAuthenticatedUserRequest(w ht
 	}
 }
 
-func (s *HTTPServer) HandlePackagesDeletePackageForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePackagesDeletePackageForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesDeletePackageForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`packages/delete-package-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7981,7 +7981,7 @@ func (s *HTTPServer) HandlePackagesDeletePackageForOrgRequest(w http.ResponseWri
 		return
 	}
 
-	response, err := s.s.PackagesDeletePackageForOrg(ctx, params)
+	response, err := s.h.PackagesDeletePackageForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -7994,7 +7994,7 @@ func (s *HTTPServer) HandlePackagesDeletePackageForOrgRequest(w http.ResponseWri
 	}
 }
 
-func (s *HTTPServer) HandlePackagesDeletePackageForUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePackagesDeletePackageForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesDeletePackageForUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/delete-package-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8007,7 +8007,7 @@ func (s *HTTPServer) HandlePackagesDeletePackageForUserRequest(w http.ResponseWr
 		return
 	}
 
-	response, err := s.s.PackagesDeletePackageForUser(ctx, params)
+	response, err := s.h.PackagesDeletePackageForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8020,7 +8020,7 @@ func (s *HTTPServer) HandlePackagesDeletePackageForUserRequest(w http.ResponseWr
 	}
 }
 
-func (s *HTTPServer) HandlePackagesDeletePackageVersionForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePackagesDeletePackageVersionForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesDeletePackageVersionForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/delete-package-version-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8033,7 +8033,7 @@ func (s *HTTPServer) HandlePackagesDeletePackageVersionForAuthenticatedUserReque
 		return
 	}
 
-	response, err := s.s.PackagesDeletePackageVersionForAuthenticatedUser(ctx, params)
+	response, err := s.h.PackagesDeletePackageVersionForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8046,7 +8046,7 @@ func (s *HTTPServer) HandlePackagesDeletePackageVersionForAuthenticatedUserReque
 	}
 }
 
-func (s *HTTPServer) HandlePackagesDeletePackageVersionForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePackagesDeletePackageVersionForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesDeletePackageVersionForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`packages/delete-package-version-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8059,7 +8059,7 @@ func (s *HTTPServer) HandlePackagesDeletePackageVersionForOrgRequest(w http.Resp
 		return
 	}
 
-	response, err := s.s.PackagesDeletePackageVersionForOrg(ctx, params)
+	response, err := s.h.PackagesDeletePackageVersionForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8072,7 +8072,7 @@ func (s *HTTPServer) HandlePackagesDeletePackageVersionForOrgRequest(w http.Resp
 	}
 }
 
-func (s *HTTPServer) HandlePackagesDeletePackageVersionForUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePackagesDeletePackageVersionForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesDeletePackageVersionForUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/delete-package-version-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8085,7 +8085,7 @@ func (s *HTTPServer) HandlePackagesDeletePackageVersionForUserRequest(w http.Res
 		return
 	}
 
-	response, err := s.s.PackagesDeletePackageVersionForUser(ctx, params)
+	response, err := s.h.PackagesDeletePackageVersionForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8098,7 +8098,7 @@ func (s *HTTPServer) HandlePackagesDeletePackageVersionForUserRequest(w http.Res
 	}
 }
 
-func (s *HTTPServer) HandlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-all-package-versions-for-package-owned-by-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8111,7 +8111,7 @@ func (s *HTTPServer) HandlePackagesGetAllPackageVersionsForPackageOwnedByAuthent
 		return
 	}
 
-	response, err := s.s.PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser(ctx, params)
+	response, err := s.h.PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8124,7 +8124,7 @@ func (s *HTTPServer) HandlePackagesGetAllPackageVersionsForPackageOwnedByAuthent
 	}
 }
 
-func (s *HTTPServer) HandlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetAllPackageVersionsForPackageOwnedByOrg`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-all-package-versions-for-package-owned-by-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8137,7 +8137,7 @@ func (s *HTTPServer) HandlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequ
 		return
 	}
 
-	response, err := s.s.PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx, params)
+	response, err := s.h.PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8150,7 +8150,7 @@ func (s *HTTPServer) HandlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequ
 	}
 }
 
-func (s *HTTPServer) HandlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetAllPackageVersionsForPackageOwnedByUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-all-package-versions-for-package-owned-by-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8163,7 +8163,7 @@ func (s *HTTPServer) HandlePackagesGetAllPackageVersionsForPackageOwnedByUserReq
 		return
 	}
 
-	response, err := s.s.PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx, params)
+	response, err := s.h.PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8176,7 +8176,7 @@ func (s *HTTPServer) HandlePackagesGetAllPackageVersionsForPackageOwnedByUserReq
 	}
 }
 
-func (s *HTTPServer) HandlePackagesGetPackageForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePackagesGetPackageForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetPackageForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-package-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8189,7 +8189,7 @@ func (s *HTTPServer) HandlePackagesGetPackageForAuthenticatedUserRequest(w http.
 		return
 	}
 
-	response, err := s.s.PackagesGetPackageForAuthenticatedUser(ctx, params)
+	response, err := s.h.PackagesGetPackageForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8202,7 +8202,7 @@ func (s *HTTPServer) HandlePackagesGetPackageForAuthenticatedUserRequest(w http.
 	}
 }
 
-func (s *HTTPServer) HandlePackagesGetPackageForOrganizationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePackagesGetPackageForOrganizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetPackageForOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-package-for-organization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8215,7 +8215,7 @@ func (s *HTTPServer) HandlePackagesGetPackageForOrganizationRequest(w http.Respo
 		return
 	}
 
-	response, err := s.s.PackagesGetPackageForOrganization(ctx, params)
+	response, err := s.h.PackagesGetPackageForOrganization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8228,7 +8228,7 @@ func (s *HTTPServer) HandlePackagesGetPackageForOrganizationRequest(w http.Respo
 	}
 }
 
-func (s *HTTPServer) HandlePackagesGetPackageForUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePackagesGetPackageForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetPackageForUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-package-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8241,7 +8241,7 @@ func (s *HTTPServer) HandlePackagesGetPackageForUserRequest(w http.ResponseWrite
 		return
 	}
 
-	response, err := s.s.PackagesGetPackageForUser(ctx, params)
+	response, err := s.h.PackagesGetPackageForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8254,7 +8254,7 @@ func (s *HTTPServer) HandlePackagesGetPackageForUserRequest(w http.ResponseWrite
 	}
 }
 
-func (s *HTTPServer) HandlePackagesGetPackageVersionForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePackagesGetPackageVersionForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetPackageVersionForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-package-version-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8267,7 +8267,7 @@ func (s *HTTPServer) HandlePackagesGetPackageVersionForAuthenticatedUserRequest(
 		return
 	}
 
-	response, err := s.s.PackagesGetPackageVersionForAuthenticatedUser(ctx, params)
+	response, err := s.h.PackagesGetPackageVersionForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8280,7 +8280,7 @@ func (s *HTTPServer) HandlePackagesGetPackageVersionForAuthenticatedUserRequest(
 	}
 }
 
-func (s *HTTPServer) HandlePackagesGetPackageVersionForOrganizationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePackagesGetPackageVersionForOrganizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetPackageVersionForOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-package-version-for-organization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8293,7 +8293,7 @@ func (s *HTTPServer) HandlePackagesGetPackageVersionForOrganizationRequest(w htt
 		return
 	}
 
-	response, err := s.s.PackagesGetPackageVersionForOrganization(ctx, params)
+	response, err := s.h.PackagesGetPackageVersionForOrganization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8306,7 +8306,7 @@ func (s *HTTPServer) HandlePackagesGetPackageVersionForOrganizationRequest(w htt
 	}
 }
 
-func (s *HTTPServer) HandlePackagesGetPackageVersionForUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePackagesGetPackageVersionForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetPackageVersionForUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-package-version-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8319,7 +8319,7 @@ func (s *HTTPServer) HandlePackagesGetPackageVersionForUserRequest(w http.Respon
 		return
 	}
 
-	response, err := s.s.PackagesGetPackageVersionForUser(ctx, params)
+	response, err := s.h.PackagesGetPackageVersionForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8332,7 +8332,7 @@ func (s *HTTPServer) HandlePackagesGetPackageVersionForUserRequest(w http.Respon
 	}
 }
 
-func (s *HTTPServer) HandlePackagesListPackagesForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePackagesListPackagesForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesListPackagesForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/list-packages-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8345,7 +8345,7 @@ func (s *HTTPServer) HandlePackagesListPackagesForAuthenticatedUserRequest(w htt
 		return
 	}
 
-	response, err := s.s.PackagesListPackagesForAuthenticatedUser(ctx, params)
+	response, err := s.h.PackagesListPackagesForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8358,7 +8358,7 @@ func (s *HTTPServer) HandlePackagesListPackagesForAuthenticatedUserRequest(w htt
 	}
 }
 
-func (s *HTTPServer) HandlePackagesListPackagesForOrganizationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePackagesListPackagesForOrganizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesListPackagesForOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`packages/list-packages-for-organization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8371,7 +8371,7 @@ func (s *HTTPServer) HandlePackagesListPackagesForOrganizationRequest(w http.Res
 		return
 	}
 
-	response, err := s.s.PackagesListPackagesForOrganization(ctx, params)
+	response, err := s.h.PackagesListPackagesForOrganization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8384,7 +8384,7 @@ func (s *HTTPServer) HandlePackagesListPackagesForOrganizationRequest(w http.Res
 	}
 }
 
-func (s *HTTPServer) HandlePackagesListPackagesForUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePackagesListPackagesForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesListPackagesForUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/list-packages-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8397,7 +8397,7 @@ func (s *HTTPServer) HandlePackagesListPackagesForUserRequest(w http.ResponseWri
 		return
 	}
 
-	response, err := s.s.PackagesListPackagesForUser(ctx, params)
+	response, err := s.h.PackagesListPackagesForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8410,7 +8410,7 @@ func (s *HTTPServer) HandlePackagesListPackagesForUserRequest(w http.ResponseWri
 	}
 }
 
-func (s *HTTPServer) HandlePackagesRestorePackageForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePackagesRestorePackageForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesRestorePackageForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/restore-package-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8423,7 +8423,7 @@ func (s *HTTPServer) HandlePackagesRestorePackageForAuthenticatedUserRequest(w h
 		return
 	}
 
-	response, err := s.s.PackagesRestorePackageForAuthenticatedUser(ctx, params)
+	response, err := s.h.PackagesRestorePackageForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8436,7 +8436,7 @@ func (s *HTTPServer) HandlePackagesRestorePackageForAuthenticatedUserRequest(w h
 	}
 }
 
-func (s *HTTPServer) HandlePackagesRestorePackageForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePackagesRestorePackageForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesRestorePackageForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`packages/restore-package-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8449,7 +8449,7 @@ func (s *HTTPServer) HandlePackagesRestorePackageForOrgRequest(w http.ResponseWr
 		return
 	}
 
-	response, err := s.s.PackagesRestorePackageForOrg(ctx, params)
+	response, err := s.h.PackagesRestorePackageForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8462,7 +8462,7 @@ func (s *HTTPServer) HandlePackagesRestorePackageForOrgRequest(w http.ResponseWr
 	}
 }
 
-func (s *HTTPServer) HandlePackagesRestorePackageForUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePackagesRestorePackageForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesRestorePackageForUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/restore-package-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8475,7 +8475,7 @@ func (s *HTTPServer) HandlePackagesRestorePackageForUserRequest(w http.ResponseW
 		return
 	}
 
-	response, err := s.s.PackagesRestorePackageForUser(ctx, params)
+	response, err := s.h.PackagesRestorePackageForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8488,7 +8488,7 @@ func (s *HTTPServer) HandlePackagesRestorePackageForUserRequest(w http.ResponseW
 	}
 }
 
-func (s *HTTPServer) HandlePackagesRestorePackageVersionForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePackagesRestorePackageVersionForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesRestorePackageVersionForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/restore-package-version-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8501,7 +8501,7 @@ func (s *HTTPServer) HandlePackagesRestorePackageVersionForAuthenticatedUserRequ
 		return
 	}
 
-	response, err := s.s.PackagesRestorePackageVersionForAuthenticatedUser(ctx, params)
+	response, err := s.h.PackagesRestorePackageVersionForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8514,7 +8514,7 @@ func (s *HTTPServer) HandlePackagesRestorePackageVersionForAuthenticatedUserRequ
 	}
 }
 
-func (s *HTTPServer) HandlePackagesRestorePackageVersionForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePackagesRestorePackageVersionForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesRestorePackageVersionForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`packages/restore-package-version-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8527,7 +8527,7 @@ func (s *HTTPServer) HandlePackagesRestorePackageVersionForOrgRequest(w http.Res
 		return
 	}
 
-	response, err := s.s.PackagesRestorePackageVersionForOrg(ctx, params)
+	response, err := s.h.PackagesRestorePackageVersionForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8540,7 +8540,7 @@ func (s *HTTPServer) HandlePackagesRestorePackageVersionForOrgRequest(w http.Res
 	}
 }
 
-func (s *HTTPServer) HandlePackagesRestorePackageVersionForUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePackagesRestorePackageVersionForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesRestorePackageVersionForUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/restore-package-version-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8553,7 +8553,7 @@ func (s *HTTPServer) HandlePackagesRestorePackageVersionForUserRequest(w http.Re
 		return
 	}
 
-	response, err := s.s.PackagesRestorePackageVersionForUser(ctx, params)
+	response, err := s.h.PackagesRestorePackageVersionForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8566,7 +8566,7 @@ func (s *HTTPServer) HandlePackagesRestorePackageVersionForUserRequest(w http.Re
 	}
 }
 
-func (s *HTTPServer) HandleProjectsCreateColumnRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleProjectsCreateColumnRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsCreateColumn`,
 		trace.WithAttributes(otelogen.OperationID(`projects/create-column`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8585,7 +8585,7 @@ func (s *HTTPServer) HandleProjectsCreateColumnRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.ProjectsCreateColumn(ctx, request, params)
+	response, err := s.h.ProjectsCreateColumn(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8598,7 +8598,7 @@ func (s *HTTPServer) HandleProjectsCreateColumnRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleProjectsCreateForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleProjectsCreateForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsCreateForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`projects/create-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8611,7 +8611,7 @@ func (s *HTTPServer) HandleProjectsCreateForAuthenticatedUserRequest(w http.Resp
 		return
 	}
 
-	response, err := s.s.ProjectsCreateForAuthenticatedUser(ctx, request)
+	response, err := s.h.ProjectsCreateForAuthenticatedUser(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8624,7 +8624,7 @@ func (s *HTTPServer) HandleProjectsCreateForAuthenticatedUserRequest(w http.Resp
 	}
 }
 
-func (s *HTTPServer) HandleProjectsCreateForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleProjectsCreateForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsCreateForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`projects/create-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8643,7 +8643,7 @@ func (s *HTTPServer) HandleProjectsCreateForOrgRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.ProjectsCreateForOrg(ctx, request, params)
+	response, err := s.h.ProjectsCreateForOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8656,7 +8656,7 @@ func (s *HTTPServer) HandleProjectsCreateForOrgRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleProjectsCreateForRepoRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleProjectsCreateForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsCreateForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`projects/create-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8675,7 +8675,7 @@ func (s *HTTPServer) HandleProjectsCreateForRepoRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.ProjectsCreateForRepo(ctx, request, params)
+	response, err := s.h.ProjectsCreateForRepo(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8688,7 +8688,7 @@ func (s *HTTPServer) HandleProjectsCreateForRepoRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleProjectsDeleteRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleProjectsDeleteRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsDelete`,
 		trace.WithAttributes(otelogen.OperationID(`projects/delete`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8701,7 +8701,7 @@ func (s *HTTPServer) HandleProjectsDeleteRequest(w http.ResponseWriter, r *http.
 		return
 	}
 
-	response, err := s.s.ProjectsDelete(ctx, params)
+	response, err := s.h.ProjectsDelete(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8714,7 +8714,7 @@ func (s *HTTPServer) HandleProjectsDeleteRequest(w http.ResponseWriter, r *http.
 	}
 }
 
-func (s *HTTPServer) HandleProjectsDeleteCardRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleProjectsDeleteCardRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsDeleteCard`,
 		trace.WithAttributes(otelogen.OperationID(`projects/delete-card`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8727,7 +8727,7 @@ func (s *HTTPServer) HandleProjectsDeleteCardRequest(w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.s.ProjectsDeleteCard(ctx, params)
+	response, err := s.h.ProjectsDeleteCard(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8740,7 +8740,7 @@ func (s *HTTPServer) HandleProjectsDeleteCardRequest(w http.ResponseWriter, r *h
 	}
 }
 
-func (s *HTTPServer) HandleProjectsDeleteColumnRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleProjectsDeleteColumnRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsDeleteColumn`,
 		trace.WithAttributes(otelogen.OperationID(`projects/delete-column`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8753,7 +8753,7 @@ func (s *HTTPServer) HandleProjectsDeleteColumnRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.ProjectsDeleteColumn(ctx, params)
+	response, err := s.h.ProjectsDeleteColumn(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8766,7 +8766,7 @@ func (s *HTTPServer) HandleProjectsDeleteColumnRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleProjectsGetRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleProjectsGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsGet`,
 		trace.WithAttributes(otelogen.OperationID(`projects/get`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8779,7 +8779,7 @@ func (s *HTTPServer) HandleProjectsGetRequest(w http.ResponseWriter, r *http.Req
 		return
 	}
 
-	response, err := s.s.ProjectsGet(ctx, params)
+	response, err := s.h.ProjectsGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8792,7 +8792,7 @@ func (s *HTTPServer) HandleProjectsGetRequest(w http.ResponseWriter, r *http.Req
 	}
 }
 
-func (s *HTTPServer) HandleProjectsGetCardRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleProjectsGetCardRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsGetCard`,
 		trace.WithAttributes(otelogen.OperationID(`projects/get-card`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8805,7 +8805,7 @@ func (s *HTTPServer) HandleProjectsGetCardRequest(w http.ResponseWriter, r *http
 		return
 	}
 
-	response, err := s.s.ProjectsGetCard(ctx, params)
+	response, err := s.h.ProjectsGetCard(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8818,7 +8818,7 @@ func (s *HTTPServer) HandleProjectsGetCardRequest(w http.ResponseWriter, r *http
 	}
 }
 
-func (s *HTTPServer) HandleProjectsGetColumnRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleProjectsGetColumnRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsGetColumn`,
 		trace.WithAttributes(otelogen.OperationID(`projects/get-column`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8831,7 +8831,7 @@ func (s *HTTPServer) HandleProjectsGetColumnRequest(w http.ResponseWriter, r *ht
 		return
 	}
 
-	response, err := s.s.ProjectsGetColumn(ctx, params)
+	response, err := s.h.ProjectsGetColumn(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8844,7 +8844,7 @@ func (s *HTTPServer) HandleProjectsGetColumnRequest(w http.ResponseWriter, r *ht
 	}
 }
 
-func (s *HTTPServer) HandleProjectsListCardsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleProjectsListCardsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsListCards`,
 		trace.WithAttributes(otelogen.OperationID(`projects/list-cards`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8857,7 +8857,7 @@ func (s *HTTPServer) HandleProjectsListCardsRequest(w http.ResponseWriter, r *ht
 		return
 	}
 
-	response, err := s.s.ProjectsListCards(ctx, params)
+	response, err := s.h.ProjectsListCards(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8870,7 +8870,7 @@ func (s *HTTPServer) HandleProjectsListCardsRequest(w http.ResponseWriter, r *ht
 	}
 }
 
-func (s *HTTPServer) HandleProjectsListColumnsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleProjectsListColumnsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsListColumns`,
 		trace.WithAttributes(otelogen.OperationID(`projects/list-columns`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8883,7 +8883,7 @@ func (s *HTTPServer) HandleProjectsListColumnsRequest(w http.ResponseWriter, r *
 		return
 	}
 
-	response, err := s.s.ProjectsListColumns(ctx, params)
+	response, err := s.h.ProjectsListColumns(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8896,7 +8896,7 @@ func (s *HTTPServer) HandleProjectsListColumnsRequest(w http.ResponseWriter, r *
 	}
 }
 
-func (s *HTTPServer) HandleProjectsListForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleProjectsListForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsListForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`projects/list-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8909,7 +8909,7 @@ func (s *HTTPServer) HandleProjectsListForOrgRequest(w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.s.ProjectsListForOrg(ctx, params)
+	response, err := s.h.ProjectsListForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8922,7 +8922,7 @@ func (s *HTTPServer) HandleProjectsListForOrgRequest(w http.ResponseWriter, r *h
 	}
 }
 
-func (s *HTTPServer) HandleProjectsListForRepoRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleProjectsListForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsListForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`projects/list-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8935,7 +8935,7 @@ func (s *HTTPServer) HandleProjectsListForRepoRequest(w http.ResponseWriter, r *
 		return
 	}
 
-	response, err := s.s.ProjectsListForRepo(ctx, params)
+	response, err := s.h.ProjectsListForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8948,7 +8948,7 @@ func (s *HTTPServer) HandleProjectsListForRepoRequest(w http.ResponseWriter, r *
 	}
 }
 
-func (s *HTTPServer) HandleProjectsMoveColumnRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleProjectsMoveColumnRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsMoveColumn`,
 		trace.WithAttributes(otelogen.OperationID(`projects/move-column`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8967,7 +8967,7 @@ func (s *HTTPServer) HandleProjectsMoveColumnRequest(w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.s.ProjectsMoveColumn(ctx, request, params)
+	response, err := s.h.ProjectsMoveColumn(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -8980,7 +8980,7 @@ func (s *HTTPServer) HandleProjectsMoveColumnRequest(w http.ResponseWriter, r *h
 	}
 }
 
-func (s *HTTPServer) HandleProjectsUpdateRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleProjectsUpdateRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsUpdate`,
 		trace.WithAttributes(otelogen.OperationID(`projects/update`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8999,7 +8999,7 @@ func (s *HTTPServer) HandleProjectsUpdateRequest(w http.ResponseWriter, r *http.
 		return
 	}
 
-	response, err := s.s.ProjectsUpdate(ctx, request, params)
+	response, err := s.h.ProjectsUpdate(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9012,7 +9012,7 @@ func (s *HTTPServer) HandleProjectsUpdateRequest(w http.ResponseWriter, r *http.
 	}
 }
 
-func (s *HTTPServer) HandleProjectsUpdateCardRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleProjectsUpdateCardRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsUpdateCard`,
 		trace.WithAttributes(otelogen.OperationID(`projects/update-card`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9031,7 +9031,7 @@ func (s *HTTPServer) HandleProjectsUpdateCardRequest(w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.s.ProjectsUpdateCard(ctx, request, params)
+	response, err := s.h.ProjectsUpdateCard(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9044,7 +9044,7 @@ func (s *HTTPServer) HandleProjectsUpdateCardRequest(w http.ResponseWriter, r *h
 	}
 }
 
-func (s *HTTPServer) HandleProjectsUpdateColumnRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleProjectsUpdateColumnRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsUpdateColumn`,
 		trace.WithAttributes(otelogen.OperationID(`projects/update-column`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9063,7 +9063,7 @@ func (s *HTTPServer) HandleProjectsUpdateColumnRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.ProjectsUpdateColumn(ctx, request, params)
+	response, err := s.h.ProjectsUpdateColumn(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9076,7 +9076,7 @@ func (s *HTTPServer) HandleProjectsUpdateColumnRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandlePullsCheckIfMergedRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePullsCheckIfMergedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsCheckIfMerged`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/check-if-merged`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9089,7 +9089,7 @@ func (s *HTTPServer) HandlePullsCheckIfMergedRequest(w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.s.PullsCheckIfMerged(ctx, params)
+	response, err := s.h.PullsCheckIfMerged(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9102,7 +9102,7 @@ func (s *HTTPServer) HandlePullsCheckIfMergedRequest(w http.ResponseWriter, r *h
 	}
 }
 
-func (s *HTTPServer) HandlePullsCreateReplyForReviewCommentRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePullsCreateReplyForReviewCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsCreateReplyForReviewComment`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/create-reply-for-review-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9121,7 +9121,7 @@ func (s *HTTPServer) HandlePullsCreateReplyForReviewCommentRequest(w http.Respon
 		return
 	}
 
-	response, err := s.s.PullsCreateReplyForReviewComment(ctx, request, params)
+	response, err := s.h.PullsCreateReplyForReviewComment(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9134,7 +9134,7 @@ func (s *HTTPServer) HandlePullsCreateReplyForReviewCommentRequest(w http.Respon
 	}
 }
 
-func (s *HTTPServer) HandlePullsCreateReviewRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePullsCreateReviewRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsCreateReview`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/create-review`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9153,7 +9153,7 @@ func (s *HTTPServer) HandlePullsCreateReviewRequest(w http.ResponseWriter, r *ht
 		return
 	}
 
-	response, err := s.s.PullsCreateReview(ctx, request, params)
+	response, err := s.h.PullsCreateReview(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9166,7 +9166,7 @@ func (s *HTTPServer) HandlePullsCreateReviewRequest(w http.ResponseWriter, r *ht
 	}
 }
 
-func (s *HTTPServer) HandlePullsDeletePendingReviewRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePullsDeletePendingReviewRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsDeletePendingReview`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/delete-pending-review`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9179,7 +9179,7 @@ func (s *HTTPServer) HandlePullsDeletePendingReviewRequest(w http.ResponseWriter
 		return
 	}
 
-	response, err := s.s.PullsDeletePendingReview(ctx, params)
+	response, err := s.h.PullsDeletePendingReview(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9192,7 +9192,7 @@ func (s *HTTPServer) HandlePullsDeletePendingReviewRequest(w http.ResponseWriter
 	}
 }
 
-func (s *HTTPServer) HandlePullsDeleteReviewCommentRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePullsDeleteReviewCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsDeleteReviewComment`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/delete-review-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9205,7 +9205,7 @@ func (s *HTTPServer) HandlePullsDeleteReviewCommentRequest(w http.ResponseWriter
 		return
 	}
 
-	response, err := s.s.PullsDeleteReviewComment(ctx, params)
+	response, err := s.h.PullsDeleteReviewComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9218,7 +9218,7 @@ func (s *HTTPServer) HandlePullsDeleteReviewCommentRequest(w http.ResponseWriter
 	}
 }
 
-func (s *HTTPServer) HandlePullsDismissReviewRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePullsDismissReviewRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsDismissReview`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/dismiss-review`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9237,7 +9237,7 @@ func (s *HTTPServer) HandlePullsDismissReviewRequest(w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.s.PullsDismissReview(ctx, request, params)
+	response, err := s.h.PullsDismissReview(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9250,7 +9250,7 @@ func (s *HTTPServer) HandlePullsDismissReviewRequest(w http.ResponseWriter, r *h
 	}
 }
 
-func (s *HTTPServer) HandlePullsGetRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePullsGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsGet`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/get`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9263,7 +9263,7 @@ func (s *HTTPServer) HandlePullsGetRequest(w http.ResponseWriter, r *http.Reques
 		return
 	}
 
-	response, err := s.s.PullsGet(ctx, params)
+	response, err := s.h.PullsGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9276,7 +9276,7 @@ func (s *HTTPServer) HandlePullsGetRequest(w http.ResponseWriter, r *http.Reques
 	}
 }
 
-func (s *HTTPServer) HandlePullsGetReviewRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePullsGetReviewRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsGetReview`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/get-review`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9289,7 +9289,7 @@ func (s *HTTPServer) HandlePullsGetReviewRequest(w http.ResponseWriter, r *http.
 		return
 	}
 
-	response, err := s.s.PullsGetReview(ctx, params)
+	response, err := s.h.PullsGetReview(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9302,7 +9302,7 @@ func (s *HTTPServer) HandlePullsGetReviewRequest(w http.ResponseWriter, r *http.
 	}
 }
 
-func (s *HTTPServer) HandlePullsGetReviewCommentRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePullsGetReviewCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsGetReviewComment`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/get-review-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9315,7 +9315,7 @@ func (s *HTTPServer) HandlePullsGetReviewCommentRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.PullsGetReviewComment(ctx, params)
+	response, err := s.h.PullsGetReviewComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9328,7 +9328,7 @@ func (s *HTTPServer) HandlePullsGetReviewCommentRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandlePullsListCommentsForReviewRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePullsListCommentsForReviewRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsListCommentsForReview`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/list-comments-for-review`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9341,7 +9341,7 @@ func (s *HTTPServer) HandlePullsListCommentsForReviewRequest(w http.ResponseWrit
 		return
 	}
 
-	response, err := s.s.PullsListCommentsForReview(ctx, params)
+	response, err := s.h.PullsListCommentsForReview(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9354,7 +9354,7 @@ func (s *HTTPServer) HandlePullsListCommentsForReviewRequest(w http.ResponseWrit
 	}
 }
 
-func (s *HTTPServer) HandlePullsListCommitsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePullsListCommitsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsListCommits`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/list-commits`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9367,7 +9367,7 @@ func (s *HTTPServer) HandlePullsListCommitsRequest(w http.ResponseWriter, r *htt
 		return
 	}
 
-	response, err := s.s.PullsListCommits(ctx, params)
+	response, err := s.h.PullsListCommits(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9380,7 +9380,7 @@ func (s *HTTPServer) HandlePullsListCommitsRequest(w http.ResponseWriter, r *htt
 	}
 }
 
-func (s *HTTPServer) HandlePullsListRequestedReviewersRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePullsListRequestedReviewersRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsListRequestedReviewers`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/list-requested-reviewers`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9393,7 +9393,7 @@ func (s *HTTPServer) HandlePullsListRequestedReviewersRequest(w http.ResponseWri
 		return
 	}
 
-	response, err := s.s.PullsListRequestedReviewers(ctx, params)
+	response, err := s.h.PullsListRequestedReviewers(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9406,7 +9406,7 @@ func (s *HTTPServer) HandlePullsListRequestedReviewersRequest(w http.ResponseWri
 	}
 }
 
-func (s *HTTPServer) HandlePullsListReviewCommentsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePullsListReviewCommentsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsListReviewComments`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/list-review-comments`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9419,7 +9419,7 @@ func (s *HTTPServer) HandlePullsListReviewCommentsRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.PullsListReviewComments(ctx, params)
+	response, err := s.h.PullsListReviewComments(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9432,7 +9432,7 @@ func (s *HTTPServer) HandlePullsListReviewCommentsRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandlePullsListReviewCommentsForRepoRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePullsListReviewCommentsForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsListReviewCommentsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/list-review-comments-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9445,7 +9445,7 @@ func (s *HTTPServer) HandlePullsListReviewCommentsForRepoRequest(w http.Response
 		return
 	}
 
-	response, err := s.s.PullsListReviewCommentsForRepo(ctx, params)
+	response, err := s.h.PullsListReviewCommentsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9458,7 +9458,7 @@ func (s *HTTPServer) HandlePullsListReviewCommentsForRepoRequest(w http.Response
 	}
 }
 
-func (s *HTTPServer) HandlePullsListReviewsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePullsListReviewsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsListReviews`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/list-reviews`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9471,7 +9471,7 @@ func (s *HTTPServer) HandlePullsListReviewsRequest(w http.ResponseWriter, r *htt
 		return
 	}
 
-	response, err := s.s.PullsListReviews(ctx, params)
+	response, err := s.h.PullsListReviews(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9484,7 +9484,7 @@ func (s *HTTPServer) HandlePullsListReviewsRequest(w http.ResponseWriter, r *htt
 	}
 }
 
-func (s *HTTPServer) HandlePullsSubmitReviewRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePullsSubmitReviewRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsSubmitReview`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/submit-review`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9503,7 +9503,7 @@ func (s *HTTPServer) HandlePullsSubmitReviewRequest(w http.ResponseWriter, r *ht
 		return
 	}
 
-	response, err := s.s.PullsSubmitReview(ctx, request, params)
+	response, err := s.h.PullsSubmitReview(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9516,7 +9516,7 @@ func (s *HTTPServer) HandlePullsSubmitReviewRequest(w http.ResponseWriter, r *ht
 	}
 }
 
-func (s *HTTPServer) HandlePullsUpdateReviewRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePullsUpdateReviewRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsUpdateReview`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/update-review`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9535,7 +9535,7 @@ func (s *HTTPServer) HandlePullsUpdateReviewRequest(w http.ResponseWriter, r *ht
 		return
 	}
 
-	response, err := s.s.PullsUpdateReview(ctx, request, params)
+	response, err := s.h.PullsUpdateReview(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9548,7 +9548,7 @@ func (s *HTTPServer) HandlePullsUpdateReviewRequest(w http.ResponseWriter, r *ht
 	}
 }
 
-func (s *HTTPServer) HandlePullsUpdateReviewCommentRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandlePullsUpdateReviewCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsUpdateReviewComment`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/update-review-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9567,7 +9567,7 @@ func (s *HTTPServer) HandlePullsUpdateReviewCommentRequest(w http.ResponseWriter
 		return
 	}
 
-	response, err := s.s.PullsUpdateReviewComment(ctx, request, params)
+	response, err := s.h.PullsUpdateReviewComment(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9580,14 +9580,14 @@ func (s *HTTPServer) HandlePullsUpdateReviewCommentRequest(w http.ResponseWriter
 	}
 }
 
-func (s *HTTPServer) HandleRateLimitGetRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleRateLimitGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `RateLimitGet`,
 		trace.WithAttributes(otelogen.OperationID(`rate-limit/get`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.RateLimitGet(ctx)
+	response, err := s.h.RateLimitGet(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9600,7 +9600,7 @@ func (s *HTTPServer) HandleRateLimitGetRequest(w http.ResponseWriter, r *http.Re
 	}
 }
 
-func (s *HTTPServer) HandleReactionsCreateForTeamDiscussionCommentInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReactionsCreateForTeamDiscussionCommentInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsCreateForTeamDiscussionCommentInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-team-discussion-comment-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9619,7 +9619,7 @@ func (s *HTTPServer) HandleReactionsCreateForTeamDiscussionCommentInOrgRequest(w
 		return
 	}
 
-	response, err := s.s.ReactionsCreateForTeamDiscussionCommentInOrg(ctx, request, params)
+	response, err := s.h.ReactionsCreateForTeamDiscussionCommentInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9632,7 +9632,7 @@ func (s *HTTPServer) HandleReactionsCreateForTeamDiscussionCommentInOrgRequest(w
 	}
 }
 
-func (s *HTTPServer) HandleReactionsCreateForTeamDiscussionCommentLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReactionsCreateForTeamDiscussionCommentLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsCreateForTeamDiscussionCommentLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-team-discussion-comment-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9651,7 +9651,7 @@ func (s *HTTPServer) HandleReactionsCreateForTeamDiscussionCommentLegacyRequest(
 		return
 	}
 
-	response, err := s.s.ReactionsCreateForTeamDiscussionCommentLegacy(ctx, request, params)
+	response, err := s.h.ReactionsCreateForTeamDiscussionCommentLegacy(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9664,7 +9664,7 @@ func (s *HTTPServer) HandleReactionsCreateForTeamDiscussionCommentLegacyRequest(
 	}
 }
 
-func (s *HTTPServer) HandleReactionsCreateForTeamDiscussionInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReactionsCreateForTeamDiscussionInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsCreateForTeamDiscussionInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-team-discussion-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9683,7 +9683,7 @@ func (s *HTTPServer) HandleReactionsCreateForTeamDiscussionInOrgRequest(w http.R
 		return
 	}
 
-	response, err := s.s.ReactionsCreateForTeamDiscussionInOrg(ctx, request, params)
+	response, err := s.h.ReactionsCreateForTeamDiscussionInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9696,7 +9696,7 @@ func (s *HTTPServer) HandleReactionsCreateForTeamDiscussionInOrgRequest(w http.R
 	}
 }
 
-func (s *HTTPServer) HandleReactionsCreateForTeamDiscussionLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReactionsCreateForTeamDiscussionLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsCreateForTeamDiscussionLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-team-discussion-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9715,7 +9715,7 @@ func (s *HTTPServer) HandleReactionsCreateForTeamDiscussionLegacyRequest(w http.
 		return
 	}
 
-	response, err := s.s.ReactionsCreateForTeamDiscussionLegacy(ctx, request, params)
+	response, err := s.h.ReactionsCreateForTeamDiscussionLegacy(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9728,7 +9728,7 @@ func (s *HTTPServer) HandleReactionsCreateForTeamDiscussionLegacyRequest(w http.
 	}
 }
 
-func (s *HTTPServer) HandleReactionsDeleteForCommitCommentRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReactionsDeleteForCommitCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsDeleteForCommitComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-for-commit-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9741,7 +9741,7 @@ func (s *HTTPServer) HandleReactionsDeleteForCommitCommentRequest(w http.Respons
 		return
 	}
 
-	response, err := s.s.ReactionsDeleteForCommitComment(ctx, params)
+	response, err := s.h.ReactionsDeleteForCommitComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9754,7 +9754,7 @@ func (s *HTTPServer) HandleReactionsDeleteForCommitCommentRequest(w http.Respons
 	}
 }
 
-func (s *HTTPServer) HandleReactionsDeleteForIssueRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReactionsDeleteForIssueRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsDeleteForIssue`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-for-issue`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9767,7 +9767,7 @@ func (s *HTTPServer) HandleReactionsDeleteForIssueRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.ReactionsDeleteForIssue(ctx, params)
+	response, err := s.h.ReactionsDeleteForIssue(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9780,7 +9780,7 @@ func (s *HTTPServer) HandleReactionsDeleteForIssueRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleReactionsDeleteForIssueCommentRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReactionsDeleteForIssueCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsDeleteForIssueComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-for-issue-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9793,7 +9793,7 @@ func (s *HTTPServer) HandleReactionsDeleteForIssueCommentRequest(w http.Response
 		return
 	}
 
-	response, err := s.s.ReactionsDeleteForIssueComment(ctx, params)
+	response, err := s.h.ReactionsDeleteForIssueComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9806,7 +9806,7 @@ func (s *HTTPServer) HandleReactionsDeleteForIssueCommentRequest(w http.Response
 	}
 }
 
-func (s *HTTPServer) HandleReactionsDeleteForPullRequestCommentRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReactionsDeleteForPullRequestCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsDeleteForPullRequestComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-for-pull-request-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9819,7 +9819,7 @@ func (s *HTTPServer) HandleReactionsDeleteForPullRequestCommentRequest(w http.Re
 		return
 	}
 
-	response, err := s.s.ReactionsDeleteForPullRequestComment(ctx, params)
+	response, err := s.h.ReactionsDeleteForPullRequestComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9832,7 +9832,7 @@ func (s *HTTPServer) HandleReactionsDeleteForPullRequestCommentRequest(w http.Re
 	}
 }
 
-func (s *HTTPServer) HandleReactionsDeleteForTeamDiscussionRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReactionsDeleteForTeamDiscussionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsDeleteForTeamDiscussion`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-for-team-discussion`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9845,7 +9845,7 @@ func (s *HTTPServer) HandleReactionsDeleteForTeamDiscussionRequest(w http.Respon
 		return
 	}
 
-	response, err := s.s.ReactionsDeleteForTeamDiscussion(ctx, params)
+	response, err := s.h.ReactionsDeleteForTeamDiscussion(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9858,7 +9858,7 @@ func (s *HTTPServer) HandleReactionsDeleteForTeamDiscussionRequest(w http.Respon
 	}
 }
 
-func (s *HTTPServer) HandleReactionsDeleteForTeamDiscussionCommentRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReactionsDeleteForTeamDiscussionCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsDeleteForTeamDiscussionComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-for-team-discussion-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9871,7 +9871,7 @@ func (s *HTTPServer) HandleReactionsDeleteForTeamDiscussionCommentRequest(w http
 		return
 	}
 
-	response, err := s.s.ReactionsDeleteForTeamDiscussionComment(ctx, params)
+	response, err := s.h.ReactionsDeleteForTeamDiscussionComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9884,7 +9884,7 @@ func (s *HTTPServer) HandleReactionsDeleteForTeamDiscussionCommentRequest(w http
 	}
 }
 
-func (s *HTTPServer) HandleReactionsDeleteLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReactionsDeleteLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsDeleteLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9897,7 +9897,7 @@ func (s *HTTPServer) HandleReactionsDeleteLegacyRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.ReactionsDeleteLegacy(ctx, params)
+	response, err := s.h.ReactionsDeleteLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9910,7 +9910,7 @@ func (s *HTTPServer) HandleReactionsDeleteLegacyRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleReactionsListForCommitCommentRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReactionsListForCommitCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsListForCommitComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/list-for-commit-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9923,7 +9923,7 @@ func (s *HTTPServer) HandleReactionsListForCommitCommentRequest(w http.ResponseW
 		return
 	}
 
-	response, err := s.s.ReactionsListForCommitComment(ctx, params)
+	response, err := s.h.ReactionsListForCommitComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9936,7 +9936,7 @@ func (s *HTTPServer) HandleReactionsListForCommitCommentRequest(w http.ResponseW
 	}
 }
 
-func (s *HTTPServer) HandleReactionsListForIssueRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReactionsListForIssueRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsListForIssue`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/list-for-issue`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9949,7 +9949,7 @@ func (s *HTTPServer) HandleReactionsListForIssueRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.ReactionsListForIssue(ctx, params)
+	response, err := s.h.ReactionsListForIssue(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9962,7 +9962,7 @@ func (s *HTTPServer) HandleReactionsListForIssueRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleReactionsListForIssueCommentRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReactionsListForIssueCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsListForIssueComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/list-for-issue-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9975,7 +9975,7 @@ func (s *HTTPServer) HandleReactionsListForIssueCommentRequest(w http.ResponseWr
 		return
 	}
 
-	response, err := s.s.ReactionsListForIssueComment(ctx, params)
+	response, err := s.h.ReactionsListForIssueComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -9988,7 +9988,7 @@ func (s *HTTPServer) HandleReactionsListForIssueCommentRequest(w http.ResponseWr
 	}
 }
 
-func (s *HTTPServer) HandleReactionsListForPullRequestReviewCommentRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReactionsListForPullRequestReviewCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsListForPullRequestReviewComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/list-for-pull-request-review-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10001,7 +10001,7 @@ func (s *HTTPServer) HandleReactionsListForPullRequestReviewCommentRequest(w htt
 		return
 	}
 
-	response, err := s.s.ReactionsListForPullRequestReviewComment(ctx, params)
+	response, err := s.h.ReactionsListForPullRequestReviewComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10014,7 +10014,7 @@ func (s *HTTPServer) HandleReactionsListForPullRequestReviewCommentRequest(w htt
 	}
 }
 
-func (s *HTTPServer) HandleReactionsListForTeamDiscussionCommentInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReactionsListForTeamDiscussionCommentInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsListForTeamDiscussionCommentInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/list-for-team-discussion-comment-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10027,7 +10027,7 @@ func (s *HTTPServer) HandleReactionsListForTeamDiscussionCommentInOrgRequest(w h
 		return
 	}
 
-	response, err := s.s.ReactionsListForTeamDiscussionCommentInOrg(ctx, params)
+	response, err := s.h.ReactionsListForTeamDiscussionCommentInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10040,7 +10040,7 @@ func (s *HTTPServer) HandleReactionsListForTeamDiscussionCommentInOrgRequest(w h
 	}
 }
 
-func (s *HTTPServer) HandleReactionsListForTeamDiscussionCommentLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReactionsListForTeamDiscussionCommentLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsListForTeamDiscussionCommentLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/list-for-team-discussion-comment-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10053,7 +10053,7 @@ func (s *HTTPServer) HandleReactionsListForTeamDiscussionCommentLegacyRequest(w 
 		return
 	}
 
-	response, err := s.s.ReactionsListForTeamDiscussionCommentLegacy(ctx, params)
+	response, err := s.h.ReactionsListForTeamDiscussionCommentLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10066,7 +10066,7 @@ func (s *HTTPServer) HandleReactionsListForTeamDiscussionCommentLegacyRequest(w 
 	}
 }
 
-func (s *HTTPServer) HandleReactionsListForTeamDiscussionInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReactionsListForTeamDiscussionInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsListForTeamDiscussionInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/list-for-team-discussion-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10079,7 +10079,7 @@ func (s *HTTPServer) HandleReactionsListForTeamDiscussionInOrgRequest(w http.Res
 		return
 	}
 
-	response, err := s.s.ReactionsListForTeamDiscussionInOrg(ctx, params)
+	response, err := s.h.ReactionsListForTeamDiscussionInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10092,7 +10092,7 @@ func (s *HTTPServer) HandleReactionsListForTeamDiscussionInOrgRequest(w http.Res
 	}
 }
 
-func (s *HTTPServer) HandleReactionsListForTeamDiscussionLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReactionsListForTeamDiscussionLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsListForTeamDiscussionLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/list-for-team-discussion-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10105,7 +10105,7 @@ func (s *HTTPServer) HandleReactionsListForTeamDiscussionLegacyRequest(w http.Re
 		return
 	}
 
-	response, err := s.s.ReactionsListForTeamDiscussionLegacy(ctx, params)
+	response, err := s.h.ReactionsListForTeamDiscussionLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10118,7 +10118,7 @@ func (s *HTTPServer) HandleReactionsListForTeamDiscussionLegacyRequest(w http.Re
 	}
 }
 
-func (s *HTTPServer) HandleReposAcceptInvitationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposAcceptInvitationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposAcceptInvitation`,
 		trace.WithAttributes(otelogen.OperationID(`repos/accept-invitation`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10131,7 +10131,7 @@ func (s *HTTPServer) HandleReposAcceptInvitationRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.ReposAcceptInvitation(ctx, params)
+	response, err := s.h.ReposAcceptInvitation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10144,7 +10144,7 @@ func (s *HTTPServer) HandleReposAcceptInvitationRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleReposCheckCollaboratorRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposCheckCollaboratorRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCheckCollaborator`,
 		trace.WithAttributes(otelogen.OperationID(`repos/check-collaborator`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10157,7 +10157,7 @@ func (s *HTTPServer) HandleReposCheckCollaboratorRequest(w http.ResponseWriter, 
 		return
 	}
 
-	response, err := s.s.ReposCheckCollaborator(ctx, params)
+	response, err := s.h.ReposCheckCollaborator(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10170,7 +10170,7 @@ func (s *HTTPServer) HandleReposCheckCollaboratorRequest(w http.ResponseWriter, 
 	}
 }
 
-func (s *HTTPServer) HandleReposCheckVulnerabilityAlertsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposCheckVulnerabilityAlertsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCheckVulnerabilityAlerts`,
 		trace.WithAttributes(otelogen.OperationID(`repos/check-vulnerability-alerts`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10183,7 +10183,7 @@ func (s *HTTPServer) HandleReposCheckVulnerabilityAlertsRequest(w http.ResponseW
 		return
 	}
 
-	response, err := s.s.ReposCheckVulnerabilityAlerts(ctx, params)
+	response, err := s.h.ReposCheckVulnerabilityAlerts(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10196,7 +10196,7 @@ func (s *HTTPServer) HandleReposCheckVulnerabilityAlertsRequest(w http.ResponseW
 	}
 }
 
-func (s *HTTPServer) HandleReposCompareCommitsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposCompareCommitsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCompareCommits`,
 		trace.WithAttributes(otelogen.OperationID(`repos/compare-commits`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10209,7 +10209,7 @@ func (s *HTTPServer) HandleReposCompareCommitsRequest(w http.ResponseWriter, r *
 		return
 	}
 
-	response, err := s.s.ReposCompareCommits(ctx, params)
+	response, err := s.h.ReposCompareCommits(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10222,7 +10222,7 @@ func (s *HTTPServer) HandleReposCompareCommitsRequest(w http.ResponseWriter, r *
 	}
 }
 
-func (s *HTTPServer) HandleReposCreateCommitSignatureProtectionRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposCreateCommitSignatureProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateCommitSignatureProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/create-commit-signature-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10235,7 +10235,7 @@ func (s *HTTPServer) HandleReposCreateCommitSignatureProtectionRequest(w http.Re
 		return
 	}
 
-	response, err := s.s.ReposCreateCommitSignatureProtection(ctx, params)
+	response, err := s.h.ReposCreateCommitSignatureProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10248,7 +10248,7 @@ func (s *HTTPServer) HandleReposCreateCommitSignatureProtectionRequest(w http.Re
 	}
 }
 
-func (s *HTTPServer) HandleReposCreateCommitStatusRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposCreateCommitStatusRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateCommitStatus`,
 		trace.WithAttributes(otelogen.OperationID(`repos/create-commit-status`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10267,7 +10267,7 @@ func (s *HTTPServer) HandleReposCreateCommitStatusRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.ReposCreateCommitStatus(ctx, request, params)
+	response, err := s.h.ReposCreateCommitStatus(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10280,7 +10280,7 @@ func (s *HTTPServer) HandleReposCreateCommitStatusRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleReposCreateUsingTemplateRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposCreateUsingTemplateRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateUsingTemplate`,
 		trace.WithAttributes(otelogen.OperationID(`repos/create-using-template`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10299,7 +10299,7 @@ func (s *HTTPServer) HandleReposCreateUsingTemplateRequest(w http.ResponseWriter
 		return
 	}
 
-	response, err := s.s.ReposCreateUsingTemplate(ctx, request, params)
+	response, err := s.h.ReposCreateUsingTemplate(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10312,7 +10312,7 @@ func (s *HTTPServer) HandleReposCreateUsingTemplateRequest(w http.ResponseWriter
 	}
 }
 
-func (s *HTTPServer) HandleReposDeclineInvitationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposDeclineInvitationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeclineInvitation`,
 		trace.WithAttributes(otelogen.OperationID(`repos/decline-invitation`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10325,7 +10325,7 @@ func (s *HTTPServer) HandleReposDeclineInvitationRequest(w http.ResponseWriter, 
 		return
 	}
 
-	response, err := s.s.ReposDeclineInvitation(ctx, params)
+	response, err := s.h.ReposDeclineInvitation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10338,7 +10338,7 @@ func (s *HTTPServer) HandleReposDeclineInvitationRequest(w http.ResponseWriter, 
 	}
 }
 
-func (s *HTTPServer) HandleReposDeleteRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposDeleteRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDelete`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10351,7 +10351,7 @@ func (s *HTTPServer) HandleReposDeleteRequest(w http.ResponseWriter, r *http.Req
 		return
 	}
 
-	response, err := s.s.ReposDelete(ctx, params)
+	response, err := s.h.ReposDelete(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10364,7 +10364,7 @@ func (s *HTTPServer) HandleReposDeleteRequest(w http.ResponseWriter, r *http.Req
 	}
 }
 
-func (s *HTTPServer) HandleReposDeleteAccessRestrictionsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposDeleteAccessRestrictionsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteAccessRestrictions`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-access-restrictions`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10377,7 +10377,7 @@ func (s *HTTPServer) HandleReposDeleteAccessRestrictionsRequest(w http.ResponseW
 		return
 	}
 
-	response, err := s.s.ReposDeleteAccessRestrictions(ctx, params)
+	response, err := s.h.ReposDeleteAccessRestrictions(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10390,7 +10390,7 @@ func (s *HTTPServer) HandleReposDeleteAccessRestrictionsRequest(w http.ResponseW
 	}
 }
 
-func (s *HTTPServer) HandleReposDeleteAdminBranchProtectionRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposDeleteAdminBranchProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteAdminBranchProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-admin-branch-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10403,7 +10403,7 @@ func (s *HTTPServer) HandleReposDeleteAdminBranchProtectionRequest(w http.Respon
 		return
 	}
 
-	response, err := s.s.ReposDeleteAdminBranchProtection(ctx, params)
+	response, err := s.h.ReposDeleteAdminBranchProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10416,7 +10416,7 @@ func (s *HTTPServer) HandleReposDeleteAdminBranchProtectionRequest(w http.Respon
 	}
 }
 
-func (s *HTTPServer) HandleReposDeleteAnEnvironmentRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposDeleteAnEnvironmentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteAnEnvironment`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-an-environment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10429,7 +10429,7 @@ func (s *HTTPServer) HandleReposDeleteAnEnvironmentRequest(w http.ResponseWriter
 		return
 	}
 
-	response, err := s.s.ReposDeleteAnEnvironment(ctx, params)
+	response, err := s.h.ReposDeleteAnEnvironment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10442,7 +10442,7 @@ func (s *HTTPServer) HandleReposDeleteAnEnvironmentRequest(w http.ResponseWriter
 	}
 }
 
-func (s *HTTPServer) HandleReposDeleteAutolinkRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposDeleteAutolinkRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteAutolink`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-autolink`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10455,7 +10455,7 @@ func (s *HTTPServer) HandleReposDeleteAutolinkRequest(w http.ResponseWriter, r *
 		return
 	}
 
-	response, err := s.s.ReposDeleteAutolink(ctx, params)
+	response, err := s.h.ReposDeleteAutolink(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10468,7 +10468,7 @@ func (s *HTTPServer) HandleReposDeleteAutolinkRequest(w http.ResponseWriter, r *
 	}
 }
 
-func (s *HTTPServer) HandleReposDeleteBranchProtectionRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposDeleteBranchProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteBranchProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-branch-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10481,7 +10481,7 @@ func (s *HTTPServer) HandleReposDeleteBranchProtectionRequest(w http.ResponseWri
 		return
 	}
 
-	response, err := s.s.ReposDeleteBranchProtection(ctx, params)
+	response, err := s.h.ReposDeleteBranchProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10494,7 +10494,7 @@ func (s *HTTPServer) HandleReposDeleteBranchProtectionRequest(w http.ResponseWri
 	}
 }
 
-func (s *HTTPServer) HandleReposDeleteCommitCommentRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposDeleteCommitCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteCommitComment`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-commit-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10507,7 +10507,7 @@ func (s *HTTPServer) HandleReposDeleteCommitCommentRequest(w http.ResponseWriter
 		return
 	}
 
-	response, err := s.s.ReposDeleteCommitComment(ctx, params)
+	response, err := s.h.ReposDeleteCommitComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10520,7 +10520,7 @@ func (s *HTTPServer) HandleReposDeleteCommitCommentRequest(w http.ResponseWriter
 	}
 }
 
-func (s *HTTPServer) HandleReposDeleteCommitSignatureProtectionRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposDeleteCommitSignatureProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteCommitSignatureProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-commit-signature-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10533,7 +10533,7 @@ func (s *HTTPServer) HandleReposDeleteCommitSignatureProtectionRequest(w http.Re
 		return
 	}
 
-	response, err := s.s.ReposDeleteCommitSignatureProtection(ctx, params)
+	response, err := s.h.ReposDeleteCommitSignatureProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10546,7 +10546,7 @@ func (s *HTTPServer) HandleReposDeleteCommitSignatureProtectionRequest(w http.Re
 	}
 }
 
-func (s *HTTPServer) HandleReposDeleteDeployKeyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposDeleteDeployKeyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteDeployKey`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-deploy-key`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10559,7 +10559,7 @@ func (s *HTTPServer) HandleReposDeleteDeployKeyRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.ReposDeleteDeployKey(ctx, params)
+	response, err := s.h.ReposDeleteDeployKey(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10572,7 +10572,7 @@ func (s *HTTPServer) HandleReposDeleteDeployKeyRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleReposDeleteDeploymentRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposDeleteDeploymentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteDeployment`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-deployment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10585,7 +10585,7 @@ func (s *HTTPServer) HandleReposDeleteDeploymentRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.ReposDeleteDeployment(ctx, params)
+	response, err := s.h.ReposDeleteDeployment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10598,7 +10598,7 @@ func (s *HTTPServer) HandleReposDeleteDeploymentRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleReposDeleteInvitationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposDeleteInvitationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteInvitation`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-invitation`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10611,7 +10611,7 @@ func (s *HTTPServer) HandleReposDeleteInvitationRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.ReposDeleteInvitation(ctx, params)
+	response, err := s.h.ReposDeleteInvitation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10624,7 +10624,7 @@ func (s *HTTPServer) HandleReposDeleteInvitationRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleReposDeletePullRequestReviewProtectionRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposDeletePullRequestReviewProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeletePullRequestReviewProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-pull-request-review-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10637,7 +10637,7 @@ func (s *HTTPServer) HandleReposDeletePullRequestReviewProtectionRequest(w http.
 		return
 	}
 
-	response, err := s.s.ReposDeletePullRequestReviewProtection(ctx, params)
+	response, err := s.h.ReposDeletePullRequestReviewProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10650,7 +10650,7 @@ func (s *HTTPServer) HandleReposDeletePullRequestReviewProtectionRequest(w http.
 	}
 }
 
-func (s *HTTPServer) HandleReposDeleteReleaseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposDeleteReleaseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteRelease`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-release`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10663,7 +10663,7 @@ func (s *HTTPServer) HandleReposDeleteReleaseRequest(w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.s.ReposDeleteRelease(ctx, params)
+	response, err := s.h.ReposDeleteRelease(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10676,7 +10676,7 @@ func (s *HTTPServer) HandleReposDeleteReleaseRequest(w http.ResponseWriter, r *h
 	}
 }
 
-func (s *HTTPServer) HandleReposDeleteReleaseAssetRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposDeleteReleaseAssetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteReleaseAsset`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-release-asset`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10689,7 +10689,7 @@ func (s *HTTPServer) HandleReposDeleteReleaseAssetRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.ReposDeleteReleaseAsset(ctx, params)
+	response, err := s.h.ReposDeleteReleaseAsset(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10702,7 +10702,7 @@ func (s *HTTPServer) HandleReposDeleteReleaseAssetRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleReposDeleteWebhookRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposDeleteWebhookRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-webhook`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10715,7 +10715,7 @@ func (s *HTTPServer) HandleReposDeleteWebhookRequest(w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.s.ReposDeleteWebhook(ctx, params)
+	response, err := s.h.ReposDeleteWebhook(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10728,7 +10728,7 @@ func (s *HTTPServer) HandleReposDeleteWebhookRequest(w http.ResponseWriter, r *h
 	}
 }
 
-func (s *HTTPServer) HandleReposDisableAutomatedSecurityFixesRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposDisableAutomatedSecurityFixesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDisableAutomatedSecurityFixes`,
 		trace.WithAttributes(otelogen.OperationID(`repos/disable-automated-security-fixes`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10741,7 +10741,7 @@ func (s *HTTPServer) HandleReposDisableAutomatedSecurityFixesRequest(w http.Resp
 		return
 	}
 
-	response, err := s.s.ReposDisableAutomatedSecurityFixes(ctx, params)
+	response, err := s.h.ReposDisableAutomatedSecurityFixes(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10754,7 +10754,7 @@ func (s *HTTPServer) HandleReposDisableAutomatedSecurityFixesRequest(w http.Resp
 	}
 }
 
-func (s *HTTPServer) HandleReposDisableLfsForRepoRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposDisableLfsForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDisableLfsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`repos/disable-lfs-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10767,7 +10767,7 @@ func (s *HTTPServer) HandleReposDisableLfsForRepoRequest(w http.ResponseWriter, 
 		return
 	}
 
-	response, err := s.s.ReposDisableLfsForRepo(ctx, params)
+	response, err := s.h.ReposDisableLfsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10780,7 +10780,7 @@ func (s *HTTPServer) HandleReposDisableLfsForRepoRequest(w http.ResponseWriter, 
 	}
 }
 
-func (s *HTTPServer) HandleReposDisableVulnerabilityAlertsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposDisableVulnerabilityAlertsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDisableVulnerabilityAlerts`,
 		trace.WithAttributes(otelogen.OperationID(`repos/disable-vulnerability-alerts`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10793,7 +10793,7 @@ func (s *HTTPServer) HandleReposDisableVulnerabilityAlertsRequest(w http.Respons
 		return
 	}
 
-	response, err := s.s.ReposDisableVulnerabilityAlerts(ctx, params)
+	response, err := s.h.ReposDisableVulnerabilityAlerts(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10806,7 +10806,7 @@ func (s *HTTPServer) HandleReposDisableVulnerabilityAlertsRequest(w http.Respons
 	}
 }
 
-func (s *HTTPServer) HandleReposDownloadTarballArchiveRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposDownloadTarballArchiveRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDownloadTarballArchive`,
 		trace.WithAttributes(otelogen.OperationID(`repos/download-tarball-archive`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10819,7 +10819,7 @@ func (s *HTTPServer) HandleReposDownloadTarballArchiveRequest(w http.ResponseWri
 		return
 	}
 
-	response, err := s.s.ReposDownloadTarballArchive(ctx, params)
+	response, err := s.h.ReposDownloadTarballArchive(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10832,7 +10832,7 @@ func (s *HTTPServer) HandleReposDownloadTarballArchiveRequest(w http.ResponseWri
 	}
 }
 
-func (s *HTTPServer) HandleReposDownloadZipballArchiveRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposDownloadZipballArchiveRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDownloadZipballArchive`,
 		trace.WithAttributes(otelogen.OperationID(`repos/download-zipball-archive`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10845,7 +10845,7 @@ func (s *HTTPServer) HandleReposDownloadZipballArchiveRequest(w http.ResponseWri
 		return
 	}
 
-	response, err := s.s.ReposDownloadZipballArchive(ctx, params)
+	response, err := s.h.ReposDownloadZipballArchive(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10858,7 +10858,7 @@ func (s *HTTPServer) HandleReposDownloadZipballArchiveRequest(w http.ResponseWri
 	}
 }
 
-func (s *HTTPServer) HandleReposEnableAutomatedSecurityFixesRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposEnableAutomatedSecurityFixesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposEnableAutomatedSecurityFixes`,
 		trace.WithAttributes(otelogen.OperationID(`repos/enable-automated-security-fixes`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10871,7 +10871,7 @@ func (s *HTTPServer) HandleReposEnableAutomatedSecurityFixesRequest(w http.Respo
 		return
 	}
 
-	response, err := s.s.ReposEnableAutomatedSecurityFixes(ctx, params)
+	response, err := s.h.ReposEnableAutomatedSecurityFixes(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10884,7 +10884,7 @@ func (s *HTTPServer) HandleReposEnableAutomatedSecurityFixesRequest(w http.Respo
 	}
 }
 
-func (s *HTTPServer) HandleReposEnableLfsForRepoRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposEnableLfsForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposEnableLfsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`repos/enable-lfs-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10897,7 +10897,7 @@ func (s *HTTPServer) HandleReposEnableLfsForRepoRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.ReposEnableLfsForRepo(ctx, params)
+	response, err := s.h.ReposEnableLfsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10910,7 +10910,7 @@ func (s *HTTPServer) HandleReposEnableLfsForRepoRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleReposEnableVulnerabilityAlertsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposEnableVulnerabilityAlertsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposEnableVulnerabilityAlerts`,
 		trace.WithAttributes(otelogen.OperationID(`repos/enable-vulnerability-alerts`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10923,7 +10923,7 @@ func (s *HTTPServer) HandleReposEnableVulnerabilityAlertsRequest(w http.Response
 		return
 	}
 
-	response, err := s.s.ReposEnableVulnerabilityAlerts(ctx, params)
+	response, err := s.h.ReposEnableVulnerabilityAlerts(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10936,7 +10936,7 @@ func (s *HTTPServer) HandleReposEnableVulnerabilityAlertsRequest(w http.Response
 	}
 }
 
-func (s *HTTPServer) HandleReposGetRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGet`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10949,7 +10949,7 @@ func (s *HTTPServer) HandleReposGetRequest(w http.ResponseWriter, r *http.Reques
 		return
 	}
 
-	response, err := s.s.ReposGet(ctx, params)
+	response, err := s.h.ReposGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10962,7 +10962,7 @@ func (s *HTTPServer) HandleReposGetRequest(w http.ResponseWriter, r *http.Reques
 	}
 }
 
-func (s *HTTPServer) HandleReposGetAccessRestrictionsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetAccessRestrictionsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetAccessRestrictions`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-access-restrictions`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10975,7 +10975,7 @@ func (s *HTTPServer) HandleReposGetAccessRestrictionsRequest(w http.ResponseWrit
 		return
 	}
 
-	response, err := s.s.ReposGetAccessRestrictions(ctx, params)
+	response, err := s.h.ReposGetAccessRestrictions(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -10988,7 +10988,7 @@ func (s *HTTPServer) HandleReposGetAccessRestrictionsRequest(w http.ResponseWrit
 	}
 }
 
-func (s *HTTPServer) HandleReposGetAdminBranchProtectionRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetAdminBranchProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetAdminBranchProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-admin-branch-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11001,7 +11001,7 @@ func (s *HTTPServer) HandleReposGetAdminBranchProtectionRequest(w http.ResponseW
 		return
 	}
 
-	response, err := s.s.ReposGetAdminBranchProtection(ctx, params)
+	response, err := s.h.ReposGetAdminBranchProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11014,7 +11014,7 @@ func (s *HTTPServer) HandleReposGetAdminBranchProtectionRequest(w http.ResponseW
 	}
 }
 
-func (s *HTTPServer) HandleReposGetAllStatusCheckContextsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetAllStatusCheckContextsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetAllStatusCheckContexts`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-all-status-check-contexts`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11027,7 +11027,7 @@ func (s *HTTPServer) HandleReposGetAllStatusCheckContextsRequest(w http.Response
 		return
 	}
 
-	response, err := s.s.ReposGetAllStatusCheckContexts(ctx, params)
+	response, err := s.h.ReposGetAllStatusCheckContexts(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11040,7 +11040,7 @@ func (s *HTTPServer) HandleReposGetAllStatusCheckContextsRequest(w http.Response
 	}
 }
 
-func (s *HTTPServer) HandleReposGetAllTopicsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetAllTopicsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetAllTopics`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-all-topics`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11053,7 +11053,7 @@ func (s *HTTPServer) HandleReposGetAllTopicsRequest(w http.ResponseWriter, r *ht
 		return
 	}
 
-	response, err := s.s.ReposGetAllTopics(ctx, params)
+	response, err := s.h.ReposGetAllTopics(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11066,7 +11066,7 @@ func (s *HTTPServer) HandleReposGetAllTopicsRequest(w http.ResponseWriter, r *ht
 	}
 }
 
-func (s *HTTPServer) HandleReposGetAppsWithAccessToProtectedBranchRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetAppsWithAccessToProtectedBranchRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetAppsWithAccessToProtectedBranch`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-apps-with-access-to-protected-branch`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11079,7 +11079,7 @@ func (s *HTTPServer) HandleReposGetAppsWithAccessToProtectedBranchRequest(w http
 		return
 	}
 
-	response, err := s.s.ReposGetAppsWithAccessToProtectedBranch(ctx, params)
+	response, err := s.h.ReposGetAppsWithAccessToProtectedBranch(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11092,7 +11092,7 @@ func (s *HTTPServer) HandleReposGetAppsWithAccessToProtectedBranchRequest(w http
 	}
 }
 
-func (s *HTTPServer) HandleReposGetAutolinkRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetAutolinkRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetAutolink`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-autolink`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11105,7 +11105,7 @@ func (s *HTTPServer) HandleReposGetAutolinkRequest(w http.ResponseWriter, r *htt
 		return
 	}
 
-	response, err := s.s.ReposGetAutolink(ctx, params)
+	response, err := s.h.ReposGetAutolink(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11118,7 +11118,7 @@ func (s *HTTPServer) HandleReposGetAutolinkRequest(w http.ResponseWriter, r *htt
 	}
 }
 
-func (s *HTTPServer) HandleReposGetBranchRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetBranchRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetBranch`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-branch`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11131,7 +11131,7 @@ func (s *HTTPServer) HandleReposGetBranchRequest(w http.ResponseWriter, r *http.
 		return
 	}
 
-	response, err := s.s.ReposGetBranch(ctx, params)
+	response, err := s.h.ReposGetBranch(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11144,7 +11144,7 @@ func (s *HTTPServer) HandleReposGetBranchRequest(w http.ResponseWriter, r *http.
 	}
 }
 
-func (s *HTTPServer) HandleReposGetBranchProtectionRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetBranchProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetBranchProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-branch-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11157,7 +11157,7 @@ func (s *HTTPServer) HandleReposGetBranchProtectionRequest(w http.ResponseWriter
 		return
 	}
 
-	response, err := s.s.ReposGetBranchProtection(ctx, params)
+	response, err := s.h.ReposGetBranchProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11170,7 +11170,7 @@ func (s *HTTPServer) HandleReposGetBranchProtectionRequest(w http.ResponseWriter
 	}
 }
 
-func (s *HTTPServer) HandleReposGetClonesRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetClonesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetClones`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-clones`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11183,7 +11183,7 @@ func (s *HTTPServer) HandleReposGetClonesRequest(w http.ResponseWriter, r *http.
 		return
 	}
 
-	response, err := s.s.ReposGetClones(ctx, params)
+	response, err := s.h.ReposGetClones(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11196,7 +11196,7 @@ func (s *HTTPServer) HandleReposGetClonesRequest(w http.ResponseWriter, r *http.
 	}
 }
 
-func (s *HTTPServer) HandleReposGetCodeFrequencyStatsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetCodeFrequencyStatsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetCodeFrequencyStats`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-code-frequency-stats`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11209,7 +11209,7 @@ func (s *HTTPServer) HandleReposGetCodeFrequencyStatsRequest(w http.ResponseWrit
 		return
 	}
 
-	response, err := s.s.ReposGetCodeFrequencyStats(ctx, params)
+	response, err := s.h.ReposGetCodeFrequencyStats(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11222,7 +11222,7 @@ func (s *HTTPServer) HandleReposGetCodeFrequencyStatsRequest(w http.ResponseWrit
 	}
 }
 
-func (s *HTTPServer) HandleReposGetCollaboratorPermissionLevelRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetCollaboratorPermissionLevelRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetCollaboratorPermissionLevel`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-collaborator-permission-level`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11235,7 +11235,7 @@ func (s *HTTPServer) HandleReposGetCollaboratorPermissionLevelRequest(w http.Res
 		return
 	}
 
-	response, err := s.s.ReposGetCollaboratorPermissionLevel(ctx, params)
+	response, err := s.h.ReposGetCollaboratorPermissionLevel(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11248,7 +11248,7 @@ func (s *HTTPServer) HandleReposGetCollaboratorPermissionLevelRequest(w http.Res
 	}
 }
 
-func (s *HTTPServer) HandleReposGetCombinedStatusForRefRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetCombinedStatusForRefRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetCombinedStatusForRef`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-combined-status-for-ref`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11261,7 +11261,7 @@ func (s *HTTPServer) HandleReposGetCombinedStatusForRefRequest(w http.ResponseWr
 		return
 	}
 
-	response, err := s.s.ReposGetCombinedStatusForRef(ctx, params)
+	response, err := s.h.ReposGetCombinedStatusForRef(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11274,7 +11274,7 @@ func (s *HTTPServer) HandleReposGetCombinedStatusForRefRequest(w http.ResponseWr
 	}
 }
 
-func (s *HTTPServer) HandleReposGetCommitActivityStatsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetCommitActivityStatsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetCommitActivityStats`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-commit-activity-stats`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11287,7 +11287,7 @@ func (s *HTTPServer) HandleReposGetCommitActivityStatsRequest(w http.ResponseWri
 		return
 	}
 
-	response, err := s.s.ReposGetCommitActivityStats(ctx, params)
+	response, err := s.h.ReposGetCommitActivityStats(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11300,7 +11300,7 @@ func (s *HTTPServer) HandleReposGetCommitActivityStatsRequest(w http.ResponseWri
 	}
 }
 
-func (s *HTTPServer) HandleReposGetCommitCommentRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetCommitCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetCommitComment`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-commit-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11313,7 +11313,7 @@ func (s *HTTPServer) HandleReposGetCommitCommentRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.ReposGetCommitComment(ctx, params)
+	response, err := s.h.ReposGetCommitComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11326,7 +11326,7 @@ func (s *HTTPServer) HandleReposGetCommitCommentRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleReposGetCommitSignatureProtectionRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetCommitSignatureProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetCommitSignatureProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-commit-signature-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11339,7 +11339,7 @@ func (s *HTTPServer) HandleReposGetCommitSignatureProtectionRequest(w http.Respo
 		return
 	}
 
-	response, err := s.s.ReposGetCommitSignatureProtection(ctx, params)
+	response, err := s.h.ReposGetCommitSignatureProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11352,7 +11352,7 @@ func (s *HTTPServer) HandleReposGetCommitSignatureProtectionRequest(w http.Respo
 	}
 }
 
-func (s *HTTPServer) HandleReposGetCommunityProfileMetricsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetCommunityProfileMetricsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetCommunityProfileMetrics`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-community-profile-metrics`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11365,7 +11365,7 @@ func (s *HTTPServer) HandleReposGetCommunityProfileMetricsRequest(w http.Respons
 		return
 	}
 
-	response, err := s.s.ReposGetCommunityProfileMetrics(ctx, params)
+	response, err := s.h.ReposGetCommunityProfileMetrics(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11378,7 +11378,7 @@ func (s *HTTPServer) HandleReposGetCommunityProfileMetricsRequest(w http.Respons
 	}
 }
 
-func (s *HTTPServer) HandleReposGetContributorsStatsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetContributorsStatsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetContributorsStats`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-contributors-stats`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11391,7 +11391,7 @@ func (s *HTTPServer) HandleReposGetContributorsStatsRequest(w http.ResponseWrite
 		return
 	}
 
-	response, err := s.s.ReposGetContributorsStats(ctx, params)
+	response, err := s.h.ReposGetContributorsStats(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11404,7 +11404,7 @@ func (s *HTTPServer) HandleReposGetContributorsStatsRequest(w http.ResponseWrite
 	}
 }
 
-func (s *HTTPServer) HandleReposGetDeployKeyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetDeployKeyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetDeployKey`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-deploy-key`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11417,7 +11417,7 @@ func (s *HTTPServer) HandleReposGetDeployKeyRequest(w http.ResponseWriter, r *ht
 		return
 	}
 
-	response, err := s.s.ReposGetDeployKey(ctx, params)
+	response, err := s.h.ReposGetDeployKey(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11430,7 +11430,7 @@ func (s *HTTPServer) HandleReposGetDeployKeyRequest(w http.ResponseWriter, r *ht
 	}
 }
 
-func (s *HTTPServer) HandleReposGetDeploymentStatusRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetDeploymentStatusRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetDeploymentStatus`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-deployment-status`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11443,7 +11443,7 @@ func (s *HTTPServer) HandleReposGetDeploymentStatusRequest(w http.ResponseWriter
 		return
 	}
 
-	response, err := s.s.ReposGetDeploymentStatus(ctx, params)
+	response, err := s.h.ReposGetDeploymentStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11456,7 +11456,7 @@ func (s *HTTPServer) HandleReposGetDeploymentStatusRequest(w http.ResponseWriter
 	}
 }
 
-func (s *HTTPServer) HandleReposGetLatestPagesBuildRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetLatestPagesBuildRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetLatestPagesBuild`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-latest-pages-build`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11469,7 +11469,7 @@ func (s *HTTPServer) HandleReposGetLatestPagesBuildRequest(w http.ResponseWriter
 		return
 	}
 
-	response, err := s.s.ReposGetLatestPagesBuild(ctx, params)
+	response, err := s.h.ReposGetLatestPagesBuild(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11482,7 +11482,7 @@ func (s *HTTPServer) HandleReposGetLatestPagesBuildRequest(w http.ResponseWriter
 	}
 }
 
-func (s *HTTPServer) HandleReposGetLatestReleaseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetLatestReleaseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetLatestRelease`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-latest-release`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11495,7 +11495,7 @@ func (s *HTTPServer) HandleReposGetLatestReleaseRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.ReposGetLatestRelease(ctx, params)
+	response, err := s.h.ReposGetLatestRelease(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11508,7 +11508,7 @@ func (s *HTTPServer) HandleReposGetLatestReleaseRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleReposGetPagesRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetPagesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetPages`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-pages`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11521,7 +11521,7 @@ func (s *HTTPServer) HandleReposGetPagesRequest(w http.ResponseWriter, r *http.R
 		return
 	}
 
-	response, err := s.s.ReposGetPages(ctx, params)
+	response, err := s.h.ReposGetPages(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11534,7 +11534,7 @@ func (s *HTTPServer) HandleReposGetPagesRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
-func (s *HTTPServer) HandleReposGetPagesBuildRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetPagesBuildRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetPagesBuild`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-pages-build`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11547,7 +11547,7 @@ func (s *HTTPServer) HandleReposGetPagesBuildRequest(w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.s.ReposGetPagesBuild(ctx, params)
+	response, err := s.h.ReposGetPagesBuild(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11560,7 +11560,7 @@ func (s *HTTPServer) HandleReposGetPagesBuildRequest(w http.ResponseWriter, r *h
 	}
 }
 
-func (s *HTTPServer) HandleReposGetPagesHealthCheckRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetPagesHealthCheckRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetPagesHealthCheck`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-pages-health-check`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11573,7 +11573,7 @@ func (s *HTTPServer) HandleReposGetPagesHealthCheckRequest(w http.ResponseWriter
 		return
 	}
 
-	response, err := s.s.ReposGetPagesHealthCheck(ctx, params)
+	response, err := s.h.ReposGetPagesHealthCheck(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11586,7 +11586,7 @@ func (s *HTTPServer) HandleReposGetPagesHealthCheckRequest(w http.ResponseWriter
 	}
 }
 
-func (s *HTTPServer) HandleReposGetParticipationStatsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetParticipationStatsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetParticipationStats`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-participation-stats`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11599,7 +11599,7 @@ func (s *HTTPServer) HandleReposGetParticipationStatsRequest(w http.ResponseWrit
 		return
 	}
 
-	response, err := s.s.ReposGetParticipationStats(ctx, params)
+	response, err := s.h.ReposGetParticipationStats(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11612,7 +11612,7 @@ func (s *HTTPServer) HandleReposGetParticipationStatsRequest(w http.ResponseWrit
 	}
 }
 
-func (s *HTTPServer) HandleReposGetPullRequestReviewProtectionRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetPullRequestReviewProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetPullRequestReviewProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-pull-request-review-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11625,7 +11625,7 @@ func (s *HTTPServer) HandleReposGetPullRequestReviewProtectionRequest(w http.Res
 		return
 	}
 
-	response, err := s.s.ReposGetPullRequestReviewProtection(ctx, params)
+	response, err := s.h.ReposGetPullRequestReviewProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11638,7 +11638,7 @@ func (s *HTTPServer) HandleReposGetPullRequestReviewProtectionRequest(w http.Res
 	}
 }
 
-func (s *HTTPServer) HandleReposGetPunchCardStatsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetPunchCardStatsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetPunchCardStats`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-punch-card-stats`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11651,7 +11651,7 @@ func (s *HTTPServer) HandleReposGetPunchCardStatsRequest(w http.ResponseWriter, 
 		return
 	}
 
-	response, err := s.s.ReposGetPunchCardStats(ctx, params)
+	response, err := s.h.ReposGetPunchCardStats(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11664,7 +11664,7 @@ func (s *HTTPServer) HandleReposGetPunchCardStatsRequest(w http.ResponseWriter, 
 	}
 }
 
-func (s *HTTPServer) HandleReposGetReleaseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetReleaseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetRelease`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-release`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11677,7 +11677,7 @@ func (s *HTTPServer) HandleReposGetReleaseRequest(w http.ResponseWriter, r *http
 		return
 	}
 
-	response, err := s.s.ReposGetRelease(ctx, params)
+	response, err := s.h.ReposGetRelease(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11690,7 +11690,7 @@ func (s *HTTPServer) HandleReposGetReleaseRequest(w http.ResponseWriter, r *http
 	}
 }
 
-func (s *HTTPServer) HandleReposGetReleaseAssetRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetReleaseAssetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetReleaseAsset`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-release-asset`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11703,7 +11703,7 @@ func (s *HTTPServer) HandleReposGetReleaseAssetRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.ReposGetReleaseAsset(ctx, params)
+	response, err := s.h.ReposGetReleaseAsset(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11716,7 +11716,7 @@ func (s *HTTPServer) HandleReposGetReleaseAssetRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleReposGetReleaseByTagRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetReleaseByTagRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetReleaseByTag`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-release-by-tag`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11729,7 +11729,7 @@ func (s *HTTPServer) HandleReposGetReleaseByTagRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.ReposGetReleaseByTag(ctx, params)
+	response, err := s.h.ReposGetReleaseByTag(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11742,7 +11742,7 @@ func (s *HTTPServer) HandleReposGetReleaseByTagRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleReposGetStatusChecksProtectionRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetStatusChecksProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetStatusChecksProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-status-checks-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11755,7 +11755,7 @@ func (s *HTTPServer) HandleReposGetStatusChecksProtectionRequest(w http.Response
 		return
 	}
 
-	response, err := s.s.ReposGetStatusChecksProtection(ctx, params)
+	response, err := s.h.ReposGetStatusChecksProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11768,7 +11768,7 @@ func (s *HTTPServer) HandleReposGetStatusChecksProtectionRequest(w http.Response
 	}
 }
 
-func (s *HTTPServer) HandleReposGetTeamsWithAccessToProtectedBranchRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetTeamsWithAccessToProtectedBranchRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetTeamsWithAccessToProtectedBranch`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-teams-with-access-to-protected-branch`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11781,7 +11781,7 @@ func (s *HTTPServer) HandleReposGetTeamsWithAccessToProtectedBranchRequest(w htt
 		return
 	}
 
-	response, err := s.s.ReposGetTeamsWithAccessToProtectedBranch(ctx, params)
+	response, err := s.h.ReposGetTeamsWithAccessToProtectedBranch(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11794,7 +11794,7 @@ func (s *HTTPServer) HandleReposGetTeamsWithAccessToProtectedBranchRequest(w htt
 	}
 }
 
-func (s *HTTPServer) HandleReposGetTopPathsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetTopPathsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetTopPaths`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-top-paths`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11807,7 +11807,7 @@ func (s *HTTPServer) HandleReposGetTopPathsRequest(w http.ResponseWriter, r *htt
 		return
 	}
 
-	response, err := s.s.ReposGetTopPaths(ctx, params)
+	response, err := s.h.ReposGetTopPaths(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11820,7 +11820,7 @@ func (s *HTTPServer) HandleReposGetTopPathsRequest(w http.ResponseWriter, r *htt
 	}
 }
 
-func (s *HTTPServer) HandleReposGetTopReferrersRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetTopReferrersRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetTopReferrers`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-top-referrers`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11833,7 +11833,7 @@ func (s *HTTPServer) HandleReposGetTopReferrersRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.ReposGetTopReferrers(ctx, params)
+	response, err := s.h.ReposGetTopReferrers(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11846,7 +11846,7 @@ func (s *HTTPServer) HandleReposGetTopReferrersRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleReposGetUsersWithAccessToProtectedBranchRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetUsersWithAccessToProtectedBranchRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetUsersWithAccessToProtectedBranch`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-users-with-access-to-protected-branch`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11859,7 +11859,7 @@ func (s *HTTPServer) HandleReposGetUsersWithAccessToProtectedBranchRequest(w htt
 		return
 	}
 
-	response, err := s.s.ReposGetUsersWithAccessToProtectedBranch(ctx, params)
+	response, err := s.h.ReposGetUsersWithAccessToProtectedBranch(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11872,7 +11872,7 @@ func (s *HTTPServer) HandleReposGetUsersWithAccessToProtectedBranchRequest(w htt
 	}
 }
 
-func (s *HTTPServer) HandleReposGetViewsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetViewsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetViews`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-views`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11885,7 +11885,7 @@ func (s *HTTPServer) HandleReposGetViewsRequest(w http.ResponseWriter, r *http.R
 		return
 	}
 
-	response, err := s.s.ReposGetViews(ctx, params)
+	response, err := s.h.ReposGetViews(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11898,7 +11898,7 @@ func (s *HTTPServer) HandleReposGetViewsRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
-func (s *HTTPServer) HandleReposGetWebhookRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetWebhookRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-webhook`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11911,7 +11911,7 @@ func (s *HTTPServer) HandleReposGetWebhookRequest(w http.ResponseWriter, r *http
 		return
 	}
 
-	response, err := s.s.ReposGetWebhook(ctx, params)
+	response, err := s.h.ReposGetWebhook(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11924,7 +11924,7 @@ func (s *HTTPServer) HandleReposGetWebhookRequest(w http.ResponseWriter, r *http
 	}
 }
 
-func (s *HTTPServer) HandleReposGetWebhookConfigForRepoRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposGetWebhookConfigForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetWebhookConfigForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-webhook-config-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11937,7 +11937,7 @@ func (s *HTTPServer) HandleReposGetWebhookConfigForRepoRequest(w http.ResponseWr
 		return
 	}
 
-	response, err := s.s.ReposGetWebhookConfigForRepo(ctx, params)
+	response, err := s.h.ReposGetWebhookConfigForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11950,7 +11950,7 @@ func (s *HTTPServer) HandleReposGetWebhookConfigForRepoRequest(w http.ResponseWr
 	}
 }
 
-func (s *HTTPServer) HandleReposListAutolinksRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposListAutolinksRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListAutolinks`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-autolinks`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11963,7 +11963,7 @@ func (s *HTTPServer) HandleReposListAutolinksRequest(w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.s.ReposListAutolinks(ctx, params)
+	response, err := s.h.ReposListAutolinks(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -11976,7 +11976,7 @@ func (s *HTTPServer) HandleReposListAutolinksRequest(w http.ResponseWriter, r *h
 	}
 }
 
-func (s *HTTPServer) HandleReposListBranchesRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposListBranchesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListBranches`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-branches`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11989,7 +11989,7 @@ func (s *HTTPServer) HandleReposListBranchesRequest(w http.ResponseWriter, r *ht
 		return
 	}
 
-	response, err := s.s.ReposListBranches(ctx, params)
+	response, err := s.h.ReposListBranches(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12002,7 +12002,7 @@ func (s *HTTPServer) HandleReposListBranchesRequest(w http.ResponseWriter, r *ht
 	}
 }
 
-func (s *HTTPServer) HandleReposListCollaboratorsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposListCollaboratorsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListCollaborators`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-collaborators`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12015,7 +12015,7 @@ func (s *HTTPServer) HandleReposListCollaboratorsRequest(w http.ResponseWriter, 
 		return
 	}
 
-	response, err := s.s.ReposListCollaborators(ctx, params)
+	response, err := s.h.ReposListCollaborators(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12028,7 +12028,7 @@ func (s *HTTPServer) HandleReposListCollaboratorsRequest(w http.ResponseWriter, 
 	}
 }
 
-func (s *HTTPServer) HandleReposListCommentsForCommitRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposListCommentsForCommitRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListCommentsForCommit`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-comments-for-commit`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12041,7 +12041,7 @@ func (s *HTTPServer) HandleReposListCommentsForCommitRequest(w http.ResponseWrit
 		return
 	}
 
-	response, err := s.s.ReposListCommentsForCommit(ctx, params)
+	response, err := s.h.ReposListCommentsForCommit(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12054,7 +12054,7 @@ func (s *HTTPServer) HandleReposListCommentsForCommitRequest(w http.ResponseWrit
 	}
 }
 
-func (s *HTTPServer) HandleReposListCommitCommentsForRepoRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposListCommitCommentsForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListCommitCommentsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-commit-comments-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12067,7 +12067,7 @@ func (s *HTTPServer) HandleReposListCommitCommentsForRepoRequest(w http.Response
 		return
 	}
 
-	response, err := s.s.ReposListCommitCommentsForRepo(ctx, params)
+	response, err := s.h.ReposListCommitCommentsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12080,7 +12080,7 @@ func (s *HTTPServer) HandleReposListCommitCommentsForRepoRequest(w http.Response
 	}
 }
 
-func (s *HTTPServer) HandleReposListCommitStatusesForRefRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposListCommitStatusesForRefRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListCommitStatusesForRef`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-commit-statuses-for-ref`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12093,7 +12093,7 @@ func (s *HTTPServer) HandleReposListCommitStatusesForRefRequest(w http.ResponseW
 		return
 	}
 
-	response, err := s.s.ReposListCommitStatusesForRef(ctx, params)
+	response, err := s.h.ReposListCommitStatusesForRef(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12106,7 +12106,7 @@ func (s *HTTPServer) HandleReposListCommitStatusesForRefRequest(w http.ResponseW
 	}
 }
 
-func (s *HTTPServer) HandleReposListCommitsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposListCommitsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListCommits`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-commits`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12119,7 +12119,7 @@ func (s *HTTPServer) HandleReposListCommitsRequest(w http.ResponseWriter, r *htt
 		return
 	}
 
-	response, err := s.s.ReposListCommits(ctx, params)
+	response, err := s.h.ReposListCommits(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12132,7 +12132,7 @@ func (s *HTTPServer) HandleReposListCommitsRequest(w http.ResponseWriter, r *htt
 	}
 }
 
-func (s *HTTPServer) HandleReposListContributorsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposListContributorsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListContributors`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-contributors`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12145,7 +12145,7 @@ func (s *HTTPServer) HandleReposListContributorsRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.ReposListContributors(ctx, params)
+	response, err := s.h.ReposListContributors(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12158,7 +12158,7 @@ func (s *HTTPServer) HandleReposListContributorsRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleReposListDeployKeysRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposListDeployKeysRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListDeployKeys`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-deploy-keys`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12171,7 +12171,7 @@ func (s *HTTPServer) HandleReposListDeployKeysRequest(w http.ResponseWriter, r *
 		return
 	}
 
-	response, err := s.s.ReposListDeployKeys(ctx, params)
+	response, err := s.h.ReposListDeployKeys(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12184,7 +12184,7 @@ func (s *HTTPServer) HandleReposListDeployKeysRequest(w http.ResponseWriter, r *
 	}
 }
 
-func (s *HTTPServer) HandleReposListDeploymentStatusesRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposListDeploymentStatusesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListDeploymentStatuses`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-deployment-statuses`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12197,7 +12197,7 @@ func (s *HTTPServer) HandleReposListDeploymentStatusesRequest(w http.ResponseWri
 		return
 	}
 
-	response, err := s.s.ReposListDeploymentStatuses(ctx, params)
+	response, err := s.h.ReposListDeploymentStatuses(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12210,7 +12210,7 @@ func (s *HTTPServer) HandleReposListDeploymentStatusesRequest(w http.ResponseWri
 	}
 }
 
-func (s *HTTPServer) HandleReposListForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposListForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12223,7 +12223,7 @@ func (s *HTTPServer) HandleReposListForOrgRequest(w http.ResponseWriter, r *http
 		return
 	}
 
-	response, err := s.s.ReposListForOrg(ctx, params)
+	response, err := s.h.ReposListForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12236,7 +12236,7 @@ func (s *HTTPServer) HandleReposListForOrgRequest(w http.ResponseWriter, r *http
 	}
 }
 
-func (s *HTTPServer) HandleReposListForUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposListForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListForUser`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12249,7 +12249,7 @@ func (s *HTTPServer) HandleReposListForUserRequest(w http.ResponseWriter, r *htt
 		return
 	}
 
-	response, err := s.s.ReposListForUser(ctx, params)
+	response, err := s.h.ReposListForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12262,7 +12262,7 @@ func (s *HTTPServer) HandleReposListForUserRequest(w http.ResponseWriter, r *htt
 	}
 }
 
-func (s *HTTPServer) HandleReposListForksRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposListForksRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListForks`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-forks`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12275,7 +12275,7 @@ func (s *HTTPServer) HandleReposListForksRequest(w http.ResponseWriter, r *http.
 		return
 	}
 
-	response, err := s.s.ReposListForks(ctx, params)
+	response, err := s.h.ReposListForks(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12288,7 +12288,7 @@ func (s *HTTPServer) HandleReposListForksRequest(w http.ResponseWriter, r *http.
 	}
 }
 
-func (s *HTTPServer) HandleReposListInvitationsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposListInvitationsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListInvitations`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-invitations`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12301,7 +12301,7 @@ func (s *HTTPServer) HandleReposListInvitationsRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.ReposListInvitations(ctx, params)
+	response, err := s.h.ReposListInvitations(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12314,7 +12314,7 @@ func (s *HTTPServer) HandleReposListInvitationsRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleReposListInvitationsForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposListInvitationsForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListInvitationsForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-invitations-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12327,7 +12327,7 @@ func (s *HTTPServer) HandleReposListInvitationsForAuthenticatedUserRequest(w htt
 		return
 	}
 
-	response, err := s.s.ReposListInvitationsForAuthenticatedUser(ctx, params)
+	response, err := s.h.ReposListInvitationsForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12340,7 +12340,7 @@ func (s *HTTPServer) HandleReposListInvitationsForAuthenticatedUserRequest(w htt
 	}
 }
 
-func (s *HTTPServer) HandleReposListLanguagesRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposListLanguagesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListLanguages`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-languages`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12353,7 +12353,7 @@ func (s *HTTPServer) HandleReposListLanguagesRequest(w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.s.ReposListLanguages(ctx, params)
+	response, err := s.h.ReposListLanguages(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12366,7 +12366,7 @@ func (s *HTTPServer) HandleReposListLanguagesRequest(w http.ResponseWriter, r *h
 	}
 }
 
-func (s *HTTPServer) HandleReposListPagesBuildsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposListPagesBuildsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListPagesBuilds`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-pages-builds`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12379,7 +12379,7 @@ func (s *HTTPServer) HandleReposListPagesBuildsRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.ReposListPagesBuilds(ctx, params)
+	response, err := s.h.ReposListPagesBuilds(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12392,7 +12392,7 @@ func (s *HTTPServer) HandleReposListPagesBuildsRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleReposListPullRequestsAssociatedWithCommitRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposListPullRequestsAssociatedWithCommitRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListPullRequestsAssociatedWithCommit`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-pull-requests-associated-with-commit`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12405,7 +12405,7 @@ func (s *HTTPServer) HandleReposListPullRequestsAssociatedWithCommitRequest(w ht
 		return
 	}
 
-	response, err := s.s.ReposListPullRequestsAssociatedWithCommit(ctx, params)
+	response, err := s.h.ReposListPullRequestsAssociatedWithCommit(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12418,7 +12418,7 @@ func (s *HTTPServer) HandleReposListPullRequestsAssociatedWithCommitRequest(w ht
 	}
 }
 
-func (s *HTTPServer) HandleReposListReleaseAssetsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposListReleaseAssetsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListReleaseAssets`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-release-assets`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12431,7 +12431,7 @@ func (s *HTTPServer) HandleReposListReleaseAssetsRequest(w http.ResponseWriter, 
 		return
 	}
 
-	response, err := s.s.ReposListReleaseAssets(ctx, params)
+	response, err := s.h.ReposListReleaseAssets(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12444,7 +12444,7 @@ func (s *HTTPServer) HandleReposListReleaseAssetsRequest(w http.ResponseWriter, 
 	}
 }
 
-func (s *HTTPServer) HandleReposListReleasesRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposListReleasesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListReleases`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-releases`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12457,7 +12457,7 @@ func (s *HTTPServer) HandleReposListReleasesRequest(w http.ResponseWriter, r *ht
 		return
 	}
 
-	response, err := s.s.ReposListReleases(ctx, params)
+	response, err := s.h.ReposListReleases(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12470,7 +12470,7 @@ func (s *HTTPServer) HandleReposListReleasesRequest(w http.ResponseWriter, r *ht
 	}
 }
 
-func (s *HTTPServer) HandleReposListTagsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposListTagsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListTags`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-tags`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12483,7 +12483,7 @@ func (s *HTTPServer) HandleReposListTagsRequest(w http.ResponseWriter, r *http.R
 		return
 	}
 
-	response, err := s.s.ReposListTags(ctx, params)
+	response, err := s.h.ReposListTags(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12496,7 +12496,7 @@ func (s *HTTPServer) HandleReposListTagsRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
-func (s *HTTPServer) HandleReposListTeamsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposListTeamsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListTeams`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-teams`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12509,7 +12509,7 @@ func (s *HTTPServer) HandleReposListTeamsRequest(w http.ResponseWriter, r *http.
 		return
 	}
 
-	response, err := s.s.ReposListTeams(ctx, params)
+	response, err := s.h.ReposListTeams(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12522,7 +12522,7 @@ func (s *HTTPServer) HandleReposListTeamsRequest(w http.ResponseWriter, r *http.
 	}
 }
 
-func (s *HTTPServer) HandleReposListWebhooksRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposListWebhooksRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListWebhooks`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-webhooks`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12535,7 +12535,7 @@ func (s *HTTPServer) HandleReposListWebhooksRequest(w http.ResponseWriter, r *ht
 		return
 	}
 
-	response, err := s.s.ReposListWebhooks(ctx, params)
+	response, err := s.h.ReposListWebhooks(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12548,7 +12548,7 @@ func (s *HTTPServer) HandleReposListWebhooksRequest(w http.ResponseWriter, r *ht
 	}
 }
 
-func (s *HTTPServer) HandleReposMergeUpstreamRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposMergeUpstreamRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposMergeUpstream`,
 		trace.WithAttributes(otelogen.OperationID(`repos/merge-upstream`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12567,7 +12567,7 @@ func (s *HTTPServer) HandleReposMergeUpstreamRequest(w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.s.ReposMergeUpstream(ctx, request, params)
+	response, err := s.h.ReposMergeUpstream(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12580,7 +12580,7 @@ func (s *HTTPServer) HandleReposMergeUpstreamRequest(w http.ResponseWriter, r *h
 	}
 }
 
-func (s *HTTPServer) HandleReposPingWebhookRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposPingWebhookRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposPingWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`repos/ping-webhook`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12593,7 +12593,7 @@ func (s *HTTPServer) HandleReposPingWebhookRequest(w http.ResponseWriter, r *htt
 		return
 	}
 
-	response, err := s.s.ReposPingWebhook(ctx, params)
+	response, err := s.h.ReposPingWebhook(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12606,7 +12606,7 @@ func (s *HTTPServer) HandleReposPingWebhookRequest(w http.ResponseWriter, r *htt
 	}
 }
 
-func (s *HTTPServer) HandleReposRemoveCollaboratorRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposRemoveCollaboratorRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposRemoveCollaborator`,
 		trace.WithAttributes(otelogen.OperationID(`repos/remove-collaborator`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12619,7 +12619,7 @@ func (s *HTTPServer) HandleReposRemoveCollaboratorRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.ReposRemoveCollaborator(ctx, params)
+	response, err := s.h.ReposRemoveCollaborator(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12632,7 +12632,7 @@ func (s *HTTPServer) HandleReposRemoveCollaboratorRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleReposRemoveStatusCheckProtectionRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposRemoveStatusCheckProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposRemoveStatusCheckProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/remove-status-check-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12645,7 +12645,7 @@ func (s *HTTPServer) HandleReposRemoveStatusCheckProtectionRequest(w http.Respon
 		return
 	}
 
-	response, err := s.s.ReposRemoveStatusCheckProtection(ctx, params)
+	response, err := s.h.ReposRemoveStatusCheckProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12658,7 +12658,7 @@ func (s *HTTPServer) HandleReposRemoveStatusCheckProtectionRequest(w http.Respon
 	}
 }
 
-func (s *HTTPServer) HandleReposReplaceAllTopicsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposReplaceAllTopicsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposReplaceAllTopics`,
 		trace.WithAttributes(otelogen.OperationID(`repos/replace-all-topics`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12677,7 +12677,7 @@ func (s *HTTPServer) HandleReposReplaceAllTopicsRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.ReposReplaceAllTopics(ctx, request, params)
+	response, err := s.h.ReposReplaceAllTopics(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12690,7 +12690,7 @@ func (s *HTTPServer) HandleReposReplaceAllTopicsRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleReposRequestPagesBuildRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposRequestPagesBuildRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposRequestPagesBuild`,
 		trace.WithAttributes(otelogen.OperationID(`repos/request-pages-build`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12703,7 +12703,7 @@ func (s *HTTPServer) HandleReposRequestPagesBuildRequest(w http.ResponseWriter, 
 		return
 	}
 
-	response, err := s.s.ReposRequestPagesBuild(ctx, params)
+	response, err := s.h.ReposRequestPagesBuild(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12716,7 +12716,7 @@ func (s *HTTPServer) HandleReposRequestPagesBuildRequest(w http.ResponseWriter, 
 	}
 }
 
-func (s *HTTPServer) HandleReposSetAdminBranchProtectionRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposSetAdminBranchProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposSetAdminBranchProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/set-admin-branch-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12729,7 +12729,7 @@ func (s *HTTPServer) HandleReposSetAdminBranchProtectionRequest(w http.ResponseW
 		return
 	}
 
-	response, err := s.s.ReposSetAdminBranchProtection(ctx, params)
+	response, err := s.h.ReposSetAdminBranchProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12742,7 +12742,7 @@ func (s *HTTPServer) HandleReposSetAdminBranchProtectionRequest(w http.ResponseW
 	}
 }
 
-func (s *HTTPServer) HandleReposTestPushWebhookRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposTestPushWebhookRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposTestPushWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`repos/test-push-webhook`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12755,7 +12755,7 @@ func (s *HTTPServer) HandleReposTestPushWebhookRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.ReposTestPushWebhook(ctx, params)
+	response, err := s.h.ReposTestPushWebhook(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12768,7 +12768,7 @@ func (s *HTTPServer) HandleReposTestPushWebhookRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleReposTransferRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposTransferRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposTransfer`,
 		trace.WithAttributes(otelogen.OperationID(`repos/transfer`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12787,7 +12787,7 @@ func (s *HTTPServer) HandleReposTransferRequest(w http.ResponseWriter, r *http.R
 		return
 	}
 
-	response, err := s.s.ReposTransfer(ctx, request, params)
+	response, err := s.h.ReposTransfer(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12800,7 +12800,7 @@ func (s *HTTPServer) HandleReposTransferRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
-func (s *HTTPServer) HandleReposUpdateBranchProtectionRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposUpdateBranchProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdateBranchProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-branch-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12819,7 +12819,7 @@ func (s *HTTPServer) HandleReposUpdateBranchProtectionRequest(w http.ResponseWri
 		return
 	}
 
-	response, err := s.s.ReposUpdateBranchProtection(ctx, request, params)
+	response, err := s.h.ReposUpdateBranchProtection(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12832,7 +12832,7 @@ func (s *HTTPServer) HandleReposUpdateBranchProtectionRequest(w http.ResponseWri
 	}
 }
 
-func (s *HTTPServer) HandleReposUpdateCommitCommentRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposUpdateCommitCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdateCommitComment`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-commit-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12851,7 +12851,7 @@ func (s *HTTPServer) HandleReposUpdateCommitCommentRequest(w http.ResponseWriter
 		return
 	}
 
-	response, err := s.s.ReposUpdateCommitComment(ctx, request, params)
+	response, err := s.h.ReposUpdateCommitComment(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12864,7 +12864,7 @@ func (s *HTTPServer) HandleReposUpdateCommitCommentRequest(w http.ResponseWriter
 	}
 }
 
-func (s *HTTPServer) HandleReposUpdateInvitationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposUpdateInvitationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdateInvitation`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-invitation`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12883,7 +12883,7 @@ func (s *HTTPServer) HandleReposUpdateInvitationRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.ReposUpdateInvitation(ctx, request, params)
+	response, err := s.h.ReposUpdateInvitation(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12896,7 +12896,7 @@ func (s *HTTPServer) HandleReposUpdateInvitationRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleReposUpdateReleaseRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposUpdateReleaseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdateRelease`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-release`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12915,7 +12915,7 @@ func (s *HTTPServer) HandleReposUpdateReleaseRequest(w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.s.ReposUpdateRelease(ctx, request, params)
+	response, err := s.h.ReposUpdateRelease(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12928,7 +12928,7 @@ func (s *HTTPServer) HandleReposUpdateReleaseRequest(w http.ResponseWriter, r *h
 	}
 }
 
-func (s *HTTPServer) HandleReposUpdateReleaseAssetRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposUpdateReleaseAssetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdateReleaseAsset`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-release-asset`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12947,7 +12947,7 @@ func (s *HTTPServer) HandleReposUpdateReleaseAssetRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.ReposUpdateReleaseAsset(ctx, request, params)
+	response, err := s.h.ReposUpdateReleaseAsset(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12960,7 +12960,7 @@ func (s *HTTPServer) HandleReposUpdateReleaseAssetRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleReposUpdateWebhookConfigForRepoRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleReposUpdateWebhookConfigForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdateWebhookConfigForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-webhook-config-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12979,7 +12979,7 @@ func (s *HTTPServer) HandleReposUpdateWebhookConfigForRepoRequest(w http.Respons
 		return
 	}
 
-	response, err := s.s.ReposUpdateWebhookConfigForRepo(ctx, request, params)
+	response, err := s.h.ReposUpdateWebhookConfigForRepo(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -12992,7 +12992,7 @@ func (s *HTTPServer) HandleReposUpdateWebhookConfigForRepoRequest(w http.Respons
 	}
 }
 
-func (s *HTTPServer) HandleScimDeleteUserFromOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleScimDeleteUserFromOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ScimDeleteUserFromOrg`,
 		trace.WithAttributes(otelogen.OperationID(`scim/delete-user-from-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13005,7 +13005,7 @@ func (s *HTTPServer) HandleScimDeleteUserFromOrgRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.ScimDeleteUserFromOrg(ctx, params)
+	response, err := s.h.ScimDeleteUserFromOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13018,7 +13018,7 @@ func (s *HTTPServer) HandleScimDeleteUserFromOrgRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleSearchCommitsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleSearchCommitsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SearchCommits`,
 		trace.WithAttributes(otelogen.OperationID(`search/commits`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13031,7 +13031,7 @@ func (s *HTTPServer) HandleSearchCommitsRequest(w http.ResponseWriter, r *http.R
 		return
 	}
 
-	response, err := s.s.SearchCommits(ctx, params)
+	response, err := s.h.SearchCommits(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13044,7 +13044,7 @@ func (s *HTTPServer) HandleSearchCommitsRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
-func (s *HTTPServer) HandleSearchTopicsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleSearchTopicsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SearchTopics`,
 		trace.WithAttributes(otelogen.OperationID(`search/topics`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13057,7 +13057,7 @@ func (s *HTTPServer) HandleSearchTopicsRequest(w http.ResponseWriter, r *http.Re
 		return
 	}
 
-	response, err := s.s.SearchTopics(ctx, params)
+	response, err := s.h.SearchTopics(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13070,7 +13070,7 @@ func (s *HTTPServer) HandleSearchTopicsRequest(w http.ResponseWriter, r *http.Re
 	}
 }
 
-func (s *HTTPServer) HandleSecretScanningGetAlertRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleSecretScanningGetAlertRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SecretScanningGetAlert`,
 		trace.WithAttributes(otelogen.OperationID(`secret-scanning/get-alert`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13083,7 +13083,7 @@ func (s *HTTPServer) HandleSecretScanningGetAlertRequest(w http.ResponseWriter, 
 		return
 	}
 
-	response, err := s.s.SecretScanningGetAlert(ctx, params)
+	response, err := s.h.SecretScanningGetAlert(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13096,7 +13096,7 @@ func (s *HTTPServer) HandleSecretScanningGetAlertRequest(w http.ResponseWriter, 
 	}
 }
 
-func (s *HTTPServer) HandleSecretScanningListAlertsForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleSecretScanningListAlertsForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SecretScanningListAlertsForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`secret-scanning/list-alerts-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13109,7 +13109,7 @@ func (s *HTTPServer) HandleSecretScanningListAlertsForOrgRequest(w http.Response
 		return
 	}
 
-	response, err := s.s.SecretScanningListAlertsForOrg(ctx, params)
+	response, err := s.h.SecretScanningListAlertsForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13122,7 +13122,7 @@ func (s *HTTPServer) HandleSecretScanningListAlertsForOrgRequest(w http.Response
 	}
 }
 
-func (s *HTTPServer) HandleSecretScanningListAlertsForRepoRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleSecretScanningListAlertsForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SecretScanningListAlertsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`secret-scanning/list-alerts-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13135,7 +13135,7 @@ func (s *HTTPServer) HandleSecretScanningListAlertsForRepoRequest(w http.Respons
 		return
 	}
 
-	response, err := s.s.SecretScanningListAlertsForRepo(ctx, params)
+	response, err := s.h.SecretScanningListAlertsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13148,7 +13148,7 @@ func (s *HTTPServer) HandleSecretScanningListAlertsForRepoRequest(w http.Respons
 	}
 }
 
-func (s *HTTPServer) HandleSecretScanningUpdateAlertRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleSecretScanningUpdateAlertRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SecretScanningUpdateAlert`,
 		trace.WithAttributes(otelogen.OperationID(`secret-scanning/update-alert`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13167,7 +13167,7 @@ func (s *HTTPServer) HandleSecretScanningUpdateAlertRequest(w http.ResponseWrite
 		return
 	}
 
-	response, err := s.s.SecretScanningUpdateAlert(ctx, request, params)
+	response, err := s.h.SecretScanningUpdateAlert(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13180,7 +13180,7 @@ func (s *HTTPServer) HandleSecretScanningUpdateAlertRequest(w http.ResponseWrite
 	}
 }
 
-func (s *HTTPServer) HandleTeamsAddMemberLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsAddMemberLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsAddMemberLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/add-member-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13193,7 +13193,7 @@ func (s *HTTPServer) HandleTeamsAddMemberLegacyRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.TeamsAddMemberLegacy(ctx, params)
+	response, err := s.h.TeamsAddMemberLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13206,7 +13206,7 @@ func (s *HTTPServer) HandleTeamsAddMemberLegacyRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleTeamsAddOrUpdateMembershipForUserInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsAddOrUpdateMembershipForUserInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsAddOrUpdateMembershipForUserInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/add-or-update-membership-for-user-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13225,7 +13225,7 @@ func (s *HTTPServer) HandleTeamsAddOrUpdateMembershipForUserInOrgRequest(w http.
 		return
 	}
 
-	response, err := s.s.TeamsAddOrUpdateMembershipForUserInOrg(ctx, request, params)
+	response, err := s.h.TeamsAddOrUpdateMembershipForUserInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13238,7 +13238,7 @@ func (s *HTTPServer) HandleTeamsAddOrUpdateMembershipForUserInOrgRequest(w http.
 	}
 }
 
-func (s *HTTPServer) HandleTeamsAddOrUpdateMembershipForUserLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsAddOrUpdateMembershipForUserLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsAddOrUpdateMembershipForUserLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/add-or-update-membership-for-user-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13257,7 +13257,7 @@ func (s *HTTPServer) HandleTeamsAddOrUpdateMembershipForUserLegacyRequest(w http
 		return
 	}
 
-	response, err := s.s.TeamsAddOrUpdateMembershipForUserLegacy(ctx, request, params)
+	response, err := s.h.TeamsAddOrUpdateMembershipForUserLegacy(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13270,7 +13270,7 @@ func (s *HTTPServer) HandleTeamsAddOrUpdateMembershipForUserLegacyRequest(w http
 	}
 }
 
-func (s *HTTPServer) HandleTeamsAddOrUpdateProjectPermissionsInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsAddOrUpdateProjectPermissionsInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsAddOrUpdateProjectPermissionsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/add-or-update-project-permissions-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13289,7 +13289,7 @@ func (s *HTTPServer) HandleTeamsAddOrUpdateProjectPermissionsInOrgRequest(w http
 		return
 	}
 
-	response, err := s.s.TeamsAddOrUpdateProjectPermissionsInOrg(ctx, request, params)
+	response, err := s.h.TeamsAddOrUpdateProjectPermissionsInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13302,7 +13302,7 @@ func (s *HTTPServer) HandleTeamsAddOrUpdateProjectPermissionsInOrgRequest(w http
 	}
 }
 
-func (s *HTTPServer) HandleTeamsAddOrUpdateRepoPermissionsInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsAddOrUpdateRepoPermissionsInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsAddOrUpdateRepoPermissionsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/add-or-update-repo-permissions-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13321,7 +13321,7 @@ func (s *HTTPServer) HandleTeamsAddOrUpdateRepoPermissionsInOrgRequest(w http.Re
 		return
 	}
 
-	response, err := s.s.TeamsAddOrUpdateRepoPermissionsInOrg(ctx, request, params)
+	response, err := s.h.TeamsAddOrUpdateRepoPermissionsInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13334,7 +13334,7 @@ func (s *HTTPServer) HandleTeamsAddOrUpdateRepoPermissionsInOrgRequest(w http.Re
 	}
 }
 
-func (s *HTTPServer) HandleTeamsCheckPermissionsForProjectInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsCheckPermissionsForProjectInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCheckPermissionsForProjectInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/check-permissions-for-project-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13347,7 +13347,7 @@ func (s *HTTPServer) HandleTeamsCheckPermissionsForProjectInOrgRequest(w http.Re
 		return
 	}
 
-	response, err := s.s.TeamsCheckPermissionsForProjectInOrg(ctx, params)
+	response, err := s.h.TeamsCheckPermissionsForProjectInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13360,7 +13360,7 @@ func (s *HTTPServer) HandleTeamsCheckPermissionsForProjectInOrgRequest(w http.Re
 	}
 }
 
-func (s *HTTPServer) HandleTeamsCheckPermissionsForProjectLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsCheckPermissionsForProjectLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCheckPermissionsForProjectLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/check-permissions-for-project-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13373,7 +13373,7 @@ func (s *HTTPServer) HandleTeamsCheckPermissionsForProjectLegacyRequest(w http.R
 		return
 	}
 
-	response, err := s.s.TeamsCheckPermissionsForProjectLegacy(ctx, params)
+	response, err := s.h.TeamsCheckPermissionsForProjectLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13386,7 +13386,7 @@ func (s *HTTPServer) HandleTeamsCheckPermissionsForProjectLegacyRequest(w http.R
 	}
 }
 
-func (s *HTTPServer) HandleTeamsCheckPermissionsForRepoInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsCheckPermissionsForRepoInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCheckPermissionsForRepoInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/check-permissions-for-repo-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13399,7 +13399,7 @@ func (s *HTTPServer) HandleTeamsCheckPermissionsForRepoInOrgRequest(w http.Respo
 		return
 	}
 
-	response, err := s.s.TeamsCheckPermissionsForRepoInOrg(ctx, params)
+	response, err := s.h.TeamsCheckPermissionsForRepoInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13412,7 +13412,7 @@ func (s *HTTPServer) HandleTeamsCheckPermissionsForRepoInOrgRequest(w http.Respo
 	}
 }
 
-func (s *HTTPServer) HandleTeamsCheckPermissionsForRepoLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsCheckPermissionsForRepoLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCheckPermissionsForRepoLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/check-permissions-for-repo-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13425,7 +13425,7 @@ func (s *HTTPServer) HandleTeamsCheckPermissionsForRepoLegacyRequest(w http.Resp
 		return
 	}
 
-	response, err := s.s.TeamsCheckPermissionsForRepoLegacy(ctx, params)
+	response, err := s.h.TeamsCheckPermissionsForRepoLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13438,7 +13438,7 @@ func (s *HTTPServer) HandleTeamsCheckPermissionsForRepoLegacyRequest(w http.Resp
 	}
 }
 
-func (s *HTTPServer) HandleTeamsCreateDiscussionCommentInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsCreateDiscussionCommentInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCreateDiscussionCommentInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/create-discussion-comment-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13457,7 +13457,7 @@ func (s *HTTPServer) HandleTeamsCreateDiscussionCommentInOrgRequest(w http.Respo
 		return
 	}
 
-	response, err := s.s.TeamsCreateDiscussionCommentInOrg(ctx, request, params)
+	response, err := s.h.TeamsCreateDiscussionCommentInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13470,7 +13470,7 @@ func (s *HTTPServer) HandleTeamsCreateDiscussionCommentInOrgRequest(w http.Respo
 	}
 }
 
-func (s *HTTPServer) HandleTeamsCreateDiscussionCommentLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsCreateDiscussionCommentLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCreateDiscussionCommentLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/create-discussion-comment-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13489,7 +13489,7 @@ func (s *HTTPServer) HandleTeamsCreateDiscussionCommentLegacyRequest(w http.Resp
 		return
 	}
 
-	response, err := s.s.TeamsCreateDiscussionCommentLegacy(ctx, request, params)
+	response, err := s.h.TeamsCreateDiscussionCommentLegacy(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13502,7 +13502,7 @@ func (s *HTTPServer) HandleTeamsCreateDiscussionCommentLegacyRequest(w http.Resp
 	}
 }
 
-func (s *HTTPServer) HandleTeamsCreateDiscussionInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsCreateDiscussionInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCreateDiscussionInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/create-discussion-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13521,7 +13521,7 @@ func (s *HTTPServer) HandleTeamsCreateDiscussionInOrgRequest(w http.ResponseWrit
 		return
 	}
 
-	response, err := s.s.TeamsCreateDiscussionInOrg(ctx, request, params)
+	response, err := s.h.TeamsCreateDiscussionInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13534,7 +13534,7 @@ func (s *HTTPServer) HandleTeamsCreateDiscussionInOrgRequest(w http.ResponseWrit
 	}
 }
 
-func (s *HTTPServer) HandleTeamsCreateDiscussionLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsCreateDiscussionLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCreateDiscussionLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/create-discussion-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13553,7 +13553,7 @@ func (s *HTTPServer) HandleTeamsCreateDiscussionLegacyRequest(w http.ResponseWri
 		return
 	}
 
-	response, err := s.s.TeamsCreateDiscussionLegacy(ctx, request, params)
+	response, err := s.h.TeamsCreateDiscussionLegacy(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13566,7 +13566,7 @@ func (s *HTTPServer) HandleTeamsCreateDiscussionLegacyRequest(w http.ResponseWri
 	}
 }
 
-func (s *HTTPServer) HandleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCreateOrUpdateIdpGroupConnectionsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/create-or-update-idp-group-connections-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13585,7 +13585,7 @@ func (s *HTTPServer) HandleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(w 
 		return
 	}
 
-	response, err := s.s.TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx, request, params)
+	response, err := s.h.TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13598,7 +13598,7 @@ func (s *HTTPServer) HandleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(w 
 	}
 }
 
-func (s *HTTPServer) HandleTeamsDeleteDiscussionCommentInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsDeleteDiscussionCommentInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsDeleteDiscussionCommentInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/delete-discussion-comment-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13611,7 +13611,7 @@ func (s *HTTPServer) HandleTeamsDeleteDiscussionCommentInOrgRequest(w http.Respo
 		return
 	}
 
-	response, err := s.s.TeamsDeleteDiscussionCommentInOrg(ctx, params)
+	response, err := s.h.TeamsDeleteDiscussionCommentInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13624,7 +13624,7 @@ func (s *HTTPServer) HandleTeamsDeleteDiscussionCommentInOrgRequest(w http.Respo
 	}
 }
 
-func (s *HTTPServer) HandleTeamsDeleteDiscussionCommentLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsDeleteDiscussionCommentLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsDeleteDiscussionCommentLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/delete-discussion-comment-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13637,7 +13637,7 @@ func (s *HTTPServer) HandleTeamsDeleteDiscussionCommentLegacyRequest(w http.Resp
 		return
 	}
 
-	response, err := s.s.TeamsDeleteDiscussionCommentLegacy(ctx, params)
+	response, err := s.h.TeamsDeleteDiscussionCommentLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13650,7 +13650,7 @@ func (s *HTTPServer) HandleTeamsDeleteDiscussionCommentLegacyRequest(w http.Resp
 	}
 }
 
-func (s *HTTPServer) HandleTeamsDeleteDiscussionInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsDeleteDiscussionInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsDeleteDiscussionInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/delete-discussion-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13663,7 +13663,7 @@ func (s *HTTPServer) HandleTeamsDeleteDiscussionInOrgRequest(w http.ResponseWrit
 		return
 	}
 
-	response, err := s.s.TeamsDeleteDiscussionInOrg(ctx, params)
+	response, err := s.h.TeamsDeleteDiscussionInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13676,7 +13676,7 @@ func (s *HTTPServer) HandleTeamsDeleteDiscussionInOrgRequest(w http.ResponseWrit
 	}
 }
 
-func (s *HTTPServer) HandleTeamsDeleteDiscussionLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsDeleteDiscussionLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsDeleteDiscussionLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/delete-discussion-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13689,7 +13689,7 @@ func (s *HTTPServer) HandleTeamsDeleteDiscussionLegacyRequest(w http.ResponseWri
 		return
 	}
 
-	response, err := s.s.TeamsDeleteDiscussionLegacy(ctx, params)
+	response, err := s.h.TeamsDeleteDiscussionLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13702,7 +13702,7 @@ func (s *HTTPServer) HandleTeamsDeleteDiscussionLegacyRequest(w http.ResponseWri
 	}
 }
 
-func (s *HTTPServer) HandleTeamsDeleteInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsDeleteInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsDeleteInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/delete-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13715,7 +13715,7 @@ func (s *HTTPServer) HandleTeamsDeleteInOrgRequest(w http.ResponseWriter, r *htt
 		return
 	}
 
-	response, err := s.s.TeamsDeleteInOrg(ctx, params)
+	response, err := s.h.TeamsDeleteInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13728,7 +13728,7 @@ func (s *HTTPServer) HandleTeamsDeleteInOrgRequest(w http.ResponseWriter, r *htt
 	}
 }
 
-func (s *HTTPServer) HandleTeamsGetByNameRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsGetByNameRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetByName`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-by-name`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13741,7 +13741,7 @@ func (s *HTTPServer) HandleTeamsGetByNameRequest(w http.ResponseWriter, r *http.
 		return
 	}
 
-	response, err := s.s.TeamsGetByName(ctx, params)
+	response, err := s.h.TeamsGetByName(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13754,7 +13754,7 @@ func (s *HTTPServer) HandleTeamsGetByNameRequest(w http.ResponseWriter, r *http.
 	}
 }
 
-func (s *HTTPServer) HandleTeamsGetDiscussionCommentInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsGetDiscussionCommentInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetDiscussionCommentInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-discussion-comment-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13767,7 +13767,7 @@ func (s *HTTPServer) HandleTeamsGetDiscussionCommentInOrgRequest(w http.Response
 		return
 	}
 
-	response, err := s.s.TeamsGetDiscussionCommentInOrg(ctx, params)
+	response, err := s.h.TeamsGetDiscussionCommentInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13780,7 +13780,7 @@ func (s *HTTPServer) HandleTeamsGetDiscussionCommentInOrgRequest(w http.Response
 	}
 }
 
-func (s *HTTPServer) HandleTeamsGetDiscussionCommentLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsGetDiscussionCommentLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetDiscussionCommentLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-discussion-comment-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13793,7 +13793,7 @@ func (s *HTTPServer) HandleTeamsGetDiscussionCommentLegacyRequest(w http.Respons
 		return
 	}
 
-	response, err := s.s.TeamsGetDiscussionCommentLegacy(ctx, params)
+	response, err := s.h.TeamsGetDiscussionCommentLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13806,7 +13806,7 @@ func (s *HTTPServer) HandleTeamsGetDiscussionCommentLegacyRequest(w http.Respons
 	}
 }
 
-func (s *HTTPServer) HandleTeamsGetDiscussionInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsGetDiscussionInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetDiscussionInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-discussion-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13819,7 +13819,7 @@ func (s *HTTPServer) HandleTeamsGetDiscussionInOrgRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.TeamsGetDiscussionInOrg(ctx, params)
+	response, err := s.h.TeamsGetDiscussionInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13832,7 +13832,7 @@ func (s *HTTPServer) HandleTeamsGetDiscussionInOrgRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleTeamsGetDiscussionLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsGetDiscussionLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetDiscussionLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-discussion-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13845,7 +13845,7 @@ func (s *HTTPServer) HandleTeamsGetDiscussionLegacyRequest(w http.ResponseWriter
 		return
 	}
 
-	response, err := s.s.TeamsGetDiscussionLegacy(ctx, params)
+	response, err := s.h.TeamsGetDiscussionLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13858,7 +13858,7 @@ func (s *HTTPServer) HandleTeamsGetDiscussionLegacyRequest(w http.ResponseWriter
 	}
 }
 
-func (s *HTTPServer) HandleTeamsGetLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsGetLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13871,7 +13871,7 @@ func (s *HTTPServer) HandleTeamsGetLegacyRequest(w http.ResponseWriter, r *http.
 		return
 	}
 
-	response, err := s.s.TeamsGetLegacy(ctx, params)
+	response, err := s.h.TeamsGetLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13884,7 +13884,7 @@ func (s *HTTPServer) HandleTeamsGetLegacyRequest(w http.ResponseWriter, r *http.
 	}
 }
 
-func (s *HTTPServer) HandleTeamsGetMemberLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsGetMemberLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetMemberLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-member-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13897,7 +13897,7 @@ func (s *HTTPServer) HandleTeamsGetMemberLegacyRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.TeamsGetMemberLegacy(ctx, params)
+	response, err := s.h.TeamsGetMemberLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13910,7 +13910,7 @@ func (s *HTTPServer) HandleTeamsGetMemberLegacyRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleTeamsGetMembershipForUserInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsGetMembershipForUserInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetMembershipForUserInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-membership-for-user-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13923,7 +13923,7 @@ func (s *HTTPServer) HandleTeamsGetMembershipForUserInOrgRequest(w http.Response
 		return
 	}
 
-	response, err := s.s.TeamsGetMembershipForUserInOrg(ctx, params)
+	response, err := s.h.TeamsGetMembershipForUserInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13936,7 +13936,7 @@ func (s *HTTPServer) HandleTeamsGetMembershipForUserInOrgRequest(w http.Response
 	}
 }
 
-func (s *HTTPServer) HandleTeamsGetMembershipForUserLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsGetMembershipForUserLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetMembershipForUserLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-membership-for-user-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13949,7 +13949,7 @@ func (s *HTTPServer) HandleTeamsGetMembershipForUserLegacyRequest(w http.Respons
 		return
 	}
 
-	response, err := s.s.TeamsGetMembershipForUserLegacy(ctx, params)
+	response, err := s.h.TeamsGetMembershipForUserLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13962,7 +13962,7 @@ func (s *HTTPServer) HandleTeamsGetMembershipForUserLegacyRequest(w http.Respons
 	}
 }
 
-func (s *HTTPServer) HandleTeamsListRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsListRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsList`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13975,7 +13975,7 @@ func (s *HTTPServer) HandleTeamsListRequest(w http.ResponseWriter, r *http.Reque
 		return
 	}
 
-	response, err := s.s.TeamsList(ctx, params)
+	response, err := s.h.TeamsList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -13988,7 +13988,7 @@ func (s *HTTPServer) HandleTeamsListRequest(w http.ResponseWriter, r *http.Reque
 	}
 }
 
-func (s *HTTPServer) HandleTeamsListChildInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsListChildInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListChildInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-child-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14001,7 +14001,7 @@ func (s *HTTPServer) HandleTeamsListChildInOrgRequest(w http.ResponseWriter, r *
 		return
 	}
 
-	response, err := s.s.TeamsListChildInOrg(ctx, params)
+	response, err := s.h.TeamsListChildInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14014,7 +14014,7 @@ func (s *HTTPServer) HandleTeamsListChildInOrgRequest(w http.ResponseWriter, r *
 	}
 }
 
-func (s *HTTPServer) HandleTeamsListDiscussionCommentsInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsListDiscussionCommentsInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListDiscussionCommentsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-discussion-comments-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14027,7 +14027,7 @@ func (s *HTTPServer) HandleTeamsListDiscussionCommentsInOrgRequest(w http.Respon
 		return
 	}
 
-	response, err := s.s.TeamsListDiscussionCommentsInOrg(ctx, params)
+	response, err := s.h.TeamsListDiscussionCommentsInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14040,7 +14040,7 @@ func (s *HTTPServer) HandleTeamsListDiscussionCommentsInOrgRequest(w http.Respon
 	}
 }
 
-func (s *HTTPServer) HandleTeamsListDiscussionCommentsLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsListDiscussionCommentsLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListDiscussionCommentsLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-discussion-comments-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14053,7 +14053,7 @@ func (s *HTTPServer) HandleTeamsListDiscussionCommentsLegacyRequest(w http.Respo
 		return
 	}
 
-	response, err := s.s.TeamsListDiscussionCommentsLegacy(ctx, params)
+	response, err := s.h.TeamsListDiscussionCommentsLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14066,7 +14066,7 @@ func (s *HTTPServer) HandleTeamsListDiscussionCommentsLegacyRequest(w http.Respo
 	}
 }
 
-func (s *HTTPServer) HandleTeamsListDiscussionsInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsListDiscussionsInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListDiscussionsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-discussions-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14079,7 +14079,7 @@ func (s *HTTPServer) HandleTeamsListDiscussionsInOrgRequest(w http.ResponseWrite
 		return
 	}
 
-	response, err := s.s.TeamsListDiscussionsInOrg(ctx, params)
+	response, err := s.h.TeamsListDiscussionsInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14092,7 +14092,7 @@ func (s *HTTPServer) HandleTeamsListDiscussionsInOrgRequest(w http.ResponseWrite
 	}
 }
 
-func (s *HTTPServer) HandleTeamsListDiscussionsLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsListDiscussionsLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListDiscussionsLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-discussions-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14105,7 +14105,7 @@ func (s *HTTPServer) HandleTeamsListDiscussionsLegacyRequest(w http.ResponseWrit
 		return
 	}
 
-	response, err := s.s.TeamsListDiscussionsLegacy(ctx, params)
+	response, err := s.h.TeamsListDiscussionsLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14118,7 +14118,7 @@ func (s *HTTPServer) HandleTeamsListDiscussionsLegacyRequest(w http.ResponseWrit
 	}
 }
 
-func (s *HTTPServer) HandleTeamsListForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsListForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14131,7 +14131,7 @@ func (s *HTTPServer) HandleTeamsListForAuthenticatedUserRequest(w http.ResponseW
 		return
 	}
 
-	response, err := s.s.TeamsListForAuthenticatedUser(ctx, params)
+	response, err := s.h.TeamsListForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14144,7 +14144,7 @@ func (s *HTTPServer) HandleTeamsListForAuthenticatedUserRequest(w http.ResponseW
 	}
 }
 
-func (s *HTTPServer) HandleTeamsListIdpGroupsForLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsListIdpGroupsForLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListIdpGroupsForLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-idp-groups-for-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14157,7 +14157,7 @@ func (s *HTTPServer) HandleTeamsListIdpGroupsForLegacyRequest(w http.ResponseWri
 		return
 	}
 
-	response, err := s.s.TeamsListIdpGroupsForLegacy(ctx, params)
+	response, err := s.h.TeamsListIdpGroupsForLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14170,7 +14170,7 @@ func (s *HTTPServer) HandleTeamsListIdpGroupsForLegacyRequest(w http.ResponseWri
 	}
 }
 
-func (s *HTTPServer) HandleTeamsListIdpGroupsForOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsListIdpGroupsForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListIdpGroupsForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-idp-groups-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14183,7 +14183,7 @@ func (s *HTTPServer) HandleTeamsListIdpGroupsForOrgRequest(w http.ResponseWriter
 		return
 	}
 
-	response, err := s.s.TeamsListIdpGroupsForOrg(ctx, params)
+	response, err := s.h.TeamsListIdpGroupsForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14196,7 +14196,7 @@ func (s *HTTPServer) HandleTeamsListIdpGroupsForOrgRequest(w http.ResponseWriter
 	}
 }
 
-func (s *HTTPServer) HandleTeamsListIdpGroupsInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsListIdpGroupsInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListIdpGroupsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-idp-groups-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14209,7 +14209,7 @@ func (s *HTTPServer) HandleTeamsListIdpGroupsInOrgRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.TeamsListIdpGroupsInOrg(ctx, params)
+	response, err := s.h.TeamsListIdpGroupsInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14222,7 +14222,7 @@ func (s *HTTPServer) HandleTeamsListIdpGroupsInOrgRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleTeamsListMembersInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsListMembersInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListMembersInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-members-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14235,7 +14235,7 @@ func (s *HTTPServer) HandleTeamsListMembersInOrgRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.TeamsListMembersInOrg(ctx, params)
+	response, err := s.h.TeamsListMembersInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14248,7 +14248,7 @@ func (s *HTTPServer) HandleTeamsListMembersInOrgRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleTeamsListMembersLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsListMembersLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListMembersLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-members-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14261,7 +14261,7 @@ func (s *HTTPServer) HandleTeamsListMembersLegacyRequest(w http.ResponseWriter, 
 		return
 	}
 
-	response, err := s.s.TeamsListMembersLegacy(ctx, params)
+	response, err := s.h.TeamsListMembersLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14274,7 +14274,7 @@ func (s *HTTPServer) HandleTeamsListMembersLegacyRequest(w http.ResponseWriter, 
 	}
 }
 
-func (s *HTTPServer) HandleTeamsListPendingInvitationsInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsListPendingInvitationsInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListPendingInvitationsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-pending-invitations-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14287,7 +14287,7 @@ func (s *HTTPServer) HandleTeamsListPendingInvitationsInOrgRequest(w http.Respon
 		return
 	}
 
-	response, err := s.s.TeamsListPendingInvitationsInOrg(ctx, params)
+	response, err := s.h.TeamsListPendingInvitationsInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14300,7 +14300,7 @@ func (s *HTTPServer) HandleTeamsListPendingInvitationsInOrgRequest(w http.Respon
 	}
 }
 
-func (s *HTTPServer) HandleTeamsListPendingInvitationsLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsListPendingInvitationsLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListPendingInvitationsLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-pending-invitations-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14313,7 +14313,7 @@ func (s *HTTPServer) HandleTeamsListPendingInvitationsLegacyRequest(w http.Respo
 		return
 	}
 
-	response, err := s.s.TeamsListPendingInvitationsLegacy(ctx, params)
+	response, err := s.h.TeamsListPendingInvitationsLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14326,7 +14326,7 @@ func (s *HTTPServer) HandleTeamsListPendingInvitationsLegacyRequest(w http.Respo
 	}
 }
 
-func (s *HTTPServer) HandleTeamsListProjectsInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsListProjectsInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListProjectsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-projects-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14339,7 +14339,7 @@ func (s *HTTPServer) HandleTeamsListProjectsInOrgRequest(w http.ResponseWriter, 
 		return
 	}
 
-	response, err := s.s.TeamsListProjectsInOrg(ctx, params)
+	response, err := s.h.TeamsListProjectsInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14352,7 +14352,7 @@ func (s *HTTPServer) HandleTeamsListProjectsInOrgRequest(w http.ResponseWriter, 
 	}
 }
 
-func (s *HTTPServer) HandleTeamsListProjectsLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsListProjectsLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListProjectsLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-projects-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14365,7 +14365,7 @@ func (s *HTTPServer) HandleTeamsListProjectsLegacyRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.TeamsListProjectsLegacy(ctx, params)
+	response, err := s.h.TeamsListProjectsLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14378,7 +14378,7 @@ func (s *HTTPServer) HandleTeamsListProjectsLegacyRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleTeamsListReposInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsListReposInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListReposInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-repos-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14391,7 +14391,7 @@ func (s *HTTPServer) HandleTeamsListReposInOrgRequest(w http.ResponseWriter, r *
 		return
 	}
 
-	response, err := s.s.TeamsListReposInOrg(ctx, params)
+	response, err := s.h.TeamsListReposInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14404,7 +14404,7 @@ func (s *HTTPServer) HandleTeamsListReposInOrgRequest(w http.ResponseWriter, r *
 	}
 }
 
-func (s *HTTPServer) HandleTeamsListReposLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsListReposLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListReposLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-repos-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14417,7 +14417,7 @@ func (s *HTTPServer) HandleTeamsListReposLegacyRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.TeamsListReposLegacy(ctx, params)
+	response, err := s.h.TeamsListReposLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14430,7 +14430,7 @@ func (s *HTTPServer) HandleTeamsListReposLegacyRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleTeamsRemoveMemberLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsRemoveMemberLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsRemoveMemberLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/remove-member-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14443,7 +14443,7 @@ func (s *HTTPServer) HandleTeamsRemoveMemberLegacyRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.TeamsRemoveMemberLegacy(ctx, params)
+	response, err := s.h.TeamsRemoveMemberLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14456,7 +14456,7 @@ func (s *HTTPServer) HandleTeamsRemoveMemberLegacyRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleTeamsRemoveMembershipForUserInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsRemoveMembershipForUserInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsRemoveMembershipForUserInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/remove-membership-for-user-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14469,7 +14469,7 @@ func (s *HTTPServer) HandleTeamsRemoveMembershipForUserInOrgRequest(w http.Respo
 		return
 	}
 
-	response, err := s.s.TeamsRemoveMembershipForUserInOrg(ctx, params)
+	response, err := s.h.TeamsRemoveMembershipForUserInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14482,7 +14482,7 @@ func (s *HTTPServer) HandleTeamsRemoveMembershipForUserInOrgRequest(w http.Respo
 	}
 }
 
-func (s *HTTPServer) HandleTeamsRemoveMembershipForUserLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsRemoveMembershipForUserLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsRemoveMembershipForUserLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/remove-membership-for-user-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14495,7 +14495,7 @@ func (s *HTTPServer) HandleTeamsRemoveMembershipForUserLegacyRequest(w http.Resp
 		return
 	}
 
-	response, err := s.s.TeamsRemoveMembershipForUserLegacy(ctx, params)
+	response, err := s.h.TeamsRemoveMembershipForUserLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14508,7 +14508,7 @@ func (s *HTTPServer) HandleTeamsRemoveMembershipForUserLegacyRequest(w http.Resp
 	}
 }
 
-func (s *HTTPServer) HandleTeamsRemoveProjectInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsRemoveProjectInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsRemoveProjectInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/remove-project-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14521,7 +14521,7 @@ func (s *HTTPServer) HandleTeamsRemoveProjectInOrgRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.TeamsRemoveProjectInOrg(ctx, params)
+	response, err := s.h.TeamsRemoveProjectInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14534,7 +14534,7 @@ func (s *HTTPServer) HandleTeamsRemoveProjectInOrgRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleTeamsRemoveRepoInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsRemoveRepoInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsRemoveRepoInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/remove-repo-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14547,7 +14547,7 @@ func (s *HTTPServer) HandleTeamsRemoveRepoInOrgRequest(w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.s.TeamsRemoveRepoInOrg(ctx, params)
+	response, err := s.h.TeamsRemoveRepoInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14560,7 +14560,7 @@ func (s *HTTPServer) HandleTeamsRemoveRepoInOrgRequest(w http.ResponseWriter, r 
 	}
 }
 
-func (s *HTTPServer) HandleTeamsRemoveRepoLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsRemoveRepoLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsRemoveRepoLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/remove-repo-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14573,7 +14573,7 @@ func (s *HTTPServer) HandleTeamsRemoveRepoLegacyRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.TeamsRemoveRepoLegacy(ctx, params)
+	response, err := s.h.TeamsRemoveRepoLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14586,7 +14586,7 @@ func (s *HTTPServer) HandleTeamsRemoveRepoLegacyRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleTeamsUpdateDiscussionCommentInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsUpdateDiscussionCommentInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsUpdateDiscussionCommentInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/update-discussion-comment-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14605,7 +14605,7 @@ func (s *HTTPServer) HandleTeamsUpdateDiscussionCommentInOrgRequest(w http.Respo
 		return
 	}
 
-	response, err := s.s.TeamsUpdateDiscussionCommentInOrg(ctx, request, params)
+	response, err := s.h.TeamsUpdateDiscussionCommentInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14618,7 +14618,7 @@ func (s *HTTPServer) HandleTeamsUpdateDiscussionCommentInOrgRequest(w http.Respo
 	}
 }
 
-func (s *HTTPServer) HandleTeamsUpdateDiscussionCommentLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsUpdateDiscussionCommentLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsUpdateDiscussionCommentLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/update-discussion-comment-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14637,7 +14637,7 @@ func (s *HTTPServer) HandleTeamsUpdateDiscussionCommentLegacyRequest(w http.Resp
 		return
 	}
 
-	response, err := s.s.TeamsUpdateDiscussionCommentLegacy(ctx, request, params)
+	response, err := s.h.TeamsUpdateDiscussionCommentLegacy(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14650,7 +14650,7 @@ func (s *HTTPServer) HandleTeamsUpdateDiscussionCommentLegacyRequest(w http.Resp
 	}
 }
 
-func (s *HTTPServer) HandleTeamsUpdateDiscussionInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsUpdateDiscussionInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsUpdateDiscussionInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/update-discussion-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14669,7 +14669,7 @@ func (s *HTTPServer) HandleTeamsUpdateDiscussionInOrgRequest(w http.ResponseWrit
 		return
 	}
 
-	response, err := s.s.TeamsUpdateDiscussionInOrg(ctx, request, params)
+	response, err := s.h.TeamsUpdateDiscussionInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14682,7 +14682,7 @@ func (s *HTTPServer) HandleTeamsUpdateDiscussionInOrgRequest(w http.ResponseWrit
 	}
 }
 
-func (s *HTTPServer) HandleTeamsUpdateDiscussionLegacyRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsUpdateDiscussionLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsUpdateDiscussionLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/update-discussion-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14701,7 +14701,7 @@ func (s *HTTPServer) HandleTeamsUpdateDiscussionLegacyRequest(w http.ResponseWri
 		return
 	}
 
-	response, err := s.s.TeamsUpdateDiscussionLegacy(ctx, request, params)
+	response, err := s.h.TeamsUpdateDiscussionLegacy(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14714,7 +14714,7 @@ func (s *HTTPServer) HandleTeamsUpdateDiscussionLegacyRequest(w http.ResponseWri
 	}
 }
 
-func (s *HTTPServer) HandleTeamsUpdateInOrgRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleTeamsUpdateInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsUpdateInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/update-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14733,7 +14733,7 @@ func (s *HTTPServer) HandleTeamsUpdateInOrgRequest(w http.ResponseWriter, r *htt
 		return
 	}
 
-	response, err := s.s.TeamsUpdateInOrg(ctx, request, params)
+	response, err := s.h.TeamsUpdateInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14746,7 +14746,7 @@ func (s *HTTPServer) HandleTeamsUpdateInOrgRequest(w http.ResponseWriter, r *htt
 	}
 }
 
-func (s *HTTPServer) HandleUsersCheckBlockedRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleUsersCheckBlockedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersCheckBlocked`,
 		trace.WithAttributes(otelogen.OperationID(`users/check-blocked`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14759,7 +14759,7 @@ func (s *HTTPServer) HandleUsersCheckBlockedRequest(w http.ResponseWriter, r *ht
 		return
 	}
 
-	response, err := s.s.UsersCheckBlocked(ctx, params)
+	response, err := s.h.UsersCheckBlocked(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14772,7 +14772,7 @@ func (s *HTTPServer) HandleUsersCheckBlockedRequest(w http.ResponseWriter, r *ht
 	}
 }
 
-func (s *HTTPServer) HandleUsersCheckFollowingForUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleUsersCheckFollowingForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersCheckFollowingForUser`,
 		trace.WithAttributes(otelogen.OperationID(`users/check-following-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14785,7 +14785,7 @@ func (s *HTTPServer) HandleUsersCheckFollowingForUserRequest(w http.ResponseWrit
 		return
 	}
 
-	response, err := s.s.UsersCheckFollowingForUser(ctx, params)
+	response, err := s.h.UsersCheckFollowingForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14798,7 +14798,7 @@ func (s *HTTPServer) HandleUsersCheckFollowingForUserRequest(w http.ResponseWrit
 	}
 }
 
-func (s *HTTPServer) HandleUsersCheckPersonIsFollowedByAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleUsersCheckPersonIsFollowedByAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersCheckPersonIsFollowedByAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/check-person-is-followed-by-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14811,7 +14811,7 @@ func (s *HTTPServer) HandleUsersCheckPersonIsFollowedByAuthenticatedRequest(w ht
 		return
 	}
 
-	response, err := s.s.UsersCheckPersonIsFollowedByAuthenticated(ctx, params)
+	response, err := s.h.UsersCheckPersonIsFollowedByAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14824,7 +14824,7 @@ func (s *HTTPServer) HandleUsersCheckPersonIsFollowedByAuthenticatedRequest(w ht
 	}
 }
 
-func (s *HTTPServer) HandleUsersDeletePublicSSHKeyForAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleUsersDeletePublicSSHKeyForAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersDeletePublicSSHKeyForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/delete-public-ssh-key-for-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14837,7 +14837,7 @@ func (s *HTTPServer) HandleUsersDeletePublicSSHKeyForAuthenticatedRequest(w http
 		return
 	}
 
-	response, err := s.s.UsersDeletePublicSSHKeyForAuthenticated(ctx, params)
+	response, err := s.h.UsersDeletePublicSSHKeyForAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14850,7 +14850,7 @@ func (s *HTTPServer) HandleUsersDeletePublicSSHKeyForAuthenticatedRequest(w http
 	}
 }
 
-func (s *HTTPServer) HandleUsersFollowRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleUsersFollowRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersFollow`,
 		trace.WithAttributes(otelogen.OperationID(`users/follow`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14863,7 +14863,7 @@ func (s *HTTPServer) HandleUsersFollowRequest(w http.ResponseWriter, r *http.Req
 		return
 	}
 
-	response, err := s.s.UsersFollow(ctx, params)
+	response, err := s.h.UsersFollow(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14876,14 +14876,14 @@ func (s *HTTPServer) HandleUsersFollowRequest(w http.ResponseWriter, r *http.Req
 	}
 }
 
-func (s *HTTPServer) HandleUsersGetAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleUsersGetAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersGetAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/get-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.UsersGetAuthenticated(ctx)
+	response, err := s.h.UsersGetAuthenticated(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14896,7 +14896,7 @@ func (s *HTTPServer) HandleUsersGetAuthenticatedRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleUsersGetByUsernameRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleUsersGetByUsernameRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersGetByUsername`,
 		trace.WithAttributes(otelogen.OperationID(`users/get-by-username`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14909,7 +14909,7 @@ func (s *HTTPServer) HandleUsersGetByUsernameRequest(w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.s.UsersGetByUsername(ctx, params)
+	response, err := s.h.UsersGetByUsername(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14922,7 +14922,7 @@ func (s *HTTPServer) HandleUsersGetByUsernameRequest(w http.ResponseWriter, r *h
 	}
 }
 
-func (s *HTTPServer) HandleUsersGetGpgKeyForAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleUsersGetGpgKeyForAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersGetGpgKeyForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/get-gpg-key-for-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14935,7 +14935,7 @@ func (s *HTTPServer) HandleUsersGetGpgKeyForAuthenticatedRequest(w http.Response
 		return
 	}
 
-	response, err := s.s.UsersGetGpgKeyForAuthenticated(ctx, params)
+	response, err := s.h.UsersGetGpgKeyForAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14948,7 +14948,7 @@ func (s *HTTPServer) HandleUsersGetGpgKeyForAuthenticatedRequest(w http.Response
 	}
 }
 
-func (s *HTTPServer) HandleUsersGetPublicSSHKeyForAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleUsersGetPublicSSHKeyForAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersGetPublicSSHKeyForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/get-public-ssh-key-for-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14961,7 +14961,7 @@ func (s *HTTPServer) HandleUsersGetPublicSSHKeyForAuthenticatedRequest(w http.Re
 		return
 	}
 
-	response, err := s.s.UsersGetPublicSSHKeyForAuthenticated(ctx, params)
+	response, err := s.h.UsersGetPublicSSHKeyForAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -14974,7 +14974,7 @@ func (s *HTTPServer) HandleUsersGetPublicSSHKeyForAuthenticatedRequest(w http.Re
 	}
 }
 
-func (s *HTTPServer) HandleUsersListRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleUsersListRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersList`,
 		trace.WithAttributes(otelogen.OperationID(`users/list`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14987,7 +14987,7 @@ func (s *HTTPServer) HandleUsersListRequest(w http.ResponseWriter, r *http.Reque
 		return
 	}
 
-	response, err := s.s.UsersList(ctx, params)
+	response, err := s.h.UsersList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -15000,14 +15000,14 @@ func (s *HTTPServer) HandleUsersListRequest(w http.ResponseWriter, r *http.Reque
 	}
 }
 
-func (s *HTTPServer) HandleUsersListBlockedByAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleUsersListBlockedByAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListBlockedByAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-blocked-by-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.UsersListBlockedByAuthenticated(ctx)
+	response, err := s.h.UsersListBlockedByAuthenticated(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -15020,7 +15020,7 @@ func (s *HTTPServer) HandleUsersListBlockedByAuthenticatedRequest(w http.Respons
 	}
 }
 
-func (s *HTTPServer) HandleUsersListEmailsForAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleUsersListEmailsForAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListEmailsForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-emails-for-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15033,7 +15033,7 @@ func (s *HTTPServer) HandleUsersListEmailsForAuthenticatedRequest(w http.Respons
 		return
 	}
 
-	response, err := s.s.UsersListEmailsForAuthenticated(ctx, params)
+	response, err := s.h.UsersListEmailsForAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -15046,7 +15046,7 @@ func (s *HTTPServer) HandleUsersListEmailsForAuthenticatedRequest(w http.Respons
 	}
 }
 
-func (s *HTTPServer) HandleUsersListFollowedByAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleUsersListFollowedByAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListFollowedByAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-followed-by-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15059,7 +15059,7 @@ func (s *HTTPServer) HandleUsersListFollowedByAuthenticatedRequest(w http.Respon
 		return
 	}
 
-	response, err := s.s.UsersListFollowedByAuthenticated(ctx, params)
+	response, err := s.h.UsersListFollowedByAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -15072,7 +15072,7 @@ func (s *HTTPServer) HandleUsersListFollowedByAuthenticatedRequest(w http.Respon
 	}
 }
 
-func (s *HTTPServer) HandleUsersListFollowersForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleUsersListFollowersForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListFollowersForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-followers-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15085,7 +15085,7 @@ func (s *HTTPServer) HandleUsersListFollowersForAuthenticatedUserRequest(w http.
 		return
 	}
 
-	response, err := s.s.UsersListFollowersForAuthenticatedUser(ctx, params)
+	response, err := s.h.UsersListFollowersForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -15098,7 +15098,7 @@ func (s *HTTPServer) HandleUsersListFollowersForAuthenticatedUserRequest(w http.
 	}
 }
 
-func (s *HTTPServer) HandleUsersListFollowersForUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleUsersListFollowersForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListFollowersForUser`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-followers-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15111,7 +15111,7 @@ func (s *HTTPServer) HandleUsersListFollowersForUserRequest(w http.ResponseWrite
 		return
 	}
 
-	response, err := s.s.UsersListFollowersForUser(ctx, params)
+	response, err := s.h.UsersListFollowersForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -15124,7 +15124,7 @@ func (s *HTTPServer) HandleUsersListFollowersForUserRequest(w http.ResponseWrite
 	}
 }
 
-func (s *HTTPServer) HandleUsersListFollowingForUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleUsersListFollowingForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListFollowingForUser`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-following-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15137,7 +15137,7 @@ func (s *HTTPServer) HandleUsersListFollowingForUserRequest(w http.ResponseWrite
 		return
 	}
 
-	response, err := s.s.UsersListFollowingForUser(ctx, params)
+	response, err := s.h.UsersListFollowingForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -15150,7 +15150,7 @@ func (s *HTTPServer) HandleUsersListFollowingForUserRequest(w http.ResponseWrite
 	}
 }
 
-func (s *HTTPServer) HandleUsersListGpgKeysForAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleUsersListGpgKeysForAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListGpgKeysForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-gpg-keys-for-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15163,7 +15163,7 @@ func (s *HTTPServer) HandleUsersListGpgKeysForAuthenticatedRequest(w http.Respon
 		return
 	}
 
-	response, err := s.s.UsersListGpgKeysForAuthenticated(ctx, params)
+	response, err := s.h.UsersListGpgKeysForAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -15176,7 +15176,7 @@ func (s *HTTPServer) HandleUsersListGpgKeysForAuthenticatedRequest(w http.Respon
 	}
 }
 
-func (s *HTTPServer) HandleUsersListGpgKeysForUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleUsersListGpgKeysForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListGpgKeysForUser`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-gpg-keys-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15189,7 +15189,7 @@ func (s *HTTPServer) HandleUsersListGpgKeysForUserRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.UsersListGpgKeysForUser(ctx, params)
+	response, err := s.h.UsersListGpgKeysForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -15202,7 +15202,7 @@ func (s *HTTPServer) HandleUsersListGpgKeysForUserRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleUsersListPublicEmailsForAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleUsersListPublicEmailsForAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListPublicEmailsForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-public-emails-for-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15215,7 +15215,7 @@ func (s *HTTPServer) HandleUsersListPublicEmailsForAuthenticatedRequest(w http.R
 		return
 	}
 
-	response, err := s.s.UsersListPublicEmailsForAuthenticated(ctx, params)
+	response, err := s.h.UsersListPublicEmailsForAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -15228,7 +15228,7 @@ func (s *HTTPServer) HandleUsersListPublicEmailsForAuthenticatedRequest(w http.R
 	}
 }
 
-func (s *HTTPServer) HandleUsersListPublicKeysForUserRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleUsersListPublicKeysForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListPublicKeysForUser`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-public-keys-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15241,7 +15241,7 @@ func (s *HTTPServer) HandleUsersListPublicKeysForUserRequest(w http.ResponseWrit
 		return
 	}
 
-	response, err := s.s.UsersListPublicKeysForUser(ctx, params)
+	response, err := s.h.UsersListPublicKeysForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -15254,7 +15254,7 @@ func (s *HTTPServer) HandleUsersListPublicKeysForUserRequest(w http.ResponseWrit
 	}
 }
 
-func (s *HTTPServer) HandleUsersListPublicSSHKeysForAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleUsersListPublicSSHKeysForAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListPublicSSHKeysForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-public-ssh-keys-for-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15267,7 +15267,7 @@ func (s *HTTPServer) HandleUsersListPublicSSHKeysForAuthenticatedRequest(w http.
 		return
 	}
 
-	response, err := s.s.UsersListPublicSSHKeysForAuthenticated(ctx, params)
+	response, err := s.h.UsersListPublicSSHKeysForAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -15280,7 +15280,7 @@ func (s *HTTPServer) HandleUsersListPublicSSHKeysForAuthenticatedRequest(w http.
 	}
 }
 
-func (s *HTTPServer) HandleUsersUnblockRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleUsersUnblockRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersUnblock`,
 		trace.WithAttributes(otelogen.OperationID(`users/unblock`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15293,7 +15293,7 @@ func (s *HTTPServer) HandleUsersUnblockRequest(w http.ResponseWriter, r *http.Re
 		return
 	}
 
-	response, err := s.s.UsersUnblock(ctx, params)
+	response, err := s.h.UsersUnblock(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -15306,7 +15306,7 @@ func (s *HTTPServer) HandleUsersUnblockRequest(w http.ResponseWriter, r *http.Re
 	}
 }
 
-func (s *HTTPServer) HandleUsersUnfollowRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleUsersUnfollowRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersUnfollow`,
 		trace.WithAttributes(otelogen.OperationID(`users/unfollow`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15319,7 +15319,7 @@ func (s *HTTPServer) HandleUsersUnfollowRequest(w http.ResponseWriter, r *http.R
 		return
 	}
 
-	response, err := s.s.UsersUnfollow(ctx, params)
+	response, err := s.h.UsersUnfollow(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)

@@ -60,14 +60,14 @@ var (
 	_ = regexp.MustCompile
 )
 
-func (s *HTTPServer) HandleCreatePetsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleCreatePetsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CreatePets`,
 		trace.WithAttributes(otelogen.OperationID(`createPets`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.CreatePets(ctx)
+	response, err := s.h.CreatePets(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -80,7 +80,7 @@ func (s *HTTPServer) HandleCreatePetsRequest(w http.ResponseWriter, r *http.Requ
 	}
 }
 
-func (s *HTTPServer) HandleListPetsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleListPetsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListPets`,
 		trace.WithAttributes(otelogen.OperationID(`listPets`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -93,7 +93,7 @@ func (s *HTTPServer) HandleListPetsRequest(w http.ResponseWriter, r *http.Reques
 		return
 	}
 
-	response, err := s.s.ListPets(ctx, params)
+	response, err := s.h.ListPets(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -106,7 +106,7 @@ func (s *HTTPServer) HandleListPetsRequest(w http.ResponseWriter, r *http.Reques
 	}
 }
 
-func (s *HTTPServer) HandleShowPetByIdRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleShowPetByIdRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ShowPetById`,
 		trace.WithAttributes(otelogen.OperationID(`showPetById`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -119,7 +119,7 @@ func (s *HTTPServer) HandleShowPetByIdRequest(w http.ResponseWriter, r *http.Req
 		return
 	}
 
-	response, err := s.s.ShowPetById(ctx, params)
+	response, err := s.h.ShowPetById(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)

@@ -60,8 +60,8 @@ var (
 	_ = regexp.MustCompile
 )
 
-// Server handles operations described by OpenAPI v3 specification.
-type Server interface {
+// Handler handles operations described by OpenAPI v3 specification.
+type Handler interface {
 	// FoobarGet implements foobarGet operation.
 	FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarGetRes, error)
 	// FoobarPost implements foobarPost operation.
@@ -88,15 +88,17 @@ type Server interface {
 	PetUploadAvatarByID(ctx context.Context, req Stream, params PetUploadAvatarByIDParams) (PetUploadAvatarByIDRes, error)
 }
 
-type HTTPServer struct {
-	s   Server
+// Server implements http server based on OpenAPI v3 specification and
+// calls Handler to handle requests.
+type Server struct {
+	h   Handler
 	mux *chi.Mux
 	cfg config
 }
 
-func NewServer(s Server, opts ...Option) *HTTPServer {
-	srv := &HTTPServer{
-		s:   s,
+func NewServer(h Handler, opts ...Option) *Server {
+	srv := &Server{
+		h:   h,
 		mux: chi.NewMux(),
 		cfg: newConfig(opts...),
 	}
@@ -104,7 +106,7 @@ func NewServer(s Server, opts ...Option) *HTTPServer {
 	return srv
 }
 
-func (s *HTTPServer) setupRoutes() {
+func (s *Server) setupRoutes() {
 	s.mux.MethodFunc("GET", "/foobar", s.HandleFoobarGetRequest)
 	s.mux.MethodFunc("POST", "/foobar", s.HandleFoobarPostRequest)
 	s.mux.MethodFunc("PUT", "/foobar", s.HandleFoobarPutRequest)
@@ -119,6 +121,6 @@ func (s *HTTPServer) setupRoutes() {
 	s.mux.MethodFunc("POST", "/pet/avatar", s.HandlePetUploadAvatarByIDRequest)
 }
 
-func (s *HTTPServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	s.mux.ServeHTTP(w, r)
 }

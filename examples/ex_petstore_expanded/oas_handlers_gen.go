@@ -60,7 +60,7 @@ var (
 	_ = regexp.MustCompile
 )
 
-func (s *HTTPServer) HandleDeletePetRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleDeletePetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `DeletePet`,
 		trace.WithAttributes(otelogen.OperationID(`deletePet`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -73,7 +73,7 @@ func (s *HTTPServer) HandleDeletePetRequest(w http.ResponseWriter, r *http.Reque
 		return
 	}
 
-	response, err := s.s.DeletePet(ctx, params)
+	response, err := s.h.DeletePet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)

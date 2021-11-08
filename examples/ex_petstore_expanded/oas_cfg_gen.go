@@ -65,7 +65,7 @@ type config struct {
 	Tracer         trace.Tracer
 	MeterProvider  metric.MeterProvider
 	Meter          metric.Meter
-	Client         HTTPClient
+	Client         ht.Client
 }
 
 func newConfig(opts ...Option) config {
@@ -106,7 +106,8 @@ func WithTracerProvider(provider trace.TracerProvider) Option {
 	})
 }
 
-func WithHTTPClient(client HTTPClient) Option {
+// WithClient specifies http client to use.
+func WithClient(client ht.Client) Option {
 	return optionFunc(func(cfg *config) {
 		if client != nil {
 			cfg.Client = client

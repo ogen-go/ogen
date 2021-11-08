@@ -60,10 +60,7 @@ var (
 	_ = regexp.MustCompile
 )
 
-type HTTPClient interface {
-	Do(req *http.Request) (*http.Response, error)
-}
-
+// Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
 	cfg       config

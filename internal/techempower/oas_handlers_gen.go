@@ -60,7 +60,7 @@ var (
 	_ = regexp.MustCompile
 )
 
-func (s *HTTPServer) HandleCachingRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleCachingRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `Caching`,
 		trace.WithAttributes(otelogen.OperationID(`Caching`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -73,7 +73,7 @@ func (s *HTTPServer) HandleCachingRequest(w http.ResponseWriter, r *http.Request
 		return
 	}
 
-	response, err := s.s.Caching(ctx, params)
+	response, err := s.h.Caching(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -86,14 +86,14 @@ func (s *HTTPServer) HandleCachingRequest(w http.ResponseWriter, r *http.Request
 	}
 }
 
-func (s *HTTPServer) HandleDBRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleDBRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `DB`,
 		trace.WithAttributes(otelogen.OperationID(`DB`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.DB(ctx)
+	response, err := s.h.DB(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -106,14 +106,14 @@ func (s *HTTPServer) HandleDBRequest(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func (s *HTTPServer) HandleJSONRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleJSONRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `JSON`,
 		trace.WithAttributes(otelogen.OperationID(`json`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.JSON(ctx)
+	response, err := s.h.JSON(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -126,7 +126,7 @@ func (s *HTTPServer) HandleJSONRequest(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func (s *HTTPServer) HandleQueriesRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleQueriesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `Queries`,
 		trace.WithAttributes(otelogen.OperationID(`Queries`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -139,7 +139,7 @@ func (s *HTTPServer) HandleQueriesRequest(w http.ResponseWriter, r *http.Request
 		return
 	}
 
-	response, err := s.s.Queries(ctx, params)
+	response, err := s.h.Queries(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -152,7 +152,7 @@ func (s *HTTPServer) HandleQueriesRequest(w http.ResponseWriter, r *http.Request
 	}
 }
 
-func (s *HTTPServer) HandleUpdatesRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleUpdatesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `Updates`,
 		trace.WithAttributes(otelogen.OperationID(`Updates`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -165,7 +165,7 @@ func (s *HTTPServer) HandleUpdatesRequest(w http.ResponseWriter, r *http.Request
 		return
 	}
 
-	response, err := s.s.Updates(ctx, params)
+	response, err := s.h.Updates(ctx, params)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)

@@ -60,8 +60,8 @@ var (
 	_ = regexp.MustCompile
 )
 
-// Server handles operations described by OpenAPI v3 specification.
-type Server interface {
+// Handler handles operations described by OpenAPI v3 specification.
+type Handler interface {
 	// CreateSnapshot implements createSnapshot operation.
 	CreateSnapshot(ctx context.Context, req SnapshotCreateParams) (CreateSnapshotRes, error)
 	// CreateSyncAction implements createSyncAction operation.
@@ -116,15 +116,17 @@ type Server interface {
 	PutMetrics(ctx context.Context, req Metrics) (PutMetricsRes, error)
 }
 
-type HTTPServer struct {
-	s   Server
+// Server implements http server based on OpenAPI v3 specification and
+// calls Handler to handle requests.
+type Server struct {
+	h   Handler
 	mux *chi.Mux
 	cfg config
 }
 
-func NewServer(s Server, opts ...Option) *HTTPServer {
-	srv := &HTTPServer{
-		s:   s,
+func NewServer(h Handler, opts ...Option) *Server {
+	srv := &Server{
+		h:   h,
 		mux: chi.NewMux(),
 		cfg: newConfig(opts...),
 	}
@@ -132,7 +134,7 @@ func NewServer(s Server, opts ...Option) *HTTPServer {
 	return srv
 }
 
-func (s *HTTPServer) setupRoutes() {
+func (s *Server) setupRoutes() {
 	s.mux.MethodFunc("PUT", "/snapshot/create", s.HandleCreateSnapshotRequest)
 	s.mux.MethodFunc("PUT", "/actions", s.HandleCreateSyncActionRequest)
 	s.mux.MethodFunc("GET", "/balloon", s.HandleDescribeBalloonConfigRequest)
@@ -161,6 +163,6 @@ func (s *HTTPServer) setupRoutes() {
 	s.mux.MethodFunc("PUT", "/metrics", s.HandlePutMetricsRequest)
 }
 
-func (s *HTTPServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	s.mux.ServeHTTP(w, r)
 }

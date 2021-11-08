@@ -60,7 +60,7 @@ var (
 	_ = regexp.MustCompile
 )
 
-func (s *HTTPServer) HandleAnswerCallbackQueryPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleAnswerCallbackQueryPostRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AnswerCallbackQueryPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -72,7 +72,7 @@ func (s *HTTPServer) HandleAnswerCallbackQueryPostRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.AnswerCallbackQueryPost(ctx, request)
+	response, err := s.h.AnswerCallbackQueryPost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -85,7 +85,7 @@ func (s *HTTPServer) HandleAnswerCallbackQueryPostRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleAnswerPreCheckoutQueryPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleAnswerPreCheckoutQueryPostRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AnswerPreCheckoutQueryPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -97,7 +97,7 @@ func (s *HTTPServer) HandleAnswerPreCheckoutQueryPostRequest(w http.ResponseWrit
 		return
 	}
 
-	response, err := s.s.AnswerPreCheckoutQueryPost(ctx, request)
+	response, err := s.h.AnswerPreCheckoutQueryPost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -110,7 +110,7 @@ func (s *HTTPServer) HandleAnswerPreCheckoutQueryPostRequest(w http.ResponseWrit
 	}
 }
 
-func (s *HTTPServer) HandleAnswerShippingQueryPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleAnswerShippingQueryPostRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AnswerShippingQueryPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -122,7 +122,7 @@ func (s *HTTPServer) HandleAnswerShippingQueryPostRequest(w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.s.AnswerShippingQueryPost(ctx, request)
+	response, err := s.h.AnswerShippingQueryPost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -135,13 +135,13 @@ func (s *HTTPServer) HandleAnswerShippingQueryPostRequest(w http.ResponseWriter,
 	}
 }
 
-func (s *HTTPServer) HandleClosePostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleClosePostRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ClosePost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.ClosePost(ctx)
+	response, err := s.h.ClosePost(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -154,7 +154,7 @@ func (s *HTTPServer) HandleClosePostRequest(w http.ResponseWriter, r *http.Reque
 	}
 }
 
-func (s *HTTPServer) HandleDeleteStickerFromSetPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleDeleteStickerFromSetPostRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `DeleteStickerFromSetPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -166,7 +166,7 @@ func (s *HTTPServer) HandleDeleteStickerFromSetPostRequest(w http.ResponseWriter
 		return
 	}
 
-	response, err := s.s.DeleteStickerFromSetPost(ctx, request)
+	response, err := s.h.DeleteStickerFromSetPost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -179,7 +179,7 @@ func (s *HTTPServer) HandleDeleteStickerFromSetPostRequest(w http.ResponseWriter
 	}
 }
 
-func (s *HTTPServer) HandleDeleteWebhookPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleDeleteWebhookPostRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `DeleteWebhookPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -191,7 +191,7 @@ func (s *HTTPServer) HandleDeleteWebhookPostRequest(w http.ResponseWriter, r *ht
 		return
 	}
 
-	response, err := s.s.DeleteWebhookPost(ctx, request)
+	response, err := s.h.DeleteWebhookPost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -204,7 +204,7 @@ func (s *HTTPServer) HandleDeleteWebhookPostRequest(w http.ResponseWriter, r *ht
 	}
 }
 
-func (s *HTTPServer) HandleGetFilePostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGetFilePostRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetFilePost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -216,7 +216,7 @@ func (s *HTTPServer) HandleGetFilePostRequest(w http.ResponseWriter, r *http.Req
 		return
 	}
 
-	response, err := s.s.GetFilePost(ctx, request)
+	response, err := s.h.GetFilePost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -229,7 +229,7 @@ func (s *HTTPServer) HandleGetFilePostRequest(w http.ResponseWriter, r *http.Req
 	}
 }
 
-func (s *HTTPServer) HandleGetGameHighScoresPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGetGameHighScoresPostRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetGameHighScoresPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -241,7 +241,7 @@ func (s *HTTPServer) HandleGetGameHighScoresPostRequest(w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.s.GetGameHighScoresPost(ctx, request)
+	response, err := s.h.GetGameHighScoresPost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -254,13 +254,13 @@ func (s *HTTPServer) HandleGetGameHighScoresPostRequest(w http.ResponseWriter, r
 	}
 }
 
-func (s *HTTPServer) HandleGetMePostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGetMePostRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetMePost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.GetMePost(ctx)
+	response, err := s.h.GetMePost(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -273,13 +273,13 @@ func (s *HTTPServer) HandleGetMePostRequest(w http.ResponseWriter, r *http.Reque
 	}
 }
 
-func (s *HTTPServer) HandleGetMyCommandsPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGetMyCommandsPostRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetMyCommandsPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.GetMyCommandsPost(ctx)
+	response, err := s.h.GetMyCommandsPost(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -292,7 +292,7 @@ func (s *HTTPServer) HandleGetMyCommandsPostRequest(w http.ResponseWriter, r *ht
 	}
 }
 
-func (s *HTTPServer) HandleGetStickerSetPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGetStickerSetPostRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetStickerSetPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -304,7 +304,7 @@ func (s *HTTPServer) HandleGetStickerSetPostRequest(w http.ResponseWriter, r *ht
 		return
 	}
 
-	response, err := s.s.GetStickerSetPost(ctx, request)
+	response, err := s.h.GetStickerSetPost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -317,7 +317,7 @@ func (s *HTTPServer) HandleGetStickerSetPostRequest(w http.ResponseWriter, r *ht
 	}
 }
 
-func (s *HTTPServer) HandleGetUpdatesPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGetUpdatesPostRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetUpdatesPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -329,7 +329,7 @@ func (s *HTTPServer) HandleGetUpdatesPostRequest(w http.ResponseWriter, r *http.
 		return
 	}
 
-	response, err := s.s.GetUpdatesPost(ctx, request)
+	response, err := s.h.GetUpdatesPost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -342,7 +342,7 @@ func (s *HTTPServer) HandleGetUpdatesPostRequest(w http.ResponseWriter, r *http.
 	}
 }
 
-func (s *HTTPServer) HandleGetUserProfilePhotosPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGetUserProfilePhotosPostRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetUserProfilePhotosPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -354,7 +354,7 @@ func (s *HTTPServer) HandleGetUserProfilePhotosPostRequest(w http.ResponseWriter
 		return
 	}
 
-	response, err := s.s.GetUserProfilePhotosPost(ctx, request)
+	response, err := s.h.GetUserProfilePhotosPost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -367,13 +367,13 @@ func (s *HTTPServer) HandleGetUserProfilePhotosPostRequest(w http.ResponseWriter
 	}
 }
 
-func (s *HTTPServer) HandleGetWebhookInfoPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGetWebhookInfoPostRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetWebhookInfoPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.GetWebhookInfoPost(ctx)
+	response, err := s.h.GetWebhookInfoPost(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -386,13 +386,13 @@ func (s *HTTPServer) HandleGetWebhookInfoPostRequest(w http.ResponseWriter, r *h
 	}
 }
 
-func (s *HTTPServer) HandleLogOutPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleLogOutPostRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `LogOutPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
 
-	response, err := s.s.LogOutPost(ctx)
+	response, err := s.h.LogOutPost(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -405,7 +405,7 @@ func (s *HTTPServer) HandleLogOutPostRequest(w http.ResponseWriter, r *http.Requ
 	}
 }
 
-func (s *HTTPServer) HandleSendGamePostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleSendGamePostRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SendGamePost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -417,7 +417,7 @@ func (s *HTTPServer) HandleSendGamePostRequest(w http.ResponseWriter, r *http.Re
 		return
 	}
 
-	response, err := s.s.SendGamePost(ctx, request)
+	response, err := s.h.SendGamePost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -430,7 +430,7 @@ func (s *HTTPServer) HandleSendGamePostRequest(w http.ResponseWriter, r *http.Re
 	}
 }
 
-func (s *HTTPServer) HandleSendInvoicePostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleSendInvoicePostRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SendInvoicePost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -442,7 +442,7 @@ func (s *HTTPServer) HandleSendInvoicePostRequest(w http.ResponseWriter, r *http
 		return
 	}
 
-	response, err := s.s.SendInvoicePost(ctx, request)
+	response, err := s.h.SendInvoicePost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -455,7 +455,7 @@ func (s *HTTPServer) HandleSendInvoicePostRequest(w http.ResponseWriter, r *http
 	}
 }
 
-func (s *HTTPServer) HandleSetMyCommandsPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleSetMyCommandsPostRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SetMyCommandsPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -467,7 +467,7 @@ func (s *HTTPServer) HandleSetMyCommandsPostRequest(w http.ResponseWriter, r *ht
 		return
 	}
 
-	response, err := s.s.SetMyCommandsPost(ctx, request)
+	response, err := s.h.SetMyCommandsPost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
@@ -480,7 +480,7 @@ func (s *HTTPServer) HandleSetMyCommandsPostRequest(w http.ResponseWriter, r *ht
 	}
 }
 
-func (s *HTTPServer) HandleSetStickerPositionInSetPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleSetStickerPositionInSetPostRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SetStickerPositionInSetPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -492,7 +492,7 @@ func (s *HTTPServer) HandleSetStickerPositionInSetPostRequest(w http.ResponseWri
 		return
 	}
 
-	response, err := s.s.SetStickerPositionInSetPost(ctx, request)
+	response, err := s.h.SetStickerPositionInSetPost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
