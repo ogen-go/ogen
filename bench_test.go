@@ -234,7 +234,7 @@ func BenchmarkIntegration(b *testing.B) {
 			},
 		}
 		client, err := techempower.NewClient(s.URL,
-			techempower.WithHTTPClient(httpClient),
+			techempower.WithClient(httpClient),
 			techempower.WithTracerProvider(trace.NewNoopTracerProvider()),
 		)
 		require.NoError(b, err)

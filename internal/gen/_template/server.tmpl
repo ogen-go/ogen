@@ -4,23 +4,25 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
-// Server handles operations described by OpenAPI v3 specification.
-type Server interface {
+// Handler handles operations described by OpenAPI v3 specification.
+type Handler interface {
 {{- range $op := $.Operations }}
 	// {{ $op.Name }} implements {{ $op.Spec.OperationID }} operation.
 	{{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) ({{ $op.Response.Type.Go }}, error)
 {{- end }}
 }
 
-type HTTPServer struct {
-	s   Server
+// Server implements http server based on OpenAPI v3 specification and
+// calls Handler to handle requests.
+type Server struct {
+	h   Handler
 	mux *chi.Mux
 	cfg config
 }
 
-func NewServer(s Server, opts ...Option) *HTTPServer {
-	srv := &HTTPServer{
-		s:   s,
+func NewServer(h Handler, opts ...Option) *Server {
+	srv := &Server{
+		h:   h,
 		mux: chi.NewMux(),
 		cfg: newConfig(opts...),
 	}
@@ -28,13 +30,13 @@ func NewServer(s Server, opts ...Option) *HTTPServer {
 	return srv
 }
 
-func (s *HTTPServer) setupRoutes() {
+func (s *Server) setupRoutes() {
 	{{- range $op := $.Operations }}
 	s.mux.MethodFunc("{{ $op.Spec.HTTPMethod }}", "{{ $op.Spec.Path }}", s.Handle{{ $op.Name }}Request)
 	{{- end }}
 }
 
-func (s *HTTPServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	s.mux.ServeHTTP(w, r)
 }
 {{ end }}
