@@ -18,8 +18,8 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/go-faster/errors"
 	"github.com/google/uuid"
-	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -63,22 +63,20 @@ var (
 // WriteJSON implements json.Marshaler.
 func (s Data) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	s.ID.WriteJSON(e)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
-	more.More()
-	e.ObjField("email")
+
+	e.FieldStart("email")
 	e.Str(s.Email)
-	more.More()
-	e.ObjField("hostname")
+
+	e.FieldStart("hostname")
 	e.Str(s.Hostname)
-	more.More()
-	e.ObjField("format")
+
+	e.FieldStart("format")
 	e.Str(s.Format)
 	e.ObjEnd()
 }
@@ -185,13 +183,11 @@ func (s *DataDescription) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s DescriptionDetailed) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("count")
+
+	e.FieldStart("count")
 	e.Int(s.Count)
 	e.ObjEnd()
 }
@@ -225,10 +221,8 @@ func (s *DescriptionDetailed) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s DescriptionSimple) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	e.Str(s.Description)
 	e.ObjEnd()
 }
@@ -256,13 +250,11 @@ func (s *DescriptionSimple) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Error) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("code")
+
+	e.FieldStart("code")
 	e.Int64(s.Code)
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
 	e.ObjEnd()
 }
@@ -296,8 +288,6 @@ func (s *Error) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ErrorStatusCode) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -318,8 +308,6 @@ func (s *ErrorStatusCode) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s FoobarPutDef) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -340,8 +328,6 @@ func (s *FoobarPutDef) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s FoobarPutDefStatusCode) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -419,7 +405,7 @@ func (o *NilString) ReadJSON(d *json.Decoder) error {
 		}
 		o.Value = string(v)
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -435,8 +421,6 @@ func (o *NilString) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s NotFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -572,7 +556,7 @@ func (o *OptNilString) ReadJSON(d *json.Decoder) error {
 		}
 		o.Value = string(v)
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -661,125 +645,101 @@ func (o *OptUUID) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Pet) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Primary != nil {
-		more.More()
-		e.ObjField("primary")
+		e.FieldStart("primary")
 		s.Primary.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int64(s.ID)
-	more.More()
-	e.ObjField("unique_id")
+
+	e.FieldStart("unique_id")
 	json.WriteUUID(e, s.UniqueID)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("kind")
+
+	e.FieldStart("kind")
 	s.Kind.WriteJSON(e)
 	if s.Tag.Set {
-		more.More()
-		e.ObjField("tag")
+		e.FieldStart("tag")
 		s.Tag.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("ip")
+
+	e.FieldStart("ip")
 	json.WriteIP(e, s.IP)
-	more.More()
-	e.ObjField("ip_v4")
+
+	e.FieldStart("ip_v4")
 	json.WriteIP(e, s.IPV4)
-	more.More()
-	e.ObjField("ip_v6")
+
+	e.FieldStart("ip_v6")
 	json.WriteIP(e, s.IPV6)
-	more.More()
-	e.ObjField("uri")
+
+	e.FieldStart("uri")
 	json.WriteURI(e, s.URI)
-	more.More()
-	e.ObjField("birthday")
+
+	e.FieldStart("birthday")
 	json.WriteDate(e, s.Birthday)
-	more.More()
-	e.ObjField("rate")
+
+	e.FieldStart("rate")
 	json.WriteDuration(e, s.Rate)
-	more.More()
-	e.ObjField("nickname")
+
+	e.FieldStart("nickname")
 	s.Nickname.WriteJSON(e)
 	if s.NullStr.Set {
-		more.More()
-		e.ObjField("nullStr")
+		e.FieldStart("nullStr")
 		s.NullStr.WriteJSON(e)
 	}
 	if s.Friends != nil {
-		more.More()
-		e.ObjField("friends")
-		more.Down()
+		e.FieldStart("friends")
 		e.ArrStart()
 		for _, elem := range s.Friends {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Next.Set {
-		more.More()
-		e.ObjField("next")
+		e.FieldStart("next")
 		s.Next.WriteJSON(e)
 	}
 	if s.TestInteger1.Set {
-		more.More()
-		e.ObjField("testInteger1")
+		e.FieldStart("testInteger1")
 		s.TestInteger1.WriteJSON(e)
 	}
 	if s.TestFloat1.Set {
-		more.More()
-		e.ObjField("testFloat1")
+		e.FieldStart("testFloat1")
 		s.TestFloat1.WriteJSON(e)
 	}
 	if s.TestArray1 != nil {
-		more.More()
-		e.ObjField("testArray1")
-		more.Down()
+		e.FieldStart("testArray1")
 		e.ArrStart()
 		for _, elem := range s.TestArray1 {
-			more.More()
-			more.Down()
 			e.ArrStart()
 			for _, elem := range elem {
-				more.More()
 				e.Str(elem)
 			}
 			e.ArrEnd()
-			more.Up()
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.TestDate.Set {
-		more.More()
-		e.ObjField("testDate")
+		e.FieldStart("testDate")
 		s.TestDate.WriteJSON(e, json.WriteDate)
 	}
 	if s.TestDuration.Set {
-		more.More()
-		e.ObjField("testDuration")
+		e.FieldStart("testDuration")
 		s.TestDuration.WriteJSON(e)
 	}
 	if s.TestTime.Set {
-		more.More()
-		e.ObjField("testTime")
+		e.FieldStart("testTime")
 		s.TestTime.WriteJSON(e, json.WriteTime)
 	}
 	if s.TestDateTime.Set {
-		more.More()
-		e.ObjField("testDateTime")
+		e.FieldStart("testDateTime")
 		s.TestDateTime.WriteJSON(e, json.WriteDateTime)
 	}
 	e.ObjEnd()
@@ -955,10 +915,8 @@ func (s *Pet) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PetGetDef) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
 	e.ObjEnd()
 }
@@ -986,8 +944,6 @@ func (s *PetGetDef) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PetGetDefStatusCode) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1047,8 +1003,6 @@ func (s *PetType) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PetUpdateNameAliasPostDef) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1069,8 +1023,6 @@ func (s *PetUpdateNameAliasPostDef) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PetUpdateNameAliasPostDefStatusCode) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1091,8 +1043,6 @@ func (s *PetUpdateNameAliasPostDefStatusCode) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PetUpdateNamePostDef) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1113,8 +1063,6 @@ func (s *PetUpdateNamePostDef) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PetUpdateNamePostDefStatusCode) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1135,8 +1083,6 @@ func (s *PetUpdateNamePostDefStatusCode) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PetUploadAvatarByIDOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 

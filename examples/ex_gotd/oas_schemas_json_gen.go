@@ -18,8 +18,8 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/go-faster/errors"
 	"github.com/google/uuid"
-	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -63,31 +63,26 @@ var (
 // WriteJSON implements json.Marshaler.
 func (s AddStickerToSet) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("emojis")
+
+	e.FieldStart("emojis")
 	e.Str(s.Emojis)
 	if s.MaskPosition.Set {
-		more.More()
-		e.ObjField("mask_position")
+		e.FieldStart("mask_position")
 		s.MaskPosition.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.PNGSticker.Set {
-		more.More()
-		e.ObjField("png_sticker")
+		e.FieldStart("png_sticker")
 		s.PNGSticker.WriteJSON(e)
 	}
 	if s.TgsSticker.Set {
-		more.More()
-		e.ObjField("tgs_sticker")
+		e.FieldStart("tgs_sticker")
 		s.TgsSticker.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("user_id")
+
+	e.FieldStart("user_id")
 	e.Int(s.UserID)
 	e.ObjEnd()
 }
@@ -142,42 +137,36 @@ func (s *AddStickerToSet) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Animation) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("duration")
+
+	e.FieldStart("duration")
 	e.Int(s.Duration)
-	more.More()
-	e.ObjField("file_id")
+
+	e.FieldStart("file_id")
 	e.Str(s.FileID)
 	if s.FileName.Set {
-		more.More()
-		e.ObjField("file_name")
+		e.FieldStart("file_name")
 		s.FileName.WriteJSON(e)
 	}
 	if s.FileSize.Set {
-		more.More()
-		e.ObjField("file_size")
+		e.FieldStart("file_size")
 		s.FileSize.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("file_unique_id")
+
+	e.FieldStart("file_unique_id")
 	e.Str(s.FileUniqueID)
-	more.More()
-	e.ObjField("height")
+
+	e.FieldStart("height")
 	e.Int(s.Height)
 	if s.MimeType.Set {
-		more.More()
-		e.ObjField("mime_type")
+		e.FieldStart("mime_type")
 		s.MimeType.WriteJSON(e)
 	}
 	if s.Thumb.Set {
-		more.More()
-		e.ObjField("thumb")
+		e.FieldStart("thumb")
 		s.Thumb.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("width")
+
+	e.FieldStart("width")
 	e.Int(s.Width)
 	e.ObjEnd()
 }
@@ -249,29 +238,23 @@ func (s *Animation) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s AnswerCallbackQuery) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.CacheTime.Set {
-		more.More()
-		e.ObjField("cache_time")
+		e.FieldStart("cache_time")
 		s.CacheTime.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("callback_query_id")
+
+	e.FieldStart("callback_query_id")
 	e.Str(s.CallbackQueryID)
 	if s.ShowAlert.Set {
-		more.More()
-		e.ObjField("show_alert")
+		e.FieldStart("show_alert")
 		s.ShowAlert.WriteJSON(e)
 	}
 	if s.Text.Set {
-		more.More()
-		e.ObjField("text")
+		e.FieldStart("text")
 		s.Text.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -320,43 +303,34 @@ func (s *AnswerCallbackQuery) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s AnswerInlineQuery) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.CacheTime.Set {
-		more.More()
-		e.ObjField("cache_time")
+		e.FieldStart("cache_time")
 		s.CacheTime.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("inline_query_id")
+
+	e.FieldStart("inline_query_id")
 	e.Str(s.InlineQueryID)
 	if s.IsPersonal.Set {
-		more.More()
-		e.ObjField("is_personal")
+		e.FieldStart("is_personal")
 		s.IsPersonal.WriteJSON(e)
 	}
 	if s.NextOffset.Set {
-		more.More()
-		e.ObjField("next_offset")
+		e.FieldStart("next_offset")
 		s.NextOffset.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("results")
-	more.Down()
+
+	e.FieldStart("results")
 	e.ArrStart()
 	for _, elem := range s.Results {
 		_ = elem // Unsupported kind "alias".
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.SwitchPmParameter.Set {
-		more.More()
-		e.ObjField("switch_pm_parameter")
+		e.FieldStart("switch_pm_parameter")
 		s.SwitchPmParameter.WriteJSON(e)
 	}
 	if s.SwitchPmText.Set {
-		more.More()
-		e.ObjField("switch_pm_text")
+		e.FieldStart("switch_pm_text")
 		s.SwitchPmText.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -420,18 +394,15 @@ func (s *AnswerInlineQuery) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s AnswerPreCheckoutQuery) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ErrorMessage.Set {
-		more.More()
-		e.ObjField("error_message")
+		e.FieldStart("error_message")
 		s.ErrorMessage.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("ok")
+
+	e.FieldStart("ok")
 	e.Bool(s.Ok)
-	more.More()
-	e.ObjField("pre_checkout_query_id")
+
+	e.FieldStart("pre_checkout_query_id")
 	e.Str(s.PreCheckoutQueryID)
 	e.ObjEnd()
 }
@@ -470,30 +441,23 @@ func (s *AnswerPreCheckoutQuery) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s AnswerShippingQuery) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ErrorMessage.Set {
-		more.More()
-		e.ObjField("error_message")
+		e.FieldStart("error_message")
 		s.ErrorMessage.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("ok")
+
+	e.FieldStart("ok")
 	e.Bool(s.Ok)
 	if s.ShippingOptions != nil {
-		more.More()
-		e.ObjField("shipping_options")
-		more.Down()
+		e.FieldStart("shipping_options")
 		e.ArrStart()
 		for _, elem := range s.ShippingOptions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("shipping_query_id")
+
+	e.FieldStart("shipping_query_id")
 	e.Str(s.ShippingQueryID)
 	e.ObjEnd()
 }
@@ -544,45 +508,37 @@ func (s *AnswerShippingQuery) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Audio) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("duration")
+
+	e.FieldStart("duration")
 	e.Int(s.Duration)
-	more.More()
-	e.ObjField("file_id")
+
+	e.FieldStart("file_id")
 	e.Str(s.FileID)
 	if s.FileName.Set {
-		more.More()
-		e.ObjField("file_name")
+		e.FieldStart("file_name")
 		s.FileName.WriteJSON(e)
 	}
 	if s.FileSize.Set {
-		more.More()
-		e.ObjField("file_size")
+		e.FieldStart("file_size")
 		s.FileSize.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("file_unique_id")
+
+	e.FieldStart("file_unique_id")
 	e.Str(s.FileUniqueID)
 	if s.MimeType.Set {
-		more.More()
-		e.ObjField("mime_type")
+		e.FieldStart("mime_type")
 		s.MimeType.WriteJSON(e)
 	}
 	if s.Performer.Set {
-		more.More()
-		e.ObjField("performer")
+		e.FieldStart("performer")
 		s.Performer.WriteJSON(e)
 	}
 	if s.Thumb.Set {
-		more.More()
-		e.ObjField("thumb")
+		e.FieldStart("thumb")
 		s.Thumb.WriteJSON(e)
 	}
 	if s.Title.Set {
-		more.More()
-		e.ObjField("title")
+		e.FieldStart("title")
 		s.Title.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -653,23 +609,19 @@ func (s *Audio) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BanChatMember) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	if s.RevokeMessages.Set {
-		more.More()
-		e.ObjField("revoke_messages")
+		e.FieldStart("revoke_messages")
 		s.RevokeMessages.WriteJSON(e)
 	}
 	if s.UntilDate.Set {
-		more.More()
-		e.ObjField("until_date")
+		e.FieldStart("until_date")
 		s.UntilDate.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("user_id")
+
+	e.FieldStart("user_id")
 	e.Int(s.UserID)
 	e.ObjEnd()
 }
@@ -711,13 +663,11 @@ func (s *BanChatMember) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BotCommand) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("command")
+
+	e.FieldStart("command")
 	e.Str(s.Command)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	e.Str(s.Description)
 	e.ObjEnd()
 }
@@ -862,10 +812,8 @@ func (s *BotCommandScope) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BotCommandScopeAllChatAdministrators) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -893,10 +841,8 @@ func (s *BotCommandScopeAllChatAdministrators) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BotCommandScopeAllGroupChats) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -924,10 +870,8 @@ func (s *BotCommandScopeAllGroupChats) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BotCommandScopeAllPrivateChats) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -955,13 +899,11 @@ func (s *BotCommandScopeAllPrivateChats) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BotCommandScopeChat) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -993,13 +935,11 @@ func (s *BotCommandScopeChat) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BotCommandScopeChatAdministrators) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -1031,16 +971,14 @@ func (s *BotCommandScopeChatAdministrators) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BotCommandScopeChatMember) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
-	more.More()
-	e.ObjField("user_id")
+
+	e.FieldStart("user_id")
 	e.Int(s.UserID)
 	e.ObjEnd()
 }
@@ -1078,10 +1016,8 @@ func (s *BotCommandScopeChatMember) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BotCommandScopeDefault) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -1109,8 +1045,6 @@ func (s *BotCommandScopeDefault) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CallbackGame) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1131,92 +1065,74 @@ func (s *CallbackGame) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Chat) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Bio.Set {
-		more.More()
-		e.ObjField("bio")
+		e.FieldStart("bio")
 		s.Bio.WriteJSON(e)
 	}
 	if s.CanSetStickerSet.Set {
-		more.More()
-		e.ObjField("can_set_sticker_set")
+		e.FieldStart("can_set_sticker_set")
 		s.CanSetStickerSet.WriteJSON(e)
 	}
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.FirstName.Set {
-		more.More()
-		e.ObjField("first_name")
+		e.FieldStart("first_name")
 		s.FirstName.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
 	if s.InviteLink.Set {
-		more.More()
-		e.ObjField("invite_link")
+		e.FieldStart("invite_link")
 		s.InviteLink.WriteJSON(e)
 	}
 	if s.LastName.Set {
-		more.More()
-		e.ObjField("last_name")
+		e.FieldStart("last_name")
 		s.LastName.WriteJSON(e)
 	}
 	if s.LinkedChatID.Set {
-		more.More()
-		e.ObjField("linked_chat_id")
+		e.FieldStart("linked_chat_id")
 		s.LinkedChatID.WriteJSON(e)
 	}
 	if s.Location.Set {
-		more.More()
-		e.ObjField("location")
+		e.FieldStart("location")
 		s.Location.WriteJSON(e)
 	}
 	if s.MessageAutoDeleteTime.Set {
-		more.More()
-		e.ObjField("message_auto_delete_time")
+		e.FieldStart("message_auto_delete_time")
 		s.MessageAutoDeleteTime.WriteJSON(e)
 	}
 	if s.Permissions.Set {
-		more.More()
-		e.ObjField("permissions")
+		e.FieldStart("permissions")
 		s.Permissions.WriteJSON(e)
 	}
 	if s.Photo.Set {
-		more.More()
-		e.ObjField("photo")
+		e.FieldStart("photo")
 		s.Photo.WriteJSON(e)
 	}
 	if s.PinnedMessage != nil {
-		more.More()
-		e.ObjField("pinned_message")
+		e.FieldStart("pinned_message")
 		s.PinnedMessage.WriteJSON(e)
 	}
 	if s.SlowModeDelay.Set {
-		more.More()
-		e.ObjField("slow_mode_delay")
+		e.FieldStart("slow_mode_delay")
 		s.SlowModeDelay.WriteJSON(e)
 	}
 	if s.StickerSetName.Set {
-		more.More()
-		e.ObjField("sticker_set_name")
+		e.FieldStart("sticker_set_name")
 		s.StickerSetName.WriteJSON(e)
 	}
 	if s.Title.Set {
-		more.More()
-		e.ObjField("title")
+		e.FieldStart("title")
 		s.Title.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	if s.Username.Set {
-		more.More()
-		e.ObjField("username")
+		e.FieldStart("username")
 		s.Username.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -1333,13 +1249,11 @@ func (s *Chat) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ChatLocation) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("address")
+
+	e.FieldStart("address")
 	e.Str(s.Address)
-	more.More()
-	e.ObjField("location")
+
+	e.FieldStart("location")
 	s.Location.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -1371,46 +1285,36 @@ func (s *ChatLocation) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ChatPermissions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.CanAddWebPagePreviews.Set {
-		more.More()
-		e.ObjField("can_add_web_page_previews")
+		e.FieldStart("can_add_web_page_previews")
 		s.CanAddWebPagePreviews.WriteJSON(e)
 	}
 	if s.CanChangeInfo.Set {
-		more.More()
-		e.ObjField("can_change_info")
+		e.FieldStart("can_change_info")
 		s.CanChangeInfo.WriteJSON(e)
 	}
 	if s.CanInviteUsers.Set {
-		more.More()
-		e.ObjField("can_invite_users")
+		e.FieldStart("can_invite_users")
 		s.CanInviteUsers.WriteJSON(e)
 	}
 	if s.CanPinMessages.Set {
-		more.More()
-		e.ObjField("can_pin_messages")
+		e.FieldStart("can_pin_messages")
 		s.CanPinMessages.WriteJSON(e)
 	}
 	if s.CanSendMediaMessages.Set {
-		more.More()
-		e.ObjField("can_send_media_messages")
+		e.FieldStart("can_send_media_messages")
 		s.CanSendMediaMessages.WriteJSON(e)
 	}
 	if s.CanSendMessages.Set {
-		more.More()
-		e.ObjField("can_send_messages")
+		e.FieldStart("can_send_messages")
 		s.CanSendMessages.WriteJSON(e)
 	}
 	if s.CanSendOtherMessages.Set {
-		more.More()
-		e.ObjField("can_send_other_messages")
+		e.FieldStart("can_send_other_messages")
 		s.CanSendOtherMessages.WriteJSON(e)
 	}
 	if s.CanSendPolls.Set {
-		more.More()
-		e.ObjField("can_send_polls")
+		e.FieldStart("can_send_polls")
 		s.CanSendPolls.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -1473,19 +1377,17 @@ func (s *ChatPermissions) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ChatPhoto) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("big_file_id")
+
+	e.FieldStart("big_file_id")
 	e.Str(s.BigFileID)
-	more.More()
-	e.ObjField("big_file_unique_id")
+
+	e.FieldStart("big_file_unique_id")
 	e.Str(s.BigFileUniqueID)
-	more.More()
-	e.ObjField("small_file_id")
+
+	e.FieldStart("small_file_id")
 	e.Str(s.SmallFileID)
-	more.More()
-	e.ObjField("small_file_unique_id")
+
+	e.FieldStart("small_file_unique_id")
 	e.Str(s.SmallFileUniqueID)
 	e.ObjEnd()
 }
@@ -1531,27 +1433,22 @@ func (s *ChatPhoto) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Contact) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("first_name")
+
+	e.FieldStart("first_name")
 	e.Str(s.FirstName)
 	if s.LastName.Set {
-		more.More()
-		e.ObjField("last_name")
+		e.FieldStart("last_name")
 		s.LastName.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("phone_number")
+
+	e.FieldStart("phone_number")
 	e.Str(s.PhoneNumber)
 	if s.UserID.Set {
-		more.More()
-		e.ObjField("user_id")
+		e.FieldStart("user_id")
 		s.UserID.WriteJSON(e)
 	}
 	if s.Vcard.Set {
-		more.More()
-		e.ObjField("vcard")
+		e.FieldStart("vcard")
 		s.Vcard.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -1601,57 +1498,45 @@ func (s *Contact) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CopyMessage) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AllowSendingWithoutReply.Set {
-		more.More()
-		e.ObjField("allow_sending_without_reply")
+		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(e)
 	}
 	if s.Caption.Set {
-		more.More()
-		e.ObjField("caption")
+		e.FieldStart("caption")
 		s.Caption.WriteJSON(e)
 	}
 	if s.CaptionEntities != nil {
-		more.More()
-		e.ObjField("caption_entities")
-		more.Down()
+		e.FieldStart("caption_entities")
 		e.ArrStart()
 		for _, elem := range s.CaptionEntities {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	if s.DisableNotification.Set {
-		more.More()
-		e.ObjField("disable_notification")
+		e.FieldStart("disable_notification")
 		s.DisableNotification.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("from_chat_id")
+
+	e.FieldStart("from_chat_id")
 	s.FromChatID.WriteJSON(e)
-	more.More()
-	e.ObjField("message_id")
+
+	e.FieldStart("message_id")
 	e.Int(s.MessageID)
 	if s.ParseMode.Set {
-		more.More()
-		e.ObjField("parse_mode")
+		e.FieldStart("parse_mode")
 		s.ParseMode.WriteJSON(e)
 	}
 	if s.ReplyMarkup != nil {
-		more.More()
-		e.ObjField("reply_markup")
+		e.FieldStart("reply_markup")
 		s.ReplyMarkup.WriteJSON(e)
 	}
 	if s.ReplyToMessageID.Set {
-		more.More()
-		e.ObjField("reply_to_message_id")
+		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -1818,19 +1703,15 @@ func (s *CopyMessageReplyMarkup) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CreateChatInviteLink) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	if s.ExpireDate.Set {
-		more.More()
-		e.ObjField("expire_date")
+		e.FieldStart("expire_date")
 		s.ExpireDate.WriteJSON(e)
 	}
 	if s.MemberLimit.Set {
-		more.More()
-		e.ObjField("member_limit")
+		e.FieldStart("member_limit")
 		s.MemberLimit.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -1867,39 +1748,33 @@ func (s *CreateChatInviteLink) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CreateNewStickerSet) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ContainsMasks.Set {
-		more.More()
-		e.ObjField("contains_masks")
+		e.FieldStart("contains_masks")
 		s.ContainsMasks.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("emojis")
+
+	e.FieldStart("emojis")
 	e.Str(s.Emojis)
 	if s.MaskPosition.Set {
-		more.More()
-		e.ObjField("mask_position")
+		e.FieldStart("mask_position")
 		s.MaskPosition.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.PNGSticker.Set {
-		more.More()
-		e.ObjField("png_sticker")
+		e.FieldStart("png_sticker")
 		s.PNGSticker.WriteJSON(e)
 	}
 	if s.TgsSticker.Set {
-		more.More()
-		e.ObjField("tgs_sticker")
+		e.FieldStart("tgs_sticker")
 		s.TgsSticker.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	e.Str(s.Title)
-	more.More()
-	e.ObjField("user_id")
+
+	e.FieldStart("user_id")
 	e.Int(s.UserID)
 	e.ObjEnd()
 }
@@ -1965,10 +1840,8 @@ func (s *CreateNewStickerSet) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s DeleteChatPhoto) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -1994,10 +1867,8 @@ func (s *DeleteChatPhoto) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s DeleteChatStickerSet) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -2023,13 +1894,11 @@ func (s *DeleteChatStickerSet) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s DeleteMessage) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
-	more.More()
-	e.ObjField("message_id")
+
+	e.FieldStart("message_id")
 	e.Int(s.MessageID)
 	e.ObjEnd()
 }
@@ -2061,16 +1930,12 @@ func (s *DeleteMessage) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s DeleteMyCommands) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LanguageCode.Set {
-		more.More()
-		e.ObjField("language_code")
+		e.FieldStart("language_code")
 		s.LanguageCode.WriteJSON(e)
 	}
 	if s.Scope != nil {
-		more.More()
-		e.ObjField("scope")
+		e.FieldStart("scope")
 		s.Scope.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -2105,10 +1970,8 @@ func (s *DeleteMyCommands) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s DeleteStickerFromSet) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("sticker")
+
+	e.FieldStart("sticker")
 	e.Str(s.Sticker)
 	e.ObjEnd()
 }
@@ -2136,11 +1999,8 @@ func (s *DeleteStickerFromSet) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s DeleteWebhook) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.DropPendingUpdates.Set {
-		more.More()
-		e.ObjField("drop_pending_updates")
+		e.FieldStart("drop_pending_updates")
 		s.DropPendingUpdates.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -2168,13 +2028,11 @@ func (s *DeleteWebhook) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Dice) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("emoji")
+
+	e.FieldStart("emoji")
 	e.Str(s.Emoji)
-	more.More()
-	e.ObjField("value")
+
+	e.FieldStart("value")
 	e.Int(s.Value)
 	e.ObjEnd()
 }
@@ -2208,32 +2066,26 @@ func (s *Dice) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Document) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("file_id")
+
+	e.FieldStart("file_id")
 	e.Str(s.FileID)
 	if s.FileName.Set {
-		more.More()
-		e.ObjField("file_name")
+		e.FieldStart("file_name")
 		s.FileName.WriteJSON(e)
 	}
 	if s.FileSize.Set {
-		more.More()
-		e.ObjField("file_size")
+		e.FieldStart("file_size")
 		s.FileSize.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("file_unique_id")
+
+	e.FieldStart("file_unique_id")
 	e.Str(s.FileUniqueID)
 	if s.MimeType.Set {
-		more.More()
-		e.ObjField("mime_type")
+		e.FieldStart("mime_type")
 		s.MimeType.WriteJSON(e)
 	}
 	if s.Thumb.Set {
-		more.More()
-		e.ObjField("thumb")
+		e.FieldStart("thumb")
 		s.Thumb.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -2288,22 +2140,18 @@ func (s *Document) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s EditChatInviteLink) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	if s.ExpireDate.Set {
-		more.More()
-		e.ObjField("expire_date")
+		e.FieldStart("expire_date")
 		s.ExpireDate.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("invite_link")
+
+	e.FieldStart("invite_link")
 	e.Str(s.InviteLink)
 	if s.MemberLimit.Set {
-		more.More()
-		e.ObjField("member_limit")
+		e.FieldStart("member_limit")
 		s.MemberLimit.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -2346,48 +2194,36 @@ func (s *EditChatInviteLink) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s EditMessageCaption) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Caption.Set {
-		more.More()
-		e.ObjField("caption")
+		e.FieldStart("caption")
 		s.Caption.WriteJSON(e)
 	}
 	if s.CaptionEntities != nil {
-		more.More()
-		e.ObjField("caption_entities")
-		more.Down()
+		e.FieldStart("caption_entities")
 		e.ArrStart()
 		for _, elem := range s.CaptionEntities {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.ChatID != nil {
-		more.More()
-		e.ObjField("chat_id")
+		e.FieldStart("chat_id")
 		s.ChatID.WriteJSON(e)
 	}
 	if s.InlineMessageID.Set {
-		more.More()
-		e.ObjField("inline_message_id")
+		e.FieldStart("inline_message_id")
 		s.InlineMessageID.WriteJSON(e)
 	}
 	if s.MessageID.Set {
-		more.More()
-		e.ObjField("message_id")
+		e.FieldStart("message_id")
 		s.MessageID.WriteJSON(e)
 	}
 	if s.ParseMode.Set {
-		more.More()
-		e.ObjField("parse_mode")
+		e.FieldStart("parse_mode")
 		s.ParseMode.WriteJSON(e)
 	}
 	if s.ReplyMarkup.Set {
-		more.More()
-		e.ObjField("reply_markup")
+		e.FieldStart("reply_markup")
 		s.ReplyMarkup.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -2454,47 +2290,38 @@ func (s *EditMessageCaption) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s EditMessageLiveLocation) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ChatID != nil {
-		more.More()
-		e.ObjField("chat_id")
+		e.FieldStart("chat_id")
 		s.ChatID.WriteJSON(e)
 	}
 	if s.Heading.Set {
-		more.More()
-		e.ObjField("heading")
+		e.FieldStart("heading")
 		s.Heading.WriteJSON(e)
 	}
 	if s.HorizontalAccuracy.Set {
-		more.More()
-		e.ObjField("horizontal_accuracy")
+		e.FieldStart("horizontal_accuracy")
 		s.HorizontalAccuracy.WriteJSON(e)
 	}
 	if s.InlineMessageID.Set {
-		more.More()
-		e.ObjField("inline_message_id")
+		e.FieldStart("inline_message_id")
 		s.InlineMessageID.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("latitude")
+
+	e.FieldStart("latitude")
 	e.Float64(s.Latitude)
-	more.More()
-	e.ObjField("longitude")
+
+	e.FieldStart("longitude")
 	e.Float64(s.Longitude)
 	if s.MessageID.Set {
-		more.More()
-		e.ObjField("message_id")
+		e.FieldStart("message_id")
 		s.MessageID.WriteJSON(e)
 	}
 	if s.ProximityAlertRadius.Set {
-		more.More()
-		e.ObjField("proximity_alert_radius")
+		e.FieldStart("proximity_alert_radius")
 		s.ProximityAlertRadius.WriteJSON(e)
 	}
 	if s.ReplyMarkup.Set {
-		more.More()
-		e.ObjField("reply_markup")
+		e.FieldStart("reply_markup")
 		s.ReplyMarkup.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -2566,29 +2393,23 @@ func (s *EditMessageLiveLocation) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s EditMessageMedia) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ChatID != nil {
-		more.More()
-		e.ObjField("chat_id")
+		e.FieldStart("chat_id")
 		s.ChatID.WriteJSON(e)
 	}
 	if s.InlineMessageID.Set {
-		more.More()
-		e.ObjField("inline_message_id")
+		e.FieldStart("inline_message_id")
 		s.InlineMessageID.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("media")
+
+	e.FieldStart("media")
 	s.Media.WriteJSON(e)
 	if s.MessageID.Set {
-		more.More()
-		e.ObjField("message_id")
+		e.FieldStart("message_id")
 		s.MessageID.WriteJSON(e)
 	}
 	if s.ReplyMarkup.Set {
-		more.More()
-		e.ObjField("reply_markup")
+		e.FieldStart("reply_markup")
 		s.ReplyMarkup.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -2637,26 +2458,20 @@ func (s *EditMessageMedia) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s EditMessageReplyMarkup) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ChatID != nil {
-		more.More()
-		e.ObjField("chat_id")
+		e.FieldStart("chat_id")
 		s.ChatID.WriteJSON(e)
 	}
 	if s.InlineMessageID.Set {
-		more.More()
-		e.ObjField("inline_message_id")
+		e.FieldStart("inline_message_id")
 		s.InlineMessageID.WriteJSON(e)
 	}
 	if s.MessageID.Set {
-		more.More()
-		e.ObjField("message_id")
+		e.FieldStart("message_id")
 		s.MessageID.WriteJSON(e)
 	}
 	if s.ReplyMarkup.Set {
-		more.More()
-		e.ObjField("reply_markup")
+		e.FieldStart("reply_markup")
 		s.ReplyMarkup.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -2701,52 +2516,40 @@ func (s *EditMessageReplyMarkup) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s EditMessageText) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ChatID != nil {
-		more.More()
-		e.ObjField("chat_id")
+		e.FieldStart("chat_id")
 		s.ChatID.WriteJSON(e)
 	}
 	if s.DisableWebPagePreview.Set {
-		more.More()
-		e.ObjField("disable_web_page_preview")
+		e.FieldStart("disable_web_page_preview")
 		s.DisableWebPagePreview.WriteJSON(e)
 	}
 	if s.Entities != nil {
-		more.More()
-		e.ObjField("entities")
-		more.Down()
+		e.FieldStart("entities")
 		e.ArrStart()
 		for _, elem := range s.Entities {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.InlineMessageID.Set {
-		more.More()
-		e.ObjField("inline_message_id")
+		e.FieldStart("inline_message_id")
 		s.InlineMessageID.WriteJSON(e)
 	}
 	if s.MessageID.Set {
-		more.More()
-		e.ObjField("message_id")
+		e.FieldStart("message_id")
 		s.MessageID.WriteJSON(e)
 	}
 	if s.ParseMode.Set {
-		more.More()
-		e.ObjField("parse_mode")
+		e.FieldStart("parse_mode")
 		s.ParseMode.WriteJSON(e)
 	}
 	if s.ReplyMarkup.Set {
-		more.More()
-		e.ObjField("reply_markup")
+		e.FieldStart("reply_markup")
 		s.ReplyMarkup.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("text")
+
+	e.FieldStart("text")
 	e.Str(s.Text)
 	e.ObjEnd()
 }
@@ -2818,16 +2621,14 @@ func (s *EditMessageText) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s EncryptedCredentials) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("data")
+
+	e.FieldStart("data")
 	e.Str(s.Data)
-	more.More()
-	e.ObjField("hash")
+
+	e.FieldStart("hash")
 	e.Str(s.Hash)
-	more.More()
-	e.ObjField("secret")
+
+	e.FieldStart("secret")
 	e.Str(s.Secret)
 	e.ObjEnd()
 }
@@ -2867,67 +2668,51 @@ func (s *EncryptedCredentials) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s EncryptedPassportElement) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Data.Set {
-		more.More()
-		e.ObjField("data")
+		e.FieldStart("data")
 		s.Data.WriteJSON(e)
 	}
 	if s.Email.Set {
-		more.More()
-		e.ObjField("email")
+		e.FieldStart("email")
 		s.Email.WriteJSON(e)
 	}
 	if s.Files != nil {
-		more.More()
-		e.ObjField("files")
-		more.Down()
+		e.FieldStart("files")
 		e.ArrStart()
 		for _, elem := range s.Files {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.FrontSide.Set {
-		more.More()
-		e.ObjField("front_side")
+		e.FieldStart("front_side")
 		s.FrontSide.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("hash")
+
+	e.FieldStart("hash")
 	e.Str(s.Hash)
 	if s.PhoneNumber.Set {
-		more.More()
-		e.ObjField("phone_number")
+		e.FieldStart("phone_number")
 		s.PhoneNumber.WriteJSON(e)
 	}
 	if s.ReverseSide.Set {
-		more.More()
-		e.ObjField("reverse_side")
+		e.FieldStart("reverse_side")
 		s.ReverseSide.WriteJSON(e)
 	}
 	if s.Selfie.Set {
-		more.More()
-		e.ObjField("selfie")
+		e.FieldStart("selfie")
 		s.Selfie.WriteJSON(e)
 	}
 	if s.Translation != nil {
-		more.More()
-		e.ObjField("translation")
-		more.Down()
+		e.FieldStart("translation")
 		e.ArrStart()
 		for _, elem := range s.Translation {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -3015,20 +2800,17 @@ func (s *EncryptedPassportElement) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Error) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	e.Str(s.Description)
-	more.More()
-	e.ObjField("error_code")
+
+	e.FieldStart("error_code")
 	e.Int(s.ErrorCode)
-	more.More()
-	e.ObjField("ok")
+
+	e.FieldStart("ok")
 	e.Bool(s.Ok)
 	if s.Parameters.Set {
-		more.More()
-		e.ObjField("parameters")
+		e.FieldStart("parameters")
 		s.Parameters.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -3074,8 +2856,6 @@ func (s *Error) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ErrorStatusCode) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -3096,10 +2876,8 @@ func (s *ErrorStatusCode) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ExportChatInviteLink) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -3125,19 +2903,15 @@ func (s *ExportChatInviteLink) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ForceReply) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("force_reply")
+
+	e.FieldStart("force_reply")
 	e.Bool(s.ForceReply)
 	if s.InputFieldPlaceholder.Set {
-		more.More()
-		e.ObjField("input_field_placeholder")
+		e.FieldStart("input_field_placeholder")
 		s.InputFieldPlaceholder.WriteJSON(e)
 	}
 	if s.Selective.Set {
-		more.More()
-		e.ObjField("selective")
+		e.FieldStart("selective")
 		s.Selective.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -3176,21 +2950,18 @@ func (s *ForceReply) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ForwardMessage) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	if s.DisableNotification.Set {
-		more.More()
-		e.ObjField("disable_notification")
+		e.FieldStart("disable_notification")
 		s.DisableNotification.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("from_chat_id")
+
+	e.FieldStart("from_chat_id")
 	s.FromChatID.WriteJSON(e)
-	more.More()
-	e.ObjField("message_id")
+
+	e.FieldStart("message_id")
 	e.Int(s.MessageID)
 	e.ObjEnd()
 }
@@ -3231,45 +3002,34 @@ func (s *ForwardMessage) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Game) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Animation.Set {
-		more.More()
-		e.ObjField("animation")
+		e.FieldStart("animation")
 		s.Animation.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	e.Str(s.Description)
-	more.More()
-	e.ObjField("photo")
-	more.Down()
+
+	e.FieldStart("photo")
 	e.ArrStart()
 	for _, elem := range s.Photo {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Text.Set {
-		more.More()
-		e.ObjField("text")
+		e.FieldStart("text")
 		s.Text.WriteJSON(e)
 	}
 	if s.TextEntities != nil {
-		more.More()
-		e.ObjField("text_entities")
-		more.Down()
+		e.FieldStart("text_entities")
 		e.ArrStart()
 		for _, elem := range s.TextEntities {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	e.Str(s.Title)
 	e.ObjEnd()
 }
@@ -3337,10 +3097,8 @@ func (s *Game) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetChat) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -3366,10 +3124,8 @@ func (s *GetChat) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetChatAdministrators) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -3395,13 +3151,11 @@ func (s *GetChatAdministrators) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetChatMember) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
-	more.More()
-	e.ObjField("user_id")
+
+	e.FieldStart("user_id")
 	e.Int(s.UserID)
 	e.ObjEnd()
 }
@@ -3433,10 +3187,8 @@ func (s *GetChatMember) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetChatMemberCount) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -3462,10 +3214,8 @@ func (s *GetChatMemberCount) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetFile) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("file_id")
+
+	e.FieldStart("file_id")
 	e.Str(s.FileID)
 	e.ObjEnd()
 }
@@ -3493,25 +3243,20 @@ func (s *GetFile) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetGameHighScores) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ChatID.Set {
-		more.More()
-		e.ObjField("chat_id")
+		e.FieldStart("chat_id")
 		s.ChatID.WriteJSON(e)
 	}
 	if s.InlineMessageID.Set {
-		more.More()
-		e.ObjField("inline_message_id")
+		e.FieldStart("inline_message_id")
 		s.InlineMessageID.WriteJSON(e)
 	}
 	if s.MessageID.Set {
-		more.More()
-		e.ObjField("message_id")
+		e.FieldStart("message_id")
 		s.MessageID.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("user_id")
+
+	e.FieldStart("user_id")
 	e.Int(s.UserID)
 	e.ObjEnd()
 }
@@ -3554,16 +3299,12 @@ func (s *GetGameHighScores) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetMyCommands) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LanguageCode.Set {
-		more.More()
-		e.ObjField("language_code")
+		e.FieldStart("language_code")
 		s.LanguageCode.WriteJSON(e)
 	}
 	if s.Scope != nil {
-		more.More()
-		e.ObjField("scope")
+		e.FieldStart("scope")
 		s.Scope.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -3598,10 +3339,8 @@ func (s *GetMyCommands) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetStickerSet) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -3629,33 +3368,24 @@ func (s *GetStickerSet) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetUpdates) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AllowedUpdates != nil {
-		more.More()
-		e.ObjField("allowed_updates")
-		more.Down()
+		e.FieldStart("allowed_updates")
 		e.ArrStart()
 		for _, elem := range s.AllowedUpdates {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Limit.Set {
-		more.More()
-		e.ObjField("limit")
+		e.FieldStart("limit")
 		s.Limit.WriteJSON(e)
 	}
 	if s.Offset.Set {
-		more.More()
-		e.ObjField("offset")
+		e.FieldStart("offset")
 		s.Offset.WriteJSON(e)
 	}
 	if s.Timeout.Set {
-		more.More()
-		e.ObjField("timeout")
+		e.FieldStart("timeout")
 		s.Timeout.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -3707,20 +3437,16 @@ func (s *GetUpdates) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetUserProfilePhotos) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Limit.Set {
-		more.More()
-		e.ObjField("limit")
+		e.FieldStart("limit")
 		s.Limit.WriteJSON(e)
 	}
 	if s.Offset.Set {
-		more.More()
-		e.ObjField("offset")
+		e.FieldStart("offset")
 		s.Offset.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("user_id")
+
+	e.FieldStart("user_id")
 	e.Int(s.UserID)
 	e.ObjEnd()
 }
@@ -3795,44 +3521,35 @@ func (s *ID) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s InlineKeyboardButton) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.CallbackData.Set {
-		more.More()
-		e.ObjField("callback_data")
+		e.FieldStart("callback_data")
 		s.CallbackData.WriteJSON(e)
 	}
 	if s.CallbackGame != nil {
-		more.More()
-		e.ObjField("callback_game")
+		e.FieldStart("callback_game")
 		s.CallbackGame.WriteJSON(e)
 	}
 	if s.LoginURL.Set {
-		more.More()
-		e.ObjField("login_url")
+		e.FieldStart("login_url")
 		s.LoginURL.WriteJSON(e)
 	}
 	if s.Pay.Set {
-		more.More()
-		e.ObjField("pay")
+		e.FieldStart("pay")
 		s.Pay.WriteJSON(e)
 	}
 	if s.SwitchInlineQuery.Set {
-		more.More()
-		e.ObjField("switch_inline_query")
+		e.FieldStart("switch_inline_query")
 		s.SwitchInlineQuery.WriteJSON(e)
 	}
 	if s.SwitchInlineQueryCurrentChat.Set {
-		more.More()
-		e.ObjField("switch_inline_query_current_chat")
+		e.FieldStart("switch_inline_query_current_chat")
 		s.SwitchInlineQueryCurrentChat.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("text")
+
+	e.FieldStart("text")
 	e.Str(s.Text)
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -3898,25 +3615,17 @@ func (s *InlineKeyboardButton) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s InlineKeyboardMarkup) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("inline_keyboard")
-	more.Down()
+
+	e.FieldStart("inline_keyboard")
 	e.ArrStart()
 	for _, elem := range s.InlineKeyboard {
-		more.More()
-		more.Down()
 		e.ArrStart()
 		for _, elem := range elem {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -4053,54 +3762,42 @@ func (s *InputMedia) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s InputMediaAnimation) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Caption.Set {
-		more.More()
-		e.ObjField("caption")
+		e.FieldStart("caption")
 		s.Caption.WriteJSON(e)
 	}
 	if s.CaptionEntities != nil {
-		more.More()
-		e.ObjField("caption_entities")
-		more.Down()
+		e.FieldStart("caption_entities")
 		e.ArrStart()
 		for _, elem := range s.CaptionEntities {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Duration.Set {
-		more.More()
-		e.ObjField("duration")
+		e.FieldStart("duration")
 		s.Duration.WriteJSON(e)
 	}
 	if s.Height.Set {
-		more.More()
-		e.ObjField("height")
+		e.FieldStart("height")
 		s.Height.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("media")
+
+	e.FieldStart("media")
 	e.Str(s.Media)
 	if s.ParseMode.Set {
-		more.More()
-		e.ObjField("parse_mode")
+		e.FieldStart("parse_mode")
 		s.ParseMode.WriteJSON(e)
 	}
 	if s.Thumb.Set {
-		more.More()
-		e.ObjField("thumb")
+		e.FieldStart("thumb")
 		s.Thumb.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	if s.Width.Set {
-		more.More()
-		e.ObjField("width")
+		e.FieldStart("width")
 		s.Width.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -4177,55 +3874,43 @@ func (s *InputMediaAnimation) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s InputMediaAudio) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Caption.Set {
-		more.More()
-		e.ObjField("caption")
+		e.FieldStart("caption")
 		s.Caption.WriteJSON(e)
 	}
 	if s.CaptionEntities != nil {
-		more.More()
-		e.ObjField("caption_entities")
-		more.Down()
+		e.FieldStart("caption_entities")
 		e.ArrStart()
 		for _, elem := range s.CaptionEntities {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Duration.Set {
-		more.More()
-		e.ObjField("duration")
+		e.FieldStart("duration")
 		s.Duration.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("media")
+
+	e.FieldStart("media")
 	e.Str(s.Media)
 	if s.ParseMode.Set {
-		more.More()
-		e.ObjField("parse_mode")
+		e.FieldStart("parse_mode")
 		s.ParseMode.WriteJSON(e)
 	}
 	if s.Performer.Set {
-		more.More()
-		e.ObjField("performer")
+		e.FieldStart("performer")
 		s.Performer.WriteJSON(e)
 	}
 	if s.Thumb.Set {
-		more.More()
-		e.ObjField("thumb")
+		e.FieldStart("thumb")
 		s.Thumb.WriteJSON(e)
 	}
 	if s.Title.Set {
-		more.More()
-		e.ObjField("title")
+		e.FieldStart("title")
 		s.Title.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -4301,45 +3986,35 @@ func (s *InputMediaAudio) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s InputMediaDocument) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Caption.Set {
-		more.More()
-		e.ObjField("caption")
+		e.FieldStart("caption")
 		s.Caption.WriteJSON(e)
 	}
 	if s.CaptionEntities != nil {
-		more.More()
-		e.ObjField("caption_entities")
-		more.Down()
+		e.FieldStart("caption_entities")
 		e.ArrStart()
 		for _, elem := range s.CaptionEntities {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.DisableContentTypeDetection.Set {
-		more.More()
-		e.ObjField("disable_content_type_detection")
+		e.FieldStart("disable_content_type_detection")
 		s.DisableContentTypeDetection.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("media")
+
+	e.FieldStart("media")
 	e.Str(s.Media)
 	if s.ParseMode.Set {
-		more.More()
-		e.ObjField("parse_mode")
+		e.FieldStart("parse_mode")
 		s.ParseMode.WriteJSON(e)
 	}
 	if s.Thumb.Set {
-		more.More()
-		e.ObjField("thumb")
+		e.FieldStart("thumb")
 		s.Thumb.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -4405,35 +4080,27 @@ func (s *InputMediaDocument) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s InputMediaPhoto) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Caption.Set {
-		more.More()
-		e.ObjField("caption")
+		e.FieldStart("caption")
 		s.Caption.WriteJSON(e)
 	}
 	if s.CaptionEntities != nil {
-		more.More()
-		e.ObjField("caption_entities")
-		more.Down()
+		e.FieldStart("caption_entities")
 		e.ArrStart()
 		for _, elem := range s.CaptionEntities {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("media")
+
+	e.FieldStart("media")
 	e.Str(s.Media)
 	if s.ParseMode.Set {
-		more.More()
-		e.ObjField("parse_mode")
+		e.FieldStart("parse_mode")
 		s.ParseMode.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -4489,59 +4156,46 @@ func (s *InputMediaPhoto) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s InputMediaVideo) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Caption.Set {
-		more.More()
-		e.ObjField("caption")
+		e.FieldStart("caption")
 		s.Caption.WriteJSON(e)
 	}
 	if s.CaptionEntities != nil {
-		more.More()
-		e.ObjField("caption_entities")
-		more.Down()
+		e.FieldStart("caption_entities")
 		e.ArrStart()
 		for _, elem := range s.CaptionEntities {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Duration.Set {
-		more.More()
-		e.ObjField("duration")
+		e.FieldStart("duration")
 		s.Duration.WriteJSON(e)
 	}
 	if s.Height.Set {
-		more.More()
-		e.ObjField("height")
+		e.FieldStart("height")
 		s.Height.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("media")
+
+	e.FieldStart("media")
 	e.Str(s.Media)
 	if s.ParseMode.Set {
-		more.More()
-		e.ObjField("parse_mode")
+		e.FieldStart("parse_mode")
 		s.ParseMode.WriteJSON(e)
 	}
 	if s.SupportsStreaming.Set {
-		more.More()
-		e.ObjField("supports_streaming")
+		e.FieldStart("supports_streaming")
 		s.SupportsStreaming.WriteJSON(e)
 	}
 	if s.Thumb.Set {
-		more.More()
-		e.ObjField("thumb")
+		e.FieldStart("thumb")
 		s.Thumb.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	if s.Width.Set {
-		more.More()
-		e.ObjField("width")
+		e.FieldStart("width")
 		s.Width.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -4623,22 +4277,20 @@ func (s *InputMediaVideo) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Invoice) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("currency")
+
+	e.FieldStart("currency")
 	e.Str(s.Currency)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	e.Str(s.Description)
-	more.More()
-	e.ObjField("start_parameter")
+
+	e.FieldStart("start_parameter")
 	e.Str(s.StartParameter)
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	e.Str(s.Title)
-	more.More()
-	e.ObjField("total_amount")
+
+	e.FieldStart("total_amount")
 	e.Int(s.TotalAmount)
 	e.ObjEnd()
 }
@@ -4690,25 +4342,20 @@ func (s *Invoice) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s KeyboardButton) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.RequestContact.Set {
-		more.More()
-		e.ObjField("request_contact")
+		e.FieldStart("request_contact")
 		s.RequestContact.WriteJSON(e)
 	}
 	if s.RequestLocation.Set {
-		more.More()
-		e.ObjField("request_location")
+		e.FieldStart("request_location")
 		s.RequestLocation.WriteJSON(e)
 	}
 	if s.RequestPoll.Set {
-		more.More()
-		e.ObjField("request_poll")
+		e.FieldStart("request_poll")
 		s.RequestPoll.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("text")
+
+	e.FieldStart("text")
 	e.Str(s.Text)
 	e.ObjEnd()
 }
@@ -4751,11 +4398,8 @@ func (s *KeyboardButton) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s KeyboardButtonPollType) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -4783,13 +4427,11 @@ func (s *KeyboardButtonPollType) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s LabeledPrice) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("amount")
+
+	e.FieldStart("amount")
 	e.Int(s.Amount)
-	more.More()
-	e.ObjField("label")
+
+	e.FieldStart("label")
 	e.Str(s.Label)
 	e.ObjEnd()
 }
@@ -4823,10 +4465,8 @@ func (s *LabeledPrice) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s LeaveChat) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -4852,32 +4492,26 @@ func (s *LeaveChat) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Location) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Heading.Set {
-		more.More()
-		e.ObjField("heading")
+		e.FieldStart("heading")
 		s.Heading.WriteJSON(e)
 	}
 	if s.HorizontalAccuracy.Set {
-		more.More()
-		e.ObjField("horizontal_accuracy")
+		e.FieldStart("horizontal_accuracy")
 		s.HorizontalAccuracy.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("latitude")
+
+	e.FieldStart("latitude")
 	e.Float64(s.Latitude)
 	if s.LivePeriod.Set {
-		more.More()
-		e.ObjField("live_period")
+		e.FieldStart("live_period")
 		s.LivePeriod.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("longitude")
+
+	e.FieldStart("longitude")
 	e.Float64(s.Longitude)
 	if s.ProximityAlertRadius.Set {
-		more.More()
-		e.ObjField("proximity_alert_radius")
+		e.FieldStart("proximity_alert_radius")
 		s.ProximityAlertRadius.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -4932,25 +4566,20 @@ func (s *Location) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s LoginUrl) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.BotUsername.Set {
-		more.More()
-		e.ObjField("bot_username")
+		e.FieldStart("bot_username")
 		s.BotUsername.WriteJSON(e)
 	}
 	if s.ForwardText.Set {
-		more.More()
-		e.ObjField("forward_text")
+		e.FieldStart("forward_text")
 		s.ForwardText.WriteJSON(e)
 	}
 	if s.RequestWriteAccess.Set {
-		more.More()
-		e.ObjField("request_write_access")
+		e.FieldStart("request_write_access")
 		s.RequestWriteAccess.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	e.ObjEnd()
 }
@@ -4993,19 +4622,17 @@ func (s *LoginUrl) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s MaskPosition) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("point")
+
+	e.FieldStart("point")
 	e.Str(s.Point)
-	more.More()
-	e.ObjField("scale")
+
+	e.FieldStart("scale")
 	e.Float64(s.Scale)
-	more.More()
-	e.ObjField("x_shift")
+
+	e.FieldStart("x_shift")
 	e.Float64(s.XShift)
-	more.More()
-	e.ObjField("y_shift")
+
+	e.FieldStart("y_shift")
 	e.Float64(s.YShift)
 	e.ObjEnd()
 }
@@ -5051,315 +4678,245 @@ func (s *MaskPosition) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Message) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Animation.Set {
-		more.More()
-		e.ObjField("animation")
+		e.FieldStart("animation")
 		s.Animation.WriteJSON(e)
 	}
 	if s.Audio.Set {
-		more.More()
-		e.ObjField("audio")
+		e.FieldStart("audio")
 		s.Audio.WriteJSON(e)
 	}
 	if s.AuthorSignature.Set {
-		more.More()
-		e.ObjField("author_signature")
+		e.FieldStart("author_signature")
 		s.AuthorSignature.WriteJSON(e)
 	}
 	if s.Caption.Set {
-		more.More()
-		e.ObjField("caption")
+		e.FieldStart("caption")
 		s.Caption.WriteJSON(e)
 	}
 	if s.CaptionEntities != nil {
-		more.More()
-		e.ObjField("caption_entities")
-		more.Down()
+		e.FieldStart("caption_entities")
 		e.ArrStart()
 		for _, elem := range s.CaptionEntities {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.ChannelChatCreated.Set {
-		more.More()
-		e.ObjField("channel_chat_created")
+		e.FieldStart("channel_chat_created")
 		s.ChannelChatCreated.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("chat")
+
+	e.FieldStart("chat")
 	s.Chat.WriteJSON(e)
 	if s.ConnectedWebsite.Set {
-		more.More()
-		e.ObjField("connected_website")
+		e.FieldStart("connected_website")
 		s.ConnectedWebsite.WriteJSON(e)
 	}
 	if s.Contact.Set {
-		more.More()
-		e.ObjField("contact")
+		e.FieldStart("contact")
 		s.Contact.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("date")
+
+	e.FieldStart("date")
 	e.Int(s.Date)
 	if s.DeleteChatPhoto.Set {
-		more.More()
-		e.ObjField("delete_chat_photo")
+		e.FieldStart("delete_chat_photo")
 		s.DeleteChatPhoto.WriteJSON(e)
 	}
 	if s.Dice.Set {
-		more.More()
-		e.ObjField("dice")
+		e.FieldStart("dice")
 		s.Dice.WriteJSON(e)
 	}
 	if s.Document.Set {
-		more.More()
-		e.ObjField("document")
+		e.FieldStart("document")
 		s.Document.WriteJSON(e)
 	}
 	if s.EditDate.Set {
-		more.More()
-		e.ObjField("edit_date")
+		e.FieldStart("edit_date")
 		s.EditDate.WriteJSON(e)
 	}
 	if s.Entities != nil {
-		more.More()
-		e.ObjField("entities")
-		more.Down()
+		e.FieldStart("entities")
 		e.ArrStart()
 		for _, elem := range s.Entities {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.ForwardDate.Set {
-		more.More()
-		e.ObjField("forward_date")
+		e.FieldStart("forward_date")
 		s.ForwardDate.WriteJSON(e)
 	}
 	if s.ForwardFrom.Set {
-		more.More()
-		e.ObjField("forward_from")
+		e.FieldStart("forward_from")
 		s.ForwardFrom.WriteJSON(e)
 	}
 	if s.ForwardFromChat.Set {
-		more.More()
-		e.ObjField("forward_from_chat")
+		e.FieldStart("forward_from_chat")
 		s.ForwardFromChat.WriteJSON(e)
 	}
 	if s.ForwardFromMessageID.Set {
-		more.More()
-		e.ObjField("forward_from_message_id")
+		e.FieldStart("forward_from_message_id")
 		s.ForwardFromMessageID.WriteJSON(e)
 	}
 	if s.ForwardSenderName.Set {
-		more.More()
-		e.ObjField("forward_sender_name")
+		e.FieldStart("forward_sender_name")
 		s.ForwardSenderName.WriteJSON(e)
 	}
 	if s.ForwardSignature.Set {
-		more.More()
-		e.ObjField("forward_signature")
+		e.FieldStart("forward_signature")
 		s.ForwardSignature.WriteJSON(e)
 	}
 	if s.From.Set {
-		more.More()
-		e.ObjField("from")
+		e.FieldStart("from")
 		s.From.WriteJSON(e)
 	}
 	if s.Game.Set {
-		more.More()
-		e.ObjField("game")
+		e.FieldStart("game")
 		s.Game.WriteJSON(e)
 	}
 	if s.GroupChatCreated.Set {
-		more.More()
-		e.ObjField("group_chat_created")
+		e.FieldStart("group_chat_created")
 		s.GroupChatCreated.WriteJSON(e)
 	}
 	if s.Invoice.Set {
-		more.More()
-		e.ObjField("invoice")
+		e.FieldStart("invoice")
 		s.Invoice.WriteJSON(e)
 	}
 	if s.LeftChatMember.Set {
-		more.More()
-		e.ObjField("left_chat_member")
+		e.FieldStart("left_chat_member")
 		s.LeftChatMember.WriteJSON(e)
 	}
 	if s.Location.Set {
-		more.More()
-		e.ObjField("location")
+		e.FieldStart("location")
 		s.Location.WriteJSON(e)
 	}
 	if s.MediaGroupID.Set {
-		more.More()
-		e.ObjField("media_group_id")
+		e.FieldStart("media_group_id")
 		s.MediaGroupID.WriteJSON(e)
 	}
 	if s.MessageAutoDeleteTimerChanged.Set {
-		more.More()
-		e.ObjField("message_auto_delete_timer_changed")
+		e.FieldStart("message_auto_delete_timer_changed")
 		s.MessageAutoDeleteTimerChanged.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("message_id")
+
+	e.FieldStart("message_id")
 	e.Int(s.MessageID)
 	if s.MigrateFromChatID.Set {
-		more.More()
-		e.ObjField("migrate_from_chat_id")
+		e.FieldStart("migrate_from_chat_id")
 		s.MigrateFromChatID.WriteJSON(e)
 	}
 	if s.MigrateToChatID.Set {
-		more.More()
-		e.ObjField("migrate_to_chat_id")
+		e.FieldStart("migrate_to_chat_id")
 		s.MigrateToChatID.WriteJSON(e)
 	}
 	if s.NewChatMembers != nil {
-		more.More()
-		e.ObjField("new_chat_members")
-		more.Down()
+		e.FieldStart("new_chat_members")
 		e.ArrStart()
 		for _, elem := range s.NewChatMembers {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.NewChatPhoto != nil {
-		more.More()
-		e.ObjField("new_chat_photo")
-		more.Down()
+		e.FieldStart("new_chat_photo")
 		e.ArrStart()
 		for _, elem := range s.NewChatPhoto {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.NewChatTitle.Set {
-		more.More()
-		e.ObjField("new_chat_title")
+		e.FieldStart("new_chat_title")
 		s.NewChatTitle.WriteJSON(e)
 	}
 	if s.PassportData.Set {
-		more.More()
-		e.ObjField("passport_data")
+		e.FieldStart("passport_data")
 		s.PassportData.WriteJSON(e)
 	}
 	if s.Photo != nil {
-		more.More()
-		e.ObjField("photo")
-		more.Down()
+		e.FieldStart("photo")
 		e.ArrStart()
 		for _, elem := range s.Photo {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.PinnedMessage != nil {
-		more.More()
-		e.ObjField("pinned_message")
+		e.FieldStart("pinned_message")
 		s.PinnedMessage.WriteJSON(e)
 	}
 	if s.Poll.Set {
-		more.More()
-		e.ObjField("poll")
+		e.FieldStart("poll")
 		s.Poll.WriteJSON(e)
 	}
 	if s.ProximityAlertTriggered.Set {
-		more.More()
-		e.ObjField("proximity_alert_triggered")
+		e.FieldStart("proximity_alert_triggered")
 		s.ProximityAlertTriggered.WriteJSON(e)
 	}
 	if s.ReplyMarkup.Set {
-		more.More()
-		e.ObjField("reply_markup")
+		e.FieldStart("reply_markup")
 		s.ReplyMarkup.WriteJSON(e)
 	}
 	if s.ReplyToMessage != nil {
-		more.More()
-		e.ObjField("reply_to_message")
+		e.FieldStart("reply_to_message")
 		s.ReplyToMessage.WriteJSON(e)
 	}
 	if s.SenderChat.Set {
-		more.More()
-		e.ObjField("sender_chat")
+		e.FieldStart("sender_chat")
 		s.SenderChat.WriteJSON(e)
 	}
 	if s.Sticker.Set {
-		more.More()
-		e.ObjField("sticker")
+		e.FieldStart("sticker")
 		s.Sticker.WriteJSON(e)
 	}
 	if s.SuccessfulPayment.Set {
-		more.More()
-		e.ObjField("successful_payment")
+		e.FieldStart("successful_payment")
 		s.SuccessfulPayment.WriteJSON(e)
 	}
 	if s.SupergroupChatCreated.Set {
-		more.More()
-		e.ObjField("supergroup_chat_created")
+		e.FieldStart("supergroup_chat_created")
 		s.SupergroupChatCreated.WriteJSON(e)
 	}
 	if s.Text.Set {
-		more.More()
-		e.ObjField("text")
+		e.FieldStart("text")
 		s.Text.WriteJSON(e)
 	}
 	if s.Venue.Set {
-		more.More()
-		e.ObjField("venue")
+		e.FieldStart("venue")
 		s.Venue.WriteJSON(e)
 	}
 	if s.ViaBot.Set {
-		more.More()
-		e.ObjField("via_bot")
+		e.FieldStart("via_bot")
 		s.ViaBot.WriteJSON(e)
 	}
 	if s.Video.Set {
-		more.More()
-		e.ObjField("video")
+		e.FieldStart("video")
 		s.Video.WriteJSON(e)
 	}
 	if s.VideoNote.Set {
-		more.More()
-		e.ObjField("video_note")
+		e.FieldStart("video_note")
 		s.VideoNote.WriteJSON(e)
 	}
 	if s.Voice.Set {
-		more.More()
-		e.ObjField("voice")
+		e.FieldStart("voice")
 		s.Voice.WriteJSON(e)
 	}
 	if s.VoiceChatEnded.Set {
-		more.More()
-		e.ObjField("voice_chat_ended")
+		e.FieldStart("voice_chat_ended")
 		s.VoiceChatEnded.WriteJSON(e)
 	}
 	if s.VoiceChatParticipantsInvited.Set {
-		more.More()
-		e.ObjField("voice_chat_participants_invited")
+		e.FieldStart("voice_chat_participants_invited")
 		s.VoiceChatParticipantsInvited.WriteJSON(e)
 	}
 	if s.VoiceChatScheduled.Set {
-		more.More()
-		e.ObjField("voice_chat_scheduled")
+		e.FieldStart("voice_chat_scheduled")
 		s.VoiceChatScheduled.WriteJSON(e)
 	}
 	if s.VoiceChatStarted != nil {
-		more.More()
-		e.ObjField("voice_chat_started")
+		e.FieldStart("voice_chat_started")
 		s.VoiceChatStarted.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -5704,10 +5261,8 @@ func (s *Message) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s MessageAutoDeleteTimerChanged) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("message_auto_delete_time")
+
+	e.FieldStart("message_auto_delete_time")
 	e.Int(s.MessageAutoDeleteTime)
 	e.ObjEnd()
 }
@@ -5735,30 +5290,25 @@ func (s *MessageAutoDeleteTimerChanged) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s MessageEntity) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Language.Set {
-		more.More()
-		e.ObjField("language")
+		e.FieldStart("language")
 		s.Language.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("length")
+
+	e.FieldStart("length")
 	e.Int(s.Length)
-	more.More()
-	e.ObjField("offset")
+
+	e.FieldStart("offset")
 	e.Int(s.Offset)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.User.Set {
-		more.More()
-		e.ObjField("user")
+		e.FieldStart("user")
 		s.User.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -6750,26 +6300,20 @@ func (o *OptVoiceChatScheduled) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrderInfo) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Email.Set {
-		more.More()
-		e.ObjField("email")
+		e.FieldStart("email")
 		s.Email.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.PhoneNumber.Set {
-		more.More()
-		e.ObjField("phone_number")
+		e.FieldStart("phone_number")
 		s.PhoneNumber.WriteJSON(e)
 	}
 	if s.ShippingAddress.Set {
-		more.More()
-		e.ObjField("shipping_address")
+		e.FieldStart("shipping_address")
 		s.ShippingAddress.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -6812,21 +6356,16 @@ func (s *OrderInfo) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PassportData) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("credentials")
+
+	e.FieldStart("credentials")
 	s.Credentials.WriteJSON(e)
-	more.More()
-	e.ObjField("data")
-	more.Down()
+
+	e.FieldStart("data")
 	e.ArrStart()
 	for _, elem := range s.Data {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -6992,22 +6531,20 @@ func (s *PassportElementError) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PassportElementErrorDataField) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("data_hash")
+
+	e.FieldStart("data_hash")
 	e.Str(s.DataHash)
-	more.More()
-	e.ObjField("field_name")
+
+	e.FieldStart("field_name")
 	e.Str(s.FieldName)
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
-	more.More()
-	e.ObjField("source")
+
+	e.FieldStart("source")
 	e.Str(s.Source)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -7059,19 +6596,17 @@ func (s *PassportElementErrorDataField) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PassportElementErrorFile) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("file_hash")
+
+	e.FieldStart("file_hash")
 	e.Str(s.FileHash)
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
-	more.More()
-	e.ObjField("source")
+
+	e.FieldStart("source")
 	e.Str(s.Source)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -7117,26 +6652,21 @@ func (s *PassportElementErrorFile) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PassportElementErrorFiles) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("file_hashes")
-	more.Down()
+
+	e.FieldStart("file_hashes")
 	e.ArrStart()
 	for _, elem := range s.FileHashes {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
-	more.More()
-	e.ObjField("source")
+
+	e.FieldStart("source")
 	e.Str(s.Source)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -7190,19 +6720,17 @@ func (s *PassportElementErrorFiles) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PassportElementErrorFrontSide) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("file_hash")
+
+	e.FieldStart("file_hash")
 	e.Str(s.FileHash)
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
-	more.More()
-	e.ObjField("source")
+
+	e.FieldStart("source")
 	e.Str(s.Source)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -7248,19 +6776,17 @@ func (s *PassportElementErrorFrontSide) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PassportElementErrorReverseSide) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("file_hash")
+
+	e.FieldStart("file_hash")
 	e.Str(s.FileHash)
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
-	more.More()
-	e.ObjField("source")
+
+	e.FieldStart("source")
 	e.Str(s.Source)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -7306,19 +6832,17 @@ func (s *PassportElementErrorReverseSide) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PassportElementErrorSelfie) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("file_hash")
+
+	e.FieldStart("file_hash")
 	e.Str(s.FileHash)
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
-	more.More()
-	e.ObjField("source")
+
+	e.FieldStart("source")
 	e.Str(s.Source)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -7364,19 +6888,17 @@ func (s *PassportElementErrorSelfie) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PassportElementErrorTranslationFile) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("file_hash")
+
+	e.FieldStart("file_hash")
 	e.Str(s.FileHash)
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
-	more.More()
-	e.ObjField("source")
+
+	e.FieldStart("source")
 	e.Str(s.Source)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -7422,26 +6944,21 @@ func (s *PassportElementErrorTranslationFile) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PassportElementErrorTranslationFiles) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("file_hashes")
-	more.Down()
+
+	e.FieldStart("file_hashes")
 	e.ArrStart()
 	for _, elem := range s.FileHashes {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
-	more.More()
-	e.ObjField("source")
+
+	e.FieldStart("source")
 	e.Str(s.Source)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -7495,19 +7012,17 @@ func (s *PassportElementErrorTranslationFiles) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PassportElementErrorUnspecified) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("element_hash")
+
+	e.FieldStart("element_hash")
 	e.Str(s.ElementHash)
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
-	more.More()
-	e.ObjField("source")
+
+	e.FieldStart("source")
 	e.Str(s.Source)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -7553,19 +7068,17 @@ func (s *PassportElementErrorUnspecified) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PassportFile) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("file_date")
+
+	e.FieldStart("file_date")
 	e.Int(s.FileDate)
-	more.More()
-	e.ObjField("file_id")
+
+	e.FieldStart("file_id")
 	e.Str(s.FileID)
-	more.More()
-	e.ObjField("file_size")
+
+	e.FieldStart("file_size")
 	e.Int(s.FileSize)
-	more.More()
-	e.ObjField("file_unique_id")
+
+	e.FieldStart("file_unique_id")
 	e.Str(s.FileUniqueID)
 	e.ObjEnd()
 }
@@ -7611,24 +7124,21 @@ func (s *PassportFile) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PhotoSize) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("file_id")
+
+	e.FieldStart("file_id")
 	e.Str(s.FileID)
 	if s.FileSize.Set {
-		more.More()
-		e.ObjField("file_size")
+		e.FieldStart("file_size")
 		s.FileSize.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("file_unique_id")
+
+	e.FieldStart("file_unique_id")
 	e.Str(s.FileUniqueID)
-	more.More()
-	e.ObjField("height")
+
+	e.FieldStart("height")
 	e.Int(s.Height)
-	more.More()
-	e.ObjField("width")
+
+	e.FieldStart("width")
 	e.Int(s.Width)
 	e.ObjEnd()
 }
@@ -7679,18 +7189,15 @@ func (s *PhotoSize) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PinChatMessage) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	if s.DisableNotification.Set {
-		more.More()
-		e.ObjField("disable_notification")
+		e.FieldStart("disable_notification")
 		s.DisableNotification.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("message_id")
+
+	e.FieldStart("message_id")
 	e.Int(s.MessageID)
 	e.ObjEnd()
 }
@@ -7727,70 +7234,57 @@ func (s *PinChatMessage) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Poll) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("allows_multiple_answers")
+
+	e.FieldStart("allows_multiple_answers")
 	e.Bool(s.AllowsMultipleAnswers)
 	if s.CloseDate.Set {
-		more.More()
-		e.ObjField("close_date")
+		e.FieldStart("close_date")
 		s.CloseDate.WriteJSON(e)
 	}
 	if s.CorrectOptionID.Set {
-		more.More()
-		e.ObjField("correct_option_id")
+		e.FieldStart("correct_option_id")
 		s.CorrectOptionID.WriteJSON(e)
 	}
 	if s.Explanation.Set {
-		more.More()
-		e.ObjField("explanation")
+		e.FieldStart("explanation")
 		s.Explanation.WriteJSON(e)
 	}
 	if s.ExplanationEntities != nil {
-		more.More()
-		e.ObjField("explanation_entities")
-		more.Down()
+		e.FieldStart("explanation_entities")
 		e.ArrStart()
 		for _, elem := range s.ExplanationEntities {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Str(s.ID)
-	more.More()
-	e.ObjField("is_anonymous")
+
+	e.FieldStart("is_anonymous")
 	e.Bool(s.IsAnonymous)
-	more.More()
-	e.ObjField("is_closed")
+
+	e.FieldStart("is_closed")
 	e.Bool(s.IsClosed)
 	if s.OpenPeriod.Set {
-		more.More()
-		e.ObjField("open_period")
+		e.FieldStart("open_period")
 		s.OpenPeriod.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("options")
-	more.Down()
+
+	e.FieldStart("options")
 	e.ArrStart()
 	for _, elem := range s.Options {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("question")
+
+	e.FieldStart("question")
 	e.Str(s.Question)
-	more.More()
-	e.ObjField("total_voter_count")
+
+	e.FieldStart("total_voter_count")
 	e.Int(s.TotalVoterCount)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -7898,13 +7392,11 @@ func (s *Poll) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PollOption) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("text")
+
+	e.FieldStart("text")
 	e.Str(s.Text)
-	more.More()
-	e.ObjField("voter_count")
+
+	e.FieldStart("voter_count")
 	e.Int(s.VoterCount)
 	e.ObjEnd()
 }
@@ -7938,68 +7430,55 @@ func (s *PollOption) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PromoteChatMember) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.CanChangeInfo.Set {
-		more.More()
-		e.ObjField("can_change_info")
+		e.FieldStart("can_change_info")
 		s.CanChangeInfo.WriteJSON(e)
 	}
 	if s.CanDeleteMessages.Set {
-		more.More()
-		e.ObjField("can_delete_messages")
+		e.FieldStart("can_delete_messages")
 		s.CanDeleteMessages.WriteJSON(e)
 	}
 	if s.CanEditMessages.Set {
-		more.More()
-		e.ObjField("can_edit_messages")
+		e.FieldStart("can_edit_messages")
 		s.CanEditMessages.WriteJSON(e)
 	}
 	if s.CanInviteUsers.Set {
-		more.More()
-		e.ObjField("can_invite_users")
+		e.FieldStart("can_invite_users")
 		s.CanInviteUsers.WriteJSON(e)
 	}
 	if s.CanManageChat.Set {
-		more.More()
-		e.ObjField("can_manage_chat")
+		e.FieldStart("can_manage_chat")
 		s.CanManageChat.WriteJSON(e)
 	}
 	if s.CanManageVoiceChats.Set {
-		more.More()
-		e.ObjField("can_manage_voice_chats")
+		e.FieldStart("can_manage_voice_chats")
 		s.CanManageVoiceChats.WriteJSON(e)
 	}
 	if s.CanPinMessages.Set {
-		more.More()
-		e.ObjField("can_pin_messages")
+		e.FieldStart("can_pin_messages")
 		s.CanPinMessages.WriteJSON(e)
 	}
 	if s.CanPostMessages.Set {
-		more.More()
-		e.ObjField("can_post_messages")
+		e.FieldStart("can_post_messages")
 		s.CanPostMessages.WriteJSON(e)
 	}
 	if s.CanPromoteMembers.Set {
-		more.More()
-		e.ObjField("can_promote_members")
+		e.FieldStart("can_promote_members")
 		s.CanPromoteMembers.WriteJSON(e)
 	}
 	if s.CanRestrictMembers.Set {
-		more.More()
-		e.ObjField("can_restrict_members")
+		e.FieldStart("can_restrict_members")
 		s.CanRestrictMembers.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	if s.IsAnonymous.Set {
-		more.More()
-		e.ObjField("is_anonymous")
+		e.FieldStart("is_anonymous")
 		s.IsAnonymous.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("user_id")
+
+	e.FieldStart("user_id")
 	e.Int(s.UserID)
 	e.ObjEnd()
 }
@@ -8086,16 +7565,14 @@ func (s *PromoteChatMember) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProximityAlertTriggered) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("distance")
+
+	e.FieldStart("distance")
 	e.Int(s.Distance)
-	more.More()
-	e.ObjField("traveler")
+
+	e.FieldStart("traveler")
 	s.Traveler.WriteJSON(e)
-	more.More()
-	e.ObjField("watcher")
+
+	e.FieldStart("watcher")
 	s.Watcher.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -8131,43 +7608,31 @@ func (s *ProximityAlertTriggered) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReplyKeyboardMarkup) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.InputFieldPlaceholder.Set {
-		more.More()
-		e.ObjField("input_field_placeholder")
+		e.FieldStart("input_field_placeholder")
 		s.InputFieldPlaceholder.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("keyboard")
-	more.Down()
+
+	e.FieldStart("keyboard")
 	e.ArrStart()
 	for _, elem := range s.Keyboard {
-		more.More()
-		more.Down()
 		e.ArrStart()
 		for _, elem := range elem {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.OneTimeKeyboard.Set {
-		more.More()
-		e.ObjField("one_time_keyboard")
+		e.FieldStart("one_time_keyboard")
 		s.OneTimeKeyboard.WriteJSON(e)
 	}
 	if s.ResizeKeyboard.Set {
-		more.More()
-		e.ObjField("resize_keyboard")
+		e.FieldStart("resize_keyboard")
 		s.ResizeKeyboard.WriteJSON(e)
 	}
 	if s.Selective.Set {
-		more.More()
-		e.ObjField("selective")
+		e.FieldStart("selective")
 		s.Selective.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -8230,14 +7695,11 @@ func (s *ReplyKeyboardMarkup) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReplyKeyboardRemove) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("remove_keyboard")
+
+	e.FieldStart("remove_keyboard")
 	e.Bool(s.RemoveKeyboard)
 	if s.Selective.Set {
-		more.More()
-		e.ObjField("selective")
+		e.FieldStart("selective")
 		s.Selective.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -8271,16 +7733,12 @@ func (s *ReplyKeyboardRemove) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Response) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.MigrateToChatID.Set {
-		more.More()
-		e.ObjField("migrate_to_chat_id")
+		e.FieldStart("migrate_to_chat_id")
 		s.MigrateToChatID.WriteJSON(e)
 	}
 	if s.RetryAfter.Set {
-		more.More()
-		e.ObjField("retry_after")
+		e.FieldStart("retry_after")
 		s.RetryAfter.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -8313,21 +7771,18 @@ func (s *Response) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s RestrictChatMember) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
-	more.More()
-	e.ObjField("permissions")
+
+	e.FieldStart("permissions")
 	s.Permissions.WriteJSON(e)
 	if s.UntilDate.Set {
-		more.More()
-		e.ObjField("until_date")
+		e.FieldStart("until_date")
 		s.UntilDate.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("user_id")
+
+	e.FieldStart("user_id")
 	e.Int(s.UserID)
 	e.ObjEnd()
 }
@@ -8368,14 +7823,11 @@ func (s *RestrictChatMember) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Result) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("ok")
+
+	e.FieldStart("ok")
 	e.Bool(s.Ok)
 	if s.Result.Set {
-		more.More()
-		e.ObjField("result")
+		e.FieldStart("result")
 		s.Result.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -8409,14 +7861,11 @@ func (s *Result) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ResultMsg) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("ok")
+
+	e.FieldStart("ok")
 	e.Bool(s.Ok)
 	if s.Result.Set {
-		more.More()
-		e.ObjField("result")
+		e.FieldStart("result")
 		s.Result.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -8450,14 +7899,11 @@ func (s *ResultMsg) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ResultUsr) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("ok")
+
+	e.FieldStart("ok")
 	e.Bool(s.Ok)
 	if s.Result.Set {
-		more.More()
-		e.ObjField("result")
+		e.FieldStart("result")
 		s.Result.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -8491,13 +7937,11 @@ func (s *ResultUsr) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s RevokeChatInviteLink) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
-	more.More()
-	e.ObjField("invite_link")
+
+	e.FieldStart("invite_link")
 	e.Str(s.InviteLink)
 	e.ObjEnd()
 }
@@ -8529,74 +7973,58 @@ func (s *RevokeChatInviteLink) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SendAnimation) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AllowSendingWithoutReply.Set {
-		more.More()
-		e.ObjField("allow_sending_without_reply")
+		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("animation")
+
+	e.FieldStart("animation")
 	e.Str(s.Animation)
 	if s.Caption.Set {
-		more.More()
-		e.ObjField("caption")
+		e.FieldStart("caption")
 		s.Caption.WriteJSON(e)
 	}
 	if s.CaptionEntities != nil {
-		more.More()
-		e.ObjField("caption_entities")
-		more.Down()
+		e.FieldStart("caption_entities")
 		e.ArrStart()
 		for _, elem := range s.CaptionEntities {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	if s.DisableNotification.Set {
-		more.More()
-		e.ObjField("disable_notification")
+		e.FieldStart("disable_notification")
 		s.DisableNotification.WriteJSON(e)
 	}
 	if s.Duration.Set {
-		more.More()
-		e.ObjField("duration")
+		e.FieldStart("duration")
 		s.Duration.WriteJSON(e)
 	}
 	if s.Height.Set {
-		more.More()
-		e.ObjField("height")
+		e.FieldStart("height")
 		s.Height.WriteJSON(e)
 	}
 	if s.ParseMode.Set {
-		more.More()
-		e.ObjField("parse_mode")
+		e.FieldStart("parse_mode")
 		s.ParseMode.WriteJSON(e)
 	}
 	if s.ReplyMarkup != nil {
-		more.More()
-		e.ObjField("reply_markup")
+		e.FieldStart("reply_markup")
 		s.ReplyMarkup.WriteJSON(e)
 	}
 	if s.ReplyToMessageID.Set {
-		more.More()
-		e.ObjField("reply_to_message_id")
+		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(e)
 	}
 	if s.Thumb.Set {
-		more.More()
-		e.ObjField("thumb")
+		e.FieldStart("thumb")
 		s.Thumb.WriteJSON(e)
 	}
 	if s.Width.Set {
-		more.More()
-		e.ObjField("width")
+		e.FieldStart("width")
 		s.Width.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -8779,74 +8207,58 @@ func (s *SendAnimationReplyMarkup) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SendAudio) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AllowSendingWithoutReply.Set {
-		more.More()
-		e.ObjField("allow_sending_without_reply")
+		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("audio")
+
+	e.FieldStart("audio")
 	e.Str(s.Audio)
 	if s.Caption.Set {
-		more.More()
-		e.ObjField("caption")
+		e.FieldStart("caption")
 		s.Caption.WriteJSON(e)
 	}
 	if s.CaptionEntities != nil {
-		more.More()
-		e.ObjField("caption_entities")
-		more.Down()
+		e.FieldStart("caption_entities")
 		e.ArrStart()
 		for _, elem := range s.CaptionEntities {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	if s.DisableNotification.Set {
-		more.More()
-		e.ObjField("disable_notification")
+		e.FieldStart("disable_notification")
 		s.DisableNotification.WriteJSON(e)
 	}
 	if s.Duration.Set {
-		more.More()
-		e.ObjField("duration")
+		e.FieldStart("duration")
 		s.Duration.WriteJSON(e)
 	}
 	if s.ParseMode.Set {
-		more.More()
-		e.ObjField("parse_mode")
+		e.FieldStart("parse_mode")
 		s.ParseMode.WriteJSON(e)
 	}
 	if s.Performer.Set {
-		more.More()
-		e.ObjField("performer")
+		e.FieldStart("performer")
 		s.Performer.WriteJSON(e)
 	}
 	if s.ReplyMarkup != nil {
-		more.More()
-		e.ObjField("reply_markup")
+		e.FieldStart("reply_markup")
 		s.ReplyMarkup.WriteJSON(e)
 	}
 	if s.ReplyToMessageID.Set {
-		more.More()
-		e.ObjField("reply_to_message_id")
+		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(e)
 	}
 	if s.Thumb.Set {
-		more.More()
-		e.ObjField("thumb")
+		e.FieldStart("thumb")
 		s.Thumb.WriteJSON(e)
 	}
 	if s.Title.Set {
-		more.More()
-		e.ObjField("title")
+		e.FieldStart("title")
 		s.Title.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -9029,13 +8441,11 @@ func (s *SendAudioReplyMarkup) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SendChatAction) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("action")
+
+	e.FieldStart("action")
 	e.Str(s.Action)
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -9067,45 +8477,37 @@ func (s *SendChatAction) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SendContact) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AllowSendingWithoutReply.Set {
-		more.More()
-		e.ObjField("allow_sending_without_reply")
+		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	if s.DisableNotification.Set {
-		more.More()
-		e.ObjField("disable_notification")
+		e.FieldStart("disable_notification")
 		s.DisableNotification.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("first_name")
+
+	e.FieldStart("first_name")
 	e.Str(s.FirstName)
 	if s.LastName.Set {
-		more.More()
-		e.ObjField("last_name")
+		e.FieldStart("last_name")
 		s.LastName.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("phone_number")
+
+	e.FieldStart("phone_number")
 	e.Str(s.PhoneNumber)
 	if s.ReplyMarkup != nil {
-		more.More()
-		e.ObjField("reply_markup")
+		e.FieldStart("reply_markup")
 		s.ReplyMarkup.WriteJSON(e)
 	}
 	if s.ReplyToMessageID.Set {
-		more.More()
-		e.ObjField("reply_to_message_id")
+		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(e)
 	}
 	if s.Vcard.Set {
-		more.More()
-		e.ObjField("vcard")
+		e.FieldStart("vcard")
 		s.Vcard.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -9262,34 +8664,27 @@ func (s *SendContactReplyMarkup) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SendDice) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AllowSendingWithoutReply.Set {
-		more.More()
-		e.ObjField("allow_sending_without_reply")
+		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	if s.DisableNotification.Set {
-		more.More()
-		e.ObjField("disable_notification")
+		e.FieldStart("disable_notification")
 		s.DisableNotification.WriteJSON(e)
 	}
 	if s.Emoji.Set {
-		more.More()
-		e.ObjField("emoji")
+		e.FieldStart("emoji")
 		s.Emoji.WriteJSON(e)
 	}
 	if s.ReplyMarkup != nil {
-		more.More()
-		e.ObjField("reply_markup")
+		e.FieldStart("reply_markup")
 		s.ReplyMarkup.WriteJSON(e)
 	}
 	if s.ReplyToMessageID.Set {
-		more.More()
-		e.ObjField("reply_to_message_id")
+		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -9429,64 +8824,50 @@ func (s *SendDiceReplyMarkup) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SendDocument) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AllowSendingWithoutReply.Set {
-		more.More()
-		e.ObjField("allow_sending_without_reply")
+		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(e)
 	}
 	if s.Caption.Set {
-		more.More()
-		e.ObjField("caption")
+		e.FieldStart("caption")
 		s.Caption.WriteJSON(e)
 	}
 	if s.CaptionEntities != nil {
-		more.More()
-		e.ObjField("caption_entities")
-		more.Down()
+		e.FieldStart("caption_entities")
 		e.ArrStart()
 		for _, elem := range s.CaptionEntities {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	if s.DisableContentTypeDetection.Set {
-		more.More()
-		e.ObjField("disable_content_type_detection")
+		e.FieldStart("disable_content_type_detection")
 		s.DisableContentTypeDetection.WriteJSON(e)
 	}
 	if s.DisableNotification.Set {
-		more.More()
-		e.ObjField("disable_notification")
+		e.FieldStart("disable_notification")
 		s.DisableNotification.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("document")
+
+	e.FieldStart("document")
 	e.Str(s.Document)
 	if s.ParseMode.Set {
-		more.More()
-		e.ObjField("parse_mode")
+		e.FieldStart("parse_mode")
 		s.ParseMode.WriteJSON(e)
 	}
 	if s.ReplyMarkup != nil {
-		more.More()
-		e.ObjField("reply_markup")
+		e.FieldStart("reply_markup")
 		s.ReplyMarkup.WriteJSON(e)
 	}
 	if s.ReplyToMessageID.Set {
-		more.More()
-		e.ObjField("reply_to_message_id")
+		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(e)
 	}
 	if s.Thumb.Set {
-		more.More()
-		e.ObjField("thumb")
+		e.FieldStart("thumb")
 		s.Thumb.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -9659,32 +9040,26 @@ func (s *SendDocumentReplyMarkup) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SendGame) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AllowSendingWithoutReply.Set {
-		more.More()
-		e.ObjField("allow_sending_without_reply")
+		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	e.Int(s.ChatID)
 	if s.DisableNotification.Set {
-		more.More()
-		e.ObjField("disable_notification")
+		e.FieldStart("disable_notification")
 		s.DisableNotification.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("game_short_name")
+
+	e.FieldStart("game_short_name")
 	e.Str(s.GameShortName)
 	if s.ReplyMarkup.Set {
-		more.More()
-		e.ObjField("reply_markup")
+		e.FieldStart("reply_markup")
 		s.ReplyMarkup.WriteJSON(e)
 	}
 	if s.ReplyToMessageID.Set {
-		more.More()
-		e.ObjField("reply_to_message_id")
+		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -9739,137 +9114,110 @@ func (s *SendGame) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SendInvoice) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AllowSendingWithoutReply.Set {
-		more.More()
-		e.ObjField("allow_sending_without_reply")
+		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
-	more.More()
-	e.ObjField("currency")
+
+	e.FieldStart("currency")
 	e.Str(s.Currency)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	e.Str(s.Description)
 	if s.DisableNotification.Set {
-		more.More()
-		e.ObjField("disable_notification")
+		e.FieldStart("disable_notification")
 		s.DisableNotification.WriteJSON(e)
 	}
 	if s.IsFlexible.Set {
-		more.More()
-		e.ObjField("is_flexible")
+		e.FieldStart("is_flexible")
 		s.IsFlexible.WriteJSON(e)
 	}
 	if s.MaxTipAmount.Set {
-		more.More()
-		e.ObjField("max_tip_amount")
+		e.FieldStart("max_tip_amount")
 		s.MaxTipAmount.WriteJSON(e)
 	}
 	if s.NeedEmail.Set {
-		more.More()
-		e.ObjField("need_email")
+		e.FieldStart("need_email")
 		s.NeedEmail.WriteJSON(e)
 	}
 	if s.NeedName.Set {
-		more.More()
-		e.ObjField("need_name")
+		e.FieldStart("need_name")
 		s.NeedName.WriteJSON(e)
 	}
 	if s.NeedPhoneNumber.Set {
-		more.More()
-		e.ObjField("need_phone_number")
+		e.FieldStart("need_phone_number")
 		s.NeedPhoneNumber.WriteJSON(e)
 	}
 	if s.NeedShippingAddress.Set {
-		more.More()
-		e.ObjField("need_shipping_address")
+		e.FieldStart("need_shipping_address")
 		s.NeedShippingAddress.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("payload")
+
+	e.FieldStart("payload")
 	e.Str(s.Payload)
 	if s.PhotoHeight.Set {
-		more.More()
-		e.ObjField("photo_height")
+		e.FieldStart("photo_height")
 		s.PhotoHeight.WriteJSON(e)
 	}
 	if s.PhotoSize.Set {
-		more.More()
-		e.ObjField("photo_size")
+		e.FieldStart("photo_size")
 		s.PhotoSize.WriteJSON(e)
 	}
 	if s.PhotoURL.Set {
-		more.More()
-		e.ObjField("photo_url")
+		e.FieldStart("photo_url")
 		s.PhotoURL.WriteJSON(e)
 	}
 	if s.PhotoWidth.Set {
-		more.More()
-		e.ObjField("photo_width")
+		e.FieldStart("photo_width")
 		s.PhotoWidth.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("prices")
-	more.Down()
+
+	e.FieldStart("prices")
 	e.ArrStart()
 	for _, elem := range s.Prices {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.ProviderData.Set {
-		more.More()
-		e.ObjField("provider_data")
+		e.FieldStart("provider_data")
 		s.ProviderData.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("provider_token")
+
+	e.FieldStart("provider_token")
 	e.Str(s.ProviderToken)
 	if s.ReplyMarkup.Set {
-		more.More()
-		e.ObjField("reply_markup")
+		e.FieldStart("reply_markup")
 		s.ReplyMarkup.WriteJSON(e)
 	}
 	if s.ReplyToMessageID.Set {
-		more.More()
-		e.ObjField("reply_to_message_id")
+		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(e)
 	}
 	if s.SendEmailToProvider.Set {
-		more.More()
-		e.ObjField("send_email_to_provider")
+		e.FieldStart("send_email_to_provider")
 		s.SendEmailToProvider.WriteJSON(e)
 	}
 	if s.SendPhoneNumberToProvider.Set {
-		more.More()
-		e.ObjField("send_phone_number_to_provider")
+		e.FieldStart("send_phone_number_to_provider")
 		s.SendPhoneNumberToProvider.WriteJSON(e)
 	}
 	if s.StartParameter.Set {
-		more.More()
-		e.ObjField("start_parameter")
+		e.FieldStart("start_parameter")
 		s.StartParameter.WriteJSON(e)
 	}
 	if s.SuggestedTipAmounts != nil {
-		more.More()
-		e.ObjField("suggested_tip_amounts")
-		more.Down()
+		e.FieldStart("suggested_tip_amounts")
 		e.ArrStart()
 		for _, elem := range s.SuggestedTipAmounts {
-			more.More()
 			e.Int(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	e.Str(s.Title)
 	e.ObjEnd()
 }
@@ -10041,55 +9389,45 @@ func (s *SendInvoice) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SendLocation) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AllowSendingWithoutReply.Set {
-		more.More()
-		e.ObjField("allow_sending_without_reply")
+		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	if s.DisableNotification.Set {
-		more.More()
-		e.ObjField("disable_notification")
+		e.FieldStart("disable_notification")
 		s.DisableNotification.WriteJSON(e)
 	}
 	if s.Heading.Set {
-		more.More()
-		e.ObjField("heading")
+		e.FieldStart("heading")
 		s.Heading.WriteJSON(e)
 	}
 	if s.HorizontalAccuracy.Set {
-		more.More()
-		e.ObjField("horizontal_accuracy")
+		e.FieldStart("horizontal_accuracy")
 		s.HorizontalAccuracy.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("latitude")
+
+	e.FieldStart("latitude")
 	e.Float64(s.Latitude)
 	if s.LivePeriod.Set {
-		more.More()
-		e.ObjField("live_period")
+		e.FieldStart("live_period")
 		s.LivePeriod.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("longitude")
+
+	e.FieldStart("longitude")
 	e.Float64(s.Longitude)
 	if s.ProximityAlertRadius.Set {
-		more.More()
-		e.ObjField("proximity_alert_radius")
+		e.FieldStart("proximity_alert_radius")
 		s.ProximityAlertRadius.WriteJSON(e)
 	}
 	if s.ReplyMarkup != nil {
-		more.More()
-		e.ObjField("reply_markup")
+		e.FieldStart("reply_markup")
 		s.ReplyMarkup.WriteJSON(e)
 	}
 	if s.ReplyToMessageID.Set {
-		more.More()
-		e.ObjField("reply_to_message_id")
+		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -10256,34 +9594,26 @@ func (s *SendLocationReplyMarkup) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SendMediaGroup) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AllowSendingWithoutReply.Set {
-		more.More()
-		e.ObjField("allow_sending_without_reply")
+		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	if s.DisableNotification.Set {
-		more.More()
-		e.ObjField("disable_notification")
+		e.FieldStart("disable_notification")
 		s.DisableNotification.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("media")
-	more.Down()
+
+	e.FieldStart("media")
 	e.ArrStart()
 	for _, elem := range s.Media {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.ReplyToMessageID.Set {
-		more.More()
-		e.ObjField("reply_to_message_id")
+		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -10421,55 +9751,43 @@ func (s *SendMediaGroupMediaItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SendMessage) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AllowSendingWithoutReply.Set {
-		more.More()
-		e.ObjField("allow_sending_without_reply")
+		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	if s.DisableNotification.Set {
-		more.More()
-		e.ObjField("disable_notification")
+		e.FieldStart("disable_notification")
 		s.DisableNotification.WriteJSON(e)
 	}
 	if s.DisableWebPagePreview.Set {
-		more.More()
-		e.ObjField("disable_web_page_preview")
+		e.FieldStart("disable_web_page_preview")
 		s.DisableWebPagePreview.WriteJSON(e)
 	}
 	if s.Entities != nil {
-		more.More()
-		e.ObjField("entities")
-		more.Down()
+		e.FieldStart("entities")
 		e.ArrStart()
 		for _, elem := range s.Entities {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.ParseMode.Set {
-		more.More()
-		e.ObjField("parse_mode")
+		e.FieldStart("parse_mode")
 		s.ParseMode.WriteJSON(e)
 	}
 	if s.ReplyMarkup != nil {
-		more.More()
-		e.ObjField("reply_markup")
+		e.FieldStart("reply_markup")
 		s.ReplyMarkup.WriteJSON(e)
 	}
 	if s.ReplyToMessageID.Set {
-		more.More()
-		e.ObjField("reply_to_message_id")
+		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("text")
+
+	e.FieldStart("text")
 	e.Str(s.Text)
 	e.ObjEnd()
 }
@@ -10631,54 +9949,42 @@ func (s *SendMessageReplyMarkup) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SendPhoto) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AllowSendingWithoutReply.Set {
-		more.More()
-		e.ObjField("allow_sending_without_reply")
+		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(e)
 	}
 	if s.Caption.Set {
-		more.More()
-		e.ObjField("caption")
+		e.FieldStart("caption")
 		s.Caption.WriteJSON(e)
 	}
 	if s.CaptionEntities != nil {
-		more.More()
-		e.ObjField("caption_entities")
-		more.Down()
+		e.FieldStart("caption_entities")
 		e.ArrStart()
 		for _, elem := range s.CaptionEntities {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	if s.DisableNotification.Set {
-		more.More()
-		e.ObjField("disable_notification")
+		e.FieldStart("disable_notification")
 		s.DisableNotification.WriteJSON(e)
 	}
 	if s.ParseMode.Set {
-		more.More()
-		e.ObjField("parse_mode")
+		e.FieldStart("parse_mode")
 		s.ParseMode.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("photo")
+
+	e.FieldStart("photo")
 	e.Str(s.Photo)
 	if s.ReplyMarkup != nil {
-		more.More()
-		e.ObjField("reply_markup")
+		e.FieldStart("reply_markup")
 		s.ReplyMarkup.WriteJSON(e)
 	}
 	if s.ReplyToMessageID.Set {
-		more.More()
-		e.ObjField("reply_to_message_id")
+		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -10841,99 +10147,77 @@ func (s *SendPhotoReplyMarkup) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SendPoll) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AllowSendingWithoutReply.Set {
-		more.More()
-		e.ObjField("allow_sending_without_reply")
+		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(e)
 	}
 	if s.AllowsMultipleAnswers.Set {
-		more.More()
-		e.ObjField("allows_multiple_answers")
+		e.FieldStart("allows_multiple_answers")
 		s.AllowsMultipleAnswers.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	if s.CloseDate.Set {
-		more.More()
-		e.ObjField("close_date")
+		e.FieldStart("close_date")
 		s.CloseDate.WriteJSON(e)
 	}
 	if s.CorrectOptionID.Set {
-		more.More()
-		e.ObjField("correct_option_id")
+		e.FieldStart("correct_option_id")
 		s.CorrectOptionID.WriteJSON(e)
 	}
 	if s.DisableNotification.Set {
-		more.More()
-		e.ObjField("disable_notification")
+		e.FieldStart("disable_notification")
 		s.DisableNotification.WriteJSON(e)
 	}
 	if s.Explanation.Set {
-		more.More()
-		e.ObjField("explanation")
+		e.FieldStart("explanation")
 		s.Explanation.WriteJSON(e)
 	}
 	if s.ExplanationEntities != nil {
-		more.More()
-		e.ObjField("explanation_entities")
-		more.Down()
+		e.FieldStart("explanation_entities")
 		e.ArrStart()
 		for _, elem := range s.ExplanationEntities {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.ExplanationParseMode.Set {
-		more.More()
-		e.ObjField("explanation_parse_mode")
+		e.FieldStart("explanation_parse_mode")
 		s.ExplanationParseMode.WriteJSON(e)
 	}
 	if s.IsAnonymous.Set {
-		more.More()
-		e.ObjField("is_anonymous")
+		e.FieldStart("is_anonymous")
 		s.IsAnonymous.WriteJSON(e)
 	}
 	if s.IsClosed.Set {
-		more.More()
-		e.ObjField("is_closed")
+		e.FieldStart("is_closed")
 		s.IsClosed.WriteJSON(e)
 	}
 	if s.OpenPeriod.Set {
-		more.More()
-		e.ObjField("open_period")
+		e.FieldStart("open_period")
 		s.OpenPeriod.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("options")
-	more.Down()
+
+	e.FieldStart("options")
 	e.ArrStart()
 	for _, elem := range s.Options {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("question")
+
+	e.FieldStart("question")
 	e.Str(s.Question)
 	if s.ReplyMarkup != nil {
-		more.More()
-		e.ObjField("reply_markup")
+		e.FieldStart("reply_markup")
 		s.ReplyMarkup.WriteJSON(e)
 	}
 	if s.ReplyToMessageID.Set {
-		more.More()
-		e.ObjField("reply_to_message_id")
+		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -11145,33 +10429,27 @@ func (s *SendPollReplyMarkup) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SendSticker) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AllowSendingWithoutReply.Set {
-		more.More()
-		e.ObjField("allow_sending_without_reply")
+		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	if s.DisableNotification.Set {
-		more.More()
-		e.ObjField("disable_notification")
+		e.FieldStart("disable_notification")
 		s.DisableNotification.WriteJSON(e)
 	}
 	if s.ReplyMarkup != nil {
-		more.More()
-		e.ObjField("reply_markup")
+		e.FieldStart("reply_markup")
 		s.ReplyMarkup.WriteJSON(e)
 	}
 	if s.ReplyToMessageID.Set {
-		more.More()
-		e.ObjField("reply_to_message_id")
+		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("sticker")
+
+	e.FieldStart("sticker")
 	e.Str(s.Sticker)
 	e.ObjEnd()
 }
@@ -11311,62 +10589,52 @@ func (s *SendStickerReplyMarkup) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SendVenue) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("address")
+
+	e.FieldStart("address")
 	e.Str(s.Address)
 	if s.AllowSendingWithoutReply.Set {
-		more.More()
-		e.ObjField("allow_sending_without_reply")
+		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	if s.DisableNotification.Set {
-		more.More()
-		e.ObjField("disable_notification")
+		e.FieldStart("disable_notification")
 		s.DisableNotification.WriteJSON(e)
 	}
 	if s.FoursquareID.Set {
-		more.More()
-		e.ObjField("foursquare_id")
+		e.FieldStart("foursquare_id")
 		s.FoursquareID.WriteJSON(e)
 	}
 	if s.FoursquareType.Set {
-		more.More()
-		e.ObjField("foursquare_type")
+		e.FieldStart("foursquare_type")
 		s.FoursquareType.WriteJSON(e)
 	}
 	if s.GooglePlaceID.Set {
-		more.More()
-		e.ObjField("google_place_id")
+		e.FieldStart("google_place_id")
 		s.GooglePlaceID.WriteJSON(e)
 	}
 	if s.GooglePlaceType.Set {
-		more.More()
-		e.ObjField("google_place_type")
+		e.FieldStart("google_place_type")
 		s.GooglePlaceType.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("latitude")
+
+	e.FieldStart("latitude")
 	e.Float64(s.Latitude)
-	more.More()
-	e.ObjField("longitude")
+
+	e.FieldStart("longitude")
 	e.Float64(s.Longitude)
 	if s.ReplyMarkup != nil {
-		more.More()
-		e.ObjField("reply_markup")
+		e.FieldStart("reply_markup")
 		s.ReplyMarkup.WriteJSON(e)
 	}
 	if s.ReplyToMessageID.Set {
-		more.More()
-		e.ObjField("reply_to_message_id")
+		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	e.Str(s.Title)
 	e.ObjEnd()
 }
@@ -11544,79 +10812,62 @@ func (s *SendVenueReplyMarkup) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SendVideo) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AllowSendingWithoutReply.Set {
-		more.More()
-		e.ObjField("allow_sending_without_reply")
+		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(e)
 	}
 	if s.Caption.Set {
-		more.More()
-		e.ObjField("caption")
+		e.FieldStart("caption")
 		s.Caption.WriteJSON(e)
 	}
 	if s.CaptionEntities != nil {
-		more.More()
-		e.ObjField("caption_entities")
-		more.Down()
+		e.FieldStart("caption_entities")
 		e.ArrStart()
 		for _, elem := range s.CaptionEntities {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	if s.DisableNotification.Set {
-		more.More()
-		e.ObjField("disable_notification")
+		e.FieldStart("disable_notification")
 		s.DisableNotification.WriteJSON(e)
 	}
 	if s.Duration.Set {
-		more.More()
-		e.ObjField("duration")
+		e.FieldStart("duration")
 		s.Duration.WriteJSON(e)
 	}
 	if s.Height.Set {
-		more.More()
-		e.ObjField("height")
+		e.FieldStart("height")
 		s.Height.WriteJSON(e)
 	}
 	if s.ParseMode.Set {
-		more.More()
-		e.ObjField("parse_mode")
+		e.FieldStart("parse_mode")
 		s.ParseMode.WriteJSON(e)
 	}
 	if s.ReplyMarkup != nil {
-		more.More()
-		e.ObjField("reply_markup")
+		e.FieldStart("reply_markup")
 		s.ReplyMarkup.WriteJSON(e)
 	}
 	if s.ReplyToMessageID.Set {
-		more.More()
-		e.ObjField("reply_to_message_id")
+		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(e)
 	}
 	if s.SupportsStreaming.Set {
-		more.More()
-		e.ObjField("supports_streaming")
+		e.FieldStart("supports_streaming")
 		s.SupportsStreaming.WriteJSON(e)
 	}
 	if s.Thumb.Set {
-		more.More()
-		e.ObjField("thumb")
+		e.FieldStart("thumb")
 		s.Thumb.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("video")
+
+	e.FieldStart("video")
 	e.Str(s.Video)
 	if s.Width.Set {
-		more.More()
-		e.ObjField("width")
+		e.FieldStart("width")
 		s.Width.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -11718,48 +10969,39 @@ func (s *SendVideo) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SendVideoNote) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AllowSendingWithoutReply.Set {
-		more.More()
-		e.ObjField("allow_sending_without_reply")
+		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	if s.DisableNotification.Set {
-		more.More()
-		e.ObjField("disable_notification")
+		e.FieldStart("disable_notification")
 		s.DisableNotification.WriteJSON(e)
 	}
 	if s.Duration.Set {
-		more.More()
-		e.ObjField("duration")
+		e.FieldStart("duration")
 		s.Duration.WriteJSON(e)
 	}
 	if s.Length.Set {
-		more.More()
-		e.ObjField("length")
+		e.FieldStart("length")
 		s.Length.WriteJSON(e)
 	}
 	if s.ReplyMarkup != nil {
-		more.More()
-		e.ObjField("reply_markup")
+		e.FieldStart("reply_markup")
 		s.ReplyMarkup.WriteJSON(e)
 	}
 	if s.ReplyToMessageID.Set {
-		more.More()
-		e.ObjField("reply_to_message_id")
+		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(e)
 	}
 	if s.Thumb.Set {
-		more.More()
-		e.ObjField("thumb")
+		e.FieldStart("thumb")
 		s.Thumb.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("video_note")
+
+	e.FieldStart("video_note")
 	e.Str(s.VideoNote)
 	e.ObjEnd()
 }
@@ -12000,60 +11242,47 @@ func (s *SendVideoReplyMarkup) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SendVoice) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AllowSendingWithoutReply.Set {
-		more.More()
-		e.ObjField("allow_sending_without_reply")
+		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(e)
 	}
 	if s.Caption.Set {
-		more.More()
-		e.ObjField("caption")
+		e.FieldStart("caption")
 		s.Caption.WriteJSON(e)
 	}
 	if s.CaptionEntities != nil {
-		more.More()
-		e.ObjField("caption_entities")
-		more.Down()
+		e.FieldStart("caption_entities")
 		e.ArrStart()
 		for _, elem := range s.CaptionEntities {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	if s.DisableNotification.Set {
-		more.More()
-		e.ObjField("disable_notification")
+		e.FieldStart("disable_notification")
 		s.DisableNotification.WriteJSON(e)
 	}
 	if s.Duration.Set {
-		more.More()
-		e.ObjField("duration")
+		e.FieldStart("duration")
 		s.Duration.WriteJSON(e)
 	}
 	if s.ParseMode.Set {
-		more.More()
-		e.ObjField("parse_mode")
+		e.FieldStart("parse_mode")
 		s.ParseMode.WriteJSON(e)
 	}
 	if s.ReplyMarkup != nil {
-		more.More()
-		e.ObjField("reply_markup")
+		e.FieldStart("reply_markup")
 		s.ReplyMarkup.WriteJSON(e)
 	}
 	if s.ReplyToMessageID.Set {
-		more.More()
-		e.ObjField("reply_to_message_id")
+		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("voice")
+
+	e.FieldStart("voice")
 	e.Str(s.Voice)
 	e.ObjEnd()
 }
@@ -12220,16 +11449,14 @@ func (s *SendVoiceReplyMarkup) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SetChatAdministratorCustomTitle) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
-	more.More()
-	e.ObjField("custom_title")
+
+	e.FieldStart("custom_title")
 	e.Str(s.CustomTitle)
-	more.More()
-	e.ObjField("user_id")
+
+	e.FieldStart("user_id")
 	e.Int(s.UserID)
 	e.ObjEnd()
 }
@@ -12267,14 +11494,11 @@ func (s *SetChatAdministratorCustomTitle) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SetChatDescription) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -12306,13 +11530,11 @@ func (s *SetChatDescription) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SetChatPermissions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
-	more.More()
-	e.ObjField("permissions")
+
+	e.FieldStart("permissions")
 	s.Permissions.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -12342,13 +11564,11 @@ func (s *SetChatPermissions) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SetChatPhoto) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
-	more.More()
-	e.ObjField("photo")
+
+	e.FieldStart("photo")
 	e.Str(s.Photo)
 	e.ObjEnd()
 }
@@ -12380,13 +11600,11 @@ func (s *SetChatPhoto) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SetChatStickerSet) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
-	more.More()
-	e.ObjField("sticker_set_name")
+
+	e.FieldStart("sticker_set_name")
 	e.Str(s.StickerSetName)
 	e.ObjEnd()
 }
@@ -12418,13 +11636,11 @@ func (s *SetChatStickerSet) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SetChatTitle) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	e.Str(s.Title)
 	e.ObjEnd()
 }
@@ -12456,38 +11672,31 @@ func (s *SetChatTitle) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SetGameScore) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ChatID.Set {
-		more.More()
-		e.ObjField("chat_id")
+		e.FieldStart("chat_id")
 		s.ChatID.WriteJSON(e)
 	}
 	if s.DisableEditMessage.Set {
-		more.More()
-		e.ObjField("disable_edit_message")
+		e.FieldStart("disable_edit_message")
 		s.DisableEditMessage.WriteJSON(e)
 	}
 	if s.Force.Set {
-		more.More()
-		e.ObjField("force")
+		e.FieldStart("force")
 		s.Force.WriteJSON(e)
 	}
 	if s.InlineMessageID.Set {
-		more.More()
-		e.ObjField("inline_message_id")
+		e.FieldStart("inline_message_id")
 		s.InlineMessageID.WriteJSON(e)
 	}
 	if s.MessageID.Set {
-		more.More()
-		e.ObjField("message_id")
+		e.FieldStart("message_id")
 		s.MessageID.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("score")
+
+	e.FieldStart("score")
 	e.Int(s.Score)
-	more.More()
-	e.ObjField("user_id")
+
+	e.FieldStart("user_id")
 	e.Int(s.UserID)
 	e.ObjEnd()
 }
@@ -12546,26 +11755,19 @@ func (s *SetGameScore) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SetMyCommands) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("commands")
-	more.Down()
+
+	e.FieldStart("commands")
 	e.ArrStart()
 	for _, elem := range s.Commands {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.LanguageCode.Set {
-		more.More()
-		e.ObjField("language_code")
+		e.FieldStart("language_code")
 		s.LanguageCode.WriteJSON(e)
 	}
 	if s.Scope != nil {
-		more.More()
-		e.ObjField("scope")
+		e.FieldStart("scope")
 		s.Scope.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -12612,20 +11814,15 @@ func (s *SetMyCommands) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SetPassportDataErrors) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("errors")
-	more.Down()
+
+	e.FieldStart("errors")
 	e.ArrStart()
 	for _, elem := range s.Errors {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("user_id")
+
+	e.FieldStart("user_id")
 	e.Int(s.UserID)
 	e.ObjEnd()
 }
@@ -12665,13 +11862,11 @@ func (s *SetPassportDataErrors) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SetStickerPositionInSet) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("position")
+
+	e.FieldStart("position")
 	e.Int(s.Position)
-	more.More()
-	e.ObjField("sticker")
+
+	e.FieldStart("sticker")
 	e.Str(s.Sticker)
 	e.ObjEnd()
 }
@@ -12705,18 +11900,15 @@ func (s *SetStickerPositionInSet) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SetStickerSetThumb) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Thumb.Set {
-		more.More()
-		e.ObjField("thumb")
+		e.FieldStart("thumb")
 		s.Thumb.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("user_id")
+
+	e.FieldStart("user_id")
 	e.Int(s.UserID)
 	e.ObjEnd()
 }
@@ -12755,42 +11947,32 @@ func (s *SetStickerSetThumb) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SetWebhook) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AllowedUpdates != nil {
-		more.More()
-		e.ObjField("allowed_updates")
-		more.Down()
+		e.FieldStart("allowed_updates")
 		e.ArrStart()
 		for _, elem := range s.AllowedUpdates {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Certificate.Set {
-		more.More()
-		e.ObjField("certificate")
+		e.FieldStart("certificate")
 		s.Certificate.WriteJSON(e)
 	}
 	if s.DropPendingUpdates.Set {
-		more.More()
-		e.ObjField("drop_pending_updates")
+		e.FieldStart("drop_pending_updates")
 		s.DropPendingUpdates.WriteJSON(e)
 	}
 	if s.IPAddress.Set {
-		more.More()
-		e.ObjField("ip_address")
+		e.FieldStart("ip_address")
 		s.IPAddress.WriteJSON(e)
 	}
 	if s.MaxConnections.Set {
-		more.More()
-		e.ObjField("max_connections")
+		e.FieldStart("max_connections")
 		s.MaxConnections.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	e.ObjEnd()
 }
@@ -12852,25 +12034,23 @@ func (s *SetWebhook) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ShippingAddress) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("city")
+
+	e.FieldStart("city")
 	e.Str(s.City)
-	more.More()
-	e.ObjField("country_code")
+
+	e.FieldStart("country_code")
 	e.Str(s.CountryCode)
-	more.More()
-	e.ObjField("post_code")
+
+	e.FieldStart("post_code")
 	e.Str(s.PostCode)
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	e.Str(s.State)
-	more.More()
-	e.ObjField("street_line1")
+
+	e.FieldStart("street_line1")
 	e.Str(s.StreetLine1)
-	more.More()
-	e.ObjField("street_line2")
+
+	e.FieldStart("street_line2")
 	e.Str(s.StreetLine2)
 	e.ObjEnd()
 }
@@ -12928,23 +12108,18 @@ func (s *ShippingAddress) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ShippingOption) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Str(s.ID)
-	more.More()
-	e.ObjField("prices")
-	more.Down()
+
+	e.FieldStart("prices")
 	e.ArrStart()
 	for _, elem := range s.Prices {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	e.Str(s.Title)
 	e.ObjEnd()
 }
@@ -12990,47 +12165,40 @@ func (s *ShippingOption) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Sticker) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Emoji.Set {
-		more.More()
-		e.ObjField("emoji")
+		e.FieldStart("emoji")
 		s.Emoji.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("file_id")
+
+	e.FieldStart("file_id")
 	e.Str(s.FileID)
 	if s.FileSize.Set {
-		more.More()
-		e.ObjField("file_size")
+		e.FieldStart("file_size")
 		s.FileSize.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("file_unique_id")
+
+	e.FieldStart("file_unique_id")
 	e.Str(s.FileUniqueID)
-	more.More()
-	e.ObjField("height")
+
+	e.FieldStart("height")
 	e.Int(s.Height)
-	more.More()
-	e.ObjField("is_animated")
+
+	e.FieldStart("is_animated")
 	e.Bool(s.IsAnimated)
 	if s.MaskPosition.Set {
-		more.More()
-		e.ObjField("mask_position")
+		e.FieldStart("mask_position")
 		s.MaskPosition.WriteJSON(e)
 	}
 	if s.SetName.Set {
-		more.More()
-		e.ObjField("set_name")
+		e.FieldStart("set_name")
 		s.SetName.WriteJSON(e)
 	}
 	if s.Thumb.Set {
-		more.More()
-		e.ObjField("thumb")
+		e.FieldStart("thumb")
 		s.Thumb.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("width")
+
+	e.FieldStart("width")
 	e.Int(s.Width)
 	e.ObjEnd()
 }
@@ -13107,26 +12275,20 @@ func (s *Sticker) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s StopMessageLiveLocation) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ChatID != nil {
-		more.More()
-		e.ObjField("chat_id")
+		e.FieldStart("chat_id")
 		s.ChatID.WriteJSON(e)
 	}
 	if s.InlineMessageID.Set {
-		more.More()
-		e.ObjField("inline_message_id")
+		e.FieldStart("inline_message_id")
 		s.InlineMessageID.WriteJSON(e)
 	}
 	if s.MessageID.Set {
-		more.More()
-		e.ObjField("message_id")
+		e.FieldStart("message_id")
 		s.MessageID.WriteJSON(e)
 	}
 	if s.ReplyMarkup.Set {
-		more.More()
-		e.ObjField("reply_markup")
+		e.FieldStart("reply_markup")
 		s.ReplyMarkup.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -13171,17 +12333,14 @@ func (s *StopMessageLiveLocation) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s StopPoll) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
-	more.More()
-	e.ObjField("message_id")
+
+	e.FieldStart("message_id")
 	e.Int(s.MessageID)
 	if s.ReplyMarkup.Set {
-		more.More()
-		e.ObjField("reply_markup")
+		e.FieldStart("reply_markup")
 		s.ReplyMarkup.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -13219,32 +12378,28 @@ func (s *StopPoll) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SuccessfulPayment) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("currency")
+
+	e.FieldStart("currency")
 	e.Str(s.Currency)
-	more.More()
-	e.ObjField("invoice_payload")
+
+	e.FieldStart("invoice_payload")
 	e.Str(s.InvoicePayload)
 	if s.OrderInfo.Set {
-		more.More()
-		e.ObjField("order_info")
+		e.FieldStart("order_info")
 		s.OrderInfo.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("provider_payment_charge_id")
+
+	e.FieldStart("provider_payment_charge_id")
 	e.Str(s.ProviderPaymentChargeID)
 	if s.ShippingOptionID.Set {
-		more.More()
-		e.ObjField("shipping_option_id")
+		e.FieldStart("shipping_option_id")
 		s.ShippingOptionID.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("telegram_payment_charge_id")
+
+	e.FieldStart("telegram_payment_charge_id")
 	e.Str(s.TelegramPaymentChargeID)
-	more.More()
-	e.ObjField("total_amount")
+
+	e.FieldStart("total_amount")
 	e.Int(s.TotalAmount)
 	e.ObjEnd()
 }
@@ -13306,18 +12461,15 @@ func (s *SuccessfulPayment) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s UnbanChatMember) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	if s.OnlyIfBanned.Set {
-		more.More()
-		e.ObjField("only_if_banned")
+		e.FieldStart("only_if_banned")
 		s.OnlyIfBanned.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("user_id")
+
+	e.FieldStart("user_id")
 	e.Int(s.UserID)
 	e.ObjEnd()
 }
@@ -13354,10 +12506,8 @@ func (s *UnbanChatMember) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s UnpinAllChatMessages) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -13383,14 +12533,11 @@ func (s *UnpinAllChatMessages) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s UnpinChatMessage) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("chat_id")
+
+	e.FieldStart("chat_id")
 	s.ChatID.WriteJSON(e)
 	if s.MessageID.Set {
-		more.More()
-		e.ObjField("message_id")
+		e.FieldStart("message_id")
 		s.MessageID.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -13422,13 +12569,11 @@ func (s *UnpinChatMessage) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s UploadStickerFile) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("png_sticker")
+
+	e.FieldStart("png_sticker")
 	e.Str(s.PNGSticker)
-	more.More()
-	e.ObjField("user_id")
+
+	e.FieldStart("user_id")
 	e.Int(s.UserID)
 	e.ObjEnd()
 }
@@ -13462,45 +12607,37 @@ func (s *UploadStickerFile) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s User) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.CanJoinGroups.Set {
-		more.More()
-		e.ObjField("can_join_groups")
+		e.FieldStart("can_join_groups")
 		s.CanJoinGroups.WriteJSON(e)
 	}
 	if s.CanReadAllGroupMessages.Set {
-		more.More()
-		e.ObjField("can_read_all_group_messages")
+		e.FieldStart("can_read_all_group_messages")
 		s.CanReadAllGroupMessages.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("first_name")
+
+	e.FieldStart("first_name")
 	e.Str(s.FirstName)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("is_bot")
+
+	e.FieldStart("is_bot")
 	e.Bool(s.IsBot)
 	if s.LanguageCode.Set {
-		more.More()
-		e.ObjField("language_code")
+		e.FieldStart("language_code")
 		s.LanguageCode.WriteJSON(e)
 	}
 	if s.LastName.Set {
-		more.More()
-		e.ObjField("last_name")
+		e.FieldStart("last_name")
 		s.LastName.WriteJSON(e)
 	}
 	if s.SupportsInlineQueries.Set {
-		more.More()
-		e.ObjField("supports_inline_queries")
+		e.FieldStart("supports_inline_queries")
 		s.SupportsInlineQueries.WriteJSON(e)
 	}
 	if s.Username.Set {
-		more.More()
-		e.ObjField("username")
+		e.FieldStart("username")
 		s.Username.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -13571,36 +12708,30 @@ func (s *User) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Venue) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("address")
+
+	e.FieldStart("address")
 	e.Str(s.Address)
 	if s.FoursquareID.Set {
-		more.More()
-		e.ObjField("foursquare_id")
+		e.FieldStart("foursquare_id")
 		s.FoursquareID.WriteJSON(e)
 	}
 	if s.FoursquareType.Set {
-		more.More()
-		e.ObjField("foursquare_type")
+		e.FieldStart("foursquare_type")
 		s.FoursquareType.WriteJSON(e)
 	}
 	if s.GooglePlaceID.Set {
-		more.More()
-		e.ObjField("google_place_id")
+		e.FieldStart("google_place_id")
 		s.GooglePlaceID.WriteJSON(e)
 	}
 	if s.GooglePlaceType.Set {
-		more.More()
-		e.ObjField("google_place_type")
+		e.FieldStart("google_place_type")
 		s.GooglePlaceType.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("location")
+
+	e.FieldStart("location")
 	s.Location.WriteJSON(e)
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	e.Str(s.Title)
 	e.ObjEnd()
 }
@@ -13658,42 +12789,36 @@ func (s *Venue) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Video) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("duration")
+
+	e.FieldStart("duration")
 	e.Int(s.Duration)
-	more.More()
-	e.ObjField("file_id")
+
+	e.FieldStart("file_id")
 	e.Str(s.FileID)
 	if s.FileName.Set {
-		more.More()
-		e.ObjField("file_name")
+		e.FieldStart("file_name")
 		s.FileName.WriteJSON(e)
 	}
 	if s.FileSize.Set {
-		more.More()
-		e.ObjField("file_size")
+		e.FieldStart("file_size")
 		s.FileSize.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("file_unique_id")
+
+	e.FieldStart("file_unique_id")
 	e.Str(s.FileUniqueID)
-	more.More()
-	e.ObjField("height")
+
+	e.FieldStart("height")
 	e.Int(s.Height)
 	if s.MimeType.Set {
-		more.More()
-		e.ObjField("mime_type")
+		e.FieldStart("mime_type")
 		s.MimeType.WriteJSON(e)
 	}
 	if s.Thumb.Set {
-		more.More()
-		e.ObjField("thumb")
+		e.FieldStart("thumb")
 		s.Thumb.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("width")
+
+	e.FieldStart("width")
 	e.Int(s.Width)
 	e.ObjEnd()
 }
@@ -13765,28 +12890,24 @@ func (s *Video) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s VideoNote) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("duration")
+
+	e.FieldStart("duration")
 	e.Int(s.Duration)
-	more.More()
-	e.ObjField("file_id")
+
+	e.FieldStart("file_id")
 	e.Str(s.FileID)
 	if s.FileSize.Set {
-		more.More()
-		e.ObjField("file_size")
+		e.FieldStart("file_size")
 		s.FileSize.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("file_unique_id")
+
+	e.FieldStart("file_unique_id")
 	e.Str(s.FileUniqueID)
-	more.More()
-	e.ObjField("length")
+
+	e.FieldStart("length")
 	e.Int(s.Length)
 	if s.Thumb.Set {
-		more.More()
-		e.ObjField("thumb")
+		e.FieldStart("thumb")
 		s.Thumb.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -13843,25 +12964,21 @@ func (s *VideoNote) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Voice) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("duration")
+
+	e.FieldStart("duration")
 	e.Int(s.Duration)
-	more.More()
-	e.ObjField("file_id")
+
+	e.FieldStart("file_id")
 	e.Str(s.FileID)
 	if s.FileSize.Set {
-		more.More()
-		e.ObjField("file_size")
+		e.FieldStart("file_size")
 		s.FileSize.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("file_unique_id")
+
+	e.FieldStart("file_unique_id")
 	e.Str(s.FileUniqueID)
 	if s.MimeType.Set {
-		more.More()
-		e.ObjField("mime_type")
+		e.FieldStart("mime_type")
 		s.MimeType.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -13912,10 +13029,8 @@ func (s *Voice) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s VoiceChatEnded) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("duration")
+
+	e.FieldStart("duration")
 	e.Int(s.Duration)
 	e.ObjEnd()
 }
@@ -13943,19 +13058,13 @@ func (s *VoiceChatEnded) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s VoiceChatParticipantsInvited) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Users != nil {
-		more.More()
-		e.ObjField("users")
-		more.Down()
+		e.FieldStart("users")
 		e.ArrStart()
 		for _, elem := range s.Users {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -13989,10 +13098,8 @@ func (s *VoiceChatParticipantsInvited) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s VoiceChatScheduled) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("start_date")
+
+	e.FieldStart("start_date")
 	e.Int(s.StartDate)
 	e.ObjEnd()
 }
@@ -14020,8 +13127,6 @@ func (s *VoiceChatScheduled) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s VoiceChatStarted) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 

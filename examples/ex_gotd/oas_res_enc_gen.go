@@ -18,8 +18,8 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/go-faster/errors"
 	"github.com/google/uuid"
-	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -67,9 +67,7 @@ func encodeAddStickerToSetResponse(response AddStickerToSetRes, w http.ResponseW
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -81,9 +79,7 @@ func encodeAddStickerToSetResponse(response AddStickerToSetRes, w http.ResponseW
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -102,9 +98,7 @@ func encodeAnswerCallbackQueryResponse(response AnswerCallbackQueryRes, w http.R
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -116,9 +110,7 @@ func encodeAnswerCallbackQueryResponse(response AnswerCallbackQueryRes, w http.R
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -137,9 +129,7 @@ func encodeAnswerInlineQueryResponse(response AnswerInlineQueryRes, w http.Respo
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -151,9 +141,7 @@ func encodeAnswerInlineQueryResponse(response AnswerInlineQueryRes, w http.Respo
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -172,9 +160,7 @@ func encodeAnswerPreCheckoutQueryResponse(response AnswerPreCheckoutQueryRes, w 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -186,9 +172,7 @@ func encodeAnswerPreCheckoutQueryResponse(response AnswerPreCheckoutQueryRes, w 
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -207,9 +191,7 @@ func encodeAnswerShippingQueryResponse(response AnswerShippingQueryRes, w http.R
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -221,9 +203,7 @@ func encodeAnswerShippingQueryResponse(response AnswerShippingQueryRes, w http.R
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -242,9 +222,7 @@ func encodeBanChatMemberResponse(response BanChatMemberRes, w http.ResponseWrite
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -256,9 +234,7 @@ func encodeBanChatMemberResponse(response BanChatMemberRes, w http.ResponseWrite
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -277,9 +253,7 @@ func encodeCopyMessageResponse(response CopyMessageRes, w http.ResponseWriter, s
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -291,9 +265,7 @@ func encodeCopyMessageResponse(response CopyMessageRes, w http.ResponseWriter, s
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -312,9 +284,7 @@ func encodeCreateChatInviteLinkResponse(response CreateChatInviteLinkRes, w http
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -326,9 +296,7 @@ func encodeCreateChatInviteLinkResponse(response CreateChatInviteLinkRes, w http
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -347,9 +315,7 @@ func encodeCreateNewStickerSetResponse(response CreateNewStickerSetRes, w http.R
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -361,9 +327,7 @@ func encodeCreateNewStickerSetResponse(response CreateNewStickerSetRes, w http.R
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -382,9 +346,7 @@ func encodeDeleteChatPhotoResponse(response DeleteChatPhotoRes, w http.ResponseW
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -396,9 +358,7 @@ func encodeDeleteChatPhotoResponse(response DeleteChatPhotoRes, w http.ResponseW
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -417,9 +377,7 @@ func encodeDeleteChatStickerSetResponse(response DeleteChatStickerSetRes, w http
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -431,9 +389,7 @@ func encodeDeleteChatStickerSetResponse(response DeleteChatStickerSetRes, w http
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -452,9 +408,7 @@ func encodeDeleteMessageResponse(response DeleteMessageRes, w http.ResponseWrite
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -466,9 +420,7 @@ func encodeDeleteMessageResponse(response DeleteMessageRes, w http.ResponseWrite
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -487,9 +439,7 @@ func encodeDeleteMyCommandsResponse(response DeleteMyCommandsRes, w http.Respons
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -501,9 +451,7 @@ func encodeDeleteMyCommandsResponse(response DeleteMyCommandsRes, w http.Respons
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -522,9 +470,7 @@ func encodeDeleteStickerFromSetResponse(response DeleteStickerFromSetRes, w http
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -536,9 +482,7 @@ func encodeDeleteStickerFromSetResponse(response DeleteStickerFromSetRes, w http
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -557,9 +501,7 @@ func encodeDeleteWebhookResponse(response DeleteWebhookRes, w http.ResponseWrite
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -571,9 +513,7 @@ func encodeDeleteWebhookResponse(response DeleteWebhookRes, w http.ResponseWrite
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -592,9 +532,7 @@ func encodeEditChatInviteLinkResponse(response EditChatInviteLinkRes, w http.Res
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -606,9 +544,7 @@ func encodeEditChatInviteLinkResponse(response EditChatInviteLinkRes, w http.Res
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -627,9 +563,7 @@ func encodeEditMessageCaptionResponse(response EditMessageCaptionRes, w http.Res
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -641,9 +575,7 @@ func encodeEditMessageCaptionResponse(response EditMessageCaptionRes, w http.Res
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -662,9 +594,7 @@ func encodeEditMessageLiveLocationResponse(response EditMessageLiveLocationRes, 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -676,9 +606,7 @@ func encodeEditMessageLiveLocationResponse(response EditMessageLiveLocationRes, 
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -697,9 +625,7 @@ func encodeEditMessageMediaResponse(response EditMessageMediaRes, w http.Respons
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -711,9 +637,7 @@ func encodeEditMessageMediaResponse(response EditMessageMediaRes, w http.Respons
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -732,9 +656,7 @@ func encodeEditMessageReplyMarkupResponse(response EditMessageReplyMarkupRes, w 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -746,9 +668,7 @@ func encodeEditMessageReplyMarkupResponse(response EditMessageReplyMarkupRes, w 
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -767,9 +687,7 @@ func encodeEditMessageTextResponse(response EditMessageTextRes, w http.ResponseW
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -781,9 +699,7 @@ func encodeEditMessageTextResponse(response EditMessageTextRes, w http.ResponseW
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -802,9 +718,7 @@ func encodeExportChatInviteLinkResponse(response ExportChatInviteLinkRes, w http
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -816,9 +730,7 @@ func encodeExportChatInviteLinkResponse(response ExportChatInviteLinkRes, w http
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -837,9 +749,7 @@ func encodeForwardMessageResponse(response ForwardMessageRes, w http.ResponseWri
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -851,9 +761,7 @@ func encodeForwardMessageResponse(response ForwardMessageRes, w http.ResponseWri
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -872,9 +780,7 @@ func encodeGetChatResponse(response GetChatRes, w http.ResponseWriter, span trac
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -886,9 +792,7 @@ func encodeGetChatResponse(response GetChatRes, w http.ResponseWriter, span trac
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -907,9 +811,7 @@ func encodeGetChatAdministratorsResponse(response GetChatAdministratorsRes, w ht
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -921,9 +823,7 @@ func encodeGetChatAdministratorsResponse(response GetChatAdministratorsRes, w ht
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -942,9 +842,7 @@ func encodeGetChatMemberResponse(response GetChatMemberRes, w http.ResponseWrite
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -956,9 +854,7 @@ func encodeGetChatMemberResponse(response GetChatMemberRes, w http.ResponseWrite
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -977,9 +873,7 @@ func encodeGetChatMemberCountResponse(response GetChatMemberCountRes, w http.Res
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -991,9 +885,7 @@ func encodeGetChatMemberCountResponse(response GetChatMemberCountRes, w http.Res
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1012,9 +904,7 @@ func encodeGetFileResponse(response GetFileRes, w http.ResponseWriter, span trac
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1026,9 +916,7 @@ func encodeGetFileResponse(response GetFileRes, w http.ResponseWriter, span trac
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1047,9 +935,7 @@ func encodeGetGameHighScoresResponse(response GetGameHighScoresRes, w http.Respo
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1061,9 +947,7 @@ func encodeGetGameHighScoresResponse(response GetGameHighScoresRes, w http.Respo
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1082,9 +966,7 @@ func encodeGetMeResponse(response GetMeRes, w http.ResponseWriter, span trace.Sp
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1096,9 +978,7 @@ func encodeGetMeResponse(response GetMeRes, w http.ResponseWriter, span trace.Sp
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1117,9 +997,7 @@ func encodeGetMyCommandsResponse(response GetMyCommandsRes, w http.ResponseWrite
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1131,9 +1009,7 @@ func encodeGetMyCommandsResponse(response GetMyCommandsRes, w http.ResponseWrite
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1152,9 +1028,7 @@ func encodeGetStickerSetResponse(response GetStickerSetRes, w http.ResponseWrite
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1166,9 +1040,7 @@ func encodeGetStickerSetResponse(response GetStickerSetRes, w http.ResponseWrite
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1187,9 +1059,7 @@ func encodeGetUpdatesResponse(response GetUpdatesRes, w http.ResponseWriter, spa
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1201,9 +1071,7 @@ func encodeGetUpdatesResponse(response GetUpdatesRes, w http.ResponseWriter, spa
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1222,9 +1090,7 @@ func encodeGetUserProfilePhotosResponse(response GetUserProfilePhotosRes, w http
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1236,9 +1102,7 @@ func encodeGetUserProfilePhotosResponse(response GetUserProfilePhotosRes, w http
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1257,9 +1121,7 @@ func encodeLeaveChatResponse(response LeaveChatRes, w http.ResponseWriter, span 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1271,9 +1133,7 @@ func encodeLeaveChatResponse(response LeaveChatRes, w http.ResponseWriter, span 
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1292,9 +1152,7 @@ func encodePinChatMessageResponse(response PinChatMessageRes, w http.ResponseWri
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1306,9 +1164,7 @@ func encodePinChatMessageResponse(response PinChatMessageRes, w http.ResponseWri
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1327,9 +1183,7 @@ func encodePromoteChatMemberResponse(response PromoteChatMemberRes, w http.Respo
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1341,9 +1195,7 @@ func encodePromoteChatMemberResponse(response PromoteChatMemberRes, w http.Respo
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1362,9 +1214,7 @@ func encodeRestrictChatMemberResponse(response RestrictChatMemberRes, w http.Res
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1376,9 +1226,7 @@ func encodeRestrictChatMemberResponse(response RestrictChatMemberRes, w http.Res
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1397,9 +1245,7 @@ func encodeRevokeChatInviteLinkResponse(response RevokeChatInviteLinkRes, w http
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1411,9 +1257,7 @@ func encodeRevokeChatInviteLinkResponse(response RevokeChatInviteLinkRes, w http
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1432,9 +1276,7 @@ func encodeSendAnimationResponse(response SendAnimationRes, w http.ResponseWrite
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1446,9 +1288,7 @@ func encodeSendAnimationResponse(response SendAnimationRes, w http.ResponseWrite
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1467,9 +1307,7 @@ func encodeSendAudioResponse(response SendAudioRes, w http.ResponseWriter, span 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1481,9 +1319,7 @@ func encodeSendAudioResponse(response SendAudioRes, w http.ResponseWriter, span 
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1502,9 +1338,7 @@ func encodeSendChatActionResponse(response SendChatActionRes, w http.ResponseWri
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1516,9 +1350,7 @@ func encodeSendChatActionResponse(response SendChatActionRes, w http.ResponseWri
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1537,9 +1369,7 @@ func encodeSendContactResponse(response SendContactRes, w http.ResponseWriter, s
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1551,9 +1381,7 @@ func encodeSendContactResponse(response SendContactRes, w http.ResponseWriter, s
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1572,9 +1400,7 @@ func encodeSendDiceResponse(response SendDiceRes, w http.ResponseWriter, span tr
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1586,9 +1412,7 @@ func encodeSendDiceResponse(response SendDiceRes, w http.ResponseWriter, span tr
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1607,9 +1431,7 @@ func encodeSendDocumentResponse(response SendDocumentRes, w http.ResponseWriter,
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1621,9 +1443,7 @@ func encodeSendDocumentResponse(response SendDocumentRes, w http.ResponseWriter,
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1642,9 +1462,7 @@ func encodeSendGameResponse(response SendGameRes, w http.ResponseWriter, span tr
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1656,9 +1474,7 @@ func encodeSendGameResponse(response SendGameRes, w http.ResponseWriter, span tr
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1677,9 +1493,7 @@ func encodeSendInvoiceResponse(response SendInvoiceRes, w http.ResponseWriter, s
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1691,9 +1505,7 @@ func encodeSendInvoiceResponse(response SendInvoiceRes, w http.ResponseWriter, s
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1712,9 +1524,7 @@ func encodeSendLocationResponse(response SendLocationRes, w http.ResponseWriter,
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1726,9 +1536,7 @@ func encodeSendLocationResponse(response SendLocationRes, w http.ResponseWriter,
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1747,9 +1555,7 @@ func encodeSendMediaGroupResponse(response SendMediaGroupRes, w http.ResponseWri
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1761,9 +1567,7 @@ func encodeSendMediaGroupResponse(response SendMediaGroupRes, w http.ResponseWri
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1782,9 +1586,7 @@ func encodeSendMessageResponse(response SendMessageRes, w http.ResponseWriter, s
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1796,9 +1598,7 @@ func encodeSendMessageResponse(response SendMessageRes, w http.ResponseWriter, s
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1817,9 +1617,7 @@ func encodeSendPhotoResponse(response SendPhotoRes, w http.ResponseWriter, span 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1831,9 +1629,7 @@ func encodeSendPhotoResponse(response SendPhotoRes, w http.ResponseWriter, span 
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1852,9 +1648,7 @@ func encodeSendPollResponse(response SendPollRes, w http.ResponseWriter, span tr
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1866,9 +1660,7 @@ func encodeSendPollResponse(response SendPollRes, w http.ResponseWriter, span tr
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1887,9 +1679,7 @@ func encodeSendStickerResponse(response SendStickerRes, w http.ResponseWriter, s
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1901,9 +1691,7 @@ func encodeSendStickerResponse(response SendStickerRes, w http.ResponseWriter, s
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1922,9 +1710,7 @@ func encodeSendVenueResponse(response SendVenueRes, w http.ResponseWriter, span 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1936,9 +1722,7 @@ func encodeSendVenueResponse(response SendVenueRes, w http.ResponseWriter, span 
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1957,9 +1741,7 @@ func encodeSendVideoResponse(response SendVideoRes, w http.ResponseWriter, span 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1971,9 +1753,7 @@ func encodeSendVideoResponse(response SendVideoRes, w http.ResponseWriter, span 
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1992,9 +1772,7 @@ func encodeSendVideoNoteResponse(response SendVideoNoteRes, w http.ResponseWrite
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2006,9 +1784,7 @@ func encodeSendVideoNoteResponse(response SendVideoNoteRes, w http.ResponseWrite
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2027,9 +1803,7 @@ func encodeSendVoiceResponse(response SendVoiceRes, w http.ResponseWriter, span 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2041,9 +1815,7 @@ func encodeSendVoiceResponse(response SendVoiceRes, w http.ResponseWriter, span 
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2062,9 +1834,7 @@ func encodeSetChatAdministratorCustomTitleResponse(response SetChatAdministrator
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2076,9 +1846,7 @@ func encodeSetChatAdministratorCustomTitleResponse(response SetChatAdministrator
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2097,9 +1865,7 @@ func encodeSetChatDescriptionResponse(response SetChatDescriptionRes, w http.Res
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2111,9 +1877,7 @@ func encodeSetChatDescriptionResponse(response SetChatDescriptionRes, w http.Res
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2132,9 +1896,7 @@ func encodeSetChatPermissionsResponse(response SetChatPermissionsRes, w http.Res
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2146,9 +1908,7 @@ func encodeSetChatPermissionsResponse(response SetChatPermissionsRes, w http.Res
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2167,9 +1927,7 @@ func encodeSetChatPhotoResponse(response SetChatPhotoRes, w http.ResponseWriter,
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2181,9 +1939,7 @@ func encodeSetChatPhotoResponse(response SetChatPhotoRes, w http.ResponseWriter,
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2202,9 +1958,7 @@ func encodeSetChatStickerSetResponse(response SetChatStickerSetRes, w http.Respo
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2216,9 +1970,7 @@ func encodeSetChatStickerSetResponse(response SetChatStickerSetRes, w http.Respo
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2237,9 +1989,7 @@ func encodeSetChatTitleResponse(response SetChatTitleRes, w http.ResponseWriter,
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2251,9 +2001,7 @@ func encodeSetChatTitleResponse(response SetChatTitleRes, w http.ResponseWriter,
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2272,9 +2020,7 @@ func encodeSetGameScoreResponse(response SetGameScoreRes, w http.ResponseWriter,
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2286,9 +2032,7 @@ func encodeSetGameScoreResponse(response SetGameScoreRes, w http.ResponseWriter,
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2307,9 +2051,7 @@ func encodeSetMyCommandsResponse(response SetMyCommandsRes, w http.ResponseWrite
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2321,9 +2063,7 @@ func encodeSetMyCommandsResponse(response SetMyCommandsRes, w http.ResponseWrite
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2342,9 +2082,7 @@ func encodeSetPassportDataErrorsResponse(response SetPassportDataErrorsRes, w ht
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2356,9 +2094,7 @@ func encodeSetPassportDataErrorsResponse(response SetPassportDataErrorsRes, w ht
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2377,9 +2113,7 @@ func encodeSetStickerPositionInSetResponse(response SetStickerPositionInSetRes, 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2391,9 +2125,7 @@ func encodeSetStickerPositionInSetResponse(response SetStickerPositionInSetRes, 
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2412,9 +2144,7 @@ func encodeSetStickerSetThumbResponse(response SetStickerSetThumbRes, w http.Res
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2426,9 +2156,7 @@ func encodeSetStickerSetThumbResponse(response SetStickerSetThumbRes, w http.Res
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2447,9 +2175,7 @@ func encodeSetWebhookResponse(response SetWebhookRes, w http.ResponseWriter, spa
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2461,9 +2187,7 @@ func encodeSetWebhookResponse(response SetWebhookRes, w http.ResponseWriter, spa
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2482,9 +2206,7 @@ func encodeStopMessageLiveLocationResponse(response StopMessageLiveLocationRes, 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2496,9 +2218,7 @@ func encodeStopMessageLiveLocationResponse(response StopMessageLiveLocationRes, 
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2517,9 +2237,7 @@ func encodeStopPollResponse(response StopPollRes, w http.ResponseWriter, span tr
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2531,9 +2249,7 @@ func encodeStopPollResponse(response StopPollRes, w http.ResponseWriter, span tr
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2552,9 +2268,7 @@ func encodeUnbanChatMemberResponse(response UnbanChatMemberRes, w http.ResponseW
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2566,9 +2280,7 @@ func encodeUnbanChatMemberResponse(response UnbanChatMemberRes, w http.ResponseW
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2587,9 +2299,7 @@ func encodeUnpinAllChatMessagesResponse(response UnpinAllChatMessagesRes, w http
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2601,9 +2311,7 @@ func encodeUnpinAllChatMessagesResponse(response UnpinAllChatMessagesRes, w http
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2622,9 +2330,7 @@ func encodeUnpinChatMessageResponse(response UnpinChatMessageRes, w http.Respons
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2636,9 +2342,7 @@ func encodeUnpinChatMessageResponse(response UnpinChatMessageRes, w http.Respons
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2657,9 +2361,7 @@ func encodeUploadStickerFileResponse(response UploadStickerFileRes, w http.Respo
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2671,9 +2373,7 @@ func encodeUploadStickerFileResponse(response UploadStickerFileRes, w http.Respo
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")

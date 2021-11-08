@@ -18,8 +18,8 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/go-faster/errors"
 	"github.com/google/uuid"
-	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -63,8 +63,6 @@ var (
 // WriteJSON implements json.Marshaler.
 func (s DeletePetNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -85,13 +83,11 @@ func (s *DeletePetNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Error) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("code")
+
+	e.FieldStart("code")
 	e.Int32(s.Code)
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
 	e.ObjEnd()
 }
@@ -125,8 +121,6 @@ func (s *Error) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ErrorStatusCode) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -147,14 +141,11 @@ func (s *ErrorStatusCode) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s NewPet) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Tag.Set {
-		more.More()
-		e.ObjField("tag")
+		e.FieldStart("tag")
 		s.Tag.WriteJSON(e)
 	}
 	e.ObjEnd()

@@ -18,8 +18,8 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/go-faster/errors"
 	"github.com/google/uuid"
-	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -64,9 +64,7 @@ func encodeFoobarPostRequestJSON(req Pet, span trace.Span) (data *bytes.Buffer, 
 	buf := json.GetBuffer()
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	req.WriteJSON(e)
 	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
@@ -80,9 +78,7 @@ func encodePetCreateRequestJSON(req Pet, span trace.Span) (data *bytes.Buffer, e
 	buf := json.GetBuffer()
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	req.WriteJSON(e)
 	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
@@ -96,8 +92,6 @@ func encodePetUpdateNameAliasPostRequestJSON(req PetName, span trace.Span) (data
 	buf := json.GetBuffer()
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
 	// Unsupported kind "alias".
 	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
@@ -111,9 +105,7 @@ func encodePetUpdateNamePostRequestJSON(req string, span trace.Span) (data *byte
 	buf := json.GetBuffer()
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	e.Str(req)
 	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)

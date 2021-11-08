@@ -18,8 +18,8 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/go-faster/errors"
 	"github.com/google/uuid"
-	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -64,9 +64,7 @@ func encodeAnswerCallbackQueryPostRequestJSON(req AnswerCallbackQueryPostReqAppl
 	buf := json.GetBuffer()
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	req.WriteJSON(e)
 	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
@@ -80,9 +78,7 @@ func encodeAnswerPreCheckoutQueryPostRequestJSON(req AnswerPreCheckoutQueryPostR
 	buf := json.GetBuffer()
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	req.WriteJSON(e)
 	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
@@ -96,9 +92,7 @@ func encodeAnswerShippingQueryPostRequestJSON(req AnswerShippingQueryPostReqAppl
 	buf := json.GetBuffer()
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	req.WriteJSON(e)
 	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
@@ -112,9 +106,7 @@ func encodeDeleteStickerFromSetPostRequestJSON(req DeleteStickerFromSetPostReqAp
 	buf := json.GetBuffer()
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	req.WriteJSON(e)
 	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
@@ -128,9 +120,7 @@ func encodeDeleteWebhookPostRequestJSON(req DeleteWebhookPostReqApplicationJSON,
 	buf := json.GetBuffer()
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	req.WriteJSON(e)
 	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
@@ -144,9 +134,7 @@ func encodeGetFilePostRequestJSON(req GetFilePostReqApplicationJSON, span trace.
 	buf := json.GetBuffer()
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	req.WriteJSON(e)
 	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
@@ -160,9 +148,7 @@ func encodeGetGameHighScoresPostRequestJSON(req GetGameHighScoresPostReqApplicat
 	buf := json.GetBuffer()
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	req.WriteJSON(e)
 	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
@@ -176,9 +162,7 @@ func encodeGetStickerSetPostRequestJSON(req GetStickerSetPostReqApplicationJSON,
 	buf := json.GetBuffer()
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	req.WriteJSON(e)
 	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
@@ -192,9 +176,7 @@ func encodeGetUpdatesPostRequestJSON(req GetUpdatesPostReqApplicationJSON, span 
 	buf := json.GetBuffer()
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	req.WriteJSON(e)
 	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
@@ -208,9 +190,7 @@ func encodeGetUserProfilePhotosPostRequestJSON(req GetUserProfilePhotosPostReqAp
 	buf := json.GetBuffer()
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	req.WriteJSON(e)
 	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
@@ -224,9 +204,7 @@ func encodeSendGamePostRequestJSON(req SendGamePostReqApplicationJSON, span trac
 	buf := json.GetBuffer()
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	req.WriteJSON(e)
 	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
@@ -240,9 +218,7 @@ func encodeSendInvoicePostRequestJSON(req SendInvoicePostReqApplicationJSON, spa
 	buf := json.GetBuffer()
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	req.WriteJSON(e)
 	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
@@ -256,9 +232,7 @@ func encodeSetMyCommandsPostRequestJSON(req SetMyCommandsPostReqApplicationJSON,
 	buf := json.GetBuffer()
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	req.WriteJSON(e)
 	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)
@@ -272,9 +246,7 @@ func encodeSetStickerPositionInSetPostRequestJSON(req SetStickerPositionInSetPos
 	buf := json.GetBuffer()
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	req.WriteJSON(e)
 	if _, err := e.WriteTo(buf); err != nil {
 		json.PutBuffer(buf)

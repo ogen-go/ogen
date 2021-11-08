@@ -18,8 +18,8 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/go-faster/errors"
 	"github.com/google/uuid"
-	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -63,17 +63,14 @@ var (
 // WriteJSON implements json.Marshaler.
 func (s Balloon) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("amount_mib")
+
+	e.FieldStart("amount_mib")
 	e.Int(s.AmountMib)
-	more.More()
-	e.ObjField("deflate_on_oom")
+
+	e.FieldStart("deflate_on_oom")
 	e.Bool(s.DeflateOnOom)
 	if s.StatsPollingIntervalS.Set {
-		more.More()
-		e.ObjField("stats_polling_interval_s")
+		e.FieldStart("stats_polling_interval_s")
 		s.StatsPollingIntervalS.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -113,68 +110,56 @@ func (s *Balloon) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BalloonStats) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("target_pages")
+
+	e.FieldStart("target_pages")
 	e.Int(s.TargetPages)
-	more.More()
-	e.ObjField("actual_pages")
+
+	e.FieldStart("actual_pages")
 	e.Int(s.ActualPages)
-	more.More()
-	e.ObjField("target_mib")
+
+	e.FieldStart("target_mib")
 	e.Int(s.TargetMib)
-	more.More()
-	e.ObjField("actual_mib")
+
+	e.FieldStart("actual_mib")
 	e.Int(s.ActualMib)
 	if s.SwapIn.Set {
-		more.More()
-		e.ObjField("swap_in")
+		e.FieldStart("swap_in")
 		s.SwapIn.WriteJSON(e)
 	}
 	if s.SwapOut.Set {
-		more.More()
-		e.ObjField("swap_out")
+		e.FieldStart("swap_out")
 		s.SwapOut.WriteJSON(e)
 	}
 	if s.MajorFaults.Set {
-		more.More()
-		e.ObjField("major_faults")
+		e.FieldStart("major_faults")
 		s.MajorFaults.WriteJSON(e)
 	}
 	if s.MinorFaults.Set {
-		more.More()
-		e.ObjField("minor_faults")
+		e.FieldStart("minor_faults")
 		s.MinorFaults.WriteJSON(e)
 	}
 	if s.FreeMemory.Set {
-		more.More()
-		e.ObjField("free_memory")
+		e.FieldStart("free_memory")
 		s.FreeMemory.WriteJSON(e)
 	}
 	if s.TotalMemory.Set {
-		more.More()
-		e.ObjField("total_memory")
+		e.FieldStart("total_memory")
 		s.TotalMemory.WriteJSON(e)
 	}
 	if s.AvailableMemory.Set {
-		more.More()
-		e.ObjField("available_memory")
+		e.FieldStart("available_memory")
 		s.AvailableMemory.WriteJSON(e)
 	}
 	if s.DiskCaches.Set {
-		more.More()
-		e.ObjField("disk_caches")
+		e.FieldStart("disk_caches")
 		s.DiskCaches.WriteJSON(e)
 	}
 	if s.HugetlbAllocations.Set {
-		more.More()
-		e.ObjField("hugetlb_allocations")
+		e.FieldStart("hugetlb_allocations")
 		s.HugetlbAllocations.WriteJSON(e)
 	}
 	if s.HugetlbFailures.Set {
-		more.More()
-		e.ObjField("hugetlb_failures")
+		e.FieldStart("hugetlb_failures")
 		s.HugetlbFailures.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -271,10 +256,8 @@ func (s *BalloonStats) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BalloonStatsUpdate) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("stats_polling_interval_s")
+
+	e.FieldStart("stats_polling_interval_s")
 	e.Int(s.StatsPollingIntervalS)
 	e.ObjEnd()
 }
@@ -302,10 +285,8 @@ func (s *BalloonStatsUpdate) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BalloonUpdate) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("amount_mib")
+
+	e.FieldStart("amount_mib")
 	e.Int(s.AmountMib)
 	e.ObjEnd()
 }
@@ -333,20 +314,16 @@ func (s *BalloonUpdate) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BootSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.BootArgs.Set {
-		more.More()
-		e.ObjField("boot_args")
+		e.FieldStart("boot_args")
 		s.BootArgs.WriteJSON(e)
 	}
 	if s.InitrdPath.Set {
-		more.More()
-		e.ObjField("initrd_path")
+		e.FieldStart("initrd_path")
 		s.InitrdPath.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("kernel_image_path")
+
+	e.FieldStart("kernel_image_path")
 	e.Str(s.KernelImagePath)
 	e.ObjEnd()
 }
@@ -402,8 +379,6 @@ func (s *CpuTemplate) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CreateSnapshotNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -424,8 +399,6 @@ func (s *CreateSnapshotNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CreateSyncActionNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -446,33 +419,28 @@ func (s *CreateSyncActionNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Drive) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("drive_id")
+
+	e.FieldStart("drive_id")
 	e.Str(s.DriveID)
 	if s.CacheType.Set {
-		more.More()
-		e.ObjField("cache_type")
+		e.FieldStart("cache_type")
 		s.CacheType.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("is_read_only")
+
+	e.FieldStart("is_read_only")
 	e.Bool(s.IsReadOnly)
-	more.More()
-	e.ObjField("is_root_device")
+
+	e.FieldStart("is_root_device")
 	e.Bool(s.IsRootDevice)
 	if s.Partuuid.Set {
-		more.More()
-		e.ObjField("partuuid")
+		e.FieldStart("partuuid")
 		s.Partuuid.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("path_on_host")
+
+	e.FieldStart("path_on_host")
 	e.Str(s.PathOnHost)
 	if s.RateLimiter.Set {
-		more.More()
-		e.ObjField("rate_limiter")
+		e.FieldStart("rate_limiter")
 		s.RateLimiter.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -534,11 +502,8 @@ func (s *Drive) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Error) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.FaultMessage.Set {
-		more.More()
-		e.ObjField("fault_message")
+		e.FieldStart("fault_message")
 		s.FaultMessage.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -566,8 +531,6 @@ func (s *Error) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ErrorStatusCode) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -588,65 +551,48 @@ func (s *ErrorStatusCode) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s FullVmConfiguration) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.BalloonDevice.Set {
-		more.More()
-		e.ObjField("balloon_device")
+		e.FieldStart("balloon_device")
 		s.BalloonDevice.WriteJSON(e)
 	}
 	if s.BlockDevices != nil {
-		more.More()
-		e.ObjField("block_devices")
-		more.Down()
+		e.FieldStart("block_devices")
 		e.ArrStart()
 		for _, elem := range s.BlockDevices {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.BootSource.Set {
-		more.More()
-		e.ObjField("boot_source")
+		e.FieldStart("boot_source")
 		s.BootSource.WriteJSON(e)
 	}
 	if s.Logger.Set {
-		more.More()
-		e.ObjField("logger")
+		e.FieldStart("logger")
 		s.Logger.WriteJSON(e)
 	}
 	if s.MachineConfig.Set {
-		more.More()
-		e.ObjField("machine_config")
+		e.FieldStart("machine_config")
 		s.MachineConfig.WriteJSON(e)
 	}
 	if s.Metrics.Set {
-		more.More()
-		e.ObjField("metrics")
+		e.FieldStart("metrics")
 		s.Metrics.WriteJSON(e)
 	}
 	if s.MmdsConfig.Set {
-		more.More()
-		e.ObjField("mmds_config")
+		e.FieldStart("mmds_config")
 		s.MmdsConfig.WriteJSON(e)
 	}
 	if s.NetDevices != nil {
-		more.More()
-		e.ObjField("net_devices")
-		more.Down()
+		e.FieldStart("net_devices")
 		e.ArrStart()
 		for _, elem := range s.NetDevices {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.VsockDevice.Set {
-		more.More()
-		e.ObjField("vsock_device")
+		e.FieldStart("vsock_device")
 		s.VsockDevice.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -728,10 +674,8 @@ func (s *FullVmConfiguration) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s InstanceActionInfo) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("action_type")
+
+	e.FieldStart("action_type")
 	s.ActionType.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -775,19 +719,17 @@ func (s *InstanceActionInfoActionType) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s InstanceInfo) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("app_name")
+
+	e.FieldStart("app_name")
 	e.Str(s.AppName)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Str(s.ID)
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	s.State.WriteJSON(e)
-	more.More()
-	e.ObjField("vmm_version")
+
+	e.FieldStart("vmm_version")
 	e.Str(s.VmmVersion)
 	e.ObjEnd()
 }
@@ -849,8 +791,6 @@ func (s *InstanceInfoState) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s LoadSnapshotNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -871,24 +811,19 @@ func (s *LoadSnapshotNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Logger) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Level.Set {
-		more.More()
-		e.ObjField("level")
+		e.FieldStart("level")
 		s.Level.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("log_path")
+
+	e.FieldStart("log_path")
 	e.Str(s.LogPath)
 	if s.ShowLevel.Set {
-		more.More()
-		e.ObjField("show_level")
+		e.FieldStart("show_level")
 		s.ShowLevel.WriteJSON(e)
 	}
 	if s.ShowLogOrigin.Set {
-		more.More()
-		e.ObjField("show_log_origin")
+		e.FieldStart("show_log_origin")
 		s.ShowLogOrigin.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -950,26 +885,22 @@ func (s *LoggerLevel) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s MachineConfiguration) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.CPUTemplate.Set {
-		more.More()
-		e.ObjField("cpu_template")
+		e.FieldStart("cpu_template")
 		s.CPUTemplate.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("ht_enabled")
+
+	e.FieldStart("ht_enabled")
 	e.Bool(s.HtEnabled)
-	more.More()
-	e.ObjField("mem_size_mib")
+
+	e.FieldStart("mem_size_mib")
 	e.Int(s.MemSizeMib)
 	if s.TrackDirtyPages.Set {
-		more.More()
-		e.ObjField("track_dirty_pages")
+		e.FieldStart("track_dirty_pages")
 		s.TrackDirtyPages.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("vcpu_count")
+
+	e.FieldStart("vcpu_count")
 	e.Int(s.VcpuCount)
 	e.ObjEnd()
 }
@@ -1019,10 +950,8 @@ func (s *MachineConfiguration) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Metrics) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("metrics_path")
+
+	e.FieldStart("metrics_path")
 	e.Str(s.MetricsPath)
 	e.ObjEnd()
 }
@@ -1050,11 +979,8 @@ func (s *Metrics) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s MmdsConfig) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Ipv4Address.Set {
-		more.More()
-		e.ObjField("ipv4_address")
+		e.FieldStart("ipv4_address")
 		s.Ipv4Address.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -1082,8 +1008,6 @@ func (s *MmdsConfig) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s MmdsConfigPutNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1104,8 +1028,6 @@ func (s *MmdsConfigPutNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s MmdsGetOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1126,8 +1048,6 @@ func (s *MmdsGetOK) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s MmdsPatchNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1148,8 +1068,6 @@ func (s *MmdsPatchNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s MmdsPatchReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1170,8 +1088,6 @@ func (s *MmdsPatchReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s MmdsPutNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1192,8 +1108,6 @@ func (s *MmdsPutNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s MmdsPutReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1214,32 +1128,26 @@ func (s *MmdsPutReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s NetworkInterface) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AllowMmdsRequests.Set {
-		more.More()
-		e.ObjField("allow_mmds_requests")
+		e.FieldStart("allow_mmds_requests")
 		s.AllowMmdsRequests.WriteJSON(e)
 	}
 	if s.GuestMAC.Set {
-		more.More()
-		e.ObjField("guest_mac")
+		e.FieldStart("guest_mac")
 		s.GuestMAC.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("host_dev_name")
+
+	e.FieldStart("host_dev_name")
 	e.Str(s.HostDevName)
-	more.More()
-	e.ObjField("iface_id")
+
+	e.FieldStart("iface_id")
 	e.Str(s.IfaceID)
 	if s.RxRateLimiter.Set {
-		more.More()
-		e.ObjField("rx_rate_limiter")
+		e.FieldStart("rx_rate_limiter")
 		s.RxRateLimiter.WriteJSON(e)
 	}
 	if s.TxRateLimiter.Set {
-		more.More()
-		e.ObjField("tx_rate_limiter")
+		e.FieldStart("tx_rate_limiter")
 		s.TxRateLimiter.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -1660,19 +1568,15 @@ func (o *OptVsock) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PartialDrive) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("drive_id")
+
+	e.FieldStart("drive_id")
 	e.Str(s.DriveID)
 	if s.PathOnHost.Set {
-		more.More()
-		e.ObjField("path_on_host")
+		e.FieldStart("path_on_host")
 		s.PathOnHost.WriteJSON(e)
 	}
 	if s.RateLimiter.Set {
-		more.More()
-		e.ObjField("rate_limiter")
+		e.FieldStart("rate_limiter")
 		s.RateLimiter.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -1711,19 +1615,15 @@ func (s *PartialDrive) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PartialNetworkInterface) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("iface_id")
+
+	e.FieldStart("iface_id")
 	e.Str(s.IfaceID)
 	if s.RxRateLimiter.Set {
-		more.More()
-		e.ObjField("rx_rate_limiter")
+		e.FieldStart("rx_rate_limiter")
 		s.RxRateLimiter.WriteJSON(e)
 	}
 	if s.TxRateLimiter.Set {
-		more.More()
-		e.ObjField("tx_rate_limiter")
+		e.FieldStart("tx_rate_limiter")
 		s.TxRateLimiter.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -1762,8 +1662,6 @@ func (s *PartialNetworkInterface) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PatchBalloonNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1784,8 +1682,6 @@ func (s *PatchBalloonNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PatchBalloonStatsIntervalNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1806,8 +1702,6 @@ func (s *PatchBalloonStatsIntervalNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PatchGuestDriveByIDNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1828,8 +1722,6 @@ func (s *PatchGuestDriveByIDNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PatchGuestNetworkInterfaceByIDNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1850,8 +1742,6 @@ func (s *PatchGuestNetworkInterfaceByIDNoContent) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s PatchMachineConfigurationNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1872,8 +1762,6 @@ func (s *PatchMachineConfigurationNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PatchVmNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1894,8 +1782,6 @@ func (s *PatchVmNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PutBalloonNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1916,8 +1802,6 @@ func (s *PutBalloonNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PutGuestBootSourceNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1938,8 +1822,6 @@ func (s *PutGuestBootSourceNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PutGuestDriveByIDNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1960,8 +1842,6 @@ func (s *PutGuestDriveByIDNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PutGuestNetworkInterfaceByIDNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1982,8 +1862,6 @@ func (s *PutGuestNetworkInterfaceByIDNoContent) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s PutGuestVsockNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -2004,8 +1882,6 @@ func (s *PutGuestVsockNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PutLoggerNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -2026,8 +1902,6 @@ func (s *PutLoggerNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PutMachineConfigurationNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -2048,8 +1922,6 @@ func (s *PutMachineConfigurationNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PutMetricsNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -2070,16 +1942,12 @@ func (s *PutMetricsNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s RateLimiter) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Bandwidth.Set {
-		more.More()
-		e.ObjField("bandwidth")
+		e.FieldStart("bandwidth")
 		s.Bandwidth.WriteJSON(e)
 	}
 	if s.Ops.Set {
-		more.More()
-		e.ObjField("ops")
+		e.FieldStart("ops")
 		s.Ops.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -2112,22 +1980,18 @@ func (s *RateLimiter) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SnapshotCreateParams) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("mem_file_path")
+
+	e.FieldStart("mem_file_path")
 	e.Str(s.MemFilePath)
-	more.More()
-	e.ObjField("snapshot_path")
+
+	e.FieldStart("snapshot_path")
 	e.Str(s.SnapshotPath)
 	if s.SnapshotType.Set {
-		more.More()
-		e.ObjField("snapshot_type")
+		e.FieldStart("snapshot_type")
 		s.SnapshotType.WriteJSON(e)
 	}
 	if s.Version.Set {
-		more.More()
-		e.ObjField("version")
+		e.FieldStart("version")
 		s.Version.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -2190,22 +2054,18 @@ func (s *SnapshotCreateParamsSnapshotType) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SnapshotLoadParams) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.EnableDiffSnapshots.Set {
-		more.More()
-		e.ObjField("enable_diff_snapshots")
+		e.FieldStart("enable_diff_snapshots")
 		s.EnableDiffSnapshots.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("mem_file_path")
+
+	e.FieldStart("mem_file_path")
 	e.Str(s.MemFilePath)
-	more.More()
-	e.ObjField("snapshot_path")
+
+	e.FieldStart("snapshot_path")
 	e.Str(s.SnapshotPath)
 	if s.ResumeVM.Set {
-		more.More()
-		e.ObjField("resume_vm")
+		e.FieldStart("resume_vm")
 		s.ResumeVM.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -2250,18 +2110,15 @@ func (s *SnapshotLoadParams) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TokenBucket) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.OneTimeBurst.Set {
-		more.More()
-		e.ObjField("one_time_burst")
+		e.FieldStart("one_time_burst")
 		s.OneTimeBurst.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("refill_time")
+
+	e.FieldStart("refill_time")
 	e.Int64(s.RefillTime)
-	more.More()
-	e.ObjField("size")
+
+	e.FieldStart("size")
 	e.Int64(s.Size)
 	e.ObjEnd()
 }
@@ -2300,10 +2157,8 @@ func (s *TokenBucket) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s VM) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	s.State.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -2347,16 +2202,14 @@ func (s *VMState) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Vsock) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("guest_cid")
+
+	e.FieldStart("guest_cid")
 	e.Int(s.GuestCid)
-	more.More()
-	e.ObjField("uds_path")
+
+	e.FieldStart("uds_path")
 	e.Str(s.UdsPath)
-	more.More()
-	e.ObjField("vsock_id")
+
+	e.FieldStart("vsock_id")
 	e.Str(s.VsockID)
 	e.ObjEnd()
 }

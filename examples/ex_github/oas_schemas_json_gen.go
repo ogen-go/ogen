@@ -18,8 +18,8 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/go-faster/errors"
 	"github.com/google/uuid"
-	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -63,123 +63,84 @@ var (
 // WriteJSON implements json.Marshaler.
 func (s APIOverview) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("verifiable_password_authentication")
+
+	e.FieldStart("verifiable_password_authentication")
 	e.Bool(s.VerifiablePasswordAuthentication)
 	if s.SSHKeyFingerprints.Set {
-		more.More()
-		e.ObjField("ssh_key_fingerprints")
+		e.FieldStart("ssh_key_fingerprints")
 		s.SSHKeyFingerprints.WriteJSON(e)
 	}
 	if s.Hooks != nil {
-		more.More()
-		e.ObjField("hooks")
-		more.Down()
+		e.FieldStart("hooks")
 		e.ArrStart()
 		for _, elem := range s.Hooks {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Web != nil {
-		more.More()
-		e.ObjField("web")
-		more.Down()
+		e.FieldStart("web")
 		e.ArrStart()
 		for _, elem := range s.Web {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.API != nil {
-		more.More()
-		e.ObjField("api")
-		more.Down()
+		e.FieldStart("api")
 		e.ArrStart()
 		for _, elem := range s.API {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Git != nil {
-		more.More()
-		e.ObjField("git")
-		more.Down()
+		e.FieldStart("git")
 		e.ArrStart()
 		for _, elem := range s.Git {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Packages != nil {
-		more.More()
-		e.ObjField("packages")
-		more.Down()
+		e.FieldStart("packages")
 		e.ArrStart()
 		for _, elem := range s.Packages {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Pages != nil {
-		more.More()
-		e.ObjField("pages")
-		more.Down()
+		e.FieldStart("pages")
 		e.ArrStart()
 		for _, elem := range s.Pages {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Importer != nil {
-		more.More()
-		e.ObjField("importer")
-		more.Down()
+		e.FieldStart("importer")
 		e.ArrStart()
 		for _, elem := range s.Importer {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Actions != nil {
-		more.More()
-		e.ObjField("actions")
-		more.Down()
+		e.FieldStart("actions")
 		e.ArrStart()
 		for _, elem := range s.Actions {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Dependabot != nil {
-		more.More()
-		e.ObjField("dependabot")
-		more.Down()
+		e.FieldStart("dependabot")
 		e.ArrStart()
 		for _, elem := range s.Dependabot {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -338,26 +299,20 @@ func (s *APIOverview) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s APIOverviewSSHKeyFingerprints) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.SHA256RSA.Set {
-		more.More()
-		e.ObjField("SHA256_RSA")
+		e.FieldStart("SHA256_RSA")
 		s.SHA256RSA.WriteJSON(e)
 	}
 	if s.SHA256DSA.Set {
-		more.More()
-		e.ObjField("SHA256_DSA")
+		e.FieldStart("SHA256_DSA")
 		s.SHA256DSA.WriteJSON(e)
 	}
 	if s.SHA256ECDSA.Set {
-		more.More()
-		e.ObjField("SHA256_ECDSA")
+		e.FieldStart("SHA256_ECDSA")
 		s.SHA256ECDSA.WriteJSON(e)
 	}
 	if s.SHA256ED25519.Set {
-		more.More()
-		e.ObjField("SHA256_ED25519")
+		e.FieldStart("SHA256_ED25519")
 		s.SHA256ED25519.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -400,8 +355,6 @@ func (s *APIOverviewSSHKeyFingerprints) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Accepted) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -422,8 +375,6 @@ func (s *Accepted) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -444,8 +395,6 @@ func (s *ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent) ReadJSON(d *
 // WriteJSON implements json.Marshaler.
 func (s ActionsAddSelectedRepoToOrgSecretConflict) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -466,8 +415,6 @@ func (s *ActionsAddSelectedRepoToOrgSecretConflict) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s ActionsAddSelectedRepoToOrgSecretNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -488,8 +435,6 @@ func (s *ActionsAddSelectedRepoToOrgSecretNoContent) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s ActionsAddSelfHostedRunnerToGroupForOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -516,19 +461,17 @@ func (ActionsApproveWorkflowRunApplicationJSONNotFound) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s ActionsBillingUsage) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_minutes_used")
+
+	e.FieldStart("total_minutes_used")
 	e.Int(s.TotalMinutesUsed)
-	more.More()
-	e.ObjField("total_paid_minutes_used")
+
+	e.FieldStart("total_paid_minutes_used")
 	e.Int(s.TotalPaidMinutesUsed)
-	more.More()
-	e.ObjField("included_minutes")
+
+	e.FieldStart("included_minutes")
 	e.Int(s.IncludedMinutes)
-	more.More()
-	e.ObjField("minutes_used_breakdown")
+
+	e.FieldStart("minutes_used_breakdown")
 	s.MinutesUsedBreakdown.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -572,21 +515,16 @@ func (s *ActionsBillingUsage) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsBillingUsageMinutesUsedBreakdown) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.UBUNTU.Set {
-		more.More()
-		e.ObjField("UBUNTU")
+		e.FieldStart("UBUNTU")
 		s.UBUNTU.WriteJSON(e)
 	}
 	if s.MACOS.Set {
-		more.More()
-		e.ObjField("MACOS")
+		e.FieldStart("MACOS")
 		s.MACOS.WriteJSON(e)
 	}
 	if s.WINDOWS.Set {
-		more.More()
-		e.ObjField("WINDOWS")
+		e.FieldStart("WINDOWS")
 		s.WINDOWS.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -624,8 +562,6 @@ func (s *ActionsBillingUsageMinutesUsedBreakdown) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s ActionsCancelWorkflowRunAccepted) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -646,8 +582,6 @@ func (s *ActionsCancelWorkflowRunAccepted) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsCreateOrUpdateEnvironmentSecretNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -668,13 +602,11 @@ func (s *ActionsCreateOrUpdateEnvironmentSecretNoContent) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s ActionsCreateOrUpdateEnvironmentSecretReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("encrypted_value")
+
+	e.FieldStart("encrypted_value")
 	e.Str(s.EncryptedValue)
-	more.More()
-	e.ObjField("key_id")
+
+	e.FieldStart("key_id")
 	e.Str(s.KeyID)
 	e.ObjEnd()
 }
@@ -708,8 +640,6 @@ func (s *ActionsCreateOrUpdateEnvironmentSecretReq) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s ActionsCreateOrUpdateOrgSecretNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -730,32 +660,24 @@ func (s *ActionsCreateOrUpdateOrgSecretNoContent) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s ActionsCreateOrUpdateOrgSecretReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.EncryptedValue.Set {
-		more.More()
-		e.ObjField("encrypted_value")
+		e.FieldStart("encrypted_value")
 		s.EncryptedValue.WriteJSON(e)
 	}
 	if s.KeyID.Set {
-		more.More()
-		e.ObjField("key_id")
+		e.FieldStart("key_id")
 		s.KeyID.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("visibility")
+
+	e.FieldStart("visibility")
 	s.Visibility.WriteJSON(e)
 	if s.SelectedRepositoryIds != nil {
-		more.More()
-		e.ObjField("selected_repository_ids")
-		more.Down()
+		e.FieldStart("selected_repository_ids")
 		e.ArrStart()
 		for _, elem := range s.SelectedRepositoryIds {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -823,8 +745,6 @@ func (s *ActionsCreateOrUpdateOrgSecretReqVisibility) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s ActionsCreateOrUpdateRepoSecretCreated) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -845,8 +765,6 @@ func (s *ActionsCreateOrUpdateRepoSecretCreated) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s ActionsCreateOrUpdateRepoSecretNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -867,16 +785,12 @@ func (s *ActionsCreateOrUpdateRepoSecretNoContent) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s ActionsCreateOrUpdateRepoSecretReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.EncryptedValue.Set {
-		more.More()
-		e.ObjField("encrypted_value")
+		e.FieldStart("encrypted_value")
 		s.EncryptedValue.WriteJSON(e)
 	}
 	if s.KeyID.Set {
-		more.More()
-		e.ObjField("key_id")
+		e.FieldStart("key_id")
 		s.KeyID.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -909,39 +823,28 @@ func (s *ActionsCreateOrUpdateRepoSecretReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsCreateSelfHostedRunnerGroupForOrgReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Visibility.Set {
-		more.More()
-		e.ObjField("visibility")
+		e.FieldStart("visibility")
 		s.Visibility.WriteJSON(e)
 	}
 	if s.SelectedRepositoryIds != nil {
-		more.More()
-		e.ObjField("selected_repository_ids")
-		more.Down()
+		e.FieldStart("selected_repository_ids")
 		e.ArrStart()
 		for _, elem := range s.SelectedRepositoryIds {
-			more.More()
 			e.Int(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Runners != nil {
-		more.More()
-		e.ObjField("runners")
-		more.Down()
+		e.FieldStart("runners")
 		e.ArrStart()
 		for _, elem := range s.Runners {
-			more.More()
 			e.Int(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -1057,8 +960,6 @@ func (s *ActionsCreateWorkflowDispatchWorkflowID) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s ActionsDeleteArtifactNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1079,8 +980,6 @@ func (s *ActionsDeleteArtifactNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsDeleteEnvironmentSecretNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1101,8 +1000,6 @@ func (s *ActionsDeleteEnvironmentSecretNoContent) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s ActionsDeleteOrgSecretNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1123,8 +1020,6 @@ func (s *ActionsDeleteOrgSecretNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsDeleteRepoSecretNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1145,8 +1040,6 @@ func (s *ActionsDeleteRepoSecretNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsDeleteSelfHostedRunnerFromOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1167,8 +1060,6 @@ func (s *ActionsDeleteSelfHostedRunnerFromOrgNoContent) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s ActionsDeleteSelfHostedRunnerFromRepoNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1189,8 +1080,6 @@ func (s *ActionsDeleteSelfHostedRunnerFromRepoNoContent) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1211,8 +1100,6 @@ func (s *ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent) ReadJSON(d *json.De
 // WriteJSON implements json.Marshaler.
 func (s ActionsDeleteWorkflowRunLogsNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1233,8 +1120,6 @@ func (s *ActionsDeleteWorkflowRunLogsNoContent) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s ActionsDeleteWorkflowRunNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1255,8 +1140,6 @@ func (s *ActionsDeleteWorkflowRunNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1314,8 +1197,6 @@ func (s *ActionsDisableWorkflowWorkflowID) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsDownloadArtifactFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1336,8 +1217,6 @@ func (s *ActionsDownloadArtifactFound) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsDownloadJobLogsForWorkflowRunFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1358,8 +1237,6 @@ func (s *ActionsDownloadJobLogsForWorkflowRunFound) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s ActionsDownloadWorkflowRunLogsFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1380,8 +1257,6 @@ func (s *ActionsDownloadWorkflowRunLogsFound) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1442,24 +1317,19 @@ func (ActionsEnabled) ReadJSON(d *json.Decoder) error { return nil }
 // WriteJSON implements json.Marshaler.
 func (s ActionsEnterprisePermissions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("enabled_organizations")
+
+	e.FieldStart("enabled_organizations")
 	s.EnabledOrganizations.WriteJSON(e)
 	if s.SelectedOrganizationsURL.Set {
-		more.More()
-		e.ObjField("selected_organizations_url")
+		e.FieldStart("selected_organizations_url")
 		s.SelectedOrganizationsURL.WriteJSON(e)
 	}
 	if s.AllowedActions.Set {
-		more.More()
-		e.ObjField("allowed_actions")
+		e.FieldStart("allowed_actions")
 		s.AllowedActions.WriteJSON(e)
 	}
 	if s.SelectedActionsURL.Set {
-		more.More()
-		e.ObjField("selected_actions_url")
+		e.FieldStart("selected_actions_url")
 		s.SelectedActionsURL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -1575,21 +1445,16 @@ func (s *ActionsGetWorkflowWorkflowID) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsListArtifactsForRepoOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Int(s.TotalCount)
-	more.More()
-	e.ObjField("artifacts")
-	more.Down()
+
+	e.FieldStart("artifacts")
 	e.ArrStart()
 	for _, elem := range s.Artifacts {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -1628,21 +1493,16 @@ func (s *ActionsListArtifactsForRepoOK) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsListEnvironmentSecretsOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Int(s.TotalCount)
-	more.More()
-	e.ObjField("secrets")
-	more.Down()
+
+	e.FieldStart("secrets")
 	e.ArrStart()
 	for _, elem := range s.Secrets {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -1699,21 +1559,16 @@ func (s *ActionsListJobsForWorkflowRunFilter) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsListJobsForWorkflowRunOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Int(s.TotalCount)
-	more.More()
-	e.ObjField("jobs")
-	more.Down()
+
+	e.FieldStart("jobs")
 	e.ArrStart()
 	for _, elem := range s.Jobs {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -1752,21 +1607,16 @@ func (s *ActionsListJobsForWorkflowRunOK) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsListOrgSecretsOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Int(s.TotalCount)
-	more.More()
-	e.ObjField("secrets")
-	more.Down()
+
+	e.FieldStart("secrets")
 	e.ArrStart()
 	for _, elem := range s.Secrets {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -1805,21 +1655,16 @@ func (s *ActionsListOrgSecretsOK) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Float64(s.TotalCount)
-	more.More()
-	e.ObjField("repositories")
-	more.Down()
+
+	e.FieldStart("repositories")
 	e.ArrStart()
 	for _, elem := range s.Repositories {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -1858,21 +1703,16 @@ func (s *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s ActionsListRepoSecretsOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Int(s.TotalCount)
-	more.More()
-	e.ObjField("secrets")
-	more.Down()
+
+	e.FieldStart("secrets")
 	e.ArrStart()
 	for _, elem := range s.Secrets {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -1911,21 +1751,16 @@ func (s *ActionsListRepoSecretsOK) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsListRepoWorkflowsOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Int(s.TotalCount)
-	more.More()
-	e.ObjField("workflows")
-	more.Down()
+
+	e.FieldStart("workflows")
 	e.ArrStart()
 	for _, elem := range s.Workflows {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -1964,21 +1799,16 @@ func (s *ActionsListRepoWorkflowsOK) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsListSelectedReposForOrgSecretOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Int(s.TotalCount)
-	more.More()
-	e.ObjField("repositories")
-	more.Down()
+
+	e.FieldStart("repositories")
 	e.ArrStart()
 	for _, elem := range s.Repositories {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -2017,21 +1847,16 @@ func (s *ActionsListSelectedReposForOrgSecretOK) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Float64(s.TotalCount)
-	more.More()
-	e.ObjField("repositories")
-	more.Down()
+
+	e.FieldStart("repositories")
 	e.ArrStart()
 	for _, elem := range s.Repositories {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -2070,21 +1895,16 @@ func (s *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) Read
 // WriteJSON implements json.Marshaler.
 func (s ActionsListSelfHostedRunnerGroupsForOrgOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Float64(s.TotalCount)
-	more.More()
-	e.ObjField("runner_groups")
-	more.Down()
+
+	e.FieldStart("runner_groups")
 	e.ArrStart()
 	for _, elem := range s.RunnerGroups {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -2123,21 +1943,16 @@ func (s *ActionsListSelfHostedRunnerGroupsForOrgOK) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s ActionsListSelfHostedRunnersForOrgOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Int(s.TotalCount)
-	more.More()
-	e.ObjField("runners")
-	more.Down()
+
+	e.FieldStart("runners")
 	e.ArrStart()
 	for _, elem := range s.Runners {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -2176,21 +1991,16 @@ func (s *ActionsListSelfHostedRunnersForOrgOK) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsListSelfHostedRunnersForRepoOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Int(s.TotalCount)
-	more.More()
-	e.ObjField("runners")
-	more.Down()
+
+	e.FieldStart("runners")
 	e.ArrStart()
 	for _, elem := range s.Runners {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -2229,21 +2039,16 @@ func (s *ActionsListSelfHostedRunnersForRepoOK) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s ActionsListSelfHostedRunnersInGroupForOrgOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Float64(s.TotalCount)
-	more.More()
-	e.ObjField("runners")
-	more.Down()
+
+	e.FieldStart("runners")
 	e.ArrStart()
 	for _, elem := range s.Runners {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -2282,21 +2087,16 @@ func (s *ActionsListSelfHostedRunnersInGroupForOrgOK) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s ActionsListWorkflowRunArtifactsOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Int(s.TotalCount)
-	more.More()
-	e.ObjField("artifacts")
-	more.Down()
+
+	e.FieldStart("artifacts")
 	e.ArrStart()
 	for _, elem := range s.Artifacts {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -2335,21 +2135,16 @@ func (s *ActionsListWorkflowRunArtifactsOK) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsListWorkflowRunsForRepoOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Int(s.TotalCount)
-	more.More()
-	e.ObjField("workflow_runs")
-	more.Down()
+
+	e.FieldStart("workflow_runs")
 	e.ArrStart()
 	for _, elem := range s.WorkflowRuns {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -2443,24 +2238,19 @@ func (s *ActionsListWorkflowRunsWorkflowID) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsOrganizationPermissions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("enabled_repositories")
+
+	e.FieldStart("enabled_repositories")
 	s.EnabledRepositories.WriteJSON(e)
 	if s.SelectedRepositoriesURL.Set {
-		more.More()
-		e.ObjField("selected_repositories_url")
+		e.FieldStart("selected_repositories_url")
 		s.SelectedRepositoriesURL.WriteJSON(e)
 	}
 	if s.AllowedActions.Set {
-		more.More()
-		e.ObjField("allowed_actions")
+		e.FieldStart("allowed_actions")
 		s.AllowedActions.WriteJSON(e)
 	}
 	if s.SelectedActionsURL.Set {
-		more.More()
-		e.ObjField("selected_actions_url")
+		e.FieldStart("selected_actions_url")
 		s.SelectedActionsURL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -2502,32 +2292,26 @@ func (s *ActionsOrganizationPermissions) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsPublicKey) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("key_id")
+
+	e.FieldStart("key_id")
 	e.Str(s.KeyID)
-	more.More()
-	e.ObjField("key")
+
+	e.FieldStart("key")
 	e.Str(s.Key)
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.Title.Set {
-		more.More()
-		e.ObjField("title")
+		e.FieldStart("title")
 		s.Title.WriteJSON(e)
 	}
 	if s.CreatedAt.Set {
-		more.More()
-		e.ObjField("created_at")
+		e.FieldStart("created_at")
 		s.CreatedAt.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -2582,8 +2366,6 @@ func (s *ActionsPublicKey) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsReRunWorkflowCreated) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -2604,8 +2386,6 @@ func (s *ActionsReRunWorkflowCreated) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -2626,8 +2406,6 @@ func (s *ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent) ReadJSON(
 // WriteJSON implements json.Marshaler.
 func (s ActionsRemoveSelectedRepoFromOrgSecretConflict) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -2648,8 +2426,6 @@ func (s *ActionsRemoveSelectedRepoFromOrgSecretConflict) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s ActionsRemoveSelectedRepoFromOrgSecretNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -2670,8 +2446,6 @@ func (s *ActionsRemoveSelectedRepoFromOrgSecretNoContent) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -2692,17 +2466,13 @@ func (s *ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s ActionsRepositoryPermissions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	// Unsupported kind "alias".
 	if s.AllowedActions.Set {
-		more.More()
-		e.ObjField("allowed_actions")
+		e.FieldStart("allowed_actions")
 		s.AllowedActions.WriteJSON(e)
 	}
 	if s.SelectedActionsURL.Set {
-		more.More()
-		e.ObjField("selected_actions_url")
+		e.FieldStart("selected_actions_url")
 		s.SelectedActionsURL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -2737,8 +2507,6 @@ func (s *ActionsRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsRetryWorkflowCreated) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -2759,23 +2527,18 @@ func (s *ActionsRetryWorkflowCreated) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsReviewPendingDeploymentsForRunReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("environment_ids")
-	more.Down()
+
+	e.FieldStart("environment_ids")
 	e.ArrStart()
 	for _, elem := range s.EnvironmentIds {
-		more.More()
 		e.Int(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	s.State.WriteJSON(e)
-	more.More()
-	e.ObjField("comment")
+
+	e.FieldStart("comment")
 	e.Str(s.Comment)
 	e.ObjEnd()
 }
@@ -2839,16 +2602,14 @@ func (s *ActionsReviewPendingDeploymentsForRunReqState) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s ActionsSecret) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
 	e.ObjEnd()
 }
@@ -2888,8 +2649,6 @@ func (s *ActionsSecret) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActionsSetAllowedActionsOrganizationNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -2910,8 +2669,6 @@ func (s *ActionsSetAllowedActionsOrganizationNoContent) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s ActionsSetAllowedActionsRepositoryNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -2932,8 +2689,6 @@ func (s *ActionsSetAllowedActionsRepositoryNoContent) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s ActionsSetGithubActionsPermissionsOrganizationNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -2954,14 +2709,11 @@ func (s *ActionsSetGithubActionsPermissionsOrganizationNoContent) ReadJSON(d *js
 // WriteJSON implements json.Marshaler.
 func (s ActionsSetGithubActionsPermissionsOrganizationReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("enabled_repositories")
+
+	e.FieldStart("enabled_repositories")
 	s.EnabledRepositories.WriteJSON(e)
 	if s.AllowedActions.Set {
-		more.More()
-		e.ObjField("allowed_actions")
+		e.FieldStart("allowed_actions")
 		s.AllowedActions.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -2993,8 +2745,6 @@ func (s *ActionsSetGithubActionsPermissionsOrganizationReq) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s ActionsSetGithubActionsPermissionsRepositoryNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -3015,12 +2765,9 @@ func (s *ActionsSetGithubActionsPermissionsRepositoryNoContent) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s ActionsSetGithubActionsPermissionsRepositoryReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	// Unsupported kind "alias".
 	if s.AllowedActions.Set {
-		more.More()
-		e.ObjField("allowed_actions")
+		e.FieldStart("allowed_actions")
 		s.AllowedActions.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -3050,8 +2797,6 @@ func (s *ActionsSetGithubActionsPermissionsRepositoryReq) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -3072,18 +2817,13 @@ func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent) ReadJSON(d *
 // WriteJSON implements json.Marshaler.
 func (s ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("selected_repository_ids")
-	more.Down()
+
+	e.FieldStart("selected_repository_ids")
 	e.ArrStart()
 	for _, elem := range s.SelectedRepositoryIds {
-		more.More()
 		e.Int(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -3118,8 +2858,6 @@ func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s ActionsSetSelectedReposForOrgSecretNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -3140,18 +2878,13 @@ func (s *ActionsSetSelectedReposForOrgSecretNoContent) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s ActionsSetSelectedReposForOrgSecretReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("selected_repository_ids")
-	more.Down()
+
+	e.FieldStart("selected_repository_ids")
 	e.ArrStart()
 	for _, elem := range s.SelectedRepositoryIds {
-		more.More()
 		e.Int(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -3186,8 +2919,6 @@ func (s *ActionsSetSelectedReposForOrgSecretReq) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -3208,18 +2939,13 @@ func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent
 // WriteJSON implements json.Marshaler.
 func (s ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("selected_repository_ids")
-	more.Down()
+
+	e.FieldStart("selected_repository_ids")
 	e.ArrStart()
 	for _, elem := range s.SelectedRepositoryIds {
-		more.More()
 		e.Int(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -3254,8 +2980,6 @@ func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) Read
 // WriteJSON implements json.Marshaler.
 func (s ActionsSetSelfHostedRunnersInGroupForOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -3276,18 +3000,13 @@ func (s *ActionsSetSelfHostedRunnersInGroupForOrgNoContent) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s ActionsSetSelfHostedRunnersInGroupForOrgReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("runners")
-	more.Down()
+
+	e.FieldStart("runners")
 	e.ArrStart()
 	for _, elem := range s.Runners {
-		more.More()
 		e.Int(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -3322,14 +3041,11 @@ func (s *ActionsSetSelfHostedRunnersInGroupForOrgReq) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s ActionsUpdateSelfHostedRunnerGroupForOrgReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Visibility.Set {
-		more.More()
-		e.ObjField("visibility")
+		e.FieldStart("visibility")
 		s.Visibility.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -3399,8 +3115,6 @@ func (ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized) 
 // WriteJSON implements json.Marshaler.
 func (s ActivityCheckRepoIsStarredByAuthenticatedUserNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -3421,8 +3135,6 @@ func (s *ActivityCheckRepoIsStarredByAuthenticatedUserNoContent) ReadJSON(d *jso
 // WriteJSON implements json.Marshaler.
 func (s ActivityDeleteRepoSubscriptionNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -3453,8 +3165,6 @@ func (ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized) ReadJSON(d *j
 // WriteJSON implements json.Marshaler.
 func (s ActivityDeleteThreadSubscriptionNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -3475,8 +3185,6 @@ func (s *ActivityDeleteThreadSubscriptionNoContent) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s ActivityGetRepoSubscriptionNotFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -3645,11 +3353,8 @@ func (ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON) ReadJSON(d 
 // WriteJSON implements json.Marshaler.
 func (s ActivityMarkNotificationsAsReadAccepted) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -3687,16 +3392,12 @@ func (ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) ReadJSON(d *js
 // WriteJSON implements json.Marshaler.
 func (s ActivityMarkNotificationsAsReadReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LastReadAt.Set {
-		more.More()
-		e.ObjField("last_read_at")
+		e.FieldStart("last_read_at")
 		s.LastReadAt.WriteJSON(e, json.WriteDateTime)
 	}
 	if s.Read.Set {
-		more.More()
-		e.ObjField("read")
+		e.FieldStart("read")
 		s.Read.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -3729,8 +3430,6 @@ func (s *ActivityMarkNotificationsAsReadReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActivityMarkNotificationsAsReadResetContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -3751,16 +3450,12 @@ func (s *ActivityMarkNotificationsAsReadResetContent) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s ActivityMarkRepoNotificationsAsReadAccepted) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -3793,11 +3488,8 @@ func (s *ActivityMarkRepoNotificationsAsReadAccepted) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s ActivityMarkRepoNotificationsAsReadReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LastReadAt.Set {
-		more.More()
-		e.ObjField("last_read_at")
+		e.FieldStart("last_read_at")
 		s.LastReadAt.WriteJSON(e, json.WriteDateTime)
 	}
 	e.ObjEnd()
@@ -3825,8 +3517,6 @@ func (s *ActivityMarkRepoNotificationsAsReadReq) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s ActivityMarkRepoNotificationsAsReadResetContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -3847,8 +3537,6 @@ func (s *ActivityMarkRepoNotificationsAsReadResetContent) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s ActivityMarkThreadAsReadResetContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -3869,16 +3557,12 @@ func (s *ActivityMarkThreadAsReadResetContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ActivitySetRepoSubscriptionReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Subscribed.Set {
-		more.More()
-		e.ObjField("subscribed")
+		e.FieldStart("subscribed")
 		s.Subscribed.WriteJSON(e)
 	}
 	if s.Ignored.Set {
-		more.More()
-		e.ObjField("ignored")
+		e.FieldStart("ignored")
 		s.Ignored.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -3921,11 +3605,8 @@ func (ActivitySetThreadSubscriptionApplicationJSONUnauthorized) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s ActivitySetThreadSubscriptionReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Ignored.Set {
-		more.More()
-		e.ObjField("ignored")
+		e.FieldStart("ignored")
 		s.Ignored.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -3968,8 +3649,6 @@ func (ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized) ReadJSON(
 // WriteJSON implements json.Marshaler.
 func (s ActivityStarRepoForAuthenticatedUserNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -4005,8 +3684,6 @@ func (ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized) ReadJSO
 // WriteJSON implements json.Marshaler.
 func (s ActivityUnstarRepoForAuthenticatedUserNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -4027,27 +3704,24 @@ func (s *ActivityUnstarRepoForAuthenticatedUserNoContent) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s Actor) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("login")
+
+	e.FieldStart("login")
 	e.Str(s.Login)
 	if s.DisplayLogin.Set {
-		more.More()
-		e.ObjField("display_login")
+		e.FieldStart("display_login")
 		s.DisplayLogin.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("gravatar_id")
+
+	e.FieldStart("gravatar_id")
 	s.GravatarID.WriteJSON(e)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("avatar_url")
+
+	e.FieldStart("avatar_url")
 	json.WriteURI(e, s.AvatarURL)
 	e.ObjEnd()
 }
@@ -4135,161 +3809,128 @@ func (s *AllowedActions) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s AppPermissions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Actions.Set {
-		more.More()
-		e.ObjField("actions")
+		e.FieldStart("actions")
 		s.Actions.WriteJSON(e)
 	}
 	if s.Administration.Set {
-		more.More()
-		e.ObjField("administration")
+		e.FieldStart("administration")
 		s.Administration.WriteJSON(e)
 	}
 	if s.Checks.Set {
-		more.More()
-		e.ObjField("checks")
+		e.FieldStart("checks")
 		s.Checks.WriteJSON(e)
 	}
 	if s.ContentReferences.Set {
-		more.More()
-		e.ObjField("content_references")
+		e.FieldStart("content_references")
 		s.ContentReferences.WriteJSON(e)
 	}
 	if s.Contents.Set {
-		more.More()
-		e.ObjField("contents")
+		e.FieldStart("contents")
 		s.Contents.WriteJSON(e)
 	}
 	if s.Deployments.Set {
-		more.More()
-		e.ObjField("deployments")
+		e.FieldStart("deployments")
 		s.Deployments.WriteJSON(e)
 	}
 	if s.Environments.Set {
-		more.More()
-		e.ObjField("environments")
+		e.FieldStart("environments")
 		s.Environments.WriteJSON(e)
 	}
 	if s.Issues.Set {
-		more.More()
-		e.ObjField("issues")
+		e.FieldStart("issues")
 		s.Issues.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Packages.Set {
-		more.More()
-		e.ObjField("packages")
+		e.FieldStart("packages")
 		s.Packages.WriteJSON(e)
 	}
 	if s.Pages.Set {
-		more.More()
-		e.ObjField("pages")
+		e.FieldStart("pages")
 		s.Pages.WriteJSON(e)
 	}
 	if s.PullRequests.Set {
-		more.More()
-		e.ObjField("pull_requests")
+		e.FieldStart("pull_requests")
 		s.PullRequests.WriteJSON(e)
 	}
 	if s.RepositoryHooks.Set {
-		more.More()
-		e.ObjField("repository_hooks")
+		e.FieldStart("repository_hooks")
 		s.RepositoryHooks.WriteJSON(e)
 	}
 	if s.RepositoryProjects.Set {
-		more.More()
-		e.ObjField("repository_projects")
+		e.FieldStart("repository_projects")
 		s.RepositoryProjects.WriteJSON(e)
 	}
 	if s.SecretScanningAlerts.Set {
-		more.More()
-		e.ObjField("secret_scanning_alerts")
+		e.FieldStart("secret_scanning_alerts")
 		s.SecretScanningAlerts.WriteJSON(e)
 	}
 	if s.Secrets.Set {
-		more.More()
-		e.ObjField("secrets")
+		e.FieldStart("secrets")
 		s.Secrets.WriteJSON(e)
 	}
 	if s.SecurityEvents.Set {
-		more.More()
-		e.ObjField("security_events")
+		e.FieldStart("security_events")
 		s.SecurityEvents.WriteJSON(e)
 	}
 	if s.SingleFile.Set {
-		more.More()
-		e.ObjField("single_file")
+		e.FieldStart("single_file")
 		s.SingleFile.WriteJSON(e)
 	}
 	if s.Statuses.Set {
-		more.More()
-		e.ObjField("statuses")
+		e.FieldStart("statuses")
 		s.Statuses.WriteJSON(e)
 	}
 	if s.VulnerabilityAlerts.Set {
-		more.More()
-		e.ObjField("vulnerability_alerts")
+		e.FieldStart("vulnerability_alerts")
 		s.VulnerabilityAlerts.WriteJSON(e)
 	}
 	if s.Workflows.Set {
-		more.More()
-		e.ObjField("workflows")
+		e.FieldStart("workflows")
 		s.Workflows.WriteJSON(e)
 	}
 	if s.Members.Set {
-		more.More()
-		e.ObjField("members")
+		e.FieldStart("members")
 		s.Members.WriteJSON(e)
 	}
 	if s.OrganizationAdministration.Set {
-		more.More()
-		e.ObjField("organization_administration")
+		e.FieldStart("organization_administration")
 		s.OrganizationAdministration.WriteJSON(e)
 	}
 	if s.OrganizationHooks.Set {
-		more.More()
-		e.ObjField("organization_hooks")
+		e.FieldStart("organization_hooks")
 		s.OrganizationHooks.WriteJSON(e)
 	}
 	if s.OrganizationPlan.Set {
-		more.More()
-		e.ObjField("organization_plan")
+		e.FieldStart("organization_plan")
 		s.OrganizationPlan.WriteJSON(e)
 	}
 	if s.OrganizationProjects.Set {
-		more.More()
-		e.ObjField("organization_projects")
+		e.FieldStart("organization_projects")
 		s.OrganizationProjects.WriteJSON(e)
 	}
 	if s.OrganizationPackages.Set {
-		more.More()
-		e.ObjField("organization_packages")
+		e.FieldStart("organization_packages")
 		s.OrganizationPackages.WriteJSON(e)
 	}
 	if s.OrganizationSecrets.Set {
-		more.More()
-		e.ObjField("organization_secrets")
+		e.FieldStart("organization_secrets")
 		s.OrganizationSecrets.WriteJSON(e)
 	}
 	if s.OrganizationSelfHostedRunners.Set {
-		more.More()
-		e.ObjField("organization_self_hosted_runners")
+		e.FieldStart("organization_self_hosted_runners")
 		s.OrganizationSelfHostedRunners.WriteJSON(e)
 	}
 	if s.OrganizationUserBlocking.Set {
-		more.More()
-		e.ObjField("organization_user_blocking")
+		e.FieldStart("organization_user_blocking")
 		s.OrganizationUserBlocking.WriteJSON(e)
 	}
 	if s.TeamDiscussions.Set {
-		more.More()
-		e.ObjField("team_discussions")
+		e.FieldStart("team_discussions")
 		s.TeamDiscussions.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -5025,36 +4666,30 @@ func (s *AppPermissionsWorkflows) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ApplicationGrant) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("app")
+
+	e.FieldStart("app")
 	s.App.WriteJSON(e)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("scopes")
-	more.Down()
+
+	e.FieldStart("scopes")
 	e.ArrStart()
 	for _, elem := range s.Scopes {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.User.Set {
-		more.More()
-		e.ObjField("user")
+		e.FieldStart("user")
 		s.User.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -5124,16 +4759,14 @@ func (s *ApplicationGrant) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ApplicationGrantApp) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("client_id")
+
+	e.FieldStart("client_id")
 	e.Str(s.ClientID)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	e.ObjEnd()
 }
@@ -5179,8 +4812,6 @@ func (AppsAddRepoToInstallationApplicationJSONNotFound) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s AppsAddRepoToInstallationNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -5201,10 +4832,8 @@ func (s *AppsAddRepoToInstallationNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s AppsCheckTokenReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("access_token")
+
+	e.FieldStart("access_token")
 	e.Str(s.AccessToken)
 	e.ObjEnd()
 }
@@ -5232,13 +4861,11 @@ func (s *AppsCheckTokenReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s AppsCreateContentAttachmentReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	e.Str(s.Title)
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
 	e.ObjEnd()
 }
@@ -5272,8 +4899,6 @@ func (s *AppsCreateContentAttachmentReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s AppsCreateFromManifestReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -5294,35 +4919,24 @@ func (s *AppsCreateFromManifestReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s AppsCreateInstallationAccessTokenReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Repositories != nil {
-		more.More()
-		e.ObjField("repositories")
-		more.Down()
+		e.FieldStart("repositories")
 		e.ArrStart()
 		for _, elem := range s.Repositories {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.RepositoryIds != nil {
-		more.More()
-		e.ObjField("repository_ids")
-		more.Down()
+		e.FieldStart("repository_ids")
 		e.ArrStart()
 		for _, elem := range s.RepositoryIds {
-			more.More()
 			e.Int(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Permissions.Set {
-		more.More()
-		e.ObjField("permissions")
+		e.FieldStart("permissions")
 		s.Permissions.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -5378,8 +4992,6 @@ func (s *AppsCreateInstallationAccessTokenReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s AppsDeleteAuthorizationNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -5400,10 +5012,8 @@ func (s *AppsDeleteAuthorizationNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s AppsDeleteAuthorizationReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("access_token")
+
+	e.FieldStart("access_token")
 	e.Str(s.AccessToken)
 	e.ObjEnd()
 }
@@ -5431,8 +5041,6 @@ func (s *AppsDeleteAuthorizationReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s AppsDeleteInstallationNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -5453,8 +5061,6 @@ func (s *AppsDeleteInstallationNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s AppsDeleteTokenNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -5475,10 +5081,8 @@ func (s *AppsDeleteTokenNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s AppsDeleteTokenReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("access_token")
+
+	e.FieldStart("access_token")
 	e.Str(s.AccessToken)
 	e.ObjEnd()
 }
@@ -5522,8 +5126,6 @@ func (AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized) ReadJSON(d *
 // WriteJSON implements json.Marshaler.
 func (s AppsGetSubscriptionPlanForAccountStubbedNotFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -5631,26 +5233,20 @@ func (AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound) Read
 // WriteJSON implements json.Marshaler.
 func (s AppsListInstallationReposForAuthenticatedUserOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Int(s.TotalCount)
 	if s.RepositorySelection.Set {
-		more.More()
-		e.ObjField("repository_selection")
+		e.FieldStart("repository_selection")
 		s.RepositorySelection.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("repositories")
-	more.Down()
+
+	e.FieldStart("repositories")
 	e.ArrStart()
 	for _, elem := range s.Repositories {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -5716,24 +5312,18 @@ func (AppsListReposAccessibleToInstallationApplicationJSONUnauthorized) ReadJSON
 // WriteJSON implements json.Marshaler.
 func (s AppsListReposAccessibleToInstallationOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Int(s.TotalCount)
-	more.More()
-	e.ObjField("repositories")
-	more.Down()
+
+	e.FieldStart("repositories")
 	e.ArrStart()
 	for _, elem := range s.Repositories {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.RepositorySelection.Set {
-		more.More()
-		e.ObjField("repository_selection")
+		e.FieldStart("repository_selection")
 		s.RepositorySelection.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -5810,8 +5400,6 @@ func (AppsRemoveRepoFromInstallationApplicationJSONNotFound) ReadJSON(d *json.De
 // WriteJSON implements json.Marshaler.
 func (s AppsRemoveRepoFromInstallationNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -5832,10 +5420,8 @@ func (s *AppsRemoveRepoFromInstallationNoContent) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s AppsResetTokenReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("access_token")
+
+	e.FieldStart("access_token")
 	e.Str(s.AccessToken)
 	e.ObjEnd()
 }
@@ -5863,8 +5449,6 @@ func (s *AppsResetTokenReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s AppsRevokeInstallationAccessTokenNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -5885,48 +5469,35 @@ func (s *AppsRevokeInstallationAccessTokenNoContent) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s AppsScopeTokenReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("access_token")
+
+	e.FieldStart("access_token")
 	e.Str(s.AccessToken)
 	if s.Target.Set {
-		more.More()
-		e.ObjField("target")
+		e.FieldStart("target")
 		s.Target.WriteJSON(e)
 	}
 	if s.TargetID.Set {
-		more.More()
-		e.ObjField("target_id")
+		e.FieldStart("target_id")
 		s.TargetID.WriteJSON(e)
 	}
 	if s.Repositories != nil {
-		more.More()
-		e.ObjField("repositories")
-		more.Down()
+		e.FieldStart("repositories")
 		e.ArrStart()
 		for _, elem := range s.Repositories {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.RepositoryIds != nil {
-		more.More()
-		e.ObjField("repository_ids")
-		more.Down()
+		e.FieldStart("repository_ids")
 		e.ArrStart()
 		for _, elem := range s.RepositoryIds {
-			more.More()
 			e.Int(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Permissions.Set {
-		more.More()
-		e.ObjField("permissions")
+		e.FieldStart("permissions")
 		s.Permissions.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -5998,8 +5569,6 @@ func (s *AppsScopeTokenReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s AppsSuspendInstallationNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -6020,8 +5589,6 @@ func (s *AppsSuspendInstallationNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s AppsUnsuspendInstallationNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -6042,26 +5609,20 @@ func (s *AppsUnsuspendInstallationNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s AppsUpdateWebhookConfigForAppReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.ContentType.Set {
-		more.More()
-		e.ObjField("content_type")
+		e.FieldStart("content_type")
 		s.ContentType.WriteJSON(e)
 	}
 	if s.Secret.Set {
-		more.More()
-		e.ObjField("secret")
+		e.FieldStart("secret")
 		s.Secret.WriteJSON(e)
 	}
 	if s.InsecureSsl != nil {
-		more.More()
-		e.ObjField("insecure_ssl")
+		e.FieldStart("insecure_ssl")
 		s.InsecureSsl.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -6106,37 +5667,35 @@ func (s *AppsUpdateWebhookConfigForAppReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Artifact) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("size_in_bytes")
+
+	e.FieldStart("size_in_bytes")
 	e.Int(s.SizeInBytes)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	e.Str(s.URL)
-	more.More()
-	e.ObjField("archive_download_url")
+
+	e.FieldStart("archive_download_url")
 	e.Str(s.ArchiveDownloadURL)
-	more.More()
-	e.ObjField("expired")
+
+	e.FieldStart("expired")
 	e.Bool(s.Expired)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	s.CreatedAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("expires_at")
+
+	e.FieldStart("expires_at")
 	s.ExpiresAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	s.UpdatedAt.WriteJSON(e, json.WriteDateTime)
 	e.ObjEnd()
 }
@@ -6212,234 +5771,180 @@ func (s *Artifact) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s AuditLogEvent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Timestamp.Set {
-		more.More()
-		e.ObjField("@timestamp")
+		e.FieldStart("@timestamp")
 		s.Timestamp.WriteJSON(e)
 	}
 	if s.Action.Set {
-		more.More()
-		e.ObjField("action")
+		e.FieldStart("action")
 		s.Action.WriteJSON(e)
 	}
 	if s.Active.Set {
-		more.More()
-		e.ObjField("active")
+		e.FieldStart("active")
 		s.Active.WriteJSON(e)
 	}
 	if s.ActiveWas.Set {
-		more.More()
-		e.ObjField("active_was")
+		e.FieldStart("active_was")
 		s.ActiveWas.WriteJSON(e)
 	}
 	if s.Actor.Set {
-		more.More()
-		e.ObjField("actor")
+		e.FieldStart("actor")
 		s.Actor.WriteJSON(e)
 	}
 	if s.ActorID.Set {
-		more.More()
-		e.ObjField("actor_id")
+		e.FieldStart("actor_id")
 		s.ActorID.WriteJSON(e)
 	}
 	if s.ActorLocation.Set {
-		more.More()
-		e.ObjField("actor_location")
+		e.FieldStart("actor_location")
 		s.ActorLocation.WriteJSON(e)
 	}
 	if s.Data != nil {
-		more.More()
-		e.ObjField("data")
+		e.FieldStart("data")
 		s.Data.WriteJSON(e)
 	}
 	if s.OrgID.Set {
-		more.More()
-		e.ObjField("org_id")
+		e.FieldStart("org_id")
 		s.OrgID.WriteJSON(e)
 	}
 	if s.BlockedUser.Set {
-		more.More()
-		e.ObjField("blocked_user")
+		e.FieldStart("blocked_user")
 		s.BlockedUser.WriteJSON(e)
 	}
 	if s.Business.Set {
-		more.More()
-		e.ObjField("business")
+		e.FieldStart("business")
 		s.Business.WriteJSON(e)
 	}
 	if s.Config != nil {
-		more.More()
-		e.ObjField("config")
-		more.Down()
+		e.FieldStart("config")
 		e.ArrStart()
 		for _, elem := range s.Config {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.ConfigWas != nil {
-		more.More()
-		e.ObjField("config_was")
-		more.Down()
+		e.FieldStart("config_was")
 		e.ArrStart()
 		for _, elem := range s.ConfigWas {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.ContentType.Set {
-		more.More()
-		e.ObjField("content_type")
+		e.FieldStart("content_type")
 		s.ContentType.WriteJSON(e)
 	}
 	if s.CreatedAt.Set {
-		more.More()
-		e.ObjField("created_at")
+		e.FieldStart("created_at")
 		s.CreatedAt.WriteJSON(e)
 	}
 	if s.DeployKeyFingerprint.Set {
-		more.More()
-		e.ObjField("deploy_key_fingerprint")
+		e.FieldStart("deploy_key_fingerprint")
 		s.DeployKeyFingerprint.WriteJSON(e)
 	}
 	if s.DocumentID.Set {
-		more.More()
-		e.ObjField("_document_id")
+		e.FieldStart("_document_id")
 		s.DocumentID.WriteJSON(e)
 	}
 	if s.Emoji.Set {
-		more.More()
-		e.ObjField("emoji")
+		e.FieldStart("emoji")
 		s.Emoji.WriteJSON(e)
 	}
 	if s.Events != nil {
-		more.More()
-		e.ObjField("events")
-		more.Down()
+		e.FieldStart("events")
 		e.ArrStart()
 		for _, elem := range s.Events {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.EventsWere != nil {
-		more.More()
-		e.ObjField("events_were")
-		more.Down()
+		e.FieldStart("events_were")
 		e.ArrStart()
 		for _, elem := range s.EventsWere {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Explanation.Set {
-		more.More()
-		e.ObjField("explanation")
+		e.FieldStart("explanation")
 		s.Explanation.WriteJSON(e)
 	}
 	if s.Fingerprint.Set {
-		more.More()
-		e.ObjField("fingerprint")
+		e.FieldStart("fingerprint")
 		s.Fingerprint.WriteJSON(e)
 	}
 	if s.HookID.Set {
-		more.More()
-		e.ObjField("hook_id")
+		e.FieldStart("hook_id")
 		s.HookID.WriteJSON(e)
 	}
 	if s.LimitedAvailability.Set {
-		more.More()
-		e.ObjField("limited_availability")
+		e.FieldStart("limited_availability")
 		s.LimitedAvailability.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.OldUser.Set {
-		more.More()
-		e.ObjField("old_user")
+		e.FieldStart("old_user")
 		s.OldUser.WriteJSON(e)
 	}
 	if s.OpensshPublicKey.Set {
-		more.More()
-		e.ObjField("openssh_public_key")
+		e.FieldStart("openssh_public_key")
 		s.OpensshPublicKey.WriteJSON(e)
 	}
 	if s.Org.Set {
-		more.More()
-		e.ObjField("org")
+		e.FieldStart("org")
 		s.Org.WriteJSON(e)
 	}
 	if s.PreviousVisibility.Set {
-		more.More()
-		e.ObjField("previous_visibility")
+		e.FieldStart("previous_visibility")
 		s.PreviousVisibility.WriteJSON(e)
 	}
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("read_only")
+		e.FieldStart("read_only")
 		s.ReadOnly.WriteJSON(e)
 	}
 	if s.Repo.Set {
-		more.More()
-		e.ObjField("repo")
+		e.FieldStart("repo")
 		s.Repo.WriteJSON(e)
 	}
 	if s.Repository.Set {
-		more.More()
-		e.ObjField("repository")
+		e.FieldStart("repository")
 		s.Repository.WriteJSON(e)
 	}
 	if s.RepositoryPublic.Set {
-		more.More()
-		e.ObjField("repository_public")
+		e.FieldStart("repository_public")
 		s.RepositoryPublic.WriteJSON(e)
 	}
 	if s.TargetLogin.Set {
-		more.More()
-		e.ObjField("target_login")
+		e.FieldStart("target_login")
 		s.TargetLogin.WriteJSON(e)
 	}
 	if s.Team.Set {
-		more.More()
-		e.ObjField("team")
+		e.FieldStart("team")
 		s.Team.WriteJSON(e)
 	}
 	if s.TransportProtocol.Set {
-		more.More()
-		e.ObjField("transport_protocol")
+		e.FieldStart("transport_protocol")
 		s.TransportProtocol.WriteJSON(e)
 	}
 	if s.TransportProtocolName.Set {
-		more.More()
-		e.ObjField("transport_protocol_name")
+		e.FieldStart("transport_protocol_name")
 		s.TransportProtocolName.WriteJSON(e)
 	}
 	if s.User.Set {
-		more.More()
-		e.ObjField("user")
+		e.FieldStart("user")
 		s.User.WriteJSON(e)
 	}
 	if s.Visibility.Set {
-		more.More()
-		e.ObjField("visibility")
+		e.FieldStart("visibility")
 		s.Visibility.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -6700,11 +6205,8 @@ func (s *AuditLogEvent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s AuditLogEventActorLocation) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.CountryName.Set {
-		more.More()
-		e.ObjField("country_name")
+		e.FieldStart("country_name")
 		s.CountryName.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -6732,8 +6234,6 @@ func (s *AuditLogEventActorLocation) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s AuditLogEventData) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -6754,39 +6254,30 @@ func (s *AuditLogEventData) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s AuthenticationToken) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("token")
+
+	e.FieldStart("token")
 	e.Str(s.Token)
-	more.More()
-	e.ObjField("expires_at")
+
+	e.FieldStart("expires_at")
 	json.WriteDateTime(e, s.ExpiresAt)
 	if s.Permissions != nil {
-		more.More()
-		e.ObjField("permissions")
+		e.FieldStart("permissions")
 		s.Permissions.WriteJSON(e)
 	}
 	if s.Repositories != nil {
-		more.More()
-		e.ObjField("repositories")
-		more.Down()
+		e.FieldStart("repositories")
 		e.ArrStart()
 		for _, elem := range s.Repositories {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.SingleFile.Set {
-		more.More()
-		e.ObjField("single_file")
+		e.FieldStart("single_file")
 		s.SingleFile.WriteJSON(e)
 	}
 	if s.RepositorySelection.Set {
-		more.More()
-		e.ObjField("repository_selection")
+		e.FieldStart("repository_selection")
 		s.RepositorySelection.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -6850,8 +6341,6 @@ func (s *AuthenticationToken) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s AuthenticationTokenPermissions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -6908,67 +6397,60 @@ func (s *AuthorAssociation) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Authorization) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("scopes")
+
+	e.FieldStart("scopes")
 	if s.Scopes == nil {
 		e.Null()
 	} else {
-		more.Down()
 		e.ArrStart()
 		for _, elem := range s.Scopes {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("token")
+
+	e.FieldStart("token")
 	e.Str(s.Token)
-	more.More()
-	e.ObjField("token_last_eight")
+
+	e.FieldStart("token_last_eight")
 	s.TokenLastEight.WriteJSON(e)
-	more.More()
-	e.ObjField("hashed_token")
+
+	e.FieldStart("hashed_token")
 	s.HashedToken.WriteJSON(e)
-	more.More()
-	e.ObjField("app")
+
+	e.FieldStart("app")
 	s.App.WriteJSON(e)
-	more.More()
-	e.ObjField("note")
+
+	e.FieldStart("note")
 	s.Note.WriteJSON(e)
-	more.More()
-	e.ObjField("note_url")
+
+	e.FieldStart("note_url")
 	s.NoteURL.WriteJSON(e)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("fingerprint")
+
+	e.FieldStart("fingerprint")
 	s.Fingerprint.WriteJSON(e)
 	if s.User.Set {
-		more.More()
-		e.ObjField("user")
+		e.FieldStart("user")
 		s.User.WriteJSON(e)
 	}
 	if s.Installation.Set {
-		more.More()
-		e.ObjField("installation")
+		e.FieldStart("installation")
 		s.Installation.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("expires_at")
+
+	e.FieldStart("expires_at")
 	s.ExpiresAt.WriteJSON(e, json.WriteDateTime)
 	e.ObjEnd()
 }
@@ -7072,16 +6554,14 @@ func (s *Authorization) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s AuthorizationApp) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("client_id")
+
+	e.FieldStart("client_id")
 	e.Str(s.ClientID)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	e.ObjEnd()
 }
@@ -7121,19 +6601,17 @@ func (s *AuthorizationApp) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s AutoMerge) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("enabled_by")
+
+	e.FieldStart("enabled_by")
 	s.EnabledBy.WriteJSON(e)
-	more.More()
-	e.ObjField("merge_method")
+
+	e.FieldStart("merge_method")
 	s.MergeMethod.WriteJSON(e)
-	more.More()
-	e.ObjField("commit_title")
+
+	e.FieldStart("commit_title")
 	e.Str(s.CommitTitle)
-	more.More()
-	e.ObjField("commit_message")
+
+	e.FieldStart("commit_message")
 	e.Str(s.CommitMessage)
 	e.ObjEnd()
 }
@@ -7193,16 +6671,14 @@ func (s *AutoMergeMergeMethod) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Autolink) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("key_prefix")
+
+	e.FieldStart("key_prefix")
 	e.Str(s.KeyPrefix)
-	more.More()
-	e.ObjField("url_template")
+
+	e.FieldStart("url_template")
 	e.Str(s.URLTemplate)
 	e.ObjEnd()
 }
@@ -7242,89 +6718,77 @@ func (s *Autolink) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BaseGist) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("forks_url")
+
+	e.FieldStart("forks_url")
 	json.WriteURI(e, s.ForksURL)
-	more.More()
-	e.ObjField("commits_url")
+
+	e.FieldStart("commits_url")
 	json.WriteURI(e, s.CommitsURL)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Str(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("git_pull_url")
+
+	e.FieldStart("git_pull_url")
 	json.WriteURI(e, s.GitPullURL)
-	more.More()
-	e.ObjField("git_push_url")
+
+	e.FieldStart("git_push_url")
 	json.WriteURI(e, s.GitPushURL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("files")
+
+	e.FieldStart("files")
 	s.Files.WriteJSON(e)
-	more.More()
-	e.ObjField("public")
+
+	e.FieldStart("public")
 	e.Bool(s.Public)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
-	more.More()
-	e.ObjField("comments")
+
+	e.FieldStart("comments")
 	e.Int(s.Comments)
-	more.More()
-	e.ObjField("user")
+
+	e.FieldStart("user")
 	s.User.WriteJSON(e)
-	more.More()
-	e.ObjField("comments_url")
+
+	e.FieldStart("comments_url")
 	json.WriteURI(e, s.CommentsURL)
 	if s.Owner.Set {
-		more.More()
-		e.ObjField("owner")
+		e.FieldStart("owner")
 		s.Owner.WriteJSON(e)
 	}
 	if s.Truncated.Set {
-		more.More()
-		e.ObjField("truncated")
+		e.FieldStart("truncated")
 		s.Truncated.WriteJSON(e)
 	}
 	if s.Forks != nil {
-		more.More()
-		e.ObjField("forks")
-		more.Down()
+		e.FieldStart("forks")
 		e.ArrStart()
 		for _, elem := range s.Forks {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.History != nil {
-		more.More()
-		e.ObjField("history")
-		more.Down()
+		e.FieldStart("history")
 		e.ArrStart()
 		for _, elem := range s.History {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -7474,8 +6938,6 @@ func (s *BaseGist) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BaseGistFiles) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -7496,26 +6958,20 @@ func (s *BaseGistFiles) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BasicError) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.DocumentationURL.Set {
-		more.More()
-		e.ObjField("documentation_url")
+		e.FieldStart("documentation_url")
 		s.DocumentationURL.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -7558,29 +7014,26 @@ func (s *BasicError) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Blob) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("content")
+
+	e.FieldStart("content")
 	e.Str(s.Content)
-	more.More()
-	e.ObjField("encoding")
+
+	e.FieldStart("encoding")
 	e.Str(s.Encoding)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("size")
+
+	e.FieldStart("size")
 	s.Size.WriteJSON(e)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
 	if s.HighlightedContent.Set {
-		more.More()
-		e.ObjField("highlighted_content")
+		e.FieldStart("highlighted_content")
 		s.HighlightedContent.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -7642,71 +7095,56 @@ func (s *Blob) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BranchProtection) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.Enabled.Set {
-		more.More()
-		e.ObjField("enabled")
+		e.FieldStart("enabled")
 		s.Enabled.WriteJSON(e)
 	}
 	if s.RequiredStatusChecks.Set {
-		more.More()
-		e.ObjField("required_status_checks")
+		e.FieldStart("required_status_checks")
 		s.RequiredStatusChecks.WriteJSON(e)
 	}
 	if s.EnforceAdmins.Set {
-		more.More()
-		e.ObjField("enforce_admins")
+		e.FieldStart("enforce_admins")
 		s.EnforceAdmins.WriteJSON(e)
 	}
 	if s.RequiredPullRequestReviews.Set {
-		more.More()
-		e.ObjField("required_pull_request_reviews")
+		e.FieldStart("required_pull_request_reviews")
 		s.RequiredPullRequestReviews.WriteJSON(e)
 	}
 	if s.Restrictions.Set {
-		more.More()
-		e.ObjField("restrictions")
+		e.FieldStart("restrictions")
 		s.Restrictions.WriteJSON(e)
 	}
 	if s.RequiredLinearHistory.Set {
-		more.More()
-		e.ObjField("required_linear_history")
+		e.FieldStart("required_linear_history")
 		s.RequiredLinearHistory.WriteJSON(e)
 	}
 	if s.AllowForcePushes.Set {
-		more.More()
-		e.ObjField("allow_force_pushes")
+		e.FieldStart("allow_force_pushes")
 		s.AllowForcePushes.WriteJSON(e)
 	}
 	if s.AllowDeletions.Set {
-		more.More()
-		e.ObjField("allow_deletions")
+		e.FieldStart("allow_deletions")
 		s.AllowDeletions.WriteJSON(e)
 	}
 	if s.RequiredConversationResolution.Set {
-		more.More()
-		e.ObjField("required_conversation_resolution")
+		e.FieldStart("required_conversation_resolution")
 		s.RequiredConversationResolution.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.ProtectionURL.Set {
-		more.More()
-		e.ObjField("protection_url")
+		e.FieldStart("protection_url")
 		s.ProtectionURL.WriteJSON(e)
 	}
 	if s.RequiredSignatures.Set {
-		more.More()
-		e.ObjField("required_signatures")
+		e.FieldStart("required_signatures")
 		s.RequiredSignatures.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -7794,11 +7232,8 @@ func (s *BranchProtection) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BranchProtectionAllowDeletions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Enabled.Set {
-		more.More()
-		e.ObjField("enabled")
+		e.FieldStart("enabled")
 		s.Enabled.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -7826,11 +7261,8 @@ func (s *BranchProtectionAllowDeletions) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BranchProtectionAllowForcePushes) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Enabled.Set {
-		more.More()
-		e.ObjField("enabled")
+		e.FieldStart("enabled")
 		s.Enabled.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -7858,11 +7290,8 @@ func (s *BranchProtectionAllowForcePushes) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BranchProtectionRequiredConversationResolution) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Enabled.Set {
-		more.More()
-		e.ObjField("enabled")
+		e.FieldStart("enabled")
 		s.Enabled.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -7890,11 +7319,8 @@ func (s *BranchProtectionRequiredConversationResolution) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s BranchProtectionRequiredLinearHistory) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Enabled.Set {
-		more.More()
-		e.ObjField("enabled")
+		e.FieldStart("enabled")
 		s.Enabled.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -7922,13 +7348,11 @@ func (s *BranchProtectionRequiredLinearHistory) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s BranchProtectionRequiredSignatures) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("enabled")
+
+	e.FieldStart("enabled")
 	e.Bool(s.Enabled)
 	e.ObjEnd()
 }
@@ -7962,36 +7386,27 @@ func (s *BranchProtectionRequiredSignatures) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BranchProtectionRequiredStatusChecks) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.EnforcementLevel.Set {
-		more.More()
-		e.ObjField("enforcement_level")
+		e.FieldStart("enforcement_level")
 		s.EnforcementLevel.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("contexts")
-	more.Down()
+
+	e.FieldStart("contexts")
 	e.ArrStart()
 	for _, elem := range s.Contexts {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.ContextsURL.Set {
-		more.More()
-		e.ObjField("contexts_url")
+		e.FieldStart("contexts_url")
 		s.ContextsURL.WriteJSON(e)
 	}
 	if s.Strict.Set {
-		more.More()
-		e.ObjField("strict")
+		e.FieldStart("strict")
 		s.Strict.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -8048,50 +7463,39 @@ func (s *BranchProtectionRequiredStatusChecks) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BranchRestrictionPolicy) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("users_url")
+
+	e.FieldStart("users_url")
 	json.WriteURI(e, s.UsersURL)
-	more.More()
-	e.ObjField("teams_url")
+
+	e.FieldStart("teams_url")
 	json.WriteURI(e, s.TeamsURL)
-	more.More()
-	e.ObjField("apps_url")
+
+	e.FieldStart("apps_url")
 	json.WriteURI(e, s.AppsURL)
-	more.More()
-	e.ObjField("users")
-	more.Down()
+
+	e.FieldStart("users")
 	e.ArrStart()
 	for _, elem := range s.Users {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("teams")
-	more.Down()
+
+	e.FieldStart("teams")
 	e.ArrStart()
 	for _, elem := range s.Teams {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("apps")
-	more.Down()
+
+	e.FieldStart("apps")
 	e.ArrStart()
 	for _, elem := range s.Apps {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -8172,74 +7576,57 @@ func (s *BranchRestrictionPolicy) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BranchRestrictionPolicyAppsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.Slug.Set {
-		more.More()
-		e.ObjField("slug")
+		e.FieldStart("slug")
 		s.Slug.WriteJSON(e)
 	}
 	if s.NodeID.Set {
-		more.More()
-		e.ObjField("node_id")
+		e.FieldStart("node_id")
 		s.NodeID.WriteJSON(e)
 	}
 	if s.Owner.Set {
-		more.More()
-		e.ObjField("owner")
+		e.FieldStart("owner")
 		s.Owner.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.ExternalURL.Set {
-		more.More()
-		e.ObjField("external_url")
+		e.FieldStart("external_url")
 		s.ExternalURL.WriteJSON(e)
 	}
 	if s.HTMLURL.Set {
-		more.More()
-		e.ObjField("html_url")
+		e.FieldStart("html_url")
 		s.HTMLURL.WriteJSON(e)
 	}
 	if s.CreatedAt.Set {
-		more.More()
-		e.ObjField("created_at")
+		e.FieldStart("created_at")
 		s.CreatedAt.WriteJSON(e)
 	}
 	if s.UpdatedAt.Set {
-		more.More()
-		e.ObjField("updated_at")
+		e.FieldStart("updated_at")
 		s.UpdatedAt.WriteJSON(e)
 	}
 	if s.Permissions.Set {
-		more.More()
-		e.ObjField("permissions")
+		e.FieldStart("permissions")
 		s.Permissions.WriteJSON(e)
 	}
 	if s.Events != nil {
-		more.More()
-		e.ObjField("events")
-		more.Down()
+		e.FieldStart("events")
 		e.ArrStart()
 		for _, elem := range s.Events {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -8330,121 +7717,96 @@ func (s *BranchRestrictionPolicyAppsItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BranchRestrictionPolicyAppsItemOwner) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Login.Set {
-		more.More()
-		e.ObjField("login")
+		e.FieldStart("login")
 		s.Login.WriteJSON(e)
 	}
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.NodeID.Set {
-		more.More()
-		e.ObjField("node_id")
+		e.FieldStart("node_id")
 		s.NodeID.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.ReposURL.Set {
-		more.More()
-		e.ObjField("repos_url")
+		e.FieldStart("repos_url")
 		s.ReposURL.WriteJSON(e)
 	}
 	if s.EventsURL.Set {
-		more.More()
-		e.ObjField("events_url")
+		e.FieldStart("events_url")
 		s.EventsURL.WriteJSON(e)
 	}
 	if s.HooksURL.Set {
-		more.More()
-		e.ObjField("hooks_url")
+		e.FieldStart("hooks_url")
 		s.HooksURL.WriteJSON(e)
 	}
 	if s.IssuesURL.Set {
-		more.More()
-		e.ObjField("issues_url")
+		e.FieldStart("issues_url")
 		s.IssuesURL.WriteJSON(e)
 	}
 	if s.MembersURL.Set {
-		more.More()
-		e.ObjField("members_url")
+		e.FieldStart("members_url")
 		s.MembersURL.WriteJSON(e)
 	}
 	if s.PublicMembersURL.Set {
-		more.More()
-		e.ObjField("public_members_url")
+		e.FieldStart("public_members_url")
 		s.PublicMembersURL.WriteJSON(e)
 	}
 	if s.AvatarURL.Set {
-		more.More()
-		e.ObjField("avatar_url")
+		e.FieldStart("avatar_url")
 		s.AvatarURL.WriteJSON(e)
 	}
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.GravatarID.Set {
-		more.More()
-		e.ObjField("gravatar_id")
+		e.FieldStart("gravatar_id")
 		s.GravatarID.WriteJSON(e)
 	}
 	if s.HTMLURL.Set {
-		more.More()
-		e.ObjField("html_url")
+		e.FieldStart("html_url")
 		s.HTMLURL.WriteJSON(e)
 	}
 	if s.FollowersURL.Set {
-		more.More()
-		e.ObjField("followers_url")
+		e.FieldStart("followers_url")
 		s.FollowersURL.WriteJSON(e)
 	}
 	if s.FollowingURL.Set {
-		more.More()
-		e.ObjField("following_url")
+		e.FieldStart("following_url")
 		s.FollowingURL.WriteJSON(e)
 	}
 	if s.GistsURL.Set {
-		more.More()
-		e.ObjField("gists_url")
+		e.FieldStart("gists_url")
 		s.GistsURL.WriteJSON(e)
 	}
 	if s.StarredURL.Set {
-		more.More()
-		e.ObjField("starred_url")
+		e.FieldStart("starred_url")
 		s.StarredURL.WriteJSON(e)
 	}
 	if s.SubscriptionsURL.Set {
-		more.More()
-		e.ObjField("subscriptions_url")
+		e.FieldStart("subscriptions_url")
 		s.SubscriptionsURL.WriteJSON(e)
 	}
 	if s.OrganizationsURL.Set {
-		more.More()
-		e.ObjField("organizations_url")
+		e.FieldStart("organizations_url")
 		s.OrganizationsURL.WriteJSON(e)
 	}
 	if s.ReceivedEventsURL.Set {
-		more.More()
-		e.ObjField("received_events_url")
+		e.FieldStart("received_events_url")
 		s.ReceivedEventsURL.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	if s.SiteAdmin.Set {
-		more.More()
-		e.ObjField("site_admin")
+		e.FieldStart("site_admin")
 		s.SiteAdmin.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -8582,26 +7944,20 @@ func (s *BranchRestrictionPolicyAppsItemOwner) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BranchRestrictionPolicyAppsItemPermissions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Contents.Set {
-		more.More()
-		e.ObjField("contents")
+		e.FieldStart("contents")
 		s.Contents.WriteJSON(e)
 	}
 	if s.Issues.Set {
-		more.More()
-		e.ObjField("issues")
+		e.FieldStart("issues")
 		s.Issues.WriteJSON(e)
 	}
 	if s.SingleFile.Set {
-		more.More()
-		e.ObjField("single_file")
+		e.FieldStart("single_file")
 		s.SingleFile.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -8644,66 +8000,52 @@ func (s *BranchRestrictionPolicyAppsItemPermissions) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s BranchRestrictionPolicyTeamsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.NodeID.Set {
-		more.More()
-		e.ObjField("node_id")
+		e.FieldStart("node_id")
 		s.NodeID.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.HTMLURL.Set {
-		more.More()
-		e.ObjField("html_url")
+		e.FieldStart("html_url")
 		s.HTMLURL.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Slug.Set {
-		more.More()
-		e.ObjField("slug")
+		e.FieldStart("slug")
 		s.Slug.WriteJSON(e)
 	}
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.Privacy.Set {
-		more.More()
-		e.ObjField("privacy")
+		e.FieldStart("privacy")
 		s.Privacy.WriteJSON(e)
 	}
 	if s.Permission.Set {
-		more.More()
-		e.ObjField("permission")
+		e.FieldStart("permission")
 		s.Permission.WriteJSON(e)
 	}
 	if s.MembersURL.Set {
-		more.More()
-		e.ObjField("members_url")
+		e.FieldStart("members_url")
 		s.MembersURL.WriteJSON(e)
 	}
 	if s.RepositoriesURL.Set {
-		more.More()
-		e.ObjField("repositories_url")
+		e.FieldStart("repositories_url")
 		s.RepositoriesURL.WriteJSON(e)
 	}
 	if s.Parent.Set {
-		more.More()
-		e.ObjField("parent")
+		e.FieldStart("parent")
 		s.Parent.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -8786,96 +8128,76 @@ func (s *BranchRestrictionPolicyTeamsItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BranchRestrictionPolicyUsersItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Login.Set {
-		more.More()
-		e.ObjField("login")
+		e.FieldStart("login")
 		s.Login.WriteJSON(e)
 	}
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.NodeID.Set {
-		more.More()
-		e.ObjField("node_id")
+		e.FieldStart("node_id")
 		s.NodeID.WriteJSON(e)
 	}
 	if s.AvatarURL.Set {
-		more.More()
-		e.ObjField("avatar_url")
+		e.FieldStart("avatar_url")
 		s.AvatarURL.WriteJSON(e)
 	}
 	if s.GravatarID.Set {
-		more.More()
-		e.ObjField("gravatar_id")
+		e.FieldStart("gravatar_id")
 		s.GravatarID.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.HTMLURL.Set {
-		more.More()
-		e.ObjField("html_url")
+		e.FieldStart("html_url")
 		s.HTMLURL.WriteJSON(e)
 	}
 	if s.FollowersURL.Set {
-		more.More()
-		e.ObjField("followers_url")
+		e.FieldStart("followers_url")
 		s.FollowersURL.WriteJSON(e)
 	}
 	if s.FollowingURL.Set {
-		more.More()
-		e.ObjField("following_url")
+		e.FieldStart("following_url")
 		s.FollowingURL.WriteJSON(e)
 	}
 	if s.GistsURL.Set {
-		more.More()
-		e.ObjField("gists_url")
+		e.FieldStart("gists_url")
 		s.GistsURL.WriteJSON(e)
 	}
 	if s.StarredURL.Set {
-		more.More()
-		e.ObjField("starred_url")
+		e.FieldStart("starred_url")
 		s.StarredURL.WriteJSON(e)
 	}
 	if s.SubscriptionsURL.Set {
-		more.More()
-		e.ObjField("subscriptions_url")
+		e.FieldStart("subscriptions_url")
 		s.SubscriptionsURL.WriteJSON(e)
 	}
 	if s.OrganizationsURL.Set {
-		more.More()
-		e.ObjField("organizations_url")
+		e.FieldStart("organizations_url")
 		s.OrganizationsURL.WriteJSON(e)
 	}
 	if s.ReposURL.Set {
-		more.More()
-		e.ObjField("repos_url")
+		e.FieldStart("repos_url")
 		s.ReposURL.WriteJSON(e)
 	}
 	if s.EventsURL.Set {
-		more.More()
-		e.ObjField("events_url")
+		e.FieldStart("events_url")
 		s.EventsURL.WriteJSON(e)
 	}
 	if s.ReceivedEventsURL.Set {
-		more.More()
-		e.ObjField("received_events_url")
+		e.FieldStart("received_events_url")
 		s.ReceivedEventsURL.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	if s.SiteAdmin.Set {
-		more.More()
-		e.ObjField("site_admin")
+		e.FieldStart("site_admin")
 		s.SiteAdmin.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -8988,16 +8310,14 @@ func (s *BranchRestrictionPolicyUsersItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BranchShort) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("commit")
+
+	e.FieldStart("commit")
 	s.Commit.WriteJSON(e)
-	more.More()
-	e.ObjField("protected")
+
+	e.FieldStart("protected")
 	e.Bool(s.Protected)
 	e.ObjEnd()
 }
@@ -9035,13 +8355,11 @@ func (s *BranchShort) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BranchShortCommit) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	e.Str(s.URL)
 	e.ObjEnd()
 }
@@ -9075,34 +8393,30 @@ func (s *BranchShortCommit) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BranchWithProtection) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("commit")
+
+	e.FieldStart("commit")
 	s.Commit.WriteJSON(e)
-	more.More()
-	e.ObjField("_links")
+
+	e.FieldStart("_links")
 	s.Links.WriteJSON(e)
-	more.More()
-	e.ObjField("protected")
+
+	e.FieldStart("protected")
 	e.Bool(s.Protected)
-	more.More()
-	e.ObjField("protection")
+
+	e.FieldStart("protection")
 	s.Protection.WriteJSON(e)
-	more.More()
-	e.ObjField("protection_url")
+
+	e.FieldStart("protection_url")
 	json.WriteURI(e, s.ProtectionURL)
 	if s.Pattern.Set {
-		more.More()
-		e.ObjField("pattern")
+		e.FieldStart("pattern")
 		s.Pattern.WriteJSON(e)
 	}
 	if s.RequiredApprovingReviewCount.Set {
-		more.More()
-		e.ObjField("required_approving_review_count")
+		e.FieldStart("required_approving_review_count")
 		s.RequiredApprovingReviewCount.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -9165,13 +8479,11 @@ func (s *BranchWithProtection) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s BranchWithProtectionLinks) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("html")
+
+	e.FieldStart("html")
 	e.Str(s.HTML)
-	more.More()
-	e.ObjField("self")
+
+	e.FieldStart("self")
 	json.WriteURI(e, s.Self)
 	e.ObjEnd()
 }
@@ -9205,37 +8517,35 @@ func (s *BranchWithProtectionLinks) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CheckAnnotation) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("path")
+
+	e.FieldStart("path")
 	e.Str(s.Path)
-	more.More()
-	e.ObjField("start_line")
+
+	e.FieldStart("start_line")
 	e.Int(s.StartLine)
-	more.More()
-	e.ObjField("end_line")
+
+	e.FieldStart("end_line")
 	e.Int(s.EndLine)
-	more.More()
-	e.ObjField("start_column")
+
+	e.FieldStart("start_column")
 	s.StartColumn.WriteJSON(e)
-	more.More()
-	e.ObjField("end_column")
+
+	e.FieldStart("end_column")
 	s.EndColumn.WriteJSON(e)
-	more.More()
-	e.ObjField("annotation_level")
+
+	e.FieldStart("annotation_level")
 	s.AnnotationLevel.WriteJSON(e)
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	s.Title.WriteJSON(e)
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	s.Message.WriteJSON(e)
-	more.More()
-	e.ObjField("raw_details")
+
+	e.FieldStart("raw_details")
 	s.RawDetails.WriteJSON(e)
-	more.More()
-	e.ObjField("blob_href")
+
+	e.FieldStart("blob_href")
 	e.Str(s.BlobHref)
 	e.ObjEnd()
 }
@@ -9305,59 +8615,56 @@ func (s *CheckAnnotation) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CheckRun) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("head_sha")
+
+	e.FieldStart("head_sha")
 	e.Str(s.HeadSha)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("external_id")
+
+	e.FieldStart("external_id")
 	s.ExternalID.WriteJSON(e)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	e.Str(s.URL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	s.HTMLURL.WriteJSON(e)
-	more.More()
-	e.ObjField("details_url")
+
+	e.FieldStart("details_url")
 	s.DetailsURL.WriteJSON(e)
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	s.Status.WriteJSON(e)
-	more.More()
-	e.ObjField("conclusion")
+
+	e.FieldStart("conclusion")
 	s.Conclusion.WriteJSON(e)
-	more.More()
-	e.ObjField("started_at")
+
+	e.FieldStart("started_at")
 	s.StartedAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("completed_at")
+
+	e.FieldStart("completed_at")
 	s.CompletedAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("output")
+
+	e.FieldStart("output")
 	s.Output.WriteJSON(e)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("check_suite")
+
+	e.FieldStart("check_suite")
 	s.CheckSuite.WriteJSON(e)
-	more.More()
-	e.ObjField("app")
+
+	e.FieldStart("app")
 	s.App.WriteJSON(e)
-	more.More()
-	e.ObjField("pull_requests")
+
+	e.FieldStart("pull_requests")
 	e.Str(s.PullRequests)
 	if s.Deployment.Set {
-		more.More()
-		e.ObjField("deployment")
+		e.FieldStart("deployment")
 		s.Deployment.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -9461,10 +8768,8 @@ func (s *CheckRun) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CheckRunCheckSuite) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
 	e.ObjEnd()
 }
@@ -9510,22 +8815,20 @@ func (s *CheckRunConclusion) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CheckRunOutput) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	s.Title.WriteJSON(e)
-	more.More()
-	e.ObjField("summary")
+
+	e.FieldStart("summary")
 	s.Summary.WriteJSON(e)
-	more.More()
-	e.ObjField("text")
+
+	e.FieldStart("text")
 	s.Text.WriteJSON(e)
-	more.More()
-	e.ObjField("annotations_count")
+
+	e.FieldStart("annotations_count")
 	e.Int(s.AnnotationsCount)
-	more.More()
-	e.ObjField("annotations_url")
+
+	e.FieldStart("annotations_url")
 	json.WriteURI(e, s.AnnotationsURL)
 	e.ObjEnd()
 }
@@ -9589,69 +8892,64 @@ func (s *CheckRunStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CheckSuite) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("head_branch")
+
+	e.FieldStart("head_branch")
 	s.HeadBranch.WriteJSON(e)
-	more.More()
-	e.ObjField("head_sha")
+
+	e.FieldStart("head_sha")
 	e.Str(s.HeadSha)
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	s.Status.WriteJSON(e)
-	more.More()
-	e.ObjField("conclusion")
+
+	e.FieldStart("conclusion")
 	s.Conclusion.WriteJSON(e)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	s.URL.WriteJSON(e)
-	more.More()
-	e.ObjField("before")
+
+	e.FieldStart("before")
 	s.Before.WriteJSON(e)
-	more.More()
-	e.ObjField("after")
+
+	e.FieldStart("after")
 	s.After.WriteJSON(e)
-	more.More()
-	e.ObjField("pull_requests")
+
+	e.FieldStart("pull_requests")
 	if s.PullRequests == nil {
 		e.Null()
 	} else {
-		more.Down()
 		e.ArrStart()
 		for _, elem := range s.PullRequests {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("app")
+
+	e.FieldStart("app")
 	s.App.WriteJSON(e)
-	more.More()
-	e.ObjField("repository")
+
+	e.FieldStart("repository")
 	s.Repository.WriteJSON(e)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	s.CreatedAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	s.UpdatedAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("head_commit")
+
+	e.FieldStart("head_commit")
 	s.HeadCommit.WriteJSON(e)
-	more.More()
-	e.ObjField("latest_check_runs_count")
+
+	e.FieldStart("latest_check_runs_count")
 	e.Int(s.LatestCheckRunsCount)
-	more.More()
-	e.ObjField("check_runs_url")
+
+	e.FieldStart("check_runs_url")
 	e.Str(s.CheckRunsURL)
 	e.ObjEnd()
 }
@@ -9777,13 +9075,11 @@ func (s *CheckSuiteConclusion) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CheckSuitePreference) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("preferences")
+
+	e.FieldStart("preferences")
 	s.Preferences.WriteJSON(e)
-	more.More()
-	e.ObjField("repository")
+
+	e.FieldStart("repository")
 	s.Repository.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -9813,19 +9109,13 @@ func (s *CheckSuitePreference) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CheckSuitePreferencePreferences) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AutoTriggerChecks != nil {
-		more.More()
-		e.ObjField("auto_trigger_checks")
-		more.Down()
+		e.FieldStart("auto_trigger_checks")
 		e.ArrStart()
 		for _, elem := range s.AutoTriggerChecks {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -9859,13 +9149,11 @@ func (s *CheckSuitePreferencePreferences) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CheckSuitePreferencePreferencesAutoTriggerChecksItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("app_id")
+
+	e.FieldStart("app_id")
 	e.Int(s.AppID)
-	more.More()
-	e.ObjField("setting")
+
+	e.FieldStart("setting")
 	e.Bool(s.Setting)
 	e.ObjEnd()
 }
@@ -9923,10 +9211,8 @@ func (ChecksCreateSuiteApplicationJSONOK) ReadJSON(d *json.Decoder) error { retu
 // WriteJSON implements json.Marshaler.
 func (s ChecksCreateSuiteReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("head_sha")
+
+	e.FieldStart("head_sha")
 	e.Str(s.HeadSha)
 	e.ObjEnd()
 }
@@ -9972,21 +9258,16 @@ func (s *ChecksListForRefFilter) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ChecksListForRefOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Int(s.TotalCount)
-	more.More()
-	e.ObjField("check_runs")
-	more.Down()
+
+	e.FieldStart("check_runs")
 	e.ArrStart()
 	for _, elem := range s.CheckRuns {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -10061,21 +9342,16 @@ func (s *ChecksListForSuiteFilter) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ChecksListForSuiteOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Int(s.TotalCount)
-	more.More()
-	e.ObjField("check_runs")
-	more.Down()
+
+	e.FieldStart("check_runs")
 	e.ArrStart()
 	for _, elem := range s.CheckRuns {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -10132,21 +9408,16 @@ func (s *ChecksListForSuiteStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ChecksListSuitesForRefOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Int(s.TotalCount)
-	more.More()
-	e.ObjField("check_suites")
-	more.Down()
+
+	e.FieldStart("check_suites")
 	e.ArrStart()
 	for _, elem := range s.CheckSuites {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -10185,8 +9456,6 @@ func (s *ChecksListSuitesForRefOK) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ChecksRerequestSuiteCreated) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -10207,19 +9476,13 @@ func (s *ChecksRerequestSuiteCreated) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ChecksSetSuitesPreferencesReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AutoTriggerChecks != nil {
-		more.More()
-		e.ObjField("auto_trigger_checks")
-		more.Down()
+		e.FieldStart("auto_trigger_checks")
 		e.ArrStart()
 		for _, elem := range s.AutoTriggerChecks {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -10253,13 +9516,11 @@ func (s *ChecksSetSuitesPreferencesReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ChecksSetSuitesPreferencesReqAutoTriggerChecksItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("app_id")
+
+	e.FieldStart("app_id")
 	e.Int(s.AppID)
-	more.More()
-	e.ObjField("setting")
+
+	e.FieldStart("setting")
 	e.Bool(s.Setting)
 	e.ObjEnd()
 }
@@ -10293,24 +9554,19 @@ func (s *ChecksSetSuitesPreferencesReqAutoTriggerChecksItem) ReadJSON(d *json.De
 // WriteJSON implements json.Marshaler.
 func (s CloneTraffic) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("count")
+
+	e.FieldStart("count")
 	e.Int(s.Count)
-	more.More()
-	e.ObjField("uniques")
+
+	e.FieldStart("uniques")
 	e.Int(s.Uniques)
-	more.More()
-	e.ObjField("clones")
-	more.Down()
+
+	e.FieldStart("clones")
 	e.ArrStart()
 	for _, elem := range s.Clones {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -10358,24 +9614,21 @@ func (CodeFrequencyStat) ReadJSON(d *json.Decoder) error { return nil }
 // WriteJSON implements json.Marshaler.
 func (s CodeOfConduct) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("key")
+
+	e.FieldStart("key")
 	e.Str(s.Key)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	if s.Body.Set {
-		more.More()
-		e.ObjField("body")
+		e.FieldStart("body")
 		s.Body.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	s.HTMLURL.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -10424,19 +9677,17 @@ func (s *CodeOfConduct) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CodeOfConductSimple) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("key")
+
+	e.FieldStart("key")
 	e.Str(s.Key)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	s.HTMLURL.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -10480,38 +9731,35 @@ func (s *CodeOfConductSimple) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CodeScanningAlert) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	// Unsupported kind "alias".
 	// Unsupported kind "alias".
 	// Unsupported kind "alias".
 	// Unsupported kind "alias".
 	if s.Instances.Set {
-		more.More()
-		e.ObjField("instances")
+		e.FieldStart("instances")
 		s.Instances.WriteJSON(e)
 	}
 	// Unsupported kind "alias".
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	s.State.WriteJSON(e)
-	more.More()
-	e.ObjField("dismissed_by")
+
+	e.FieldStart("dismissed_by")
 	s.DismissedBy.WriteJSON(e)
-	more.More()
-	e.ObjField("dismissed_at")
+
+	e.FieldStart("dismissed_at")
 	s.DismissedAt.WriteJSON(e)
-	more.More()
-	e.ObjField("dismissed_reason")
+
+	e.FieldStart("dismissed_reason")
 	s.DismissedReason.WriteJSON(e)
-	more.More()
-	e.ObjField("rule")
+
+	e.FieldStart("rule")
 	s.Rule.WriteJSON(e)
-	more.More()
-	e.ObjField("tool")
+
+	e.FieldStart("tool")
 	s.Tool.WriteJSON(e)
-	more.More()
-	e.ObjField("most_recent_instance")
+
+	e.FieldStart("most_recent_instance")
 	s.MostRecentInstance.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -10618,64 +9866,49 @@ func (CodeScanningAlertEnvironment) ReadJSON(d *json.Decoder) error { return nil
 // WriteJSON implements json.Marshaler.
 func (s CodeScanningAlertInstance) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Ref.Set {
-		more.More()
-		e.ObjField("ref")
+		e.FieldStart("ref")
 		s.Ref.WriteJSON(e)
 	}
 	if s.AnalysisKey.Set {
-		more.More()
-		e.ObjField("analysis_key")
+		e.FieldStart("analysis_key")
 		s.AnalysisKey.WriteJSON(e)
 	}
 	if s.Environment.Set {
-		more.More()
-		e.ObjField("environment")
+		e.FieldStart("environment")
 		s.Environment.WriteJSON(e)
 	}
 	if s.Category.Set {
-		more.More()
-		e.ObjField("category")
+		e.FieldStart("category")
 		s.Category.WriteJSON(e)
 	}
 	if s.State.Set {
-		more.More()
-		e.ObjField("state")
+		e.FieldStart("state")
 		s.State.WriteJSON(e)
 	}
 	if s.CommitSha.Set {
-		more.More()
-		e.ObjField("commit_sha")
+		e.FieldStart("commit_sha")
 		s.CommitSha.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Location.Set {
-		more.More()
-		e.ObjField("location")
+		e.FieldStart("location")
 		s.Location.WriteJSON(e)
 	}
 	if s.HTMLURL.Set {
-		more.More()
-		e.ObjField("html_url")
+		e.FieldStart("html_url")
 		s.HTMLURL.WriteJSON(e)
 	}
 	if s.Classifications != nil {
-		more.More()
-		e.ObjField("classifications")
-		more.Down()
+		e.FieldStart("classifications")
 		e.ArrStart()
 		for _, elem := range s.Classifications {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -10754,11 +9987,8 @@ func (s *CodeScanningAlertInstance) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CodeScanningAlertInstanceMessage) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Text.Set {
-		more.More()
-		e.ObjField("text")
+		e.FieldStart("text")
 		s.Text.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -10786,33 +10016,31 @@ func (s *CodeScanningAlertInstanceMessage) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CodeScanningAlertItems) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	// Unsupported kind "alias".
 	// Unsupported kind "alias".
 	// Unsupported kind "alias".
 	// Unsupported kind "alias".
 	// Unsupported kind "alias".
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	s.State.WriteJSON(e)
-	more.More()
-	e.ObjField("dismissed_by")
+
+	e.FieldStart("dismissed_by")
 	s.DismissedBy.WriteJSON(e)
-	more.More()
-	e.ObjField("dismissed_at")
+
+	e.FieldStart("dismissed_at")
 	s.DismissedAt.WriteJSON(e)
-	more.More()
-	e.ObjField("dismissed_reason")
+
+	e.FieldStart("dismissed_reason")
 	s.DismissedReason.WriteJSON(e)
-	more.More()
-	e.ObjField("rule")
+
+	e.FieldStart("rule")
 	s.Rule.WriteJSON(e)
-	more.More()
-	e.ObjField("tool")
+
+	e.FieldStart("tool")
 	s.Tool.WriteJSON(e)
-	more.More()
-	e.ObjField("most_recent_instance")
+
+	e.FieldStart("most_recent_instance")
 	s.MostRecentInstance.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -10872,31 +10100,24 @@ func (s *CodeScanningAlertItems) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CodeScanningAlertLocation) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Path.Set {
-		more.More()
-		e.ObjField("path")
+		e.FieldStart("path")
 		s.Path.WriteJSON(e)
 	}
 	if s.StartLine.Set {
-		more.More()
-		e.ObjField("start_line")
+		e.FieldStart("start_line")
 		s.StartLine.WriteJSON(e)
 	}
 	if s.EndLine.Set {
-		more.More()
-		e.ObjField("end_line")
+		e.FieldStart("end_line")
 		s.EndLine.WriteJSON(e)
 	}
 	if s.StartColumn.Set {
-		more.More()
-		e.ObjField("start_column")
+		e.FieldStart("start_column")
 		s.StartColumn.WriteJSON(e)
 	}
 	if s.EndColumn.Set {
-		more.More()
-		e.ObjField("end_column")
+		e.FieldStart("end_column")
 		s.EndColumn.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -10944,46 +10165,36 @@ func (s *CodeScanningAlertLocation) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CodeScanningAlertRule) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Severity.Set {
-		more.More()
-		e.ObjField("severity")
+		e.FieldStart("severity")
 		s.Severity.WriteJSON(e)
 	}
 	if s.SecuritySeverityLevel.Set {
-		more.More()
-		e.ObjField("security_severity_level")
+		e.FieldStart("security_severity_level")
 		s.SecuritySeverityLevel.WriteJSON(e)
 	}
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.FullDescription.Set {
-		more.More()
-		e.ObjField("full_description")
+		e.FieldStart("full_description")
 		s.FullDescription.WriteJSON(e)
 	}
 	if s.Tags.Set {
-		more.More()
-		e.ObjField("tags")
+		e.FieldStart("tags")
 		s.Tags.WriteJSON(e)
 	}
 	if s.Help.Set {
-		more.More()
-		e.ObjField("help")
+		e.FieldStart("help")
 		s.Help.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -11082,26 +10293,20 @@ func (s *CodeScanningAlertRuleSeverity) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CodeScanningAlertRuleSummary) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Severity.Set {
-		more.More()
-		e.ObjField("severity")
+		e.FieldStart("severity")
 		s.Severity.WriteJSON(e)
 	}
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -11198,44 +10403,40 @@ func (s *CodeScanningAlertState) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CodeScanningAnalysis) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	// Unsupported kind "alias".
 	// Unsupported kind "alias".
 	// Unsupported kind "alias".
 	// Unsupported kind "alias".
 	if s.Category.Set {
-		more.More()
-		e.ObjField("category")
+		e.FieldStart("category")
 		s.Category.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("error")
+
+	e.FieldStart("error")
 	e.Str(s.Error)
 	// Unsupported kind "alias".
-	more.More()
-	e.ObjField("results_count")
+
+	e.FieldStart("results_count")
 	e.Int(s.ResultsCount)
-	more.More()
-	e.ObjField("rules_count")
+
+	e.FieldStart("rules_count")
 	e.Int(s.RulesCount)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
 	// Unsupported kind "alias".
 	// Unsupported kind "alias".
-	more.More()
-	e.ObjField("tool")
+
+	e.FieldStart("tool")
 	s.Tool.WriteJSON(e)
-	more.More()
-	e.ObjField("deletable")
+
+	e.FieldStart("deletable")
 	e.Bool(s.Deletable)
-	more.More()
-	e.ObjField("warning")
+
+	e.FieldStart("warning")
 	e.Str(s.Warning)
 	if s.ToolName.Set {
-		more.More()
-		e.ObjField("tool_name")
+		e.FieldStart("tool_name")
 		s.ToolName.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -11334,13 +10535,11 @@ func (CodeScanningAnalysisCreatedAt) ReadJSON(d *json.Decoder) error { return ni
 // WriteJSON implements json.Marshaler.
 func (s CodeScanningAnalysisDeletion) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("next_analysis_url")
+
+	e.FieldStart("next_analysis_url")
 	s.NextAnalysisURL.WriteJSON(e)
-	more.More()
-	e.ObjField("confirm_delete_url")
+
+	e.FieldStart("confirm_delete_url")
 	s.ConfirmDeleteURL.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -11379,21 +10578,16 @@ func (CodeScanningAnalysisSarifID) ReadJSON(d *json.Decoder) error { return nil 
 // WriteJSON implements json.Marshaler.
 func (s CodeScanningAnalysisTool) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Version.Set {
-		more.More()
-		e.ObjField("version")
+		e.FieldStart("version")
 		s.Version.WriteJSON(e)
 	}
 	if s.GUID.Set {
-		more.More()
-		e.ObjField("guid")
+		e.FieldStart("guid")
 		s.GUID.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -11466,8 +10660,6 @@ func (CodeScanningGetAnalysisApplicationJSONNotFound) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s CodeScanningGetSarifNotFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -11530,16 +10722,12 @@ func (CodeScanningRef) ReadJSON(d *json.Decoder) error { return nil }
 // WriteJSON implements json.Marshaler.
 func (s CodeScanningSarifsReceipt) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -11572,16 +10760,12 @@ func (s *CodeScanningSarifsReceipt) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CodeScanningSarifsStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ProcessingStatus.Set {
-		more.More()
-		e.ObjField("processing_status")
+		e.FieldStart("processing_status")
 		s.ProcessingStatus.WriteJSON(e)
 	}
 	if s.AnalysesURL.Set {
-		more.More()
-		e.ObjField("analyses_url")
+		e.FieldStart("analyses_url")
 		s.AnalysesURL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -11638,14 +10822,11 @@ func (CodeScanningUpdateAlertApplicationJSONNotFound) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s CodeScanningUpdateAlertReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	s.State.WriteJSON(e)
 	if s.DismissedReason.Set {
-		more.More()
-		e.ObjField("dismissed_reason")
+		e.FieldStart("dismissed_reason")
 		s.DismissedReason.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -11683,8 +10864,6 @@ func (CodeScanningUploadSarifApplicationJSONNotFound) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s CodeScanningUploadSarifBadRequest) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -11705,24 +10884,19 @@ func (s *CodeScanningUploadSarifBadRequest) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CodeScanningUploadSarifReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	// Unsupported kind "alias".
 	// Unsupported kind "alias".
 	// Unsupported kind "alias".
 	if s.CheckoutURI.Set {
-		more.More()
-		e.ObjField("checkout_uri")
+		e.FieldStart("checkout_uri")
 		s.CheckoutURI.WriteJSON(e)
 	}
 	if s.StartedAt.Set {
-		more.More()
-		e.ObjField("started_at")
+		e.FieldStart("started_at")
 		s.StartedAt.WriteJSON(e, json.WriteDateTime)
 	}
 	if s.ToolName.Set {
-		more.More()
-		e.ObjField("tool_name")
+		e.FieldStart("tool_name")
 		s.ToolName.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -11766,8 +10940,6 @@ func (s *CodeScanningUploadSarifReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CodeScanningUploadSarifRequestEntityTooLarge) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -11788,62 +10960,52 @@ func (s *CodeScanningUploadSarifRequestEntityTooLarge) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s CodeSearchResultItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("path")
+
+	e.FieldStart("path")
 	e.Str(s.Path)
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("git_url")
+
+	e.FieldStart("git_url")
 	json.WriteURI(e, s.GitURL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("repository")
+
+	e.FieldStart("repository")
 	s.Repository.WriteJSON(e)
-	more.More()
-	e.ObjField("score")
+
+	e.FieldStart("score")
 	e.Float64(s.Score)
 	if s.FileSize.Set {
-		more.More()
-		e.ObjField("file_size")
+		e.FieldStart("file_size")
 		s.FileSize.WriteJSON(e)
 	}
 	if s.Language.Set {
-		more.More()
-		e.ObjField("language")
+		e.FieldStart("language")
 		s.Language.WriteJSON(e)
 	}
 	if s.LastModifiedAt.Set {
-		more.More()
-		e.ObjField("last_modified_at")
+		e.FieldStart("last_modified_at")
 		s.LastModifiedAt.WriteJSON(e, json.WriteDateTime)
 	}
 	if s.LineNumbers != nil {
-		more.More()
-		e.ObjField("line_numbers")
-		more.Down()
+		e.FieldStart("line_numbers")
 		e.ArrStart()
 		for _, elem := range s.LineNumbers {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.TextMatches != nil {
-		more.More()
-		e.ObjField("text_matches")
+		e.FieldStart("text_matches")
 		s.TextMatches.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -11951,75 +11113,70 @@ func (CodesOfConductGetAllCodesOfConductOKApplicationJSON) ReadJSON(d *json.Deco
 // WriteJSON implements json.Marshaler.
 func (s Collaborator) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("login")
+
+	e.FieldStart("login")
 	e.Str(s.Login)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
 	if s.Email.Set {
-		more.More()
-		e.ObjField("email")
+		e.FieldStart("email")
 		s.Email.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("avatar_url")
+
+	e.FieldStart("avatar_url")
 	json.WriteURI(e, s.AvatarURL)
-	more.More()
-	e.ObjField("gravatar_id")
+
+	e.FieldStart("gravatar_id")
 	s.GravatarID.WriteJSON(e)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("followers_url")
+
+	e.FieldStart("followers_url")
 	json.WriteURI(e, s.FollowersURL)
-	more.More()
-	e.ObjField("following_url")
+
+	e.FieldStart("following_url")
 	e.Str(s.FollowingURL)
-	more.More()
-	e.ObjField("gists_url")
+
+	e.FieldStart("gists_url")
 	e.Str(s.GistsURL)
-	more.More()
-	e.ObjField("starred_url")
+
+	e.FieldStart("starred_url")
 	e.Str(s.StarredURL)
-	more.More()
-	e.ObjField("subscriptions_url")
+
+	e.FieldStart("subscriptions_url")
 	json.WriteURI(e, s.SubscriptionsURL)
-	more.More()
-	e.ObjField("organizations_url")
+
+	e.FieldStart("organizations_url")
 	json.WriteURI(e, s.OrganizationsURL)
-	more.More()
-	e.ObjField("repos_url")
+
+	e.FieldStart("repos_url")
 	json.WriteURI(e, s.ReposURL)
-	more.More()
-	e.ObjField("events_url")
+
+	e.FieldStart("events_url")
 	e.Str(s.EventsURL)
-	more.More()
-	e.ObjField("received_events_url")
+
+	e.FieldStart("received_events_url")
 	json.WriteURI(e, s.ReceivedEventsURL)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
-	more.More()
-	e.ObjField("site_admin")
+
+	e.FieldStart("site_admin")
 	e.Bool(s.SiteAdmin)
 	if s.Permissions.Set {
-		more.More()
-		e.ObjField("permissions")
+		e.FieldStart("permissions")
 		s.Permissions.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -12163,26 +11320,22 @@ func (s *Collaborator) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CollaboratorPermissions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("pull")
+
+	e.FieldStart("pull")
 	e.Bool(s.Pull)
 	if s.Triage.Set {
-		more.More()
-		e.ObjField("triage")
+		e.FieldStart("triage")
 		s.Triage.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("push")
+
+	e.FieldStart("push")
 	e.Bool(s.Push)
 	if s.Maintain.Set {
-		more.More()
-		e.ObjField("maintain")
+		e.FieldStart("maintain")
 		s.Maintain.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("admin")
+
+	e.FieldStart("admin")
 	e.Bool(s.Admin)
 	e.ObjEnd()
 }
@@ -12232,16 +11385,14 @@ func (s *CollaboratorPermissions) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CombinedBillingUsage) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("days_left_in_billing_cycle")
+
+	e.FieldStart("days_left_in_billing_cycle")
 	e.Int(s.DaysLeftInBillingCycle)
-	more.More()
-	e.ObjField("estimated_paid_storage_for_month")
+
+	e.FieldStart("estimated_paid_storage_for_month")
 	e.Int(s.EstimatedPaidStorageForMonth)
-	more.More()
-	e.ObjField("estimated_storage_for_month")
+
+	e.FieldStart("estimated_storage_for_month")
 	e.Int(s.EstimatedStorageForMonth)
 	e.ObjEnd()
 }
@@ -12281,35 +11432,30 @@ func (s *CombinedBillingUsage) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CombinedCommitStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	e.Str(s.State)
-	more.More()
-	e.ObjField("statuses")
-	more.Down()
+
+	e.FieldStart("statuses")
 	e.ArrStart()
 	for _, elem := range s.Statuses {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Int(s.TotalCount)
-	more.More()
-	e.ObjField("repository")
+
+	e.FieldStart("repository")
 	s.Repository.WriteJSON(e)
-	more.More()
-	e.ObjField("commit_url")
+
+	e.FieldStart("commit_url")
 	json.WriteURI(e, s.CommitURL)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	e.ObjEnd()
 }
@@ -12377,58 +11523,48 @@ func (s *CombinedCommitStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Commit) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("comments_url")
+
+	e.FieldStart("comments_url")
 	json.WriteURI(e, s.CommentsURL)
-	more.More()
-	e.ObjField("commit")
+
+	e.FieldStart("commit")
 	s.Commit.WriteJSON(e)
-	more.More()
-	e.ObjField("author")
+
+	e.FieldStart("author")
 	s.Author.WriteJSON(e)
-	more.More()
-	e.ObjField("committer")
+
+	e.FieldStart("committer")
 	s.Committer.WriteJSON(e)
-	more.More()
-	e.ObjField("parents")
-	more.Down()
+
+	e.FieldStart("parents")
 	e.ArrStart()
 	for _, elem := range s.Parents {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Stats.Set {
-		more.More()
-		e.ObjField("stats")
+		e.FieldStart("stats")
 		s.Stats.WriteJSON(e)
 	}
 	if s.Files != nil {
-		more.More()
-		e.ObjField("files")
-		more.Down()
+		e.FieldStart("files")
 		e.ArrStart()
 		for _, elem := range s.Files {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -12521,23 +11657,18 @@ func (s *Commit) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CommitActivity) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("days")
-	more.Down()
+
+	e.FieldStart("days")
 	e.ArrStart()
 	for _, elem := range s.Days {
-		more.More()
 		e.Int(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("total")
+
+	e.FieldStart("total")
 	e.Int(s.Total)
-	more.More()
-	e.ObjField("week")
+
+	e.FieldStart("week")
 	e.Int(s.Week)
 	e.ObjEnd()
 }
@@ -12585,50 +11716,47 @@ func (s *CommitActivity) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CommitComment) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
-	more.More()
-	e.ObjField("path")
+
+	e.FieldStart("path")
 	s.Path.WriteJSON(e)
-	more.More()
-	e.ObjField("position")
+
+	e.FieldStart("position")
 	s.Position.WriteJSON(e)
-	more.More()
-	e.ObjField("line")
+
+	e.FieldStart("line")
 	s.Line.WriteJSON(e)
-	more.More()
-	e.ObjField("commit_id")
+
+	e.FieldStart("commit_id")
 	e.Str(s.CommitID)
-	more.More()
-	e.ObjField("user")
+
+	e.FieldStart("user")
 	s.User.WriteJSON(e)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("author_association")
+
+	e.FieldStart("author_association")
 	s.AuthorAssociation.WriteJSON(e)
 	if s.Reactions.Set {
-		more.More()
-		e.ObjField("reactions")
+		e.FieldStart("reactions")
 		s.Reactions.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -12724,29 +11852,26 @@ func (s *CommitComment) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CommitCommit) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("author")
+
+	e.FieldStart("author")
 	s.Author.WriteJSON(e)
-	more.More()
-	e.ObjField("committer")
+
+	e.FieldStart("committer")
 	s.Committer.WriteJSON(e)
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
-	more.More()
-	e.ObjField("comment_count")
+
+	e.FieldStart("comment_count")
 	e.Int(s.CommentCount)
-	more.More()
-	e.ObjField("tree")
+
+	e.FieldStart("tree")
 	s.Tree.WriteJSON(e)
 	if s.Verification.Set {
-		more.More()
-		e.ObjField("verification")
+		e.FieldStart("verification")
 		s.Verification.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -12804,13 +11929,11 @@ func (s *CommitCommit) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CommitCommitTree) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	e.ObjEnd()
 }
@@ -12844,62 +11967,53 @@ func (s *CommitCommitTree) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CommitComparison) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("permalink_url")
+
+	e.FieldStart("permalink_url")
 	json.WriteURI(e, s.PermalinkURL)
-	more.More()
-	e.ObjField("diff_url")
+
+	e.FieldStart("diff_url")
 	json.WriteURI(e, s.DiffURL)
-	more.More()
-	e.ObjField("patch_url")
+
+	e.FieldStart("patch_url")
 	json.WriteURI(e, s.PatchURL)
-	more.More()
-	e.ObjField("base_commit")
+
+	e.FieldStart("base_commit")
 	s.BaseCommit.WriteJSON(e)
-	more.More()
-	e.ObjField("merge_base_commit")
+
+	e.FieldStart("merge_base_commit")
 	s.MergeBaseCommit.WriteJSON(e)
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	s.Status.WriteJSON(e)
-	more.More()
-	e.ObjField("ahead_by")
+
+	e.FieldStart("ahead_by")
 	e.Int(s.AheadBy)
-	more.More()
-	e.ObjField("behind_by")
+
+	e.FieldStart("behind_by")
 	e.Int(s.BehindBy)
-	more.More()
-	e.ObjField("total_commits")
+
+	e.FieldStart("total_commits")
 	e.Int(s.TotalCommits)
-	more.More()
-	e.ObjField("commits")
-	more.Down()
+
+	e.FieldStart("commits")
 	e.ArrStart()
 	for _, elem := range s.Commits {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Files != nil {
-		more.More()
-		e.ObjField("files")
-		more.Down()
+		e.FieldStart("files")
 		e.ArrStart()
 		for _, elem := range s.Files {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -13023,61 +12137,48 @@ func (s *CommitComparisonStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CommitFilesItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Filename.Set {
-		more.More()
-		e.ObjField("filename")
+		e.FieldStart("filename")
 		s.Filename.WriteJSON(e)
 	}
 	if s.Additions.Set {
-		more.More()
-		e.ObjField("additions")
+		e.FieldStart("additions")
 		s.Additions.WriteJSON(e)
 	}
 	if s.Deletions.Set {
-		more.More()
-		e.ObjField("deletions")
+		e.FieldStart("deletions")
 		s.Deletions.WriteJSON(e)
 	}
 	if s.Changes.Set {
-		more.More()
-		e.ObjField("changes")
+		e.FieldStart("changes")
 		s.Changes.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	if s.RawURL.Set {
-		more.More()
-		e.ObjField("raw_url")
+		e.FieldStart("raw_url")
 		s.RawURL.WriteJSON(e)
 	}
 	if s.BlobURL.Set {
-		more.More()
-		e.ObjField("blob_url")
+		e.FieldStart("blob_url")
 		s.BlobURL.WriteJSON(e)
 	}
 	if s.Patch.Set {
-		more.More()
-		e.ObjField("patch")
+		e.FieldStart("patch")
 		s.Patch.WriteJSON(e)
 	}
 	if s.Sha.Set {
-		more.More()
-		e.ObjField("sha")
+		e.FieldStart("sha")
 		s.Sha.WriteJSON(e)
 	}
 	if s.ContentsURL.Set {
-		more.More()
-		e.ObjField("contents_url")
+		e.FieldStart("contents_url")
 		s.ContentsURL.WriteJSON(e)
 	}
 	if s.PreviousFilename.Set {
-		more.More()
-		e.ObjField("previous_filename")
+		e.FieldStart("previous_filename")
 		s.PreviousFilename.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -13155,17 +12256,14 @@ func (s *CommitFilesItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CommitParentsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	if s.HTMLURL.Set {
-		more.More()
-		e.ObjField("html_url")
+		e.FieldStart("html_url")
 		s.HTMLURL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -13205,51 +12303,45 @@ func (s *CommitParentsItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CommitSearchResultItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("comments_url")
+
+	e.FieldStart("comments_url")
 	json.WriteURI(e, s.CommentsURL)
-	more.More()
-	e.ObjField("commit")
+
+	e.FieldStart("commit")
 	s.Commit.WriteJSON(e)
-	more.More()
-	e.ObjField("author")
+
+	e.FieldStart("author")
 	s.Author.WriteJSON(e)
-	more.More()
-	e.ObjField("committer")
+
+	e.FieldStart("committer")
 	s.Committer.WriteJSON(e)
-	more.More()
-	e.ObjField("parents")
-	more.Down()
+
+	e.FieldStart("parents")
 	e.ArrStart()
 	for _, elem := range s.Parents {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("repository")
+
+	e.FieldStart("repository")
 	s.Repository.WriteJSON(e)
-	more.More()
-	e.ObjField("score")
+
+	e.FieldStart("score")
 	e.Float64(s.Score)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
 	if s.TextMatches != nil {
-		more.More()
-		e.ObjField("text_matches")
+		e.FieldStart("text_matches")
 		s.TextMatches.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -13341,29 +12433,26 @@ func (s *CommitSearchResultItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CommitSearchResultItemCommit) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("author")
+
+	e.FieldStart("author")
 	s.Author.WriteJSON(e)
-	more.More()
-	e.ObjField("committer")
+
+	e.FieldStart("committer")
 	s.Committer.WriteJSON(e)
-	more.More()
-	e.ObjField("comment_count")
+
+	e.FieldStart("comment_count")
 	e.Int(s.CommentCount)
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
-	more.More()
-	e.ObjField("tree")
+
+	e.FieldStart("tree")
 	s.Tree.WriteJSON(e)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	if s.Verification.Set {
-		more.More()
-		e.ObjField("verification")
+		e.FieldStart("verification")
 		s.Verification.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -13421,16 +12510,14 @@ func (s *CommitSearchResultItemCommit) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CommitSearchResultItemCommitAuthor) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("email")
+
+	e.FieldStart("email")
 	e.Str(s.Email)
-	more.More()
-	e.ObjField("date")
+
+	e.FieldStart("date")
 	json.WriteDateTime(e, s.Date)
 	e.ObjEnd()
 }
@@ -13470,13 +12557,11 @@ func (s *CommitSearchResultItemCommitAuthor) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CommitSearchResultItemCommitTree) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	e.ObjEnd()
 }
@@ -13510,21 +12595,16 @@ func (s *CommitSearchResultItemCommitTree) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CommitSearchResultItemParentsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.HTMLURL.Set {
-		more.More()
-		e.ObjField("html_url")
+		e.FieldStart("html_url")
 		s.HTMLURL.WriteJSON(e)
 	}
 	if s.Sha.Set {
-		more.More()
-		e.ObjField("sha")
+		e.FieldStart("sha")
 		s.Sha.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -13562,21 +12642,16 @@ func (s *CommitSearchResultItemParentsItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CommitStats) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Additions.Set {
-		more.More()
-		e.ObjField("additions")
+		e.FieldStart("additions")
 		s.Additions.WriteJSON(e)
 	}
 	if s.Deletions.Set {
-		more.More()
-		e.ObjField("deletions")
+		e.FieldStart("deletions")
 		s.Deletions.WriteJSON(e)
 	}
 	if s.Total.Set {
-		more.More()
-		e.ObjField("total")
+		e.FieldStart("total")
 		s.Total.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -13614,26 +12689,23 @@ func (s *CommitStats) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CommunityProfile) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("health_percentage")
+
+	e.FieldStart("health_percentage")
 	e.Int(s.HealthPercentage)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
-	more.More()
-	e.ObjField("documentation")
+
+	e.FieldStart("documentation")
 	s.Documentation.WriteJSON(e)
-	more.More()
-	e.ObjField("files")
+
+	e.FieldStart("files")
 	s.Files.WriteJSON(e)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	s.UpdatedAt.WriteJSON(e, json.WriteDateTime)
 	if s.ContentReportsEnabled.Set {
-		more.More()
-		e.ObjField("content_reports_enabled")
+		e.FieldStart("content_reports_enabled")
 		s.ContentReportsEnabled.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -13683,28 +12755,26 @@ func (s *CommunityProfile) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CommunityProfileFiles) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("code_of_conduct")
+
+	e.FieldStart("code_of_conduct")
 	s.CodeOfConduct.WriteJSON(e)
-	more.More()
-	e.ObjField("code_of_conduct_file")
+
+	e.FieldStart("code_of_conduct_file")
 	s.CodeOfConductFile.WriteJSON(e)
-	more.More()
-	e.ObjField("license")
+
+	e.FieldStart("license")
 	s.License.WriteJSON(e)
-	more.More()
-	e.ObjField("contributing")
+
+	e.FieldStart("contributing")
 	s.Contributing.WriteJSON(e)
-	more.More()
-	e.ObjField("readme")
+
+	e.FieldStart("readme")
 	s.Readme.WriteJSON(e)
-	more.More()
-	e.ObjField("issue_template")
+
+	e.FieldStart("issue_template")
 	s.IssueTemplate.WriteJSON(e)
-	more.More()
-	e.ObjField("pull_request_template")
+
+	e.FieldStart("pull_request_template")
 	s.PullRequestTemplate.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -13754,52 +12824,48 @@ func (s *CommunityProfileFiles) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ContentFile) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
-	more.More()
-	e.ObjField("encoding")
+
+	e.FieldStart("encoding")
 	e.Str(s.Encoding)
-	more.More()
-	e.ObjField("size")
+
+	e.FieldStart("size")
 	e.Int(s.Size)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("path")
+
+	e.FieldStart("path")
 	e.Str(s.Path)
-	more.More()
-	e.ObjField("content")
+
+	e.FieldStart("content")
 	e.Str(s.Content)
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("git_url")
+
+	e.FieldStart("git_url")
 	s.GitURL.WriteJSON(e)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	s.HTMLURL.WriteJSON(e)
-	more.More()
-	e.ObjField("download_url")
+
+	e.FieldStart("download_url")
 	s.DownloadURL.WriteJSON(e)
-	more.More()
-	e.ObjField("_links")
+
+	e.FieldStart("_links")
 	s.Links.WriteJSON(e)
 	if s.Target.Set {
-		more.More()
-		e.ObjField("target")
+		e.FieldStart("target")
 		s.Target.WriteJSON(e)
 	}
 	if s.SubmoduleGitURL.Set {
-		more.More()
-		e.ObjField("submodule_git_url")
+		e.FieldStart("submodule_git_url")
 		s.SubmoduleGitURL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -13896,16 +12962,14 @@ func (s *ContentFile) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ContentFileLinks) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("git")
+
+	e.FieldStart("git")
 	s.Git.WriteJSON(e)
-	more.More()
-	e.ObjField("html")
+
+	e.FieldStart("html")
 	s.HTML.WriteJSON(e)
-	more.More()
-	e.ObjField("self")
+
+	e.FieldStart("self")
 	json.WriteURI(e, s.Self)
 	e.ObjEnd()
 }
@@ -13941,20 +13005,17 @@ func (s *ContentFileLinks) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ContentReferenceAttachment) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	e.Str(s.Title)
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
 	if s.NodeID.Set {
-		more.More()
-		e.ObjField("node_id")
+		e.FieldStart("node_id")
 		s.NodeID.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -14000,19 +13061,17 @@ func (s *ContentReferenceAttachment) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ContentTraffic) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("path")
+
+	e.FieldStart("path")
 	e.Str(s.Path)
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	e.Str(s.Title)
-	more.More()
-	e.ObjField("count")
+
+	e.FieldStart("count")
 	e.Int(s.Count)
-	more.More()
-	e.ObjField("uniques")
+
+	e.FieldStart("uniques")
 	e.Int(s.Uniques)
 	e.ObjEnd()
 }
@@ -14058,107 +13117,86 @@ func (s *ContentTraffic) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Contributor) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Login.Set {
-		more.More()
-		e.ObjField("login")
+		e.FieldStart("login")
 		s.Login.WriteJSON(e)
 	}
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.NodeID.Set {
-		more.More()
-		e.ObjField("node_id")
+		e.FieldStart("node_id")
 		s.NodeID.WriteJSON(e)
 	}
 	if s.AvatarURL.Set {
-		more.More()
-		e.ObjField("avatar_url")
+		e.FieldStart("avatar_url")
 		s.AvatarURL.WriteJSON(e)
 	}
 	if s.GravatarID.Set {
-		more.More()
-		e.ObjField("gravatar_id")
+		e.FieldStart("gravatar_id")
 		s.GravatarID.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.HTMLURL.Set {
-		more.More()
-		e.ObjField("html_url")
+		e.FieldStart("html_url")
 		s.HTMLURL.WriteJSON(e)
 	}
 	if s.FollowersURL.Set {
-		more.More()
-		e.ObjField("followers_url")
+		e.FieldStart("followers_url")
 		s.FollowersURL.WriteJSON(e)
 	}
 	if s.FollowingURL.Set {
-		more.More()
-		e.ObjField("following_url")
+		e.FieldStart("following_url")
 		s.FollowingURL.WriteJSON(e)
 	}
 	if s.GistsURL.Set {
-		more.More()
-		e.ObjField("gists_url")
+		e.FieldStart("gists_url")
 		s.GistsURL.WriteJSON(e)
 	}
 	if s.StarredURL.Set {
-		more.More()
-		e.ObjField("starred_url")
+		e.FieldStart("starred_url")
 		s.StarredURL.WriteJSON(e)
 	}
 	if s.SubscriptionsURL.Set {
-		more.More()
-		e.ObjField("subscriptions_url")
+		e.FieldStart("subscriptions_url")
 		s.SubscriptionsURL.WriteJSON(e)
 	}
 	if s.OrganizationsURL.Set {
-		more.More()
-		e.ObjField("organizations_url")
+		e.FieldStart("organizations_url")
 		s.OrganizationsURL.WriteJSON(e)
 	}
 	if s.ReposURL.Set {
-		more.More()
-		e.ObjField("repos_url")
+		e.FieldStart("repos_url")
 		s.ReposURL.WriteJSON(e)
 	}
 	if s.EventsURL.Set {
-		more.More()
-		e.ObjField("events_url")
+		e.FieldStart("events_url")
 		s.EventsURL.WriteJSON(e)
 	}
 	if s.ReceivedEventsURL.Set {
-		more.More()
-		e.ObjField("received_events_url")
+		e.FieldStart("received_events_url")
 		s.ReceivedEventsURL.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	if s.SiteAdmin.Set {
-		more.More()
-		e.ObjField("site_admin")
+		e.FieldStart("site_admin")
 		s.SiteAdmin.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("contributions")
+
+	e.FieldStart("contributions")
 	e.Int(s.Contributions)
 	if s.Email.Set {
-		more.More()
-		e.ObjField("email")
+		e.FieldStart("email")
 		s.Email.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -14288,24 +13326,19 @@ func (s *Contributor) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ContributorActivity) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("author")
+
+	e.FieldStart("author")
 	s.Author.WriteJSON(e)
-	more.More()
-	e.ObjField("total")
+
+	e.FieldStart("total")
 	e.Int(s.Total)
-	more.More()
-	e.ObjField("weeks")
-	more.Down()
+
+	e.FieldStart("weeks")
 	e.ArrStart()
 	for _, elem := range s.Weeks {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -14348,26 +13381,20 @@ func (s *ContributorActivity) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ContributorActivityWeeksItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.W.Set {
-		more.More()
-		e.ObjField("w")
+		e.FieldStart("w")
 		s.W.WriteJSON(e)
 	}
 	if s.A.Set {
-		more.More()
-		e.ObjField("a")
+		e.FieldStart("a")
 		s.A.WriteJSON(e)
 	}
 	if s.D.Set {
-		more.More()
-		e.ObjField("d")
+		e.FieldStart("d")
 		s.D.WriteJSON(e)
 	}
 	if s.C.Set {
-		more.More()
-		e.ObjField("c")
+		e.FieldStart("c")
 		s.C.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -14410,60 +13437,48 @@ func (s *ContributorActivityWeeksItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s CredentialAuthorization) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("login")
+
+	e.FieldStart("login")
 	e.Str(s.Login)
-	more.More()
-	e.ObjField("credential_id")
+
+	e.FieldStart("credential_id")
 	e.Int(s.CredentialID)
-	more.More()
-	e.ObjField("credential_type")
+
+	e.FieldStart("credential_type")
 	e.Str(s.CredentialType)
 	if s.TokenLastEight.Set {
-		more.More()
-		e.ObjField("token_last_eight")
+		e.FieldStart("token_last_eight")
 		s.TokenLastEight.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("credential_authorized_at")
+
+	e.FieldStart("credential_authorized_at")
 	json.WriteDateTime(e, s.CredentialAuthorizedAt)
 	if s.Scopes != nil {
-		more.More()
-		e.ObjField("scopes")
-		more.Down()
+		e.FieldStart("scopes")
 		e.ArrStart()
 		for _, elem := range s.Scopes {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Fingerprint.Set {
-		more.More()
-		e.ObjField("fingerprint")
+		e.FieldStart("fingerprint")
 		s.Fingerprint.WriteJSON(e)
 	}
 	if s.CredentialAccessedAt.Set {
-		more.More()
-		e.ObjField("credential_accessed_at")
+		e.FieldStart("credential_accessed_at")
 		s.CredentialAccessedAt.WriteJSON(e, json.WriteDateTime)
 	}
 	if s.AuthorizedCredentialID.Set {
-		more.More()
-		e.ObjField("authorized_credential_id")
+		e.FieldStart("authorized_credential_id")
 		s.AuthorizedCredentialID.WriteJSON(e)
 	}
 	if s.AuthorizedCredentialTitle.Set {
-		more.More()
-		e.ObjField("authorized_credential_title")
+		e.FieldStart("authorized_credential_title")
 		s.AuthorizedCredentialTitle.WriteJSON(e)
 	}
 	if s.AuthorizedCredentialNote.Set {
-		more.More()
-		e.ObjField("authorized_credential_note")
+		e.FieldStart("authorized_credential_note")
 		s.AuthorizedCredentialNote.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -14554,28 +13569,26 @@ func (s *CredentialAuthorization) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s DeployKey) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("key")
+
+	e.FieldStart("key")
 	e.Str(s.Key)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	e.Str(s.URL)
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	e.Str(s.Title)
-	more.More()
-	e.ObjField("verified")
+
+	e.FieldStart("verified")
 	e.Bool(s.Verified)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	e.Str(s.CreatedAt)
-	more.More()
-	e.ObjField("read_only")
+
+	e.FieldStart("read_only")
 	e.Bool(s.ReadOnly)
 	e.ObjEnd()
 }
@@ -14639,13 +13652,11 @@ func (s *DeployKey) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s DeploymentBranchPolicy) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("protected_branches")
+
+	e.FieldStart("protected_branches")
 	e.Bool(s.ProtectedBranches)
-	more.More()
-	e.ObjField("custom_branch_policies")
+
+	e.FieldStart("custom_branch_policies")
 	e.Bool(s.CustomBranchPolicies)
 	e.ObjEnd()
 }
@@ -14697,56 +13708,50 @@ func (s *DeploymentReviewerType) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s DeploymentSimple) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("task")
+
+	e.FieldStart("task")
 	e.Str(s.Task)
 	if s.OriginalEnvironment.Set {
-		more.More()
-		e.ObjField("original_environment")
+		e.FieldStart("original_environment")
 		s.OriginalEnvironment.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("environment")
+
+	e.FieldStart("environment")
 	e.Str(s.Environment)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("statuses_url")
+
+	e.FieldStart("statuses_url")
 	json.WriteURI(e, s.StatusesURL)
-	more.More()
-	e.ObjField("repository_url")
+
+	e.FieldStart("repository_url")
 	json.WriteURI(e, s.RepositoryURL)
 	if s.TransientEnvironment.Set {
-		more.More()
-		e.ObjField("transient_environment")
+		e.FieldStart("transient_environment")
 		s.TransientEnvironment.WriteJSON(e)
 	}
 	if s.ProductionEnvironment.Set {
-		more.More()
-		e.ObjField("production_environment")
+		e.FieldStart("production_environment")
 		s.ProductionEnvironment.WriteJSON(e)
 	}
 	if s.PerformedViaGithubApp.Set {
-		more.More()
-		e.ObjField("performed_via_github_app")
+		e.FieldStart("performed_via_github_app")
 		s.PerformedViaGithubApp.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -14847,59 +13852,53 @@ func (s *DeploymentSimple) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s DeploymentStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	s.State.WriteJSON(e)
-	more.More()
-	e.ObjField("creator")
+
+	e.FieldStart("creator")
 	s.Creator.WriteJSON(e)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	e.Str(s.Description)
 	if s.Environment.Set {
-		more.More()
-		e.ObjField("environment")
+		e.FieldStart("environment")
 		s.Environment.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("target_url")
+
+	e.FieldStart("target_url")
 	json.WriteURI(e, s.TargetURL)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("deployment_url")
+
+	e.FieldStart("deployment_url")
 	json.WriteURI(e, s.DeploymentURL)
-	more.More()
-	e.ObjField("repository_url")
+
+	e.FieldStart("repository_url")
 	json.WriteURI(e, s.RepositoryURL)
 	if s.EnvironmentURL.Set {
-		more.More()
-		e.ObjField("environment_url")
+		e.FieldStart("environment_url")
 		s.EnvironmentURL.WriteJSON(e)
 	}
 	if s.LogURL.Set {
-		more.More()
-		e.ObjField("log_url")
+		e.FieldStart("log_url")
 		s.LogURL.WriteJSON(e)
 	}
 	if s.PerformedViaGithubApp.Set {
-		more.More()
-		e.ObjField("performed_via_github_app")
+		e.FieldStart("performed_via_github_app")
 		s.PerformedViaGithubApp.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -15022,43 +14021,39 @@ func (s *DeploymentStatusState) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s DiffEntry) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("filename")
+
+	e.FieldStart("filename")
 	e.Str(s.Filename)
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	s.Status.WriteJSON(e)
-	more.More()
-	e.ObjField("additions")
+
+	e.FieldStart("additions")
 	e.Int(s.Additions)
-	more.More()
-	e.ObjField("deletions")
+
+	e.FieldStart("deletions")
 	e.Int(s.Deletions)
-	more.More()
-	e.ObjField("changes")
+
+	e.FieldStart("changes")
 	e.Int(s.Changes)
-	more.More()
-	e.ObjField("blob_url")
+
+	e.FieldStart("blob_url")
 	json.WriteURI(e, s.BlobURL)
-	more.More()
-	e.ObjField("raw_url")
+
+	e.FieldStart("raw_url")
 	json.WriteURI(e, s.RawURL)
-	more.More()
-	e.ObjField("contents_url")
+
+	e.FieldStart("contents_url")
 	json.WriteURI(e, s.ContentsURL)
 	if s.Patch.Set {
-		more.More()
-		e.ObjField("patch")
+		e.FieldStart("patch")
 		s.Patch.WriteJSON(e)
 	}
 	if s.PreviousFilename.Set {
-		more.More()
-		e.ObjField("previous_filename")
+		e.FieldStart("previous_filename")
 		s.PreviousFilename.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -15161,19 +14156,17 @@ func (s *DiffEntryStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Email) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("email")
+
+	e.FieldStart("email")
 	e.Str(s.Email)
-	more.More()
-	e.ObjField("primary")
+
+	e.FieldStart("primary")
 	e.Bool(s.Primary)
-	more.More()
-	e.ObjField("verified")
+
+	e.FieldStart("verified")
 	e.Bool(s.Verified)
-	more.More()
-	e.ObjField("visibility")
+
+	e.FieldStart("visibility")
 	s.Visibility.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -15217,8 +14210,6 @@ func (s *Email) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s EmojisGetOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -15239,8 +14230,6 @@ func (s *EmojisGetOK) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s EmptyObject) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -15297,8 +14286,6 @@ func (s *EnabledRepositories) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -15319,8 +14306,6 @@ func (s *EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -15341,39 +14326,28 @@ func (s *EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent) ReadJS
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Visibility.Set {
-		more.More()
-		e.ObjField("visibility")
+		e.FieldStart("visibility")
 		s.Visibility.WriteJSON(e)
 	}
 	if s.SelectedOrganizationIds != nil {
-		more.More()
-		e.ObjField("selected_organization_ids")
-		more.Down()
+		e.FieldStart("selected_organization_ids")
 		e.ArrStart()
 		for _, elem := range s.SelectedOrganizationIds {
-			more.More()
 			e.Int(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Runners != nil {
-		more.More()
-		e.ObjField("runners")
-		more.Down()
+		e.FieldStart("runners")
 		e.ArrStart()
 		for _, elem := range s.Runners {
-			more.More()
 			e.Int(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -15452,8 +14426,6 @@ func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility) R
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -15474,8 +14446,6 @@ func (s *EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -15496,8 +14466,6 @@ func (s *EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent) ReadJSON(
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -15518,8 +14486,6 @@ func (s *EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent) Read
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminDeleteUserFromEnterpriseNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -15540,8 +14506,6 @@ func (s *EnterpriseAdminDeleteUserFromEnterpriseNoContent) ReadJSON(d *json.Deco
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -15562,8 +14526,6 @@ func (s *EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoCont
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -15620,21 +14582,16 @@ func (s *EnterpriseAdminGetAuditLogOrder) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Float64(s.TotalCount)
-	more.More()
-	e.ObjField("organizations")
-	more.Down()
+
+	e.FieldStart("organizations")
 	e.ArrStart()
 	for _, elem := range s.Organizations {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -15673,21 +14630,16 @@ func (s *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) Read
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Float64(s.TotalCount)
-	more.More()
-	e.ObjField("organizations")
-	more.Down()
+
+	e.FieldStart("organizations")
 	e.ArrStart()
 	for _, elem := range s.Organizations {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -15726,21 +14678,16 @@ func (s *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseO
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Float64(s.TotalCount)
-	more.More()
-	e.ObjField("runner_groups")
-	more.Down()
+
+	e.FieldStart("runner_groups")
 	e.ArrStart()
 	for _, elem := range s.RunnerGroups {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -15779,24 +14726,17 @@ func (s *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) ReadJSON(d *j
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.TotalCount.Set {
-		more.More()
-		e.ObjField("total_count")
+		e.FieldStart("total_count")
 		s.TotalCount.WriteJSON(e)
 	}
 	if s.Runners != nil {
-		more.More()
-		e.ObjField("runners")
-		more.Down()
+		e.FieldStart("runners")
 		e.ArrStart()
 		for _, elem := range s.Runners {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -15835,21 +14775,16 @@ func (s *EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Float64(s.TotalCount)
-	more.More()
-	e.ObjField("runners")
-	more.Down()
+
+	e.FieldStart("runners")
 	e.ArrStart()
 	for _, elem := range s.Runners {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -15888,32 +14823,23 @@ func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) ReadJSON(d 
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("schemas")
-	more.Down()
+
+	e.FieldStart("schemas")
 	e.ArrStart()
 	for _, elem := range s.Schemas {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("displayName")
+
+	e.FieldStart("displayName")
 	e.Str(s.DisplayName)
 	if s.Members != nil {
-		more.More()
-		e.ObjField("members")
-		more.Down()
+		e.FieldStart("members")
 		e.ArrStart()
 		for _, elem := range s.Members {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -15967,10 +14893,8 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("value")
+
+	e.FieldStart("value")
 	e.Str(s.Value)
 	e.ObjEnd()
 }
@@ -15998,45 +14922,33 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem) ReadJSO
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("schemas")
-	more.Down()
+
+	e.FieldStart("schemas")
 	e.ArrStart()
 	for _, elem := range s.Schemas {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("userName")
+
+	e.FieldStart("userName")
 	e.Str(s.UserName)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	s.Name.WriteJSON(e)
-	more.More()
-	e.ObjField("emails")
-	more.Down()
+
+	e.FieldStart("emails")
 	e.ArrStart()
 	for _, elem := range s.Emails {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Groups != nil {
-		more.More()
-		e.ObjField("groups")
-		more.Down()
+		e.FieldStart("groups")
 		e.ArrStart()
 		for _, elem := range s.Groups {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -16106,16 +15018,14 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReq) ReadJSON(d *json.De
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("value")
+
+	e.FieldStart("value")
 	e.Str(s.Value)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
-	more.More()
-	e.ObjField("primary")
+
+	e.FieldStart("primary")
 	e.Bool(s.Primary)
 	e.ObjEnd()
 }
@@ -16155,11 +15065,8 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem) ReadJSON(
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Value.Set {
-		more.More()
-		e.ObjField("value")
+		e.FieldStart("value")
 		s.Value.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -16187,13 +15094,11 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem) ReadJSON(
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReqName) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("givenName")
+
+	e.FieldStart("givenName")
 	e.Str(s.GivenName)
-	more.More()
-	e.ObjField("familyName")
+
+	e.FieldStart("familyName")
 	e.Str(s.FamilyName)
 	e.ObjEnd()
 }
@@ -16227,8 +15132,6 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqName) ReadJSON(d *jso
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -16249,8 +15152,6 @@ func (s *EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoCont
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -16271,8 +15172,6 @@ func (s *EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent) R
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminSetAllowedActionsEnterpriseNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -16293,8 +15192,6 @@ func (s *EnterpriseAdminSetAllowedActionsEnterpriseNoContent) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -16315,14 +15212,11 @@ func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent) ReadJSON
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("enabled_organizations")
+
+	e.FieldStart("enabled_organizations")
 	s.EnabledOrganizations.WriteJSON(e)
 	if s.AllowedActions.Set {
-		more.More()
-		e.ObjField("allowed_actions")
+		e.FieldStart("allowed_actions")
 		s.AllowedActions.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -16354,32 +15248,23 @@ func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) ReadJSON(d *js
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("schemas")
-	more.Down()
+
+	e.FieldStart("schemas")
 	e.ArrStart()
 	for _, elem := range s.Schemas {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("displayName")
+
+	e.FieldStart("displayName")
 	e.Str(s.DisplayName)
 	if s.Members != nil {
-		more.More()
-		e.ObjField("members")
-		more.Down()
+		e.FieldStart("members")
 		e.ArrStart()
 		for _, elem := range s.Members {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -16433,10 +15318,8 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) ReadJSON
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("value")
+
+	e.FieldStart("value")
 	e.Str(s.Value)
 	e.ObjEnd()
 }
@@ -16464,45 +15347,33 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersIte
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("schemas")
-	more.Down()
+
+	e.FieldStart("schemas")
 	e.ArrStart()
 	for _, elem := range s.Schemas {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("userName")
+
+	e.FieldStart("userName")
 	e.Str(s.UserName)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	s.Name.WriteJSON(e)
-	more.More()
-	e.ObjField("emails")
-	more.Down()
+
+	e.FieldStart("emails")
 	e.ArrStart()
 	for _, elem := range s.Emails {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Groups != nil {
-		more.More()
-		e.ObjField("groups")
-		more.Down()
+		e.FieldStart("groups")
 		e.ArrStart()
 		for _, elem := range s.Groups {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -16572,16 +15443,14 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) ReadJSON(
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("value")
+
+	e.FieldStart("value")
 	e.Str(s.Value)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
-	more.More()
-	e.ObjField("primary")
+
+	e.FieldStart("primary")
 	e.Bool(s.Primary)
 	e.ObjEnd()
 }
@@ -16621,11 +15490,8 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem)
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Value.Set {
-		more.More()
-		e.ObjField("value")
+		e.FieldStart("value")
 		s.Value.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -16653,13 +15519,11 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem)
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("givenName")
+
+	e.FieldStart("givenName")
 	e.Str(s.GivenName)
-	more.More()
-	e.ObjField("familyName")
+
+	e.FieldStart("familyName")
 	e.Str(s.FamilyName)
 	e.ObjEnd()
 }
@@ -16693,8 +15557,6 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName) ReadJ
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -16715,18 +15577,13 @@ func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("selected_organization_ids")
-	more.Down()
+
+	e.FieldStart("selected_organization_ids")
 	e.ArrStart()
 	for _, elem := range s.SelectedOrganizationIds {
-		more.More()
 		e.Int(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -16761,8 +15618,6 @@ func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) Read
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -16783,18 +15638,13 @@ func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNo
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("selected_organization_ids")
-	more.Down()
+
+	e.FieldStart("selected_organization_ids")
 	e.ArrStart()
 	for _, elem := range s.SelectedOrganizationIds {
-		more.More()
 		e.Int(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -16829,8 +15679,6 @@ func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRe
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -16851,18 +15699,13 @@ func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent) ReadJ
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("runners")
-	more.Down()
+
+	e.FieldStart("runners")
 	e.ArrStart()
 	for _, elem := range s.Runners {
-		more.More()
 		e.Int(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -16897,28 +15740,20 @@ func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) ReadJSON(d 
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminUpdateAttributeForEnterpriseUserReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("schemas")
-	more.Down()
+
+	e.FieldStart("schemas")
 	e.ArrStart()
 	for _, elem := range s.Schemas {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("Operations")
-	more.Down()
+
+	e.FieldStart("Operations")
 	e.ArrStart()
 	for _, elem := range s.Operations {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -16965,8 +15800,6 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReq) ReadJSON(d *json.De
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -16987,16 +15820,12 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem) ReadJ
 // WriteJSON implements json.Marshaler.
 func (s EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Visibility.Set {
-		more.More()
-		e.ObjField("visibility")
+		e.FieldStart("visibility")
 		s.Visibility.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -17047,26 +15876,21 @@ func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility) R
 // WriteJSON implements json.Marshaler.
 func (s EnvironmentApprovals) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("environments")
-	more.Down()
+
+	e.FieldStart("environments")
 	e.ArrStart()
 	for _, elem := range s.Environments {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	s.State.WriteJSON(e)
-	more.More()
-	e.ObjField("user")
+
+	e.FieldStart("user")
 	s.User.WriteJSON(e)
-	more.More()
-	e.ObjField("comment")
+
+	e.FieldStart("comment")
 	e.Str(s.Comment)
 	e.ObjEnd()
 }
@@ -17114,41 +15938,32 @@ func (s *EnvironmentApprovals) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s EnvironmentApprovalsEnvironmentsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.NodeID.Set {
-		more.More()
-		e.ObjField("node_id")
+		e.FieldStart("node_id")
 		s.NodeID.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.HTMLURL.Set {
-		more.More()
-		e.ObjField("html_url")
+		e.FieldStart("html_url")
 		s.HTMLURL.WriteJSON(e)
 	}
 	if s.CreatedAt.Set {
-		more.More()
-		e.ObjField("created_at")
+		e.FieldStart("created_at")
 		s.CreatedAt.WriteJSON(e, json.WriteDateTime)
 	}
 	if s.UpdatedAt.Set {
-		more.More()
-		e.ObjField("updated_at")
+		e.FieldStart("updated_at")
 		s.UpdatedAt.WriteJSON(e, json.WriteDateTime)
 	}
 	e.ObjEnd()
@@ -17224,33 +16039,30 @@ func (s *EnvironmentApprovalsState) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Event) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Str(s.ID)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	s.Type.WriteJSON(e)
-	more.More()
-	e.ObjField("actor")
+
+	e.FieldStart("actor")
 	s.Actor.WriteJSON(e)
-	more.More()
-	e.ObjField("repo")
+
+	e.FieldStart("repo")
 	s.Repo.WriteJSON(e)
 	if s.Org.Set {
-		more.More()
-		e.ObjField("org")
+		e.FieldStart("org")
 		s.Org.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("payload")
+
+	e.FieldStart("payload")
 	s.Payload.WriteJSON(e)
-	more.More()
-	e.ObjField("public")
+
+	e.FieldStart("public")
 	e.Bool(s.Public)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	s.CreatedAt.WriteJSON(e, json.WriteDateTime)
 	e.ObjEnd()
 }
@@ -17309,34 +16121,25 @@ func (s *Event) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s EventPayload) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Action.Set {
-		more.More()
-		e.ObjField("action")
+		e.FieldStart("action")
 		s.Action.WriteJSON(e)
 	}
 	if s.Issue.Set {
-		more.More()
-		e.ObjField("issue")
+		e.FieldStart("issue")
 		s.Issue.WriteJSON(e)
 	}
 	if s.Comment.Set {
-		more.More()
-		e.ObjField("comment")
+		e.FieldStart("comment")
 		s.Comment.WriteJSON(e)
 	}
 	if s.Pages != nil {
-		more.More()
-		e.ObjField("pages")
-		more.Down()
+		e.FieldStart("pages")
 		e.ArrStart()
 		for _, elem := range s.Pages {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -17385,36 +16188,28 @@ func (s *EventPayload) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s EventPayloadPagesItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.PageName.Set {
-		more.More()
-		e.ObjField("page_name")
+		e.FieldStart("page_name")
 		s.PageName.WriteJSON(e)
 	}
 	if s.Title.Set {
-		more.More()
-		e.ObjField("title")
+		e.FieldStart("title")
 		s.Title.WriteJSON(e)
 	}
 	if s.Summary.Set {
-		more.More()
-		e.ObjField("summary")
+		e.FieldStart("summary")
 		s.Summary.WriteJSON(e)
 	}
 	if s.Action.Set {
-		more.More()
-		e.ObjField("action")
+		e.FieldStart("action")
 		s.Action.WriteJSON(e)
 	}
 	if s.Sha.Set {
-		more.More()
-		e.ObjField("sha")
+		e.FieldStart("sha")
 		s.Sha.WriteJSON(e)
 	}
 	if s.HTMLURL.Set {
-		more.More()
-		e.ObjField("html_url")
+		e.FieldStart("html_url")
 		s.HTMLURL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -17467,16 +16262,14 @@ func (s *EventPayloadPagesItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s EventRepo) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	e.ObjEnd()
 }
@@ -17516,53 +16309,42 @@ func (s *EventRepo) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Feed) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("timeline_url")
+
+	e.FieldStart("timeline_url")
 	e.Str(s.TimelineURL)
-	more.More()
-	e.ObjField("user_url")
+
+	e.FieldStart("user_url")
 	e.Str(s.UserURL)
 	if s.CurrentUserPublicURL.Set {
-		more.More()
-		e.ObjField("current_user_public_url")
+		e.FieldStart("current_user_public_url")
 		s.CurrentUserPublicURL.WriteJSON(e)
 	}
 	if s.CurrentUserURL.Set {
-		more.More()
-		e.ObjField("current_user_url")
+		e.FieldStart("current_user_url")
 		s.CurrentUserURL.WriteJSON(e)
 	}
 	if s.CurrentUserActorURL.Set {
-		more.More()
-		e.ObjField("current_user_actor_url")
+		e.FieldStart("current_user_actor_url")
 		s.CurrentUserActorURL.WriteJSON(e)
 	}
 	if s.CurrentUserOrganizationURL.Set {
-		more.More()
-		e.ObjField("current_user_organization_url")
+		e.FieldStart("current_user_organization_url")
 		s.CurrentUserOrganizationURL.WriteJSON(e)
 	}
 	if s.CurrentUserOrganizationUrls != nil {
-		more.More()
-		e.ObjField("current_user_organization_urls")
-		more.Down()
+		e.FieldStart("current_user_organization_urls")
 		e.ArrStart()
 		for _, elem := range s.CurrentUserOrganizationUrls {
-			more.More()
 			json.WriteURI(e, elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.SecurityAdvisoriesURL.Set {
-		more.More()
-		e.ObjField("security_advisories_url")
+		e.FieldStart("security_advisories_url")
 		s.SecurityAdvisoriesURL.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("_links")
+
+	e.FieldStart("_links")
 	s.Links.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -17639,50 +16421,39 @@ func (s *Feed) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s FeedLinks) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("timeline")
+
+	e.FieldStart("timeline")
 	s.Timeline.WriteJSON(e)
-	more.More()
-	e.ObjField("user")
+
+	e.FieldStart("user")
 	s.User.WriteJSON(e)
 	if s.SecurityAdvisories.Set {
-		more.More()
-		e.ObjField("security_advisories")
+		e.FieldStart("security_advisories")
 		s.SecurityAdvisories.WriteJSON(e)
 	}
 	if s.CurrentUser.Set {
-		more.More()
-		e.ObjField("current_user")
+		e.FieldStart("current_user")
 		s.CurrentUser.WriteJSON(e)
 	}
 	if s.CurrentUserPublic.Set {
-		more.More()
-		e.ObjField("current_user_public")
+		e.FieldStart("current_user_public")
 		s.CurrentUserPublic.WriteJSON(e)
 	}
 	if s.CurrentUserActor.Set {
-		more.More()
-		e.ObjField("current_user_actor")
+		e.FieldStart("current_user_actor")
 		s.CurrentUserActor.WriteJSON(e)
 	}
 	if s.CurrentUserOrganization.Set {
-		more.More()
-		e.ObjField("current_user_organization")
+		e.FieldStart("current_user_organization")
 		s.CurrentUserOrganization.WriteJSON(e)
 	}
 	if s.CurrentUserOrganizations != nil {
-		more.More()
-		e.ObjField("current_user_organizations")
-		more.Down()
+		e.FieldStart("current_user_organizations")
 		e.ArrStart()
 		for _, elem := range s.CurrentUserOrganizations {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -17749,13 +16520,11 @@ func (s *FeedLinks) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s FileCommit) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("content")
+
+	e.FieldStart("content")
 	s.Content.WriteJSON(e)
-	more.More()
-	e.ObjField("commit")
+
+	e.FieldStart("commit")
 	s.Commit.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -17785,63 +16554,48 @@ func (s *FileCommit) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s FileCommitCommit) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Sha.Set {
-		more.More()
-		e.ObjField("sha")
+		e.FieldStart("sha")
 		s.Sha.WriteJSON(e)
 	}
 	if s.NodeID.Set {
-		more.More()
-		e.ObjField("node_id")
+		e.FieldStart("node_id")
 		s.NodeID.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.HTMLURL.Set {
-		more.More()
-		e.ObjField("html_url")
+		e.FieldStart("html_url")
 		s.HTMLURL.WriteJSON(e)
 	}
 	if s.Author.Set {
-		more.More()
-		e.ObjField("author")
+		e.FieldStart("author")
 		s.Author.WriteJSON(e)
 	}
 	if s.Committer.Set {
-		more.More()
-		e.ObjField("committer")
+		e.FieldStart("committer")
 		s.Committer.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Tree.Set {
-		more.More()
-		e.ObjField("tree")
+		e.FieldStart("tree")
 		s.Tree.WriteJSON(e)
 	}
 	if s.Parents != nil {
-		more.More()
-		e.ObjField("parents")
-		more.Down()
+		e.FieldStart("parents")
 		e.ArrStart()
 		for _, elem := range s.Parents {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Verification.Set {
-		more.More()
-		e.ObjField("verification")
+		e.FieldStart("verification")
 		s.Verification.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -17921,21 +16675,16 @@ func (s *FileCommitCommit) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s FileCommitCommitAuthor) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Date.Set {
-		more.More()
-		e.ObjField("date")
+		e.FieldStart("date")
 		s.Date.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Email.Set {
-		more.More()
-		e.ObjField("email")
+		e.FieldStart("email")
 		s.Email.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -17973,21 +16722,16 @@ func (s *FileCommitCommitAuthor) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s FileCommitCommitCommitter) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Date.Set {
-		more.More()
-		e.ObjField("date")
+		e.FieldStart("date")
 		s.Date.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Email.Set {
-		more.More()
-		e.ObjField("email")
+		e.FieldStart("email")
 		s.Email.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -18025,21 +16769,16 @@ func (s *FileCommitCommitCommitter) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s FileCommitCommitParentsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.HTMLURL.Set {
-		more.More()
-		e.ObjField("html_url")
+		e.FieldStart("html_url")
 		s.HTMLURL.WriteJSON(e)
 	}
 	if s.Sha.Set {
-		more.More()
-		e.ObjField("sha")
+		e.FieldStart("sha")
 		s.Sha.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -18077,16 +16816,12 @@ func (s *FileCommitCommitParentsItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s FileCommitCommitTree) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.Sha.Set {
-		more.More()
-		e.ObjField("sha")
+		e.FieldStart("sha")
 		s.Sha.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -18119,26 +16854,20 @@ func (s *FileCommitCommitTree) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s FileCommitCommitVerification) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Verified.Set {
-		more.More()
-		e.ObjField("verified")
+		e.FieldStart("verified")
 		s.Verified.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
 	if s.Signature.Set {
-		more.More()
-		e.ObjField("signature")
+		e.FieldStart("signature")
 		s.Signature.WriteJSON(e)
 	}
 	if s.Payload.Set {
-		more.More()
-		e.ObjField("payload")
+		e.FieldStart("payload")
 		s.Payload.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -18181,56 +16910,44 @@ func (s *FileCommitCommitVerification) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s FileCommitContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Path.Set {
-		more.More()
-		e.ObjField("path")
+		e.FieldStart("path")
 		s.Path.WriteJSON(e)
 	}
 	if s.Sha.Set {
-		more.More()
-		e.ObjField("sha")
+		e.FieldStart("sha")
 		s.Sha.WriteJSON(e)
 	}
 	if s.Size.Set {
-		more.More()
-		e.ObjField("size")
+		e.FieldStart("size")
 		s.Size.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.HTMLURL.Set {
-		more.More()
-		e.ObjField("html_url")
+		e.FieldStart("html_url")
 		s.HTMLURL.WriteJSON(e)
 	}
 	if s.GitURL.Set {
-		more.More()
-		e.ObjField("git_url")
+		e.FieldStart("git_url")
 		s.GitURL.WriteJSON(e)
 	}
 	if s.DownloadURL.Set {
-		more.More()
-		e.ObjField("download_url")
+		e.FieldStart("download_url")
 		s.DownloadURL.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	if s.Links.Set {
-		more.More()
-		e.ObjField("_links")
+		e.FieldStart("_links")
 		s.Links.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -18303,21 +17020,16 @@ func (s *FileCommitContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s FileCommitContentLinks) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Self.Set {
-		more.More()
-		e.ObjField("self")
+		e.FieldStart("self")
 		s.Self.WriteJSON(e)
 	}
 	if s.Git.Set {
-		more.More()
-		e.ObjField("git")
+		e.FieldStart("git")
 		s.Git.WriteJSON(e)
 	}
 	if s.HTML.Set {
-		more.More()
-		e.ObjField("html")
+		e.FieldStart("html")
 		s.HTML.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -18355,21 +17067,16 @@ func (s *FileCommitContentLinks) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ForbiddenGist) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Block.Set {
-		more.More()
-		e.ObjField("block")
+		e.FieldStart("block")
 		s.Block.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.DocumentationURL.Set {
-		more.More()
-		e.ObjField("documentation_url")
+		e.FieldStart("documentation_url")
 		s.DocumentationURL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -18407,21 +17114,16 @@ func (s *ForbiddenGist) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ForbiddenGistBlock) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
 	if s.CreatedAt.Set {
-		more.More()
-		e.ObjField("created_at")
+		e.FieldStart("created_at")
 		s.CreatedAt.WriteJSON(e)
 	}
 	if s.HTMLURL.Set {
-		more.More()
-		e.ObjField("html_url")
+		e.FieldStart("html_url")
 		s.HTMLURL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -18459,8 +17161,6 @@ func (s *ForbiddenGistBlock) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Found) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -18481,333 +17181,309 @@ func (s *Found) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s FullRepository) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("full_name")
+
+	e.FieldStart("full_name")
 	e.Str(s.FullName)
-	more.More()
-	e.ObjField("owner")
+
+	e.FieldStart("owner")
 	s.Owner.WriteJSON(e)
-	more.More()
-	e.ObjField("private")
+
+	e.FieldStart("private")
 	e.Bool(s.Private)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
-	more.More()
-	e.ObjField("fork")
+
+	e.FieldStart("fork")
 	e.Bool(s.Fork)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("archive_url")
+
+	e.FieldStart("archive_url")
 	e.Str(s.ArchiveURL)
-	more.More()
-	e.ObjField("assignees_url")
+
+	e.FieldStart("assignees_url")
 	e.Str(s.AssigneesURL)
-	more.More()
-	e.ObjField("blobs_url")
+
+	e.FieldStart("blobs_url")
 	e.Str(s.BlobsURL)
-	more.More()
-	e.ObjField("branches_url")
+
+	e.FieldStart("branches_url")
 	e.Str(s.BranchesURL)
-	more.More()
-	e.ObjField("collaborators_url")
+
+	e.FieldStart("collaborators_url")
 	e.Str(s.CollaboratorsURL)
-	more.More()
-	e.ObjField("comments_url")
+
+	e.FieldStart("comments_url")
 	e.Str(s.CommentsURL)
-	more.More()
-	e.ObjField("commits_url")
+
+	e.FieldStart("commits_url")
 	e.Str(s.CommitsURL)
-	more.More()
-	e.ObjField("compare_url")
+
+	e.FieldStart("compare_url")
 	e.Str(s.CompareURL)
-	more.More()
-	e.ObjField("contents_url")
+
+	e.FieldStart("contents_url")
 	e.Str(s.ContentsURL)
-	more.More()
-	e.ObjField("contributors_url")
+
+	e.FieldStart("contributors_url")
 	json.WriteURI(e, s.ContributorsURL)
-	more.More()
-	e.ObjField("deployments_url")
+
+	e.FieldStart("deployments_url")
 	json.WriteURI(e, s.DeploymentsURL)
-	more.More()
-	e.ObjField("downloads_url")
+
+	e.FieldStart("downloads_url")
 	json.WriteURI(e, s.DownloadsURL)
-	more.More()
-	e.ObjField("events_url")
+
+	e.FieldStart("events_url")
 	json.WriteURI(e, s.EventsURL)
-	more.More()
-	e.ObjField("forks_url")
+
+	e.FieldStart("forks_url")
 	json.WriteURI(e, s.ForksURL)
-	more.More()
-	e.ObjField("git_commits_url")
+
+	e.FieldStart("git_commits_url")
 	e.Str(s.GitCommitsURL)
-	more.More()
-	e.ObjField("git_refs_url")
+
+	e.FieldStart("git_refs_url")
 	e.Str(s.GitRefsURL)
-	more.More()
-	e.ObjField("git_tags_url")
+
+	e.FieldStart("git_tags_url")
 	e.Str(s.GitTagsURL)
-	more.More()
-	e.ObjField("git_url")
+
+	e.FieldStart("git_url")
 	e.Str(s.GitURL)
-	more.More()
-	e.ObjField("issue_comment_url")
+
+	e.FieldStart("issue_comment_url")
 	e.Str(s.IssueCommentURL)
-	more.More()
-	e.ObjField("issue_events_url")
+
+	e.FieldStart("issue_events_url")
 	e.Str(s.IssueEventsURL)
-	more.More()
-	e.ObjField("issues_url")
+
+	e.FieldStart("issues_url")
 	e.Str(s.IssuesURL)
-	more.More()
-	e.ObjField("keys_url")
+
+	e.FieldStart("keys_url")
 	e.Str(s.KeysURL)
-	more.More()
-	e.ObjField("labels_url")
+
+	e.FieldStart("labels_url")
 	e.Str(s.LabelsURL)
-	more.More()
-	e.ObjField("languages_url")
+
+	e.FieldStart("languages_url")
 	json.WriteURI(e, s.LanguagesURL)
-	more.More()
-	e.ObjField("merges_url")
+
+	e.FieldStart("merges_url")
 	json.WriteURI(e, s.MergesURL)
-	more.More()
-	e.ObjField("milestones_url")
+
+	e.FieldStart("milestones_url")
 	e.Str(s.MilestonesURL)
-	more.More()
-	e.ObjField("notifications_url")
+
+	e.FieldStart("notifications_url")
 	e.Str(s.NotificationsURL)
-	more.More()
-	e.ObjField("pulls_url")
+
+	e.FieldStart("pulls_url")
 	e.Str(s.PullsURL)
-	more.More()
-	e.ObjField("releases_url")
+
+	e.FieldStart("releases_url")
 	e.Str(s.ReleasesURL)
-	more.More()
-	e.ObjField("ssh_url")
+
+	e.FieldStart("ssh_url")
 	e.Str(s.SSHURL)
-	more.More()
-	e.ObjField("stargazers_url")
+
+	e.FieldStart("stargazers_url")
 	json.WriteURI(e, s.StargazersURL)
-	more.More()
-	e.ObjField("statuses_url")
+
+	e.FieldStart("statuses_url")
 	e.Str(s.StatusesURL)
-	more.More()
-	e.ObjField("subscribers_url")
+
+	e.FieldStart("subscribers_url")
 	json.WriteURI(e, s.SubscribersURL)
-	more.More()
-	e.ObjField("subscription_url")
+
+	e.FieldStart("subscription_url")
 	json.WriteURI(e, s.SubscriptionURL)
-	more.More()
-	e.ObjField("tags_url")
+
+	e.FieldStart("tags_url")
 	json.WriteURI(e, s.TagsURL)
-	more.More()
-	e.ObjField("teams_url")
+
+	e.FieldStart("teams_url")
 	json.WriteURI(e, s.TeamsURL)
-	more.More()
-	e.ObjField("trees_url")
+
+	e.FieldStart("trees_url")
 	e.Str(s.TreesURL)
-	more.More()
-	e.ObjField("clone_url")
+
+	e.FieldStart("clone_url")
 	e.Str(s.CloneURL)
-	more.More()
-	e.ObjField("mirror_url")
+
+	e.FieldStart("mirror_url")
 	s.MirrorURL.WriteJSON(e)
-	more.More()
-	e.ObjField("hooks_url")
+
+	e.FieldStart("hooks_url")
 	json.WriteURI(e, s.HooksURL)
-	more.More()
-	e.ObjField("svn_url")
+
+	e.FieldStart("svn_url")
 	json.WriteURI(e, s.SvnURL)
-	more.More()
-	e.ObjField("homepage")
+
+	e.FieldStart("homepage")
 	s.Homepage.WriteJSON(e)
-	more.More()
-	e.ObjField("language")
+
+	e.FieldStart("language")
 	s.Language.WriteJSON(e)
-	more.More()
-	e.ObjField("forks_count")
+
+	e.FieldStart("forks_count")
 	e.Int(s.ForksCount)
-	more.More()
-	e.ObjField("stargazers_count")
+
+	e.FieldStart("stargazers_count")
 	e.Int(s.StargazersCount)
-	more.More()
-	e.ObjField("watchers_count")
+
+	e.FieldStart("watchers_count")
 	e.Int(s.WatchersCount)
-	more.More()
-	e.ObjField("size")
+
+	e.FieldStart("size")
 	e.Int(s.Size)
-	more.More()
-	e.ObjField("default_branch")
+
+	e.FieldStart("default_branch")
 	e.Str(s.DefaultBranch)
-	more.More()
-	e.ObjField("open_issues_count")
+
+	e.FieldStart("open_issues_count")
 	e.Int(s.OpenIssuesCount)
 	if s.IsTemplate.Set {
-		more.More()
-		e.ObjField("is_template")
+		e.FieldStart("is_template")
 		s.IsTemplate.WriteJSON(e)
 	}
 	if s.Topics != nil {
-		more.More()
-		e.ObjField("topics")
-		more.Down()
+		e.FieldStart("topics")
 		e.ArrStart()
 		for _, elem := range s.Topics {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("has_issues")
+
+	e.FieldStart("has_issues")
 	e.Bool(s.HasIssues)
-	more.More()
-	e.ObjField("has_projects")
+
+	e.FieldStart("has_projects")
 	e.Bool(s.HasProjects)
-	more.More()
-	e.ObjField("has_wiki")
+
+	e.FieldStart("has_wiki")
 	e.Bool(s.HasWiki)
-	more.More()
-	e.ObjField("has_pages")
+
+	e.FieldStart("has_pages")
 	e.Bool(s.HasPages)
-	more.More()
-	e.ObjField("has_downloads")
+
+	e.FieldStart("has_downloads")
 	e.Bool(s.HasDownloads)
-	more.More()
-	e.ObjField("archived")
+
+	e.FieldStart("archived")
 	e.Bool(s.Archived)
-	more.More()
-	e.ObjField("disabled")
+
+	e.FieldStart("disabled")
 	e.Bool(s.Disabled)
 	if s.Visibility.Set {
-		more.More()
-		e.ObjField("visibility")
+		e.FieldStart("visibility")
 		s.Visibility.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("pushed_at")
+
+	e.FieldStart("pushed_at")
 	json.WriteDateTime(e, s.PushedAt)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
 	if s.Permissions.Set {
-		more.More()
-		e.ObjField("permissions")
+		e.FieldStart("permissions")
 		s.Permissions.WriteJSON(e)
 	}
 	if s.AllowRebaseMerge.Set {
-		more.More()
-		e.ObjField("allow_rebase_merge")
+		e.FieldStart("allow_rebase_merge")
 		s.AllowRebaseMerge.WriteJSON(e)
 	}
 	if s.TemplateRepository.Set {
-		more.More()
-		e.ObjField("template_repository")
+		e.FieldStart("template_repository")
 		s.TemplateRepository.WriteJSON(e)
 	}
 	if s.TempCloneToken.Set {
-		more.More()
-		e.ObjField("temp_clone_token")
+		e.FieldStart("temp_clone_token")
 		s.TempCloneToken.WriteJSON(e)
 	}
 	if s.AllowSquashMerge.Set {
-		more.More()
-		e.ObjField("allow_squash_merge")
+		e.FieldStart("allow_squash_merge")
 		s.AllowSquashMerge.WriteJSON(e)
 	}
 	if s.AllowAutoMerge.Set {
-		more.More()
-		e.ObjField("allow_auto_merge")
+		e.FieldStart("allow_auto_merge")
 		s.AllowAutoMerge.WriteJSON(e)
 	}
 	if s.DeleteBranchOnMerge.Set {
-		more.More()
-		e.ObjField("delete_branch_on_merge")
+		e.FieldStart("delete_branch_on_merge")
 		s.DeleteBranchOnMerge.WriteJSON(e)
 	}
 	if s.AllowMergeCommit.Set {
-		more.More()
-		e.ObjField("allow_merge_commit")
+		e.FieldStart("allow_merge_commit")
 		s.AllowMergeCommit.WriteJSON(e)
 	}
 	if s.AllowForking.Set {
-		more.More()
-		e.ObjField("allow_forking")
+		e.FieldStart("allow_forking")
 		s.AllowForking.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("subscribers_count")
+
+	e.FieldStart("subscribers_count")
 	e.Int(s.SubscribersCount)
-	more.More()
-	e.ObjField("network_count")
+
+	e.FieldStart("network_count")
 	e.Int(s.NetworkCount)
-	more.More()
-	e.ObjField("license")
+
+	e.FieldStart("license")
 	s.License.WriteJSON(e)
 	if s.Organization.Set {
-		more.More()
-		e.ObjField("organization")
+		e.FieldStart("organization")
 		s.Organization.WriteJSON(e)
 	}
 	if s.Parent.Set {
-		more.More()
-		e.ObjField("parent")
+		e.FieldStart("parent")
 		s.Parent.WriteJSON(e)
 	}
 	if s.Source.Set {
-		more.More()
-		e.ObjField("source")
+		e.FieldStart("source")
 		s.Source.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("forks")
+
+	e.FieldStart("forks")
 	e.Int(s.Forks)
 	if s.MasterBranch.Set {
-		more.More()
-		e.ObjField("master_branch")
+		e.FieldStart("master_branch")
 		s.MasterBranch.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("open_issues")
+
+	e.FieldStart("open_issues")
 	e.Int(s.OpenIssues)
-	more.More()
-	e.ObjField("watchers")
+
+	e.FieldStart("watchers")
 	e.Int(s.Watchers)
 	if s.AnonymousAccessEnabled.Set {
-		more.More()
-		e.ObjField("anonymous_access_enabled")
+		e.FieldStart("anonymous_access_enabled")
 		s.AnonymousAccessEnabled.WriteJSON(e)
 	}
 	if s.CodeOfConduct.Set {
-		more.More()
-		e.ObjField("code_of_conduct")
+		e.FieldStart("code_of_conduct")
 		s.CodeOfConduct.WriteJSON(e)
 	}
 	if s.SecurityAndAnalysis.Set {
-		more.More()
-		e.ObjField("security_and_analysis")
+		e.FieldStart("security_and_analysis")
 		s.SecurityAndAnalysis.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -19372,26 +18048,22 @@ func (s *FullRepository) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s FullRepositoryPermissions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("admin")
+
+	e.FieldStart("admin")
 	e.Bool(s.Admin)
 	if s.Maintain.Set {
-		more.More()
-		e.ObjField("maintain")
+		e.FieldStart("maintain")
 		s.Maintain.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("push")
+
+	e.FieldStart("push")
 	e.Bool(s.Push)
 	if s.Triage.Set {
-		more.More()
-		e.ObjField("triage")
+		e.FieldStart("triage")
 		s.Triage.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("pull")
+
+	e.FieldStart("pull")
 	e.Bool(s.Pull)
 	e.ObjEnd()
 }
@@ -19441,16 +18113,12 @@ func (s *FullRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s FullRepositorySecurityAndAnalysis) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AdvancedSecurity.Set {
-		more.More()
-		e.ObjField("advanced_security")
+		e.FieldStart("advanced_security")
 		s.AdvancedSecurity.WriteJSON(e)
 	}
 	if s.SecretScanning.Set {
-		more.More()
-		e.ObjField("secret_scanning")
+		e.FieldStart("secret_scanning")
 		s.SecretScanning.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -19483,11 +18151,8 @@ func (s *FullRepositorySecurityAndAnalysis) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s FullRepositorySecurityAndAnalysisAdvancedSecurity) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -19533,11 +18198,8 @@ func (s *FullRepositorySecurityAndAnalysisAdvancedSecurityStatus) ReadJSON(d *js
 // WriteJSON implements json.Marshaler.
 func (s FullRepositorySecurityAndAnalysisSecretScanning) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -19583,31 +18245,29 @@ func (s *FullRepositorySecurityAndAnalysisSecretScanningStatus) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s GistComment) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
-	more.More()
-	e.ObjField("user")
+
+	e.FieldStart("user")
 	s.User.WriteJSON(e)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("author_association")
+
+	e.FieldStart("author_association")
 	s.AuthorAssociation.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -19673,22 +18333,20 @@ func (s *GistComment) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GistCommit) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("version")
+
+	e.FieldStart("version")
 	e.Str(s.Version)
-	more.More()
-	e.ObjField("user")
+
+	e.FieldStart("user")
 	s.User.WriteJSON(e)
-	more.More()
-	e.ObjField("change_status")
+
+	e.FieldStart("change_status")
 	s.ChangeStatus.WriteJSON(e)
-	more.More()
-	e.ObjField("committed_at")
+
+	e.FieldStart("committed_at")
 	json.WriteDateTime(e, s.CommittedAt)
 	e.ObjEnd()
 }
@@ -19736,21 +18394,16 @@ func (s *GistCommit) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GistCommitChangeStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Total.Set {
-		more.More()
-		e.ObjField("total")
+		e.FieldStart("total")
 		s.Total.WriteJSON(e)
 	}
 	if s.Additions.Set {
-		more.More()
-		e.ObjField("additions")
+		e.FieldStart("additions")
 		s.Additions.WriteJSON(e)
 	}
 	if s.Deletions.Set {
-		more.More()
-		e.ObjField("deletions")
+		e.FieldStart("deletions")
 		s.Deletions.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -19788,31 +18441,24 @@ func (s *GistCommitChangeStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GistHistory) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.User.Set {
-		more.More()
-		e.ObjField("user")
+		e.FieldStart("user")
 		s.User.WriteJSON(e)
 	}
 	if s.Version.Set {
-		more.More()
-		e.ObjField("version")
+		e.FieldStart("version")
 		s.Version.WriteJSON(e)
 	}
 	if s.CommittedAt.Set {
-		more.More()
-		e.ObjField("committed_at")
+		e.FieldStart("committed_at")
 		s.CommittedAt.WriteJSON(e, json.WriteDateTime)
 	}
 	if s.ChangeStatus.Set {
-		more.More()
-		e.ObjField("change_status")
+		e.FieldStart("change_status")
 		s.ChangeStatus.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -19860,21 +18506,16 @@ func (s *GistHistory) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GistHistoryChangeStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Total.Set {
-		more.More()
-		e.ObjField("total")
+		e.FieldStart("total")
 		s.Total.WriteJSON(e)
 	}
 	if s.Additions.Set {
-		more.More()
-		e.ObjField("additions")
+		e.FieldStart("additions")
 		s.Additions.WriteJSON(e)
 	}
 	if s.Deletions.Set {
-		more.More()
-		e.ObjField("deletions")
+		e.FieldStart("deletions")
 		s.Deletions.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -19912,111 +18553,88 @@ func (s *GistHistoryChangeStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GistSimple) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Forks.Set {
-		more.More()
-		e.ObjField("forks")
+		e.FieldStart("forks")
 		s.Forks.WriteJSON(e)
 	}
 	if s.History.Set {
-		more.More()
-		e.ObjField("history")
+		e.FieldStart("history")
 		s.History.WriteJSON(e)
 	}
 	if s.ForkOf.Set {
-		more.More()
-		e.ObjField("fork_of")
+		e.FieldStart("fork_of")
 		s.ForkOf.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.ForksURL.Set {
-		more.More()
-		e.ObjField("forks_url")
+		e.FieldStart("forks_url")
 		s.ForksURL.WriteJSON(e)
 	}
 	if s.CommitsURL.Set {
-		more.More()
-		e.ObjField("commits_url")
+		e.FieldStart("commits_url")
 		s.CommitsURL.WriteJSON(e)
 	}
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.NodeID.Set {
-		more.More()
-		e.ObjField("node_id")
+		e.FieldStart("node_id")
 		s.NodeID.WriteJSON(e)
 	}
 	if s.GitPullURL.Set {
-		more.More()
-		e.ObjField("git_pull_url")
+		e.FieldStart("git_pull_url")
 		s.GitPullURL.WriteJSON(e)
 	}
 	if s.GitPushURL.Set {
-		more.More()
-		e.ObjField("git_push_url")
+		e.FieldStart("git_push_url")
 		s.GitPushURL.WriteJSON(e)
 	}
 	if s.HTMLURL.Set {
-		more.More()
-		e.ObjField("html_url")
+		e.FieldStart("html_url")
 		s.HTMLURL.WriteJSON(e)
 	}
 	if s.Files != nil {
-		more.More()
-		e.ObjField("files")
+		e.FieldStart("files")
 		s.Files.WriteJSON(e)
 	}
 	if s.Public.Set {
-		more.More()
-		e.ObjField("public")
+		e.FieldStart("public")
 		s.Public.WriteJSON(e)
 	}
 	if s.CreatedAt.Set {
-		more.More()
-		e.ObjField("created_at")
+		e.FieldStart("created_at")
 		s.CreatedAt.WriteJSON(e)
 	}
 	if s.UpdatedAt.Set {
-		more.More()
-		e.ObjField("updated_at")
+		e.FieldStart("updated_at")
 		s.UpdatedAt.WriteJSON(e)
 	}
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.Comments.Set {
-		more.More()
-		e.ObjField("comments")
+		e.FieldStart("comments")
 		s.Comments.WriteJSON(e)
 	}
 	if s.User.Set {
-		more.More()
-		e.ObjField("user")
+		e.FieldStart("user")
 		s.User.WriteJSON(e)
 	}
 	if s.CommentsURL.Set {
-		more.More()
-		e.ObjField("comments_url")
+		e.FieldStart("comments_url")
 		s.CommentsURL.WriteJSON(e)
 	}
 	if s.Owner.Set {
-		more.More()
-		e.ObjField("owner")
+		e.FieldStart("owner")
 		s.Owner.WriteJSON(e)
 	}
 	if s.Truncated.Set {
-		more.More()
-		e.ObjField("truncated")
+		e.FieldStart("truncated")
 		s.Truncated.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -20146,8 +18764,6 @@ func (s *GistSimple) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GistSimpleFiles) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -20168,89 +18784,77 @@ func (s *GistSimpleFiles) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GistSimpleForkOf) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("forks_url")
+
+	e.FieldStart("forks_url")
 	json.WriteURI(e, s.ForksURL)
-	more.More()
-	e.ObjField("commits_url")
+
+	e.FieldStart("commits_url")
 	json.WriteURI(e, s.CommitsURL)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Str(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("git_pull_url")
+
+	e.FieldStart("git_pull_url")
 	json.WriteURI(e, s.GitPullURL)
-	more.More()
-	e.ObjField("git_push_url")
+
+	e.FieldStart("git_push_url")
 	json.WriteURI(e, s.GitPushURL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("files")
+
+	e.FieldStart("files")
 	s.Files.WriteJSON(e)
-	more.More()
-	e.ObjField("public")
+
+	e.FieldStart("public")
 	e.Bool(s.Public)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
-	more.More()
-	e.ObjField("comments")
+
+	e.FieldStart("comments")
 	e.Int(s.Comments)
-	more.More()
-	e.ObjField("user")
+
+	e.FieldStart("user")
 	s.User.WriteJSON(e)
-	more.More()
-	e.ObjField("comments_url")
+
+	e.FieldStart("comments_url")
 	json.WriteURI(e, s.CommentsURL)
 	if s.Owner.Set {
-		more.More()
-		e.ObjField("owner")
+		e.FieldStart("owner")
 		s.Owner.WriteJSON(e)
 	}
 	if s.Truncated.Set {
-		more.More()
-		e.ObjField("truncated")
+		e.FieldStart("truncated")
 		s.Truncated.WriteJSON(e)
 	}
 	if s.Forks != nil {
-		more.More()
-		e.ObjField("forks")
-		more.Down()
+		e.FieldStart("forks")
 		e.ArrStart()
 		for _, elem := range s.Forks {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.History != nil {
-		more.More()
-		e.ObjField("history")
-		more.Down()
+		e.FieldStart("history")
 		e.ArrStart()
 		for _, elem := range s.History {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -20400,8 +19004,6 @@ func (s *GistSimpleForkOf) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GistSimpleForkOfFiles) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -20422,31 +19024,24 @@ func (s *GistSimpleForkOfFiles) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GistSimpleForksItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.User.Set {
-		more.More()
-		e.ObjField("user")
+		e.FieldStart("user")
 		s.User.WriteJSON(e)
 	}
 	if s.CreatedAt.Set {
-		more.More()
-		e.ObjField("created_at")
+		e.FieldStart("created_at")
 		s.CreatedAt.WriteJSON(e, json.WriteDateTime)
 	}
 	if s.UpdatedAt.Set {
-		more.More()
-		e.ObjField("updated_at")
+		e.FieldStart("updated_at")
 		s.UpdatedAt.WriteJSON(e, json.WriteDateTime)
 	}
 	e.ObjEnd()
@@ -20494,8 +19089,6 @@ func (s *GistSimpleForksItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GistsCheckIsStarredNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -20516,8 +19109,6 @@ func (s *GistsCheckIsStarredNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GistsCheckIsStarredNotFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -20544,10 +19135,8 @@ func (GistsCreateCommentApplicationJSONNotFound) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s GistsCreateCommentReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
 	e.ObjEnd()
 }
@@ -20587,8 +19176,6 @@ func (GistsDeleteCommentApplicationJSONNotFound) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s GistsDeleteCommentNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -20609,8 +19196,6 @@ func (s *GistsDeleteCommentNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GistsDeleteNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -20676,8 +19261,6 @@ func (GistsStarApplicationJSONNotFound) ReadJSON(d *json.Decoder) error { return
 // WriteJSON implements json.Marshaler.
 func (s GistsStarNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -20704,8 +19287,6 @@ func (GistsUnstarApplicationJSONNotFound) ReadJSON(d *json.Decoder) error { retu
 // WriteJSON implements json.Marshaler.
 func (s GistsUnstarNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -20726,10 +19307,8 @@ func (s *GistsUnstarNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GistsUpdateCommentReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
 	e.ObjEnd()
 }
@@ -20757,44 +19336,39 @@ func (s *GistsUpdateCommentReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GitCommit) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("author")
+
+	e.FieldStart("author")
 	s.Author.WriteJSON(e)
-	more.More()
-	e.ObjField("committer")
+
+	e.FieldStart("committer")
 	s.Committer.WriteJSON(e)
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
-	more.More()
-	e.ObjField("tree")
+
+	e.FieldStart("tree")
 	s.Tree.WriteJSON(e)
-	more.More()
-	e.ObjField("parents")
-	more.Down()
+
+	e.FieldStart("parents")
 	e.ArrStart()
 	for _, elem := range s.Parents {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("verification")
+
+	e.FieldStart("verification")
 	s.Verification.WriteJSON(e)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
 	e.ObjEnd()
 }
@@ -20874,16 +19448,14 @@ func (s *GitCommit) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GitCommitAuthor) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("date")
+
+	e.FieldStart("date")
 	json.WriteDateTime(e, s.Date)
-	more.More()
-	e.ObjField("email")
+
+	e.FieldStart("email")
 	e.Str(s.Email)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -20923,16 +19495,14 @@ func (s *GitCommitAuthor) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GitCommitCommitter) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("date")
+
+	e.FieldStart("date")
 	json.WriteDateTime(e, s.Date)
-	more.More()
-	e.ObjField("email")
+
+	e.FieldStart("email")
 	e.Str(s.Email)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -20972,16 +19542,14 @@ func (s *GitCommitCommitter) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GitCommitParentsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
 	e.ObjEnd()
 }
@@ -21021,13 +19589,11 @@ func (s *GitCommitParentsItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GitCommitTree) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	e.ObjEnd()
 }
@@ -21061,19 +19627,17 @@ func (s *GitCommitTree) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GitCommitVerification) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("verified")
+
+	e.FieldStart("verified")
 	e.Bool(s.Verified)
-	more.More()
-	e.ObjField("reason")
+
+	e.FieldStart("reason")
 	e.Str(s.Reason)
-	more.More()
-	e.ObjField("signature")
+
+	e.FieldStart("signature")
 	s.Signature.WriteJSON(e)
-	more.More()
-	e.ObjField("payload")
+
+	e.FieldStart("payload")
 	s.Payload.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -21115,14 +19679,11 @@ func (s *GitCommitVerification) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GitCreateBlobReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("content")
+
+	e.FieldStart("content")
 	e.Str(s.Content)
 	if s.Encoding.Set {
-		more.More()
-		e.ObjField("encoding")
+		e.FieldStart("encoding")
 		s.Encoding.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -21156,39 +19717,30 @@ func (s *GitCreateBlobReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GitCreateCommitReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
-	more.More()
-	e.ObjField("tree")
+
+	e.FieldStart("tree")
 	e.Str(s.Tree)
 	if s.Parents != nil {
-		more.More()
-		e.ObjField("parents")
-		more.Down()
+		e.FieldStart("parents")
 		e.ArrStart()
 		for _, elem := range s.Parents {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Author.Set {
-		more.More()
-		e.ObjField("author")
+		e.FieldStart("author")
 		s.Author.WriteJSON(e)
 	}
 	if s.Committer.Set {
-		more.More()
-		e.ObjField("committer")
+		e.FieldStart("committer")
 		s.Committer.WriteJSON(e)
 	}
 	if s.Signature.Set {
-		more.More()
-		e.ObjField("signature")
+		e.FieldStart("signature")
 		s.Signature.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -21252,17 +19804,14 @@ func (s *GitCreateCommitReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GitCreateCommitReqAuthor) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("email")
+
+	e.FieldStart("email")
 	e.Str(s.Email)
 	if s.Date.Set {
-		more.More()
-		e.ObjField("date")
+		e.FieldStart("date")
 		s.Date.WriteJSON(e, json.WriteDateTime)
 	}
 	e.ObjEnd()
@@ -21302,21 +19851,16 @@ func (s *GitCreateCommitReqAuthor) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GitCreateCommitReqCommitter) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Email.Set {
-		more.More()
-		e.ObjField("email")
+		e.FieldStart("email")
 		s.Email.WriteJSON(e)
 	}
 	if s.Date.Set {
-		more.More()
-		e.ObjField("date")
+		e.FieldStart("date")
 		s.Date.WriteJSON(e, json.WriteDateTime)
 	}
 	e.ObjEnd()
@@ -21354,17 +19898,14 @@ func (s *GitCreateCommitReqCommitter) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GitCreateRefReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("ref")
+
+	e.FieldStart("ref")
 	e.Str(s.Ref)
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
 	if s.Key.Set {
-		more.More()
-		e.ObjField("key")
+		e.FieldStart("key")
 		s.Key.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -21404,23 +19945,20 @@ func (s *GitCreateRefReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GitCreateTagReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("tag")
+
+	e.FieldStart("tag")
 	e.Str(s.Tag)
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
-	more.More()
-	e.ObjField("object")
+
+	e.FieldStart("object")
 	e.Str(s.Object)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	s.Type.WriteJSON(e)
 	if s.Tagger.Set {
-		more.More()
-		e.ObjField("tagger")
+		e.FieldStart("tagger")
 		s.Tagger.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -21470,17 +20008,14 @@ func (s *GitCreateTagReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GitCreateTagReqTagger) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("email")
+
+	e.FieldStart("email")
 	e.Str(s.Email)
 	if s.Date.Set {
-		more.More()
-		e.ObjField("date")
+		e.FieldStart("date")
 		s.Date.WriteJSON(e, json.WriteDateTime)
 	}
 	e.ObjEnd()
@@ -21538,21 +20073,15 @@ func (s *GitCreateTagReqType) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GitCreateTreeReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("tree")
-	more.Down()
+
+	e.FieldStart("tree")
 	e.ArrStart()
 	for _, elem := range s.Tree {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.BaseTree.Set {
-		more.More()
-		e.ObjField("base_tree")
+		e.FieldStart("base_tree")
 		s.BaseTree.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -21592,31 +20121,24 @@ func (s *GitCreateTreeReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GitCreateTreeReqTreeItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Path.Set {
-		more.More()
-		e.ObjField("path")
+		e.FieldStart("path")
 		s.Path.WriteJSON(e)
 	}
 	if s.Mode.Set {
-		more.More()
-		e.ObjField("mode")
+		e.FieldStart("mode")
 		s.Mode.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	if s.Sha.Set {
-		more.More()
-		e.ObjField("sha")
+		e.FieldStart("sha")
 		s.Sha.WriteJSON(e)
 	}
 	if s.Content.Set {
-		more.More()
-		e.ObjField("content")
+		e.FieldStart("content")
 		s.Content.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -21700,8 +20222,6 @@ func (s *GitCreateTreeReqTreeItemType) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GitDeleteRefNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -21722,19 +20242,17 @@ func (s *GitDeleteRefNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GitRef) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("ref")
+
+	e.FieldStart("ref")
 	e.Str(s.Ref)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("object")
+
+	e.FieldStart("object")
 	s.Object.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -21778,16 +20296,14 @@ func (s *GitRef) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GitRefObject) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	e.ObjEnd()
 }
@@ -21827,32 +20343,29 @@ func (s *GitRefObject) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GitTag) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("tag")
+
+	e.FieldStart("tag")
 	e.Str(s.Tag)
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
-	more.More()
-	e.ObjField("tagger")
+
+	e.FieldStart("tagger")
 	s.Tagger.WriteJSON(e)
-	more.More()
-	e.ObjField("object")
+
+	e.FieldStart("object")
 	s.Object.WriteJSON(e)
 	if s.Verification.Set {
-		more.More()
-		e.ObjField("verification")
+		e.FieldStart("verification")
 		s.Verification.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -21918,16 +20431,14 @@ func (s *GitTag) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GitTagObject) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	e.ObjEnd()
 }
@@ -21967,16 +20478,14 @@ func (s *GitTagObject) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GitTagTagger) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("date")
+
+	e.FieldStart("date")
 	e.Str(s.Date)
-	more.More()
-	e.ObjField("email")
+
+	e.FieldStart("email")
 	e.Str(s.Email)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -22016,27 +20525,22 @@ func (s *GitTagTagger) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GitTree) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("truncated")
+
+	e.FieldStart("truncated")
 	e.Bool(s.Truncated)
-	more.More()
-	e.ObjField("tree")
-	more.Down()
+
+	e.FieldStart("tree")
 	e.ArrStart()
 	for _, elem := range s.Tree {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -22087,36 +20591,28 @@ func (s *GitTree) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GitTreeTreeItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Path.Set {
-		more.More()
-		e.ObjField("path")
+		e.FieldStart("path")
 		s.Path.WriteJSON(e)
 	}
 	if s.Mode.Set {
-		more.More()
-		e.ObjField("mode")
+		e.FieldStart("mode")
 		s.Mode.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	if s.Sha.Set {
-		more.More()
-		e.ObjField("sha")
+		e.FieldStart("sha")
 		s.Sha.WriteJSON(e)
 	}
 	if s.Size.Set {
-		more.More()
-		e.ObjField("size")
+		e.FieldStart("size")
 		s.Size.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -22169,14 +20665,11 @@ func (s *GitTreeTreeItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GitUpdateRefReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
 	if s.Force.Set {
-		more.More()
-		e.ObjField("force")
+		e.FieldStart("force")
 		s.Force.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -22213,13 +20706,11 @@ func (GitignoreGetAllTemplatesOKApplicationJSON) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s GitignoreTemplate) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("source")
+
+	e.FieldStart("source")
 	e.Str(s.Source)
 	e.ObjEnd()
 }
@@ -22253,60 +20744,52 @@ func (s *GitignoreTemplate) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GpgKey) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("primary_key_id")
+
+	e.FieldStart("primary_key_id")
 	s.PrimaryKeyID.WriteJSON(e)
-	more.More()
-	e.ObjField("key_id")
+
+	e.FieldStart("key_id")
 	e.Str(s.KeyID)
-	more.More()
-	e.ObjField("public_key")
+
+	e.FieldStart("public_key")
 	e.Str(s.PublicKey)
-	more.More()
-	e.ObjField("emails")
-	more.Down()
+
+	e.FieldStart("emails")
 	e.ArrStart()
 	for _, elem := range s.Emails {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("subkeys")
-	more.Down()
+
+	e.FieldStart("subkeys")
 	e.ArrStart()
 	for _, elem := range s.Subkeys {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("can_sign")
+
+	e.FieldStart("can_sign")
 	e.Bool(s.CanSign)
-	more.More()
-	e.ObjField("can_encrypt_comms")
+
+	e.FieldStart("can_encrypt_comms")
 	e.Bool(s.CanEncryptComms)
-	more.More()
-	e.ObjField("can_encrypt_storage")
+
+	e.FieldStart("can_encrypt_storage")
 	e.Bool(s.CanEncryptStorage)
-	more.More()
-	e.ObjField("can_certify")
+
+	e.FieldStart("can_certify")
 	e.Bool(s.CanCertify)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("expires_at")
+
+	e.FieldStart("expires_at")
 	s.ExpiresAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("raw_key")
+
+	e.FieldStart("raw_key")
 	s.RawKey.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -22412,16 +20895,12 @@ func (s *GpgKey) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GpgKeyEmailsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Email.Set {
-		more.More()
-		e.ObjField("email")
+		e.FieldStart("email")
 		s.Email.WriteJSON(e)
 	}
 	if s.Verified.Set {
-		more.More()
-		e.ObjField("verified")
+		e.FieldStart("verified")
 		s.Verified.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -22454,85 +20933,64 @@ func (s *GpgKeyEmailsItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GpgKeySubkeysItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.PrimaryKeyID.Set {
-		more.More()
-		e.ObjField("primary_key_id")
+		e.FieldStart("primary_key_id")
 		s.PrimaryKeyID.WriteJSON(e)
 	}
 	if s.KeyID.Set {
-		more.More()
-		e.ObjField("key_id")
+		e.FieldStart("key_id")
 		s.KeyID.WriteJSON(e)
 	}
 	if s.PublicKey.Set {
-		more.More()
-		e.ObjField("public_key")
+		e.FieldStart("public_key")
 		s.PublicKey.WriteJSON(e)
 	}
 	if s.Emails != nil {
-		more.More()
-		e.ObjField("emails")
-		more.Down()
+		e.FieldStart("emails")
 		e.ArrStart()
 		for _, elem := range s.Emails {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Subkeys != nil {
-		more.More()
-		e.ObjField("subkeys")
-		more.Down()
+		e.FieldStart("subkeys")
 		e.ArrStart()
 		for _, elem := range s.Subkeys {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.CanSign.Set {
-		more.More()
-		e.ObjField("can_sign")
+		e.FieldStart("can_sign")
 		s.CanSign.WriteJSON(e)
 	}
 	if s.CanEncryptComms.Set {
-		more.More()
-		e.ObjField("can_encrypt_comms")
+		e.FieldStart("can_encrypt_comms")
 		s.CanEncryptComms.WriteJSON(e)
 	}
 	if s.CanEncryptStorage.Set {
-		more.More()
-		e.ObjField("can_encrypt_storage")
+		e.FieldStart("can_encrypt_storage")
 		s.CanEncryptStorage.WriteJSON(e)
 	}
 	if s.CanCertify.Set {
-		more.More()
-		e.ObjField("can_certify")
+		e.FieldStart("can_certify")
 		s.CanCertify.WriteJSON(e)
 	}
 	if s.CreatedAt.Set {
-		more.More()
-		e.ObjField("created_at")
+		e.FieldStart("created_at")
 		s.CreatedAt.WriteJSON(e)
 	}
 	if s.ExpiresAt.Set {
-		more.More()
-		e.ObjField("expires_at")
+		e.FieldStart("expires_at")
 		s.ExpiresAt.WriteJSON(e)
 	}
 	if s.RawKey.Set {
-		more.More()
-		e.ObjField("raw_key")
+		e.FieldStart("raw_key")
 		s.RawKey.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -22638,19 +21096,13 @@ func (s *GpgKeySubkeysItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GroupMapping) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Groups != nil {
-		more.More()
-		e.ObjField("groups")
-		more.Down()
+		e.FieldStart("groups")
 		e.ArrStart()
 		for _, elem := range s.Groups {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -22684,25 +21136,21 @@ func (s *GroupMapping) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GroupMappingGroupsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("group_id")
+
+	e.FieldStart("group_id")
 	e.Str(s.GroupID)
-	more.More()
-	e.ObjField("group_name")
+
+	e.FieldStart("group_name")
 	e.Str(s.GroupName)
-	more.More()
-	e.ObjField("group_description")
+
+	e.FieldStart("group_description")
 	e.Str(s.GroupDescription)
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	if s.SyncedAt.Set {
-		more.More()
-		e.ObjField("synced_at")
+		e.FieldStart("synced_at")
 		s.SyncedAt.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -22753,55 +21201,49 @@ func (s *GroupMappingGroupsItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Hook) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("active")
+
+	e.FieldStart("active")
 	e.Bool(s.Active)
-	more.More()
-	e.ObjField("events")
-	more.Down()
+
+	e.FieldStart("events")
 	e.ArrStart()
 	for _, elem := range s.Events {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("config")
+
+	e.FieldStart("config")
 	s.Config.WriteJSON(e)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("test_url")
+
+	e.FieldStart("test_url")
 	json.WriteURI(e, s.TestURL)
-	more.More()
-	e.ObjField("ping_url")
+
+	e.FieldStart("ping_url")
 	json.WriteURI(e, s.PingURL)
 	if s.DeliveriesURL.Set {
-		more.More()
-		e.ObjField("deliveries_url")
+		e.FieldStart("deliveries_url")
 		s.DeliveriesURL.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("last_response")
+
+	e.FieldStart("last_response")
 	s.LastResponse.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -22904,56 +21346,44 @@ func (s *Hook) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s HookConfig) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Email.Set {
-		more.More()
-		e.ObjField("email")
+		e.FieldStart("email")
 		s.Email.WriteJSON(e)
 	}
 	if s.Password.Set {
-		more.More()
-		e.ObjField("password")
+		e.FieldStart("password")
 		s.Password.WriteJSON(e)
 	}
 	if s.Room.Set {
-		more.More()
-		e.ObjField("room")
+		e.FieldStart("room")
 		s.Room.WriteJSON(e)
 	}
 	if s.Subdomain.Set {
-		more.More()
-		e.ObjField("subdomain")
+		e.FieldStart("subdomain")
 		s.Subdomain.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.InsecureSsl != nil {
-		more.More()
-		e.ObjField("insecure_ssl")
+		e.FieldStart("insecure_ssl")
 		s.InsecureSsl.WriteJSON(e)
 	}
 	if s.ContentType.Set {
-		more.More()
-		e.ObjField("content_type")
+		e.FieldStart("content_type")
 		s.ContentType.WriteJSON(e)
 	}
 	if s.Digest.Set {
-		more.More()
-		e.ObjField("digest")
+		e.FieldStart("digest")
 		s.Digest.WriteJSON(e)
 	}
 	if s.Secret.Set {
-		more.More()
-		e.ObjField("secret")
+		e.FieldStart("secret")
 		s.Secret.WriteJSON(e)
 	}
 	if s.Token.Set {
-		more.More()
-		e.ObjField("token")
+		e.FieldStart("token")
 		s.Token.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -23028,51 +21458,48 @@ func (s *HookConfig) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s HookDelivery) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("guid")
+
+	e.FieldStart("guid")
 	e.Str(s.GUID)
-	more.More()
-	e.ObjField("delivered_at")
+
+	e.FieldStart("delivered_at")
 	json.WriteDateTime(e, s.DeliveredAt)
-	more.More()
-	e.ObjField("redelivery")
+
+	e.FieldStart("redelivery")
 	e.Bool(s.Redelivery)
-	more.More()
-	e.ObjField("duration")
+
+	e.FieldStart("duration")
 	e.Float64(s.Duration)
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	e.Str(s.Status)
-	more.More()
-	e.ObjField("status_code")
+
+	e.FieldStart("status_code")
 	e.Int(s.StatusCode)
-	more.More()
-	e.ObjField("event")
+
+	e.FieldStart("event")
 	e.Str(s.Event)
-	more.More()
-	e.ObjField("action")
+
+	e.FieldStart("action")
 	s.Action.WriteJSON(e)
-	more.More()
-	e.ObjField("installation_id")
+
+	e.FieldStart("installation_id")
 	s.InstallationID.WriteJSON(e)
-	more.More()
-	e.ObjField("repository_id")
+
+	e.FieldStart("repository_id")
 	s.RepositoryID.WriteJSON(e)
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("request")
+
+	e.FieldStart("request")
 	s.Request.WriteJSON(e)
-	more.More()
-	e.ObjField("response")
+
+	e.FieldStart("response")
 	s.Response.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -23167,40 +21594,38 @@ func (s *HookDelivery) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s HookDeliveryItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("guid")
+
+	e.FieldStart("guid")
 	e.Str(s.GUID)
-	more.More()
-	e.ObjField("delivered_at")
+
+	e.FieldStart("delivered_at")
 	json.WriteDateTime(e, s.DeliveredAt)
-	more.More()
-	e.ObjField("redelivery")
+
+	e.FieldStart("redelivery")
 	e.Bool(s.Redelivery)
-	more.More()
-	e.ObjField("duration")
+
+	e.FieldStart("duration")
 	e.Float64(s.Duration)
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	e.Str(s.Status)
-	more.More()
-	e.ObjField("status_code")
+
+	e.FieldStart("status_code")
 	e.Int(s.StatusCode)
-	more.More()
-	e.ObjField("event")
+
+	e.FieldStart("event")
 	e.Str(s.Event)
-	more.More()
-	e.ObjField("action")
+
+	e.FieldStart("action")
 	s.Action.WriteJSON(e)
-	more.More()
-	e.ObjField("installation_id")
+
+	e.FieldStart("installation_id")
 	s.InstallationID.WriteJSON(e)
-	more.More()
-	e.ObjField("repository_id")
+
+	e.FieldStart("repository_id")
 	s.RepositoryID.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -23282,17 +21707,15 @@ func (s *HookDeliveryItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s HookDeliveryRequest) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("headers")
+
+	e.FieldStart("headers")
 	if s.Headers == nil {
 		e.Null()
 	} else {
 		s.Headers.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("payload")
+
+	e.FieldStart("payload")
 	if s.Payload == nil {
 		e.Null()
 	} else {
@@ -23332,8 +21755,6 @@ func (s *HookDeliveryRequest) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s HookDeliveryRequestHeaders) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -23354,8 +21775,6 @@ func (s *HookDeliveryRequestHeaders) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s HookDeliveryRequestPayload) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -23376,17 +21795,15 @@ func (s *HookDeliveryRequestPayload) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s HookDeliveryResponse) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("headers")
+
+	e.FieldStart("headers")
 	if s.Headers == nil {
 		e.Null()
 	} else {
 		s.Headers.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("payload")
+
+	e.FieldStart("payload")
 	s.Payload.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -23419,8 +21836,6 @@ func (s *HookDeliveryResponse) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s HookDeliveryResponseHeaders) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -23441,16 +21856,14 @@ func (s *HookDeliveryResponseHeaders) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s HookResponse) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("code")
+
+	e.FieldStart("code")
 	s.Code.WriteJSON(e)
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	s.Status.WriteJSON(e)
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	s.Message.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -23484,18 +21897,13 @@ func (s *HookResponse) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Hovercard) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("contexts")
-	more.Down()
+
+	e.FieldStart("contexts")
 	e.ArrStart()
 	for _, elem := range s.Contexts {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -23528,13 +21936,11 @@ func (s *Hovercard) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s HovercardContextsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
-	more.More()
-	e.ObjField("octicon")
+
+	e.FieldStart("octicon")
 	e.Str(s.Octicon)
 	e.ObjEnd()
 }
@@ -23568,114 +21974,93 @@ func (s *HovercardContextsItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Import) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("vcs")
+
+	e.FieldStart("vcs")
 	s.Vcs.WriteJSON(e)
 	if s.UseLfs.Set {
-		more.More()
-		e.ObjField("use_lfs")
+		e.FieldStart("use_lfs")
 		s.UseLfs.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("vcs_url")
+
+	e.FieldStart("vcs_url")
 	e.Str(s.VcsURL)
 	if s.SvcRoot.Set {
-		more.More()
-		e.ObjField("svc_root")
+		e.FieldStart("svc_root")
 		s.SvcRoot.WriteJSON(e)
 	}
 	if s.TfvcProject.Set {
-		more.More()
-		e.ObjField("tfvc_project")
+		e.FieldStart("tfvc_project")
 		s.TfvcProject.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	s.Status.WriteJSON(e)
 	if s.StatusText.Set {
-		more.More()
-		e.ObjField("status_text")
+		e.FieldStart("status_text")
 		s.StatusText.WriteJSON(e)
 	}
 	if s.FailedStep.Set {
-		more.More()
-		e.ObjField("failed_step")
+		e.FieldStart("failed_step")
 		s.FailedStep.WriteJSON(e)
 	}
 	if s.ErrorMessage.Set {
-		more.More()
-		e.ObjField("error_message")
+		e.FieldStart("error_message")
 		s.ErrorMessage.WriteJSON(e)
 	}
 	if s.ImportPercent.Set {
-		more.More()
-		e.ObjField("import_percent")
+		e.FieldStart("import_percent")
 		s.ImportPercent.WriteJSON(e)
 	}
 	if s.CommitCount.Set {
-		more.More()
-		e.ObjField("commit_count")
+		e.FieldStart("commit_count")
 		s.CommitCount.WriteJSON(e)
 	}
 	if s.PushPercent.Set {
-		more.More()
-		e.ObjField("push_percent")
+		e.FieldStart("push_percent")
 		s.PushPercent.WriteJSON(e)
 	}
 	if s.HasLargeFiles.Set {
-		more.More()
-		e.ObjField("has_large_files")
+		e.FieldStart("has_large_files")
 		s.HasLargeFiles.WriteJSON(e)
 	}
 	if s.LargeFilesSize.Set {
-		more.More()
-		e.ObjField("large_files_size")
+		e.FieldStart("large_files_size")
 		s.LargeFilesSize.WriteJSON(e)
 	}
 	if s.LargeFilesCount.Set {
-		more.More()
-		e.ObjField("large_files_count")
+		e.FieldStart("large_files_count")
 		s.LargeFilesCount.WriteJSON(e)
 	}
 	if s.ProjectChoices != nil {
-		more.More()
-		e.ObjField("project_choices")
-		more.Down()
+		e.FieldStart("project_choices")
 		e.ArrStart()
 		for _, elem := range s.ProjectChoices {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.AuthorsCount.Set {
-		more.More()
-		e.ObjField("authors_count")
+		e.FieldStart("authors_count")
 		s.AuthorsCount.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("authors_url")
+
+	e.FieldStart("authors_url")
 	json.WriteURI(e, s.AuthorsURL)
-	more.More()
-	e.ObjField("repository_url")
+
+	e.FieldStart("repository_url")
 	json.WriteURI(e, s.RepositoryURL)
 	if s.SvnRoot.Set {
-		more.More()
-		e.ObjField("svn_root")
+		e.FieldStart("svn_root")
 		s.SvnRoot.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -23823,21 +22208,16 @@ func (s *Import) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ImportProjectChoicesItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Vcs.Set {
-		more.More()
-		e.ObjField("vcs")
+		e.FieldStart("vcs")
 		s.Vcs.WriteJSON(e)
 	}
 	if s.TfvcProject.Set {
-		more.More()
-		e.ObjField("tfvc_project")
+		e.FieldStart("tfvc_project")
 		s.TfvcProject.WriteJSON(e)
 	}
 	if s.HumanName.Set {
-		more.More()
-		e.ObjField("human_name")
+		e.FieldStart("human_name")
 		s.HumanName.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -23893,57 +22273,43 @@ func (s *ImportStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s InstallationToken) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("token")
+
+	e.FieldStart("token")
 	e.Str(s.Token)
-	more.More()
-	e.ObjField("expires_at")
+
+	e.FieldStart("expires_at")
 	e.Str(s.ExpiresAt)
 	if s.Permissions.Set {
-		more.More()
-		e.ObjField("permissions")
+		e.FieldStart("permissions")
 		s.Permissions.WriteJSON(e)
 	}
 	if s.RepositorySelection.Set {
-		more.More()
-		e.ObjField("repository_selection")
+		e.FieldStart("repository_selection")
 		s.RepositorySelection.WriteJSON(e)
 	}
 	if s.Repositories != nil {
-		more.More()
-		e.ObjField("repositories")
-		more.Down()
+		e.FieldStart("repositories")
 		e.ArrStart()
 		for _, elem := range s.Repositories {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.SingleFile.Set {
-		more.More()
-		e.ObjField("single_file")
+		e.FieldStart("single_file")
 		s.SingleFile.WriteJSON(e)
 	}
 	if s.HasMultipleSingleFiles.Set {
-		more.More()
-		e.ObjField("has_multiple_single_files")
+		e.FieldStart("has_multiple_single_files")
 		s.HasMultipleSingleFiles.WriteJSON(e)
 	}
 	if s.SingleFilePaths != nil {
-		more.More()
-		e.ObjField("single_file_paths")
-		more.Down()
+		e.FieldStart("single_file_paths")
 		e.ArrStart()
 		for _, elem := range s.SingleFilePaths {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -24041,76 +22407,65 @@ func (s *InstallationTokenRepositorySelection) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Integration) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
 	if s.Slug.Set {
-		more.More()
-		e.ObjField("slug")
+		e.FieldStart("slug")
 		s.Slug.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("owner")
+
+	e.FieldStart("owner")
 	s.Owner.WriteJSON(e)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
-	more.More()
-	e.ObjField("external_url")
+
+	e.FieldStart("external_url")
 	json.WriteURI(e, s.ExternalURL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("permissions")
+
+	e.FieldStart("permissions")
 	s.Permissions.WriteJSON(e)
-	more.More()
-	e.ObjField("events")
-	more.Down()
+
+	e.FieldStart("events")
 	e.ArrStart()
 	for _, elem := range s.Events {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.InstallationsCount.Set {
-		more.More()
-		e.ObjField("installations_count")
+		e.FieldStart("installations_count")
 		s.InstallationsCount.WriteJSON(e)
 	}
 	if s.ClientID.Set {
-		more.More()
-		e.ObjField("client_id")
+		e.FieldStart("client_id")
 		s.ClientID.WriteJSON(e)
 	}
 	if s.ClientSecret.Set {
-		more.More()
-		e.ObjField("client_secret")
+		e.FieldStart("client_secret")
 		s.ClientSecret.WriteJSON(e)
 	}
 	if s.WebhookSecret.Set {
-		more.More()
-		e.ObjField("webhook_secret")
+		e.FieldStart("webhook_secret")
 		s.WebhookSecret.WriteJSON(e)
 	}
 	if s.Pem.Set {
-		more.More()
-		e.ObjField("pem")
+		e.FieldStart("pem")
 		s.Pem.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -24231,31 +22586,24 @@ func (s *Integration) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IntegrationPermissions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Issues.Set {
-		more.More()
-		e.ObjField("issues")
+		e.FieldStart("issues")
 		s.Issues.WriteJSON(e)
 	}
 	if s.Checks.Set {
-		more.More()
-		e.ObjField("checks")
+		e.FieldStart("checks")
 		s.Checks.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Contents.Set {
-		more.More()
-		e.ObjField("contents")
+		e.FieldStart("contents")
 		s.Contents.WriteJSON(e)
 	}
 	if s.Deployments.Set {
-		more.More()
-		e.ObjField("deployments")
+		e.FieldStart("deployments")
 		s.Deployments.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -24339,14 +22687,11 @@ func (s *InteractionGroup) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s InteractionLimit) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("limit")
+
+	e.FieldStart("limit")
 	s.Limit.WriteJSON(e)
 	if s.Expiry.Set {
-		more.More()
-		e.ObjField("expiry")
+		e.FieldStart("expiry")
 		s.Expiry.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -24378,16 +22723,14 @@ func (s *InteractionLimit) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s InteractionLimitResponse) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("limit")
+
+	e.FieldStart("limit")
 	s.Limit.WriteJSON(e)
-	more.More()
-	e.ObjField("origin")
+
+	e.FieldStart("origin")
 	e.Str(s.Origin)
-	more.More()
-	e.ObjField("expires_at")
+
+	e.FieldStart("expires_at")
 	json.WriteDateTime(e, s.ExpiresAt)
 	e.ObjEnd()
 }
@@ -24425,8 +22768,6 @@ func (s *InteractionLimitResponse) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s InteractionsRemoveRestrictionsForAuthenticatedUserNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -24447,8 +22788,6 @@ func (s *InteractionsRemoveRestrictionsForAuthenticatedUserNoContent) ReadJSON(d
 // WriteJSON implements json.Marshaler.
 func (s InteractionsRemoveRestrictionsForOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -24469,8 +22808,6 @@ func (s *InteractionsRemoveRestrictionsForOrgNoContent) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s InteractionsRemoveRestrictionsForRepoConflict) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -24491,8 +22828,6 @@ func (s *InteractionsRemoveRestrictionsForRepoConflict) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s InteractionsRemoveRestrictionsForRepoNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -24513,8 +22848,6 @@ func (s *InteractionsRemoveRestrictionsForRepoNoContent) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s InteractionsSetRestrictionsForRepoConflict) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -24535,58 +22868,51 @@ func (s *InteractionsSetRestrictionsForRepoConflict) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s IssueComment) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	if s.Body.Set {
-		more.More()
-		e.ObjField("body")
+		e.FieldStart("body")
 		s.Body.WriteJSON(e)
 	}
 	if s.BodyText.Set {
-		more.More()
-		e.ObjField("body_text")
+		e.FieldStart("body_text")
 		s.BodyText.WriteJSON(e)
 	}
 	if s.BodyHTML.Set {
-		more.More()
-		e.ObjField("body_html")
+		e.FieldStart("body_html")
 		s.BodyHTML.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("user")
+
+	e.FieldStart("user")
 	s.User.WriteJSON(e)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("issue_url")
+
+	e.FieldStart("issue_url")
 	json.WriteURI(e, s.IssueURL)
-	more.More()
-	e.ObjField("author_association")
+
+	e.FieldStart("author_association")
 	s.AuthorAssociation.WriteJSON(e)
 	if s.PerformedViaGithubApp.Set {
-		more.More()
-		e.ObjField("performed_via_github_app")
+		e.FieldStart("performed_via_github_app")
 		s.PerformedViaGithubApp.WriteJSON(e)
 	}
 	if s.Reactions.Set {
-		more.More()
-		e.ObjField("reactions")
+		e.FieldStart("reactions")
 		s.Reactions.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -24684,100 +23010,84 @@ func (s *IssueComment) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IssueEvent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("actor")
+
+	e.FieldStart("actor")
 	s.Actor.WriteJSON(e)
-	more.More()
-	e.ObjField("event")
+
+	e.FieldStart("event")
 	e.Str(s.Event)
-	more.More()
-	e.ObjField("commit_id")
+
+	e.FieldStart("commit_id")
 	s.CommitID.WriteJSON(e)
-	more.More()
-	e.ObjField("commit_url")
+
+	e.FieldStart("commit_url")
 	s.CommitURL.WriteJSON(e)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
 	if s.Issue.Set {
-		more.More()
-		e.ObjField("issue")
+		e.FieldStart("issue")
 		s.Issue.WriteJSON(e)
 	}
 	if s.Label.Set {
-		more.More()
-		e.ObjField("label")
+		e.FieldStart("label")
 		s.Label.WriteJSON(e)
 	}
 	if s.Assignee.Set {
-		more.More()
-		e.ObjField("assignee")
+		e.FieldStart("assignee")
 		s.Assignee.WriteJSON(e)
 	}
 	if s.Assigner.Set {
-		more.More()
-		e.ObjField("assigner")
+		e.FieldStart("assigner")
 		s.Assigner.WriteJSON(e)
 	}
 	if s.ReviewRequester.Set {
-		more.More()
-		e.ObjField("review_requester")
+		e.FieldStart("review_requester")
 		s.ReviewRequester.WriteJSON(e)
 	}
 	if s.RequestedReviewer.Set {
-		more.More()
-		e.ObjField("requested_reviewer")
+		e.FieldStart("requested_reviewer")
 		s.RequestedReviewer.WriteJSON(e)
 	}
 	if s.RequestedTeam.Set {
-		more.More()
-		e.ObjField("requested_team")
+		e.FieldStart("requested_team")
 		s.RequestedTeam.WriteJSON(e)
 	}
 	if s.DismissedReview.Set {
-		more.More()
-		e.ObjField("dismissed_review")
+		e.FieldStart("dismissed_review")
 		s.DismissedReview.WriteJSON(e)
 	}
 	if s.Milestone.Set {
-		more.More()
-		e.ObjField("milestone")
+		e.FieldStart("milestone")
 		s.Milestone.WriteJSON(e)
 	}
 	if s.ProjectCard.Set {
-		more.More()
-		e.ObjField("project_card")
+		e.FieldStart("project_card")
 		s.ProjectCard.WriteJSON(e)
 	}
 	if s.Rename.Set {
-		more.More()
-		e.ObjField("rename")
+		e.FieldStart("rename")
 		s.Rename.WriteJSON(e)
 	}
 	if s.AuthorAssociation.Set {
-		more.More()
-		e.ObjField("author_association")
+		e.FieldStart("author_association")
 		s.AuthorAssociation.WriteJSON(e)
 	}
 	if s.LockReason.Set {
-		more.More()
-		e.ObjField("lock_reason")
+		e.FieldStart("lock_reason")
 		s.LockReason.WriteJSON(e)
 	}
 	if s.PerformedViaGithubApp.Set {
-		more.More()
-		e.ObjField("performed_via_github_app")
+		e.FieldStart("performed_via_github_app")
 		s.PerformedViaGithubApp.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -24912,20 +23222,17 @@ func (s *IssueEvent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IssueEventDismissedReview) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	e.Str(s.State)
-	more.More()
-	e.ObjField("review_id")
+
+	e.FieldStart("review_id")
 	e.Int(s.ReviewID)
-	more.More()
-	e.ObjField("dismissal_message")
+
+	e.FieldStart("dismissal_message")
 	s.DismissalMessage.WriteJSON(e)
 	if s.DismissalCommitID.Set {
-		more.More()
-		e.ObjField("dismissal_commit_id")
+		e.FieldStart("dismissal_commit_id")
 		s.DismissalCommitID.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -24969,13 +23276,11 @@ func (s *IssueEventDismissedReview) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IssueEventLabel) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	s.Name.WriteJSON(e)
-	more.More()
-	e.ObjField("color")
+
+	e.FieldStart("color")
 	s.Color.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -25005,10 +23310,8 @@ func (s *IssueEventLabel) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IssueEventMilestone) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	e.Str(s.Title)
 	e.ObjEnd()
 }
@@ -25036,26 +23339,23 @@ func (s *IssueEventMilestone) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IssueEventProjectCard) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("project_url")
+
+	e.FieldStart("project_url")
 	json.WriteURI(e, s.ProjectURL)
-	more.More()
-	e.ObjField("project_id")
+
+	e.FieldStart("project_id")
 	e.Int(s.ProjectID)
-	more.More()
-	e.ObjField("column_name")
+
+	e.FieldStart("column_name")
 	e.Str(s.ColumnName)
 	if s.PreviousColumnName.Set {
-		more.More()
-		e.ObjField("previous_column_name")
+		e.FieldStart("previous_column_name")
 		s.PreviousColumnName.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -25113,13 +23413,11 @@ func (s *IssueEventProjectCard) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IssueEventRename) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("from")
+
+	e.FieldStart("from")
 	e.Str(s.From)
-	more.More()
-	e.ObjField("to")
+
+	e.FieldStart("to")
 	e.Str(s.To)
 	e.ObjEnd()
 }
@@ -25153,134 +23451,118 @@ func (s *IssueEventRename) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IssueSearchResultItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("repository_url")
+
+	e.FieldStart("repository_url")
 	json.WriteURI(e, s.RepositoryURL)
-	more.More()
-	e.ObjField("labels_url")
+
+	e.FieldStart("labels_url")
 	e.Str(s.LabelsURL)
-	more.More()
-	e.ObjField("comments_url")
+
+	e.FieldStart("comments_url")
 	json.WriteURI(e, s.CommentsURL)
-	more.More()
-	e.ObjField("events_url")
+
+	e.FieldStart("events_url")
 	json.WriteURI(e, s.EventsURL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("number")
+
+	e.FieldStart("number")
 	e.Int(s.Number)
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	e.Str(s.Title)
-	more.More()
-	e.ObjField("locked")
+
+	e.FieldStart("locked")
 	e.Bool(s.Locked)
 	if s.ActiveLockReason.Set {
-		more.More()
-		e.ObjField("active_lock_reason")
+		e.FieldStart("active_lock_reason")
 		s.ActiveLockReason.WriteJSON(e)
 	}
 	if s.Assignees.Set {
-		more.More()
-		e.ObjField("assignees")
+		e.FieldStart("assignees")
 		s.Assignees.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("user")
+
+	e.FieldStart("user")
 	s.User.WriteJSON(e)
-	more.More()
-	e.ObjField("labels")
-	more.Down()
+
+	e.FieldStart("labels")
 	e.ArrStart()
 	for _, elem := range s.Labels {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	e.Str(s.State)
-	more.More()
-	e.ObjField("assignee")
+
+	e.FieldStart("assignee")
 	s.Assignee.WriteJSON(e)
-	more.More()
-	e.ObjField("milestone")
+
+	e.FieldStart("milestone")
 	s.Milestone.WriteJSON(e)
-	more.More()
-	e.ObjField("comments")
+
+	e.FieldStart("comments")
 	e.Int(s.Comments)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("closed_at")
+
+	e.FieldStart("closed_at")
 	s.ClosedAt.WriteJSON(e, json.WriteDateTime)
 	if s.TextMatches != nil {
-		more.More()
-		e.ObjField("text_matches")
+		e.FieldStart("text_matches")
 		s.TextMatches.WriteJSON(e)
 	}
 	if s.PullRequest.Set {
-		more.More()
-		e.ObjField("pull_request")
+		e.FieldStart("pull_request")
 		s.PullRequest.WriteJSON(e)
 	}
 	if s.Body.Set {
-		more.More()
-		e.ObjField("body")
+		e.FieldStart("body")
 		s.Body.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("score")
+
+	e.FieldStart("score")
 	e.Float64(s.Score)
-	more.More()
-	e.ObjField("author_association")
+
+	e.FieldStart("author_association")
 	s.AuthorAssociation.WriteJSON(e)
 	if s.Draft.Set {
-		more.More()
-		e.ObjField("draft")
+		e.FieldStart("draft")
 		s.Draft.WriteJSON(e)
 	}
 	if s.Repository.Set {
-		more.More()
-		e.ObjField("repository")
+		e.FieldStart("repository")
 		s.Repository.WriteJSON(e)
 	}
 	if s.BodyHTML.Set {
-		more.More()
-		e.ObjField("body_html")
+		e.FieldStart("body_html")
 		s.BodyHTML.WriteJSON(e)
 	}
 	if s.BodyText.Set {
-		more.More()
-		e.ObjField("body_text")
+		e.FieldStart("body_text")
 		s.BodyText.WriteJSON(e)
 	}
 	if s.TimelineURL.Set {
-		more.More()
-		e.ObjField("timeline_url")
+		e.FieldStart("timeline_url")
 		s.TimelineURL.WriteJSON(e)
 	}
 	if s.PerformedViaGithubApp.Set {
-		more.More()
-		e.ObjField("performed_via_github_app")
+		e.FieldStart("performed_via_github_app")
 		s.PerformedViaGithubApp.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -25486,41 +23768,32 @@ func (s *IssueSearchResultItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IssueSearchResultItemLabelsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.NodeID.Set {
-		more.More()
-		e.ObjField("node_id")
+		e.FieldStart("node_id")
 		s.NodeID.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Color.Set {
-		more.More()
-		e.ObjField("color")
+		e.FieldStart("color")
 		s.Color.WriteJSON(e)
 	}
 	if s.Default.Set {
-		more.More()
-		e.ObjField("default")
+		e.FieldStart("default")
 		s.Default.WriteJSON(e)
 	}
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -25578,24 +23851,21 @@ func (s *IssueSearchResultItemLabelsItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IssueSearchResultItemPullRequest) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.MergedAt.Set {
-		more.More()
-		e.ObjField("merged_at")
+		e.FieldStart("merged_at")
 		s.MergedAt.WriteJSON(e, json.WriteDateTime)
 	}
-	more.More()
-	e.ObjField("diff_url")
+
+	e.FieldStart("diff_url")
 	s.DiffURL.WriteJSON(e)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	s.HTMLURL.WriteJSON(e)
-	more.More()
-	e.ObjField("patch_url")
+
+	e.FieldStart("patch_url")
 	s.PatchURL.WriteJSON(e)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	s.URL.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -25638,121 +23908,107 @@ func (s *IssueSearchResultItemPullRequest) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IssueSimple) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("repository_url")
+
+	e.FieldStart("repository_url")
 	json.WriteURI(e, s.RepositoryURL)
-	more.More()
-	e.ObjField("labels_url")
+
+	e.FieldStart("labels_url")
 	e.Str(s.LabelsURL)
-	more.More()
-	e.ObjField("comments_url")
+
+	e.FieldStart("comments_url")
 	json.WriteURI(e, s.CommentsURL)
-	more.More()
-	e.ObjField("events_url")
+
+	e.FieldStart("events_url")
 	json.WriteURI(e, s.EventsURL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("number")
+
+	e.FieldStart("number")
 	e.Int(s.Number)
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	e.Str(s.State)
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	e.Str(s.Title)
 	if s.Body.Set {
-		more.More()
-		e.ObjField("body")
+		e.FieldStart("body")
 		s.Body.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("user")
+
+	e.FieldStart("user")
 	s.User.WriteJSON(e)
-	more.More()
-	e.ObjField("labels")
-	more.Down()
+
+	e.FieldStart("labels")
 	e.ArrStart()
 	for _, elem := range s.Labels {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("assignee")
+
+	e.FieldStart("assignee")
 	s.Assignee.WriteJSON(e)
 	if s.Assignees.Set {
-		more.More()
-		e.ObjField("assignees")
+		e.FieldStart("assignees")
 		s.Assignees.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("milestone")
+
+	e.FieldStart("milestone")
 	s.Milestone.WriteJSON(e)
-	more.More()
-	e.ObjField("locked")
+
+	e.FieldStart("locked")
 	e.Bool(s.Locked)
 	if s.ActiveLockReason.Set {
-		more.More()
-		e.ObjField("active_lock_reason")
+		e.FieldStart("active_lock_reason")
 		s.ActiveLockReason.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("comments")
+
+	e.FieldStart("comments")
 	e.Int(s.Comments)
 	if s.PullRequest.Set {
-		more.More()
-		e.ObjField("pull_request")
+		e.FieldStart("pull_request")
 		s.PullRequest.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("closed_at")
+
+	e.FieldStart("closed_at")
 	s.ClosedAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("author_association")
+
+	e.FieldStart("author_association")
 	s.AuthorAssociation.WriteJSON(e)
 	if s.BodyHTML.Set {
-		more.More()
-		e.ObjField("body_html")
+		e.FieldStart("body_html")
 		s.BodyHTML.WriteJSON(e)
 	}
 	if s.BodyText.Set {
-		more.More()
-		e.ObjField("body_text")
+		e.FieldStart("body_text")
 		s.BodyText.WriteJSON(e)
 	}
 	if s.TimelineURL.Set {
-		more.More()
-		e.ObjField("timeline_url")
+		e.FieldStart("timeline_url")
 		s.TimelineURL.WriteJSON(e)
 	}
 	if s.Repository.Set {
-		more.More()
-		e.ObjField("repository")
+		e.FieldStart("repository")
 		s.Repository.WriteJSON(e)
 	}
 	if s.PerformedViaGithubApp.Set {
-		more.More()
-		e.ObjField("performed_via_github_app")
+		e.FieldStart("performed_via_github_app")
 		s.PerformedViaGithubApp.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -25942,24 +24198,21 @@ func (s *IssueSimple) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IssueSimplePullRequest) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.MergedAt.Set {
-		more.More()
-		e.ObjField("merged_at")
+		e.FieldStart("merged_at")
 		s.MergedAt.WriteJSON(e, json.WriteDateTime)
 	}
-	more.More()
-	e.ObjField("diff_url")
+
+	e.FieldStart("diff_url")
 	s.DiffURL.WriteJSON(e)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	s.HTMLURL.WriteJSON(e)
-	more.More()
-	e.ObjField("patch_url")
+
+	e.FieldStart("patch_url")
 	s.PatchURL.WriteJSON(e)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	s.URL.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -26002,19 +24255,13 @@ func (s *IssueSimplePullRequest) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IssuesAddAssigneesReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Assignees != nil {
-		more.More()
-		e.ObjField("assignees")
-		more.Down()
+		e.FieldStart("assignees")
 		e.ArrStart()
 		for _, elem := range s.Assignees {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -26050,8 +24297,6 @@ func (s *IssuesAddAssigneesReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IssuesCheckUserCanBeAssignedNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -26072,10 +24317,8 @@ func (s *IssuesCheckUserCanBeAssignedNoContent) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s IssuesCreateCommentReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
 	e.ObjEnd()
 }
@@ -26103,19 +24346,15 @@ func (s *IssuesCreateCommentReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IssuesCreateLabelReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Color.Set {
-		more.More()
-		e.ObjField("color")
+		e.FieldStart("color")
 		s.Color.WriteJSON(e)
 	}
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -26154,24 +24393,19 @@ func (s *IssuesCreateLabelReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IssuesCreateMilestoneReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	e.Str(s.Title)
 	if s.State.Set {
-		more.More()
-		e.ObjField("state")
+		e.FieldStart("state")
 		s.State.WriteJSON(e)
 	}
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.DueOn.Set {
-		more.More()
-		e.ObjField("due_on")
+		e.FieldStart("due_on")
 		s.DueOn.WriteJSON(e, json.WriteDateTime)
 	}
 	e.ObjEnd()
@@ -26233,8 +24467,6 @@ func (s *IssuesCreateMilestoneReqState) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IssuesDeleteCommentNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -26255,8 +24487,6 @@ func (s *IssuesDeleteCommentNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IssuesDeleteLabelNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -26277,8 +24507,6 @@ func (s *IssuesDeleteLabelNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IssuesDeleteMilestoneNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -26689,8 +24917,6 @@ func (s *IssuesListState) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IssuesLockNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -26711,11 +24937,8 @@ func (s *IssuesLockNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IssuesLockReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LockReason.Set {
-		more.More()
-		e.ObjField("lock_reason")
+		e.FieldStart("lock_reason")
 		s.LockReason.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -26761,8 +24984,6 @@ func (s *IssuesLockReqLockReason) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IssuesRemoveAllLabelsNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -26783,19 +25004,13 @@ func (s *IssuesRemoveAllLabelsNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IssuesRemoveAssigneesReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Assignees != nil {
-		more.More()
-		e.ObjField("assignees")
-		more.Down()
+		e.FieldStart("assignees")
 		e.ArrStart()
 		for _, elem := range s.Assignees {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -26846,8 +25061,6 @@ func (IssuesUnlockApplicationJSONNotFound) ReadJSON(d *json.Decoder) error { ret
 // WriteJSON implements json.Marshaler.
 func (s IssuesUnlockNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -26868,10 +25081,8 @@ func (s *IssuesUnlockNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IssuesUpdateCommentReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
 	e.ObjEnd()
 }
@@ -26899,21 +25110,16 @@ func (s *IssuesUpdateCommentReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IssuesUpdateLabelReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.NewName.Set {
-		more.More()
-		e.ObjField("new_name")
+		e.FieldStart("new_name")
 		s.NewName.WriteJSON(e)
 	}
 	if s.Color.Set {
-		more.More()
-		e.ObjField("color")
+		e.FieldStart("color")
 		s.Color.WriteJSON(e)
 	}
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -26951,26 +25157,20 @@ func (s *IssuesUpdateLabelReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IssuesUpdateMilestoneReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Title.Set {
-		more.More()
-		e.ObjField("title")
+		e.FieldStart("title")
 		s.Title.WriteJSON(e)
 	}
 	if s.State.Set {
-		more.More()
-		e.ObjField("state")
+		e.FieldStart("state")
 		s.State.WriteJSON(e)
 	}
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.DueOn.Set {
-		more.More()
-		e.ObjField("due_on")
+		e.FieldStart("due_on")
 		s.DueOn.WriteJSON(e, json.WriteDateTime)
 	}
 	e.ObjEnd()
@@ -27031,58 +25231,52 @@ func (s *IssuesUpdateMilestoneReqState) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Job) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("run_id")
+
+	e.FieldStart("run_id")
 	e.Int(s.RunID)
-	more.More()
-	e.ObjField("run_url")
+
+	e.FieldStart("run_url")
 	e.Str(s.RunURL)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("head_sha")
+
+	e.FieldStart("head_sha")
 	e.Str(s.HeadSha)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	e.Str(s.URL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	s.HTMLURL.WriteJSON(e)
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	s.Status.WriteJSON(e)
-	more.More()
-	e.ObjField("conclusion")
+
+	e.FieldStart("conclusion")
 	s.Conclusion.WriteJSON(e)
-	more.More()
-	e.ObjField("started_at")
+
+	e.FieldStart("started_at")
 	json.WriteDateTime(e, s.StartedAt)
-	more.More()
-	e.ObjField("completed_at")
+
+	e.FieldStart("completed_at")
 	s.CompletedAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Steps != nil {
-		more.More()
-		e.ObjField("steps")
-		more.Down()
+		e.FieldStart("steps")
 		e.ArrStart()
 		for _, elem := range s.Steps {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("check_run_url")
+
+	e.FieldStart("check_run_url")
 	e.Str(s.CheckRunURL)
 	e.ObjEnd()
 }
@@ -27204,28 +25398,24 @@ func (s *JobStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s JobStepsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	s.Status.WriteJSON(e)
-	more.More()
-	e.ObjField("conclusion")
+
+	e.FieldStart("conclusion")
 	s.Conclusion.WriteJSON(e)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("number")
+
+	e.FieldStart("number")
 	e.Int(s.Number)
 	if s.StartedAt.Set {
-		more.More()
-		e.ObjField("started_at")
+		e.FieldStart("started_at")
 		s.StartedAt.WriteJSON(e, json.WriteDateTime)
 	}
 	if s.CompletedAt.Set {
-		more.More()
-		e.ObjField("completed_at")
+		e.FieldStart("completed_at")
 		s.CompletedAt.WriteJSON(e, json.WriteDateTime)
 	}
 	e.ObjEnd()
@@ -27296,28 +25486,26 @@ func (s *JobStepsItemStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Key) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("key")
+
+	e.FieldStart("key")
 	e.Str(s.Key)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	e.Str(s.URL)
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	e.Str(s.Title)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("verified")
+
+	e.FieldStart("verified")
 	e.Bool(s.Verified)
-	more.More()
-	e.ObjField("read_only")
+
+	e.FieldStart("read_only")
 	e.Bool(s.ReadOnly)
 	e.ObjEnd()
 }
@@ -27381,13 +25569,11 @@ func (s *Key) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s KeySimple) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("key")
+
+	e.FieldStart("key")
 	e.Str(s.Key)
 	e.ObjEnd()
 }
@@ -27421,28 +25607,26 @@ func (s *KeySimple) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Label) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int64(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
-	more.More()
-	e.ObjField("color")
+
+	e.FieldStart("color")
 	e.Str(s.Color)
-	more.More()
-	e.ObjField("default")
+
+	e.FieldStart("default")
 	e.Bool(s.Default)
 	e.ObjEnd()
 }
@@ -27504,35 +25688,32 @@ func (s *Label) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s LabelSearchResultItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("color")
+
+	e.FieldStart("color")
 	e.Str(s.Color)
-	more.More()
-	e.ObjField("default")
+
+	e.FieldStart("default")
 	e.Bool(s.Default)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
-	more.More()
-	e.ObjField("score")
+
+	e.FieldStart("score")
 	e.Float64(s.Score)
 	if s.TextMatches != nil {
-		more.More()
-		e.ObjField("text_matches")
+		e.FieldStart("text_matches")
 		s.TextMatches.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -27606,8 +25787,6 @@ func (s *LabelSearchResultItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Language) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -27628,67 +25807,56 @@ func (s *Language) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s License) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("key")
+
+	e.FieldStart("key")
 	e.Str(s.Key)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("spdx_id")
+
+	e.FieldStart("spdx_id")
 	s.SpdxID.WriteJSON(e)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	s.URL.WriteJSON(e)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	e.Str(s.Description)
-	more.More()
-	e.ObjField("implementation")
+
+	e.FieldStart("implementation")
 	e.Str(s.Implementation)
-	more.More()
-	e.ObjField("permissions")
-	more.Down()
+
+	e.FieldStart("permissions")
 	e.ArrStart()
 	for _, elem := range s.Permissions {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("conditions")
-	more.Down()
+
+	e.FieldStart("conditions")
 	e.ArrStart()
 	for _, elem := range s.Conditions {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("limitations")
-	more.Down()
+
+	e.FieldStart("limitations")
 	e.ArrStart()
 	for _, elem := range s.Limitations {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
-	more.More()
-	e.ObjField("featured")
+
+	e.FieldStart("featured")
 	e.Bool(s.Featured)
 	e.ObjEnd()
 }
@@ -27808,46 +25976,44 @@ func (s *License) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s LicenseContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("path")
+
+	e.FieldStart("path")
 	e.Str(s.Path)
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("size")
+
+	e.FieldStart("size")
 	e.Int(s.Size)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	s.HTMLURL.WriteJSON(e)
-	more.More()
-	e.ObjField("git_url")
+
+	e.FieldStart("git_url")
 	s.GitURL.WriteJSON(e)
-	more.More()
-	e.ObjField("download_url")
+
+	e.FieldStart("download_url")
 	s.DownloadURL.WriteJSON(e)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
-	more.More()
-	e.ObjField("content")
+
+	e.FieldStart("content")
 	e.Str(s.Content)
-	more.More()
-	e.ObjField("encoding")
+
+	e.FieldStart("encoding")
 	e.Str(s.Encoding)
-	more.More()
-	e.ObjField("_links")
+
+	e.FieldStart("_links")
 	s.Links.WriteJSON(e)
-	more.More()
-	e.ObjField("license")
+
+	e.FieldStart("license")
 	s.License.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -27937,16 +26103,14 @@ func (s *LicenseContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s LicenseContentLinks) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("git")
+
+	e.FieldStart("git")
 	s.Git.WriteJSON(e)
-	more.More()
-	e.ObjField("html")
+
+	e.FieldStart("html")
 	s.HTML.WriteJSON(e)
-	more.More()
-	e.ObjField("self")
+
+	e.FieldStart("self")
 	json.WriteURI(e, s.Self)
 	e.ObjEnd()
 }
@@ -27982,26 +26146,23 @@ func (s *LicenseContentLinks) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s LicenseSimple) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("key")
+
+	e.FieldStart("key")
 	e.Str(s.Key)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	s.URL.WriteJSON(e)
-	more.More()
-	e.ObjField("spdx_id")
+
+	e.FieldStart("spdx_id")
 	s.SpdxID.WriteJSON(e)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
 	if s.HTMLURL.Set {
-		more.More()
-		e.ObjField("html_url")
+		e.FieldStart("html_url")
 		s.HTMLURL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -28064,10 +26225,8 @@ func (LicensesGetApplicationJSONNotFound) ReadJSON(d *json.Decoder) error { retu
 // WriteJSON implements json.Marshaler.
 func (s Link) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("href")
+
+	e.FieldStart("href")
 	e.Str(s.Href)
 	e.ObjEnd()
 }
@@ -28095,13 +26254,11 @@ func (s *Link) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s LinkWithType) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("href")
+
+	e.FieldStart("href")
 	e.Str(s.Href)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -28135,19 +26292,15 @@ func (s *LinkWithType) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s MarkdownRenderReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("text")
+
+	e.FieldStart("text")
 	e.Str(s.Text)
 	if s.Mode.Set {
-		more.More()
-		e.ObjField("mode")
+		e.FieldStart("mode")
 		s.Mode.WriteJSON(e)
 	}
 	if s.Context.Set {
-		more.More()
-		e.ObjField("context")
+		e.FieldStart("context")
 		s.Context.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -28204,33 +26357,28 @@ func (s *MarkdownRenderReqMode) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s MarketplaceAccount) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	if s.NodeID.Set {
-		more.More()
-		e.ObjField("node_id")
+		e.FieldStart("node_id")
 		s.NodeID.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("login")
+
+	e.FieldStart("login")
 	e.Str(s.Login)
 	if s.Email.Set {
-		more.More()
-		e.ObjField("email")
+		e.FieldStart("email")
 		s.Email.WriteJSON(e)
 	}
 	if s.OrganizationBillingEmail.Set {
-		more.More()
-		e.ObjField("organization_billing_email")
+		e.FieldStart("organization_billing_email")
 		s.OrganizationBillingEmail.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -28292,54 +26440,49 @@ func (s *MarketplaceAccount) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s MarketplaceListingPlan) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("accounts_url")
+
+	e.FieldStart("accounts_url")
 	json.WriteURI(e, s.AccountsURL)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("number")
+
+	e.FieldStart("number")
 	e.Int(s.Number)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	e.Str(s.Description)
-	more.More()
-	e.ObjField("monthly_price_in_cents")
+
+	e.FieldStart("monthly_price_in_cents")
 	e.Int(s.MonthlyPriceInCents)
-	more.More()
-	e.ObjField("yearly_price_in_cents")
+
+	e.FieldStart("yearly_price_in_cents")
 	e.Int(s.YearlyPriceInCents)
-	more.More()
-	e.ObjField("price_model")
+
+	e.FieldStart("price_model")
 	e.Str(s.PriceModel)
-	more.More()
-	e.ObjField("has_free_trial")
+
+	e.FieldStart("has_free_trial")
 	e.Bool(s.HasFreeTrial)
-	more.More()
-	e.ObjField("unit_name")
+
+	e.FieldStart("unit_name")
 	s.UnitName.WriteJSON(e)
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	e.Str(s.State)
-	more.More()
-	e.ObjField("bullets")
-	more.Down()
+
+	e.FieldStart("bullets")
 	e.ArrStart()
 	for _, elem := range s.Bullets {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -28444,37 +26587,32 @@ func (s *MarketplaceListingPlan) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s MarketplacePurchase) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	e.Str(s.URL)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("login")
+
+	e.FieldStart("login")
 	e.Str(s.Login)
 	if s.OrganizationBillingEmail.Set {
-		more.More()
-		e.ObjField("organization_billing_email")
+		e.FieldStart("organization_billing_email")
 		s.OrganizationBillingEmail.WriteJSON(e)
 	}
 	if s.Email.Set {
-		more.More()
-		e.ObjField("email")
+		e.FieldStart("email")
 		s.Email.WriteJSON(e)
 	}
 	if s.MarketplacePendingChange.Set {
-		more.More()
-		e.ObjField("marketplace_pending_change")
+		e.FieldStart("marketplace_pending_change")
 		s.MarketplacePendingChange.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("marketplace_purchase")
+
+	e.FieldStart("marketplace_purchase")
 	s.MarketplacePurchase.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -28539,31 +26677,24 @@ func (s *MarketplacePurchase) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s MarketplacePurchaseMarketplacePendingChange) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.IsInstalled.Set {
-		more.More()
-		e.ObjField("is_installed")
+		e.FieldStart("is_installed")
 		s.IsInstalled.WriteJSON(e)
 	}
 	if s.EffectiveDate.Set {
-		more.More()
-		e.ObjField("effective_date")
+		e.FieldStart("effective_date")
 		s.EffectiveDate.WriteJSON(e)
 	}
 	if s.UnitCount.Set {
-		more.More()
-		e.ObjField("unit_count")
+		e.FieldStart("unit_count")
 		s.UnitCount.WriteJSON(e)
 	}
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.Plan.Set {
-		more.More()
-		e.ObjField("plan")
+		e.FieldStart("plan")
 		s.Plan.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -28611,46 +26742,36 @@ func (s *MarketplacePurchaseMarketplacePendingChange) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s MarketplacePurchaseMarketplacePurchase) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.BillingCycle.Set {
-		more.More()
-		e.ObjField("billing_cycle")
+		e.FieldStart("billing_cycle")
 		s.BillingCycle.WriteJSON(e)
 	}
 	if s.NextBillingDate.Set {
-		more.More()
-		e.ObjField("next_billing_date")
+		e.FieldStart("next_billing_date")
 		s.NextBillingDate.WriteJSON(e)
 	}
 	if s.IsInstalled.Set {
-		more.More()
-		e.ObjField("is_installed")
+		e.FieldStart("is_installed")
 		s.IsInstalled.WriteJSON(e)
 	}
 	if s.UnitCount.Set {
-		more.More()
-		e.ObjField("unit_count")
+		e.FieldStart("unit_count")
 		s.UnitCount.WriteJSON(e)
 	}
 	if s.OnFreeTrial.Set {
-		more.More()
-		e.ObjField("on_free_trial")
+		e.FieldStart("on_free_trial")
 		s.OnFreeTrial.WriteJSON(e)
 	}
 	if s.FreeTrialEndsOn.Set {
-		more.More()
-		e.ObjField("free_trial_ends_on")
+		e.FieldStart("free_trial_ends_on")
 		s.FreeTrialEndsOn.WriteJSON(e)
 	}
 	if s.UpdatedAt.Set {
-		more.More()
-		e.ObjField("updated_at")
+		e.FieldStart("updated_at")
 		s.UpdatedAt.WriteJSON(e)
 	}
 	if s.Plan.Set {
-		more.More()
-		e.ObjField("plan")
+		e.FieldStart("plan")
 		s.Plan.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -28713,21 +26834,16 @@ func (s *MarketplacePurchaseMarketplacePurchase) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s MergedUpstream) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.MergeType.Set {
-		more.More()
-		e.ObjField("merge_type")
+		e.FieldStart("merge_type")
 		s.MergeType.WriteJSON(e)
 	}
 	if s.BaseBranch.Set {
-		more.More()
-		e.ObjField("base_branch")
+		e.FieldStart("base_branch")
 		s.BaseBranch.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -28783,108 +26899,105 @@ func (s *MergedUpstreamMergeType) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s MetaRootOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("current_user_url")
+
+	e.FieldStart("current_user_url")
 	e.Str(s.CurrentUserURL)
-	more.More()
-	e.ObjField("current_user_authorizations_html_url")
+
+	e.FieldStart("current_user_authorizations_html_url")
 	e.Str(s.CurrentUserAuthorizationsHTMLURL)
-	more.More()
-	e.ObjField("authorizations_url")
+
+	e.FieldStart("authorizations_url")
 	e.Str(s.AuthorizationsURL)
-	more.More()
-	e.ObjField("code_search_url")
+
+	e.FieldStart("code_search_url")
 	e.Str(s.CodeSearchURL)
-	more.More()
-	e.ObjField("commit_search_url")
+
+	e.FieldStart("commit_search_url")
 	e.Str(s.CommitSearchURL)
-	more.More()
-	e.ObjField("emails_url")
+
+	e.FieldStart("emails_url")
 	e.Str(s.EmailsURL)
-	more.More()
-	e.ObjField("emojis_url")
+
+	e.FieldStart("emojis_url")
 	e.Str(s.EmojisURL)
-	more.More()
-	e.ObjField("events_url")
+
+	e.FieldStart("events_url")
 	e.Str(s.EventsURL)
-	more.More()
-	e.ObjField("feeds_url")
+
+	e.FieldStart("feeds_url")
 	e.Str(s.FeedsURL)
-	more.More()
-	e.ObjField("followers_url")
+
+	e.FieldStart("followers_url")
 	e.Str(s.FollowersURL)
-	more.More()
-	e.ObjField("following_url")
+
+	e.FieldStart("following_url")
 	e.Str(s.FollowingURL)
-	more.More()
-	e.ObjField("gists_url")
+
+	e.FieldStart("gists_url")
 	e.Str(s.GistsURL)
-	more.More()
-	e.ObjField("hub_url")
+
+	e.FieldStart("hub_url")
 	e.Str(s.HubURL)
-	more.More()
-	e.ObjField("issue_search_url")
+
+	e.FieldStart("issue_search_url")
 	e.Str(s.IssueSearchURL)
-	more.More()
-	e.ObjField("issues_url")
+
+	e.FieldStart("issues_url")
 	e.Str(s.IssuesURL)
-	more.More()
-	e.ObjField("keys_url")
+
+	e.FieldStart("keys_url")
 	e.Str(s.KeysURL)
-	more.More()
-	e.ObjField("label_search_url")
+
+	e.FieldStart("label_search_url")
 	e.Str(s.LabelSearchURL)
-	more.More()
-	e.ObjField("notifications_url")
+
+	e.FieldStart("notifications_url")
 	e.Str(s.NotificationsURL)
-	more.More()
-	e.ObjField("organization_url")
+
+	e.FieldStart("organization_url")
 	e.Str(s.OrganizationURL)
-	more.More()
-	e.ObjField("organization_repositories_url")
+
+	e.FieldStart("organization_repositories_url")
 	e.Str(s.OrganizationRepositoriesURL)
-	more.More()
-	e.ObjField("organization_teams_url")
+
+	e.FieldStart("organization_teams_url")
 	e.Str(s.OrganizationTeamsURL)
-	more.More()
-	e.ObjField("public_gists_url")
+
+	e.FieldStart("public_gists_url")
 	e.Str(s.PublicGistsURL)
-	more.More()
-	e.ObjField("rate_limit_url")
+
+	e.FieldStart("rate_limit_url")
 	e.Str(s.RateLimitURL)
-	more.More()
-	e.ObjField("repository_url")
+
+	e.FieldStart("repository_url")
 	e.Str(s.RepositoryURL)
-	more.More()
-	e.ObjField("repository_search_url")
+
+	e.FieldStart("repository_search_url")
 	e.Str(s.RepositorySearchURL)
-	more.More()
-	e.ObjField("current_user_repositories_url")
+
+	e.FieldStart("current_user_repositories_url")
 	e.Str(s.CurrentUserRepositoriesURL)
-	more.More()
-	e.ObjField("starred_url")
+
+	e.FieldStart("starred_url")
 	e.Str(s.StarredURL)
-	more.More()
-	e.ObjField("starred_gists_url")
+
+	e.FieldStart("starred_gists_url")
 	e.Str(s.StarredGistsURL)
 	if s.TopicSearchURL.Set {
-		more.More()
-		e.ObjField("topic_search_url")
+		e.FieldStart("topic_search_url")
 		s.TopicSearchURL.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("user_url")
+
+	e.FieldStart("user_url")
 	e.Str(s.UserURL)
-	more.More()
-	e.ObjField("user_organizations_url")
+
+	e.FieldStart("user_organizations_url")
 	e.Str(s.UserOrganizationsURL)
-	more.More()
-	e.ObjField("user_repositories_url")
+
+	e.FieldStart("user_repositories_url")
 	e.Str(s.UserRepositoriesURL)
-	more.More()
-	e.ObjField("user_search_url")
+
+	e.FieldStart("user_search_url")
 	e.Str(s.UserSearchURL)
 	e.ObjEnd()
 }
@@ -29103,76 +27216,66 @@ func (s *MetaRootOK) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Migration) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("owner")
+
+	e.FieldStart("owner")
 	s.Owner.WriteJSON(e)
-	more.More()
-	e.ObjField("guid")
+
+	e.FieldStart("guid")
 	e.Str(s.GUID)
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	e.Str(s.State)
-	more.More()
-	e.ObjField("lock_repositories")
+
+	e.FieldStart("lock_repositories")
 	e.Bool(s.LockRepositories)
-	more.More()
-	e.ObjField("exclude_metadata")
+
+	e.FieldStart("exclude_metadata")
 	e.Bool(s.ExcludeMetadata)
-	more.More()
-	e.ObjField("exclude_git_data")
+
+	e.FieldStart("exclude_git_data")
 	e.Bool(s.ExcludeGitData)
-	more.More()
-	e.ObjField("exclude_attachments")
+
+	e.FieldStart("exclude_attachments")
 	e.Bool(s.ExcludeAttachments)
-	more.More()
-	e.ObjField("exclude_releases")
+
+	e.FieldStart("exclude_releases")
 	e.Bool(s.ExcludeReleases)
-	more.More()
-	e.ObjField("exclude_owner_projects")
+
+	e.FieldStart("exclude_owner_projects")
 	e.Bool(s.ExcludeOwnerProjects)
-	more.More()
-	e.ObjField("repositories")
-	more.Down()
+
+	e.FieldStart("repositories")
 	e.ArrStart()
 	for _, elem := range s.Repositories {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
 	if s.ArchiveURL.Set {
-		more.More()
-		e.ObjField("archive_url")
+		e.FieldStart("archive_url")
 		s.ArchiveURL.WriteJSON(e)
 	}
 	if s.Exclude != nil {
-		more.More()
-		e.ObjField("exclude")
-		more.Down()
+		e.FieldStart("exclude")
 		e.ArrStart()
 		for _, elem := range s.Exclude {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -29307,8 +27410,6 @@ func (s *Migration) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s MigrationsCancelImportNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -29347,8 +27448,6 @@ func (MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized) Re
 // WriteJSON implements json.Marshaler.
 func (s MigrationsDeleteArchiveForAuthenticatedUserNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -29369,8 +27468,6 @@ func (s *MigrationsDeleteArchiveForAuthenticatedUserNoContent) ReadJSON(d *json.
 // WriteJSON implements json.Marshaler.
 func (s MigrationsDeleteArchiveForOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -29391,8 +27488,6 @@ func (s *MigrationsDeleteArchiveForOrgNoContent) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s MigrationsDownloadArchiveForOrgFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -29424,8 +27519,6 @@ func (MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized) ReadJ
 // WriteJSON implements json.Marshaler.
 func (s MigrationsGetArchiveForAuthenticatedUserFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -29522,16 +27615,12 @@ func (MigrationsListReposForUserOKApplicationJSON) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s MigrationsMapCommitAuthorReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Email.Set {
-		more.More()
-		e.ObjField("email")
+		e.FieldStart("email")
 		s.Email.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -29564,10 +27653,8 @@ func (s *MigrationsMapCommitAuthorReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s MigrationsSetLfsPreferenceReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("use_lfs")
+
+	e.FieldStart("use_lfs")
 	s.UseLfs.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -29611,50 +27698,37 @@ func (s *MigrationsSetLfsPreferenceReqUseLfs) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s MigrationsStartForAuthenticatedUserReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LockRepositories.Set {
-		more.More()
-		e.ObjField("lock_repositories")
+		e.FieldStart("lock_repositories")
 		s.LockRepositories.WriteJSON(e)
 	}
 	if s.ExcludeAttachments.Set {
-		more.More()
-		e.ObjField("exclude_attachments")
+		e.FieldStart("exclude_attachments")
 		s.ExcludeAttachments.WriteJSON(e)
 	}
 	if s.ExcludeReleases.Set {
-		more.More()
-		e.ObjField("exclude_releases")
+		e.FieldStart("exclude_releases")
 		s.ExcludeReleases.WriteJSON(e)
 	}
 	if s.ExcludeOwnerProjects.Set {
-		more.More()
-		e.ObjField("exclude_owner_projects")
+		e.FieldStart("exclude_owner_projects")
 		s.ExcludeOwnerProjects.WriteJSON(e)
 	}
 	if s.Exclude != nil {
-		more.More()
-		e.ObjField("exclude")
-		more.Down()
+		e.FieldStart("exclude")
 		e.ArrStart()
 		for _, elem := range s.Exclude {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("repositories")
-	more.Down()
+
+	e.FieldStart("repositories")
 	e.ArrStart()
 	for _, elem := range s.Repositories {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -29739,49 +27813,36 @@ func (s *MigrationsStartForAuthenticatedUserReqExcludeItem) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s MigrationsStartForOrgReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("repositories")
-	more.Down()
+
+	e.FieldStart("repositories")
 	e.ArrStart()
 	for _, elem := range s.Repositories {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.LockRepositories.Set {
-		more.More()
-		e.ObjField("lock_repositories")
+		e.FieldStart("lock_repositories")
 		s.LockRepositories.WriteJSON(e)
 	}
 	if s.ExcludeAttachments.Set {
-		more.More()
-		e.ObjField("exclude_attachments")
+		e.FieldStart("exclude_attachments")
 		s.ExcludeAttachments.WriteJSON(e)
 	}
 	if s.ExcludeReleases.Set {
-		more.More()
-		e.ObjField("exclude_releases")
+		e.FieldStart("exclude_releases")
 		s.ExcludeReleases.WriteJSON(e)
 	}
 	if s.ExcludeOwnerProjects.Set {
-		more.More()
-		e.ObjField("exclude_owner_projects")
+		e.FieldStart("exclude_owner_projects")
 		s.ExcludeOwnerProjects.WriteJSON(e)
 	}
 	if s.Exclude != nil {
-		more.More()
-		e.ObjField("exclude")
-		more.Down()
+		e.FieldStart("exclude")
 		e.ArrStart()
 		for _, elem := range s.Exclude {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -29867,29 +27928,23 @@ func (s *MigrationsStartForOrgReqExcludeItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s MigrationsStartImportReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("vcs_url")
+
+	e.FieldStart("vcs_url")
 	e.Str(s.VcsURL)
 	if s.Vcs.Set {
-		more.More()
-		e.ObjField("vcs")
+		e.FieldStart("vcs")
 		s.Vcs.WriteJSON(e)
 	}
 	if s.VcsUsername.Set {
-		more.More()
-		e.ObjField("vcs_username")
+		e.FieldStart("vcs_username")
 		s.VcsUsername.WriteJSON(e)
 	}
 	if s.VcsPassword.Set {
-		more.More()
-		e.ObjField("vcs_password")
+		e.FieldStart("vcs_password")
 		s.VcsPassword.WriteJSON(e)
 	}
 	if s.TfvcProject.Set {
-		more.More()
-		e.ObjField("tfvc_project")
+		e.FieldStart("tfvc_project")
 		s.TfvcProject.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -29972,8 +28027,6 @@ func (MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized) ReadJ
 // WriteJSON implements json.Marshaler.
 func (s MigrationsUnlockRepoForAuthenticatedUserNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -29994,8 +28047,6 @@ func (s *MigrationsUnlockRepoForAuthenticatedUserNoContent) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s MigrationsUnlockRepoForOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -30016,26 +28067,20 @@ func (s *MigrationsUnlockRepoForOrgNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s MigrationsUpdateImportReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.VcsUsername.Set {
-		more.More()
-		e.ObjField("vcs_username")
+		e.FieldStart("vcs_username")
 		s.VcsUsername.WriteJSON(e)
 	}
 	if s.VcsPassword.Set {
-		more.More()
-		e.ObjField("vcs_password")
+		e.FieldStart("vcs_password")
 		s.VcsPassword.WriteJSON(e)
 	}
 	if s.Vcs.Set {
-		more.More()
-		e.ObjField("vcs")
+		e.FieldStart("vcs")
 		s.Vcs.WriteJSON(e)
 	}
 	if s.TfvcProject.Set {
-		more.More()
-		e.ObjField("tfvc_project")
+		e.FieldStart("tfvc_project")
 		s.TfvcProject.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -30078,55 +28123,53 @@ func (s *MigrationsUpdateImportReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Milestone) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("labels_url")
+
+	e.FieldStart("labels_url")
 	json.WriteURI(e, s.LabelsURL)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("number")
+
+	e.FieldStart("number")
 	e.Int(s.Number)
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	s.State.WriteJSON(e)
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	e.Str(s.Title)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
-	more.More()
-	e.ObjField("creator")
+
+	e.FieldStart("creator")
 	s.Creator.WriteJSON(e)
-	more.More()
-	e.ObjField("open_issues")
+
+	e.FieldStart("open_issues")
 	e.Int(s.OpenIssues)
-	more.More()
-	e.ObjField("closed_issues")
+
+	e.FieldStart("closed_issues")
 	e.Int(s.ClosedIssues)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("closed_at")
+
+	e.FieldStart("closed_at")
 	s.ClosedAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("due_on")
+
+	e.FieldStart("due_on")
 	s.DueOn.WriteJSON(e, json.WriteDateTime)
 	e.ObjEnd()
 }
@@ -30252,341 +28295,298 @@ func (s *MilestoneState) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s MinimalRepository) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("full_name")
+
+	e.FieldStart("full_name")
 	e.Str(s.FullName)
-	more.More()
-	e.ObjField("owner")
+
+	e.FieldStart("owner")
 	s.Owner.WriteJSON(e)
-	more.More()
-	e.ObjField("private")
+
+	e.FieldStart("private")
 	e.Bool(s.Private)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
-	more.More()
-	e.ObjField("fork")
+
+	e.FieldStart("fork")
 	e.Bool(s.Fork)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("archive_url")
+
+	e.FieldStart("archive_url")
 	e.Str(s.ArchiveURL)
-	more.More()
-	e.ObjField("assignees_url")
+
+	e.FieldStart("assignees_url")
 	e.Str(s.AssigneesURL)
-	more.More()
-	e.ObjField("blobs_url")
+
+	e.FieldStart("blobs_url")
 	e.Str(s.BlobsURL)
-	more.More()
-	e.ObjField("branches_url")
+
+	e.FieldStart("branches_url")
 	e.Str(s.BranchesURL)
-	more.More()
-	e.ObjField("collaborators_url")
+
+	e.FieldStart("collaborators_url")
 	e.Str(s.CollaboratorsURL)
-	more.More()
-	e.ObjField("comments_url")
+
+	e.FieldStart("comments_url")
 	e.Str(s.CommentsURL)
-	more.More()
-	e.ObjField("commits_url")
+
+	e.FieldStart("commits_url")
 	e.Str(s.CommitsURL)
-	more.More()
-	e.ObjField("compare_url")
+
+	e.FieldStart("compare_url")
 	e.Str(s.CompareURL)
-	more.More()
-	e.ObjField("contents_url")
+
+	e.FieldStart("contents_url")
 	e.Str(s.ContentsURL)
-	more.More()
-	e.ObjField("contributors_url")
+
+	e.FieldStart("contributors_url")
 	json.WriteURI(e, s.ContributorsURL)
-	more.More()
-	e.ObjField("deployments_url")
+
+	e.FieldStart("deployments_url")
 	json.WriteURI(e, s.DeploymentsURL)
-	more.More()
-	e.ObjField("downloads_url")
+
+	e.FieldStart("downloads_url")
 	json.WriteURI(e, s.DownloadsURL)
-	more.More()
-	e.ObjField("events_url")
+
+	e.FieldStart("events_url")
 	json.WriteURI(e, s.EventsURL)
-	more.More()
-	e.ObjField("forks_url")
+
+	e.FieldStart("forks_url")
 	json.WriteURI(e, s.ForksURL)
-	more.More()
-	e.ObjField("git_commits_url")
+
+	e.FieldStart("git_commits_url")
 	e.Str(s.GitCommitsURL)
-	more.More()
-	e.ObjField("git_refs_url")
+
+	e.FieldStart("git_refs_url")
 	e.Str(s.GitRefsURL)
-	more.More()
-	e.ObjField("git_tags_url")
+
+	e.FieldStart("git_tags_url")
 	e.Str(s.GitTagsURL)
 	if s.GitURL.Set {
-		more.More()
-		e.ObjField("git_url")
+		e.FieldStart("git_url")
 		s.GitURL.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("issue_comment_url")
+
+	e.FieldStart("issue_comment_url")
 	e.Str(s.IssueCommentURL)
-	more.More()
-	e.ObjField("issue_events_url")
+
+	e.FieldStart("issue_events_url")
 	e.Str(s.IssueEventsURL)
-	more.More()
-	e.ObjField("issues_url")
+
+	e.FieldStart("issues_url")
 	e.Str(s.IssuesURL)
-	more.More()
-	e.ObjField("keys_url")
+
+	e.FieldStart("keys_url")
 	e.Str(s.KeysURL)
-	more.More()
-	e.ObjField("labels_url")
+
+	e.FieldStart("labels_url")
 	e.Str(s.LabelsURL)
-	more.More()
-	e.ObjField("languages_url")
+
+	e.FieldStart("languages_url")
 	json.WriteURI(e, s.LanguagesURL)
-	more.More()
-	e.ObjField("merges_url")
+
+	e.FieldStart("merges_url")
 	json.WriteURI(e, s.MergesURL)
-	more.More()
-	e.ObjField("milestones_url")
+
+	e.FieldStart("milestones_url")
 	e.Str(s.MilestonesURL)
-	more.More()
-	e.ObjField("notifications_url")
+
+	e.FieldStart("notifications_url")
 	e.Str(s.NotificationsURL)
-	more.More()
-	e.ObjField("pulls_url")
+
+	e.FieldStart("pulls_url")
 	e.Str(s.PullsURL)
-	more.More()
-	e.ObjField("releases_url")
+
+	e.FieldStart("releases_url")
 	e.Str(s.ReleasesURL)
 	if s.SSHURL.Set {
-		more.More()
-		e.ObjField("ssh_url")
+		e.FieldStart("ssh_url")
 		s.SSHURL.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("stargazers_url")
+
+	e.FieldStart("stargazers_url")
 	json.WriteURI(e, s.StargazersURL)
-	more.More()
-	e.ObjField("statuses_url")
+
+	e.FieldStart("statuses_url")
 	e.Str(s.StatusesURL)
-	more.More()
-	e.ObjField("subscribers_url")
+
+	e.FieldStart("subscribers_url")
 	json.WriteURI(e, s.SubscribersURL)
-	more.More()
-	e.ObjField("subscription_url")
+
+	e.FieldStart("subscription_url")
 	json.WriteURI(e, s.SubscriptionURL)
-	more.More()
-	e.ObjField("tags_url")
+
+	e.FieldStart("tags_url")
 	json.WriteURI(e, s.TagsURL)
-	more.More()
-	e.ObjField("teams_url")
+
+	e.FieldStart("teams_url")
 	json.WriteURI(e, s.TeamsURL)
-	more.More()
-	e.ObjField("trees_url")
+
+	e.FieldStart("trees_url")
 	e.Str(s.TreesURL)
 	if s.CloneURL.Set {
-		more.More()
-		e.ObjField("clone_url")
+		e.FieldStart("clone_url")
 		s.CloneURL.WriteJSON(e)
 	}
 	if s.MirrorURL.Set {
-		more.More()
-		e.ObjField("mirror_url")
+		e.FieldStart("mirror_url")
 		s.MirrorURL.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("hooks_url")
+
+	e.FieldStart("hooks_url")
 	json.WriteURI(e, s.HooksURL)
 	if s.SvnURL.Set {
-		more.More()
-		e.ObjField("svn_url")
+		e.FieldStart("svn_url")
 		s.SvnURL.WriteJSON(e)
 	}
 	if s.Homepage.Set {
-		more.More()
-		e.ObjField("homepage")
+		e.FieldStart("homepage")
 		s.Homepage.WriteJSON(e)
 	}
 	if s.Language.Set {
-		more.More()
-		e.ObjField("language")
+		e.FieldStart("language")
 		s.Language.WriteJSON(e)
 	}
 	if s.ForksCount.Set {
-		more.More()
-		e.ObjField("forks_count")
+		e.FieldStart("forks_count")
 		s.ForksCount.WriteJSON(e)
 	}
 	if s.StargazersCount.Set {
-		more.More()
-		e.ObjField("stargazers_count")
+		e.FieldStart("stargazers_count")
 		s.StargazersCount.WriteJSON(e)
 	}
 	if s.WatchersCount.Set {
-		more.More()
-		e.ObjField("watchers_count")
+		e.FieldStart("watchers_count")
 		s.WatchersCount.WriteJSON(e)
 	}
 	if s.Size.Set {
-		more.More()
-		e.ObjField("size")
+		e.FieldStart("size")
 		s.Size.WriteJSON(e)
 	}
 	if s.DefaultBranch.Set {
-		more.More()
-		e.ObjField("default_branch")
+		e.FieldStart("default_branch")
 		s.DefaultBranch.WriteJSON(e)
 	}
 	if s.OpenIssuesCount.Set {
-		more.More()
-		e.ObjField("open_issues_count")
+		e.FieldStart("open_issues_count")
 		s.OpenIssuesCount.WriteJSON(e)
 	}
 	if s.IsTemplate.Set {
-		more.More()
-		e.ObjField("is_template")
+		e.FieldStart("is_template")
 		s.IsTemplate.WriteJSON(e)
 	}
 	if s.Topics != nil {
-		more.More()
-		e.ObjField("topics")
-		more.Down()
+		e.FieldStart("topics")
 		e.ArrStart()
 		for _, elem := range s.Topics {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.HasIssues.Set {
-		more.More()
-		e.ObjField("has_issues")
+		e.FieldStart("has_issues")
 		s.HasIssues.WriteJSON(e)
 	}
 	if s.HasProjects.Set {
-		more.More()
-		e.ObjField("has_projects")
+		e.FieldStart("has_projects")
 		s.HasProjects.WriteJSON(e)
 	}
 	if s.HasWiki.Set {
-		more.More()
-		e.ObjField("has_wiki")
+		e.FieldStart("has_wiki")
 		s.HasWiki.WriteJSON(e)
 	}
 	if s.HasPages.Set {
-		more.More()
-		e.ObjField("has_pages")
+		e.FieldStart("has_pages")
 		s.HasPages.WriteJSON(e)
 	}
 	if s.HasDownloads.Set {
-		more.More()
-		e.ObjField("has_downloads")
+		e.FieldStart("has_downloads")
 		s.HasDownloads.WriteJSON(e)
 	}
 	if s.Archived.Set {
-		more.More()
-		e.ObjField("archived")
+		e.FieldStart("archived")
 		s.Archived.WriteJSON(e)
 	}
 	if s.Disabled.Set {
-		more.More()
-		e.ObjField("disabled")
+		e.FieldStart("disabled")
 		s.Disabled.WriteJSON(e)
 	}
 	if s.Visibility.Set {
-		more.More()
-		e.ObjField("visibility")
+		e.FieldStart("visibility")
 		s.Visibility.WriteJSON(e)
 	}
 	if s.PushedAt.Set {
-		more.More()
-		e.ObjField("pushed_at")
+		e.FieldStart("pushed_at")
 		s.PushedAt.WriteJSON(e, json.WriteDateTime)
 	}
 	if s.CreatedAt.Set {
-		more.More()
-		e.ObjField("created_at")
+		e.FieldStart("created_at")
 		s.CreatedAt.WriteJSON(e, json.WriteDateTime)
 	}
 	if s.UpdatedAt.Set {
-		more.More()
-		e.ObjField("updated_at")
+		e.FieldStart("updated_at")
 		s.UpdatedAt.WriteJSON(e, json.WriteDateTime)
 	}
 	if s.Permissions.Set {
-		more.More()
-		e.ObjField("permissions")
+		e.FieldStart("permissions")
 		s.Permissions.WriteJSON(e)
 	}
 	if s.TemplateRepository.Set {
-		more.More()
-		e.ObjField("template_repository")
+		e.FieldStart("template_repository")
 		s.TemplateRepository.WriteJSON(e)
 	}
 	if s.TempCloneToken.Set {
-		more.More()
-		e.ObjField("temp_clone_token")
+		e.FieldStart("temp_clone_token")
 		s.TempCloneToken.WriteJSON(e)
 	}
 	if s.DeleteBranchOnMerge.Set {
-		more.More()
-		e.ObjField("delete_branch_on_merge")
+		e.FieldStart("delete_branch_on_merge")
 		s.DeleteBranchOnMerge.WriteJSON(e)
 	}
 	if s.SubscribersCount.Set {
-		more.More()
-		e.ObjField("subscribers_count")
+		e.FieldStart("subscribers_count")
 		s.SubscribersCount.WriteJSON(e)
 	}
 	if s.NetworkCount.Set {
-		more.More()
-		e.ObjField("network_count")
+		e.FieldStart("network_count")
 		s.NetworkCount.WriteJSON(e)
 	}
 	if s.CodeOfConduct.Set {
-		more.More()
-		e.ObjField("code_of_conduct")
+		e.FieldStart("code_of_conduct")
 		s.CodeOfConduct.WriteJSON(e)
 	}
 	if s.License.Set {
-		more.More()
-		e.ObjField("license")
+		e.FieldStart("license")
 		s.License.WriteJSON(e)
 	}
 	if s.Forks.Set {
-		more.More()
-		e.ObjField("forks")
+		e.FieldStart("forks")
 		s.Forks.WriteJSON(e)
 	}
 	if s.OpenIssues.Set {
-		more.More()
-		e.ObjField("open_issues")
+		e.FieldStart("open_issues")
 		s.OpenIssues.WriteJSON(e)
 	}
 	if s.Watchers.Set {
-		more.More()
-		e.ObjField("watchers")
+		e.FieldStart("watchers")
 		s.Watchers.WriteJSON(e)
 	}
 	if s.AllowForking.Set {
-		more.More()
-		e.ObjField("allow_forking")
+		e.FieldStart("allow_forking")
 		s.AllowForking.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -31080,31 +29080,24 @@ func (s *MinimalRepository) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s MinimalRepositoryLicense) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Key.Set {
-		more.More()
-		e.ObjField("key")
+		e.FieldStart("key")
 		s.Key.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.SpdxID.Set {
-		more.More()
-		e.ObjField("spdx_id")
+		e.FieldStart("spdx_id")
 		s.SpdxID.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.NodeID.Set {
-		more.More()
-		e.ObjField("node_id")
+		e.FieldStart("node_id")
 		s.NodeID.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -31152,31 +29145,24 @@ func (s *MinimalRepositoryLicense) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s MinimalRepositoryPermissions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Admin.Set {
-		more.More()
-		e.ObjField("admin")
+		e.FieldStart("admin")
 		s.Admin.WriteJSON(e)
 	}
 	if s.Maintain.Set {
-		more.More()
-		e.ObjField("maintain")
+		e.FieldStart("maintain")
 		s.Maintain.WriteJSON(e)
 	}
 	if s.Push.Set {
-		more.More()
-		e.ObjField("push")
+		e.FieldStart("push")
 		s.Push.WriteJSON(e)
 	}
 	if s.Triage.Set {
-		more.More()
-		e.ObjField("triage")
+		e.FieldStart("triage")
 		s.Triage.WriteJSON(e)
 	}
 	if s.Pull.Set {
-		more.More()
-		e.ObjField("pull")
+		e.FieldStart("pull")
 		s.Pull.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -31242,7 +29228,7 @@ func (o *NilAutoMerge) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -31278,7 +29264,7 @@ func (o *NilBool) ReadJSON(d *json.Decoder) error {
 		}
 		o.Value = bool(v)
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -31312,7 +29298,7 @@ func (o *NilCheckRunCheckSuite) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -31348,7 +29334,7 @@ func (o *NilCheckRunConclusion) ReadJSON(d *json.Decoder) error {
 		}
 		o.Value = CheckRunConclusion(v)
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -31384,7 +29370,7 @@ func (o *NilCheckSuiteConclusion) ReadJSON(d *json.Decoder) error {
 		}
 		o.Value = CheckSuiteConclusion(v)
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -31420,7 +29406,7 @@ func (o *NilCheckSuiteStatus) ReadJSON(d *json.Decoder) error {
 		}
 		o.Value = CheckSuiteStatus(v)
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -31450,7 +29436,7 @@ func (o *NilCodeScanningAlertDismissedAt) ReadJSON(d *json.Decoder) error {
 	case json.String:
 		o.Null = false
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -31486,7 +29472,7 @@ func (o *NilCodeScanningAlertDismissedReason) ReadJSON(d *json.Decoder) error {
 		}
 		o.Value = CodeScanningAlertDismissedReason(v)
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -31520,7 +29506,7 @@ func (o *NilFileCommitContent) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -31556,7 +29542,7 @@ func (o *NilInt) ReadJSON(d *json.Decoder) error {
 		}
 		o.Value = int(v)
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -31590,7 +29576,7 @@ func (o *NilNullableCodeOfConductSimple) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -31624,7 +29610,7 @@ func (o *NilNullableCommunityHealthFile) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -31658,7 +29644,7 @@ func (o *NilNullableGitUser) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -31692,7 +29678,7 @@ func (o *NilNullableIntegration) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -31726,7 +29712,7 @@ func (o *NilNullableLicenseSimple) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -31760,7 +29746,7 @@ func (o *NilNullableMilestone) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -31794,7 +29780,7 @@ func (o *NilNullableSimpleCommit) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -31828,7 +29814,7 @@ func (o *NilNullableSimpleCommitAuthor) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -31862,7 +29848,7 @@ func (o *NilNullableSimpleCommitCommitter) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -31896,7 +29882,7 @@ func (o *NilNullableSimpleUser) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -31930,7 +29916,7 @@ func (o *NilNullableTeamSimple) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -31966,7 +29952,7 @@ func (o *NilPageStatus) ReadJSON(d *json.Decoder) error {
 		}
 		o.Value = PageStatus(v)
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -32000,7 +29986,7 @@ func (o *NilPullRequestHeadRepo) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -32034,7 +30020,7 @@ func (o *NilPullRequestHeadRepoLicense) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -32068,7 +30054,7 @@ func (o *NilReposUpdateBranchProtectionReqRequiredPullRequestReviews) ReadJSON(d
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -32102,7 +30088,7 @@ func (o *NilReposUpdateBranchProtectionReqRequiredStatusChecks) ReadJSON(d *json
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -32136,7 +30122,7 @@ func (o *NilReposUpdateBranchProtectionReqRestrictions) ReadJSON(d *json.Decoder
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -32170,7 +30156,7 @@ func (o *NilSimpleCommitAuthor) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -32204,7 +30190,7 @@ func (o *NilSimpleCommitCommitter) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -32240,7 +30226,7 @@ func (o *NilString) ReadJSON(d *json.Decoder) error {
 		}
 		o.Value = string(v)
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -32276,7 +30262,7 @@ func (o *NilTime) ReadJSON(d *json.Decoder, format func(*json.Decoder) (time.Tim
 		}
 		o.Value = v
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -32312,7 +30298,7 @@ func (o *NilURL) ReadJSON(d *json.Decoder) error {
 		}
 		o.Value = v
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -32328,8 +30314,6 @@ func (o *NilURL) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s NoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -32350,8 +30334,6 @@ func (s *NoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s NotModified) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -32372,19 +30354,17 @@ func (s *NotModified) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s NullableCodeOfConductSimple) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("key")
+
+	e.FieldStart("key")
 	e.Str(s.Key)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	s.HTMLURL.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -32428,13 +30408,11 @@ func (s *NullableCodeOfConductSimple) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s NullableCommunityHealthFile) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
 	e.ObjEnd()
 }
@@ -32468,21 +30446,16 @@ func (s *NullableCommunityHealthFile) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s NullableGitUser) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Email.Set {
-		more.More()
-		e.ObjField("email")
+		e.FieldStart("email")
 		s.Email.WriteJSON(e)
 	}
 	if s.Date.Set {
-		more.More()
-		e.ObjField("date")
+		e.FieldStart("date")
 		s.Date.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -32520,76 +30493,65 @@ func (s *NullableGitUser) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s NullableIntegration) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
 	if s.Slug.Set {
-		more.More()
-		e.ObjField("slug")
+		e.FieldStart("slug")
 		s.Slug.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("owner")
+
+	e.FieldStart("owner")
 	s.Owner.WriteJSON(e)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
-	more.More()
-	e.ObjField("external_url")
+
+	e.FieldStart("external_url")
 	json.WriteURI(e, s.ExternalURL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("permissions")
+
+	e.FieldStart("permissions")
 	s.Permissions.WriteJSON(e)
-	more.More()
-	e.ObjField("events")
-	more.Down()
+
+	e.FieldStart("events")
 	e.ArrStart()
 	for _, elem := range s.Events {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.InstallationsCount.Set {
-		more.More()
-		e.ObjField("installations_count")
+		e.FieldStart("installations_count")
 		s.InstallationsCount.WriteJSON(e)
 	}
 	if s.ClientID.Set {
-		more.More()
-		e.ObjField("client_id")
+		e.FieldStart("client_id")
 		s.ClientID.WriteJSON(e)
 	}
 	if s.ClientSecret.Set {
-		more.More()
-		e.ObjField("client_secret")
+		e.FieldStart("client_secret")
 		s.ClientSecret.WriteJSON(e)
 	}
 	if s.WebhookSecret.Set {
-		more.More()
-		e.ObjField("webhook_secret")
+		e.FieldStart("webhook_secret")
 		s.WebhookSecret.WriteJSON(e)
 	}
 	if s.Pem.Set {
-		more.More()
-		e.ObjField("pem")
+		e.FieldStart("pem")
 		s.Pem.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -32710,31 +30672,24 @@ func (s *NullableIntegration) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s NullableIntegrationPermissions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Issues.Set {
-		more.More()
-		e.ObjField("issues")
+		e.FieldStart("issues")
 		s.Issues.WriteJSON(e)
 	}
 	if s.Checks.Set {
-		more.More()
-		e.ObjField("checks")
+		e.FieldStart("checks")
 		s.Checks.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Contents.Set {
-		more.More()
-		e.ObjField("contents")
+		e.FieldStart("contents")
 		s.Contents.WriteJSON(e)
 	}
 	if s.Deployments.Set {
-		more.More()
-		e.ObjField("deployments")
+		e.FieldStart("deployments")
 		s.Deployments.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -32782,26 +30737,23 @@ func (s *NullableIntegrationPermissions) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s NullableLicenseSimple) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("key")
+
+	e.FieldStart("key")
 	e.Str(s.Key)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	s.URL.WriteJSON(e)
-	more.More()
-	e.ObjField("spdx_id")
+
+	e.FieldStart("spdx_id")
 	s.SpdxID.WriteJSON(e)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
 	if s.HTMLURL.Set {
-		more.More()
-		e.ObjField("html_url")
+		e.FieldStart("html_url")
 		s.HTMLURL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -32855,55 +30807,53 @@ func (s *NullableLicenseSimple) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s NullableMilestone) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("labels_url")
+
+	e.FieldStart("labels_url")
 	json.WriteURI(e, s.LabelsURL)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("number")
+
+	e.FieldStart("number")
 	e.Int(s.Number)
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	s.State.WriteJSON(e)
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	e.Str(s.Title)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
-	more.More()
-	e.ObjField("creator")
+
+	e.FieldStart("creator")
 	s.Creator.WriteJSON(e)
-	more.More()
-	e.ObjField("open_issues")
+
+	e.FieldStart("open_issues")
 	e.Int(s.OpenIssues)
-	more.More()
-	e.ObjField("closed_issues")
+
+	e.FieldStart("closed_issues")
 	e.Int(s.ClosedIssues)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("closed_at")
+
+	e.FieldStart("closed_at")
 	s.ClosedAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("due_on")
+
+	e.FieldStart("due_on")
 	s.DueOn.WriteJSON(e, json.WriteDateTime)
 	e.ObjEnd()
 }
@@ -33029,341 +30979,298 @@ func (s *NullableMilestoneState) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s NullableMinimalRepository) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("full_name")
+
+	e.FieldStart("full_name")
 	e.Str(s.FullName)
-	more.More()
-	e.ObjField("owner")
+
+	e.FieldStart("owner")
 	s.Owner.WriteJSON(e)
-	more.More()
-	e.ObjField("private")
+
+	e.FieldStart("private")
 	e.Bool(s.Private)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
-	more.More()
-	e.ObjField("fork")
+
+	e.FieldStart("fork")
 	e.Bool(s.Fork)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("archive_url")
+
+	e.FieldStart("archive_url")
 	e.Str(s.ArchiveURL)
-	more.More()
-	e.ObjField("assignees_url")
+
+	e.FieldStart("assignees_url")
 	e.Str(s.AssigneesURL)
-	more.More()
-	e.ObjField("blobs_url")
+
+	e.FieldStart("blobs_url")
 	e.Str(s.BlobsURL)
-	more.More()
-	e.ObjField("branches_url")
+
+	e.FieldStart("branches_url")
 	e.Str(s.BranchesURL)
-	more.More()
-	e.ObjField("collaborators_url")
+
+	e.FieldStart("collaborators_url")
 	e.Str(s.CollaboratorsURL)
-	more.More()
-	e.ObjField("comments_url")
+
+	e.FieldStart("comments_url")
 	e.Str(s.CommentsURL)
-	more.More()
-	e.ObjField("commits_url")
+
+	e.FieldStart("commits_url")
 	e.Str(s.CommitsURL)
-	more.More()
-	e.ObjField("compare_url")
+
+	e.FieldStart("compare_url")
 	e.Str(s.CompareURL)
-	more.More()
-	e.ObjField("contents_url")
+
+	e.FieldStart("contents_url")
 	e.Str(s.ContentsURL)
-	more.More()
-	e.ObjField("contributors_url")
+
+	e.FieldStart("contributors_url")
 	json.WriteURI(e, s.ContributorsURL)
-	more.More()
-	e.ObjField("deployments_url")
+
+	e.FieldStart("deployments_url")
 	json.WriteURI(e, s.DeploymentsURL)
-	more.More()
-	e.ObjField("downloads_url")
+
+	e.FieldStart("downloads_url")
 	json.WriteURI(e, s.DownloadsURL)
-	more.More()
-	e.ObjField("events_url")
+
+	e.FieldStart("events_url")
 	json.WriteURI(e, s.EventsURL)
-	more.More()
-	e.ObjField("forks_url")
+
+	e.FieldStart("forks_url")
 	json.WriteURI(e, s.ForksURL)
-	more.More()
-	e.ObjField("git_commits_url")
+
+	e.FieldStart("git_commits_url")
 	e.Str(s.GitCommitsURL)
-	more.More()
-	e.ObjField("git_refs_url")
+
+	e.FieldStart("git_refs_url")
 	e.Str(s.GitRefsURL)
-	more.More()
-	e.ObjField("git_tags_url")
+
+	e.FieldStart("git_tags_url")
 	e.Str(s.GitTagsURL)
 	if s.GitURL.Set {
-		more.More()
-		e.ObjField("git_url")
+		e.FieldStart("git_url")
 		s.GitURL.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("issue_comment_url")
+
+	e.FieldStart("issue_comment_url")
 	e.Str(s.IssueCommentURL)
-	more.More()
-	e.ObjField("issue_events_url")
+
+	e.FieldStart("issue_events_url")
 	e.Str(s.IssueEventsURL)
-	more.More()
-	e.ObjField("issues_url")
+
+	e.FieldStart("issues_url")
 	e.Str(s.IssuesURL)
-	more.More()
-	e.ObjField("keys_url")
+
+	e.FieldStart("keys_url")
 	e.Str(s.KeysURL)
-	more.More()
-	e.ObjField("labels_url")
+
+	e.FieldStart("labels_url")
 	e.Str(s.LabelsURL)
-	more.More()
-	e.ObjField("languages_url")
+
+	e.FieldStart("languages_url")
 	json.WriteURI(e, s.LanguagesURL)
-	more.More()
-	e.ObjField("merges_url")
+
+	e.FieldStart("merges_url")
 	json.WriteURI(e, s.MergesURL)
-	more.More()
-	e.ObjField("milestones_url")
+
+	e.FieldStart("milestones_url")
 	e.Str(s.MilestonesURL)
-	more.More()
-	e.ObjField("notifications_url")
+
+	e.FieldStart("notifications_url")
 	e.Str(s.NotificationsURL)
-	more.More()
-	e.ObjField("pulls_url")
+
+	e.FieldStart("pulls_url")
 	e.Str(s.PullsURL)
-	more.More()
-	e.ObjField("releases_url")
+
+	e.FieldStart("releases_url")
 	e.Str(s.ReleasesURL)
 	if s.SSHURL.Set {
-		more.More()
-		e.ObjField("ssh_url")
+		e.FieldStart("ssh_url")
 		s.SSHURL.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("stargazers_url")
+
+	e.FieldStart("stargazers_url")
 	json.WriteURI(e, s.StargazersURL)
-	more.More()
-	e.ObjField("statuses_url")
+
+	e.FieldStart("statuses_url")
 	e.Str(s.StatusesURL)
-	more.More()
-	e.ObjField("subscribers_url")
+
+	e.FieldStart("subscribers_url")
 	json.WriteURI(e, s.SubscribersURL)
-	more.More()
-	e.ObjField("subscription_url")
+
+	e.FieldStart("subscription_url")
 	json.WriteURI(e, s.SubscriptionURL)
-	more.More()
-	e.ObjField("tags_url")
+
+	e.FieldStart("tags_url")
 	json.WriteURI(e, s.TagsURL)
-	more.More()
-	e.ObjField("teams_url")
+
+	e.FieldStart("teams_url")
 	json.WriteURI(e, s.TeamsURL)
-	more.More()
-	e.ObjField("trees_url")
+
+	e.FieldStart("trees_url")
 	e.Str(s.TreesURL)
 	if s.CloneURL.Set {
-		more.More()
-		e.ObjField("clone_url")
+		e.FieldStart("clone_url")
 		s.CloneURL.WriteJSON(e)
 	}
 	if s.MirrorURL.Set {
-		more.More()
-		e.ObjField("mirror_url")
+		e.FieldStart("mirror_url")
 		s.MirrorURL.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("hooks_url")
+
+	e.FieldStart("hooks_url")
 	json.WriteURI(e, s.HooksURL)
 	if s.SvnURL.Set {
-		more.More()
-		e.ObjField("svn_url")
+		e.FieldStart("svn_url")
 		s.SvnURL.WriteJSON(e)
 	}
 	if s.Homepage.Set {
-		more.More()
-		e.ObjField("homepage")
+		e.FieldStart("homepage")
 		s.Homepage.WriteJSON(e)
 	}
 	if s.Language.Set {
-		more.More()
-		e.ObjField("language")
+		e.FieldStart("language")
 		s.Language.WriteJSON(e)
 	}
 	if s.ForksCount.Set {
-		more.More()
-		e.ObjField("forks_count")
+		e.FieldStart("forks_count")
 		s.ForksCount.WriteJSON(e)
 	}
 	if s.StargazersCount.Set {
-		more.More()
-		e.ObjField("stargazers_count")
+		e.FieldStart("stargazers_count")
 		s.StargazersCount.WriteJSON(e)
 	}
 	if s.WatchersCount.Set {
-		more.More()
-		e.ObjField("watchers_count")
+		e.FieldStart("watchers_count")
 		s.WatchersCount.WriteJSON(e)
 	}
 	if s.Size.Set {
-		more.More()
-		e.ObjField("size")
+		e.FieldStart("size")
 		s.Size.WriteJSON(e)
 	}
 	if s.DefaultBranch.Set {
-		more.More()
-		e.ObjField("default_branch")
+		e.FieldStart("default_branch")
 		s.DefaultBranch.WriteJSON(e)
 	}
 	if s.OpenIssuesCount.Set {
-		more.More()
-		e.ObjField("open_issues_count")
+		e.FieldStart("open_issues_count")
 		s.OpenIssuesCount.WriteJSON(e)
 	}
 	if s.IsTemplate.Set {
-		more.More()
-		e.ObjField("is_template")
+		e.FieldStart("is_template")
 		s.IsTemplate.WriteJSON(e)
 	}
 	if s.Topics != nil {
-		more.More()
-		e.ObjField("topics")
-		more.Down()
+		e.FieldStart("topics")
 		e.ArrStart()
 		for _, elem := range s.Topics {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.HasIssues.Set {
-		more.More()
-		e.ObjField("has_issues")
+		e.FieldStart("has_issues")
 		s.HasIssues.WriteJSON(e)
 	}
 	if s.HasProjects.Set {
-		more.More()
-		e.ObjField("has_projects")
+		e.FieldStart("has_projects")
 		s.HasProjects.WriteJSON(e)
 	}
 	if s.HasWiki.Set {
-		more.More()
-		e.ObjField("has_wiki")
+		e.FieldStart("has_wiki")
 		s.HasWiki.WriteJSON(e)
 	}
 	if s.HasPages.Set {
-		more.More()
-		e.ObjField("has_pages")
+		e.FieldStart("has_pages")
 		s.HasPages.WriteJSON(e)
 	}
 	if s.HasDownloads.Set {
-		more.More()
-		e.ObjField("has_downloads")
+		e.FieldStart("has_downloads")
 		s.HasDownloads.WriteJSON(e)
 	}
 	if s.Archived.Set {
-		more.More()
-		e.ObjField("archived")
+		e.FieldStart("archived")
 		s.Archived.WriteJSON(e)
 	}
 	if s.Disabled.Set {
-		more.More()
-		e.ObjField("disabled")
+		e.FieldStart("disabled")
 		s.Disabled.WriteJSON(e)
 	}
 	if s.Visibility.Set {
-		more.More()
-		e.ObjField("visibility")
+		e.FieldStart("visibility")
 		s.Visibility.WriteJSON(e)
 	}
 	if s.PushedAt.Set {
-		more.More()
-		e.ObjField("pushed_at")
+		e.FieldStart("pushed_at")
 		s.PushedAt.WriteJSON(e, json.WriteDateTime)
 	}
 	if s.CreatedAt.Set {
-		more.More()
-		e.ObjField("created_at")
+		e.FieldStart("created_at")
 		s.CreatedAt.WriteJSON(e, json.WriteDateTime)
 	}
 	if s.UpdatedAt.Set {
-		more.More()
-		e.ObjField("updated_at")
+		e.FieldStart("updated_at")
 		s.UpdatedAt.WriteJSON(e, json.WriteDateTime)
 	}
 	if s.Permissions.Set {
-		more.More()
-		e.ObjField("permissions")
+		e.FieldStart("permissions")
 		s.Permissions.WriteJSON(e)
 	}
 	if s.TemplateRepository.Set {
-		more.More()
-		e.ObjField("template_repository")
+		e.FieldStart("template_repository")
 		s.TemplateRepository.WriteJSON(e)
 	}
 	if s.TempCloneToken.Set {
-		more.More()
-		e.ObjField("temp_clone_token")
+		e.FieldStart("temp_clone_token")
 		s.TempCloneToken.WriteJSON(e)
 	}
 	if s.DeleteBranchOnMerge.Set {
-		more.More()
-		e.ObjField("delete_branch_on_merge")
+		e.FieldStart("delete_branch_on_merge")
 		s.DeleteBranchOnMerge.WriteJSON(e)
 	}
 	if s.SubscribersCount.Set {
-		more.More()
-		e.ObjField("subscribers_count")
+		e.FieldStart("subscribers_count")
 		s.SubscribersCount.WriteJSON(e)
 	}
 	if s.NetworkCount.Set {
-		more.More()
-		e.ObjField("network_count")
+		e.FieldStart("network_count")
 		s.NetworkCount.WriteJSON(e)
 	}
 	if s.CodeOfConduct.Set {
-		more.More()
-		e.ObjField("code_of_conduct")
+		e.FieldStart("code_of_conduct")
 		s.CodeOfConduct.WriteJSON(e)
 	}
 	if s.License.Set {
-		more.More()
-		e.ObjField("license")
+		e.FieldStart("license")
 		s.License.WriteJSON(e)
 	}
 	if s.Forks.Set {
-		more.More()
-		e.ObjField("forks")
+		e.FieldStart("forks")
 		s.Forks.WriteJSON(e)
 	}
 	if s.OpenIssues.Set {
-		more.More()
-		e.ObjField("open_issues")
+		e.FieldStart("open_issues")
 		s.OpenIssues.WriteJSON(e)
 	}
 	if s.Watchers.Set {
-		more.More()
-		e.ObjField("watchers")
+		e.FieldStart("watchers")
 		s.Watchers.WriteJSON(e)
 	}
 	if s.AllowForking.Set {
-		more.More()
-		e.ObjField("allow_forking")
+		e.FieldStart("allow_forking")
 		s.AllowForking.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -33857,31 +31764,24 @@ func (s *NullableMinimalRepository) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s NullableMinimalRepositoryLicense) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Key.Set {
-		more.More()
-		e.ObjField("key")
+		e.FieldStart("key")
 		s.Key.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.SpdxID.Set {
-		more.More()
-		e.ObjField("spdx_id")
+		e.FieldStart("spdx_id")
 		s.SpdxID.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.NodeID.Set {
-		more.More()
-		e.ObjField("node_id")
+		e.FieldStart("node_id")
 		s.NodeID.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -33929,31 +31829,24 @@ func (s *NullableMinimalRepositoryLicense) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s NullableMinimalRepositoryPermissions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Admin.Set {
-		more.More()
-		e.ObjField("admin")
+		e.FieldStart("admin")
 		s.Admin.WriteJSON(e)
 	}
 	if s.Maintain.Set {
-		more.More()
-		e.ObjField("maintain")
+		e.FieldStart("maintain")
 		s.Maintain.WriteJSON(e)
 	}
 	if s.Push.Set {
-		more.More()
-		e.ObjField("push")
+		e.FieldStart("push")
 		s.Push.WriteJSON(e)
 	}
 	if s.Triage.Set {
-		more.More()
-		e.ObjField("triage")
+		e.FieldStart("triage")
 		s.Triage.WriteJSON(e)
 	}
 	if s.Pull.Set {
-		more.More()
-		e.ObjField("pull")
+		e.FieldStart("pull")
 		s.Pull.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -34001,317 +31894,295 @@ func (s *NullableMinimalRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s NullableRepository) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("full_name")
+
+	e.FieldStart("full_name")
 	e.Str(s.FullName)
-	more.More()
-	e.ObjField("license")
+
+	e.FieldStart("license")
 	s.License.WriteJSON(e)
 	if s.Organization.Set {
-		more.More()
-		e.ObjField("organization")
+		e.FieldStart("organization")
 		s.Organization.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("forks")
+
+	e.FieldStart("forks")
 	e.Int(s.Forks)
 	if s.Permissions.Set {
-		more.More()
-		e.ObjField("permissions")
+		e.FieldStart("permissions")
 		s.Permissions.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("owner")
+
+	e.FieldStart("owner")
 	s.Owner.WriteJSON(e)
-	more.More()
-	e.ObjField("private")
+
+	e.FieldStart("private")
 	e.Bool(s.Private)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
-	more.More()
-	e.ObjField("fork")
+
+	e.FieldStart("fork")
 	e.Bool(s.Fork)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("archive_url")
+
+	e.FieldStart("archive_url")
 	e.Str(s.ArchiveURL)
-	more.More()
-	e.ObjField("assignees_url")
+
+	e.FieldStart("assignees_url")
 	e.Str(s.AssigneesURL)
-	more.More()
-	e.ObjField("blobs_url")
+
+	e.FieldStart("blobs_url")
 	e.Str(s.BlobsURL)
-	more.More()
-	e.ObjField("branches_url")
+
+	e.FieldStart("branches_url")
 	e.Str(s.BranchesURL)
-	more.More()
-	e.ObjField("collaborators_url")
+
+	e.FieldStart("collaborators_url")
 	e.Str(s.CollaboratorsURL)
-	more.More()
-	e.ObjField("comments_url")
+
+	e.FieldStart("comments_url")
 	e.Str(s.CommentsURL)
-	more.More()
-	e.ObjField("commits_url")
+
+	e.FieldStart("commits_url")
 	e.Str(s.CommitsURL)
-	more.More()
-	e.ObjField("compare_url")
+
+	e.FieldStart("compare_url")
 	e.Str(s.CompareURL)
-	more.More()
-	e.ObjField("contents_url")
+
+	e.FieldStart("contents_url")
 	e.Str(s.ContentsURL)
-	more.More()
-	e.ObjField("contributors_url")
+
+	e.FieldStart("contributors_url")
 	json.WriteURI(e, s.ContributorsURL)
-	more.More()
-	e.ObjField("deployments_url")
+
+	e.FieldStart("deployments_url")
 	json.WriteURI(e, s.DeploymentsURL)
-	more.More()
-	e.ObjField("downloads_url")
+
+	e.FieldStart("downloads_url")
 	json.WriteURI(e, s.DownloadsURL)
-	more.More()
-	e.ObjField("events_url")
+
+	e.FieldStart("events_url")
 	json.WriteURI(e, s.EventsURL)
-	more.More()
-	e.ObjField("forks_url")
+
+	e.FieldStart("forks_url")
 	json.WriteURI(e, s.ForksURL)
-	more.More()
-	e.ObjField("git_commits_url")
+
+	e.FieldStart("git_commits_url")
 	e.Str(s.GitCommitsURL)
-	more.More()
-	e.ObjField("git_refs_url")
+
+	e.FieldStart("git_refs_url")
 	e.Str(s.GitRefsURL)
-	more.More()
-	e.ObjField("git_tags_url")
+
+	e.FieldStart("git_tags_url")
 	e.Str(s.GitTagsURL)
-	more.More()
-	e.ObjField("git_url")
+
+	e.FieldStart("git_url")
 	e.Str(s.GitURL)
-	more.More()
-	e.ObjField("issue_comment_url")
+
+	e.FieldStart("issue_comment_url")
 	e.Str(s.IssueCommentURL)
-	more.More()
-	e.ObjField("issue_events_url")
+
+	e.FieldStart("issue_events_url")
 	e.Str(s.IssueEventsURL)
-	more.More()
-	e.ObjField("issues_url")
+
+	e.FieldStart("issues_url")
 	e.Str(s.IssuesURL)
-	more.More()
-	e.ObjField("keys_url")
+
+	e.FieldStart("keys_url")
 	e.Str(s.KeysURL)
-	more.More()
-	e.ObjField("labels_url")
+
+	e.FieldStart("labels_url")
 	e.Str(s.LabelsURL)
-	more.More()
-	e.ObjField("languages_url")
+
+	e.FieldStart("languages_url")
 	json.WriteURI(e, s.LanguagesURL)
-	more.More()
-	e.ObjField("merges_url")
+
+	e.FieldStart("merges_url")
 	json.WriteURI(e, s.MergesURL)
-	more.More()
-	e.ObjField("milestones_url")
+
+	e.FieldStart("milestones_url")
 	e.Str(s.MilestonesURL)
-	more.More()
-	e.ObjField("notifications_url")
+
+	e.FieldStart("notifications_url")
 	e.Str(s.NotificationsURL)
-	more.More()
-	e.ObjField("pulls_url")
+
+	e.FieldStart("pulls_url")
 	e.Str(s.PullsURL)
-	more.More()
-	e.ObjField("releases_url")
+
+	e.FieldStart("releases_url")
 	e.Str(s.ReleasesURL)
-	more.More()
-	e.ObjField("ssh_url")
+
+	e.FieldStart("ssh_url")
 	e.Str(s.SSHURL)
-	more.More()
-	e.ObjField("stargazers_url")
+
+	e.FieldStart("stargazers_url")
 	json.WriteURI(e, s.StargazersURL)
-	more.More()
-	e.ObjField("statuses_url")
+
+	e.FieldStart("statuses_url")
 	e.Str(s.StatusesURL)
-	more.More()
-	e.ObjField("subscribers_url")
+
+	e.FieldStart("subscribers_url")
 	json.WriteURI(e, s.SubscribersURL)
-	more.More()
-	e.ObjField("subscription_url")
+
+	e.FieldStart("subscription_url")
 	json.WriteURI(e, s.SubscriptionURL)
-	more.More()
-	e.ObjField("tags_url")
+
+	e.FieldStart("tags_url")
 	json.WriteURI(e, s.TagsURL)
-	more.More()
-	e.ObjField("teams_url")
+
+	e.FieldStart("teams_url")
 	json.WriteURI(e, s.TeamsURL)
-	more.More()
-	e.ObjField("trees_url")
+
+	e.FieldStart("trees_url")
 	e.Str(s.TreesURL)
-	more.More()
-	e.ObjField("clone_url")
+
+	e.FieldStart("clone_url")
 	e.Str(s.CloneURL)
-	more.More()
-	e.ObjField("mirror_url")
+
+	e.FieldStart("mirror_url")
 	s.MirrorURL.WriteJSON(e)
-	more.More()
-	e.ObjField("hooks_url")
+
+	e.FieldStart("hooks_url")
 	json.WriteURI(e, s.HooksURL)
-	more.More()
-	e.ObjField("svn_url")
+
+	e.FieldStart("svn_url")
 	json.WriteURI(e, s.SvnURL)
-	more.More()
-	e.ObjField("homepage")
+
+	e.FieldStart("homepage")
 	s.Homepage.WriteJSON(e)
-	more.More()
-	e.ObjField("language")
+
+	e.FieldStart("language")
 	s.Language.WriteJSON(e)
-	more.More()
-	e.ObjField("forks_count")
+
+	e.FieldStart("forks_count")
 	e.Int(s.ForksCount)
-	more.More()
-	e.ObjField("stargazers_count")
+
+	e.FieldStart("stargazers_count")
 	e.Int(s.StargazersCount)
-	more.More()
-	e.ObjField("watchers_count")
+
+	e.FieldStart("watchers_count")
 	e.Int(s.WatchersCount)
-	more.More()
-	e.ObjField("size")
+
+	e.FieldStart("size")
 	e.Int(s.Size)
-	more.More()
-	e.ObjField("default_branch")
+
+	e.FieldStart("default_branch")
 	e.Str(s.DefaultBranch)
-	more.More()
-	e.ObjField("open_issues_count")
+
+	e.FieldStart("open_issues_count")
 	e.Int(s.OpenIssuesCount)
 	if s.IsTemplate.Set {
-		more.More()
-		e.ObjField("is_template")
+		e.FieldStart("is_template")
 		s.IsTemplate.WriteJSON(e)
 	}
 	if s.Topics != nil {
-		more.More()
-		e.ObjField("topics")
-		more.Down()
+		e.FieldStart("topics")
 		e.ArrStart()
 		for _, elem := range s.Topics {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("has_issues")
+
+	e.FieldStart("has_issues")
 	e.Bool(s.HasIssues)
-	more.More()
-	e.ObjField("has_projects")
+
+	e.FieldStart("has_projects")
 	e.Bool(s.HasProjects)
-	more.More()
-	e.ObjField("has_wiki")
+
+	e.FieldStart("has_wiki")
 	e.Bool(s.HasWiki)
-	more.More()
-	e.ObjField("has_pages")
+
+	e.FieldStart("has_pages")
 	e.Bool(s.HasPages)
-	more.More()
-	e.ObjField("has_downloads")
+
+	e.FieldStart("has_downloads")
 	e.Bool(s.HasDownloads)
-	more.More()
-	e.ObjField("archived")
+
+	e.FieldStart("archived")
 	e.Bool(s.Archived)
-	more.More()
-	e.ObjField("disabled")
+
+	e.FieldStart("disabled")
 	e.Bool(s.Disabled)
 	if s.Visibility.Set {
-		more.More()
-		e.ObjField("visibility")
+		e.FieldStart("visibility")
 		s.Visibility.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("pushed_at")
+
+	e.FieldStart("pushed_at")
 	s.PushedAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	s.CreatedAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	s.UpdatedAt.WriteJSON(e, json.WriteDateTime)
 	if s.AllowRebaseMerge.Set {
-		more.More()
-		e.ObjField("allow_rebase_merge")
+		e.FieldStart("allow_rebase_merge")
 		s.AllowRebaseMerge.WriteJSON(e)
 	}
 	if s.TemplateRepository.Set {
-		more.More()
-		e.ObjField("template_repository")
+		e.FieldStart("template_repository")
 		s.TemplateRepository.WriteJSON(e)
 	}
 	if s.TempCloneToken.Set {
-		more.More()
-		e.ObjField("temp_clone_token")
+		e.FieldStart("temp_clone_token")
 		s.TempCloneToken.WriteJSON(e)
 	}
 	if s.AllowSquashMerge.Set {
-		more.More()
-		e.ObjField("allow_squash_merge")
+		e.FieldStart("allow_squash_merge")
 		s.AllowSquashMerge.WriteJSON(e)
 	}
 	if s.AllowAutoMerge.Set {
-		more.More()
-		e.ObjField("allow_auto_merge")
+		e.FieldStart("allow_auto_merge")
 		s.AllowAutoMerge.WriteJSON(e)
 	}
 	if s.DeleteBranchOnMerge.Set {
-		more.More()
-		e.ObjField("delete_branch_on_merge")
+		e.FieldStart("delete_branch_on_merge")
 		s.DeleteBranchOnMerge.WriteJSON(e)
 	}
 	if s.AllowMergeCommit.Set {
-		more.More()
-		e.ObjField("allow_merge_commit")
+		e.FieldStart("allow_merge_commit")
 		s.AllowMergeCommit.WriteJSON(e)
 	}
 	if s.AllowForking.Set {
-		more.More()
-		e.ObjField("allow_forking")
+		e.FieldStart("allow_forking")
 		s.AllowForking.WriteJSON(e)
 	}
 	if s.SubscribersCount.Set {
-		more.More()
-		e.ObjField("subscribers_count")
+		e.FieldStart("subscribers_count")
 		s.SubscribersCount.WriteJSON(e)
 	}
 	if s.NetworkCount.Set {
-		more.More()
-		e.ObjField("network_count")
+		e.FieldStart("network_count")
 		s.NetworkCount.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("open_issues")
+
+	e.FieldStart("open_issues")
 	e.Int(s.OpenIssues)
-	more.More()
-	e.ObjField("watchers")
+
+	e.FieldStart("watchers")
 	e.Int(s.Watchers)
 	if s.MasterBranch.Set {
-		more.More()
-		e.ObjField("master_branch")
+		e.FieldStart("master_branch")
 		s.MasterBranch.WriteJSON(e)
 	}
 	if s.StarredAt.Set {
-		more.More()
-		e.ObjField("starred_at")
+		e.FieldStart("starred_at")
 		s.StarredAt.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -34848,25 +32719,21 @@ func (s *NullableRepository) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s NullableRepositoryPermissions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("admin")
+
+	e.FieldStart("admin")
 	e.Bool(s.Admin)
-	more.More()
-	e.ObjField("pull")
+
+	e.FieldStart("pull")
 	e.Bool(s.Pull)
 	if s.Triage.Set {
-		more.More()
-		e.ObjField("triage")
+		e.FieldStart("triage")
 		s.Triage.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("push")
+
+	e.FieldStart("push")
 	e.Bool(s.Push)
 	if s.Maintain.Set {
-		more.More()
-		e.ObjField("maintain")
+		e.FieldStart("maintain")
 		s.Maintain.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -34917,418 +32784,332 @@ func (s *NullableRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s NullableRepositoryTemplateRepository) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.NodeID.Set {
-		more.More()
-		e.ObjField("node_id")
+		e.FieldStart("node_id")
 		s.NodeID.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.FullName.Set {
-		more.More()
-		e.ObjField("full_name")
+		e.FieldStart("full_name")
 		s.FullName.WriteJSON(e)
 	}
 	if s.Owner.Set {
-		more.More()
-		e.ObjField("owner")
+		e.FieldStart("owner")
 		s.Owner.WriteJSON(e)
 	}
 	if s.Private.Set {
-		more.More()
-		e.ObjField("private")
+		e.FieldStart("private")
 		s.Private.WriteJSON(e)
 	}
 	if s.HTMLURL.Set {
-		more.More()
-		e.ObjField("html_url")
+		e.FieldStart("html_url")
 		s.HTMLURL.WriteJSON(e)
 	}
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.Fork.Set {
-		more.More()
-		e.ObjField("fork")
+		e.FieldStart("fork")
 		s.Fork.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.ArchiveURL.Set {
-		more.More()
-		e.ObjField("archive_url")
+		e.FieldStart("archive_url")
 		s.ArchiveURL.WriteJSON(e)
 	}
 	if s.AssigneesURL.Set {
-		more.More()
-		e.ObjField("assignees_url")
+		e.FieldStart("assignees_url")
 		s.AssigneesURL.WriteJSON(e)
 	}
 	if s.BlobsURL.Set {
-		more.More()
-		e.ObjField("blobs_url")
+		e.FieldStart("blobs_url")
 		s.BlobsURL.WriteJSON(e)
 	}
 	if s.BranchesURL.Set {
-		more.More()
-		e.ObjField("branches_url")
+		e.FieldStart("branches_url")
 		s.BranchesURL.WriteJSON(e)
 	}
 	if s.CollaboratorsURL.Set {
-		more.More()
-		e.ObjField("collaborators_url")
+		e.FieldStart("collaborators_url")
 		s.CollaboratorsURL.WriteJSON(e)
 	}
 	if s.CommentsURL.Set {
-		more.More()
-		e.ObjField("comments_url")
+		e.FieldStart("comments_url")
 		s.CommentsURL.WriteJSON(e)
 	}
 	if s.CommitsURL.Set {
-		more.More()
-		e.ObjField("commits_url")
+		e.FieldStart("commits_url")
 		s.CommitsURL.WriteJSON(e)
 	}
 	if s.CompareURL.Set {
-		more.More()
-		e.ObjField("compare_url")
+		e.FieldStart("compare_url")
 		s.CompareURL.WriteJSON(e)
 	}
 	if s.ContentsURL.Set {
-		more.More()
-		e.ObjField("contents_url")
+		e.FieldStart("contents_url")
 		s.ContentsURL.WriteJSON(e)
 	}
 	if s.ContributorsURL.Set {
-		more.More()
-		e.ObjField("contributors_url")
+		e.FieldStart("contributors_url")
 		s.ContributorsURL.WriteJSON(e)
 	}
 	if s.DeploymentsURL.Set {
-		more.More()
-		e.ObjField("deployments_url")
+		e.FieldStart("deployments_url")
 		s.DeploymentsURL.WriteJSON(e)
 	}
 	if s.DownloadsURL.Set {
-		more.More()
-		e.ObjField("downloads_url")
+		e.FieldStart("downloads_url")
 		s.DownloadsURL.WriteJSON(e)
 	}
 	if s.EventsURL.Set {
-		more.More()
-		e.ObjField("events_url")
+		e.FieldStart("events_url")
 		s.EventsURL.WriteJSON(e)
 	}
 	if s.ForksURL.Set {
-		more.More()
-		e.ObjField("forks_url")
+		e.FieldStart("forks_url")
 		s.ForksURL.WriteJSON(e)
 	}
 	if s.GitCommitsURL.Set {
-		more.More()
-		e.ObjField("git_commits_url")
+		e.FieldStart("git_commits_url")
 		s.GitCommitsURL.WriteJSON(e)
 	}
 	if s.GitRefsURL.Set {
-		more.More()
-		e.ObjField("git_refs_url")
+		e.FieldStart("git_refs_url")
 		s.GitRefsURL.WriteJSON(e)
 	}
 	if s.GitTagsURL.Set {
-		more.More()
-		e.ObjField("git_tags_url")
+		e.FieldStart("git_tags_url")
 		s.GitTagsURL.WriteJSON(e)
 	}
 	if s.GitURL.Set {
-		more.More()
-		e.ObjField("git_url")
+		e.FieldStart("git_url")
 		s.GitURL.WriteJSON(e)
 	}
 	if s.IssueCommentURL.Set {
-		more.More()
-		e.ObjField("issue_comment_url")
+		e.FieldStart("issue_comment_url")
 		s.IssueCommentURL.WriteJSON(e)
 	}
 	if s.IssueEventsURL.Set {
-		more.More()
-		e.ObjField("issue_events_url")
+		e.FieldStart("issue_events_url")
 		s.IssueEventsURL.WriteJSON(e)
 	}
 	if s.IssuesURL.Set {
-		more.More()
-		e.ObjField("issues_url")
+		e.FieldStart("issues_url")
 		s.IssuesURL.WriteJSON(e)
 	}
 	if s.KeysURL.Set {
-		more.More()
-		e.ObjField("keys_url")
+		e.FieldStart("keys_url")
 		s.KeysURL.WriteJSON(e)
 	}
 	if s.LabelsURL.Set {
-		more.More()
-		e.ObjField("labels_url")
+		e.FieldStart("labels_url")
 		s.LabelsURL.WriteJSON(e)
 	}
 	if s.LanguagesURL.Set {
-		more.More()
-		e.ObjField("languages_url")
+		e.FieldStart("languages_url")
 		s.LanguagesURL.WriteJSON(e)
 	}
 	if s.MergesURL.Set {
-		more.More()
-		e.ObjField("merges_url")
+		e.FieldStart("merges_url")
 		s.MergesURL.WriteJSON(e)
 	}
 	if s.MilestonesURL.Set {
-		more.More()
-		e.ObjField("milestones_url")
+		e.FieldStart("milestones_url")
 		s.MilestonesURL.WriteJSON(e)
 	}
 	if s.NotificationsURL.Set {
-		more.More()
-		e.ObjField("notifications_url")
+		e.FieldStart("notifications_url")
 		s.NotificationsURL.WriteJSON(e)
 	}
 	if s.PullsURL.Set {
-		more.More()
-		e.ObjField("pulls_url")
+		e.FieldStart("pulls_url")
 		s.PullsURL.WriteJSON(e)
 	}
 	if s.ReleasesURL.Set {
-		more.More()
-		e.ObjField("releases_url")
+		e.FieldStart("releases_url")
 		s.ReleasesURL.WriteJSON(e)
 	}
 	if s.SSHURL.Set {
-		more.More()
-		e.ObjField("ssh_url")
+		e.FieldStart("ssh_url")
 		s.SSHURL.WriteJSON(e)
 	}
 	if s.StargazersURL.Set {
-		more.More()
-		e.ObjField("stargazers_url")
+		e.FieldStart("stargazers_url")
 		s.StargazersURL.WriteJSON(e)
 	}
 	if s.StatusesURL.Set {
-		more.More()
-		e.ObjField("statuses_url")
+		e.FieldStart("statuses_url")
 		s.StatusesURL.WriteJSON(e)
 	}
 	if s.SubscribersURL.Set {
-		more.More()
-		e.ObjField("subscribers_url")
+		e.FieldStart("subscribers_url")
 		s.SubscribersURL.WriteJSON(e)
 	}
 	if s.SubscriptionURL.Set {
-		more.More()
-		e.ObjField("subscription_url")
+		e.FieldStart("subscription_url")
 		s.SubscriptionURL.WriteJSON(e)
 	}
 	if s.TagsURL.Set {
-		more.More()
-		e.ObjField("tags_url")
+		e.FieldStart("tags_url")
 		s.TagsURL.WriteJSON(e)
 	}
 	if s.TeamsURL.Set {
-		more.More()
-		e.ObjField("teams_url")
+		e.FieldStart("teams_url")
 		s.TeamsURL.WriteJSON(e)
 	}
 	if s.TreesURL.Set {
-		more.More()
-		e.ObjField("trees_url")
+		e.FieldStart("trees_url")
 		s.TreesURL.WriteJSON(e)
 	}
 	if s.CloneURL.Set {
-		more.More()
-		e.ObjField("clone_url")
+		e.FieldStart("clone_url")
 		s.CloneURL.WriteJSON(e)
 	}
 	if s.MirrorURL.Set {
-		more.More()
-		e.ObjField("mirror_url")
+		e.FieldStart("mirror_url")
 		s.MirrorURL.WriteJSON(e)
 	}
 	if s.HooksURL.Set {
-		more.More()
-		e.ObjField("hooks_url")
+		e.FieldStart("hooks_url")
 		s.HooksURL.WriteJSON(e)
 	}
 	if s.SvnURL.Set {
-		more.More()
-		e.ObjField("svn_url")
+		e.FieldStart("svn_url")
 		s.SvnURL.WriteJSON(e)
 	}
 	if s.Homepage.Set {
-		more.More()
-		e.ObjField("homepage")
+		e.FieldStart("homepage")
 		s.Homepage.WriteJSON(e)
 	}
 	if s.Language.Set {
-		more.More()
-		e.ObjField("language")
+		e.FieldStart("language")
 		s.Language.WriteJSON(e)
 	}
 	if s.ForksCount.Set {
-		more.More()
-		e.ObjField("forks_count")
+		e.FieldStart("forks_count")
 		s.ForksCount.WriteJSON(e)
 	}
 	if s.StargazersCount.Set {
-		more.More()
-		e.ObjField("stargazers_count")
+		e.FieldStart("stargazers_count")
 		s.StargazersCount.WriteJSON(e)
 	}
 	if s.WatchersCount.Set {
-		more.More()
-		e.ObjField("watchers_count")
+		e.FieldStart("watchers_count")
 		s.WatchersCount.WriteJSON(e)
 	}
 	if s.Size.Set {
-		more.More()
-		e.ObjField("size")
+		e.FieldStart("size")
 		s.Size.WriteJSON(e)
 	}
 	if s.DefaultBranch.Set {
-		more.More()
-		e.ObjField("default_branch")
+		e.FieldStart("default_branch")
 		s.DefaultBranch.WriteJSON(e)
 	}
 	if s.OpenIssuesCount.Set {
-		more.More()
-		e.ObjField("open_issues_count")
+		e.FieldStart("open_issues_count")
 		s.OpenIssuesCount.WriteJSON(e)
 	}
 	if s.IsTemplate.Set {
-		more.More()
-		e.ObjField("is_template")
+		e.FieldStart("is_template")
 		s.IsTemplate.WriteJSON(e)
 	}
 	if s.Topics != nil {
-		more.More()
-		e.ObjField("topics")
-		more.Down()
+		e.FieldStart("topics")
 		e.ArrStart()
 		for _, elem := range s.Topics {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.HasIssues.Set {
-		more.More()
-		e.ObjField("has_issues")
+		e.FieldStart("has_issues")
 		s.HasIssues.WriteJSON(e)
 	}
 	if s.HasProjects.Set {
-		more.More()
-		e.ObjField("has_projects")
+		e.FieldStart("has_projects")
 		s.HasProjects.WriteJSON(e)
 	}
 	if s.HasWiki.Set {
-		more.More()
-		e.ObjField("has_wiki")
+		e.FieldStart("has_wiki")
 		s.HasWiki.WriteJSON(e)
 	}
 	if s.HasPages.Set {
-		more.More()
-		e.ObjField("has_pages")
+		e.FieldStart("has_pages")
 		s.HasPages.WriteJSON(e)
 	}
 	if s.HasDownloads.Set {
-		more.More()
-		e.ObjField("has_downloads")
+		e.FieldStart("has_downloads")
 		s.HasDownloads.WriteJSON(e)
 	}
 	if s.Archived.Set {
-		more.More()
-		e.ObjField("archived")
+		e.FieldStart("archived")
 		s.Archived.WriteJSON(e)
 	}
 	if s.Disabled.Set {
-		more.More()
-		e.ObjField("disabled")
+		e.FieldStart("disabled")
 		s.Disabled.WriteJSON(e)
 	}
 	if s.Visibility.Set {
-		more.More()
-		e.ObjField("visibility")
+		e.FieldStart("visibility")
 		s.Visibility.WriteJSON(e)
 	}
 	if s.PushedAt.Set {
-		more.More()
-		e.ObjField("pushed_at")
+		e.FieldStart("pushed_at")
 		s.PushedAt.WriteJSON(e)
 	}
 	if s.CreatedAt.Set {
-		more.More()
-		e.ObjField("created_at")
+		e.FieldStart("created_at")
 		s.CreatedAt.WriteJSON(e)
 	}
 	if s.UpdatedAt.Set {
-		more.More()
-		e.ObjField("updated_at")
+		e.FieldStart("updated_at")
 		s.UpdatedAt.WriteJSON(e)
 	}
 	if s.Permissions.Set {
-		more.More()
-		e.ObjField("permissions")
+		e.FieldStart("permissions")
 		s.Permissions.WriteJSON(e)
 	}
 	if s.AllowRebaseMerge.Set {
-		more.More()
-		e.ObjField("allow_rebase_merge")
+		e.FieldStart("allow_rebase_merge")
 		s.AllowRebaseMerge.WriteJSON(e)
 	}
 	if s.TempCloneToken.Set {
-		more.More()
-		e.ObjField("temp_clone_token")
+		e.FieldStart("temp_clone_token")
 		s.TempCloneToken.WriteJSON(e)
 	}
 	if s.AllowSquashMerge.Set {
-		more.More()
-		e.ObjField("allow_squash_merge")
+		e.FieldStart("allow_squash_merge")
 		s.AllowSquashMerge.WriteJSON(e)
 	}
 	if s.AllowAutoMerge.Set {
-		more.More()
-		e.ObjField("allow_auto_merge")
+		e.FieldStart("allow_auto_merge")
 		s.AllowAutoMerge.WriteJSON(e)
 	}
 	if s.DeleteBranchOnMerge.Set {
-		more.More()
-		e.ObjField("delete_branch_on_merge")
+		e.FieldStart("delete_branch_on_merge")
 		s.DeleteBranchOnMerge.WriteJSON(e)
 	}
 	if s.AllowMergeCommit.Set {
-		more.More()
-		e.ObjField("allow_merge_commit")
+		e.FieldStart("allow_merge_commit")
 		s.AllowMergeCommit.WriteJSON(e)
 	}
 	if s.SubscribersCount.Set {
-		more.More()
-		e.ObjField("subscribers_count")
+		e.FieldStart("subscribers_count")
 		s.SubscribersCount.WriteJSON(e)
 	}
 	if s.NetworkCount.Set {
-		more.More()
-		e.ObjField("network_count")
+		e.FieldStart("network_count")
 		s.NetworkCount.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -35765,96 +33546,76 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s NullableRepositoryTemplateRepositoryOwner) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Login.Set {
-		more.More()
-		e.ObjField("login")
+		e.FieldStart("login")
 		s.Login.WriteJSON(e)
 	}
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.NodeID.Set {
-		more.More()
-		e.ObjField("node_id")
+		e.FieldStart("node_id")
 		s.NodeID.WriteJSON(e)
 	}
 	if s.AvatarURL.Set {
-		more.More()
-		e.ObjField("avatar_url")
+		e.FieldStart("avatar_url")
 		s.AvatarURL.WriteJSON(e)
 	}
 	if s.GravatarID.Set {
-		more.More()
-		e.ObjField("gravatar_id")
+		e.FieldStart("gravatar_id")
 		s.GravatarID.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.HTMLURL.Set {
-		more.More()
-		e.ObjField("html_url")
+		e.FieldStart("html_url")
 		s.HTMLURL.WriteJSON(e)
 	}
 	if s.FollowersURL.Set {
-		more.More()
-		e.ObjField("followers_url")
+		e.FieldStart("followers_url")
 		s.FollowersURL.WriteJSON(e)
 	}
 	if s.FollowingURL.Set {
-		more.More()
-		e.ObjField("following_url")
+		e.FieldStart("following_url")
 		s.FollowingURL.WriteJSON(e)
 	}
 	if s.GistsURL.Set {
-		more.More()
-		e.ObjField("gists_url")
+		e.FieldStart("gists_url")
 		s.GistsURL.WriteJSON(e)
 	}
 	if s.StarredURL.Set {
-		more.More()
-		e.ObjField("starred_url")
+		e.FieldStart("starred_url")
 		s.StarredURL.WriteJSON(e)
 	}
 	if s.SubscriptionsURL.Set {
-		more.More()
-		e.ObjField("subscriptions_url")
+		e.FieldStart("subscriptions_url")
 		s.SubscriptionsURL.WriteJSON(e)
 	}
 	if s.OrganizationsURL.Set {
-		more.More()
-		e.ObjField("organizations_url")
+		e.FieldStart("organizations_url")
 		s.OrganizationsURL.WriteJSON(e)
 	}
 	if s.ReposURL.Set {
-		more.More()
-		e.ObjField("repos_url")
+		e.FieldStart("repos_url")
 		s.ReposURL.WriteJSON(e)
 	}
 	if s.EventsURL.Set {
-		more.More()
-		e.ObjField("events_url")
+		e.FieldStart("events_url")
 		s.EventsURL.WriteJSON(e)
 	}
 	if s.ReceivedEventsURL.Set {
-		more.More()
-		e.ObjField("received_events_url")
+		e.FieldStart("received_events_url")
 		s.ReceivedEventsURL.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	if s.SiteAdmin.Set {
-		more.More()
-		e.ObjField("site_admin")
+		e.FieldStart("site_admin")
 		s.SiteAdmin.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -35967,31 +33728,24 @@ func (s *NullableRepositoryTemplateRepositoryOwner) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s NullableRepositoryTemplateRepositoryPermissions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Admin.Set {
-		more.More()
-		e.ObjField("admin")
+		e.FieldStart("admin")
 		s.Admin.WriteJSON(e)
 	}
 	if s.Maintain.Set {
-		more.More()
-		e.ObjField("maintain")
+		e.FieldStart("maintain")
 		s.Maintain.WriteJSON(e)
 	}
 	if s.Push.Set {
-		more.More()
-		e.ObjField("push")
+		e.FieldStart("push")
 		s.Push.WriteJSON(e)
 	}
 	if s.Triage.Set {
-		more.More()
-		e.ObjField("triage")
+		e.FieldStart("triage")
 		s.Triage.WriteJSON(e)
 	}
 	if s.Pull.Set {
-		more.More()
-		e.ObjField("pull")
+		e.FieldStart("pull")
 		s.Pull.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -36039,39 +33793,32 @@ func (s *NullableRepositoryTemplateRepositoryPermissions) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s NullableScopedInstallation) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("permissions")
+
+	e.FieldStart("permissions")
 	s.Permissions.WriteJSON(e)
-	more.More()
-	e.ObjField("repository_selection")
+
+	e.FieldStart("repository_selection")
 	s.RepositorySelection.WriteJSON(e)
-	more.More()
-	e.ObjField("single_file_name")
+
+	e.FieldStart("single_file_name")
 	s.SingleFileName.WriteJSON(e)
 	if s.HasMultipleSingleFiles.Set {
-		more.More()
-		e.ObjField("has_multiple_single_files")
+		e.FieldStart("has_multiple_single_files")
 		s.HasMultipleSingleFiles.WriteJSON(e)
 	}
 	if s.SingleFilePaths != nil {
-		more.More()
-		e.ObjField("single_file_paths")
-		more.Down()
+		e.FieldStart("single_file_paths")
 		e.ArrStart()
 		for _, elem := range s.SingleFilePaths {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("repositories_url")
+
+	e.FieldStart("repositories_url")
 	json.WriteURI(e, s.RepositoriesURL)
-	more.More()
-	e.ObjField("account")
+
+	e.FieldStart("account")
 	s.Account.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -36152,25 +33899,23 @@ func (s *NullableScopedInstallationRepositorySelection) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s NullableSimpleCommit) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Str(s.ID)
-	more.More()
-	e.ObjField("tree_id")
+
+	e.FieldStart("tree_id")
 	e.Str(s.TreeID)
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
-	more.More()
-	e.ObjField("timestamp")
+
+	e.FieldStart("timestamp")
 	json.WriteDateTime(e, s.Timestamp)
-	more.More()
-	e.ObjField("author")
+
+	e.FieldStart("author")
 	s.Author.WriteJSON(e)
-	more.More()
-	e.ObjField("committer")
+
+	e.FieldStart("committer")
 	s.Committer.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -36224,13 +33969,11 @@ func (s *NullableSimpleCommit) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s NullableSimpleCommitAuthor) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("email")
+
+	e.FieldStart("email")
 	e.Str(s.Email)
 	e.ObjEnd()
 }
@@ -36264,13 +34007,11 @@ func (s *NullableSimpleCommitAuthor) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s NullableSimpleCommitCommitter) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("email")
+
+	e.FieldStart("email")
 	e.Str(s.Email)
 	e.ObjEnd()
 }
@@ -36304,75 +34045,70 @@ func (s *NullableSimpleCommitCommitter) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s NullableSimpleUser) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Email.Set {
-		more.More()
-		e.ObjField("email")
+		e.FieldStart("email")
 		s.Email.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("login")
+
+	e.FieldStart("login")
 	e.Str(s.Login)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("avatar_url")
+
+	e.FieldStart("avatar_url")
 	json.WriteURI(e, s.AvatarURL)
-	more.More()
-	e.ObjField("gravatar_id")
+
+	e.FieldStart("gravatar_id")
 	s.GravatarID.WriteJSON(e)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("followers_url")
+
+	e.FieldStart("followers_url")
 	json.WriteURI(e, s.FollowersURL)
-	more.More()
-	e.ObjField("following_url")
+
+	e.FieldStart("following_url")
 	e.Str(s.FollowingURL)
-	more.More()
-	e.ObjField("gists_url")
+
+	e.FieldStart("gists_url")
 	e.Str(s.GistsURL)
-	more.More()
-	e.ObjField("starred_url")
+
+	e.FieldStart("starred_url")
 	e.Str(s.StarredURL)
-	more.More()
-	e.ObjField("subscriptions_url")
+
+	e.FieldStart("subscriptions_url")
 	json.WriteURI(e, s.SubscriptionsURL)
-	more.More()
-	e.ObjField("organizations_url")
+
+	e.FieldStart("organizations_url")
 	json.WriteURI(e, s.OrganizationsURL)
-	more.More()
-	e.ObjField("repos_url")
+
+	e.FieldStart("repos_url")
 	json.WriteURI(e, s.ReposURL)
-	more.More()
-	e.ObjField("events_url")
+
+	e.FieldStart("events_url")
 	e.Str(s.EventsURL)
-	more.More()
-	e.ObjField("received_events_url")
+
+	e.FieldStart("received_events_url")
 	json.WriteURI(e, s.ReceivedEventsURL)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
-	more.More()
-	e.ObjField("site_admin")
+
+	e.FieldStart("site_admin")
 	e.Bool(s.SiteAdmin)
 	if s.StarredAt.Set {
-		more.More()
-		e.ObjField("starred_at")
+		e.FieldStart("starred_at")
 		s.StarredAt.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -36516,46 +34252,42 @@ func (s *NullableSimpleUser) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s NullableTeamSimple) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("members_url")
+
+	e.FieldStart("members_url")
 	e.Str(s.MembersURL)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
-	more.More()
-	e.ObjField("permission")
+
+	e.FieldStart("permission")
 	e.Str(s.Permission)
 	if s.Privacy.Set {
-		more.More()
-		e.ObjField("privacy")
+		e.FieldStart("privacy")
 		s.Privacy.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("repositories_url")
+
+	e.FieldStart("repositories_url")
 	json.WriteURI(e, s.RepositoriesURL)
-	more.More()
-	e.ObjField("slug")
+
+	e.FieldStart("slug")
 	e.Str(s.Slug)
 	if s.LdapDn.Set {
-		more.More()
-		e.ObjField("ldap_dn")
+		e.FieldStart("ldap_dn")
 		s.LdapDn.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -36646,36 +34378,28 @@ func (s *NullableTeamSimple) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OAuthAuthorizationsCreateAuthorizationReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Scopes.Set {
-		more.More()
-		e.ObjField("scopes")
+		e.FieldStart("scopes")
 		s.Scopes.WriteJSON(e)
 	}
 	if s.Note.Set {
-		more.More()
-		e.ObjField("note")
+		e.FieldStart("note")
 		s.Note.WriteJSON(e)
 	}
 	if s.NoteURL.Set {
-		more.More()
-		e.ObjField("note_url")
+		e.FieldStart("note_url")
 		s.NoteURL.WriteJSON(e)
 	}
 	if s.ClientID.Set {
-		more.More()
-		e.ObjField("client_id")
+		e.FieldStart("client_id")
 		s.ClientID.WriteJSON(e)
 	}
 	if s.ClientSecret.Set {
-		more.More()
-		e.ObjField("client_secret")
+		e.FieldStart("client_secret")
 		s.ClientSecret.WriteJSON(e)
 	}
 	if s.Fingerprint.Set {
-		more.More()
-		e.ObjField("fingerprint")
+		e.FieldStart("fingerprint")
 		s.Fingerprint.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -36738,8 +34462,6 @@ func (OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized) ReadJSO
 // WriteJSON implements json.Marshaler.
 func (s OAuthAuthorizationsDeleteAuthorizationNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -36770,8 +34492,6 @@ func (OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized) ReadJSON(d *jso
 // WriteJSON implements json.Marshaler.
 func (s OAuthAuthorizationsDeleteGrantNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -36812,24 +34532,19 @@ func (OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("client_secret")
+
+	e.FieldStart("client_secret")
 	e.Str(s.ClientSecret)
 	if s.Scopes.Set {
-		more.More()
-		e.ObjField("scopes")
+		e.FieldStart("scopes")
 		s.Scopes.WriteJSON(e)
 	}
 	if s.Note.Set {
-		more.More()
-		e.ObjField("note")
+		e.FieldStart("note")
 		s.Note.WriteJSON(e)
 	}
 	if s.NoteURL.Set {
-		more.More()
-		e.ObjField("note_url")
+		e.FieldStart("note_url")
 		s.NoteURL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -36873,29 +34588,23 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Rea
 // WriteJSON implements json.Marshaler.
 func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("client_secret")
+
+	e.FieldStart("client_secret")
 	e.Str(s.ClientSecret)
 	if s.Scopes.Set {
-		more.More()
-		e.ObjField("scopes")
+		e.FieldStart("scopes")
 		s.Scopes.WriteJSON(e)
 	}
 	if s.Note.Set {
-		more.More()
-		e.ObjField("note")
+		e.FieldStart("note")
 		s.Note.WriteJSON(e)
 	}
 	if s.NoteURL.Set {
-		more.More()
-		e.ObjField("note_url")
+		e.FieldStart("note_url")
 		s.NoteURL.WriteJSON(e)
 	}
 	if s.Fingerprint.Set {
-		more.More()
-		e.ObjField("fingerprint")
+		e.FieldStart("fingerprint")
 		s.Fingerprint.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -36982,50 +34691,36 @@ func (OAuthAuthorizationsListGrantsOKApplicationJSON) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s OAuthAuthorizationsUpdateAuthorizationReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Scopes.Set {
-		more.More()
-		e.ObjField("scopes")
+		e.FieldStart("scopes")
 		s.Scopes.WriteJSON(e)
 	}
 	if s.AddScopes != nil {
-		more.More()
-		e.ObjField("add_scopes")
-		more.Down()
+		e.FieldStart("add_scopes")
 		e.ArrStart()
 		for _, elem := range s.AddScopes {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.RemoveScopes != nil {
-		more.More()
-		e.ObjField("remove_scopes")
-		more.Down()
+		e.FieldStart("remove_scopes")
 		e.ArrStart()
 		for _, elem := range s.RemoveScopes {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Note.Set {
-		more.More()
-		e.ObjField("note")
+		e.FieldStart("note")
 		s.Note.WriteJSON(e)
 	}
 	if s.NoteURL.Set {
-		more.More()
-		e.ObjField("note_url")
+		e.FieldStart("note_url")
 		s.NoteURL.WriteJSON(e)
 	}
 	if s.Fingerprint.Set {
-		more.More()
-		e.ObjField("fingerprint")
+		e.FieldStart("fingerprint")
 		s.Fingerprint.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -40059,7 +37754,7 @@ func (o *OptNilBool) ReadJSON(d *json.Decoder) error {
 		}
 		o.Value = bool(v)
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40097,7 +37792,7 @@ func (o *OptNilCodeScanningAlertDismissedReason) ReadJSON(d *json.Decoder) error
 		}
 		o.Value = CodeScanningAlertDismissedReason(v)
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40135,7 +37830,7 @@ func (o *OptNilCodeScanningAlertRuleSecuritySeverityLevel) ReadJSON(d *json.Deco
 		}
 		o.Value = CodeScanningAlertRuleSecuritySeverityLevel(v)
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40173,7 +37868,7 @@ func (o *OptNilCodeScanningAlertRuleSeverity) ReadJSON(d *json.Decoder) error {
 		}
 		o.Value = CodeScanningAlertRuleSeverity(v)
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40211,7 +37906,7 @@ func (o *OptNilCodeScanningAlertRuleSummarySeverity) ReadJSON(d *json.Decoder) e
 		}
 		o.Value = CodeScanningAlertRuleSummarySeverity(v)
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40243,7 +37938,7 @@ func (o *OptNilCodeScanningAnalysisToolGUID) ReadJSON(d *json.Decoder) error {
 		o.Set = true
 		o.Null = false
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40275,7 +37970,7 @@ func (o *OptNilCodeScanningAnalysisToolVersion) ReadJSON(d *json.Decoder) error 
 		o.Set = true
 		o.Null = false
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40311,7 +38006,7 @@ func (o *OptNilDeploymentBranchPolicy) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40347,7 +38042,7 @@ func (o *OptNilFullRepositorySecurityAndAnalysis) ReadJSON(d *json.Decoder) erro
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40379,7 +38074,7 @@ func (o *OptNilGistHistoryArray) ReadJSON(d *json.Decoder) error {
 		o.Set = true
 		o.Null = false
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40415,7 +38110,7 @@ func (o *OptNilGistSimpleForkOf) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40447,7 +38142,7 @@ func (o *OptNilGistSimpleForksItemArray) ReadJSON(d *json.Decoder) error {
 		o.Set = true
 		o.Null = false
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40485,7 +38180,7 @@ func (o *OptNilInt) ReadJSON(d *json.Decoder) error {
 		}
 		o.Value = int(v)
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40521,7 +38216,7 @@ func (o *OptNilMarketplacePurchaseMarketplacePendingChange) ReadJSON(d *json.Dec
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40557,7 +38252,7 @@ func (o *OptNilMinimalRepositoryLicense) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40593,7 +38288,7 @@ func (o *OptNilNullableIntegration) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40629,7 +38324,7 @@ func (o *OptNilNullableMinimalRepository) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40665,7 +38360,7 @@ func (o *OptNilNullableMinimalRepositoryLicense) ReadJSON(d *json.Decoder) error
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40701,7 +38396,7 @@ func (o *OptNilNullableRepository) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40737,7 +38432,7 @@ func (o *OptNilNullableRepositoryTemplateRepository) ReadJSON(d *json.Decoder) e
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40773,7 +38468,7 @@ func (o *OptNilNullableScopedInstallation) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40809,7 +38504,7 @@ func (o *OptNilNullableSimpleUser) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40845,7 +38540,7 @@ func (o *OptNilNullableTeamSimple) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40883,7 +38578,7 @@ func (o *OptNilPageProtectedDomainState) ReadJSON(d *json.Decoder) error {
 		}
 		o.Value = PageProtectedDomainState(v)
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40919,7 +38614,7 @@ func (o *OptNilPagesHealthCheckAltDomain) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40957,7 +38652,7 @@ func (o *OptNilPullRequestReviewCommentStartSide) ReadJSON(d *json.Decoder) erro
 		}
 		o.Value = PullRequestReviewCommentStartSide(v)
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -40989,7 +38684,7 @@ func (o *OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) ReadJSON(d *
 		o.Set = true
 		o.Null = false
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -41025,7 +38720,7 @@ func (o *OptNilReposUpdateReqSecurityAndAnalysis) ReadJSON(d *json.Decoder) erro
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -41061,7 +38756,7 @@ func (o *OptNilRepositoryTemplateRepository) ReadJSON(d *json.Decoder) error {
 			return err
 		}
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -41099,7 +38794,7 @@ func (o *OptNilReviewCommentStartSide) ReadJSON(d *json.Decoder) error {
 		}
 		o.Value = ReviewCommentStartSide(v)
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -41137,7 +38832,7 @@ func (o *OptNilSecretScanningAlertResolution) ReadJSON(d *json.Decoder) error {
 		}
 		o.Value = SecretScanningAlertResolution(v)
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -41169,7 +38864,7 @@ func (o *OptNilSimpleUserArray) ReadJSON(d *json.Decoder) error {
 		o.Set = true
 		o.Null = false
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -41207,7 +38902,7 @@ func (o *OptNilString) ReadJSON(d *json.Decoder) error {
 		}
 		o.Value = string(v)
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -41239,7 +38934,7 @@ func (o *OptNilStringArray) ReadJSON(d *json.Decoder) error {
 		o.Set = true
 		o.Null = false
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -41271,7 +38966,7 @@ func (o *OptNilTeamArray) ReadJSON(d *json.Decoder) error {
 		o.Set = true
 		o.Null = false
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -41303,7 +38998,7 @@ func (o *OptNilTeamSimpleArray) ReadJSON(d *json.Decoder) error {
 		o.Set = true
 		o.Null = false
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -41341,7 +39036,7 @@ func (o *OptNilTime) ReadJSON(d *json.Decoder, format func(*json.Decoder) (time.
 		}
 		o.Value = v
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -41373,7 +39068,7 @@ func (o *OptNilTopicSearchResultItemAliasesItemArray) ReadJSON(d *json.Decoder) 
 		o.Set = true
 		o.Null = false
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -41405,7 +39100,7 @@ func (o *OptNilTopicSearchResultItemRelatedItemArray) ReadJSON(d *json.Decoder) 
 		o.Set = true
 		o.Null = false
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -41443,7 +39138,7 @@ func (o *OptNilURL) ReadJSON(d *json.Decoder) error {
 		}
 		o.Value = v
 		return nil
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}
@@ -44880,49 +42575,43 @@ func (o *OptWorkflowRunUsageBillableWINDOWS) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrgHook) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("ping_url")
+
+	e.FieldStart("ping_url")
 	json.WriteURI(e, s.PingURL)
 	if s.DeliveriesURL.Set {
-		more.More()
-		e.ObjField("deliveries_url")
+		e.FieldStart("deliveries_url")
 		s.DeliveriesURL.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("events")
-	more.Down()
+
+	e.FieldStart("events")
 	e.ArrStart()
 	for _, elem := range s.Events {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("active")
+
+	e.FieldStart("active")
 	e.Bool(s.Active)
-	more.More()
-	e.ObjField("config")
+
+	e.FieldStart("config")
 	s.Config.WriteJSON(e)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -45015,26 +42704,20 @@ func (s *OrgHook) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrgHookConfig) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.InsecureSsl.Set {
-		more.More()
-		e.ObjField("insecure_ssl")
+		e.FieldStart("insecure_ssl")
 		s.InsecureSsl.WriteJSON(e)
 	}
 	if s.ContentType.Set {
-		more.More()
-		e.ObjField("content_type")
+		e.FieldStart("content_type")
 		s.ContentType.WriteJSON(e)
 	}
 	if s.Secret.Set {
-		more.More()
-		e.ObjField("secret")
+		e.FieldStart("secret")
 		s.Secret.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -45077,29 +42760,26 @@ func (s *OrgHookConfig) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrgMembership) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	s.State.WriteJSON(e)
-	more.More()
-	e.ObjField("role")
+
+	e.FieldStart("role")
 	s.Role.WriteJSON(e)
-	more.More()
-	e.ObjField("organization_url")
+
+	e.FieldStart("organization_url")
 	json.WriteURI(e, s.OrganizationURL)
-	more.More()
-	e.ObjField("organization")
+
+	e.FieldStart("organization")
 	s.Organization.WriteJSON(e)
-	more.More()
-	e.ObjField("user")
+
+	e.FieldStart("user")
 	s.User.WriteJSON(e)
 	if s.Permissions.Set {
-		more.More()
-		e.ObjField("permissions")
+		e.FieldStart("permissions")
 		s.Permissions.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -45155,10 +42835,8 @@ func (s *OrgMembership) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrgMembershipPermissions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("can_create_repository")
+
+	e.FieldStart("can_create_repository")
 	e.Bool(s.CanCreateRepository)
 	e.ObjEnd()
 }
@@ -45222,23 +42900,20 @@ func (s *OrgMembershipState) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrganizationActionsSecret) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("visibility")
+
+	e.FieldStart("visibility")
 	s.Visibility.WriteJSON(e)
 	if s.SelectedRepositoriesURL.Set {
-		more.More()
-		e.ObjField("selected_repositories_url")
+		e.FieldStart("selected_repositories_url")
 		s.SelectedRepositoriesURL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -45306,193 +42981,167 @@ func (s *OrganizationActionsSecretVisibility) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrganizationFull) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("login")
+
+	e.FieldStart("login")
 	e.Str(s.Login)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("repos_url")
+
+	e.FieldStart("repos_url")
 	json.WriteURI(e, s.ReposURL)
-	more.More()
-	e.ObjField("events_url")
+
+	e.FieldStart("events_url")
 	json.WriteURI(e, s.EventsURL)
-	more.More()
-	e.ObjField("hooks_url")
+
+	e.FieldStart("hooks_url")
 	e.Str(s.HooksURL)
-	more.More()
-	e.ObjField("issues_url")
+
+	e.FieldStart("issues_url")
 	e.Str(s.IssuesURL)
-	more.More()
-	e.ObjField("members_url")
+
+	e.FieldStart("members_url")
 	e.Str(s.MembersURL)
-	more.More()
-	e.ObjField("public_members_url")
+
+	e.FieldStart("public_members_url")
 	e.Str(s.PublicMembersURL)
-	more.More()
-	e.ObjField("avatar_url")
+
+	e.FieldStart("avatar_url")
 	e.Str(s.AvatarURL)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Company.Set {
-		more.More()
-		e.ObjField("company")
+		e.FieldStart("company")
 		s.Company.WriteJSON(e)
 	}
 	if s.Blog.Set {
-		more.More()
-		e.ObjField("blog")
+		e.FieldStart("blog")
 		s.Blog.WriteJSON(e)
 	}
 	if s.Location.Set {
-		more.More()
-		e.ObjField("location")
+		e.FieldStart("location")
 		s.Location.WriteJSON(e)
 	}
 	if s.Email.Set {
-		more.More()
-		e.ObjField("email")
+		e.FieldStart("email")
 		s.Email.WriteJSON(e)
 	}
 	if s.TwitterUsername.Set {
-		more.More()
-		e.ObjField("twitter_username")
+		e.FieldStart("twitter_username")
 		s.TwitterUsername.WriteJSON(e)
 	}
 	if s.IsVerified.Set {
-		more.More()
-		e.ObjField("is_verified")
+		e.FieldStart("is_verified")
 		s.IsVerified.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("has_organization_projects")
+
+	e.FieldStart("has_organization_projects")
 	e.Bool(s.HasOrganizationProjects)
-	more.More()
-	e.ObjField("has_repository_projects")
+
+	e.FieldStart("has_repository_projects")
 	e.Bool(s.HasRepositoryProjects)
-	more.More()
-	e.ObjField("public_repos")
+
+	e.FieldStart("public_repos")
 	e.Int(s.PublicRepos)
-	more.More()
-	e.ObjField("public_gists")
+
+	e.FieldStart("public_gists")
 	e.Int(s.PublicGists)
-	more.More()
-	e.ObjField("followers")
+
+	e.FieldStart("followers")
 	e.Int(s.Followers)
-	more.More()
-	e.ObjField("following")
+
+	e.FieldStart("following")
 	e.Int(s.Following)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	if s.TotalPrivateRepos.Set {
-		more.More()
-		e.ObjField("total_private_repos")
+		e.FieldStart("total_private_repos")
 		s.TotalPrivateRepos.WriteJSON(e)
 	}
 	if s.OwnedPrivateRepos.Set {
-		more.More()
-		e.ObjField("owned_private_repos")
+		e.FieldStart("owned_private_repos")
 		s.OwnedPrivateRepos.WriteJSON(e)
 	}
 	if s.PrivateGists.Set {
-		more.More()
-		e.ObjField("private_gists")
+		e.FieldStart("private_gists")
 		s.PrivateGists.WriteJSON(e)
 	}
 	if s.DiskUsage.Set {
-		more.More()
-		e.ObjField("disk_usage")
+		e.FieldStart("disk_usage")
 		s.DiskUsage.WriteJSON(e)
 	}
 	if s.Collaborators.Set {
-		more.More()
-		e.ObjField("collaborators")
+		e.FieldStart("collaborators")
 		s.Collaborators.WriteJSON(e)
 	}
 	if s.BillingEmail.Set {
-		more.More()
-		e.ObjField("billing_email")
+		e.FieldStart("billing_email")
 		s.BillingEmail.WriteJSON(e)
 	}
 	if s.Plan.Set {
-		more.More()
-		e.ObjField("plan")
+		e.FieldStart("plan")
 		s.Plan.WriteJSON(e)
 	}
 	if s.DefaultRepositoryPermission.Set {
-		more.More()
-		e.ObjField("default_repository_permission")
+		e.FieldStart("default_repository_permission")
 		s.DefaultRepositoryPermission.WriteJSON(e)
 	}
 	if s.MembersCanCreateRepositories.Set {
-		more.More()
-		e.ObjField("members_can_create_repositories")
+		e.FieldStart("members_can_create_repositories")
 		s.MembersCanCreateRepositories.WriteJSON(e)
 	}
 	if s.TwoFactorRequirementEnabled.Set {
-		more.More()
-		e.ObjField("two_factor_requirement_enabled")
+		e.FieldStart("two_factor_requirement_enabled")
 		s.TwoFactorRequirementEnabled.WriteJSON(e)
 	}
 	if s.MembersAllowedRepositoryCreationType.Set {
-		more.More()
-		e.ObjField("members_allowed_repository_creation_type")
+		e.FieldStart("members_allowed_repository_creation_type")
 		s.MembersAllowedRepositoryCreationType.WriteJSON(e)
 	}
 	if s.MembersCanCreatePublicRepositories.Set {
-		more.More()
-		e.ObjField("members_can_create_public_repositories")
+		e.FieldStart("members_can_create_public_repositories")
 		s.MembersCanCreatePublicRepositories.WriteJSON(e)
 	}
 	if s.MembersCanCreatePrivateRepositories.Set {
-		more.More()
-		e.ObjField("members_can_create_private_repositories")
+		e.FieldStart("members_can_create_private_repositories")
 		s.MembersCanCreatePrivateRepositories.WriteJSON(e)
 	}
 	if s.MembersCanCreateInternalRepositories.Set {
-		more.More()
-		e.ObjField("members_can_create_internal_repositories")
+		e.FieldStart("members_can_create_internal_repositories")
 		s.MembersCanCreateInternalRepositories.WriteJSON(e)
 	}
 	if s.MembersCanCreatePages.Set {
-		more.More()
-		e.ObjField("members_can_create_pages")
+		e.FieldStart("members_can_create_pages")
 		s.MembersCanCreatePages.WriteJSON(e)
 	}
 	if s.MembersCanCreatePublicPages.Set {
-		more.More()
-		e.ObjField("members_can_create_public_pages")
+		e.FieldStart("members_can_create_public_pages")
 		s.MembersCanCreatePublicPages.WriteJSON(e)
 	}
 	if s.MembersCanCreatePrivatePages.Set {
-		more.More()
-		e.ObjField("members_can_create_private_pages")
+		e.FieldStart("members_can_create_private_pages")
 		s.MembersCanCreatePrivatePages.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
 	e.ObjEnd()
 }
@@ -45764,25 +43413,21 @@ func (s *OrganizationFull) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrganizationFullPlan) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("space")
+
+	e.FieldStart("space")
 	e.Int(s.Space)
-	more.More()
-	e.ObjField("private_repos")
+
+	e.FieldStart("private_repos")
 	e.Int(s.PrivateRepos)
 	if s.FilledSeats.Set {
-		more.More()
-		e.ObjField("filled_seats")
+		e.FieldStart("filled_seats")
 		s.FilledSeats.WriteJSON(e)
 	}
 	if s.Seats.Set {
-		more.More()
-		e.ObjField("seats")
+		e.FieldStart("seats")
 		s.Seats.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -45833,44 +43478,40 @@ func (s *OrganizationFullPlan) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrganizationInvitation) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("login")
+
+	e.FieldStart("login")
 	s.Login.WriteJSON(e)
-	more.More()
-	e.ObjField("email")
+
+	e.FieldStart("email")
 	s.Email.WriteJSON(e)
-	more.More()
-	e.ObjField("role")
+
+	e.FieldStart("role")
 	e.Str(s.Role)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	e.Str(s.CreatedAt)
 	if s.FailedAt.Set {
-		more.More()
-		e.ObjField("failed_at")
+		e.FieldStart("failed_at")
 		s.FailedAt.WriteJSON(e)
 	}
 	if s.FailedReason.Set {
-		more.More()
-		e.ObjField("failed_reason")
+		e.FieldStart("failed_reason")
 		s.FailedReason.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("inviter")
+
+	e.FieldStart("inviter")
 	s.Inviter.WriteJSON(e)
-	more.More()
-	e.ObjField("team_count")
+
+	e.FieldStart("team_count")
 	e.Int(s.TeamCount)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("invitation_teams_url")
+
+	e.FieldStart("invitation_teams_url")
 	e.Str(s.InvitationTeamsURL)
 	e.ObjEnd()
 }
@@ -45950,66 +43591,52 @@ func (s *OrganizationInvitation) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrganizationSecretScanningAlert) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Number.Set {
-		more.More()
-		e.ObjField("number")
+		e.FieldStart("number")
 		s.Number.WriteJSON(e)
 	}
 	if s.CreatedAt.Set {
-		more.More()
-		e.ObjField("created_at")
+		e.FieldStart("created_at")
 		s.CreatedAt.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.HTMLURL.Set {
-		more.More()
-		e.ObjField("html_url")
+		e.FieldStart("html_url")
 		s.HTMLURL.WriteJSON(e)
 	}
 	if s.LocationsURL.Set {
-		more.More()
-		e.ObjField("locations_url")
+		e.FieldStart("locations_url")
 		s.LocationsURL.WriteJSON(e)
 	}
 	if s.State.Set {
-		more.More()
-		e.ObjField("state")
+		e.FieldStart("state")
 		s.State.WriteJSON(e)
 	}
 	if s.Resolution.Set {
-		more.More()
-		e.ObjField("resolution")
+		e.FieldStart("resolution")
 		s.Resolution.WriteJSON(e)
 	}
 	if s.ResolvedAt.Set {
-		more.More()
-		e.ObjField("resolved_at")
+		e.FieldStart("resolved_at")
 		s.ResolvedAt.WriteJSON(e, json.WriteDateTime)
 	}
 	if s.ResolvedBy.Set {
-		more.More()
-		e.ObjField("resolved_by")
+		e.FieldStart("resolved_by")
 		s.ResolvedBy.WriteJSON(e)
 	}
 	if s.SecretType.Set {
-		more.More()
-		e.ObjField("secret_type")
+		e.FieldStart("secret_type")
 		s.SecretType.WriteJSON(e)
 	}
 	if s.Secret.Set {
-		more.More()
-		e.ObjField("secret")
+		e.FieldStart("secret")
 		s.Secret.WriteJSON(e)
 	}
 	if s.Repository.Set {
-		more.More()
-		e.ObjField("repository")
+		e.FieldStart("repository")
 		s.Repository.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -46092,43 +43719,41 @@ func (s *OrganizationSecretScanningAlert) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrganizationSimple) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("login")
+
+	e.FieldStart("login")
 	e.Str(s.Login)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("repos_url")
+
+	e.FieldStart("repos_url")
 	json.WriteURI(e, s.ReposURL)
-	more.More()
-	e.ObjField("events_url")
+
+	e.FieldStart("events_url")
 	json.WriteURI(e, s.EventsURL)
-	more.More()
-	e.ObjField("hooks_url")
+
+	e.FieldStart("hooks_url")
 	e.Str(s.HooksURL)
-	more.More()
-	e.ObjField("issues_url")
+
+	e.FieldStart("issues_url")
 	e.Str(s.IssuesURL)
-	more.More()
-	e.ObjField("members_url")
+
+	e.FieldStart("members_url")
 	e.Str(s.MembersURL)
-	more.More()
-	e.ObjField("public_members_url")
+
+	e.FieldStart("public_members_url")
 	e.Str(s.PublicMembersURL)
-	more.More()
-	e.ObjField("avatar_url")
+
+	e.FieldStart("avatar_url")
 	e.Str(s.AvatarURL)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -46220,8 +43845,6 @@ func (s *OrganizationSimple) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrgsBlockUserNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46242,8 +43865,6 @@ func (s *OrgsBlockUserNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrgsCancelInvitationNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46264,8 +43885,6 @@ func (s *OrgsCancelInvitationNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrgsCheckBlockedUserNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46286,8 +43905,6 @@ func (s *OrgsCheckBlockedUserNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrgsCheckMembershipForUserFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46308,8 +43925,6 @@ func (s *OrgsCheckMembershipForUserFound) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrgsCheckMembershipForUserNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46330,8 +43945,6 @@ func (s *OrgsCheckMembershipForUserNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrgsCheckMembershipForUserNotFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46352,8 +43965,6 @@ func (s *OrgsCheckMembershipForUserNotFound) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrgsCheckPublicMembershipForUserNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46374,8 +43985,6 @@ func (s *OrgsCheckPublicMembershipForUserNoContent) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s OrgsCheckPublicMembershipForUserNotFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46396,8 +44005,6 @@ func (s *OrgsCheckPublicMembershipForUserNotFound) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s OrgsConvertMemberToOutsideCollaboratorAccepted) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46418,8 +44025,6 @@ func (s *OrgsConvertMemberToOutsideCollaboratorAccepted) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s OrgsConvertMemberToOutsideCollaboratorForbidden) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46440,8 +44045,6 @@ func (s *OrgsConvertMemberToOutsideCollaboratorForbidden) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s OrgsConvertMemberToOutsideCollaboratorNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46462,34 +44065,25 @@ func (s *OrgsConvertMemberToOutsideCollaboratorNoContent) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s OrgsCreateInvitationReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.InviteeID.Set {
-		more.More()
-		e.ObjField("invitee_id")
+		e.FieldStart("invitee_id")
 		s.InviteeID.WriteJSON(e)
 	}
 	if s.Email.Set {
-		more.More()
-		e.ObjField("email")
+		e.FieldStart("email")
 		s.Email.WriteJSON(e)
 	}
 	if s.Role.Set {
-		more.More()
-		e.ObjField("role")
+		e.FieldStart("role")
 		s.Role.WriteJSON(e)
 	}
 	if s.TeamIds != nil {
-		more.More()
-		e.ObjField("team_ids")
-		more.Down()
+		e.FieldStart("team_ids")
 		e.ArrStart()
 		for _, elem := range s.TeamIds {
-			more.More()
 			e.Int(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -46558,29 +44152,22 @@ func (s *OrgsCreateInvitationReqRole) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrgsCreateWebhookReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("config")
+
+	e.FieldStart("config")
 	s.Config.WriteJSON(e)
 	if s.Events != nil {
-		more.More()
-		e.ObjField("events")
-		more.Down()
+		e.FieldStart("events")
 		e.ArrStart()
 		for _, elem := range s.Events {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Active.Set {
-		more.More()
-		e.ObjField("active")
+		e.FieldStart("active")
 		s.Active.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -46632,32 +44219,25 @@ func (s *OrgsCreateWebhookReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrgsCreateWebhookReqConfig) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	// Unsupported kind "alias".
 	if s.ContentType.Set {
-		more.More()
-		e.ObjField("content_type")
+		e.FieldStart("content_type")
 		s.ContentType.WriteJSON(e)
 	}
 	if s.Secret.Set {
-		more.More()
-		e.ObjField("secret")
+		e.FieldStart("secret")
 		s.Secret.WriteJSON(e)
 	}
 	if s.InsecureSsl != nil {
-		more.More()
-		e.ObjField("insecure_ssl")
+		e.FieldStart("insecure_ssl")
 		s.InsecureSsl.WriteJSON(e)
 	}
 	if s.Username.Set {
-		more.More()
-		e.ObjField("username")
+		e.FieldStart("username")
 		s.Username.WriteJSON(e)
 	}
 	if s.Password.Set {
-		more.More()
-		e.ObjField("password")
+		e.FieldStart("password")
 		s.Password.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -46709,8 +44289,6 @@ func (s *OrgsCreateWebhookReqConfig) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrgsDeleteWebhookNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46823,8 +44401,6 @@ func (s *OrgsListMembersFilter) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrgsListMembersFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46908,8 +44484,6 @@ func (OrgsListWebhooksOKApplicationJSON) ReadJSON(d *json.Decoder) error { retur
 // WriteJSON implements json.Marshaler.
 func (s OrgsPingWebhookNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46930,8 +44504,6 @@ func (s *OrgsPingWebhookNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrgsRemoveMemberNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46960,8 +44532,6 @@ func (OrgsRemoveMembershipForUserApplicationJSONNotFound) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s OrgsRemoveMembershipForUserNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46982,8 +44552,6 @@ func (s *OrgsRemoveMembershipForUserNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrgsRemoveOutsideCollaboratorNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47004,16 +44572,12 @@ func (s *OrgsRemoveOutsideCollaboratorNoContent) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s OrgsRemoveOutsideCollaboratorUnprocessableEntity) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.DocumentationURL.Set {
-		more.More()
-		e.ObjField("documentation_url")
+		e.FieldStart("documentation_url")
 		s.DocumentationURL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -47046,8 +44610,6 @@ func (s *OrgsRemoveOutsideCollaboratorUnprocessableEntity) ReadJSON(d *json.Deco
 // WriteJSON implements json.Marshaler.
 func (s OrgsRemovePublicMembershipForAuthenticatedUserNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47068,8 +44630,6 @@ func (s *OrgsRemovePublicMembershipForAuthenticatedUserNoContent) ReadJSON(d *js
 // WriteJSON implements json.Marshaler.
 func (s OrgsRemoveSamlSSOAuthorizationNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47090,11 +44650,8 @@ func (s *OrgsRemoveSamlSSOAuthorizationNoContent) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s OrgsSetMembershipForUserReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Role.Set {
-		more.More()
-		e.ObjField("role")
+		e.FieldStart("role")
 		s.Role.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -47140,8 +44697,6 @@ func (s *OrgsSetMembershipForUserReqRole) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrgsSetPublicMembershipForAuthenticatedUserNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47162,8 +44717,6 @@ func (s *OrgsSetPublicMembershipForAuthenticatedUserNoContent) ReadJSON(d *json.
 // WriteJSON implements json.Marshaler.
 func (s OrgsUnblockUserNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47184,10 +44737,8 @@ func (s *OrgsUnblockUserNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrgsUpdateMembershipForAuthenticatedUserReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	s.State.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -47231,101 +44782,80 @@ func (s *OrgsUpdateMembershipForAuthenticatedUserReqState) ReadJSON(d *json.Deco
 // WriteJSON implements json.Marshaler.
 func (s OrgsUpdateReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.BillingEmail.Set {
-		more.More()
-		e.ObjField("billing_email")
+		e.FieldStart("billing_email")
 		s.BillingEmail.WriteJSON(e)
 	}
 	if s.Company.Set {
-		more.More()
-		e.ObjField("company")
+		e.FieldStart("company")
 		s.Company.WriteJSON(e)
 	}
 	if s.Email.Set {
-		more.More()
-		e.ObjField("email")
+		e.FieldStart("email")
 		s.Email.WriteJSON(e)
 	}
 	if s.TwitterUsername.Set {
-		more.More()
-		e.ObjField("twitter_username")
+		e.FieldStart("twitter_username")
 		s.TwitterUsername.WriteJSON(e)
 	}
 	if s.Location.Set {
-		more.More()
-		e.ObjField("location")
+		e.FieldStart("location")
 		s.Location.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.HasOrganizationProjects.Set {
-		more.More()
-		e.ObjField("has_organization_projects")
+		e.FieldStart("has_organization_projects")
 		s.HasOrganizationProjects.WriteJSON(e)
 	}
 	if s.HasRepositoryProjects.Set {
-		more.More()
-		e.ObjField("has_repository_projects")
+		e.FieldStart("has_repository_projects")
 		s.HasRepositoryProjects.WriteJSON(e)
 	}
 	if s.DefaultRepositoryPermission.Set {
-		more.More()
-		e.ObjField("default_repository_permission")
+		e.FieldStart("default_repository_permission")
 		s.DefaultRepositoryPermission.WriteJSON(e)
 	}
 	if s.MembersCanCreateRepositories.Set {
-		more.More()
-		e.ObjField("members_can_create_repositories")
+		e.FieldStart("members_can_create_repositories")
 		s.MembersCanCreateRepositories.WriteJSON(e)
 	}
 	if s.MembersCanCreateInternalRepositories.Set {
-		more.More()
-		e.ObjField("members_can_create_internal_repositories")
+		e.FieldStart("members_can_create_internal_repositories")
 		s.MembersCanCreateInternalRepositories.WriteJSON(e)
 	}
 	if s.MembersCanCreatePrivateRepositories.Set {
-		more.More()
-		e.ObjField("members_can_create_private_repositories")
+		e.FieldStart("members_can_create_private_repositories")
 		s.MembersCanCreatePrivateRepositories.WriteJSON(e)
 	}
 	if s.MembersCanCreatePublicRepositories.Set {
-		more.More()
-		e.ObjField("members_can_create_public_repositories")
+		e.FieldStart("members_can_create_public_repositories")
 		s.MembersCanCreatePublicRepositories.WriteJSON(e)
 	}
 	if s.MembersAllowedRepositoryCreationType.Set {
-		more.More()
-		e.ObjField("members_allowed_repository_creation_type")
+		e.FieldStart("members_allowed_repository_creation_type")
 		s.MembersAllowedRepositoryCreationType.WriteJSON(e)
 	}
 	if s.MembersCanCreatePages.Set {
-		more.More()
-		e.ObjField("members_can_create_pages")
+		e.FieldStart("members_can_create_pages")
 		s.MembersCanCreatePages.WriteJSON(e)
 	}
 	if s.MembersCanCreatePublicPages.Set {
-		more.More()
-		e.ObjField("members_can_create_public_pages")
+		e.FieldStart("members_can_create_public_pages")
 		s.MembersCanCreatePublicPages.WriteJSON(e)
 	}
 	if s.MembersCanCreatePrivatePages.Set {
-		more.More()
-		e.ObjField("members_can_create_private_pages")
+		e.FieldStart("members_can_create_private_pages")
 		s.MembersCanCreatePrivatePages.WriteJSON(e)
 	}
 	if s.Blog.Set {
-		more.More()
-		e.ObjField("blog")
+		e.FieldStart("blog")
 		s.Blog.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -47479,26 +45009,20 @@ func (s *OrgsUpdateReqMembersAllowedRepositoryCreationType) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s OrgsUpdateWebhookConfigForOrgReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.ContentType.Set {
-		more.More()
-		e.ObjField("content_type")
+		e.FieldStart("content_type")
 		s.ContentType.WriteJSON(e)
 	}
 	if s.Secret.Set {
-		more.More()
-		e.ObjField("secret")
+		e.FieldStart("secret")
 		s.Secret.WriteJSON(e)
 	}
 	if s.InsecureSsl != nil {
-		more.More()
-		e.ObjField("insecure_ssl")
+		e.FieldStart("insecure_ssl")
 		s.InsecureSsl.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -47543,33 +45067,24 @@ func (s *OrgsUpdateWebhookConfigForOrgReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrgsUpdateWebhookReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Config.Set {
-		more.More()
-		e.ObjField("config")
+		e.FieldStart("config")
 		s.Config.WriteJSON(e)
 	}
 	if s.Events != nil {
-		more.More()
-		e.ObjField("events")
-		more.Down()
+		e.FieldStart("events")
 		e.ArrStart()
 		for _, elem := range s.Events {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Active.Set {
-		more.More()
-		e.ObjField("active")
+		e.FieldStart("active")
 		s.Active.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -47621,22 +45136,17 @@ func (s *OrgsUpdateWebhookReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s OrgsUpdateWebhookReqConfig) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	// Unsupported kind "alias".
 	if s.ContentType.Set {
-		more.More()
-		e.ObjField("content_type")
+		e.FieldStart("content_type")
 		s.ContentType.WriteJSON(e)
 	}
 	if s.Secret.Set {
-		more.More()
-		e.ObjField("secret")
+		e.FieldStart("secret")
 		s.Secret.WriteJSON(e)
 	}
 	if s.InsecureSsl != nil {
-		more.More()
-		e.ObjField("insecure_ssl")
+		e.FieldStart("insecure_ssl")
 		s.InsecureSsl.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -47678,44 +45188,40 @@ func (s *OrgsUpdateWebhookReqConfig) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Package) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("package_type")
+
+	e.FieldStart("package_type")
 	s.PackageType.WriteJSON(e)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	e.Str(s.URL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	e.Str(s.HTMLURL)
-	more.More()
-	e.ObjField("version_count")
+
+	e.FieldStart("version_count")
 	e.Int(s.VersionCount)
-	more.More()
-	e.ObjField("visibility")
+
+	e.FieldStart("visibility")
 	s.Visibility.WriteJSON(e)
 	if s.Owner.Set {
-		more.More()
-		e.ObjField("owner")
+		e.FieldStart("owner")
 		s.Owner.WriteJSON(e)
 	}
 	if s.Repository.Set {
-		more.More()
-		e.ObjField("repository")
+		e.FieldStart("repository")
 		s.Repository.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
 	e.ObjEnd()
 }
@@ -47815,49 +45321,42 @@ func (s *PackagePackageType) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PackageVersion) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	e.Str(s.URL)
-	more.More()
-	e.ObjField("package_html_url")
+
+	e.FieldStart("package_html_url")
 	e.Str(s.PackageHTMLURL)
 	if s.HTMLURL.Set {
-		more.More()
-		e.ObjField("html_url")
+		e.FieldStart("html_url")
 		s.HTMLURL.WriteJSON(e)
 	}
 	if s.License.Set {
-		more.More()
-		e.ObjField("license")
+		e.FieldStart("license")
 		s.License.WriteJSON(e)
 	}
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
 	if s.DeletedAt.Set {
-		more.More()
-		e.ObjField("deleted_at")
+		e.FieldStart("deleted_at")
 		s.DeletedAt.WriteJSON(e, json.WriteDateTime)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -47941,19 +45440,15 @@ func (s *PackageVersion) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PackageVersionMetadata) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("package_type")
+
+	e.FieldStart("package_type")
 	s.PackageType.WriteJSON(e)
 	if s.Container.Set {
-		more.More()
-		e.ObjField("container")
+		e.FieldStart("container")
 		s.Container.WriteJSON(e)
 	}
 	if s.Docker.Set {
-		more.More()
-		e.ObjField("docker")
+		e.FieldStart("docker")
 		s.Docker.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -47990,18 +45485,13 @@ func (s *PackageVersionMetadata) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PackageVersionMetadataContainer) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("tags")
-	more.Down()
+
+	e.FieldStart("tags")
 	e.ArrStart()
 	for _, elem := range s.Tags {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -48036,19 +45526,13 @@ func (s *PackageVersionMetadataContainer) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PackageVersionMetadataDocker) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Tag != nil {
-		more.More()
-		e.ObjField("tag")
-		more.Down()
+		e.FieldStart("tag")
 		e.ArrStart()
 		for _, elem := range s.Tag {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -48120,16 +45604,14 @@ func (s *PackageVisibility) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PackagesBillingUsage) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_gigabytes_bandwidth_used")
+
+	e.FieldStart("total_gigabytes_bandwidth_used")
 	e.Int(s.TotalGigabytesBandwidthUsed)
-	more.More()
-	e.ObjField("total_paid_gigabytes_bandwidth_used")
+
+	e.FieldStart("total_paid_gigabytes_bandwidth_used")
 	e.Int(s.TotalPaidGigabytesBandwidthUsed)
-	more.More()
-	e.ObjField("included_gigabytes_bandwidth")
+
+	e.FieldStart("included_gigabytes_bandwidth")
 	e.Int(s.IncludedGigabytesBandwidth)
 	e.ObjEnd()
 }
@@ -48185,8 +45667,6 @@ func (PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized) Read
 // WriteJSON implements json.Marshaler.
 func (s PackagesDeletePackageForAuthenticatedUserNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48238,8 +45718,6 @@ func (PackagesDeletePackageForOrgApplicationJSONUnauthorized) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s PackagesDeletePackageForOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48293,8 +45771,6 @@ func (PackagesDeletePackageForUserApplicationJSONUnauthorized) ReadJSON(d *json.
 // WriteJSON implements json.Marshaler.
 func (s PackagesDeletePackageForUserNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48351,8 +45827,6 @@ func (PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorize
 // WriteJSON implements json.Marshaler.
 func (s PackagesDeletePackageVersionForAuthenticatedUserNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48406,8 +45880,6 @@ func (PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized) ReadJSON(d 
 // WriteJSON implements json.Marshaler.
 func (s PackagesDeletePackageVersionForOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48461,8 +45933,6 @@ func (PackagesDeletePackageVersionForUserApplicationJSONUnauthorized) ReadJSON(d
 // WriteJSON implements json.Marshaler.
 func (s PackagesDeletePackageVersionForUserNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48924,8 +46394,6 @@ func (PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized) Rea
 // WriteJSON implements json.Marshaler.
 func (s PackagesRestorePackageForAuthenticatedUserNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48979,8 +46447,6 @@ func (PackagesRestorePackageForOrgApplicationJSONUnauthorized) ReadJSON(d *json.
 // WriteJSON implements json.Marshaler.
 func (s PackagesRestorePackageForOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49034,8 +46500,6 @@ func (PackagesRestorePackageForUserApplicationJSONUnauthorized) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s PackagesRestorePackageForUserNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49092,8 +46556,6 @@ func (PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthoriz
 // WriteJSON implements json.Marshaler.
 func (s PackagesRestorePackageVersionForAuthenticatedUserNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49147,8 +46609,6 @@ func (PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized) ReadJSON(d
 // WriteJSON implements json.Marshaler.
 func (s PackagesRestorePackageVersionForOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49202,8 +46662,6 @@ func (PackagesRestorePackageVersionForUserApplicationJSONUnauthorized) ReadJSON(
 // WriteJSON implements json.Marshaler.
 func (s PackagesRestorePackageVersionForUserNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49242,51 +46700,43 @@ func (s *PackagesRestorePackageVersionForUserPackageType) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s Page) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	s.Status.WriteJSON(e)
-	more.More()
-	e.ObjField("cname")
+
+	e.FieldStart("cname")
 	s.Cname.WriteJSON(e)
 	if s.ProtectedDomainState.Set {
-		more.More()
-		e.ObjField("protected_domain_state")
+		e.FieldStart("protected_domain_state")
 		s.ProtectedDomainState.WriteJSON(e)
 	}
 	if s.PendingDomainUnverifiedAt.Set {
-		more.More()
-		e.ObjField("pending_domain_unverified_at")
+		e.FieldStart("pending_domain_unverified_at")
 		s.PendingDomainUnverifiedAt.WriteJSON(e, json.WriteDateTime)
 	}
-	more.More()
-	e.ObjField("custom_404")
+
+	e.FieldStart("custom_404")
 	e.Bool(s.Custom404)
 	if s.HTMLURL.Set {
-		more.More()
-		e.ObjField("html_url")
+		e.FieldStart("html_url")
 		s.HTMLURL.WriteJSON(e)
 	}
 	if s.Source.Set {
-		more.More()
-		e.ObjField("source")
+		e.FieldStart("source")
 		s.Source.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("public")
+
+	e.FieldStart("public")
 	e.Bool(s.Public)
 	if s.HTTPSCertificate.Set {
-		more.More()
-		e.ObjField("https_certificate")
+		e.FieldStart("https_certificate")
 		s.HTTPSCertificate.WriteJSON(e)
 	}
 	if s.HTTPSEnforced.Set {
-		more.More()
-		e.ObjField("https_enforced")
+		e.FieldStart("https_enforced")
 		s.HTTPSEnforced.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -49365,31 +46815,29 @@ func (s *Page) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PageBuild) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	e.Str(s.Status)
-	more.More()
-	e.ObjField("error")
+
+	e.FieldStart("error")
 	s.Error.WriteJSON(e)
-	more.More()
-	e.ObjField("pusher")
+
+	e.FieldStart("pusher")
 	s.Pusher.WriteJSON(e)
-	more.More()
-	e.ObjField("commit")
+
+	e.FieldStart("commit")
 	e.Str(s.Commit)
-	more.More()
-	e.ObjField("duration")
+
+	e.FieldStart("duration")
 	e.Int(s.Duration)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
 	e.ObjEnd()
 }
@@ -49455,10 +46903,8 @@ func (s *PageBuild) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PageBuildError) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	s.Message.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -49484,13 +46930,11 @@ func (s *PageBuildError) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PageBuildStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	e.Str(s.Status)
 	e.ObjEnd()
 }
@@ -49560,27 +47004,21 @@ func (s *PageStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PagesHTTPSCertificate) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	s.State.WriteJSON(e)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	e.Str(s.Description)
-	more.More()
-	e.ObjField("domains")
-	more.Down()
+
+	e.FieldStart("domains")
 	e.ArrStart()
 	for _, elem := range s.Domains {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.ExpiresAt.Set {
-		more.More()
-		e.ObjField("expires_at")
+		e.FieldStart("expires_at")
 		s.ExpiresAt.WriteJSON(e, json.WriteDate)
 	}
 	e.ObjEnd()
@@ -49650,16 +47088,12 @@ func (s *PagesHTTPSCertificateState) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PagesHealthCheck) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Domain.Set {
-		more.More()
-		e.ObjField("domain")
+		e.FieldStart("domain")
 		s.Domain.WriteJSON(e)
 	}
 	if s.AltDomain.Set {
-		more.More()
-		e.ObjField("alt_domain")
+		e.FieldStart("alt_domain")
 		s.AltDomain.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -49692,146 +47126,116 @@ func (s *PagesHealthCheck) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PagesHealthCheckAltDomain) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Host.Set {
-		more.More()
-		e.ObjField("host")
+		e.FieldStart("host")
 		s.Host.WriteJSON(e)
 	}
 	if s.URI.Set {
-		more.More()
-		e.ObjField("uri")
+		e.FieldStart("uri")
 		s.URI.WriteJSON(e)
 	}
 	if s.Nameservers.Set {
-		more.More()
-		e.ObjField("nameservers")
+		e.FieldStart("nameservers")
 		s.Nameservers.WriteJSON(e)
 	}
 	if s.DNSResolves.Set {
-		more.More()
-		e.ObjField("dns_resolves")
+		e.FieldStart("dns_resolves")
 		s.DNSResolves.WriteJSON(e)
 	}
 	if s.IsProxied.Set {
-		more.More()
-		e.ObjField("is_proxied")
+		e.FieldStart("is_proxied")
 		s.IsProxied.WriteJSON(e)
 	}
 	if s.IsCloudflareIP.Set {
-		more.More()
-		e.ObjField("is_cloudflare_ip")
+		e.FieldStart("is_cloudflare_ip")
 		s.IsCloudflareIP.WriteJSON(e)
 	}
 	if s.IsFastlyIP.Set {
-		more.More()
-		e.ObjField("is_fastly_ip")
+		e.FieldStart("is_fastly_ip")
 		s.IsFastlyIP.WriteJSON(e)
 	}
 	if s.IsOldIPAddress.Set {
-		more.More()
-		e.ObjField("is_old_ip_address")
+		e.FieldStart("is_old_ip_address")
 		s.IsOldIPAddress.WriteJSON(e)
 	}
 	if s.IsARecord.Set {
-		more.More()
-		e.ObjField("is_a_record")
+		e.FieldStart("is_a_record")
 		s.IsARecord.WriteJSON(e)
 	}
 	if s.HasCnameRecord.Set {
-		more.More()
-		e.ObjField("has_cname_record")
+		e.FieldStart("has_cname_record")
 		s.HasCnameRecord.WriteJSON(e)
 	}
 	if s.HasMxRecordsPresent.Set {
-		more.More()
-		e.ObjField("has_mx_records_present")
+		e.FieldStart("has_mx_records_present")
 		s.HasMxRecordsPresent.WriteJSON(e)
 	}
 	if s.IsValidDomain.Set {
-		more.More()
-		e.ObjField("is_valid_domain")
+		e.FieldStart("is_valid_domain")
 		s.IsValidDomain.WriteJSON(e)
 	}
 	if s.IsApexDomain.Set {
-		more.More()
-		e.ObjField("is_apex_domain")
+		e.FieldStart("is_apex_domain")
 		s.IsApexDomain.WriteJSON(e)
 	}
 	if s.ShouldBeARecord.Set {
-		more.More()
-		e.ObjField("should_be_a_record")
+		e.FieldStart("should_be_a_record")
 		s.ShouldBeARecord.WriteJSON(e)
 	}
 	if s.IsCnameToGithubUserDomain.Set {
-		more.More()
-		e.ObjField("is_cname_to_github_user_domain")
+		e.FieldStart("is_cname_to_github_user_domain")
 		s.IsCnameToGithubUserDomain.WriteJSON(e)
 	}
 	if s.IsCnameToPagesDotGithubDotCom.Set {
-		more.More()
-		e.ObjField("is_cname_to_pages_dot_github_dot_com")
+		e.FieldStart("is_cname_to_pages_dot_github_dot_com")
 		s.IsCnameToPagesDotGithubDotCom.WriteJSON(e)
 	}
 	if s.IsCnameToFastly.Set {
-		more.More()
-		e.ObjField("is_cname_to_fastly")
+		e.FieldStart("is_cname_to_fastly")
 		s.IsCnameToFastly.WriteJSON(e)
 	}
 	if s.IsPointedToGithubPagesIP.Set {
-		more.More()
-		e.ObjField("is_pointed_to_github_pages_ip")
+		e.FieldStart("is_pointed_to_github_pages_ip")
 		s.IsPointedToGithubPagesIP.WriteJSON(e)
 	}
 	if s.IsNonGithubPagesIPPresent.Set {
-		more.More()
-		e.ObjField("is_non_github_pages_ip_present")
+		e.FieldStart("is_non_github_pages_ip_present")
 		s.IsNonGithubPagesIPPresent.WriteJSON(e)
 	}
 	if s.IsPagesDomain.Set {
-		more.More()
-		e.ObjField("is_pages_domain")
+		e.FieldStart("is_pages_domain")
 		s.IsPagesDomain.WriteJSON(e)
 	}
 	if s.IsServedByPages.Set {
-		more.More()
-		e.ObjField("is_served_by_pages")
+		e.FieldStart("is_served_by_pages")
 		s.IsServedByPages.WriteJSON(e)
 	}
 	if s.IsValid.Set {
-		more.More()
-		e.ObjField("is_valid")
+		e.FieldStart("is_valid")
 		s.IsValid.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
 	if s.RespondsToHTTPS.Set {
-		more.More()
-		e.ObjField("responds_to_https")
+		e.FieldStart("responds_to_https")
 		s.RespondsToHTTPS.WriteJSON(e)
 	}
 	if s.EnforcesHTTPS.Set {
-		more.More()
-		e.ObjField("enforces_https")
+		e.FieldStart("enforces_https")
 		s.EnforcesHTTPS.WriteJSON(e)
 	}
 	if s.HTTPSError.Set {
-		more.More()
-		e.ObjField("https_error")
+		e.FieldStart("https_error")
 		s.HTTPSError.WriteJSON(e)
 	}
 	if s.IsHTTPSEligible.Set {
-		more.More()
-		e.ObjField("is_https_eligible")
+		e.FieldStart("is_https_eligible")
 		s.IsHTTPSEligible.WriteJSON(e)
 	}
 	if s.CaaError.Set {
-		more.More()
-		e.ObjField("caa_error")
+		e.FieldStart("caa_error")
 		s.CaaError.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -49994,146 +47398,116 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PagesHealthCheckDomain) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Host.Set {
-		more.More()
-		e.ObjField("host")
+		e.FieldStart("host")
 		s.Host.WriteJSON(e)
 	}
 	if s.URI.Set {
-		more.More()
-		e.ObjField("uri")
+		e.FieldStart("uri")
 		s.URI.WriteJSON(e)
 	}
 	if s.Nameservers.Set {
-		more.More()
-		e.ObjField("nameservers")
+		e.FieldStart("nameservers")
 		s.Nameservers.WriteJSON(e)
 	}
 	if s.DNSResolves.Set {
-		more.More()
-		e.ObjField("dns_resolves")
+		e.FieldStart("dns_resolves")
 		s.DNSResolves.WriteJSON(e)
 	}
 	if s.IsProxied.Set {
-		more.More()
-		e.ObjField("is_proxied")
+		e.FieldStart("is_proxied")
 		s.IsProxied.WriteJSON(e)
 	}
 	if s.IsCloudflareIP.Set {
-		more.More()
-		e.ObjField("is_cloudflare_ip")
+		e.FieldStart("is_cloudflare_ip")
 		s.IsCloudflareIP.WriteJSON(e)
 	}
 	if s.IsFastlyIP.Set {
-		more.More()
-		e.ObjField("is_fastly_ip")
+		e.FieldStart("is_fastly_ip")
 		s.IsFastlyIP.WriteJSON(e)
 	}
 	if s.IsOldIPAddress.Set {
-		more.More()
-		e.ObjField("is_old_ip_address")
+		e.FieldStart("is_old_ip_address")
 		s.IsOldIPAddress.WriteJSON(e)
 	}
 	if s.IsARecord.Set {
-		more.More()
-		e.ObjField("is_a_record")
+		e.FieldStart("is_a_record")
 		s.IsARecord.WriteJSON(e)
 	}
 	if s.HasCnameRecord.Set {
-		more.More()
-		e.ObjField("has_cname_record")
+		e.FieldStart("has_cname_record")
 		s.HasCnameRecord.WriteJSON(e)
 	}
 	if s.HasMxRecordsPresent.Set {
-		more.More()
-		e.ObjField("has_mx_records_present")
+		e.FieldStart("has_mx_records_present")
 		s.HasMxRecordsPresent.WriteJSON(e)
 	}
 	if s.IsValidDomain.Set {
-		more.More()
-		e.ObjField("is_valid_domain")
+		e.FieldStart("is_valid_domain")
 		s.IsValidDomain.WriteJSON(e)
 	}
 	if s.IsApexDomain.Set {
-		more.More()
-		e.ObjField("is_apex_domain")
+		e.FieldStart("is_apex_domain")
 		s.IsApexDomain.WriteJSON(e)
 	}
 	if s.ShouldBeARecord.Set {
-		more.More()
-		e.ObjField("should_be_a_record")
+		e.FieldStart("should_be_a_record")
 		s.ShouldBeARecord.WriteJSON(e)
 	}
 	if s.IsCnameToGithubUserDomain.Set {
-		more.More()
-		e.ObjField("is_cname_to_github_user_domain")
+		e.FieldStart("is_cname_to_github_user_domain")
 		s.IsCnameToGithubUserDomain.WriteJSON(e)
 	}
 	if s.IsCnameToPagesDotGithubDotCom.Set {
-		more.More()
-		e.ObjField("is_cname_to_pages_dot_github_dot_com")
+		e.FieldStart("is_cname_to_pages_dot_github_dot_com")
 		s.IsCnameToPagesDotGithubDotCom.WriteJSON(e)
 	}
 	if s.IsCnameToFastly.Set {
-		more.More()
-		e.ObjField("is_cname_to_fastly")
+		e.FieldStart("is_cname_to_fastly")
 		s.IsCnameToFastly.WriteJSON(e)
 	}
 	if s.IsPointedToGithubPagesIP.Set {
-		more.More()
-		e.ObjField("is_pointed_to_github_pages_ip")
+		e.FieldStart("is_pointed_to_github_pages_ip")
 		s.IsPointedToGithubPagesIP.WriteJSON(e)
 	}
 	if s.IsNonGithubPagesIPPresent.Set {
-		more.More()
-		e.ObjField("is_non_github_pages_ip_present")
+		e.FieldStart("is_non_github_pages_ip_present")
 		s.IsNonGithubPagesIPPresent.WriteJSON(e)
 	}
 	if s.IsPagesDomain.Set {
-		more.More()
-		e.ObjField("is_pages_domain")
+		e.FieldStart("is_pages_domain")
 		s.IsPagesDomain.WriteJSON(e)
 	}
 	if s.IsServedByPages.Set {
-		more.More()
-		e.ObjField("is_served_by_pages")
+		e.FieldStart("is_served_by_pages")
 		s.IsServedByPages.WriteJSON(e)
 	}
 	if s.IsValid.Set {
-		more.More()
-		e.ObjField("is_valid")
+		e.FieldStart("is_valid")
 		s.IsValid.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
 	if s.RespondsToHTTPS.Set {
-		more.More()
-		e.ObjField("responds_to_https")
+		e.FieldStart("responds_to_https")
 		s.RespondsToHTTPS.WriteJSON(e)
 	}
 	if s.EnforcesHTTPS.Set {
-		more.More()
-		e.ObjField("enforces_https")
+		e.FieldStart("enforces_https")
 		s.EnforcesHTTPS.WriteJSON(e)
 	}
 	if s.HTTPSError.Set {
-		more.More()
-		e.ObjField("https_error")
+		e.FieldStart("https_error")
 		s.HTTPSError.WriteJSON(e)
 	}
 	if s.IsHTTPSEligible.Set {
-		more.More()
-		e.ObjField("is_https_eligible")
+		e.FieldStart("is_https_eligible")
 		s.IsHTTPSEligible.WriteJSON(e)
 	}
 	if s.CaaError.Set {
-		more.More()
-		e.ObjField("caa_error")
+		e.FieldStart("caa_error")
 		s.CaaError.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -50296,13 +47670,11 @@ func (s *PagesHealthCheckDomain) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PagesSourceHash) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("branch")
+
+	e.FieldStart("branch")
 	e.Str(s.Branch)
-	more.More()
-	e.ObjField("path")
+
+	e.FieldStart("path")
 	e.Str(s.Path)
 	e.ObjEnd()
 }
@@ -50336,28 +47708,20 @@ func (s *PagesSourceHash) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ParticipationStats) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("all")
-	more.Down()
+
+	e.FieldStart("all")
 	e.ArrStart()
 	for _, elem := range s.All {
-		more.More()
 		e.Int(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("owner")
-	more.Down()
+
+	e.FieldStart("owner")
 	e.ArrStart()
 	for _, elem := range s.Owner {
-		more.More()
 		e.Int(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -50406,28 +47770,26 @@ func (s *ParticipationStats) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PorterAuthor) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("remote_id")
+
+	e.FieldStart("remote_id")
 	e.Str(s.RemoteID)
-	more.More()
-	e.ObjField("remote_name")
+
+	e.FieldStart("remote_name")
 	e.Str(s.RemoteName)
-	more.More()
-	e.ObjField("email")
+
+	e.FieldStart("email")
 	e.Str(s.Email)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("import_url")
+
+	e.FieldStart("import_url")
 	json.WriteURI(e, s.ImportURL)
 	e.ObjEnd()
 }
@@ -50491,19 +47853,17 @@ func (s *PorterAuthor) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PorterLargeFile) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("ref_name")
+
+	e.FieldStart("ref_name")
 	e.Str(s.RefName)
-	more.More()
-	e.ObjField("path")
+
+	e.FieldStart("path")
 	e.Str(s.Path)
-	more.More()
-	e.ObjField("oid")
+
+	e.FieldStart("oid")
 	e.Str(s.Oid)
-	more.More()
-	e.ObjField("size")
+
+	e.FieldStart("size")
 	e.Int(s.Size)
 	e.ObjEnd()
 }
@@ -50549,13 +47909,11 @@ func (s *PorterLargeFile) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PreviewHeaderMissing) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
-	more.More()
-	e.ObjField("documentation_url")
+
+	e.FieldStart("documentation_url")
 	e.Str(s.DocumentationURL)
 	e.ObjEnd()
 }
@@ -50589,142 +47947,135 @@ func (s *PreviewHeaderMissing) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PrivateUser) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("login")
+
+	e.FieldStart("login")
 	e.Str(s.Login)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("avatar_url")
+
+	e.FieldStart("avatar_url")
 	json.WriteURI(e, s.AvatarURL)
-	more.More()
-	e.ObjField("gravatar_id")
+
+	e.FieldStart("gravatar_id")
 	s.GravatarID.WriteJSON(e)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("followers_url")
+
+	e.FieldStart("followers_url")
 	json.WriteURI(e, s.FollowersURL)
-	more.More()
-	e.ObjField("following_url")
+
+	e.FieldStart("following_url")
 	e.Str(s.FollowingURL)
-	more.More()
-	e.ObjField("gists_url")
+
+	e.FieldStart("gists_url")
 	e.Str(s.GistsURL)
-	more.More()
-	e.ObjField("starred_url")
+
+	e.FieldStart("starred_url")
 	e.Str(s.StarredURL)
-	more.More()
-	e.ObjField("subscriptions_url")
+
+	e.FieldStart("subscriptions_url")
 	json.WriteURI(e, s.SubscriptionsURL)
-	more.More()
-	e.ObjField("organizations_url")
+
+	e.FieldStart("organizations_url")
 	json.WriteURI(e, s.OrganizationsURL)
-	more.More()
-	e.ObjField("repos_url")
+
+	e.FieldStart("repos_url")
 	json.WriteURI(e, s.ReposURL)
-	more.More()
-	e.ObjField("events_url")
+
+	e.FieldStart("events_url")
 	e.Str(s.EventsURL)
-	more.More()
-	e.ObjField("received_events_url")
+
+	e.FieldStart("received_events_url")
 	json.WriteURI(e, s.ReceivedEventsURL)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
-	more.More()
-	e.ObjField("site_admin")
+
+	e.FieldStart("site_admin")
 	e.Bool(s.SiteAdmin)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	s.Name.WriteJSON(e)
-	more.More()
-	e.ObjField("company")
+
+	e.FieldStart("company")
 	s.Company.WriteJSON(e)
-	more.More()
-	e.ObjField("blog")
+
+	e.FieldStart("blog")
 	s.Blog.WriteJSON(e)
-	more.More()
-	e.ObjField("location")
+
+	e.FieldStart("location")
 	s.Location.WriteJSON(e)
-	more.More()
-	e.ObjField("email")
+
+	e.FieldStart("email")
 	s.Email.WriteJSON(e)
-	more.More()
-	e.ObjField("hireable")
+
+	e.FieldStart("hireable")
 	s.Hireable.WriteJSON(e)
-	more.More()
-	e.ObjField("bio")
+
+	e.FieldStart("bio")
 	s.Bio.WriteJSON(e)
 	if s.TwitterUsername.Set {
-		more.More()
-		e.ObjField("twitter_username")
+		e.FieldStart("twitter_username")
 		s.TwitterUsername.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("public_repos")
+
+	e.FieldStart("public_repos")
 	e.Int(s.PublicRepos)
-	more.More()
-	e.ObjField("public_gists")
+
+	e.FieldStart("public_gists")
 	e.Int(s.PublicGists)
-	more.More()
-	e.ObjField("followers")
+
+	e.FieldStart("followers")
 	e.Int(s.Followers)
-	more.More()
-	e.ObjField("following")
+
+	e.FieldStart("following")
 	e.Int(s.Following)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("private_gists")
+
+	e.FieldStart("private_gists")
 	e.Int(s.PrivateGists)
-	more.More()
-	e.ObjField("total_private_repos")
+
+	e.FieldStart("total_private_repos")
 	e.Int(s.TotalPrivateRepos)
-	more.More()
-	e.ObjField("owned_private_repos")
+
+	e.FieldStart("owned_private_repos")
 	e.Int(s.OwnedPrivateRepos)
-	more.More()
-	e.ObjField("disk_usage")
+
+	e.FieldStart("disk_usage")
 	e.Int(s.DiskUsage)
-	more.More()
-	e.ObjField("collaborators")
+
+	e.FieldStart("collaborators")
 	e.Int(s.Collaborators)
-	more.More()
-	e.ObjField("two_factor_authentication")
+
+	e.FieldStart("two_factor_authentication")
 	e.Bool(s.TwoFactorAuthentication)
 	if s.Plan.Set {
-		more.More()
-		e.ObjField("plan")
+		e.FieldStart("plan")
 		s.Plan.WriteJSON(e)
 	}
 	if s.SuspendedAt.Set {
-		more.More()
-		e.ObjField("suspended_at")
+		e.FieldStart("suspended_at")
 		s.SuspendedAt.WriteJSON(e, json.WriteDateTime)
 	}
 	if s.BusinessPlus.Set {
-		more.More()
-		e.ObjField("business_plus")
+		e.FieldStart("business_plus")
 		s.BusinessPlus.WriteJSON(e)
 	}
 	if s.LdapDn.Set {
-		more.More()
-		e.ObjField("ldap_dn")
+		e.FieldStart("ldap_dn")
 		s.LdapDn.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -50978,19 +48329,17 @@ func (s *PrivateUser) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PrivateUserPlan) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("collaborators")
+
+	e.FieldStart("collaborators")
 	e.Int(s.Collaborators)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("space")
+
+	e.FieldStart("space")
 	e.Int(s.Space)
-	more.More()
-	e.ObjField("private_repos")
+
+	e.FieldStart("private_repos")
 	e.Int(s.PrivateRepos)
 	e.ObjEnd()
 }
@@ -51036,55 +48385,51 @@ func (s *PrivateUserPlan) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Project) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("owner_url")
+
+	e.FieldStart("owner_url")
 	json.WriteURI(e, s.OwnerURL)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("columns_url")
+
+	e.FieldStart("columns_url")
 	json.WriteURI(e, s.ColumnsURL)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	s.Body.WriteJSON(e)
-	more.More()
-	e.ObjField("number")
+
+	e.FieldStart("number")
 	e.Int(s.Number)
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	e.Str(s.State)
-	more.More()
-	e.ObjField("creator")
+
+	e.FieldStart("creator")
 	s.Creator.WriteJSON(e)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
 	if s.OrganizationPermission.Set {
-		more.More()
-		e.ObjField("organization_permission")
+		e.FieldStart("organization_permission")
 		s.OrganizationPermission.WriteJSON(e)
 	}
 	if s.Private.Set {
-		more.More()
-		e.ObjField("private")
+		e.FieldStart("private")
 		s.Private.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -51191,54 +48536,48 @@ func (s *Project) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProjectCard) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("note")
+
+	e.FieldStart("note")
 	s.Note.WriteJSON(e)
-	more.More()
-	e.ObjField("creator")
+
+	e.FieldStart("creator")
 	s.Creator.WriteJSON(e)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
 	if s.Archived.Set {
-		more.More()
-		e.ObjField("archived")
+		e.FieldStart("archived")
 		s.Archived.WriteJSON(e)
 	}
 	if s.ColumnName.Set {
-		more.More()
-		e.ObjField("column_name")
+		e.FieldStart("column_name")
 		s.ColumnName.WriteJSON(e)
 	}
 	if s.ProjectID.Set {
-		more.More()
-		e.ObjField("project_id")
+		e.FieldStart("project_id")
 		s.ProjectID.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("column_url")
+
+	e.FieldStart("column_url")
 	json.WriteURI(e, s.ColumnURL)
 	if s.ContentURL.Set {
-		more.More()
-		e.ObjField("content_url")
+		e.FieldStart("content_url")
 		s.ContentURL.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("project_url")
+
+	e.FieldStart("project_url")
 	json.WriteURI(e, s.ProjectURL)
 	e.ObjEnd()
 }
@@ -51330,31 +48669,29 @@ func (s *ProjectCard) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProjectColumn) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("project_url")
+
+	e.FieldStart("project_url")
 	json.WriteURI(e, s.ProjectURL)
-	more.More()
-	e.ObjField("cards_url")
+
+	e.FieldStart("cards_url")
 	json.WriteURI(e, s.CardsURL)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
 	e.ObjEnd()
 }
@@ -51442,8 +48779,6 @@ func (s *ProjectOrganizationPermission) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProjectsAddCollaboratorNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51464,11 +48799,8 @@ func (s *ProjectsAddCollaboratorNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProjectsAddCollaboratorReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Permission.Set {
-		more.More()
-		e.ObjField("permission")
+		e.FieldStart("permission")
 		s.Permission.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -51573,10 +48905,8 @@ func (s *ProjectsCreateCardReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProjectsCreateCardReq0) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("note")
+
+	e.FieldStart("note")
 	s.Note.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -51602,13 +48932,11 @@ func (s *ProjectsCreateCardReq0) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProjectsCreateCardReq1) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("content_id")
+
+	e.FieldStart("content_id")
 	e.Int(s.ContentID)
-	more.More()
-	e.ObjField("content_type")
+
+	e.FieldStart("content_type")
 	e.Str(s.ContentType)
 	e.ObjEnd()
 }
@@ -51648,10 +48976,8 @@ func (ProjectsCreateColumnApplicationJSONUnauthorized) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s ProjectsCreateColumnReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -51689,14 +49015,11 @@ func (ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) ReadJSON(d 
 // WriteJSON implements json.Marshaler.
 func (s ProjectsCreateForAuthenticatedUserReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Body.Set {
-		more.More()
-		e.ObjField("body")
+		e.FieldStart("body")
 		s.Body.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -51742,14 +49065,11 @@ func (ProjectsCreateForOrgApplicationJSONUnauthorized) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s ProjectsCreateForOrgReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Body.Set {
-		more.More()
-		e.ObjField("body")
+		e.FieldStart("body")
 		s.Body.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -51795,14 +49115,11 @@ func (ProjectsCreateForRepoApplicationJSONUnauthorized) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s ProjectsCreateForRepoReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Body.Set {
-		more.More()
-		e.ObjField("body")
+		e.FieldStart("body")
 		s.Body.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -51851,29 +49168,21 @@ func (ProjectsDeleteCardApplicationJSONUnauthorized) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s ProjectsDeleteCardForbidden) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.DocumentationURL.Set {
-		more.More()
-		e.ObjField("documentation_url")
+		e.FieldStart("documentation_url")
 		s.DocumentationURL.WriteJSON(e)
 	}
 	if s.Errors != nil {
-		more.More()
-		e.ObjField("errors")
-		more.Down()
+		e.FieldStart("errors")
 		e.ArrStart()
 		for _, elem := range s.Errors {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -51919,8 +49228,6 @@ func (s *ProjectsDeleteCardForbidden) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProjectsDeleteCardNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51947,8 +49254,6 @@ func (ProjectsDeleteColumnApplicationJSONUnauthorized) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s ProjectsDeleteColumnNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51969,29 +49274,21 @@ func (s *ProjectsDeleteColumnNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProjectsDeleteForbidden) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.DocumentationURL.Set {
-		more.More()
-		e.ObjField("documentation_url")
+		e.FieldStart("documentation_url")
 		s.DocumentationURL.WriteJSON(e)
 	}
 	if s.Errors != nil {
-		more.More()
-		e.ObjField("errors")
-		more.Down()
+		e.FieldStart("errors")
 		e.ArrStart()
 		for _, elem := range s.Errors {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -52037,8 +49334,6 @@ func (s *ProjectsDeleteForbidden) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProjectsDeleteNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -52209,8 +49504,6 @@ func (s *ProjectsListForUserState) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProjectsMoveCardCreated) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -52231,29 +49524,21 @@ func (s *ProjectsMoveCardCreated) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProjectsMoveCardForbidden) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.DocumentationURL.Set {
-		more.More()
-		e.ObjField("documentation_url")
+		e.FieldStart("documentation_url")
 		s.DocumentationURL.WriteJSON(e)
 	}
 	if s.Errors != nil {
-		more.More()
-		e.ObjField("errors")
-		more.Down()
+		e.FieldStart("errors")
 		e.ArrStart()
 		for _, elem := range s.Errors {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -52297,26 +49582,20 @@ func (s *ProjectsMoveCardForbidden) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProjectsMoveCardForbiddenErrorsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Code.Set {
-		more.More()
-		e.ObjField("code")
+		e.FieldStart("code")
 		s.Code.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Resource.Set {
-		more.More()
-		e.ObjField("resource")
+		e.FieldStart("resource")
 		s.Resource.WriteJSON(e)
 	}
 	if s.Field.Set {
-		more.More()
-		e.ObjField("field")
+		e.FieldStart("field")
 		s.Field.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -52359,14 +49638,11 @@ func (s *ProjectsMoveCardForbiddenErrorsItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProjectsMoveCardReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("position")
+
+	e.FieldStart("position")
 	e.Str(s.Position)
 	if s.ColumnID.Set {
-		more.More()
-		e.ObjField("column_id")
+		e.FieldStart("column_id")
 		s.ColumnID.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -52406,8 +49682,6 @@ func (ProjectsMoveColumnApplicationJSONUnauthorized) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s ProjectsMoveColumnCreated) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -52428,10 +49702,8 @@ func (s *ProjectsMoveColumnCreated) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProjectsMoveColumnReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("position")
+
+	e.FieldStart("position")
 	e.Str(s.Position)
 	e.ObjEnd()
 }
@@ -52459,8 +49731,6 @@ func (s *ProjectsMoveColumnReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProjectsRemoveCollaboratorNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -52496,16 +49766,12 @@ func (ProjectsUpdateCardApplicationJSONUnauthorized) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s ProjectsUpdateCardReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Note.Set {
-		more.More()
-		e.ObjField("note")
+		e.FieldStart("note")
 		s.Note.WriteJSON(e)
 	}
 	if s.Archived.Set {
-		more.More()
-		e.ObjField("archived")
+		e.FieldStart("archived")
 		s.Archived.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -52544,10 +49810,8 @@ func (ProjectsUpdateColumnApplicationJSONUnauthorized) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s ProjectsUpdateColumnReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -52575,29 +49839,21 @@ func (s *ProjectsUpdateColumnReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProjectsUpdateForbidden) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.DocumentationURL.Set {
-		more.More()
-		e.ObjField("documentation_url")
+		e.FieldStart("documentation_url")
 		s.DocumentationURL.WriteJSON(e)
 	}
 	if s.Errors != nil {
-		more.More()
-		e.ObjField("errors")
-		more.Down()
+		e.FieldStart("errors")
 		e.ArrStart()
 		for _, elem := range s.Errors {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -52643,8 +49899,6 @@ func (s *ProjectsUpdateForbidden) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProjectsUpdateNotFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -52665,31 +49919,24 @@ func (s *ProjectsUpdateNotFound) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProjectsUpdateReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Body.Set {
-		more.More()
-		e.ObjField("body")
+		e.FieldStart("body")
 		s.Body.WriteJSON(e)
 	}
 	if s.State.Set {
-		more.More()
-		e.ObjField("state")
+		e.FieldStart("state")
 		s.State.WriteJSON(e)
 	}
 	if s.OrganizationPermission.Set {
-		more.More()
-		e.ObjField("organization_permission")
+		e.FieldStart("organization_permission")
 		s.OrganizationPermission.WriteJSON(e)
 	}
 	if s.Private.Set {
-		more.More()
-		e.ObjField("private")
+		e.FieldStart("private")
 		s.Private.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -52755,54 +50002,43 @@ func (s *ProjectsUpdateReqOrganizationPermission) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s ProtectedBranch) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	if s.RequiredStatusChecks.Set {
-		more.More()
-		e.ObjField("required_status_checks")
+		e.FieldStart("required_status_checks")
 		s.RequiredStatusChecks.WriteJSON(e)
 	}
 	if s.RequiredPullRequestReviews.Set {
-		more.More()
-		e.ObjField("required_pull_request_reviews")
+		e.FieldStart("required_pull_request_reviews")
 		s.RequiredPullRequestReviews.WriteJSON(e)
 	}
 	if s.RequiredSignatures.Set {
-		more.More()
-		e.ObjField("required_signatures")
+		e.FieldStart("required_signatures")
 		s.RequiredSignatures.WriteJSON(e)
 	}
 	if s.EnforceAdmins.Set {
-		more.More()
-		e.ObjField("enforce_admins")
+		e.FieldStart("enforce_admins")
 		s.EnforceAdmins.WriteJSON(e)
 	}
 	if s.RequiredLinearHistory.Set {
-		more.More()
-		e.ObjField("required_linear_history")
+		e.FieldStart("required_linear_history")
 		s.RequiredLinearHistory.WriteJSON(e)
 	}
 	if s.AllowForcePushes.Set {
-		more.More()
-		e.ObjField("allow_force_pushes")
+		e.FieldStart("allow_force_pushes")
 		s.AllowForcePushes.WriteJSON(e)
 	}
 	if s.AllowDeletions.Set {
-		more.More()
-		e.ObjField("allow_deletions")
+		e.FieldStart("allow_deletions")
 		s.AllowDeletions.WriteJSON(e)
 	}
 	if s.Restrictions.Set {
-		more.More()
-		e.ObjField("restrictions")
+		e.FieldStart("restrictions")
 		s.Restrictions.WriteJSON(e)
 	}
 	if s.RequiredConversationResolution.Set {
-		more.More()
-		e.ObjField("required_conversation_resolution")
+		e.FieldStart("required_conversation_resolution")
 		s.RequiredConversationResolution.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -52876,13 +50112,11 @@ func (s *ProtectedBranch) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProtectedBranchAdminEnforced) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("enabled")
+
+	e.FieldStart("enabled")
 	e.Bool(s.Enabled)
 	e.ObjEnd()
 }
@@ -52916,10 +50150,8 @@ func (s *ProtectedBranchAdminEnforced) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProtectedBranchAllowDeletions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("enabled")
+
+	e.FieldStart("enabled")
 	e.Bool(s.Enabled)
 	e.ObjEnd()
 }
@@ -52947,10 +50179,8 @@ func (s *ProtectedBranchAllowDeletions) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProtectedBranchAllowForcePushes) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("enabled")
+
+	e.FieldStart("enabled")
 	e.Bool(s.Enabled)
 	e.ObjEnd()
 }
@@ -52978,13 +50208,11 @@ func (s *ProtectedBranchAllowForcePushes) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProtectedBranchEnforceAdmins) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("enabled")
+
+	e.FieldStart("enabled")
 	e.Bool(s.Enabled)
 	e.ObjEnd()
 }
@@ -53018,27 +50246,22 @@ func (s *ProtectedBranchEnforceAdmins) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProtectedBranchPullRequestReview) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.DismissalRestrictions.Set {
-		more.More()
-		e.ObjField("dismissal_restrictions")
+		e.FieldStart("dismissal_restrictions")
 		s.DismissalRestrictions.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("dismiss_stale_reviews")
+
+	e.FieldStart("dismiss_stale_reviews")
 	e.Bool(s.DismissStaleReviews)
-	more.More()
-	e.ObjField("require_code_owner_reviews")
+
+	e.FieldStart("require_code_owner_reviews")
 	e.Bool(s.RequireCodeOwnerReviews)
 	if s.RequiredApprovingReviewCount.Set {
-		more.More()
-		e.ObjField("required_approving_review_count")
+		e.FieldStart("required_approving_review_count")
 		s.RequiredApprovingReviewCount.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -53088,45 +50311,32 @@ func (s *ProtectedBranchPullRequestReview) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProtectedBranchPullRequestReviewDismissalRestrictions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Users != nil {
-		more.More()
-		e.ObjField("users")
-		more.Down()
+		e.FieldStart("users")
 		e.ArrStart()
 		for _, elem := range s.Users {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Teams != nil {
-		more.More()
-		e.ObjField("teams")
-		more.Down()
+		e.FieldStart("teams")
 		e.ArrStart()
 		for _, elem := range s.Teams {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.UsersURL.Set {
-		more.More()
-		e.ObjField("users_url")
+		e.FieldStart("users_url")
 		s.UsersURL.WriteJSON(e)
 	}
 	if s.TeamsURL.Set {
-		more.More()
-		e.ObjField("teams_url")
+		e.FieldStart("teams_url")
 		s.TeamsURL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -53188,11 +50398,8 @@ func (s *ProtectedBranchPullRequestReviewDismissalRestrictions) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s ProtectedBranchRequiredConversationResolution) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Enabled.Set {
-		more.More()
-		e.ObjField("enabled")
+		e.FieldStart("enabled")
 		s.Enabled.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -53220,10 +50427,8 @@ func (s *ProtectedBranchRequiredConversationResolution) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s ProtectedBranchRequiredLinearHistory) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("enabled")
+
+	e.FieldStart("enabled")
 	e.Bool(s.Enabled)
 	e.ObjEnd()
 }
@@ -53251,29 +50456,23 @@ func (s *ProtectedBranchRequiredLinearHistory) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ProtectedBranchRequiredPullRequestReviews) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	if s.DismissStaleReviews.Set {
-		more.More()
-		e.ObjField("dismiss_stale_reviews")
+		e.FieldStart("dismiss_stale_reviews")
 		s.DismissStaleReviews.WriteJSON(e)
 	}
 	if s.RequireCodeOwnerReviews.Set {
-		more.More()
-		e.ObjField("require_code_owner_reviews")
+		e.FieldStart("require_code_owner_reviews")
 		s.RequireCodeOwnerReviews.WriteJSON(e)
 	}
 	if s.RequiredApprovingReviewCount.Set {
-		more.More()
-		e.ObjField("required_approving_review_count")
+		e.FieldStart("required_approving_review_count")
 		s.RequiredApprovingReviewCount.WriteJSON(e)
 	}
 	if s.DismissalRestrictions.Set {
-		more.More()
-		e.ObjField("dismissal_restrictions")
+		e.FieldStart("dismissal_restrictions")
 		s.DismissalRestrictions.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -53322,37 +50521,29 @@ func (s *ProtectedBranchRequiredPullRequestReviews) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("users_url")
+
+	e.FieldStart("users_url")
 	json.WriteURI(e, s.UsersURL)
-	more.More()
-	e.ObjField("teams_url")
+
+	e.FieldStart("teams_url")
 	json.WriteURI(e, s.TeamsURL)
-	more.More()
-	e.ObjField("users")
-	more.Down()
+
+	e.FieldStart("users")
 	e.ArrStart()
 	for _, elem := range s.Users {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("teams")
-	more.Down()
+
+	e.FieldStart("teams")
 	e.ArrStart()
 	for _, elem := range s.Teams {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -53415,13 +50606,11 @@ func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) ReadJSO
 // WriteJSON implements json.Marshaler.
 func (s ProtectedBranchRequiredSignatures) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("enabled")
+
+	e.FieldStart("enabled")
 	e.Bool(s.Enabled)
 	e.ObjEnd()
 }
@@ -53455,139 +50644,129 @@ func (s *ProtectedBranchRequiredSignatures) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PublicUser) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("login")
+
+	e.FieldStart("login")
 	e.Str(s.Login)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("avatar_url")
+
+	e.FieldStart("avatar_url")
 	json.WriteURI(e, s.AvatarURL)
-	more.More()
-	e.ObjField("gravatar_id")
+
+	e.FieldStart("gravatar_id")
 	s.GravatarID.WriteJSON(e)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("followers_url")
+
+	e.FieldStart("followers_url")
 	json.WriteURI(e, s.FollowersURL)
-	more.More()
-	e.ObjField("following_url")
+
+	e.FieldStart("following_url")
 	e.Str(s.FollowingURL)
-	more.More()
-	e.ObjField("gists_url")
+
+	e.FieldStart("gists_url")
 	e.Str(s.GistsURL)
-	more.More()
-	e.ObjField("starred_url")
+
+	e.FieldStart("starred_url")
 	e.Str(s.StarredURL)
-	more.More()
-	e.ObjField("subscriptions_url")
+
+	e.FieldStart("subscriptions_url")
 	json.WriteURI(e, s.SubscriptionsURL)
-	more.More()
-	e.ObjField("organizations_url")
+
+	e.FieldStart("organizations_url")
 	json.WriteURI(e, s.OrganizationsURL)
-	more.More()
-	e.ObjField("repos_url")
+
+	e.FieldStart("repos_url")
 	json.WriteURI(e, s.ReposURL)
-	more.More()
-	e.ObjField("events_url")
+
+	e.FieldStart("events_url")
 	e.Str(s.EventsURL)
-	more.More()
-	e.ObjField("received_events_url")
+
+	e.FieldStart("received_events_url")
 	json.WriteURI(e, s.ReceivedEventsURL)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
-	more.More()
-	e.ObjField("site_admin")
+
+	e.FieldStart("site_admin")
 	e.Bool(s.SiteAdmin)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	s.Name.WriteJSON(e)
-	more.More()
-	e.ObjField("company")
+
+	e.FieldStart("company")
 	s.Company.WriteJSON(e)
-	more.More()
-	e.ObjField("blog")
+
+	e.FieldStart("blog")
 	s.Blog.WriteJSON(e)
-	more.More()
-	e.ObjField("location")
+
+	e.FieldStart("location")
 	s.Location.WriteJSON(e)
-	more.More()
-	e.ObjField("email")
+
+	e.FieldStart("email")
 	s.Email.WriteJSON(e)
-	more.More()
-	e.ObjField("hireable")
+
+	e.FieldStart("hireable")
 	s.Hireable.WriteJSON(e)
-	more.More()
-	e.ObjField("bio")
+
+	e.FieldStart("bio")
 	s.Bio.WriteJSON(e)
 	if s.TwitterUsername.Set {
-		more.More()
-		e.ObjField("twitter_username")
+		e.FieldStart("twitter_username")
 		s.TwitterUsername.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("public_repos")
+
+	e.FieldStart("public_repos")
 	e.Int(s.PublicRepos)
-	more.More()
-	e.ObjField("public_gists")
+
+	e.FieldStart("public_gists")
 	e.Int(s.PublicGists)
-	more.More()
-	e.ObjField("followers")
+
+	e.FieldStart("followers")
 	e.Int(s.Followers)
-	more.More()
-	e.ObjField("following")
+
+	e.FieldStart("following")
 	e.Int(s.Following)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
 	if s.Plan.Set {
-		more.More()
-		e.ObjField("plan")
+		e.FieldStart("plan")
 		s.Plan.WriteJSON(e)
 	}
 	if s.SuspendedAt.Set {
-		more.More()
-		e.ObjField("suspended_at")
+		e.FieldStart("suspended_at")
 		s.SuspendedAt.WriteJSON(e, json.WriteDateTime)
 	}
 	if s.PrivateGists.Set {
-		more.More()
-		e.ObjField("private_gists")
+		e.FieldStart("private_gists")
 		s.PrivateGists.WriteJSON(e)
 	}
 	if s.TotalPrivateRepos.Set {
-		more.More()
-		e.ObjField("total_private_repos")
+		e.FieldStart("total_private_repos")
 		s.TotalPrivateRepos.WriteJSON(e)
 	}
 	if s.OwnedPrivateRepos.Set {
-		more.More()
-		e.ObjField("owned_private_repos")
+		e.FieldStart("owned_private_repos")
 		s.OwnedPrivateRepos.WriteJSON(e)
 	}
 	if s.DiskUsage.Set {
-		more.More()
-		e.ObjField("disk_usage")
+		e.FieldStart("disk_usage")
 		s.DiskUsage.WriteJSON(e)
 	}
 	if s.Collaborators.Set {
-		more.More()
-		e.ObjField("collaborators")
+		e.FieldStart("collaborators")
 		s.Collaborators.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -53820,19 +50999,17 @@ func (s *PublicUser) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PublicUserPlan) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("collaborators")
+
+	e.FieldStart("collaborators")
 	e.Int(s.Collaborators)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("space")
+
+	e.FieldStart("space")
 	e.Int(s.Space)
-	more.More()
-	e.ObjField("private_repos")
+
+	e.FieldStart("private_repos")
 	e.Int(s.PrivateRepos)
 	e.ObjEnd()
 }
@@ -53878,170 +51055,159 @@ func (s *PublicUserPlan) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequest) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("diff_url")
+
+	e.FieldStart("diff_url")
 	json.WriteURI(e, s.DiffURL)
-	more.More()
-	e.ObjField("patch_url")
+
+	e.FieldStart("patch_url")
 	json.WriteURI(e, s.PatchURL)
-	more.More()
-	e.ObjField("issue_url")
+
+	e.FieldStart("issue_url")
 	json.WriteURI(e, s.IssueURL)
-	more.More()
-	e.ObjField("commits_url")
+
+	e.FieldStart("commits_url")
 	json.WriteURI(e, s.CommitsURL)
-	more.More()
-	e.ObjField("review_comments_url")
+
+	e.FieldStart("review_comments_url")
 	json.WriteURI(e, s.ReviewCommentsURL)
-	more.More()
-	e.ObjField("review_comment_url")
+
+	e.FieldStart("review_comment_url")
 	e.Str(s.ReviewCommentURL)
-	more.More()
-	e.ObjField("comments_url")
+
+	e.FieldStart("comments_url")
 	json.WriteURI(e, s.CommentsURL)
-	more.More()
-	e.ObjField("statuses_url")
+
+	e.FieldStart("statuses_url")
 	json.WriteURI(e, s.StatusesURL)
-	more.More()
-	e.ObjField("number")
+
+	e.FieldStart("number")
 	e.Int(s.Number)
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	s.State.WriteJSON(e)
-	more.More()
-	e.ObjField("locked")
+
+	e.FieldStart("locked")
 	e.Bool(s.Locked)
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	e.Str(s.Title)
-	more.More()
-	e.ObjField("user")
+
+	e.FieldStart("user")
 	s.User.WriteJSON(e)
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	s.Body.WriteJSON(e)
-	more.More()
-	e.ObjField("labels")
-	more.Down()
+
+	e.FieldStart("labels")
 	e.ArrStart()
 	for _, elem := range s.Labels {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("milestone")
+
+	e.FieldStart("milestone")
 	s.Milestone.WriteJSON(e)
 	if s.ActiveLockReason.Set {
-		more.More()
-		e.ObjField("active_lock_reason")
+		e.FieldStart("active_lock_reason")
 		s.ActiveLockReason.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("closed_at")
+
+	e.FieldStart("closed_at")
 	s.ClosedAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("merged_at")
+
+	e.FieldStart("merged_at")
 	s.MergedAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("merge_commit_sha")
+
+	e.FieldStart("merge_commit_sha")
 	s.MergeCommitSha.WriteJSON(e)
-	more.More()
-	e.ObjField("assignee")
+
+	e.FieldStart("assignee")
 	s.Assignee.WriteJSON(e)
 	if s.Assignees.Set {
-		more.More()
-		e.ObjField("assignees")
+		e.FieldStart("assignees")
 		s.Assignees.WriteJSON(e)
 	}
 	if s.RequestedReviewers.Set {
-		more.More()
-		e.ObjField("requested_reviewers")
+		e.FieldStart("requested_reviewers")
 		s.RequestedReviewers.WriteJSON(e)
 	}
 	if s.RequestedTeams.Set {
-		more.More()
-		e.ObjField("requested_teams")
+		e.FieldStart("requested_teams")
 		s.RequestedTeams.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("head")
+
+	e.FieldStart("head")
 	s.Head.WriteJSON(e)
-	more.More()
-	e.ObjField("base")
+
+	e.FieldStart("base")
 	s.Base.WriteJSON(e)
-	more.More()
-	e.ObjField("_links")
+
+	e.FieldStart("_links")
 	s.Links.WriteJSON(e)
-	more.More()
-	e.ObjField("author_association")
+
+	e.FieldStart("author_association")
 	s.AuthorAssociation.WriteJSON(e)
-	more.More()
-	e.ObjField("auto_merge")
+
+	e.FieldStart("auto_merge")
 	s.AutoMerge.WriteJSON(e)
 	if s.Draft.Set {
-		more.More()
-		e.ObjField("draft")
+		e.FieldStart("draft")
 		s.Draft.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("merged")
+
+	e.FieldStart("merged")
 	e.Bool(s.Merged)
-	more.More()
-	e.ObjField("mergeable")
+
+	e.FieldStart("mergeable")
 	s.Mergeable.WriteJSON(e)
 	if s.Rebaseable.Set {
-		more.More()
-		e.ObjField("rebaseable")
+		e.FieldStart("rebaseable")
 		s.Rebaseable.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("mergeable_state")
+
+	e.FieldStart("mergeable_state")
 	e.Str(s.MergeableState)
-	more.More()
-	e.ObjField("merged_by")
+
+	e.FieldStart("merged_by")
 	s.MergedBy.WriteJSON(e)
-	more.More()
-	e.ObjField("comments")
+
+	e.FieldStart("comments")
 	e.Int(s.Comments)
-	more.More()
-	e.ObjField("review_comments")
+
+	e.FieldStart("review_comments")
 	e.Int(s.ReviewComments)
-	more.More()
-	e.ObjField("maintainer_can_modify")
+
+	e.FieldStart("maintainer_can_modify")
 	e.Bool(s.MaintainerCanModify)
-	more.More()
-	e.ObjField("commits")
+
+	e.FieldStart("commits")
 	e.Int(s.Commits)
-	more.More()
-	e.ObjField("additions")
+
+	e.FieldStart("additions")
 	e.Int(s.Additions)
-	more.More()
-	e.ObjField("deletions")
+
+	e.FieldStart("deletions")
 	e.Int(s.Deletions)
-	more.More()
-	e.ObjField("changed_files")
+
+	e.FieldStart("changed_files")
 	e.Int(s.ChangedFiles)
 	e.ObjEnd()
 }
@@ -54321,22 +51487,20 @@ func (s *PullRequest) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestBase) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("label")
+
+	e.FieldStart("label")
 	e.Str(s.Label)
-	more.More()
-	e.ObjField("ref")
+
+	e.FieldStart("ref")
 	e.Str(s.Ref)
-	more.More()
-	e.ObjField("repo")
+
+	e.FieldStart("repo")
 	s.Repo.WriteJSON(e)
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("user")
+
+	e.FieldStart("user")
 	s.User.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -54384,272 +51548,259 @@ func (s *PullRequestBase) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestBaseRepo) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("archive_url")
+
+	e.FieldStart("archive_url")
 	e.Str(s.ArchiveURL)
-	more.More()
-	e.ObjField("assignees_url")
+
+	e.FieldStart("assignees_url")
 	e.Str(s.AssigneesURL)
-	more.More()
-	e.ObjField("blobs_url")
+
+	e.FieldStart("blobs_url")
 	e.Str(s.BlobsURL)
-	more.More()
-	e.ObjField("branches_url")
+
+	e.FieldStart("branches_url")
 	e.Str(s.BranchesURL)
-	more.More()
-	e.ObjField("collaborators_url")
+
+	e.FieldStart("collaborators_url")
 	e.Str(s.CollaboratorsURL)
-	more.More()
-	e.ObjField("comments_url")
+
+	e.FieldStart("comments_url")
 	e.Str(s.CommentsURL)
-	more.More()
-	e.ObjField("commits_url")
+
+	e.FieldStart("commits_url")
 	e.Str(s.CommitsURL)
-	more.More()
-	e.ObjField("compare_url")
+
+	e.FieldStart("compare_url")
 	e.Str(s.CompareURL)
-	more.More()
-	e.ObjField("contents_url")
+
+	e.FieldStart("contents_url")
 	e.Str(s.ContentsURL)
-	more.More()
-	e.ObjField("contributors_url")
+
+	e.FieldStart("contributors_url")
 	json.WriteURI(e, s.ContributorsURL)
-	more.More()
-	e.ObjField("deployments_url")
+
+	e.FieldStart("deployments_url")
 	json.WriteURI(e, s.DeploymentsURL)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
-	more.More()
-	e.ObjField("downloads_url")
+
+	e.FieldStart("downloads_url")
 	json.WriteURI(e, s.DownloadsURL)
-	more.More()
-	e.ObjField("events_url")
+
+	e.FieldStart("events_url")
 	json.WriteURI(e, s.EventsURL)
-	more.More()
-	e.ObjField("fork")
+
+	e.FieldStart("fork")
 	e.Bool(s.Fork)
-	more.More()
-	e.ObjField("forks_url")
+
+	e.FieldStart("forks_url")
 	json.WriteURI(e, s.ForksURL)
-	more.More()
-	e.ObjField("full_name")
+
+	e.FieldStart("full_name")
 	e.Str(s.FullName)
-	more.More()
-	e.ObjField("git_commits_url")
+
+	e.FieldStart("git_commits_url")
 	e.Str(s.GitCommitsURL)
-	more.More()
-	e.ObjField("git_refs_url")
+
+	e.FieldStart("git_refs_url")
 	e.Str(s.GitRefsURL)
-	more.More()
-	e.ObjField("git_tags_url")
+
+	e.FieldStart("git_tags_url")
 	e.Str(s.GitTagsURL)
-	more.More()
-	e.ObjField("hooks_url")
+
+	e.FieldStart("hooks_url")
 	json.WriteURI(e, s.HooksURL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("issue_comment_url")
+
+	e.FieldStart("issue_comment_url")
 	e.Str(s.IssueCommentURL)
-	more.More()
-	e.ObjField("issue_events_url")
+
+	e.FieldStart("issue_events_url")
 	e.Str(s.IssueEventsURL)
-	more.More()
-	e.ObjField("issues_url")
+
+	e.FieldStart("issues_url")
 	e.Str(s.IssuesURL)
-	more.More()
-	e.ObjField("keys_url")
+
+	e.FieldStart("keys_url")
 	e.Str(s.KeysURL)
-	more.More()
-	e.ObjField("labels_url")
+
+	e.FieldStart("labels_url")
 	e.Str(s.LabelsURL)
-	more.More()
-	e.ObjField("languages_url")
+
+	e.FieldStart("languages_url")
 	json.WriteURI(e, s.LanguagesURL)
-	more.More()
-	e.ObjField("merges_url")
+
+	e.FieldStart("merges_url")
 	json.WriteURI(e, s.MergesURL)
-	more.More()
-	e.ObjField("milestones_url")
+
+	e.FieldStart("milestones_url")
 	e.Str(s.MilestonesURL)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("notifications_url")
+
+	e.FieldStart("notifications_url")
 	e.Str(s.NotificationsURL)
-	more.More()
-	e.ObjField("owner")
+
+	e.FieldStart("owner")
 	s.Owner.WriteJSON(e)
-	more.More()
-	e.ObjField("private")
+
+	e.FieldStart("private")
 	e.Bool(s.Private)
-	more.More()
-	e.ObjField("pulls_url")
+
+	e.FieldStart("pulls_url")
 	e.Str(s.PullsURL)
-	more.More()
-	e.ObjField("releases_url")
+
+	e.FieldStart("releases_url")
 	e.Str(s.ReleasesURL)
-	more.More()
-	e.ObjField("stargazers_url")
+
+	e.FieldStart("stargazers_url")
 	json.WriteURI(e, s.StargazersURL)
-	more.More()
-	e.ObjField("statuses_url")
+
+	e.FieldStart("statuses_url")
 	e.Str(s.StatusesURL)
-	more.More()
-	e.ObjField("subscribers_url")
+
+	e.FieldStart("subscribers_url")
 	json.WriteURI(e, s.SubscribersURL)
-	more.More()
-	e.ObjField("subscription_url")
+
+	e.FieldStart("subscription_url")
 	json.WriteURI(e, s.SubscriptionURL)
-	more.More()
-	e.ObjField("tags_url")
+
+	e.FieldStart("tags_url")
 	json.WriteURI(e, s.TagsURL)
-	more.More()
-	e.ObjField("teams_url")
+
+	e.FieldStart("teams_url")
 	json.WriteURI(e, s.TeamsURL)
-	more.More()
-	e.ObjField("trees_url")
+
+	e.FieldStart("trees_url")
 	e.Str(s.TreesURL)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("clone_url")
+
+	e.FieldStart("clone_url")
 	e.Str(s.CloneURL)
-	more.More()
-	e.ObjField("default_branch")
+
+	e.FieldStart("default_branch")
 	e.Str(s.DefaultBranch)
-	more.More()
-	e.ObjField("forks")
+
+	e.FieldStart("forks")
 	e.Int(s.Forks)
-	more.More()
-	e.ObjField("forks_count")
+
+	e.FieldStart("forks_count")
 	e.Int(s.ForksCount)
-	more.More()
-	e.ObjField("git_url")
+
+	e.FieldStart("git_url")
 	e.Str(s.GitURL)
-	more.More()
-	e.ObjField("has_downloads")
+
+	e.FieldStart("has_downloads")
 	e.Bool(s.HasDownloads)
-	more.More()
-	e.ObjField("has_issues")
+
+	e.FieldStart("has_issues")
 	e.Bool(s.HasIssues)
-	more.More()
-	e.ObjField("has_projects")
+
+	e.FieldStart("has_projects")
 	e.Bool(s.HasProjects)
-	more.More()
-	e.ObjField("has_wiki")
+
+	e.FieldStart("has_wiki")
 	e.Bool(s.HasWiki)
-	more.More()
-	e.ObjField("has_pages")
+
+	e.FieldStart("has_pages")
 	e.Bool(s.HasPages)
-	more.More()
-	e.ObjField("homepage")
+
+	e.FieldStart("homepage")
 	s.Homepage.WriteJSON(e)
-	more.More()
-	e.ObjField("language")
+
+	e.FieldStart("language")
 	s.Language.WriteJSON(e)
 	if s.MasterBranch.Set {
-		more.More()
-		e.ObjField("master_branch")
+		e.FieldStart("master_branch")
 		s.MasterBranch.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("archived")
+
+	e.FieldStart("archived")
 	e.Bool(s.Archived)
-	more.More()
-	e.ObjField("disabled")
+
+	e.FieldStart("disabled")
 	e.Bool(s.Disabled)
-	more.More()
-	e.ObjField("mirror_url")
+
+	e.FieldStart("mirror_url")
 	s.MirrorURL.WriteJSON(e)
-	more.More()
-	e.ObjField("open_issues")
+
+	e.FieldStart("open_issues")
 	e.Int(s.OpenIssues)
-	more.More()
-	e.ObjField("open_issues_count")
+
+	e.FieldStart("open_issues_count")
 	e.Int(s.OpenIssuesCount)
 	if s.Permissions.Set {
-		more.More()
-		e.ObjField("permissions")
+		e.FieldStart("permissions")
 		s.Permissions.WriteJSON(e)
 	}
 	if s.TempCloneToken.Set {
-		more.More()
-		e.ObjField("temp_clone_token")
+		e.FieldStart("temp_clone_token")
 		s.TempCloneToken.WriteJSON(e)
 	}
 	if s.AllowMergeCommit.Set {
-		more.More()
-		e.ObjField("allow_merge_commit")
+		e.FieldStart("allow_merge_commit")
 		s.AllowMergeCommit.WriteJSON(e)
 	}
 	if s.AllowSquashMerge.Set {
-		more.More()
-		e.ObjField("allow_squash_merge")
+		e.FieldStart("allow_squash_merge")
 		s.AllowSquashMerge.WriteJSON(e)
 	}
 	if s.AllowRebaseMerge.Set {
-		more.More()
-		e.ObjField("allow_rebase_merge")
+		e.FieldStart("allow_rebase_merge")
 		s.AllowRebaseMerge.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("license")
+
+	e.FieldStart("license")
 	s.License.WriteJSON(e)
-	more.More()
-	e.ObjField("pushed_at")
+
+	e.FieldStart("pushed_at")
 	json.WriteDateTime(e, s.PushedAt)
-	more.More()
-	e.ObjField("size")
+
+	e.FieldStart("size")
 	e.Int(s.Size)
-	more.More()
-	e.ObjField("ssh_url")
+
+	e.FieldStart("ssh_url")
 	e.Str(s.SSHURL)
-	more.More()
-	e.ObjField("stargazers_count")
+
+	e.FieldStart("stargazers_count")
 	e.Int(s.StargazersCount)
-	more.More()
-	e.ObjField("svn_url")
+
+	e.FieldStart("svn_url")
 	json.WriteURI(e, s.SvnURL)
 	if s.Topics != nil {
-		more.More()
-		e.ObjField("topics")
-		more.Down()
+		e.FieldStart("topics")
 		e.ArrStart()
 		for _, elem := range s.Topics {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("watchers")
+
+	e.FieldStart("watchers")
 	e.Int(s.Watchers)
-	more.More()
-	e.ObjField("watchers_count")
+
+	e.FieldStart("watchers_count")
 	e.Int(s.WatchersCount)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
 	if s.AllowForking.Set {
-		more.More()
-		e.ObjField("allow_forking")
+		e.FieldStart("allow_forking")
 		s.AllowForking.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -55147,61 +52298,59 @@ func (s *PullRequestBaseRepo) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestBaseRepoOwner) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("avatar_url")
+
+	e.FieldStart("avatar_url")
 	json.WriteURI(e, s.AvatarURL)
-	more.More()
-	e.ObjField("events_url")
+
+	e.FieldStart("events_url")
 	e.Str(s.EventsURL)
-	more.More()
-	e.ObjField("followers_url")
+
+	e.FieldStart("followers_url")
 	json.WriteURI(e, s.FollowersURL)
-	more.More()
-	e.ObjField("following_url")
+
+	e.FieldStart("following_url")
 	e.Str(s.FollowingURL)
-	more.More()
-	e.ObjField("gists_url")
+
+	e.FieldStart("gists_url")
 	e.Str(s.GistsURL)
-	more.More()
-	e.ObjField("gravatar_id")
+
+	e.FieldStart("gravatar_id")
 	s.GravatarID.WriteJSON(e)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("login")
+
+	e.FieldStart("login")
 	e.Str(s.Login)
-	more.More()
-	e.ObjField("organizations_url")
+
+	e.FieldStart("organizations_url")
 	json.WriteURI(e, s.OrganizationsURL)
-	more.More()
-	e.ObjField("received_events_url")
+
+	e.FieldStart("received_events_url")
 	json.WriteURI(e, s.ReceivedEventsURL)
-	more.More()
-	e.ObjField("repos_url")
+
+	e.FieldStart("repos_url")
 	json.WriteURI(e, s.ReposURL)
-	more.More()
-	e.ObjField("site_admin")
+
+	e.FieldStart("site_admin")
 	e.Bool(s.SiteAdmin)
-	more.More()
-	e.ObjField("starred_url")
+
+	e.FieldStart("starred_url")
 	e.Str(s.StarredURL)
-	more.More()
-	e.ObjField("subscriptions_url")
+
+	e.FieldStart("subscriptions_url")
 	json.WriteURI(e, s.SubscriptionsURL)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	e.ObjEnd()
 }
@@ -55329,26 +52478,22 @@ func (s *PullRequestBaseRepoOwner) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestBaseRepoPermissions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("admin")
+
+	e.FieldStart("admin")
 	e.Bool(s.Admin)
 	if s.Maintain.Set {
-		more.More()
-		e.ObjField("maintain")
+		e.FieldStart("maintain")
 		s.Maintain.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("push")
+
+	e.FieldStart("push")
 	e.Bool(s.Push)
 	if s.Triage.Set {
-		more.More()
-		e.ObjField("triage")
+		e.FieldStart("triage")
 		s.Triage.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("pull")
+
+	e.FieldStart("pull")
 	e.Bool(s.Pull)
 	e.ObjEnd()
 }
@@ -55398,61 +52543,59 @@ func (s *PullRequestBaseRepoPermissions) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestBaseUser) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("avatar_url")
+
+	e.FieldStart("avatar_url")
 	json.WriteURI(e, s.AvatarURL)
-	more.More()
-	e.ObjField("events_url")
+
+	e.FieldStart("events_url")
 	e.Str(s.EventsURL)
-	more.More()
-	e.ObjField("followers_url")
+
+	e.FieldStart("followers_url")
 	json.WriteURI(e, s.FollowersURL)
-	more.More()
-	e.ObjField("following_url")
+
+	e.FieldStart("following_url")
 	e.Str(s.FollowingURL)
-	more.More()
-	e.ObjField("gists_url")
+
+	e.FieldStart("gists_url")
 	e.Str(s.GistsURL)
-	more.More()
-	e.ObjField("gravatar_id")
+
+	e.FieldStart("gravatar_id")
 	s.GravatarID.WriteJSON(e)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("login")
+
+	e.FieldStart("login")
 	e.Str(s.Login)
-	more.More()
-	e.ObjField("organizations_url")
+
+	e.FieldStart("organizations_url")
 	json.WriteURI(e, s.OrganizationsURL)
-	more.More()
-	e.ObjField("received_events_url")
+
+	e.FieldStart("received_events_url")
 	json.WriteURI(e, s.ReceivedEventsURL)
-	more.More()
-	e.ObjField("repos_url")
+
+	e.FieldStart("repos_url")
 	json.WriteURI(e, s.ReposURL)
-	more.More()
-	e.ObjField("site_admin")
+
+	e.FieldStart("site_admin")
 	e.Bool(s.SiteAdmin)
-	more.More()
-	e.ObjField("starred_url")
+
+	e.FieldStart("starred_url")
 	e.Str(s.StarredURL)
-	more.More()
-	e.ObjField("subscriptions_url")
+
+	e.FieldStart("subscriptions_url")
 	json.WriteURI(e, s.SubscriptionsURL)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	e.ObjEnd()
 }
@@ -55580,22 +52723,20 @@ func (s *PullRequestBaseUser) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestHead) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("label")
+
+	e.FieldStart("label")
 	e.Str(s.Label)
-	more.More()
-	e.ObjField("ref")
+
+	e.FieldStart("ref")
 	e.Str(s.Ref)
-	more.More()
-	e.ObjField("repo")
+
+	e.FieldStart("repo")
 	s.Repo.WriteJSON(e)
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("user")
+
+	e.FieldStart("user")
 	s.User.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -55643,272 +52784,259 @@ func (s *PullRequestHead) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestHeadRepo) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("archive_url")
+
+	e.FieldStart("archive_url")
 	e.Str(s.ArchiveURL)
-	more.More()
-	e.ObjField("assignees_url")
+
+	e.FieldStart("assignees_url")
 	e.Str(s.AssigneesURL)
-	more.More()
-	e.ObjField("blobs_url")
+
+	e.FieldStart("blobs_url")
 	e.Str(s.BlobsURL)
-	more.More()
-	e.ObjField("branches_url")
+
+	e.FieldStart("branches_url")
 	e.Str(s.BranchesURL)
-	more.More()
-	e.ObjField("collaborators_url")
+
+	e.FieldStart("collaborators_url")
 	e.Str(s.CollaboratorsURL)
-	more.More()
-	e.ObjField("comments_url")
+
+	e.FieldStart("comments_url")
 	e.Str(s.CommentsURL)
-	more.More()
-	e.ObjField("commits_url")
+
+	e.FieldStart("commits_url")
 	e.Str(s.CommitsURL)
-	more.More()
-	e.ObjField("compare_url")
+
+	e.FieldStart("compare_url")
 	e.Str(s.CompareURL)
-	more.More()
-	e.ObjField("contents_url")
+
+	e.FieldStart("contents_url")
 	e.Str(s.ContentsURL)
-	more.More()
-	e.ObjField("contributors_url")
+
+	e.FieldStart("contributors_url")
 	json.WriteURI(e, s.ContributorsURL)
-	more.More()
-	e.ObjField("deployments_url")
+
+	e.FieldStart("deployments_url")
 	json.WriteURI(e, s.DeploymentsURL)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
-	more.More()
-	e.ObjField("downloads_url")
+
+	e.FieldStart("downloads_url")
 	json.WriteURI(e, s.DownloadsURL)
-	more.More()
-	e.ObjField("events_url")
+
+	e.FieldStart("events_url")
 	json.WriteURI(e, s.EventsURL)
-	more.More()
-	e.ObjField("fork")
+
+	e.FieldStart("fork")
 	e.Bool(s.Fork)
-	more.More()
-	e.ObjField("forks_url")
+
+	e.FieldStart("forks_url")
 	json.WriteURI(e, s.ForksURL)
-	more.More()
-	e.ObjField("full_name")
+
+	e.FieldStart("full_name")
 	e.Str(s.FullName)
-	more.More()
-	e.ObjField("git_commits_url")
+
+	e.FieldStart("git_commits_url")
 	e.Str(s.GitCommitsURL)
-	more.More()
-	e.ObjField("git_refs_url")
+
+	e.FieldStart("git_refs_url")
 	e.Str(s.GitRefsURL)
-	more.More()
-	e.ObjField("git_tags_url")
+
+	e.FieldStart("git_tags_url")
 	e.Str(s.GitTagsURL)
-	more.More()
-	e.ObjField("hooks_url")
+
+	e.FieldStart("hooks_url")
 	json.WriteURI(e, s.HooksURL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("issue_comment_url")
+
+	e.FieldStart("issue_comment_url")
 	e.Str(s.IssueCommentURL)
-	more.More()
-	e.ObjField("issue_events_url")
+
+	e.FieldStart("issue_events_url")
 	e.Str(s.IssueEventsURL)
-	more.More()
-	e.ObjField("issues_url")
+
+	e.FieldStart("issues_url")
 	e.Str(s.IssuesURL)
-	more.More()
-	e.ObjField("keys_url")
+
+	e.FieldStart("keys_url")
 	e.Str(s.KeysURL)
-	more.More()
-	e.ObjField("labels_url")
+
+	e.FieldStart("labels_url")
 	e.Str(s.LabelsURL)
-	more.More()
-	e.ObjField("languages_url")
+
+	e.FieldStart("languages_url")
 	json.WriteURI(e, s.LanguagesURL)
-	more.More()
-	e.ObjField("merges_url")
+
+	e.FieldStart("merges_url")
 	json.WriteURI(e, s.MergesURL)
-	more.More()
-	e.ObjField("milestones_url")
+
+	e.FieldStart("milestones_url")
 	e.Str(s.MilestonesURL)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("notifications_url")
+
+	e.FieldStart("notifications_url")
 	e.Str(s.NotificationsURL)
-	more.More()
-	e.ObjField("owner")
+
+	e.FieldStart("owner")
 	s.Owner.WriteJSON(e)
-	more.More()
-	e.ObjField("private")
+
+	e.FieldStart("private")
 	e.Bool(s.Private)
-	more.More()
-	e.ObjField("pulls_url")
+
+	e.FieldStart("pulls_url")
 	e.Str(s.PullsURL)
-	more.More()
-	e.ObjField("releases_url")
+
+	e.FieldStart("releases_url")
 	e.Str(s.ReleasesURL)
-	more.More()
-	e.ObjField("stargazers_url")
+
+	e.FieldStart("stargazers_url")
 	json.WriteURI(e, s.StargazersURL)
-	more.More()
-	e.ObjField("statuses_url")
+
+	e.FieldStart("statuses_url")
 	e.Str(s.StatusesURL)
-	more.More()
-	e.ObjField("subscribers_url")
+
+	e.FieldStart("subscribers_url")
 	json.WriteURI(e, s.SubscribersURL)
-	more.More()
-	e.ObjField("subscription_url")
+
+	e.FieldStart("subscription_url")
 	json.WriteURI(e, s.SubscriptionURL)
-	more.More()
-	e.ObjField("tags_url")
+
+	e.FieldStart("tags_url")
 	json.WriteURI(e, s.TagsURL)
-	more.More()
-	e.ObjField("teams_url")
+
+	e.FieldStart("teams_url")
 	json.WriteURI(e, s.TeamsURL)
-	more.More()
-	e.ObjField("trees_url")
+
+	e.FieldStart("trees_url")
 	e.Str(s.TreesURL)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("clone_url")
+
+	e.FieldStart("clone_url")
 	e.Str(s.CloneURL)
-	more.More()
-	e.ObjField("default_branch")
+
+	e.FieldStart("default_branch")
 	e.Str(s.DefaultBranch)
-	more.More()
-	e.ObjField("forks")
+
+	e.FieldStart("forks")
 	e.Int(s.Forks)
-	more.More()
-	e.ObjField("forks_count")
+
+	e.FieldStart("forks_count")
 	e.Int(s.ForksCount)
-	more.More()
-	e.ObjField("git_url")
+
+	e.FieldStart("git_url")
 	e.Str(s.GitURL)
-	more.More()
-	e.ObjField("has_downloads")
+
+	e.FieldStart("has_downloads")
 	e.Bool(s.HasDownloads)
-	more.More()
-	e.ObjField("has_issues")
+
+	e.FieldStart("has_issues")
 	e.Bool(s.HasIssues)
-	more.More()
-	e.ObjField("has_projects")
+
+	e.FieldStart("has_projects")
 	e.Bool(s.HasProjects)
-	more.More()
-	e.ObjField("has_wiki")
+
+	e.FieldStart("has_wiki")
 	e.Bool(s.HasWiki)
-	more.More()
-	e.ObjField("has_pages")
+
+	e.FieldStart("has_pages")
 	e.Bool(s.HasPages)
-	more.More()
-	e.ObjField("homepage")
+
+	e.FieldStart("homepage")
 	s.Homepage.WriteJSON(e)
-	more.More()
-	e.ObjField("language")
+
+	e.FieldStart("language")
 	s.Language.WriteJSON(e)
 	if s.MasterBranch.Set {
-		more.More()
-		e.ObjField("master_branch")
+		e.FieldStart("master_branch")
 		s.MasterBranch.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("archived")
+
+	e.FieldStart("archived")
 	e.Bool(s.Archived)
-	more.More()
-	e.ObjField("disabled")
+
+	e.FieldStart("disabled")
 	e.Bool(s.Disabled)
-	more.More()
-	e.ObjField("mirror_url")
+
+	e.FieldStart("mirror_url")
 	s.MirrorURL.WriteJSON(e)
-	more.More()
-	e.ObjField("open_issues")
+
+	e.FieldStart("open_issues")
 	e.Int(s.OpenIssues)
-	more.More()
-	e.ObjField("open_issues_count")
+
+	e.FieldStart("open_issues_count")
 	e.Int(s.OpenIssuesCount)
 	if s.Permissions.Set {
-		more.More()
-		e.ObjField("permissions")
+		e.FieldStart("permissions")
 		s.Permissions.WriteJSON(e)
 	}
 	if s.TempCloneToken.Set {
-		more.More()
-		e.ObjField("temp_clone_token")
+		e.FieldStart("temp_clone_token")
 		s.TempCloneToken.WriteJSON(e)
 	}
 	if s.AllowMergeCommit.Set {
-		more.More()
-		e.ObjField("allow_merge_commit")
+		e.FieldStart("allow_merge_commit")
 		s.AllowMergeCommit.WriteJSON(e)
 	}
 	if s.AllowSquashMerge.Set {
-		more.More()
-		e.ObjField("allow_squash_merge")
+		e.FieldStart("allow_squash_merge")
 		s.AllowSquashMerge.WriteJSON(e)
 	}
 	if s.AllowRebaseMerge.Set {
-		more.More()
-		e.ObjField("allow_rebase_merge")
+		e.FieldStart("allow_rebase_merge")
 		s.AllowRebaseMerge.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("license")
+
+	e.FieldStart("license")
 	s.License.WriteJSON(e)
-	more.More()
-	e.ObjField("pushed_at")
+
+	e.FieldStart("pushed_at")
 	json.WriteDateTime(e, s.PushedAt)
-	more.More()
-	e.ObjField("size")
+
+	e.FieldStart("size")
 	e.Int(s.Size)
-	more.More()
-	e.ObjField("ssh_url")
+
+	e.FieldStart("ssh_url")
 	e.Str(s.SSHURL)
-	more.More()
-	e.ObjField("stargazers_count")
+
+	e.FieldStart("stargazers_count")
 	e.Int(s.StargazersCount)
-	more.More()
-	e.ObjField("svn_url")
+
+	e.FieldStart("svn_url")
 	json.WriteURI(e, s.SvnURL)
 	if s.Topics != nil {
-		more.More()
-		e.ObjField("topics")
-		more.Down()
+		e.FieldStart("topics")
 		e.ArrStart()
 		for _, elem := range s.Topics {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("watchers")
+
+	e.FieldStart("watchers")
 	e.Int(s.Watchers)
-	more.More()
-	e.ObjField("watchers_count")
+
+	e.FieldStart("watchers_count")
 	e.Int(s.WatchersCount)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
 	if s.AllowForking.Set {
-		more.More()
-		e.ObjField("allow_forking")
+		e.FieldStart("allow_forking")
 		s.AllowForking.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -56406,22 +53534,20 @@ func (s *PullRequestHeadRepo) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestHeadRepoLicense) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("key")
+
+	e.FieldStart("key")
 	e.Str(s.Key)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	s.URL.WriteJSON(e)
-	more.More()
-	e.ObjField("spdx_id")
+
+	e.FieldStart("spdx_id")
 	s.SpdxID.WriteJSON(e)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
 	e.ObjEnd()
 }
@@ -56469,61 +53595,59 @@ func (s *PullRequestHeadRepoLicense) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestHeadRepoOwner) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("avatar_url")
+
+	e.FieldStart("avatar_url")
 	json.WriteURI(e, s.AvatarURL)
-	more.More()
-	e.ObjField("events_url")
+
+	e.FieldStart("events_url")
 	e.Str(s.EventsURL)
-	more.More()
-	e.ObjField("followers_url")
+
+	e.FieldStart("followers_url")
 	json.WriteURI(e, s.FollowersURL)
-	more.More()
-	e.ObjField("following_url")
+
+	e.FieldStart("following_url")
 	e.Str(s.FollowingURL)
-	more.More()
-	e.ObjField("gists_url")
+
+	e.FieldStart("gists_url")
 	e.Str(s.GistsURL)
-	more.More()
-	e.ObjField("gravatar_id")
+
+	e.FieldStart("gravatar_id")
 	s.GravatarID.WriteJSON(e)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("login")
+
+	e.FieldStart("login")
 	e.Str(s.Login)
-	more.More()
-	e.ObjField("organizations_url")
+
+	e.FieldStart("organizations_url")
 	json.WriteURI(e, s.OrganizationsURL)
-	more.More()
-	e.ObjField("received_events_url")
+
+	e.FieldStart("received_events_url")
 	json.WriteURI(e, s.ReceivedEventsURL)
-	more.More()
-	e.ObjField("repos_url")
+
+	e.FieldStart("repos_url")
 	json.WriteURI(e, s.ReposURL)
-	more.More()
-	e.ObjField("site_admin")
+
+	e.FieldStart("site_admin")
 	e.Bool(s.SiteAdmin)
-	more.More()
-	e.ObjField("starred_url")
+
+	e.FieldStart("starred_url")
 	e.Str(s.StarredURL)
-	more.More()
-	e.ObjField("subscriptions_url")
+
+	e.FieldStart("subscriptions_url")
 	json.WriteURI(e, s.SubscriptionsURL)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	e.ObjEnd()
 }
@@ -56651,26 +53775,22 @@ func (s *PullRequestHeadRepoOwner) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestHeadRepoPermissions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("admin")
+
+	e.FieldStart("admin")
 	e.Bool(s.Admin)
 	if s.Maintain.Set {
-		more.More()
-		e.ObjField("maintain")
+		e.FieldStart("maintain")
 		s.Maintain.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("push")
+
+	e.FieldStart("push")
 	e.Bool(s.Push)
 	if s.Triage.Set {
-		more.More()
-		e.ObjField("triage")
+		e.FieldStart("triage")
 		s.Triage.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("pull")
+
+	e.FieldStart("pull")
 	e.Bool(s.Pull)
 	e.ObjEnd()
 }
@@ -56720,61 +53840,59 @@ func (s *PullRequestHeadRepoPermissions) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestHeadUser) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("avatar_url")
+
+	e.FieldStart("avatar_url")
 	json.WriteURI(e, s.AvatarURL)
-	more.More()
-	e.ObjField("events_url")
+
+	e.FieldStart("events_url")
 	e.Str(s.EventsURL)
-	more.More()
-	e.ObjField("followers_url")
+
+	e.FieldStart("followers_url")
 	json.WriteURI(e, s.FollowersURL)
-	more.More()
-	e.ObjField("following_url")
+
+	e.FieldStart("following_url")
 	e.Str(s.FollowingURL)
-	more.More()
-	e.ObjField("gists_url")
+
+	e.FieldStart("gists_url")
 	e.Str(s.GistsURL)
-	more.More()
-	e.ObjField("gravatar_id")
+
+	e.FieldStart("gravatar_id")
 	s.GravatarID.WriteJSON(e)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("login")
+
+	e.FieldStart("login")
 	e.Str(s.Login)
-	more.More()
-	e.ObjField("organizations_url")
+
+	e.FieldStart("organizations_url")
 	json.WriteURI(e, s.OrganizationsURL)
-	more.More()
-	e.ObjField("received_events_url")
+
+	e.FieldStart("received_events_url")
 	json.WriteURI(e, s.ReceivedEventsURL)
-	more.More()
-	e.ObjField("repos_url")
+
+	e.FieldStart("repos_url")
 	json.WriteURI(e, s.ReposURL)
-	more.More()
-	e.ObjField("site_admin")
+
+	e.FieldStart("site_admin")
 	e.Bool(s.SiteAdmin)
-	more.More()
-	e.ObjField("starred_url")
+
+	e.FieldStart("starred_url")
 	e.Str(s.StarredURL)
-	more.More()
-	e.ObjField("subscriptions_url")
+
+	e.FieldStart("subscriptions_url")
 	json.WriteURI(e, s.SubscriptionsURL)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	e.ObjEnd()
 }
@@ -56902,41 +54020,32 @@ func (s *PullRequestHeadUser) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestLabelsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.NodeID.Set {
-		more.More()
-		e.ObjField("node_id")
+		e.FieldStart("node_id")
 		s.NodeID.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.Color.Set {
-		more.More()
-		e.ObjField("color")
+		e.FieldStart("color")
 		s.Color.WriteJSON(e)
 	}
 	if s.Default.Set {
-		more.More()
-		e.ObjField("default")
+		e.FieldStart("default")
 		s.Default.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -56994,31 +54103,29 @@ func (s *PullRequestLabelsItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestLinks) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("comments")
+
+	e.FieldStart("comments")
 	s.Comments.WriteJSON(e)
-	more.More()
-	e.ObjField("commits")
+
+	e.FieldStart("commits")
 	s.Commits.WriteJSON(e)
-	more.More()
-	e.ObjField("statuses")
+
+	e.FieldStart("statuses")
 	s.Statuses.WriteJSON(e)
-	more.More()
-	e.ObjField("html")
+
+	e.FieldStart("html")
 	s.HTML.WriteJSON(e)
-	more.More()
-	e.ObjField("issue")
+
+	e.FieldStart("issue")
 	s.Issue.WriteJSON(e)
-	more.More()
-	e.ObjField("review_comments")
+
+	e.FieldStart("review_comments")
 	s.ReviewComments.WriteJSON(e)
-	more.More()
-	e.ObjField("review_comment")
+
+	e.FieldStart("review_comment")
 	s.ReviewComment.WriteJSON(e)
-	more.More()
-	e.ObjField("self")
+
+	e.FieldStart("self")
 	s.Self.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -57072,16 +54179,14 @@ func (s *PullRequestLinks) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestMergeResult) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("merged")
+
+	e.FieldStart("merged")
 	e.Bool(s.Merged)
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
 	e.ObjEnd()
 }
@@ -57121,22 +54226,20 @@ func (s *PullRequestMergeResult) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestMinimal) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("number")
+
+	e.FieldStart("number")
 	e.Int(s.Number)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	e.Str(s.URL)
-	more.More()
-	e.ObjField("head")
+
+	e.FieldStart("head")
 	s.Head.WriteJSON(e)
-	more.More()
-	e.ObjField("base")
+
+	e.FieldStart("base")
 	s.Base.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -57184,16 +54287,14 @@ func (s *PullRequestMinimal) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestMinimalBase) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("ref")
+
+	e.FieldStart("ref")
 	e.Str(s.Ref)
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("repo")
+
+	e.FieldStart("repo")
 	s.Repo.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -57231,16 +54332,14 @@ func (s *PullRequestMinimalBase) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestMinimalBaseRepo) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	e.Str(s.URL)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -57280,16 +54379,14 @@ func (s *PullRequestMinimalBaseRepo) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestMinimalHead) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("ref")
+
+	e.FieldStart("ref")
 	e.Str(s.Ref)
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("repo")
+
+	e.FieldStart("repo")
 	s.Repo.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -57327,16 +54424,14 @@ func (s *PullRequestMinimalHead) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestMinimalHeadRepo) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	e.Str(s.URL)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -57376,52 +54471,47 @@ func (s *PullRequestMinimalHeadRepo) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestReview) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("user")
+
+	e.FieldStart("user")
 	s.User.WriteJSON(e)
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	e.Str(s.State)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("pull_request_url")
+
+	e.FieldStart("pull_request_url")
 	json.WriteURI(e, s.PullRequestURL)
-	more.More()
-	e.ObjField("_links")
+
+	e.FieldStart("_links")
 	s.Links.WriteJSON(e)
 	if s.SubmittedAt.Set {
-		more.More()
-		e.ObjField("submitted_at")
+		e.FieldStart("submitted_at")
 		s.SubmittedAt.WriteJSON(e, json.WriteDateTime)
 	}
-	more.More()
-	e.ObjField("commit_id")
+
+	e.FieldStart("commit_id")
 	e.Str(s.CommitID)
 	if s.BodyHTML.Set {
-		more.More()
-		e.ObjField("body_html")
+		e.FieldStart("body_html")
 		s.BodyHTML.WriteJSON(e)
 	}
 	if s.BodyText.Set {
-		more.More()
-		e.ObjField("body_text")
+		e.FieldStart("body_text")
 		s.BodyText.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("author_association")
+
+	e.FieldStart("author_association")
 	s.AuthorAssociation.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -57512,110 +54602,98 @@ func (s *PullRequestReview) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestReviewComment) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	e.Str(s.URL)
-	more.More()
-	e.ObjField("pull_request_review_id")
+
+	e.FieldStart("pull_request_review_id")
 	s.PullRequestReviewID.WriteJSON(e)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("diff_hunk")
+
+	e.FieldStart("diff_hunk")
 	e.Str(s.DiffHunk)
-	more.More()
-	e.ObjField("path")
+
+	e.FieldStart("path")
 	e.Str(s.Path)
-	more.More()
-	e.ObjField("position")
+
+	e.FieldStart("position")
 	e.Int(s.Position)
-	more.More()
-	e.ObjField("original_position")
+
+	e.FieldStart("original_position")
 	e.Int(s.OriginalPosition)
-	more.More()
-	e.ObjField("commit_id")
+
+	e.FieldStart("commit_id")
 	e.Str(s.CommitID)
-	more.More()
-	e.ObjField("original_commit_id")
+
+	e.FieldStart("original_commit_id")
 	e.Str(s.OriginalCommitID)
 	if s.InReplyToID.Set {
-		more.More()
-		e.ObjField("in_reply_to_id")
+		e.FieldStart("in_reply_to_id")
 		s.InReplyToID.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("user")
+
+	e.FieldStart("user")
 	s.User.WriteJSON(e)
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("pull_request_url")
+
+	e.FieldStart("pull_request_url")
 	json.WriteURI(e, s.PullRequestURL)
-	more.More()
-	e.ObjField("author_association")
+
+	e.FieldStart("author_association")
 	s.AuthorAssociation.WriteJSON(e)
-	more.More()
-	e.ObjField("_links")
+
+	e.FieldStart("_links")
 	s.Links.WriteJSON(e)
 	if s.StartLine.Set {
-		more.More()
-		e.ObjField("start_line")
+		e.FieldStart("start_line")
 		s.StartLine.WriteJSON(e)
 	}
 	if s.OriginalStartLine.Set {
-		more.More()
-		e.ObjField("original_start_line")
+		e.FieldStart("original_start_line")
 		s.OriginalStartLine.WriteJSON(e)
 	}
 	if s.StartSide.Set {
-		more.More()
-		e.ObjField("start_side")
+		e.FieldStart("start_side")
 		s.StartSide.WriteJSON(e)
 	}
 	if s.Line.Set {
-		more.More()
-		e.ObjField("line")
+		e.FieldStart("line")
 		s.Line.WriteJSON(e)
 	}
 	if s.OriginalLine.Set {
-		more.More()
-		e.ObjField("original_line")
+		e.FieldStart("original_line")
 		s.OriginalLine.WriteJSON(e)
 	}
 	if s.Side.Set {
-		more.More()
-		e.ObjField("side")
+		e.FieldStart("side")
 		s.Side.WriteJSON(e)
 	}
 	if s.Reactions.Set {
-		more.More()
-		e.ObjField("reactions")
+		e.FieldStart("reactions")
 		s.Reactions.WriteJSON(e)
 	}
 	if s.BodyHTML.Set {
-		more.More()
-		e.ObjField("body_html")
+		e.FieldStart("body_html")
 		s.BodyHTML.WriteJSON(e)
 	}
 	if s.BodyText.Set {
-		more.More()
-		e.ObjField("body_text")
+		e.FieldStart("body_text")
 		s.BodyText.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -57788,16 +54866,14 @@ func (s *PullRequestReviewComment) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestReviewCommentLinks) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("self")
+
+	e.FieldStart("self")
 	s.Self.WriteJSON(e)
-	more.More()
-	e.ObjField("html")
+
+	e.FieldStart("html")
 	s.HTML.WriteJSON(e)
-	more.More()
-	e.ObjField("pull_request")
+
+	e.FieldStart("pull_request")
 	s.PullRequest.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -57831,10 +54907,8 @@ func (s *PullRequestReviewCommentLinks) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestReviewCommentLinksHTML) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("href")
+
+	e.FieldStart("href")
 	json.WriteURI(e, s.Href)
 	e.ObjEnd()
 }
@@ -57862,10 +54936,8 @@ func (s *PullRequestReviewCommentLinksHTML) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestReviewCommentLinksPullRequest) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("href")
+
+	e.FieldStart("href")
 	json.WriteURI(e, s.Href)
 	e.ObjEnd()
 }
@@ -57893,10 +54965,8 @@ func (s *PullRequestReviewCommentLinksPullRequest) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s PullRequestReviewCommentLinksSelf) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("href")
+
+	e.FieldStart("href")
 	json.WriteURI(e, s.Href)
 	e.ObjEnd()
 }
@@ -57960,13 +55030,11 @@ func (s *PullRequestReviewCommentStartSide) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestReviewLinks) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("html")
+
+	e.FieldStart("html")
 	s.HTML.WriteJSON(e)
-	more.More()
-	e.ObjField("pull_request")
+
+	e.FieldStart("pull_request")
 	s.PullRequest.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -57996,10 +55064,8 @@ func (s *PullRequestReviewLinks) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestReviewLinksHTML) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("href")
+
+	e.FieldStart("href")
 	e.Str(s.Href)
 	e.ObjEnd()
 }
@@ -58027,10 +55093,8 @@ func (s *PullRequestReviewLinksHTML) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestReviewLinksPullRequest) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("href")
+
+	e.FieldStart("href")
 	e.Str(s.Href)
 	e.ObjEnd()
 }
@@ -58058,28 +55122,20 @@ func (s *PullRequestReviewLinksPullRequest) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestReviewRequest) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("users")
-	more.Down()
+
+	e.FieldStart("users")
 	e.ArrStart()
 	for _, elem := range s.Users {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("teams")
-	more.Down()
+
+	e.FieldStart("teams")
 	e.ArrStart()
 	for _, elem := range s.Teams {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -58124,131 +55180,121 @@ func (s *PullRequestReviewRequest) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestSimple) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("diff_url")
+
+	e.FieldStart("diff_url")
 	json.WriteURI(e, s.DiffURL)
-	more.More()
-	e.ObjField("patch_url")
+
+	e.FieldStart("patch_url")
 	json.WriteURI(e, s.PatchURL)
-	more.More()
-	e.ObjField("issue_url")
+
+	e.FieldStart("issue_url")
 	json.WriteURI(e, s.IssueURL)
-	more.More()
-	e.ObjField("commits_url")
+
+	e.FieldStart("commits_url")
 	json.WriteURI(e, s.CommitsURL)
-	more.More()
-	e.ObjField("review_comments_url")
+
+	e.FieldStart("review_comments_url")
 	json.WriteURI(e, s.ReviewCommentsURL)
-	more.More()
-	e.ObjField("review_comment_url")
+
+	e.FieldStart("review_comment_url")
 	e.Str(s.ReviewCommentURL)
-	more.More()
-	e.ObjField("comments_url")
+
+	e.FieldStart("comments_url")
 	json.WriteURI(e, s.CommentsURL)
-	more.More()
-	e.ObjField("statuses_url")
+
+	e.FieldStart("statuses_url")
 	json.WriteURI(e, s.StatusesURL)
-	more.More()
-	e.ObjField("number")
+
+	e.FieldStart("number")
 	e.Int(s.Number)
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	e.Str(s.State)
-	more.More()
-	e.ObjField("locked")
+
+	e.FieldStart("locked")
 	e.Bool(s.Locked)
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	e.Str(s.Title)
-	more.More()
-	e.ObjField("user")
+
+	e.FieldStart("user")
 	s.User.WriteJSON(e)
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	s.Body.WriteJSON(e)
-	more.More()
-	e.ObjField("labels")
-	more.Down()
+
+	e.FieldStart("labels")
 	e.ArrStart()
 	for _, elem := range s.Labels {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("milestone")
+
+	e.FieldStart("milestone")
 	s.Milestone.WriteJSON(e)
 	if s.ActiveLockReason.Set {
-		more.More()
-		e.ObjField("active_lock_reason")
+		e.FieldStart("active_lock_reason")
 		s.ActiveLockReason.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("closed_at")
+
+	e.FieldStart("closed_at")
 	s.ClosedAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("merged_at")
+
+	e.FieldStart("merged_at")
 	s.MergedAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("merge_commit_sha")
+
+	e.FieldStart("merge_commit_sha")
 	s.MergeCommitSha.WriteJSON(e)
-	more.More()
-	e.ObjField("assignee")
+
+	e.FieldStart("assignee")
 	s.Assignee.WriteJSON(e)
 	if s.Assignees.Set {
-		more.More()
-		e.ObjField("assignees")
+		e.FieldStart("assignees")
 		s.Assignees.WriteJSON(e)
 	}
 	if s.RequestedReviewers.Set {
-		more.More()
-		e.ObjField("requested_reviewers")
+		e.FieldStart("requested_reviewers")
 		s.RequestedReviewers.WriteJSON(e)
 	}
 	if s.RequestedTeams.Set {
-		more.More()
-		e.ObjField("requested_teams")
+		e.FieldStart("requested_teams")
 		s.RequestedTeams.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("head")
+
+	e.FieldStart("head")
 	s.Head.WriteJSON(e)
-	more.More()
-	e.ObjField("base")
+
+	e.FieldStart("base")
 	s.Base.WriteJSON(e)
-	more.More()
-	e.ObjField("_links")
+
+	e.FieldStart("_links")
 	s.Links.WriteJSON(e)
-	more.More()
-	e.ObjField("author_association")
+
+	e.FieldStart("author_association")
 	s.AuthorAssociation.WriteJSON(e)
-	more.More()
-	e.ObjField("auto_merge")
+
+	e.FieldStart("auto_merge")
 	s.AutoMerge.WriteJSON(e)
 	if s.Draft.Set {
-		more.More()
-		e.ObjField("draft")
+		e.FieldStart("draft")
 		s.Draft.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -58464,22 +55510,20 @@ func (s *PullRequestSimple) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestSimpleBase) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("label")
+
+	e.FieldStart("label")
 	e.Str(s.Label)
-	more.More()
-	e.ObjField("ref")
+
+	e.FieldStart("ref")
 	e.Str(s.Ref)
-	more.More()
-	e.ObjField("repo")
+
+	e.FieldStart("repo")
 	s.Repo.WriteJSON(e)
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("user")
+
+	e.FieldStart("user")
 	s.User.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -58527,22 +55571,20 @@ func (s *PullRequestSimpleBase) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestSimpleHead) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("label")
+
+	e.FieldStart("label")
 	e.Str(s.Label)
-	more.More()
-	e.ObjField("ref")
+
+	e.FieldStart("ref")
 	e.Str(s.Ref)
-	more.More()
-	e.ObjField("repo")
+
+	e.FieldStart("repo")
 	s.Repo.WriteJSON(e)
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("user")
+
+	e.FieldStart("user")
 	s.User.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -58590,41 +55632,32 @@ func (s *PullRequestSimpleHead) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestSimpleLabelsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.NodeID.Set {
-		more.More()
-		e.ObjField("node_id")
+		e.FieldStart("node_id")
 		s.NodeID.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.Color.Set {
-		more.More()
-		e.ObjField("color")
+		e.FieldStart("color")
 		s.Color.WriteJSON(e)
 	}
 	if s.Default.Set {
-		more.More()
-		e.ObjField("default")
+		e.FieldStart("default")
 		s.Default.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -58682,31 +55715,29 @@ func (s *PullRequestSimpleLabelsItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullRequestSimpleLinks) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("comments")
+
+	e.FieldStart("comments")
 	s.Comments.WriteJSON(e)
-	more.More()
-	e.ObjField("commits")
+
+	e.FieldStart("commits")
 	s.Commits.WriteJSON(e)
-	more.More()
-	e.ObjField("statuses")
+
+	e.FieldStart("statuses")
 	s.Statuses.WriteJSON(e)
-	more.More()
-	e.ObjField("html")
+
+	e.FieldStart("html")
 	s.HTML.WriteJSON(e)
-	more.More()
-	e.ObjField("issue")
+
+	e.FieldStart("issue")
 	s.Issue.WriteJSON(e)
-	more.More()
-	e.ObjField("review_comments")
+
+	e.FieldStart("review_comments")
 	s.ReviewComments.WriteJSON(e)
-	more.More()
-	e.ObjField("review_comment")
+
+	e.FieldStart("review_comment")
 	s.ReviewComment.WriteJSON(e)
-	more.More()
-	e.ObjField("self")
+
+	e.FieldStart("self")
 	s.Self.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -58778,8 +55809,6 @@ func (s *PullRequestState) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullsCheckIfMergedNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -58800,8 +55829,6 @@ func (s *PullsCheckIfMergedNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullsCheckIfMergedNotFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -58822,10 +55849,8 @@ func (s *PullsCheckIfMergedNotFound) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullsCreateReplyForReviewCommentReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
 	e.ObjEnd()
 }
@@ -58853,37 +55878,30 @@ func (s *PullsCreateReplyForReviewCommentReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullsCreateReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Title.Set {
-		more.More()
-		e.ObjField("title")
+		e.FieldStart("title")
 		s.Title.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("head")
+
+	e.FieldStart("head")
 	e.Str(s.Head)
-	more.More()
-	e.ObjField("base")
+
+	e.FieldStart("base")
 	e.Str(s.Base)
 	if s.Body.Set {
-		more.More()
-		e.ObjField("body")
+		e.FieldStart("body")
 		s.Body.WriteJSON(e)
 	}
 	if s.MaintainerCanModify.Set {
-		more.More()
-		e.ObjField("maintainer_can_modify")
+		e.FieldStart("maintainer_can_modify")
 		s.MaintainerCanModify.WriteJSON(e)
 	}
 	if s.Draft.Set {
-		more.More()
-		e.ObjField("draft")
+		e.FieldStart("draft")
 		s.Draft.WriteJSON(e)
 	}
 	if s.Issue.Set {
-		more.More()
-		e.ObjField("issue")
+		e.FieldStart("issue")
 		s.Issue.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -58943,49 +55961,39 @@ func (s *PullsCreateReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullsCreateReviewCommentReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
 	if s.CommitID.Set {
-		more.More()
-		e.ObjField("commit_id")
+		e.FieldStart("commit_id")
 		s.CommitID.WriteJSON(e)
 	}
 	if s.Path.Set {
-		more.More()
-		e.ObjField("path")
+		e.FieldStart("path")
 		s.Path.WriteJSON(e)
 	}
 	if s.Position.Set {
-		more.More()
-		e.ObjField("position")
+		e.FieldStart("position")
 		s.Position.WriteJSON(e)
 	}
 	if s.Side.Set {
-		more.More()
-		e.ObjField("side")
+		e.FieldStart("side")
 		s.Side.WriteJSON(e)
 	}
 	if s.Line.Set {
-		more.More()
-		e.ObjField("line")
+		e.FieldStart("line")
 		s.Line.WriteJSON(e)
 	}
 	if s.StartLine.Set {
-		more.More()
-		e.ObjField("start_line")
+		e.FieldStart("start_line")
 		s.StartLine.WriteJSON(e)
 	}
 	if s.StartSide.Set {
-		more.More()
-		e.ObjField("start_side")
+		e.FieldStart("start_side")
 		s.StartSide.WriteJSON(e)
 	}
 	if s.InReplyTo.Set {
-		more.More()
-		e.ObjField("in_reply_to")
+		e.FieldStart("in_reply_to")
 		s.InReplyTo.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -59090,34 +56098,25 @@ func (s *PullsCreateReviewCommentReqStartSide) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullsCreateReviewReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.CommitID.Set {
-		more.More()
-		e.ObjField("commit_id")
+		e.FieldStart("commit_id")
 		s.CommitID.WriteJSON(e)
 	}
 	if s.Body.Set {
-		more.More()
-		e.ObjField("body")
+		e.FieldStart("body")
 		s.Body.WriteJSON(e)
 	}
 	if s.Event.Set {
-		more.More()
-		e.ObjField("event")
+		e.FieldStart("event")
 		s.Event.WriteJSON(e)
 	}
 	if s.Comments != nil {
-		more.More()
-		e.ObjField("comments")
-		more.Down()
+		e.FieldStart("comments")
 		e.ArrStart()
 		for _, elem := range s.Comments {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -59166,37 +56165,30 @@ func (s *PullsCreateReviewReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullsCreateReviewReqCommentsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("path")
+
+	e.FieldStart("path")
 	e.Str(s.Path)
 	if s.Position.Set {
-		more.More()
-		e.ObjField("position")
+		e.FieldStart("position")
 		s.Position.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
 	if s.Line.Set {
-		more.More()
-		e.ObjField("line")
+		e.FieldStart("line")
 		s.Line.WriteJSON(e)
 	}
 	if s.Side.Set {
-		more.More()
-		e.ObjField("side")
+		e.FieldStart("side")
 		s.Side.WriteJSON(e)
 	}
 	if s.StartLine.Set {
-		more.More()
-		e.ObjField("start_line")
+		e.FieldStart("start_line")
 		s.StartLine.WriteJSON(e)
 	}
 	if s.StartSide.Set {
-		more.More()
-		e.ObjField("start_side")
+		e.FieldStart("start_side")
 		s.StartSide.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -59274,8 +56266,6 @@ func (s *PullsCreateReviewReqEvent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullsDeleteReviewCommentNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -59296,14 +56286,11 @@ func (s *PullsDeleteReviewCommentNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullsDismissReviewReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
 	if s.Event.Set {
-		more.More()
-		e.ObjField("event")
+		e.FieldStart("event")
 		s.Event.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -59472,16 +56459,12 @@ func (s *PullsListState) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullsMergeConflict) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.DocumentationURL.Set {
-		more.More()
-		e.ObjField("documentation_url")
+		e.FieldStart("documentation_url")
 		s.DocumentationURL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -59514,16 +56497,12 @@ func (s *PullsMergeConflict) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullsMergeMethodNotAllowed) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.DocumentationURL.Set {
-		more.More()
-		e.ObjField("documentation_url")
+		e.FieldStart("documentation_url")
 		s.DocumentationURL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -59556,26 +56535,20 @@ func (s *PullsMergeMethodNotAllowed) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullsMergeReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.CommitTitle.Set {
-		more.More()
-		e.ObjField("commit_title")
+		e.FieldStart("commit_title")
 		s.CommitTitle.WriteJSON(e)
 	}
 	if s.CommitMessage.Set {
-		more.More()
-		e.ObjField("commit_message")
+		e.FieldStart("commit_message")
 		s.CommitMessage.WriteJSON(e)
 	}
 	if s.Sha.Set {
-		more.More()
-		e.ObjField("sha")
+		e.FieldStart("sha")
 		s.Sha.WriteJSON(e)
 	}
 	if s.MergeMethod.Set {
-		more.More()
-		e.ObjField("merge_method")
+		e.FieldStart("merge_method")
 		s.MergeMethod.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -59636,29 +56609,20 @@ func (s *PullsMergeReqMergeMethod) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullsRemoveRequestedReviewersReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("reviewers")
-	more.Down()
+
+	e.FieldStart("reviewers")
 	e.ArrStart()
 	for _, elem := range s.Reviewers {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.TeamReviewers != nil {
-		more.More()
-		e.ObjField("team_reviewers")
-		more.Down()
+		e.FieldStart("team_reviewers")
 		e.ArrStart()
 		for _, elem := range s.TeamReviewers {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -59714,15 +56678,12 @@ func (PullsSubmitReviewApplicationJSONNotFound) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s PullsSubmitReviewReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Body.Set {
-		more.More()
-		e.ObjField("body")
+		e.FieldStart("body")
 		s.Body.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("event")
+
+	e.FieldStart("event")
 	s.Event.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -59771,16 +56732,12 @@ func (s *PullsSubmitReviewReqEvent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullsUpdateBranchAccepted) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -59813,11 +56770,8 @@ func (s *PullsUpdateBranchAccepted) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullsUpdateBranchReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ExpectedHeadSha.Set {
-		more.More()
-		e.ObjField("expected_head_sha")
+		e.FieldStart("expected_head_sha")
 		s.ExpectedHeadSha.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -59845,31 +56799,24 @@ func (s *PullsUpdateBranchReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullsUpdateReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Title.Set {
-		more.More()
-		e.ObjField("title")
+		e.FieldStart("title")
 		s.Title.WriteJSON(e)
 	}
 	if s.Body.Set {
-		more.More()
-		e.ObjField("body")
+		e.FieldStart("body")
 		s.Body.WriteJSON(e)
 	}
 	if s.State.Set {
-		more.More()
-		e.ObjField("state")
+		e.FieldStart("state")
 		s.State.WriteJSON(e)
 	}
 	if s.Base.Set {
-		more.More()
-		e.ObjField("base")
+		e.FieldStart("base")
 		s.Base.WriteJSON(e)
 	}
 	if s.MaintainerCanModify.Set {
-		more.More()
-		e.ObjField("maintainer_can_modify")
+		e.FieldStart("maintainer_can_modify")
 		s.MaintainerCanModify.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -59935,10 +56882,8 @@ func (s *PullsUpdateReqState) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullsUpdateReviewCommentReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
 	e.ObjEnd()
 }
@@ -59966,10 +56911,8 @@ func (s *PullsUpdateReviewCommentReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s PullsUpdateReviewReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
 	e.ObjEnd()
 }
@@ -59997,19 +56940,17 @@ func (s *PullsUpdateReviewReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s RateLimit) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("limit")
+
+	e.FieldStart("limit")
 	e.Int(s.Limit)
-	more.More()
-	e.ObjField("remaining")
+
+	e.FieldStart("remaining")
 	e.Int(s.Remaining)
-	more.More()
-	e.ObjField("reset")
+
+	e.FieldStart("reset")
 	e.Int(s.Reset)
-	more.More()
-	e.ObjField("used")
+
+	e.FieldStart("used")
 	e.Int(s.Used)
 	e.ObjEnd()
 }
@@ -60055,13 +56996,11 @@ func (s *RateLimit) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s RateLimitOverview) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("resources")
+
+	e.FieldStart("resources")
 	s.Resources.WriteJSON(e)
-	more.More()
-	e.ObjField("rate")
+
+	e.FieldStart("rate")
 	s.Rate.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -60091,37 +57030,30 @@ func (s *RateLimitOverview) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s RateLimitOverviewResources) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("core")
+
+	e.FieldStart("core")
 	s.Core.WriteJSON(e)
 	if s.Graphql.Set {
-		more.More()
-		e.ObjField("graphql")
+		e.FieldStart("graphql")
 		s.Graphql.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("search")
+
+	e.FieldStart("search")
 	s.Search.WriteJSON(e)
 	if s.SourceImport.Set {
-		more.More()
-		e.ObjField("source_import")
+		e.FieldStart("source_import")
 		s.SourceImport.WriteJSON(e)
 	}
 	if s.IntegrationManifest.Set {
-		more.More()
-		e.ObjField("integration_manifest")
+		e.FieldStart("integration_manifest")
 		s.IntegrationManifest.WriteJSON(e)
 	}
 	if s.CodeScanningUpload.Set {
-		more.More()
-		e.ObjField("code_scanning_upload")
+		e.FieldStart("code_scanning_upload")
 		s.CodeScanningUpload.WriteJSON(e)
 	}
 	if s.ActionsRunnerRegistration.Set {
-		more.More()
-		e.ObjField("actions_runner_registration")
+		e.FieldStart("actions_runner_registration")
 		s.ActionsRunnerRegistration.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -60177,22 +57109,20 @@ func (s *RateLimitOverviewResources) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Reaction) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("user")
+
+	e.FieldStart("user")
 	s.User.WriteJSON(e)
-	more.More()
-	e.ObjField("content")
+
+	e.FieldStart("content")
 	s.Content.WriteJSON(e)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
 	e.ObjEnd()
 }
@@ -60258,37 +57188,35 @@ func (s *ReactionContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReactionRollup) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Int(s.TotalCount)
-	more.More()
-	e.ObjField("+1")
+
+	e.FieldStart("+1")
 	e.Int(s.Plus1)
-	more.More()
-	e.ObjField("-1")
+
+	e.FieldStart("-1")
 	e.Int(s.Minus1)
-	more.More()
-	e.ObjField("laugh")
+
+	e.FieldStart("laugh")
 	e.Int(s.Laugh)
-	more.More()
-	e.ObjField("confused")
+
+	e.FieldStart("confused")
 	e.Int(s.Confused)
-	more.More()
-	e.ObjField("heart")
+
+	e.FieldStart("heart")
 	e.Int(s.Heart)
-	more.More()
-	e.ObjField("hooray")
+
+	e.FieldStart("hooray")
 	e.Int(s.Hooray)
-	more.More()
-	e.ObjField("eyes")
+
+	e.FieldStart("eyes")
 	e.Int(s.Eyes)
-	more.More()
-	e.ObjField("rocket")
+
+	e.FieldStart("rocket")
 	e.Int(s.Rocket)
 	e.ObjEnd()
 }
@@ -60370,10 +57298,8 @@ func (s *ReactionRollup) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReactionsCreateForCommitCommentReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("content")
+
+	e.FieldStart("content")
 	s.Content.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -60417,10 +57343,8 @@ func (s *ReactionsCreateForCommitCommentReqContent) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s ReactionsCreateForIssueCommentReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("content")
+
+	e.FieldStart("content")
 	s.Content.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -60464,10 +57388,8 @@ func (s *ReactionsCreateForIssueCommentReqContent) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s ReactionsCreateForIssueReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("content")
+
+	e.FieldStart("content")
 	s.Content.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -60511,10 +57433,8 @@ func (s *ReactionsCreateForIssueReqContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReactionsCreateForPullRequestReviewCommentReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("content")
+
+	e.FieldStart("content")
 	s.Content.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -60558,10 +57478,8 @@ func (s *ReactionsCreateForPullRequestReviewCommentReqContent) ReadJSON(d *json.
 // WriteJSON implements json.Marshaler.
 func (s ReactionsCreateForReleaseReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("content")
+
+	e.FieldStart("content")
 	s.Content.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -60616,10 +57534,8 @@ func (ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK) ReadJSON(d 
 // WriteJSON implements json.Marshaler.
 func (s ReactionsCreateForTeamDiscussionCommentInOrgReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("content")
+
+	e.FieldStart("content")
 	s.Content.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -60663,10 +57579,8 @@ func (s *ReactionsCreateForTeamDiscussionCommentInOrgReqContent) ReadJSON(d *jso
 // WriteJSON implements json.Marshaler.
 func (s ReactionsCreateForTeamDiscussionCommentLegacyReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("content")
+
+	e.FieldStart("content")
 	s.Content.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -60720,10 +57634,8 @@ func (ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s ReactionsCreateForTeamDiscussionInOrgReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("content")
+
+	e.FieldStart("content")
 	s.Content.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -60767,10 +57679,8 @@ func (s *ReactionsCreateForTeamDiscussionInOrgReqContent) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s ReactionsCreateForTeamDiscussionLegacyReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("content")
+
+	e.FieldStart("content")
 	s.Content.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -60814,8 +57724,6 @@ func (s *ReactionsCreateForTeamDiscussionLegacyReqContent) ReadJSON(d *json.Deco
 // WriteJSON implements json.Marshaler.
 func (s ReactionsDeleteForCommitCommentNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -60836,8 +57744,6 @@ func (s *ReactionsDeleteForCommitCommentNoContent) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s ReactionsDeleteForIssueCommentNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -60858,8 +57764,6 @@ func (s *ReactionsDeleteForIssueCommentNoContent) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s ReactionsDeleteForIssueNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -60880,8 +57784,6 @@ func (s *ReactionsDeleteForIssueNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReactionsDeleteForPullRequestCommentNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -60902,8 +57804,6 @@ func (s *ReactionsDeleteForPullRequestCommentNoContent) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s ReactionsDeleteForTeamDiscussionCommentNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -60924,8 +57824,6 @@ func (s *ReactionsDeleteForTeamDiscussionCommentNoContent) ReadJSON(d *json.Deco
 // WriteJSON implements json.Marshaler.
 func (s ReactionsDeleteForTeamDiscussionNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -60955,8 +57853,6 @@ func (ReactionsDeleteLegacyApplicationJSONUnauthorized) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s ReactionsDeleteLegacyNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -61141,16 +58037,14 @@ func (s *ReactionsListForTeamDiscussionLegacyContent) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s ReferrerTraffic) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("referrer")
+
+	e.FieldStart("referrer")
 	e.Str(s.Referrer)
-	more.More()
-	e.ObjField("count")
+
+	e.FieldStart("count")
 	e.Int(s.Count)
-	more.More()
-	e.ObjField("uniques")
+
+	e.FieldStart("uniques")
 	e.Int(s.Uniques)
 	e.ObjEnd()
 }
@@ -61190,94 +58084,83 @@ func (s *ReferrerTraffic) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Release) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("assets_url")
+
+	e.FieldStart("assets_url")
 	json.WriteURI(e, s.AssetsURL)
-	more.More()
-	e.ObjField("upload_url")
+
+	e.FieldStart("upload_url")
 	e.Str(s.UploadURL)
-	more.More()
-	e.ObjField("tarball_url")
+
+	e.FieldStart("tarball_url")
 	s.TarballURL.WriteJSON(e)
-	more.More()
-	e.ObjField("zipball_url")
+
+	e.FieldStart("zipball_url")
 	s.ZipballURL.WriteJSON(e)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("tag_name")
+
+	e.FieldStart("tag_name")
 	e.Str(s.TagName)
-	more.More()
-	e.ObjField("target_commitish")
+
+	e.FieldStart("target_commitish")
 	e.Str(s.TargetCommitish)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	s.Name.WriteJSON(e)
 	if s.Body.Set {
-		more.More()
-		e.ObjField("body")
+		e.FieldStart("body")
 		s.Body.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("draft")
+
+	e.FieldStart("draft")
 	e.Bool(s.Draft)
-	more.More()
-	e.ObjField("prerelease")
+
+	e.FieldStart("prerelease")
 	e.Bool(s.Prerelease)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("published_at")
+
+	e.FieldStart("published_at")
 	s.PublishedAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("author")
+
+	e.FieldStart("author")
 	s.Author.WriteJSON(e)
-	more.More()
-	e.ObjField("assets")
-	more.Down()
+
+	e.FieldStart("assets")
 	e.ArrStart()
 	for _, elem := range s.Assets {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.BodyHTML.Set {
-		more.More()
-		e.ObjField("body_html")
+		e.FieldStart("body_html")
 		s.BodyHTML.WriteJSON(e)
 	}
 	if s.BodyText.Set {
-		more.More()
-		e.ObjField("body_text")
+		e.FieldStart("body_text")
 		s.BodyText.WriteJSON(e)
 	}
 	if s.MentionsCount.Set {
-		more.More()
-		e.ObjField("mentions_count")
+		e.FieldStart("mentions_count")
 		s.MentionsCount.WriteJSON(e)
 	}
 	if s.DiscussionURL.Set {
-		more.More()
-		e.ObjField("discussion_url")
+		e.FieldStart("discussion_url")
 		s.DiscussionURL.WriteJSON(e)
 	}
 	if s.Reactions.Set {
-		more.More()
-		e.ObjField("reactions")
+		e.FieldStart("reactions")
 		s.Reactions.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -61428,46 +58311,44 @@ func (s *Release) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReleaseAsset) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("browser_download_url")
+
+	e.FieldStart("browser_download_url")
 	json.WriteURI(e, s.BrowserDownloadURL)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("label")
+
+	e.FieldStart("label")
 	s.Label.WriteJSON(e)
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	s.State.WriteJSON(e)
-	more.More()
-	e.ObjField("content_type")
+
+	e.FieldStart("content_type")
 	e.Str(s.ContentType)
-	more.More()
-	e.ObjField("size")
+
+	e.FieldStart("size")
 	e.Int(s.Size)
-	more.More()
-	e.ObjField("download_count")
+
+	e.FieldStart("download_count")
 	e.Int(s.DownloadCount)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("uploader")
+
+	e.FieldStart("uploader")
 	s.Uploader.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -61579,290 +58460,274 @@ func (s *ReleaseAssetState) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s RepoSearchResultItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("full_name")
+
+	e.FieldStart("full_name")
 	e.Str(s.FullName)
-	more.More()
-	e.ObjField("owner")
+
+	e.FieldStart("owner")
 	s.Owner.WriteJSON(e)
-	more.More()
-	e.ObjField("private")
+
+	e.FieldStart("private")
 	e.Bool(s.Private)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
-	more.More()
-	e.ObjField("fork")
+
+	e.FieldStart("fork")
 	e.Bool(s.Fork)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("pushed_at")
+
+	e.FieldStart("pushed_at")
 	json.WriteDateTime(e, s.PushedAt)
-	more.More()
-	e.ObjField("homepage")
+
+	e.FieldStart("homepage")
 	s.Homepage.WriteJSON(e)
-	more.More()
-	e.ObjField("size")
+
+	e.FieldStart("size")
 	e.Int(s.Size)
-	more.More()
-	e.ObjField("stargazers_count")
+
+	e.FieldStart("stargazers_count")
 	e.Int(s.StargazersCount)
-	more.More()
-	e.ObjField("watchers_count")
+
+	e.FieldStart("watchers_count")
 	e.Int(s.WatchersCount)
-	more.More()
-	e.ObjField("language")
+
+	e.FieldStart("language")
 	s.Language.WriteJSON(e)
-	more.More()
-	e.ObjField("forks_count")
+
+	e.FieldStart("forks_count")
 	e.Int(s.ForksCount)
-	more.More()
-	e.ObjField("open_issues_count")
+
+	e.FieldStart("open_issues_count")
 	e.Int(s.OpenIssuesCount)
 	if s.MasterBranch.Set {
-		more.More()
-		e.ObjField("master_branch")
+		e.FieldStart("master_branch")
 		s.MasterBranch.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("default_branch")
+
+	e.FieldStart("default_branch")
 	e.Str(s.DefaultBranch)
-	more.More()
-	e.ObjField("score")
+
+	e.FieldStart("score")
 	e.Float64(s.Score)
-	more.More()
-	e.ObjField("forks_url")
+
+	e.FieldStart("forks_url")
 	json.WriteURI(e, s.ForksURL)
-	more.More()
-	e.ObjField("keys_url")
+
+	e.FieldStart("keys_url")
 	e.Str(s.KeysURL)
-	more.More()
-	e.ObjField("collaborators_url")
+
+	e.FieldStart("collaborators_url")
 	e.Str(s.CollaboratorsURL)
-	more.More()
-	e.ObjField("teams_url")
+
+	e.FieldStart("teams_url")
 	json.WriteURI(e, s.TeamsURL)
-	more.More()
-	e.ObjField("hooks_url")
+
+	e.FieldStart("hooks_url")
 	json.WriteURI(e, s.HooksURL)
-	more.More()
-	e.ObjField("issue_events_url")
+
+	e.FieldStart("issue_events_url")
 	e.Str(s.IssueEventsURL)
-	more.More()
-	e.ObjField("events_url")
+
+	e.FieldStart("events_url")
 	json.WriteURI(e, s.EventsURL)
-	more.More()
-	e.ObjField("assignees_url")
+
+	e.FieldStart("assignees_url")
 	e.Str(s.AssigneesURL)
-	more.More()
-	e.ObjField("branches_url")
+
+	e.FieldStart("branches_url")
 	e.Str(s.BranchesURL)
-	more.More()
-	e.ObjField("tags_url")
+
+	e.FieldStart("tags_url")
 	json.WriteURI(e, s.TagsURL)
-	more.More()
-	e.ObjField("blobs_url")
+
+	e.FieldStart("blobs_url")
 	e.Str(s.BlobsURL)
-	more.More()
-	e.ObjField("git_tags_url")
+
+	e.FieldStart("git_tags_url")
 	e.Str(s.GitTagsURL)
-	more.More()
-	e.ObjField("git_refs_url")
+
+	e.FieldStart("git_refs_url")
 	e.Str(s.GitRefsURL)
-	more.More()
-	e.ObjField("trees_url")
+
+	e.FieldStart("trees_url")
 	e.Str(s.TreesURL)
-	more.More()
-	e.ObjField("statuses_url")
+
+	e.FieldStart("statuses_url")
 	e.Str(s.StatusesURL)
-	more.More()
-	e.ObjField("languages_url")
+
+	e.FieldStart("languages_url")
 	json.WriteURI(e, s.LanguagesURL)
-	more.More()
-	e.ObjField("stargazers_url")
+
+	e.FieldStart("stargazers_url")
 	json.WriteURI(e, s.StargazersURL)
-	more.More()
-	e.ObjField("contributors_url")
+
+	e.FieldStart("contributors_url")
 	json.WriteURI(e, s.ContributorsURL)
-	more.More()
-	e.ObjField("subscribers_url")
+
+	e.FieldStart("subscribers_url")
 	json.WriteURI(e, s.SubscribersURL)
-	more.More()
-	e.ObjField("subscription_url")
+
+	e.FieldStart("subscription_url")
 	json.WriteURI(e, s.SubscriptionURL)
-	more.More()
-	e.ObjField("commits_url")
+
+	e.FieldStart("commits_url")
 	e.Str(s.CommitsURL)
-	more.More()
-	e.ObjField("git_commits_url")
+
+	e.FieldStart("git_commits_url")
 	e.Str(s.GitCommitsURL)
-	more.More()
-	e.ObjField("comments_url")
+
+	e.FieldStart("comments_url")
 	e.Str(s.CommentsURL)
-	more.More()
-	e.ObjField("issue_comment_url")
+
+	e.FieldStart("issue_comment_url")
 	e.Str(s.IssueCommentURL)
-	more.More()
-	e.ObjField("contents_url")
+
+	e.FieldStart("contents_url")
 	e.Str(s.ContentsURL)
-	more.More()
-	e.ObjField("compare_url")
+
+	e.FieldStart("compare_url")
 	e.Str(s.CompareURL)
-	more.More()
-	e.ObjField("merges_url")
+
+	e.FieldStart("merges_url")
 	json.WriteURI(e, s.MergesURL)
-	more.More()
-	e.ObjField("archive_url")
+
+	e.FieldStart("archive_url")
 	e.Str(s.ArchiveURL)
-	more.More()
-	e.ObjField("downloads_url")
+
+	e.FieldStart("downloads_url")
 	json.WriteURI(e, s.DownloadsURL)
-	more.More()
-	e.ObjField("issues_url")
+
+	e.FieldStart("issues_url")
 	e.Str(s.IssuesURL)
-	more.More()
-	e.ObjField("pulls_url")
+
+	e.FieldStart("pulls_url")
 	e.Str(s.PullsURL)
-	more.More()
-	e.ObjField("milestones_url")
+
+	e.FieldStart("milestones_url")
 	e.Str(s.MilestonesURL)
-	more.More()
-	e.ObjField("notifications_url")
+
+	e.FieldStart("notifications_url")
 	e.Str(s.NotificationsURL)
-	more.More()
-	e.ObjField("labels_url")
+
+	e.FieldStart("labels_url")
 	e.Str(s.LabelsURL)
-	more.More()
-	e.ObjField("releases_url")
+
+	e.FieldStart("releases_url")
 	e.Str(s.ReleasesURL)
-	more.More()
-	e.ObjField("deployments_url")
+
+	e.FieldStart("deployments_url")
 	json.WriteURI(e, s.DeploymentsURL)
-	more.More()
-	e.ObjField("git_url")
+
+	e.FieldStart("git_url")
 	e.Str(s.GitURL)
-	more.More()
-	e.ObjField("ssh_url")
+
+	e.FieldStart("ssh_url")
 	e.Str(s.SSHURL)
-	more.More()
-	e.ObjField("clone_url")
+
+	e.FieldStart("clone_url")
 	e.Str(s.CloneURL)
-	more.More()
-	e.ObjField("svn_url")
+
+	e.FieldStart("svn_url")
 	json.WriteURI(e, s.SvnURL)
-	more.More()
-	e.ObjField("forks")
+
+	e.FieldStart("forks")
 	e.Int(s.Forks)
-	more.More()
-	e.ObjField("open_issues")
+
+	e.FieldStart("open_issues")
 	e.Int(s.OpenIssues)
-	more.More()
-	e.ObjField("watchers")
+
+	e.FieldStart("watchers")
 	e.Int(s.Watchers)
 	if s.Topics != nil {
-		more.More()
-		e.ObjField("topics")
-		more.Down()
+		e.FieldStart("topics")
 		e.ArrStart()
 		for _, elem := range s.Topics {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("mirror_url")
+
+	e.FieldStart("mirror_url")
 	s.MirrorURL.WriteJSON(e)
-	more.More()
-	e.ObjField("has_issues")
+
+	e.FieldStart("has_issues")
 	e.Bool(s.HasIssues)
-	more.More()
-	e.ObjField("has_projects")
+
+	e.FieldStart("has_projects")
 	e.Bool(s.HasProjects)
-	more.More()
-	e.ObjField("has_pages")
+
+	e.FieldStart("has_pages")
 	e.Bool(s.HasPages)
-	more.More()
-	e.ObjField("has_wiki")
+
+	e.FieldStart("has_wiki")
 	e.Bool(s.HasWiki)
-	more.More()
-	e.ObjField("has_downloads")
+
+	e.FieldStart("has_downloads")
 	e.Bool(s.HasDownloads)
-	more.More()
-	e.ObjField("archived")
+
+	e.FieldStart("archived")
 	e.Bool(s.Archived)
-	more.More()
-	e.ObjField("disabled")
+
+	e.FieldStart("disabled")
 	e.Bool(s.Disabled)
-	more.More()
-	e.ObjField("license")
+
+	e.FieldStart("license")
 	s.License.WriteJSON(e)
 	if s.Permissions.Set {
-		more.More()
-		e.ObjField("permissions")
+		e.FieldStart("permissions")
 		s.Permissions.WriteJSON(e)
 	}
 	if s.TextMatches != nil {
-		more.More()
-		e.ObjField("text_matches")
+		e.FieldStart("text_matches")
 		s.TextMatches.WriteJSON(e)
 	}
 	if s.TempCloneToken.Set {
-		more.More()
-		e.ObjField("temp_clone_token")
+		e.FieldStart("temp_clone_token")
 		s.TempCloneToken.WriteJSON(e)
 	}
 	if s.AllowMergeCommit.Set {
-		more.More()
-		e.ObjField("allow_merge_commit")
+		e.FieldStart("allow_merge_commit")
 		s.AllowMergeCommit.WriteJSON(e)
 	}
 	if s.AllowSquashMerge.Set {
-		more.More()
-		e.ObjField("allow_squash_merge")
+		e.FieldStart("allow_squash_merge")
 		s.AllowSquashMerge.WriteJSON(e)
 	}
 	if s.AllowRebaseMerge.Set {
-		more.More()
-		e.ObjField("allow_rebase_merge")
+		e.FieldStart("allow_rebase_merge")
 		s.AllowRebaseMerge.WriteJSON(e)
 	}
 	if s.AllowAutoMerge.Set {
-		more.More()
-		e.ObjField("allow_auto_merge")
+		e.FieldStart("allow_auto_merge")
 		s.AllowAutoMerge.WriteJSON(e)
 	}
 	if s.DeleteBranchOnMerge.Set {
-		more.More()
-		e.ObjField("delete_branch_on_merge")
+		e.FieldStart("delete_branch_on_merge")
 		s.DeleteBranchOnMerge.WriteJSON(e)
 	}
 	if s.AllowForking.Set {
-		more.More()
-		e.ObjField("allow_forking")
+		e.FieldStart("allow_forking")
 		s.AllowForking.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -62381,26 +59246,22 @@ func (s *RepoSearchResultItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s RepoSearchResultItemPermissions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("admin")
+
+	e.FieldStart("admin")
 	e.Bool(s.Admin)
 	if s.Maintain.Set {
-		more.More()
-		e.ObjField("maintain")
+		e.FieldStart("maintain")
 		s.Maintain.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("push")
+
+	e.FieldStart("push")
 	e.Bool(s.Push)
 	if s.Triage.Set {
-		more.More()
-		e.ObjField("triage")
+		e.FieldStart("triage")
 		s.Triage.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("pull")
+
+	e.FieldStart("pull")
 	e.Bool(s.Pull)
 	e.ObjEnd()
 }
@@ -62459,8 +59320,6 @@ func (ReposAcceptInvitationApplicationJSONNotFound) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s ReposAcceptInvitationNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -62481,8 +59340,6 @@ func (s *ReposAcceptInvitationNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposAddCollaboratorNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -62503,16 +59360,12 @@ func (s *ReposAddCollaboratorNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposAddCollaboratorReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Permission.Set {
-		more.More()
-		e.ObjField("permission")
+		e.FieldStart("permission")
 		s.Permission.WriteJSON(e)
 	}
 	if s.Permissions.Set {
-		more.More()
-		e.ObjField("permissions")
+		e.FieldStart("permissions")
 		s.Permissions.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -62563,8 +59416,6 @@ func (s *ReposAddCollaboratorReqPermission) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposCheckCollaboratorNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -62585,8 +59436,6 @@ func (s *ReposCheckCollaboratorNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposCheckCollaboratorNotFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -62607,8 +59456,6 @@ func (s *ReposCheckCollaboratorNotFound) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposCheckVulnerabilityAlertsNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -62629,8 +59476,6 @@ func (s *ReposCheckVulnerabilityAlertsNoContent) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s ReposCheckVulnerabilityAlertsNotFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -62659,13 +59504,11 @@ func (ReposCompareCommitsApplicationJSONNotFound) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s ReposCreateAutolinkReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("key_prefix")
+
+	e.FieldStart("key_prefix")
 	e.Str(s.KeyPrefix)
-	more.More()
-	e.ObjField("url_template")
+
+	e.FieldStart("url_template")
 	e.Str(s.URLTemplate)
 	e.ObjEnd()
 }
@@ -62699,24 +59542,19 @@ func (s *ReposCreateAutolinkReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposCreateCommitCommentReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
 	if s.Path.Set {
-		more.More()
-		e.ObjField("path")
+		e.FieldStart("path")
 		s.Path.WriteJSON(e)
 	}
 	if s.Position.Set {
-		more.More()
-		e.ObjField("position")
+		e.FieldStart("position")
 		s.Position.WriteJSON(e)
 	}
 	if s.Line.Set {
-		more.More()
-		e.ObjField("line")
+		e.FieldStart("line")
 		s.Line.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -62760,24 +59598,19 @@ func (s *ReposCreateCommitCommentReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposCreateCommitStatusReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	s.State.WriteJSON(e)
 	if s.TargetURL.Set {
-		more.More()
-		e.ObjField("target_url")
+		e.FieldStart("target_url")
 		s.TargetURL.WriteJSON(e)
 	}
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.Context.Set {
-		more.More()
-		e.ObjField("context")
+		e.FieldStart("context")
 		s.Context.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -62837,19 +59670,15 @@ func (s *ReposCreateCommitStatusReqState) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposCreateDeployKeyReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Title.Set {
-		more.More()
-		e.ObjField("title")
+		e.FieldStart("title")
 		s.Title.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("key")
+
+	e.FieldStart("key")
 	e.Str(s.Key)
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("read_only")
+		e.FieldStart("read_only")
 		s.ReadOnly.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -62888,39 +59717,31 @@ func (s *ReposCreateDeployKeyReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposCreateDeploymentStatusReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	s.State.WriteJSON(e)
 	if s.TargetURL.Set {
-		more.More()
-		e.ObjField("target_url")
+		e.FieldStart("target_url")
 		s.TargetURL.WriteJSON(e)
 	}
 	if s.LogURL.Set {
-		more.More()
-		e.ObjField("log_url")
+		e.FieldStart("log_url")
 		s.LogURL.WriteJSON(e)
 	}
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.Environment.Set {
-		more.More()
-		e.ObjField("environment")
+		e.FieldStart("environment")
 		s.Environment.WriteJSON(e)
 	}
 	if s.EnvironmentURL.Set {
-		more.More()
-		e.ObjField("environment_url")
+		e.FieldStart("environment_url")
 		s.EnvironmentURL.WriteJSON(e)
 	}
 	if s.AutoInactive.Set {
-		more.More()
-		e.ObjField("auto_inactive")
+		e.FieldStart("auto_inactive")
 		s.AutoInactive.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -63013,8 +59834,6 @@ func (s *ReposCreateDeploymentStatusReqState) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposCreateDispatchEventNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -63035,14 +59854,11 @@ func (s *ReposCreateDispatchEventNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposCreateDispatchEventReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("event_type")
+
+	e.FieldStart("event_type")
 	e.Str(s.EventType)
 	if s.ClientPayload != nil {
-		more.More()
-		e.ObjField("client_payload")
+		e.FieldStart("client_payload")
 		s.ClientPayload.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -63078,8 +59894,6 @@ func (s *ReposCreateDispatchEventReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposCreateDispatchEventReqClientPayload) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -63100,94 +59914,75 @@ func (s *ReposCreateDispatchEventReqClientPayload) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s ReposCreateForAuthenticatedUserReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.Homepage.Set {
-		more.More()
-		e.ObjField("homepage")
+		e.FieldStart("homepage")
 		s.Homepage.WriteJSON(e)
 	}
 	if s.Private.Set {
-		more.More()
-		e.ObjField("private")
+		e.FieldStart("private")
 		s.Private.WriteJSON(e)
 	}
 	if s.HasIssues.Set {
-		more.More()
-		e.ObjField("has_issues")
+		e.FieldStart("has_issues")
 		s.HasIssues.WriteJSON(e)
 	}
 	if s.HasProjects.Set {
-		more.More()
-		e.ObjField("has_projects")
+		e.FieldStart("has_projects")
 		s.HasProjects.WriteJSON(e)
 	}
 	if s.HasWiki.Set {
-		more.More()
-		e.ObjField("has_wiki")
+		e.FieldStart("has_wiki")
 		s.HasWiki.WriteJSON(e)
 	}
 	if s.TeamID.Set {
-		more.More()
-		e.ObjField("team_id")
+		e.FieldStart("team_id")
 		s.TeamID.WriteJSON(e)
 	}
 	if s.AutoInit.Set {
-		more.More()
-		e.ObjField("auto_init")
+		e.FieldStart("auto_init")
 		s.AutoInit.WriteJSON(e)
 	}
 	if s.GitignoreTemplate.Set {
-		more.More()
-		e.ObjField("gitignore_template")
+		e.FieldStart("gitignore_template")
 		s.GitignoreTemplate.WriteJSON(e)
 	}
 	if s.LicenseTemplate.Set {
-		more.More()
-		e.ObjField("license_template")
+		e.FieldStart("license_template")
 		s.LicenseTemplate.WriteJSON(e)
 	}
 	if s.AllowSquashMerge.Set {
-		more.More()
-		e.ObjField("allow_squash_merge")
+		e.FieldStart("allow_squash_merge")
 		s.AllowSquashMerge.WriteJSON(e)
 	}
 	if s.AllowMergeCommit.Set {
-		more.More()
-		e.ObjField("allow_merge_commit")
+		e.FieldStart("allow_merge_commit")
 		s.AllowMergeCommit.WriteJSON(e)
 	}
 	if s.AllowRebaseMerge.Set {
-		more.More()
-		e.ObjField("allow_rebase_merge")
+		e.FieldStart("allow_rebase_merge")
 		s.AllowRebaseMerge.WriteJSON(e)
 	}
 	if s.AllowAutoMerge.Set {
-		more.More()
-		e.ObjField("allow_auto_merge")
+		e.FieldStart("allow_auto_merge")
 		s.AllowAutoMerge.WriteJSON(e)
 	}
 	if s.DeleteBranchOnMerge.Set {
-		more.More()
-		e.ObjField("delete_branch_on_merge")
+		e.FieldStart("delete_branch_on_merge")
 		s.DeleteBranchOnMerge.WriteJSON(e)
 	}
 	if s.HasDownloads.Set {
-		more.More()
-		e.ObjField("has_downloads")
+		e.FieldStart("has_downloads")
 		s.HasDownloads.WriteJSON(e)
 	}
 	if s.IsTemplate.Set {
-		more.More()
-		e.ObjField("is_template")
+		e.FieldStart("is_template")
 		s.IsTemplate.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -63301,11 +60096,8 @@ func (s *ReposCreateForAuthenticatedUserReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposCreateForkReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Organization.Set {
-		more.More()
-		e.ObjField("organization")
+		e.FieldStart("organization")
 		s.Organization.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -63333,94 +60125,75 @@ func (s *ReposCreateForkReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposCreateInOrgReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.Homepage.Set {
-		more.More()
-		e.ObjField("homepage")
+		e.FieldStart("homepage")
 		s.Homepage.WriteJSON(e)
 	}
 	if s.Private.Set {
-		more.More()
-		e.ObjField("private")
+		e.FieldStart("private")
 		s.Private.WriteJSON(e)
 	}
 	if s.Visibility.Set {
-		more.More()
-		e.ObjField("visibility")
+		e.FieldStart("visibility")
 		s.Visibility.WriteJSON(e)
 	}
 	if s.HasIssues.Set {
-		more.More()
-		e.ObjField("has_issues")
+		e.FieldStart("has_issues")
 		s.HasIssues.WriteJSON(e)
 	}
 	if s.HasProjects.Set {
-		more.More()
-		e.ObjField("has_projects")
+		e.FieldStart("has_projects")
 		s.HasProjects.WriteJSON(e)
 	}
 	if s.HasWiki.Set {
-		more.More()
-		e.ObjField("has_wiki")
+		e.FieldStart("has_wiki")
 		s.HasWiki.WriteJSON(e)
 	}
 	if s.IsTemplate.Set {
-		more.More()
-		e.ObjField("is_template")
+		e.FieldStart("is_template")
 		s.IsTemplate.WriteJSON(e)
 	}
 	if s.TeamID.Set {
-		more.More()
-		e.ObjField("team_id")
+		e.FieldStart("team_id")
 		s.TeamID.WriteJSON(e)
 	}
 	if s.AutoInit.Set {
-		more.More()
-		e.ObjField("auto_init")
+		e.FieldStart("auto_init")
 		s.AutoInit.WriteJSON(e)
 	}
 	if s.GitignoreTemplate.Set {
-		more.More()
-		e.ObjField("gitignore_template")
+		e.FieldStart("gitignore_template")
 		s.GitignoreTemplate.WriteJSON(e)
 	}
 	if s.LicenseTemplate.Set {
-		more.More()
-		e.ObjField("license_template")
+		e.FieldStart("license_template")
 		s.LicenseTemplate.WriteJSON(e)
 	}
 	if s.AllowSquashMerge.Set {
-		more.More()
-		e.ObjField("allow_squash_merge")
+		e.FieldStart("allow_squash_merge")
 		s.AllowSquashMerge.WriteJSON(e)
 	}
 	if s.AllowMergeCommit.Set {
-		more.More()
-		e.ObjField("allow_merge_commit")
+		e.FieldStart("allow_merge_commit")
 		s.AllowMergeCommit.WriteJSON(e)
 	}
 	if s.AllowRebaseMerge.Set {
-		more.More()
-		e.ObjField("allow_rebase_merge")
+		e.FieldStart("allow_rebase_merge")
 		s.AllowRebaseMerge.WriteJSON(e)
 	}
 	if s.AllowAutoMerge.Set {
-		more.More()
-		e.ObjField("allow_auto_merge")
+		e.FieldStart("allow_auto_merge")
 		s.AllowAutoMerge.WriteJSON(e)
 	}
 	if s.DeleteBranchOnMerge.Set {
-		more.More()
-		e.ObjField("delete_branch_on_merge")
+		e.FieldStart("delete_branch_on_merge")
 		s.DeleteBranchOnMerge.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -63552,21 +60325,16 @@ func (s *ReposCreateInOrgReqVisibility) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposCreateOrUpdateEnvironmentReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.WaitTimer.Set {
-		more.More()
-		e.ObjField("wait_timer")
+		e.FieldStart("wait_timer")
 		s.WaitTimer.WriteJSON(e)
 	}
 	if s.Reviewers.Set {
-		more.More()
-		e.ObjField("reviewers")
+		e.FieldStart("reviewers")
 		s.Reviewers.WriteJSON(e)
 	}
 	if s.DeploymentBranchPolicy.Set {
-		more.More()
-		e.ObjField("deployment_branch_policy")
+		e.FieldStart("deployment_branch_policy")
 		s.DeploymentBranchPolicy.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -63604,16 +60372,12 @@ func (s *ReposCreateOrUpdateEnvironmentReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposCreateOrUpdateEnvironmentReqReviewersItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -63646,32 +60410,26 @@ func (s *ReposCreateOrUpdateEnvironmentReqReviewersItem) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s ReposCreateOrUpdateFileContentsReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
-	more.More()
-	e.ObjField("content")
+
+	e.FieldStart("content")
 	e.Str(s.Content)
 	if s.Sha.Set {
-		more.More()
-		e.ObjField("sha")
+		e.FieldStart("sha")
 		s.Sha.WriteJSON(e)
 	}
 	if s.Branch.Set {
-		more.More()
-		e.ObjField("branch")
+		e.FieldStart("branch")
 		s.Branch.WriteJSON(e)
 	}
 	if s.Committer.Set {
-		more.More()
-		e.ObjField("committer")
+		e.FieldStart("committer")
 		s.Committer.WriteJSON(e)
 	}
 	if s.Author.Set {
-		more.More()
-		e.ObjField("author")
+		e.FieldStart("author")
 		s.Author.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -63726,17 +60484,14 @@ func (s *ReposCreateOrUpdateFileContentsReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposCreateOrUpdateFileContentsReqAuthor) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("email")
+
+	e.FieldStart("email")
 	e.Str(s.Email)
 	if s.Date.Set {
-		more.More()
-		e.ObjField("date")
+		e.FieldStart("date")
 		s.Date.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -63776,17 +60531,14 @@ func (s *ReposCreateOrUpdateFileContentsReqAuthor) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s ReposCreateOrUpdateFileContentsReqCommitter) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("email")
+
+	e.FieldStart("email")
 	e.Str(s.Email)
 	if s.Date.Set {
-		more.More()
-		e.ObjField("date")
+		e.FieldStart("date")
 		s.Date.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -63826,10 +60578,8 @@ func (s *ReposCreateOrUpdateFileContentsReqCommitter) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s ReposCreatePagesSiteReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("source")
+
+	e.FieldStart("source")
 	s.Source.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -63855,14 +60605,11 @@ func (s *ReposCreatePagesSiteReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposCreatePagesSiteReqSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("branch")
+
+	e.FieldStart("branch")
 	e.Str(s.Branch)
 	if s.Path.Set {
-		more.More()
-		e.ObjField("path")
+		e.FieldStart("path")
 		s.Path.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -63914,39 +60661,31 @@ func (s *ReposCreatePagesSiteReqSourcePath) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposCreateReleaseReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("tag_name")
+
+	e.FieldStart("tag_name")
 	e.Str(s.TagName)
 	if s.TargetCommitish.Set {
-		more.More()
-		e.ObjField("target_commitish")
+		e.FieldStart("target_commitish")
 		s.TargetCommitish.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Body.Set {
-		more.More()
-		e.ObjField("body")
+		e.FieldStart("body")
 		s.Body.WriteJSON(e)
 	}
 	if s.Draft.Set {
-		more.More()
-		e.ObjField("draft")
+		e.FieldStart("draft")
 		s.Draft.WriteJSON(e)
 	}
 	if s.Prerelease.Set {
-		more.More()
-		e.ObjField("prerelease")
+		e.FieldStart("prerelease")
 		s.Prerelease.WriteJSON(e)
 	}
 	if s.DiscussionCategoryName.Set {
-		more.More()
-		e.ObjField("discussion_category_name")
+		e.FieldStart("discussion_category_name")
 		s.DiscussionCategoryName.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -64005,29 +60744,23 @@ func (s *ReposCreateReleaseReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposCreateUsingTemplateReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Owner.Set {
-		more.More()
-		e.ObjField("owner")
+		e.FieldStart("owner")
 		s.Owner.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.IncludeAllBranches.Set {
-		more.More()
-		e.ObjField("include_all_branches")
+		e.FieldStart("include_all_branches")
 		s.IncludeAllBranches.WriteJSON(e)
 	}
 	if s.Private.Set {
-		more.More()
-		e.ObjField("private")
+		e.FieldStart("private")
 		s.Private.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -64076,33 +60809,24 @@ func (s *ReposCreateUsingTemplateReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposCreateWebhookReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Config.Set {
-		more.More()
-		e.ObjField("config")
+		e.FieldStart("config")
 		s.Config.WriteJSON(e)
 	}
 	if s.Events != nil {
-		more.More()
-		e.ObjField("events")
-		more.Down()
+		e.FieldStart("events")
 		e.ArrStart()
 		for _, elem := range s.Events {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Active.Set {
-		more.More()
-		e.ObjField("active")
+		e.FieldStart("active")
 		s.Active.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -64154,36 +60878,28 @@ func (s *ReposCreateWebhookReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposCreateWebhookReqConfig) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.ContentType.Set {
-		more.More()
-		e.ObjField("content_type")
+		e.FieldStart("content_type")
 		s.ContentType.WriteJSON(e)
 	}
 	if s.Secret.Set {
-		more.More()
-		e.ObjField("secret")
+		e.FieldStart("secret")
 		s.Secret.WriteJSON(e)
 	}
 	if s.InsecureSsl != nil {
-		more.More()
-		e.ObjField("insecure_ssl")
+		e.FieldStart("insecure_ssl")
 		s.InsecureSsl.WriteJSON(e)
 	}
 	if s.Token.Set {
-		more.More()
-		e.ObjField("token")
+		e.FieldStart("token")
 		s.Token.WriteJSON(e)
 	}
 	if s.Digest.Set {
-		more.More()
-		e.ObjField("digest")
+		e.FieldStart("digest")
 		s.Digest.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -64247,8 +60963,6 @@ func (ReposDeclineInvitationApplicationJSONNotFound) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s ReposDeclineInvitationNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -64269,8 +60983,6 @@ func (s *ReposDeclineInvitationNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposDeleteAccessRestrictionsNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -64291,8 +61003,6 @@ func (s *ReposDeleteAccessRestrictionsNoContent) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s ReposDeleteAdminBranchProtectionNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -64313,8 +61023,6 @@ func (s *ReposDeleteAdminBranchProtectionNoContent) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s ReposDeleteAnEnvironmentNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -64341,8 +61049,6 @@ func (ReposDeleteApplicationJSONTemporaryRedirect) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s ReposDeleteAutolinkNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -64363,8 +61069,6 @@ func (s *ReposDeleteAutolinkNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposDeleteBranchProtectionNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -64385,8 +61089,6 @@ func (s *ReposDeleteBranchProtectionNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposDeleteCommitCommentNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -64407,8 +61109,6 @@ func (s *ReposDeleteCommitCommentNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposDeleteCommitSignatureProtectionNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -64429,8 +61129,6 @@ func (s *ReposDeleteCommitSignatureProtectionNoContent) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s ReposDeleteDeployKeyNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -64451,8 +61149,6 @@ func (s *ReposDeleteDeployKeyNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposDeleteDeploymentNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -64473,27 +61169,22 @@ func (s *ReposDeleteDeploymentNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposDeleteFileReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
 	if s.Branch.Set {
-		more.More()
-		e.ObjField("branch")
+		e.FieldStart("branch")
 		s.Branch.WriteJSON(e)
 	}
 	if s.Committer.Set {
-		more.More()
-		e.ObjField("committer")
+		e.FieldStart("committer")
 		s.Committer.WriteJSON(e)
 	}
 	if s.Author.Set {
-		more.More()
-		e.ObjField("author")
+		e.FieldStart("author")
 		s.Author.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -64543,16 +61234,12 @@ func (s *ReposDeleteFileReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposDeleteFileReqAuthor) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Email.Set {
-		more.More()
-		e.ObjField("email")
+		e.FieldStart("email")
 		s.Email.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -64585,16 +61272,12 @@ func (s *ReposDeleteFileReqAuthor) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposDeleteFileReqCommitter) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Email.Set {
-		more.More()
-		e.ObjField("email")
+		e.FieldStart("email")
 		s.Email.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -64627,16 +61310,12 @@ func (s *ReposDeleteFileReqCommitter) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposDeleteForbidden) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.DocumentationURL.Set {
-		more.More()
-		e.ObjField("documentation_url")
+		e.FieldStart("documentation_url")
 		s.DocumentationURL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -64669,8 +61348,6 @@ func (s *ReposDeleteForbidden) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposDeleteInvitationNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -64691,8 +61368,6 @@ func (s *ReposDeleteInvitationNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposDeleteNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -64713,8 +61388,6 @@ func (s *ReposDeleteNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposDeletePagesSiteNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -64735,8 +61408,6 @@ func (s *ReposDeletePagesSiteNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposDeletePullRequestReviewProtectionNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -64757,8 +61428,6 @@ func (s *ReposDeletePullRequestReviewProtectionNoContent) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s ReposDeleteReleaseAssetNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -64779,8 +61448,6 @@ func (s *ReposDeleteReleaseAssetNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposDeleteReleaseNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -64801,8 +61468,6 @@ func (s *ReposDeleteReleaseNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposDeleteWebhookNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -64823,8 +61488,6 @@ func (s *ReposDeleteWebhookNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposDisableAutomatedSecurityFixesNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -64845,8 +61508,6 @@ func (s *ReposDisableAutomatedSecurityFixesNoContent) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s ReposDisableLfsForRepoNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -64867,8 +61528,6 @@ func (s *ReposDisableLfsForRepoNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposDisableVulnerabilityAlertsNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -64889,8 +61548,6 @@ func (s *ReposDisableVulnerabilityAlertsNoContent) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s ReposDownloadTarballArchiveFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -64911,8 +61568,6 @@ func (s *ReposDownloadTarballArchiveFound) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposDownloadZipballArchiveFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -64933,8 +61588,6 @@ func (s *ReposDownloadZipballArchiveFound) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposEnableAutomatedSecurityFixesNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -64955,8 +61608,6 @@ func (s *ReposEnableAutomatedSecurityFixesNoContent) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s ReposEnableLfsForRepoForbidden) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -64977,8 +61628,6 @@ func (s *ReposEnableLfsForRepoForbidden) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposEnableVulnerabilityAlertsNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -65049,8 +61698,6 @@ func (ReposGetContributorsStatsOKApplicationJSON) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s ReposGetPagesHealthCheckBadRequest) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -65071,8 +61718,6 @@ func (s *ReposGetPagesHealthCheckBadRequest) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposGetPagesHealthCheckUnprocessableEntity) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -65178,8 +61823,6 @@ func (ReposListContributorsApplicationJSONNotFound) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s ReposListContributorsNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -65434,8 +62077,6 @@ func (ReposListWebhooksOKApplicationJSON) ReadJSON(d *json.Decoder) error { retu
 // WriteJSON implements json.Marshaler.
 func (s ReposMergeConflict) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -65456,8 +62097,6 @@ func (s *ReposMergeConflict) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposMergeNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -65478,8 +62117,6 @@ func (s *ReposMergeNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposMergeNotFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -65500,17 +62137,14 @@ func (s *ReposMergeNotFound) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposMergeReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("base")
+
+	e.FieldStart("base")
 	e.Str(s.Base)
-	more.More()
-	e.ObjField("head")
+
+	e.FieldStart("head")
 	e.Str(s.Head)
 	if s.CommitMessage.Set {
-		more.More()
-		e.ObjField("commit_message")
+		e.FieldStart("commit_message")
 		s.CommitMessage.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -65550,8 +62184,6 @@ func (s *ReposMergeReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposMergeUpstreamConflict) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -65572,10 +62204,8 @@ func (s *ReposMergeUpstreamConflict) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposMergeUpstreamReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("branch")
+
+	e.FieldStart("branch")
 	e.Str(s.Branch)
 	e.ObjEnd()
 }
@@ -65603,8 +62233,6 @@ func (s *ReposMergeUpstreamReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposMergeUpstreamUnprocessableEntity) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -65625,8 +62253,6 @@ func (s *ReposMergeUpstreamUnprocessableEntity) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s ReposPingWebhookNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -65647,8 +62273,6 @@ func (s *ReposPingWebhookNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposRemoveCollaboratorNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -65669,8 +62293,6 @@ func (s *ReposRemoveCollaboratorNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposRemoveStatusCheckProtectionNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -65691,10 +62313,8 @@ func (s *ReposRemoveStatusCheckProtectionNoContent) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s ReposRenameBranchReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("new_name")
+
+	e.FieldStart("new_name")
 	e.Str(s.NewName)
 	e.ObjEnd()
 }
@@ -65722,18 +62342,13 @@ func (s *ReposRenameBranchReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposReplaceAllTopicsReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("names")
-	more.Down()
+
+	e.FieldStart("names")
 	e.ArrStart()
 	for _, elem := range s.Names {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -65768,8 +62383,6 @@ func (s *ReposReplaceAllTopicsReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposTestPushWebhookNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -65790,22 +62403,16 @@ func (s *ReposTestPushWebhookNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposTransferReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("new_owner")
+
+	e.FieldStart("new_owner")
 	e.Str(s.NewOwner)
 	if s.TeamIds != nil {
-		more.More()
-		e.ObjField("team_ids")
-		more.Down()
+		e.FieldStart("team_ids")
 		e.ArrStart()
 		for _, elem := range s.TeamIds {
-			more.More()
 			e.Int(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -65855,38 +62462,32 @@ func (ReposUpdateBranchProtectionApplicationJSONNotFound) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s ReposUpdateBranchProtectionReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("required_status_checks")
+
+	e.FieldStart("required_status_checks")
 	s.RequiredStatusChecks.WriteJSON(e)
-	more.More()
-	e.ObjField("enforce_admins")
+
+	e.FieldStart("enforce_admins")
 	s.EnforceAdmins.WriteJSON(e)
-	more.More()
-	e.ObjField("required_pull_request_reviews")
+
+	e.FieldStart("required_pull_request_reviews")
 	s.RequiredPullRequestReviews.WriteJSON(e)
-	more.More()
-	e.ObjField("restrictions")
+
+	e.FieldStart("restrictions")
 	s.Restrictions.WriteJSON(e)
 	if s.RequiredLinearHistory.Set {
-		more.More()
-		e.ObjField("required_linear_history")
+		e.FieldStart("required_linear_history")
 		s.RequiredLinearHistory.WriteJSON(e)
 	}
 	if s.AllowForcePushes.Set {
-		more.More()
-		e.ObjField("allow_force_pushes")
+		e.FieldStart("allow_force_pushes")
 		s.AllowForcePushes.WriteJSON(e)
 	}
 	if s.AllowDeletions.Set {
-		more.More()
-		e.ObjField("allow_deletions")
+		e.FieldStart("allow_deletions")
 		s.AllowDeletions.WriteJSON(e)
 	}
 	if s.RequiredConversationResolution.Set {
-		more.More()
-		e.ObjField("required_conversation_resolution")
+		e.FieldStart("required_conversation_resolution")
 		s.RequiredConversationResolution.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -65945,26 +62546,20 @@ func (s *ReposUpdateBranchProtectionReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposUpdateBranchProtectionReqRequiredPullRequestReviews) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.DismissalRestrictions.Set {
-		more.More()
-		e.ObjField("dismissal_restrictions")
+		e.FieldStart("dismissal_restrictions")
 		s.DismissalRestrictions.WriteJSON(e)
 	}
 	if s.DismissStaleReviews.Set {
-		more.More()
-		e.ObjField("dismiss_stale_reviews")
+		e.FieldStart("dismiss_stale_reviews")
 		s.DismissStaleReviews.WriteJSON(e)
 	}
 	if s.RequireCodeOwnerReviews.Set {
-		more.More()
-		e.ObjField("require_code_owner_reviews")
+		e.FieldStart("require_code_owner_reviews")
 		s.RequireCodeOwnerReviews.WriteJSON(e)
 	}
 	if s.RequiredApprovingReviewCount.Set {
-		more.More()
-		e.ObjField("required_approving_review_count")
+		e.FieldStart("required_approving_review_count")
 		s.RequiredApprovingReviewCount.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -66007,31 +62602,21 @@ func (s *ReposUpdateBranchProtectionReqRequiredPullRequestReviews) ReadJSON(d *j
 // WriteJSON implements json.Marshaler.
 func (s ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Users != nil {
-		more.More()
-		e.ObjField("users")
-		more.Down()
+		e.FieldStart("users")
 		e.ArrStart()
 		for _, elem := range s.Users {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Teams != nil {
-		more.More()
-		e.ObjField("teams")
-		more.Down()
+		e.FieldStart("teams")
 		e.ArrStart()
 		for _, elem := range s.Teams {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -66081,21 +62666,16 @@ func (s *ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestri
 // WriteJSON implements json.Marshaler.
 func (s ReposUpdateBranchProtectionReqRequiredStatusChecks) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("strict")
+
+	e.FieldStart("strict")
 	e.Bool(s.Strict)
-	more.More()
-	e.ObjField("contexts")
-	more.Down()
+
+	e.FieldStart("contexts")
 	e.ArrStart()
 	for _, elem := range s.Contexts {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -66136,39 +62716,27 @@ func (s *ReposUpdateBranchProtectionReqRequiredStatusChecks) ReadJSON(d *json.De
 // WriteJSON implements json.Marshaler.
 func (s ReposUpdateBranchProtectionReqRestrictions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("users")
-	more.Down()
+
+	e.FieldStart("users")
 	e.ArrStart()
 	for _, elem := range s.Users {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("teams")
-	more.Down()
+
+	e.FieldStart("teams")
 	e.ArrStart()
 	for _, elem := range s.Teams {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Apps != nil {
-		more.More()
-		e.ObjField("apps")
-		more.Down()
+		e.FieldStart("apps")
 		e.ArrStart()
 		for _, elem := range s.Apps {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -66232,10 +62800,8 @@ func (s *ReposUpdateBranchProtectionReqRestrictions) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s ReposUpdateCommitCommentReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
 	e.ObjEnd()
 }
@@ -66263,11 +62829,8 @@ func (s *ReposUpdateCommitCommentReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposUpdateInvitationReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Permissions.Set {
-		more.More()
-		e.ObjField("permissions")
+		e.FieldStart("permissions")
 		s.Permissions.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -66313,26 +62876,20 @@ func (s *ReposUpdateInvitationReqPermissions) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposUpdatePullRequestReviewProtectionReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.DismissalRestrictions.Set {
-		more.More()
-		e.ObjField("dismissal_restrictions")
+		e.FieldStart("dismissal_restrictions")
 		s.DismissalRestrictions.WriteJSON(e)
 	}
 	if s.DismissStaleReviews.Set {
-		more.More()
-		e.ObjField("dismiss_stale_reviews")
+		e.FieldStart("dismiss_stale_reviews")
 		s.DismissStaleReviews.WriteJSON(e)
 	}
 	if s.RequireCodeOwnerReviews.Set {
-		more.More()
-		e.ObjField("require_code_owner_reviews")
+		e.FieldStart("require_code_owner_reviews")
 		s.RequireCodeOwnerReviews.WriteJSON(e)
 	}
 	if s.RequiredApprovingReviewCount.Set {
-		more.More()
-		e.ObjField("required_approving_review_count")
+		e.FieldStart("required_approving_review_count")
 		s.RequiredApprovingReviewCount.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -66375,31 +62932,21 @@ func (s *ReposUpdatePullRequestReviewProtectionReq) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Users != nil {
-		more.More()
-		e.ObjField("users")
-		more.Down()
+		e.FieldStart("users")
 		e.ArrStart()
 		for _, elem := range s.Users {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Teams != nil {
-		more.More()
-		e.ObjField("teams")
-		more.Down()
+		e.FieldStart("teams")
 		e.ArrStart()
 		for _, elem := range s.Teams {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -66449,21 +62996,16 @@ func (s *ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) ReadJSO
 // WriteJSON implements json.Marshaler.
 func (s ReposUpdateReleaseAssetReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Label.Set {
-		more.More()
-		e.ObjField("label")
+		e.FieldStart("label")
 		s.Label.WriteJSON(e)
 	}
 	if s.State.Set {
-		more.More()
-		e.ObjField("state")
+		e.FieldStart("state")
 		s.State.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -66501,41 +63043,32 @@ func (s *ReposUpdateReleaseAssetReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposUpdateReleaseReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.TagName.Set {
-		more.More()
-		e.ObjField("tag_name")
+		e.FieldStart("tag_name")
 		s.TagName.WriteJSON(e)
 	}
 	if s.TargetCommitish.Set {
-		more.More()
-		e.ObjField("target_commitish")
+		e.FieldStart("target_commitish")
 		s.TargetCommitish.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Body.Set {
-		more.More()
-		e.ObjField("body")
+		e.FieldStart("body")
 		s.Body.WriteJSON(e)
 	}
 	if s.Draft.Set {
-		more.More()
-		e.ObjField("draft")
+		e.FieldStart("draft")
 		s.Draft.WriteJSON(e)
 	}
 	if s.Prerelease.Set {
-		more.More()
-		e.ObjField("prerelease")
+		e.FieldStart("prerelease")
 		s.Prerelease.WriteJSON(e)
 	}
 	if s.DiscussionCategoryName.Set {
-		more.More()
-		e.ObjField("discussion_category_name")
+		e.FieldStart("discussion_category_name")
 		s.DiscussionCategoryName.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -66593,96 +63126,76 @@ func (s *ReposUpdateReleaseReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposUpdateReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.Homepage.Set {
-		more.More()
-		e.ObjField("homepage")
+		e.FieldStart("homepage")
 		s.Homepage.WriteJSON(e)
 	}
 	if s.Private.Set {
-		more.More()
-		e.ObjField("private")
+		e.FieldStart("private")
 		s.Private.WriteJSON(e)
 	}
 	if s.Visibility.Set {
-		more.More()
-		e.ObjField("visibility")
+		e.FieldStart("visibility")
 		s.Visibility.WriteJSON(e)
 	}
 	if s.SecurityAndAnalysis.Set {
-		more.More()
-		e.ObjField("security_and_analysis")
+		e.FieldStart("security_and_analysis")
 		s.SecurityAndAnalysis.WriteJSON(e)
 	}
 	if s.HasIssues.Set {
-		more.More()
-		e.ObjField("has_issues")
+		e.FieldStart("has_issues")
 		s.HasIssues.WriteJSON(e)
 	}
 	if s.HasProjects.Set {
-		more.More()
-		e.ObjField("has_projects")
+		e.FieldStart("has_projects")
 		s.HasProjects.WriteJSON(e)
 	}
 	if s.HasWiki.Set {
-		more.More()
-		e.ObjField("has_wiki")
+		e.FieldStart("has_wiki")
 		s.HasWiki.WriteJSON(e)
 	}
 	if s.IsTemplate.Set {
-		more.More()
-		e.ObjField("is_template")
+		e.FieldStart("is_template")
 		s.IsTemplate.WriteJSON(e)
 	}
 	if s.DefaultBranch.Set {
-		more.More()
-		e.ObjField("default_branch")
+		e.FieldStart("default_branch")
 		s.DefaultBranch.WriteJSON(e)
 	}
 	if s.AllowSquashMerge.Set {
-		more.More()
-		e.ObjField("allow_squash_merge")
+		e.FieldStart("allow_squash_merge")
 		s.AllowSquashMerge.WriteJSON(e)
 	}
 	if s.AllowMergeCommit.Set {
-		more.More()
-		e.ObjField("allow_merge_commit")
+		e.FieldStart("allow_merge_commit")
 		s.AllowMergeCommit.WriteJSON(e)
 	}
 	if s.AllowRebaseMerge.Set {
-		more.More()
-		e.ObjField("allow_rebase_merge")
+		e.FieldStart("allow_rebase_merge")
 		s.AllowRebaseMerge.WriteJSON(e)
 	}
 	if s.AllowAutoMerge.Set {
-		more.More()
-		e.ObjField("allow_auto_merge")
+		e.FieldStart("allow_auto_merge")
 		s.AllowAutoMerge.WriteJSON(e)
 	}
 	if s.DeleteBranchOnMerge.Set {
-		more.More()
-		e.ObjField("delete_branch_on_merge")
+		e.FieldStart("delete_branch_on_merge")
 		s.DeleteBranchOnMerge.WriteJSON(e)
 	}
 	if s.Archived.Set {
-		more.More()
-		e.ObjField("archived")
+		e.FieldStart("archived")
 		s.Archived.WriteJSON(e)
 	}
 	if s.AllowForking.Set {
-		more.More()
-		e.ObjField("allow_forking")
+		e.FieldStart("allow_forking")
 		s.AllowForking.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -66795,16 +63308,12 @@ func (s *ReposUpdateReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposUpdateReqSecurityAndAnalysis) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AdvancedSecurity.Set {
-		more.More()
-		e.ObjField("advanced_security")
+		e.FieldStart("advanced_security")
 		s.AdvancedSecurity.WriteJSON(e)
 	}
 	if s.SecretScanning.Set {
-		more.More()
-		e.ObjField("secret_scanning")
+		e.FieldStart("secret_scanning")
 		s.SecretScanning.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -66837,11 +63346,8 @@ func (s *ReposUpdateReqSecurityAndAnalysis) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposUpdateReqSecurityAndAnalysisAdvancedSecurity) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -66869,11 +63375,8 @@ func (s *ReposUpdateReqSecurityAndAnalysisAdvancedSecurity) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s ReposUpdateReqSecurityAndAnalysisSecretScanning) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -66919,24 +63422,17 @@ func (s *ReposUpdateReqVisibility) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposUpdateStatusCheckProtectionReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Strict.Set {
-		more.More()
-		e.ObjField("strict")
+		e.FieldStart("strict")
 		s.Strict.WriteJSON(e)
 	}
 	if s.Contexts != nil {
-		more.More()
-		e.ObjField("contexts")
-		more.Down()
+		e.FieldStart("contexts")
 		e.ArrStart()
 		for _, elem := range s.Contexts {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -66977,26 +63473,20 @@ func (s *ReposUpdateStatusCheckProtectionReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposUpdateWebhookConfigForRepoReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.ContentType.Set {
-		more.More()
-		e.ObjField("content_type")
+		e.FieldStart("content_type")
 		s.ContentType.WriteJSON(e)
 	}
 	if s.Secret.Set {
-		more.More()
-		e.ObjField("secret")
+		e.FieldStart("secret")
 		s.Secret.WriteJSON(e)
 	}
 	if s.InsecureSsl != nil {
-		more.More()
-		e.ObjField("insecure_ssl")
+		e.FieldStart("insecure_ssl")
 		s.InsecureSsl.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -67041,52 +63531,36 @@ func (s *ReposUpdateWebhookConfigForRepoReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposUpdateWebhookReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Config.Set {
-		more.More()
-		e.ObjField("config")
+		e.FieldStart("config")
 		s.Config.WriteJSON(e)
 	}
 	if s.Events != nil {
-		more.More()
-		e.ObjField("events")
-		more.Down()
+		e.FieldStart("events")
 		e.ArrStart()
 		for _, elem := range s.Events {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.AddEvents != nil {
-		more.More()
-		e.ObjField("add_events")
-		more.Down()
+		e.FieldStart("add_events")
 		e.ArrStart()
 		for _, elem := range s.AddEvents {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.RemoveEvents != nil {
-		more.More()
-		e.ObjField("remove_events")
-		more.Down()
+		e.FieldStart("remove_events")
 		e.ArrStart()
 		for _, elem := range s.RemoveEvents {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Active.Set {
-		more.More()
-		e.ObjField("active")
+		e.FieldStart("active")
 		s.Active.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -67161,32 +63635,25 @@ func (s *ReposUpdateWebhookReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReposUpdateWebhookReqConfig) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	// Unsupported kind "alias".
 	if s.ContentType.Set {
-		more.More()
-		e.ObjField("content_type")
+		e.FieldStart("content_type")
 		s.ContentType.WriteJSON(e)
 	}
 	if s.Secret.Set {
-		more.More()
-		e.ObjField("secret")
+		e.FieldStart("secret")
 		s.Secret.WriteJSON(e)
 	}
 	if s.InsecureSsl != nil {
-		more.More()
-		e.ObjField("insecure_ssl")
+		e.FieldStart("insecure_ssl")
 		s.InsecureSsl.WriteJSON(e)
 	}
 	if s.Address.Set {
-		more.More()
-		e.ObjField("address")
+		e.FieldStart("address")
 		s.Address.WriteJSON(e)
 	}
 	if s.Room.Set {
-		more.More()
-		e.ObjField("room")
+		e.FieldStart("room")
 		s.Room.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -67238,317 +63705,295 @@ func (s *ReposUpdateWebhookReqConfig) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Repository) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("full_name")
+
+	e.FieldStart("full_name")
 	e.Str(s.FullName)
-	more.More()
-	e.ObjField("license")
+
+	e.FieldStart("license")
 	s.License.WriteJSON(e)
 	if s.Organization.Set {
-		more.More()
-		e.ObjField("organization")
+		e.FieldStart("organization")
 		s.Organization.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("forks")
+
+	e.FieldStart("forks")
 	e.Int(s.Forks)
 	if s.Permissions.Set {
-		more.More()
-		e.ObjField("permissions")
+		e.FieldStart("permissions")
 		s.Permissions.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("owner")
+
+	e.FieldStart("owner")
 	s.Owner.WriteJSON(e)
-	more.More()
-	e.ObjField("private")
+
+	e.FieldStart("private")
 	e.Bool(s.Private)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
-	more.More()
-	e.ObjField("fork")
+
+	e.FieldStart("fork")
 	e.Bool(s.Fork)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("archive_url")
+
+	e.FieldStart("archive_url")
 	e.Str(s.ArchiveURL)
-	more.More()
-	e.ObjField("assignees_url")
+
+	e.FieldStart("assignees_url")
 	e.Str(s.AssigneesURL)
-	more.More()
-	e.ObjField("blobs_url")
+
+	e.FieldStart("blobs_url")
 	e.Str(s.BlobsURL)
-	more.More()
-	e.ObjField("branches_url")
+
+	e.FieldStart("branches_url")
 	e.Str(s.BranchesURL)
-	more.More()
-	e.ObjField("collaborators_url")
+
+	e.FieldStart("collaborators_url")
 	e.Str(s.CollaboratorsURL)
-	more.More()
-	e.ObjField("comments_url")
+
+	e.FieldStart("comments_url")
 	e.Str(s.CommentsURL)
-	more.More()
-	e.ObjField("commits_url")
+
+	e.FieldStart("commits_url")
 	e.Str(s.CommitsURL)
-	more.More()
-	e.ObjField("compare_url")
+
+	e.FieldStart("compare_url")
 	e.Str(s.CompareURL)
-	more.More()
-	e.ObjField("contents_url")
+
+	e.FieldStart("contents_url")
 	e.Str(s.ContentsURL)
-	more.More()
-	e.ObjField("contributors_url")
+
+	e.FieldStart("contributors_url")
 	json.WriteURI(e, s.ContributorsURL)
-	more.More()
-	e.ObjField("deployments_url")
+
+	e.FieldStart("deployments_url")
 	json.WriteURI(e, s.DeploymentsURL)
-	more.More()
-	e.ObjField("downloads_url")
+
+	e.FieldStart("downloads_url")
 	json.WriteURI(e, s.DownloadsURL)
-	more.More()
-	e.ObjField("events_url")
+
+	e.FieldStart("events_url")
 	json.WriteURI(e, s.EventsURL)
-	more.More()
-	e.ObjField("forks_url")
+
+	e.FieldStart("forks_url")
 	json.WriteURI(e, s.ForksURL)
-	more.More()
-	e.ObjField("git_commits_url")
+
+	e.FieldStart("git_commits_url")
 	e.Str(s.GitCommitsURL)
-	more.More()
-	e.ObjField("git_refs_url")
+
+	e.FieldStart("git_refs_url")
 	e.Str(s.GitRefsURL)
-	more.More()
-	e.ObjField("git_tags_url")
+
+	e.FieldStart("git_tags_url")
 	e.Str(s.GitTagsURL)
-	more.More()
-	e.ObjField("git_url")
+
+	e.FieldStart("git_url")
 	e.Str(s.GitURL)
-	more.More()
-	e.ObjField("issue_comment_url")
+
+	e.FieldStart("issue_comment_url")
 	e.Str(s.IssueCommentURL)
-	more.More()
-	e.ObjField("issue_events_url")
+
+	e.FieldStart("issue_events_url")
 	e.Str(s.IssueEventsURL)
-	more.More()
-	e.ObjField("issues_url")
+
+	e.FieldStart("issues_url")
 	e.Str(s.IssuesURL)
-	more.More()
-	e.ObjField("keys_url")
+
+	e.FieldStart("keys_url")
 	e.Str(s.KeysURL)
-	more.More()
-	e.ObjField("labels_url")
+
+	e.FieldStart("labels_url")
 	e.Str(s.LabelsURL)
-	more.More()
-	e.ObjField("languages_url")
+
+	e.FieldStart("languages_url")
 	json.WriteURI(e, s.LanguagesURL)
-	more.More()
-	e.ObjField("merges_url")
+
+	e.FieldStart("merges_url")
 	json.WriteURI(e, s.MergesURL)
-	more.More()
-	e.ObjField("milestones_url")
+
+	e.FieldStart("milestones_url")
 	e.Str(s.MilestonesURL)
-	more.More()
-	e.ObjField("notifications_url")
+
+	e.FieldStart("notifications_url")
 	e.Str(s.NotificationsURL)
-	more.More()
-	e.ObjField("pulls_url")
+
+	e.FieldStart("pulls_url")
 	e.Str(s.PullsURL)
-	more.More()
-	e.ObjField("releases_url")
+
+	e.FieldStart("releases_url")
 	e.Str(s.ReleasesURL)
-	more.More()
-	e.ObjField("ssh_url")
+
+	e.FieldStart("ssh_url")
 	e.Str(s.SSHURL)
-	more.More()
-	e.ObjField("stargazers_url")
+
+	e.FieldStart("stargazers_url")
 	json.WriteURI(e, s.StargazersURL)
-	more.More()
-	e.ObjField("statuses_url")
+
+	e.FieldStart("statuses_url")
 	e.Str(s.StatusesURL)
-	more.More()
-	e.ObjField("subscribers_url")
+
+	e.FieldStart("subscribers_url")
 	json.WriteURI(e, s.SubscribersURL)
-	more.More()
-	e.ObjField("subscription_url")
+
+	e.FieldStart("subscription_url")
 	json.WriteURI(e, s.SubscriptionURL)
-	more.More()
-	e.ObjField("tags_url")
+
+	e.FieldStart("tags_url")
 	json.WriteURI(e, s.TagsURL)
-	more.More()
-	e.ObjField("teams_url")
+
+	e.FieldStart("teams_url")
 	json.WriteURI(e, s.TeamsURL)
-	more.More()
-	e.ObjField("trees_url")
+
+	e.FieldStart("trees_url")
 	e.Str(s.TreesURL)
-	more.More()
-	e.ObjField("clone_url")
+
+	e.FieldStart("clone_url")
 	e.Str(s.CloneURL)
-	more.More()
-	e.ObjField("mirror_url")
+
+	e.FieldStart("mirror_url")
 	s.MirrorURL.WriteJSON(e)
-	more.More()
-	e.ObjField("hooks_url")
+
+	e.FieldStart("hooks_url")
 	json.WriteURI(e, s.HooksURL)
-	more.More()
-	e.ObjField("svn_url")
+
+	e.FieldStart("svn_url")
 	json.WriteURI(e, s.SvnURL)
-	more.More()
-	e.ObjField("homepage")
+
+	e.FieldStart("homepage")
 	s.Homepage.WriteJSON(e)
-	more.More()
-	e.ObjField("language")
+
+	e.FieldStart("language")
 	s.Language.WriteJSON(e)
-	more.More()
-	e.ObjField("forks_count")
+
+	e.FieldStart("forks_count")
 	e.Int(s.ForksCount)
-	more.More()
-	e.ObjField("stargazers_count")
+
+	e.FieldStart("stargazers_count")
 	e.Int(s.StargazersCount)
-	more.More()
-	e.ObjField("watchers_count")
+
+	e.FieldStart("watchers_count")
 	e.Int(s.WatchersCount)
-	more.More()
-	e.ObjField("size")
+
+	e.FieldStart("size")
 	e.Int(s.Size)
-	more.More()
-	e.ObjField("default_branch")
+
+	e.FieldStart("default_branch")
 	e.Str(s.DefaultBranch)
-	more.More()
-	e.ObjField("open_issues_count")
+
+	e.FieldStart("open_issues_count")
 	e.Int(s.OpenIssuesCount)
 	if s.IsTemplate.Set {
-		more.More()
-		e.ObjField("is_template")
+		e.FieldStart("is_template")
 		s.IsTemplate.WriteJSON(e)
 	}
 	if s.Topics != nil {
-		more.More()
-		e.ObjField("topics")
-		more.Down()
+		e.FieldStart("topics")
 		e.ArrStart()
 		for _, elem := range s.Topics {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("has_issues")
+
+	e.FieldStart("has_issues")
 	e.Bool(s.HasIssues)
-	more.More()
-	e.ObjField("has_projects")
+
+	e.FieldStart("has_projects")
 	e.Bool(s.HasProjects)
-	more.More()
-	e.ObjField("has_wiki")
+
+	e.FieldStart("has_wiki")
 	e.Bool(s.HasWiki)
-	more.More()
-	e.ObjField("has_pages")
+
+	e.FieldStart("has_pages")
 	e.Bool(s.HasPages)
-	more.More()
-	e.ObjField("has_downloads")
+
+	e.FieldStart("has_downloads")
 	e.Bool(s.HasDownloads)
-	more.More()
-	e.ObjField("archived")
+
+	e.FieldStart("archived")
 	e.Bool(s.Archived)
-	more.More()
-	e.ObjField("disabled")
+
+	e.FieldStart("disabled")
 	e.Bool(s.Disabled)
 	if s.Visibility.Set {
-		more.More()
-		e.ObjField("visibility")
+		e.FieldStart("visibility")
 		s.Visibility.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("pushed_at")
+
+	e.FieldStart("pushed_at")
 	s.PushedAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	s.CreatedAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	s.UpdatedAt.WriteJSON(e, json.WriteDateTime)
 	if s.AllowRebaseMerge.Set {
-		more.More()
-		e.ObjField("allow_rebase_merge")
+		e.FieldStart("allow_rebase_merge")
 		s.AllowRebaseMerge.WriteJSON(e)
 	}
 	if s.TemplateRepository.Set {
-		more.More()
-		e.ObjField("template_repository")
+		e.FieldStart("template_repository")
 		s.TemplateRepository.WriteJSON(e)
 	}
 	if s.TempCloneToken.Set {
-		more.More()
-		e.ObjField("temp_clone_token")
+		e.FieldStart("temp_clone_token")
 		s.TempCloneToken.WriteJSON(e)
 	}
 	if s.AllowSquashMerge.Set {
-		more.More()
-		e.ObjField("allow_squash_merge")
+		e.FieldStart("allow_squash_merge")
 		s.AllowSquashMerge.WriteJSON(e)
 	}
 	if s.AllowAutoMerge.Set {
-		more.More()
-		e.ObjField("allow_auto_merge")
+		e.FieldStart("allow_auto_merge")
 		s.AllowAutoMerge.WriteJSON(e)
 	}
 	if s.DeleteBranchOnMerge.Set {
-		more.More()
-		e.ObjField("delete_branch_on_merge")
+		e.FieldStart("delete_branch_on_merge")
 		s.DeleteBranchOnMerge.WriteJSON(e)
 	}
 	if s.AllowMergeCommit.Set {
-		more.More()
-		e.ObjField("allow_merge_commit")
+		e.FieldStart("allow_merge_commit")
 		s.AllowMergeCommit.WriteJSON(e)
 	}
 	if s.AllowForking.Set {
-		more.More()
-		e.ObjField("allow_forking")
+		e.FieldStart("allow_forking")
 		s.AllowForking.WriteJSON(e)
 	}
 	if s.SubscribersCount.Set {
-		more.More()
-		e.ObjField("subscribers_count")
+		e.FieldStart("subscribers_count")
 		s.SubscribersCount.WriteJSON(e)
 	}
 	if s.NetworkCount.Set {
-		more.More()
-		e.ObjField("network_count")
+		e.FieldStart("network_count")
 		s.NetworkCount.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("open_issues")
+
+	e.FieldStart("open_issues")
 	e.Int(s.OpenIssues)
-	more.More()
-	e.ObjField("watchers")
+
+	e.FieldStart("watchers")
 	e.Int(s.Watchers)
 	if s.MasterBranch.Set {
-		more.More()
-		e.ObjField("master_branch")
+		e.FieldStart("master_branch")
 		s.MasterBranch.WriteJSON(e)
 	}
 	if s.StarredAt.Set {
-		more.More()
-		e.ObjField("starred_at")
+		e.FieldStart("starred_at")
 		s.StarredAt.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -68085,13 +64530,11 @@ func (s *Repository) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s RepositoryCollaboratorPermission) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("permission")
+
+	e.FieldStart("permission")
 	e.Str(s.Permission)
-	more.More()
-	e.ObjField("user")
+
+	e.FieldStart("user")
 	s.User.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -68123,39 +64566,36 @@ func (s *RepositoryCollaboratorPermission) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s RepositoryInvitation) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("repository")
+
+	e.FieldStart("repository")
 	s.Repository.WriteJSON(e)
-	more.More()
-	e.ObjField("invitee")
+
+	e.FieldStart("invitee")
 	s.Invitee.WriteJSON(e)
-	more.More()
-	e.ObjField("inviter")
+
+	e.FieldStart("inviter")
 	s.Inviter.WriteJSON(e)
-	more.More()
-	e.ObjField("permissions")
+
+	e.FieldStart("permissions")
 	s.Permissions.WriteJSON(e)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
 	if s.Expired.Set {
-		more.More()
-		e.ObjField("expired")
+		e.FieldStart("expired")
 		s.Expired.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	e.Str(s.URL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	e.Str(s.HTMLURL)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
 	e.ObjEnd()
 }
@@ -68246,25 +64686,21 @@ func (s *RepositoryInvitationPermissions) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s RepositoryPermissions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("admin")
+
+	e.FieldStart("admin")
 	e.Bool(s.Admin)
-	more.More()
-	e.ObjField("pull")
+
+	e.FieldStart("pull")
 	e.Bool(s.Pull)
 	if s.Triage.Set {
-		more.More()
-		e.ObjField("triage")
+		e.FieldStart("triage")
 		s.Triage.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("push")
+
+	e.FieldStart("push")
 	e.Bool(s.Push)
 	if s.Maintain.Set {
-		more.More()
-		e.ObjField("maintain")
+		e.FieldStart("maintain")
 		s.Maintain.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -68315,25 +64751,23 @@ func (s *RepositoryPermissions) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s RepositorySubscription) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("subscribed")
+
+	e.FieldStart("subscribed")
 	e.Bool(s.Subscribed)
-	more.More()
-	e.ObjField("ignored")
+
+	e.FieldStart("ignored")
 	e.Bool(s.Ignored)
-	more.More()
-	e.ObjField("reason")
+
+	e.FieldStart("reason")
 	s.Reason.WriteJSON(e)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("repository_url")
+
+	e.FieldStart("repository_url")
 	json.WriteURI(e, s.RepositoryURL)
 	e.ObjEnd()
 }
@@ -68389,418 +64823,332 @@ func (s *RepositorySubscription) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s RepositoryTemplateRepository) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.NodeID.Set {
-		more.More()
-		e.ObjField("node_id")
+		e.FieldStart("node_id")
 		s.NodeID.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.FullName.Set {
-		more.More()
-		e.ObjField("full_name")
+		e.FieldStart("full_name")
 		s.FullName.WriteJSON(e)
 	}
 	if s.Owner.Set {
-		more.More()
-		e.ObjField("owner")
+		e.FieldStart("owner")
 		s.Owner.WriteJSON(e)
 	}
 	if s.Private.Set {
-		more.More()
-		e.ObjField("private")
+		e.FieldStart("private")
 		s.Private.WriteJSON(e)
 	}
 	if s.HTMLURL.Set {
-		more.More()
-		e.ObjField("html_url")
+		e.FieldStart("html_url")
 		s.HTMLURL.WriteJSON(e)
 	}
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.Fork.Set {
-		more.More()
-		e.ObjField("fork")
+		e.FieldStart("fork")
 		s.Fork.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.ArchiveURL.Set {
-		more.More()
-		e.ObjField("archive_url")
+		e.FieldStart("archive_url")
 		s.ArchiveURL.WriteJSON(e)
 	}
 	if s.AssigneesURL.Set {
-		more.More()
-		e.ObjField("assignees_url")
+		e.FieldStart("assignees_url")
 		s.AssigneesURL.WriteJSON(e)
 	}
 	if s.BlobsURL.Set {
-		more.More()
-		e.ObjField("blobs_url")
+		e.FieldStart("blobs_url")
 		s.BlobsURL.WriteJSON(e)
 	}
 	if s.BranchesURL.Set {
-		more.More()
-		e.ObjField("branches_url")
+		e.FieldStart("branches_url")
 		s.BranchesURL.WriteJSON(e)
 	}
 	if s.CollaboratorsURL.Set {
-		more.More()
-		e.ObjField("collaborators_url")
+		e.FieldStart("collaborators_url")
 		s.CollaboratorsURL.WriteJSON(e)
 	}
 	if s.CommentsURL.Set {
-		more.More()
-		e.ObjField("comments_url")
+		e.FieldStart("comments_url")
 		s.CommentsURL.WriteJSON(e)
 	}
 	if s.CommitsURL.Set {
-		more.More()
-		e.ObjField("commits_url")
+		e.FieldStart("commits_url")
 		s.CommitsURL.WriteJSON(e)
 	}
 	if s.CompareURL.Set {
-		more.More()
-		e.ObjField("compare_url")
+		e.FieldStart("compare_url")
 		s.CompareURL.WriteJSON(e)
 	}
 	if s.ContentsURL.Set {
-		more.More()
-		e.ObjField("contents_url")
+		e.FieldStart("contents_url")
 		s.ContentsURL.WriteJSON(e)
 	}
 	if s.ContributorsURL.Set {
-		more.More()
-		e.ObjField("contributors_url")
+		e.FieldStart("contributors_url")
 		s.ContributorsURL.WriteJSON(e)
 	}
 	if s.DeploymentsURL.Set {
-		more.More()
-		e.ObjField("deployments_url")
+		e.FieldStart("deployments_url")
 		s.DeploymentsURL.WriteJSON(e)
 	}
 	if s.DownloadsURL.Set {
-		more.More()
-		e.ObjField("downloads_url")
+		e.FieldStart("downloads_url")
 		s.DownloadsURL.WriteJSON(e)
 	}
 	if s.EventsURL.Set {
-		more.More()
-		e.ObjField("events_url")
+		e.FieldStart("events_url")
 		s.EventsURL.WriteJSON(e)
 	}
 	if s.ForksURL.Set {
-		more.More()
-		e.ObjField("forks_url")
+		e.FieldStart("forks_url")
 		s.ForksURL.WriteJSON(e)
 	}
 	if s.GitCommitsURL.Set {
-		more.More()
-		e.ObjField("git_commits_url")
+		e.FieldStart("git_commits_url")
 		s.GitCommitsURL.WriteJSON(e)
 	}
 	if s.GitRefsURL.Set {
-		more.More()
-		e.ObjField("git_refs_url")
+		e.FieldStart("git_refs_url")
 		s.GitRefsURL.WriteJSON(e)
 	}
 	if s.GitTagsURL.Set {
-		more.More()
-		e.ObjField("git_tags_url")
+		e.FieldStart("git_tags_url")
 		s.GitTagsURL.WriteJSON(e)
 	}
 	if s.GitURL.Set {
-		more.More()
-		e.ObjField("git_url")
+		e.FieldStart("git_url")
 		s.GitURL.WriteJSON(e)
 	}
 	if s.IssueCommentURL.Set {
-		more.More()
-		e.ObjField("issue_comment_url")
+		e.FieldStart("issue_comment_url")
 		s.IssueCommentURL.WriteJSON(e)
 	}
 	if s.IssueEventsURL.Set {
-		more.More()
-		e.ObjField("issue_events_url")
+		e.FieldStart("issue_events_url")
 		s.IssueEventsURL.WriteJSON(e)
 	}
 	if s.IssuesURL.Set {
-		more.More()
-		e.ObjField("issues_url")
+		e.FieldStart("issues_url")
 		s.IssuesURL.WriteJSON(e)
 	}
 	if s.KeysURL.Set {
-		more.More()
-		e.ObjField("keys_url")
+		e.FieldStart("keys_url")
 		s.KeysURL.WriteJSON(e)
 	}
 	if s.LabelsURL.Set {
-		more.More()
-		e.ObjField("labels_url")
+		e.FieldStart("labels_url")
 		s.LabelsURL.WriteJSON(e)
 	}
 	if s.LanguagesURL.Set {
-		more.More()
-		e.ObjField("languages_url")
+		e.FieldStart("languages_url")
 		s.LanguagesURL.WriteJSON(e)
 	}
 	if s.MergesURL.Set {
-		more.More()
-		e.ObjField("merges_url")
+		e.FieldStart("merges_url")
 		s.MergesURL.WriteJSON(e)
 	}
 	if s.MilestonesURL.Set {
-		more.More()
-		e.ObjField("milestones_url")
+		e.FieldStart("milestones_url")
 		s.MilestonesURL.WriteJSON(e)
 	}
 	if s.NotificationsURL.Set {
-		more.More()
-		e.ObjField("notifications_url")
+		e.FieldStart("notifications_url")
 		s.NotificationsURL.WriteJSON(e)
 	}
 	if s.PullsURL.Set {
-		more.More()
-		e.ObjField("pulls_url")
+		e.FieldStart("pulls_url")
 		s.PullsURL.WriteJSON(e)
 	}
 	if s.ReleasesURL.Set {
-		more.More()
-		e.ObjField("releases_url")
+		e.FieldStart("releases_url")
 		s.ReleasesURL.WriteJSON(e)
 	}
 	if s.SSHURL.Set {
-		more.More()
-		e.ObjField("ssh_url")
+		e.FieldStart("ssh_url")
 		s.SSHURL.WriteJSON(e)
 	}
 	if s.StargazersURL.Set {
-		more.More()
-		e.ObjField("stargazers_url")
+		e.FieldStart("stargazers_url")
 		s.StargazersURL.WriteJSON(e)
 	}
 	if s.StatusesURL.Set {
-		more.More()
-		e.ObjField("statuses_url")
+		e.FieldStart("statuses_url")
 		s.StatusesURL.WriteJSON(e)
 	}
 	if s.SubscribersURL.Set {
-		more.More()
-		e.ObjField("subscribers_url")
+		e.FieldStart("subscribers_url")
 		s.SubscribersURL.WriteJSON(e)
 	}
 	if s.SubscriptionURL.Set {
-		more.More()
-		e.ObjField("subscription_url")
+		e.FieldStart("subscription_url")
 		s.SubscriptionURL.WriteJSON(e)
 	}
 	if s.TagsURL.Set {
-		more.More()
-		e.ObjField("tags_url")
+		e.FieldStart("tags_url")
 		s.TagsURL.WriteJSON(e)
 	}
 	if s.TeamsURL.Set {
-		more.More()
-		e.ObjField("teams_url")
+		e.FieldStart("teams_url")
 		s.TeamsURL.WriteJSON(e)
 	}
 	if s.TreesURL.Set {
-		more.More()
-		e.ObjField("trees_url")
+		e.FieldStart("trees_url")
 		s.TreesURL.WriteJSON(e)
 	}
 	if s.CloneURL.Set {
-		more.More()
-		e.ObjField("clone_url")
+		e.FieldStart("clone_url")
 		s.CloneURL.WriteJSON(e)
 	}
 	if s.MirrorURL.Set {
-		more.More()
-		e.ObjField("mirror_url")
+		e.FieldStart("mirror_url")
 		s.MirrorURL.WriteJSON(e)
 	}
 	if s.HooksURL.Set {
-		more.More()
-		e.ObjField("hooks_url")
+		e.FieldStart("hooks_url")
 		s.HooksURL.WriteJSON(e)
 	}
 	if s.SvnURL.Set {
-		more.More()
-		e.ObjField("svn_url")
+		e.FieldStart("svn_url")
 		s.SvnURL.WriteJSON(e)
 	}
 	if s.Homepage.Set {
-		more.More()
-		e.ObjField("homepage")
+		e.FieldStart("homepage")
 		s.Homepage.WriteJSON(e)
 	}
 	if s.Language.Set {
-		more.More()
-		e.ObjField("language")
+		e.FieldStart("language")
 		s.Language.WriteJSON(e)
 	}
 	if s.ForksCount.Set {
-		more.More()
-		e.ObjField("forks_count")
+		e.FieldStart("forks_count")
 		s.ForksCount.WriteJSON(e)
 	}
 	if s.StargazersCount.Set {
-		more.More()
-		e.ObjField("stargazers_count")
+		e.FieldStart("stargazers_count")
 		s.StargazersCount.WriteJSON(e)
 	}
 	if s.WatchersCount.Set {
-		more.More()
-		e.ObjField("watchers_count")
+		e.FieldStart("watchers_count")
 		s.WatchersCount.WriteJSON(e)
 	}
 	if s.Size.Set {
-		more.More()
-		e.ObjField("size")
+		e.FieldStart("size")
 		s.Size.WriteJSON(e)
 	}
 	if s.DefaultBranch.Set {
-		more.More()
-		e.ObjField("default_branch")
+		e.FieldStart("default_branch")
 		s.DefaultBranch.WriteJSON(e)
 	}
 	if s.OpenIssuesCount.Set {
-		more.More()
-		e.ObjField("open_issues_count")
+		e.FieldStart("open_issues_count")
 		s.OpenIssuesCount.WriteJSON(e)
 	}
 	if s.IsTemplate.Set {
-		more.More()
-		e.ObjField("is_template")
+		e.FieldStart("is_template")
 		s.IsTemplate.WriteJSON(e)
 	}
 	if s.Topics != nil {
-		more.More()
-		e.ObjField("topics")
-		more.Down()
+		e.FieldStart("topics")
 		e.ArrStart()
 		for _, elem := range s.Topics {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.HasIssues.Set {
-		more.More()
-		e.ObjField("has_issues")
+		e.FieldStart("has_issues")
 		s.HasIssues.WriteJSON(e)
 	}
 	if s.HasProjects.Set {
-		more.More()
-		e.ObjField("has_projects")
+		e.FieldStart("has_projects")
 		s.HasProjects.WriteJSON(e)
 	}
 	if s.HasWiki.Set {
-		more.More()
-		e.ObjField("has_wiki")
+		e.FieldStart("has_wiki")
 		s.HasWiki.WriteJSON(e)
 	}
 	if s.HasPages.Set {
-		more.More()
-		e.ObjField("has_pages")
+		e.FieldStart("has_pages")
 		s.HasPages.WriteJSON(e)
 	}
 	if s.HasDownloads.Set {
-		more.More()
-		e.ObjField("has_downloads")
+		e.FieldStart("has_downloads")
 		s.HasDownloads.WriteJSON(e)
 	}
 	if s.Archived.Set {
-		more.More()
-		e.ObjField("archived")
+		e.FieldStart("archived")
 		s.Archived.WriteJSON(e)
 	}
 	if s.Disabled.Set {
-		more.More()
-		e.ObjField("disabled")
+		e.FieldStart("disabled")
 		s.Disabled.WriteJSON(e)
 	}
 	if s.Visibility.Set {
-		more.More()
-		e.ObjField("visibility")
+		e.FieldStart("visibility")
 		s.Visibility.WriteJSON(e)
 	}
 	if s.PushedAt.Set {
-		more.More()
-		e.ObjField("pushed_at")
+		e.FieldStart("pushed_at")
 		s.PushedAt.WriteJSON(e)
 	}
 	if s.CreatedAt.Set {
-		more.More()
-		e.ObjField("created_at")
+		e.FieldStart("created_at")
 		s.CreatedAt.WriteJSON(e)
 	}
 	if s.UpdatedAt.Set {
-		more.More()
-		e.ObjField("updated_at")
+		e.FieldStart("updated_at")
 		s.UpdatedAt.WriteJSON(e)
 	}
 	if s.Permissions.Set {
-		more.More()
-		e.ObjField("permissions")
+		e.FieldStart("permissions")
 		s.Permissions.WriteJSON(e)
 	}
 	if s.AllowRebaseMerge.Set {
-		more.More()
-		e.ObjField("allow_rebase_merge")
+		e.FieldStart("allow_rebase_merge")
 		s.AllowRebaseMerge.WriteJSON(e)
 	}
 	if s.TempCloneToken.Set {
-		more.More()
-		e.ObjField("temp_clone_token")
+		e.FieldStart("temp_clone_token")
 		s.TempCloneToken.WriteJSON(e)
 	}
 	if s.AllowSquashMerge.Set {
-		more.More()
-		e.ObjField("allow_squash_merge")
+		e.FieldStart("allow_squash_merge")
 		s.AllowSquashMerge.WriteJSON(e)
 	}
 	if s.AllowAutoMerge.Set {
-		more.More()
-		e.ObjField("allow_auto_merge")
+		e.FieldStart("allow_auto_merge")
 		s.AllowAutoMerge.WriteJSON(e)
 	}
 	if s.DeleteBranchOnMerge.Set {
-		more.More()
-		e.ObjField("delete_branch_on_merge")
+		e.FieldStart("delete_branch_on_merge")
 		s.DeleteBranchOnMerge.WriteJSON(e)
 	}
 	if s.AllowMergeCommit.Set {
-		more.More()
-		e.ObjField("allow_merge_commit")
+		e.FieldStart("allow_merge_commit")
 		s.AllowMergeCommit.WriteJSON(e)
 	}
 	if s.SubscribersCount.Set {
-		more.More()
-		e.ObjField("subscribers_count")
+		e.FieldStart("subscribers_count")
 		s.SubscribersCount.WriteJSON(e)
 	}
 	if s.NetworkCount.Set {
-		more.More()
-		e.ObjField("network_count")
+		e.FieldStart("network_count")
 		s.NetworkCount.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -69237,96 +65585,76 @@ func (s *RepositoryTemplateRepository) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s RepositoryTemplateRepositoryOwner) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Login.Set {
-		more.More()
-		e.ObjField("login")
+		e.FieldStart("login")
 		s.Login.WriteJSON(e)
 	}
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.NodeID.Set {
-		more.More()
-		e.ObjField("node_id")
+		e.FieldStart("node_id")
 		s.NodeID.WriteJSON(e)
 	}
 	if s.AvatarURL.Set {
-		more.More()
-		e.ObjField("avatar_url")
+		e.FieldStart("avatar_url")
 		s.AvatarURL.WriteJSON(e)
 	}
 	if s.GravatarID.Set {
-		more.More()
-		e.ObjField("gravatar_id")
+		e.FieldStart("gravatar_id")
 		s.GravatarID.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.HTMLURL.Set {
-		more.More()
-		e.ObjField("html_url")
+		e.FieldStart("html_url")
 		s.HTMLURL.WriteJSON(e)
 	}
 	if s.FollowersURL.Set {
-		more.More()
-		e.ObjField("followers_url")
+		e.FieldStart("followers_url")
 		s.FollowersURL.WriteJSON(e)
 	}
 	if s.FollowingURL.Set {
-		more.More()
-		e.ObjField("following_url")
+		e.FieldStart("following_url")
 		s.FollowingURL.WriteJSON(e)
 	}
 	if s.GistsURL.Set {
-		more.More()
-		e.ObjField("gists_url")
+		e.FieldStart("gists_url")
 		s.GistsURL.WriteJSON(e)
 	}
 	if s.StarredURL.Set {
-		more.More()
-		e.ObjField("starred_url")
+		e.FieldStart("starred_url")
 		s.StarredURL.WriteJSON(e)
 	}
 	if s.SubscriptionsURL.Set {
-		more.More()
-		e.ObjField("subscriptions_url")
+		e.FieldStart("subscriptions_url")
 		s.SubscriptionsURL.WriteJSON(e)
 	}
 	if s.OrganizationsURL.Set {
-		more.More()
-		e.ObjField("organizations_url")
+		e.FieldStart("organizations_url")
 		s.OrganizationsURL.WriteJSON(e)
 	}
 	if s.ReposURL.Set {
-		more.More()
-		e.ObjField("repos_url")
+		e.FieldStart("repos_url")
 		s.ReposURL.WriteJSON(e)
 	}
 	if s.EventsURL.Set {
-		more.More()
-		e.ObjField("events_url")
+		e.FieldStart("events_url")
 		s.EventsURL.WriteJSON(e)
 	}
 	if s.ReceivedEventsURL.Set {
-		more.More()
-		e.ObjField("received_events_url")
+		e.FieldStart("received_events_url")
 		s.ReceivedEventsURL.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	if s.SiteAdmin.Set {
-		more.More()
-		e.ObjField("site_admin")
+		e.FieldStart("site_admin")
 		s.SiteAdmin.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -69439,31 +65767,24 @@ func (s *RepositoryTemplateRepositoryOwner) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s RepositoryTemplateRepositoryPermissions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Admin.Set {
-		more.More()
-		e.ObjField("admin")
+		e.FieldStart("admin")
 		s.Admin.WriteJSON(e)
 	}
 	if s.Maintain.Set {
-		more.More()
-		e.ObjField("maintain")
+		e.FieldStart("maintain")
 		s.Maintain.WriteJSON(e)
 	}
 	if s.Push.Set {
-		more.More()
-		e.ObjField("push")
+		e.FieldStart("push")
 		s.Push.WriteJSON(e)
 	}
 	if s.Triage.Set {
-		more.More()
-		e.ObjField("triage")
+		e.FieldStart("triage")
 		s.Triage.WriteJSON(e)
 	}
 	if s.Pull.Set {
-		more.More()
-		e.ObjField("pull")
+		e.FieldStart("pull")
 		s.Pull.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -69511,110 +65832,98 @@ func (s *RepositoryTemplateRepositoryPermissions) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s ReviewComment) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("pull_request_review_id")
+
+	e.FieldStart("pull_request_review_id")
 	s.PullRequestReviewID.WriteJSON(e)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("diff_hunk")
+
+	e.FieldStart("diff_hunk")
 	e.Str(s.DiffHunk)
-	more.More()
-	e.ObjField("path")
+
+	e.FieldStart("path")
 	e.Str(s.Path)
-	more.More()
-	e.ObjField("position")
+
+	e.FieldStart("position")
 	s.Position.WriteJSON(e)
-	more.More()
-	e.ObjField("original_position")
+
+	e.FieldStart("original_position")
 	e.Int(s.OriginalPosition)
-	more.More()
-	e.ObjField("commit_id")
+
+	e.FieldStart("commit_id")
 	e.Str(s.CommitID)
-	more.More()
-	e.ObjField("original_commit_id")
+
+	e.FieldStart("original_commit_id")
 	e.Str(s.OriginalCommitID)
 	if s.InReplyToID.Set {
-		more.More()
-		e.ObjField("in_reply_to_id")
+		e.FieldStart("in_reply_to_id")
 		s.InReplyToID.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("user")
+
+	e.FieldStart("user")
 	s.User.WriteJSON(e)
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("pull_request_url")
+
+	e.FieldStart("pull_request_url")
 	json.WriteURI(e, s.PullRequestURL)
-	more.More()
-	e.ObjField("author_association")
+
+	e.FieldStart("author_association")
 	s.AuthorAssociation.WriteJSON(e)
-	more.More()
-	e.ObjField("_links")
+
+	e.FieldStart("_links")
 	s.Links.WriteJSON(e)
 	if s.BodyText.Set {
-		more.More()
-		e.ObjField("body_text")
+		e.FieldStart("body_text")
 		s.BodyText.WriteJSON(e)
 	}
 	if s.BodyHTML.Set {
-		more.More()
-		e.ObjField("body_html")
+		e.FieldStart("body_html")
 		s.BodyHTML.WriteJSON(e)
 	}
 	if s.Reactions.Set {
-		more.More()
-		e.ObjField("reactions")
+		e.FieldStart("reactions")
 		s.Reactions.WriteJSON(e)
 	}
 	if s.Side.Set {
-		more.More()
-		e.ObjField("side")
+		e.FieldStart("side")
 		s.Side.WriteJSON(e)
 	}
 	if s.StartSide.Set {
-		more.More()
-		e.ObjField("start_side")
+		e.FieldStart("start_side")
 		s.StartSide.WriteJSON(e)
 	}
 	if s.Line.Set {
-		more.More()
-		e.ObjField("line")
+		e.FieldStart("line")
 		s.Line.WriteJSON(e)
 	}
 	if s.OriginalLine.Set {
-		more.More()
-		e.ObjField("original_line")
+		e.FieldStart("original_line")
 		s.OriginalLine.WriteJSON(e)
 	}
 	if s.StartLine.Set {
-		more.More()
-		e.ObjField("start_line")
+		e.FieldStart("start_line")
 		s.StartLine.WriteJSON(e)
 	}
 	if s.OriginalStartLine.Set {
-		more.More()
-		e.ObjField("original_start_line")
+		e.FieldStart("original_start_line")
 		s.OriginalStartLine.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -69785,16 +66094,14 @@ func (s *ReviewComment) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReviewCommentLinks) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("self")
+
+	e.FieldStart("self")
 	s.Self.WriteJSON(e)
-	more.More()
-	e.ObjField("html")
+
+	e.FieldStart("html")
 	s.HTML.WriteJSON(e)
-	more.More()
-	e.ObjField("pull_request")
+
+	e.FieldStart("pull_request")
 	s.PullRequest.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -69864,33 +66171,28 @@ func (s *ReviewCommentStartSide) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Runner) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("os")
+
+	e.FieldStart("os")
 	e.Str(s.Os)
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	e.Str(s.Status)
-	more.More()
-	e.ObjField("busy")
+
+	e.FieldStart("busy")
 	e.Bool(s.Busy)
-	more.More()
-	e.ObjField("labels")
-	more.Down()
+
+	e.FieldStart("labels")
 	e.ArrStart()
 	for _, elem := range s.Labels {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -69953,28 +66255,24 @@ func (s *Runner) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s RunnerApplication) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("os")
+
+	e.FieldStart("os")
 	e.Str(s.Os)
-	more.More()
-	e.ObjField("architecture")
+
+	e.FieldStart("architecture")
 	e.Str(s.Architecture)
-	more.More()
-	e.ObjField("download_url")
+
+	e.FieldStart("download_url")
 	e.Str(s.DownloadURL)
-	more.More()
-	e.ObjField("filename")
+
+	e.FieldStart("filename")
 	e.Str(s.Filename)
 	if s.TempDownloadToken.Set {
-		more.More()
-		e.ObjField("temp_download_token")
+		e.FieldStart("temp_download_token")
 		s.TempDownloadToken.WriteJSON(e)
 	}
 	if s.SHA256Checksum.Set {
-		more.More()
-		e.ObjField("sha256_checksum")
+		e.FieldStart("sha256_checksum")
 		s.SHA256Checksum.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -70031,30 +66329,27 @@ func (s *RunnerApplication) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s RunnerGroupsEnterprise) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Float64(s.ID)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("visibility")
+
+	e.FieldStart("visibility")
 	e.Str(s.Visibility)
-	more.More()
-	e.ObjField("default")
+
+	e.FieldStart("default")
 	e.Bool(s.Default)
 	if s.SelectedOrganizationsURL.Set {
-		more.More()
-		e.ObjField("selected_organizations_url")
+		e.FieldStart("selected_organizations_url")
 		s.SelectedOrganizationsURL.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("runners_url")
+
+	e.FieldStart("runners_url")
 	e.Str(s.RunnersURL)
-	more.More()
-	e.ObjField("allows_public_repositories")
+
+	e.FieldStart("allows_public_repositories")
 	e.Bool(s.AllowsPublicRepositories)
 	e.ObjEnd()
 }
@@ -70117,38 +66412,34 @@ func (s *RunnerGroupsEnterprise) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s RunnerGroupsOrg) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Float64(s.ID)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("visibility")
+
+	e.FieldStart("visibility")
 	e.Str(s.Visibility)
-	more.More()
-	e.ObjField("default")
+
+	e.FieldStart("default")
 	e.Bool(s.Default)
 	if s.SelectedRepositoriesURL.Set {
-		more.More()
-		e.ObjField("selected_repositories_url")
+		e.FieldStart("selected_repositories_url")
 		s.SelectedRepositoriesURL.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("runners_url")
+
+	e.FieldStart("runners_url")
 	e.Str(s.RunnersURL)
-	more.More()
-	e.ObjField("inherited")
+
+	e.FieldStart("inherited")
 	e.Bool(s.Inherited)
 	if s.InheritedAllowsPublicRepositories.Set {
-		more.More()
-		e.ObjField("inherited_allows_public_repositories")
+		e.FieldStart("inherited_allows_public_repositories")
 		s.InheritedAllowsPublicRepositories.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("allows_public_repositories")
+
+	e.FieldStart("allows_public_repositories")
 	e.Bool(s.AllowsPublicRepositories)
 	e.ObjEnd()
 }
@@ -70222,21 +66513,16 @@ func (s *RunnerGroupsOrg) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s RunnerLabelsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -70298,8 +66584,6 @@ func (ScimDeleteUserFromOrgApplicationJSONNotFound) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s ScimDeleteUserFromOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -70320,46 +66604,34 @@ func (s *ScimDeleteUserFromOrgNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ScimEnterpriseGroup) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("schemas")
-	more.Down()
+
+	e.FieldStart("schemas")
 	e.ArrStart()
 	for _, elem := range s.Schemas {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Str(s.ID)
 	if s.ExternalId.Set {
-		more.More()
-		e.ObjField("externalId")
+		e.FieldStart("externalId")
 		s.ExternalId.WriteJSON(e)
 	}
 	if s.DisplayName.Set {
-		more.More()
-		e.ObjField("displayName")
+		e.FieldStart("displayName")
 		s.DisplayName.WriteJSON(e)
 	}
 	if s.Members != nil {
-		more.More()
-		e.ObjField("members")
-		more.Down()
+		e.FieldStart("members")
 		e.ArrStart()
 		for _, elem := range s.Members {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Meta.Set {
-		more.More()
-		e.ObjField("meta")
+		e.FieldStart("meta")
 		s.Meta.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -70429,21 +66701,16 @@ func (s *ScimEnterpriseGroup) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ScimEnterpriseGroupMembersItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Value.Set {
-		more.More()
-		e.ObjField("value")
+		e.FieldStart("value")
 		s.Value.WriteJSON(e)
 	}
 	if s.Ref.Set {
-		more.More()
-		e.ObjField("$ref")
+		e.FieldStart("$ref")
 		s.Ref.WriteJSON(e)
 	}
 	if s.Display.Set {
-		more.More()
-		e.ObjField("display")
+		e.FieldStart("display")
 		s.Display.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -70481,26 +66748,20 @@ func (s *ScimEnterpriseGroupMembersItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ScimEnterpriseGroupMeta) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ResourceType.Set {
-		more.More()
-		e.ObjField("resourceType")
+		e.FieldStart("resourceType")
 		s.ResourceType.WriteJSON(e)
 	}
 	if s.Created.Set {
-		more.More()
-		e.ObjField("created")
+		e.FieldStart("created")
 		s.Created.WriteJSON(e)
 	}
 	if s.LastModified.Set {
-		more.More()
-		e.ObjField("lastModified")
+		e.FieldStart("lastModified")
 		s.LastModified.WriteJSON(e)
 	}
 	if s.Location.Set {
-		more.More()
-		e.ObjField("location")
+		e.FieldStart("location")
 		s.Location.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -70543,68 +66804,50 @@ func (s *ScimEnterpriseGroupMeta) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ScimEnterpriseUser) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("schemas")
-	more.Down()
+
+	e.FieldStart("schemas")
 	e.ArrStart()
 	for _, elem := range s.Schemas {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Str(s.ID)
 	if s.ExternalId.Set {
-		more.More()
-		e.ObjField("externalId")
+		e.FieldStart("externalId")
 		s.ExternalId.WriteJSON(e)
 	}
 	if s.UserName.Set {
-		more.More()
-		e.ObjField("userName")
+		e.FieldStart("userName")
 		s.UserName.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Emails != nil {
-		more.More()
-		e.ObjField("emails")
-		more.Down()
+		e.FieldStart("emails")
 		e.ArrStart()
 		for _, elem := range s.Emails {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Groups != nil {
-		more.More()
-		e.ObjField("groups")
-		more.Down()
+		e.FieldStart("groups")
 		e.ArrStart()
 		for _, elem := range s.Groups {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Active.Set {
-		more.More()
-		e.ObjField("active")
+		e.FieldStart("active")
 		s.Active.WriteJSON(e)
 	}
 	if s.Meta.Set {
-		more.More()
-		e.ObjField("meta")
+		e.FieldStart("meta")
 		s.Meta.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -70696,21 +66939,16 @@ func (s *ScimEnterpriseUser) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ScimEnterpriseUserEmailsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Value.Set {
-		more.More()
-		e.ObjField("value")
+		e.FieldStart("value")
 		s.Value.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	if s.Primary.Set {
-		more.More()
-		e.ObjField("primary")
+		e.FieldStart("primary")
 		s.Primary.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -70748,11 +66986,8 @@ func (s *ScimEnterpriseUserEmailsItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ScimEnterpriseUserGroupsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Value.Set {
-		more.More()
-		e.ObjField("value")
+		e.FieldStart("value")
 		s.Value.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -70780,26 +67015,20 @@ func (s *ScimEnterpriseUserGroupsItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ScimEnterpriseUserMeta) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ResourceType.Set {
-		more.More()
-		e.ObjField("resourceType")
+		e.FieldStart("resourceType")
 		s.ResourceType.WriteJSON(e)
 	}
 	if s.Created.Set {
-		more.More()
-		e.ObjField("created")
+		e.FieldStart("created")
 		s.Created.WriteJSON(e)
 	}
 	if s.LastModified.Set {
-		more.More()
-		e.ObjField("lastModified")
+		e.FieldStart("lastModified")
 		s.LastModified.WriteJSON(e)
 	}
 	if s.Location.Set {
-		more.More()
-		e.ObjField("location")
+		e.FieldStart("location")
 		s.Location.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -70842,16 +67071,12 @@ func (s *ScimEnterpriseUserMeta) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ScimEnterpriseUserName) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.GivenName.Set {
-		more.More()
-		e.ObjField("givenName")
+		e.FieldStart("givenName")
 		s.GivenName.WriteJSON(e)
 	}
 	if s.FamilyName.Set {
-		more.More()
-		e.ObjField("familyName")
+		e.FieldStart("familyName")
 		s.FamilyName.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -70884,44 +67109,33 @@ func (s *ScimEnterpriseUserName) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ScimError) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.DocumentationURL.Set {
-		more.More()
-		e.ObjField("documentation_url")
+		e.FieldStart("documentation_url")
 		s.DocumentationURL.WriteJSON(e)
 	}
 	if s.Detail.Set {
-		more.More()
-		e.ObjField("detail")
+		e.FieldStart("detail")
 		s.Detail.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	if s.ScimType.Set {
-		more.More()
-		e.ObjField("scimType")
+		e.FieldStart("scimType")
 		s.ScimType.WriteJSON(e)
 	}
 	if s.Schemas != nil {
-		more.More()
-		e.ObjField("schemas")
-		more.Down()
+		e.FieldStart("schemas")
 		e.ArrStart()
 		for _, elem := range s.Schemas {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -70982,37 +67196,29 @@ func (s *ScimError) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ScimGroupListEnterprise) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("schemas")
-	more.Down()
+
+	e.FieldStart("schemas")
 	e.ArrStart()
 	for _, elem := range s.Schemas {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("totalResults")
+
+	e.FieldStart("totalResults")
 	e.Float64(s.TotalResults)
-	more.More()
-	e.ObjField("itemsPerPage")
+
+	e.FieldStart("itemsPerPage")
 	e.Float64(s.ItemsPerPage)
-	more.More()
-	e.ObjField("startIndex")
+
+	e.FieldStart("startIndex")
 	e.Float64(s.StartIndex)
-	more.More()
-	e.ObjField("Resources")
-	more.Down()
+
+	e.FieldStart("Resources")
 	e.ArrStart()
 	for _, elem := range s.Resources {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -71077,46 +67283,34 @@ func (s *ScimGroupListEnterprise) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ScimGroupListEnterpriseResourcesItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("schemas")
-	more.Down()
+
+	e.FieldStart("schemas")
 	e.ArrStart()
 	for _, elem := range s.Schemas {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Str(s.ID)
 	if s.ExternalId.Set {
-		more.More()
-		e.ObjField("externalId")
+		e.FieldStart("externalId")
 		s.ExternalId.WriteJSON(e)
 	}
 	if s.DisplayName.Set {
-		more.More()
-		e.ObjField("displayName")
+		e.FieldStart("displayName")
 		s.DisplayName.WriteJSON(e)
 	}
 	if s.Members != nil {
-		more.More()
-		e.ObjField("members")
-		more.Down()
+		e.FieldStart("members")
 		e.ArrStart()
 		for _, elem := range s.Members {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Meta.Set {
-		more.More()
-		e.ObjField("meta")
+		e.FieldStart("meta")
 		s.Meta.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -71186,21 +67380,16 @@ func (s *ScimGroupListEnterpriseResourcesItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ScimGroupListEnterpriseResourcesItemMembersItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Value.Set {
-		more.More()
-		e.ObjField("value")
+		e.FieldStart("value")
 		s.Value.WriteJSON(e)
 	}
 	if s.Ref.Set {
-		more.More()
-		e.ObjField("$ref")
+		e.FieldStart("$ref")
 		s.Ref.WriteJSON(e)
 	}
 	if s.Display.Set {
-		more.More()
-		e.ObjField("display")
+		e.FieldStart("display")
 		s.Display.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -71238,26 +67427,20 @@ func (s *ScimGroupListEnterpriseResourcesItemMembersItem) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s ScimGroupListEnterpriseResourcesItemMeta) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ResourceType.Set {
-		more.More()
-		e.ObjField("resourceType")
+		e.FieldStart("resourceType")
 		s.ResourceType.WriteJSON(e)
 	}
 	if s.Created.Set {
-		more.More()
-		e.ObjField("created")
+		e.FieldStart("created")
 		s.Created.WriteJSON(e)
 	}
 	if s.LastModified.Set {
-		more.More()
-		e.ObjField("lastModified")
+		e.FieldStart("lastModified")
 		s.LastModified.WriteJSON(e)
 	}
 	if s.Location.Set {
-		more.More()
-		e.ObjField("location")
+		e.FieldStart("location")
 		s.Location.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -71300,61 +67483,45 @@ func (s *ScimGroupListEnterpriseResourcesItemMeta) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s ScimProvisionAndInviteUserReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("userName")
+
+	e.FieldStart("userName")
 	e.Str(s.UserName)
 	if s.DisplayName.Set {
-		more.More()
-		e.ObjField("displayName")
+		e.FieldStart("displayName")
 		s.DisplayName.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	s.Name.WriteJSON(e)
-	more.More()
-	e.ObjField("emails")
-	more.Down()
+
+	e.FieldStart("emails")
 	e.ArrStart()
 	for _, elem := range s.Emails {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Schemas != nil {
-		more.More()
-		e.ObjField("schemas")
-		more.Down()
+		e.FieldStart("schemas")
 		e.ArrStart()
 		for _, elem := range s.Schemas {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.ExternalId.Set {
-		more.More()
-		e.ObjField("externalId")
+		e.FieldStart("externalId")
 		s.ExternalId.WriteJSON(e)
 	}
 	if s.Groups != nil {
-		more.More()
-		e.ObjField("groups")
-		more.Down()
+		e.FieldStart("groups")
 		e.ArrStart()
 		for _, elem := range s.Groups {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Active.Set {
-		more.More()
-		e.ObjField("active")
+		e.FieldStart("active")
 		s.Active.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -71442,19 +67609,15 @@ func (s *ScimProvisionAndInviteUserReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ScimProvisionAndInviteUserReqEmailsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("value")
+
+	e.FieldStart("value")
 	e.Str(s.Value)
 	if s.Primary.Set {
-		more.More()
-		e.ObjField("primary")
+		e.FieldStart("primary")
 		s.Primary.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -71493,17 +67656,14 @@ func (s *ScimProvisionAndInviteUserReqEmailsItem) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s ScimProvisionAndInviteUserReqName) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("givenName")
+
+	e.FieldStart("givenName")
 	e.Str(s.GivenName)
-	more.More()
-	e.ObjField("familyName")
+
+	e.FieldStart("familyName")
 	e.Str(s.FamilyName)
 	if s.Formatted.Set {
-		more.More()
-		e.ObjField("formatted")
+		e.FieldStart("formatted")
 		s.Formatted.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -71543,63 +67703,47 @@ func (s *ScimProvisionAndInviteUserReqName) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ScimSetInformationForProvisionedUserReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Schemas != nil {
-		more.More()
-		e.ObjField("schemas")
-		more.Down()
+		e.FieldStart("schemas")
 		e.ArrStart()
 		for _, elem := range s.Schemas {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.DisplayName.Set {
-		more.More()
-		e.ObjField("displayName")
+		e.FieldStart("displayName")
 		s.DisplayName.WriteJSON(e)
 	}
 	if s.ExternalId.Set {
-		more.More()
-		e.ObjField("externalId")
+		e.FieldStart("externalId")
 		s.ExternalId.WriteJSON(e)
 	}
 	if s.Groups != nil {
-		more.More()
-		e.ObjField("groups")
-		more.Down()
+		e.FieldStart("groups")
 		e.ArrStart()
 		for _, elem := range s.Groups {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Active.Set {
-		more.More()
-		e.ObjField("active")
+		e.FieldStart("active")
 		s.Active.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("userName")
+
+	e.FieldStart("userName")
 	e.Str(s.UserName)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	s.Name.WriteJSON(e)
-	more.More()
-	e.ObjField("emails")
-	more.Down()
+
+	e.FieldStart("emails")
 	e.ArrStart()
 	for _, elem := range s.Emails {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -71685,19 +67829,15 @@ func (s *ScimSetInformationForProvisionedUserReq) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s ScimSetInformationForProvisionedUserReqEmailsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("value")
+
+	e.FieldStart("value")
 	e.Str(s.Value)
 	if s.Primary.Set {
-		more.More()
-		e.ObjField("primary")
+		e.FieldStart("primary")
 		s.Primary.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -71736,17 +67876,14 @@ func (s *ScimSetInformationForProvisionedUserReqEmailsItem) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s ScimSetInformationForProvisionedUserReqName) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("givenName")
+
+	e.FieldStart("givenName")
 	e.Str(s.GivenName)
-	more.More()
-	e.ObjField("familyName")
+
+	e.FieldStart("familyName")
 	e.Str(s.FamilyName)
 	if s.Formatted.Set {
-		more.More()
-		e.ObjField("formatted")
+		e.FieldStart("formatted")
 		s.Formatted.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -71786,37 +67923,29 @@ func (s *ScimSetInformationForProvisionedUserReqName) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s ScimUserListEnterprise) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("schemas")
-	more.Down()
+
+	e.FieldStart("schemas")
 	e.ArrStart()
 	for _, elem := range s.Schemas {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("totalResults")
+
+	e.FieldStart("totalResults")
 	e.Float64(s.TotalResults)
-	more.More()
-	e.ObjField("itemsPerPage")
+
+	e.FieldStart("itemsPerPage")
 	e.Float64(s.ItemsPerPage)
-	more.More()
-	e.ObjField("startIndex")
+
+	e.FieldStart("startIndex")
 	e.Float64(s.StartIndex)
-	more.More()
-	e.ObjField("Resources")
-	more.Down()
+
+	e.FieldStart("Resources")
 	e.ArrStart()
 	for _, elem := range s.Resources {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -71881,68 +68010,50 @@ func (s *ScimUserListEnterprise) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ScimUserListEnterpriseResourcesItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("schemas")
-	more.Down()
+
+	e.FieldStart("schemas")
 	e.ArrStart()
 	for _, elem := range s.Schemas {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Str(s.ID)
 	if s.ExternalId.Set {
-		more.More()
-		e.ObjField("externalId")
+		e.FieldStart("externalId")
 		s.ExternalId.WriteJSON(e)
 	}
 	if s.UserName.Set {
-		more.More()
-		e.ObjField("userName")
+		e.FieldStart("userName")
 		s.UserName.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Emails != nil {
-		more.More()
-		e.ObjField("emails")
-		more.Down()
+		e.FieldStart("emails")
 		e.ArrStart()
 		for _, elem := range s.Emails {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Groups != nil {
-		more.More()
-		e.ObjField("groups")
-		more.Down()
+		e.FieldStart("groups")
 		e.ArrStart()
 		for _, elem := range s.Groups {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Active.Set {
-		more.More()
-		e.ObjField("active")
+		e.FieldStart("active")
 		s.Active.WriteJSON(e)
 	}
 	if s.Meta.Set {
-		more.More()
-		e.ObjField("meta")
+		e.FieldStart("meta")
 		s.Meta.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -72034,21 +68145,16 @@ func (s *ScimUserListEnterpriseResourcesItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ScimUserListEnterpriseResourcesItemEmailsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Value.Set {
-		more.More()
-		e.ObjField("value")
+		e.FieldStart("value")
 		s.Value.WriteJSON(e)
 	}
 	if s.Primary.Set {
-		more.More()
-		e.ObjField("primary")
+		e.FieldStart("primary")
 		s.Primary.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -72086,11 +68192,8 @@ func (s *ScimUserListEnterpriseResourcesItemEmailsItem) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s ScimUserListEnterpriseResourcesItemGroupsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Value.Set {
-		more.More()
-		e.ObjField("value")
+		e.FieldStart("value")
 		s.Value.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -72118,26 +68221,20 @@ func (s *ScimUserListEnterpriseResourcesItemGroupsItem) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s ScimUserListEnterpriseResourcesItemMeta) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ResourceType.Set {
-		more.More()
-		e.ObjField("resourceType")
+		e.FieldStart("resourceType")
 		s.ResourceType.WriteJSON(e)
 	}
 	if s.Created.Set {
-		more.More()
-		e.ObjField("created")
+		e.FieldStart("created")
 		s.Created.WriteJSON(e)
 	}
 	if s.LastModified.Set {
-		more.More()
-		e.ObjField("lastModified")
+		e.FieldStart("lastModified")
 		s.LastModified.WriteJSON(e)
 	}
 	if s.Location.Set {
-		more.More()
-		e.ObjField("location")
+		e.FieldStart("location")
 		s.Location.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -72180,16 +68277,12 @@ func (s *ScimUserListEnterpriseResourcesItemMeta) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s ScimUserListEnterpriseResourcesItemName) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.GivenName.Set {
-		more.More()
-		e.ObjField("givenName")
+		e.FieldStart("givenName")
 		s.GivenName.WriteJSON(e)
 	}
 	if s.FamilyName.Set {
-		more.More()
-		e.ObjField("familyName")
+		e.FieldStart("familyName")
 		s.FamilyName.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -72222,24 +68315,19 @@ func (s *ScimUserListEnterpriseResourcesItemName) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s SearchCodeOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Int(s.TotalCount)
-	more.More()
-	e.ObjField("incomplete_results")
+
+	e.FieldStart("incomplete_results")
 	e.Bool(s.IncompleteResults)
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -72320,24 +68408,19 @@ func (s *SearchCodeSort) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SearchCommitsOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Int(s.TotalCount)
-	more.More()
-	e.ObjField("incomplete_results")
+
+	e.FieldStart("incomplete_results")
 	e.Bool(s.IncompleteResults)
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -72418,24 +68501,19 @@ func (s *SearchCommitsSort) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SearchIssuesAndPullRequestsOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Int(s.TotalCount)
-	more.More()
-	e.ObjField("incomplete_results")
+
+	e.FieldStart("incomplete_results")
 	e.Bool(s.IncompleteResults)
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -72516,24 +68594,19 @@ func (s *SearchIssuesAndPullRequestsSort) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SearchLabelsOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Int(s.TotalCount)
-	more.More()
-	e.ObjField("incomplete_results")
+
+	e.FieldStart("incomplete_results")
 	e.Bool(s.IncompleteResults)
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -72614,24 +68687,19 @@ func (s *SearchLabelsSort) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SearchReposOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Int(s.TotalCount)
-	more.More()
-	e.ObjField("incomplete_results")
+
+	e.FieldStart("incomplete_results")
 	e.Bool(s.IncompleteResults)
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -72715,39 +68783,29 @@ func (SearchResultTextMatches) ReadJSON(d *json.Decoder) error { return nil }
 // WriteJSON implements json.Marshaler.
 func (s SearchResultTextMatchesItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ObjectURL.Set {
-		more.More()
-		e.ObjField("object_url")
+		e.FieldStart("object_url")
 		s.ObjectURL.WriteJSON(e)
 	}
 	if s.ObjectType.Set {
-		more.More()
-		e.ObjField("object_type")
+		e.FieldStart("object_type")
 		s.ObjectType.WriteJSON(e)
 	}
 	if s.Property.Set {
-		more.More()
-		e.ObjField("property")
+		e.FieldStart("property")
 		s.Property.WriteJSON(e)
 	}
 	if s.Fragment.Set {
-		more.More()
-		e.ObjField("fragment")
+		e.FieldStart("fragment")
 		s.Fragment.WriteJSON(e)
 	}
 	if s.Matches != nil {
-		more.More()
-		e.ObjField("matches")
-		more.Down()
+		e.FieldStart("matches")
 		e.ArrStart()
 		for _, elem := range s.Matches {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -72801,24 +68859,17 @@ func (s *SearchResultTextMatchesItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SearchResultTextMatchesItemMatchesItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Text.Set {
-		more.More()
-		e.ObjField("text")
+		e.FieldStart("text")
 		s.Text.WriteJSON(e)
 	}
 	if s.Indices != nil {
-		more.More()
-		e.ObjField("indices")
-		more.Down()
+		e.FieldStart("indices")
 		e.ArrStart()
 		for _, elem := range s.Indices {
-			more.More()
 			e.Int(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -72859,24 +68910,19 @@ func (s *SearchResultTextMatchesItemMatchesItem) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s SearchTopicsOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Int(s.TotalCount)
-	more.More()
-	e.ObjField("incomplete_results")
+
+	e.FieldStart("incomplete_results")
 	e.Bool(s.IncompleteResults)
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -72921,24 +68967,19 @@ func (s *SearchTopicsOK) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SearchUsersOK) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_count")
+
+	e.FieldStart("total_count")
 	e.Int(s.TotalCount)
-	more.More()
-	e.ObjField("incomplete_results")
+
+	e.FieldStart("incomplete_results")
 	e.Bool(s.IncompleteResults)
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -73019,61 +69060,48 @@ func (s *SearchUsersSort) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SecretScanningAlert) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Number.Set {
-		more.More()
-		e.ObjField("number")
+		e.FieldStart("number")
 		s.Number.WriteJSON(e)
 	}
 	if s.CreatedAt.Set {
-		more.More()
-		e.ObjField("created_at")
+		e.FieldStart("created_at")
 		s.CreatedAt.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.HTMLURL.Set {
-		more.More()
-		e.ObjField("html_url")
+		e.FieldStart("html_url")
 		s.HTMLURL.WriteJSON(e)
 	}
 	if s.LocationsURL.Set {
-		more.More()
-		e.ObjField("locations_url")
+		e.FieldStart("locations_url")
 		s.LocationsURL.WriteJSON(e)
 	}
 	if s.State.Set {
-		more.More()
-		e.ObjField("state")
+		e.FieldStart("state")
 		s.State.WriteJSON(e)
 	}
 	if s.Resolution.Set {
-		more.More()
-		e.ObjField("resolution")
+		e.FieldStart("resolution")
 		s.Resolution.WriteJSON(e)
 	}
 	if s.ResolvedAt.Set {
-		more.More()
-		e.ObjField("resolved_at")
+		e.FieldStart("resolved_at")
 		s.ResolvedAt.WriteJSON(e, json.WriteDateTime)
 	}
 	if s.ResolvedBy.Set {
-		more.More()
-		e.ObjField("resolved_by")
+		e.FieldStart("resolved_by")
 		s.ResolvedBy.WriteJSON(e)
 	}
 	if s.SecretType.Set {
-		more.More()
-		e.ObjField("secret_type")
+		e.FieldStart("secret_type")
 		s.SecretType.WriteJSON(e)
 	}
 	if s.Secret.Set {
-		more.More()
-		e.ObjField("secret")
+		e.FieldStart("secret")
 		s.Secret.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -73187,8 +69215,6 @@ func (s *SecretScanningAlertState) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SecretScanningGetAlertNotFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -73230,8 +69256,6 @@ func (s *SecretScanningListAlertsForOrgState) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SecretScanningListAlertsForRepoNotFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -73273,8 +69297,6 @@ func (s *SecretScanningListAlertsForRepoState) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SecretScanningUpdateAlertNotFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -73295,14 +69317,11 @@ func (s *SecretScanningUpdateAlertNotFound) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SecretScanningUpdateAlertReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	s.State.WriteJSON(e)
 	if s.Resolution.Set {
-		more.More()
-		e.ObjField("resolution")
+		e.FieldStart("resolution")
 		s.Resolution.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -73334,8 +69353,6 @@ func (s *SecretScanningUpdateAlertReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SecretScanningUpdateAlertUnprocessableEntity) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -73356,29 +69373,21 @@ func (s *SecretScanningUpdateAlertUnprocessableEntity) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s SelectedActions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.GithubOwnedAllowed.Set {
-		more.More()
-		e.ObjField("github_owned_allowed")
+		e.FieldStart("github_owned_allowed")
 		s.GithubOwnedAllowed.WriteJSON(e)
 	}
 	if s.VerifiedAllowed.Set {
-		more.More()
-		e.ObjField("verified_allowed")
+		e.FieldStart("verified_allowed")
 		s.VerifiedAllowed.WriteJSON(e)
 	}
 	if s.PatternsAllowed != nil {
-		more.More()
-		e.ObjField("patterns_allowed")
-		more.Down()
+		e.FieldStart("patterns_allowed")
 		e.ArrStart()
 		for _, elem := range s.PatternsAllowed {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -73427,21 +69436,16 @@ func (SelectedActionsURL) ReadJSON(d *json.Decoder) error { return nil }
 // WriteJSON implements json.Marshaler.
 func (s ServiceUnavailable) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Code.Set {
-		more.More()
-		e.ObjField("code")
+		e.FieldStart("code")
 		s.Code.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.DocumentationURL.Set {
-		more.More()
-		e.ObjField("documentation_url")
+		e.FieldStart("documentation_url")
 		s.DocumentationURL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -73479,13 +69483,11 @@ func (s *ServiceUnavailable) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ShortBlob) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	e.Str(s.URL)
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
 	e.ObjEnd()
 }
@@ -73519,25 +69521,21 @@ func (s *ShortBlob) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ShortBranch) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("commit")
+
+	e.FieldStart("commit")
 	s.Commit.WriteJSON(e)
-	more.More()
-	e.ObjField("protected")
+
+	e.FieldStart("protected")
 	e.Bool(s.Protected)
 	if s.Protection.Set {
-		more.More()
-		e.ObjField("protection")
+		e.FieldStart("protection")
 		s.Protection.WriteJSON(e)
 	}
 	if s.ProtectionURL.Set {
-		more.More()
-		e.ObjField("protection_url")
+		e.FieldStart("protection_url")
 		s.ProtectionURL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -73586,13 +69584,11 @@ func (s *ShortBranch) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ShortBranchCommit) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	e.ObjEnd()
 }
@@ -73626,25 +69622,23 @@ func (s *ShortBranchCommit) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SimpleCommit) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Str(s.ID)
-	more.More()
-	e.ObjField("tree_id")
+
+	e.FieldStart("tree_id")
 	e.Str(s.TreeID)
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
-	more.More()
-	e.ObjField("timestamp")
+
+	e.FieldStart("timestamp")
 	json.WriteDateTime(e, s.Timestamp)
-	more.More()
-	e.ObjField("author")
+
+	e.FieldStart("author")
 	s.Author.WriteJSON(e)
-	more.More()
-	e.ObjField("committer")
+
+	e.FieldStart("committer")
 	s.Committer.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -73698,13 +69692,11 @@ func (s *SimpleCommit) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SimpleCommitAuthor) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("email")
+
+	e.FieldStart("email")
 	e.Str(s.Email)
 	e.ObjEnd()
 }
@@ -73738,13 +69730,11 @@ func (s *SimpleCommitAuthor) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SimpleCommitCommitter) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("email")
+
+	e.FieldStart("email")
 	e.Str(s.Email)
 	e.ObjEnd()
 }
@@ -73778,42 +69768,39 @@ func (s *SimpleCommitCommitter) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SimpleCommitStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	e.Str(s.State)
-	more.More()
-	e.ObjField("context")
+
+	e.FieldStart("context")
 	e.Str(s.Context)
-	more.More()
-	e.ObjField("target_url")
+
+	e.FieldStart("target_url")
 	json.WriteURI(e, s.TargetURL)
 	if s.Required.Set {
-		more.More()
-		e.ObjField("required")
+		e.FieldStart("required")
 		s.Required.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("avatar_url")
+
+	e.FieldStart("avatar_url")
 	s.AvatarURL.WriteJSON(e)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
 	e.ObjEnd()
 }
@@ -73896,75 +69883,70 @@ func (s *SimpleCommitStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SimpleUser) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Email.Set {
-		more.More()
-		e.ObjField("email")
+		e.FieldStart("email")
 		s.Email.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("login")
+
+	e.FieldStart("login")
 	e.Str(s.Login)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("avatar_url")
+
+	e.FieldStart("avatar_url")
 	json.WriteURI(e, s.AvatarURL)
-	more.More()
-	e.ObjField("gravatar_id")
+
+	e.FieldStart("gravatar_id")
 	s.GravatarID.WriteJSON(e)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("followers_url")
+
+	e.FieldStart("followers_url")
 	json.WriteURI(e, s.FollowersURL)
-	more.More()
-	e.ObjField("following_url")
+
+	e.FieldStart("following_url")
 	e.Str(s.FollowingURL)
-	more.More()
-	e.ObjField("gists_url")
+
+	e.FieldStart("gists_url")
 	e.Str(s.GistsURL)
-	more.More()
-	e.ObjField("starred_url")
+
+	e.FieldStart("starred_url")
 	e.Str(s.StarredURL)
-	more.More()
-	e.ObjField("subscriptions_url")
+
+	e.FieldStart("subscriptions_url")
 	json.WriteURI(e, s.SubscriptionsURL)
-	more.More()
-	e.ObjField("organizations_url")
+
+	e.FieldStart("organizations_url")
 	json.WriteURI(e, s.OrganizationsURL)
-	more.More()
-	e.ObjField("repos_url")
+
+	e.FieldStart("repos_url")
 	json.WriteURI(e, s.ReposURL)
-	more.More()
-	e.ObjField("events_url")
+
+	e.FieldStart("events_url")
 	e.Str(s.EventsURL)
-	more.More()
-	e.ObjField("received_events_url")
+
+	e.FieldStart("received_events_url")
 	json.WriteURI(e, s.ReceivedEventsURL)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
-	more.More()
-	e.ObjField("site_admin")
+
+	e.FieldStart("site_admin")
 	e.Bool(s.SiteAdmin)
 	if s.StarredAt.Set {
-		more.More()
-		e.ObjField("starred_at")
+		e.FieldStart("starred_at")
 		s.StarredAt.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -74108,40 +70090,38 @@ func (s *SimpleUser) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Status) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	e.Str(s.URL)
-	more.More()
-	e.ObjField("avatar_url")
+
+	e.FieldStart("avatar_url")
 	s.AvatarURL.WriteJSON(e)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	e.Str(s.State)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	e.Str(s.Description)
-	more.More()
-	e.ObjField("target_url")
+
+	e.FieldStart("target_url")
 	e.Str(s.TargetURL)
-	more.More()
-	e.ObjField("context")
+
+	e.FieldStart("context")
 	e.Str(s.Context)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	e.Str(s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	e.Str(s.UpdatedAt)
-	more.More()
-	e.ObjField("creator")
+
+	e.FieldStart("creator")
 	s.Creator.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -74225,26 +70205,21 @@ func (s *Status) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s StatusCheckPolicy) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("strict")
+
+	e.FieldStart("strict")
 	e.Bool(s.Strict)
-	more.More()
-	e.ObjField("contexts")
-	more.Down()
+
+	e.FieldStart("contexts")
 	e.ArrStart()
 	for _, elem := range s.Contexts {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("contexts_url")
+
+	e.FieldStart("contexts_url")
 	json.WriteURI(e, s.ContextsURL)
 	e.ObjEnd()
 }
@@ -74298,22 +70273,20 @@ func (s *StatusCheckPolicy) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Tag) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("commit")
+
+	e.FieldStart("commit")
 	s.Commit.WriteJSON(e)
-	more.More()
-	e.ObjField("zipball_url")
+
+	e.FieldStart("zipball_url")
 	json.WriteURI(e, s.ZipballURL)
-	more.More()
-	e.ObjField("tarball_url")
+
+	e.FieldStart("tarball_url")
 	json.WriteURI(e, s.TarballURL)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
 	e.ObjEnd()
 }
@@ -74363,13 +70336,11 @@ func (s *Tag) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TagCommit) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("sha")
+
+	e.FieldStart("sha")
 	e.Str(s.Sha)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	e.ObjEnd()
 }
@@ -74403,50 +70374,46 @@ func (s *TagCommit) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Team) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("slug")
+
+	e.FieldStart("slug")
 	e.Str(s.Slug)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
 	if s.Privacy.Set {
-		more.More()
-		e.ObjField("privacy")
+		e.FieldStart("privacy")
 		s.Privacy.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("permission")
+
+	e.FieldStart("permission")
 	e.Str(s.Permission)
 	if s.Permissions.Set {
-		more.More()
-		e.ObjField("permissions")
+		e.FieldStart("permissions")
 		s.Permissions.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("members_url")
+
+	e.FieldStart("members_url")
 	e.Str(s.MembersURL)
-	more.More()
-	e.ObjField("repositories_url")
+
+	e.FieldStart("repositories_url")
 	json.WriteURI(e, s.RepositoriesURL)
-	more.More()
-	e.ObjField("parent")
+
+	e.FieldStart("parent")
 	s.Parent.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -74540,62 +70507,59 @@ func (s *Team) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamDiscussion) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("author")
+
+	e.FieldStart("author")
 	s.Author.WriteJSON(e)
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
-	more.More()
-	e.ObjField("body_html")
+
+	e.FieldStart("body_html")
 	e.Str(s.BodyHTML)
-	more.More()
-	e.ObjField("body_version")
+
+	e.FieldStart("body_version")
 	e.Str(s.BodyVersion)
-	more.More()
-	e.ObjField("comments_count")
+
+	e.FieldStart("comments_count")
 	e.Int(s.CommentsCount)
-	more.More()
-	e.ObjField("comments_url")
+
+	e.FieldStart("comments_url")
 	json.WriteURI(e, s.CommentsURL)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("last_edited_at")
+
+	e.FieldStart("last_edited_at")
 	s.LastEditedAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("number")
+
+	e.FieldStart("number")
 	e.Int(s.Number)
-	more.More()
-	e.ObjField("pinned")
+
+	e.FieldStart("pinned")
 	e.Bool(s.Pinned)
-	more.More()
-	e.ObjField("private")
+
+	e.FieldStart("private")
 	e.Bool(s.Private)
-	more.More()
-	e.ObjField("team_url")
+
+	e.FieldStart("team_url")
 	json.WriteURI(e, s.TeamURL)
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	e.Str(s.Title)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	if s.Reactions.Set {
-		more.More()
-		e.ObjField("reactions")
+		e.FieldStart("reactions")
 		s.Reactions.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -74721,47 +70685,44 @@ func (s *TeamDiscussion) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamDiscussionComment) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("author")
+
+	e.FieldStart("author")
 	s.Author.WriteJSON(e)
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
-	more.More()
-	e.ObjField("body_html")
+
+	e.FieldStart("body_html")
 	e.Str(s.BodyHTML)
-	more.More()
-	e.ObjField("body_version")
+
+	e.FieldStart("body_version")
 	e.Str(s.BodyVersion)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("last_edited_at")
+
+	e.FieldStart("last_edited_at")
 	s.LastEditedAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("discussion_url")
+
+	e.FieldStart("discussion_url")
 	json.WriteURI(e, s.DiscussionURL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("number")
+
+	e.FieldStart("number")
 	e.Int(s.Number)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	if s.Reactions.Set {
-		more.More()
-		e.ObjField("reactions")
+		e.FieldStart("reactions")
 		s.Reactions.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -74857,66 +70818,61 @@ func (s *TeamDiscussionComment) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamFull) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("slug")
+
+	e.FieldStart("slug")
 	e.Str(s.Slug)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
 	if s.Privacy.Set {
-		more.More()
-		e.ObjField("privacy")
+		e.FieldStart("privacy")
 		s.Privacy.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("permission")
+
+	e.FieldStart("permission")
 	e.Str(s.Permission)
-	more.More()
-	e.ObjField("members_url")
+
+	e.FieldStart("members_url")
 	e.Str(s.MembersURL)
-	more.More()
-	e.ObjField("repositories_url")
+
+	e.FieldStart("repositories_url")
 	json.WriteURI(e, s.RepositoriesURL)
 	if s.Parent.Set {
-		more.More()
-		e.ObjField("parent")
+		e.FieldStart("parent")
 		s.Parent.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("members_count")
+
+	e.FieldStart("members_count")
 	e.Int(s.MembersCount)
-	more.More()
-	e.ObjField("repos_count")
+
+	e.FieldStart("repos_count")
 	e.Int(s.ReposCount)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("organization")
+
+	e.FieldStart("organization")
 	s.Organization.WriteJSON(e)
 	if s.LdapDn.Set {
-		more.More()
-		e.ObjField("ldap_dn")
+		e.FieldStart("ldap_dn")
 		s.LdapDn.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -75058,16 +71014,14 @@ func (s *TeamFullPrivacy) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamMembership) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("role")
+
+	e.FieldStart("role")
 	s.Role.WriteJSON(e)
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	s.State.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -75139,22 +71093,20 @@ func (s *TeamMembershipState) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamPermissions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("pull")
+
+	e.FieldStart("pull")
 	e.Bool(s.Pull)
-	more.More()
-	e.ObjField("triage")
+
+	e.FieldStart("triage")
 	e.Bool(s.Triage)
-	more.More()
-	e.ObjField("push")
+
+	e.FieldStart("push")
 	e.Bool(s.Push)
-	more.More()
-	e.ObjField("maintain")
+
+	e.FieldStart("maintain")
 	e.Bool(s.Maintain)
-	more.More()
-	e.ObjField("admin")
+
+	e.FieldStart("admin")
 	e.Bool(s.Admin)
 	e.ObjEnd()
 }
@@ -75206,59 +71158,55 @@ func (s *TeamPermissions) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamProject) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("owner_url")
+
+	e.FieldStart("owner_url")
 	e.Str(s.OwnerURL)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	e.Str(s.URL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	e.Str(s.HTMLURL)
-	more.More()
-	e.ObjField("columns_url")
+
+	e.FieldStart("columns_url")
 	e.Str(s.ColumnsURL)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	s.Body.WriteJSON(e)
-	more.More()
-	e.ObjField("number")
+
+	e.FieldStart("number")
 	e.Int(s.Number)
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	e.Str(s.State)
-	more.More()
-	e.ObjField("creator")
+
+	e.FieldStart("creator")
 	s.Creator.WriteJSON(e)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	e.Str(s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	e.Str(s.UpdatedAt)
 	if s.OrganizationPermission.Set {
-		more.More()
-		e.ObjField("organization_permission")
+		e.FieldStart("organization_permission")
 		s.OrganizationPermission.WriteJSON(e)
 	}
 	if s.Private.Set {
-		more.More()
-		e.ObjField("private")
+		e.FieldStart("private")
 		s.Private.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("permissions")
+
+	e.FieldStart("permissions")
 	s.Permissions.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -75368,16 +71316,14 @@ func (s *TeamProject) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamProjectPermissions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("read")
+
+	e.FieldStart("read")
 	e.Bool(s.Read)
-	more.More()
-	e.ObjField("write")
+
+	e.FieldStart("write")
 	e.Bool(s.Write)
-	more.More()
-	e.ObjField("admin")
+
+	e.FieldStart("admin")
 	e.Bool(s.Admin)
 	e.ObjEnd()
 }
@@ -75417,307 +71363,287 @@ func (s *TeamProjectPermissions) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamRepository) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("full_name")
+
+	e.FieldStart("full_name")
 	e.Str(s.FullName)
-	more.More()
-	e.ObjField("license")
+
+	e.FieldStart("license")
 	s.License.WriteJSON(e)
-	more.More()
-	e.ObjField("forks")
+
+	e.FieldStart("forks")
 	e.Int(s.Forks)
 	if s.Permissions.Set {
-		more.More()
-		e.ObjField("permissions")
+		e.FieldStart("permissions")
 		s.Permissions.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("owner")
+
+	e.FieldStart("owner")
 	s.Owner.WriteJSON(e)
-	more.More()
-	e.ObjField("private")
+
+	e.FieldStart("private")
 	e.Bool(s.Private)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
-	more.More()
-	e.ObjField("fork")
+
+	e.FieldStart("fork")
 	e.Bool(s.Fork)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("archive_url")
+
+	e.FieldStart("archive_url")
 	e.Str(s.ArchiveURL)
-	more.More()
-	e.ObjField("assignees_url")
+
+	e.FieldStart("assignees_url")
 	e.Str(s.AssigneesURL)
-	more.More()
-	e.ObjField("blobs_url")
+
+	e.FieldStart("blobs_url")
 	e.Str(s.BlobsURL)
-	more.More()
-	e.ObjField("branches_url")
+
+	e.FieldStart("branches_url")
 	e.Str(s.BranchesURL)
-	more.More()
-	e.ObjField("collaborators_url")
+
+	e.FieldStart("collaborators_url")
 	e.Str(s.CollaboratorsURL)
-	more.More()
-	e.ObjField("comments_url")
+
+	e.FieldStart("comments_url")
 	e.Str(s.CommentsURL)
-	more.More()
-	e.ObjField("commits_url")
+
+	e.FieldStart("commits_url")
 	e.Str(s.CommitsURL)
-	more.More()
-	e.ObjField("compare_url")
+
+	e.FieldStart("compare_url")
 	e.Str(s.CompareURL)
-	more.More()
-	e.ObjField("contents_url")
+
+	e.FieldStart("contents_url")
 	e.Str(s.ContentsURL)
-	more.More()
-	e.ObjField("contributors_url")
+
+	e.FieldStart("contributors_url")
 	json.WriteURI(e, s.ContributorsURL)
-	more.More()
-	e.ObjField("deployments_url")
+
+	e.FieldStart("deployments_url")
 	json.WriteURI(e, s.DeploymentsURL)
-	more.More()
-	e.ObjField("downloads_url")
+
+	e.FieldStart("downloads_url")
 	json.WriteURI(e, s.DownloadsURL)
-	more.More()
-	e.ObjField("events_url")
+
+	e.FieldStart("events_url")
 	json.WriteURI(e, s.EventsURL)
-	more.More()
-	e.ObjField("forks_url")
+
+	e.FieldStart("forks_url")
 	json.WriteURI(e, s.ForksURL)
-	more.More()
-	e.ObjField("git_commits_url")
+
+	e.FieldStart("git_commits_url")
 	e.Str(s.GitCommitsURL)
-	more.More()
-	e.ObjField("git_refs_url")
+
+	e.FieldStart("git_refs_url")
 	e.Str(s.GitRefsURL)
-	more.More()
-	e.ObjField("git_tags_url")
+
+	e.FieldStart("git_tags_url")
 	e.Str(s.GitTagsURL)
-	more.More()
-	e.ObjField("git_url")
+
+	e.FieldStart("git_url")
 	e.Str(s.GitURL)
-	more.More()
-	e.ObjField("issue_comment_url")
+
+	e.FieldStart("issue_comment_url")
 	e.Str(s.IssueCommentURL)
-	more.More()
-	e.ObjField("issue_events_url")
+
+	e.FieldStart("issue_events_url")
 	e.Str(s.IssueEventsURL)
-	more.More()
-	e.ObjField("issues_url")
+
+	e.FieldStart("issues_url")
 	e.Str(s.IssuesURL)
-	more.More()
-	e.ObjField("keys_url")
+
+	e.FieldStart("keys_url")
 	e.Str(s.KeysURL)
-	more.More()
-	e.ObjField("labels_url")
+
+	e.FieldStart("labels_url")
 	e.Str(s.LabelsURL)
-	more.More()
-	e.ObjField("languages_url")
+
+	e.FieldStart("languages_url")
 	json.WriteURI(e, s.LanguagesURL)
-	more.More()
-	e.ObjField("merges_url")
+
+	e.FieldStart("merges_url")
 	json.WriteURI(e, s.MergesURL)
-	more.More()
-	e.ObjField("milestones_url")
+
+	e.FieldStart("milestones_url")
 	e.Str(s.MilestonesURL)
-	more.More()
-	e.ObjField("notifications_url")
+
+	e.FieldStart("notifications_url")
 	e.Str(s.NotificationsURL)
-	more.More()
-	e.ObjField("pulls_url")
+
+	e.FieldStart("pulls_url")
 	e.Str(s.PullsURL)
-	more.More()
-	e.ObjField("releases_url")
+
+	e.FieldStart("releases_url")
 	e.Str(s.ReleasesURL)
-	more.More()
-	e.ObjField("ssh_url")
+
+	e.FieldStart("ssh_url")
 	e.Str(s.SSHURL)
-	more.More()
-	e.ObjField("stargazers_url")
+
+	e.FieldStart("stargazers_url")
 	json.WriteURI(e, s.StargazersURL)
-	more.More()
-	e.ObjField("statuses_url")
+
+	e.FieldStart("statuses_url")
 	e.Str(s.StatusesURL)
-	more.More()
-	e.ObjField("subscribers_url")
+
+	e.FieldStart("subscribers_url")
 	json.WriteURI(e, s.SubscribersURL)
-	more.More()
-	e.ObjField("subscription_url")
+
+	e.FieldStart("subscription_url")
 	json.WriteURI(e, s.SubscriptionURL)
-	more.More()
-	e.ObjField("tags_url")
+
+	e.FieldStart("tags_url")
 	json.WriteURI(e, s.TagsURL)
-	more.More()
-	e.ObjField("teams_url")
+
+	e.FieldStart("teams_url")
 	json.WriteURI(e, s.TeamsURL)
-	more.More()
-	e.ObjField("trees_url")
+
+	e.FieldStart("trees_url")
 	e.Str(s.TreesURL)
-	more.More()
-	e.ObjField("clone_url")
+
+	e.FieldStart("clone_url")
 	e.Str(s.CloneURL)
-	more.More()
-	e.ObjField("mirror_url")
+
+	e.FieldStart("mirror_url")
 	s.MirrorURL.WriteJSON(e)
-	more.More()
-	e.ObjField("hooks_url")
+
+	e.FieldStart("hooks_url")
 	json.WriteURI(e, s.HooksURL)
-	more.More()
-	e.ObjField("svn_url")
+
+	e.FieldStart("svn_url")
 	json.WriteURI(e, s.SvnURL)
-	more.More()
-	e.ObjField("homepage")
+
+	e.FieldStart("homepage")
 	s.Homepage.WriteJSON(e)
-	more.More()
-	e.ObjField("language")
+
+	e.FieldStart("language")
 	s.Language.WriteJSON(e)
-	more.More()
-	e.ObjField("forks_count")
+
+	e.FieldStart("forks_count")
 	e.Int(s.ForksCount)
-	more.More()
-	e.ObjField("stargazers_count")
+
+	e.FieldStart("stargazers_count")
 	e.Int(s.StargazersCount)
-	more.More()
-	e.ObjField("watchers_count")
+
+	e.FieldStart("watchers_count")
 	e.Int(s.WatchersCount)
-	more.More()
-	e.ObjField("size")
+
+	e.FieldStart("size")
 	e.Int(s.Size)
-	more.More()
-	e.ObjField("default_branch")
+
+	e.FieldStart("default_branch")
 	e.Str(s.DefaultBranch)
-	more.More()
-	e.ObjField("open_issues_count")
+
+	e.FieldStart("open_issues_count")
 	e.Int(s.OpenIssuesCount)
 	if s.IsTemplate.Set {
-		more.More()
-		e.ObjField("is_template")
+		e.FieldStart("is_template")
 		s.IsTemplate.WriteJSON(e)
 	}
 	if s.Topics != nil {
-		more.More()
-		e.ObjField("topics")
-		more.Down()
+		e.FieldStart("topics")
 		e.ArrStart()
 		for _, elem := range s.Topics {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("has_issues")
+
+	e.FieldStart("has_issues")
 	e.Bool(s.HasIssues)
-	more.More()
-	e.ObjField("has_projects")
+
+	e.FieldStart("has_projects")
 	e.Bool(s.HasProjects)
-	more.More()
-	e.ObjField("has_wiki")
+
+	e.FieldStart("has_wiki")
 	e.Bool(s.HasWiki)
-	more.More()
-	e.ObjField("has_pages")
+
+	e.FieldStart("has_pages")
 	e.Bool(s.HasPages)
-	more.More()
-	e.ObjField("has_downloads")
+
+	e.FieldStart("has_downloads")
 	e.Bool(s.HasDownloads)
-	more.More()
-	e.ObjField("archived")
+
+	e.FieldStart("archived")
 	e.Bool(s.Archived)
-	more.More()
-	e.ObjField("disabled")
+
+	e.FieldStart("disabled")
 	e.Bool(s.Disabled)
 	if s.Visibility.Set {
-		more.More()
-		e.ObjField("visibility")
+		e.FieldStart("visibility")
 		s.Visibility.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("pushed_at")
+
+	e.FieldStart("pushed_at")
 	s.PushedAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	s.CreatedAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	s.UpdatedAt.WriteJSON(e, json.WriteDateTime)
 	if s.AllowRebaseMerge.Set {
-		more.More()
-		e.ObjField("allow_rebase_merge")
+		e.FieldStart("allow_rebase_merge")
 		s.AllowRebaseMerge.WriteJSON(e)
 	}
 	if s.TemplateRepository.Set {
-		more.More()
-		e.ObjField("template_repository")
+		e.FieldStart("template_repository")
 		s.TemplateRepository.WriteJSON(e)
 	}
 	if s.TempCloneToken.Set {
-		more.More()
-		e.ObjField("temp_clone_token")
+		e.FieldStart("temp_clone_token")
 		s.TempCloneToken.WriteJSON(e)
 	}
 	if s.AllowSquashMerge.Set {
-		more.More()
-		e.ObjField("allow_squash_merge")
+		e.FieldStart("allow_squash_merge")
 		s.AllowSquashMerge.WriteJSON(e)
 	}
 	if s.AllowAutoMerge.Set {
-		more.More()
-		e.ObjField("allow_auto_merge")
+		e.FieldStart("allow_auto_merge")
 		s.AllowAutoMerge.WriteJSON(e)
 	}
 	if s.DeleteBranchOnMerge.Set {
-		more.More()
-		e.ObjField("delete_branch_on_merge")
+		e.FieldStart("delete_branch_on_merge")
 		s.DeleteBranchOnMerge.WriteJSON(e)
 	}
 	if s.AllowMergeCommit.Set {
-		more.More()
-		e.ObjField("allow_merge_commit")
+		e.FieldStart("allow_merge_commit")
 		s.AllowMergeCommit.WriteJSON(e)
 	}
 	if s.AllowForking.Set {
-		more.More()
-		e.ObjField("allow_forking")
+		e.FieldStart("allow_forking")
 		s.AllowForking.WriteJSON(e)
 	}
 	if s.SubscribersCount.Set {
-		more.More()
-		e.ObjField("subscribers_count")
+		e.FieldStart("subscribers_count")
 		s.SubscribersCount.WriteJSON(e)
 	}
 	if s.NetworkCount.Set {
-		more.More()
-		e.ObjField("network_count")
+		e.FieldStart("network_count")
 		s.NetworkCount.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("open_issues")
+
+	e.FieldStart("open_issues")
 	e.Int(s.OpenIssues)
-	more.More()
-	e.ObjField("watchers")
+
+	e.FieldStart("watchers")
 	e.Int(s.Watchers)
 	if s.MasterBranch.Set {
-		more.More()
-		e.ObjField("master_branch")
+		e.FieldStart("master_branch")
 		s.MasterBranch.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -76244,25 +72170,21 @@ func (s *TeamRepository) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamRepositoryPermissions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("admin")
+
+	e.FieldStart("admin")
 	e.Bool(s.Admin)
-	more.More()
-	e.ObjField("pull")
+
+	e.FieldStart("pull")
 	e.Bool(s.Pull)
 	if s.Triage.Set {
-		more.More()
-		e.ObjField("triage")
+		e.FieldStart("triage")
 		s.Triage.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("push")
+
+	e.FieldStart("push")
 	e.Bool(s.Push)
 	if s.Maintain.Set {
-		more.More()
-		e.ObjField("maintain")
+		e.FieldStart("maintain")
 		s.Maintain.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -76313,46 +72235,42 @@ func (s *TeamRepositoryPermissions) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamSimple) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("members_url")
+
+	e.FieldStart("members_url")
 	e.Str(s.MembersURL)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
-	more.More()
-	e.ObjField("permission")
+
+	e.FieldStart("permission")
 	e.Str(s.Permission)
 	if s.Privacy.Set {
-		more.More()
-		e.ObjField("privacy")
+		e.FieldStart("privacy")
 		s.Privacy.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("repositories_url")
+
+	e.FieldStart("repositories_url")
 	json.WriteURI(e, s.RepositoriesURL)
-	more.More()
-	e.ObjField("slug")
+
+	e.FieldStart("slug")
 	e.Str(s.Slug)
 	if s.LdapDn.Set {
-		more.More()
-		e.ObjField("ldap_dn")
+		e.FieldStart("ldap_dn")
 		s.LdapDn.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -76443,8 +72361,6 @@ func (s *TeamSimple) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamsAddMemberLegacyNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -76465,8 +72381,6 @@ func (s *TeamsAddMemberLegacyNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamsAddMemberLegacyNotFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -76487,8 +72401,6 @@ func (s *TeamsAddMemberLegacyNotFound) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamsAddMemberLegacyUnprocessableEntity) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -76509,8 +72421,6 @@ func (s *TeamsAddMemberLegacyUnprocessableEntity) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s TeamsAddOrUpdateMembershipForUserInOrgForbidden) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -76531,11 +72441,8 @@ func (s *TeamsAddOrUpdateMembershipForUserInOrgForbidden) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s TeamsAddOrUpdateMembershipForUserInOrgReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Role.Set {
-		more.More()
-		e.ObjField("role")
+		e.FieldStart("role")
 		s.Role.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -76581,8 +72488,6 @@ func (s *TeamsAddOrUpdateMembershipForUserInOrgReqRole) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -76603,8 +72508,6 @@ func (s *TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity) ReadJSON(d *
 // WriteJSON implements json.Marshaler.
 func (s TeamsAddOrUpdateMembershipForUserLegacyForbidden) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -76625,11 +72528,8 @@ func (s *TeamsAddOrUpdateMembershipForUserLegacyForbidden) ReadJSON(d *json.Deco
 // WriteJSON implements json.Marshaler.
 func (s TeamsAddOrUpdateMembershipForUserLegacyReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Role.Set {
-		more.More()
-		e.ObjField("role")
+		e.FieldStart("role")
 		s.Role.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -76675,8 +72575,6 @@ func (s *TeamsAddOrUpdateMembershipForUserLegacyReqRole) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -76697,16 +72595,12 @@ func (s *TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity) ReadJSON(d 
 // WriteJSON implements json.Marshaler.
 func (s TeamsAddOrUpdateProjectPermissionsInOrgForbidden) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.DocumentationURL.Set {
-		more.More()
-		e.ObjField("documentation_url")
+		e.FieldStart("documentation_url")
 		s.DocumentationURL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -76739,8 +72633,6 @@ func (s *TeamsAddOrUpdateProjectPermissionsInOrgForbidden) ReadJSON(d *json.Deco
 // WriteJSON implements json.Marshaler.
 func (s TeamsAddOrUpdateProjectPermissionsInOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -76761,11 +72653,8 @@ func (s *TeamsAddOrUpdateProjectPermissionsInOrgNoContent) ReadJSON(d *json.Deco
 // WriteJSON implements json.Marshaler.
 func (s TeamsAddOrUpdateProjectPermissionsInOrgReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Permission.Set {
-		more.More()
-		e.ObjField("permission")
+		e.FieldStart("permission")
 		s.Permission.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -76811,16 +72700,12 @@ func (s *TeamsAddOrUpdateProjectPermissionsInOrgReqPermission) ReadJSON(d *json.
 // WriteJSON implements json.Marshaler.
 func (s TeamsAddOrUpdateProjectPermissionsLegacyForbidden) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.DocumentationURL.Set {
-		more.More()
-		e.ObjField("documentation_url")
+		e.FieldStart("documentation_url")
 		s.DocumentationURL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -76853,8 +72738,6 @@ func (s *TeamsAddOrUpdateProjectPermissionsLegacyForbidden) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s TeamsAddOrUpdateProjectPermissionsLegacyNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -76875,11 +72758,8 @@ func (s *TeamsAddOrUpdateProjectPermissionsLegacyNoContent) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s TeamsAddOrUpdateProjectPermissionsLegacyReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Permission.Set {
-		more.More()
-		e.ObjField("permission")
+		e.FieldStart("permission")
 		s.Permission.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -76925,8 +72805,6 @@ func (s *TeamsAddOrUpdateProjectPermissionsLegacyReqPermission) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s TeamsAddOrUpdateRepoPermissionsInOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -76947,11 +72825,8 @@ func (s *TeamsAddOrUpdateRepoPermissionsInOrgNoContent) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s TeamsAddOrUpdateRepoPermissionsInOrgReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Permission.Set {
-		more.More()
-		e.ObjField("permission")
+		e.FieldStart("permission")
 		s.Permission.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -76997,8 +72872,6 @@ func (s *TeamsAddOrUpdateRepoPermissionsInOrgReqPermission) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s TeamsAddOrUpdateRepoPermissionsLegacyNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -77019,11 +72892,8 @@ func (s *TeamsAddOrUpdateRepoPermissionsLegacyNoContent) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s TeamsAddOrUpdateRepoPermissionsLegacyReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Permission.Set {
-		more.More()
-		e.ObjField("permission")
+		e.FieldStart("permission")
 		s.Permission.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -77069,8 +72939,6 @@ func (s *TeamsAddOrUpdateRepoPermissionsLegacyReqPermission) ReadJSON(d *json.De
 // WriteJSON implements json.Marshaler.
 func (s TeamsCheckPermissionsForProjectInOrgNotFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -77091,8 +72959,6 @@ func (s *TeamsCheckPermissionsForProjectInOrgNotFound) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s TeamsCheckPermissionsForProjectLegacyNotFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -77113,8 +72979,6 @@ func (s *TeamsCheckPermissionsForProjectLegacyNotFound) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s TeamsCheckPermissionsForRepoInOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -77135,8 +72999,6 @@ func (s *TeamsCheckPermissionsForRepoInOrgNoContent) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s TeamsCheckPermissionsForRepoInOrgNotFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -77157,8 +73019,6 @@ func (s *TeamsCheckPermissionsForRepoInOrgNotFound) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s TeamsCheckPermissionsForRepoLegacyNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -77179,8 +73039,6 @@ func (s *TeamsCheckPermissionsForRepoLegacyNoContent) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s TeamsCheckPermissionsForRepoLegacyNotFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -77201,10 +73059,8 @@ func (s *TeamsCheckPermissionsForRepoLegacyNotFound) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s TeamsCreateDiscussionCommentInOrgReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
 	e.ObjEnd()
 }
@@ -77232,10 +73088,8 @@ func (s *TeamsCreateDiscussionCommentInOrgReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamsCreateDiscussionCommentLegacyReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
 	e.ObjEnd()
 }
@@ -77263,17 +73117,14 @@ func (s *TeamsCreateDiscussionCommentLegacyReq) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s TeamsCreateDiscussionInOrgReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	e.Str(s.Title)
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
 	if s.Private.Set {
-		more.More()
-		e.ObjField("private")
+		e.FieldStart("private")
 		s.Private.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -77313,17 +73164,14 @@ func (s *TeamsCreateDiscussionInOrgReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamsCreateDiscussionLegacyReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	e.Str(s.Title)
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
 	if s.Private.Set {
-		more.More()
-		e.ObjField("private")
+		e.FieldStart("private")
 		s.Private.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -77363,19 +73211,13 @@ func (s *TeamsCreateDiscussionLegacyReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Groups != nil {
-		more.More()
-		e.ObjField("groups")
-		more.Down()
+		e.FieldStart("groups")
 		e.ArrStart()
 		for _, elem := range s.Groups {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -77409,16 +73251,14 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("group_id")
+
+	e.FieldStart("group_id")
 	e.Str(s.GroupID)
-	more.More()
-	e.ObjField("group_name")
+
+	e.FieldStart("group_name")
 	e.Str(s.GroupName)
-	more.More()
-	e.ObjField("group_description")
+
+	e.FieldStart("group_description")
 	e.Str(s.GroupDescription)
 	e.ObjEnd()
 }
@@ -77458,21 +73298,15 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem) ReadJSON(d *j
 // WriteJSON implements json.Marshaler.
 func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("groups")
-	more.Down()
+
+	e.FieldStart("groups")
 	e.ArrStart()
 	for _, elem := range s.Groups {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.SyncedAt.Set {
-		more.More()
-		e.ObjField("synced_at")
+		e.FieldStart("synced_at")
 		s.SyncedAt.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -77512,30 +73346,25 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("group_id")
+
+	e.FieldStart("group_id")
 	e.Str(s.GroupID)
-	more.More()
-	e.ObjField("group_name")
+
+	e.FieldStart("group_name")
 	e.Str(s.GroupName)
-	more.More()
-	e.ObjField("group_description")
+
+	e.FieldStart("group_description")
 	e.Str(s.GroupDescription)
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -77591,53 +73420,39 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem) ReadJSON(d *
 // WriteJSON implements json.Marshaler.
 func (s TeamsCreateReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.Maintainers != nil {
-		more.More()
-		e.ObjField("maintainers")
-		more.Down()
+		e.FieldStart("maintainers")
 		e.ArrStart()
 		for _, elem := range s.Maintainers {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.RepoNames != nil {
-		more.More()
-		e.ObjField("repo_names")
-		more.Down()
+		e.FieldStart("repo_names")
 		e.ArrStart()
 		for _, elem := range s.RepoNames {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Privacy.Set {
-		more.More()
-		e.ObjField("privacy")
+		e.FieldStart("privacy")
 		s.Privacy.WriteJSON(e)
 	}
 	if s.Permission.Set {
-		more.More()
-		e.ObjField("permission")
+		e.FieldStart("permission")
 		s.Permission.WriteJSON(e)
 	}
 	if s.ParentTeamID.Set {
-		more.More()
-		e.ObjField("parent_team_id")
+		e.FieldStart("parent_team_id")
 		s.ParentTeamID.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -77750,8 +73565,6 @@ func (s *TeamsCreateReqPrivacy) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamsDeleteDiscussionCommentInOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -77772,8 +73585,6 @@ func (s *TeamsDeleteDiscussionCommentInOrgNoContent) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s TeamsDeleteDiscussionCommentLegacyNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -77794,8 +73605,6 @@ func (s *TeamsDeleteDiscussionCommentLegacyNoContent) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s TeamsDeleteDiscussionInOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -77816,8 +73625,6 @@ func (s *TeamsDeleteDiscussionInOrgNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamsDeleteDiscussionLegacyNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -77838,8 +73645,6 @@ func (s *TeamsDeleteDiscussionLegacyNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamsDeleteInOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -77860,8 +73665,6 @@ func (s *TeamsDeleteInOrgNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamsDeleteLegacyNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -77882,8 +73685,6 @@ func (s *TeamsDeleteLegacyNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamsGetMemberLegacyNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -77904,8 +73705,6 @@ func (s *TeamsGetMemberLegacyNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamsGetMemberLegacyNotFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -77926,8 +73725,6 @@ func (s *TeamsGetMemberLegacyNotFound) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamsGetMembershipForUserInOrgNotFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -78089,8 +73886,6 @@ func (TeamsListReposLegacyOKApplicationJSON) ReadJSON(d *json.Decoder) error { r
 // WriteJSON implements json.Marshaler.
 func (s TeamsRemoveMemberLegacyNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -78111,8 +73906,6 @@ func (s *TeamsRemoveMemberLegacyNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamsRemoveMemberLegacyNotFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -78133,8 +73926,6 @@ func (s *TeamsRemoveMemberLegacyNotFound) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamsRemoveMembershipForUserInOrgForbidden) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -78155,8 +73946,6 @@ func (s *TeamsRemoveMembershipForUserInOrgForbidden) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s TeamsRemoveMembershipForUserInOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -78177,8 +73966,6 @@ func (s *TeamsRemoveMembershipForUserInOrgNoContent) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s TeamsRemoveMembershipForUserLegacyForbidden) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -78199,8 +73986,6 @@ func (s *TeamsRemoveMembershipForUserLegacyForbidden) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s TeamsRemoveMembershipForUserLegacyNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -78221,8 +74006,6 @@ func (s *TeamsRemoveMembershipForUserLegacyNoContent) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s TeamsRemoveProjectInOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -78243,8 +74026,6 @@ func (s *TeamsRemoveProjectInOrgNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamsRemoveProjectLegacyNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -78265,8 +74046,6 @@ func (s *TeamsRemoveProjectLegacyNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamsRemoveRepoInOrgNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -78287,8 +74066,6 @@ func (s *TeamsRemoveRepoInOrgNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamsRemoveRepoLegacyNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -78309,10 +74086,8 @@ func (s *TeamsRemoveRepoLegacyNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamsUpdateDiscussionCommentInOrgReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
 	e.ObjEnd()
 }
@@ -78340,10 +74115,8 @@ func (s *TeamsUpdateDiscussionCommentInOrgReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamsUpdateDiscussionCommentLegacyReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("body")
+
+	e.FieldStart("body")
 	e.Str(s.Body)
 	e.ObjEnd()
 }
@@ -78371,16 +74144,12 @@ func (s *TeamsUpdateDiscussionCommentLegacyReq) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s TeamsUpdateDiscussionInOrgReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Title.Set {
-		more.More()
-		e.ObjField("title")
+		e.FieldStart("title")
 		s.Title.WriteJSON(e)
 	}
 	if s.Body.Set {
-		more.More()
-		e.ObjField("body")
+		e.FieldStart("body")
 		s.Body.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -78413,16 +74182,12 @@ func (s *TeamsUpdateDiscussionInOrgReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamsUpdateDiscussionLegacyReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Title.Set {
-		more.More()
-		e.ObjField("title")
+		e.FieldStart("title")
 		s.Title.WriteJSON(e)
 	}
 	if s.Body.Set {
-		more.More()
-		e.ObjField("body")
+		e.FieldStart("body")
 		s.Body.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -78455,31 +74220,24 @@ func (s *TeamsUpdateDiscussionLegacyReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamsUpdateInOrgReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.Privacy.Set {
-		more.More()
-		e.ObjField("privacy")
+		e.FieldStart("privacy")
 		s.Privacy.WriteJSON(e)
 	}
 	if s.Permission.Set {
-		more.More()
-		e.ObjField("permission")
+		e.FieldStart("permission")
 		s.Permission.WriteJSON(e)
 	}
 	if s.ParentTeamID.Set {
-		more.More()
-		e.ObjField("parent_team_id")
+		e.FieldStart("parent_team_id")
 		s.ParentTeamID.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -78563,29 +74321,23 @@ func (s *TeamsUpdateInOrgReqPrivacy) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TeamsUpdateLegacyReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.Privacy.Set {
-		more.More()
-		e.ObjField("privacy")
+		e.FieldStart("privacy")
 		s.Privacy.WriteJSON(e)
 	}
 	if s.Permission.Set {
-		more.More()
-		e.ObjField("permission")
+		e.FieldStart("permission")
 		s.Permission.WriteJSON(e)
 	}
 	if s.ParentTeamID.Set {
-		more.More()
-		e.ObjField("parent_team_id")
+		e.FieldStart("parent_team_id")
 		s.ParentTeamID.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -78670,34 +74422,32 @@ func (s *TeamsUpdateLegacyReqPrivacy) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Thread) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Str(s.ID)
-	more.More()
-	e.ObjField("repository")
+
+	e.FieldStart("repository")
 	s.Repository.WriteJSON(e)
-	more.More()
-	e.ObjField("subject")
+
+	e.FieldStart("subject")
 	s.Subject.WriteJSON(e)
-	more.More()
-	e.ObjField("reason")
+
+	e.FieldStart("reason")
 	e.Str(s.Reason)
-	more.More()
-	e.ObjField("unread")
+
+	e.FieldStart("unread")
 	e.Bool(s.Unread)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	e.Str(s.UpdatedAt)
-	more.More()
-	e.ObjField("last_read_at")
+
+	e.FieldStart("last_read_at")
 	s.LastReadAt.WriteJSON(e)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	e.Str(s.URL)
-	more.More()
-	e.ObjField("subscription_url")
+
+	e.FieldStart("subscription_url")
 	e.Str(s.SubscriptionURL)
 	e.ObjEnd()
 }
@@ -78767,19 +74517,17 @@ func (s *Thread) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ThreadSubject) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("title")
+
+	e.FieldStart("title")
 	e.Str(s.Title)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	e.Str(s.URL)
-	more.More()
-	e.ObjField("latest_comment_url")
+
+	e.FieldStart("latest_comment_url")
 	e.Str(s.LatestCommentURL)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -78825,31 +74573,27 @@ func (s *ThreadSubject) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ThreadSubscription) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("subscribed")
+
+	e.FieldStart("subscribed")
 	e.Bool(s.Subscribed)
-	more.More()
-	e.ObjField("ignored")
+
+	e.FieldStart("ignored")
 	e.Bool(s.Ignored)
-	more.More()
-	e.ObjField("reason")
+
+	e.FieldStart("reason")
 	s.Reason.WriteJSON(e)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	s.CreatedAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
 	if s.ThreadURL.Set {
-		more.More()
-		e.ObjField("thread_url")
+		e.FieldStart("thread_url")
 		s.ThreadURL.WriteJSON(e)
 	}
 	if s.RepositoryURL.Set {
-		more.More()
-		e.ObjField("repository_url")
+		e.FieldStart("repository_url")
 		s.RepositoryURL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -78908,18 +74652,13 @@ func (s *ThreadSubscription) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Topic) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("names")
-	more.Down()
+
+	e.FieldStart("names")
 	e.ArrStart()
 	for _, elem := range s.Names {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -78954,64 +74693,57 @@ func (s *Topic) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TopicSearchResultItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("display_name")
+
+	e.FieldStart("display_name")
 	s.DisplayName.WriteJSON(e)
-	more.More()
-	e.ObjField("short_description")
+
+	e.FieldStart("short_description")
 	s.ShortDescription.WriteJSON(e)
-	more.More()
-	e.ObjField("description")
+
+	e.FieldStart("description")
 	s.Description.WriteJSON(e)
-	more.More()
-	e.ObjField("created_by")
+
+	e.FieldStart("created_by")
 	s.CreatedBy.WriteJSON(e)
-	more.More()
-	e.ObjField("released")
+
+	e.FieldStart("released")
 	s.Released.WriteJSON(e)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("featured")
+
+	e.FieldStart("featured")
 	e.Bool(s.Featured)
-	more.More()
-	e.ObjField("curated")
+
+	e.FieldStart("curated")
 	e.Bool(s.Curated)
-	more.More()
-	e.ObjField("score")
+
+	e.FieldStart("score")
 	e.Float64(s.Score)
 	if s.RepositoryCount.Set {
-		more.More()
-		e.ObjField("repository_count")
+		e.FieldStart("repository_count")
 		s.RepositoryCount.WriteJSON(e)
 	}
 	if s.LogoURL.Set {
-		more.More()
-		e.ObjField("logo_url")
+		e.FieldStart("logo_url")
 		s.LogoURL.WriteJSON(e)
 	}
 	if s.TextMatches != nil {
-		more.More()
-		e.ObjField("text_matches")
+		e.FieldStart("text_matches")
 		s.TextMatches.WriteJSON(e)
 	}
 	if s.Related.Set {
-		more.More()
-		e.ObjField("related")
+		e.FieldStart("related")
 		s.Related.WriteJSON(e)
 	}
 	if s.Aliases.Set {
-		more.More()
-		e.ObjField("aliases")
+		e.FieldStart("aliases")
 		s.Aliases.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -79115,11 +74847,8 @@ func (s *TopicSearchResultItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TopicSearchResultItemAliasesItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.TopicRelation.Set {
-		more.More()
-		e.ObjField("topic_relation")
+		e.FieldStart("topic_relation")
 		s.TopicRelation.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -79147,26 +74876,20 @@ func (s *TopicSearchResultItemAliasesItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TopicSearchResultItemAliasesItemTopicRelation) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.TopicID.Set {
-		more.More()
-		e.ObjField("topic_id")
+		e.FieldStart("topic_id")
 		s.TopicID.WriteJSON(e)
 	}
 	if s.RelationType.Set {
-		more.More()
-		e.ObjField("relation_type")
+		e.FieldStart("relation_type")
 		s.RelationType.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -79209,11 +74932,8 @@ func (s *TopicSearchResultItemAliasesItemTopicRelation) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s TopicSearchResultItemRelatedItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.TopicRelation.Set {
-		more.More()
-		e.ObjField("topic_relation")
+		e.FieldStart("topic_relation")
 		s.TopicRelation.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -79241,26 +74961,20 @@ func (s *TopicSearchResultItemRelatedItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s TopicSearchResultItemRelatedItemTopicRelation) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.TopicID.Set {
-		more.More()
-		e.ObjField("topic_id")
+		e.FieldStart("topic_id")
 		s.TopicID.WriteJSON(e)
 	}
 	if s.RelationType.Set {
-		more.More()
-		e.ObjField("relation_type")
+		e.FieldStart("relation_type")
 		s.RelationType.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -79303,16 +75017,14 @@ func (s *TopicSearchResultItemRelatedItemTopicRelation) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s Traffic) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("timestamp")
+
+	e.FieldStart("timestamp")
 	json.WriteDateTime(e, s.Timestamp)
-	more.More()
-	e.ObjField("uniques")
+
+	e.FieldStart("uniques")
 	e.Int(s.Uniques)
-	more.More()
-	e.ObjField("count")
+
+	e.FieldStart("count")
 	e.Int(s.Count)
 	e.ObjEnd()
 }
@@ -79352,31 +75064,29 @@ func (s *Traffic) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s UserMarketplacePurchase) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("billing_cycle")
+
+	e.FieldStart("billing_cycle")
 	e.Str(s.BillingCycle)
-	more.More()
-	e.ObjField("next_billing_date")
+
+	e.FieldStart("next_billing_date")
 	s.NextBillingDate.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("unit_count")
+
+	e.FieldStart("unit_count")
 	s.UnitCount.WriteJSON(e)
-	more.More()
-	e.ObjField("on_free_trial")
+
+	e.FieldStart("on_free_trial")
 	e.Bool(s.OnFreeTrial)
-	more.More()
-	e.ObjField("free_trial_ends_on")
+
+	e.FieldStart("free_trial_ends_on")
 	s.FreeTrialEndsOn.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	s.UpdatedAt.WriteJSON(e, json.WriteDateTime)
-	more.More()
-	e.ObjField("account")
+
+	e.FieldStart("account")
 	s.Account.WriteJSON(e)
-	more.More()
-	e.ObjField("plan")
+
+	e.FieldStart("plan")
 	s.Plan.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -79434,138 +75144,121 @@ func (s *UserMarketplacePurchase) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s UserSearchResultItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("login")
+
+	e.FieldStart("login")
 	e.Str(s.Login)
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("avatar_url")
+
+	e.FieldStart("avatar_url")
 	json.WriteURI(e, s.AvatarURL)
-	more.More()
-	e.ObjField("gravatar_id")
+
+	e.FieldStart("gravatar_id")
 	s.GravatarID.WriteJSON(e)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	json.WriteURI(e, s.URL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	json.WriteURI(e, s.HTMLURL)
-	more.More()
-	e.ObjField("followers_url")
+
+	e.FieldStart("followers_url")
 	json.WriteURI(e, s.FollowersURL)
-	more.More()
-	e.ObjField("subscriptions_url")
+
+	e.FieldStart("subscriptions_url")
 	json.WriteURI(e, s.SubscriptionsURL)
-	more.More()
-	e.ObjField("organizations_url")
+
+	e.FieldStart("organizations_url")
 	json.WriteURI(e, s.OrganizationsURL)
-	more.More()
-	e.ObjField("repos_url")
+
+	e.FieldStart("repos_url")
 	json.WriteURI(e, s.ReposURL)
-	more.More()
-	e.ObjField("received_events_url")
+
+	e.FieldStart("received_events_url")
 	json.WriteURI(e, s.ReceivedEventsURL)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
-	more.More()
-	e.ObjField("score")
+
+	e.FieldStart("score")
 	e.Float64(s.Score)
-	more.More()
-	e.ObjField("following_url")
+
+	e.FieldStart("following_url")
 	e.Str(s.FollowingURL)
-	more.More()
-	e.ObjField("gists_url")
+
+	e.FieldStart("gists_url")
 	e.Str(s.GistsURL)
-	more.More()
-	e.ObjField("starred_url")
+
+	e.FieldStart("starred_url")
 	e.Str(s.StarredURL)
-	more.More()
-	e.ObjField("events_url")
+
+	e.FieldStart("events_url")
 	e.Str(s.EventsURL)
 	if s.PublicRepos.Set {
-		more.More()
-		e.ObjField("public_repos")
+		e.FieldStart("public_repos")
 		s.PublicRepos.WriteJSON(e)
 	}
 	if s.PublicGists.Set {
-		more.More()
-		e.ObjField("public_gists")
+		e.FieldStart("public_gists")
 		s.PublicGists.WriteJSON(e)
 	}
 	if s.Followers.Set {
-		more.More()
-		e.ObjField("followers")
+		e.FieldStart("followers")
 		s.Followers.WriteJSON(e)
 	}
 	if s.Following.Set {
-		more.More()
-		e.ObjField("following")
+		e.FieldStart("following")
 		s.Following.WriteJSON(e)
 	}
 	if s.CreatedAt.Set {
-		more.More()
-		e.ObjField("created_at")
+		e.FieldStart("created_at")
 		s.CreatedAt.WriteJSON(e, json.WriteDateTime)
 	}
 	if s.UpdatedAt.Set {
-		more.More()
-		e.ObjField("updated_at")
+		e.FieldStart("updated_at")
 		s.UpdatedAt.WriteJSON(e, json.WriteDateTime)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Bio.Set {
-		more.More()
-		e.ObjField("bio")
+		e.FieldStart("bio")
 		s.Bio.WriteJSON(e)
 	}
 	if s.Email.Set {
-		more.More()
-		e.ObjField("email")
+		e.FieldStart("email")
 		s.Email.WriteJSON(e)
 	}
 	if s.Location.Set {
-		more.More()
-		e.ObjField("location")
+		e.FieldStart("location")
 		s.Location.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("site_admin")
+
+	e.FieldStart("site_admin")
 	e.Bool(s.SiteAdmin)
 	if s.Hireable.Set {
-		more.More()
-		e.ObjField("hireable")
+		e.FieldStart("hireable")
 		s.Hireable.WriteJSON(e)
 	}
 	if s.TextMatches != nil {
-		more.More()
-		e.ObjField("text_matches")
+		e.FieldStart("text_matches")
 		s.TextMatches.WriteJSON(e)
 	}
 	if s.Blog.Set {
-		more.More()
-		e.ObjField("blog")
+		e.FieldStart("blog")
 		s.Blog.WriteJSON(e)
 	}
 	if s.Company.Set {
-		more.More()
-		e.ObjField("company")
+		e.FieldStart("company")
 		s.Company.WriteJSON(e)
 	}
 	if s.SuspendedAt.Set {
-		more.More()
-		e.ObjField("suspended_at")
+		e.FieldStart("suspended_at")
 		s.SuspendedAt.WriteJSON(e, json.WriteDateTime)
 	}
 	e.ObjEnd()
@@ -79775,8 +75468,6 @@ func (s *UserSearchResultItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s UsersBlockNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -79806,8 +75497,6 @@ func (UsersCheckBlockedApplicationJSONUnauthorized) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s UsersCheckBlockedNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -79828,8 +75517,6 @@ func (s *UsersCheckBlockedNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s UsersCheckFollowingForUserNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -79850,8 +75537,6 @@ func (s *UsersCheckFollowingForUserNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s UsersCheckFollowingForUserNotFound) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -79888,8 +75573,6 @@ func (UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized) Read
 // WriteJSON implements json.Marshaler.
 func (s UsersCheckPersonIsFollowedByAuthenticatedNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -79910,10 +75593,8 @@ func (s *UsersCheckPersonIsFollowedByAuthenticatedNoContent) ReadJSON(d *json.De
 // WriteJSON implements json.Marshaler.
 func (s UsersCreateGpgKeyForAuthenticatedReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("armored_public_key")
+
+	e.FieldStart("armored_public_key")
 	e.Str(s.ArmoredPublicKey)
 	e.ObjEnd()
 }
@@ -79941,15 +75622,12 @@ func (s *UsersCreateGpgKeyForAuthenticatedReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s UsersCreatePublicSSHKeyForAuthenticatedReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Title.Set {
-		more.More()
-		e.ObjField("title")
+		e.FieldStart("title")
 		s.Title.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("key")
+
+	e.FieldStart("key")
 	e.Str(s.Key)
 	e.ObjEnd()
 }
@@ -79982,8 +75660,6 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedReq) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s UsersDeleteGpgKeyForAuthenticatedNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -80020,8 +75696,6 @@ func (UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) ReadJS
 // WriteJSON implements json.Marshaler.
 func (s UsersDeletePublicSSHKeyForAuthenticatedNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -80051,8 +75725,6 @@ func (UsersFollowApplicationJSONUnauthorized) ReadJSON(d *json.Decoder) error { 
 // WriteJSON implements json.Marshaler.
 func (s UsersFollowNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -80604,10 +76276,8 @@ func (UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON) ReadJSON(d *json.
 // WriteJSON implements json.Marshaler.
 func (s UsersSetPrimaryEmailVisibilityForAuthenticatedReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("visibility")
+
+	e.FieldStart("visibility")
 	s.Visibility.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -80660,8 +76330,6 @@ func (UsersUnblockApplicationJSONUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s UsersUnblockNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -80691,8 +76359,6 @@ func (UsersUnfollowApplicationJSONUnauthorized) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s UsersUnfollowNoContent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -80713,46 +76379,36 @@ func (s *UsersUnfollowNoContent) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s UsersUpdateAuthenticatedReq) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Email.Set {
-		more.More()
-		e.ObjField("email")
+		e.FieldStart("email")
 		s.Email.WriteJSON(e)
 	}
 	if s.Blog.Set {
-		more.More()
-		e.ObjField("blog")
+		e.FieldStart("blog")
 		s.Blog.WriteJSON(e)
 	}
 	if s.TwitterUsername.Set {
-		more.More()
-		e.ObjField("twitter_username")
+		e.FieldStart("twitter_username")
 		s.TwitterUsername.WriteJSON(e)
 	}
 	if s.Company.Set {
-		more.More()
-		e.ObjField("company")
+		e.FieldStart("company")
 		s.Company.WriteJSON(e)
 	}
 	if s.Location.Set {
-		more.More()
-		e.ObjField("location")
+		e.FieldStart("location")
 		s.Location.WriteJSON(e)
 	}
 	if s.Hireable.Set {
-		more.More()
-		e.ObjField("hireable")
+		e.FieldStart("hireable")
 		s.Hireable.WriteJSON(e)
 	}
 	if s.Bio.Set {
-		more.More()
-		e.ObjField("bio")
+		e.FieldStart("bio")
 		s.Bio.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -80815,25 +76471,19 @@ func (s *UsersUpdateAuthenticatedReq) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ValidationErrorSimple) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
-	more.More()
-	e.ObjField("documentation_url")
+
+	e.FieldStart("documentation_url")
 	e.Str(s.DocumentationURL)
 	if s.Errors != nil {
-		more.More()
-		e.ObjField("errors")
-		more.Down()
+		e.FieldStart("errors")
 		e.ArrStart()
 		for _, elem := range s.Errors {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -80881,19 +76531,17 @@ func (s *ValidationErrorSimple) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Verification) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("verified")
+
+	e.FieldStart("verified")
 	e.Bool(s.Verified)
-	more.More()
-	e.ObjField("reason")
+
+	e.FieldStart("reason")
 	e.Str(s.Reason)
-	more.More()
-	e.ObjField("payload")
+
+	e.FieldStart("payload")
 	s.Payload.WriteJSON(e)
-	more.More()
-	e.ObjField("signature")
+
+	e.FieldStart("signature")
 	s.Signature.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -80935,24 +76583,19 @@ func (s *Verification) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ViewTraffic) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("count")
+
+	e.FieldStart("count")
 	e.Int(s.Count)
-	more.More()
-	e.ObjField("uniques")
+
+	e.FieldStart("uniques")
 	e.Int(s.Uniques)
-	more.More()
-	e.ObjField("views")
-	more.Down()
+
+	e.FieldStart("views")
 	e.ArrStart()
 	for _, elem := range s.Views {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -81000,26 +76643,20 @@ func (WaitTimer) ReadJSON(d *json.Decoder) error { return nil }
 // WriteJSON implements json.Marshaler.
 func (s WebhookConfig) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.ContentType.Set {
-		more.More()
-		e.ObjField("content_type")
+		e.FieldStart("content_type")
 		s.ContentType.WriteJSON(e)
 	}
 	if s.Secret.Set {
-		more.More()
-		e.ObjField("secret")
+		e.FieldStart("secret")
 		s.Secret.WriteJSON(e)
 	}
 	if s.InsecureSsl != nil {
-		more.More()
-		e.ObjField("insecure_ssl")
+		e.FieldStart("insecure_ssl")
 		s.InsecureSsl.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -81110,41 +76747,38 @@ func (WebhookConfigURL) ReadJSON(d *json.Decoder) error { return nil }
 // WriteJSON implements json.Marshaler.
 func (s Workflow) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("path")
+
+	e.FieldStart("path")
 	e.Str(s.Path)
-	more.More()
-	e.ObjField("state")
+
+	e.FieldStart("state")
 	s.State.WriteJSON(e)
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	e.Str(s.URL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	e.Str(s.HTMLURL)
-	more.More()
-	e.ObjField("badge_url")
+
+	e.FieldStart("badge_url")
 	e.Str(s.BadgeURL)
 	if s.DeletedAt.Set {
-		more.More()
-		e.ObjField("deleted_at")
+		e.FieldStart("deleted_at")
 		s.DeletedAt.WriteJSON(e, json.WriteDateTime)
 	}
 	e.ObjEnd()
@@ -81230,119 +76864,108 @@ func (s *Workflow) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s WorkflowRun) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int(s.ID)
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("node_id")
+
+	e.FieldStart("node_id")
 	e.Str(s.NodeID)
 	if s.CheckSuiteID.Set {
-		more.More()
-		e.ObjField("check_suite_id")
+		e.FieldStart("check_suite_id")
 		s.CheckSuiteID.WriteJSON(e)
 	}
 	if s.CheckSuiteNodeID.Set {
-		more.More()
-		e.ObjField("check_suite_node_id")
+		e.FieldStart("check_suite_node_id")
 		s.CheckSuiteNodeID.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("head_branch")
+
+	e.FieldStart("head_branch")
 	s.HeadBranch.WriteJSON(e)
-	more.More()
-	e.ObjField("head_sha")
+
+	e.FieldStart("head_sha")
 	e.Str(s.HeadSha)
-	more.More()
-	e.ObjField("run_number")
+
+	e.FieldStart("run_number")
 	e.Int(s.RunNumber)
 	if s.RunAttempt.Set {
-		more.More()
-		e.ObjField("run_attempt")
+		e.FieldStart("run_attempt")
 		s.RunAttempt.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("event")
+
+	e.FieldStart("event")
 	e.Str(s.Event)
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	s.Status.WriteJSON(e)
-	more.More()
-	e.ObjField("conclusion")
+
+	e.FieldStart("conclusion")
 	s.Conclusion.WriteJSON(e)
-	more.More()
-	e.ObjField("workflow_id")
+
+	e.FieldStart("workflow_id")
 	e.Int(s.WorkflowID)
-	more.More()
-	e.ObjField("url")
+
+	e.FieldStart("url")
 	e.Str(s.URL)
-	more.More()
-	e.ObjField("html_url")
+
+	e.FieldStart("html_url")
 	e.Str(s.HTMLURL)
-	more.More()
-	e.ObjField("pull_requests")
+
+	e.FieldStart("pull_requests")
 	if s.PullRequests == nil {
 		e.Null()
 	} else {
-		more.Down()
 		e.ArrStart()
 		for _, elem := range s.PullRequests {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("created_at")
+
+	e.FieldStart("created_at")
 	json.WriteDateTime(e, s.CreatedAt)
-	more.More()
-	e.ObjField("updated_at")
+
+	e.FieldStart("updated_at")
 	json.WriteDateTime(e, s.UpdatedAt)
-	more.More()
-	e.ObjField("jobs_url")
+
+	e.FieldStart("jobs_url")
 	e.Str(s.JobsURL)
-	more.More()
-	e.ObjField("logs_url")
+
+	e.FieldStart("logs_url")
 	e.Str(s.LogsURL)
-	more.More()
-	e.ObjField("check_suite_url")
+
+	e.FieldStart("check_suite_url")
 	e.Str(s.CheckSuiteURL)
-	more.More()
-	e.ObjField("artifacts_url")
+
+	e.FieldStart("artifacts_url")
 	e.Str(s.ArtifactsURL)
-	more.More()
-	e.ObjField("cancel_url")
+
+	e.FieldStart("cancel_url")
 	e.Str(s.CancelURL)
-	more.More()
-	e.ObjField("rerun_url")
+
+	e.FieldStart("rerun_url")
 	e.Str(s.RerunURL)
 	if s.PreviousAttemptURL.Set {
-		more.More()
-		e.ObjField("previous_attempt_url")
+		e.FieldStart("previous_attempt_url")
 		s.PreviousAttemptURL.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("workflow_url")
+
+	e.FieldStart("workflow_url")
 	e.Str(s.WorkflowURL)
-	more.More()
-	e.ObjField("head_commit")
+
+	e.FieldStart("head_commit")
 	s.HeadCommit.WriteJSON(e)
-	more.More()
-	e.ObjField("repository")
+
+	e.FieldStart("repository")
 	s.Repository.WriteJSON(e)
-	more.More()
-	e.ObjField("head_repository")
+
+	e.FieldStart("head_repository")
 	s.HeadRepository.WriteJSON(e)
 	if s.HeadRepositoryID.Set {
-		more.More()
-		e.ObjField("head_repository_id")
+		e.FieldStart("head_repository_id")
 		s.HeadRepositoryID.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -81533,14 +77156,11 @@ func (s *WorkflowRun) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s WorkflowRunUsage) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("billable")
+
+	e.FieldStart("billable")
 	s.Billable.WriteJSON(e)
 	if s.RunDurationMs.Set {
-		more.More()
-		e.ObjField("run_duration_ms")
+		e.FieldStart("run_duration_ms")
 		s.RunDurationMs.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -81572,21 +77192,16 @@ func (s *WorkflowRunUsage) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s WorkflowRunUsageBillable) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.UBUNTU.Set {
-		more.More()
-		e.ObjField("UBUNTU")
+		e.FieldStart("UBUNTU")
 		s.UBUNTU.WriteJSON(e)
 	}
 	if s.MACOS.Set {
-		more.More()
-		e.ObjField("MACOS")
+		e.FieldStart("MACOS")
 		s.MACOS.WriteJSON(e)
 	}
 	if s.WINDOWS.Set {
-		more.More()
-		e.ObjField("WINDOWS")
+		e.FieldStart("WINDOWS")
 		s.WINDOWS.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -81624,13 +77239,11 @@ func (s *WorkflowRunUsageBillable) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s WorkflowRunUsageBillableMACOS) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_ms")
+
+	e.FieldStart("total_ms")
 	e.Int(s.TotalMs)
-	more.More()
-	e.ObjField("jobs")
+
+	e.FieldStart("jobs")
 	e.Int(s.Jobs)
 	e.ObjEnd()
 }
@@ -81664,13 +77277,11 @@ func (s *WorkflowRunUsageBillableMACOS) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s WorkflowRunUsageBillableUBUNTU) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_ms")
+
+	e.FieldStart("total_ms")
 	e.Int(s.TotalMs)
-	more.More()
-	e.ObjField("jobs")
+
+	e.FieldStart("jobs")
 	e.Int(s.Jobs)
 	e.ObjEnd()
 }
@@ -81704,13 +77315,11 @@ func (s *WorkflowRunUsageBillableUBUNTU) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s WorkflowRunUsageBillableWINDOWS) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("total_ms")
+
+	e.FieldStart("total_ms")
 	e.Int(s.TotalMs)
-	more.More()
-	e.ObjField("jobs")
+
+	e.FieldStart("jobs")
 	e.Int(s.Jobs)
 	e.ObjEnd()
 }

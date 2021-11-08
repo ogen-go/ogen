@@ -18,8 +18,8 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/go-faster/errors"
 	"github.com/google/uuid"
-	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -67,9 +67,7 @@ func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter, span 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -91,9 +89,7 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -108,9 +104,7 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -132,9 +126,7 @@ func encodePetCreateResponse(response Pet, w http.ResponseWriter, span trace.Spa
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -148,17 +140,12 @@ func encodePetFriendsNamesByIDResponse(response []string, w http.ResponseWriter,
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -173,9 +160,7 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -187,9 +172,7 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -219,9 +202,7 @@ func encodePetGetAvatarByIDResponse(response PetGetAvatarByIDRes, w http.Respons
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -238,9 +219,7 @@ func encodePetGetByNameResponse(response Pet, w http.ResponseWriter, span trace.
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -254,9 +233,7 @@ func encodePetNameByIDResponse(response string, w http.ResponseWriter, span trac
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	e.Str(response)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -288,9 +265,7 @@ func encodePetUploadAvatarByIDResponse(response PetUploadAvatarByIDRes, w http.R
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")

@@ -18,8 +18,8 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/go-faster/errors"
 	"github.com/google/uuid"
-	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -90,9 +90,7 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 		w.WriteHeader(201)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -104,8 +102,6 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -117,8 +113,6 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -135,9 +129,7 @@ func encodeActionsCancelWorkflowRunResponse(response ActionsCancelWorkflowRunAcc
 	w.WriteHeader(202)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -153,9 +145,7 @@ func encodeActionsCreateOrUpdateEnvironmentSecretResponse(response ActionsCreate
 		w.WriteHeader(201)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -177,9 +167,7 @@ func encodeActionsCreateOrUpdateOrgSecretResponse(response ActionsCreateOrUpdate
 		w.WriteHeader(201)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -201,9 +189,7 @@ func encodeActionsCreateOrUpdateRepoSecretResponse(response ActionsCreateOrUpdat
 		w.WriteHeader(201)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -223,9 +209,7 @@ func encodeActionsCreateRegistrationTokenForOrgResponse(response AuthenticationT
 	w.WriteHeader(201)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -239,9 +223,7 @@ func encodeActionsCreateRegistrationTokenForRepoResponse(response Authentication
 	w.WriteHeader(201)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -255,9 +237,7 @@ func encodeActionsCreateRemoveTokenForOrgResponse(response AuthenticationToken, 
 	w.WriteHeader(201)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -271,9 +251,7 @@ func encodeActionsCreateRemoveTokenForRepoResponse(response AuthenticationToken,
 	w.WriteHeader(201)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -287,9 +265,7 @@ func encodeActionsCreateSelfHostedRunnerGroupForOrgResponse(response RunnerGroup
 	w.WriteHeader(201)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -373,9 +349,7 @@ func encodeActionsGetAllowedActionsOrganizationResponse(response SelectedActions
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -389,9 +363,7 @@ func encodeActionsGetAllowedActionsRepositoryResponse(response SelectedActions, 
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -405,9 +377,7 @@ func encodeActionsGetArtifactResponse(response Artifact, w http.ResponseWriter, 
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -421,9 +391,7 @@ func encodeActionsGetEnvironmentPublicKeyResponse(response ActionsPublicKey, w h
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -437,9 +405,7 @@ func encodeActionsGetEnvironmentSecretResponse(response ActionsSecret, w http.Re
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -453,9 +419,7 @@ func encodeActionsGetGithubActionsPermissionsOrganizationResponse(response Actio
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -469,9 +433,7 @@ func encodeActionsGetGithubActionsPermissionsRepositoryResponse(response Actions
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -485,9 +447,7 @@ func encodeActionsGetJobForWorkflowRunResponse(response Job, w http.ResponseWrit
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -501,9 +461,7 @@ func encodeActionsGetOrgPublicKeyResponse(response ActionsPublicKey, w http.Resp
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -517,9 +475,7 @@ func encodeActionsGetOrgSecretResponse(response OrganizationActionsSecret, w htt
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -533,9 +489,7 @@ func encodeActionsGetRepoPublicKeyResponse(response ActionsPublicKey, w http.Res
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -549,9 +503,7 @@ func encodeActionsGetRepoSecretResponse(response ActionsSecret, w http.ResponseW
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -565,17 +517,12 @@ func encodeActionsGetReviewsForRunResponse(response []EnvironmentApprovals, w ht
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -588,9 +535,7 @@ func encodeActionsGetSelfHostedRunnerForOrgResponse(response Runner, w http.Resp
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -604,9 +549,7 @@ func encodeActionsGetSelfHostedRunnerForRepoResponse(response Runner, w http.Res
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -620,9 +563,7 @@ func encodeActionsGetSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOr
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -636,9 +577,7 @@ func encodeActionsGetWorkflowRunResponse(response WorkflowRun, w http.ResponseWr
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -652,9 +591,7 @@ func encodeActionsGetWorkflowRunUsageResponse(response WorkflowRunUsage, w http.
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -668,9 +605,7 @@ func encodeActionsListArtifactsForRepoResponse(response ActionsListArtifactsForR
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -684,9 +619,7 @@ func encodeActionsListEnvironmentSecretsResponse(response ActionsListEnvironment
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -700,9 +633,7 @@ func encodeActionsListJobsForWorkflowRunResponse(response ActionsListJobsForWork
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -716,9 +647,7 @@ func encodeActionsListOrgSecretsResponse(response ActionsListOrgSecretsOK, w htt
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -732,9 +661,7 @@ func encodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(response Ac
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -748,9 +675,7 @@ func encodeActionsListRepoSecretsResponse(response ActionsListRepoSecretsOK, w h
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -764,9 +689,7 @@ func encodeActionsListRepoWorkflowsResponse(response ActionsListRepoWorkflowsOK,
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -780,17 +703,12 @@ func encodeActionsListRunnerApplicationsForOrgResponse(response []RunnerApplicat
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -803,17 +721,12 @@ func encodeActionsListRunnerApplicationsForRepoResponse(response []RunnerApplica
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -826,9 +739,7 @@ func encodeActionsListSelectedReposForOrgSecretResponse(response ActionsListSele
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -842,9 +753,7 @@ func encodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRespon
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -858,9 +767,7 @@ func encodeActionsListSelfHostedRunnerGroupsForOrgResponse(response ActionsListS
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -874,9 +781,7 @@ func encodeActionsListSelfHostedRunnersForOrgResponse(response ActionsListSelfHo
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -890,9 +795,7 @@ func encodeActionsListSelfHostedRunnersForRepoResponse(response ActionsListSelfH
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -906,9 +809,7 @@ func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response ActionsLis
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -922,9 +823,7 @@ func encodeActionsListWorkflowRunArtifactsResponse(response ActionsListWorkflowR
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -938,9 +837,7 @@ func encodeActionsListWorkflowRunsForRepoResponse(response ActionsListWorkflowRu
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -954,9 +851,7 @@ func encodeActionsReRunWorkflowResponse(response ActionsReRunWorkflowCreated, w 
 	w.WriteHeader(201)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -993,9 +888,7 @@ func encodeActionsRetryWorkflowResponse(response ActionsRetryWorkflowCreated, w 
 	w.WriteHeader(201)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -1049,9 +942,7 @@ func encodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(response RunnerGroup
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -1073,8 +964,6 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1086,8 +975,6 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1099,8 +986,6 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1130,8 +1015,6 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1143,8 +1026,6 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1161,9 +1042,7 @@ func encodeActivityGetFeedsResponse(response Feed, w http.ResponseWriter, span t
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -1179,9 +1058,7 @@ func encodeActivityGetRepoSubscriptionResponse(response ActivityGetRepoSubscript
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1193,9 +1070,7 @@ func encodeActivityGetRepoSubscriptionResponse(response ActivityGetRepoSubscript
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1217,9 +1092,7 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1234,8 +1107,6 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1247,8 +1118,6 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1267,9 +1136,7 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1284,8 +1151,6 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1297,8 +1162,6 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1315,17 +1178,12 @@ func encodeActivityListEventsForAuthenticatedUserResponse(response []Event, w ht
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -1338,17 +1196,12 @@ func encodeActivityListOrgEventsForAuthenticatedUserResponse(response []Event, w
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -1363,8 +1216,6 @@ func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1379,9 +1230,7 @@ func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1393,9 +1242,7 @@ func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes
 		w.WriteHeader(503)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1414,8 +1261,6 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1427,8 +1272,6 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 		w.WriteHeader(301)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1443,8 +1286,6 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1456,8 +1297,6 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1474,17 +1313,12 @@ func encodeActivityListPublicEventsForUserResponse(response []Event, w http.Resp
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -1497,17 +1331,12 @@ func encodeActivityListPublicOrgEventsResponse(response []Event, w http.Response
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -1520,17 +1349,12 @@ func encodeActivityListReceivedEventsForUserResponse(response []Event, w http.Re
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -1543,17 +1367,12 @@ func encodeActivityListReceivedPublicEventsForUserResponse(response []Event, w h
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -1566,17 +1385,12 @@ func encodeActivityListRepoEventsResponse(response []Event, w http.ResponseWrite
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -1589,17 +1403,12 @@ func encodeActivityListRepoNotificationsForAuthenticatedUserResponse(response []
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -1614,8 +1423,6 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1630,8 +1437,6 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1643,8 +1448,6 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1661,17 +1464,12 @@ func encodeActivityListReposWatchedByUserResponse(response []MinimalRepository, 
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -1686,8 +1484,6 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1702,8 +1498,6 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1715,8 +1509,6 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1733,17 +1525,12 @@ func encodeActivityListWatchersForRepoResponse(response []SimpleUser, w http.Res
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -1758,9 +1545,7 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 		w.WriteHeader(202)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1778,8 +1563,6 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1791,8 +1574,6 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1811,9 +1592,7 @@ func encodeActivityMarkRepoNotificationsAsReadResponse(response ActivityMarkRepo
 		w.WriteHeader(202)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1841,9 +1620,7 @@ func encodeActivityMarkThreadAsReadResponse(response ActivityMarkThreadAsReadRes
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1860,9 +1637,7 @@ func encodeActivitySetRepoSubscriptionResponse(response RepositorySubscription, 
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -1878,9 +1653,7 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1895,8 +1668,6 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1908,8 +1679,6 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1934,8 +1703,6 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1947,8 +1714,6 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1960,8 +1725,6 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1986,8 +1749,6 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1999,8 +1760,6 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2012,8 +1771,6 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2038,8 +1795,6 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2051,8 +1806,6 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2074,9 +1827,7 @@ func encodeAppsDeleteInstallationResponse(response AppsDeleteInstallationRes, w 
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2093,9 +1844,7 @@ func encodeAppsGetAuthenticatedResponse(response Integration, w http.ResponseWri
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -2111,9 +1860,7 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2125,8 +1872,6 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2138,8 +1883,6 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2151,9 +1894,7 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 		w.WriteHeader(415)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2172,9 +1913,7 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2186,8 +1925,6 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2199,8 +1936,6 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2219,9 +1954,7 @@ func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubs
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2233,9 +1966,7 @@ func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubs
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2255,9 +1986,7 @@ func encodeAppsGetWebhookConfigForAppResponse(response WebhookConfig, w http.Res
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -2273,8 +2002,6 @@ func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPl
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2286,9 +2013,7 @@ func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPl
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2307,9 +2032,7 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2324,8 +2047,6 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2337,8 +2058,6 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2357,8 +2076,6 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2370,8 +2087,6 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2383,8 +2098,6 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2403,8 +2116,6 @@ func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2416,9 +2127,7 @@ func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2437,9 +2146,7 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2454,8 +2161,6 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2467,8 +2172,6 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2487,8 +2190,6 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2503,8 +2204,6 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2516,8 +2215,6 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2536,8 +2233,6 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2552,9 +2247,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2579,8 +2272,6 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2592,8 +2283,6 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2620,9 +2309,7 @@ func encodeAppsSuspendInstallationResponse(response AppsSuspendInstallationRes, 
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2644,9 +2331,7 @@ func encodeAppsUnsuspendInstallationResponse(response AppsUnsuspendInstallationR
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2663,9 +2348,7 @@ func encodeAppsUpdateWebhookConfigForAppResponse(response WebhookConfig, w http.
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -2679,9 +2362,7 @@ func encodeBillingGetGithubActionsBillingGheResponse(response ActionsBillingUsag
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -2695,9 +2376,7 @@ func encodeBillingGetGithubActionsBillingOrgResponse(response ActionsBillingUsag
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -2711,9 +2390,7 @@ func encodeBillingGetGithubActionsBillingUserResponse(response ActionsBillingUsa
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -2727,9 +2404,7 @@ func encodeBillingGetGithubPackagesBillingGheResponse(response PackagesBillingUs
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -2743,9 +2418,7 @@ func encodeBillingGetGithubPackagesBillingOrgResponse(response PackagesBillingUs
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -2759,9 +2432,7 @@ func encodeBillingGetGithubPackagesBillingUserResponse(response PackagesBillingU
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -2775,9 +2446,7 @@ func encodeBillingGetSharedStorageBillingGheResponse(response CombinedBillingUsa
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -2791,9 +2460,7 @@ func encodeBillingGetSharedStorageBillingOrgResponse(response CombinedBillingUsa
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -2807,9 +2474,7 @@ func encodeBillingGetSharedStorageBillingUserResponse(response CombinedBillingUs
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -2825,8 +2490,6 @@ func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.Respo
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2838,8 +2501,6 @@ func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.Respo
 		w.WriteHeader(201)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2856,9 +2517,7 @@ func encodeChecksGetResponse(response CheckRun, w http.ResponseWriter, span trac
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -2872,9 +2531,7 @@ func encodeChecksGetSuiteResponse(response CheckSuite, w http.ResponseWriter, sp
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -2888,17 +2545,12 @@ func encodeChecksListAnnotationsResponse(response []CheckAnnotation, w http.Resp
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -2911,9 +2563,7 @@ func encodeChecksListForRefResponse(response ChecksListForRefOK, w http.Response
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -2927,9 +2577,7 @@ func encodeChecksListForSuiteResponse(response ChecksListForSuiteOK, w http.Resp
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -2943,9 +2591,7 @@ func encodeChecksListSuitesForRefResponse(response ChecksListSuitesForRefOK, w h
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -2959,9 +2605,7 @@ func encodeChecksRerequestSuiteResponse(response ChecksRerequestSuiteCreated, w 
 	w.WriteHeader(201)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -2975,9 +2619,7 @@ func encodeChecksSetSuitesPreferencesResponse(response CheckSuitePreference, w h
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -2993,9 +2635,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3007,8 +2647,6 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		w.WriteHeader(400)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3020,8 +2658,6 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3033,8 +2669,6 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3046,9 +2680,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		w.WriteHeader(503)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3067,9 +2699,7 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3081,8 +2711,6 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3094,8 +2722,6 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3107,9 +2733,7 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 		w.WriteHeader(503)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3128,9 +2752,7 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3142,8 +2764,6 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3155,8 +2775,6 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3168,9 +2786,7 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 		w.WriteHeader(503)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3189,9 +2805,7 @@ func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3203,9 +2817,7 @@ func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3220,9 +2832,7 @@ func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http
 		w.WriteHeader(503)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3241,8 +2851,6 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3254,8 +2862,6 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3267,8 +2873,6 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3280,9 +2884,7 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 		w.WriteHeader(503)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3301,8 +2903,6 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3314,8 +2914,6 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3327,8 +2925,6 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3340,9 +2936,7 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 		w.WriteHeader(503)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3361,8 +2955,6 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3374,8 +2966,6 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3387,8 +2977,6 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3400,9 +2988,7 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 		w.WriteHeader(503)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3421,9 +3007,7 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3435,8 +3019,6 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3448,8 +3030,6 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3461,9 +3041,7 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 		w.WriteHeader(503)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3482,9 +3060,7 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 		w.WriteHeader(202)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3499,8 +3075,6 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3512,8 +3086,6 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3528,9 +3100,7 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 		w.WriteHeader(503)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3549,8 +3119,6 @@ func encodeCodesOfConductGetAllCodesOfConductResponse(response CodesOfConductGet
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3572,9 +3140,7 @@ func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConduc
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3589,9 +3155,7 @@ func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConduc
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3610,9 +3174,7 @@ func encodeEmojisGetResponse(response EmojisGetRes, w http.ResponseWriter, span 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3642,9 +3204,7 @@ func encodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(response 
 	w.WriteHeader(201)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -3658,9 +3218,7 @@ func encodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(response Authen
 	w.WriteHeader(201)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -3674,9 +3232,7 @@ func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(respo
 	w.WriteHeader(201)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -3720,9 +3276,7 @@ func encodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(response SelectedA
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -3736,17 +3290,12 @@ func encodeEnterpriseAdminGetAuditLogResponse(response []AuditLogEvent, w http.R
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -3759,9 +3308,7 @@ func encodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(response
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -3775,9 +3322,7 @@ func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(r
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -3791,9 +3336,7 @@ func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(re
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -3807,9 +3350,7 @@ func encodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(response Runn
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -3823,9 +3364,7 @@ func encodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(response
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -3839,9 +3378,7 @@ func encodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRespon
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -3855,9 +3392,7 @@ func encodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(response ScimG
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -3871,9 +3406,7 @@ func encodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(response S
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -3887,17 +3420,12 @@ func encodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(response [
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -3910,9 +3438,7 @@ func encodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -3926,9 +3452,7 @@ func encodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(respon
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -3942,9 +3466,7 @@ func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response En
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -3958,9 +3480,7 @@ func encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -3974,9 +3494,7 @@ func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(response Sci
 	w.WriteHeader(201)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -3990,9 +3508,7 @@ func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(response Scim
 	w.WriteHeader(201)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -4026,9 +3542,7 @@ func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(re
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -4042,9 +3556,7 @@ func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(res
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -4073,9 +3585,7 @@ func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(response Scim
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -4089,9 +3599,7 @@ func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(respo
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -4113,9 +3621,7 @@ func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredRes, w http.R
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4127,9 +3633,7 @@ func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredRes, w http.R
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4148,9 +3652,7 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 		w.WriteHeader(201)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4165,8 +3667,6 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4178,8 +3678,6 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4204,8 +3702,6 @@ func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter, s
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4217,8 +3713,6 @@ func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter, s
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4243,8 +3737,6 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.Res
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4256,8 +3748,6 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.Res
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4276,9 +3766,7 @@ func encodeGistsGetResponse(response GistsGetRes, w http.ResponseWriter, span tr
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4293,9 +3781,7 @@ func encodeGistsGetResponse(response GistsGetRes, w http.ResponseWriter, span tr
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4307,9 +3793,7 @@ func encodeGistsGetResponse(response GistsGetRes, w http.ResponseWriter, span tr
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4328,9 +3812,7 @@ func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseW
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4345,9 +3827,7 @@ func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseW
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4359,9 +3839,7 @@ func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseW
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4380,8 +3858,6 @@ func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter, span 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4396,9 +3872,7 @@ func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter, span 
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4417,8 +3891,6 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4433,8 +3905,6 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4446,8 +3916,6 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4466,8 +3934,6 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4482,8 +3948,6 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4495,8 +3959,6 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4515,8 +3977,6 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4531,8 +3991,6 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4544,8 +4002,6 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4564,8 +4020,6 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4580,8 +4034,6 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4593,8 +4045,6 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4619,8 +4069,6 @@ func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter, span 
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4632,8 +4080,6 @@ func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter, span 
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4658,8 +4104,6 @@ func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter, s
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4671,8 +4115,6 @@ func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter, s
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4691,9 +4133,7 @@ func encodeGistsUpdateCommentResponse(response GistsUpdateCommentRes, w http.Res
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4705,9 +4145,7 @@ func encodeGistsUpdateCommentResponse(response GistsUpdateCommentRes, w http.Res
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4726,9 +4164,7 @@ func encodeGitGetCommitResponse(response GitGetCommitRes, w http.ResponseWriter,
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4740,9 +4176,7 @@ func encodeGitGetCommitResponse(response GitGetCommitRes, w http.ResponseWriter,
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4761,9 +4195,7 @@ func encodeGitGetRefResponse(response GitGetRefRes, w http.ResponseWriter, span 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4775,9 +4207,7 @@ func encodeGitGetRefResponse(response GitGetRefRes, w http.ResponseWriter, span 
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4796,9 +4226,7 @@ func encodeGitGetTagResponse(response GitGetTagRes, w http.ResponseWriter, span 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4810,9 +4238,7 @@ func encodeGitGetTagResponse(response GitGetTagRes, w http.ResponseWriter, span 
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4829,17 +4255,12 @@ func encodeGitListMatchingRefsResponse(response []GitRef, w http.ResponseWriter,
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -4854,8 +4275,6 @@ func encodeGitignoreGetAllTemplatesResponse(response GitignoreGetAllTemplatesRes
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4877,9 +4296,7 @@ func encodeGitignoreGetTemplateResponse(response GitignoreGetTemplateRes, w http
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4924,9 +4341,7 @@ func encodeInteractionsSetRestrictionsForRepoResponse(response InteractionsSetRe
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4946,9 +4361,7 @@ func encodeIssuesAddAssigneesResponse(response IssueSimple, w http.ResponseWrite
 	w.WriteHeader(201)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -4967,9 +4380,7 @@ func encodeIssuesCheckUserCanBeAssignedResponse(response IssuesCheckUserCanBeAss
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5001,9 +4412,7 @@ func encodeIssuesDeleteMilestoneResponse(response IssuesDeleteMilestoneRes, w ht
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5022,9 +4431,7 @@ func encodeIssuesGetCommentResponse(response IssuesGetCommentRes, w http.Respons
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5036,9 +4443,7 @@ func encodeIssuesGetCommentResponse(response IssuesGetCommentRes, w http.Respons
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5057,9 +4462,7 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5071,8 +4474,6 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5084,8 +4485,6 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5097,8 +4496,6 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 		w.WriteHeader(410)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5117,9 +4514,7 @@ func encodeIssuesGetLabelResponse(response IssuesGetLabelRes, w http.ResponseWri
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5131,9 +4526,7 @@ func encodeIssuesGetLabelResponse(response IssuesGetLabelRes, w http.ResponseWri
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5152,9 +4545,7 @@ func encodeIssuesGetMilestoneResponse(response IssuesGetMilestoneRes, w http.Res
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5166,9 +4557,7 @@ func encodeIssuesGetMilestoneResponse(response IssuesGetMilestoneRes, w http.Res
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5187,8 +4576,6 @@ func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.R
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5200,9 +4587,7 @@ func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.R
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5221,8 +4606,6 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5234,8 +4617,6 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5247,8 +4628,6 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 		w.WriteHeader(410)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5265,17 +4644,12 @@ func encodeIssuesListLabelsForMilestoneResponse(response []Label, w http.Respons
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -5290,8 +4664,6 @@ func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5303,9 +4675,7 @@ func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, 
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5324,8 +4694,6 @@ func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5337,9 +4705,7 @@ func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, 
 		w.WriteHeader(410)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5358,8 +4724,6 @@ func encodeIssuesListMilestonesResponse(response IssuesListMilestonesRes, w http
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5371,9 +4735,7 @@ func encodeIssuesListMilestonesResponse(response IssuesListMilestonesRes, w http
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5395,9 +4757,7 @@ func encodeIssuesRemoveAllLabelsResponse(response IssuesRemoveAllLabelsRes, w ht
 		w.WriteHeader(410)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5414,9 +4774,7 @@ func encodeIssuesRemoveAssigneesResponse(response IssueSimple, w http.ResponseWr
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -5432,8 +4790,6 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5445,8 +4801,6 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5458,8 +4812,6 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 		w.WriteHeader(410)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5481,8 +4833,6 @@ func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter,
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5494,8 +4844,6 @@ func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter,
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5512,9 +4860,7 @@ func encodeIssuesUpdateLabelResponse(response Label, w http.ResponseWriter, span
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -5528,9 +4874,7 @@ func encodeIssuesUpdateMilestoneResponse(response Milestone, w http.ResponseWrit
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -5546,9 +4890,7 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, s
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5563,8 +4905,6 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, s
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5576,8 +4916,6 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, s
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5596,8 +4934,6 @@ func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUse
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5617,9 +4953,7 @@ func encodeLicensesGetForRepoResponse(response LicenseContent, w http.ResponseWr
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -5635,9 +4969,7 @@ func encodeMetaGetResponse(response MetaGetRes, w http.ResponseWriter, span trac
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5657,9 +4989,7 @@ func encodeMetaRootResponse(response MetaRootOK, w http.ResponseWriter, span tra
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -5686,8 +5016,6 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5699,8 +5027,6 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5712,8 +5038,6 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5735,9 +5059,7 @@ func encodeMigrationsDeleteArchiveForOrgResponse(response MigrationsDeleteArchiv
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5759,9 +5081,7 @@ func encodeMigrationsDownloadArchiveForOrgResponse(response MigrationsDownloadAr
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5786,8 +5106,6 @@ func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsG
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5799,8 +5117,6 @@ func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsG
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5819,8 +5135,6 @@ func encodeMigrationsGetCommitAuthorsResponse(response MigrationsGetCommitAuthor
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5832,9 +5146,7 @@ func encodeMigrationsGetCommitAuthorsResponse(response MigrationsGetCommitAuthor
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5853,9 +5165,7 @@ func encodeMigrationsGetImportStatusResponse(response MigrationsGetImportStatusR
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5867,9 +5177,7 @@ func encodeMigrationsGetImportStatusResponse(response MigrationsGetImportStatusR
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5886,17 +5194,12 @@ func encodeMigrationsGetLargeFilesResponse(response []PorterLargeFile, w http.Re
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -5911,9 +5214,7 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5928,8 +5229,6 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5941,8 +5240,6 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5954,8 +5251,6 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5974,9 +5269,7 @@ func encodeMigrationsGetStatusForOrgResponse(response MigrationsGetStatusForOrgR
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5988,9 +5281,7 @@ func encodeMigrationsGetStatusForOrgResponse(response MigrationsGetStatusForOrgR
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6009,8 +5300,6 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6025,8 +5314,6 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6038,8 +5325,6 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6056,17 +5341,12 @@ func encodeMigrationsListForOrgResponse(response []Migration, w http.ResponseWri
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -6081,8 +5361,6 @@ func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgR
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6094,9 +5372,7 @@ func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgR
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6115,8 +5391,6 @@ func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUse
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6128,9 +5402,7 @@ func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUse
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6155,8 +5427,6 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6168,8 +5438,6 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6181,8 +5449,6 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6204,9 +5470,7 @@ func encodeMigrationsUnlockRepoForOrgResponse(response MigrationsUnlockRepoForOr
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6223,9 +5487,7 @@ func encodeMigrationsUpdateImportResponse(response Import, w http.ResponseWriter
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -6247,8 +5509,6 @@ func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthoriz
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6260,8 +5520,6 @@ func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthoriz
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6286,8 +5544,6 @@ func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDe
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6299,8 +5555,6 @@ func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDe
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6319,9 +5573,7 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6336,8 +5588,6 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6349,8 +5599,6 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6369,9 +5617,7 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6386,8 +5632,6 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6399,8 +5643,6 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6419,8 +5661,6 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6435,8 +5675,6 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6448,8 +5686,6 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6461,8 +5697,6 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6481,8 +5715,6 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6497,8 +5729,6 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6510,8 +5740,6 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6523,8 +5751,6 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6546,9 +5772,7 @@ func encodeOrgsCheckBlockedUserResponse(response OrgsCheckBlockedUserRes, w http
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6596,9 +5820,7 @@ func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMe
 		w.WriteHeader(202)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6616,9 +5838,7 @@ func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMe
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6640,9 +5860,7 @@ func encodeOrgsDeleteWebhookResponse(response OrgsDeleteWebhookRes, w http.Respo
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6661,9 +5879,7 @@ func encodeOrgsGetResponse(response OrgsGetRes, w http.ResponseWriter, span trac
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6675,9 +5891,7 @@ func encodeOrgsGetResponse(response OrgsGetRes, w http.ResponseWriter, span trac
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6694,17 +5908,12 @@ func encodeOrgsGetAuditLogResponse(response []AuditLogEvent, w http.ResponseWrit
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -6719,9 +5928,7 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6733,8 +5940,6 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6746,8 +5951,6 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6766,9 +5969,7 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6780,8 +5981,6 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6793,8 +5992,6 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6813,9 +6010,7 @@ func encodeOrgsGetWebhookResponse(response OrgsGetWebhookRes, w http.ResponseWri
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6827,9 +6022,7 @@ func encodeOrgsGetWebhookResponse(response OrgsGetWebhookRes, w http.ResponseWri
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6846,9 +6039,7 @@ func encodeOrgsGetWebhookConfigForOrgResponse(response WebhookConfig, w http.Res
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -6864,8 +6055,6 @@ func encodeOrgsListResponse(response OrgsListRes, w http.ResponseWriter, span tr
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6887,8 +6076,6 @@ func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersRes, w http
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6900,9 +6087,7 @@ func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersRes, w http
 		w.WriteHeader(415)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6921,8 +6106,6 @@ func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsR
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6934,9 +6117,7 @@ func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsR
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6955,8 +6136,6 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6971,8 +6150,6 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6984,8 +6161,6 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7002,17 +6177,12 @@ func encodeOrgsListForUserResponse(response []OrganizationSimple, w http.Respons
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -7027,8 +6197,6 @@ func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7040,9 +6208,7 @@ func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, 
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7059,17 +6225,12 @@ func encodeOrgsListOutsideCollaboratorsResponse(response []SimpleUser, w http.Re
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -7084,8 +6245,6 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7097,9 +6256,7 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7116,17 +6273,12 @@ func encodeOrgsListPublicMembersResponse(response []SimpleUser, w http.ResponseW
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -7139,17 +6291,12 @@ func encodeOrgsListSamlSSOAuthorizationsResponse(response []CredentialAuthorizat
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -7164,8 +6311,6 @@ func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.Respons
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7177,9 +6322,7 @@ func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.Respons
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7201,9 +6344,7 @@ func encodeOrgsPingWebhookResponse(response OrgsPingWebhookRes, w http.ResponseW
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7225,9 +6366,7 @@ func encodeOrgsRemoveMemberResponse(response OrgsRemoveMemberRes, w http.Respons
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7249,8 +6388,6 @@ func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForU
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7262,8 +6399,6 @@ func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForU
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7285,9 +6420,7 @@ func encodeOrgsRemoveOutsideCollaboratorResponse(response OrgsRemoveOutsideColla
 		w.WriteHeader(422)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7314,9 +6447,7 @@ func encodeOrgsRemoveSamlSSOAuthorizationResponse(response OrgsRemoveSamlSSOAuth
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7338,9 +6469,7 @@ func encodeOrgsSetPublicMembershipForAuthenticatedUserResponse(response OrgsSetP
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7362,9 +6491,7 @@ func encodeOrgsUpdateWebhookConfigForOrgResponse(response WebhookConfig, w http.
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -7383,8 +6510,6 @@ func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDe
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7396,8 +6521,6 @@ func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDe
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7409,8 +6532,6 @@ func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDe
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7432,8 +6553,6 @@ func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageFor
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7445,8 +6564,6 @@ func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageFor
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7458,8 +6575,6 @@ func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageFor
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7481,8 +6596,6 @@ func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageFo
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7494,8 +6607,6 @@ func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageFo
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7507,8 +6618,6 @@ func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageFo
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7530,8 +6639,6 @@ func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response Pac
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7543,8 +6650,6 @@ func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response Pac
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7556,8 +6661,6 @@ func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response Pac
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7579,8 +6682,6 @@ func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePac
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7592,8 +6693,6 @@ func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePac
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7605,8 +6704,6 @@ func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePac
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7628,8 +6725,6 @@ func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePa
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7641,8 +6736,6 @@ func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePa
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7654,8 +6747,6 @@ func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePa
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7674,8 +6765,6 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7687,8 +6776,6 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7700,8 +6787,6 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7713,8 +6798,6 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7733,8 +6816,6 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7746,8 +6827,6 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7759,8 +6838,6 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7772,8 +6849,6 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7792,8 +6867,6 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7805,8 +6878,6 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7818,8 +6889,6 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7831,8 +6900,6 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7849,9 +6916,7 @@ func encodePackagesGetPackageForAuthenticatedUserResponse(response Package, w ht
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -7865,9 +6930,7 @@ func encodePackagesGetPackageForOrganizationResponse(response Package, w http.Re
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -7881,9 +6944,7 @@ func encodePackagesGetPackageForUserResponse(response Package, w http.ResponseWr
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -7897,9 +6958,7 @@ func encodePackagesGetPackageVersionForAuthenticatedUserResponse(response Packag
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -7913,9 +6972,7 @@ func encodePackagesGetPackageVersionForOrganizationResponse(response PackageVers
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -7929,9 +6986,7 @@ func encodePackagesGetPackageVersionForUserResponse(response PackageVersion, w h
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -7945,17 +7000,12 @@ func encodePackagesListPackagesForAuthenticatedUserResponse(response []Package, 
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -7970,8 +7020,6 @@ func encodePackagesListPackagesForOrganizationResponse(response PackagesListPack
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7983,8 +7031,6 @@ func encodePackagesListPackagesForOrganizationResponse(response PackagesListPack
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7996,8 +7042,6 @@ func encodePackagesListPackagesForOrganizationResponse(response PackagesListPack
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8016,8 +7060,6 @@ func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForU
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8029,8 +7071,6 @@ func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForU
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8042,8 +7082,6 @@ func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForU
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8065,8 +7103,6 @@ func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesR
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8078,8 +7114,6 @@ func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesR
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8091,8 +7125,6 @@ func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesR
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8114,8 +7146,6 @@ func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageF
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8127,8 +7157,6 @@ func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageF
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8140,8 +7168,6 @@ func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageF
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8163,8 +7189,6 @@ func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackage
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8176,8 +7200,6 @@ func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackage
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8189,8 +7211,6 @@ func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackage
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8212,8 +7232,6 @@ func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response Pa
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8225,8 +7243,6 @@ func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response Pa
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8238,8 +7254,6 @@ func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response Pa
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8261,8 +7275,6 @@ func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestoreP
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8274,8 +7286,6 @@ func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestoreP
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8287,8 +7297,6 @@ func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestoreP
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8310,8 +7318,6 @@ func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestore
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8323,8 +7329,6 @@ func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestore
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8336,8 +7340,6 @@ func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestore
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8356,9 +7358,7 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 		w.WriteHeader(201)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8373,8 +7373,6 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8386,8 +7384,6 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8399,9 +7395,7 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 		w.WriteHeader(422)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8420,9 +7414,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 		w.WriteHeader(201)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8437,8 +7429,6 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8450,8 +7440,6 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8463,9 +7451,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 		w.WriteHeader(415)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8477,9 +7463,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 		w.WriteHeader(422)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8498,9 +7482,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		w.WriteHeader(201)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8512,8 +7494,6 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8525,8 +7505,6 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8538,8 +7516,6 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8551,8 +7527,6 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		w.WriteHeader(410)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8564,9 +7538,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		w.WriteHeader(422)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8585,9 +7557,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		w.WriteHeader(201)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8599,8 +7569,6 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8612,8 +7580,6 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8625,8 +7591,6 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8638,8 +7602,6 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		w.WriteHeader(410)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8651,9 +7613,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		w.WriteHeader(422)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8678,8 +7638,6 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8691,9 +7649,7 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8705,8 +7661,6 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8718,8 +7672,6 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 		w.WriteHeader(410)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8744,8 +7696,6 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8757,9 +7707,7 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8771,8 +7719,6 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8797,8 +7743,6 @@ func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8810,8 +7754,6 @@ func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8830,9 +7772,7 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, s
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8847,8 +7787,6 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, s
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8860,8 +7798,6 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, s
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8880,9 +7816,7 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8897,8 +7831,6 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8910,8 +7842,6 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8923,8 +7853,6 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8943,9 +7871,7 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8960,8 +7886,6 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8973,8 +7897,6 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8986,8 +7908,6 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9006,8 +7926,6 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9022,8 +7940,6 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9035,8 +7951,6 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9055,8 +7969,6 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9071,8 +7983,6 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9084,8 +7994,6 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9104,8 +8012,6 @@ func encodeProjectsListForOrgResponse(response ProjectsListForOrgRes, w http.Res
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9117,9 +8023,7 @@ func encodeProjectsListForOrgResponse(response ProjectsListForOrgRes, w http.Res
 		w.WriteHeader(422)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9138,8 +8042,6 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9151,8 +8053,6 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9164,8 +8064,6 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9177,8 +8075,6 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9190,8 +8086,6 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		w.WriteHeader(410)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9203,9 +8097,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		w.WriteHeader(422)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9224,9 +8116,7 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 		w.WriteHeader(201)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9241,8 +8131,6 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9254,8 +8142,6 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9267,9 +8153,7 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 		w.WriteHeader(422)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9288,9 +8172,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9305,8 +8187,6 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9318,9 +8198,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9335,8 +8213,6 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 		w.WriteHeader(410)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9348,9 +8224,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 		w.WriteHeader(422)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9369,9 +8243,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9386,8 +8258,6 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9399,8 +8269,6 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9412,8 +8280,6 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9425,9 +8291,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 		w.WriteHeader(422)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9446,9 +8310,7 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9463,8 +8325,6 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9476,8 +8336,6 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9509,9 +8367,7 @@ func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyFor
 		w.WriteHeader(201)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9523,9 +8379,7 @@ func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyFor
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9544,9 +8398,7 @@ func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.Respo
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9558,9 +8410,7 @@ func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.Respo
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9572,9 +8422,7 @@ func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.Respo
 		w.WriteHeader(422)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9593,9 +8441,7 @@ func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9607,9 +8453,7 @@ func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9621,9 +8465,7 @@ func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes
 		w.WriteHeader(422)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9645,9 +8487,7 @@ func encodePullsDeleteReviewCommentResponse(response PullsDeleteReviewCommentRes
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9666,9 +8506,7 @@ func encodePullsDismissReviewResponse(response PullsDismissReviewRes, w http.Res
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9680,9 +8518,7 @@ func encodePullsDismissReviewResponse(response PullsDismissReviewRes, w http.Res
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9694,9 +8530,7 @@ func encodePullsDismissReviewResponse(response PullsDismissReviewRes, w http.Res
 		w.WriteHeader(422)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9715,9 +8549,7 @@ func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span tr
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9732,8 +8564,6 @@ func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span tr
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9745,8 +8575,6 @@ func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span tr
 		w.WriteHeader(500)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9765,9 +8593,7 @@ func encodePullsGetReviewResponse(response PullsGetReviewRes, w http.ResponseWri
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9779,9 +8605,7 @@ func encodePullsGetReviewResponse(response PullsGetReviewRes, w http.ResponseWri
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9800,9 +8624,7 @@ func encodePullsGetReviewCommentResponse(response PullsGetReviewCommentRes, w ht
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9814,9 +8636,7 @@ func encodePullsGetReviewCommentResponse(response PullsGetReviewCommentRes, w ht
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9835,8 +8655,6 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9848,9 +8666,7 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9867,17 +8683,12 @@ func encodePullsListCommitsResponse(response []Commit, w http.ResponseWriter, sp
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -9890,9 +8701,7 @@ func encodePullsListRequestedReviewersResponse(response PullRequestReviewRequest
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -9906,17 +8715,12 @@ func encodePullsListReviewCommentsResponse(response []PullRequestReviewComment, 
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -9929,17 +8733,12 @@ func encodePullsListReviewCommentsForRepoResponse(response []PullRequestReviewCo
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -9952,17 +8751,12 @@ func encodePullsListReviewsResponse(response []PullRequestReview, w http.Respons
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -9977,9 +8771,7 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9991,8 +8783,6 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10004,8 +8794,6 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10017,9 +8805,7 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 		w.WriteHeader(422)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10038,9 +8824,7 @@ func encodePullsUpdateReviewResponse(response PullsUpdateReviewRes, w http.Respo
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10052,9 +8836,7 @@ func encodePullsUpdateReviewResponse(response PullsUpdateReviewRes, w http.Respo
 		w.WriteHeader(422)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10071,9 +8853,7 @@ func encodePullsUpdateReviewCommentResponse(response PullRequestReviewComment, w
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -10089,9 +8869,7 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter,
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10106,9 +8884,7 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter,
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10127,8 +8903,6 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response Reactio
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10140,8 +8914,6 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response Reactio
 		w.WriteHeader(201)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10158,9 +8930,7 @@ func encodeReactionsCreateForTeamDiscussionCommentLegacyResponse(response Reacti
 	w.WriteHeader(201)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -10176,8 +8946,6 @@ func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreat
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10189,8 +8957,6 @@ func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreat
 		w.WriteHeader(201)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10207,9 +8973,7 @@ func encodeReactionsCreateForTeamDiscussionLegacyResponse(response Reaction, w h
 	w.WriteHeader(201)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -10261,8 +9025,6 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10274,8 +9036,6 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10287,8 +9047,6 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 		w.WriteHeader(410)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10300,9 +9058,7 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 		w.WriteHeader(415)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10321,8 +9077,6 @@ func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommit
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10334,9 +9088,7 @@ func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommit
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10348,9 +9100,7 @@ func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommit
 		w.WriteHeader(415)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10369,8 +9119,6 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10382,8 +9130,6 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10395,8 +9141,6 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 		w.WriteHeader(410)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10408,9 +9152,7 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 		w.WriteHeader(415)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10429,8 +9171,6 @@ func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCo
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10442,9 +9182,7 @@ func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCo
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10456,9 +9194,7 @@ func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCo
 		w.WriteHeader(415)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10477,8 +9213,6 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10490,9 +9224,7 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10504,9 +9236,7 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 		w.WriteHeader(415)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10523,17 +9253,12 @@ func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response []Reactio
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -10546,17 +9271,12 @@ func encodeReactionsListForTeamDiscussionCommentLegacyResponse(response []Reacti
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -10569,17 +9289,12 @@ func encodeReactionsListForTeamDiscussionInOrgResponse(response []Reaction, w ht
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -10592,17 +9307,12 @@ func encodeReactionsListForTeamDiscussionLegacyResponse(response []Reaction, w h
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -10623,8 +9333,6 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10636,8 +9344,6 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10649,8 +9355,6 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 		w.WriteHeader(409)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10695,9 +9399,7 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10709,8 +9411,6 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10722,8 +9422,6 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 		w.WriteHeader(500)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10742,9 +9440,7 @@ func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateComm
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10756,9 +9452,7 @@ func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateComm
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10775,9 +9469,7 @@ func encodeReposCreateCommitStatusResponse(response Status, w http.ResponseWrite
 	w.WriteHeader(201)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -10791,9 +9483,7 @@ func encodeReposCreateUsingTemplateResponse(response Repository, w http.Response
 	w.WriteHeader(201)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -10815,8 +9505,6 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10828,8 +9516,6 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10841,8 +9527,6 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 		w.WriteHeader(409)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10864,8 +9548,6 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 		w.WriteHeader(307)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10877,9 +9559,7 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10891,8 +9571,6 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10919,9 +9597,7 @@ func encodeReposDeleteAdminBranchProtectionResponse(response ReposDeleteAdminBra
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10948,9 +9624,7 @@ func encodeReposDeleteAutolinkResponse(response ReposDeleteAutolinkRes, w http.R
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10972,9 +9646,7 @@ func encodeReposDeleteBranchProtectionResponse(response ReposDeleteBranchProtect
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10996,9 +9668,7 @@ func encodeReposDeleteCommitCommentResponse(response ReposDeleteCommitCommentRes
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11020,9 +9690,7 @@ func encodeReposDeleteCommitSignatureProtectionResponse(response ReposDeleteComm
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11049,9 +9717,7 @@ func encodeReposDeleteDeploymentResponse(response ReposDeleteDeploymentRes, w ht
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11063,9 +9729,7 @@ func encodeReposDeleteDeploymentResponse(response ReposDeleteDeploymentRes, w ht
 		w.WriteHeader(422)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11092,9 +9756,7 @@ func encodeReposDeletePullRequestReviewProtectionResponse(response ReposDeletePu
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11126,9 +9788,7 @@ func encodeReposDeleteWebhookResponse(response ReposDeleteWebhookRes, w http.Res
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11177,9 +9837,7 @@ func encodeReposEnableLfsForRepoResponse(response ReposEnableLfsForRepoRes, w ht
 		w.WriteHeader(202)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11206,9 +9864,7 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11220,8 +9876,6 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 		w.WriteHeader(301)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11233,8 +9887,6 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11246,8 +9898,6 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11266,9 +9916,7 @@ func encodeReposGetAccessRestrictionsResponse(response ReposGetAccessRestriction
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11280,9 +9928,7 @@ func encodeReposGetAccessRestrictionsResponse(response ReposGetAccessRestriction
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11299,9 +9945,7 @@ func encodeReposGetAdminBranchProtectionResponse(response ProtectedBranchAdminEn
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -11317,8 +9961,6 @@ func encodeReposGetAllStatusCheckContextsResponse(response ReposGetAllStatusChec
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11330,9 +9972,7 @@ func encodeReposGetAllStatusCheckContextsResponse(response ReposGetAllStatusChec
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11351,9 +9991,7 @@ func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, w http.Respo
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11365,9 +10003,7 @@ func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, w http.Respo
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11379,9 +10015,7 @@ func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, w http.Respo
 		w.WriteHeader(415)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11400,8 +10034,6 @@ func encodeReposGetAppsWithAccessToProtectedBranchResponse(response ReposGetApps
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11413,9 +10045,7 @@ func encodeReposGetAppsWithAccessToProtectedBranchResponse(response ReposGetApps
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11434,9 +10064,7 @@ func encodeReposGetAutolinkResponse(response ReposGetAutolinkRes, w http.Respons
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11448,9 +10076,7 @@ func encodeReposGetAutolinkResponse(response ReposGetAutolinkRes, w http.Respons
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11469,9 +10095,7 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11483,8 +10107,6 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 		w.WriteHeader(301)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11496,8 +10118,6 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11509,9 +10129,7 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 		w.WriteHeader(415)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11530,9 +10148,7 @@ func encodeReposGetBranchProtectionResponse(response ReposGetBranchProtectionRes
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11544,9 +10160,7 @@ func encodeReposGetBranchProtectionResponse(response ReposGetBranchProtectionRes
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11565,9 +10179,7 @@ func encodeReposGetClonesResponse(response ReposGetClonesRes, w http.ResponseWri
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11579,9 +10191,7 @@ func encodeReposGetClonesResponse(response ReposGetClonesRes, w http.ResponseWri
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11600,8 +10210,6 @@ func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStat
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11613,9 +10221,7 @@ func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStat
 		w.WriteHeader(202)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11637,9 +10243,7 @@ func encodeReposGetCollaboratorPermissionLevelResponse(response ReposGetCollabor
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11651,9 +10255,7 @@ func encodeReposGetCollaboratorPermissionLevelResponse(response ReposGetCollabor
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11672,9 +10274,7 @@ func encodeReposGetCombinedStatusForRefResponse(response ReposGetCombinedStatusF
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11686,9 +10286,7 @@ func encodeReposGetCombinedStatusForRefResponse(response ReposGetCombinedStatusF
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11707,8 +10305,6 @@ func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivitySt
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11720,9 +10316,7 @@ func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivitySt
 		w.WriteHeader(202)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11744,9 +10338,7 @@ func encodeReposGetCommitCommentResponse(response ReposGetCommitCommentRes, w ht
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11758,9 +10350,7 @@ func encodeReposGetCommitCommentResponse(response ReposGetCommitCommentRes, w ht
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11779,9 +10369,7 @@ func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSign
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11793,9 +10381,7 @@ func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSign
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11812,9 +10398,7 @@ func encodeReposGetCommunityProfileMetricsResponse(response CommunityProfile, w 
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -11830,8 +10414,6 @@ func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsR
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11843,9 +10425,7 @@ func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsR
 		w.WriteHeader(202)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11867,9 +10447,7 @@ func encodeReposGetDeployKeyResponse(response ReposGetDeployKeyRes, w http.Respo
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11881,9 +10459,7 @@ func encodeReposGetDeployKeyResponse(response ReposGetDeployKeyRes, w http.Respo
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11902,9 +10478,7 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11916,9 +10490,7 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11930,9 +10502,7 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 		w.WriteHeader(415)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11949,9 +10519,7 @@ func encodeReposGetLatestPagesBuildResponse(response PageBuild, w http.ResponseW
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -11965,9 +10533,7 @@ func encodeReposGetLatestReleaseResponse(response Release, w http.ResponseWriter
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -11983,9 +10549,7 @@ func encodeReposGetPagesResponse(response ReposGetPagesRes, w http.ResponseWrite
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11997,9 +10561,7 @@ func encodeReposGetPagesResponse(response ReposGetPagesRes, w http.ResponseWrite
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12016,9 +10578,7 @@ func encodeReposGetPagesBuildResponse(response PageBuild, w http.ResponseWriter,
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -12034,9 +10594,7 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12048,9 +10606,7 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 		w.WriteHeader(202)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12065,9 +10621,7 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12089,9 +10643,7 @@ func encodeReposGetParticipationStatsResponse(response ReposGetParticipationStat
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12103,9 +10655,7 @@ func encodeReposGetParticipationStatsResponse(response ReposGetParticipationStat
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12122,9 +10672,7 @@ func encodeReposGetPullRequestReviewProtectionResponse(response ProtectedBranchP
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -12140,8 +10688,6 @@ func encodeReposGetPunchCardStatsResponse(response ReposGetPunchCardStatsRes, w 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12163,9 +10709,7 @@ func encodeReposGetReleaseResponse(response ReposGetReleaseRes, w http.ResponseW
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12177,9 +10721,7 @@ func encodeReposGetReleaseResponse(response ReposGetReleaseRes, w http.ResponseW
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12198,9 +10740,7 @@ func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12215,9 +10755,7 @@ func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12229,9 +10767,7 @@ func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http
 		w.WriteHeader(415)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12250,9 +10786,7 @@ func encodeReposGetReleaseByTagResponse(response ReposGetReleaseByTagRes, w http
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12264,9 +10798,7 @@ func encodeReposGetReleaseByTagResponse(response ReposGetReleaseByTagRes, w http
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12285,9 +10817,7 @@ func encodeReposGetStatusChecksProtectionResponse(response ReposGetStatusChecksP
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12299,9 +10829,7 @@ func encodeReposGetStatusChecksProtectionResponse(response ReposGetStatusChecksP
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12320,8 +10848,6 @@ func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTea
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12333,9 +10859,7 @@ func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTea
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12354,8 +10878,6 @@ func encodeReposGetTopPathsResponse(response ReposGetTopPathsRes, w http.Respons
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12367,9 +10889,7 @@ func encodeReposGetTopPathsResponse(response ReposGetTopPathsRes, w http.Respons
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12388,8 +10908,6 @@ func encodeReposGetTopReferrersResponse(response ReposGetTopReferrersRes, w http
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12401,9 +10919,7 @@ func encodeReposGetTopReferrersResponse(response ReposGetTopReferrersRes, w http
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12422,8 +10938,6 @@ func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUse
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12435,9 +10949,7 @@ func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUse
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12456,9 +10968,7 @@ func encodeReposGetViewsResponse(response ReposGetViewsRes, w http.ResponseWrite
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12470,9 +10980,7 @@ func encodeReposGetViewsResponse(response ReposGetViewsRes, w http.ResponseWrite
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12491,9 +10999,7 @@ func encodeReposGetWebhookResponse(response ReposGetWebhookRes, w http.ResponseW
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12505,9 +11011,7 @@ func encodeReposGetWebhookResponse(response ReposGetWebhookRes, w http.ResponseW
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12524,9 +11028,7 @@ func encodeReposGetWebhookConfigForRepoResponse(response WebhookConfig, w http.R
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -12540,17 +11042,12 @@ func encodeReposListAutolinksResponse(response []Autolink, w http.ResponseWriter
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -12565,8 +11062,6 @@ func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.Respo
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12578,9 +11073,7 @@ func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.Respo
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12599,8 +11092,6 @@ func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12612,9 +11103,7 @@ func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w 
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12631,17 +11120,12 @@ func encodeReposListCommentsForCommitResponse(response []CommitComment, w http.R
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -12654,17 +11138,12 @@ func encodeReposListCommitCommentsForRepoResponse(response []CommitComment, w ht
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -12679,8 +11158,6 @@ func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatuse
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12692,9 +11169,7 @@ func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatuse
 		w.WriteHeader(301)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12713,8 +11188,6 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12726,8 +11199,6 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		w.WriteHeader(400)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12739,8 +11210,6 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12752,8 +11221,6 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		w.WriteHeader(409)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12765,8 +11232,6 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		w.WriteHeader(500)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12785,8 +11250,6 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12801,8 +11264,6 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12814,8 +11275,6 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12832,17 +11291,12 @@ func encodeReposListDeployKeysResponse(response []DeployKey, w http.ResponseWrit
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -12857,8 +11311,6 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12870,9 +11322,7 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12889,17 +11339,12 @@ func encodeReposListForOrgResponse(response []MinimalRepository, w http.Response
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -12912,17 +11357,12 @@ func encodeReposListForUserResponse(response []MinimalRepository, w http.Respons
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -12937,8 +11377,6 @@ func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWri
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12950,9 +11388,7 @@ func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWri
 		w.WriteHeader(400)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12969,17 +11405,12 @@ func encodeReposListInvitationsResponse(response []RepositoryInvitation, w http.
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -12994,8 +11425,6 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13010,8 +11439,6 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13023,8 +11450,6 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13036,8 +11461,6 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13054,9 +11477,7 @@ func encodeReposListLanguagesResponse(response Language, w http.ResponseWriter, 
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -13070,17 +11491,12 @@ func encodeReposListPagesBuildsResponse(response []PageBuild, w http.ResponseWri
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -13093,17 +11509,12 @@ func encodeReposListPullRequestsAssociatedWithCommitResponse(response []PullRequ
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -13116,17 +11527,12 @@ func encodeReposListReleaseAssetsResponse(response []ReleaseAsset, w http.Respon
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -13141,8 +11547,6 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13154,9 +11558,7 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13173,17 +11575,12 @@ func encodeReposListTagsResponse(response []Tag, w http.ResponseWriter, span tra
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -13196,17 +11593,12 @@ func encodeReposListTeamsResponse(response []Team, w http.ResponseWriter, span t
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -13221,8 +11613,6 @@ func encodeReposListWebhooksResponse(response ReposListWebhooksRes, w http.Respo
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13234,9 +11624,7 @@ func encodeReposListWebhooksResponse(response ReposListWebhooksRes, w http.Respo
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13255,9 +11643,7 @@ func encodeReposMergeUpstreamResponse(response ReposMergeUpstreamRes, w http.Res
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13285,9 +11671,7 @@ func encodeReposPingWebhookResponse(response ReposPingWebhookRes, w http.Respons
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13316,9 +11700,7 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13330,9 +11712,7 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13344,9 +11724,7 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 		w.WriteHeader(415)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13358,9 +11736,7 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 		w.WriteHeader(422)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13377,9 +11753,7 @@ func encodeReposRequestPagesBuildResponse(response PageBuildStatus, w http.Respo
 	w.WriteHeader(201)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -13393,9 +11767,7 @@ func encodeReposSetAdminBranchProtectionResponse(response ProtectedBranchAdminEn
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -13414,9 +11786,7 @@ func encodeReposTestPushWebhookResponse(response ReposTestPushWebhookRes, w http
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13433,9 +11803,7 @@ func encodeReposTransferResponse(response MinimalRepository, w http.ResponseWrit
 	w.WriteHeader(202)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -13451,9 +11819,7 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13465,8 +11831,6 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13478,8 +11842,6 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13491,9 +11853,7 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 		w.WriteHeader(422)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13512,9 +11872,7 @@ func encodeReposUpdateCommitCommentResponse(response ReposUpdateCommitCommentRes
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13526,9 +11884,7 @@ func encodeReposUpdateCommitCommentResponse(response ReposUpdateCommitCommentRes
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13545,9 +11901,7 @@ func encodeReposUpdateInvitationResponse(response RepositoryInvitation, w http.R
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -13563,9 +11917,7 @@ func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseRes, w http.Res
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13577,9 +11929,7 @@ func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseRes, w http.Res
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13596,9 +11946,7 @@ func encodeReposUpdateReleaseAssetResponse(response ReleaseAsset, w http.Respons
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -13612,9 +11960,7 @@ func encodeReposUpdateWebhookConfigForRepoResponse(response WebhookConfig, w htt
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -13636,8 +11982,6 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w ht
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13649,8 +11993,6 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w ht
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13669,9 +12011,7 @@ func encodeSearchCommitsResponse(response SearchCommitsRes, w http.ResponseWrite
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13686,9 +12026,7 @@ func encodeSearchCommitsResponse(response SearchCommitsRes, w http.ResponseWrite
 		w.WriteHeader(415)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13707,9 +12045,7 @@ func encodeSearchTopicsResponse(response SearchTopicsRes, w http.ResponseWriter,
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13724,9 +12060,7 @@ func encodeSearchTopicsResponse(response SearchTopicsRes, w http.ResponseWriter,
 		w.WriteHeader(415)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13745,9 +12079,7 @@ func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertRes, w 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13762,9 +12094,7 @@ func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertRes, w 
 		w.WriteHeader(503)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13783,8 +12113,6 @@ func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAle
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13796,9 +12124,7 @@ func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAle
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13810,9 +12136,7 @@ func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAle
 		w.WriteHeader(503)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13831,8 +12155,6 @@ func encodeSecretScanningListAlertsForRepoResponse(response SecretScanningListAl
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13847,9 +12169,7 @@ func encodeSecretScanningListAlertsForRepoResponse(response SecretScanningListAl
 		w.WriteHeader(503)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13868,9 +12188,7 @@ func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertR
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13888,9 +12206,7 @@ func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertR
 		w.WriteHeader(503)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13912,9 +12228,7 @@ func encodeTeamsAddMemberLegacyResponse(response TeamsAddMemberLegacyRes, w http
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13939,9 +12253,7 @@ func encodeTeamsAddOrUpdateMembershipForUserInOrgResponse(response TeamsAddOrUpd
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13966,9 +12278,7 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUp
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13983,9 +12293,7 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUp
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14010,9 +12318,7 @@ func encodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(response TeamsAddOrUp
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14036,9 +12342,7 @@ func encodeTeamsCheckPermissionsForProjectInOrgResponse(response TeamsCheckPermi
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14060,9 +12364,7 @@ func encodeTeamsCheckPermissionsForProjectLegacyResponse(response TeamsCheckPerm
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14084,9 +12386,7 @@ func encodeTeamsCheckPermissionsForRepoInOrgResponse(response TeamsCheckPermissi
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14111,9 +12411,7 @@ func encodeTeamsCheckPermissionsForRepoLegacyResponse(response TeamsCheckPermiss
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14136,9 +12434,7 @@ func encodeTeamsCreateDiscussionCommentInOrgResponse(response TeamDiscussionComm
 	w.WriteHeader(201)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -14152,9 +12448,7 @@ func encodeTeamsCreateDiscussionCommentLegacyResponse(response TeamDiscussionCom
 	w.WriteHeader(201)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -14168,9 +12462,7 @@ func encodeTeamsCreateDiscussionInOrgResponse(response TeamDiscussion, w http.Re
 	w.WriteHeader(201)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -14184,9 +12476,7 @@ func encodeTeamsCreateDiscussionLegacyResponse(response TeamDiscussion, w http.R
 	w.WriteHeader(201)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -14200,9 +12490,7 @@ func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(response GroupMap
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -14243,9 +12531,7 @@ func encodeTeamsGetByNameResponse(response TeamsGetByNameRes, w http.ResponseWri
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14257,9 +12543,7 @@ func encodeTeamsGetByNameResponse(response TeamsGetByNameRes, w http.ResponseWri
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14276,9 +12560,7 @@ func encodeTeamsGetDiscussionCommentInOrgResponse(response TeamDiscussionComment
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -14292,9 +12574,7 @@ func encodeTeamsGetDiscussionCommentLegacyResponse(response TeamDiscussionCommen
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -14308,9 +12588,7 @@ func encodeTeamsGetDiscussionInOrgResponse(response TeamDiscussion, w http.Respo
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -14324,9 +12602,7 @@ func encodeTeamsGetDiscussionLegacyResponse(response TeamDiscussion, w http.Resp
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -14342,9 +12618,7 @@ func encodeTeamsGetLegacyResponse(response TeamsGetLegacyRes, w http.ResponseWri
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14356,9 +12630,7 @@ func encodeTeamsGetLegacyResponse(response TeamsGetLegacyRes, w http.ResponseWri
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14390,9 +12662,7 @@ func encodeTeamsGetMembershipForUserInOrgResponse(response TeamsGetMembershipFor
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14414,9 +12684,7 @@ func encodeTeamsGetMembershipForUserLegacyResponse(response TeamsGetMembershipFo
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14428,9 +12696,7 @@ func encodeTeamsGetMembershipForUserLegacyResponse(response TeamsGetMembershipFo
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14449,8 +12715,6 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14462,9 +12726,7 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span 
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14481,17 +12743,12 @@ func encodeTeamsListChildInOrgResponse(response []Team, w http.ResponseWriter, s
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -14504,17 +12761,12 @@ func encodeTeamsListDiscussionCommentsInOrgResponse(response []TeamDiscussionCom
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -14527,17 +12779,12 @@ func encodeTeamsListDiscussionCommentsLegacyResponse(response []TeamDiscussionCo
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -14550,17 +12797,12 @@ func encodeTeamsListDiscussionsInOrgResponse(response []TeamDiscussion, w http.R
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -14573,17 +12815,12 @@ func encodeTeamsListDiscussionsLegacyResponse(response []TeamDiscussion, w http.
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -14598,8 +12835,6 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14614,8 +12849,6 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14627,8 +12860,6 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14647,9 +12878,7 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14661,8 +12890,6 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14674,8 +12901,6 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14692,9 +12917,7 @@ func encodeTeamsListIdpGroupsForOrgResponse(response GroupMapping, w http.Respon
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -14708,9 +12931,7 @@ func encodeTeamsListIdpGroupsInOrgResponse(response GroupMapping, w http.Respons
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -14724,17 +12945,12 @@ func encodeTeamsListMembersInOrgResponse(response []SimpleUser, w http.ResponseW
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -14749,8 +12965,6 @@ func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14762,9 +12976,7 @@ func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w 
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14781,17 +12993,12 @@ func encodeTeamsListPendingInvitationsInOrgResponse(response []OrganizationInvit
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -14804,17 +13011,12 @@ func encodeTeamsListPendingInvitationsLegacyResponse(response []OrganizationInvi
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -14827,17 +13029,12 @@ func encodeTeamsListProjectsInOrgResponse(response []TeamProject, w http.Respons
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -14852,8 +13049,6 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14865,9 +13060,7 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14884,17 +13077,12 @@ func encodeTeamsListReposInOrgResponse(response []MinimalRepository, w http.Resp
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -14909,8 +13097,6 @@ func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, w http
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14922,9 +13108,7 @@ func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, w http
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14995,9 +13179,7 @@ func encodeTeamsUpdateDiscussionCommentInOrgResponse(response TeamDiscussionComm
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -15011,9 +13193,7 @@ func encodeTeamsUpdateDiscussionCommentLegacyResponse(response TeamDiscussionCom
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -15027,9 +13207,7 @@ func encodeTeamsUpdateDiscussionInOrgResponse(response TeamDiscussion, w http.Re
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -15043,9 +13221,7 @@ func encodeTeamsUpdateDiscussionLegacyResponse(response TeamDiscussion, w http.R
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -15059,9 +13235,7 @@ func encodeTeamsUpdateInOrgResponse(response TeamFull, w http.ResponseWriter, sp
 	w.WriteHeader(201)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -15083,8 +13257,6 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15096,8 +13268,6 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15109,8 +13279,6 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15148,8 +13316,6 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15161,8 +13327,6 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15174,8 +13338,6 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15200,8 +13362,6 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15213,8 +13373,6 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15226,8 +13384,6 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15252,8 +13408,6 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15265,8 +13419,6 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15278,8 +13430,6 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15298,9 +13448,7 @@ func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedRes, w ht
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15315,8 +13463,6 @@ func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedRes, w ht
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15328,8 +13474,6 @@ func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedRes, w ht
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15348,9 +13492,7 @@ func encodeUsersGetByUsernameResponse(response UsersGetByUsernameRes, w http.Res
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15362,9 +13504,7 @@ func encodeUsersGetByUsernameResponse(response UsersGetByUsernameRes, w http.Res
 		w.WriteHeader(202)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15376,9 +13516,7 @@ func encodeUsersGetByUsernameResponse(response UsersGetByUsernameRes, w http.Res
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15397,9 +13535,7 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15414,8 +13550,6 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15427,8 +13561,6 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15440,8 +13572,6 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15460,9 +13590,7 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15477,8 +13605,6 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15490,8 +13616,6 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15503,8 +13627,6 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15523,8 +13645,6 @@ func encodeUsersListResponse(response UsersListRes, w http.ResponseWriter, span 
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15546,8 +13666,6 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15562,8 +13680,6 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15575,8 +13691,6 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15588,8 +13702,6 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15601,9 +13713,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		w.WriteHeader(415)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15622,8 +13732,6 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15638,8 +13746,6 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15651,8 +13757,6 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15664,8 +13768,6 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15684,8 +13786,6 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15700,8 +13800,6 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15713,8 +13811,6 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15733,8 +13829,6 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15749,8 +13843,6 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15762,8 +13854,6 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15780,17 +13870,12 @@ func encodeUsersListFollowersForUserResponse(response []SimpleUser, w http.Respo
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -15803,17 +13888,12 @@ func encodeUsersListFollowingForUserResponse(response []SimpleUser, w http.Respo
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -15828,8 +13908,6 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15844,8 +13922,6 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15857,8 +13933,6 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15870,8 +13944,6 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15888,17 +13960,12 @@ func encodeUsersListGpgKeysForUserResponse(response []GpgKey, w http.ResponseWri
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -15913,8 +13980,6 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15929,8 +13994,6 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15942,8 +14005,6 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15955,8 +14016,6 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -15973,17 +14032,12 @@ func encodeUsersListPublicKeysForUserResponse(response []KeySimple, w http.Respo
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	more.Down()
+
 	e.ArrStart()
 	for _, elem := range response {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -15998,8 +14052,6 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -16014,8 +14066,6 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -16027,8 +14077,6 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -16040,8 +14088,6 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -16066,8 +14112,6 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter,
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -16079,8 +14123,6 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter,
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -16092,8 +14134,6 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter,
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -16118,8 +14158,6 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 		w.WriteHeader(401)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -16131,8 +14169,6 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 		w.WriteHeader(403)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -16144,8 +14180,6 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 		w.WriteHeader(404)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")

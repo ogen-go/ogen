@@ -18,8 +18,8 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/go-faster/errors"
 	"github.com/google/uuid"
-	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -63,58 +63,44 @@ var (
 // WriteJSON implements json.Marshaler.
 func (s Book) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.MediaID.Set {
-		more.More()
-		e.ObjField("media_id")
+		e.FieldStart("media_id")
 		s.MediaID.WriteJSON(e)
 	}
 	if s.Images.Set {
-		more.More()
-		e.ObjField("images")
+		e.FieldStart("images")
 		s.Images.WriteJSON(e)
 	}
 	if s.Title.Set {
-		more.More()
-		e.ObjField("title")
+		e.FieldStart("title")
 		s.Title.WriteJSON(e)
 	}
 	if s.Tags != nil {
-		more.More()
-		e.ObjField("tags")
-		more.Down()
+		e.FieldStart("tags")
 		e.ArrStart()
 		for _, elem := range s.Tags {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Scanlator.Set {
-		more.More()
-		e.ObjField("scanlator")
+		e.FieldStart("scanlator")
 		s.Scanlator.WriteJSON(e)
 	}
 	if s.UploadDate.Set {
-		more.More()
-		e.ObjField("upload_date")
+		e.FieldStart("upload_date")
 		s.UploadDate.WriteJSON(e)
 	}
 	if s.NumPages.Set {
-		more.More()
-		e.ObjField("num_pages")
+		e.FieldStart("num_pages")
 		s.NumPages.WriteJSON(e)
 	}
 	if s.NumFavorites.Set {
-		more.More()
-		e.ObjField("num_favorites")
+		e.FieldStart("num_favorites")
 		s.NumFavorites.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -189,8 +175,6 @@ func (s *Book) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetBookForbidden) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -211,8 +195,6 @@ func (s *GetBookForbidden) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetPageCoverImageForbidden) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -233,8 +215,6 @@ func (s *GetPageCoverImageForbidden) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetPageImageForbidden) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -255,8 +235,6 @@ func (s *GetPageImageForbidden) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetPageThumbnailImageForbidden) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -277,21 +255,16 @@ func (s *GetPageThumbnailImageForbidden) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Image) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.T.Set {
-		more.More()
-		e.ObjField("t")
+		e.FieldStart("t")
 		s.T.WriteJSON(e)
 	}
 	if s.W.Set {
-		more.More()
-		e.ObjField("w")
+		e.FieldStart("w")
 		s.W.WriteJSON(e)
 	}
 	if s.H.Set {
-		more.More()
-		e.ObjField("h")
+		e.FieldStart("h")
 		s.H.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -329,28 +302,20 @@ func (s *Image) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Images) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Pages != nil {
-		more.More()
-		e.ObjField("pages")
-		more.Down()
+		e.FieldStart("pages")
 		e.ArrStart()
 		for _, elem := range s.Pages {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Cover.Set {
-		more.More()
-		e.ObjField("cover")
+		e.FieldStart("cover")
 		s.Cover.WriteJSON(e)
 	}
 	if s.Thumbnail.Set {
-		more.More()
-		e.ObjField("thumbnail")
+		e.FieldStart("thumbnail")
 		s.Thumbnail.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -533,8 +498,6 @@ func (o *OptTitle) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s SearchByTagIDForbidden) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -558,8 +521,6 @@ func (SearchByTagIDOKApplicationJSON) ReadJSON(d *json.Decoder) error { return n
 // WriteJSON implements json.Marshaler.
 func (s SearchForbidden) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -583,28 +544,20 @@ func (SearchOKApplicationJSON) ReadJSON(d *json.Decoder) error { return nil }
 // WriteJSON implements json.Marshaler.
 func (s SearchResponse) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Result != nil {
-		more.More()
-		e.ObjField("result")
-		more.Down()
+		e.FieldStart("result")
 		e.ArrStart()
 		for _, elem := range s.Result {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.NumPages.Set {
-		more.More()
-		e.ObjField("num_pages")
+		e.FieldStart("num_pages")
 		s.NumPages.WriteJSON(e)
 	}
 	if s.PerPage.Set {
-		more.More()
-		e.ObjField("per_page")
+		e.FieldStart("per_page")
 		s.PerPage.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -649,31 +602,24 @@ func (s *SearchResponse) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Tag) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	if s.Count.Set {
-		more.More()
-		e.ObjField("count")
+		e.FieldStart("count")
 		s.Count.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -739,21 +685,16 @@ func (s *TagType) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s Title) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.English.Set {
-		more.More()
-		e.ObjField("english")
+		e.FieldStart("english")
 		s.English.WriteJSON(e)
 	}
 	if s.Japanese.Set {
-		more.More()
-		e.ObjField("japanese")
+		e.FieldStart("japanese")
 		s.Japanese.WriteJSON(e)
 	}
 	if s.Pretty.Set {
-		more.More()
-		e.ObjField("pretty")
+		e.FieldStart("pretty")
 		s.Pretty.WriteJSON(e)
 	}
 	e.ObjEnd()

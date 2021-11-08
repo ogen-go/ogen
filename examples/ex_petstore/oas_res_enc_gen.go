@@ -18,8 +18,8 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/go-faster/errors"
 	"github.com/google/uuid"
-	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -70,9 +70,7 @@ func encodeCreatePetsResponse(response CreatePetsRes, w http.ResponseWriter, spa
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -91,8 +89,6 @@ func encodeListPetsResponse(response ListPetsRes, w http.ResponseWriter, span tr
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -104,9 +100,7 @@ func encodeListPetsResponse(response ListPetsRes, w http.ResponseWriter, span tr
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -125,9 +119,7 @@ func encodeShowPetByIdResponse(response ShowPetByIdRes, w http.ResponseWriter, s
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -139,9 +131,7 @@ func encodeShowPetByIdResponse(response ShowPetByIdRes, w http.ResponseWriter, s
 		w.WriteHeader(response.StatusCode)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.Response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")

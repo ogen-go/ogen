@@ -18,8 +18,8 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/go-faster/errors"
 	"github.com/google/uuid"
-	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -65,8 +65,6 @@ func encodeCachingResponse(response WorldObjects, w http.ResponseWriter, span tr
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
 	// Unsupported kind "alias".
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -80,9 +78,7 @@ func encodeDBResponse(response WorldObject, w http.ResponseWriter, span trace.Sp
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -96,9 +92,7 @@ func encodeJSONResponse(response HelloWorld, w http.ResponseWriter, span trace.S
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
+
 	response.WriteJSON(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -112,8 +106,6 @@ func encodeQueriesResponse(response WorldObjects, w http.ResponseWriter, span tr
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
 	// Unsupported kind "alias".
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -127,8 +119,6 @@ func encodeUpdatesResponse(response WorldObjects, w http.ResponseWriter, span tr
 	w.WriteHeader(200)
 	e := json.GetEncoder()
 	defer json.PutEncoder(e)
-	more := json.NewMore(e)
-	defer more.Reset()
 	// Unsupported kind "alias".
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")

@@ -18,8 +18,8 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/go-faster/errors"
 	"github.com/google/uuid"
-	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -63,10 +63,8 @@ var (
 // WriteJSON implements json.Marshaler.
 func (s HelloWorld) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
 	e.ObjEnd()
 }
@@ -94,13 +92,11 @@ func (s *HelloWorld) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s WorldObject) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("id")
+
+	e.FieldStart("id")
 	e.Int64(s.ID)
-	more.More()
-	e.ObjField("randomNumber")
+
+	e.FieldStart("randomNumber")
 	e.Int64(s.RandomNumber)
 	e.ObjEnd()
 }

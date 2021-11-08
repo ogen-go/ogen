@@ -18,8 +18,8 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/go-faster/errors"
 	"github.com/google/uuid"
-	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -67,9 +67,7 @@ func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter, span trac
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
-		more.More()
+
 		response.WriteJSON(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -145,8 +143,6 @@ func encodeSearchResponse(response SearchRes, w http.ResponseWriter, span trace.
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -168,8 +164,6 @@ func encodeSearchByTagIDResponse(response SearchByTagIDRes, w http.ResponseWrite
 		w.WriteHeader(200)
 		e := json.GetEncoder()
 		defer json.PutEncoder(e)
-		more := json.NewMore(e)
-		defer more.Reset()
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")

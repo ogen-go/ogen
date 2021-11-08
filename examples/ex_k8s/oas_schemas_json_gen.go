@@ -18,8 +18,8 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/go-faster/errors"
 	"github.com/google/uuid"
-	"github.com/ogen-go/errors"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
@@ -63,8 +63,6 @@ var (
 // WriteJSON implements json.Marshaler.
 func (s GetAPIVersionsUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -85,8 +83,6 @@ func (s *GetAPIVersionsUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetAdmissionregistrationAPIGroupUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -107,8 +103,6 @@ func (s *GetAdmissionregistrationAPIGroupUnauthorized) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s GetAdmissionregistrationV1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -129,8 +123,6 @@ func (s *GetAdmissionregistrationV1APIResourcesUnauthorized) ReadJSON(d *json.De
 // WriteJSON implements json.Marshaler.
 func (s GetApiextensionsAPIGroupUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -151,8 +143,6 @@ func (s *GetApiextensionsAPIGroupUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetApiextensionsV1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -173,8 +163,6 @@ func (s *GetApiextensionsV1APIResourcesUnauthorized) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s GetApiregistrationAPIGroupUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -195,8 +183,6 @@ func (s *GetApiregistrationAPIGroupUnauthorized) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s GetApiregistrationV1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -217,8 +203,6 @@ func (s *GetApiregistrationV1APIResourcesUnauthorized) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s GetAppsAPIGroupUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -239,8 +223,6 @@ func (s *GetAppsAPIGroupUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetAppsV1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -261,8 +243,6 @@ func (s *GetAppsV1APIResourcesUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetAuthenticationAPIGroupUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -283,8 +263,6 @@ func (s *GetAuthenticationAPIGroupUnauthorized) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s GetAuthenticationV1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -305,8 +283,6 @@ func (s *GetAuthenticationV1APIResourcesUnauthorized) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s GetAuthorizationAPIGroupUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -327,8 +303,6 @@ func (s *GetAuthorizationAPIGroupUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetAuthorizationV1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -349,8 +323,6 @@ func (s *GetAuthorizationV1APIResourcesUnauthorized) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s GetAutoscalingAPIGroupUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -371,8 +343,6 @@ func (s *GetAutoscalingAPIGroupUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetAutoscalingV1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -393,8 +363,6 @@ func (s *GetAutoscalingV1APIResourcesUnauthorized) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s GetAutoscalingV2beta1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -415,8 +383,6 @@ func (s *GetAutoscalingV2beta1APIResourcesUnauthorized) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s GetAutoscalingV2beta2APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -437,8 +403,6 @@ func (s *GetAutoscalingV2beta2APIResourcesUnauthorized) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s GetBatchAPIGroupUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -459,8 +423,6 @@ func (s *GetBatchAPIGroupUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetBatchV1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -481,8 +443,6 @@ func (s *GetBatchV1APIResourcesUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetBatchV1beta1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -503,8 +463,6 @@ func (s *GetBatchV1beta1APIResourcesUnauthorized) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s GetCertificatesAPIGroupUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -525,8 +483,6 @@ func (s *GetCertificatesAPIGroupUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetCertificatesV1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -547,8 +503,6 @@ func (s *GetCertificatesV1APIResourcesUnauthorized) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s GetCodeVersionUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -569,8 +523,6 @@ func (s *GetCodeVersionUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetCoordinationAPIGroupUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -591,8 +543,6 @@ func (s *GetCoordinationAPIGroupUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetCoordinationV1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -613,8 +563,6 @@ func (s *GetCoordinationV1APIResourcesUnauthorized) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s GetCoreAPIVersionsUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -635,8 +583,6 @@ func (s *GetCoreAPIVersionsUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetCoreV1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -657,8 +603,6 @@ func (s *GetCoreV1APIResourcesUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetDiscoveryAPIGroupUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -679,8 +623,6 @@ func (s *GetDiscoveryAPIGroupUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetDiscoveryV1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -701,8 +643,6 @@ func (s *GetDiscoveryV1APIResourcesUnauthorized) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s GetDiscoveryV1beta1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -723,8 +663,6 @@ func (s *GetDiscoveryV1beta1APIResourcesUnauthorized) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s GetEventsAPIGroupUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -745,8 +683,6 @@ func (s *GetEventsAPIGroupUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetEventsV1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -767,8 +703,6 @@ func (s *GetEventsV1APIResourcesUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetEventsV1beta1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -789,8 +723,6 @@ func (s *GetEventsV1beta1APIResourcesUnauthorized) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s GetFlowcontrolApiserverAPIGroupUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -811,8 +743,6 @@ func (s *GetFlowcontrolApiserverAPIGroupUnauthorized) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -833,8 +763,6 @@ func (s *GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized) ReadJSON(d *jso
 // WriteJSON implements json.Marshaler.
 func (s GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -855,8 +783,6 @@ func (s *GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized) ReadJSON(d *jso
 // WriteJSON implements json.Marshaler.
 func (s GetInternalApiserverAPIGroupUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -877,8 +803,6 @@ func (s *GetInternalApiserverAPIGroupUnauthorized) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s GetInternalApiserverV1alpha1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -899,8 +823,6 @@ func (s *GetInternalApiserverV1alpha1APIResourcesUnauthorized) ReadJSON(d *json.
 // WriteJSON implements json.Marshaler.
 func (s GetNetworkingAPIGroupUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -921,8 +843,6 @@ func (s *GetNetworkingAPIGroupUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetNetworkingV1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -943,8 +863,6 @@ func (s *GetNetworkingV1APIResourcesUnauthorized) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s GetNodeAPIGroupUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -965,8 +883,6 @@ func (s *GetNodeAPIGroupUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetNodeV1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -987,8 +903,6 @@ func (s *GetNodeV1APIResourcesUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetNodeV1alpha1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1009,8 +923,6 @@ func (s *GetNodeV1alpha1APIResourcesUnauthorized) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s GetNodeV1beta1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1031,8 +943,6 @@ func (s *GetNodeV1beta1APIResourcesUnauthorized) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s GetPolicyAPIGroupUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1053,8 +963,6 @@ func (s *GetPolicyAPIGroupUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetPolicyV1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1075,8 +983,6 @@ func (s *GetPolicyV1APIResourcesUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetPolicyV1beta1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1097,8 +1003,6 @@ func (s *GetPolicyV1beta1APIResourcesUnauthorized) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s GetRbacAuthorizationAPIGroupUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1119,8 +1023,6 @@ func (s *GetRbacAuthorizationAPIGroupUnauthorized) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s GetRbacAuthorizationV1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1141,8 +1043,6 @@ func (s *GetRbacAuthorizationV1APIResourcesUnauthorized) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s GetSchedulingAPIGroupUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1163,8 +1063,6 @@ func (s *GetSchedulingAPIGroupUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetSchedulingV1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1190,8 +1088,6 @@ func (GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON) ReadJSON(d *j
 // WriteJSON implements json.Marshaler.
 func (s GetServiceAccountIssuerOpenIDConfigurationUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1212,8 +1108,6 @@ func (s *GetServiceAccountIssuerOpenIDConfigurationUnauthorized) ReadJSON(d *jso
 // WriteJSON implements json.Marshaler.
 func (s GetStorageAPIGroupUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1234,8 +1128,6 @@ func (s *GetStorageAPIGroupUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetStorageV1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1256,8 +1148,6 @@ func (s *GetStorageV1APIResourcesUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s GetStorageV1alpha1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1278,8 +1168,6 @@ func (s *GetStorageV1alpha1APIResourcesUnauthorized) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s GetStorageV1beta1APIResourcesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -1300,67 +1188,52 @@ func (s *GetStorageV1beta1APIResourcesUnauthorized) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("admissionReviewVersions")
-	more.Down()
+
+	e.FieldStart("admissionReviewVersions")
 	e.ArrStart()
 	for _, elem := range s.AdmissionReviewVersions {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("clientConfig")
+
+	e.FieldStart("clientConfig")
 	s.ClientConfig.WriteJSON(e)
 	if s.FailurePolicy.Set {
-		more.More()
-		e.ObjField("failurePolicy")
+		e.FieldStart("failurePolicy")
 		s.FailurePolicy.WriteJSON(e)
 	}
 	if s.MatchPolicy.Set {
-		more.More()
-		e.ObjField("matchPolicy")
+		e.FieldStart("matchPolicy")
 		s.MatchPolicy.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.NamespaceSelector.Set {
-		more.More()
-		e.ObjField("namespaceSelector")
+		e.FieldStart("namespaceSelector")
 		s.NamespaceSelector.WriteJSON(e)
 	}
 	if s.ObjectSelector.Set {
-		more.More()
-		e.ObjField("objectSelector")
+		e.FieldStart("objectSelector")
 		s.ObjectSelector.WriteJSON(e)
 	}
 	if s.ReinvocationPolicy.Set {
-		more.More()
-		e.ObjField("reinvocationPolicy")
+		e.FieldStart("reinvocationPolicy")
 		s.ReinvocationPolicy.WriteJSON(e)
 	}
 	if s.Rules != nil {
-		more.More()
-		e.ObjField("rules")
-		more.Down()
+		e.FieldStart("rules")
 		e.ArrStart()
 		for _, elem := range s.Rules {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("sideEffects")
+
+	e.FieldStart("sideEffects")
 	e.Str(s.SideEffects)
 	if s.TimeoutSeconds.Set {
-		more.More()
-		e.ObjField("timeoutSeconds")
+		e.FieldStart("timeoutSeconds")
 		s.TimeoutSeconds.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -1455,34 +1328,25 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Webhooks != nil {
-		more.More()
-		e.ObjField("webhooks")
-		more.Down()
+		e.FieldStart("webhooks")
 		e.ArrStart()
 		for _, elem := range s.Webhooks {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -1531,31 +1395,23 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) ReadJSON(d
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -1605,59 +1461,40 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) ReadJS
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiGroups != nil {
-		more.More()
-		e.ObjField("apiGroups")
-		more.Down()
+		e.FieldStart("apiGroups")
 		e.ArrStart()
 		for _, elem := range s.ApiGroups {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.ApiVersions != nil {
-		more.More()
-		e.ObjField("apiVersions")
-		more.Down()
+		e.FieldStart("apiVersions")
 		e.ArrStart()
 		for _, elem := range s.ApiVersions {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Operations != nil {
-		more.More()
-		e.ObjField("operations")
-		more.Down()
+		e.FieldStart("operations")
 		e.ArrStart()
 		for _, elem := range s.Operations {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Resources != nil {
-		more.More()
-		e.ObjField("resources")
-		more.Down()
+		e.FieldStart("resources")
 		e.ArrStart()
 		for _, elem := range s.Resources {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Scope.Set {
-		more.More()
-		e.ObjField("scope")
+		e.FieldStart("scope")
 		s.Scope.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -1741,22 +1578,18 @@ func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1ServiceReference) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("namespace")
+
+	e.FieldStart("namespace")
 	e.Str(s.Namespace)
 	if s.Path.Set {
-		more.More()
-		e.ObjField("path")
+		e.FieldStart("path")
 		s.Path.WriteJSON(e)
 	}
 	if s.Port.Set {
-		more.More()
-		e.ObjField("port")
+		e.FieldStart("port")
 		s.Port.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -1801,62 +1634,48 @@ func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("admissionReviewVersions")
-	more.Down()
+
+	e.FieldStart("admissionReviewVersions")
 	e.ArrStart()
 	for _, elem := range s.AdmissionReviewVersions {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("clientConfig")
+
+	e.FieldStart("clientConfig")
 	s.ClientConfig.WriteJSON(e)
 	if s.FailurePolicy.Set {
-		more.More()
-		e.ObjField("failurePolicy")
+		e.FieldStart("failurePolicy")
 		s.FailurePolicy.WriteJSON(e)
 	}
 	if s.MatchPolicy.Set {
-		more.More()
-		e.ObjField("matchPolicy")
+		e.FieldStart("matchPolicy")
 		s.MatchPolicy.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.NamespaceSelector.Set {
-		more.More()
-		e.ObjField("namespaceSelector")
+		e.FieldStart("namespaceSelector")
 		s.NamespaceSelector.WriteJSON(e)
 	}
 	if s.ObjectSelector.Set {
-		more.More()
-		e.ObjField("objectSelector")
+		e.FieldStart("objectSelector")
 		s.ObjectSelector.WriteJSON(e)
 	}
 	if s.Rules != nil {
-		more.More()
-		e.ObjField("rules")
-		more.Down()
+		e.FieldStart("rules")
 		e.ArrStart()
 		for _, elem := range s.Rules {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("sideEffects")
+
+	e.FieldStart("sideEffects")
 	e.Str(s.SideEffects)
 	if s.TimeoutSeconds.Set {
-		more.More()
-		e.ObjField("timeoutSeconds")
+		e.FieldStart("timeoutSeconds")
 		s.TimeoutSeconds.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -1946,34 +1765,25 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) ReadJSON(d *json.Deco
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Webhooks != nil {
-		more.More()
-		e.ObjField("webhooks")
-		more.Down()
+		e.FieldStart("webhooks")
 		e.ArrStart()
 		for _, elem := range s.Webhooks {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -2022,31 +1832,23 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) ReadJSON
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -2096,27 +1898,20 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Read
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.CaBundle != nil {
-		more.More()
-		e.ObjField("caBundle")
-		more.Down()
+		e.FieldStart("caBundle")
 		e.ArrStart()
 		for _, elem := range s.CaBundle {
 			_ = elem // Unsupported kind "primitive".
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Service.Set {
-		more.More()
-		e.ObjField("service")
+		e.FieldStart("service")
 		s.Service.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -2159,28 +1954,20 @@ func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) ReadJSON(d *json.De
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiServerID.Set {
-		more.More()
-		e.ObjField("apiServerID")
+		e.FieldStart("apiServerID")
 		s.ApiServerID.WriteJSON(e)
 	}
 	if s.DecodableVersions != nil {
-		more.More()
-		e.ObjField("decodableVersions")
-		more.Down()
+		e.FieldStart("decodableVersions")
 		e.ArrStart()
 		for _, elem := range s.DecodableVersions {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.EncodingVersion.Set {
-		more.More()
-		e.ObjField("encodingVersion")
+		e.FieldStart("encodingVersion")
 		s.EncodingVersion.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -2227,28 +2014,23 @@ func (s *IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("spec")
+
+	e.FieldStart("spec")
 	s.Spec.WriteJSON(e)
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	s.Status.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -2293,31 +2075,26 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LastTransitionTime.Set {
-		more.More()
-		e.ObjField("lastTransitionTime")
+		e.FieldStart("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.ObservedGeneration.Set {
-		more.More()
-		e.ObjField("observedGeneration")
+		e.FieldStart("observedGeneration")
 		s.ObservedGeneration.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("reason")
+
+	e.FieldStart("reason")
 	e.Str(s.Reason)
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	e.Str(s.Status)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -2372,31 +2149,23 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) ReadJSON(d *j
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -2446,8 +2215,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -2468,36 +2235,25 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.CommonEncodingVersion.Set {
-		more.More()
-		e.ObjField("commonEncodingVersion")
+		e.FieldStart("commonEncodingVersion")
 		s.CommonEncodingVersion.WriteJSON(e)
 	}
 	if s.Conditions != nil {
-		more.More()
-		e.ObjField("conditions")
-		more.Down()
+		e.FieldStart("conditions")
 		e.ArrStart()
 		for _, elem := range s.Conditions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.StorageVersions != nil {
-		more.More()
-		e.ObjField("storageVersions")
-		more.Down()
+		e.FieldStart("storageVersions")
 		e.ArrStart()
 		for _, elem := range s.StorageVersions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -2548,30 +2304,24 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1ControllerRevision) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Data != nil {
-		more.More()
-		e.ObjField("data")
+		e.FieldStart("data")
 		s.Data.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("revision")
+
+	e.FieldStart("revision")
 	e.Int64(s.Revision)
 	e.ObjEnd()
 }
@@ -2621,31 +2371,23 @@ func (s *IoK8sAPIAppsV1ControllerRevision) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1ControllerRevisionList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -2695,31 +2437,24 @@ func (s *IoK8sAPIAppsV1ControllerRevisionList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSet) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -2767,28 +2502,23 @@ func (s *IoK8sAPIAppsV1DaemonSet) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSetCondition) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LastTransitionTime.Set {
-		more.More()
-		e.ObjField("lastTransitionTime")
+		e.FieldStart("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	e.Str(s.Status)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -2837,31 +2567,23 @@ func (s *IoK8sAPIAppsV1DaemonSetCondition) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSetList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -2911,27 +2633,22 @@ func (s *IoK8sAPIAppsV1DaemonSetList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSetSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.MinReadySeconds.Set {
-		more.More()
-		e.ObjField("minReadySeconds")
+		e.FieldStart("minReadySeconds")
 		s.MinReadySeconds.WriteJSON(e)
 	}
 	if s.RevisionHistoryLimit.Set {
-		more.More()
-		e.ObjField("revisionHistoryLimit")
+		e.FieldStart("revisionHistoryLimit")
 		s.RevisionHistoryLimit.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("selector")
+
+	e.FieldStart("selector")
 	s.Selector.WriteJSON(e)
-	more.More()
-	e.ObjField("template")
+
+	e.FieldStart("template")
 	s.Template.WriteJSON(e)
 	if s.UpdateStrategy.Set {
-		more.More()
-		e.ObjField("updateStrategy")
+		e.FieldStart("updateStrategy")
 		s.UpdateStrategy.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -2977,55 +2694,44 @@ func (s *IoK8sAPIAppsV1DaemonSetSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSetStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.CollisionCount.Set {
-		more.More()
-		e.ObjField("collisionCount")
+		e.FieldStart("collisionCount")
 		s.CollisionCount.WriteJSON(e)
 	}
 	if s.Conditions != nil {
-		more.More()
-		e.ObjField("conditions")
-		more.Down()
+		e.FieldStart("conditions")
 		e.ArrStart()
 		for _, elem := range s.Conditions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("currentNumberScheduled")
+
+	e.FieldStart("currentNumberScheduled")
 	e.Int32(s.CurrentNumberScheduled)
-	more.More()
-	e.ObjField("desiredNumberScheduled")
+
+	e.FieldStart("desiredNumberScheduled")
 	e.Int32(s.DesiredNumberScheduled)
 	if s.NumberAvailable.Set {
-		more.More()
-		e.ObjField("numberAvailable")
+		e.FieldStart("numberAvailable")
 		s.NumberAvailable.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("numberMisscheduled")
+
+	e.FieldStart("numberMisscheduled")
 	e.Int32(s.NumberMisscheduled)
-	more.More()
-	e.ObjField("numberReady")
+
+	e.FieldStart("numberReady")
 	e.Int32(s.NumberReady)
 	if s.NumberUnavailable.Set {
-		more.More()
-		e.ObjField("numberUnavailable")
+		e.FieldStart("numberUnavailable")
 		s.NumberUnavailable.WriteJSON(e)
 	}
 	if s.ObservedGeneration.Set {
-		more.More()
-		e.ObjField("observedGeneration")
+		e.FieldStart("observedGeneration")
 		s.ObservedGeneration.WriteJSON(e)
 	}
 	if s.UpdatedNumberScheduled.Set {
-		more.More()
-		e.ObjField("updatedNumberScheduled")
+		e.FieldStart("updatedNumberScheduled")
 		s.UpdatedNumberScheduled.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -3109,16 +2815,12 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSetUpdateStrategy) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.RollingUpdate.Set {
-		more.More()
-		e.ObjField("rollingUpdate")
+		e.FieldStart("rollingUpdate")
 		s.RollingUpdate.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -3151,31 +2853,24 @@ func (s *IoK8sAPIAppsV1DaemonSetUpdateStrategy) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1Deployment) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -3223,33 +2918,27 @@ func (s *IoK8sAPIAppsV1Deployment) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1DeploymentCondition) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LastTransitionTime.Set {
-		more.More()
-		e.ObjField("lastTransitionTime")
+		e.FieldStart("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(e)
 	}
 	if s.LastUpdateTime.Set {
-		more.More()
-		e.ObjField("lastUpdateTime")
+		e.FieldStart("lastUpdateTime")
 		s.LastUpdateTime.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	e.Str(s.Status)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -3303,31 +2992,23 @@ func (s *IoK8sAPIAppsV1DeploymentCondition) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1DeploymentList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -3377,43 +3058,35 @@ func (s *IoK8sAPIAppsV1DeploymentList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1DeploymentSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.MinReadySeconds.Set {
-		more.More()
-		e.ObjField("minReadySeconds")
+		e.FieldStart("minReadySeconds")
 		s.MinReadySeconds.WriteJSON(e)
 	}
 	if s.Paused.Set {
-		more.More()
-		e.ObjField("paused")
+		e.FieldStart("paused")
 		s.Paused.WriteJSON(e)
 	}
 	if s.ProgressDeadlineSeconds.Set {
-		more.More()
-		e.ObjField("progressDeadlineSeconds")
+		e.FieldStart("progressDeadlineSeconds")
 		s.ProgressDeadlineSeconds.WriteJSON(e)
 	}
 	if s.Replicas.Set {
-		more.More()
-		e.ObjField("replicas")
+		e.FieldStart("replicas")
 		s.Replicas.WriteJSON(e)
 	}
 	if s.RevisionHistoryLimit.Set {
-		more.More()
-		e.ObjField("revisionHistoryLimit")
+		e.FieldStart("revisionHistoryLimit")
 		s.RevisionHistoryLimit.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("selector")
+
+	e.FieldStart("selector")
 	s.Selector.WriteJSON(e)
 	if s.Strategy.Set {
-		more.More()
-		e.ObjField("strategy")
+		e.FieldStart("strategy")
 		s.Strategy.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("template")
+
+	e.FieldStart("template")
 	s.Template.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -3473,53 +3146,40 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1DeploymentStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AvailableReplicas.Set {
-		more.More()
-		e.ObjField("availableReplicas")
+		e.FieldStart("availableReplicas")
 		s.AvailableReplicas.WriteJSON(e)
 	}
 	if s.CollisionCount.Set {
-		more.More()
-		e.ObjField("collisionCount")
+		e.FieldStart("collisionCount")
 		s.CollisionCount.WriteJSON(e)
 	}
 	if s.Conditions != nil {
-		more.More()
-		e.ObjField("conditions")
-		more.Down()
+		e.FieldStart("conditions")
 		e.ArrStart()
 		for _, elem := range s.Conditions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.ObservedGeneration.Set {
-		more.More()
-		e.ObjField("observedGeneration")
+		e.FieldStart("observedGeneration")
 		s.ObservedGeneration.WriteJSON(e)
 	}
 	if s.ReadyReplicas.Set {
-		more.More()
-		e.ObjField("readyReplicas")
+		e.FieldStart("readyReplicas")
 		s.ReadyReplicas.WriteJSON(e)
 	}
 	if s.Replicas.Set {
-		more.More()
-		e.ObjField("replicas")
+		e.FieldStart("replicas")
 		s.Replicas.WriteJSON(e)
 	}
 	if s.UnavailableReplicas.Set {
-		more.More()
-		e.ObjField("unavailableReplicas")
+		e.FieldStart("unavailableReplicas")
 		s.UnavailableReplicas.WriteJSON(e)
 	}
 	if s.UpdatedReplicas.Set {
-		more.More()
-		e.ObjField("updatedReplicas")
+		e.FieldStart("updatedReplicas")
 		s.UpdatedReplicas.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -3589,16 +3249,12 @@ func (s *IoK8sAPIAppsV1DeploymentStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1DeploymentStrategy) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.RollingUpdate.Set {
-		more.More()
-		e.ObjField("rollingUpdate")
+		e.FieldStart("rollingUpdate")
 		s.RollingUpdate.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -3631,31 +3287,24 @@ func (s *IoK8sAPIAppsV1DeploymentStrategy) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1ReplicaSet) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -3703,28 +3352,23 @@ func (s *IoK8sAPIAppsV1ReplicaSet) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1ReplicaSetCondition) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LastTransitionTime.Set {
-		more.More()
-		e.ObjField("lastTransitionTime")
+		e.FieldStart("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	e.Str(s.Status)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -3773,31 +3417,23 @@ func (s *IoK8sAPIAppsV1ReplicaSetCondition) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1ReplicaSetList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -3847,24 +3483,19 @@ func (s *IoK8sAPIAppsV1ReplicaSetList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1ReplicaSetSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.MinReadySeconds.Set {
-		more.More()
-		e.ObjField("minReadySeconds")
+		e.FieldStart("minReadySeconds")
 		s.MinReadySeconds.WriteJSON(e)
 	}
 	if s.Replicas.Set {
-		more.More()
-		e.ObjField("replicas")
+		e.FieldStart("replicas")
 		s.Replicas.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("selector")
+
+	e.FieldStart("selector")
 	s.Selector.WriteJSON(e)
 	if s.Template.Set {
-		more.More()
-		e.ObjField("template")
+		e.FieldStart("template")
 		s.Template.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -3906,42 +3537,32 @@ func (s *IoK8sAPIAppsV1ReplicaSetSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1ReplicaSetStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AvailableReplicas.Set {
-		more.More()
-		e.ObjField("availableReplicas")
+		e.FieldStart("availableReplicas")
 		s.AvailableReplicas.WriteJSON(e)
 	}
 	if s.Conditions != nil {
-		more.More()
-		e.ObjField("conditions")
-		more.Down()
+		e.FieldStart("conditions")
 		e.ArrStart()
 		for _, elem := range s.Conditions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.FullyLabeledReplicas.Set {
-		more.More()
-		e.ObjField("fullyLabeledReplicas")
+		e.FieldStart("fullyLabeledReplicas")
 		s.FullyLabeledReplicas.WriteJSON(e)
 	}
 	if s.ObservedGeneration.Set {
-		more.More()
-		e.ObjField("observedGeneration")
+		e.FieldStart("observedGeneration")
 		s.ObservedGeneration.WriteJSON(e)
 	}
 	if s.ReadyReplicas.Set {
-		more.More()
-		e.ObjField("readyReplicas")
+		e.FieldStart("readyReplicas")
 		s.ReadyReplicas.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("replicas")
+
+	e.FieldStart("replicas")
 	e.Int32(s.Replicas)
 	e.ObjEnd()
 }
@@ -4001,16 +3622,12 @@ func (s *IoK8sAPIAppsV1ReplicaSetStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1RollingUpdateDaemonSet) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.MaxSurge.Set {
-		more.More()
-		e.ObjField("maxSurge")
+		e.FieldStart("maxSurge")
 		s.MaxSurge.WriteJSON(e)
 	}
 	if s.MaxUnavailable.Set {
-		more.More()
-		e.ObjField("maxUnavailable")
+		e.FieldStart("maxUnavailable")
 		s.MaxUnavailable.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -4043,16 +3660,12 @@ func (s *IoK8sAPIAppsV1RollingUpdateDaemonSet) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1RollingUpdateDeployment) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.MaxSurge.Set {
-		more.More()
-		e.ObjField("maxSurge")
+		e.FieldStart("maxSurge")
 		s.MaxSurge.WriteJSON(e)
 	}
 	if s.MaxUnavailable.Set {
-		more.More()
-		e.ObjField("maxUnavailable")
+		e.FieldStart("maxUnavailable")
 		s.MaxUnavailable.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -4085,11 +3698,8 @@ func (s *IoK8sAPIAppsV1RollingUpdateDeployment) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Partition.Set {
-		more.More()
-		e.ObjField("partition")
+		e.FieldStart("partition")
 		s.Partition.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -4117,31 +3727,24 @@ func (s *IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSet) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -4189,28 +3792,23 @@ func (s *IoK8sAPIAppsV1StatefulSet) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSetCondition) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LastTransitionTime.Set {
-		more.More()
-		e.ObjField("lastTransitionTime")
+		e.FieldStart("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	e.Str(s.Status)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -4259,31 +3857,23 @@ func (s *IoK8sAPIAppsV1StatefulSetCondition) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSetList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -4333,53 +3923,42 @@ func (s *IoK8sAPIAppsV1StatefulSetList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSetSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.MinReadySeconds.Set {
-		more.More()
-		e.ObjField("minReadySeconds")
+		e.FieldStart("minReadySeconds")
 		s.MinReadySeconds.WriteJSON(e)
 	}
 	if s.PodManagementPolicy.Set {
-		more.More()
-		e.ObjField("podManagementPolicy")
+		e.FieldStart("podManagementPolicy")
 		s.PodManagementPolicy.WriteJSON(e)
 	}
 	if s.Replicas.Set {
-		more.More()
-		e.ObjField("replicas")
+		e.FieldStart("replicas")
 		s.Replicas.WriteJSON(e)
 	}
 	if s.RevisionHistoryLimit.Set {
-		more.More()
-		e.ObjField("revisionHistoryLimit")
+		e.FieldStart("revisionHistoryLimit")
 		s.RevisionHistoryLimit.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("selector")
+
+	e.FieldStart("selector")
 	s.Selector.WriteJSON(e)
-	more.More()
-	e.ObjField("serviceName")
+
+	e.FieldStart("serviceName")
 	e.Str(s.ServiceName)
-	more.More()
-	e.ObjField("template")
+
+	e.FieldStart("template")
 	s.Template.WriteJSON(e)
 	if s.UpdateStrategy.Set {
-		more.More()
-		e.ObjField("updateStrategy")
+		e.FieldStart("updateStrategy")
 		s.UpdateStrategy.WriteJSON(e)
 	}
 	if s.VolumeClaimTemplates != nil {
-		more.More()
-		e.ObjField("volumeClaimTemplates")
-		more.Down()
+		e.FieldStart("volumeClaimTemplates")
 		e.ArrStart()
 		for _, elem := range s.VolumeClaimTemplates {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -4452,59 +4031,46 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSetStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("availableReplicas")
+
+	e.FieldStart("availableReplicas")
 	e.Int32(s.AvailableReplicas)
 	if s.CollisionCount.Set {
-		more.More()
-		e.ObjField("collisionCount")
+		e.FieldStart("collisionCount")
 		s.CollisionCount.WriteJSON(e)
 	}
 	if s.Conditions != nil {
-		more.More()
-		e.ObjField("conditions")
-		more.Down()
+		e.FieldStart("conditions")
 		e.ArrStart()
 		for _, elem := range s.Conditions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.CurrentReplicas.Set {
-		more.More()
-		e.ObjField("currentReplicas")
+		e.FieldStart("currentReplicas")
 		s.CurrentReplicas.WriteJSON(e)
 	}
 	if s.CurrentRevision.Set {
-		more.More()
-		e.ObjField("currentRevision")
+		e.FieldStart("currentRevision")
 		s.CurrentRevision.WriteJSON(e)
 	}
 	if s.ObservedGeneration.Set {
-		more.More()
-		e.ObjField("observedGeneration")
+		e.FieldStart("observedGeneration")
 		s.ObservedGeneration.WriteJSON(e)
 	}
 	if s.ReadyReplicas.Set {
-		more.More()
-		e.ObjField("readyReplicas")
+		e.FieldStart("readyReplicas")
 		s.ReadyReplicas.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("replicas")
+
+	e.FieldStart("replicas")
 	e.Int32(s.Replicas)
 	if s.UpdateRevision.Set {
-		more.More()
-		e.ObjField("updateRevision")
+		e.FieldStart("updateRevision")
 		s.UpdateRevision.WriteJSON(e)
 	}
 	if s.UpdatedReplicas.Set {
-		more.More()
-		e.ObjField("updatedReplicas")
+		e.FieldStart("updatedReplicas")
 		s.UpdatedReplicas.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -4586,16 +4152,12 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSetUpdateStrategy) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.RollingUpdate.Set {
-		more.More()
-		e.ObjField("rollingUpdate")
+		e.FieldStart("rollingUpdate")
 		s.RollingUpdate.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -4628,18 +4190,15 @@ func (s *IoK8sAPIAppsV1StatefulSetUpdateStrategy) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1CrossVersionObjectReference) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("kind")
+
+	e.FieldStart("kind")
 	e.Str(s.Kind)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -4678,31 +4237,24 @@ func (s *IoK8sAPIAutoscalingV1CrossVersionObjectReference) ReadJSON(d *json.Deco
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -4750,31 +4302,23 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -4824,22 +4368,18 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) ReadJSON(d *json.Deco
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("maxReplicas")
+
+	e.FieldStart("maxReplicas")
 	e.Int32(s.MaxReplicas)
 	if s.MinReplicas.Set {
-		more.More()
-		e.ObjField("minReplicas")
+		e.FieldStart("minReplicas")
 		s.MinReplicas.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("scaleTargetRef")
+
+	e.FieldStart("scaleTargetRef")
 	s.ScaleTargetRef.WriteJSON(e)
 	if s.TargetCPUUtilizationPercentage.Set {
-		more.More()
-		e.ObjField("targetCPUUtilizationPercentage")
+		e.FieldStart("targetCPUUtilizationPercentage")
 		s.TargetCPUUtilizationPercentage.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -4882,27 +4422,22 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) ReadJSON(d *json.Deco
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.CurrentCPUUtilizationPercentage.Set {
-		more.More()
-		e.ObjField("currentCPUUtilizationPercentage")
+		e.FieldStart("currentCPUUtilizationPercentage")
 		s.CurrentCPUUtilizationPercentage.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("currentReplicas")
+
+	e.FieldStart("currentReplicas")
 	e.Int32(s.CurrentReplicas)
-	more.More()
-	e.ObjField("desiredReplicas")
+
+	e.FieldStart("desiredReplicas")
 	e.Int32(s.DesiredReplicas)
 	if s.LastScaleTime.Set {
-		more.More()
-		e.ObjField("lastScaleTime")
+		e.FieldStart("lastScaleTime")
 		s.LastScaleTime.WriteJSON(e)
 	}
 	if s.ObservedGeneration.Set {
-		more.More()
-		e.ObjField("observedGeneration")
+		e.FieldStart("observedGeneration")
 		s.ObservedGeneration.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -4952,31 +4487,24 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) ReadJSON(d *json.De
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1Scale) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -5024,11 +4552,8 @@ func (s *IoK8sAPIAutoscalingV1Scale) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1ScaleSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Replicas.Set {
-		more.More()
-		e.ObjField("replicas")
+		e.FieldStart("replicas")
 		s.Replicas.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -5056,14 +4581,11 @@ func (s *IoK8sAPIAutoscalingV1ScaleSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1ScaleStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("replicas")
+
+	e.FieldStart("replicas")
 	e.Int32(s.Replicas)
 	if s.Selector.Set {
-		more.More()
-		e.ObjField("selector")
+		e.FieldStart("selector")
 		s.Selector.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -5097,22 +4619,18 @@ func (s *IoK8sAPIAutoscalingV1ScaleStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("container")
+
+	e.FieldStart("container")
 	e.Str(s.Container)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.TargetAverageUtilization.Set {
-		more.More()
-		e.ObjField("targetAverageUtilization")
+		e.FieldStart("targetAverageUtilization")
 		s.TargetAverageUtilization.WriteJSON(e)
 	}
 	if s.TargetAverageValue.Set {
-		more.More()
-		e.ObjField("targetAverageValue")
+		e.FieldStart("targetAverageValue")
 		s.TargetAverageValue.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -5157,19 +4675,16 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) ReadJSON(d *js
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("container")
+
+	e.FieldStart("container")
 	e.Str(s.Container)
 	if s.CurrentAverageUtilization.Set {
-		more.More()
-		e.ObjField("currentAverageUtilization")
+		e.FieldStart("currentAverageUtilization")
 		s.CurrentAverageUtilization.WriteJSON(e)
 	}
 	// Unsupported kind "alias".
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -5210,18 +4725,15 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) ReadJSON(d *js
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("kind")
+
+	e.FieldStart("kind")
 	e.Str(s.Kind)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -5260,24 +4772,19 @@ func (s *IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ExternalMetricSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("metricName")
+
+	e.FieldStart("metricName")
 	e.Str(s.MetricName)
 	if s.MetricSelector.Set {
-		more.More()
-		e.ObjField("metricSelector")
+		e.FieldStart("metricSelector")
 		s.MetricSelector.WriteJSON(e)
 	}
 	if s.TargetAverageValue.Set {
-		more.More()
-		e.ObjField("targetAverageValue")
+		e.FieldStart("targetAverageValue")
 		s.TargetAverageValue.WriteJSON(e)
 	}
 	if s.TargetValue.Set {
-		more.More()
-		e.ObjField("targetValue")
+		e.FieldStart("targetValue")
 		s.TargetValue.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -5321,20 +4828,16 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.CurrentAverageValue.Set {
-		more.More()
-		e.ObjField("currentAverageValue")
+		e.FieldStart("currentAverageValue")
 		s.CurrentAverageValue.WriteJSON(e)
 	}
 	// Unsupported kind "alias".
-	more.More()
-	e.ObjField("metricName")
+
+	e.FieldStart("metricName")
 	e.Str(s.MetricName)
 	if s.MetricSelector.Set {
-		more.More()
-		e.ObjField("metricSelector")
+		e.FieldStart("metricSelector")
 		s.MetricSelector.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -5375,31 +4878,24 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -5447,28 +4943,23 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LastTransitionTime.Set {
-		more.More()
-		e.ObjField("lastTransitionTime")
+		e.FieldStart("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	e.Str(s.Status)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -5517,31 +5008,23 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) ReadJSON(d 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -5591,30 +5074,23 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("maxReplicas")
+
+	e.FieldStart("maxReplicas")
 	e.Int32(s.MaxReplicas)
 	if s.Metrics != nil {
-		more.More()
-		e.ObjField("metrics")
-		more.Down()
+		e.FieldStart("metrics")
 		e.ArrStart()
 		for _, elem := range s.Metrics {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.MinReplicas.Set {
-		more.More()
-		e.ObjField("minReplicas")
+		e.FieldStart("minReplicas")
 		s.MinReplicas.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("scaleTargetRef")
+
+	e.FieldStart("scaleTargetRef")
 	s.ScaleTargetRef.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -5663,44 +5139,33 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("conditions")
-	more.Down()
+
+	e.FieldStart("conditions")
 	e.ArrStart()
 	for _, elem := range s.Conditions {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.CurrentMetrics != nil {
-		more.More()
-		e.ObjField("currentMetrics")
-		more.Down()
+		e.FieldStart("currentMetrics")
 		e.ArrStart()
 		for _, elem := range s.CurrentMetrics {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("currentReplicas")
+
+	e.FieldStart("currentReplicas")
 	e.Int32(s.CurrentReplicas)
-	more.More()
-	e.ObjField("desiredReplicas")
+
+	e.FieldStart("desiredReplicas")
 	e.Int32(s.DesiredReplicas)
 	if s.LastScaleTime.Set {
-		more.More()
-		e.ObjField("lastScaleTime")
+		e.FieldStart("lastScaleTime")
 		s.LastScaleTime.WriteJSON(e)
 	}
 	if s.ObservedGeneration.Set {
-		more.More()
-		e.ObjField("observedGeneration")
+		e.FieldStart("observedGeneration")
 		s.ObservedGeneration.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -5769,35 +5234,28 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) ReadJSON(d *js
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1MetricSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ContainerResource.Set {
-		more.More()
-		e.ObjField("containerResource")
+		e.FieldStart("containerResource")
 		s.ContainerResource.WriteJSON(e)
 	}
 	if s.External.Set {
-		more.More()
-		e.ObjField("external")
+		e.FieldStart("external")
 		s.External.WriteJSON(e)
 	}
 	if s.Object.Set {
-		more.More()
-		e.ObjField("object")
+		e.FieldStart("object")
 		s.Object.WriteJSON(e)
 	}
 	if s.Pods.Set {
-		more.More()
-		e.ObjField("pods")
+		e.FieldStart("pods")
 		s.Pods.WriteJSON(e)
 	}
 	if s.Resource.Set {
-		more.More()
-		e.ObjField("resource")
+		e.FieldStart("resource")
 		s.Resource.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -5850,35 +5308,28 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1MetricStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ContainerResource.Set {
-		more.More()
-		e.ObjField("containerResource")
+		e.FieldStart("containerResource")
 		s.ContainerResource.WriteJSON(e)
 	}
 	if s.External.Set {
-		more.More()
-		e.ObjField("external")
+		e.FieldStart("external")
 		s.External.WriteJSON(e)
 	}
 	if s.Object.Set {
-		more.More()
-		e.ObjField("object")
+		e.FieldStart("object")
 		s.Object.WriteJSON(e)
 	}
 	if s.Pods.Set {
-		more.More()
-		e.ObjField("pods")
+		e.FieldStart("pods")
 		s.Pods.WriteJSON(e)
 	}
 	if s.Resource.Set {
-		more.More()
-		e.ObjField("resource")
+		e.FieldStart("resource")
 		s.Resource.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -5931,23 +5382,19 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AverageValue.Set {
-		more.More()
-		e.ObjField("averageValue")
+		e.FieldStart("averageValue")
 		s.AverageValue.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("metricName")
+
+	e.FieldStart("metricName")
 	e.Str(s.MetricName)
 	if s.Selector.Set {
-		more.More()
-		e.ObjField("selector")
+		e.FieldStart("selector")
 		s.Selector.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("target")
+
+	e.FieldStart("target")
 	s.Target.WriteJSON(e)
 	// Unsupported kind "alias".
 	e.ObjEnd()
@@ -5992,24 +5439,20 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AverageValue.Set {
-		more.More()
-		e.ObjField("averageValue")
+		e.FieldStart("averageValue")
 		s.AverageValue.WriteJSON(e)
 	}
 	// Unsupported kind "alias".
-	more.More()
-	e.ObjField("metricName")
+
+	e.FieldStart("metricName")
 	e.Str(s.MetricName)
 	if s.Selector.Set {
-		more.More()
-		e.ObjField("selector")
+		e.FieldStart("selector")
 		s.Selector.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("target")
+
+	e.FieldStart("target")
 	s.Target.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -6053,14 +5496,11 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1PodsMetricSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("metricName")
+
+	e.FieldStart("metricName")
 	e.Str(s.MetricName)
 	if s.Selector.Set {
-		more.More()
-		e.ObjField("selector")
+		e.FieldStart("selector")
 		s.Selector.WriteJSON(e)
 	}
 	// Unsupported kind "alias".
@@ -6097,15 +5537,12 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1PodsMetricStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	// Unsupported kind "alias".
-	more.More()
-	e.ObjField("metricName")
+
+	e.FieldStart("metricName")
 	e.Str(s.MetricName)
 	if s.Selector.Set {
-		more.More()
-		e.ObjField("selector")
+		e.FieldStart("selector")
 		s.Selector.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -6141,19 +5578,15 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ResourceMetricSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.TargetAverageUtilization.Set {
-		more.More()
-		e.ObjField("targetAverageUtilization")
+		e.FieldStart("targetAverageUtilization")
 		s.TargetAverageUtilization.WriteJSON(e)
 	}
 	if s.TargetAverageValue.Set {
-		more.More()
-		e.ObjField("targetAverageValue")
+		e.FieldStart("targetAverageValue")
 		s.TargetAverageValue.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -6192,16 +5625,13 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.CurrentAverageUtilization.Set {
-		more.More()
-		e.ObjField("currentAverageUtilization")
+		e.FieldStart("currentAverageUtilization")
 		s.CurrentAverageUtilization.WriteJSON(e)
 	}
 	// Unsupported kind "alias".
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -6236,16 +5666,14 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("container")
+
+	e.FieldStart("container")
 	e.Str(s.Container)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("target")
+
+	e.FieldStart("target")
 	s.Target.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -6283,16 +5711,14 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) ReadJSON(d *js
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("container")
+
+	e.FieldStart("container")
 	e.Str(s.Container)
-	more.More()
-	e.ObjField("current")
+
+	e.FieldStart("current")
 	s.Current.WriteJSON(e)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -6330,18 +5756,15 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) ReadJSON(d *js
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("kind")
+
+	e.FieldStart("kind")
 	e.Str(s.Kind)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -6380,13 +5803,11 @@ func (s *IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ExternalMetricSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("metric")
+
+	e.FieldStart("metric")
 	s.Metric.WriteJSON(e)
-	more.More()
-	e.ObjField("target")
+
+	e.FieldStart("target")
 	s.Target.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -6416,13 +5837,11 @@ func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricSource) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("current")
+
+	e.FieldStart("current")
 	s.Current.WriteJSON(e)
-	more.More()
-	e.ObjField("metric")
+
+	e.FieldStart("metric")
 	s.Metric.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -6452,16 +5871,14 @@ func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("periodSeconds")
+
+	e.FieldStart("periodSeconds")
 	e.Int32(s.PeriodSeconds)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
-	more.More()
-	e.ObjField("value")
+
+	e.FieldStart("value")
 	e.Int32(s.Value)
 	e.ObjEnd()
 }
@@ -6501,28 +5918,20 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HPAScalingRules) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Policies != nil {
-		more.More()
-		e.ObjField("policies")
-		more.Down()
+		e.FieldStart("policies")
 		e.ArrStart()
 		for _, elem := range s.Policies {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.SelectPolicy.Set {
-		more.More()
-		e.ObjField("selectPolicy")
+		e.FieldStart("selectPolicy")
 		s.SelectPolicy.WriteJSON(e)
 	}
 	if s.StabilizationWindowSeconds.Set {
-		more.More()
-		e.ObjField("stabilizationWindowSeconds")
+		e.FieldStart("stabilizationWindowSeconds")
 		s.StabilizationWindowSeconds.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -6567,31 +5976,24 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingRules) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -6639,16 +6041,12 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ScaleDown.Set {
-		more.More()
-		e.ObjField("scaleDown")
+		e.FieldStart("scaleDown")
 		s.ScaleDown.WriteJSON(e)
 	}
 	if s.ScaleUp.Set {
-		more.More()
-		e.ObjField("scaleUp")
+		e.FieldStart("scaleUp")
 		s.ScaleUp.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -6681,28 +6079,23 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) ReadJSON(d *
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LastTransitionTime.Set {
-		more.More()
-		e.ObjField("lastTransitionTime")
+		e.FieldStart("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	e.Str(s.Status)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -6751,31 +6144,23 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) ReadJSON(d 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -6825,35 +6210,27 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Behavior.Set {
-		more.More()
-		e.ObjField("behavior")
+		e.FieldStart("behavior")
 		s.Behavior.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("maxReplicas")
+
+	e.FieldStart("maxReplicas")
 	e.Int32(s.MaxReplicas)
 	if s.Metrics != nil {
-		more.More()
-		e.ObjField("metrics")
-		more.Down()
+		e.FieldStart("metrics")
 		e.ArrStart()
 		for _, elem := range s.Metrics {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.MinReplicas.Set {
-		more.More()
-		e.ObjField("minReplicas")
+		e.FieldStart("minReplicas")
 		s.MinReplicas.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("scaleTargetRef")
+
+	e.FieldStart("scaleTargetRef")
 	s.ScaleTargetRef.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -6907,44 +6284,33 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("conditions")
-	more.Down()
+
+	e.FieldStart("conditions")
 	e.ArrStart()
 	for _, elem := range s.Conditions {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.CurrentMetrics != nil {
-		more.More()
-		e.ObjField("currentMetrics")
-		more.Down()
+		e.FieldStart("currentMetrics")
 		e.ArrStart()
 		for _, elem := range s.CurrentMetrics {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("currentReplicas")
+
+	e.FieldStart("currentReplicas")
 	e.Int32(s.CurrentReplicas)
-	more.More()
-	e.ObjField("desiredReplicas")
+
+	e.FieldStart("desiredReplicas")
 	e.Int32(s.DesiredReplicas)
 	if s.LastScaleTime.Set {
-		more.More()
-		e.ObjField("lastScaleTime")
+		e.FieldStart("lastScaleTime")
 		s.LastScaleTime.WriteJSON(e)
 	}
 	if s.ObservedGeneration.Set {
-		more.More()
-		e.ObjField("observedGeneration")
+		e.FieldStart("observedGeneration")
 		s.ObservedGeneration.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -7013,14 +6379,11 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) ReadJSON(d *js
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2MetricIdentifier) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Selector.Set {
-		more.More()
-		e.ObjField("selector")
+		e.FieldStart("selector")
 		s.Selector.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -7054,35 +6417,28 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricIdentifier) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2MetricSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ContainerResource.Set {
-		more.More()
-		e.ObjField("containerResource")
+		e.FieldStart("containerResource")
 		s.ContainerResource.WriteJSON(e)
 	}
 	if s.External.Set {
-		more.More()
-		e.ObjField("external")
+		e.FieldStart("external")
 		s.External.WriteJSON(e)
 	}
 	if s.Object.Set {
-		more.More()
-		e.ObjField("object")
+		e.FieldStart("object")
 		s.Object.WriteJSON(e)
 	}
 	if s.Pods.Set {
-		more.More()
-		e.ObjField("pods")
+		e.FieldStart("pods")
 		s.Pods.WriteJSON(e)
 	}
 	if s.Resource.Set {
-		more.More()
-		e.ObjField("resource")
+		e.FieldStart("resource")
 		s.Resource.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -7135,35 +6491,28 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2MetricStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ContainerResource.Set {
-		more.More()
-		e.ObjField("containerResource")
+		e.FieldStart("containerResource")
 		s.ContainerResource.WriteJSON(e)
 	}
 	if s.External.Set {
-		more.More()
-		e.ObjField("external")
+		e.FieldStart("external")
 		s.External.WriteJSON(e)
 	}
 	if s.Object.Set {
-		more.More()
-		e.ObjField("object")
+		e.FieldStart("object")
 		s.Object.WriteJSON(e)
 	}
 	if s.Pods.Set {
-		more.More()
-		e.ObjField("pods")
+		e.FieldStart("pods")
 		s.Pods.WriteJSON(e)
 	}
 	if s.Resource.Set {
-		more.More()
-		e.ObjField("resource")
+		e.FieldStart("resource")
 		s.Resource.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -7216,24 +6565,19 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2MetricTarget) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AverageUtilization.Set {
-		more.More()
-		e.ObjField("averageUtilization")
+		e.FieldStart("averageUtilization")
 		s.AverageUtilization.WriteJSON(e)
 	}
 	if s.AverageValue.Set {
-		more.More()
-		e.ObjField("averageValue")
+		e.FieldStart("averageValue")
 		s.AverageValue.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	if s.Value.Set {
-		more.More()
-		e.ObjField("value")
+		e.FieldStart("value")
 		s.Value.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -7277,21 +6621,16 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2MetricValueStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AverageUtilization.Set {
-		more.More()
-		e.ObjField("averageUtilization")
+		e.FieldStart("averageUtilization")
 		s.AverageUtilization.WriteJSON(e)
 	}
 	if s.AverageValue.Set {
-		more.More()
-		e.ObjField("averageValue")
+		e.FieldStart("averageValue")
 		s.AverageValue.WriteJSON(e)
 	}
 	if s.Value.Set {
-		more.More()
-		e.ObjField("value")
+		e.FieldStart("value")
 		s.Value.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -7329,16 +6668,14 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricValueStatus) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ObjectMetricSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("describedObject")
+
+	e.FieldStart("describedObject")
 	s.DescribedObject.WriteJSON(e)
-	more.More()
-	e.ObjField("metric")
+
+	e.FieldStart("metric")
 	s.Metric.WriteJSON(e)
-	more.More()
-	e.ObjField("target")
+
+	e.FieldStart("target")
 	s.Target.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -7372,16 +6709,14 @@ func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricSource) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("current")
+
+	e.FieldStart("current")
 	s.Current.WriteJSON(e)
-	more.More()
-	e.ObjField("describedObject")
+
+	e.FieldStart("describedObject")
 	s.DescribedObject.WriteJSON(e)
-	more.More()
-	e.ObjField("metric")
+
+	e.FieldStart("metric")
 	s.Metric.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -7415,13 +6750,11 @@ func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2PodsMetricSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("metric")
+
+	e.FieldStart("metric")
 	s.Metric.WriteJSON(e)
-	more.More()
-	e.ObjField("target")
+
+	e.FieldStart("target")
 	s.Target.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -7451,13 +6784,11 @@ func (s *IoK8sAPIAutoscalingV2beta2PodsMetricSource) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2PodsMetricStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("current")
+
+	e.FieldStart("current")
 	s.Current.WriteJSON(e)
-	more.More()
-	e.ObjField("metric")
+
+	e.FieldStart("metric")
 	s.Metric.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -7487,13 +6818,11 @@ func (s *IoK8sAPIAutoscalingV2beta2PodsMetricStatus) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ResourceMetricSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("target")
+
+	e.FieldStart("target")
 	s.Target.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -7525,13 +6854,11 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricSource) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("current")
+
+	e.FieldStart("current")
 	s.Current.WriteJSON(e)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -7563,31 +6890,24 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1CronJob) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -7635,31 +6955,23 @@ func (s *IoK8sAPIBatchV1CronJob) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1CronJobList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -7709,37 +7021,30 @@ func (s *IoK8sAPIBatchV1CronJobList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1CronJobSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ConcurrencyPolicy.Set {
-		more.More()
-		e.ObjField("concurrencyPolicy")
+		e.FieldStart("concurrencyPolicy")
 		s.ConcurrencyPolicy.WriteJSON(e)
 	}
 	if s.FailedJobsHistoryLimit.Set {
-		more.More()
-		e.ObjField("failedJobsHistoryLimit")
+		e.FieldStart("failedJobsHistoryLimit")
 		s.FailedJobsHistoryLimit.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("jobTemplate")
+
+	e.FieldStart("jobTemplate")
 	s.JobTemplate.WriteJSON(e)
-	more.More()
-	e.ObjField("schedule")
+
+	e.FieldStart("schedule")
 	e.Str(s.Schedule)
 	if s.StartingDeadlineSeconds.Set {
-		more.More()
-		e.ObjField("startingDeadlineSeconds")
+		e.FieldStart("startingDeadlineSeconds")
 		s.StartingDeadlineSeconds.WriteJSON(e)
 	}
 	if s.SuccessfulJobsHistoryLimit.Set {
-		more.More()
-		e.ObjField("successfulJobsHistoryLimit")
+		e.FieldStart("successfulJobsHistoryLimit")
 		s.SuccessfulJobsHistoryLimit.WriteJSON(e)
 	}
 	if s.Suspend.Set {
-		more.More()
-		e.ObjField("suspend")
+		e.FieldStart("suspend")
 		s.Suspend.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -7797,28 +7102,20 @@ func (s *IoK8sAPIBatchV1CronJobSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1CronJobStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Active != nil {
-		more.More()
-		e.ObjField("active")
-		more.Down()
+		e.FieldStart("active")
 		e.ArrStart()
 		for _, elem := range s.Active {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.LastScheduleTime.Set {
-		more.More()
-		e.ObjField("lastScheduleTime")
+		e.FieldStart("lastScheduleTime")
 		s.LastScheduleTime.WriteJSON(e)
 	}
 	if s.LastSuccessfulTime.Set {
-		more.More()
-		e.ObjField("lastSuccessfulTime")
+		e.FieldStart("lastSuccessfulTime")
 		s.LastSuccessfulTime.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -7863,31 +7160,24 @@ func (s *IoK8sAPIBatchV1CronJobStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1Job) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -7935,33 +7225,27 @@ func (s *IoK8sAPIBatchV1Job) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1JobCondition) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LastProbeTime.Set {
-		more.More()
-		e.ObjField("lastProbeTime")
+		e.FieldStart("lastProbeTime")
 		s.LastProbeTime.WriteJSON(e)
 	}
 	if s.LastTransitionTime.Set {
-		more.More()
-		e.ObjField("lastTransitionTime")
+		e.FieldStart("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	e.Str(s.Status)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -8015,31 +7299,23 @@ func (s *IoK8sAPIBatchV1JobCondition) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1JobList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -8089,54 +7365,43 @@ func (s *IoK8sAPIBatchV1JobList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1JobSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ActiveDeadlineSeconds.Set {
-		more.More()
-		e.ObjField("activeDeadlineSeconds")
+		e.FieldStart("activeDeadlineSeconds")
 		s.ActiveDeadlineSeconds.WriteJSON(e)
 	}
 	if s.BackoffLimit.Set {
-		more.More()
-		e.ObjField("backoffLimit")
+		e.FieldStart("backoffLimit")
 		s.BackoffLimit.WriteJSON(e)
 	}
 	if s.CompletionMode.Set {
-		more.More()
-		e.ObjField("completionMode")
+		e.FieldStart("completionMode")
 		s.CompletionMode.WriteJSON(e)
 	}
 	if s.Completions.Set {
-		more.More()
-		e.ObjField("completions")
+		e.FieldStart("completions")
 		s.Completions.WriteJSON(e)
 	}
 	if s.ManualSelector.Set {
-		more.More()
-		e.ObjField("manualSelector")
+		e.FieldStart("manualSelector")
 		s.ManualSelector.WriteJSON(e)
 	}
 	if s.Parallelism.Set {
-		more.More()
-		e.ObjField("parallelism")
+		e.FieldStart("parallelism")
 		s.Parallelism.WriteJSON(e)
 	}
 	if s.Selector.Set {
-		more.More()
-		e.ObjField("selector")
+		e.FieldStart("selector")
 		s.Selector.WriteJSON(e)
 	}
 	if s.Suspend.Set {
-		more.More()
-		e.ObjField("suspend")
+		e.FieldStart("suspend")
 		s.Suspend.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("template")
+
+	e.FieldStart("template")
 	s.Template.WriteJSON(e)
 	if s.TtlSecondsAfterFinished.Set {
-		more.More()
-		e.ObjField("ttlSecondsAfterFinished")
+		e.FieldStart("ttlSecondsAfterFinished")
 		s.TtlSecondsAfterFinished.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -8208,53 +7473,40 @@ func (s *IoK8sAPIBatchV1JobSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1JobStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Active.Set {
-		more.More()
-		e.ObjField("active")
+		e.FieldStart("active")
 		s.Active.WriteJSON(e)
 	}
 	if s.CompletedIndexes.Set {
-		more.More()
-		e.ObjField("completedIndexes")
+		e.FieldStart("completedIndexes")
 		s.CompletedIndexes.WriteJSON(e)
 	}
 	if s.CompletionTime.Set {
-		more.More()
-		e.ObjField("completionTime")
+		e.FieldStart("completionTime")
 		s.CompletionTime.WriteJSON(e)
 	}
 	if s.Conditions != nil {
-		more.More()
-		e.ObjField("conditions")
-		more.Down()
+		e.FieldStart("conditions")
 		e.ArrStart()
 		for _, elem := range s.Conditions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Failed.Set {
-		more.More()
-		e.ObjField("failed")
+		e.FieldStart("failed")
 		s.Failed.WriteJSON(e)
 	}
 	if s.StartTime.Set {
-		more.More()
-		e.ObjField("startTime")
+		e.FieldStart("startTime")
 		s.StartTime.WriteJSON(e)
 	}
 	if s.Succeeded.Set {
-		more.More()
-		e.ObjField("succeeded")
+		e.FieldStart("succeeded")
 		s.Succeeded.WriteJSON(e)
 	}
 	if s.UncountedTerminatedPods.Set {
-		more.More()
-		e.ObjField("uncountedTerminatedPods")
+		e.FieldStart("uncountedTerminatedPods")
 		s.UncountedTerminatedPods.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -8324,16 +7576,12 @@ func (s *IoK8sAPIBatchV1JobStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1JobTemplateSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -8366,31 +7614,21 @@ func (s *IoK8sAPIBatchV1JobTemplateSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1UncountedTerminatedPods) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Failed != nil {
-		more.More()
-		e.ObjField("failed")
-		more.Down()
+		e.FieldStart("failed")
 		e.ArrStart()
 		for _, elem := range s.Failed {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Succeeded != nil {
-		more.More()
-		e.ObjField("succeeded")
-		more.Down()
+		e.FieldStart("succeeded")
 		e.ArrStart()
 		for _, elem := range s.Succeeded {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -8440,31 +7678,24 @@ func (s *IoK8sAPIBatchV1UncountedTerminatedPods) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1beta1CronJob) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -8512,31 +7743,23 @@ func (s *IoK8sAPIBatchV1beta1CronJob) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1beta1CronJobList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -8586,37 +7809,30 @@ func (s *IoK8sAPIBatchV1beta1CronJobList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1beta1CronJobSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ConcurrencyPolicy.Set {
-		more.More()
-		e.ObjField("concurrencyPolicy")
+		e.FieldStart("concurrencyPolicy")
 		s.ConcurrencyPolicy.WriteJSON(e)
 	}
 	if s.FailedJobsHistoryLimit.Set {
-		more.More()
-		e.ObjField("failedJobsHistoryLimit")
+		e.FieldStart("failedJobsHistoryLimit")
 		s.FailedJobsHistoryLimit.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("jobTemplate")
+
+	e.FieldStart("jobTemplate")
 	s.JobTemplate.WriteJSON(e)
-	more.More()
-	e.ObjField("schedule")
+
+	e.FieldStart("schedule")
 	e.Str(s.Schedule)
 	if s.StartingDeadlineSeconds.Set {
-		more.More()
-		e.ObjField("startingDeadlineSeconds")
+		e.FieldStart("startingDeadlineSeconds")
 		s.StartingDeadlineSeconds.WriteJSON(e)
 	}
 	if s.SuccessfulJobsHistoryLimit.Set {
-		more.More()
-		e.ObjField("successfulJobsHistoryLimit")
+		e.FieldStart("successfulJobsHistoryLimit")
 		s.SuccessfulJobsHistoryLimit.WriteJSON(e)
 	}
 	if s.Suspend.Set {
-		more.More()
-		e.ObjField("suspend")
+		e.FieldStart("suspend")
 		s.Suspend.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -8674,28 +7890,20 @@ func (s *IoK8sAPIBatchV1beta1CronJobSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1beta1CronJobStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Active != nil {
-		more.More()
-		e.ObjField("active")
-		more.Down()
+		e.FieldStart("active")
 		e.ArrStart()
 		for _, elem := range s.Active {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.LastScheduleTime.Set {
-		more.More()
-		e.ObjField("lastScheduleTime")
+		e.FieldStart("lastScheduleTime")
 		s.LastScheduleTime.WriteJSON(e)
 	}
 	if s.LastSuccessfulTime.Set {
-		more.More()
-		e.ObjField("lastSuccessfulTime")
+		e.FieldStart("lastSuccessfulTime")
 		s.LastSuccessfulTime.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -8740,16 +7948,12 @@ func (s *IoK8sAPIBatchV1beta1CronJobStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1beta1JobTemplateSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -8782,29 +7986,23 @@ func (s *IoK8sAPIBatchV1beta1JobTemplateSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequest) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("spec")
+
+	e.FieldStart("spec")
 	s.Spec.WriteJSON(e)
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -8851,33 +8049,27 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequest) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LastTransitionTime.Set {
-		more.More()
-		e.ObjField("lastTransitionTime")
+		e.FieldStart("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(e)
 	}
 	if s.LastUpdateTime.Set {
-		more.More()
-		e.ObjField("lastUpdateTime")
+		e.FieldStart("lastUpdateTime")
 		s.LastUpdateTime.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	e.Str(s.Status)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -8931,31 +8123,23 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) ReadJSON(d *j
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -9005,62 +8189,46 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ExpirationSeconds.Set {
-		more.More()
-		e.ObjField("expirationSeconds")
+		e.FieldStart("expirationSeconds")
 		s.ExpirationSeconds.WriteJSON(e)
 	}
 	if s.Extra != nil {
-		more.More()
-		e.ObjField("extra")
+		e.FieldStart("extra")
 		s.Extra.WriteJSON(e)
 	}
 	if s.Groups != nil {
-		more.More()
-		e.ObjField("groups")
-		more.Down()
+		e.FieldStart("groups")
 		e.ArrStart()
 		for _, elem := range s.Groups {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("request")
-	more.Down()
+
+	e.FieldStart("request")
 	e.ArrStart()
 	for _, elem := range s.Request {
 		_ = elem // Unsupported kind "primitive".
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("signerName")
+
+	e.FieldStart("signerName")
 	e.Str(s.SignerName)
 	if s.UID.Set {
-		more.More()
-		e.ObjField("uid")
+		e.FieldStart("uid")
 		s.UID.WriteJSON(e)
 	}
 	if s.Usages != nil {
-		more.More()
-		e.ObjField("usages")
-		more.Down()
+		e.FieldStart("usages")
 		e.ArrStart()
 		for _, elem := range s.Usages {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Username.Set {
-		more.More()
-		e.ObjField("username")
+		e.FieldStart("username")
 		s.Username.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -9149,8 +8317,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -9171,30 +8337,21 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) ReadJSON(d *j
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Certificate != nil {
-		more.More()
-		e.ObjField("certificate")
-		more.Down()
+		e.FieldStart("certificate")
 		e.ArrStart()
 		for _, elem := range s.Certificate {
 			_ = elem // Unsupported kind "primitive".
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Conditions != nil {
-		more.More()
-		e.ObjField("conditions")
-		more.Down()
+		e.FieldStart("conditions")
 		e.ArrStart()
 		for _, elem := range s.Conditions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -9238,26 +8395,20 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestStatus) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoordinationV1Lease) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -9300,31 +8451,23 @@ func (s *IoK8sAPICoordinationV1Lease) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoordinationV1LeaseList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -9374,31 +8517,24 @@ func (s *IoK8sAPICoordinationV1LeaseList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoordinationV1LeaseSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AcquireTime.Set {
-		more.More()
-		e.ObjField("acquireTime")
+		e.FieldStart("acquireTime")
 		s.AcquireTime.WriteJSON(e)
 	}
 	if s.HolderIdentity.Set {
-		more.More()
-		e.ObjField("holderIdentity")
+		e.FieldStart("holderIdentity")
 		s.HolderIdentity.WriteJSON(e)
 	}
 	if s.LeaseDurationSeconds.Set {
-		more.More()
-		e.ObjField("leaseDurationSeconds")
+		e.FieldStart("leaseDurationSeconds")
 		s.LeaseDurationSeconds.WriteJSON(e)
 	}
 	if s.LeaseTransitions.Set {
-		more.More()
-		e.ObjField("leaseTransitions")
+		e.FieldStart("leaseTransitions")
 		s.LeaseTransitions.WriteJSON(e)
 	}
 	if s.RenewTime.Set {
-		more.More()
-		e.ObjField("renewTime")
+		e.FieldStart("renewTime")
 		s.RenewTime.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -9446,25 +8582,20 @@ func (s *IoK8sAPICoordinationV1LeaseSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.FsType.Set {
-		more.More()
-		e.ObjField("fsType")
+		e.FieldStart("fsType")
 		s.FsType.WriteJSON(e)
 	}
 	if s.Partition.Set {
-		more.More()
-		e.ObjField("partition")
+		e.FieldStart("partition")
 		s.Partition.WriteJSON(e)
 	}
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("volumeID")
+
+	e.FieldStart("volumeID")
 	e.Str(s.VolumeID)
 	e.ObjEnd()
 }
@@ -9507,21 +8638,16 @@ func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Affinity) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.NodeAffinity.Set {
-		more.More()
-		e.ObjField("nodeAffinity")
+		e.FieldStart("nodeAffinity")
 		s.NodeAffinity.WriteJSON(e)
 	}
 	if s.PodAffinity.Set {
-		more.More()
-		e.ObjField("podAffinity")
+		e.FieldStart("podAffinity")
 		s.PodAffinity.WriteJSON(e)
 	}
 	if s.PodAntiAffinity.Set {
-		more.More()
-		e.ObjField("podAntiAffinity")
+		e.FieldStart("podAntiAffinity")
 		s.PodAntiAffinity.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -9559,13 +8685,11 @@ func (s *IoK8sAPICoreV1Affinity) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1AttachedVolume) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("devicePath")
+
+	e.FieldStart("devicePath")
 	e.Str(s.DevicePath)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -9599,32 +8723,26 @@ func (s *IoK8sAPICoreV1AttachedVolume) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1AzureDiskVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.CachingMode.Set {
-		more.More()
-		e.ObjField("cachingMode")
+		e.FieldStart("cachingMode")
 		s.CachingMode.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("diskName")
+
+	e.FieldStart("diskName")
 	e.Str(s.DiskName)
-	more.More()
-	e.ObjField("diskURI")
+
+	e.FieldStart("diskURI")
 	e.Str(s.DiskURI)
 	if s.FsType.Set {
-		more.More()
-		e.ObjField("fsType")
+		e.FieldStart("fsType")
 		s.FsType.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -9679,23 +8797,19 @@ func (s *IoK8sAPICoreV1AzureDiskVolumeSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1AzureFilePersistentVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("secretName")
+
+	e.FieldStart("secretName")
 	e.Str(s.SecretName)
 	if s.SecretNamespace.Set {
-		more.More()
-		e.ObjField("secretNamespace")
+		e.FieldStart("secretNamespace")
 		s.SecretNamespace.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("shareName")
+
+	e.FieldStart("shareName")
 	e.Str(s.ShareName)
 	e.ObjEnd()
 }
@@ -9739,18 +8853,15 @@ func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1AzureFileVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("secretName")
+
+	e.FieldStart("secretName")
 	e.Str(s.SecretName)
-	more.More()
-	e.ObjField("shareName")
+
+	e.FieldStart("shareName")
 	e.Str(s.ShareName)
 	e.ObjEnd()
 }
@@ -9789,48 +8900,39 @@ func (s *IoK8sAPICoreV1AzureFileVolumeSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1CSIPersistentVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ControllerExpandSecretRef.Set {
-		more.More()
-		e.ObjField("controllerExpandSecretRef")
+		e.FieldStart("controllerExpandSecretRef")
 		s.ControllerExpandSecretRef.WriteJSON(e)
 	}
 	if s.ControllerPublishSecretRef.Set {
-		more.More()
-		e.ObjField("controllerPublishSecretRef")
+		e.FieldStart("controllerPublishSecretRef")
 		s.ControllerPublishSecretRef.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("driver")
+
+	e.FieldStart("driver")
 	e.Str(s.Driver)
 	if s.FsType.Set {
-		more.More()
-		e.ObjField("fsType")
+		e.FieldStart("fsType")
 		s.FsType.WriteJSON(e)
 	}
 	if s.NodePublishSecretRef.Set {
-		more.More()
-		e.ObjField("nodePublishSecretRef")
+		e.FieldStart("nodePublishSecretRef")
 		s.NodePublishSecretRef.WriteJSON(e)
 	}
 	if s.NodeStageSecretRef.Set {
-		more.More()
-		e.ObjField("nodeStageSecretRef")
+		e.FieldStart("nodeStageSecretRef")
 		s.NodeStageSecretRef.WriteJSON(e)
 	}
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
 	if s.VolumeAttributes != nil {
-		more.More()
-		e.ObjField("volumeAttributes")
+		e.FieldStart("volumeAttributes")
 		s.VolumeAttributes.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("volumeHandle")
+
+	e.FieldStart("volumeHandle")
 	e.Str(s.VolumeHandle)
 	e.ObjEnd()
 }
@@ -9901,8 +9003,6 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -9923,29 +9023,23 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) ReadJSON(d *js
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1CSIVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("driver")
+
+	e.FieldStart("driver")
 	e.Str(s.Driver)
 	if s.FsType.Set {
-		more.More()
-		e.ObjField("fsType")
+		e.FieldStart("fsType")
 		s.FsType.WriteJSON(e)
 	}
 	if s.NodePublishSecretRef.Set {
-		more.More()
-		e.ObjField("nodePublishSecretRef")
+		e.FieldStart("nodePublishSecretRef")
 		s.NodePublishSecretRef.WriteJSON(e)
 	}
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
 	if s.VolumeAttributes != nil {
-		more.More()
-		e.ObjField("volumeAttributes")
+		e.FieldStart("volumeAttributes")
 		s.VolumeAttributes.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -9996,8 +9090,6 @@ func (s *IoK8sAPICoreV1CSIVolumeSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -10018,31 +9110,21 @@ func (s *IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Capabilities) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Add != nil {
-		more.More()
-		e.ObjField("add")
-		more.Down()
+		e.FieldStart("add")
 		e.ArrStart()
 		for _, elem := range s.Add {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Drop != nil {
-		more.More()
-		e.ObjField("drop")
-		more.Down()
+		e.FieldStart("drop")
 		e.ArrStart()
 		for _, elem := range s.Drop {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -10092,41 +9174,31 @@ func (s *IoK8sAPICoreV1Capabilities) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("monitors")
-	more.Down()
+
+	e.FieldStart("monitors")
 	e.ArrStart()
 	for _, elem := range s.Monitors {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Path.Set {
-		more.More()
-		e.ObjField("path")
+		e.FieldStart("path")
 		s.Path.WriteJSON(e)
 	}
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
 	if s.SecretFile.Set {
-		more.More()
-		e.ObjField("secretFile")
+		e.FieldStart("secretFile")
 		s.SecretFile.WriteJSON(e)
 	}
 	if s.SecretRef.Set {
-		more.More()
-		e.ObjField("secretRef")
+		e.FieldStart("secretRef")
 		s.SecretRef.WriteJSON(e)
 	}
 	if s.User.Set {
-		more.More()
-		e.ObjField("user")
+		e.FieldStart("user")
 		s.User.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -10188,41 +9260,31 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1CephFSVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("monitors")
-	more.Down()
+
+	e.FieldStart("monitors")
 	e.ArrStart()
 	for _, elem := range s.Monitors {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Path.Set {
-		more.More()
-		e.ObjField("path")
+		e.FieldStart("path")
 		s.Path.WriteJSON(e)
 	}
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
 	if s.SecretFile.Set {
-		more.More()
-		e.ObjField("secretFile")
+		e.FieldStart("secretFile")
 		s.SecretFile.WriteJSON(e)
 	}
 	if s.SecretRef.Set {
-		more.More()
-		e.ObjField("secretRef")
+		e.FieldStart("secretRef")
 		s.SecretRef.WriteJSON(e)
 	}
 	if s.User.Set {
-		more.More()
-		e.ObjField("user")
+		e.FieldStart("user")
 		s.User.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -10284,25 +9346,20 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1CinderPersistentVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.FsType.Set {
-		more.More()
-		e.ObjField("fsType")
+		e.FieldStart("fsType")
 		s.FsType.WriteJSON(e)
 	}
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
 	if s.SecretRef.Set {
-		more.More()
-		e.ObjField("secretRef")
+		e.FieldStart("secretRef")
 		s.SecretRef.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("volumeID")
+
+	e.FieldStart("volumeID")
 	e.Str(s.VolumeID)
 	e.ObjEnd()
 }
@@ -10345,25 +9402,20 @@ func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1CinderVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.FsType.Set {
-		more.More()
-		e.ObjField("fsType")
+		e.FieldStart("fsType")
 		s.FsType.WriteJSON(e)
 	}
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
 	if s.SecretRef.Set {
-		more.More()
-		e.ObjField("secretRef")
+		e.FieldStart("secretRef")
 		s.SecretRef.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("volumeID")
+
+	e.FieldStart("volumeID")
 	e.Str(s.VolumeID)
 	e.ObjEnd()
 }
@@ -10406,11 +9458,8 @@ func (s *IoK8sAPICoreV1CinderVolumeSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ClientIPConfig) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.TimeoutSeconds.Set {
-		more.More()
-		e.ObjField("timeoutSeconds")
+		e.FieldStart("timeoutSeconds")
 		s.TimeoutSeconds.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -10438,23 +9487,19 @@ func (s *IoK8sAPICoreV1ClientIPConfig) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ComponentCondition) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Error.Set {
-		more.More()
-		e.ObjField("error")
+		e.FieldStart("error")
 		s.Error.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	e.Str(s.Status)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -10498,33 +9543,24 @@ func (s *IoK8sAPICoreV1ComponentCondition) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ComponentStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Conditions != nil {
-		more.More()
-		e.ObjField("conditions")
-		more.Down()
+		e.FieldStart("conditions")
 		e.ArrStart()
 		for _, elem := range s.Conditions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -10574,31 +9610,23 @@ func (s *IoK8sAPICoreV1ComponentStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ComponentStatusList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -10648,36 +9676,28 @@ func (s *IoK8sAPICoreV1ComponentStatusList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMap) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.BinaryData != nil {
-		more.More()
-		e.ObjField("binaryData")
+		e.FieldStart("binaryData")
 		s.BinaryData.WriteJSON(e)
 	}
 	if s.Data != nil {
-		more.More()
-		e.ObjField("data")
+		e.FieldStart("data")
 		s.Data.WriteJSON(e)
 	}
 	if s.Immutable.Set {
-		more.More()
-		e.ObjField("immutable")
+		e.FieldStart("immutable")
 		s.Immutable.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -10734,8 +9754,6 @@ func (s *IoK8sAPICoreV1ConfigMap) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapBinaryData) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -10756,8 +9774,6 @@ func (s *IoK8sAPICoreV1ConfigMapBinaryData) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapData) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -10778,16 +9794,12 @@ func (s *IoK8sAPICoreV1ConfigMapData) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapEnvSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Optional.Set {
-		more.More()
-		e.ObjField("optional")
+		e.FieldStart("optional")
 		s.Optional.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -10820,19 +9832,15 @@ func (s *IoK8sAPICoreV1ConfigMapEnvSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapKeySelector) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("key")
+
+	e.FieldStart("key")
 	e.Str(s.Key)
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Optional.Set {
-		more.More()
-		e.ObjField("optional")
+		e.FieldStart("optional")
 		s.Optional.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -10871,31 +9879,23 @@ func (s *IoK8sAPICoreV1ConfigMapKeySelector) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -10945,25 +9945,21 @@ func (s *IoK8sAPICoreV1ConfigMapList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapNodeConfigSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("kubeletConfigKey")
+
+	e.FieldStart("kubeletConfigKey")
 	e.Str(s.KubeletConfigKey)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("namespace")
+
+	e.FieldStart("namespace")
 	e.Str(s.Namespace)
 	if s.ResourceVersion.Set {
-		more.More()
-		e.ObjField("resourceVersion")
+		e.FieldStart("resourceVersion")
 		s.ResourceVersion.WriteJSON(e)
 	}
 	if s.UID.Set {
-		more.More()
-		e.ObjField("uid")
+		e.FieldStart("uid")
 		s.UID.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -11014,28 +10010,20 @@ func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapProjection) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Items != nil {
-		more.More()
-		e.ObjField("items")
-		more.Down()
+		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Optional.Set {
-		more.More()
-		e.ObjField("optional")
+		e.FieldStart("optional")
 		s.Optional.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -11080,33 +10068,24 @@ func (s *IoK8sAPICoreV1ConfigMapProjection) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.DefaultMode.Set {
-		more.More()
-		e.ObjField("defaultMode")
+		e.FieldStart("defaultMode")
 		s.DefaultMode.WriteJSON(e)
 	}
 	if s.Items != nil {
-		more.More()
-		e.ObjField("items")
-		more.Down()
+		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Optional.Set {
-		more.More()
-		e.ObjField("optional")
+		e.FieldStart("optional")
 		s.Optional.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -11156,163 +10135,119 @@ func (s *IoK8sAPICoreV1ConfigMapVolumeSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Container) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Args != nil {
-		more.More()
-		e.ObjField("args")
-		more.Down()
+		e.FieldStart("args")
 		e.ArrStart()
 		for _, elem := range s.Args {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Command != nil {
-		more.More()
-		e.ObjField("command")
-		more.Down()
+		e.FieldStart("command")
 		e.ArrStart()
 		for _, elem := range s.Command {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Env != nil {
-		more.More()
-		e.ObjField("env")
-		more.Down()
+		e.FieldStart("env")
 		e.ArrStart()
 		for _, elem := range s.Env {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.EnvFrom != nil {
-		more.More()
-		e.ObjField("envFrom")
-		more.Down()
+		e.FieldStart("envFrom")
 		e.ArrStart()
 		for _, elem := range s.EnvFrom {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Image.Set {
-		more.More()
-		e.ObjField("image")
+		e.FieldStart("image")
 		s.Image.WriteJSON(e)
 	}
 	if s.ImagePullPolicy.Set {
-		more.More()
-		e.ObjField("imagePullPolicy")
+		e.FieldStart("imagePullPolicy")
 		s.ImagePullPolicy.WriteJSON(e)
 	}
 	if s.Lifecycle.Set {
-		more.More()
-		e.ObjField("lifecycle")
+		e.FieldStart("lifecycle")
 		s.Lifecycle.WriteJSON(e)
 	}
 	if s.LivenessProbe.Set {
-		more.More()
-		e.ObjField("livenessProbe")
+		e.FieldStart("livenessProbe")
 		s.LivenessProbe.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Ports != nil {
-		more.More()
-		e.ObjField("ports")
-		more.Down()
+		e.FieldStart("ports")
 		e.ArrStart()
 		for _, elem := range s.Ports {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.ReadinessProbe.Set {
-		more.More()
-		e.ObjField("readinessProbe")
+		e.FieldStart("readinessProbe")
 		s.ReadinessProbe.WriteJSON(e)
 	}
 	if s.Resources.Set {
-		more.More()
-		e.ObjField("resources")
+		e.FieldStart("resources")
 		s.Resources.WriteJSON(e)
 	}
 	if s.SecurityContext.Set {
-		more.More()
-		e.ObjField("securityContext")
+		e.FieldStart("securityContext")
 		s.SecurityContext.WriteJSON(e)
 	}
 	if s.StartupProbe.Set {
-		more.More()
-		e.ObjField("startupProbe")
+		e.FieldStart("startupProbe")
 		s.StartupProbe.WriteJSON(e)
 	}
 	if s.Stdin.Set {
-		more.More()
-		e.ObjField("stdin")
+		e.FieldStart("stdin")
 		s.Stdin.WriteJSON(e)
 	}
 	if s.StdinOnce.Set {
-		more.More()
-		e.ObjField("stdinOnce")
+		e.FieldStart("stdinOnce")
 		s.StdinOnce.WriteJSON(e)
 	}
 	if s.TerminationMessagePath.Set {
-		more.More()
-		e.ObjField("terminationMessagePath")
+		e.FieldStart("terminationMessagePath")
 		s.TerminationMessagePath.WriteJSON(e)
 	}
 	if s.TerminationMessagePolicy.Set {
-		more.More()
-		e.ObjField("terminationMessagePolicy")
+		e.FieldStart("terminationMessagePolicy")
 		s.TerminationMessagePolicy.WriteJSON(e)
 	}
 	if s.Tty.Set {
-		more.More()
-		e.ObjField("tty")
+		e.FieldStart("tty")
 		s.Tty.WriteJSON(e)
 	}
 	if s.VolumeDevices != nil {
-		more.More()
-		e.ObjField("volumeDevices")
-		more.Down()
+		e.FieldStart("volumeDevices")
 		e.ArrStart()
 		for _, elem := range s.VolumeDevices {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.VolumeMounts != nil {
-		more.More()
-		e.ObjField("volumeMounts")
-		more.Down()
+		e.FieldStart("volumeMounts")
 		e.ArrStart()
 		for _, elem := range s.VolumeMounts {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.WorkingDir.Set {
-		more.More()
-		e.ObjField("workingDir")
+		e.FieldStart("workingDir")
 		s.WorkingDir.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -11499,23 +10434,16 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerImage) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Names != nil {
-		more.More()
-		e.ObjField("names")
-		more.Down()
+		e.FieldStart("names")
 		e.ArrStart()
 		for _, elem := range s.Names {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.SizeBytes.Set {
-		more.More()
-		e.ObjField("sizeBytes")
+		e.FieldStart("sizeBytes")
 		s.SizeBytes.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -11557,29 +10485,23 @@ func (s *IoK8sAPICoreV1ContainerImage) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerPort) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("containerPort")
+
+	e.FieldStart("containerPort")
 	e.Int32(s.ContainerPort)
 	if s.HostIP.Set {
-		more.More()
-		e.ObjField("hostIP")
+		e.FieldStart("hostIP")
 		s.HostIP.WriteJSON(e)
 	}
 	if s.HostPort.Set {
-		more.More()
-		e.ObjField("hostPort")
+		e.FieldStart("hostPort")
 		s.HostPort.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Protocol.Set {
-		more.More()
-		e.ObjField("protocol")
+		e.FieldStart("protocol")
 		s.Protocol.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -11628,21 +10550,16 @@ func (s *IoK8sAPICoreV1ContainerPort) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerState) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Running.Set {
-		more.More()
-		e.ObjField("running")
+		e.FieldStart("running")
 		s.Running.WriteJSON(e)
 	}
 	if s.Terminated.Set {
-		more.More()
-		e.ObjField("terminated")
+		e.FieldStart("terminated")
 		s.Terminated.WriteJSON(e)
 	}
 	if s.Waiting.Set {
-		more.More()
-		e.ObjField("waiting")
+		e.FieldStart("waiting")
 		s.Waiting.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -11680,11 +10597,8 @@ func (s *IoK8sAPICoreV1ContainerState) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerStateRunning) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.StartedAt.Set {
-		more.More()
-		e.ObjField("startedAt")
+		e.FieldStart("startedAt")
 		s.StartedAt.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -11712,39 +10626,31 @@ func (s *IoK8sAPICoreV1ContainerStateRunning) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerStateTerminated) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ContainerID.Set {
-		more.More()
-		e.ObjField("containerID")
+		e.FieldStart("containerID")
 		s.ContainerID.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("exitCode")
+
+	e.FieldStart("exitCode")
 	e.Int32(s.ExitCode)
 	if s.FinishedAt.Set {
-		more.More()
-		e.ObjField("finishedAt")
+		e.FieldStart("finishedAt")
 		s.FinishedAt.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
 	if s.Signal.Set {
-		more.More()
-		e.ObjField("signal")
+		e.FieldStart("signal")
 		s.Signal.WriteJSON(e)
 	}
 	if s.StartedAt.Set {
-		more.More()
-		e.ObjField("startedAt")
+		e.FieldStart("startedAt")
 		s.StartedAt.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -11803,16 +10709,12 @@ func (s *IoK8sAPICoreV1ContainerStateTerminated) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerStateWaiting) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -11845,41 +10747,35 @@ func (s *IoK8sAPICoreV1ContainerStateWaiting) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ContainerID.Set {
-		more.More()
-		e.ObjField("containerID")
+		e.FieldStart("containerID")
 		s.ContainerID.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("image")
+
+	e.FieldStart("image")
 	e.Str(s.Image)
-	more.More()
-	e.ObjField("imageID")
+
+	e.FieldStart("imageID")
 	e.Str(s.ImageID)
 	if s.LastState.Set {
-		more.More()
-		e.ObjField("lastState")
+		e.FieldStart("lastState")
 		s.LastState.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("ready")
+
+	e.FieldStart("ready")
 	e.Bool(s.Ready)
-	more.More()
-	e.ObjField("restartCount")
+
+	e.FieldStart("restartCount")
 	e.Int32(s.RestartCount)
 	if s.Started.Set {
-		more.More()
-		e.ObjField("started")
+		e.FieldStart("started")
 		s.Started.WriteJSON(e)
 	}
 	if s.State.Set {
-		more.More()
-		e.ObjField("state")
+		e.FieldStart("state")
 		s.State.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -11952,10 +10848,8 @@ func (s *IoK8sAPICoreV1ContainerStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1DaemonEndpoint) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("Port")
+
+	e.FieldStart("Port")
 	e.Int32(s.Port)
 	e.ObjEnd()
 }
@@ -11983,19 +10877,13 @@ func (s *IoK8sAPICoreV1DaemonEndpoint) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1DownwardAPIProjection) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Items != nil {
-		more.More()
-		e.ObjField("items")
-		more.Down()
+		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -12029,24 +10917,19 @@ func (s *IoK8sAPICoreV1DownwardAPIProjection) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1DownwardAPIVolumeFile) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.FieldRef.Set {
-		more.More()
-		e.ObjField("fieldRef")
+		e.FieldStart("fieldRef")
 		s.FieldRef.WriteJSON(e)
 	}
 	if s.Mode.Set {
-		more.More()
-		e.ObjField("mode")
+		e.FieldStart("mode")
 		s.Mode.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("path")
+
+	e.FieldStart("path")
 	e.Str(s.Path)
 	if s.ResourceFieldRef.Set {
-		more.More()
-		e.ObjField("resourceFieldRef")
+		e.FieldStart("resourceFieldRef")
 		s.ResourceFieldRef.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -12090,24 +10973,17 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1DownwardAPIVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.DefaultMode.Set {
-		more.More()
-		e.ObjField("defaultMode")
+		e.FieldStart("defaultMode")
 		s.DefaultMode.WriteJSON(e)
 	}
 	if s.Items != nil {
-		more.More()
-		e.ObjField("items")
-		more.Down()
+		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -12146,16 +11022,12 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeSource) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EmptyDirVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Medium.Set {
-		more.More()
-		e.ObjField("medium")
+		e.FieldStart("medium")
 		s.Medium.WriteJSON(e)
 	}
 	if s.SizeLimit.Set {
-		more.More()
-		e.ObjField("sizeLimit")
+		e.FieldStart("sizeLimit")
 		s.SizeLimit.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -12188,24 +11060,19 @@ func (s *IoK8sAPICoreV1EmptyDirVolumeSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EndpointAddress) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Hostname.Set {
-		more.More()
-		e.ObjField("hostname")
+		e.FieldStart("hostname")
 		s.Hostname.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("ip")
+
+	e.FieldStart("ip")
 	e.Str(s.IP)
 	if s.NodeName.Set {
-		more.More()
-		e.ObjField("nodeName")
+		e.FieldStart("nodeName")
 		s.NodeName.WriteJSON(e)
 	}
 	if s.TargetRef.Set {
-		more.More()
-		e.ObjField("targetRef")
+		e.FieldStart("targetRef")
 		s.TargetRef.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -12249,24 +11116,19 @@ func (s *IoK8sAPICoreV1EndpointAddress) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EndpointPort) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AppProtocol.Set {
-		more.More()
-		e.ObjField("appProtocol")
+		e.FieldStart("appProtocol")
 		s.AppProtocol.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("port")
+
+	e.FieldStart("port")
 	e.Int32(s.Port)
 	if s.Protocol.Set {
-		more.More()
-		e.ObjField("protocol")
+		e.FieldStart("protocol")
 		s.Protocol.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -12310,43 +11172,29 @@ func (s *IoK8sAPICoreV1EndpointPort) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EndpointSubset) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Addresses != nil {
-		more.More()
-		e.ObjField("addresses")
-		more.Down()
+		e.FieldStart("addresses")
 		e.ArrStart()
 		for _, elem := range s.Addresses {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.NotReadyAddresses != nil {
-		more.More()
-		e.ObjField("notReadyAddresses")
-		more.Down()
+		e.FieldStart("notReadyAddresses")
 		e.ArrStart()
 		for _, elem := range s.NotReadyAddresses {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Ports != nil {
-		more.More()
-		e.ObjField("ports")
-		more.Down()
+		e.FieldStart("ports")
 		e.ArrStart()
 		for _, elem := range s.Ports {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -12404,34 +11252,25 @@ func (s *IoK8sAPICoreV1EndpointSubset) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Endpoints) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Subsets != nil {
-		more.More()
-		e.ObjField("subsets")
-		more.Down()
+		e.FieldStart("subsets")
 		e.ArrStart()
 		for _, elem := range s.Subsets {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -12480,31 +11319,23 @@ func (s *IoK8sAPICoreV1Endpoints) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EndpointsList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -12554,21 +11385,16 @@ func (s *IoK8sAPICoreV1EndpointsList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EnvFromSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ConfigMapRef.Set {
-		more.More()
-		e.ObjField("configMapRef")
+		e.FieldStart("configMapRef")
 		s.ConfigMapRef.WriteJSON(e)
 	}
 	if s.Prefix.Set {
-		more.More()
-		e.ObjField("prefix")
+		e.FieldStart("prefix")
 		s.Prefix.WriteJSON(e)
 	}
 	if s.SecretRef.Set {
-		more.More()
-		e.ObjField("secretRef")
+		e.FieldStart("secretRef")
 		s.SecretRef.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -12606,19 +11432,15 @@ func (s *IoK8sAPICoreV1EnvFromSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EnvVar) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Value.Set {
-		more.More()
-		e.ObjField("value")
+		e.FieldStart("value")
 		s.Value.WriteJSON(e)
 	}
 	if s.ValueFrom.Set {
-		more.More()
-		e.ObjField("valueFrom")
+		e.FieldStart("valueFrom")
 		s.ValueFrom.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -12657,26 +11479,20 @@ func (s *IoK8sAPICoreV1EnvVar) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EnvVarSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ConfigMapKeyRef.Set {
-		more.More()
-		e.ObjField("configMapKeyRef")
+		e.FieldStart("configMapKeyRef")
 		s.ConfigMapKeyRef.WriteJSON(e)
 	}
 	if s.FieldRef.Set {
-		more.More()
-		e.ObjField("fieldRef")
+		e.FieldStart("fieldRef")
 		s.FieldRef.WriteJSON(e)
 	}
 	if s.ResourceFieldRef.Set {
-		more.More()
-		e.ObjField("resourceFieldRef")
+		e.FieldStart("resourceFieldRef")
 		s.ResourceFieldRef.WriteJSON(e)
 	}
 	if s.SecretKeyRef.Set {
-		more.More()
-		e.ObjField("secretKeyRef")
+		e.FieldStart("secretKeyRef")
 		s.SecretKeyRef.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -12719,168 +11535,123 @@ func (s *IoK8sAPICoreV1EnvVarSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EphemeralContainer) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Args != nil {
-		more.More()
-		e.ObjField("args")
-		more.Down()
+		e.FieldStart("args")
 		e.ArrStart()
 		for _, elem := range s.Args {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Command != nil {
-		more.More()
-		e.ObjField("command")
-		more.Down()
+		e.FieldStart("command")
 		e.ArrStart()
 		for _, elem := range s.Command {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Env != nil {
-		more.More()
-		e.ObjField("env")
-		more.Down()
+		e.FieldStart("env")
 		e.ArrStart()
 		for _, elem := range s.Env {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.EnvFrom != nil {
-		more.More()
-		e.ObjField("envFrom")
-		more.Down()
+		e.FieldStart("envFrom")
 		e.ArrStart()
 		for _, elem := range s.EnvFrom {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Image.Set {
-		more.More()
-		e.ObjField("image")
+		e.FieldStart("image")
 		s.Image.WriteJSON(e)
 	}
 	if s.ImagePullPolicy.Set {
-		more.More()
-		e.ObjField("imagePullPolicy")
+		e.FieldStart("imagePullPolicy")
 		s.ImagePullPolicy.WriteJSON(e)
 	}
 	if s.Lifecycle.Set {
-		more.More()
-		e.ObjField("lifecycle")
+		e.FieldStart("lifecycle")
 		s.Lifecycle.WriteJSON(e)
 	}
 	if s.LivenessProbe.Set {
-		more.More()
-		e.ObjField("livenessProbe")
+		e.FieldStart("livenessProbe")
 		s.LivenessProbe.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Ports != nil {
-		more.More()
-		e.ObjField("ports")
-		more.Down()
+		e.FieldStart("ports")
 		e.ArrStart()
 		for _, elem := range s.Ports {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.ReadinessProbe.Set {
-		more.More()
-		e.ObjField("readinessProbe")
+		e.FieldStart("readinessProbe")
 		s.ReadinessProbe.WriteJSON(e)
 	}
 	if s.Resources.Set {
-		more.More()
-		e.ObjField("resources")
+		e.FieldStart("resources")
 		s.Resources.WriteJSON(e)
 	}
 	if s.SecurityContext.Set {
-		more.More()
-		e.ObjField("securityContext")
+		e.FieldStart("securityContext")
 		s.SecurityContext.WriteJSON(e)
 	}
 	if s.StartupProbe.Set {
-		more.More()
-		e.ObjField("startupProbe")
+		e.FieldStart("startupProbe")
 		s.StartupProbe.WriteJSON(e)
 	}
 	if s.Stdin.Set {
-		more.More()
-		e.ObjField("stdin")
+		e.FieldStart("stdin")
 		s.Stdin.WriteJSON(e)
 	}
 	if s.StdinOnce.Set {
-		more.More()
-		e.ObjField("stdinOnce")
+		e.FieldStart("stdinOnce")
 		s.StdinOnce.WriteJSON(e)
 	}
 	if s.TargetContainerName.Set {
-		more.More()
-		e.ObjField("targetContainerName")
+		e.FieldStart("targetContainerName")
 		s.TargetContainerName.WriteJSON(e)
 	}
 	if s.TerminationMessagePath.Set {
-		more.More()
-		e.ObjField("terminationMessagePath")
+		e.FieldStart("terminationMessagePath")
 		s.TerminationMessagePath.WriteJSON(e)
 	}
 	if s.TerminationMessagePolicy.Set {
-		more.More()
-		e.ObjField("terminationMessagePolicy")
+		e.FieldStart("terminationMessagePolicy")
 		s.TerminationMessagePolicy.WriteJSON(e)
 	}
 	if s.Tty.Set {
-		more.More()
-		e.ObjField("tty")
+		e.FieldStart("tty")
 		s.Tty.WriteJSON(e)
 	}
 	if s.VolumeDevices != nil {
-		more.More()
-		e.ObjField("volumeDevices")
-		more.Down()
+		e.FieldStart("volumeDevices")
 		e.ArrStart()
 		for _, elem := range s.VolumeDevices {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.VolumeMounts != nil {
-		more.More()
-		e.ObjField("volumeMounts")
-		more.Down()
+		e.FieldStart("volumeMounts")
 		e.ArrStart()
 		for _, elem := range s.VolumeMounts {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.WorkingDir.Set {
-		more.More()
-		e.ObjField("workingDir")
+		e.FieldStart("workingDir")
 		s.WorkingDir.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -13072,11 +11843,8 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EphemeralVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.VolumeClaimTemplate.Set {
-		more.More()
-		e.ObjField("volumeClaimTemplate")
+		e.FieldStart("volumeClaimTemplate")
 		s.VolumeClaimTemplate.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -13104,87 +11872,70 @@ func (s *IoK8sAPICoreV1EphemeralVolumeSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Event) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Action.Set {
-		more.More()
-		e.ObjField("action")
+		e.FieldStart("action")
 		s.Action.WriteJSON(e)
 	}
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Count.Set {
-		more.More()
-		e.ObjField("count")
+		e.FieldStart("count")
 		s.Count.WriteJSON(e)
 	}
 	if s.EventTime.Set {
-		more.More()
-		e.ObjField("eventTime")
+		e.FieldStart("eventTime")
 		s.EventTime.WriteJSON(e)
 	}
 	if s.FirstTimestamp.Set {
-		more.More()
-		e.ObjField("firstTimestamp")
+		e.FieldStart("firstTimestamp")
 		s.FirstTimestamp.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("involvedObject")
+
+	e.FieldStart("involvedObject")
 	s.InvolvedObject.WriteJSON(e)
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.LastTimestamp.Set {
-		more.More()
-		e.ObjField("lastTimestamp")
+		e.FieldStart("lastTimestamp")
 		s.LastTimestamp.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("metadata")
+
+	e.FieldStart("metadata")
 	s.Metadata.WriteJSON(e)
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
 	if s.Related.Set {
-		more.More()
-		e.ObjField("related")
+		e.FieldStart("related")
 		s.Related.WriteJSON(e)
 	}
 	if s.ReportingComponent.Set {
-		more.More()
-		e.ObjField("reportingComponent")
+		e.FieldStart("reportingComponent")
 		s.ReportingComponent.WriteJSON(e)
 	}
 	if s.ReportingInstance.Set {
-		more.More()
-		e.ObjField("reportingInstance")
+		e.FieldStart("reportingInstance")
 		s.ReportingInstance.WriteJSON(e)
 	}
 	if s.Series.Set {
-		more.More()
-		e.ObjField("series")
+		e.FieldStart("series")
 		s.Series.WriteJSON(e)
 	}
 	if s.Source.Set {
-		more.More()
-		e.ObjField("source")
+		e.FieldStart("source")
 		s.Source.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -13290,31 +12041,23 @@ func (s *IoK8sAPICoreV1Event) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EventList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -13364,16 +12107,12 @@ func (s *IoK8sAPICoreV1EventList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EventSeries) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Count.Set {
-		more.More()
-		e.ObjField("count")
+		e.FieldStart("count")
 		s.Count.WriteJSON(e)
 	}
 	if s.LastObservedTime.Set {
-		more.More()
-		e.ObjField("lastObservedTime")
+		e.FieldStart("lastObservedTime")
 		s.LastObservedTime.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -13406,16 +12145,12 @@ func (s *IoK8sAPICoreV1EventSeries) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EventSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Component.Set {
-		more.More()
-		e.ObjField("component")
+		e.FieldStart("component")
 		s.Component.WriteJSON(e)
 	}
 	if s.Host.Set {
-		more.More()
-		e.ObjField("host")
+		e.FieldStart("host")
 		s.Host.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -13448,19 +12183,13 @@ func (s *IoK8sAPICoreV1EventSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ExecAction) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Command != nil {
-		more.More()
-		e.ObjField("command")
-		more.Down()
+		e.FieldStart("command")
 		e.ArrStart()
 		for _, elem := range s.Command {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -13496,46 +12225,33 @@ func (s *IoK8sAPICoreV1ExecAction) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1FCVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.FsType.Set {
-		more.More()
-		e.ObjField("fsType")
+		e.FieldStart("fsType")
 		s.FsType.WriteJSON(e)
 	}
 	if s.Lun.Set {
-		more.More()
-		e.ObjField("lun")
+		e.FieldStart("lun")
 		s.Lun.WriteJSON(e)
 	}
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
 	if s.TargetWWNs != nil {
-		more.More()
-		e.ObjField("targetWWNs")
-		more.Down()
+		e.FieldStart("targetWWNs")
 		e.ArrStart()
 		for _, elem := range s.TargetWWNs {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Wwids != nil {
-		more.More()
-		e.ObjField("wwids")
-		more.Down()
+		e.FieldStart("wwids")
 		e.ArrStart()
 		for _, elem := range s.Wwids {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -13600,29 +12316,23 @@ func (s *IoK8sAPICoreV1FCVolumeSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1FlexPersistentVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("driver")
+
+	e.FieldStart("driver")
 	e.Str(s.Driver)
 	if s.FsType.Set {
-		more.More()
-		e.ObjField("fsType")
+		e.FieldStart("fsType")
 		s.FsType.WriteJSON(e)
 	}
 	if s.Options != nil {
-		more.More()
-		e.ObjField("options")
+		e.FieldStart("options")
 		s.Options.WriteJSON(e)
 	}
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
 	if s.SecretRef.Set {
-		more.More()
-		e.ObjField("secretRef")
+		e.FieldStart("secretRef")
 		s.SecretRef.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -13673,8 +12383,6 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -13695,29 +12403,23 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1FlexVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("driver")
+
+	e.FieldStart("driver")
 	e.Str(s.Driver)
 	if s.FsType.Set {
-		more.More()
-		e.ObjField("fsType")
+		e.FieldStart("fsType")
 		s.FsType.WriteJSON(e)
 	}
 	if s.Options != nil {
-		more.More()
-		e.ObjField("options")
+		e.FieldStart("options")
 		s.Options.WriteJSON(e)
 	}
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
 	if s.SecretRef.Set {
-		more.More()
-		e.ObjField("secretRef")
+		e.FieldStart("secretRef")
 		s.SecretRef.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -13768,8 +12470,6 @@ func (s *IoK8sAPICoreV1FlexVolumeSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1FlexVolumeSourceOptions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -13790,16 +12490,12 @@ func (s *IoK8sAPICoreV1FlexVolumeSourceOptions) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1FlockerVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.DatasetName.Set {
-		more.More()
-		e.ObjField("datasetName")
+		e.FieldStart("datasetName")
 		s.DatasetName.WriteJSON(e)
 	}
 	if s.DatasetUUID.Set {
-		more.More()
-		e.ObjField("datasetUUID")
+		e.FieldStart("datasetUUID")
 		s.DatasetUUID.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -13832,24 +12528,19 @@ func (s *IoK8sAPICoreV1FlockerVolumeSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1GCEPersistentDiskVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.FsType.Set {
-		more.More()
-		e.ObjField("fsType")
+		e.FieldStart("fsType")
 		s.FsType.WriteJSON(e)
 	}
 	if s.Partition.Set {
-		more.More()
-		e.ObjField("partition")
+		e.FieldStart("partition")
 		s.Partition.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("pdName")
+
+	e.FieldStart("pdName")
 	e.Str(s.PdName)
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -13893,19 +12584,15 @@ func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1GitRepoVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Directory.Set {
-		more.More()
-		e.ObjField("directory")
+		e.FieldStart("directory")
 		s.Directory.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("repository")
+
+	e.FieldStart("repository")
 	e.Str(s.Repository)
 	if s.Revision.Set {
-		more.More()
-		e.ObjField("revision")
+		e.FieldStart("revision")
 		s.Revision.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -13944,22 +12631,18 @@ func (s *IoK8sAPICoreV1GitRepoVolumeSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1GlusterfsPersistentVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("endpoints")
+
+	e.FieldStart("endpoints")
 	e.Str(s.Endpoints)
 	if s.EndpointsNamespace.Set {
-		more.More()
-		e.ObjField("endpointsNamespace")
+		e.FieldStart("endpointsNamespace")
 		s.EndpointsNamespace.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("path")
+
+	e.FieldStart("path")
 	e.Str(s.Path)
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -14004,17 +12687,14 @@ func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1GlusterfsVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("endpoints")
+
+	e.FieldStart("endpoints")
 	e.Str(s.Endpoints)
-	more.More()
-	e.ObjField("path")
+
+	e.FieldStart("path")
 	e.Str(s.Path)
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -14054,34 +12734,25 @@ func (s *IoK8sAPICoreV1GlusterfsVolumeSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1HTTPGetAction) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Host.Set {
-		more.More()
-		e.ObjField("host")
+		e.FieldStart("host")
 		s.Host.WriteJSON(e)
 	}
 	if s.HttpHeaders != nil {
-		more.More()
-		e.ObjField("httpHeaders")
-		more.Down()
+		e.FieldStart("httpHeaders")
 		e.ArrStart()
 		for _, elem := range s.HttpHeaders {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Path.Set {
-		more.More()
-		e.ObjField("path")
+		e.FieldStart("path")
 		s.Path.WriteJSON(e)
 	}
 	// Unsupported kind "alias".
 	if s.Scheme.Set {
-		more.More()
-		e.ObjField("scheme")
+		e.FieldStart("scheme")
 		s.Scheme.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -14133,13 +12804,11 @@ func (s *IoK8sAPICoreV1HTTPGetAction) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1HTTPHeader) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("value")
+
+	e.FieldStart("value")
 	e.Str(s.Value)
 	e.ObjEnd()
 }
@@ -14173,21 +12842,16 @@ func (s *IoK8sAPICoreV1HTTPHeader) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Handler) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Exec.Set {
-		more.More()
-		e.ObjField("exec")
+		e.FieldStart("exec")
 		s.Exec.WriteJSON(e)
 	}
 	if s.HttpGet.Set {
-		more.More()
-		e.ObjField("httpGet")
+		e.FieldStart("httpGet")
 		s.HttpGet.WriteJSON(e)
 	}
 	if s.TcpSocket.Set {
-		more.More()
-		e.ObjField("tcpSocket")
+		e.FieldStart("tcpSocket")
 		s.TcpSocket.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -14225,23 +12889,16 @@ func (s *IoK8sAPICoreV1Handler) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1HostAlias) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Hostnames != nil {
-		more.More()
-		e.ObjField("hostnames")
-		more.Down()
+		e.FieldStart("hostnames")
 		e.ArrStart()
 		for _, elem := range s.Hostnames {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.IP.Set {
-		more.More()
-		e.ObjField("ip")
+		e.FieldStart("ip")
 		s.IP.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -14283,14 +12940,11 @@ func (s *IoK8sAPICoreV1HostAlias) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1HostPathVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("path")
+
+	e.FieldStart("path")
 	e.Str(s.Path)
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -14324,63 +12978,50 @@ func (s *IoK8sAPICoreV1HostPathVolumeSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ChapAuthDiscovery.Set {
-		more.More()
-		e.ObjField("chapAuthDiscovery")
+		e.FieldStart("chapAuthDiscovery")
 		s.ChapAuthDiscovery.WriteJSON(e)
 	}
 	if s.ChapAuthSession.Set {
-		more.More()
-		e.ObjField("chapAuthSession")
+		e.FieldStart("chapAuthSession")
 		s.ChapAuthSession.WriteJSON(e)
 	}
 	if s.FsType.Set {
-		more.More()
-		e.ObjField("fsType")
+		e.FieldStart("fsType")
 		s.FsType.WriteJSON(e)
 	}
 	if s.InitiatorName.Set {
-		more.More()
-		e.ObjField("initiatorName")
+		e.FieldStart("initiatorName")
 		s.InitiatorName.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("iqn")
+
+	e.FieldStart("iqn")
 	e.Str(s.Iqn)
 	if s.IscsiInterface.Set {
-		more.More()
-		e.ObjField("iscsiInterface")
+		e.FieldStart("iscsiInterface")
 		s.IscsiInterface.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("lun")
+
+	e.FieldStart("lun")
 	e.Int32(s.Lun)
 	if s.Portals != nil {
-		more.More()
-		e.ObjField("portals")
-		more.Down()
+		e.FieldStart("portals")
 		e.ArrStart()
 		for _, elem := range s.Portals {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
 	if s.SecretRef.Set {
-		more.More()
-		e.ObjField("secretRef")
+		e.FieldStart("secretRef")
 		s.SecretRef.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("targetPortal")
+
+	e.FieldStart("targetPortal")
 	e.Str(s.TargetPortal)
 	e.ObjEnd()
 }
@@ -14469,63 +13110,50 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ISCSIVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ChapAuthDiscovery.Set {
-		more.More()
-		e.ObjField("chapAuthDiscovery")
+		e.FieldStart("chapAuthDiscovery")
 		s.ChapAuthDiscovery.WriteJSON(e)
 	}
 	if s.ChapAuthSession.Set {
-		more.More()
-		e.ObjField("chapAuthSession")
+		e.FieldStart("chapAuthSession")
 		s.ChapAuthSession.WriteJSON(e)
 	}
 	if s.FsType.Set {
-		more.More()
-		e.ObjField("fsType")
+		e.FieldStart("fsType")
 		s.FsType.WriteJSON(e)
 	}
 	if s.InitiatorName.Set {
-		more.More()
-		e.ObjField("initiatorName")
+		e.FieldStart("initiatorName")
 		s.InitiatorName.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("iqn")
+
+	e.FieldStart("iqn")
 	e.Str(s.Iqn)
 	if s.IscsiInterface.Set {
-		more.More()
-		e.ObjField("iscsiInterface")
+		e.FieldStart("iscsiInterface")
 		s.IscsiInterface.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("lun")
+
+	e.FieldStart("lun")
 	e.Int32(s.Lun)
 	if s.Portals != nil {
-		more.More()
-		e.ObjField("portals")
-		more.Down()
+		e.FieldStart("portals")
 		e.ArrStart()
 		for _, elem := range s.Portals {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
 	if s.SecretRef.Set {
-		more.More()
-		e.ObjField("secretRef")
+		e.FieldStart("secretRef")
 		s.SecretRef.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("targetPortal")
+
+	e.FieldStart("targetPortal")
 	e.Str(s.TargetPortal)
 	e.ObjEnd()
 }
@@ -14614,18 +13242,15 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1KeyToPath) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("key")
+
+	e.FieldStart("key")
 	e.Str(s.Key)
 	if s.Mode.Set {
-		more.More()
-		e.ObjField("mode")
+		e.FieldStart("mode")
 		s.Mode.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("path")
+
+	e.FieldStart("path")
 	e.Str(s.Path)
 	e.ObjEnd()
 }
@@ -14664,16 +13289,12 @@ func (s *IoK8sAPICoreV1KeyToPath) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Lifecycle) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.PostStart.Set {
-		more.More()
-		e.ObjField("postStart")
+		e.FieldStart("postStart")
 		s.PostStart.WriteJSON(e)
 	}
 	if s.PreStop.Set {
-		more.More()
-		e.ObjField("preStop")
+		e.FieldStart("preStop")
 		s.PreStop.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -14706,26 +13327,20 @@ func (s *IoK8sAPICoreV1Lifecycle) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRange) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -14768,35 +13383,28 @@ func (s *IoK8sAPICoreV1LimitRange) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeItem) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Default != nil {
-		more.More()
-		e.ObjField("default")
+		e.FieldStart("default")
 		s.Default.WriteJSON(e)
 	}
 	if s.DefaultRequest != nil {
-		more.More()
-		e.ObjField("defaultRequest")
+		e.FieldStart("defaultRequest")
 		s.DefaultRequest.WriteJSON(e)
 	}
 	if s.Max != nil {
-		more.More()
-		e.ObjField("max")
+		e.FieldStart("max")
 		s.Max.WriteJSON(e)
 	}
 	if s.MaxLimitRequestRatio != nil {
-		more.More()
-		e.ObjField("maxLimitRequestRatio")
+		e.FieldStart("maxLimitRequestRatio")
 		s.MaxLimitRequestRatio.WriteJSON(e)
 	}
 	if s.Min != nil {
-		more.More()
-		e.ObjField("min")
+		e.FieldStart("min")
 		s.Min.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -14859,8 +13467,6 @@ func (s *IoK8sAPICoreV1LimitRangeItem) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeItemDefault) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -14881,8 +13487,6 @@ func (s *IoK8sAPICoreV1LimitRangeItemDefault) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeItemDefaultRequest) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -14903,8 +13507,6 @@ func (s *IoK8sAPICoreV1LimitRangeItemDefaultRequest) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeItemMax) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -14925,8 +13527,6 @@ func (s *IoK8sAPICoreV1LimitRangeItemMax) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -14947,8 +13547,6 @@ func (s *IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) ReadJSON(d *json.Deco
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeItemMin) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -14969,31 +13567,23 @@ func (s *IoK8sAPICoreV1LimitRangeItemMin) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -15043,18 +13633,13 @@ func (s *IoK8sAPICoreV1LimitRangeList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("limits")
-	more.Down()
+
+	e.FieldStart("limits")
 	e.ArrStart()
 	for _, elem := range s.Limits {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -15087,29 +13672,21 @@ func (s *IoK8sAPICoreV1LimitRangeSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1LoadBalancerIngress) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Hostname.Set {
-		more.More()
-		e.ObjField("hostname")
+		e.FieldStart("hostname")
 		s.Hostname.WriteJSON(e)
 	}
 	if s.IP.Set {
-		more.More()
-		e.ObjField("ip")
+		e.FieldStart("ip")
 		s.IP.WriteJSON(e)
 	}
 	if s.Ports != nil {
-		more.More()
-		e.ObjField("ports")
-		more.Down()
+		e.FieldStart("ports")
 		e.ArrStart()
 		for _, elem := range s.Ports {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -15153,19 +13730,13 @@ func (s *IoK8sAPICoreV1LoadBalancerIngress) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1LoadBalancerStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Ingress != nil {
-		more.More()
-		e.ObjField("ingress")
-		more.Down()
+		e.FieldStart("ingress")
 		e.ArrStart()
 		for _, elem := range s.Ingress {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -15199,11 +13770,8 @@ func (s *IoK8sAPICoreV1LoadBalancerStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1LocalObjectReference) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -15231,15 +13799,12 @@ func (s *IoK8sAPICoreV1LocalObjectReference) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1LocalVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.FsType.Set {
-		more.More()
-		e.ObjField("fsType")
+		e.FieldStart("fsType")
 		s.FsType.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("path")
+
+	e.FieldStart("path")
 	e.Str(s.Path)
 	e.ObjEnd()
 }
@@ -15272,18 +13837,15 @@ func (s *IoK8sAPICoreV1LocalVolumeSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NFSVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("path")
+
+	e.FieldStart("path")
 	e.Str(s.Path)
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("server")
+
+	e.FieldStart("server")
 	e.Str(s.Server)
 	e.ObjEnd()
 }
@@ -15322,31 +13884,24 @@ func (s *IoK8sAPICoreV1NFSVolumeSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Namespace) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -15394,28 +13949,23 @@ func (s *IoK8sAPICoreV1Namespace) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NamespaceCondition) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LastTransitionTime.Set {
-		more.More()
-		e.ObjField("lastTransitionTime")
+		e.FieldStart("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	e.Str(s.Status)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -15464,31 +14014,23 @@ func (s *IoK8sAPICoreV1NamespaceCondition) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NamespaceList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -15538,19 +14080,13 @@ func (s *IoK8sAPICoreV1NamespaceList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NamespaceSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Finalizers != nil {
-		more.More()
-		e.ObjField("finalizers")
-		more.Down()
+		e.FieldStart("finalizers")
 		e.ArrStart()
 		for _, elem := range s.Finalizers {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -15586,23 +14122,16 @@ func (s *IoK8sAPICoreV1NamespaceSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NamespaceStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Conditions != nil {
-		more.More()
-		e.ObjField("conditions")
-		more.Down()
+		e.FieldStart("conditions")
 		e.ArrStart()
 		for _, elem := range s.Conditions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Phase.Set {
-		more.More()
-		e.ObjField("phase")
+		e.FieldStart("phase")
 		s.Phase.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -15642,31 +14171,24 @@ func (s *IoK8sAPICoreV1NamespaceStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Node) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -15714,13 +14236,11 @@ func (s *IoK8sAPICoreV1Node) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeAddress) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("address")
+
+	e.FieldStart("address")
 	e.Str(s.Address)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -15754,23 +14274,16 @@ func (s *IoK8sAPICoreV1NodeAddress) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeAffinity) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
-		more.More()
-		e.ObjField("preferredDuringSchedulingIgnoredDuringExecution")
-		more.Down()
+		e.FieldStart("preferredDuringSchedulingIgnoredDuringExecution")
 		e.ArrStart()
 		for _, elem := range s.PreferredDuringSchedulingIgnoredDuringExecution {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.RequiredDuringSchedulingIgnoredDuringExecution.Set {
-		more.More()
-		e.ObjField("requiredDuringSchedulingIgnoredDuringExecution")
+		e.FieldStart("requiredDuringSchedulingIgnoredDuringExecution")
 		s.RequiredDuringSchedulingIgnoredDuringExecution.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -15810,33 +14323,27 @@ func (s *IoK8sAPICoreV1NodeAffinity) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeCondition) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LastHeartbeatTime.Set {
-		more.More()
-		e.ObjField("lastHeartbeatTime")
+		e.FieldStart("lastHeartbeatTime")
 		s.LastHeartbeatTime.WriteJSON(e)
 	}
 	if s.LastTransitionTime.Set {
-		more.More()
-		e.ObjField("lastTransitionTime")
+		e.FieldStart("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	e.Str(s.Status)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -15890,11 +14397,8 @@ func (s *IoK8sAPICoreV1NodeCondition) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeConfigSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ConfigMap.Set {
-		more.More()
-		e.ObjField("configMap")
+		e.FieldStart("configMap")
 		s.ConfigMap.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -15922,26 +14426,20 @@ func (s *IoK8sAPICoreV1NodeConfigSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeConfigStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Active.Set {
-		more.More()
-		e.ObjField("active")
+		e.FieldStart("active")
 		s.Active.WriteJSON(e)
 	}
 	if s.Assigned.Set {
-		more.More()
-		e.ObjField("assigned")
+		e.FieldStart("assigned")
 		s.Assigned.WriteJSON(e)
 	}
 	if s.Error.Set {
-		more.More()
-		e.ObjField("error")
+		e.FieldStart("error")
 		s.Error.WriteJSON(e)
 	}
 	if s.LastKnownGood.Set {
-		more.More()
-		e.ObjField("lastKnownGood")
+		e.FieldStart("lastKnownGood")
 		s.LastKnownGood.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -15984,11 +14482,8 @@ func (s *IoK8sAPICoreV1NodeConfigStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeDaemonEndpoints) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.KubeletEndpoint.Set {
-		more.More()
-		e.ObjField("kubeletEndpoint")
+		e.FieldStart("kubeletEndpoint")
 		s.KubeletEndpoint.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -16016,31 +14511,23 @@ func (s *IoK8sAPICoreV1NodeDaemonEndpoints) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -16090,18 +14577,13 @@ func (s *IoK8sAPICoreV1NodeList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeSelector) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("nodeSelectorTerms")
-	more.Down()
+
+	e.FieldStart("nodeSelectorTerms")
 	e.ArrStart()
 	for _, elem := range s.NodeSelectorTerms {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -16134,25 +14616,19 @@ func (s *IoK8sAPICoreV1NodeSelector) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeSelectorRequirement) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("key")
+
+	e.FieldStart("key")
 	e.Str(s.Key)
-	more.More()
-	e.ObjField("operator")
+
+	e.FieldStart("operator")
 	e.Str(s.Operator)
 	if s.Values != nil {
-		more.More()
-		e.ObjField("values")
-		more.Down()
+		e.FieldStart("values")
 		e.ArrStart()
 		for _, elem := range s.Values {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -16200,31 +14676,21 @@ func (s *IoK8sAPICoreV1NodeSelectorRequirement) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeSelectorTerm) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.MatchExpressions != nil {
-		more.More()
-		e.ObjField("matchExpressions")
-		more.Down()
+		e.FieldStart("matchExpressions")
 		e.ArrStart()
 		for _, elem := range s.MatchExpressions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.MatchFields != nil {
-		more.More()
-		e.ObjField("matchFields")
-		more.Down()
+		e.FieldStart("matchFields")
 		e.ArrStart()
 		for _, elem := range s.MatchFields {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -16270,55 +14736,40 @@ func (s *IoK8sAPICoreV1NodeSelectorTerm) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ConfigSource.Set {
-		more.More()
-		e.ObjField("configSource")
+		e.FieldStart("configSource")
 		s.ConfigSource.WriteJSON(e)
 	}
 	if s.ExternalID.Set {
-		more.More()
-		e.ObjField("externalID")
+		e.FieldStart("externalID")
 		s.ExternalID.WriteJSON(e)
 	}
 	if s.PodCIDR.Set {
-		more.More()
-		e.ObjField("podCIDR")
+		e.FieldStart("podCIDR")
 		s.PodCIDR.WriteJSON(e)
 	}
 	if s.PodCIDRs != nil {
-		more.More()
-		e.ObjField("podCIDRs")
-		more.Down()
+		e.FieldStart("podCIDRs")
 		e.ArrStart()
 		for _, elem := range s.PodCIDRs {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.ProviderID.Set {
-		more.More()
-		e.ObjField("providerID")
+		e.FieldStart("providerID")
 		s.ProviderID.WriteJSON(e)
 	}
 	if s.Taints != nil {
-		more.More()
-		e.ObjField("taints")
-		more.Down()
+		e.FieldStart("taints")
 		e.ArrStart()
 		for _, elem := range s.Taints {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Unschedulable.Set {
-		more.More()
-		e.ObjField("unschedulable")
+		e.FieldStart("unschedulable")
 		s.Unschedulable.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -16392,97 +14843,69 @@ func (s *IoK8sAPICoreV1NodeSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Addresses != nil {
-		more.More()
-		e.ObjField("addresses")
-		more.Down()
+		e.FieldStart("addresses")
 		e.ArrStart()
 		for _, elem := range s.Addresses {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Allocatable != nil {
-		more.More()
-		e.ObjField("allocatable")
+		e.FieldStart("allocatable")
 		s.Allocatable.WriteJSON(e)
 	}
 	if s.Capacity != nil {
-		more.More()
-		e.ObjField("capacity")
+		e.FieldStart("capacity")
 		s.Capacity.WriteJSON(e)
 	}
 	if s.Conditions != nil {
-		more.More()
-		e.ObjField("conditions")
-		more.Down()
+		e.FieldStart("conditions")
 		e.ArrStart()
 		for _, elem := range s.Conditions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Config.Set {
-		more.More()
-		e.ObjField("config")
+		e.FieldStart("config")
 		s.Config.WriteJSON(e)
 	}
 	if s.DaemonEndpoints.Set {
-		more.More()
-		e.ObjField("daemonEndpoints")
+		e.FieldStart("daemonEndpoints")
 		s.DaemonEndpoints.WriteJSON(e)
 	}
 	if s.Images != nil {
-		more.More()
-		e.ObjField("images")
-		more.Down()
+		e.FieldStart("images")
 		e.ArrStart()
 		for _, elem := range s.Images {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.NodeInfo.Set {
-		more.More()
-		e.ObjField("nodeInfo")
+		e.FieldStart("nodeInfo")
 		s.NodeInfo.WriteJSON(e)
 	}
 	if s.Phase.Set {
-		more.More()
-		e.ObjField("phase")
+		e.FieldStart("phase")
 		s.Phase.WriteJSON(e)
 	}
 	if s.VolumesAttached != nil {
-		more.More()
-		e.ObjField("volumesAttached")
-		more.Down()
+		e.FieldStart("volumesAttached")
 		e.ArrStart()
 		for _, elem := range s.VolumesAttached {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.VolumesInUse != nil {
-		more.More()
-		e.ObjField("volumesInUse")
-		more.Down()
+		e.FieldStart("volumesInUse")
 		e.ArrStart()
 		for _, elem := range s.VolumesInUse {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -16600,8 +15023,6 @@ func (s *IoK8sAPICoreV1NodeStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeStatusAllocatable) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -16622,8 +15043,6 @@ func (s *IoK8sAPICoreV1NodeStatusAllocatable) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeStatusCapacity) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -16644,37 +15063,35 @@ func (s *IoK8sAPICoreV1NodeStatusCapacity) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeSystemInfo) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("architecture")
+
+	e.FieldStart("architecture")
 	e.Str(s.Architecture)
-	more.More()
-	e.ObjField("bootID")
+
+	e.FieldStart("bootID")
 	e.Str(s.BootID)
-	more.More()
-	e.ObjField("containerRuntimeVersion")
+
+	e.FieldStart("containerRuntimeVersion")
 	e.Str(s.ContainerRuntimeVersion)
-	more.More()
-	e.ObjField("kernelVersion")
+
+	e.FieldStart("kernelVersion")
 	e.Str(s.KernelVersion)
-	more.More()
-	e.ObjField("kubeProxyVersion")
+
+	e.FieldStart("kubeProxyVersion")
 	e.Str(s.KubeProxyVersion)
-	more.More()
-	e.ObjField("kubeletVersion")
+
+	e.FieldStart("kubeletVersion")
 	e.Str(s.KubeletVersion)
-	more.More()
-	e.ObjField("machineID")
+
+	e.FieldStart("machineID")
 	e.Str(s.MachineID)
-	more.More()
-	e.ObjField("operatingSystem")
+
+	e.FieldStart("operatingSystem")
 	e.Str(s.OperatingSystem)
-	more.More()
-	e.ObjField("osImage")
+
+	e.FieldStart("osImage")
 	e.Str(s.OsImage)
-	more.More()
-	e.ObjField("systemUUID")
+
+	e.FieldStart("systemUUID")
 	e.Str(s.SystemUUID)
 	e.ObjEnd()
 }
@@ -16756,15 +15173,12 @@ func (s *IoK8sAPICoreV1NodeSystemInfo) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ObjectFieldSelector) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("fieldPath")
+
+	e.FieldStart("fieldPath")
 	e.Str(s.FieldPath)
 	e.ObjEnd()
 }
@@ -16797,41 +15211,32 @@ func (s *IoK8sAPICoreV1ObjectFieldSelector) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ObjectReference) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.FieldPath.Set {
-		more.More()
-		e.ObjField("fieldPath")
+		e.FieldStart("fieldPath")
 		s.FieldPath.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Namespace.Set {
-		more.More()
-		e.ObjField("namespace")
+		e.FieldStart("namespace")
 		s.Namespace.WriteJSON(e)
 	}
 	if s.ResourceVersion.Set {
-		more.More()
-		e.ObjField("resourceVersion")
+		e.FieldStart("resourceVersion")
 		s.ResourceVersion.WriteJSON(e)
 	}
 	if s.UID.Set {
-		more.More()
-		e.ObjField("uid")
+		e.FieldStart("uid")
 		s.UID.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -16889,31 +15294,24 @@ func (s *IoK8sAPICoreV1ObjectReference) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolume) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -16961,31 +15359,24 @@ func (s *IoK8sAPICoreV1PersistentVolume) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaim) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -17033,33 +15424,27 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaim) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LastProbeTime.Set {
-		more.More()
-		e.ObjField("lastProbeTime")
+		e.FieldStart("lastProbeTime")
 		s.LastProbeTime.WriteJSON(e)
 	}
 	if s.LastTransitionTime.Set {
-		more.More()
-		e.ObjField("lastTransitionTime")
+		e.FieldStart("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	e.Str(s.Status)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -17113,31 +15498,23 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -17187,53 +15564,40 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimList) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AccessModes != nil {
-		more.More()
-		e.ObjField("accessModes")
-		more.Down()
+		e.FieldStart("accessModes")
 		e.ArrStart()
 		for _, elem := range s.AccessModes {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.DataSource.Set {
-		more.More()
-		e.ObjField("dataSource")
+		e.FieldStart("dataSource")
 		s.DataSource.WriteJSON(e)
 	}
 	if s.DataSourceRef.Set {
-		more.More()
-		e.ObjField("dataSourceRef")
+		e.FieldStart("dataSourceRef")
 		s.DataSourceRef.WriteJSON(e)
 	}
 	if s.Resources.Set {
-		more.More()
-		e.ObjField("resources")
+		e.FieldStart("resources")
 		s.Resources.WriteJSON(e)
 	}
 	if s.Selector.Set {
-		more.More()
-		e.ObjField("selector")
+		e.FieldStart("selector")
 		s.Selector.WriteJSON(e)
 	}
 	if s.StorageClassName.Set {
-		more.More()
-		e.ObjField("storageClassName")
+		e.FieldStart("storageClassName")
 		s.StorageClassName.WriteJSON(e)
 	}
 	if s.VolumeMode.Set {
-		more.More()
-		e.ObjField("volumeMode")
+		e.FieldStart("volumeMode")
 		s.VolumeMode.WriteJSON(e)
 	}
 	if s.VolumeName.Set {
-		more.More()
-		e.ObjField("volumeName")
+		e.FieldStart("volumeName")
 		s.VolumeName.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -17305,40 +15669,28 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AccessModes != nil {
-		more.More()
-		e.ObjField("accessModes")
-		more.Down()
+		e.FieldStart("accessModes")
 		e.ArrStart()
 		for _, elem := range s.AccessModes {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Capacity != nil {
-		more.More()
-		e.ObjField("capacity")
+		e.FieldStart("capacity")
 		s.Capacity.WriteJSON(e)
 	}
 	if s.Conditions != nil {
-		more.More()
-		e.ObjField("conditions")
-		more.Down()
+		e.FieldStart("conditions")
 		e.ArrStart()
 		for _, elem := range s.Conditions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Phase.Set {
-		more.More()
-		e.ObjField("phase")
+		e.FieldStart("phase")
 		s.Phase.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -17399,8 +15751,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -17421,15 +15771,12 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimTemplate) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("spec")
+
+	e.FieldStart("spec")
 	s.Spec.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -17460,14 +15807,11 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimTemplate) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("claimName")
+
+	e.FieldStart("claimName")
 	e.Str(s.ClaimName)
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -17501,31 +15845,23 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -17575,170 +15911,132 @@ func (s *IoK8sAPICoreV1PersistentVolumeList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AccessModes != nil {
-		more.More()
-		e.ObjField("accessModes")
-		more.Down()
+		e.FieldStart("accessModes")
 		e.ArrStart()
 		for _, elem := range s.AccessModes {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.AwsElasticBlockStore.Set {
-		more.More()
-		e.ObjField("awsElasticBlockStore")
+		e.FieldStart("awsElasticBlockStore")
 		s.AwsElasticBlockStore.WriteJSON(e)
 	}
 	if s.AzureDisk.Set {
-		more.More()
-		e.ObjField("azureDisk")
+		e.FieldStart("azureDisk")
 		s.AzureDisk.WriteJSON(e)
 	}
 	if s.AzureFile.Set {
-		more.More()
-		e.ObjField("azureFile")
+		e.FieldStart("azureFile")
 		s.AzureFile.WriteJSON(e)
 	}
 	if s.Capacity != nil {
-		more.More()
-		e.ObjField("capacity")
+		e.FieldStart("capacity")
 		s.Capacity.WriteJSON(e)
 	}
 	if s.Cephfs.Set {
-		more.More()
-		e.ObjField("cephfs")
+		e.FieldStart("cephfs")
 		s.Cephfs.WriteJSON(e)
 	}
 	if s.Cinder.Set {
-		more.More()
-		e.ObjField("cinder")
+		e.FieldStart("cinder")
 		s.Cinder.WriteJSON(e)
 	}
 	if s.ClaimRef.Set {
-		more.More()
-		e.ObjField("claimRef")
+		e.FieldStart("claimRef")
 		s.ClaimRef.WriteJSON(e)
 	}
 	if s.Csi.Set {
-		more.More()
-		e.ObjField("csi")
+		e.FieldStart("csi")
 		s.Csi.WriteJSON(e)
 	}
 	if s.Fc.Set {
-		more.More()
-		e.ObjField("fc")
+		e.FieldStart("fc")
 		s.Fc.WriteJSON(e)
 	}
 	if s.FlexVolume.Set {
-		more.More()
-		e.ObjField("flexVolume")
+		e.FieldStart("flexVolume")
 		s.FlexVolume.WriteJSON(e)
 	}
 	if s.Flocker.Set {
-		more.More()
-		e.ObjField("flocker")
+		e.FieldStart("flocker")
 		s.Flocker.WriteJSON(e)
 	}
 	if s.GcePersistentDisk.Set {
-		more.More()
-		e.ObjField("gcePersistentDisk")
+		e.FieldStart("gcePersistentDisk")
 		s.GcePersistentDisk.WriteJSON(e)
 	}
 	if s.Glusterfs.Set {
-		more.More()
-		e.ObjField("glusterfs")
+		e.FieldStart("glusterfs")
 		s.Glusterfs.WriteJSON(e)
 	}
 	if s.HostPath.Set {
-		more.More()
-		e.ObjField("hostPath")
+		e.FieldStart("hostPath")
 		s.HostPath.WriteJSON(e)
 	}
 	if s.Iscsi.Set {
-		more.More()
-		e.ObjField("iscsi")
+		e.FieldStart("iscsi")
 		s.Iscsi.WriteJSON(e)
 	}
 	if s.Local.Set {
-		more.More()
-		e.ObjField("local")
+		e.FieldStart("local")
 		s.Local.WriteJSON(e)
 	}
 	if s.MountOptions != nil {
-		more.More()
-		e.ObjField("mountOptions")
-		more.Down()
+		e.FieldStart("mountOptions")
 		e.ArrStart()
 		for _, elem := range s.MountOptions {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Nfs.Set {
-		more.More()
-		e.ObjField("nfs")
+		e.FieldStart("nfs")
 		s.Nfs.WriteJSON(e)
 	}
 	if s.NodeAffinity.Set {
-		more.More()
-		e.ObjField("nodeAffinity")
+		e.FieldStart("nodeAffinity")
 		s.NodeAffinity.WriteJSON(e)
 	}
 	if s.PersistentVolumeReclaimPolicy.Set {
-		more.More()
-		e.ObjField("persistentVolumeReclaimPolicy")
+		e.FieldStart("persistentVolumeReclaimPolicy")
 		s.PersistentVolumeReclaimPolicy.WriteJSON(e)
 	}
 	if s.PhotonPersistentDisk.Set {
-		more.More()
-		e.ObjField("photonPersistentDisk")
+		e.FieldStart("photonPersistentDisk")
 		s.PhotonPersistentDisk.WriteJSON(e)
 	}
 	if s.PortworxVolume.Set {
-		more.More()
-		e.ObjField("portworxVolume")
+		e.FieldStart("portworxVolume")
 		s.PortworxVolume.WriteJSON(e)
 	}
 	if s.Quobyte.Set {
-		more.More()
-		e.ObjField("quobyte")
+		e.FieldStart("quobyte")
 		s.Quobyte.WriteJSON(e)
 	}
 	if s.Rbd.Set {
-		more.More()
-		e.ObjField("rbd")
+		e.FieldStart("rbd")
 		s.Rbd.WriteJSON(e)
 	}
 	if s.ScaleIO.Set {
-		more.More()
-		e.ObjField("scaleIO")
+		e.FieldStart("scaleIO")
 		s.ScaleIO.WriteJSON(e)
 	}
 	if s.StorageClassName.Set {
-		more.More()
-		e.ObjField("storageClassName")
+		e.FieldStart("storageClassName")
 		s.StorageClassName.WriteJSON(e)
 	}
 	if s.Storageos.Set {
-		more.More()
-		e.ObjField("storageos")
+		e.FieldStart("storageos")
 		s.Storageos.WriteJSON(e)
 	}
 	if s.VolumeMode.Set {
-		more.More()
-		e.ObjField("volumeMode")
+		e.FieldStart("volumeMode")
 		s.VolumeMode.WriteJSON(e)
 	}
 	if s.VsphereVolume.Set {
-		more.More()
-		e.ObjField("vsphereVolume")
+		e.FieldStart("vsphereVolume")
 		s.VsphereVolume.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -17931,8 +16229,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeSpecCapacity) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -17953,21 +16249,16 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpecCapacity) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Phase.Set {
-		more.More()
-		e.ObjField("phase")
+		e.FieldStart("phase")
 		s.Phase.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -18005,15 +16296,12 @@ func (s *IoK8sAPICoreV1PersistentVolumeStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.FsType.Set {
-		more.More()
-		e.ObjField("fsType")
+		e.FieldStart("fsType")
 		s.FsType.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("pdID")
+
+	e.FieldStart("pdID")
 	e.Str(s.PdID)
 	e.ObjEnd()
 }
@@ -18046,31 +16334,24 @@ func (s *IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Pod) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -18118,31 +16399,21 @@ func (s *IoK8sAPICoreV1Pod) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodAffinity) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
-		more.More()
-		e.ObjField("preferredDuringSchedulingIgnoredDuringExecution")
-		more.Down()
+		e.FieldStart("preferredDuringSchedulingIgnoredDuringExecution")
 		e.ArrStart()
 		for _, elem := range s.PreferredDuringSchedulingIgnoredDuringExecution {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.RequiredDuringSchedulingIgnoredDuringExecution != nil {
-		more.More()
-		e.ObjField("requiredDuringSchedulingIgnoredDuringExecution")
-		more.Down()
+		e.FieldStart("requiredDuringSchedulingIgnoredDuringExecution")
 		e.ArrStart()
 		for _, elem := range s.RequiredDuringSchedulingIgnoredDuringExecution {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -18188,32 +16459,24 @@ func (s *IoK8sAPICoreV1PodAffinity) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodAffinityTerm) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LabelSelector.Set {
-		more.More()
-		e.ObjField("labelSelector")
+		e.FieldStart("labelSelector")
 		s.LabelSelector.WriteJSON(e)
 	}
 	if s.NamespaceSelector.Set {
-		more.More()
-		e.ObjField("namespaceSelector")
+		e.FieldStart("namespaceSelector")
 		s.NamespaceSelector.WriteJSON(e)
 	}
 	if s.Namespaces != nil {
-		more.More()
-		e.ObjField("namespaces")
-		more.Down()
+		e.FieldStart("namespaces")
 		e.ArrStart()
 		for _, elem := range s.Namespaces {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("topologyKey")
+
+	e.FieldStart("topologyKey")
 	e.Str(s.TopologyKey)
 	e.ObjEnd()
 }
@@ -18265,31 +16528,21 @@ func (s *IoK8sAPICoreV1PodAffinityTerm) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodAntiAffinity) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
-		more.More()
-		e.ObjField("preferredDuringSchedulingIgnoredDuringExecution")
-		more.Down()
+		e.FieldStart("preferredDuringSchedulingIgnoredDuringExecution")
 		e.ArrStart()
 		for _, elem := range s.PreferredDuringSchedulingIgnoredDuringExecution {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.RequiredDuringSchedulingIgnoredDuringExecution != nil {
-		more.More()
-		e.ObjField("requiredDuringSchedulingIgnoredDuringExecution")
-		more.Down()
+		e.FieldStart("requiredDuringSchedulingIgnoredDuringExecution")
 		e.ArrStart()
 		for _, elem := range s.RequiredDuringSchedulingIgnoredDuringExecution {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -18335,33 +16588,27 @@ func (s *IoK8sAPICoreV1PodAntiAffinity) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodCondition) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LastProbeTime.Set {
-		more.More()
-		e.ObjField("lastProbeTime")
+		e.FieldStart("lastProbeTime")
 		s.LastProbeTime.WriteJSON(e)
 	}
 	if s.LastTransitionTime.Set {
-		more.More()
-		e.ObjField("lastTransitionTime")
+		e.FieldStart("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	e.Str(s.Status)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -18415,43 +16662,29 @@ func (s *IoK8sAPICoreV1PodCondition) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodDNSConfig) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Nameservers != nil {
-		more.More()
-		e.ObjField("nameservers")
-		more.Down()
+		e.FieldStart("nameservers")
 		e.ArrStart()
 		for _, elem := range s.Nameservers {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Options != nil {
-		more.More()
-		e.ObjField("options")
-		more.Down()
+		e.FieldStart("options")
 		e.ArrStart()
 		for _, elem := range s.Options {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Searches != nil {
-		more.More()
-		e.ObjField("searches")
-		more.Down()
+		e.FieldStart("searches")
 		e.ArrStart()
 		for _, elem := range s.Searches {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -18513,16 +16746,12 @@ func (s *IoK8sAPICoreV1PodDNSConfig) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodDNSConfigOption) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Value.Set {
-		more.More()
-		e.ObjField("value")
+		e.FieldStart("value")
 		s.Value.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -18555,11 +16784,8 @@ func (s *IoK8sAPICoreV1PodDNSConfigOption) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodIP) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.IP.Set {
-		more.More()
-		e.ObjField("ip")
+		e.FieldStart("ip")
 		s.IP.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -18587,31 +16813,23 @@ func (s *IoK8sAPICoreV1PodIP) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -18661,10 +16879,8 @@ func (s *IoK8sAPICoreV1PodList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodReadinessGate) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("conditionType")
+
+	e.FieldStart("conditionType")
 	e.Str(s.ConditionType)
 	e.ObjEnd()
 }
@@ -18692,70 +16908,52 @@ func (s *IoK8sAPICoreV1PodReadinessGate) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodSecurityContext) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.FsGroup.Set {
-		more.More()
-		e.ObjField("fsGroup")
+		e.FieldStart("fsGroup")
 		s.FsGroup.WriteJSON(e)
 	}
 	if s.FsGroupChangePolicy.Set {
-		more.More()
-		e.ObjField("fsGroupChangePolicy")
+		e.FieldStart("fsGroupChangePolicy")
 		s.FsGroupChangePolicy.WriteJSON(e)
 	}
 	if s.RunAsGroup.Set {
-		more.More()
-		e.ObjField("runAsGroup")
+		e.FieldStart("runAsGroup")
 		s.RunAsGroup.WriteJSON(e)
 	}
 	if s.RunAsNonRoot.Set {
-		more.More()
-		e.ObjField("runAsNonRoot")
+		e.FieldStart("runAsNonRoot")
 		s.RunAsNonRoot.WriteJSON(e)
 	}
 	if s.RunAsUser.Set {
-		more.More()
-		e.ObjField("runAsUser")
+		e.FieldStart("runAsUser")
 		s.RunAsUser.WriteJSON(e)
 	}
 	if s.SeLinuxOptions.Set {
-		more.More()
-		e.ObjField("seLinuxOptions")
+		e.FieldStart("seLinuxOptions")
 		s.SeLinuxOptions.WriteJSON(e)
 	}
 	if s.SeccompProfile.Set {
-		more.More()
-		e.ObjField("seccompProfile")
+		e.FieldStart("seccompProfile")
 		s.SeccompProfile.WriteJSON(e)
 	}
 	if s.SupplementalGroups != nil {
-		more.More()
-		e.ObjField("supplementalGroups")
-		more.Down()
+		e.FieldStart("supplementalGroups")
 		e.ArrStart()
 		for _, elem := range s.SupplementalGroups {
-			more.More()
 			e.Int64(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Sysctls != nil {
-		more.More()
-		e.ObjField("sysctls")
-		more.Down()
+		e.FieldStart("sysctls")
 		e.ArrStart()
 		for _, elem := range s.Sysctls {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.WindowsOptions.Set {
-		more.More()
-		e.ObjField("windowsOptions")
+		e.FieldStart("windowsOptions")
 		s.WindowsOptions.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -18844,243 +17042,180 @@ func (s *IoK8sAPICoreV1PodSecurityContext) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ActiveDeadlineSeconds.Set {
-		more.More()
-		e.ObjField("activeDeadlineSeconds")
+		e.FieldStart("activeDeadlineSeconds")
 		s.ActiveDeadlineSeconds.WriteJSON(e)
 	}
 	if s.Affinity.Set {
-		more.More()
-		e.ObjField("affinity")
+		e.FieldStart("affinity")
 		s.Affinity.WriteJSON(e)
 	}
 	if s.AutomountServiceAccountToken.Set {
-		more.More()
-		e.ObjField("automountServiceAccountToken")
+		e.FieldStart("automountServiceAccountToken")
 		s.AutomountServiceAccountToken.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("containers")
-	more.Down()
+
+	e.FieldStart("containers")
 	e.ArrStart()
 	for _, elem := range s.Containers {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.DnsConfig.Set {
-		more.More()
-		e.ObjField("dnsConfig")
+		e.FieldStart("dnsConfig")
 		s.DnsConfig.WriteJSON(e)
 	}
 	if s.DnsPolicy.Set {
-		more.More()
-		e.ObjField("dnsPolicy")
+		e.FieldStart("dnsPolicy")
 		s.DnsPolicy.WriteJSON(e)
 	}
 	if s.EnableServiceLinks.Set {
-		more.More()
-		e.ObjField("enableServiceLinks")
+		e.FieldStart("enableServiceLinks")
 		s.EnableServiceLinks.WriteJSON(e)
 	}
 	if s.EphemeralContainers != nil {
-		more.More()
-		e.ObjField("ephemeralContainers")
-		more.Down()
+		e.FieldStart("ephemeralContainers")
 		e.ArrStart()
 		for _, elem := range s.EphemeralContainers {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.HostAliases != nil {
-		more.More()
-		e.ObjField("hostAliases")
-		more.Down()
+		e.FieldStart("hostAliases")
 		e.ArrStart()
 		for _, elem := range s.HostAliases {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.HostIPC.Set {
-		more.More()
-		e.ObjField("hostIPC")
+		e.FieldStart("hostIPC")
 		s.HostIPC.WriteJSON(e)
 	}
 	if s.HostNetwork.Set {
-		more.More()
-		e.ObjField("hostNetwork")
+		e.FieldStart("hostNetwork")
 		s.HostNetwork.WriteJSON(e)
 	}
 	if s.HostPID.Set {
-		more.More()
-		e.ObjField("hostPID")
+		e.FieldStart("hostPID")
 		s.HostPID.WriteJSON(e)
 	}
 	if s.Hostname.Set {
-		more.More()
-		e.ObjField("hostname")
+		e.FieldStart("hostname")
 		s.Hostname.WriteJSON(e)
 	}
 	if s.ImagePullSecrets != nil {
-		more.More()
-		e.ObjField("imagePullSecrets")
-		more.Down()
+		e.FieldStart("imagePullSecrets")
 		e.ArrStart()
 		for _, elem := range s.ImagePullSecrets {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.InitContainers != nil {
-		more.More()
-		e.ObjField("initContainers")
-		more.Down()
+		e.FieldStart("initContainers")
 		e.ArrStart()
 		for _, elem := range s.InitContainers {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.NodeName.Set {
-		more.More()
-		e.ObjField("nodeName")
+		e.FieldStart("nodeName")
 		s.NodeName.WriteJSON(e)
 	}
 	if s.NodeSelector != nil {
-		more.More()
-		e.ObjField("nodeSelector")
+		e.FieldStart("nodeSelector")
 		s.NodeSelector.WriteJSON(e)
 	}
 	if s.Overhead != nil {
-		more.More()
-		e.ObjField("overhead")
+		e.FieldStart("overhead")
 		s.Overhead.WriteJSON(e)
 	}
 	if s.PreemptionPolicy.Set {
-		more.More()
-		e.ObjField("preemptionPolicy")
+		e.FieldStart("preemptionPolicy")
 		s.PreemptionPolicy.WriteJSON(e)
 	}
 	if s.Priority.Set {
-		more.More()
-		e.ObjField("priority")
+		e.FieldStart("priority")
 		s.Priority.WriteJSON(e)
 	}
 	if s.PriorityClassName.Set {
-		more.More()
-		e.ObjField("priorityClassName")
+		e.FieldStart("priorityClassName")
 		s.PriorityClassName.WriteJSON(e)
 	}
 	if s.ReadinessGates != nil {
-		more.More()
-		e.ObjField("readinessGates")
-		more.Down()
+		e.FieldStart("readinessGates")
 		e.ArrStart()
 		for _, elem := range s.ReadinessGates {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.RestartPolicy.Set {
-		more.More()
-		e.ObjField("restartPolicy")
+		e.FieldStart("restartPolicy")
 		s.RestartPolicy.WriteJSON(e)
 	}
 	if s.RuntimeClassName.Set {
-		more.More()
-		e.ObjField("runtimeClassName")
+		e.FieldStart("runtimeClassName")
 		s.RuntimeClassName.WriteJSON(e)
 	}
 	if s.SchedulerName.Set {
-		more.More()
-		e.ObjField("schedulerName")
+		e.FieldStart("schedulerName")
 		s.SchedulerName.WriteJSON(e)
 	}
 	if s.SecurityContext.Set {
-		more.More()
-		e.ObjField("securityContext")
+		e.FieldStart("securityContext")
 		s.SecurityContext.WriteJSON(e)
 	}
 	if s.ServiceAccount.Set {
-		more.More()
-		e.ObjField("serviceAccount")
+		e.FieldStart("serviceAccount")
 		s.ServiceAccount.WriteJSON(e)
 	}
 	if s.ServiceAccountName.Set {
-		more.More()
-		e.ObjField("serviceAccountName")
+		e.FieldStart("serviceAccountName")
 		s.ServiceAccountName.WriteJSON(e)
 	}
 	if s.SetHostnameAsFQDN.Set {
-		more.More()
-		e.ObjField("setHostnameAsFQDN")
+		e.FieldStart("setHostnameAsFQDN")
 		s.SetHostnameAsFQDN.WriteJSON(e)
 	}
 	if s.ShareProcessNamespace.Set {
-		more.More()
-		e.ObjField("shareProcessNamespace")
+		e.FieldStart("shareProcessNamespace")
 		s.ShareProcessNamespace.WriteJSON(e)
 	}
 	if s.Subdomain.Set {
-		more.More()
-		e.ObjField("subdomain")
+		e.FieldStart("subdomain")
 		s.Subdomain.WriteJSON(e)
 	}
 	if s.TerminationGracePeriodSeconds.Set {
-		more.More()
-		e.ObjField("terminationGracePeriodSeconds")
+		e.FieldStart("terminationGracePeriodSeconds")
 		s.TerminationGracePeriodSeconds.WriteJSON(e)
 	}
 	if s.Tolerations != nil {
-		more.More()
-		e.ObjField("tolerations")
-		more.Down()
+		e.FieldStart("tolerations")
 		e.ArrStart()
 		for _, elem := range s.Tolerations {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.TopologySpreadConstraints != nil {
-		more.More()
-		e.ObjField("topologySpreadConstraints")
-		more.Down()
+		e.FieldStart("topologySpreadConstraints")
 		e.ArrStart()
 		for _, elem := range s.TopologySpreadConstraints {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Volumes != nil {
-		more.More()
-		e.ObjField("volumes")
-		more.Down()
+		e.FieldStart("volumes")
 		e.ArrStart()
 		for _, elem := range s.Volumes {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -19344,8 +17479,6 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodSpecNodeSelector) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -19366,8 +17499,6 @@ func (s *IoK8sAPICoreV1PodSpecNodeSelector) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodSpecOverhead) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -19388,106 +17519,76 @@ func (s *IoK8sAPICoreV1PodSpecOverhead) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Conditions != nil {
-		more.More()
-		e.ObjField("conditions")
-		more.Down()
+		e.FieldStart("conditions")
 		e.ArrStart()
 		for _, elem := range s.Conditions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.ContainerStatuses != nil {
-		more.More()
-		e.ObjField("containerStatuses")
-		more.Down()
+		e.FieldStart("containerStatuses")
 		e.ArrStart()
 		for _, elem := range s.ContainerStatuses {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.EphemeralContainerStatuses != nil {
-		more.More()
-		e.ObjField("ephemeralContainerStatuses")
-		more.Down()
+		e.FieldStart("ephemeralContainerStatuses")
 		e.ArrStart()
 		for _, elem := range s.EphemeralContainerStatuses {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.HostIP.Set {
-		more.More()
-		e.ObjField("hostIP")
+		e.FieldStart("hostIP")
 		s.HostIP.WriteJSON(e)
 	}
 	if s.InitContainerStatuses != nil {
-		more.More()
-		e.ObjField("initContainerStatuses")
-		more.Down()
+		e.FieldStart("initContainerStatuses")
 		e.ArrStart()
 		for _, elem := range s.InitContainerStatuses {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.NominatedNodeName.Set {
-		more.More()
-		e.ObjField("nominatedNodeName")
+		e.FieldStart("nominatedNodeName")
 		s.NominatedNodeName.WriteJSON(e)
 	}
 	if s.Phase.Set {
-		more.More()
-		e.ObjField("phase")
+		e.FieldStart("phase")
 		s.Phase.WriteJSON(e)
 	}
 	if s.PodIP.Set {
-		more.More()
-		e.ObjField("podIP")
+		e.FieldStart("podIP")
 		s.PodIP.WriteJSON(e)
 	}
 	if s.PodIPs != nil {
-		more.More()
-		e.ObjField("podIPs")
-		more.Down()
+		e.FieldStart("podIPs")
 		e.ArrStart()
 		for _, elem := range s.PodIPs {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.QosClass.Set {
-		more.More()
-		e.ObjField("qosClass")
+		e.FieldStart("qosClass")
 		s.QosClass.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
 	if s.StartTime.Set {
-		more.More()
-		e.ObjField("startTime")
+		e.FieldStart("startTime")
 		s.StartTime.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -19610,26 +17711,20 @@ func (s *IoK8sAPICoreV1PodStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodTemplate) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Template.Set {
-		more.More()
-		e.ObjField("template")
+		e.FieldStart("template")
 		s.Template.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -19672,31 +17767,23 @@ func (s *IoK8sAPICoreV1PodTemplate) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodTemplateList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -19746,16 +17833,12 @@ func (s *IoK8sAPICoreV1PodTemplateList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodTemplateSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -19788,18 +17871,15 @@ func (s *IoK8sAPICoreV1PodTemplateSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PortStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Error.Set {
-		more.More()
-		e.ObjField("error")
+		e.FieldStart("error")
 		s.Error.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("port")
+
+	e.FieldStart("port")
 	e.Int32(s.Port)
-	more.More()
-	e.ObjField("protocol")
+
+	e.FieldStart("protocol")
 	e.Str(s.Protocol)
 	e.ObjEnd()
 }
@@ -19838,20 +17918,16 @@ func (s *IoK8sAPICoreV1PortStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PortworxVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.FsType.Set {
-		more.More()
-		e.ObjField("fsType")
+		e.FieldStart("fsType")
 		s.FsType.WriteJSON(e)
 	}
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("volumeID")
+
+	e.FieldStart("volumeID")
 	e.Str(s.VolumeID)
 	e.ObjEnd()
 }
@@ -19889,13 +17965,11 @@ func (s *IoK8sAPICoreV1PortworxVolumeSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PreferredSchedulingTerm) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("preference")
+
+	e.FieldStart("preference")
 	s.Preference.WriteJSON(e)
-	more.More()
-	e.ObjField("weight")
+
+	e.FieldStart("weight")
 	e.Int32(s.Weight)
 	e.ObjEnd()
 }
@@ -19927,51 +18001,40 @@ func (s *IoK8sAPICoreV1PreferredSchedulingTerm) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Probe) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Exec.Set {
-		more.More()
-		e.ObjField("exec")
+		e.FieldStart("exec")
 		s.Exec.WriteJSON(e)
 	}
 	if s.FailureThreshold.Set {
-		more.More()
-		e.ObjField("failureThreshold")
+		e.FieldStart("failureThreshold")
 		s.FailureThreshold.WriteJSON(e)
 	}
 	if s.HttpGet.Set {
-		more.More()
-		e.ObjField("httpGet")
+		e.FieldStart("httpGet")
 		s.HttpGet.WriteJSON(e)
 	}
 	if s.InitialDelaySeconds.Set {
-		more.More()
-		e.ObjField("initialDelaySeconds")
+		e.FieldStart("initialDelaySeconds")
 		s.InitialDelaySeconds.WriteJSON(e)
 	}
 	if s.PeriodSeconds.Set {
-		more.More()
-		e.ObjField("periodSeconds")
+		e.FieldStart("periodSeconds")
 		s.PeriodSeconds.WriteJSON(e)
 	}
 	if s.SuccessThreshold.Set {
-		more.More()
-		e.ObjField("successThreshold")
+		e.FieldStart("successThreshold")
 		s.SuccessThreshold.WriteJSON(e)
 	}
 	if s.TcpSocket.Set {
-		more.More()
-		e.ObjField("tcpSocket")
+		e.FieldStart("tcpSocket")
 		s.TcpSocket.WriteJSON(e)
 	}
 	if s.TerminationGracePeriodSeconds.Set {
-		more.More()
-		e.ObjField("terminationGracePeriodSeconds")
+		e.FieldStart("terminationGracePeriodSeconds")
 		s.TerminationGracePeriodSeconds.WriteJSON(e)
 	}
 	if s.TimeoutSeconds.Set {
-		more.More()
-		e.ObjField("timeoutSeconds")
+		e.FieldStart("timeoutSeconds")
 		s.TimeoutSeconds.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -20039,24 +18102,17 @@ func (s *IoK8sAPICoreV1Probe) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ProjectedVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.DefaultMode.Set {
-		more.More()
-		e.ObjField("defaultMode")
+		e.FieldStart("defaultMode")
 		s.DefaultMode.WriteJSON(e)
 	}
 	if s.Sources != nil {
-		more.More()
-		e.ObjField("sources")
-		more.Down()
+		e.FieldStart("sources")
 		e.ArrStart()
 		for _, elem := range s.Sources {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -20095,33 +18151,27 @@ func (s *IoK8sAPICoreV1ProjectedVolumeSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1QuobyteVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Group.Set {
-		more.More()
-		e.ObjField("group")
+		e.FieldStart("group")
 		s.Group.WriteJSON(e)
 	}
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("registry")
+
+	e.FieldStart("registry")
 	e.Str(s.Registry)
 	if s.Tenant.Set {
-		more.More()
-		e.ObjField("tenant")
+		e.FieldStart("tenant")
 		s.Tenant.WriteJSON(e)
 	}
 	if s.User.Set {
-		more.More()
-		e.ObjField("user")
+		e.FieldStart("user")
 		s.User.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("volume")
+
+	e.FieldStart("volume")
 	e.Str(s.Volume)
 	e.ObjEnd()
 }
@@ -20175,49 +18225,38 @@ func (s *IoK8sAPICoreV1QuobyteVolumeSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1RBDPersistentVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.FsType.Set {
-		more.More()
-		e.ObjField("fsType")
+		e.FieldStart("fsType")
 		s.FsType.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("image")
+
+	e.FieldStart("image")
 	e.Str(s.Image)
 	if s.Keyring.Set {
-		more.More()
-		e.ObjField("keyring")
+		e.FieldStart("keyring")
 		s.Keyring.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("monitors")
-	more.Down()
+
+	e.FieldStart("monitors")
 	e.ArrStart()
 	for _, elem := range s.Monitors {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Pool.Set {
-		more.More()
-		e.ObjField("pool")
+		e.FieldStart("pool")
 		s.Pool.WriteJSON(e)
 	}
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
 	if s.SecretRef.Set {
-		more.More()
-		e.ObjField("secretRef")
+		e.FieldStart("secretRef")
 		s.SecretRef.WriteJSON(e)
 	}
 	if s.User.Set {
-		more.More()
-		e.ObjField("user")
+		e.FieldStart("user")
 		s.User.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -20290,49 +18329,38 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1RBDVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.FsType.Set {
-		more.More()
-		e.ObjField("fsType")
+		e.FieldStart("fsType")
 		s.FsType.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("image")
+
+	e.FieldStart("image")
 	e.Str(s.Image)
 	if s.Keyring.Set {
-		more.More()
-		e.ObjField("keyring")
+		e.FieldStart("keyring")
 		s.Keyring.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("monitors")
-	more.Down()
+
+	e.FieldStart("monitors")
 	e.ArrStart()
 	for _, elem := range s.Monitors {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Pool.Set {
-		more.More()
-		e.ObjField("pool")
+		e.FieldStart("pool")
 		s.Pool.WriteJSON(e)
 	}
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
 	if s.SecretRef.Set {
-		more.More()
-		e.ObjField("secretRef")
+		e.FieldStart("secretRef")
 		s.SecretRef.WriteJSON(e)
 	}
 	if s.User.Set {
-		more.More()
-		e.ObjField("user")
+		e.FieldStart("user")
 		s.User.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -20405,31 +18433,24 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationController) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -20477,28 +18498,23 @@ func (s *IoK8sAPICoreV1ReplicationController) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationControllerCondition) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LastTransitionTime.Set {
-		more.More()
-		e.ObjField("lastTransitionTime")
+		e.FieldStart("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	e.Str(s.Status)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -20547,31 +18563,23 @@ func (s *IoK8sAPICoreV1ReplicationControllerCondition) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationControllerList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -20621,26 +18629,20 @@ func (s *IoK8sAPICoreV1ReplicationControllerList) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationControllerSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.MinReadySeconds.Set {
-		more.More()
-		e.ObjField("minReadySeconds")
+		e.FieldStart("minReadySeconds")
 		s.MinReadySeconds.WriteJSON(e)
 	}
 	if s.Replicas.Set {
-		more.More()
-		e.ObjField("replicas")
+		e.FieldStart("replicas")
 		s.Replicas.WriteJSON(e)
 	}
 	if s.Selector != nil {
-		more.More()
-		e.ObjField("selector")
+		e.FieldStart("selector")
 		s.Selector.WriteJSON(e)
 	}
 	if s.Template.Set {
-		more.More()
-		e.ObjField("template")
+		e.FieldStart("template")
 		s.Template.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -20685,8 +18687,6 @@ func (s *IoK8sAPICoreV1ReplicationControllerSpec) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationControllerSpecSelector) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -20707,42 +18707,32 @@ func (s *IoK8sAPICoreV1ReplicationControllerSpecSelector) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationControllerStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AvailableReplicas.Set {
-		more.More()
-		e.ObjField("availableReplicas")
+		e.FieldStart("availableReplicas")
 		s.AvailableReplicas.WriteJSON(e)
 	}
 	if s.Conditions != nil {
-		more.More()
-		e.ObjField("conditions")
-		more.Down()
+		e.FieldStart("conditions")
 		e.ArrStart()
 		for _, elem := range s.Conditions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.FullyLabeledReplicas.Set {
-		more.More()
-		e.ObjField("fullyLabeledReplicas")
+		e.FieldStart("fullyLabeledReplicas")
 		s.FullyLabeledReplicas.WriteJSON(e)
 	}
 	if s.ObservedGeneration.Set {
-		more.More()
-		e.ObjField("observedGeneration")
+		e.FieldStart("observedGeneration")
 		s.ObservedGeneration.WriteJSON(e)
 	}
 	if s.ReadyReplicas.Set {
-		more.More()
-		e.ObjField("readyReplicas")
+		e.FieldStart("readyReplicas")
 		s.ReadyReplicas.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("replicas")
+
+	e.FieldStart("replicas")
 	e.Int32(s.Replicas)
 	e.ObjEnd()
 }
@@ -20802,20 +18792,16 @@ func (s *IoK8sAPICoreV1ReplicationControllerStatus) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceFieldSelector) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ContainerName.Set {
-		more.More()
-		e.ObjField("containerName")
+		e.FieldStart("containerName")
 		s.ContainerName.WriteJSON(e)
 	}
 	if s.Divisor.Set {
-		more.More()
-		e.ObjField("divisor")
+		e.FieldStart("divisor")
 		s.Divisor.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("resource")
+
+	e.FieldStart("resource")
 	e.Str(s.Resource)
 	e.ObjEnd()
 }
@@ -20853,31 +18839,24 @@ func (s *IoK8sAPICoreV1ResourceFieldSelector) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuota) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -20925,31 +18904,23 @@ func (s *IoK8sAPICoreV1ResourceQuota) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -20999,29 +18970,21 @@ func (s *IoK8sAPICoreV1ResourceQuotaList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Hard != nil {
-		more.More()
-		e.ObjField("hard")
+		e.FieldStart("hard")
 		s.Hard.WriteJSON(e)
 	}
 	if s.ScopeSelector.Set {
-		more.More()
-		e.ObjField("scopeSelector")
+		e.FieldStart("scopeSelector")
 		s.ScopeSelector.WriteJSON(e)
 	}
 	if s.Scopes != nil {
-		more.More()
-		e.ObjField("scopes")
-		more.Down()
+		e.FieldStart("scopes")
 		e.ArrStart()
 		for _, elem := range s.Scopes {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -21069,8 +19032,6 @@ func (s *IoK8sAPICoreV1ResourceQuotaSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaSpecHard) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -21091,16 +19052,12 @@ func (s *IoK8sAPICoreV1ResourceQuotaSpecHard) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Hard != nil {
-		more.More()
-		e.ObjField("hard")
+		e.FieldStart("hard")
 		s.Hard.WriteJSON(e)
 	}
 	if s.Used != nil {
-		more.More()
-		e.ObjField("used")
+		e.FieldStart("used")
 		s.Used.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -21137,8 +19094,6 @@ func (s *IoK8sAPICoreV1ResourceQuotaStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaStatusHard) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -21159,8 +19114,6 @@ func (s *IoK8sAPICoreV1ResourceQuotaStatusHard) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaStatusUsed) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -21181,16 +19134,12 @@ func (s *IoK8sAPICoreV1ResourceQuotaStatusUsed) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceRequirements) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Limits != nil {
-		more.More()
-		e.ObjField("limits")
+		e.FieldStart("limits")
 		s.Limits.WriteJSON(e)
 	}
 	if s.Requests != nil {
-		more.More()
-		e.ObjField("requests")
+		e.FieldStart("requests")
 		s.Requests.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -21227,8 +19176,6 @@ func (s *IoK8sAPICoreV1ResourceRequirements) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceRequirementsLimits) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -21249,8 +19196,6 @@ func (s *IoK8sAPICoreV1ResourceRequirementsLimits) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceRequirementsRequests) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -21271,26 +19216,20 @@ func (s *IoK8sAPICoreV1ResourceRequirementsRequests) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1SELinuxOptions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Level.Set {
-		more.More()
-		e.ObjField("level")
+		e.FieldStart("level")
 		s.Level.WriteJSON(e)
 	}
 	if s.Role.Set {
-		more.More()
-		e.ObjField("role")
+		e.FieldStart("role")
 		s.Role.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	if s.User.Set {
-		more.More()
-		e.ObjField("user")
+		e.FieldStart("user")
 		s.User.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -21333,50 +19272,41 @@ func (s *IoK8sAPICoreV1SELinuxOptions) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.FsType.Set {
-		more.More()
-		e.ObjField("fsType")
+		e.FieldStart("fsType")
 		s.FsType.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("gateway")
+
+	e.FieldStart("gateway")
 	e.Str(s.Gateway)
 	if s.ProtectionDomain.Set {
-		more.More()
-		e.ObjField("protectionDomain")
+		e.FieldStart("protectionDomain")
 		s.ProtectionDomain.WriteJSON(e)
 	}
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("secretRef")
+
+	e.FieldStart("secretRef")
 	s.SecretRef.WriteJSON(e)
 	if s.SslEnabled.Set {
-		more.More()
-		e.ObjField("sslEnabled")
+		e.FieldStart("sslEnabled")
 		s.SslEnabled.WriteJSON(e)
 	}
 	if s.StorageMode.Set {
-		more.More()
-		e.ObjField("storageMode")
+		e.FieldStart("storageMode")
 		s.StorageMode.WriteJSON(e)
 	}
 	if s.StoragePool.Set {
-		more.More()
-		e.ObjField("storagePool")
+		e.FieldStart("storagePool")
 		s.StoragePool.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("system")
+
+	e.FieldStart("system")
 	e.Str(s.System)
 	if s.VolumeName.Set {
-		more.More()
-		e.ObjField("volumeName")
+		e.FieldStart("volumeName")
 		s.VolumeName.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -21450,50 +19380,41 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ScaleIOVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.FsType.Set {
-		more.More()
-		e.ObjField("fsType")
+		e.FieldStart("fsType")
 		s.FsType.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("gateway")
+
+	e.FieldStart("gateway")
 	e.Str(s.Gateway)
 	if s.ProtectionDomain.Set {
-		more.More()
-		e.ObjField("protectionDomain")
+		e.FieldStart("protectionDomain")
 		s.ProtectionDomain.WriteJSON(e)
 	}
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("secretRef")
+
+	e.FieldStart("secretRef")
 	s.SecretRef.WriteJSON(e)
 	if s.SslEnabled.Set {
-		more.More()
-		e.ObjField("sslEnabled")
+		e.FieldStart("sslEnabled")
 		s.SslEnabled.WriteJSON(e)
 	}
 	if s.StorageMode.Set {
-		more.More()
-		e.ObjField("storageMode")
+		e.FieldStart("storageMode")
 		s.StorageMode.WriteJSON(e)
 	}
 	if s.StoragePool.Set {
-		more.More()
-		e.ObjField("storagePool")
+		e.FieldStart("storagePool")
 		s.StoragePool.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("system")
+
+	e.FieldStart("system")
 	e.Str(s.System)
 	if s.VolumeName.Set {
-		more.More()
-		e.ObjField("volumeName")
+		e.FieldStart("volumeName")
 		s.VolumeName.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -21567,19 +19488,13 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ScopeSelector) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.MatchExpressions != nil {
-		more.More()
-		e.ObjField("matchExpressions")
-		more.Down()
+		e.FieldStart("matchExpressions")
 		e.ArrStart()
 		for _, elem := range s.MatchExpressions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -21613,25 +19528,19 @@ func (s *IoK8sAPICoreV1ScopeSelector) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ScopedResourceSelectorRequirement) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("operator")
+
+	e.FieldStart("operator")
 	e.Str(s.Operator)
-	more.More()
-	e.ObjField("scopeName")
+
+	e.FieldStart("scopeName")
 	e.Str(s.ScopeName)
 	if s.Values != nil {
-		more.More()
-		e.ObjField("values")
-		more.Down()
+		e.FieldStart("values")
 		e.ArrStart()
 		for _, elem := range s.Values {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -21679,15 +19588,12 @@ func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1SeccompProfile) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LocalhostProfile.Set {
-		more.More()
-		e.ObjField("localhostProfile")
+		e.FieldStart("localhostProfile")
 		s.LocalhostProfile.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -21720,41 +19626,32 @@ func (s *IoK8sAPICoreV1SeccompProfile) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Secret) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Data != nil {
-		more.More()
-		e.ObjField("data")
+		e.FieldStart("data")
 		s.Data.WriteJSON(e)
 	}
 	if s.Immutable.Set {
-		more.More()
-		e.ObjField("immutable")
+		e.FieldStart("immutable")
 		s.Immutable.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.StringData != nil {
-		more.More()
-		e.ObjField("stringData")
+		e.FieldStart("stringData")
 		s.StringData.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -21816,8 +19713,6 @@ func (s *IoK8sAPICoreV1Secret) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretData) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -21838,16 +19733,12 @@ func (s *IoK8sAPICoreV1SecretData) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretEnvSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Optional.Set {
-		more.More()
-		e.ObjField("optional")
+		e.FieldStart("optional")
 		s.Optional.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -21880,19 +19771,15 @@ func (s *IoK8sAPICoreV1SecretEnvSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretKeySelector) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("key")
+
+	e.FieldStart("key")
 	e.Str(s.Key)
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Optional.Set {
-		more.More()
-		e.ObjField("optional")
+		e.FieldStart("optional")
 		s.Optional.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -21931,31 +19818,23 @@ func (s *IoK8sAPICoreV1SecretKeySelector) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -22005,28 +19884,20 @@ func (s *IoK8sAPICoreV1SecretList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretProjection) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Items != nil {
-		more.More()
-		e.ObjField("items")
-		more.Down()
+		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Optional.Set {
-		more.More()
-		e.ObjField("optional")
+		e.FieldStart("optional")
 		s.Optional.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -22071,16 +19942,12 @@ func (s *IoK8sAPICoreV1SecretProjection) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretReference) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Namespace.Set {
-		more.More()
-		e.ObjField("namespace")
+		e.FieldStart("namespace")
 		s.Namespace.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -22113,8 +19980,6 @@ func (s *IoK8sAPICoreV1SecretReference) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretStringData) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -22135,33 +20000,24 @@ func (s *IoK8sAPICoreV1SecretStringData) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.DefaultMode.Set {
-		more.More()
-		e.ObjField("defaultMode")
+		e.FieldStart("defaultMode")
 		s.DefaultMode.WriteJSON(e)
 	}
 	if s.Items != nil {
-		more.More()
-		e.ObjField("items")
-		more.Down()
+		e.FieldStart("items")
 		e.ArrStart()
 		for _, elem := range s.Items {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Optional.Set {
-		more.More()
-		e.ObjField("optional")
+		e.FieldStart("optional")
 		s.Optional.WriteJSON(e)
 	}
 	if s.SecretName.Set {
-		more.More()
-		e.ObjField("secretName")
+		e.FieldStart("secretName")
 		s.SecretName.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -22211,61 +20067,48 @@ func (s *IoK8sAPICoreV1SecretVolumeSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1SecurityContext) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AllowPrivilegeEscalation.Set {
-		more.More()
-		e.ObjField("allowPrivilegeEscalation")
+		e.FieldStart("allowPrivilegeEscalation")
 		s.AllowPrivilegeEscalation.WriteJSON(e)
 	}
 	if s.Capabilities.Set {
-		more.More()
-		e.ObjField("capabilities")
+		e.FieldStart("capabilities")
 		s.Capabilities.WriteJSON(e)
 	}
 	if s.Privileged.Set {
-		more.More()
-		e.ObjField("privileged")
+		e.FieldStart("privileged")
 		s.Privileged.WriteJSON(e)
 	}
 	if s.ProcMount.Set {
-		more.More()
-		e.ObjField("procMount")
+		e.FieldStart("procMount")
 		s.ProcMount.WriteJSON(e)
 	}
 	if s.ReadOnlyRootFilesystem.Set {
-		more.More()
-		e.ObjField("readOnlyRootFilesystem")
+		e.FieldStart("readOnlyRootFilesystem")
 		s.ReadOnlyRootFilesystem.WriteJSON(e)
 	}
 	if s.RunAsGroup.Set {
-		more.More()
-		e.ObjField("runAsGroup")
+		e.FieldStart("runAsGroup")
 		s.RunAsGroup.WriteJSON(e)
 	}
 	if s.RunAsNonRoot.Set {
-		more.More()
-		e.ObjField("runAsNonRoot")
+		e.FieldStart("runAsNonRoot")
 		s.RunAsNonRoot.WriteJSON(e)
 	}
 	if s.RunAsUser.Set {
-		more.More()
-		e.ObjField("runAsUser")
+		e.FieldStart("runAsUser")
 		s.RunAsUser.WriteJSON(e)
 	}
 	if s.SeLinuxOptions.Set {
-		more.More()
-		e.ObjField("seLinuxOptions")
+		e.FieldStart("seLinuxOptions")
 		s.SeLinuxOptions.WriteJSON(e)
 	}
 	if s.SeccompProfile.Set {
-		more.More()
-		e.ObjField("seccompProfile")
+		e.FieldStart("seccompProfile")
 		s.SeccompProfile.WriteJSON(e)
 	}
 	if s.WindowsOptions.Set {
-		more.More()
-		e.ObjField("windowsOptions")
+		e.FieldStart("windowsOptions")
 		s.WindowsOptions.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -22343,31 +20186,24 @@ func (s *IoK8sAPICoreV1SecurityContext) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Service) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -22415,51 +20251,37 @@ func (s *IoK8sAPICoreV1Service) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceAccount) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.AutomountServiceAccountToken.Set {
-		more.More()
-		e.ObjField("automountServiceAccountToken")
+		e.FieldStart("automountServiceAccountToken")
 		s.AutomountServiceAccountToken.WriteJSON(e)
 	}
 	if s.ImagePullSecrets != nil {
-		more.More()
-		e.ObjField("imagePullSecrets")
-		more.Down()
+		e.FieldStart("imagePullSecrets")
 		e.ArrStart()
 		for _, elem := range s.ImagePullSecrets {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Secrets != nil {
-		more.More()
-		e.ObjField("secrets")
-		more.Down()
+		e.FieldStart("secrets")
 		e.ArrStart()
 		for _, elem := range s.Secrets {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -22525,31 +20347,23 @@ func (s *IoK8sAPICoreV1ServiceAccount) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceAccountList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -22599,20 +20413,16 @@ func (s *IoK8sAPICoreV1ServiceAccountList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceAccountTokenProjection) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Audience.Set {
-		more.More()
-		e.ObjField("audience")
+		e.FieldStart("audience")
 		s.Audience.WriteJSON(e)
 	}
 	if s.ExpirationSeconds.Set {
-		more.More()
-		e.ObjField("expirationSeconds")
+		e.FieldStart("expirationSeconds")
 		s.ExpirationSeconds.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("path")
+
+	e.FieldStart("path")
 	e.Str(s.Path)
 	e.ObjEnd()
 }
@@ -22650,31 +20460,23 @@ func (s *IoK8sAPICoreV1ServiceAccountTokenProjection) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -22724,34 +20526,27 @@ func (s *IoK8sAPICoreV1ServiceList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ServicePort) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AppProtocol.Set {
-		more.More()
-		e.ObjField("appProtocol")
+		e.FieldStart("appProtocol")
 		s.AppProtocol.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.NodePort.Set {
-		more.More()
-		e.ObjField("nodePort")
+		e.FieldStart("nodePort")
 		s.NodePort.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("port")
+
+	e.FieldStart("port")
 	e.Int32(s.Port)
 	if s.Protocol.Set {
-		more.More()
-		e.ObjField("protocol")
+		e.FieldStart("protocol")
 		s.Protocol.WriteJSON(e)
 	}
 	if s.TargetPort.Set {
-		more.More()
-		e.ObjField("targetPort")
+		e.FieldStart("targetPort")
 		s.TargetPort.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -22805,136 +20600,100 @@ func (s *IoK8sAPICoreV1ServicePort) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AllocateLoadBalancerNodePorts.Set {
-		more.More()
-		e.ObjField("allocateLoadBalancerNodePorts")
+		e.FieldStart("allocateLoadBalancerNodePorts")
 		s.AllocateLoadBalancerNodePorts.WriteJSON(e)
 	}
 	if s.ClusterIP.Set {
-		more.More()
-		e.ObjField("clusterIP")
+		e.FieldStart("clusterIP")
 		s.ClusterIP.WriteJSON(e)
 	}
 	if s.ClusterIPs != nil {
-		more.More()
-		e.ObjField("clusterIPs")
-		more.Down()
+		e.FieldStart("clusterIPs")
 		e.ArrStart()
 		for _, elem := range s.ClusterIPs {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.ExternalIPs != nil {
-		more.More()
-		e.ObjField("externalIPs")
-		more.Down()
+		e.FieldStart("externalIPs")
 		e.ArrStart()
 		for _, elem := range s.ExternalIPs {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.ExternalName.Set {
-		more.More()
-		e.ObjField("externalName")
+		e.FieldStart("externalName")
 		s.ExternalName.WriteJSON(e)
 	}
 	if s.ExternalTrafficPolicy.Set {
-		more.More()
-		e.ObjField("externalTrafficPolicy")
+		e.FieldStart("externalTrafficPolicy")
 		s.ExternalTrafficPolicy.WriteJSON(e)
 	}
 	if s.HealthCheckNodePort.Set {
-		more.More()
-		e.ObjField("healthCheckNodePort")
+		e.FieldStart("healthCheckNodePort")
 		s.HealthCheckNodePort.WriteJSON(e)
 	}
 	if s.InternalTrafficPolicy.Set {
-		more.More()
-		e.ObjField("internalTrafficPolicy")
+		e.FieldStart("internalTrafficPolicy")
 		s.InternalTrafficPolicy.WriteJSON(e)
 	}
 	if s.IpFamilies != nil {
-		more.More()
-		e.ObjField("ipFamilies")
-		more.Down()
+		e.FieldStart("ipFamilies")
 		e.ArrStart()
 		for _, elem := range s.IpFamilies {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.IpFamilyPolicy.Set {
-		more.More()
-		e.ObjField("ipFamilyPolicy")
+		e.FieldStart("ipFamilyPolicy")
 		s.IpFamilyPolicy.WriteJSON(e)
 	}
 	if s.LoadBalancerClass.Set {
-		more.More()
-		e.ObjField("loadBalancerClass")
+		e.FieldStart("loadBalancerClass")
 		s.LoadBalancerClass.WriteJSON(e)
 	}
 	if s.LoadBalancerIP.Set {
-		more.More()
-		e.ObjField("loadBalancerIP")
+		e.FieldStart("loadBalancerIP")
 		s.LoadBalancerIP.WriteJSON(e)
 	}
 	if s.LoadBalancerSourceRanges != nil {
-		more.More()
-		e.ObjField("loadBalancerSourceRanges")
-		more.Down()
+		e.FieldStart("loadBalancerSourceRanges")
 		e.ArrStart()
 		for _, elem := range s.LoadBalancerSourceRanges {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Ports != nil {
-		more.More()
-		e.ObjField("ports")
-		more.Down()
+		e.FieldStart("ports")
 		e.ArrStart()
 		for _, elem := range s.Ports {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.PublishNotReadyAddresses.Set {
-		more.More()
-		e.ObjField("publishNotReadyAddresses")
+		e.FieldStart("publishNotReadyAddresses")
 		s.PublishNotReadyAddresses.WriteJSON(e)
 	}
 	if s.Selector != nil {
-		more.More()
-		e.ObjField("selector")
+		e.FieldStart("selector")
 		s.Selector.WriteJSON(e)
 	}
 	if s.SessionAffinity.Set {
-		more.More()
-		e.ObjField("sessionAffinity")
+		e.FieldStart("sessionAffinity")
 		s.SessionAffinity.WriteJSON(e)
 	}
 	if s.SessionAffinityConfig.Set {
-		more.More()
-		e.ObjField("sessionAffinityConfig")
+		e.FieldStart("sessionAffinityConfig")
 		s.SessionAffinityConfig.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -23097,8 +20856,6 @@ func (s *IoK8sAPICoreV1ServiceSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceSpecSelector) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -23119,23 +20876,16 @@ func (s *IoK8sAPICoreV1ServiceSpecSelector) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Conditions != nil {
-		more.More()
-		e.ObjField("conditions")
-		more.Down()
+		e.FieldStart("conditions")
 		e.ArrStart()
 		for _, elem := range s.Conditions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.LoadBalancer.Set {
-		more.More()
-		e.ObjField("loadBalancer")
+		e.FieldStart("loadBalancer")
 		s.LoadBalancer.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -23175,11 +20925,8 @@ func (s *IoK8sAPICoreV1ServiceStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1SessionAffinityConfig) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ClientIP.Set {
-		more.More()
-		e.ObjField("clientIP")
+		e.FieldStart("clientIP")
 		s.ClientIP.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -23207,31 +20954,24 @@ func (s *IoK8sAPICoreV1SessionAffinityConfig) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.FsType.Set {
-		more.More()
-		e.ObjField("fsType")
+		e.FieldStart("fsType")
 		s.FsType.WriteJSON(e)
 	}
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
 	if s.SecretRef.Set {
-		more.More()
-		e.ObjField("secretRef")
+		e.FieldStart("secretRef")
 		s.SecretRef.WriteJSON(e)
 	}
 	if s.VolumeName.Set {
-		more.More()
-		e.ObjField("volumeName")
+		e.FieldStart("volumeName")
 		s.VolumeName.WriteJSON(e)
 	}
 	if s.VolumeNamespace.Set {
-		more.More()
-		e.ObjField("volumeNamespace")
+		e.FieldStart("volumeNamespace")
 		s.VolumeNamespace.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -23279,31 +21019,24 @@ func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1StorageOSVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.FsType.Set {
-		more.More()
-		e.ObjField("fsType")
+		e.FieldStart("fsType")
 		s.FsType.WriteJSON(e)
 	}
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
 	if s.SecretRef.Set {
-		more.More()
-		e.ObjField("secretRef")
+		e.FieldStart("secretRef")
 		s.SecretRef.WriteJSON(e)
 	}
 	if s.VolumeName.Set {
-		more.More()
-		e.ObjField("volumeName")
+		e.FieldStart("volumeName")
 		s.VolumeName.WriteJSON(e)
 	}
 	if s.VolumeNamespace.Set {
-		more.More()
-		e.ObjField("volumeNamespace")
+		e.FieldStart("volumeNamespace")
 		s.VolumeNamespace.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -23351,13 +21084,11 @@ func (s *IoK8sAPICoreV1StorageOSVolumeSource) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Sysctl) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("value")
+
+	e.FieldStart("value")
 	e.Str(s.Value)
 	e.ObjEnd()
 }
@@ -23391,11 +21122,8 @@ func (s *IoK8sAPICoreV1Sysctl) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1TCPSocketAction) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Host.Set {
-		more.More()
-		e.ObjField("host")
+		e.FieldStart("host")
 		s.Host.WriteJSON(e)
 	}
 	// Unsupported kind "alias".
@@ -23426,22 +21154,18 @@ func (s *IoK8sAPICoreV1TCPSocketAction) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Taint) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("effect")
+
+	e.FieldStart("effect")
 	e.Str(s.Effect)
-	more.More()
-	e.ObjField("key")
+
+	e.FieldStart("key")
 	e.Str(s.Key)
 	if s.TimeAdded.Set {
-		more.More()
-		e.ObjField("timeAdded")
+		e.FieldStart("timeAdded")
 		s.TimeAdded.WriteJSON(e)
 	}
 	if s.Value.Set {
-		more.More()
-		e.ObjField("value")
+		e.FieldStart("value")
 		s.Value.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -23486,31 +21210,24 @@ func (s *IoK8sAPICoreV1Taint) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Toleration) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Effect.Set {
-		more.More()
-		e.ObjField("effect")
+		e.FieldStart("effect")
 		s.Effect.WriteJSON(e)
 	}
 	if s.Key.Set {
-		more.More()
-		e.ObjField("key")
+		e.FieldStart("key")
 		s.Key.WriteJSON(e)
 	}
 	if s.Operator.Set {
-		more.More()
-		e.ObjField("operator")
+		e.FieldStart("operator")
 		s.Operator.WriteJSON(e)
 	}
 	if s.TolerationSeconds.Set {
-		more.More()
-		e.ObjField("tolerationSeconds")
+		e.FieldStart("tolerationSeconds")
 		s.TolerationSeconds.WriteJSON(e)
 	}
 	if s.Value.Set {
-		more.More()
-		e.ObjField("value")
+		e.FieldStart("value")
 		s.Value.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -23558,21 +21275,16 @@ func (s *IoK8sAPICoreV1Toleration) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("key")
+
+	e.FieldStart("key")
 	e.Str(s.Key)
-	more.More()
-	e.ObjField("values")
-	more.Down()
+
+	e.FieldStart("values")
 	e.ArrStart()
 	for _, elem := range s.Values {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -23613,19 +21325,13 @@ func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1TopologySelectorTerm) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.MatchLabelExpressions != nil {
-		more.More()
-		e.ObjField("matchLabelExpressions")
-		more.Down()
+		e.FieldStart("matchLabelExpressions")
 		e.ArrStart()
 		for _, elem := range s.MatchLabelExpressions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -23659,21 +21365,18 @@ func (s *IoK8sAPICoreV1TopologySelectorTerm) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1TopologySpreadConstraint) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LabelSelector.Set {
-		more.More()
-		e.ObjField("labelSelector")
+		e.FieldStart("labelSelector")
 		s.LabelSelector.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("maxSkew")
+
+	e.FieldStart("maxSkew")
 	e.Int32(s.MaxSkew)
-	more.More()
-	e.ObjField("topologyKey")
+
+	e.FieldStart("topologyKey")
 	e.Str(s.TopologyKey)
-	more.More()
-	e.ObjField("whenUnsatisfiable")
+
+	e.FieldStart("whenUnsatisfiable")
 	e.Str(s.WhenUnsatisfiable)
 	e.ObjEnd()
 }
@@ -23718,18 +21421,15 @@ func (s *IoK8sAPICoreV1TopologySpreadConstraint) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1TypedLocalObjectReference) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiGroup.Set {
-		more.More()
-		e.ObjField("apiGroup")
+		e.FieldStart("apiGroup")
 		s.ApiGroup.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("kind")
+
+	e.FieldStart("kind")
 	e.Str(s.Kind)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -23768,154 +21468,123 @@ func (s *IoK8sAPICoreV1TypedLocalObjectReference) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Volume) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AwsElasticBlockStore.Set {
-		more.More()
-		e.ObjField("awsElasticBlockStore")
+		e.FieldStart("awsElasticBlockStore")
 		s.AwsElasticBlockStore.WriteJSON(e)
 	}
 	if s.AzureDisk.Set {
-		more.More()
-		e.ObjField("azureDisk")
+		e.FieldStart("azureDisk")
 		s.AzureDisk.WriteJSON(e)
 	}
 	if s.AzureFile.Set {
-		more.More()
-		e.ObjField("azureFile")
+		e.FieldStart("azureFile")
 		s.AzureFile.WriteJSON(e)
 	}
 	if s.Cephfs.Set {
-		more.More()
-		e.ObjField("cephfs")
+		e.FieldStart("cephfs")
 		s.Cephfs.WriteJSON(e)
 	}
 	if s.Cinder.Set {
-		more.More()
-		e.ObjField("cinder")
+		e.FieldStart("cinder")
 		s.Cinder.WriteJSON(e)
 	}
 	if s.ConfigMap.Set {
-		more.More()
-		e.ObjField("configMap")
+		e.FieldStart("configMap")
 		s.ConfigMap.WriteJSON(e)
 	}
 	if s.Csi.Set {
-		more.More()
-		e.ObjField("csi")
+		e.FieldStart("csi")
 		s.Csi.WriteJSON(e)
 	}
 	if s.DownwardAPI.Set {
-		more.More()
-		e.ObjField("downwardAPI")
+		e.FieldStart("downwardAPI")
 		s.DownwardAPI.WriteJSON(e)
 	}
 	if s.EmptyDir.Set {
-		more.More()
-		e.ObjField("emptyDir")
+		e.FieldStart("emptyDir")
 		s.EmptyDir.WriteJSON(e)
 	}
 	if s.Ephemeral.Set {
-		more.More()
-		e.ObjField("ephemeral")
+		e.FieldStart("ephemeral")
 		s.Ephemeral.WriteJSON(e)
 	}
 	if s.Fc.Set {
-		more.More()
-		e.ObjField("fc")
+		e.FieldStart("fc")
 		s.Fc.WriteJSON(e)
 	}
 	if s.FlexVolume.Set {
-		more.More()
-		e.ObjField("flexVolume")
+		e.FieldStart("flexVolume")
 		s.FlexVolume.WriteJSON(e)
 	}
 	if s.Flocker.Set {
-		more.More()
-		e.ObjField("flocker")
+		e.FieldStart("flocker")
 		s.Flocker.WriteJSON(e)
 	}
 	if s.GcePersistentDisk.Set {
-		more.More()
-		e.ObjField("gcePersistentDisk")
+		e.FieldStart("gcePersistentDisk")
 		s.GcePersistentDisk.WriteJSON(e)
 	}
 	if s.GitRepo.Set {
-		more.More()
-		e.ObjField("gitRepo")
+		e.FieldStart("gitRepo")
 		s.GitRepo.WriteJSON(e)
 	}
 	if s.Glusterfs.Set {
-		more.More()
-		e.ObjField("glusterfs")
+		e.FieldStart("glusterfs")
 		s.Glusterfs.WriteJSON(e)
 	}
 	if s.HostPath.Set {
-		more.More()
-		e.ObjField("hostPath")
+		e.FieldStart("hostPath")
 		s.HostPath.WriteJSON(e)
 	}
 	if s.Iscsi.Set {
-		more.More()
-		e.ObjField("iscsi")
+		e.FieldStart("iscsi")
 		s.Iscsi.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Nfs.Set {
-		more.More()
-		e.ObjField("nfs")
+		e.FieldStart("nfs")
 		s.Nfs.WriteJSON(e)
 	}
 	if s.PersistentVolumeClaim.Set {
-		more.More()
-		e.ObjField("persistentVolumeClaim")
+		e.FieldStart("persistentVolumeClaim")
 		s.PersistentVolumeClaim.WriteJSON(e)
 	}
 	if s.PhotonPersistentDisk.Set {
-		more.More()
-		e.ObjField("photonPersistentDisk")
+		e.FieldStart("photonPersistentDisk")
 		s.PhotonPersistentDisk.WriteJSON(e)
 	}
 	if s.PortworxVolume.Set {
-		more.More()
-		e.ObjField("portworxVolume")
+		e.FieldStart("portworxVolume")
 		s.PortworxVolume.WriteJSON(e)
 	}
 	if s.Projected.Set {
-		more.More()
-		e.ObjField("projected")
+		e.FieldStart("projected")
 		s.Projected.WriteJSON(e)
 	}
 	if s.Quobyte.Set {
-		more.More()
-		e.ObjField("quobyte")
+		e.FieldStart("quobyte")
 		s.Quobyte.WriteJSON(e)
 	}
 	if s.Rbd.Set {
-		more.More()
-		e.ObjField("rbd")
+		e.FieldStart("rbd")
 		s.Rbd.WriteJSON(e)
 	}
 	if s.ScaleIO.Set {
-		more.More()
-		e.ObjField("scaleIO")
+		e.FieldStart("scaleIO")
 		s.ScaleIO.WriteJSON(e)
 	}
 	if s.Secret.Set {
-		more.More()
-		e.ObjField("secret")
+		e.FieldStart("secret")
 		s.Secret.WriteJSON(e)
 	}
 	if s.Storageos.Set {
-		more.More()
-		e.ObjField("storageos")
+		e.FieldStart("storageos")
 		s.Storageos.WriteJSON(e)
 	}
 	if s.VsphereVolume.Set {
-		more.More()
-		e.ObjField("vsphereVolume")
+		e.FieldStart("vsphereVolume")
 		s.VsphereVolume.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -24089,13 +21758,11 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1VolumeDevice) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("devicePath")
+
+	e.FieldStart("devicePath")
 	e.Str(s.DevicePath)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -24129,32 +21796,26 @@ func (s *IoK8sAPICoreV1VolumeDevice) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1VolumeMount) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("mountPath")
+
+	e.FieldStart("mountPath")
 	e.Str(s.MountPath)
 	if s.MountPropagation.Set {
-		more.More()
-		e.ObjField("mountPropagation")
+		e.FieldStart("mountPropagation")
 		s.MountPropagation.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
 	if s.SubPath.Set {
-		more.More()
-		e.ObjField("subPath")
+		e.FieldStart("subPath")
 		s.SubPath.WriteJSON(e)
 	}
 	if s.SubPathExpr.Set {
-		more.More()
-		e.ObjField("subPathExpr")
+		e.FieldStart("subPathExpr")
 		s.SubPathExpr.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -24209,11 +21870,8 @@ func (s *IoK8sAPICoreV1VolumeMount) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1VolumeNodeAffinity) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Required.Set {
-		more.More()
-		e.ObjField("required")
+		e.FieldStart("required")
 		s.Required.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -24241,26 +21899,20 @@ func (s *IoK8sAPICoreV1VolumeNodeAffinity) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1VolumeProjection) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ConfigMap.Set {
-		more.More()
-		e.ObjField("configMap")
+		e.FieldStart("configMap")
 		s.ConfigMap.WriteJSON(e)
 	}
 	if s.DownwardAPI.Set {
-		more.More()
-		e.ObjField("downwardAPI")
+		e.FieldStart("downwardAPI")
 		s.DownwardAPI.WriteJSON(e)
 	}
 	if s.Secret.Set {
-		more.More()
-		e.ObjField("secret")
+		e.FieldStart("secret")
 		s.Secret.WriteJSON(e)
 	}
 	if s.ServiceAccountToken.Set {
-		more.More()
-		e.ObjField("serviceAccountToken")
+		e.FieldStart("serviceAccountToken")
 		s.ServiceAccountToken.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -24303,25 +21955,20 @@ func (s *IoK8sAPICoreV1VolumeProjection) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.FsType.Set {
-		more.More()
-		e.ObjField("fsType")
+		e.FieldStart("fsType")
 		s.FsType.WriteJSON(e)
 	}
 	if s.StoragePolicyID.Set {
-		more.More()
-		e.ObjField("storagePolicyID")
+		e.FieldStart("storagePolicyID")
 		s.StoragePolicyID.WriteJSON(e)
 	}
 	if s.StoragePolicyName.Set {
-		more.More()
-		e.ObjField("storagePolicyName")
+		e.FieldStart("storagePolicyName")
 		s.StoragePolicyName.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("volumePath")
+
+	e.FieldStart("volumePath")
 	e.Str(s.VolumePath)
 	e.ObjEnd()
 }
@@ -24364,13 +22011,11 @@ func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1WeightedPodAffinityTerm) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("podAffinityTerm")
+
+	e.FieldStart("podAffinityTerm")
 	s.PodAffinityTerm.WriteJSON(e)
-	more.More()
-	e.ObjField("weight")
+
+	e.FieldStart("weight")
 	e.Int32(s.Weight)
 	e.ObjEnd()
 }
@@ -24402,26 +22047,20 @@ func (s *IoK8sAPICoreV1WeightedPodAffinityTerm) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1WindowsSecurityContextOptions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.GmsaCredentialSpec.Set {
-		more.More()
-		e.ObjField("gmsaCredentialSpec")
+		e.FieldStart("gmsaCredentialSpec")
 		s.GmsaCredentialSpec.WriteJSON(e)
 	}
 	if s.GmsaCredentialSpecName.Set {
-		more.More()
-		e.ObjField("gmsaCredentialSpecName")
+		e.FieldStart("gmsaCredentialSpecName")
 		s.GmsaCredentialSpecName.WriteJSON(e)
 	}
 	if s.HostProcess.Set {
-		more.More()
-		e.ObjField("hostProcess")
+		e.FieldStart("hostProcess")
 		s.HostProcess.WriteJSON(e)
 	}
 	if s.RunAsUserName.Set {
-		more.More()
-		e.ObjField("runAsUserName")
+		e.FieldStart("runAsUserName")
 		s.RunAsUserName.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -24464,51 +22103,39 @@ func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1Endpoint) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("addresses")
-	more.Down()
+
+	e.FieldStart("addresses")
 	e.ArrStart()
 	for _, elem := range s.Addresses {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Conditions.Set {
-		more.More()
-		e.ObjField("conditions")
+		e.FieldStart("conditions")
 		s.Conditions.WriteJSON(e)
 	}
 	if s.DeprecatedTopology != nil {
-		more.More()
-		e.ObjField("deprecatedTopology")
+		e.FieldStart("deprecatedTopology")
 		s.DeprecatedTopology.WriteJSON(e)
 	}
 	if s.Hints.Set {
-		more.More()
-		e.ObjField("hints")
+		e.FieldStart("hints")
 		s.Hints.WriteJSON(e)
 	}
 	if s.Hostname.Set {
-		more.More()
-		e.ObjField("hostname")
+		e.FieldStart("hostname")
 		s.Hostname.WriteJSON(e)
 	}
 	if s.NodeName.Set {
-		more.More()
-		e.ObjField("nodeName")
+		e.FieldStart("nodeName")
 		s.NodeName.WriteJSON(e)
 	}
 	if s.TargetRef.Set {
-		more.More()
-		e.ObjField("targetRef")
+		e.FieldStart("targetRef")
 		s.TargetRef.WriteJSON(e)
 	}
 	if s.Zone.Set {
-		more.More()
-		e.ObjField("zone")
+		e.FieldStart("zone")
 		s.Zone.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -24582,21 +22209,16 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointConditions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Ready.Set {
-		more.More()
-		e.ObjField("ready")
+		e.FieldStart("ready")
 		s.Ready.WriteJSON(e)
 	}
 	if s.Serving.Set {
-		more.More()
-		e.ObjField("serving")
+		e.FieldStart("serving")
 		s.Serving.WriteJSON(e)
 	}
 	if s.Terminating.Set {
-		more.More()
-		e.ObjField("terminating")
+		e.FieldStart("terminating")
 		s.Terminating.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -24634,8 +22256,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointConditions) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -24656,19 +22276,13 @@ func (s *IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointHints) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ForZones != nil {
-		more.More()
-		e.ObjField("forZones")
-		more.Down()
+		e.FieldStart("forZones")
 		e.ArrStart()
 		for _, elem := range s.ForZones {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -24702,26 +22316,20 @@ func (s *IoK8sAPIDiscoveryV1EndpointHints) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointPort) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AppProtocol.Set {
-		more.More()
-		e.ObjField("appProtocol")
+		e.FieldStart("appProtocol")
 		s.AppProtocol.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Port.Set {
-		more.More()
-		e.ObjField("port")
+		e.FieldStart("port")
 		s.Port.WriteJSON(e)
 	}
 	if s.Protocol.Set {
-		more.More()
-		e.ObjField("protocol")
+		e.FieldStart("protocol")
 		s.Protocol.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -24764,47 +22372,35 @@ func (s *IoK8sAPIDiscoveryV1EndpointPort) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointSlice) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("addressType")
+
+	e.FieldStart("addressType")
 	e.Str(s.AddressType)
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("endpoints")
-	more.Down()
+
+	e.FieldStart("endpoints")
 	e.ArrStart()
 	for _, elem := range s.Endpoints {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Ports != nil {
-		more.More()
-		e.ObjField("ports")
-		more.Down()
+		e.FieldStart("ports")
 		e.ArrStart()
 		for _, elem := range s.Ports {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -24871,31 +22467,23 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointSliceList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -24945,10 +22533,8 @@ func (s *IoK8sAPIDiscoveryV1EndpointSliceList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1ForZone) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -24976,46 +22562,35 @@ func (s *IoK8sAPIDiscoveryV1ForZone) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1Endpoint) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("addresses")
-	more.Down()
+
+	e.FieldStart("addresses")
 	e.ArrStart()
 	for _, elem := range s.Addresses {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Conditions.Set {
-		more.More()
-		e.ObjField("conditions")
+		e.FieldStart("conditions")
 		s.Conditions.WriteJSON(e)
 	}
 	if s.Hints.Set {
-		more.More()
-		e.ObjField("hints")
+		e.FieldStart("hints")
 		s.Hints.WriteJSON(e)
 	}
 	if s.Hostname.Set {
-		more.More()
-		e.ObjField("hostname")
+		e.FieldStart("hostname")
 		s.Hostname.WriteJSON(e)
 	}
 	if s.NodeName.Set {
-		more.More()
-		e.ObjField("nodeName")
+		e.FieldStart("nodeName")
 		s.NodeName.WriteJSON(e)
 	}
 	if s.TargetRef.Set {
-		more.More()
-		e.ObjField("targetRef")
+		e.FieldStart("targetRef")
 		s.TargetRef.WriteJSON(e)
 	}
 	if s.Topology != nil {
-		more.More()
-		e.ObjField("topology")
+		e.FieldStart("topology")
 		s.Topology.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -25084,21 +22659,16 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointConditions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Ready.Set {
-		more.More()
-		e.ObjField("ready")
+		e.FieldStart("ready")
 		s.Ready.WriteJSON(e)
 	}
 	if s.Serving.Set {
-		more.More()
-		e.ObjField("serving")
+		e.FieldStart("serving")
 		s.Serving.WriteJSON(e)
 	}
 	if s.Terminating.Set {
-		more.More()
-		e.ObjField("terminating")
+		e.FieldStart("terminating")
 		s.Terminating.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -25136,19 +22706,13 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointConditions) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointHints) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ForZones != nil {
-		more.More()
-		e.ObjField("forZones")
-		more.Down()
+		e.FieldStart("forZones")
 		e.ArrStart()
 		for _, elem := range s.ForZones {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -25182,26 +22746,20 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointHints) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointPort) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AppProtocol.Set {
-		more.More()
-		e.ObjField("appProtocol")
+		e.FieldStart("appProtocol")
 		s.AppProtocol.WriteJSON(e)
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Port.Set {
-		more.More()
-		e.ObjField("port")
+		e.FieldStart("port")
 		s.Port.WriteJSON(e)
 	}
 	if s.Protocol.Set {
-		more.More()
-		e.ObjField("protocol")
+		e.FieldStart("protocol")
 		s.Protocol.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -25244,47 +22802,35 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointPort) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("addressType")
+
+	e.FieldStart("addressType")
 	e.Str(s.AddressType)
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("endpoints")
-	more.Down()
+
+	e.FieldStart("endpoints")
 	e.ArrStart()
 	for _, elem := range s.Endpoints {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Ports != nil {
-		more.More()
-		e.ObjField("ports")
-		more.Down()
+		e.FieldStart("ports")
 		e.ArrStart()
 		for _, elem := range s.Ports {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -25351,31 +22897,23 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -25425,8 +22963,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointTopology) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -25447,10 +22983,8 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointTopology) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1ForZone) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -25478,87 +23012,69 @@ func (s *IoK8sAPIDiscoveryV1beta1ForZone) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIEventsV1Event) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Action.Set {
-		more.More()
-		e.ObjField("action")
+		e.FieldStart("action")
 		s.Action.WriteJSON(e)
 	}
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.DeprecatedCount.Set {
-		more.More()
-		e.ObjField("deprecatedCount")
+		e.FieldStart("deprecatedCount")
 		s.DeprecatedCount.WriteJSON(e)
 	}
 	if s.DeprecatedFirstTimestamp.Set {
-		more.More()
-		e.ObjField("deprecatedFirstTimestamp")
+		e.FieldStart("deprecatedFirstTimestamp")
 		s.DeprecatedFirstTimestamp.WriteJSON(e)
 	}
 	if s.DeprecatedLastTimestamp.Set {
-		more.More()
-		e.ObjField("deprecatedLastTimestamp")
+		e.FieldStart("deprecatedLastTimestamp")
 		s.DeprecatedLastTimestamp.WriteJSON(e)
 	}
 	if s.DeprecatedSource.Set {
-		more.More()
-		e.ObjField("deprecatedSource")
+		e.FieldStart("deprecatedSource")
 		s.DeprecatedSource.WriteJSON(e)
 	}
 	// Unsupported kind "alias".
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Note.Set {
-		more.More()
-		e.ObjField("note")
+		e.FieldStart("note")
 		s.Note.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
 	if s.Regarding.Set {
-		more.More()
-		e.ObjField("regarding")
+		e.FieldStart("regarding")
 		s.Regarding.WriteJSON(e)
 	}
 	if s.Related.Set {
-		more.More()
-		e.ObjField("related")
+		e.FieldStart("related")
 		s.Related.WriteJSON(e)
 	}
 	if s.ReportingController.Set {
-		more.More()
-		e.ObjField("reportingController")
+		e.FieldStart("reportingController")
 		s.ReportingController.WriteJSON(e)
 	}
 	if s.ReportingInstance.Set {
-		more.More()
-		e.ObjField("reportingInstance")
+		e.FieldStart("reportingInstance")
 		s.ReportingInstance.WriteJSON(e)
 	}
 	if s.Series.Set {
-		more.More()
-		e.ObjField("series")
+		e.FieldStart("series")
 		s.Series.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -25663,31 +23179,23 @@ func (s *IoK8sAPIEventsV1Event) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIEventsV1EventList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -25737,10 +23245,8 @@ func (s *IoK8sAPIEventsV1EventList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIEventsV1EventSeries) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("count")
+
+	e.FieldStart("count")
 	e.Int32(s.Count)
 	// Unsupported kind "alias".
 	e.ObjEnd()
@@ -25771,87 +23277,69 @@ func (s *IoK8sAPIEventsV1EventSeries) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIEventsV1beta1Event) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Action.Set {
-		more.More()
-		e.ObjField("action")
+		e.FieldStart("action")
 		s.Action.WriteJSON(e)
 	}
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.DeprecatedCount.Set {
-		more.More()
-		e.ObjField("deprecatedCount")
+		e.FieldStart("deprecatedCount")
 		s.DeprecatedCount.WriteJSON(e)
 	}
 	if s.DeprecatedFirstTimestamp.Set {
-		more.More()
-		e.ObjField("deprecatedFirstTimestamp")
+		e.FieldStart("deprecatedFirstTimestamp")
 		s.DeprecatedFirstTimestamp.WriteJSON(e)
 	}
 	if s.DeprecatedLastTimestamp.Set {
-		more.More()
-		e.ObjField("deprecatedLastTimestamp")
+		e.FieldStart("deprecatedLastTimestamp")
 		s.DeprecatedLastTimestamp.WriteJSON(e)
 	}
 	if s.DeprecatedSource.Set {
-		more.More()
-		e.ObjField("deprecatedSource")
+		e.FieldStart("deprecatedSource")
 		s.DeprecatedSource.WriteJSON(e)
 	}
 	// Unsupported kind "alias".
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Note.Set {
-		more.More()
-		e.ObjField("note")
+		e.FieldStart("note")
 		s.Note.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
 	if s.Regarding.Set {
-		more.More()
-		e.ObjField("regarding")
+		e.FieldStart("regarding")
 		s.Regarding.WriteJSON(e)
 	}
 	if s.Related.Set {
-		more.More()
-		e.ObjField("related")
+		e.FieldStart("related")
 		s.Related.WriteJSON(e)
 	}
 	if s.ReportingController.Set {
-		more.More()
-		e.ObjField("reportingController")
+		e.FieldStart("reportingController")
 		s.ReportingController.WriteJSON(e)
 	}
 	if s.ReportingInstance.Set {
-		more.More()
-		e.ObjField("reportingInstance")
+		e.FieldStart("reportingInstance")
 		s.ReportingInstance.WriteJSON(e)
 	}
 	if s.Series.Set {
-		more.More()
-		e.ObjField("series")
+		e.FieldStart("series")
 		s.Series.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -25956,31 +23444,23 @@ func (s *IoK8sAPIEventsV1beta1Event) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIEventsV1beta1EventList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -26030,10 +23510,8 @@ func (s *IoK8sAPIEventsV1beta1EventList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIEventsV1beta1EventSeries) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("count")
+
+	e.FieldStart("count")
 	e.Int32(s.Count)
 	// Unsupported kind "alias".
 	e.ObjEnd()
@@ -26064,10 +23542,8 @@ func (s *IoK8sAPIEventsV1beta1EventSeries) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -26095,31 +23571,24 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -26167,31 +23636,24 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LastTransitionTime.Set {
-		more.More()
-		e.ObjField("lastTransitionTime")
+		e.FieldStart("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -26239,31 +23701,23 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -26313,32 +23767,24 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.DistinguisherMethod.Set {
-		more.More()
-		e.ObjField("distinguisherMethod")
+		e.FieldStart("distinguisherMethod")
 		s.DistinguisherMethod.WriteJSON(e)
 	}
 	if s.MatchingPrecedence.Set {
-		more.More()
-		e.ObjField("matchingPrecedence")
+		e.FieldStart("matchingPrecedence")
 		s.MatchingPrecedence.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("priorityLevelConfiguration")
+
+	e.FieldStart("priorityLevelConfiguration")
 	s.PriorityLevelConfiguration.WriteJSON(e)
 	if s.Rules != nil {
-		more.More()
-		e.ObjField("rules")
-		more.Down()
+		e.FieldStart("rules")
 		e.ArrStart()
 		for _, elem := range s.Rules {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -26386,19 +23832,13 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Conditions != nil {
-		more.More()
-		e.ObjField("conditions")
-		more.Down()
+		e.FieldStart("conditions")
 		e.ArrStart()
 		for _, elem := range s.Conditions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -26432,10 +23872,8 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1GroupSubject) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -26463,15 +23901,12 @@ func (s *IoK8sAPIFlowcontrolV1beta1GroupSubject) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1LimitResponse) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Queuing.Set {
-		more.More()
-		e.ObjField("queuing")
+		e.FieldStart("queuing")
 		s.Queuing.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -26504,16 +23939,12 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitResponse) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AssuredConcurrencyShares.Set {
-		more.More()
-		e.ObjField("assuredConcurrencyShares")
+		e.FieldStart("assuredConcurrencyShares")
 		s.AssuredConcurrencyShares.WriteJSON(e)
 	}
 	if s.LimitResponse.Set {
-		more.More()
-		e.ObjField("limitResponse")
+		e.FieldStart("limitResponse")
 		s.LimitResponse.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -26546,28 +23977,20 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) ReadJSON(d
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("nonResourceURLs")
-	more.Down()
+
+	e.FieldStart("nonResourceURLs")
 	e.ArrStart()
 	for _, elem := range s.NonResourceURLs {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("verbs")
-	more.Down()
+
+	e.FieldStart("verbs")
 	e.ArrStart()
 	for _, elem := range s.Verbs {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -26616,42 +24039,29 @@ func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.NonResourceRules != nil {
-		more.More()
-		e.ObjField("nonResourceRules")
-		more.Down()
+		e.FieldStart("nonResourceRules")
 		e.ArrStart()
 		for _, elem := range s.NonResourceRules {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.ResourceRules != nil {
-		more.More()
-		e.ObjField("resourceRules")
-		more.Down()
+		e.FieldStart("resourceRules")
 		e.ArrStart()
 		for _, elem := range s.ResourceRules {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("subjects")
-	more.Down()
+
+	e.FieldStart("subjects")
 	e.ArrStart()
 	for _, elem := range s.Subjects {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -26708,31 +24118,24 @@ func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -26780,31 +24183,24 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) ReadJSON(d *json.
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LastTransitionTime.Set {
-		more.More()
-		e.ObjField("lastTransitionTime")
+		e.FieldStart("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -26852,31 +24248,23 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) ReadJSON
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -26926,10 +24314,8 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) ReadJSON(d *j
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -26957,15 +24343,12 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) ReadJSON
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Limited.Set {
-		more.More()
-		e.ObjField("limited")
+		e.FieldStart("limited")
 		s.Limited.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -26998,19 +24381,13 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) ReadJSON(d *j
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Conditions != nil {
-		more.More()
-		e.ObjField("conditions")
-		more.Down()
+		e.FieldStart("conditions")
 		e.ArrStart()
 		for _, elem := range s.Conditions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -27044,21 +24421,16 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) ReadJSON(d 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.HandSize.Set {
-		more.More()
-		e.ObjField("handSize")
+		e.FieldStart("handSize")
 		s.HandSize.WriteJSON(e)
 	}
 	if s.QueueLengthLimit.Set {
-		more.More()
-		e.ObjField("queueLengthLimit")
+		e.FieldStart("queueLengthLimit")
 		s.QueueLengthLimit.WriteJSON(e)
 	}
 	if s.Queues.Set {
-		more.More()
-		e.ObjField("queues")
+		e.FieldStart("queues")
 		s.Queues.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -27096,55 +24468,39 @@ func (s *IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("apiGroups")
-	more.Down()
+
+	e.FieldStart("apiGroups")
 	e.ArrStart()
 	for _, elem := range s.ApiGroups {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.ClusterScope.Set {
-		more.More()
-		e.ObjField("clusterScope")
+		e.FieldStart("clusterScope")
 		s.ClusterScope.WriteJSON(e)
 	}
 	if s.Namespaces != nil {
-		more.More()
-		e.ObjField("namespaces")
-		more.Down()
+		e.FieldStart("namespaces")
 		e.ArrStart()
 		for _, elem := range s.Namespaces {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("resources")
-	more.Down()
+
+	e.FieldStart("resources")
 	e.ArrStart()
 	for _, elem := range s.Resources {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("verbs")
-	more.Down()
+
+	e.FieldStart("verbs")
 	e.ArrStart()
 	for _, elem := range s.Verbs {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -27226,13 +24582,11 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("namespace")
+
+	e.FieldStart("namespace")
 	e.Str(s.Namespace)
 	e.ObjEnd()
 }
@@ -27266,24 +24620,19 @@ func (s *IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1Subject) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Group.Set {
-		more.More()
-		e.ObjField("group")
+		e.FieldStart("group")
 		s.Group.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("kind")
+
+	e.FieldStart("kind")
 	e.Str(s.Kind)
 	if s.ServiceAccount.Set {
-		more.More()
-		e.ObjField("serviceAccount")
+		e.FieldStart("serviceAccount")
 		s.ServiceAccount.WriteJSON(e)
 	}
 	if s.User.Set {
-		more.More()
-		e.ObjField("user")
+		e.FieldStart("user")
 		s.User.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -27327,10 +24676,8 @@ func (s *IoK8sAPIFlowcontrolV1beta1Subject) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1UserSubject) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -27358,10 +24705,8 @@ func (s *IoK8sAPIFlowcontrolV1beta1UserSubject) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -27389,31 +24734,24 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -27461,31 +24799,24 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LastTransitionTime.Set {
-		more.More()
-		e.ObjField("lastTransitionTime")
+		e.FieldStart("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -27533,31 +24864,23 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -27607,32 +24930,24 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.DistinguisherMethod.Set {
-		more.More()
-		e.ObjField("distinguisherMethod")
+		e.FieldStart("distinguisherMethod")
 		s.DistinguisherMethod.WriteJSON(e)
 	}
 	if s.MatchingPrecedence.Set {
-		more.More()
-		e.ObjField("matchingPrecedence")
+		e.FieldStart("matchingPrecedence")
 		s.MatchingPrecedence.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("priorityLevelConfiguration")
+
+	e.FieldStart("priorityLevelConfiguration")
 	s.PriorityLevelConfiguration.WriteJSON(e)
 	if s.Rules != nil {
-		more.More()
-		e.ObjField("rules")
-		more.Down()
+		e.FieldStart("rules")
 		e.ArrStart()
 		for _, elem := range s.Rules {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -27680,19 +24995,13 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Conditions != nil {
-		more.More()
-		e.ObjField("conditions")
-		more.Down()
+		e.FieldStart("conditions")
 		e.ArrStart()
 		for _, elem := range s.Conditions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -27726,10 +25035,8 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2GroupSubject) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -27757,15 +25064,12 @@ func (s *IoK8sAPIFlowcontrolV1beta2GroupSubject) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2LimitResponse) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Queuing.Set {
-		more.More()
-		e.ObjField("queuing")
+		e.FieldStart("queuing")
 		s.Queuing.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -27798,16 +25102,12 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitResponse) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AssuredConcurrencyShares.Set {
-		more.More()
-		e.ObjField("assuredConcurrencyShares")
+		e.FieldStart("assuredConcurrencyShares")
 		s.AssuredConcurrencyShares.WriteJSON(e)
 	}
 	if s.LimitResponse.Set {
-		more.More()
-		e.ObjField("limitResponse")
+		e.FieldStart("limitResponse")
 		s.LimitResponse.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -27840,28 +25140,20 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) ReadJSON(d
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("nonResourceURLs")
-	more.Down()
+
+	e.FieldStart("nonResourceURLs")
 	e.ArrStart()
 	for _, elem := range s.NonResourceURLs {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("verbs")
-	more.Down()
+
+	e.FieldStart("verbs")
 	e.ArrStart()
 	for _, elem := range s.Verbs {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -27910,42 +25202,29 @@ func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.NonResourceRules != nil {
-		more.More()
-		e.ObjField("nonResourceRules")
-		more.Down()
+		e.FieldStart("nonResourceRules")
 		e.ArrStart()
 		for _, elem := range s.NonResourceRules {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.ResourceRules != nil {
-		more.More()
-		e.ObjField("resourceRules")
-		more.Down()
+		e.FieldStart("resourceRules")
 		e.ArrStart()
 		for _, elem := range s.ResourceRules {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("subjects")
-	more.Down()
+
+	e.FieldStart("subjects")
 	e.ArrStart()
 	for _, elem := range s.Subjects {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -28002,31 +25281,24 @@ func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -28074,31 +25346,24 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) ReadJSON(d *json.
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LastTransitionTime.Set {
-		more.More()
-		e.ObjField("lastTransitionTime")
+		e.FieldStart("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -28146,31 +25411,23 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) ReadJSON
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -28220,10 +25477,8 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) ReadJSON(d *j
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -28251,15 +25506,12 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) ReadJSON
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Limited.Set {
-		more.More()
-		e.ObjField("limited")
+		e.FieldStart("limited")
 		s.Limited.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -28292,19 +25544,13 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) ReadJSON(d *j
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Conditions != nil {
-		more.More()
-		e.ObjField("conditions")
-		more.Down()
+		e.FieldStart("conditions")
 		e.ArrStart()
 		for _, elem := range s.Conditions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -28338,21 +25584,16 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) ReadJSON(d 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.HandSize.Set {
-		more.More()
-		e.ObjField("handSize")
+		e.FieldStart("handSize")
 		s.HandSize.WriteJSON(e)
 	}
 	if s.QueueLengthLimit.Set {
-		more.More()
-		e.ObjField("queueLengthLimit")
+		e.FieldStart("queueLengthLimit")
 		s.QueueLengthLimit.WriteJSON(e)
 	}
 	if s.Queues.Set {
-		more.More()
-		e.ObjField("queues")
+		e.FieldStart("queues")
 		s.Queues.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -28390,55 +25631,39 @@ func (s *IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("apiGroups")
-	more.Down()
+
+	e.FieldStart("apiGroups")
 	e.ArrStart()
 	for _, elem := range s.ApiGroups {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.ClusterScope.Set {
-		more.More()
-		e.ObjField("clusterScope")
+		e.FieldStart("clusterScope")
 		s.ClusterScope.WriteJSON(e)
 	}
 	if s.Namespaces != nil {
-		more.More()
-		e.ObjField("namespaces")
-		more.Down()
+		e.FieldStart("namespaces")
 		e.ArrStart()
 		for _, elem := range s.Namespaces {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("resources")
-	more.Down()
+
+	e.FieldStart("resources")
 	e.ArrStart()
 	for _, elem := range s.Resources {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("verbs")
-	more.Down()
+
+	e.FieldStart("verbs")
 	e.ArrStart()
 	for _, elem := range s.Verbs {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -28520,13 +25745,11 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("namespace")
+
+	e.FieldStart("namespace")
 	e.Str(s.Namespace)
 	e.ObjEnd()
 }
@@ -28560,24 +25783,19 @@ func (s *IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2Subject) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Group.Set {
-		more.More()
-		e.ObjField("group")
+		e.FieldStart("group")
 		s.Group.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("kind")
+
+	e.FieldStart("kind")
 	e.Str(s.Kind)
 	if s.ServiceAccount.Set {
-		more.More()
-		e.ObjField("serviceAccount")
+		e.FieldStart("serviceAccount")
 		s.ServiceAccount.WriteJSON(e)
 	}
 	if s.User.Set {
-		more.More()
-		e.ObjField("user")
+		e.FieldStart("user")
 		s.User.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -28621,10 +25839,8 @@ func (s *IoK8sAPIFlowcontrolV1beta2Subject) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2UserSubject) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -28652,18 +25868,15 @@ func (s *IoK8sAPIFlowcontrolV1beta2UserSubject) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1HTTPIngressPath) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("backend")
+
+	e.FieldStart("backend")
 	s.Backend.WriteJSON(e)
 	if s.Path.Set {
-		more.More()
-		e.ObjField("path")
+		e.FieldStart("path")
 		s.Path.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("pathType")
+
+	e.FieldStart("pathType")
 	e.Str(s.PathType)
 	e.ObjEnd()
 }
@@ -28700,18 +25913,13 @@ func (s *IoK8sAPINetworkingV1HTTPIngressPath) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1HTTPIngressRuleValue) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("paths")
-	more.Down()
+
+	e.FieldStart("paths")
 	e.ArrStart()
 	for _, elem := range s.Paths {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -28744,22 +25952,16 @@ func (s *IoK8sAPINetworkingV1HTTPIngressRuleValue) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IPBlock) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("cidr")
+
+	e.FieldStart("cidr")
 	e.Str(s.Cidr)
 	if s.Except != nil {
-		more.More()
-		e.ObjField("except")
-		more.Down()
+		e.FieldStart("except")
 		e.ArrStart()
 		for _, elem := range s.Except {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -28801,31 +26003,24 @@ func (s *IoK8sAPINetworkingV1IPBlock) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1Ingress) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -28873,16 +26068,12 @@ func (s *IoK8sAPINetworkingV1Ingress) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressBackend) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Resource.Set {
-		more.More()
-		e.ObjField("resource")
+		e.FieldStart("resource")
 		s.Resource.WriteJSON(e)
 	}
 	if s.Service.Set {
-		more.More()
-		e.ObjField("service")
+		e.FieldStart("service")
 		s.Service.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -28915,26 +26106,20 @@ func (s *IoK8sAPINetworkingV1IngressBackend) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressClass) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -28977,31 +26162,23 @@ func (s *IoK8sAPINetworkingV1IngressClass) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressClassList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -29051,27 +26228,22 @@ func (s *IoK8sAPINetworkingV1IngressClassList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressClassParametersReference) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiGroup.Set {
-		more.More()
-		e.ObjField("apiGroup")
+		e.FieldStart("apiGroup")
 		s.ApiGroup.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("kind")
+
+	e.FieldStart("kind")
 	e.Str(s.Kind)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Namespace.Set {
-		more.More()
-		e.ObjField("namespace")
+		e.FieldStart("namespace")
 		s.Namespace.WriteJSON(e)
 	}
 	if s.Scope.Set {
-		more.More()
-		e.ObjField("scope")
+		e.FieldStart("scope")
 		s.Scope.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -29121,16 +26293,12 @@ func (s *IoK8sAPINetworkingV1IngressClassParametersReference) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressClassSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Controller.Set {
-		more.More()
-		e.ObjField("controller")
+		e.FieldStart("controller")
 		s.Controller.WriteJSON(e)
 	}
 	if s.Parameters.Set {
-		more.More()
-		e.ObjField("parameters")
+		e.FieldStart("parameters")
 		s.Parameters.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -29163,31 +26331,23 @@ func (s *IoK8sAPINetworkingV1IngressClassSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -29237,16 +26397,12 @@ func (s *IoK8sAPINetworkingV1IngressList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressRule) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Host.Set {
-		more.More()
-		e.ObjField("host")
+		e.FieldStart("host")
 		s.Host.WriteJSON(e)
 	}
 	if s.HTTP.Set {
-		more.More()
-		e.ObjField("http")
+		e.FieldStart("http")
 		s.HTTP.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -29279,14 +26435,11 @@ func (s *IoK8sAPINetworkingV1IngressRule) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressServiceBackend) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Port.Set {
-		more.More()
-		e.ObjField("port")
+		e.FieldStart("port")
 		s.Port.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -29320,41 +26473,29 @@ func (s *IoK8sAPINetworkingV1IngressServiceBackend) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.DefaultBackend.Set {
-		more.More()
-		e.ObjField("defaultBackend")
+		e.FieldStart("defaultBackend")
 		s.DefaultBackend.WriteJSON(e)
 	}
 	if s.IngressClassName.Set {
-		more.More()
-		e.ObjField("ingressClassName")
+		e.FieldStart("ingressClassName")
 		s.IngressClassName.WriteJSON(e)
 	}
 	if s.Rules != nil {
-		more.More()
-		e.ObjField("rules")
-		more.Down()
+		e.FieldStart("rules")
 		e.ArrStart()
 		for _, elem := range s.Rules {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.TLS != nil {
-		more.More()
-		e.ObjField("tls")
-		more.Down()
+		e.FieldStart("tls")
 		e.ArrStart()
 		for _, elem := range s.TLS {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -29410,11 +26551,8 @@ func (s *IoK8sAPINetworkingV1IngressSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LoadBalancer.Set {
-		more.More()
-		e.ObjField("loadBalancer")
+		e.FieldStart("loadBalancer")
 		s.LoadBalancer.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -29442,23 +26580,16 @@ func (s *IoK8sAPINetworkingV1IngressStatus) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressTLS) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Hosts != nil {
-		more.More()
-		e.ObjField("hosts")
-		more.Down()
+		e.FieldStart("hosts")
 		e.ArrStart()
 		for _, elem := range s.Hosts {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.SecretName.Set {
-		more.More()
-		e.ObjField("secretName")
+		e.FieldStart("secretName")
 		s.SecretName.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -29500,26 +26631,20 @@ func (s *IoK8sAPINetworkingV1IngressTLS) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicy) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -29562,31 +26687,21 @@ func (s *IoK8sAPINetworkingV1NetworkPolicy) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicyEgressRule) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Ports != nil {
-		more.More()
-		e.ObjField("ports")
-		more.Down()
+		e.FieldStart("ports")
 		e.ArrStart()
 		for _, elem := range s.Ports {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.To != nil {
-		more.More()
-		e.ObjField("to")
-		more.Down()
+		e.FieldStart("to")
 		e.ArrStart()
 		for _, elem := range s.To {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -29632,31 +26747,21 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyEgressRule) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicyIngressRule) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.From != nil {
-		more.More()
-		e.ObjField("from")
-		more.Down()
+		e.FieldStart("from")
 		e.ArrStart()
 		for _, elem := range s.From {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Ports != nil {
-		more.More()
-		e.ObjField("ports")
-		more.Down()
+		e.FieldStart("ports")
 		e.ArrStart()
 		for _, elem := range s.Ports {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -29702,31 +26807,23 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyIngressRule) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicyList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -29776,21 +26873,16 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyList) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicyPeer) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.IpBlock.Set {
-		more.More()
-		e.ObjField("ipBlock")
+		e.FieldStart("ipBlock")
 		s.IpBlock.WriteJSON(e)
 	}
 	if s.NamespaceSelector.Set {
-		more.More()
-		e.ObjField("namespaceSelector")
+		e.FieldStart("namespaceSelector")
 		s.NamespaceSelector.WriteJSON(e)
 	}
 	if s.PodSelector.Set {
-		more.More()
-		e.ObjField("podSelector")
+		e.FieldStart("podSelector")
 		s.PodSelector.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -29828,21 +26920,16 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPeer) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicyPort) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.EndPort.Set {
-		more.More()
-		e.ObjField("endPort")
+		e.FieldStart("endPort")
 		s.EndPort.WriteJSON(e)
 	}
 	if s.Port.Set {
-		more.More()
-		e.ObjField("port")
+		e.FieldStart("port")
 		s.Port.WriteJSON(e)
 	}
 	if s.Protocol.Set {
-		more.More()
-		e.ObjField("protocol")
+		e.FieldStart("protocol")
 		s.Protocol.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -29880,46 +26967,32 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPort) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicySpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Egress != nil {
-		more.More()
-		e.ObjField("egress")
-		more.Down()
+		e.FieldStart("egress")
 		e.ArrStart()
 		for _, elem := range s.Egress {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Ingress != nil {
-		more.More()
-		e.ObjField("ingress")
-		more.Down()
+		e.FieldStart("ingress")
 		e.ArrStart()
 		for _, elem := range s.Ingress {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("podSelector")
+
+	e.FieldStart("podSelector")
 	s.PodSelector.WriteJSON(e)
 	if s.PolicyTypes != nil {
-		more.More()
-		e.ObjField("policyTypes")
-		more.Down()
+		e.FieldStart("policyTypes")
 		e.ArrStart()
 		for _, elem := range s.PolicyTypes {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -29983,16 +27056,12 @@ func (s *IoK8sAPINetworkingV1NetworkPolicySpec) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1ServiceBackendPort) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Number.Set {
-		more.More()
-		e.ObjField("number")
+		e.FieldStart("number")
 		s.Number.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -30025,11 +27094,8 @@ func (s *IoK8sAPINetworkingV1ServiceBackendPort) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1Overhead) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.PodFixed != nil {
-		more.More()
-		e.ObjField("podFixed")
+		e.FieldStart("podFixed")
 		s.PodFixed.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -30059,8 +27125,6 @@ func (s *IoK8sAPINodeV1Overhead) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1OverheadPodFixed) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -30081,34 +27145,27 @@ func (s *IoK8sAPINodeV1OverheadPodFixed) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1RuntimeClass) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("handler")
+
+	e.FieldStart("handler")
 	e.Str(s.Handler)
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Overhead.Set {
-		more.More()
-		e.ObjField("overhead")
+		e.FieldStart("overhead")
 		s.Overhead.WriteJSON(e)
 	}
 	if s.Scheduling.Set {
-		more.More()
-		e.ObjField("scheduling")
+		e.FieldStart("scheduling")
 		s.Scheduling.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -30162,31 +27219,23 @@ func (s *IoK8sAPINodeV1RuntimeClass) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1RuntimeClassList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -30236,24 +27285,17 @@ func (s *IoK8sAPINodeV1RuntimeClassList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1Scheduling) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.NodeSelector != nil {
-		more.More()
-		e.ObjField("nodeSelector")
+		e.FieldStart("nodeSelector")
 		s.NodeSelector.WriteJSON(e)
 	}
 	if s.Tolerations != nil {
-		more.More()
-		e.ObjField("tolerations")
-		more.Down()
+		e.FieldStart("tolerations")
 		e.ArrStart()
 		for _, elem := range s.Tolerations {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -30294,8 +27336,6 @@ func (s *IoK8sAPINodeV1Scheduling) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1SchedulingNodeSelector) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -30316,11 +27356,8 @@ func (s *IoK8sAPINodeV1SchedulingNodeSelector) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1Overhead) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.PodFixed != nil {
-		more.More()
-		e.ObjField("podFixed")
+		e.FieldStart("podFixed")
 		s.PodFixed.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -30350,8 +27387,6 @@ func (s *IoK8sAPINodeV1alpha1Overhead) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1OverheadPodFixed) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -30372,25 +27407,20 @@ func (s *IoK8sAPINodeV1alpha1OverheadPodFixed) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1RuntimeClass) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("spec")
+
+	e.FieldStart("spec")
 	s.Spec.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -30431,31 +27461,23 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClass) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1RuntimeClassList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -30505,19 +27527,15 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1RuntimeClassSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Overhead.Set {
-		more.More()
-		e.ObjField("overhead")
+		e.FieldStart("overhead")
 		s.Overhead.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("runtimeHandler")
+
+	e.FieldStart("runtimeHandler")
 	e.Str(s.RuntimeHandler)
 	if s.Scheduling.Set {
-		more.More()
-		e.ObjField("scheduling")
+		e.FieldStart("scheduling")
 		s.Scheduling.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -30556,24 +27574,17 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1Scheduling) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.NodeSelector != nil {
-		more.More()
-		e.ObjField("nodeSelector")
+		e.FieldStart("nodeSelector")
 		s.NodeSelector.WriteJSON(e)
 	}
 	if s.Tolerations != nil {
-		more.More()
-		e.ObjField("tolerations")
-		more.Down()
+		e.FieldStart("tolerations")
 		e.ArrStart()
 		for _, elem := range s.Tolerations {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -30614,8 +27625,6 @@ func (s *IoK8sAPINodeV1alpha1Scheduling) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1SchedulingNodeSelector) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -30636,11 +27645,8 @@ func (s *IoK8sAPINodeV1alpha1SchedulingNodeSelector) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1Overhead) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.PodFixed != nil {
-		more.More()
-		e.ObjField("podFixed")
+		e.FieldStart("podFixed")
 		s.PodFixed.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -30670,8 +27676,6 @@ func (s *IoK8sAPINodeV1beta1Overhead) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1OverheadPodFixed) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -30692,34 +27696,27 @@ func (s *IoK8sAPINodeV1beta1OverheadPodFixed) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1RuntimeClass) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("handler")
+
+	e.FieldStart("handler")
 	e.Str(s.Handler)
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Overhead.Set {
-		more.More()
-		e.ObjField("overhead")
+		e.FieldStart("overhead")
 		s.Overhead.WriteJSON(e)
 	}
 	if s.Scheduling.Set {
-		more.More()
-		e.ObjField("scheduling")
+		e.FieldStart("scheduling")
 		s.Scheduling.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -30773,31 +27770,23 @@ func (s *IoK8sAPINodeV1beta1RuntimeClass) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1RuntimeClassList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -30847,24 +27836,17 @@ func (s *IoK8sAPINodeV1beta1RuntimeClassList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1Scheduling) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.NodeSelector != nil {
-		more.More()
-		e.ObjField("nodeSelector")
+		e.FieldStart("nodeSelector")
 		s.NodeSelector.WriteJSON(e)
 	}
 	if s.Tolerations != nil {
-		more.More()
-		e.ObjField("tolerations")
-		more.Down()
+		e.FieldStart("tolerations")
 		e.ArrStart()
 		for _, elem := range s.Tolerations {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -30905,8 +27887,6 @@ func (s *IoK8sAPINodeV1beta1Scheduling) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1SchedulingNodeSelector) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -30927,31 +27907,24 @@ func (s *IoK8sAPINodeV1beta1SchedulingNodeSelector) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1PodDisruptionBudget) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -30999,31 +27972,23 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudget) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -31073,21 +28038,16 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.MaxUnavailable.Set {
-		more.More()
-		e.ObjField("maxUnavailable")
+		e.FieldStart("maxUnavailable")
 		s.MaxUnavailable.WriteJSON(e)
 	}
 	if s.MinAvailable.Set {
-		more.More()
-		e.ObjField("minAvailable")
+		e.FieldStart("minAvailable")
 		s.MinAvailable.WriteJSON(e)
 	}
 	if s.Selector.Set {
-		more.More()
-		e.ObjField("selector")
+		e.FieldStart("selector")
 		s.Selector.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -31125,40 +28085,32 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetSpec) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Conditions != nil {
-		more.More()
-		e.ObjField("conditions")
-		more.Down()
+		e.FieldStart("conditions")
 		e.ArrStart()
 		for _, elem := range s.Conditions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("currentHealthy")
+
+	e.FieldStart("currentHealthy")
 	e.Int32(s.CurrentHealthy)
-	more.More()
-	e.ObjField("desiredHealthy")
+
+	e.FieldStart("desiredHealthy")
 	e.Int32(s.DesiredHealthy)
 	if s.DisruptedPods != nil {
-		more.More()
-		e.ObjField("disruptedPods")
+		e.FieldStart("disruptedPods")
 		s.DisruptedPods.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("disruptionsAllowed")
+
+	e.FieldStart("disruptionsAllowed")
 	e.Int32(s.DisruptionsAllowed)
-	more.More()
-	e.ObjField("expectedPods")
+
+	e.FieldStart("expectedPods")
 	e.Int32(s.ExpectedPods)
 	if s.ObservedGeneration.Set {
-		more.More()
-		e.ObjField("observedGeneration")
+		e.FieldStart("observedGeneration")
 		s.ObservedGeneration.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -31229,8 +28181,6 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -31251,10 +28201,8 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) ReadJSON(d *jso
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1AllowedCSIDriver) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -31282,10 +28230,8 @@ func (s *IoK8sAPIPolicyV1beta1AllowedCSIDriver) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1AllowedFlexVolume) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("driver")
+
+	e.FieldStart("driver")
 	e.Str(s.Driver)
 	e.ObjEnd()
 }
@@ -31313,16 +28259,12 @@ func (s *IoK8sAPIPolicyV1beta1AllowedFlexVolume) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1AllowedHostPath) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.PathPrefix.Set {
-		more.More()
-		e.ObjField("pathPrefix")
+		e.FieldStart("pathPrefix")
 		s.PathPrefix.WriteJSON(e)
 	}
 	if s.ReadOnly.Set {
-		more.More()
-		e.ObjField("readOnly")
+		e.FieldStart("readOnly")
 		s.ReadOnly.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -31355,23 +28297,16 @@ func (s *IoK8sAPIPolicyV1beta1AllowedHostPath) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Ranges != nil {
-		more.More()
-		e.ObjField("ranges")
-		more.Down()
+		e.FieldStart("ranges")
 		e.ArrStart()
 		for _, elem := range s.Ranges {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Rule.Set {
-		more.More()
-		e.ObjField("rule")
+		e.FieldStart("rule")
 		s.Rule.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -31411,13 +28346,11 @@ func (s *IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1HostPortRange) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("max")
+
+	e.FieldStart("max")
 	e.Int32(s.Max)
-	more.More()
-	e.ObjField("min")
+
+	e.FieldStart("min")
 	e.Int32(s.Min)
 	e.ObjEnd()
 }
@@ -31451,13 +28384,11 @@ func (s *IoK8sAPIPolicyV1beta1HostPortRange) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1IDRange) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("max")
+
+	e.FieldStart("max")
 	e.Int64(s.Max)
-	more.More()
-	e.ObjField("min")
+
+	e.FieldStart("min")
 	e.Int64(s.Min)
 	e.ObjEnd()
 }
@@ -31491,31 +28422,24 @@ func (s *IoK8sAPIPolicyV1beta1IDRange) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -31563,31 +28487,23 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -31637,21 +28553,16 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.MaxUnavailable.Set {
-		more.More()
-		e.ObjField("maxUnavailable")
+		e.FieldStart("maxUnavailable")
 		s.MaxUnavailable.WriteJSON(e)
 	}
 	if s.MinAvailable.Set {
-		more.More()
-		e.ObjField("minAvailable")
+		e.FieldStart("minAvailable")
 		s.MinAvailable.WriteJSON(e)
 	}
 	if s.Selector.Set {
-		more.More()
-		e.ObjField("selector")
+		e.FieldStart("selector")
 		s.Selector.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -31689,40 +28600,32 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Conditions != nil {
-		more.More()
-		e.ObjField("conditions")
-		more.Down()
+		e.FieldStart("conditions")
 		e.ArrStart()
 		for _, elem := range s.Conditions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("currentHealthy")
+
+	e.FieldStart("currentHealthy")
 	e.Int32(s.CurrentHealthy)
-	more.More()
-	e.ObjField("desiredHealthy")
+
+	e.FieldStart("desiredHealthy")
 	e.Int32(s.DesiredHealthy)
 	if s.DisruptedPods != nil {
-		more.More()
-		e.ObjField("disruptedPods")
+		e.FieldStart("disruptedPods")
 		s.DisruptedPods.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("disruptionsAllowed")
+
+	e.FieldStart("disruptionsAllowed")
 	e.Int32(s.DisruptionsAllowed)
-	more.More()
-	e.ObjField("expectedPods")
+
+	e.FieldStart("expectedPods")
 	e.Int32(s.ExpectedPods)
 	if s.ObservedGeneration.Set {
-		more.More()
-		e.ObjField("observedGeneration")
+		e.FieldStart("observedGeneration")
 		s.ObservedGeneration.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -31793,8 +28696,6 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -31815,26 +28716,20 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) ReadJSON(d
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -31877,31 +28772,23 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -31951,196 +28838,141 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AllowPrivilegeEscalation.Set {
-		more.More()
-		e.ObjField("allowPrivilegeEscalation")
+		e.FieldStart("allowPrivilegeEscalation")
 		s.AllowPrivilegeEscalation.WriteJSON(e)
 	}
 	if s.AllowedCSIDrivers != nil {
-		more.More()
-		e.ObjField("allowedCSIDrivers")
-		more.Down()
+		e.FieldStart("allowedCSIDrivers")
 		e.ArrStart()
 		for _, elem := range s.AllowedCSIDrivers {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.AllowedCapabilities != nil {
-		more.More()
-		e.ObjField("allowedCapabilities")
-		more.Down()
+		e.FieldStart("allowedCapabilities")
 		e.ArrStart()
 		for _, elem := range s.AllowedCapabilities {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.AllowedFlexVolumes != nil {
-		more.More()
-		e.ObjField("allowedFlexVolumes")
-		more.Down()
+		e.FieldStart("allowedFlexVolumes")
 		e.ArrStart()
 		for _, elem := range s.AllowedFlexVolumes {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.AllowedHostPaths != nil {
-		more.More()
-		e.ObjField("allowedHostPaths")
-		more.Down()
+		e.FieldStart("allowedHostPaths")
 		e.ArrStart()
 		for _, elem := range s.AllowedHostPaths {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.AllowedProcMountTypes != nil {
-		more.More()
-		e.ObjField("allowedProcMountTypes")
-		more.Down()
+		e.FieldStart("allowedProcMountTypes")
 		e.ArrStart()
 		for _, elem := range s.AllowedProcMountTypes {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.AllowedUnsafeSysctls != nil {
-		more.More()
-		e.ObjField("allowedUnsafeSysctls")
-		more.Down()
+		e.FieldStart("allowedUnsafeSysctls")
 		e.ArrStart()
 		for _, elem := range s.AllowedUnsafeSysctls {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.DefaultAddCapabilities != nil {
-		more.More()
-		e.ObjField("defaultAddCapabilities")
-		more.Down()
+		e.FieldStart("defaultAddCapabilities")
 		e.ArrStart()
 		for _, elem := range s.DefaultAddCapabilities {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.DefaultAllowPrivilegeEscalation.Set {
-		more.More()
-		e.ObjField("defaultAllowPrivilegeEscalation")
+		e.FieldStart("defaultAllowPrivilegeEscalation")
 		s.DefaultAllowPrivilegeEscalation.WriteJSON(e)
 	}
 	if s.ForbiddenSysctls != nil {
-		more.More()
-		e.ObjField("forbiddenSysctls")
-		more.Down()
+		e.FieldStart("forbiddenSysctls")
 		e.ArrStart()
 		for _, elem := range s.ForbiddenSysctls {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("fsGroup")
+
+	e.FieldStart("fsGroup")
 	s.FsGroup.WriteJSON(e)
 	if s.HostIPC.Set {
-		more.More()
-		e.ObjField("hostIPC")
+		e.FieldStart("hostIPC")
 		s.HostIPC.WriteJSON(e)
 	}
 	if s.HostNetwork.Set {
-		more.More()
-		e.ObjField("hostNetwork")
+		e.FieldStart("hostNetwork")
 		s.HostNetwork.WriteJSON(e)
 	}
 	if s.HostPID.Set {
-		more.More()
-		e.ObjField("hostPID")
+		e.FieldStart("hostPID")
 		s.HostPID.WriteJSON(e)
 	}
 	if s.HostPorts != nil {
-		more.More()
-		e.ObjField("hostPorts")
-		more.Down()
+		e.FieldStart("hostPorts")
 		e.ArrStart()
 		for _, elem := range s.HostPorts {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Privileged.Set {
-		more.More()
-		e.ObjField("privileged")
+		e.FieldStart("privileged")
 		s.Privileged.WriteJSON(e)
 	}
 	if s.ReadOnlyRootFilesystem.Set {
-		more.More()
-		e.ObjField("readOnlyRootFilesystem")
+		e.FieldStart("readOnlyRootFilesystem")
 		s.ReadOnlyRootFilesystem.WriteJSON(e)
 	}
 	if s.RequiredDropCapabilities != nil {
-		more.More()
-		e.ObjField("requiredDropCapabilities")
-		more.Down()
+		e.FieldStart("requiredDropCapabilities")
 		e.ArrStart()
 		for _, elem := range s.RequiredDropCapabilities {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.RunAsGroup.Set {
-		more.More()
-		e.ObjField("runAsGroup")
+		e.FieldStart("runAsGroup")
 		s.RunAsGroup.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("runAsUser")
+
+	e.FieldStart("runAsUser")
 	s.RunAsUser.WriteJSON(e)
 	if s.RuntimeClass.Set {
-		more.More()
-		e.ObjField("runtimeClass")
+		e.FieldStart("runtimeClass")
 		s.RuntimeClass.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("seLinux")
+
+	e.FieldStart("seLinux")
 	s.SeLinux.WriteJSON(e)
-	more.More()
-	e.ObjField("supplementalGroups")
+
+	e.FieldStart("supplementalGroups")
 	s.SupplementalGroups.WriteJSON(e)
 	if s.Volumes != nil {
-		more.More()
-		e.ObjField("volumes")
-		more.Down()
+		e.FieldStart("volumes")
 		e.ArrStart()
 		for _, elem := range s.Volumes {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -32369,22 +29201,16 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Ranges != nil {
-		more.More()
-		e.ObjField("ranges")
-		more.Down()
+		e.FieldStart("ranges")
 		e.ArrStart()
 		for _, elem := range s.Ranges {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("rule")
+
+	e.FieldStart("rule")
 	e.Str(s.Rule)
 	e.ObjEnd()
 }
@@ -32424,22 +29250,16 @@ func (s *IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Ranges != nil {
-		more.More()
-		e.ObjField("ranges")
-		more.Down()
+		e.FieldStart("ranges")
 		e.ArrStart()
 		for _, elem := range s.Ranges {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("rule")
+
+	e.FieldStart("rule")
 	e.Str(s.Rule)
 	e.ObjEnd()
 }
@@ -32479,21 +29299,15 @@ func (s *IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("allowedRuntimeClassNames")
-	more.Down()
+
+	e.FieldStart("allowedRuntimeClassNames")
 	e.ArrStart()
 	for _, elem := range s.AllowedRuntimeClassNames {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.DefaultRuntimeClassName.Set {
-		more.More()
-		e.ObjField("defaultRuntimeClassName")
+		e.FieldStart("defaultRuntimeClassName")
 		s.DefaultRuntimeClassName.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -32535,14 +29349,11 @@ func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) ReadJSON(d *json.Deco
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("rule")
+
+	e.FieldStart("rule")
 	e.Str(s.Rule)
 	if s.SeLinuxOptions.Set {
-		more.More()
-		e.ObjField("seLinuxOptions")
+		e.FieldStart("seLinuxOptions")
 		s.SeLinuxOptions.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -32576,23 +29387,16 @@ func (s *IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Ranges != nil {
-		more.More()
-		e.ObjField("ranges")
-		more.Down()
+		e.FieldStart("ranges")
 		e.ArrStart()
 		for _, elem := range s.Ranges {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Rule.Set {
-		more.More()
-		e.ObjField("rule")
+		e.FieldStart("rule")
 		s.Rule.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -32632,19 +29436,13 @@ func (s *IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) ReadJSON(d *jso
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIRbacV1AggregationRule) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ClusterRoleSelectors != nil {
-		more.More()
-		e.ObjField("clusterRoleSelectors")
-		more.Down()
+		e.FieldStart("clusterRoleSelectors")
 		e.ArrStart()
 		for _, elem := range s.ClusterRoleSelectors {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -32678,39 +29476,29 @@ func (s *IoK8sAPIRbacV1AggregationRule) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIRbacV1ClusterRole) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AggregationRule.Set {
-		more.More()
-		e.ObjField("aggregationRule")
+		e.FieldStart("aggregationRule")
 		s.AggregationRule.WriteJSON(e)
 	}
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Rules != nil {
-		more.More()
-		e.ObjField("rules")
-		more.Down()
+		e.FieldStart("rules")
 		e.ArrStart()
 		for _, elem := range s.Rules {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -32764,37 +29552,28 @@ func (s *IoK8sAPIRbacV1ClusterRole) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIRbacV1ClusterRoleBinding) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("roleRef")
+
+	e.FieldStart("roleRef")
 	s.RoleRef.WriteJSON(e)
 	if s.Subjects != nil {
-		more.More()
-		e.ObjField("subjects")
-		more.Down()
+		e.FieldStart("subjects")
 		e.ArrStart()
 		for _, elem := range s.Subjects {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -32847,31 +29626,23 @@ func (s *IoK8sAPIRbacV1ClusterRoleBinding) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIRbacV1ClusterRoleBindingList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -32921,31 +29692,23 @@ func (s *IoK8sAPIRbacV1ClusterRoleBindingList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIRbacV1ClusterRoleList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -32995,66 +29758,45 @@ func (s *IoK8sAPIRbacV1ClusterRoleList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIRbacV1PolicyRule) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiGroups != nil {
-		more.More()
-		e.ObjField("apiGroups")
-		more.Down()
+		e.FieldStart("apiGroups")
 		e.ArrStart()
 		for _, elem := range s.ApiGroups {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.NonResourceURLs != nil {
-		more.More()
-		e.ObjField("nonResourceURLs")
-		more.Down()
+		e.FieldStart("nonResourceURLs")
 		e.ArrStart()
 		for _, elem := range s.NonResourceURLs {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.ResourceNames != nil {
-		more.More()
-		e.ObjField("resourceNames")
-		more.Down()
+		e.FieldStart("resourceNames")
 		e.ArrStart()
 		for _, elem := range s.ResourceNames {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Resources != nil {
-		more.More()
-		e.ObjField("resources")
-		more.Down()
+		e.FieldStart("resources")
 		e.ArrStart()
 		for _, elem := range s.Resources {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("verbs")
-	more.Down()
+
+	e.FieldStart("verbs")
 	e.ArrStart()
 	for _, elem := range s.Verbs {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -33145,34 +29887,25 @@ func (s *IoK8sAPIRbacV1PolicyRule) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIRbacV1Role) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Rules != nil {
-		more.More()
-		e.ObjField("rules")
-		more.Down()
+		e.FieldStart("rules")
 		e.ArrStart()
 		for _, elem := range s.Rules {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -33221,37 +29954,28 @@ func (s *IoK8sAPIRbacV1Role) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIRbacV1RoleBinding) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("roleRef")
+
+	e.FieldStart("roleRef")
 	s.RoleRef.WriteJSON(e)
 	if s.Subjects != nil {
-		more.More()
-		e.ObjField("subjects")
-		more.Down()
+		e.FieldStart("subjects")
 		e.ArrStart()
 		for _, elem := range s.Subjects {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -33304,31 +30028,23 @@ func (s *IoK8sAPIRbacV1RoleBinding) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIRbacV1RoleBindingList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -33378,31 +30094,23 @@ func (s *IoK8sAPIRbacV1RoleBindingList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIRbacV1RoleList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -33452,16 +30160,14 @@ func (s *IoK8sAPIRbacV1RoleList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIRbacV1RoleRef) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("apiGroup")
+
+	e.FieldStart("apiGroup")
 	e.Str(s.ApiGroup)
-	more.More()
-	e.ObjField("kind")
+
+	e.FieldStart("kind")
 	e.Str(s.Kind)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	e.ObjEnd()
 }
@@ -33501,22 +30207,18 @@ func (s *IoK8sAPIRbacV1RoleRef) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIRbacV1Subject) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiGroup.Set {
-		more.More()
-		e.ObjField("apiGroup")
+		e.FieldStart("apiGroup")
 		s.ApiGroup.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("kind")
+
+	e.FieldStart("kind")
 	e.Str(s.Kind)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Namespace.Set {
-		more.More()
-		e.ObjField("namespace")
+		e.FieldStart("namespace")
 		s.Namespace.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -33561,40 +30263,32 @@ func (s *IoK8sAPIRbacV1Subject) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPISchedulingV1PriorityClass) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.GlobalDefault.Set {
-		more.More()
-		e.ObjField("globalDefault")
+		e.FieldStart("globalDefault")
 		s.GlobalDefault.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.PreemptionPolicy.Set {
-		more.More()
-		e.ObjField("preemptionPolicy")
+		e.FieldStart("preemptionPolicy")
 		s.PreemptionPolicy.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("value")
+
+	e.FieldStart("value")
 	e.Int32(s.Value)
 	e.ObjEnd()
 }
@@ -33652,31 +30346,23 @@ func (s *IoK8sAPISchedulingV1PriorityClass) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPISchedulingV1PriorityClassList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -33726,25 +30412,20 @@ func (s *IoK8sAPISchedulingV1PriorityClassList) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSIDriver) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("spec")
+
+	e.FieldStart("spec")
 	s.Spec.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -33785,31 +30466,23 @@ func (s *IoK8sAPIStorageV1CSIDriver) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSIDriverList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -33859,56 +30532,41 @@ func (s *IoK8sAPIStorageV1CSIDriverList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSIDriverSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AttachRequired.Set {
-		more.More()
-		e.ObjField("attachRequired")
+		e.FieldStart("attachRequired")
 		s.AttachRequired.WriteJSON(e)
 	}
 	if s.FsGroupPolicy.Set {
-		more.More()
-		e.ObjField("fsGroupPolicy")
+		e.FieldStart("fsGroupPolicy")
 		s.FsGroupPolicy.WriteJSON(e)
 	}
 	if s.PodInfoOnMount.Set {
-		more.More()
-		e.ObjField("podInfoOnMount")
+		e.FieldStart("podInfoOnMount")
 		s.PodInfoOnMount.WriteJSON(e)
 	}
 	if s.RequiresRepublish.Set {
-		more.More()
-		e.ObjField("requiresRepublish")
+		e.FieldStart("requiresRepublish")
 		s.RequiresRepublish.WriteJSON(e)
 	}
 	if s.StorageCapacity.Set {
-		more.More()
-		e.ObjField("storageCapacity")
+		e.FieldStart("storageCapacity")
 		s.StorageCapacity.WriteJSON(e)
 	}
 	if s.TokenRequests != nil {
-		more.More()
-		e.ObjField("tokenRequests")
-		more.Down()
+		e.FieldStart("tokenRequests")
 		e.ArrStart()
 		for _, elem := range s.TokenRequests {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.VolumeLifecycleModes != nil {
-		more.More()
-		e.ObjField("volumeLifecycleModes")
-		more.Down()
+		e.FieldStart("volumeLifecycleModes")
 		e.ArrStart()
 		for _, elem := range s.VolumeLifecycleModes {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -33981,25 +30639,20 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSINode) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("spec")
+
+	e.FieldStart("spec")
 	s.Spec.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -34040,30 +30693,23 @@ func (s *IoK8sAPIStorageV1CSINode) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSINodeDriver) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Allocatable.Set {
-		more.More()
-		e.ObjField("allocatable")
+		e.FieldStart("allocatable")
 		s.Allocatable.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("nodeID")
+
+	e.FieldStart("nodeID")
 	e.Str(s.NodeID)
 	if s.TopologyKeys != nil {
-		more.More()
-		e.ObjField("topologyKeys")
-		more.Down()
+		e.FieldStart("topologyKeys")
 		e.ArrStart()
 		for _, elem := range s.TopologyKeys {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -34116,31 +30762,23 @@ func (s *IoK8sAPIStorageV1CSINodeDriver) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSINodeList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -34190,18 +30828,13 @@ func (s *IoK8sAPIStorageV1CSINodeList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSINodeSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("drivers")
-	more.Down()
+
+	e.FieldStart("drivers")
 	e.ArrStart()
 	for _, elem := range s.Drivers {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -34234,68 +30867,51 @@ func (s *IoK8sAPIStorageV1CSINodeSpec) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1StorageClass) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AllowVolumeExpansion.Set {
-		more.More()
-		e.ObjField("allowVolumeExpansion")
+		e.FieldStart("allowVolumeExpansion")
 		s.AllowVolumeExpansion.WriteJSON(e)
 	}
 	if s.AllowedTopologies != nil {
-		more.More()
-		e.ObjField("allowedTopologies")
-		more.Down()
+		e.FieldStart("allowedTopologies")
 		e.ArrStart()
 		for _, elem := range s.AllowedTopologies {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.MountOptions != nil {
-		more.More()
-		e.ObjField("mountOptions")
-		more.Down()
+		e.FieldStart("mountOptions")
 		e.ArrStart()
 		for _, elem := range s.MountOptions {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Parameters != nil {
-		more.More()
-		e.ObjField("parameters")
+		e.FieldStart("parameters")
 		s.Parameters.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("provisioner")
+
+	e.FieldStart("provisioner")
 	e.Str(s.Provisioner)
 	if s.ReclaimPolicy.Set {
-		more.More()
-		e.ObjField("reclaimPolicy")
+		e.FieldStart("reclaimPolicy")
 		s.ReclaimPolicy.WriteJSON(e)
 	}
 	if s.VolumeBindingMode.Set {
-		more.More()
-		e.ObjField("volumeBindingMode")
+		e.FieldStart("volumeBindingMode")
 		s.VolumeBindingMode.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -34387,31 +31003,23 @@ func (s *IoK8sAPIStorageV1StorageClass) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1StorageClassList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -34461,8 +31069,6 @@ func (s *IoK8sAPIStorageV1StorageClassList) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1StorageClassParameters) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -34483,14 +31089,11 @@ func (s *IoK8sAPIStorageV1StorageClassParameters) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1TokenRequest) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("audience")
+
+	e.FieldStart("audience")
 	e.Str(s.Audience)
 	if s.ExpirationSeconds.Set {
-		more.More()
-		e.ObjField("expirationSeconds")
+		e.FieldStart("expirationSeconds")
 		s.ExpirationSeconds.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -34524,29 +31127,23 @@ func (s *IoK8sAPIStorageV1TokenRequest) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachment) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("spec")
+
+	e.FieldStart("spec")
 	s.Spec.WriteJSON(e)
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -34593,31 +31190,23 @@ func (s *IoK8sAPIStorageV1VolumeAttachment) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachmentList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -34667,16 +31256,12 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentList) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachmentSource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.InlineVolumeSpec.Set {
-		more.More()
-		e.ObjField("inlineVolumeSpec")
+		e.FieldStart("inlineVolumeSpec")
 		s.InlineVolumeSpec.WriteJSON(e)
 	}
 	if s.PersistentVolumeName.Set {
-		more.More()
-		e.ObjField("persistentVolumeName")
+		e.FieldStart("persistentVolumeName")
 		s.PersistentVolumeName.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -34709,16 +31294,14 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSource) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachmentSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("attacher")
+
+	e.FieldStart("attacher")
 	e.Str(s.Attacher)
-	more.More()
-	e.ObjField("nodeName")
+
+	e.FieldStart("nodeName")
 	e.Str(s.NodeName)
-	more.More()
-	e.ObjField("source")
+
+	e.FieldStart("source")
 	s.Source.WriteJSON(e)
 	e.ObjEnd()
 }
@@ -34756,24 +31339,19 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSpec) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachmentStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AttachError.Set {
-		more.More()
-		e.ObjField("attachError")
+		e.FieldStart("attachError")
 		s.AttachError.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("attached")
+
+	e.FieldStart("attached")
 	e.Bool(s.Attached)
 	if s.AttachmentMetadata != nil {
-		more.More()
-		e.ObjField("attachmentMetadata")
+		e.FieldStart("attachmentMetadata")
 		s.AttachmentMetadata.WriteJSON(e)
 	}
 	if s.DetachError.Set {
-		more.More()
-		e.ObjField("detachError")
+		e.FieldStart("detachError")
 		s.DetachError.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -34819,8 +31397,6 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -34841,16 +31417,12 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) ReadJSON(d *
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeError) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Time.Set {
-		more.More()
-		e.ObjField("time")
+		e.FieldStart("time")
 		s.Time.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -34883,11 +31455,8 @@ func (s *IoK8sAPIStorageV1VolumeError) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeNodeResources) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Count.Set {
-		more.More()
-		e.ObjField("count")
+		e.FieldStart("count")
 		s.Count.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -34915,40 +31484,32 @@ func (s *IoK8sAPIStorageV1VolumeNodeResources) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Capacity.Set {
-		more.More()
-		e.ObjField("capacity")
+		e.FieldStart("capacity")
 		s.Capacity.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.MaximumVolumeSize.Set {
-		more.More()
-		e.ObjField("maximumVolumeSize")
+		e.FieldStart("maximumVolumeSize")
 		s.MaximumVolumeSize.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.NodeTopology.Set {
-		more.More()
-		e.ObjField("nodeTopology")
+		e.FieldStart("nodeTopology")
 		s.NodeTopology.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("storageClassName")
+
+	e.FieldStart("storageClassName")
 	e.Str(s.StorageClassName)
 	e.ObjEnd()
 }
@@ -35006,31 +31567,23 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -35080,40 +31633,32 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Capacity.Set {
-		more.More()
-		e.ObjField("capacity")
+		e.FieldStart("capacity")
 		s.Capacity.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.MaximumVolumeSize.Set {
-		more.More()
-		e.ObjField("maximumVolumeSize")
+		e.FieldStart("maximumVolumeSize")
 		s.MaximumVolumeSize.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.NodeTopology.Set {
-		more.More()
-		e.ObjField("nodeTopology")
+		e.FieldStart("nodeTopology")
 		s.NodeTopology.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("storageClassName")
+
+	e.FieldStart("storageClassName")
 	e.Str(s.StorageClassName)
 	e.ObjEnd()
 }
@@ -35171,31 +31716,23 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -35245,31 +31782,26 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.Format.Set {
-		more.More()
-		e.ObjField("format")
+		e.FieldStart("format")
 		s.Format.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("jsonPath")
+
+	e.FieldStart("jsonPath")
 	e.Str(s.JsonPath)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Priority.Set {
-		more.More()
-		e.ObjField("priority")
+		e.FieldStart("priority")
 		s.Priority.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -35324,14 +31856,11 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDe
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("strategy")
+
+	e.FieldStart("strategy")
 	e.Str(s.Strategy)
 	if s.Webhook.Set {
-		more.More()
-		e.ObjField("webhook")
+		e.FieldStart("webhook")
 		s.Webhook.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -35365,29 +31894,23 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversi
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("spec")
+
+	e.FieldStart("spec")
 	s.Spec.WriteJSON(e)
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -35434,28 +31957,23 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LastTransitionTime.Set {
-		more.More()
-		e.ObjField("lastTransitionTime")
+		e.FieldStart("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	e.Str(s.Status)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -35504,31 +32022,23 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -35578,46 +32088,34 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Categories != nil {
-		more.More()
-		e.ObjField("categories")
-		more.Down()
+		e.FieldStart("categories")
 		e.ArrStart()
 		for _, elem := range s.Categories {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("kind")
+
+	e.FieldStart("kind")
 	e.Str(s.Kind)
 	if s.ListKind.Set {
-		more.More()
-		e.ObjField("listKind")
+		e.FieldStart("listKind")
 		s.ListKind.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("plural")
+
+	e.FieldStart("plural")
 	e.Str(s.Plural)
 	if s.ShortNames != nil {
-		more.More()
-		e.ObjField("shortNames")
-		more.Down()
+		e.FieldStart("shortNames")
 		e.ArrStart()
 		for _, elem := range s.ShortNames {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Singular.Set {
-		more.More()
-		e.ObjField("singular")
+		e.FieldStart("singular")
 		s.Singular.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -35690,37 +32188,30 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Conversion.Set {
-		more.More()
-		e.ObjField("conversion")
+		e.FieldStart("conversion")
 		s.Conversion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("group")
+
+	e.FieldStart("group")
 	e.Str(s.Group)
-	more.More()
-	e.ObjField("names")
+
+	e.FieldStart("names")
 	s.Names.WriteJSON(e)
 	if s.PreserveUnknownFields.Set {
-		more.More()
-		e.ObjField("preserveUnknownFields")
+		e.FieldStart("preserveUnknownFields")
 		s.PreserveUnknownFields.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("scope")
+
+	e.FieldStart("scope")
 	e.Str(s.Scope)
-	more.More()
-	e.ObjField("versions")
-	more.Down()
+
+	e.FieldStart("versions")
 	e.ArrStart()
 	for _, elem := range s.Versions {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -35779,36 +32270,25 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AcceptedNames.Set {
-		more.More()
-		e.ObjField("acceptedNames")
+		e.FieldStart("acceptedNames")
 		s.AcceptedNames.WriteJSON(e)
 	}
 	if s.Conditions != nil {
-		more.More()
-		e.ObjField("conditions")
-		more.Down()
+		e.FieldStart("conditions")
 		e.ArrStart()
 		for _, elem := range s.Conditions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.StoredVersions != nil {
-		more.More()
-		e.ObjField("storedVersions")
-		more.Down()
+		e.FieldStart("storedVersions")
 		e.ArrStart()
 		for _, elem := range s.StoredVersions {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -35861,47 +32341,37 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.AdditionalPrinterColumns != nil {
-		more.More()
-		e.ObjField("additionalPrinterColumns")
-		more.Down()
+		e.FieldStart("additionalPrinterColumns")
 		e.ArrStart()
 		for _, elem := range s.AdditionalPrinterColumns {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Deprecated.Set {
-		more.More()
-		e.ObjField("deprecated")
+		e.FieldStart("deprecated")
 		s.Deprecated.WriteJSON(e)
 	}
 	if s.DeprecationWarning.Set {
-		more.More()
-		e.ObjField("deprecationWarning")
+		e.FieldStart("deprecationWarning")
 		s.DeprecationWarning.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.Schema.Set {
-		more.More()
-		e.ObjField("schema")
+		e.FieldStart("schema")
 		s.Schema.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("served")
+
+	e.FieldStart("served")
 	e.Bool(s.Served)
-	more.More()
-	e.ObjField("storage")
+
+	e.FieldStart("storage")
 	e.Bool(s.Storage)
 	if s.Subresources.Set {
-		more.More()
-		e.ObjField("subresources")
+		e.FieldStart("subresources")
 		s.Subresources.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -35974,18 +32444,15 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LabelSelectorPath.Set {
-		more.More()
-		e.ObjField("labelSelectorPath")
+		e.FieldStart("labelSelectorPath")
 		s.LabelSelectorPath.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("specReplicasPath")
+
+	e.FieldStart("specReplicasPath")
 	e.Str(s.SpecReplicasPath)
-	more.More()
-	e.ObjField("statusReplicasPath")
+
+	e.FieldStart("statusReplicasPath")
 	e.Str(s.StatusReplicasPath)
 	e.ObjEnd()
 }
@@ -36024,8 +32491,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -36046,16 +32511,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Scale.Set {
-		more.More()
-		e.ObjField("scale")
+		e.FieldStart("scale")
 		s.Scale.WriteJSON(e)
 	}
 	if s.Status != nil {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -36090,11 +32551,8 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.OpenAPIV3Schema.Set {
-		more.More()
-		e.ObjField("openAPIV3Schema")
+		e.FieldStart("openAPIV3Schema")
 		s.OpenAPIV3Schema.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -36122,16 +32580,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidati
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -36164,8 +32618,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -36186,263 +32638,200 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Ref.Set {
-		more.More()
-		e.ObjField("$ref")
+		e.FieldStart("$ref")
 		s.Ref.WriteJSON(e)
 	}
 	if s.Schema.Set {
-		more.More()
-		e.ObjField("$schema")
+		e.FieldStart("$schema")
 		s.Schema.WriteJSON(e)
 	}
 	if s.AdditionalItems != nil {
-		more.More()
-		e.ObjField("additionalItems")
+		e.FieldStart("additionalItems")
 		s.AdditionalItems.WriteJSON(e)
 	}
 	if s.AdditionalProperties != nil {
-		more.More()
-		e.ObjField("additionalProperties")
+		e.FieldStart("additionalProperties")
 		s.AdditionalProperties.WriteJSON(e)
 	}
 	if s.AllOf != nil {
-		more.More()
-		e.ObjField("allOf")
-		more.Down()
+		e.FieldStart("allOf")
 		e.ArrStart()
 		for _, elem := range s.AllOf {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.AnyOf != nil {
-		more.More()
-		e.ObjField("anyOf")
-		more.Down()
+		e.FieldStart("anyOf")
 		e.ArrStart()
 		for _, elem := range s.AnyOf {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Default != nil {
-		more.More()
-		e.ObjField("default")
+		e.FieldStart("default")
 		s.Default.WriteJSON(e)
 	}
 	if s.Definitions != nil {
-		more.More()
-		e.ObjField("definitions")
+		e.FieldStart("definitions")
 		s.Definitions.WriteJSON(e)
 	}
 	if s.Dependencies != nil {
-		more.More()
-		e.ObjField("dependencies")
+		e.FieldStart("dependencies")
 		s.Dependencies.WriteJSON(e)
 	}
 	if s.Description.Set {
-		more.More()
-		e.ObjField("description")
+		e.FieldStart("description")
 		s.Description.WriteJSON(e)
 	}
 	if s.Enum != nil {
-		more.More()
-		e.ObjField("enum")
-		more.Down()
+		e.FieldStart("enum")
 		e.ArrStart()
 		for _, elem := range s.Enum {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Example != nil {
-		more.More()
-		e.ObjField("example")
+		e.FieldStart("example")
 		s.Example.WriteJSON(e)
 	}
 	if s.ExclusiveMaximum.Set {
-		more.More()
-		e.ObjField("exclusiveMaximum")
+		e.FieldStart("exclusiveMaximum")
 		s.ExclusiveMaximum.WriteJSON(e)
 	}
 	if s.ExclusiveMinimum.Set {
-		more.More()
-		e.ObjField("exclusiveMinimum")
+		e.FieldStart("exclusiveMinimum")
 		s.ExclusiveMinimum.WriteJSON(e)
 	}
 	if s.ExternalDocs.Set {
-		more.More()
-		e.ObjField("externalDocs")
+		e.FieldStart("externalDocs")
 		s.ExternalDocs.WriteJSON(e)
 	}
 	if s.Format.Set {
-		more.More()
-		e.ObjField("format")
+		e.FieldStart("format")
 		s.Format.WriteJSON(e)
 	}
 	if s.ID.Set {
-		more.More()
-		e.ObjField("id")
+		e.FieldStart("id")
 		s.ID.WriteJSON(e)
 	}
 	if s.Items != nil {
-		more.More()
-		e.ObjField("items")
+		e.FieldStart("items")
 		s.Items.WriteJSON(e)
 	}
 	if s.MaxItems.Set {
-		more.More()
-		e.ObjField("maxItems")
+		e.FieldStart("maxItems")
 		s.MaxItems.WriteJSON(e)
 	}
 	if s.MaxLength.Set {
-		more.More()
-		e.ObjField("maxLength")
+		e.FieldStart("maxLength")
 		s.MaxLength.WriteJSON(e)
 	}
 	if s.MaxProperties.Set {
-		more.More()
-		e.ObjField("maxProperties")
+		e.FieldStart("maxProperties")
 		s.MaxProperties.WriteJSON(e)
 	}
 	if s.Maximum.Set {
-		more.More()
-		e.ObjField("maximum")
+		e.FieldStart("maximum")
 		s.Maximum.WriteJSON(e)
 	}
 	if s.MinItems.Set {
-		more.More()
-		e.ObjField("minItems")
+		e.FieldStart("minItems")
 		s.MinItems.WriteJSON(e)
 	}
 	if s.MinLength.Set {
-		more.More()
-		e.ObjField("minLength")
+		e.FieldStart("minLength")
 		s.MinLength.WriteJSON(e)
 	}
 	if s.MinProperties.Set {
-		more.More()
-		e.ObjField("minProperties")
+		e.FieldStart("minProperties")
 		s.MinProperties.WriteJSON(e)
 	}
 	if s.Minimum.Set {
-		more.More()
-		e.ObjField("minimum")
+		e.FieldStart("minimum")
 		s.Minimum.WriteJSON(e)
 	}
 	if s.MultipleOf.Set {
-		more.More()
-		e.ObjField("multipleOf")
+		e.FieldStart("multipleOf")
 		s.MultipleOf.WriteJSON(e)
 	}
 	if s.Not != nil {
-		more.More()
-		e.ObjField("not")
+		e.FieldStart("not")
 		s.Not.WriteJSON(e)
 	}
 	if s.Nullable.Set {
-		more.More()
-		e.ObjField("nullable")
+		e.FieldStart("nullable")
 		s.Nullable.WriteJSON(e)
 	}
 	if s.OneOf != nil {
-		more.More()
-		e.ObjField("oneOf")
-		more.Down()
+		e.FieldStart("oneOf")
 		e.ArrStart()
 		for _, elem := range s.OneOf {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Pattern.Set {
-		more.More()
-		e.ObjField("pattern")
+		e.FieldStart("pattern")
 		s.Pattern.WriteJSON(e)
 	}
 	if s.PatternProperties != nil {
-		more.More()
-		e.ObjField("patternProperties")
+		e.FieldStart("patternProperties")
 		s.PatternProperties.WriteJSON(e)
 	}
 	if s.Properties != nil {
-		more.More()
-		e.ObjField("properties")
+		e.FieldStart("properties")
 		s.Properties.WriteJSON(e)
 	}
 	if s.Required != nil {
-		more.More()
-		e.ObjField("required")
-		more.Down()
+		e.FieldStart("required")
 		e.ArrStart()
 		for _, elem := range s.Required {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Title.Set {
-		more.More()
-		e.ObjField("title")
+		e.FieldStart("title")
 		s.Title.WriteJSON(e)
 	}
 	if s.Type.Set {
-		more.More()
-		e.ObjField("type")
+		e.FieldStart("type")
 		s.Type.WriteJSON(e)
 	}
 	if s.UniqueItems.Set {
-		more.More()
-		e.ObjField("uniqueItems")
+		e.FieldStart("uniqueItems")
 		s.UniqueItems.WriteJSON(e)
 	}
 	if s.XMinusKubernetesMinusEmbeddedMinusResource.Set {
-		more.More()
-		e.ObjField("x-kubernetes-embedded-resource")
+		e.FieldStart("x-kubernetes-embedded-resource")
 		s.XMinusKubernetesMinusEmbeddedMinusResource.WriteJSON(e)
 	}
 	if s.XMinusKubernetesMinusIntMinusOrMinusString.Set {
-		more.More()
-		e.ObjField("x-kubernetes-int-or-string")
+		e.FieldStart("x-kubernetes-int-or-string")
 		s.XMinusKubernetesMinusIntMinusOrMinusString.WriteJSON(e)
 	}
 	if s.XMinusKubernetesMinusListMinusMapMinusKeys != nil {
-		more.More()
-		e.ObjField("x-kubernetes-list-map-keys")
-		more.Down()
+		e.FieldStart("x-kubernetes-list-map-keys")
 		e.ArrStart()
 		for _, elem := range s.XMinusKubernetesMinusListMinusMapMinusKeys {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.XMinusKubernetesMinusListMinusType.Set {
-		more.More()
-		e.ObjField("x-kubernetes-list-type")
+		e.FieldStart("x-kubernetes-list-type")
 		s.XMinusKubernetesMinusListMinusType.WriteJSON(e)
 	}
 	if s.XMinusKubernetesMinusMapMinusType.Set {
-		more.More()
-		e.ObjField("x-kubernetes-map-type")
+		e.FieldStart("x-kubernetes-map-type")
 		s.XMinusKubernetesMinusMapMinusType.WriteJSON(e)
 	}
 	if s.XMinusKubernetesMinusPreserveMinusUnknownMinusFields.Set {
-		more.More()
-		e.ObjField("x-kubernetes-preserve-unknown-fields")
+		e.FieldStart("x-kubernetes-preserve-unknown-fields")
 		s.XMinusKubernetesMinusPreserveMinusUnknownMinusFields.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -36746,8 +33135,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -36768,8 +33155,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinit
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -36790,8 +33175,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDepende
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -36812,8 +33195,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -36834,8 +33215,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -36856,8 +33235,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPattern
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -36878,22 +33255,18 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPropert
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("namespace")
+
+	e.FieldStart("namespace")
 	e.Str(s.Namespace)
 	if s.Path.Set {
-		more.More()
-		e.ObjField("path")
+		e.FieldStart("path")
 		s.Path.WriteJSON(e)
 	}
 	if s.Port.Set {
-		more.More()
-		e.ObjField("port")
+		e.FieldStart("port")
 		s.Port.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -36938,27 +33311,20 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Read
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.CaBundle != nil {
-		more.More()
-		e.ObjField("caBundle")
-		more.Down()
+		e.FieldStart("caBundle")
 		e.ArrStart()
 		for _, elem := range s.CaBundle {
 			_ = elem // Unsupported kind "primitive".
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Service.Set {
-		more.More()
-		e.ObjField("service")
+		e.FieldStart("service")
 		s.Service.WriteJSON(e)
 	}
 	if s.URL.Set {
-		more.More()
-		e.ObjField("url")
+		e.FieldStart("url")
 		s.URL.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -37001,23 +33367,17 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) R
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ClientConfig.Set {
-		more.More()
-		e.ObjField("clientConfig")
+		e.FieldStart("clientConfig")
 		s.ClientConfig.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("conversionReviewVersions")
-	more.Down()
+
+	e.FieldStart("conversionReviewVersions")
 	e.ArrStart()
 	for _, elem := range s.ConversionReviewVersions {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -37060,48 +33420,36 @@ func (IoK8sApimachineryPkgAPIResourceQuantity) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIGroup) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
 	if s.PreferredVersion.Set {
-		more.More()
-		e.ObjField("preferredVersion")
+		e.FieldStart("preferredVersion")
 		s.PreferredVersion.WriteJSON(e)
 	}
 	if s.ServerAddressByClientCIDRs != nil {
-		more.More()
-		e.ObjField("serverAddressByClientCIDRs")
-		more.Down()
+		e.FieldStart("serverAddressByClientCIDRs")
 		e.ArrStart()
 		for _, elem := range s.ServerAddressByClientCIDRs {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("versions")
-	more.Down()
+
+	e.FieldStart("versions")
 	e.ArrStart()
 	for _, elem := range s.Versions {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -37167,26 +33515,19 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("groups")
-	more.Down()
+
+	e.FieldStart("groups")
 	e.ArrStart()
 	for _, elem := range s.Groups {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -37231,67 +33572,51 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIResource) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Categories != nil {
-		more.More()
-		e.ObjField("categories")
-		more.Down()
+		e.FieldStart("categories")
 		e.ArrStart()
 		for _, elem := range s.Categories {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Group.Set {
-		more.More()
-		e.ObjField("group")
+		e.FieldStart("group")
 		s.Group.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("kind")
+
+	e.FieldStart("kind")
 	e.Str(s.Kind)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("namespaced")
+
+	e.FieldStart("namespaced")
 	e.Bool(s.Namespaced)
 	if s.ShortNames != nil {
-		more.More()
-		e.ObjField("shortNames")
-		more.Down()
+		e.FieldStart("shortNames")
 		e.ArrStart()
 		for _, elem := range s.ShortNames {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
-	more.More()
-	e.ObjField("singularName")
+
+	e.FieldStart("singularName")
 	e.Str(s.SingularName)
 	if s.StorageVersionHash.Set {
-		more.More()
-		e.ObjField("storageVersionHash")
+		e.FieldStart("storageVersionHash")
 		s.StorageVersionHash.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("verbs")
-	more.Down()
+
+	e.FieldStart("verbs")
 	e.ArrStart()
 	for _, elem := range s.Verbs {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Version.Set {
-		more.More()
-		e.ObjField("version")
+		e.FieldStart("version")
 		s.Version.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -37395,31 +33720,24 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("groupVersion")
+
+	e.FieldStart("groupVersion")
 	e.Str(s.GroupVersion)
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("resources")
-	more.Down()
+
+	e.FieldStart("resources")
 	e.ArrStart()
 	for _, elem := range s.Resources {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -37468,38 +33786,28 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIVersions) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("serverAddressByClientCIDRs")
-	more.Down()
+
+	e.FieldStart("serverAddressByClientCIDRs")
 	e.ArrStart()
 	for _, elem := range s.ServerAddressByClientCIDRs {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
-	more.More()
-	e.ObjField("versions")
-	more.Down()
+
+	e.FieldStart("versions")
 	e.ArrStart()
 	for _, elem := range s.Versions {
-		more.More()
 		e.Str(elem)
 	}
 	e.ArrEnd()
-	more.Up()
 	e.ObjEnd()
 }
 
@@ -37556,25 +33864,22 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1Condition) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	// Unsupported kind "alias".
-	more.More()
-	e.ObjField("message")
+
+	e.FieldStart("message")
 	e.Str(s.Message)
 	if s.ObservedGeneration.Set {
-		more.More()
-		e.ObjField("observedGeneration")
+		e.FieldStart("observedGeneration")
 		s.ObservedGeneration.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("reason")
+
+	e.FieldStart("reason")
 	e.Str(s.Reason)
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	e.Str(s.Status)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -37627,8 +33932,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1FieldsV1) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -37649,13 +33952,11 @@ func (s *IoK8sApimachineryPkgApisMetaV1FieldsV1) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("groupVersion")
+
+	e.FieldStart("groupVersion")
 	e.Str(s.GroupVersion)
-	more.More()
-	e.ObjField("version")
+
+	e.FieldStart("version")
 	e.Str(s.Version)
 	e.ObjEnd()
 }
@@ -37689,23 +33990,16 @@ func (s *IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) ReadJSON(d *jso
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1LabelSelector) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.MatchExpressions != nil {
-		more.More()
-		e.ObjField("matchExpressions")
-		more.Down()
+		e.FieldStart("matchExpressions")
 		e.ArrStart()
 		for _, elem := range s.MatchExpressions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.MatchLabels != nil {
-		more.More()
-		e.ObjField("matchLabels")
+		e.FieldStart("matchLabels")
 		s.MatchLabels.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -37747,8 +34041,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelector) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -37769,25 +34061,19 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) ReadJSON(d *jso
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("key")
+
+	e.FieldStart("key")
 	e.Str(s.Key)
-	more.More()
-	e.ObjField("operator")
+
+	e.FieldStart("operator")
 	e.Str(s.Operator)
 	if s.Values != nil {
-		more.More()
-		e.ObjField("values")
-		more.Down()
+		e.FieldStart("values")
 		e.ArrStart()
 		for _, elem := range s.Values {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -37835,26 +34121,20 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) ReadJSON(d *jso
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ListMeta) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Continue.Set {
-		more.More()
-		e.ObjField("continue")
+		e.FieldStart("continue")
 		s.Continue.WriteJSON(e)
 	}
 	if s.RemainingItemCount.Set {
-		more.More()
-		e.ObjField("remainingItemCount")
+		e.FieldStart("remainingItemCount")
 		s.RemainingItemCount.WriteJSON(e)
 	}
 	if s.ResourceVersion.Set {
-		more.More()
-		e.ObjField("resourceVersion")
+		e.FieldStart("resourceVersion")
 		s.ResourceVersion.WriteJSON(e)
 	}
 	if s.SelfLink.Set {
-		more.More()
-		e.ObjField("selfLink")
+		e.FieldStart("selfLink")
 		s.SelfLink.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -37897,41 +34177,32 @@ func (s *IoK8sApimachineryPkgApisMetaV1ListMeta) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.FieldsType.Set {
-		more.More()
-		e.ObjField("fieldsType")
+		e.FieldStart("fieldsType")
 		s.FieldsType.WriteJSON(e)
 	}
 	if s.FieldsV1 != nil {
-		more.More()
-		e.ObjField("fieldsV1")
+		e.FieldStart("fieldsV1")
 		s.FieldsV1.WriteJSON(e)
 	}
 	if s.Manager.Set {
-		more.More()
-		e.ObjField("manager")
+		e.FieldStart("manager")
 		s.Manager.WriteJSON(e)
 	}
 	if s.Operation.Set {
-		more.More()
-		e.ObjField("operation")
+		e.FieldStart("operation")
 		s.Operation.WriteJSON(e)
 	}
 	if s.Subresource.Set {
-		more.More()
-		e.ObjField("subresource")
+		e.FieldStart("subresource")
 		s.Subresource.WriteJSON(e)
 	}
 	if s.Time.Set {
-		more.More()
-		e.ObjField("time")
+		e.FieldStart("time")
 		s.Time.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -37994,107 +34265,80 @@ func (IoK8sApimachineryPkgApisMetaV1MicroTime) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Annotations != nil {
-		more.More()
-		e.ObjField("annotations")
+		e.FieldStart("annotations")
 		s.Annotations.WriteJSON(e)
 	}
 	if s.ClusterName.Set {
-		more.More()
-		e.ObjField("clusterName")
+		e.FieldStart("clusterName")
 		s.ClusterName.WriteJSON(e)
 	}
 	if s.CreationTimestamp.Set {
-		more.More()
-		e.ObjField("creationTimestamp")
+		e.FieldStart("creationTimestamp")
 		s.CreationTimestamp.WriteJSON(e)
 	}
 	if s.DeletionGracePeriodSeconds.Set {
-		more.More()
-		e.ObjField("deletionGracePeriodSeconds")
+		e.FieldStart("deletionGracePeriodSeconds")
 		s.DeletionGracePeriodSeconds.WriteJSON(e)
 	}
 	if s.DeletionTimestamp.Set {
-		more.More()
-		e.ObjField("deletionTimestamp")
+		e.FieldStart("deletionTimestamp")
 		s.DeletionTimestamp.WriteJSON(e)
 	}
 	if s.Finalizers != nil {
-		more.More()
-		e.ObjField("finalizers")
-		more.Down()
+		e.FieldStart("finalizers")
 		e.ArrStart()
 		for _, elem := range s.Finalizers {
-			more.More()
 			e.Str(elem)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.GenerateName.Set {
-		more.More()
-		e.ObjField("generateName")
+		e.FieldStart("generateName")
 		s.GenerateName.WriteJSON(e)
 	}
 	if s.Generation.Set {
-		more.More()
-		e.ObjField("generation")
+		e.FieldStart("generation")
 		s.Generation.WriteJSON(e)
 	}
 	if s.Labels != nil {
-		more.More()
-		e.ObjField("labels")
+		e.FieldStart("labels")
 		s.Labels.WriteJSON(e)
 	}
 	if s.ManagedFields != nil {
-		more.More()
-		e.ObjField("managedFields")
-		more.Down()
+		e.FieldStart("managedFields")
 		e.ArrStart()
 		for _, elem := range s.ManagedFields {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Namespace.Set {
-		more.More()
-		e.ObjField("namespace")
+		e.FieldStart("namespace")
 		s.Namespace.WriteJSON(e)
 	}
 	if s.OwnerReferences != nil {
-		more.More()
-		e.ObjField("ownerReferences")
-		more.Down()
+		e.FieldStart("ownerReferences")
 		e.ArrStart()
 		for _, elem := range s.OwnerReferences {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.ResourceVersion.Set {
-		more.More()
-		e.ObjField("resourceVersion")
+		e.FieldStart("resourceVersion")
 		s.ResourceVersion.WriteJSON(e)
 	}
 	if s.SelfLink.Set {
-		more.More()
-		e.ObjField("selfLink")
+		e.FieldStart("selfLink")
 		s.SelfLink.WriteJSON(e)
 	}
 	if s.UID.Set {
-		more.More()
-		e.ObjField("uid")
+		e.FieldStart("uid")
 		s.UID.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -38224,8 +34468,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -38246,8 +34488,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -38268,29 +34508,25 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("apiVersion")
+
+	e.FieldStart("apiVersion")
 	e.Str(s.ApiVersion)
 	if s.BlockOwnerDeletion.Set {
-		more.More()
-		e.ObjField("blockOwnerDeletion")
+		e.FieldStart("blockOwnerDeletion")
 		s.BlockOwnerDeletion.WriteJSON(e)
 	}
 	if s.Controller.Set {
-		more.More()
-		e.ObjField("controller")
+		e.FieldStart("controller")
 		s.Controller.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("kind")
+
+	e.FieldStart("kind")
 	e.Str(s.Kind)
-	more.More()
-	e.ObjField("name")
+
+	e.FieldStart("name")
 	e.Str(s.Name)
-	more.More()
-	e.ObjField("uid")
+
+	e.FieldStart("uid")
 	e.Str(s.UID)
 	e.ObjEnd()
 }
@@ -38346,13 +34582,11 @@ func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("clientCIDR")
+
+	e.FieldStart("clientCIDR")
 	e.Str(s.ClientCIDR)
-	more.More()
-	e.ObjField("serverAddress")
+
+	e.FieldStart("serverAddress")
 	e.Str(s.ServerAddress)
 	e.ObjEnd()
 }
@@ -38389,13 +34623,11 @@ func (IoK8sApimachineryPkgApisMetaV1Time) ReadJSON(d *json.Decoder) error { retu
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1WatchEvent) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("object")
+
+	e.FieldStart("object")
 	s.Object.WriteJSON(e)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -38427,8 +34659,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgRuntimeRawExtension) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -38452,34 +34682,32 @@ func (IoK8sApimachineryPkgUtilIntstrIntOrString) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgVersionInfo) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
-	more.More()
-	e.ObjField("buildDate")
+
+	e.FieldStart("buildDate")
 	e.Str(s.BuildDate)
-	more.More()
-	e.ObjField("compiler")
+
+	e.FieldStart("compiler")
 	e.Str(s.Compiler)
-	more.More()
-	e.ObjField("gitCommit")
+
+	e.FieldStart("gitCommit")
 	e.Str(s.GitCommit)
-	more.More()
-	e.ObjField("gitTreeState")
+
+	e.FieldStart("gitTreeState")
 	e.Str(s.GitTreeState)
-	more.More()
-	e.ObjField("gitVersion")
+
+	e.FieldStart("gitVersion")
 	e.Str(s.GitVersion)
-	more.More()
-	e.ObjField("goVersion")
+
+	e.FieldStart("goVersion")
 	e.Str(s.GoVersion)
-	more.More()
-	e.ObjField("major")
+
+	e.FieldStart("major")
 	e.Str(s.Major)
-	more.More()
-	e.ObjField("minor")
+
+	e.FieldStart("minor")
 	e.Str(s.Minor)
-	more.More()
-	e.ObjField("platform")
+
+	e.FieldStart("platform")
 	e.Str(s.Platform)
 	e.ObjEnd()
 }
@@ -38555,31 +34783,24 @@ func (s *IoK8sApimachineryPkgVersionInfo) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	if s.Spec.Set {
-		more.More()
-		e.ObjField("spec")
+		e.FieldStart("spec")
 		s.Spec.WriteJSON(e)
 	}
 	if s.Status.Set {
-		more.More()
-		e.ObjField("status")
+		e.FieldStart("status")
 		s.Status.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -38627,28 +34848,23 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.LastTransitionTime.Set {
-		more.More()
-		e.ObjField("lastTransitionTime")
+		e.FieldStart("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(e)
 	}
 	if s.Message.Set {
-		more.More()
-		e.ObjField("message")
+		e.FieldStart("message")
 		s.Message.WriteJSON(e)
 	}
 	if s.Reason.Set {
-		more.More()
-		e.ObjField("reason")
+		e.FieldStart("reason")
 		s.Reason.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("status")
+
+	e.FieldStart("status")
 	e.Str(s.Status)
-	more.More()
-	e.ObjField("type")
+
+	e.FieldStart("type")
 	e.Str(s.Type)
 	e.ObjEnd()
 }
@@ -38697,31 +34913,23 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) ReadJSO
 // WriteJSON implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.ApiVersion.Set {
-		more.More()
-		e.ObjField("apiVersion")
+		e.FieldStart("apiVersion")
 		s.ApiVersion.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("items")
-	more.Down()
+
+	e.FieldStart("items")
 	e.ArrStart()
 	for _, elem := range s.Items {
-		more.More()
 		elem.WriteJSON(e)
 	}
 	e.ArrEnd()
-	more.Up()
 	if s.Kind.Set {
-		more.More()
-		e.ObjField("kind")
+		e.FieldStart("kind")
 		s.Kind.WriteJSON(e)
 	}
 	if s.Metadata.Set {
-		more.More()
-		e.ObjField("metadata")
+		e.FieldStart("metadata")
 		s.Metadata.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -38771,44 +34979,35 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) ReadJSON(d *
 // WriteJSON implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.CaBundle != nil {
-		more.More()
-		e.ObjField("caBundle")
-		more.Down()
+		e.FieldStart("caBundle")
 		e.ArrStart()
 		for _, elem := range s.CaBundle {
 			_ = elem // Unsupported kind "primitive".
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	if s.Group.Set {
-		more.More()
-		e.ObjField("group")
+		e.FieldStart("group")
 		s.Group.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("groupPriorityMinimum")
+
+	e.FieldStart("groupPriorityMinimum")
 	e.Int32(s.GroupPriorityMinimum)
 	if s.InsecureSkipTLSVerify.Set {
-		more.More()
-		e.ObjField("insecureSkipTLSVerify")
+		e.FieldStart("insecureSkipTLSVerify")
 		s.InsecureSkipTLSVerify.WriteJSON(e)
 	}
 	if s.Service.Set {
-		more.More()
-		e.ObjField("service")
+		e.FieldStart("service")
 		s.Service.WriteJSON(e)
 	}
 	if s.Version.Set {
-		more.More()
-		e.ObjField("version")
+		e.FieldStart("version")
 		s.Version.WriteJSON(e)
 	}
-	more.More()
-	e.ObjField("versionPriority")
+
+	e.FieldStart("versionPriority")
 	e.Int32(s.VersionPriority)
 	e.ObjEnd()
 }
@@ -38872,19 +35071,13 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) ReadJSON(d *
 // WriteJSON implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Conditions != nil {
-		more.More()
-		e.ObjField("conditions")
-		more.Down()
+		e.FieldStart("conditions")
 		e.ArrStart()
 		for _, elem := range s.Conditions {
-			more.More()
 			elem.WriteJSON(e)
 		}
 		e.ArrEnd()
-		more.Up()
 	}
 	e.ObjEnd()
 }
@@ -38918,21 +35111,16 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) ReadJSON(d
 // WriteJSON implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	if s.Name.Set {
-		more.More()
-		e.ObjField("name")
+		e.FieldStart("name")
 		s.Name.WriteJSON(e)
 	}
 	if s.Namespace.Set {
-		more.More()
-		e.ObjField("namespace")
+		e.FieldStart("namespace")
 		s.Namespace.WriteJSON(e)
 	}
 	if s.Port.Set {
-		more.More()
-		e.ObjField("port")
+		e.FieldStart("port")
 		s.Port.WriteJSON(e)
 	}
 	e.ObjEnd()
@@ -38970,8 +35158,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) ReadJSON(d
 // WriteJSON implements json.Marshaler.
 func (s ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -38992,8 +35178,6 @@ func (s *ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) Re
 // WriteJSON implements json.Marshaler.
 func (s ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39014,8 +35198,6 @@ func (s *ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) 
 // WriteJSON implements json.Marshaler.
 func (s ListApiextensionsV1CustomResourceDefinitionUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39036,8 +35218,6 @@ func (s *ListApiextensionsV1CustomResourceDefinitionUnauthorized) ReadJSON(d *js
 // WriteJSON implements json.Marshaler.
 func (s ListApiregistrationV1APIServiceUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39058,8 +35238,6 @@ func (s *ListApiregistrationV1APIServiceUnauthorized) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s ListAppsV1ControllerRevisionForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39080,8 +35258,6 @@ func (s *ListAppsV1ControllerRevisionForAllNamespacesUnauthorized) ReadJSON(d *j
 // WriteJSON implements json.Marshaler.
 func (s ListAppsV1DaemonSetForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39102,8 +35278,6 @@ func (s *ListAppsV1DaemonSetForAllNamespacesUnauthorized) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s ListAppsV1DeploymentForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39124,8 +35298,6 @@ func (s *ListAppsV1DeploymentForAllNamespacesUnauthorized) ReadJSON(d *json.Deco
 // WriteJSON implements json.Marshaler.
 func (s ListAppsV1NamespacedControllerRevisionUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39146,8 +35318,6 @@ func (s *ListAppsV1NamespacedControllerRevisionUnauthorized) ReadJSON(d *json.De
 // WriteJSON implements json.Marshaler.
 func (s ListAppsV1NamespacedDaemonSetUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39168,8 +35338,6 @@ func (s *ListAppsV1NamespacedDaemonSetUnauthorized) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s ListAppsV1NamespacedDeploymentUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39190,8 +35358,6 @@ func (s *ListAppsV1NamespacedDeploymentUnauthorized) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s ListAppsV1NamespacedReplicaSetUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39212,8 +35378,6 @@ func (s *ListAppsV1NamespacedReplicaSetUnauthorized) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s ListAppsV1NamespacedStatefulSetUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39234,8 +35398,6 @@ func (s *ListAppsV1NamespacedStatefulSetUnauthorized) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s ListAppsV1ReplicaSetForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39256,8 +35418,6 @@ func (s *ListAppsV1ReplicaSetForAllNamespacesUnauthorized) ReadJSON(d *json.Deco
 // WriteJSON implements json.Marshaler.
 func (s ListAppsV1StatefulSetForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39278,8 +35438,6 @@ func (s *ListAppsV1StatefulSetForAllNamespacesUnauthorized) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39300,8 +35458,6 @@ func (s *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized) R
 // WriteJSON implements json.Marshaler.
 func (s ListAutoscalingV1NamespacedHorizontalPodAutoscalerUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39322,8 +35478,6 @@ func (s *ListAutoscalingV1NamespacedHorizontalPodAutoscalerUnauthorized) ReadJSO
 // WriteJSON implements json.Marshaler.
 func (s ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39344,8 +35498,6 @@ func (s *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthoriz
 // WriteJSON implements json.Marshaler.
 func (s ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39366,8 +35518,6 @@ func (s *ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerUnauthorized) Re
 // WriteJSON implements json.Marshaler.
 func (s ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39388,8 +35538,6 @@ func (s *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthoriz
 // WriteJSON implements json.Marshaler.
 func (s ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39410,8 +35558,6 @@ func (s *ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerUnauthorized) Re
 // WriteJSON implements json.Marshaler.
 func (s ListBatchV1CronJobForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39432,8 +35578,6 @@ func (s *ListBatchV1CronJobForAllNamespacesUnauthorized) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s ListBatchV1JobForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39454,8 +35598,6 @@ func (s *ListBatchV1JobForAllNamespacesUnauthorized) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s ListBatchV1NamespacedCronJobUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39476,8 +35618,6 @@ func (s *ListBatchV1NamespacedCronJobUnauthorized) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s ListBatchV1NamespacedJobUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39498,8 +35638,6 @@ func (s *ListBatchV1NamespacedJobUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ListBatchV1beta1CronJobForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39520,8 +35658,6 @@ func (s *ListBatchV1beta1CronJobForAllNamespacesUnauthorized) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s ListBatchV1beta1NamespacedCronJobUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39542,8 +35678,6 @@ func (s *ListBatchV1beta1NamespacedCronJobUnauthorized) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s ListCertificatesV1CertificateSigningRequestUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39564,8 +35698,6 @@ func (s *ListCertificatesV1CertificateSigningRequestUnauthorized) ReadJSON(d *js
 // WriteJSON implements json.Marshaler.
 func (s ListCoordinationV1LeaseForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39586,8 +35718,6 @@ func (s *ListCoordinationV1LeaseForAllNamespacesUnauthorized) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s ListCoordinationV1NamespacedLeaseUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39608,8 +35738,6 @@ func (s *ListCoordinationV1NamespacedLeaseUnauthorized) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1ComponentStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39630,8 +35758,6 @@ func (s *ListCoreV1ComponentStatusUnauthorized) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1ConfigMapForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39652,8 +35778,6 @@ func (s *ListCoreV1ConfigMapForAllNamespacesUnauthorized) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1EndpointsForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39674,8 +35798,6 @@ func (s *ListCoreV1EndpointsForAllNamespacesUnauthorized) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1EventForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39696,8 +35818,6 @@ func (s *ListCoreV1EventForAllNamespacesUnauthorized) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1LimitRangeForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39718,8 +35838,6 @@ func (s *ListCoreV1LimitRangeForAllNamespacesUnauthorized) ReadJSON(d *json.Deco
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1NamespaceUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39740,8 +35858,6 @@ func (s *ListCoreV1NamespaceUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1NamespacedConfigMapUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39762,8 +35878,6 @@ func (s *ListCoreV1NamespacedConfigMapUnauthorized) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1NamespacedEndpointsUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39784,8 +35898,6 @@ func (s *ListCoreV1NamespacedEndpointsUnauthorized) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1NamespacedEventUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39806,8 +35918,6 @@ func (s *ListCoreV1NamespacedEventUnauthorized) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1NamespacedLimitRangeUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39828,8 +35938,6 @@ func (s *ListCoreV1NamespacedLimitRangeUnauthorized) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1NamespacedPersistentVolumeClaimUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39850,8 +35958,6 @@ func (s *ListCoreV1NamespacedPersistentVolumeClaimUnauthorized) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1NamespacedPodTemplateUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39872,8 +35978,6 @@ func (s *ListCoreV1NamespacedPodTemplateUnauthorized) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1NamespacedPodUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39894,8 +35998,6 @@ func (s *ListCoreV1NamespacedPodUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1NamespacedReplicationControllerUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39916,8 +36018,6 @@ func (s *ListCoreV1NamespacedReplicationControllerUnauthorized) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1NamespacedResourceQuotaUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39938,8 +36038,6 @@ func (s *ListCoreV1NamespacedResourceQuotaUnauthorized) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1NamespacedSecretUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39960,8 +36058,6 @@ func (s *ListCoreV1NamespacedSecretUnauthorized) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1NamespacedServiceAccountUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -39982,8 +36078,6 @@ func (s *ListCoreV1NamespacedServiceAccountUnauthorized) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1NamespacedServiceUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40004,8 +36098,6 @@ func (s *ListCoreV1NamespacedServiceUnauthorized) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1NodeUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40026,8 +36118,6 @@ func (s *ListCoreV1NodeUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40048,8 +36138,6 @@ func (s *ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized) ReadJSON(d
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1PersistentVolumeUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40070,8 +36158,6 @@ func (s *ListCoreV1PersistentVolumeUnauthorized) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1PodForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40092,8 +36178,6 @@ func (s *ListCoreV1PodForAllNamespacesUnauthorized) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1PodTemplateForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40114,8 +36198,6 @@ func (s *ListCoreV1PodTemplateForAllNamespacesUnauthorized) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1ReplicationControllerForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40136,8 +36218,6 @@ func (s *ListCoreV1ReplicationControllerForAllNamespacesUnauthorized) ReadJSON(d
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1ResourceQuotaForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40158,8 +36238,6 @@ func (s *ListCoreV1ResourceQuotaForAllNamespacesUnauthorized) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1SecretForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40180,8 +36258,6 @@ func (s *ListCoreV1SecretForAllNamespacesUnauthorized) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1ServiceAccountForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40202,8 +36278,6 @@ func (s *ListCoreV1ServiceAccountForAllNamespacesUnauthorized) ReadJSON(d *json.
 // WriteJSON implements json.Marshaler.
 func (s ListCoreV1ServiceForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40224,8 +36298,6 @@ func (s *ListCoreV1ServiceForAllNamespacesUnauthorized) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40246,8 +36318,6 @@ func (s *ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized) ReadJSON(d *j
 // WriteJSON implements json.Marshaler.
 func (s ListDiscoveryV1NamespacedEndpointSliceUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40268,8 +36338,6 @@ func (s *ListDiscoveryV1NamespacedEndpointSliceUnauthorized) ReadJSON(d *json.De
 // WriteJSON implements json.Marshaler.
 func (s ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40290,8 +36358,6 @@ func (s *ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized) ReadJSON
 // WriteJSON implements json.Marshaler.
 func (s ListDiscoveryV1beta1NamespacedEndpointSliceUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40312,8 +36378,6 @@ func (s *ListDiscoveryV1beta1NamespacedEndpointSliceUnauthorized) ReadJSON(d *js
 // WriteJSON implements json.Marshaler.
 func (s ListEventsV1EventForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40334,8 +36398,6 @@ func (s *ListEventsV1EventForAllNamespacesUnauthorized) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s ListEventsV1NamespacedEventUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40356,8 +36418,6 @@ func (s *ListEventsV1NamespacedEventUnauthorized) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s ListEventsV1beta1EventForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40378,8 +36438,6 @@ func (s *ListEventsV1beta1EventForAllNamespacesUnauthorized) ReadJSON(d *json.De
 // WriteJSON implements json.Marshaler.
 func (s ListEventsV1beta1NamespacedEventUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40400,8 +36458,6 @@ func (s *ListEventsV1beta1NamespacedEventUnauthorized) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40422,8 +36478,6 @@ func (s *ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40444,8 +36498,6 @@ func (s *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) 
 // WriteJSON implements json.Marshaler.
 func (s ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40466,8 +36518,6 @@ func (s *ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40488,8 +36538,6 @@ func (s *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) 
 // WriteJSON implements json.Marshaler.
 func (s ListInternalApiserverV1alpha1StorageVersionUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40510,8 +36558,6 @@ func (s *ListInternalApiserverV1alpha1StorageVersionUnauthorized) ReadJSON(d *js
 // WriteJSON implements json.Marshaler.
 func (s ListNetworkingV1IngressClassUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40532,8 +36578,6 @@ func (s *ListNetworkingV1IngressClassUnauthorized) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s ListNetworkingV1IngressForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40554,8 +36598,6 @@ func (s *ListNetworkingV1IngressForAllNamespacesUnauthorized) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s ListNetworkingV1NamespacedIngressUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40576,8 +36618,6 @@ func (s *ListNetworkingV1NamespacedIngressUnauthorized) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s ListNetworkingV1NamespacedNetworkPolicyUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40598,8 +36638,6 @@ func (s *ListNetworkingV1NamespacedNetworkPolicyUnauthorized) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40620,8 +36658,6 @@ func (s *ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized) ReadJSON(d *
 // WriteJSON implements json.Marshaler.
 func (s ListNodeV1RuntimeClassUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40642,8 +36678,6 @@ func (s *ListNodeV1RuntimeClassUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ListNodeV1alpha1RuntimeClassUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40664,8 +36698,6 @@ func (s *ListNodeV1alpha1RuntimeClassUnauthorized) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s ListNodeV1beta1RuntimeClassUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40686,8 +36718,6 @@ func (s *ListNodeV1beta1RuntimeClassUnauthorized) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s ListPolicyV1NamespacedPodDisruptionBudgetUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40708,8 +36738,6 @@ func (s *ListPolicyV1NamespacedPodDisruptionBudgetUnauthorized) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40730,8 +36758,6 @@ func (s *ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized) ReadJSON(d
 // WriteJSON implements json.Marshaler.
 func (s ListPolicyV1beta1NamespacedPodDisruptionBudgetUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40752,8 +36778,6 @@ func (s *ListPolicyV1beta1NamespacedPodDisruptionBudgetUnauthorized) ReadJSON(d 
 // WriteJSON implements json.Marshaler.
 func (s ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40774,8 +36798,6 @@ func (s *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized) ReadJ
 // WriteJSON implements json.Marshaler.
 func (s ListPolicyV1beta1PodSecurityPolicyUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40796,8 +36818,6 @@ func (s *ListPolicyV1beta1PodSecurityPolicyUnauthorized) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s ListRbacAuthorizationV1ClusterRoleBindingUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40818,8 +36838,6 @@ func (s *ListRbacAuthorizationV1ClusterRoleBindingUnauthorized) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s ListRbacAuthorizationV1ClusterRoleUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40840,8 +36858,6 @@ func (s *ListRbacAuthorizationV1ClusterRoleUnauthorized) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s ListRbacAuthorizationV1NamespacedRoleBindingUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40862,8 +36878,6 @@ func (s *ListRbacAuthorizationV1NamespacedRoleBindingUnauthorized) ReadJSON(d *j
 // WriteJSON implements json.Marshaler.
 func (s ListRbacAuthorizationV1NamespacedRoleUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40884,8 +36898,6 @@ func (s *ListRbacAuthorizationV1NamespacedRoleUnauthorized) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40906,8 +36918,6 @@ func (s *ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized) ReadJSO
 // WriteJSON implements json.Marshaler.
 func (s ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40928,8 +36938,6 @@ func (s *ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized) ReadJSON(d *js
 // WriteJSON implements json.Marshaler.
 func (s ListSchedulingV1PriorityClassUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40950,8 +36958,6 @@ func (s *ListSchedulingV1PriorityClassUnauthorized) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s ListStorageV1CSIDriverUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40972,8 +36978,6 @@ func (s *ListStorageV1CSIDriverUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ListStorageV1CSINodeUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -40994,8 +36998,6 @@ func (s *ListStorageV1CSINodeUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ListStorageV1StorageClassUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -41016,8 +37018,6 @@ func (s *ListStorageV1StorageClassUnauthorized) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s ListStorageV1VolumeAttachmentUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -41038,8 +37038,6 @@ func (s *ListStorageV1VolumeAttachmentUnauthorized) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -41060,8 +37058,6 @@ func (s *ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized) Read
 // WriteJSON implements json.Marshaler.
 func (s ListStorageV1alpha1NamespacedCSIStorageCapacityUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -41082,8 +37078,6 @@ func (s *ListStorageV1alpha1NamespacedCSIStorageCapacityUnauthorized) ReadJSON(d
 // WriteJSON implements json.Marshaler.
 func (s ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -41104,8 +37098,6 @@ func (s *ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized) ReadJ
 // WriteJSON implements json.Marshaler.
 func (s ListStorageV1beta1NamespacedCSIStorageCapacityUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -41126,8 +37118,6 @@ func (s *ListStorageV1beta1NamespacedCSIStorageCapacityUnauthorized) ReadJSON(d 
 // WriteJSON implements json.Marshaler.
 func (s LogFileHandlerUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -41148,8 +37138,6 @@ func (s *LogFileHandlerUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s LogFileListHandlerUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46600,8 +42588,6 @@ func (o *OptString) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReadAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46622,8 +42608,6 @@ func (s *ReadAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) Re
 // WriteJSON implements json.Marshaler.
 func (s ReadAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46644,8 +42628,6 @@ func (s *ReadAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) 
 // WriteJSON implements json.Marshaler.
 func (s ReadApiextensionsV1CustomResourceDefinitionStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46666,8 +42648,6 @@ func (s *ReadApiextensionsV1CustomResourceDefinitionStatusUnauthorized) ReadJSON
 // WriteJSON implements json.Marshaler.
 func (s ReadApiextensionsV1CustomResourceDefinitionUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46688,8 +42668,6 @@ func (s *ReadApiextensionsV1CustomResourceDefinitionUnauthorized) ReadJSON(d *js
 // WriteJSON implements json.Marshaler.
 func (s ReadApiregistrationV1APIServiceStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46710,8 +42688,6 @@ func (s *ReadApiregistrationV1APIServiceStatusUnauthorized) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s ReadApiregistrationV1APIServiceUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46732,8 +42708,6 @@ func (s *ReadApiregistrationV1APIServiceUnauthorized) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s ReadAppsV1NamespacedControllerRevisionUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46754,8 +42728,6 @@ func (s *ReadAppsV1NamespacedControllerRevisionUnauthorized) ReadJSON(d *json.De
 // WriteJSON implements json.Marshaler.
 func (s ReadAppsV1NamespacedDaemonSetStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46776,8 +42748,6 @@ func (s *ReadAppsV1NamespacedDaemonSetStatusUnauthorized) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s ReadAppsV1NamespacedDaemonSetUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46798,8 +42768,6 @@ func (s *ReadAppsV1NamespacedDaemonSetUnauthorized) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s ReadAppsV1NamespacedDeploymentScaleUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46820,8 +42788,6 @@ func (s *ReadAppsV1NamespacedDeploymentScaleUnauthorized) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s ReadAppsV1NamespacedDeploymentStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46842,8 +42808,6 @@ func (s *ReadAppsV1NamespacedDeploymentStatusUnauthorized) ReadJSON(d *json.Deco
 // WriteJSON implements json.Marshaler.
 func (s ReadAppsV1NamespacedDeploymentUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46864,8 +42828,6 @@ func (s *ReadAppsV1NamespacedDeploymentUnauthorized) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s ReadAppsV1NamespacedReplicaSetScaleUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46886,8 +42848,6 @@ func (s *ReadAppsV1NamespacedReplicaSetScaleUnauthorized) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s ReadAppsV1NamespacedReplicaSetStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46908,8 +42868,6 @@ func (s *ReadAppsV1NamespacedReplicaSetStatusUnauthorized) ReadJSON(d *json.Deco
 // WriteJSON implements json.Marshaler.
 func (s ReadAppsV1NamespacedReplicaSetUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46930,8 +42888,6 @@ func (s *ReadAppsV1NamespacedReplicaSetUnauthorized) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s ReadAppsV1NamespacedStatefulSetScaleUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46952,8 +42908,6 @@ func (s *ReadAppsV1NamespacedStatefulSetScaleUnauthorized) ReadJSON(d *json.Deco
 // WriteJSON implements json.Marshaler.
 func (s ReadAppsV1NamespacedStatefulSetStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46974,8 +42928,6 @@ func (s *ReadAppsV1NamespacedStatefulSetStatusUnauthorized) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s ReadAppsV1NamespacedStatefulSetUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -46996,8 +42948,6 @@ func (s *ReadAppsV1NamespacedStatefulSetUnauthorized) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47018,8 +42968,6 @@ func (s *ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusUnauthorized) R
 // WriteJSON implements json.Marshaler.
 func (s ReadAutoscalingV1NamespacedHorizontalPodAutoscalerUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47040,8 +42988,6 @@ func (s *ReadAutoscalingV1NamespacedHorizontalPodAutoscalerUnauthorized) ReadJSO
 // WriteJSON implements json.Marshaler.
 func (s ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47062,8 +43008,6 @@ func (s *ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusUnauthoriz
 // WriteJSON implements json.Marshaler.
 func (s ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47084,8 +43028,6 @@ func (s *ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerUnauthorized) Re
 // WriteJSON implements json.Marshaler.
 func (s ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47106,8 +43048,6 @@ func (s *ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusUnauthoriz
 // WriteJSON implements json.Marshaler.
 func (s ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47128,8 +43068,6 @@ func (s *ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerUnauthorized) Re
 // WriteJSON implements json.Marshaler.
 func (s ReadBatchV1NamespacedCronJobStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47150,8 +43088,6 @@ func (s *ReadBatchV1NamespacedCronJobStatusUnauthorized) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s ReadBatchV1NamespacedCronJobUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47172,8 +43108,6 @@ func (s *ReadBatchV1NamespacedCronJobUnauthorized) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s ReadBatchV1NamespacedJobStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47194,8 +43128,6 @@ func (s *ReadBatchV1NamespacedJobStatusUnauthorized) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s ReadBatchV1NamespacedJobUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47216,8 +43148,6 @@ func (s *ReadBatchV1NamespacedJobUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReadBatchV1beta1NamespacedCronJobStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47238,8 +43168,6 @@ func (s *ReadBatchV1beta1NamespacedCronJobStatusUnauthorized) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s ReadBatchV1beta1NamespacedCronJobUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47260,8 +43188,6 @@ func (s *ReadBatchV1beta1NamespacedCronJobUnauthorized) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s ReadCertificatesV1CertificateSigningRequestApprovalUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47282,8 +43208,6 @@ func (s *ReadCertificatesV1CertificateSigningRequestApprovalUnauthorized) ReadJS
 // WriteJSON implements json.Marshaler.
 func (s ReadCertificatesV1CertificateSigningRequestStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47304,8 +43228,6 @@ func (s *ReadCertificatesV1CertificateSigningRequestStatusUnauthorized) ReadJSON
 // WriteJSON implements json.Marshaler.
 func (s ReadCertificatesV1CertificateSigningRequestUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47326,8 +43248,6 @@ func (s *ReadCertificatesV1CertificateSigningRequestUnauthorized) ReadJSON(d *js
 // WriteJSON implements json.Marshaler.
 func (s ReadCoordinationV1NamespacedLeaseUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47348,8 +43268,6 @@ func (s *ReadCoordinationV1NamespacedLeaseUnauthorized) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1ComponentStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47370,8 +43288,6 @@ func (s *ReadCoreV1ComponentStatusUnauthorized) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1NamespaceStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47392,8 +43308,6 @@ func (s *ReadCoreV1NamespaceStatusUnauthorized) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1NamespaceUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47414,8 +43328,6 @@ func (s *ReadCoreV1NamespaceUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1NamespacedConfigMapUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47436,8 +43348,6 @@ func (s *ReadCoreV1NamespacedConfigMapUnauthorized) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1NamespacedEndpointsUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47458,8 +43368,6 @@ func (s *ReadCoreV1NamespacedEndpointsUnauthorized) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1NamespacedEventUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47480,8 +43388,6 @@ func (s *ReadCoreV1NamespacedEventUnauthorized) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1NamespacedLimitRangeUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47502,8 +43408,6 @@ func (s *ReadCoreV1NamespacedLimitRangeUnauthorized) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1NamespacedPersistentVolumeClaimStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47524,8 +43428,6 @@ func (s *ReadCoreV1NamespacedPersistentVolumeClaimStatusUnauthorized) ReadJSON(d
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1NamespacedPersistentVolumeClaimUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47546,8 +43448,6 @@ func (s *ReadCoreV1NamespacedPersistentVolumeClaimUnauthorized) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1NamespacedPodEphemeralcontainersUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47571,8 +43471,6 @@ func (ReadCoreV1NamespacedPodLogOKApplicationJSON) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1NamespacedPodLogUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47593,8 +43491,6 @@ func (s *ReadCoreV1NamespacedPodLogUnauthorized) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1NamespacedPodStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47615,8 +43511,6 @@ func (s *ReadCoreV1NamespacedPodStatusUnauthorized) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1NamespacedPodTemplateUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47637,8 +43531,6 @@ func (s *ReadCoreV1NamespacedPodTemplateUnauthorized) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1NamespacedPodUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47659,8 +43551,6 @@ func (s *ReadCoreV1NamespacedPodUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1NamespacedReplicationControllerScaleUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47681,8 +43571,6 @@ func (s *ReadCoreV1NamespacedReplicationControllerScaleUnauthorized) ReadJSON(d 
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1NamespacedReplicationControllerStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47703,8 +43591,6 @@ func (s *ReadCoreV1NamespacedReplicationControllerStatusUnauthorized) ReadJSON(d
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1NamespacedReplicationControllerUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47725,8 +43611,6 @@ func (s *ReadCoreV1NamespacedReplicationControllerUnauthorized) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1NamespacedResourceQuotaStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47747,8 +43631,6 @@ func (s *ReadCoreV1NamespacedResourceQuotaStatusUnauthorized) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1NamespacedResourceQuotaUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47769,8 +43651,6 @@ func (s *ReadCoreV1NamespacedResourceQuotaUnauthorized) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1NamespacedSecretUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47791,8 +43671,6 @@ func (s *ReadCoreV1NamespacedSecretUnauthorized) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1NamespacedServiceAccountUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47813,8 +43691,6 @@ func (s *ReadCoreV1NamespacedServiceAccountUnauthorized) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1NamespacedServiceStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47835,8 +43711,6 @@ func (s *ReadCoreV1NamespacedServiceStatusUnauthorized) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1NamespacedServiceUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47857,8 +43731,6 @@ func (s *ReadCoreV1NamespacedServiceUnauthorized) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1NodeStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47879,8 +43751,6 @@ func (s *ReadCoreV1NodeStatusUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1NodeUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47901,8 +43771,6 @@ func (s *ReadCoreV1NodeUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1PersistentVolumeStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47923,8 +43791,6 @@ func (s *ReadCoreV1PersistentVolumeStatusUnauthorized) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s ReadCoreV1PersistentVolumeUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47945,8 +43811,6 @@ func (s *ReadCoreV1PersistentVolumeUnauthorized) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s ReadDiscoveryV1NamespacedEndpointSliceUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47967,8 +43831,6 @@ func (s *ReadDiscoveryV1NamespacedEndpointSliceUnauthorized) ReadJSON(d *json.De
 // WriteJSON implements json.Marshaler.
 func (s ReadDiscoveryV1beta1NamespacedEndpointSliceUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -47989,8 +43851,6 @@ func (s *ReadDiscoveryV1beta1NamespacedEndpointSliceUnauthorized) ReadJSON(d *js
 // WriteJSON implements json.Marshaler.
 func (s ReadEventsV1NamespacedEventUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48011,8 +43871,6 @@ func (s *ReadEventsV1NamespacedEventUnauthorized) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s ReadEventsV1beta1NamespacedEventUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48033,8 +43891,6 @@ func (s *ReadEventsV1beta1NamespacedEventUnauthorized) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s ReadFlowcontrolApiserverV1beta1FlowSchemaStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48055,8 +43911,6 @@ func (s *ReadFlowcontrolApiserverV1beta1FlowSchemaStatusUnauthorized) ReadJSON(d
 // WriteJSON implements json.Marshaler.
 func (s ReadFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48077,8 +43931,6 @@ func (s *ReadFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48099,8 +43951,6 @@ func (s *ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusUnauthor
 // WriteJSON implements json.Marshaler.
 func (s ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48121,8 +43971,6 @@ func (s *ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) 
 // WriteJSON implements json.Marshaler.
 func (s ReadFlowcontrolApiserverV1beta2FlowSchemaStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48143,8 +43991,6 @@ func (s *ReadFlowcontrolApiserverV1beta2FlowSchemaStatusUnauthorized) ReadJSON(d
 // WriteJSON implements json.Marshaler.
 func (s ReadFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48165,8 +44011,6 @@ func (s *ReadFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48187,8 +44031,6 @@ func (s *ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusUnauthor
 // WriteJSON implements json.Marshaler.
 func (s ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48209,8 +44051,6 @@ func (s *ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) 
 // WriteJSON implements json.Marshaler.
 func (s ReadInternalApiserverV1alpha1StorageVersionStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48231,8 +44071,6 @@ func (s *ReadInternalApiserverV1alpha1StorageVersionStatusUnauthorized) ReadJSON
 // WriteJSON implements json.Marshaler.
 func (s ReadInternalApiserverV1alpha1StorageVersionUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48253,8 +44091,6 @@ func (s *ReadInternalApiserverV1alpha1StorageVersionUnauthorized) ReadJSON(d *js
 // WriteJSON implements json.Marshaler.
 func (s ReadNetworkingV1IngressClassUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48275,8 +44111,6 @@ func (s *ReadNetworkingV1IngressClassUnauthorized) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s ReadNetworkingV1NamespacedIngressStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48297,8 +44131,6 @@ func (s *ReadNetworkingV1NamespacedIngressStatusUnauthorized) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s ReadNetworkingV1NamespacedIngressUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48319,8 +44151,6 @@ func (s *ReadNetworkingV1NamespacedIngressUnauthorized) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s ReadNetworkingV1NamespacedNetworkPolicyUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48341,8 +44171,6 @@ func (s *ReadNetworkingV1NamespacedNetworkPolicyUnauthorized) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s ReadNodeV1RuntimeClassUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48363,8 +44191,6 @@ func (s *ReadNodeV1RuntimeClassUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReadNodeV1alpha1RuntimeClassUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48385,8 +44211,6 @@ func (s *ReadNodeV1alpha1RuntimeClassUnauthorized) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s ReadNodeV1beta1RuntimeClassUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48407,8 +44231,6 @@ func (s *ReadNodeV1beta1RuntimeClassUnauthorized) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s ReadPolicyV1NamespacedPodDisruptionBudgetStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48429,8 +44251,6 @@ func (s *ReadPolicyV1NamespacedPodDisruptionBudgetStatusUnauthorized) ReadJSON(d
 // WriteJSON implements json.Marshaler.
 func (s ReadPolicyV1NamespacedPodDisruptionBudgetUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48451,8 +44271,6 @@ func (s *ReadPolicyV1NamespacedPodDisruptionBudgetUnauthorized) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48473,8 +44291,6 @@ func (s *ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusUnauthorized) ReadJ
 // WriteJSON implements json.Marshaler.
 func (s ReadPolicyV1beta1NamespacedPodDisruptionBudgetUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48495,8 +44311,6 @@ func (s *ReadPolicyV1beta1NamespacedPodDisruptionBudgetUnauthorized) ReadJSON(d 
 // WriteJSON implements json.Marshaler.
 func (s ReadPolicyV1beta1PodSecurityPolicyUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48517,8 +44331,6 @@ func (s *ReadPolicyV1beta1PodSecurityPolicyUnauthorized) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s ReadRbacAuthorizationV1ClusterRoleBindingUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48539,8 +44351,6 @@ func (s *ReadRbacAuthorizationV1ClusterRoleBindingUnauthorized) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s ReadRbacAuthorizationV1ClusterRoleUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48561,8 +44371,6 @@ func (s *ReadRbacAuthorizationV1ClusterRoleUnauthorized) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s ReadRbacAuthorizationV1NamespacedRoleBindingUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48583,8 +44391,6 @@ func (s *ReadRbacAuthorizationV1NamespacedRoleBindingUnauthorized) ReadJSON(d *j
 // WriteJSON implements json.Marshaler.
 func (s ReadRbacAuthorizationV1NamespacedRoleUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48605,8 +44411,6 @@ func (s *ReadRbacAuthorizationV1NamespacedRoleUnauthorized) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s ReadSchedulingV1PriorityClassUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48627,8 +44431,6 @@ func (s *ReadSchedulingV1PriorityClassUnauthorized) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s ReadStorageV1CSIDriverUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48649,8 +44451,6 @@ func (s *ReadStorageV1CSIDriverUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReadStorageV1CSINodeUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48671,8 +44471,6 @@ func (s *ReadStorageV1CSINodeUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s ReadStorageV1StorageClassUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48693,8 +44491,6 @@ func (s *ReadStorageV1StorageClassUnauthorized) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s ReadStorageV1VolumeAttachmentStatusUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48715,8 +44511,6 @@ func (s *ReadStorageV1VolumeAttachmentStatusUnauthorized) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s ReadStorageV1VolumeAttachmentUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48737,8 +44531,6 @@ func (s *ReadStorageV1VolumeAttachmentUnauthorized) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s ReadStorageV1alpha1NamespacedCSIStorageCapacityUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48759,8 +44551,6 @@ func (s *ReadStorageV1alpha1NamespacedCSIStorageCapacityUnauthorized) ReadJSON(d
 // WriteJSON implements json.Marshaler.
 func (s ReadStorageV1beta1NamespacedCSIStorageCapacityUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48781,8 +44571,6 @@ func (s *ReadStorageV1beta1NamespacedCSIStorageCapacityUnauthorized) ReadJSON(d 
 // WriteJSON implements json.Marshaler.
 func (s WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48803,8 +44591,6 @@ func (s *WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorize
 // WriteJSON implements json.Marshaler.
 func (s WatchAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48825,8 +44611,6 @@ func (s *WatchAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) R
 // WriteJSON implements json.Marshaler.
 func (s WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48847,8 +44631,6 @@ func (s *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthori
 // WriteJSON implements json.Marshaler.
 func (s WatchAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48869,8 +44651,6 @@ func (s *WatchAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized)
 // WriteJSON implements json.Marshaler.
 func (s WatchApiextensionsV1CustomResourceDefinitionListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48891,8 +44671,6 @@ func (s *WatchApiextensionsV1CustomResourceDefinitionListUnauthorized) ReadJSON(
 // WriteJSON implements json.Marshaler.
 func (s WatchApiextensionsV1CustomResourceDefinitionUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48913,8 +44691,6 @@ func (s *WatchApiextensionsV1CustomResourceDefinitionUnauthorized) ReadJSON(d *j
 // WriteJSON implements json.Marshaler.
 func (s WatchApiregistrationV1APIServiceListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48935,8 +44711,6 @@ func (s *WatchApiregistrationV1APIServiceListUnauthorized) ReadJSON(d *json.Deco
 // WriteJSON implements json.Marshaler.
 func (s WatchApiregistrationV1APIServiceUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48957,8 +44731,6 @@ func (s *WatchApiregistrationV1APIServiceUnauthorized) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -48979,8 +44751,6 @@ func (s *WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized) ReadJSON
 // WriteJSON implements json.Marshaler.
 func (s WatchAppsV1DaemonSetListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49001,8 +44771,6 @@ func (s *WatchAppsV1DaemonSetListForAllNamespacesUnauthorized) ReadJSON(d *json.
 // WriteJSON implements json.Marshaler.
 func (s WatchAppsV1DeploymentListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49023,8 +44791,6 @@ func (s *WatchAppsV1DeploymentListForAllNamespacesUnauthorized) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s WatchAppsV1NamespacedControllerRevisionListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49045,8 +44811,6 @@ func (s *WatchAppsV1NamespacedControllerRevisionListUnauthorized) ReadJSON(d *js
 // WriteJSON implements json.Marshaler.
 func (s WatchAppsV1NamespacedControllerRevisionUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49067,8 +44831,6 @@ func (s *WatchAppsV1NamespacedControllerRevisionUnauthorized) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s WatchAppsV1NamespacedDaemonSetListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49089,8 +44851,6 @@ func (s *WatchAppsV1NamespacedDaemonSetListUnauthorized) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s WatchAppsV1NamespacedDaemonSetUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49111,8 +44871,6 @@ func (s *WatchAppsV1NamespacedDaemonSetUnauthorized) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s WatchAppsV1NamespacedDeploymentListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49133,8 +44891,6 @@ func (s *WatchAppsV1NamespacedDeploymentListUnauthorized) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s WatchAppsV1NamespacedDeploymentUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49155,8 +44911,6 @@ func (s *WatchAppsV1NamespacedDeploymentUnauthorized) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s WatchAppsV1NamespacedReplicaSetListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49177,8 +44931,6 @@ func (s *WatchAppsV1NamespacedReplicaSetListUnauthorized) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s WatchAppsV1NamespacedReplicaSetUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49199,8 +44951,6 @@ func (s *WatchAppsV1NamespacedReplicaSetUnauthorized) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s WatchAppsV1NamespacedStatefulSetListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49221,8 +44971,6 @@ func (s *WatchAppsV1NamespacedStatefulSetListUnauthorized) ReadJSON(d *json.Deco
 // WriteJSON implements json.Marshaler.
 func (s WatchAppsV1NamespacedStatefulSetUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49243,8 +44991,6 @@ func (s *WatchAppsV1NamespacedStatefulSetUnauthorized) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49265,8 +45011,6 @@ func (s *WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s WatchAppsV1StatefulSetListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49287,8 +45031,6 @@ func (s *WatchAppsV1StatefulSetListForAllNamespacesUnauthorized) ReadJSON(d *jso
 // WriteJSON implements json.Marshaler.
 func (s WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49309,8 +45051,6 @@ func (s *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthoriz
 // WriteJSON implements json.Marshaler.
 func (s WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49331,8 +45071,6 @@ func (s *WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListUnauthorized) Re
 // WriteJSON implements json.Marshaler.
 func (s WatchAutoscalingV1NamespacedHorizontalPodAutoscalerUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49353,8 +45091,6 @@ func (s *WatchAutoscalingV1NamespacedHorizontalPodAutoscalerUnauthorized) ReadJS
 // WriteJSON implements json.Marshaler.
 func (s WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49375,8 +45111,6 @@ func (s *WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnaut
 // WriteJSON implements json.Marshaler.
 func (s WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49397,8 +45131,6 @@ func (s *WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListUnauthorize
 // WriteJSON implements json.Marshaler.
 func (s WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49419,8 +45151,6 @@ func (s *WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerUnauthorized) R
 // WriteJSON implements json.Marshaler.
 func (s WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49441,8 +45171,6 @@ func (s *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnaut
 // WriteJSON implements json.Marshaler.
 func (s WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49463,8 +45191,6 @@ func (s *WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListUnauthorize
 // WriteJSON implements json.Marshaler.
 func (s WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49485,8 +45211,6 @@ func (s *WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerUnauthorized) R
 // WriteJSON implements json.Marshaler.
 func (s WatchBatchV1CronJobListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49507,8 +45231,6 @@ func (s *WatchBatchV1CronJobListForAllNamespacesUnauthorized) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s WatchBatchV1JobListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49529,8 +45251,6 @@ func (s *WatchBatchV1JobListForAllNamespacesUnauthorized) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s WatchBatchV1NamespacedCronJobListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49551,8 +45271,6 @@ func (s *WatchBatchV1NamespacedCronJobListUnauthorized) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s WatchBatchV1NamespacedCronJobUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49573,8 +45291,6 @@ func (s *WatchBatchV1NamespacedCronJobUnauthorized) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s WatchBatchV1NamespacedJobListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49595,8 +45311,6 @@ func (s *WatchBatchV1NamespacedJobListUnauthorized) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s WatchBatchV1NamespacedJobUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49617,8 +45331,6 @@ func (s *WatchBatchV1NamespacedJobUnauthorized) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49639,8 +45351,6 @@ func (s *WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized) ReadJSON(d *j
 // WriteJSON implements json.Marshaler.
 func (s WatchBatchV1beta1NamespacedCronJobListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49661,8 +45371,6 @@ func (s *WatchBatchV1beta1NamespacedCronJobListUnauthorized) ReadJSON(d *json.De
 // WriteJSON implements json.Marshaler.
 func (s WatchBatchV1beta1NamespacedCronJobUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49683,8 +45391,6 @@ func (s *WatchBatchV1beta1NamespacedCronJobUnauthorized) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s WatchCertificatesV1CertificateSigningRequestListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49705,8 +45411,6 @@ func (s *WatchCertificatesV1CertificateSigningRequestListUnauthorized) ReadJSON(
 // WriteJSON implements json.Marshaler.
 func (s WatchCertificatesV1CertificateSigningRequestUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49727,8 +45431,6 @@ func (s *WatchCertificatesV1CertificateSigningRequestUnauthorized) ReadJSON(d *j
 // WriteJSON implements json.Marshaler.
 func (s WatchCoordinationV1LeaseListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49749,8 +45451,6 @@ func (s *WatchCoordinationV1LeaseListForAllNamespacesUnauthorized) ReadJSON(d *j
 // WriteJSON implements json.Marshaler.
 func (s WatchCoordinationV1NamespacedLeaseListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49771,8 +45471,6 @@ func (s *WatchCoordinationV1NamespacedLeaseListUnauthorized) ReadJSON(d *json.De
 // WriteJSON implements json.Marshaler.
 func (s WatchCoordinationV1NamespacedLeaseUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49793,8 +45491,6 @@ func (s *WatchCoordinationV1NamespacedLeaseUnauthorized) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1ConfigMapListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49815,8 +45511,6 @@ func (s *WatchCoreV1ConfigMapListForAllNamespacesUnauthorized) ReadJSON(d *json.
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1EndpointsListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49837,8 +45531,6 @@ func (s *WatchCoreV1EndpointsListForAllNamespacesUnauthorized) ReadJSON(d *json.
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1EventListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49859,8 +45551,6 @@ func (s *WatchCoreV1EventListForAllNamespacesUnauthorized) ReadJSON(d *json.Deco
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1LimitRangeListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49881,8 +45571,6 @@ func (s *WatchCoreV1LimitRangeListForAllNamespacesUnauthorized) ReadJSON(d *json
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespaceListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49903,8 +45591,6 @@ func (s *WatchCoreV1NamespaceListUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespaceUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49925,8 +45611,6 @@ func (s *WatchCoreV1NamespaceUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespacedConfigMapListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49947,8 +45631,6 @@ func (s *WatchCoreV1NamespacedConfigMapListUnauthorized) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespacedConfigMapUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49969,8 +45651,6 @@ func (s *WatchCoreV1NamespacedConfigMapUnauthorized) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespacedEndpointsListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -49991,8 +45671,6 @@ func (s *WatchCoreV1NamespacedEndpointsListUnauthorized) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespacedEndpointsUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50013,8 +45691,6 @@ func (s *WatchCoreV1NamespacedEndpointsUnauthorized) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespacedEventListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50035,8 +45711,6 @@ func (s *WatchCoreV1NamespacedEventListUnauthorized) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespacedEventUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50057,8 +45731,6 @@ func (s *WatchCoreV1NamespacedEventUnauthorized) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespacedLimitRangeListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50079,8 +45751,6 @@ func (s *WatchCoreV1NamespacedLimitRangeListUnauthorized) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespacedLimitRangeUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50101,8 +45771,6 @@ func (s *WatchCoreV1NamespacedLimitRangeUnauthorized) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespacedPersistentVolumeClaimListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50123,8 +45791,6 @@ func (s *WatchCoreV1NamespacedPersistentVolumeClaimListUnauthorized) ReadJSON(d 
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespacedPersistentVolumeClaimUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50145,8 +45811,6 @@ func (s *WatchCoreV1NamespacedPersistentVolumeClaimUnauthorized) ReadJSON(d *jso
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespacedPodListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50167,8 +45831,6 @@ func (s *WatchCoreV1NamespacedPodListUnauthorized) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespacedPodTemplateListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50189,8 +45851,6 @@ func (s *WatchCoreV1NamespacedPodTemplateListUnauthorized) ReadJSON(d *json.Deco
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespacedPodTemplateUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50211,8 +45871,6 @@ func (s *WatchCoreV1NamespacedPodTemplateUnauthorized) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespacedPodUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50233,8 +45891,6 @@ func (s *WatchCoreV1NamespacedPodUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespacedReplicationControllerListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50255,8 +45911,6 @@ func (s *WatchCoreV1NamespacedReplicationControllerListUnauthorized) ReadJSON(d 
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespacedReplicationControllerUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50277,8 +45931,6 @@ func (s *WatchCoreV1NamespacedReplicationControllerUnauthorized) ReadJSON(d *jso
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespacedResourceQuotaListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50299,8 +45951,6 @@ func (s *WatchCoreV1NamespacedResourceQuotaListUnauthorized) ReadJSON(d *json.De
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespacedResourceQuotaUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50321,8 +45971,6 @@ func (s *WatchCoreV1NamespacedResourceQuotaUnauthorized) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespacedSecretListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50343,8 +45991,6 @@ func (s *WatchCoreV1NamespacedSecretListUnauthorized) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespacedSecretUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50365,8 +46011,6 @@ func (s *WatchCoreV1NamespacedSecretUnauthorized) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespacedServiceAccountListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50387,8 +46031,6 @@ func (s *WatchCoreV1NamespacedServiceAccountListUnauthorized) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespacedServiceAccountUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50409,8 +46051,6 @@ func (s *WatchCoreV1NamespacedServiceAccountUnauthorized) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespacedServiceListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50431,8 +46071,6 @@ func (s *WatchCoreV1NamespacedServiceListUnauthorized) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NamespacedServiceUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50453,8 +46091,6 @@ func (s *WatchCoreV1NamespacedServiceUnauthorized) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NodeListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50475,8 +46111,6 @@ func (s *WatchCoreV1NodeListUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1NodeUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50497,8 +46131,6 @@ func (s *WatchCoreV1NodeUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50519,8 +46151,6 @@ func (s *WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized) ReadJ
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1PersistentVolumeListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50541,8 +46171,6 @@ func (s *WatchCoreV1PersistentVolumeListUnauthorized) ReadJSON(d *json.Decoder) 
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1PersistentVolumeUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50563,8 +46191,6 @@ func (s *WatchCoreV1PersistentVolumeUnauthorized) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1PodListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50585,8 +46211,6 @@ func (s *WatchCoreV1PodListForAllNamespacesUnauthorized) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1PodTemplateListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50607,8 +46231,6 @@ func (s *WatchCoreV1PodTemplateListForAllNamespacesUnauthorized) ReadJSON(d *jso
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50629,8 +46251,6 @@ func (s *WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized) ReadJ
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50651,8 +46271,6 @@ func (s *WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized) ReadJSON(d *j
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1SecretListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50673,8 +46291,6 @@ func (s *WatchCoreV1SecretListForAllNamespacesUnauthorized) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50695,8 +46311,6 @@ func (s *WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized) ReadJSON(d *
 // WriteJSON implements json.Marshaler.
 func (s WatchCoreV1ServiceListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50717,8 +46331,6 @@ func (s *WatchCoreV1ServiceListForAllNamespacesUnauthorized) ReadJSON(d *json.De
 // WriteJSON implements json.Marshaler.
 func (s WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50739,8 +46351,6 @@ func (s *WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized) ReadJSON
 // WriteJSON implements json.Marshaler.
 func (s WatchDiscoveryV1NamespacedEndpointSliceListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50761,8 +46371,6 @@ func (s *WatchDiscoveryV1NamespacedEndpointSliceListUnauthorized) ReadJSON(d *js
 // WriteJSON implements json.Marshaler.
 func (s WatchDiscoveryV1NamespacedEndpointSliceUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50783,8 +46391,6 @@ func (s *WatchDiscoveryV1NamespacedEndpointSliceUnauthorized) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50805,8 +46411,6 @@ func (s *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized) Rea
 // WriteJSON implements json.Marshaler.
 func (s WatchDiscoveryV1beta1NamespacedEndpointSliceListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50827,8 +46431,6 @@ func (s *WatchDiscoveryV1beta1NamespacedEndpointSliceListUnauthorized) ReadJSON(
 // WriteJSON implements json.Marshaler.
 func (s WatchDiscoveryV1beta1NamespacedEndpointSliceUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50849,8 +46451,6 @@ func (s *WatchDiscoveryV1beta1NamespacedEndpointSliceUnauthorized) ReadJSON(d *j
 // WriteJSON implements json.Marshaler.
 func (s WatchEventsV1EventListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50871,8 +46471,6 @@ func (s *WatchEventsV1EventListForAllNamespacesUnauthorized) ReadJSON(d *json.De
 // WriteJSON implements json.Marshaler.
 func (s WatchEventsV1NamespacedEventListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50893,8 +46491,6 @@ func (s *WatchEventsV1NamespacedEventListUnauthorized) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s WatchEventsV1NamespacedEventUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50915,8 +46511,6 @@ func (s *WatchEventsV1NamespacedEventUnauthorized) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s WatchEventsV1beta1EventListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50937,8 +46531,6 @@ func (s *WatchEventsV1beta1EventListForAllNamespacesUnauthorized) ReadJSON(d *js
 // WriteJSON implements json.Marshaler.
 func (s WatchEventsV1beta1NamespacedEventListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50959,8 +46551,6 @@ func (s *WatchEventsV1beta1NamespacedEventListUnauthorized) ReadJSON(d *json.Dec
 // WriteJSON implements json.Marshaler.
 func (s WatchEventsV1beta1NamespacedEventUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -50981,8 +46571,6 @@ func (s *WatchEventsV1beta1NamespacedEventUnauthorized) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51003,8 +46591,6 @@ func (s *WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized) ReadJSON(d 
 // WriteJSON implements json.Marshaler.
 func (s WatchFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51025,8 +46611,6 @@ func (s *WatchFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) ReadJSON(d *jso
 // WriteJSON implements json.Marshaler.
 func (s WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51047,8 +46631,6 @@ func (s *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthori
 // WriteJSON implements json.Marshaler.
 func (s WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51069,8 +46651,6 @@ func (s *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized)
 // WriteJSON implements json.Marshaler.
 func (s WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51091,8 +46671,6 @@ func (s *WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized) ReadJSON(d 
 // WriteJSON implements json.Marshaler.
 func (s WatchFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51113,8 +46691,6 @@ func (s *WatchFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) ReadJSON(d *jso
 // WriteJSON implements json.Marshaler.
 func (s WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51135,8 +46711,6 @@ func (s *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthori
 // WriteJSON implements json.Marshaler.
 func (s WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51157,8 +46731,6 @@ func (s *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized)
 // WriteJSON implements json.Marshaler.
 func (s WatchInternalApiserverV1alpha1StorageVersionListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51179,8 +46751,6 @@ func (s *WatchInternalApiserverV1alpha1StorageVersionListUnauthorized) ReadJSON(
 // WriteJSON implements json.Marshaler.
 func (s WatchInternalApiserverV1alpha1StorageVersionUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51201,8 +46771,6 @@ func (s *WatchInternalApiserverV1alpha1StorageVersionUnauthorized) ReadJSON(d *j
 // WriteJSON implements json.Marshaler.
 func (s WatchNetworkingV1IngressClassListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51223,8 +46791,6 @@ func (s *WatchNetworkingV1IngressClassListUnauthorized) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s WatchNetworkingV1IngressClassUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51245,8 +46811,6 @@ func (s *WatchNetworkingV1IngressClassUnauthorized) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s WatchNetworkingV1IngressListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51267,8 +46831,6 @@ func (s *WatchNetworkingV1IngressListForAllNamespacesUnauthorized) ReadJSON(d *j
 // WriteJSON implements json.Marshaler.
 func (s WatchNetworkingV1NamespacedIngressListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51289,8 +46851,6 @@ func (s *WatchNetworkingV1NamespacedIngressListUnauthorized) ReadJSON(d *json.De
 // WriteJSON implements json.Marshaler.
 func (s WatchNetworkingV1NamespacedIngressUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51311,8 +46871,6 @@ func (s *WatchNetworkingV1NamespacedIngressUnauthorized) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s WatchNetworkingV1NamespacedNetworkPolicyListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51333,8 +46891,6 @@ func (s *WatchNetworkingV1NamespacedNetworkPolicyListUnauthorized) ReadJSON(d *j
 // WriteJSON implements json.Marshaler.
 func (s WatchNetworkingV1NamespacedNetworkPolicyUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51355,8 +46911,6 @@ func (s *WatchNetworkingV1NamespacedNetworkPolicyUnauthorized) ReadJSON(d *json.
 // WriteJSON implements json.Marshaler.
 func (s WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51377,8 +46931,6 @@ func (s *WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized) ReadJSO
 // WriteJSON implements json.Marshaler.
 func (s WatchNodeV1RuntimeClassListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51399,8 +46951,6 @@ func (s *WatchNodeV1RuntimeClassListUnauthorized) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s WatchNodeV1RuntimeClassUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51421,8 +46971,6 @@ func (s *WatchNodeV1RuntimeClassUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s WatchNodeV1alpha1RuntimeClassListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51443,8 +46991,6 @@ func (s *WatchNodeV1alpha1RuntimeClassListUnauthorized) ReadJSON(d *json.Decoder
 // WriteJSON implements json.Marshaler.
 func (s WatchNodeV1alpha1RuntimeClassUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51465,8 +47011,6 @@ func (s *WatchNodeV1alpha1RuntimeClassUnauthorized) ReadJSON(d *json.Decoder) er
 // WriteJSON implements json.Marshaler.
 func (s WatchNodeV1beta1RuntimeClassListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51487,8 +47031,6 @@ func (s *WatchNodeV1beta1RuntimeClassListUnauthorized) ReadJSON(d *json.Decoder)
 // WriteJSON implements json.Marshaler.
 func (s WatchNodeV1beta1RuntimeClassUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51509,8 +47051,6 @@ func (s *WatchNodeV1beta1RuntimeClassUnauthorized) ReadJSON(d *json.Decoder) err
 // WriteJSON implements json.Marshaler.
 func (s WatchPolicyV1NamespacedPodDisruptionBudgetListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51531,8 +47071,6 @@ func (s *WatchPolicyV1NamespacedPodDisruptionBudgetListUnauthorized) ReadJSON(d 
 // WriteJSON implements json.Marshaler.
 func (s WatchPolicyV1NamespacedPodDisruptionBudgetUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51553,8 +47091,6 @@ func (s *WatchPolicyV1NamespacedPodDisruptionBudgetUnauthorized) ReadJSON(d *jso
 // WriteJSON implements json.Marshaler.
 func (s WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51575,8 +47111,6 @@ func (s *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized) ReadJ
 // WriteJSON implements json.Marshaler.
 func (s WatchPolicyV1beta1NamespacedPodDisruptionBudgetListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51597,8 +47131,6 @@ func (s *WatchPolicyV1beta1NamespacedPodDisruptionBudgetListUnauthorized) ReadJS
 // WriteJSON implements json.Marshaler.
 func (s WatchPolicyV1beta1NamespacedPodDisruptionBudgetUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51619,8 +47151,6 @@ func (s *WatchPolicyV1beta1NamespacedPodDisruptionBudgetUnauthorized) ReadJSON(d
 // WriteJSON implements json.Marshaler.
 func (s WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51641,8 +47171,6 @@ func (s *WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized) 
 // WriteJSON implements json.Marshaler.
 func (s WatchPolicyV1beta1PodSecurityPolicyListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51663,8 +47191,6 @@ func (s *WatchPolicyV1beta1PodSecurityPolicyListUnauthorized) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s WatchPolicyV1beta1PodSecurityPolicyUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51685,8 +47211,6 @@ func (s *WatchPolicyV1beta1PodSecurityPolicyUnauthorized) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51707,8 +47231,6 @@ func (s *WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized) ReadJSON(d 
 // WriteJSON implements json.Marshaler.
 func (s WatchRbacAuthorizationV1ClusterRoleBindingUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51729,8 +47251,6 @@ func (s *WatchRbacAuthorizationV1ClusterRoleBindingUnauthorized) ReadJSON(d *jso
 // WriteJSON implements json.Marshaler.
 func (s WatchRbacAuthorizationV1ClusterRoleListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51751,8 +47271,6 @@ func (s *WatchRbacAuthorizationV1ClusterRoleListUnauthorized) ReadJSON(d *json.D
 // WriteJSON implements json.Marshaler.
 func (s WatchRbacAuthorizationV1ClusterRoleUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51773,8 +47291,6 @@ func (s *WatchRbacAuthorizationV1ClusterRoleUnauthorized) ReadJSON(d *json.Decod
 // WriteJSON implements json.Marshaler.
 func (s WatchRbacAuthorizationV1NamespacedRoleBindingListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51795,8 +47311,6 @@ func (s *WatchRbacAuthorizationV1NamespacedRoleBindingListUnauthorized) ReadJSON
 // WriteJSON implements json.Marshaler.
 func (s WatchRbacAuthorizationV1NamespacedRoleBindingUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51817,8 +47331,6 @@ func (s *WatchRbacAuthorizationV1NamespacedRoleBindingUnauthorized) ReadJSON(d *
 // WriteJSON implements json.Marshaler.
 func (s WatchRbacAuthorizationV1NamespacedRoleListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51839,8 +47351,6 @@ func (s *WatchRbacAuthorizationV1NamespacedRoleListUnauthorized) ReadJSON(d *jso
 // WriteJSON implements json.Marshaler.
 func (s WatchRbacAuthorizationV1NamespacedRoleUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51861,8 +47371,6 @@ func (s *WatchRbacAuthorizationV1NamespacedRoleUnauthorized) ReadJSON(d *json.De
 // WriteJSON implements json.Marshaler.
 func (s WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51883,8 +47391,6 @@ func (s *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized) Re
 // WriteJSON implements json.Marshaler.
 func (s WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51905,8 +47411,6 @@ func (s *WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized) ReadJSON(
 // WriteJSON implements json.Marshaler.
 func (s WatchSchedulingV1PriorityClassListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51927,8 +47431,6 @@ func (s *WatchSchedulingV1PriorityClassListUnauthorized) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s WatchSchedulingV1PriorityClassUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51949,8 +47451,6 @@ func (s *WatchSchedulingV1PriorityClassUnauthorized) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s WatchStorageV1CSIDriverListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51971,8 +47471,6 @@ func (s *WatchStorageV1CSIDriverListUnauthorized) ReadJSON(d *json.Decoder) erro
 // WriteJSON implements json.Marshaler.
 func (s WatchStorageV1CSIDriverUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -51993,8 +47491,6 @@ func (s *WatchStorageV1CSIDriverUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s WatchStorageV1CSINodeListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -52015,8 +47511,6 @@ func (s *WatchStorageV1CSINodeListUnauthorized) ReadJSON(d *json.Decoder) error 
 // WriteJSON implements json.Marshaler.
 func (s WatchStorageV1CSINodeUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -52037,8 +47531,6 @@ func (s *WatchStorageV1CSINodeUnauthorized) ReadJSON(d *json.Decoder) error {
 // WriteJSON implements json.Marshaler.
 func (s WatchStorageV1StorageClassListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -52059,8 +47551,6 @@ func (s *WatchStorageV1StorageClassListUnauthorized) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s WatchStorageV1StorageClassUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -52081,8 +47571,6 @@ func (s *WatchStorageV1StorageClassUnauthorized) ReadJSON(d *json.Decoder) error
 // WriteJSON implements json.Marshaler.
 func (s WatchStorageV1VolumeAttachmentListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -52103,8 +47591,6 @@ func (s *WatchStorageV1VolumeAttachmentListUnauthorized) ReadJSON(d *json.Decode
 // WriteJSON implements json.Marshaler.
 func (s WatchStorageV1VolumeAttachmentUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -52125,8 +47611,6 @@ func (s *WatchStorageV1VolumeAttachmentUnauthorized) ReadJSON(d *json.Decoder) e
 // WriteJSON implements json.Marshaler.
 func (s WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -52147,8 +47631,6 @@ func (s *WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized)
 // WriteJSON implements json.Marshaler.
 func (s WatchStorageV1alpha1NamespacedCSIStorageCapacityListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -52169,8 +47651,6 @@ func (s *WatchStorageV1alpha1NamespacedCSIStorageCapacityListUnauthorized) ReadJ
 // WriteJSON implements json.Marshaler.
 func (s WatchStorageV1alpha1NamespacedCSIStorageCapacityUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -52191,8 +47671,6 @@ func (s *WatchStorageV1alpha1NamespacedCSIStorageCapacityUnauthorized) ReadJSON(
 // WriteJSON implements json.Marshaler.
 func (s WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -52213,8 +47691,6 @@ func (s *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized) 
 // WriteJSON implements json.Marshaler.
 func (s WatchStorageV1beta1NamespacedCSIStorageCapacityListUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
@@ -52235,8 +47711,6 @@ func (s *WatchStorageV1beta1NamespacedCSIStorageCapacityListUnauthorized) ReadJS
 // WriteJSON implements json.Marshaler.
 func (s WatchStorageV1beta1NamespacedCSIStorageCapacityUnauthorized) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	e.ObjEnd()
 }
 
