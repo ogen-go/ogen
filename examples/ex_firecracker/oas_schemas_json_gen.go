@@ -15,10 +15,12 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -58,10 +60,12 @@ var (
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
 	_ = regexp.MustCompile
+	_ = jx.Null
+	_ = sync.Pool{}
 )
 
-// WriteJSON implements json.Marshaler.
-func (s Balloon) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s Balloon) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
 	e.FieldStart("amount_mib")
@@ -71,17 +75,17 @@ func (s Balloon) WriteJSON(e *json.Encoder) {
 	e.Bool(s.DeflateOnOom)
 	if s.StatsPollingIntervalS.Set {
 		e.FieldStart("stats_polling_interval_s")
-		s.StatsPollingIntervalS.WriteJSON(e)
+		s.StatsPollingIntervalS.Encode(e)
 	}
 	e.ObjEnd()
 }
 
-// ReadJSON reads Balloon from json stream.
-func (s *Balloon) ReadJSON(d *json.Decoder) error {
+// Decode decodes Balloon from json.
+func (s *Balloon) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode Balloon to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "amount_mib":
 			v, err := d.Int()
@@ -97,7 +101,7 @@ func (s *Balloon) ReadJSON(d *json.Decoder) error {
 			}
 		case "stats_polling_interval_s":
 			s.StatsPollingIntervalS.Reset()
-			if err := s.StatsPollingIntervalS.ReadJSON(d); err != nil {
+			if err := s.StatsPollingIntervalS.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -107,8 +111,8 @@ func (s *Balloon) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s BalloonStats) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s BalloonStats) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
 	e.FieldStart("target_pages")
@@ -124,53 +128,53 @@ func (s BalloonStats) WriteJSON(e *json.Encoder) {
 	e.Int(s.ActualMib)
 	if s.SwapIn.Set {
 		e.FieldStart("swap_in")
-		s.SwapIn.WriteJSON(e)
+		s.SwapIn.Encode(e)
 	}
 	if s.SwapOut.Set {
 		e.FieldStart("swap_out")
-		s.SwapOut.WriteJSON(e)
+		s.SwapOut.Encode(e)
 	}
 	if s.MajorFaults.Set {
 		e.FieldStart("major_faults")
-		s.MajorFaults.WriteJSON(e)
+		s.MajorFaults.Encode(e)
 	}
 	if s.MinorFaults.Set {
 		e.FieldStart("minor_faults")
-		s.MinorFaults.WriteJSON(e)
+		s.MinorFaults.Encode(e)
 	}
 	if s.FreeMemory.Set {
 		e.FieldStart("free_memory")
-		s.FreeMemory.WriteJSON(e)
+		s.FreeMemory.Encode(e)
 	}
 	if s.TotalMemory.Set {
 		e.FieldStart("total_memory")
-		s.TotalMemory.WriteJSON(e)
+		s.TotalMemory.Encode(e)
 	}
 	if s.AvailableMemory.Set {
 		e.FieldStart("available_memory")
-		s.AvailableMemory.WriteJSON(e)
+		s.AvailableMemory.Encode(e)
 	}
 	if s.DiskCaches.Set {
 		e.FieldStart("disk_caches")
-		s.DiskCaches.WriteJSON(e)
+		s.DiskCaches.Encode(e)
 	}
 	if s.HugetlbAllocations.Set {
 		e.FieldStart("hugetlb_allocations")
-		s.HugetlbAllocations.WriteJSON(e)
+		s.HugetlbAllocations.Encode(e)
 	}
 	if s.HugetlbFailures.Set {
 		e.FieldStart("hugetlb_failures")
-		s.HugetlbFailures.WriteJSON(e)
+		s.HugetlbFailures.Encode(e)
 	}
 	e.ObjEnd()
 }
 
-// ReadJSON reads BalloonStats from json stream.
-func (s *BalloonStats) ReadJSON(d *json.Decoder) error {
+// Decode decodes BalloonStats from json.
+func (s *BalloonStats) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode BalloonStats to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "target_pages":
 			v, err := d.Int()
@@ -198,52 +202,52 @@ func (s *BalloonStats) ReadJSON(d *json.Decoder) error {
 			}
 		case "swap_in":
 			s.SwapIn.Reset()
-			if err := s.SwapIn.ReadJSON(d); err != nil {
+			if err := s.SwapIn.Decode(d); err != nil {
 				return err
 			}
 		case "swap_out":
 			s.SwapOut.Reset()
-			if err := s.SwapOut.ReadJSON(d); err != nil {
+			if err := s.SwapOut.Decode(d); err != nil {
 				return err
 			}
 		case "major_faults":
 			s.MajorFaults.Reset()
-			if err := s.MajorFaults.ReadJSON(d); err != nil {
+			if err := s.MajorFaults.Decode(d); err != nil {
 				return err
 			}
 		case "minor_faults":
 			s.MinorFaults.Reset()
-			if err := s.MinorFaults.ReadJSON(d); err != nil {
+			if err := s.MinorFaults.Decode(d); err != nil {
 				return err
 			}
 		case "free_memory":
 			s.FreeMemory.Reset()
-			if err := s.FreeMemory.ReadJSON(d); err != nil {
+			if err := s.FreeMemory.Decode(d); err != nil {
 				return err
 			}
 		case "total_memory":
 			s.TotalMemory.Reset()
-			if err := s.TotalMemory.ReadJSON(d); err != nil {
+			if err := s.TotalMemory.Decode(d); err != nil {
 				return err
 			}
 		case "available_memory":
 			s.AvailableMemory.Reset()
-			if err := s.AvailableMemory.ReadJSON(d); err != nil {
+			if err := s.AvailableMemory.Decode(d); err != nil {
 				return err
 			}
 		case "disk_caches":
 			s.DiskCaches.Reset()
-			if err := s.DiskCaches.ReadJSON(d); err != nil {
+			if err := s.DiskCaches.Decode(d); err != nil {
 				return err
 			}
 		case "hugetlb_allocations":
 			s.HugetlbAllocations.Reset()
-			if err := s.HugetlbAllocations.ReadJSON(d); err != nil {
+			if err := s.HugetlbAllocations.Decode(d); err != nil {
 				return err
 			}
 		case "hugetlb_failures":
 			s.HugetlbFailures.Reset()
-			if err := s.HugetlbFailures.ReadJSON(d); err != nil {
+			if err := s.HugetlbFailures.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -253,8 +257,8 @@ func (s *BalloonStats) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s BalloonStatsUpdate) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s BalloonStatsUpdate) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
 	e.FieldStart("stats_polling_interval_s")
@@ -262,12 +266,12 @@ func (s BalloonStatsUpdate) WriteJSON(e *json.Encoder) {
 	e.ObjEnd()
 }
 
-// ReadJSON reads BalloonStatsUpdate from json stream.
-func (s *BalloonStatsUpdate) ReadJSON(d *json.Decoder) error {
+// Decode decodes BalloonStatsUpdate from json.
+func (s *BalloonStatsUpdate) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode BalloonStatsUpdate to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "stats_polling_interval_s":
 			v, err := d.Int()
@@ -282,8 +286,8 @@ func (s *BalloonStatsUpdate) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s BalloonUpdate) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s BalloonUpdate) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
 	e.FieldStart("amount_mib")
@@ -291,12 +295,12 @@ func (s BalloonUpdate) WriteJSON(e *json.Encoder) {
 	e.ObjEnd()
 }
 
-// ReadJSON reads BalloonUpdate from json stream.
-func (s *BalloonUpdate) ReadJSON(d *json.Decoder) error {
+// Decode decodes BalloonUpdate from json.
+func (s *BalloonUpdate) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode BalloonUpdate to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "amount_mib":
 			v, err := d.Int()
@@ -311,16 +315,16 @@ func (s *BalloonUpdate) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s BootSource) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s BootSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	if s.BootArgs.Set {
 		e.FieldStart("boot_args")
-		s.BootArgs.WriteJSON(e)
+		s.BootArgs.Encode(e)
 	}
 	if s.InitrdPath.Set {
 		e.FieldStart("initrd_path")
-		s.InitrdPath.WriteJSON(e)
+		s.InitrdPath.Encode(e)
 	}
 
 	e.FieldStart("kernel_image_path")
@@ -328,21 +332,21 @@ func (s BootSource) WriteJSON(e *json.Encoder) {
 	e.ObjEnd()
 }
 
-// ReadJSON reads BootSource from json stream.
-func (s *BootSource) ReadJSON(d *json.Decoder) error {
+// Decode decodes BootSource from json.
+func (s *BootSource) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode BootSource to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "boot_args":
 			s.BootArgs.Reset()
-			if err := s.BootArgs.ReadJSON(d); err != nil {
+			if err := s.BootArgs.Decode(d); err != nil {
 				return err
 			}
 		case "initrd_path":
 			s.InitrdPath.Reset()
-			if err := s.InitrdPath.ReadJSON(d); err != nil {
+			if err := s.InitrdPath.Decode(d); err != nil {
 				return err
 			}
 		case "kernel_image_path":
@@ -358,13 +362,13 @@ func (s *BootSource) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s CpuTemplate) WriteJSON(e *json.Encoder) {
+// Encode encodes CpuTemplate as json.
+func (s CpuTemplate) Encode(e *jx.Encoder) {
 	e.Str(string(s))
 }
 
-// ReadJSON reads CpuTemplate from json reader.
-func (s *CpuTemplate) ReadJSON(d *json.Decoder) error {
+// Decode decodes CpuTemplate from json.
+func (s *CpuTemplate) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode CpuTemplate to nil`)
 	}
@@ -376,18 +380,18 @@ func (s *CpuTemplate) ReadJSON(d *json.Decoder) error {
 	return nil
 }
 
-// WriteJSON implements json.Marshaler.
-func (s CreateSnapshotNoContent) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s CreateSnapshotNoContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	e.ObjEnd()
 }
 
-// ReadJSON reads CreateSnapshotNoContent from json stream.
-func (s *CreateSnapshotNoContent) ReadJSON(d *json.Decoder) error {
+// Decode decodes CreateSnapshotNoContent from json.
+func (s *CreateSnapshotNoContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode CreateSnapshotNoContent to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
 			return d.Skip()
@@ -396,18 +400,18 @@ func (s *CreateSnapshotNoContent) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s CreateSyncActionNoContent) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s CreateSyncActionNoContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	e.ObjEnd()
 }
 
-// ReadJSON reads CreateSyncActionNoContent from json stream.
-func (s *CreateSyncActionNoContent) ReadJSON(d *json.Decoder) error {
+// Decode decodes CreateSyncActionNoContent from json.
+func (s *CreateSyncActionNoContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode CreateSyncActionNoContent to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
 			return d.Skip()
@@ -416,15 +420,15 @@ func (s *CreateSyncActionNoContent) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s Drive) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s Drive) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
 	e.FieldStart("drive_id")
 	e.Str(s.DriveID)
 	if s.CacheType.Set {
 		e.FieldStart("cache_type")
-		s.CacheType.WriteJSON(e)
+		s.CacheType.Encode(e)
 	}
 
 	e.FieldStart("is_read_only")
@@ -434,24 +438,24 @@ func (s Drive) WriteJSON(e *json.Encoder) {
 	e.Bool(s.IsRootDevice)
 	if s.Partuuid.Set {
 		e.FieldStart("partuuid")
-		s.Partuuid.WriteJSON(e)
+		s.Partuuid.Encode(e)
 	}
 
 	e.FieldStart("path_on_host")
 	e.Str(s.PathOnHost)
 	if s.RateLimiter.Set {
 		e.FieldStart("rate_limiter")
-		s.RateLimiter.WriteJSON(e)
+		s.RateLimiter.Encode(e)
 	}
 	e.ObjEnd()
 }
 
-// ReadJSON reads Drive from json stream.
-func (s *Drive) ReadJSON(d *json.Decoder) error {
+// Decode decodes Drive from json.
+func (s *Drive) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode Drive to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "drive_id":
 			v, err := d.Str()
@@ -461,7 +465,7 @@ func (s *Drive) ReadJSON(d *json.Decoder) error {
 			}
 		case "cache_type":
 			s.CacheType.Reset()
-			if err := s.CacheType.ReadJSON(d); err != nil {
+			if err := s.CacheType.Decode(d); err != nil {
 				return err
 			}
 		case "is_read_only":
@@ -478,7 +482,7 @@ func (s *Drive) ReadJSON(d *json.Decoder) error {
 			}
 		case "partuuid":
 			s.Partuuid.Reset()
-			if err := s.Partuuid.ReadJSON(d); err != nil {
+			if err := s.Partuuid.Decode(d); err != nil {
 				return err
 			}
 		case "path_on_host":
@@ -489,7 +493,7 @@ func (s *Drive) ReadJSON(d *json.Decoder) error {
 			}
 		case "rate_limiter":
 			s.RateLimiter.Reset()
-			if err := s.RateLimiter.ReadJSON(d); err != nil {
+			if err := s.RateLimiter.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -499,26 +503,26 @@ func (s *Drive) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s Error) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s Error) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	if s.FaultMessage.Set {
 		e.FieldStart("fault_message")
-		s.FaultMessage.WriteJSON(e)
+		s.FaultMessage.Encode(e)
 	}
 	e.ObjEnd()
 }
 
-// ReadJSON reads Error from json stream.
-func (s *Error) ReadJSON(d *json.Decoder) error {
+// Decode decodes Error from json.
+func (s *Error) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode Error to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "fault_message":
 			s.FaultMessage.Reset()
-			if err := s.FaultMessage.ReadJSON(d); err != nil {
+			if err := s.FaultMessage.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -528,18 +532,18 @@ func (s *Error) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s ErrorStatusCode) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s ErrorStatusCode) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	e.ObjEnd()
 }
 
-// ReadJSON reads ErrorStatusCode from json stream.
-func (s *ErrorStatusCode) ReadJSON(d *json.Decoder) error {
+// Decode decodes ErrorStatusCode from json.
+func (s *ErrorStatusCode) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ErrorStatusCode to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
 			return d.Skip()
@@ -548,73 +552,73 @@ func (s *ErrorStatusCode) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s FullVmConfiguration) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s FullVmConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	if s.BalloonDevice.Set {
 		e.FieldStart("balloon_device")
-		s.BalloonDevice.WriteJSON(e)
+		s.BalloonDevice.Encode(e)
 	}
 	if s.BlockDevices != nil {
 		e.FieldStart("block_devices")
 		e.ArrStart()
 		for _, elem := range s.BlockDevices {
-			elem.WriteJSON(e)
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	if s.BootSource.Set {
 		e.FieldStart("boot_source")
-		s.BootSource.WriteJSON(e)
+		s.BootSource.Encode(e)
 	}
 	if s.Logger.Set {
 		e.FieldStart("logger")
-		s.Logger.WriteJSON(e)
+		s.Logger.Encode(e)
 	}
 	if s.MachineConfig.Set {
 		e.FieldStart("machine_config")
-		s.MachineConfig.WriteJSON(e)
+		s.MachineConfig.Encode(e)
 	}
 	if s.Metrics.Set {
 		e.FieldStart("metrics")
-		s.Metrics.WriteJSON(e)
+		s.Metrics.Encode(e)
 	}
 	if s.MmdsConfig.Set {
 		e.FieldStart("mmds_config")
-		s.MmdsConfig.WriteJSON(e)
+		s.MmdsConfig.Encode(e)
 	}
 	if s.NetDevices != nil {
 		e.FieldStart("net_devices")
 		e.ArrStart()
 		for _, elem := range s.NetDevices {
-			elem.WriteJSON(e)
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	if s.VsockDevice.Set {
 		e.FieldStart("vsock_device")
-		s.VsockDevice.WriteJSON(e)
+		s.VsockDevice.Encode(e)
 	}
 	e.ObjEnd()
 }
 
-// ReadJSON reads FullVmConfiguration from json stream.
-func (s *FullVmConfiguration) ReadJSON(d *json.Decoder) error {
+// Decode decodes FullVmConfiguration from json.
+func (s *FullVmConfiguration) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode FullVmConfiguration to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "balloon_device":
 			s.BalloonDevice.Reset()
-			if err := s.BalloonDevice.ReadJSON(d); err != nil {
+			if err := s.BalloonDevice.Decode(d); err != nil {
 				return err
 			}
 		case "block_devices":
 			s.BlockDevices = nil
-			if err := d.Arr(func(d *json.Decoder) error {
+			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem Drive
-				if err := elem.ReadJSON(d); err != nil {
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				s.BlockDevices = append(s.BlockDevices, elem)
@@ -624,34 +628,34 @@ func (s *FullVmConfiguration) ReadJSON(d *json.Decoder) error {
 			}
 		case "boot_source":
 			s.BootSource.Reset()
-			if err := s.BootSource.ReadJSON(d); err != nil {
+			if err := s.BootSource.Decode(d); err != nil {
 				return err
 			}
 		case "logger":
 			s.Logger.Reset()
-			if err := s.Logger.ReadJSON(d); err != nil {
+			if err := s.Logger.Decode(d); err != nil {
 				return err
 			}
 		case "machine_config":
 			s.MachineConfig.Reset()
-			if err := s.MachineConfig.ReadJSON(d); err != nil {
+			if err := s.MachineConfig.Decode(d); err != nil {
 				return err
 			}
 		case "metrics":
 			s.Metrics.Reset()
-			if err := s.Metrics.ReadJSON(d); err != nil {
+			if err := s.Metrics.Decode(d); err != nil {
 				return err
 			}
 		case "mmds_config":
 			s.MmdsConfig.Reset()
-			if err := s.MmdsConfig.ReadJSON(d); err != nil {
+			if err := s.MmdsConfig.Decode(d); err != nil {
 				return err
 			}
 		case "net_devices":
 			s.NetDevices = nil
-			if err := d.Arr(func(d *json.Decoder) error {
+			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem NetworkInterface
-				if err := elem.ReadJSON(d); err != nil {
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				s.NetDevices = append(s.NetDevices, elem)
@@ -661,7 +665,7 @@ func (s *FullVmConfiguration) ReadJSON(d *json.Decoder) error {
 			}
 		case "vsock_device":
 			s.VsockDevice.Reset()
-			if err := s.VsockDevice.ReadJSON(d); err != nil {
+			if err := s.VsockDevice.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -671,24 +675,24 @@ func (s *FullVmConfiguration) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s InstanceActionInfo) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s InstanceActionInfo) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
 	e.FieldStart("action_type")
-	s.ActionType.WriteJSON(e)
+	s.ActionType.Encode(e)
 	e.ObjEnd()
 }
 
-// ReadJSON reads InstanceActionInfo from json stream.
-func (s *InstanceActionInfo) ReadJSON(d *json.Decoder) error {
+// Decode decodes InstanceActionInfo from json.
+func (s *InstanceActionInfo) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode InstanceActionInfo to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "action_type":
-			if err := s.ActionType.ReadJSON(d); err != nil {
+			if err := s.ActionType.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -698,13 +702,13 @@ func (s *InstanceActionInfo) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s InstanceActionInfoActionType) WriteJSON(e *json.Encoder) {
+// Encode encodes InstanceActionInfoActionType as json.
+func (s InstanceActionInfoActionType) Encode(e *jx.Encoder) {
 	e.Str(string(s))
 }
 
-// ReadJSON reads InstanceActionInfoActionType from json reader.
-func (s *InstanceActionInfoActionType) ReadJSON(d *json.Decoder) error {
+// Decode decodes InstanceActionInfoActionType from json.
+func (s *InstanceActionInfoActionType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode InstanceActionInfoActionType to nil`)
 	}
@@ -716,8 +720,8 @@ func (s *InstanceActionInfoActionType) ReadJSON(d *json.Decoder) error {
 	return nil
 }
 
-// WriteJSON implements json.Marshaler.
-func (s InstanceInfo) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s InstanceInfo) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
 	e.FieldStart("app_name")
@@ -727,19 +731,19 @@ func (s InstanceInfo) WriteJSON(e *json.Encoder) {
 	e.Str(s.ID)
 
 	e.FieldStart("state")
-	s.State.WriteJSON(e)
+	s.State.Encode(e)
 
 	e.FieldStart("vmm_version")
 	e.Str(s.VmmVersion)
 	e.ObjEnd()
 }
 
-// ReadJSON reads InstanceInfo from json stream.
-func (s *InstanceInfo) ReadJSON(d *json.Decoder) error {
+// Decode decodes InstanceInfo from json.
+func (s *InstanceInfo) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode InstanceInfo to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "app_name":
 			v, err := d.Str()
@@ -754,7 +758,7 @@ func (s *InstanceInfo) ReadJSON(d *json.Decoder) error {
 				return err
 			}
 		case "state":
-			if err := s.State.ReadJSON(d); err != nil {
+			if err := s.State.Decode(d); err != nil {
 				return err
 			}
 		case "vmm_version":
@@ -770,13 +774,13 @@ func (s *InstanceInfo) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s InstanceInfoState) WriteJSON(e *json.Encoder) {
+// Encode encodes InstanceInfoState as json.
+func (s InstanceInfoState) Encode(e *jx.Encoder) {
 	e.Str(string(s))
 }
 
-// ReadJSON reads InstanceInfoState from json reader.
-func (s *InstanceInfoState) ReadJSON(d *json.Decoder) error {
+// Decode decodes InstanceInfoState from json.
+func (s *InstanceInfoState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode InstanceInfoState to nil`)
 	}
@@ -788,18 +792,18 @@ func (s *InstanceInfoState) ReadJSON(d *json.Decoder) error {
 	return nil
 }
 
-// WriteJSON implements json.Marshaler.
-func (s LoadSnapshotNoContent) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s LoadSnapshotNoContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	e.ObjEnd()
 }
 
-// ReadJSON reads LoadSnapshotNoContent from json stream.
-func (s *LoadSnapshotNoContent) ReadJSON(d *json.Decoder) error {
+// Decode decodes LoadSnapshotNoContent from json.
+func (s *LoadSnapshotNoContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode LoadSnapshotNoContent to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
 			return d.Skip()
@@ -808,37 +812,37 @@ func (s *LoadSnapshotNoContent) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s Logger) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s Logger) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	if s.Level.Set {
 		e.FieldStart("level")
-		s.Level.WriteJSON(e)
+		s.Level.Encode(e)
 	}
 
 	e.FieldStart("log_path")
 	e.Str(s.LogPath)
 	if s.ShowLevel.Set {
 		e.FieldStart("show_level")
-		s.ShowLevel.WriteJSON(e)
+		s.ShowLevel.Encode(e)
 	}
 	if s.ShowLogOrigin.Set {
 		e.FieldStart("show_log_origin")
-		s.ShowLogOrigin.WriteJSON(e)
+		s.ShowLogOrigin.Encode(e)
 	}
 	e.ObjEnd()
 }
 
-// ReadJSON reads Logger from json stream.
-func (s *Logger) ReadJSON(d *json.Decoder) error {
+// Decode decodes Logger from json.
+func (s *Logger) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode Logger to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "level":
 			s.Level.Reset()
-			if err := s.Level.ReadJSON(d); err != nil {
+			if err := s.Level.Decode(d); err != nil {
 				return err
 			}
 		case "log_path":
@@ -849,12 +853,12 @@ func (s *Logger) ReadJSON(d *json.Decoder) error {
 			}
 		case "show_level":
 			s.ShowLevel.Reset()
-			if err := s.ShowLevel.ReadJSON(d); err != nil {
+			if err := s.ShowLevel.Decode(d); err != nil {
 				return err
 			}
 		case "show_log_origin":
 			s.ShowLogOrigin.Reset()
-			if err := s.ShowLogOrigin.ReadJSON(d); err != nil {
+			if err := s.ShowLogOrigin.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -864,13 +868,13 @@ func (s *Logger) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s LoggerLevel) WriteJSON(e *json.Encoder) {
+// Encode encodes LoggerLevel as json.
+func (s LoggerLevel) Encode(e *jx.Encoder) {
 	e.Str(string(s))
 }
 
-// ReadJSON reads LoggerLevel from json reader.
-func (s *LoggerLevel) ReadJSON(d *json.Decoder) error {
+// Decode decodes LoggerLevel from json.
+func (s *LoggerLevel) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode LoggerLevel to nil`)
 	}
@@ -882,12 +886,12 @@ func (s *LoggerLevel) ReadJSON(d *json.Decoder) error {
 	return nil
 }
 
-// WriteJSON implements json.Marshaler.
-func (s MachineConfiguration) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s MachineConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	if s.CPUTemplate.Set {
 		e.FieldStart("cpu_template")
-		s.CPUTemplate.WriteJSON(e)
+		s.CPUTemplate.Encode(e)
 	}
 
 	e.FieldStart("ht_enabled")
@@ -897,7 +901,7 @@ func (s MachineConfiguration) WriteJSON(e *json.Encoder) {
 	e.Int(s.MemSizeMib)
 	if s.TrackDirtyPages.Set {
 		e.FieldStart("track_dirty_pages")
-		s.TrackDirtyPages.WriteJSON(e)
+		s.TrackDirtyPages.Encode(e)
 	}
 
 	e.FieldStart("vcpu_count")
@@ -905,16 +909,16 @@ func (s MachineConfiguration) WriteJSON(e *json.Encoder) {
 	e.ObjEnd()
 }
 
-// ReadJSON reads MachineConfiguration from json stream.
-func (s *MachineConfiguration) ReadJSON(d *json.Decoder) error {
+// Decode decodes MachineConfiguration from json.
+func (s *MachineConfiguration) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode MachineConfiguration to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "cpu_template":
 			s.CPUTemplate.Reset()
-			if err := s.CPUTemplate.ReadJSON(d); err != nil {
+			if err := s.CPUTemplate.Decode(d); err != nil {
 				return err
 			}
 		case "ht_enabled":
@@ -931,7 +935,7 @@ func (s *MachineConfiguration) ReadJSON(d *json.Decoder) error {
 			}
 		case "track_dirty_pages":
 			s.TrackDirtyPages.Reset()
-			if err := s.TrackDirtyPages.ReadJSON(d); err != nil {
+			if err := s.TrackDirtyPages.Decode(d); err != nil {
 				return err
 			}
 		case "vcpu_count":
@@ -947,8 +951,8 @@ func (s *MachineConfiguration) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s Metrics) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s Metrics) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
 	e.FieldStart("metrics_path")
@@ -956,12 +960,12 @@ func (s Metrics) WriteJSON(e *json.Encoder) {
 	e.ObjEnd()
 }
 
-// ReadJSON reads Metrics from json stream.
-func (s *Metrics) ReadJSON(d *json.Decoder) error {
+// Decode decodes Metrics from json.
+func (s *Metrics) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode Metrics to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "metrics_path":
 			v, err := d.Str()
@@ -976,26 +980,26 @@ func (s *Metrics) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s MmdsConfig) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s MmdsConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	if s.Ipv4Address.Set {
 		e.FieldStart("ipv4_address")
-		s.Ipv4Address.WriteJSON(e)
+		s.Ipv4Address.Encode(e)
 	}
 	e.ObjEnd()
 }
 
-// ReadJSON reads MmdsConfig from json stream.
-func (s *MmdsConfig) ReadJSON(d *json.Decoder) error {
+// Decode decodes MmdsConfig from json.
+func (s *MmdsConfig) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode MmdsConfig to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "ipv4_address":
 			s.Ipv4Address.Reset()
-			if err := s.Ipv4Address.ReadJSON(d); err != nil {
+			if err := s.Ipv4Address.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -1005,18 +1009,18 @@ func (s *MmdsConfig) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s MmdsConfigPutNoContent) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s MmdsConfigPutNoContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	e.ObjEnd()
 }
 
-// ReadJSON reads MmdsConfigPutNoContent from json stream.
-func (s *MmdsConfigPutNoContent) ReadJSON(d *json.Decoder) error {
+// Decode decodes MmdsConfigPutNoContent from json.
+func (s *MmdsConfigPutNoContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode MmdsConfigPutNoContent to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
 			return d.Skip()
@@ -1025,18 +1029,18 @@ func (s *MmdsConfigPutNoContent) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s MmdsGetOK) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s MmdsGetOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	e.ObjEnd()
 }
 
-// ReadJSON reads MmdsGetOK from json stream.
-func (s *MmdsGetOK) ReadJSON(d *json.Decoder) error {
+// Decode decodes MmdsGetOK from json.
+func (s *MmdsGetOK) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode MmdsGetOK to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
 			return d.Skip()
@@ -1045,18 +1049,18 @@ func (s *MmdsGetOK) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s MmdsPatchNoContent) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s MmdsPatchNoContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	e.ObjEnd()
 }
 
-// ReadJSON reads MmdsPatchNoContent from json stream.
-func (s *MmdsPatchNoContent) ReadJSON(d *json.Decoder) error {
+// Decode decodes MmdsPatchNoContent from json.
+func (s *MmdsPatchNoContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode MmdsPatchNoContent to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
 			return d.Skip()
@@ -1065,18 +1069,18 @@ func (s *MmdsPatchNoContent) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s MmdsPatchReq) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s MmdsPatchReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	e.ObjEnd()
 }
 
-// ReadJSON reads MmdsPatchReq from json stream.
-func (s *MmdsPatchReq) ReadJSON(d *json.Decoder) error {
+// Decode decodes MmdsPatchReq from json.
+func (s *MmdsPatchReq) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode MmdsPatchReq to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
 			return d.Skip()
@@ -1085,18 +1089,18 @@ func (s *MmdsPatchReq) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s MmdsPutNoContent) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s MmdsPutNoContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	e.ObjEnd()
 }
 
-// ReadJSON reads MmdsPutNoContent from json stream.
-func (s *MmdsPutNoContent) ReadJSON(d *json.Decoder) error {
+// Decode decodes MmdsPutNoContent from json.
+func (s *MmdsPutNoContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode MmdsPutNoContent to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
 			return d.Skip()
@@ -1105,18 +1109,18 @@ func (s *MmdsPutNoContent) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s MmdsPutReq) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s MmdsPutReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	e.ObjEnd()
 }
 
-// ReadJSON reads MmdsPutReq from json stream.
-func (s *MmdsPutReq) ReadJSON(d *json.Decoder) error {
+// Decode decodes MmdsPutReq from json.
+func (s *MmdsPutReq) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode MmdsPutReq to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
 			return d.Skip()
@@ -1125,16 +1129,16 @@ func (s *MmdsPutReq) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s NetworkInterface) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s NetworkInterface) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	if s.AllowMmdsRequests.Set {
 		e.FieldStart("allow_mmds_requests")
-		s.AllowMmdsRequests.WriteJSON(e)
+		s.AllowMmdsRequests.Encode(e)
 	}
 	if s.GuestMAC.Set {
 		e.FieldStart("guest_mac")
-		s.GuestMAC.WriteJSON(e)
+		s.GuestMAC.Encode(e)
 	}
 
 	e.FieldStart("host_dev_name")
@@ -1144,30 +1148,30 @@ func (s NetworkInterface) WriteJSON(e *json.Encoder) {
 	e.Str(s.IfaceID)
 	if s.RxRateLimiter.Set {
 		e.FieldStart("rx_rate_limiter")
-		s.RxRateLimiter.WriteJSON(e)
+		s.RxRateLimiter.Encode(e)
 	}
 	if s.TxRateLimiter.Set {
 		e.FieldStart("tx_rate_limiter")
-		s.TxRateLimiter.WriteJSON(e)
+		s.TxRateLimiter.Encode(e)
 	}
 	e.ObjEnd()
 }
 
-// ReadJSON reads NetworkInterface from json stream.
-func (s *NetworkInterface) ReadJSON(d *json.Decoder) error {
+// Decode decodes NetworkInterface from json.
+func (s *NetworkInterface) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode NetworkInterface to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "allow_mmds_requests":
 			s.AllowMmdsRequests.Reset()
-			if err := s.AllowMmdsRequests.ReadJSON(d); err != nil {
+			if err := s.AllowMmdsRequests.Decode(d); err != nil {
 				return err
 			}
 		case "guest_mac":
 			s.GuestMAC.Reset()
-			if err := s.GuestMAC.ReadJSON(d); err != nil {
+			if err := s.GuestMAC.Decode(d); err != nil {
 				return err
 			}
 		case "host_dev_name":
@@ -1184,12 +1188,12 @@ func (s *NetworkInterface) ReadJSON(d *json.Decoder) error {
 			}
 		case "rx_rate_limiter":
 			s.RxRateLimiter.Reset()
-			if err := s.RxRateLimiter.ReadJSON(d); err != nil {
+			if err := s.RxRateLimiter.Decode(d); err != nil {
 				return err
 			}
 		case "tx_rate_limiter":
 			s.TxRateLimiter.Reset()
-			if err := s.TxRateLimiter.ReadJSON(d); err != nil {
+			if err := s.TxRateLimiter.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -1199,20 +1203,20 @@ func (s *NetworkInterface) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON writes json value of Balloon to json stream.
-func (o OptBalloon) WriteJSON(e *json.Encoder) {
-	o.Value.WriteJSON(e)
+// Encode encodes Balloon as json.
+func (o OptBalloon) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
 }
 
-// ReadJSON reads json value of Balloon from json iterator.
-func (o *OptBalloon) ReadJSON(d *json.Decoder) error {
+// Decode decodes Balloon from json.
+func (o *OptBalloon) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New(`invalid: unable to decode OptBalloon to nil`)
 	}
 	switch d.Next() {
-	case json.Object:
+	case jx.Object:
 		o.Set = true
-		if err := o.Value.ReadJSON(d); err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
 		return nil
@@ -1221,18 +1225,18 @@ func (o *OptBalloon) ReadJSON(d *json.Decoder) error {
 	}
 }
 
-// WriteJSON writes json value of bool to json stream.
-func (o OptBool) WriteJSON(e *json.Encoder) {
+// Encode encodes bool as json.
+func (o OptBool) Encode(e *jx.Encoder) {
 	e.Bool(bool(o.Value))
 }
 
-// ReadJSON reads json value of bool from json iterator.
-func (o *OptBool) ReadJSON(d *json.Decoder) error {
+// Decode decodes bool from json.
+func (o *OptBool) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New(`invalid: unable to decode OptBool to nil`)
 	}
 	switch d.Next() {
-	case json.Bool:
+	case jx.Bool:
 		o.Set = true
 		v, err := d.Bool()
 		if err != nil {
@@ -1245,20 +1249,20 @@ func (o *OptBool) ReadJSON(d *json.Decoder) error {
 	}
 }
 
-// WriteJSON writes json value of BootSource to json stream.
-func (o OptBootSource) WriteJSON(e *json.Encoder) {
-	o.Value.WriteJSON(e)
+// Encode encodes BootSource as json.
+func (o OptBootSource) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
 }
 
-// ReadJSON reads json value of BootSource from json iterator.
-func (o *OptBootSource) ReadJSON(d *json.Decoder) error {
+// Decode decodes BootSource from json.
+func (o *OptBootSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New(`invalid: unable to decode OptBootSource to nil`)
 	}
 	switch d.Next() {
-	case json.Object:
+	case jx.Object:
 		o.Set = true
-		if err := o.Value.ReadJSON(d); err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
 		return nil
@@ -1267,18 +1271,18 @@ func (o *OptBootSource) ReadJSON(d *json.Decoder) error {
 	}
 }
 
-// WriteJSON writes json value of CpuTemplate to json stream.
-func (o OptCpuTemplate) WriteJSON(e *json.Encoder) {
+// Encode encodes CpuTemplate as json.
+func (o OptCpuTemplate) Encode(e *jx.Encoder) {
 	e.Str(string(o.Value))
 }
 
-// ReadJSON reads json value of CpuTemplate from json iterator.
-func (o *OptCpuTemplate) ReadJSON(d *json.Decoder) error {
+// Decode decodes CpuTemplate from json.
+func (o *OptCpuTemplate) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New(`invalid: unable to decode OptCpuTemplate to nil`)
 	}
 	switch d.Next() {
-	case json.String:
+	case jx.String:
 		o.Set = true
 		v, err := d.Str()
 		if err != nil {
@@ -1291,18 +1295,18 @@ func (o *OptCpuTemplate) ReadJSON(d *json.Decoder) error {
 	}
 }
 
-// WriteJSON writes json value of int to json stream.
-func (o OptInt) WriteJSON(e *json.Encoder) {
+// Encode encodes int as json.
+func (o OptInt) Encode(e *jx.Encoder) {
 	e.Int(int(o.Value))
 }
 
-// ReadJSON reads json value of int from json iterator.
-func (o *OptInt) ReadJSON(d *json.Decoder) error {
+// Decode decodes int from json.
+func (o *OptInt) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New(`invalid: unable to decode OptInt to nil`)
 	}
 	switch d.Next() {
-	case json.Number:
+	case jx.Number:
 		o.Set = true
 		v, err := d.Int()
 		if err != nil {
@@ -1315,18 +1319,18 @@ func (o *OptInt) ReadJSON(d *json.Decoder) error {
 	}
 }
 
-// WriteJSON writes json value of int64 to json stream.
-func (o OptInt64) WriteJSON(e *json.Encoder) {
+// Encode encodes int64 as json.
+func (o OptInt64) Encode(e *jx.Encoder) {
 	e.Int64(int64(o.Value))
 }
 
-// ReadJSON reads json value of int64 from json iterator.
-func (o *OptInt64) ReadJSON(d *json.Decoder) error {
+// Decode decodes int64 from json.
+func (o *OptInt64) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New(`invalid: unable to decode OptInt64 to nil`)
 	}
 	switch d.Next() {
-	case json.Number:
+	case jx.Number:
 		o.Set = true
 		v, err := d.Int64()
 		if err != nil {
@@ -1339,20 +1343,20 @@ func (o *OptInt64) ReadJSON(d *json.Decoder) error {
 	}
 }
 
-// WriteJSON writes json value of Logger to json stream.
-func (o OptLogger) WriteJSON(e *json.Encoder) {
-	o.Value.WriteJSON(e)
+// Encode encodes Logger as json.
+func (o OptLogger) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
 }
 
-// ReadJSON reads json value of Logger from json iterator.
-func (o *OptLogger) ReadJSON(d *json.Decoder) error {
+// Decode decodes Logger from json.
+func (o *OptLogger) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New(`invalid: unable to decode OptLogger to nil`)
 	}
 	switch d.Next() {
-	case json.Object:
+	case jx.Object:
 		o.Set = true
-		if err := o.Value.ReadJSON(d); err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
 		return nil
@@ -1361,18 +1365,18 @@ func (o *OptLogger) ReadJSON(d *json.Decoder) error {
 	}
 }
 
-// WriteJSON writes json value of LoggerLevel to json stream.
-func (o OptLoggerLevel) WriteJSON(e *json.Encoder) {
+// Encode encodes LoggerLevel as json.
+func (o OptLoggerLevel) Encode(e *jx.Encoder) {
 	e.Str(string(o.Value))
 }
 
-// ReadJSON reads json value of LoggerLevel from json iterator.
-func (o *OptLoggerLevel) ReadJSON(d *json.Decoder) error {
+// Decode decodes LoggerLevel from json.
+func (o *OptLoggerLevel) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New(`invalid: unable to decode OptLoggerLevel to nil`)
 	}
 	switch d.Next() {
-	case json.String:
+	case jx.String:
 		o.Set = true
 		v, err := d.Str()
 		if err != nil {
@@ -1385,20 +1389,20 @@ func (o *OptLoggerLevel) ReadJSON(d *json.Decoder) error {
 	}
 }
 
-// WriteJSON writes json value of MachineConfiguration to json stream.
-func (o OptMachineConfiguration) WriteJSON(e *json.Encoder) {
-	o.Value.WriteJSON(e)
+// Encode encodes MachineConfiguration as json.
+func (o OptMachineConfiguration) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
 }
 
-// ReadJSON reads json value of MachineConfiguration from json iterator.
-func (o *OptMachineConfiguration) ReadJSON(d *json.Decoder) error {
+// Decode decodes MachineConfiguration from json.
+func (o *OptMachineConfiguration) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New(`invalid: unable to decode OptMachineConfiguration to nil`)
 	}
 	switch d.Next() {
-	case json.Object:
+	case jx.Object:
 		o.Set = true
-		if err := o.Value.ReadJSON(d); err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
 		return nil
@@ -1407,20 +1411,20 @@ func (o *OptMachineConfiguration) ReadJSON(d *json.Decoder) error {
 	}
 }
 
-// WriteJSON writes json value of Metrics to json stream.
-func (o OptMetrics) WriteJSON(e *json.Encoder) {
-	o.Value.WriteJSON(e)
+// Encode encodes Metrics as json.
+func (o OptMetrics) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
 }
 
-// ReadJSON reads json value of Metrics from json iterator.
-func (o *OptMetrics) ReadJSON(d *json.Decoder) error {
+// Decode decodes Metrics from json.
+func (o *OptMetrics) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New(`invalid: unable to decode OptMetrics to nil`)
 	}
 	switch d.Next() {
-	case json.Object:
+	case jx.Object:
 		o.Set = true
-		if err := o.Value.ReadJSON(d); err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
 		return nil
@@ -1429,20 +1433,20 @@ func (o *OptMetrics) ReadJSON(d *json.Decoder) error {
 	}
 }
 
-// WriteJSON writes json value of MmdsConfig to json stream.
-func (o OptMmdsConfig) WriteJSON(e *json.Encoder) {
-	o.Value.WriteJSON(e)
+// Encode encodes MmdsConfig as json.
+func (o OptMmdsConfig) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
 }
 
-// ReadJSON reads json value of MmdsConfig from json iterator.
-func (o *OptMmdsConfig) ReadJSON(d *json.Decoder) error {
+// Decode decodes MmdsConfig from json.
+func (o *OptMmdsConfig) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New(`invalid: unable to decode OptMmdsConfig to nil`)
 	}
 	switch d.Next() {
-	case json.Object:
+	case jx.Object:
 		o.Set = true
-		if err := o.Value.ReadJSON(d); err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
 		return nil
@@ -1451,20 +1455,20 @@ func (o *OptMmdsConfig) ReadJSON(d *json.Decoder) error {
 	}
 }
 
-// WriteJSON writes json value of RateLimiter to json stream.
-func (o OptRateLimiter) WriteJSON(e *json.Encoder) {
-	o.Value.WriteJSON(e)
+// Encode encodes RateLimiter as json.
+func (o OptRateLimiter) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
 }
 
-// ReadJSON reads json value of RateLimiter from json iterator.
-func (o *OptRateLimiter) ReadJSON(d *json.Decoder) error {
+// Decode decodes RateLimiter from json.
+func (o *OptRateLimiter) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New(`invalid: unable to decode OptRateLimiter to nil`)
 	}
 	switch d.Next() {
-	case json.Object:
+	case jx.Object:
 		o.Set = true
-		if err := o.Value.ReadJSON(d); err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
 		return nil
@@ -1473,18 +1477,18 @@ func (o *OptRateLimiter) ReadJSON(d *json.Decoder) error {
 	}
 }
 
-// WriteJSON writes json value of SnapshotCreateParamsSnapshotType to json stream.
-func (o OptSnapshotCreateParamsSnapshotType) WriteJSON(e *json.Encoder) {
+// Encode encodes SnapshotCreateParamsSnapshotType as json.
+func (o OptSnapshotCreateParamsSnapshotType) Encode(e *jx.Encoder) {
 	e.Str(string(o.Value))
 }
 
-// ReadJSON reads json value of SnapshotCreateParamsSnapshotType from json iterator.
-func (o *OptSnapshotCreateParamsSnapshotType) ReadJSON(d *json.Decoder) error {
+// Decode decodes SnapshotCreateParamsSnapshotType from json.
+func (o *OptSnapshotCreateParamsSnapshotType) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New(`invalid: unable to decode OptSnapshotCreateParamsSnapshotType to nil`)
 	}
 	switch d.Next() {
-	case json.String:
+	case jx.String:
 		o.Set = true
 		v, err := d.Str()
 		if err != nil {
@@ -1497,18 +1501,18 @@ func (o *OptSnapshotCreateParamsSnapshotType) ReadJSON(d *json.Decoder) error {
 	}
 }
 
-// WriteJSON writes json value of string to json stream.
-func (o OptString) WriteJSON(e *json.Encoder) {
+// Encode encodes string as json.
+func (o OptString) Encode(e *jx.Encoder) {
 	e.Str(string(o.Value))
 }
 
-// ReadJSON reads json value of string from json iterator.
-func (o *OptString) ReadJSON(d *json.Decoder) error {
+// Decode decodes string from json.
+func (o *OptString) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New(`invalid: unable to decode OptString to nil`)
 	}
 	switch d.Next() {
-	case json.String:
+	case jx.String:
 		o.Set = true
 		v, err := d.Str()
 		if err != nil {
@@ -1521,20 +1525,20 @@ func (o *OptString) ReadJSON(d *json.Decoder) error {
 	}
 }
 
-// WriteJSON writes json value of TokenBucket to json stream.
-func (o OptTokenBucket) WriteJSON(e *json.Encoder) {
-	o.Value.WriteJSON(e)
+// Encode encodes TokenBucket as json.
+func (o OptTokenBucket) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
 }
 
-// ReadJSON reads json value of TokenBucket from json iterator.
-func (o *OptTokenBucket) ReadJSON(d *json.Decoder) error {
+// Decode decodes TokenBucket from json.
+func (o *OptTokenBucket) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New(`invalid: unable to decode OptTokenBucket to nil`)
 	}
 	switch d.Next() {
-	case json.Object:
+	case jx.Object:
 		o.Set = true
-		if err := o.Value.ReadJSON(d); err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
 		return nil
@@ -1543,20 +1547,20 @@ func (o *OptTokenBucket) ReadJSON(d *json.Decoder) error {
 	}
 }
 
-// WriteJSON writes json value of Vsock to json stream.
-func (o OptVsock) WriteJSON(e *json.Encoder) {
-	o.Value.WriteJSON(e)
+// Encode encodes Vsock as json.
+func (o OptVsock) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
 }
 
-// ReadJSON reads json value of Vsock from json iterator.
-func (o *OptVsock) ReadJSON(d *json.Decoder) error {
+// Decode decodes Vsock from json.
+func (o *OptVsock) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New(`invalid: unable to decode OptVsock to nil`)
 	}
 	switch d.Next() {
-	case json.Object:
+	case jx.Object:
 		o.Set = true
-		if err := o.Value.ReadJSON(d); err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
 		return nil
@@ -1565,29 +1569,29 @@ func (o *OptVsock) ReadJSON(d *json.Decoder) error {
 	}
 }
 
-// WriteJSON implements json.Marshaler.
-func (s PartialDrive) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s PartialDrive) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
 	e.FieldStart("drive_id")
 	e.Str(s.DriveID)
 	if s.PathOnHost.Set {
 		e.FieldStart("path_on_host")
-		s.PathOnHost.WriteJSON(e)
+		s.PathOnHost.Encode(e)
 	}
 	if s.RateLimiter.Set {
 		e.FieldStart("rate_limiter")
-		s.RateLimiter.WriteJSON(e)
+		s.RateLimiter.Encode(e)
 	}
 	e.ObjEnd()
 }
 
-// ReadJSON reads PartialDrive from json stream.
-func (s *PartialDrive) ReadJSON(d *json.Decoder) error {
+// Decode decodes PartialDrive from json.
+func (s *PartialDrive) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PartialDrive to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "drive_id":
 			v, err := d.Str()
@@ -1597,12 +1601,12 @@ func (s *PartialDrive) ReadJSON(d *json.Decoder) error {
 			}
 		case "path_on_host":
 			s.PathOnHost.Reset()
-			if err := s.PathOnHost.ReadJSON(d); err != nil {
+			if err := s.PathOnHost.Decode(d); err != nil {
 				return err
 			}
 		case "rate_limiter":
 			s.RateLimiter.Reset()
-			if err := s.RateLimiter.ReadJSON(d); err != nil {
+			if err := s.RateLimiter.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -1612,29 +1616,29 @@ func (s *PartialDrive) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s PartialNetworkInterface) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s PartialNetworkInterface) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
 	e.FieldStart("iface_id")
 	e.Str(s.IfaceID)
 	if s.RxRateLimiter.Set {
 		e.FieldStart("rx_rate_limiter")
-		s.RxRateLimiter.WriteJSON(e)
+		s.RxRateLimiter.Encode(e)
 	}
 	if s.TxRateLimiter.Set {
 		e.FieldStart("tx_rate_limiter")
-		s.TxRateLimiter.WriteJSON(e)
+		s.TxRateLimiter.Encode(e)
 	}
 	e.ObjEnd()
 }
 
-// ReadJSON reads PartialNetworkInterface from json stream.
-func (s *PartialNetworkInterface) ReadJSON(d *json.Decoder) error {
+// Decode decodes PartialNetworkInterface from json.
+func (s *PartialNetworkInterface) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PartialNetworkInterface to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "iface_id":
 			v, err := d.Str()
@@ -1644,12 +1648,12 @@ func (s *PartialNetworkInterface) ReadJSON(d *json.Decoder) error {
 			}
 		case "rx_rate_limiter":
 			s.RxRateLimiter.Reset()
-			if err := s.RxRateLimiter.ReadJSON(d); err != nil {
+			if err := s.RxRateLimiter.Decode(d); err != nil {
 				return err
 			}
 		case "tx_rate_limiter":
 			s.TxRateLimiter.Reset()
-			if err := s.TxRateLimiter.ReadJSON(d); err != nil {
+			if err := s.TxRateLimiter.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -1659,18 +1663,18 @@ func (s *PartialNetworkInterface) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s PatchBalloonNoContent) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s PatchBalloonNoContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	e.ObjEnd()
 }
 
-// ReadJSON reads PatchBalloonNoContent from json stream.
-func (s *PatchBalloonNoContent) ReadJSON(d *json.Decoder) error {
+// Decode decodes PatchBalloonNoContent from json.
+func (s *PatchBalloonNoContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PatchBalloonNoContent to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
 			return d.Skip()
@@ -1679,18 +1683,18 @@ func (s *PatchBalloonNoContent) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s PatchBalloonStatsIntervalNoContent) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s PatchBalloonStatsIntervalNoContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	e.ObjEnd()
 }
 
-// ReadJSON reads PatchBalloonStatsIntervalNoContent from json stream.
-func (s *PatchBalloonStatsIntervalNoContent) ReadJSON(d *json.Decoder) error {
+// Decode decodes PatchBalloonStatsIntervalNoContent from json.
+func (s *PatchBalloonStatsIntervalNoContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PatchBalloonStatsIntervalNoContent to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
 			return d.Skip()
@@ -1699,18 +1703,18 @@ func (s *PatchBalloonStatsIntervalNoContent) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s PatchGuestDriveByIDNoContent) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s PatchGuestDriveByIDNoContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	e.ObjEnd()
 }
 
-// ReadJSON reads PatchGuestDriveByIDNoContent from json stream.
-func (s *PatchGuestDriveByIDNoContent) ReadJSON(d *json.Decoder) error {
+// Decode decodes PatchGuestDriveByIDNoContent from json.
+func (s *PatchGuestDriveByIDNoContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PatchGuestDriveByIDNoContent to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
 			return d.Skip()
@@ -1719,18 +1723,18 @@ func (s *PatchGuestDriveByIDNoContent) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s PatchGuestNetworkInterfaceByIDNoContent) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s PatchGuestNetworkInterfaceByIDNoContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	e.ObjEnd()
 }
 
-// ReadJSON reads PatchGuestNetworkInterfaceByIDNoContent from json stream.
-func (s *PatchGuestNetworkInterfaceByIDNoContent) ReadJSON(d *json.Decoder) error {
+// Decode decodes PatchGuestNetworkInterfaceByIDNoContent from json.
+func (s *PatchGuestNetworkInterfaceByIDNoContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PatchGuestNetworkInterfaceByIDNoContent to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
 			return d.Skip()
@@ -1739,18 +1743,18 @@ func (s *PatchGuestNetworkInterfaceByIDNoContent) ReadJSON(d *json.Decoder) erro
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s PatchMachineConfigurationNoContent) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s PatchMachineConfigurationNoContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	e.ObjEnd()
 }
 
-// ReadJSON reads PatchMachineConfigurationNoContent from json stream.
-func (s *PatchMachineConfigurationNoContent) ReadJSON(d *json.Decoder) error {
+// Decode decodes PatchMachineConfigurationNoContent from json.
+func (s *PatchMachineConfigurationNoContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PatchMachineConfigurationNoContent to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
 			return d.Skip()
@@ -1759,18 +1763,18 @@ func (s *PatchMachineConfigurationNoContent) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s PatchVmNoContent) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s PatchVmNoContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	e.ObjEnd()
 }
 
-// ReadJSON reads PatchVmNoContent from json stream.
-func (s *PatchVmNoContent) ReadJSON(d *json.Decoder) error {
+// Decode decodes PatchVmNoContent from json.
+func (s *PatchVmNoContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PatchVmNoContent to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
 			return d.Skip()
@@ -1779,18 +1783,18 @@ func (s *PatchVmNoContent) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s PutBalloonNoContent) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s PutBalloonNoContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	e.ObjEnd()
 }
 
-// ReadJSON reads PutBalloonNoContent from json stream.
-func (s *PutBalloonNoContent) ReadJSON(d *json.Decoder) error {
+// Decode decodes PutBalloonNoContent from json.
+func (s *PutBalloonNoContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PutBalloonNoContent to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
 			return d.Skip()
@@ -1799,18 +1803,18 @@ func (s *PutBalloonNoContent) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s PutGuestBootSourceNoContent) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s PutGuestBootSourceNoContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	e.ObjEnd()
 }
 
-// ReadJSON reads PutGuestBootSourceNoContent from json stream.
-func (s *PutGuestBootSourceNoContent) ReadJSON(d *json.Decoder) error {
+// Decode decodes PutGuestBootSourceNoContent from json.
+func (s *PutGuestBootSourceNoContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PutGuestBootSourceNoContent to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
 			return d.Skip()
@@ -1819,18 +1823,18 @@ func (s *PutGuestBootSourceNoContent) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s PutGuestDriveByIDNoContent) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s PutGuestDriveByIDNoContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	e.ObjEnd()
 }
 
-// ReadJSON reads PutGuestDriveByIDNoContent from json stream.
-func (s *PutGuestDriveByIDNoContent) ReadJSON(d *json.Decoder) error {
+// Decode decodes PutGuestDriveByIDNoContent from json.
+func (s *PutGuestDriveByIDNoContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PutGuestDriveByIDNoContent to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
 			return d.Skip()
@@ -1839,18 +1843,18 @@ func (s *PutGuestDriveByIDNoContent) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s PutGuestNetworkInterfaceByIDNoContent) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s PutGuestNetworkInterfaceByIDNoContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	e.ObjEnd()
 }
 
-// ReadJSON reads PutGuestNetworkInterfaceByIDNoContent from json stream.
-func (s *PutGuestNetworkInterfaceByIDNoContent) ReadJSON(d *json.Decoder) error {
+// Decode decodes PutGuestNetworkInterfaceByIDNoContent from json.
+func (s *PutGuestNetworkInterfaceByIDNoContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PutGuestNetworkInterfaceByIDNoContent to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
 			return d.Skip()
@@ -1859,18 +1863,18 @@ func (s *PutGuestNetworkInterfaceByIDNoContent) ReadJSON(d *json.Decoder) error 
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s PutGuestVsockNoContent) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s PutGuestVsockNoContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	e.ObjEnd()
 }
 
-// ReadJSON reads PutGuestVsockNoContent from json stream.
-func (s *PutGuestVsockNoContent) ReadJSON(d *json.Decoder) error {
+// Decode decodes PutGuestVsockNoContent from json.
+func (s *PutGuestVsockNoContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PutGuestVsockNoContent to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
 			return d.Skip()
@@ -1879,18 +1883,18 @@ func (s *PutGuestVsockNoContent) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s PutLoggerNoContent) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s PutLoggerNoContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	e.ObjEnd()
 }
 
-// ReadJSON reads PutLoggerNoContent from json stream.
-func (s *PutLoggerNoContent) ReadJSON(d *json.Decoder) error {
+// Decode decodes PutLoggerNoContent from json.
+func (s *PutLoggerNoContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PutLoggerNoContent to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
 			return d.Skip()
@@ -1899,18 +1903,18 @@ func (s *PutLoggerNoContent) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s PutMachineConfigurationNoContent) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s PutMachineConfigurationNoContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	e.ObjEnd()
 }
 
-// ReadJSON reads PutMachineConfigurationNoContent from json stream.
-func (s *PutMachineConfigurationNoContent) ReadJSON(d *json.Decoder) error {
+// Decode decodes PutMachineConfigurationNoContent from json.
+func (s *PutMachineConfigurationNoContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PutMachineConfigurationNoContent to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
 			return d.Skip()
@@ -1919,18 +1923,18 @@ func (s *PutMachineConfigurationNoContent) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s PutMetricsNoContent) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s PutMetricsNoContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	e.ObjEnd()
 }
 
-// ReadJSON reads PutMetricsNoContent from json stream.
-func (s *PutMetricsNoContent) ReadJSON(d *json.Decoder) error {
+// Decode decodes PutMetricsNoContent from json.
+func (s *PutMetricsNoContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PutMetricsNoContent to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
 			return d.Skip()
@@ -1939,35 +1943,35 @@ func (s *PutMetricsNoContent) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s RateLimiter) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s RateLimiter) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	if s.Bandwidth.Set {
 		e.FieldStart("bandwidth")
-		s.Bandwidth.WriteJSON(e)
+		s.Bandwidth.Encode(e)
 	}
 	if s.Ops.Set {
 		e.FieldStart("ops")
-		s.Ops.WriteJSON(e)
+		s.Ops.Encode(e)
 	}
 	e.ObjEnd()
 }
 
-// ReadJSON reads RateLimiter from json stream.
-func (s *RateLimiter) ReadJSON(d *json.Decoder) error {
+// Decode decodes RateLimiter from json.
+func (s *RateLimiter) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode RateLimiter to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "bandwidth":
 			s.Bandwidth.Reset()
-			if err := s.Bandwidth.ReadJSON(d); err != nil {
+			if err := s.Bandwidth.Decode(d); err != nil {
 				return err
 			}
 		case "ops":
 			s.Ops.Reset()
-			if err := s.Ops.ReadJSON(d); err != nil {
+			if err := s.Ops.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -1977,8 +1981,8 @@ func (s *RateLimiter) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s SnapshotCreateParams) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s SnapshotCreateParams) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
 	e.FieldStart("mem_file_path")
@@ -1988,21 +1992,21 @@ func (s SnapshotCreateParams) WriteJSON(e *json.Encoder) {
 	e.Str(s.SnapshotPath)
 	if s.SnapshotType.Set {
 		e.FieldStart("snapshot_type")
-		s.SnapshotType.WriteJSON(e)
+		s.SnapshotType.Encode(e)
 	}
 	if s.Version.Set {
 		e.FieldStart("version")
-		s.Version.WriteJSON(e)
+		s.Version.Encode(e)
 	}
 	e.ObjEnd()
 }
 
-// ReadJSON reads SnapshotCreateParams from json stream.
-func (s *SnapshotCreateParams) ReadJSON(d *json.Decoder) error {
+// Decode decodes SnapshotCreateParams from json.
+func (s *SnapshotCreateParams) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode SnapshotCreateParams to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "mem_file_path":
 			v, err := d.Str()
@@ -2018,12 +2022,12 @@ func (s *SnapshotCreateParams) ReadJSON(d *json.Decoder) error {
 			}
 		case "snapshot_type":
 			s.SnapshotType.Reset()
-			if err := s.SnapshotType.ReadJSON(d); err != nil {
+			if err := s.SnapshotType.Decode(d); err != nil {
 				return err
 			}
 		case "version":
 			s.Version.Reset()
-			if err := s.Version.ReadJSON(d); err != nil {
+			if err := s.Version.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -2033,13 +2037,13 @@ func (s *SnapshotCreateParams) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s SnapshotCreateParamsSnapshotType) WriteJSON(e *json.Encoder) {
+// Encode encodes SnapshotCreateParamsSnapshotType as json.
+func (s SnapshotCreateParamsSnapshotType) Encode(e *jx.Encoder) {
 	e.Str(string(s))
 }
 
-// ReadJSON reads SnapshotCreateParamsSnapshotType from json reader.
-func (s *SnapshotCreateParamsSnapshotType) ReadJSON(d *json.Decoder) error {
+// Decode decodes SnapshotCreateParamsSnapshotType from json.
+func (s *SnapshotCreateParamsSnapshotType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode SnapshotCreateParamsSnapshotType to nil`)
 	}
@@ -2051,12 +2055,12 @@ func (s *SnapshotCreateParamsSnapshotType) ReadJSON(d *json.Decoder) error {
 	return nil
 }
 
-// WriteJSON implements json.Marshaler.
-func (s SnapshotLoadParams) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s SnapshotLoadParams) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	if s.EnableDiffSnapshots.Set {
 		e.FieldStart("enable_diff_snapshots")
-		s.EnableDiffSnapshots.WriteJSON(e)
+		s.EnableDiffSnapshots.Encode(e)
 	}
 
 	e.FieldStart("mem_file_path")
@@ -2066,21 +2070,21 @@ func (s SnapshotLoadParams) WriteJSON(e *json.Encoder) {
 	e.Str(s.SnapshotPath)
 	if s.ResumeVM.Set {
 		e.FieldStart("resume_vm")
-		s.ResumeVM.WriteJSON(e)
+		s.ResumeVM.Encode(e)
 	}
 	e.ObjEnd()
 }
 
-// ReadJSON reads SnapshotLoadParams from json stream.
-func (s *SnapshotLoadParams) ReadJSON(d *json.Decoder) error {
+// Decode decodes SnapshotLoadParams from json.
+func (s *SnapshotLoadParams) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode SnapshotLoadParams to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "enable_diff_snapshots":
 			s.EnableDiffSnapshots.Reset()
-			if err := s.EnableDiffSnapshots.ReadJSON(d); err != nil {
+			if err := s.EnableDiffSnapshots.Decode(d); err != nil {
 				return err
 			}
 		case "mem_file_path":
@@ -2097,7 +2101,7 @@ func (s *SnapshotLoadParams) ReadJSON(d *json.Decoder) error {
 			}
 		case "resume_vm":
 			s.ResumeVM.Reset()
-			if err := s.ResumeVM.ReadJSON(d); err != nil {
+			if err := s.ResumeVM.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -2107,12 +2111,12 @@ func (s *SnapshotLoadParams) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s TokenBucket) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s TokenBucket) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	if s.OneTimeBurst.Set {
 		e.FieldStart("one_time_burst")
-		s.OneTimeBurst.WriteJSON(e)
+		s.OneTimeBurst.Encode(e)
 	}
 
 	e.FieldStart("refill_time")
@@ -2123,16 +2127,16 @@ func (s TokenBucket) WriteJSON(e *json.Encoder) {
 	e.ObjEnd()
 }
 
-// ReadJSON reads TokenBucket from json stream.
-func (s *TokenBucket) ReadJSON(d *json.Decoder) error {
+// Decode decodes TokenBucket from json.
+func (s *TokenBucket) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode TokenBucket to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "one_time_burst":
 			s.OneTimeBurst.Reset()
-			if err := s.OneTimeBurst.ReadJSON(d); err != nil {
+			if err := s.OneTimeBurst.Decode(d); err != nil {
 				return err
 			}
 		case "refill_time":
@@ -2154,24 +2158,24 @@ func (s *TokenBucket) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s VM) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s VM) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
 	e.FieldStart("state")
-	s.State.WriteJSON(e)
+	s.State.Encode(e)
 	e.ObjEnd()
 }
 
-// ReadJSON reads VM from json stream.
-func (s *VM) ReadJSON(d *json.Decoder) error {
+// Decode decodes VM from json.
+func (s *VM) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode VM to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "state":
-			if err := s.State.ReadJSON(d); err != nil {
+			if err := s.State.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -2181,13 +2185,13 @@ func (s *VM) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s VMState) WriteJSON(e *json.Encoder) {
+// Encode encodes VMState as json.
+func (s VMState) Encode(e *jx.Encoder) {
 	e.Str(string(s))
 }
 
-// ReadJSON reads VMState from json reader.
-func (s *VMState) ReadJSON(d *json.Decoder) error {
+// Decode decodes VMState from json.
+func (s *VMState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode VMState to nil`)
 	}
@@ -2199,8 +2203,8 @@ func (s *VMState) ReadJSON(d *json.Decoder) error {
 	return nil
 }
 
-// WriteJSON implements json.Marshaler.
-func (s Vsock) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s Vsock) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
 	e.FieldStart("guest_cid")
@@ -2214,12 +2218,12 @@ func (s Vsock) WriteJSON(e *json.Encoder) {
 	e.ObjEnd()
 }
 
-// ReadJSON reads Vsock from json stream.
-func (s *Vsock) ReadJSON(d *json.Decoder) error {
+// Decode decodes Vsock from json.
+func (s *Vsock) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode Vsock to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "guest_cid":
 			v, err := d.Int()

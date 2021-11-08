@@ -15,10 +15,12 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -58,6 +60,8 @@ var (
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
 	_ = regexp.MustCompile
+	_ = jx.Null
+	_ = sync.Pool{}
 )
 
 func decodeFoobarGetResponse(resp *http.Response, span trace.Span) (res FoobarGetRes, err error) {
@@ -65,19 +69,19 @@ func decodeFoobarGetResponse(resp *http.Response, span trace.Span) (res FoobarGe
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
+			buf := getBuf()
+			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := json.GetDecoder()
-			defer json.PutDecoder(d)
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
 			var response Pet
 			if err := func() error {
-				if err := response.ReadJSON(d); err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -101,19 +105,19 @@ func decodeFoobarPostResponse(resp *http.Response, span trace.Span) (res FoobarP
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
+			buf := getBuf()
+			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := json.GetDecoder()
-			defer json.PutDecoder(d)
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
 			var response Pet
 			if err := func() error {
-				if err := response.ReadJSON(d); err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -130,19 +134,19 @@ func decodeFoobarPostResponse(resp *http.Response, span trace.Span) (res FoobarP
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
+			buf := getBuf()
+			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := json.GetDecoder()
-			defer json.PutDecoder(d)
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
 			if err := func() error {
-				if err := response.ReadJSON(d); err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -170,19 +174,19 @@ func decodePetCreateResponse(resp *http.Response, span trace.Span) (res Pet, err
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
+			buf := getBuf()
+			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := json.GetDecoder()
-			defer json.PutDecoder(d)
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
 			var response Pet
 			if err := func() error {
-				if err := response.ReadJSON(d); err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -204,20 +208,20 @@ func decodePetFriendsNamesByIDResponse(resp *http.Response, span trace.Span) (re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
+			buf := getBuf()
+			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := json.GetDecoder()
-			defer json.PutDecoder(d)
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
 			var response []string
 			if err := func() error {
 				response = nil
-				if err := d.Arr(func(d *json.Decoder) error {
+				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
 					elem = string(v)
@@ -248,19 +252,19 @@ func decodePetGetResponse(resp *http.Response, span trace.Span) (res PetGetRes, 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
+			buf := getBuf()
+			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := json.GetDecoder()
-			defer json.PutDecoder(d)
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
 			var response Pet
 			if err := func() error {
-				if err := response.ReadJSON(d); err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -275,19 +279,19 @@ func decodePetGetResponse(resp *http.Response, span trace.Span) (res PetGetRes, 
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
+			buf := getBuf()
+			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := json.GetDecoder()
-			defer json.PutDecoder(d)
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
 			var response PetGetDefStatusCode
 			if err := func() error {
-				if err := response.ReadJSON(d); err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -324,19 +328,19 @@ func decodePetGetAvatarByIDResponse(resp *http.Response, span trace.Span) (res P
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
+			buf := getBuf()
+			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := json.GetDecoder()
-			defer json.PutDecoder(d)
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
 			if err := func() error {
-				if err := response.ReadJSON(d); err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -357,19 +361,19 @@ func decodePetGetByNameResponse(resp *http.Response, span trace.Span) (res Pet, 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
+			buf := getBuf()
+			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := json.GetDecoder()
-			defer json.PutDecoder(d)
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
 			var response Pet
 			if err := func() error {
-				if err := response.ReadJSON(d); err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -391,14 +395,14 @@ func decodePetNameByIDResponse(resp *http.Response, span trace.Span) (res string
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
+			buf := getBuf()
+			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := json.GetDecoder()
-			defer json.PutDecoder(d)
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
 			var response string
@@ -445,19 +449,19 @@ func decodePetUploadAvatarByIDResponse(resp *http.Response, span trace.Span) (re
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
+			buf := getBuf()
+			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := json.GetDecoder()
-			defer json.PutDecoder(d)
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
 			if err := func() error {
-				if err := response.ReadJSON(d); err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil

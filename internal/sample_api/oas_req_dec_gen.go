@@ -15,10 +15,12 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -58,22 +60,24 @@ var (
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
 	_ = regexp.MustCompile
+	_ = jx.Null
+	_ = sync.Pool{}
 )
 
 func decodeFoobarPostRequest(r *http.Request, span trace.Span) (req Pet, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Pet
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -98,16 +102,16 @@ func decodePetCreateRequest(r *http.Request, span trace.Span) (req Pet, err erro
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Pet
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -132,13 +136,13 @@ func decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (req 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request PetName
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
 			return errors.New(`decoding of "PetName" (alias) is not implemented`)
@@ -175,13 +179,13 @@ func decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req strin
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request string
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
 			v, err := d.Str()

@@ -15,10 +15,12 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -58,10 +60,12 @@ var (
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
 	_ = regexp.MustCompile
+	_ = jx.Null
+	_ = sync.Pool{}
 )
 
-// WriteJSON implements json.Marshaler.
-func (s HelloWorld) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s HelloWorld) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
 	e.FieldStart("message")
@@ -69,12 +73,12 @@ func (s HelloWorld) WriteJSON(e *json.Encoder) {
 	e.ObjEnd()
 }
 
-// ReadJSON reads HelloWorld from json stream.
-func (s *HelloWorld) ReadJSON(d *json.Decoder) error {
+// Decode decodes HelloWorld from json.
+func (s *HelloWorld) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode HelloWorld to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "message":
 			v, err := d.Str()
@@ -89,8 +93,8 @@ func (s *HelloWorld) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-// WriteJSON implements json.Marshaler.
-func (s WorldObject) WriteJSON(e *json.Encoder) {
+// Encode implements json.Marshaler.
+func (s WorldObject) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
 	e.FieldStart("id")
@@ -101,12 +105,12 @@ func (s WorldObject) WriteJSON(e *json.Encoder) {
 	e.ObjEnd()
 }
 
-// ReadJSON reads WorldObject from json stream.
-func (s *WorldObject) ReadJSON(d *json.Decoder) error {
+// Decode decodes WorldObject from json.
+func (s *WorldObject) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode WorldObject to nil`)
 	}
-	return d.ObjBytes(func(d *json.Decoder, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
 			v, err := d.Int64()
@@ -127,5 +131,5 @@ func (s *WorldObject) ReadJSON(d *json.Decoder) error {
 	})
 }
 
-func (WorldObjects) WriteJSON(e *json.Encoder)      {}
-func (WorldObjects) ReadJSON(d *json.Decoder) error { return nil }
+func (WorldObjects) Encode(e *jx.Encoder)       {}
+func (WorldObjects) Decode(d *jx.Decoder) error { return nil }

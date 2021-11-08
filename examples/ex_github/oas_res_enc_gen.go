@@ -15,10 +15,12 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -58,6 +60,8 @@ var (
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
 	_ = regexp.MustCompile
+	_ = jx.Null
+	_ = sync.Pool{}
 )
 
 func encodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
@@ -88,10 +92,10 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 	case *EmptyObject:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -100,8 +104,8 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 	case *ActionsApproveWorkflowRunApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -111,8 +115,8 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 	case *ActionsApproveWorkflowRunApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -127,10 +131,10 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 func encodeActionsCancelWorkflowRunResponse(response ActionsCancelWorkflowRunAccepted, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(202)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -143,10 +147,10 @@ func encodeActionsCreateOrUpdateEnvironmentSecretResponse(response ActionsCreate
 	case *EmptyObject:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -165,10 +169,10 @@ func encodeActionsCreateOrUpdateOrgSecretResponse(response ActionsCreateOrUpdate
 	case *EmptyObject:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -187,10 +191,10 @@ func encodeActionsCreateOrUpdateRepoSecretResponse(response ActionsCreateOrUpdat
 	case *ActionsCreateOrUpdateRepoSecretCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -207,10 +211,10 @@ func encodeActionsCreateOrUpdateRepoSecretResponse(response ActionsCreateOrUpdat
 func encodeActionsCreateRegistrationTokenForOrgResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -221,10 +225,10 @@ func encodeActionsCreateRegistrationTokenForOrgResponse(response AuthenticationT
 func encodeActionsCreateRegistrationTokenForRepoResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -235,10 +239,10 @@ func encodeActionsCreateRegistrationTokenForRepoResponse(response Authentication
 func encodeActionsCreateRemoveTokenForOrgResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -249,10 +253,10 @@ func encodeActionsCreateRemoveTokenForOrgResponse(response AuthenticationToken, 
 func encodeActionsCreateRemoveTokenForRepoResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -263,10 +267,10 @@ func encodeActionsCreateRemoveTokenForRepoResponse(response AuthenticationToken,
 func encodeActionsCreateSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOrg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -347,10 +351,10 @@ func encodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(resp
 func encodeActionsGetAllowedActionsOrganizationResponse(response SelectedActions, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -361,10 +365,10 @@ func encodeActionsGetAllowedActionsOrganizationResponse(response SelectedActions
 func encodeActionsGetAllowedActionsRepositoryResponse(response SelectedActions, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -375,10 +379,10 @@ func encodeActionsGetAllowedActionsRepositoryResponse(response SelectedActions, 
 func encodeActionsGetArtifactResponse(response Artifact, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -389,10 +393,10 @@ func encodeActionsGetArtifactResponse(response Artifact, w http.ResponseWriter, 
 func encodeActionsGetEnvironmentPublicKeyResponse(response ActionsPublicKey, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -403,10 +407,10 @@ func encodeActionsGetEnvironmentPublicKeyResponse(response ActionsPublicKey, w h
 func encodeActionsGetEnvironmentSecretResponse(response ActionsSecret, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -417,10 +421,10 @@ func encodeActionsGetEnvironmentSecretResponse(response ActionsSecret, w http.Re
 func encodeActionsGetGithubActionsPermissionsOrganizationResponse(response ActionsOrganizationPermissions, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -431,10 +435,10 @@ func encodeActionsGetGithubActionsPermissionsOrganizationResponse(response Actio
 func encodeActionsGetGithubActionsPermissionsRepositoryResponse(response ActionsRepositoryPermissions, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -445,10 +449,10 @@ func encodeActionsGetGithubActionsPermissionsRepositoryResponse(response Actions
 func encodeActionsGetJobForWorkflowRunResponse(response Job, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -459,10 +463,10 @@ func encodeActionsGetJobForWorkflowRunResponse(response Job, w http.ResponseWrit
 func encodeActionsGetOrgPublicKeyResponse(response ActionsPublicKey, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -473,10 +477,10 @@ func encodeActionsGetOrgPublicKeyResponse(response ActionsPublicKey, w http.Resp
 func encodeActionsGetOrgSecretResponse(response OrganizationActionsSecret, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -487,10 +491,10 @@ func encodeActionsGetOrgSecretResponse(response OrganizationActionsSecret, w htt
 func encodeActionsGetRepoPublicKeyResponse(response ActionsPublicKey, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -501,10 +505,10 @@ func encodeActionsGetRepoPublicKeyResponse(response ActionsPublicKey, w http.Res
 func encodeActionsGetRepoSecretResponse(response ActionsSecret, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -515,12 +519,12 @@ func encodeActionsGetRepoSecretResponse(response ActionsSecret, w http.ResponseW
 func encodeActionsGetReviewsForRunResponse(response []EnvironmentApprovals, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -533,10 +537,10 @@ func encodeActionsGetReviewsForRunResponse(response []EnvironmentApprovals, w ht
 func encodeActionsGetSelfHostedRunnerForOrgResponse(response Runner, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -547,10 +551,10 @@ func encodeActionsGetSelfHostedRunnerForOrgResponse(response Runner, w http.Resp
 func encodeActionsGetSelfHostedRunnerForRepoResponse(response Runner, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -561,10 +565,10 @@ func encodeActionsGetSelfHostedRunnerForRepoResponse(response Runner, w http.Res
 func encodeActionsGetSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOrg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -575,10 +579,10 @@ func encodeActionsGetSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOr
 func encodeActionsGetWorkflowRunResponse(response WorkflowRun, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -589,10 +593,10 @@ func encodeActionsGetWorkflowRunResponse(response WorkflowRun, w http.ResponseWr
 func encodeActionsGetWorkflowRunUsageResponse(response WorkflowRunUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -603,10 +607,10 @@ func encodeActionsGetWorkflowRunUsageResponse(response WorkflowRunUsage, w http.
 func encodeActionsListArtifactsForRepoResponse(response ActionsListArtifactsForRepoOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -617,10 +621,10 @@ func encodeActionsListArtifactsForRepoResponse(response ActionsListArtifactsForR
 func encodeActionsListEnvironmentSecretsResponse(response ActionsListEnvironmentSecretsOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -631,10 +635,10 @@ func encodeActionsListEnvironmentSecretsResponse(response ActionsListEnvironment
 func encodeActionsListJobsForWorkflowRunResponse(response ActionsListJobsForWorkflowRunOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -645,10 +649,10 @@ func encodeActionsListJobsForWorkflowRunResponse(response ActionsListJobsForWork
 func encodeActionsListOrgSecretsResponse(response ActionsListOrgSecretsOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -659,10 +663,10 @@ func encodeActionsListOrgSecretsResponse(response ActionsListOrgSecretsOK, w htt
 func encodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -673,10 +677,10 @@ func encodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(response Ac
 func encodeActionsListRepoSecretsResponse(response ActionsListRepoSecretsOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -687,10 +691,10 @@ func encodeActionsListRepoSecretsResponse(response ActionsListRepoSecretsOK, w h
 func encodeActionsListRepoWorkflowsResponse(response ActionsListRepoWorkflowsOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -701,12 +705,12 @@ func encodeActionsListRepoWorkflowsResponse(response ActionsListRepoWorkflowsOK,
 func encodeActionsListRunnerApplicationsForOrgResponse(response []RunnerApplication, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -719,12 +723,12 @@ func encodeActionsListRunnerApplicationsForOrgResponse(response []RunnerApplicat
 func encodeActionsListRunnerApplicationsForRepoResponse(response []RunnerApplication, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -737,10 +741,10 @@ func encodeActionsListRunnerApplicationsForRepoResponse(response []RunnerApplica
 func encodeActionsListSelectedReposForOrgSecretResponse(response ActionsListSelectedReposForOrgSecretOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -751,10 +755,10 @@ func encodeActionsListSelectedReposForOrgSecretResponse(response ActionsListSele
 func encodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse(response ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -765,10 +769,10 @@ func encodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRespon
 func encodeActionsListSelfHostedRunnerGroupsForOrgResponse(response ActionsListSelfHostedRunnerGroupsForOrgOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -779,10 +783,10 @@ func encodeActionsListSelfHostedRunnerGroupsForOrgResponse(response ActionsListS
 func encodeActionsListSelfHostedRunnersForOrgResponse(response ActionsListSelfHostedRunnersForOrgOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -793,10 +797,10 @@ func encodeActionsListSelfHostedRunnersForOrgResponse(response ActionsListSelfHo
 func encodeActionsListSelfHostedRunnersForRepoResponse(response ActionsListSelfHostedRunnersForRepoOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -807,10 +811,10 @@ func encodeActionsListSelfHostedRunnersForRepoResponse(response ActionsListSelfH
 func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response ActionsListSelfHostedRunnersInGroupForOrgOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -821,10 +825,10 @@ func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response ActionsLis
 func encodeActionsListWorkflowRunArtifactsResponse(response ActionsListWorkflowRunArtifactsOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -835,10 +839,10 @@ func encodeActionsListWorkflowRunArtifactsResponse(response ActionsListWorkflowR
 func encodeActionsListWorkflowRunsForRepoResponse(response ActionsListWorkflowRunsForRepoOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -849,10 +853,10 @@ func encodeActionsListWorkflowRunsForRepoResponse(response ActionsListWorkflowRu
 func encodeActionsReRunWorkflowResponse(response ActionsReRunWorkflowCreated, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -886,10 +890,10 @@ func encodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(response Actions
 func encodeActionsRetryWorkflowResponse(response ActionsRetryWorkflowCreated, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -940,10 +944,10 @@ func encodeActionsSetSelfHostedRunnersInGroupForOrgResponse(response ActionsSetS
 func encodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOrg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -962,8 +966,8 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 	case *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -973,8 +977,8 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 	case *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -984,8 +988,8 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 	case *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1013,8 +1017,8 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 	case *ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1024,8 +1028,8 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 	case *ActivityDeleteThreadSubscriptionApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1040,10 +1044,10 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 func encodeActivityGetFeedsResponse(response Feed, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -1056,10 +1060,10 @@ func encodeActivityGetRepoSubscriptionResponse(response ActivityGetRepoSubscript
 	case *RepositorySubscription:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1068,10 +1072,10 @@ func encodeActivityGetRepoSubscriptionResponse(response ActivityGetRepoSubscript
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1090,10 +1094,10 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 	case *Thread:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1105,8 +1109,8 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 	case *ActivityGetThreadApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1116,8 +1120,8 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 	case *ActivityGetThreadApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1134,10 +1138,10 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 	case *ThreadSubscription:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1149,8 +1153,8 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 	case *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1160,8 +1164,8 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 	case *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1176,12 +1180,12 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 func encodeActivityListEventsForAuthenticatedUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -1194,12 +1198,12 @@ func encodeActivityListEventsForAuthenticatedUserResponse(response []Event, w ht
 func encodeActivityListOrgEventsForAuthenticatedUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -1214,8 +1218,8 @@ func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes
 	case *ActivityListPublicEventsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1228,10 +1232,10 @@ func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1240,10 +1244,10 @@ func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1259,8 +1263,8 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 	case *ActivityListPublicEventsForRepoNetworkOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1270,8 +1274,8 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 	case *ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(301)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1284,8 +1288,8 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 	case *ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1295,8 +1299,8 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 	case *ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1311,12 +1315,12 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 func encodeActivityListPublicEventsForUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -1329,12 +1333,12 @@ func encodeActivityListPublicEventsForUserResponse(response []Event, w http.Resp
 func encodeActivityListPublicOrgEventsResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -1347,12 +1351,12 @@ func encodeActivityListPublicOrgEventsResponse(response []Event, w http.Response
 func encodeActivityListReceivedEventsForUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -1365,12 +1369,12 @@ func encodeActivityListReceivedEventsForUserResponse(response []Event, w http.Re
 func encodeActivityListReceivedPublicEventsForUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -1383,12 +1387,12 @@ func encodeActivityListReceivedPublicEventsForUserResponse(response []Event, w h
 func encodeActivityListRepoEventsResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -1401,12 +1405,12 @@ func encodeActivityListRepoEventsResponse(response []Event, w http.ResponseWrite
 func encodeActivityListRepoNotificationsForAuthenticatedUserResponse(response []Thread, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -1421,8 +1425,8 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 	case *ActivityListReposStarredByAuthenticatedUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1435,8 +1439,8 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 	case *ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1446,8 +1450,8 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 	case *ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1462,12 +1466,12 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 func encodeActivityListReposWatchedByUserResponse(response []MinimalRepository, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -1482,8 +1486,8 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 	case *ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1496,8 +1500,8 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 	case *ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1507,8 +1511,8 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 	case *ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1523,12 +1527,12 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 func encodeActivityListWatchersForRepoResponse(response []SimpleUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -1543,10 +1547,10 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 	case *ActivityMarkNotificationsAsReadAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1561,8 +1565,8 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 	case *ActivityMarkNotificationsAsReadApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1572,8 +1576,8 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 	case *ActivityMarkNotificationsAsReadApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1590,10 +1594,10 @@ func encodeActivityMarkRepoNotificationsAsReadResponse(response ActivityMarkRepo
 	case *ActivityMarkRepoNotificationsAsReadAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1618,10 +1622,10 @@ func encodeActivityMarkThreadAsReadResponse(response ActivityMarkThreadAsReadRes
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1635,10 +1639,10 @@ func encodeActivityMarkThreadAsReadResponse(response ActivityMarkThreadAsReadRes
 func encodeActivitySetRepoSubscriptionResponse(response RepositorySubscription, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -1651,10 +1655,10 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 	case *ThreadSubscription:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1666,8 +1670,8 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 	case *ActivitySetThreadSubscriptionApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1677,8 +1681,8 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 	case *ActivitySetThreadSubscriptionApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1701,8 +1705,8 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 	case *ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1712,8 +1716,8 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 	case *ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1723,8 +1727,8 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 	case *ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1747,8 +1751,8 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 	case *ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1758,8 +1762,8 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 	case *ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1769,8 +1773,8 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 	case *ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1793,8 +1797,8 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 	case *AppsAddRepoToInstallationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1804,8 +1808,8 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 	case *AppsAddRepoToInstallationApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1825,10 +1829,10 @@ func encodeAppsDeleteInstallationResponse(response AppsDeleteInstallationRes, w 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1842,10 +1846,10 @@ func encodeAppsDeleteInstallationResponse(response AppsDeleteInstallationRes, w 
 func encodeAppsGetAuthenticatedResponse(response Integration, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -1858,10 +1862,10 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 	case *Integration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1870,8 +1874,8 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 	case *AppsGetBySlugApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1881,8 +1885,8 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 	case *AppsGetBySlugApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1892,10 +1896,10 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1911,10 +1915,10 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 	case *MarketplacePurchase:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1923,8 +1927,8 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 	case *AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1934,8 +1938,8 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 	case *AppsGetSubscriptionPlanForAccountApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -1952,10 +1956,10 @@ func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubs
 	case *MarketplacePurchase:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1964,10 +1968,10 @@ func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubs
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1984,10 +1988,10 @@ func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubs
 func encodeAppsGetWebhookConfigForAppResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -2000,8 +2004,8 @@ func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPl
 	case *AppsListAccountsForPlanStubbedOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2011,10 +2015,10 @@ func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPl
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2030,10 +2034,10 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 	case *AppsListInstallationReposForAuthenticatedUserOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2045,8 +2049,8 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 	case *AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2056,8 +2060,8 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 	case *AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2074,8 +2078,8 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 	case *AppsListPlansOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2085,8 +2089,8 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 	case *AppsListPlansApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2096,8 +2100,8 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 	case *AppsListPlansApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2114,8 +2118,8 @@ func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http
 	case *AppsListPlansStubbedOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2125,10 +2129,10 @@ func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2144,10 +2148,10 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 	case *AppsListReposAccessibleToInstallationOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2159,8 +2163,8 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 	case *AppsListReposAccessibleToInstallationApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2170,8 +2174,8 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 	case *AppsListReposAccessibleToInstallationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2188,8 +2192,8 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 	case *AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2202,8 +2206,8 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 	case *AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2213,8 +2217,8 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 	case *AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2231,8 +2235,8 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 	case *AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2245,10 +2249,10 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2270,8 +2274,8 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 	case *AppsRemoveRepoFromInstallationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2281,8 +2285,8 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 	case *AppsRemoveRepoFromInstallationApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2307,10 +2311,10 @@ func encodeAppsSuspendInstallationResponse(response AppsSuspendInstallationRes, 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2329,10 +2333,10 @@ func encodeAppsUnsuspendInstallationResponse(response AppsUnsuspendInstallationR
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2346,10 +2350,10 @@ func encodeAppsUnsuspendInstallationResponse(response AppsUnsuspendInstallationR
 func encodeAppsUpdateWebhookConfigForAppResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -2360,10 +2364,10 @@ func encodeAppsUpdateWebhookConfigForAppResponse(response WebhookConfig, w http.
 func encodeBillingGetGithubActionsBillingGheResponse(response ActionsBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -2374,10 +2378,10 @@ func encodeBillingGetGithubActionsBillingGheResponse(response ActionsBillingUsag
 func encodeBillingGetGithubActionsBillingOrgResponse(response ActionsBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -2388,10 +2392,10 @@ func encodeBillingGetGithubActionsBillingOrgResponse(response ActionsBillingUsag
 func encodeBillingGetGithubActionsBillingUserResponse(response ActionsBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -2402,10 +2406,10 @@ func encodeBillingGetGithubActionsBillingUserResponse(response ActionsBillingUsa
 func encodeBillingGetGithubPackagesBillingGheResponse(response PackagesBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -2416,10 +2420,10 @@ func encodeBillingGetGithubPackagesBillingGheResponse(response PackagesBillingUs
 func encodeBillingGetGithubPackagesBillingOrgResponse(response PackagesBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -2430,10 +2434,10 @@ func encodeBillingGetGithubPackagesBillingOrgResponse(response PackagesBillingUs
 func encodeBillingGetGithubPackagesBillingUserResponse(response PackagesBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -2444,10 +2448,10 @@ func encodeBillingGetGithubPackagesBillingUserResponse(response PackagesBillingU
 func encodeBillingGetSharedStorageBillingGheResponse(response CombinedBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -2458,10 +2462,10 @@ func encodeBillingGetSharedStorageBillingGheResponse(response CombinedBillingUsa
 func encodeBillingGetSharedStorageBillingOrgResponse(response CombinedBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -2472,10 +2476,10 @@ func encodeBillingGetSharedStorageBillingOrgResponse(response CombinedBillingUsa
 func encodeBillingGetSharedStorageBillingUserResponse(response CombinedBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -2488,8 +2492,8 @@ func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.Respo
 	case *ChecksCreateSuiteApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2499,8 +2503,8 @@ func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.Respo
 	case *ChecksCreateSuiteApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2515,10 +2519,10 @@ func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.Respo
 func encodeChecksGetResponse(response CheckRun, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -2529,10 +2533,10 @@ func encodeChecksGetResponse(response CheckRun, w http.ResponseWriter, span trac
 func encodeChecksGetSuiteResponse(response CheckSuite, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -2543,12 +2547,12 @@ func encodeChecksGetSuiteResponse(response CheckSuite, w http.ResponseWriter, sp
 func encodeChecksListAnnotationsResponse(response []CheckAnnotation, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -2561,10 +2565,10 @@ func encodeChecksListAnnotationsResponse(response []CheckAnnotation, w http.Resp
 func encodeChecksListForRefResponse(response ChecksListForRefOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -2575,10 +2579,10 @@ func encodeChecksListForRefResponse(response ChecksListForRefOK, w http.Response
 func encodeChecksListForSuiteResponse(response ChecksListForSuiteOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -2589,10 +2593,10 @@ func encodeChecksListForSuiteResponse(response ChecksListForSuiteOK, w http.Resp
 func encodeChecksListSuitesForRefResponse(response ChecksListSuitesForRefOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -2603,10 +2607,10 @@ func encodeChecksListSuitesForRefResponse(response ChecksListSuitesForRefOK, w h
 func encodeChecksRerequestSuiteResponse(response ChecksRerequestSuiteCreated, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -2617,10 +2621,10 @@ func encodeChecksRerequestSuiteResponse(response ChecksRerequestSuiteCreated, w 
 func encodeChecksSetSuitesPreferencesResponse(response CheckSuitePreference, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -2633,10 +2637,10 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 	case *CodeScanningAnalysisDeletion:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2645,8 +2649,8 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 	case *CodeScanningDeleteAnalysisApplicationJSONBadRequest:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2656,8 +2660,8 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 	case *CodeScanningDeleteAnalysisApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2667,8 +2671,8 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 	case *CodeScanningDeleteAnalysisApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2678,10 +2682,10 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2697,10 +2701,10 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 	case *CodeScanningAlert:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2709,8 +2713,8 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 	case *CodeScanningGetAlertApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2720,8 +2724,8 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 	case *CodeScanningGetAlertApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2731,10 +2735,10 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2750,10 +2754,10 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 	case *CodeScanningAnalysis:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2762,8 +2766,8 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 	case *CodeScanningGetAnalysisApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2773,8 +2777,8 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 	case *CodeScanningGetAnalysisApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2784,10 +2788,10 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2803,10 +2807,10 @@ func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http
 	case *CodeScanningSarifsStatus:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2815,10 +2819,10 @@ func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2830,10 +2834,10 @@ func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2849,8 +2853,8 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 	case *CodeScanningListAlertInstancesOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2860,8 +2864,8 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 	case *CodeScanningListAlertInstancesApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2871,8 +2875,8 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 	case *CodeScanningListAlertInstancesApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2882,10 +2886,10 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2901,8 +2905,8 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 	case *CodeScanningListAlertsForRepoOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2912,8 +2916,8 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 	case *CodeScanningListAlertsForRepoApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2923,8 +2927,8 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 	case *CodeScanningListAlertsForRepoApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2934,10 +2938,10 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2953,8 +2957,8 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 	case *CodeScanningListRecentAnalysesOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2964,8 +2968,8 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 	case *CodeScanningListRecentAnalysesApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2975,8 +2979,8 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 	case *CodeScanningListRecentAnalysesApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -2986,10 +2990,10 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3005,10 +3009,10 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 	case *CodeScanningAlert:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3017,8 +3021,8 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 	case *CodeScanningUpdateAlertApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3028,8 +3032,8 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 	case *CodeScanningUpdateAlertApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3039,10 +3043,10 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3058,10 +3062,10 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 	case *CodeScanningSarifsReceipt:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3073,8 +3077,8 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 	case *CodeScanningUploadSarifApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3084,8 +3088,8 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 	case *CodeScanningUploadSarifApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3098,10 +3102,10 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3117,8 +3121,8 @@ func encodeCodesOfConductGetAllCodesOfConductResponse(response CodesOfConductGet
 	case *CodesOfConductGetAllCodesOfConductOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3138,10 +3142,10 @@ func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConduc
 	case *CodeOfConduct:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3153,10 +3157,10 @@ func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConduc
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3172,10 +3176,10 @@ func encodeEmojisGetResponse(response EmojisGetRes, w http.ResponseWriter, span 
 	case *EmojisGetOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3202,10 +3206,10 @@ func encodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(respon
 func encodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -3216,10 +3220,10 @@ func encodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(response 
 func encodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -3230,10 +3234,10 @@ func encodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(response Authen
 func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(response RunnerGroupsEnterprise, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -3274,10 +3278,10 @@ func encodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRespo
 func encodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(response SelectedActions, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -3288,12 +3292,12 @@ func encodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(response SelectedA
 func encodeEnterpriseAdminGetAuditLogResponse(response []AuditLogEvent, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -3306,10 +3310,10 @@ func encodeEnterpriseAdminGetAuditLogResponse(response []AuditLogEvent, w http.R
 func encodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(response ActionsEnterprisePermissions, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -3320,10 +3324,10 @@ func encodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(response
 func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(response ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -3334,10 +3338,10 @@ func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(r
 func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(response ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -3348,10 +3352,10 @@ func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(re
 func encodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(response Runner, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -3362,10 +3366,10 @@ func encodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(response Runn
 func encodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(response RunnerGroupsEnterprise, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -3376,10 +3380,10 @@ func encodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(response
 func encodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -3390,10 +3394,10 @@ func encodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRespon
 func encodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(response ScimGroupListEnterprise, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -3404,10 +3408,10 @@ func encodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(response ScimG
 func encodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(response ScimUserListEnterprise, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -3418,12 +3422,12 @@ func encodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(response S
 func encodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(response []RunnerApplication, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -3436,10 +3440,10 @@ func encodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(response [
 func encodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(response EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -3450,10 +3454,10 @@ func encodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 func encodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -3464,10 +3468,10 @@ func encodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(respon
 func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnersForEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -3478,10 +3482,10 @@ func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response En
 func encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -3492,10 +3496,10 @@ func encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp
 func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(response ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -3506,10 +3510,10 @@ func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(response Sci
 func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(response ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -3540,10 +3544,10 @@ func encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(response
 func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(response ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -3554,10 +3558,10 @@ func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(re
 func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(response ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -3583,10 +3587,10 @@ func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(respo
 func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(response ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -3597,10 +3601,10 @@ func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(response Scim
 func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(response RunnerGroupsEnterprise, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -3619,10 +3623,10 @@ func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredRes, w http.R
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3631,10 +3635,10 @@ func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredRes, w http.R
 	case *GistsCheckIsStarredNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3650,10 +3654,10 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 	case *GistComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3665,8 +3669,8 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 	case *GistsCreateCommentApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3676,8 +3680,8 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 	case *GistsCreateCommentApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3700,8 +3704,8 @@ func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter, s
 	case *GistsDeleteApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3711,8 +3715,8 @@ func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter, s
 	case *GistsDeleteApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3735,8 +3739,8 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.Res
 	case *GistsDeleteCommentApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3746,8 +3750,8 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.Res
 	case *GistsDeleteCommentApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3764,10 +3768,10 @@ func encodeGistsGetResponse(response GistsGetRes, w http.ResponseWriter, span tr
 	case *GistSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3779,10 +3783,10 @@ func encodeGistsGetResponse(response GistsGetRes, w http.ResponseWriter, span tr
 	case *ForbiddenGist:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3791,10 +3795,10 @@ func encodeGistsGetResponse(response GistsGetRes, w http.ResponseWriter, span tr
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3810,10 +3814,10 @@ func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseW
 	case *GistComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3825,10 +3829,10 @@ func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseW
 	case *ForbiddenGist:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3837,10 +3841,10 @@ func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseW
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3856,8 +3860,8 @@ func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter, span 
 	case *GistsListOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3870,10 +3874,10 @@ func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter, span 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3889,8 +3893,8 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 	case *GistsListCommentsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3903,8 +3907,8 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 	case *GistsListCommentsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3914,8 +3918,8 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 	case *GistsListCommentsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3932,8 +3936,8 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 	case *GistsListCommitsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3946,8 +3950,8 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 	case *GistsListCommitsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3957,8 +3961,8 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 	case *GistsListCommitsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3975,8 +3979,8 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 	case *GistsListForksOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -3989,8 +3993,8 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 	case *GistsListForksApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4000,8 +4004,8 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 	case *GistsListForksApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4018,8 +4022,8 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 	case *GistsListStarredOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4032,8 +4036,8 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 	case *GistsListStarredApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4043,8 +4047,8 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 	case *GistsListStarredApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4067,8 +4071,8 @@ func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter, span 
 	case *GistsStarApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4078,8 +4082,8 @@ func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter, span 
 	case *GistsStarApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4102,8 +4106,8 @@ func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter, s
 	case *GistsUnstarApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4113,8 +4117,8 @@ func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter, s
 	case *GistsUnstarApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4131,10 +4135,10 @@ func encodeGistsUpdateCommentResponse(response GistsUpdateCommentRes, w http.Res
 	case *GistComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4143,10 +4147,10 @@ func encodeGistsUpdateCommentResponse(response GistsUpdateCommentRes, w http.Res
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4162,10 +4166,10 @@ func encodeGitGetCommitResponse(response GitGetCommitRes, w http.ResponseWriter,
 	case *GitCommit:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4174,10 +4178,10 @@ func encodeGitGetCommitResponse(response GitGetCommitRes, w http.ResponseWriter,
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4193,10 +4197,10 @@ func encodeGitGetRefResponse(response GitGetRefRes, w http.ResponseWriter, span 
 	case *GitRef:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4205,10 +4209,10 @@ func encodeGitGetRefResponse(response GitGetRefRes, w http.ResponseWriter, span 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4224,10 +4228,10 @@ func encodeGitGetTagResponse(response GitGetTagRes, w http.ResponseWriter, span 
 	case *GitTag:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4236,10 +4240,10 @@ func encodeGitGetTagResponse(response GitGetTagRes, w http.ResponseWriter, span 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4253,12 +4257,12 @@ func encodeGitGetTagResponse(response GitGetTagRes, w http.ResponseWriter, span 
 func encodeGitListMatchingRefsResponse(response []GitRef, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -4273,8 +4277,8 @@ func encodeGitignoreGetAllTemplatesResponse(response GitignoreGetAllTemplatesRes
 	case *GitignoreGetAllTemplatesOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4294,10 +4298,10 @@ func encodeGitignoreGetTemplateResponse(response GitignoreGetTemplateRes, w http
 	case *GitignoreTemplate:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4339,10 +4343,10 @@ func encodeInteractionsSetRestrictionsForRepoResponse(response InteractionsSetRe
 	case *InteractionLimitResponse:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4359,10 +4363,10 @@ func encodeInteractionsSetRestrictionsForRepoResponse(response InteractionsSetRe
 func encodeIssuesAddAssigneesResponse(response IssueSimple, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -4378,10 +4382,10 @@ func encodeIssuesCheckUserCanBeAssignedResponse(response IssuesCheckUserCanBeAss
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4410,10 +4414,10 @@ func encodeIssuesDeleteMilestoneResponse(response IssuesDeleteMilestoneRes, w ht
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4429,10 +4433,10 @@ func encodeIssuesGetCommentResponse(response IssuesGetCommentRes, w http.Respons
 	case *IssueComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4441,10 +4445,10 @@ func encodeIssuesGetCommentResponse(response IssuesGetCommentRes, w http.Respons
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4460,10 +4464,10 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 	case *IssueEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4472,8 +4476,8 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 	case *IssuesGetEventApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4483,8 +4487,8 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 	case *IssuesGetEventApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4494,8 +4498,8 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 	case *IssuesGetEventApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4512,10 +4516,10 @@ func encodeIssuesGetLabelResponse(response IssuesGetLabelRes, w http.ResponseWri
 	case *Label:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4524,10 +4528,10 @@ func encodeIssuesGetLabelResponse(response IssuesGetLabelRes, w http.ResponseWri
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4543,10 +4547,10 @@ func encodeIssuesGetMilestoneResponse(response IssuesGetMilestoneRes, w http.Res
 	case *Milestone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4555,10 +4559,10 @@ func encodeIssuesGetMilestoneResponse(response IssuesGetMilestoneRes, w http.Res
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4574,8 +4578,8 @@ func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.R
 	case *IssuesListAssigneesOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4585,10 +4589,10 @@ func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.R
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4604,8 +4608,8 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 	case *IssuesListCommentsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4615,8 +4619,8 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 	case *IssuesListCommentsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4626,8 +4630,8 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 	case *IssuesListCommentsApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4642,12 +4646,12 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 func encodeIssuesListLabelsForMilestoneResponse(response []Label, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -4662,8 +4666,8 @@ func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, 
 	case *IssuesListLabelsForRepoOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4673,10 +4677,10 @@ func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4692,8 +4696,8 @@ func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, 
 	case *IssuesListLabelsOnIssueOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4703,10 +4707,10 @@ func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4722,8 +4726,8 @@ func encodeIssuesListMilestonesResponse(response IssuesListMilestonesRes, w http
 	case *IssuesListMilestonesOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4733,10 +4737,10 @@ func encodeIssuesListMilestonesResponse(response IssuesListMilestonesRes, w http
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4755,10 +4759,10 @@ func encodeIssuesRemoveAllLabelsResponse(response IssuesRemoveAllLabelsRes, w ht
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4772,10 +4776,10 @@ func encodeIssuesRemoveAllLabelsResponse(response IssuesRemoveAllLabelsRes, w ht
 func encodeIssuesRemoveAssigneesResponse(response IssueSimple, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -4788,8 +4792,8 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 	case *IssuesRemoveLabelOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4799,8 +4803,8 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 	case *IssuesRemoveLabelApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4810,8 +4814,8 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 	case *IssuesRemoveLabelApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4831,8 +4835,8 @@ func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter,
 	case *IssuesUnlockApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4842,8 +4846,8 @@ func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter,
 	case *IssuesUnlockApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4858,10 +4862,10 @@ func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter,
 func encodeIssuesUpdateLabelResponse(response Label, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -4872,10 +4876,10 @@ func encodeIssuesUpdateLabelResponse(response Label, w http.ResponseWriter, span
 func encodeIssuesUpdateMilestoneResponse(response Milestone, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -4888,10 +4892,10 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, s
 	case *License:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4903,8 +4907,8 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, s
 	case *LicensesGetApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4914,8 +4918,8 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, s
 	case *LicensesGetApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4932,8 +4936,8 @@ func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUse
 	case *LicensesGetAllCommonlyUsedOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -4951,10 +4955,10 @@ func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUse
 func encodeLicensesGetForRepoResponse(response LicenseContent, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -4967,10 +4971,10 @@ func encodeMetaGetResponse(response MetaGetRes, w http.ResponseWriter, span trac
 	case *APIOverview:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4987,10 +4991,10 @@ func encodeMetaGetResponse(response MetaGetRes, w http.ResponseWriter, span trac
 func encodeMetaRootResponse(response MetaRootOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -5014,8 +5018,8 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 	case *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5025,8 +5029,8 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 	case *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5036,8 +5040,8 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 	case *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5057,10 +5061,10 @@ func encodeMigrationsDeleteArchiveForOrgResponse(response MigrationsDeleteArchiv
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5079,10 +5083,10 @@ func encodeMigrationsDownloadArchiveForOrgResponse(response MigrationsDownloadAr
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5104,8 +5108,8 @@ func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsG
 	case *MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5115,8 +5119,8 @@ func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsG
 	case *MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5133,8 +5137,8 @@ func encodeMigrationsGetCommitAuthorsResponse(response MigrationsGetCommitAuthor
 	case *MigrationsGetCommitAuthorsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5144,10 +5148,10 @@ func encodeMigrationsGetCommitAuthorsResponse(response MigrationsGetCommitAuthor
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5163,10 +5167,10 @@ func encodeMigrationsGetImportStatusResponse(response MigrationsGetImportStatusR
 	case *Import:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5175,10 +5179,10 @@ func encodeMigrationsGetImportStatusResponse(response MigrationsGetImportStatusR
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5192,12 +5196,12 @@ func encodeMigrationsGetImportStatusResponse(response MigrationsGetImportStatusR
 func encodeMigrationsGetLargeFilesResponse(response []PorterLargeFile, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -5212,10 +5216,10 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 	case *Migration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5227,8 +5231,8 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 	case *MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5238,8 +5242,8 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 	case *MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5249,8 +5253,8 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 	case *MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5267,10 +5271,10 @@ func encodeMigrationsGetStatusForOrgResponse(response MigrationsGetStatusForOrgR
 	case *Migration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5279,10 +5283,10 @@ func encodeMigrationsGetStatusForOrgResponse(response MigrationsGetStatusForOrgR
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5298,8 +5302,8 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 	case *MigrationsListForAuthenticatedUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5312,8 +5316,8 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 	case *MigrationsListForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5323,8 +5327,8 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 	case *MigrationsListForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5339,12 +5343,12 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 func encodeMigrationsListForOrgResponse(response []Migration, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -5359,8 +5363,8 @@ func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgR
 	case *MigrationsListReposForOrgOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5370,10 +5374,10 @@ func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgR
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5389,8 +5393,8 @@ func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUse
 	case *MigrationsListReposForUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5400,10 +5404,10 @@ func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUse
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5425,8 +5429,8 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 	case *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5436,8 +5440,8 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 	case *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5447,8 +5451,8 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 	case *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5468,10 +5472,10 @@ func encodeMigrationsUnlockRepoForOrgResponse(response MigrationsUnlockRepoForOr
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5485,10 +5489,10 @@ func encodeMigrationsUnlockRepoForOrgResponse(response MigrationsUnlockRepoForOr
 func encodeMigrationsUpdateImportResponse(response Import, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -5507,8 +5511,8 @@ func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthoriz
 	case *OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5518,8 +5522,8 @@ func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthoriz
 	case *OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5542,8 +5546,8 @@ func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDe
 	case *OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5553,8 +5557,8 @@ func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDe
 	case *OAuthAuthorizationsDeleteGrantApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5571,10 +5575,10 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 	case *Authorization:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5586,8 +5590,8 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 	case *OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5597,8 +5601,8 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 	case *OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5615,10 +5619,10 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 	case *ApplicationGrant:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5630,8 +5634,8 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 	case *OAuthAuthorizationsGetGrantApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5641,8 +5645,8 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 	case *OAuthAuthorizationsGetGrantApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5659,8 +5663,8 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 	case *OAuthAuthorizationsListAuthorizationsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5673,8 +5677,8 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 	case *OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5684,8 +5688,8 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 	case *OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5695,8 +5699,8 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 	case *OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5713,8 +5717,8 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 	case *OAuthAuthorizationsListGrantsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5727,8 +5731,8 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 	case *OAuthAuthorizationsListGrantsApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5738,8 +5742,8 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 	case *OAuthAuthorizationsListGrantsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5749,8 +5753,8 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 	case *OAuthAuthorizationsListGrantsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5770,10 +5774,10 @@ func encodeOrgsCheckBlockedUserResponse(response OrgsCheckBlockedUserRes, w http
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5818,10 +5822,10 @@ func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMe
 	case *OrgsConvertMemberToOutsideCollaboratorAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5836,10 +5840,10 @@ func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMe
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5858,10 +5862,10 @@ func encodeOrgsDeleteWebhookResponse(response OrgsDeleteWebhookRes, w http.Respo
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5877,10 +5881,10 @@ func encodeOrgsGetResponse(response OrgsGetRes, w http.ResponseWriter, span trac
 	case *OrganizationFull:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5889,10 +5893,10 @@ func encodeOrgsGetResponse(response OrgsGetRes, w http.ResponseWriter, span trac
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5906,12 +5910,12 @@ func encodeOrgsGetResponse(response OrgsGetRes, w http.ResponseWriter, span trac
 func encodeOrgsGetAuditLogResponse(response []AuditLogEvent, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -5926,10 +5930,10 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 	case *OrgMembership:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5938,8 +5942,8 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 	case *OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5949,8 +5953,8 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 	case *OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5967,10 +5971,10 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 	case *OrgMembership:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5979,8 +5983,8 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 	case *OrgsGetMembershipForUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -5990,8 +5994,8 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 	case *OrgsGetMembershipForUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6008,10 +6012,10 @@ func encodeOrgsGetWebhookResponse(response OrgsGetWebhookRes, w http.ResponseWri
 	case *OrgHook:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6020,10 +6024,10 @@ func encodeOrgsGetWebhookResponse(response OrgsGetWebhookRes, w http.ResponseWri
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6037,10 +6041,10 @@ func encodeOrgsGetWebhookResponse(response OrgsGetWebhookRes, w http.ResponseWri
 func encodeOrgsGetWebhookConfigForOrgResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -6053,8 +6057,8 @@ func encodeOrgsListResponse(response OrgsListRes, w http.ResponseWriter, span tr
 	case *OrgsListOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6074,8 +6078,8 @@ func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersRes, w http
 	case *OrgsListBlockedUsersOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6085,10 +6089,10 @@ func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersRes, w http
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6104,8 +6108,8 @@ func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsR
 	case *OrgsListFailedInvitationsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6115,10 +6119,10 @@ func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsR
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6134,8 +6138,8 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 	case *OrgsListForAuthenticatedUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6148,8 +6152,8 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 	case *OrgsListForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6159,8 +6163,8 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 	case *OrgsListForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6175,12 +6179,12 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 func encodeOrgsListForUserResponse(response []OrganizationSimple, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6195,8 +6199,8 @@ func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, 
 	case *OrgsListInvitationTeamsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6206,10 +6210,10 @@ func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6223,12 +6227,12 @@ func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, 
 func encodeOrgsListOutsideCollaboratorsResponse(response []SimpleUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6243,8 +6247,8 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 	case *OrgsListPendingInvitationsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6254,10 +6258,10 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6271,12 +6275,12 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 func encodeOrgsListPublicMembersResponse(response []SimpleUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6289,12 +6293,12 @@ func encodeOrgsListPublicMembersResponse(response []SimpleUser, w http.ResponseW
 func encodeOrgsListSamlSSOAuthorizationsResponse(response []CredentialAuthorization, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6309,8 +6313,8 @@ func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.Respons
 	case *OrgsListWebhooksOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6320,10 +6324,10 @@ func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.Respons
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6342,10 +6346,10 @@ func encodeOrgsPingWebhookResponse(response OrgsPingWebhookRes, w http.ResponseW
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6364,10 +6368,10 @@ func encodeOrgsRemoveMemberResponse(response OrgsRemoveMemberRes, w http.Respons
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6386,8 +6390,8 @@ func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForU
 	case *OrgsRemoveMembershipForUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6397,8 +6401,8 @@ func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForU
 	case *OrgsRemoveMembershipForUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6418,10 +6422,10 @@ func encodeOrgsRemoveOutsideCollaboratorResponse(response OrgsRemoveOutsideColla
 	case *OrgsRemoveOutsideCollaboratorUnprocessableEntity:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6445,10 +6449,10 @@ func encodeOrgsRemoveSamlSSOAuthorizationResponse(response OrgsRemoveSamlSSOAuth
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6467,10 +6471,10 @@ func encodeOrgsSetPublicMembershipForAuthenticatedUserResponse(response OrgsSetP
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6489,10 +6493,10 @@ func encodeOrgsUnblockUserResponse(response OrgsUnblockUserNoContent, w http.Res
 func encodeOrgsUpdateWebhookConfigForOrgResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -6508,8 +6512,8 @@ func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDe
 	case *PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6519,8 +6523,8 @@ func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDe
 	case *PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6530,8 +6534,8 @@ func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDe
 	case *PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6551,8 +6555,8 @@ func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageFor
 	case *PackagesDeletePackageForOrgApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6562,8 +6566,8 @@ func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageFor
 	case *PackagesDeletePackageForOrgApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6573,8 +6577,8 @@ func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageFor
 	case *PackagesDeletePackageForOrgApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6594,8 +6598,8 @@ func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageFo
 	case *PackagesDeletePackageForUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6605,8 +6609,8 @@ func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageFo
 	case *PackagesDeletePackageForUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6616,8 +6620,8 @@ func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageFo
 	case *PackagesDeletePackageForUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6637,8 +6641,8 @@ func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response Pac
 	case *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6648,8 +6652,8 @@ func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response Pac
 	case *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6659,8 +6663,8 @@ func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response Pac
 	case *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6680,8 +6684,8 @@ func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePac
 	case *PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6691,8 +6695,8 @@ func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePac
 	case *PackagesDeletePackageVersionForOrgApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6702,8 +6706,8 @@ func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePac
 	case *PackagesDeletePackageVersionForOrgApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6723,8 +6727,8 @@ func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePa
 	case *PackagesDeletePackageVersionForUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6734,8 +6738,8 @@ func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePa
 	case *PackagesDeletePackageVersionForUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6745,8 +6749,8 @@ func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePa
 	case *PackagesDeletePackageVersionForUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6763,8 +6767,8 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 	case *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6774,8 +6778,8 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 	case *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6785,8 +6789,8 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 	case *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6796,8 +6800,8 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 	case *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6814,8 +6818,8 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 	case *PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6825,8 +6829,8 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 	case *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6836,8 +6840,8 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 	case *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6847,8 +6851,8 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 	case *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6865,8 +6869,8 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 	case *PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6876,8 +6880,8 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 	case *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6887,8 +6891,8 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 	case *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6898,8 +6902,8 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 	case *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -6914,10 +6918,10 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 func encodePackagesGetPackageForAuthenticatedUserResponse(response Package, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -6928,10 +6932,10 @@ func encodePackagesGetPackageForAuthenticatedUserResponse(response Package, w ht
 func encodePackagesGetPackageForOrganizationResponse(response Package, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -6942,10 +6946,10 @@ func encodePackagesGetPackageForOrganizationResponse(response Package, w http.Re
 func encodePackagesGetPackageForUserResponse(response Package, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -6956,10 +6960,10 @@ func encodePackagesGetPackageForUserResponse(response Package, w http.ResponseWr
 func encodePackagesGetPackageVersionForAuthenticatedUserResponse(response PackageVersion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -6970,10 +6974,10 @@ func encodePackagesGetPackageVersionForAuthenticatedUserResponse(response Packag
 func encodePackagesGetPackageVersionForOrganizationResponse(response PackageVersion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -6984,10 +6988,10 @@ func encodePackagesGetPackageVersionForOrganizationResponse(response PackageVers
 func encodePackagesGetPackageVersionForUserResponse(response PackageVersion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -6998,12 +7002,12 @@ func encodePackagesGetPackageVersionForUserResponse(response PackageVersion, w h
 func encodePackagesListPackagesForAuthenticatedUserResponse(response []Package, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -7018,8 +7022,8 @@ func encodePackagesListPackagesForOrganizationResponse(response PackagesListPack
 	case *PackagesListPackagesForOrganizationOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7029,8 +7033,8 @@ func encodePackagesListPackagesForOrganizationResponse(response PackagesListPack
 	case *PackagesListPackagesForOrganizationApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7040,8 +7044,8 @@ func encodePackagesListPackagesForOrganizationResponse(response PackagesListPack
 	case *PackagesListPackagesForOrganizationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7058,8 +7062,8 @@ func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForU
 	case *PackagesListPackagesForUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7069,8 +7073,8 @@ func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForU
 	case *PackagesListPackagesForUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7080,8 +7084,8 @@ func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForU
 	case *PackagesListPackagesForUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7101,8 +7105,8 @@ func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesR
 	case *PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7112,8 +7116,8 @@ func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesR
 	case *PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7123,8 +7127,8 @@ func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesR
 	case *PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7144,8 +7148,8 @@ func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageF
 	case *PackagesRestorePackageForOrgApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7155,8 +7159,8 @@ func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageF
 	case *PackagesRestorePackageForOrgApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7166,8 +7170,8 @@ func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageF
 	case *PackagesRestorePackageForOrgApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7187,8 +7191,8 @@ func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackage
 	case *PackagesRestorePackageForUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7198,8 +7202,8 @@ func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackage
 	case *PackagesRestorePackageForUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7209,8 +7213,8 @@ func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackage
 	case *PackagesRestorePackageForUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7230,8 +7234,8 @@ func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response Pa
 	case *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7241,8 +7245,8 @@ func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response Pa
 	case *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7252,8 +7256,8 @@ func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response Pa
 	case *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7273,8 +7277,8 @@ func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestoreP
 	case *PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7284,8 +7288,8 @@ func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestoreP
 	case *PackagesRestorePackageVersionForOrgApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7295,8 +7299,8 @@ func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestoreP
 	case *PackagesRestorePackageVersionForOrgApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7316,8 +7320,8 @@ func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestore
 	case *PackagesRestorePackageVersionForUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7327,8 +7331,8 @@ func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestore
 	case *PackagesRestorePackageVersionForUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7338,8 +7342,8 @@ func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestore
 	case *PackagesRestorePackageVersionForUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7356,10 +7360,10 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 	case *ProjectColumn:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7371,8 +7375,8 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 	case *ProjectsCreateColumnApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7382,8 +7386,8 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 	case *ProjectsCreateColumnApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7393,10 +7397,10 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7412,10 +7416,10 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 	case *Project:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7427,8 +7431,8 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 	case *ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7438,8 +7442,8 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 	case *ProjectsCreateForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7449,10 +7453,10 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7461,10 +7465,10 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7480,10 +7484,10 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 	case *Project:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7492,8 +7496,8 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 	case *ProjectsCreateForOrgApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7503,8 +7507,8 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 	case *ProjectsCreateForOrgApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7514,8 +7518,8 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 	case *ProjectsCreateForOrgApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7525,8 +7529,8 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 	case *ProjectsCreateForOrgApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7536,10 +7540,10 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7555,10 +7559,10 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 	case *Project:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7567,8 +7571,8 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 	case *ProjectsCreateForRepoApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7578,8 +7582,8 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 	case *ProjectsCreateForRepoApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7589,8 +7593,8 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 	case *ProjectsCreateForRepoApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7600,8 +7604,8 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 	case *ProjectsCreateForRepoApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7611,10 +7615,10 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7636,8 +7640,8 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 	case *ProjectsDeleteApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7647,10 +7651,10 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 	case *ProjectsDeleteForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7659,8 +7663,8 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 	case *ProjectsDeleteApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7670,8 +7674,8 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 	case *ProjectsDeleteApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7694,8 +7698,8 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 	case *ProjectsDeleteCardApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7705,10 +7709,10 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 	case *ProjectsDeleteCardForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7717,8 +7721,8 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 	case *ProjectsDeleteCardApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7741,8 +7745,8 @@ func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http
 	case *ProjectsDeleteColumnApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7752,8 +7756,8 @@ func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http
 	case *ProjectsDeleteColumnApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7770,10 +7774,10 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, s
 	case *Project:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7785,8 +7789,8 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, s
 	case *ProjectsGetApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7796,8 +7800,8 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, s
 	case *ProjectsGetApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7814,10 +7818,10 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 	case *ProjectCard:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7829,8 +7833,8 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 	case *ProjectsGetCardApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7840,8 +7844,8 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 	case *ProjectsGetCardApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7851,8 +7855,8 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 	case *ProjectsGetCardApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7869,10 +7873,10 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 	case *ProjectColumn:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7884,8 +7888,8 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 	case *ProjectsGetColumnApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7895,8 +7899,8 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 	case *ProjectsGetColumnApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7906,8 +7910,8 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 	case *ProjectsGetColumnApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7924,8 +7928,8 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 	case *ProjectsListCardsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7938,8 +7942,8 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 	case *ProjectsListCardsApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7949,8 +7953,8 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 	case *ProjectsListCardsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7967,8 +7971,8 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 	case *ProjectsListColumnsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7981,8 +7985,8 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 	case *ProjectsListColumnsApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -7992,8 +7996,8 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 	case *ProjectsListColumnsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8010,8 +8014,8 @@ func encodeProjectsListForOrgResponse(response ProjectsListForOrgRes, w http.Res
 	case *ProjectsListForOrgOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8021,10 +8025,10 @@ func encodeProjectsListForOrgResponse(response ProjectsListForOrgRes, w http.Res
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8040,8 +8044,8 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 	case *ProjectsListForRepoOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8051,8 +8055,8 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 	case *ProjectsListForRepoApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8062,8 +8066,8 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 	case *ProjectsListForRepoApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8073,8 +8077,8 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 	case *ProjectsListForRepoApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8084,8 +8088,8 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 	case *ProjectsListForRepoApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8095,10 +8099,10 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8114,10 +8118,10 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 	case *ProjectsMoveColumnCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8129,8 +8133,8 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 	case *ProjectsMoveColumnApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8140,8 +8144,8 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 	case *ProjectsMoveColumnApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8151,10 +8155,10 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8170,10 +8174,10 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 	case *Project:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8185,8 +8189,8 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 	case *ProjectsUpdateApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8196,10 +8200,10 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 	case *ProjectsUpdateForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8211,8 +8215,8 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 	case *ProjectsUpdateApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8222,10 +8226,10 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8241,10 +8245,10 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 	case *ProjectCard:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8256,8 +8260,8 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 	case *ProjectsUpdateCardApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8267,8 +8271,8 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 	case *ProjectsUpdateCardApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8278,8 +8282,8 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 	case *ProjectsUpdateCardApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8289,10 +8293,10 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8308,10 +8312,10 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 	case *ProjectColumn:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8323,8 +8327,8 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 	case *ProjectsUpdateColumnApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8334,8 +8338,8 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 	case *ProjectsUpdateColumnApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8365,10 +8369,10 @@ func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyFor
 	case *PullRequestReviewComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8377,10 +8381,10 @@ func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyFor
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8396,10 +8400,10 @@ func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.Respo
 	case *PullRequestReview:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8408,10 +8412,10 @@ func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.Respo
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8420,10 +8424,10 @@ func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.Respo
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8439,10 +8443,10 @@ func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes
 	case *PullRequestReview:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8451,10 +8455,10 @@ func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8463,10 +8467,10 @@ func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8485,10 +8489,10 @@ func encodePullsDeleteReviewCommentResponse(response PullsDeleteReviewCommentRes
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8504,10 +8508,10 @@ func encodePullsDismissReviewResponse(response PullsDismissReviewRes, w http.Res
 	case *PullRequestReview:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8516,10 +8520,10 @@ func encodePullsDismissReviewResponse(response PullsDismissReviewRes, w http.Res
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8528,10 +8532,10 @@ func encodePullsDismissReviewResponse(response PullsDismissReviewRes, w http.Res
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8547,10 +8551,10 @@ func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span tr
 	case *PullRequest:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8562,8 +8566,8 @@ func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span tr
 	case *PullsGetApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8573,8 +8577,8 @@ func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span tr
 	case *PullsGetApplicationJSONInternalServerError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8591,10 +8595,10 @@ func encodePullsGetReviewResponse(response PullsGetReviewRes, w http.ResponseWri
 	case *PullRequestReview:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8603,10 +8607,10 @@ func encodePullsGetReviewResponse(response PullsGetReviewRes, w http.ResponseWri
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8622,10 +8626,10 @@ func encodePullsGetReviewCommentResponse(response PullsGetReviewCommentRes, w ht
 	case *PullRequestReviewComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8634,10 +8638,10 @@ func encodePullsGetReviewCommentResponse(response PullsGetReviewCommentRes, w ht
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8653,8 +8657,8 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 	case *PullsListCommentsForReviewOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8664,10 +8668,10 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8681,12 +8685,12 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 func encodePullsListCommitsResponse(response []Commit, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -8699,10 +8703,10 @@ func encodePullsListCommitsResponse(response []Commit, w http.ResponseWriter, sp
 func encodePullsListRequestedReviewersResponse(response PullRequestReviewRequest, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -8713,12 +8717,12 @@ func encodePullsListRequestedReviewersResponse(response PullRequestReviewRequest
 func encodePullsListReviewCommentsResponse(response []PullRequestReviewComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -8731,12 +8735,12 @@ func encodePullsListReviewCommentsResponse(response []PullRequestReviewComment, 
 func encodePullsListReviewCommentsForRepoResponse(response []PullRequestReviewComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -8749,12 +8753,12 @@ func encodePullsListReviewCommentsForRepoResponse(response []PullRequestReviewCo
 func encodePullsListReviewsResponse(response []PullRequestReview, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -8769,10 +8773,10 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 	case *PullRequestReview:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8781,8 +8785,8 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 	case *PullsSubmitReviewApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8792,8 +8796,8 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 	case *PullsSubmitReviewApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8803,10 +8807,10 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8822,10 +8826,10 @@ func encodePullsUpdateReviewResponse(response PullsUpdateReviewRes, w http.Respo
 	case *PullRequestReview:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8834,10 +8838,10 @@ func encodePullsUpdateReviewResponse(response PullsUpdateReviewRes, w http.Respo
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8851,10 +8855,10 @@ func encodePullsUpdateReviewResponse(response PullsUpdateReviewRes, w http.Respo
 func encodePullsUpdateReviewCommentResponse(response PullRequestReviewComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -8867,10 +8871,10 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter,
 	case *RateLimitOverview:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8882,10 +8886,10 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter,
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8901,8 +8905,8 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response Reactio
 	case *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8912,8 +8916,8 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response Reactio
 	case *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8928,10 +8932,10 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response Reactio
 func encodeReactionsCreateForTeamDiscussionCommentLegacyResponse(response Reaction, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -8944,8 +8948,8 @@ func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreat
 	case *ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8955,8 +8959,8 @@ func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreat
 	case *ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -8971,10 +8975,10 @@ func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreat
 func encodeReactionsCreateForTeamDiscussionLegacyResponse(response Reaction, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -9023,8 +9027,8 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 	case *ReactionsDeleteLegacyApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9034,8 +9038,8 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 	case *ReactionsDeleteLegacyApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9045,8 +9049,8 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 	case *ReactionsDeleteLegacyApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9056,10 +9060,10 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9075,8 +9079,8 @@ func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommit
 	case *ReactionsListForCommitCommentOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9086,10 +9090,10 @@ func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommit
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9098,10 +9102,10 @@ func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommit
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9117,8 +9121,8 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 	case *ReactionsListForIssueOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9128,8 +9132,8 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 	case *ReactionsListForIssueApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9139,8 +9143,8 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 	case *ReactionsListForIssueApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9150,10 +9154,10 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9169,8 +9173,8 @@ func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCo
 	case *ReactionsListForIssueCommentOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9180,10 +9184,10 @@ func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCo
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9192,10 +9196,10 @@ func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCo
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9211,8 +9215,8 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 	case *ReactionsListForPullRequestReviewCommentOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9222,10 +9226,10 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9234,10 +9238,10 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9251,12 +9255,12 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response []Reaction, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -9269,12 +9273,12 @@ func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response []Reactio
 func encodeReactionsListForTeamDiscussionCommentLegacyResponse(response []Reaction, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -9287,12 +9291,12 @@ func encodeReactionsListForTeamDiscussionCommentLegacyResponse(response []Reacti
 func encodeReactionsListForTeamDiscussionInOrgResponse(response []Reaction, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -9305,12 +9309,12 @@ func encodeReactionsListForTeamDiscussionInOrgResponse(response []Reaction, w ht
 func encodeReactionsListForTeamDiscussionLegacyResponse(response []Reaction, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -9331,8 +9335,8 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 	case *ReposAcceptInvitationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9342,8 +9346,8 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 	case *ReposAcceptInvitationApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9353,8 +9357,8 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 	case *ReposAcceptInvitationApplicationJSONConflict:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9397,10 +9401,10 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 	case *CommitComparison:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9409,8 +9413,8 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 	case *ReposCompareCommitsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9420,8 +9424,8 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 	case *ReposCompareCommitsApplicationJSONInternalServerError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9438,10 +9442,10 @@ func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateComm
 	case *ProtectedBranchAdminEnforced:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9450,10 +9454,10 @@ func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateComm
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9467,10 +9471,10 @@ func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateComm
 func encodeReposCreateCommitStatusResponse(response Status, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -9481,10 +9485,10 @@ func encodeReposCreateCommitStatusResponse(response Status, w http.ResponseWrite
 func encodeReposCreateUsingTemplateResponse(response Repository, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -9503,8 +9507,8 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 	case *ReposDeclineInvitationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9514,8 +9518,8 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 	case *ReposDeclineInvitationApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9525,8 +9529,8 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 	case *ReposDeclineInvitationApplicationJSONConflict:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9546,8 +9550,8 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 	case *ReposDeleteApplicationJSONTemporaryRedirect:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(307)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9557,10 +9561,10 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 	case *ReposDeleteForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9569,8 +9573,8 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 	case *ReposDeleteApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9595,10 +9599,10 @@ func encodeReposDeleteAdminBranchProtectionResponse(response ReposDeleteAdminBra
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9622,10 +9626,10 @@ func encodeReposDeleteAutolinkResponse(response ReposDeleteAutolinkRes, w http.R
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9644,10 +9648,10 @@ func encodeReposDeleteBranchProtectionResponse(response ReposDeleteBranchProtect
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9666,10 +9670,10 @@ func encodeReposDeleteCommitCommentResponse(response ReposDeleteCommitCommentRes
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9688,10 +9692,10 @@ func encodeReposDeleteCommitSignatureProtectionResponse(response ReposDeleteComm
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9715,10 +9719,10 @@ func encodeReposDeleteDeploymentResponse(response ReposDeleteDeploymentRes, w ht
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9727,10 +9731,10 @@ func encodeReposDeleteDeploymentResponse(response ReposDeleteDeploymentRes, w ht
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9754,10 +9758,10 @@ func encodeReposDeletePullRequestReviewProtectionResponse(response ReposDeletePu
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9786,10 +9790,10 @@ func encodeReposDeleteWebhookResponse(response ReposDeleteWebhookRes, w http.Res
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9835,10 +9839,10 @@ func encodeReposEnableLfsForRepoResponse(response ReposEnableLfsForRepoRes, w ht
 	case *Accepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9862,10 +9866,10 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 	case *FullRepository:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9874,8 +9878,8 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 	case *ReposGetApplicationJSONMovedPermanently:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(301)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9885,8 +9889,8 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 	case *ReposGetApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9896,8 +9900,8 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 	case *ReposGetApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9914,10 +9918,10 @@ func encodeReposGetAccessRestrictionsResponse(response ReposGetAccessRestriction
 	case *BranchRestrictionPolicy:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9926,10 +9930,10 @@ func encodeReposGetAccessRestrictionsResponse(response ReposGetAccessRestriction
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9943,10 +9947,10 @@ func encodeReposGetAccessRestrictionsResponse(response ReposGetAccessRestriction
 func encodeReposGetAdminBranchProtectionResponse(response ProtectedBranchAdminEnforced, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -9959,8 +9963,8 @@ func encodeReposGetAllStatusCheckContextsResponse(response ReposGetAllStatusChec
 	case *ReposGetAllStatusCheckContextsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -9970,10 +9974,10 @@ func encodeReposGetAllStatusCheckContextsResponse(response ReposGetAllStatusChec
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9989,10 +9993,10 @@ func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, w http.Respo
 	case *Topic:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10001,10 +10005,10 @@ func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, w http.Respo
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10013,10 +10017,10 @@ func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, w http.Respo
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10032,8 +10036,8 @@ func encodeReposGetAppsWithAccessToProtectedBranchResponse(response ReposGetApps
 	case *ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10043,10 +10047,10 @@ func encodeReposGetAppsWithAccessToProtectedBranchResponse(response ReposGetApps
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10062,10 +10066,10 @@ func encodeReposGetAutolinkResponse(response ReposGetAutolinkRes, w http.Respons
 	case *Autolink:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10074,10 +10078,10 @@ func encodeReposGetAutolinkResponse(response ReposGetAutolinkRes, w http.Respons
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10093,10 +10097,10 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 	case *BranchWithProtection:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10105,8 +10109,8 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 	case *ReposGetBranchApplicationJSONMovedPermanently:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(301)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10116,8 +10120,8 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 	case *ReposGetBranchApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10127,10 +10131,10 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10146,10 +10150,10 @@ func encodeReposGetBranchProtectionResponse(response ReposGetBranchProtectionRes
 	case *BranchProtection:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10158,10 +10162,10 @@ func encodeReposGetBranchProtectionResponse(response ReposGetBranchProtectionRes
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10177,10 +10181,10 @@ func encodeReposGetClonesResponse(response ReposGetClonesRes, w http.ResponseWri
 	case *CloneTraffic:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10189,10 +10193,10 @@ func encodeReposGetClonesResponse(response ReposGetClonesRes, w http.ResponseWri
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10208,8 +10212,8 @@ func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStat
 	case *ReposGetCodeFrequencyStatsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10219,10 +10223,10 @@ func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStat
 	case *Accepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10241,10 +10245,10 @@ func encodeReposGetCollaboratorPermissionLevelResponse(response ReposGetCollabor
 	case *RepositoryCollaboratorPermission:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10253,10 +10257,10 @@ func encodeReposGetCollaboratorPermissionLevelResponse(response ReposGetCollabor
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10272,10 +10276,10 @@ func encodeReposGetCombinedStatusForRefResponse(response ReposGetCombinedStatusF
 	case *CombinedCommitStatus:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10284,10 +10288,10 @@ func encodeReposGetCombinedStatusForRefResponse(response ReposGetCombinedStatusF
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10303,8 +10307,8 @@ func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivitySt
 	case *ReposGetCommitActivityStatsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10314,10 +10318,10 @@ func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivitySt
 	case *Accepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10336,10 +10340,10 @@ func encodeReposGetCommitCommentResponse(response ReposGetCommitCommentRes, w ht
 	case *CommitComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10348,10 +10352,10 @@ func encodeReposGetCommitCommentResponse(response ReposGetCommitCommentRes, w ht
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10367,10 +10371,10 @@ func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSign
 	case *ProtectedBranchAdminEnforced:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10379,10 +10383,10 @@ func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSign
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10396,10 +10400,10 @@ func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSign
 func encodeReposGetCommunityProfileMetricsResponse(response CommunityProfile, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -10412,8 +10416,8 @@ func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsR
 	case *ReposGetContributorsStatsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10423,10 +10427,10 @@ func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsR
 	case *Accepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10445,10 +10449,10 @@ func encodeReposGetDeployKeyResponse(response ReposGetDeployKeyRes, w http.Respo
 	case *DeployKey:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10457,10 +10461,10 @@ func encodeReposGetDeployKeyResponse(response ReposGetDeployKeyRes, w http.Respo
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10476,10 +10480,10 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 	case *DeploymentStatus:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10488,10 +10492,10 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10500,10 +10504,10 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10517,10 +10521,10 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 func encodeReposGetLatestPagesBuildResponse(response PageBuild, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -10531,10 +10535,10 @@ func encodeReposGetLatestPagesBuildResponse(response PageBuild, w http.ResponseW
 func encodeReposGetLatestReleaseResponse(response Release, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -10547,10 +10551,10 @@ func encodeReposGetPagesResponse(response ReposGetPagesRes, w http.ResponseWrite
 	case *Page:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10559,10 +10563,10 @@ func encodeReposGetPagesResponse(response ReposGetPagesRes, w http.ResponseWrite
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10576,10 +10580,10 @@ func encodeReposGetPagesResponse(response ReposGetPagesRes, w http.ResponseWrite
 func encodeReposGetPagesBuildResponse(response PageBuild, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -10592,10 +10596,10 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 	case *PagesHealthCheck:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10604,10 +10608,10 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 	case *EmptyObject:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10619,10 +10623,10 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10641,10 +10645,10 @@ func encodeReposGetParticipationStatsResponse(response ReposGetParticipationStat
 	case *ParticipationStats:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10653,10 +10657,10 @@ func encodeReposGetParticipationStatsResponse(response ReposGetParticipationStat
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10670,10 +10674,10 @@ func encodeReposGetParticipationStatsResponse(response ReposGetParticipationStat
 func encodeReposGetPullRequestReviewProtectionResponse(response ProtectedBranchPullRequestReview, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -10686,8 +10690,8 @@ func encodeReposGetPunchCardStatsResponse(response ReposGetPunchCardStatsRes, w 
 	case *ReposGetPunchCardStatsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10707,10 +10711,10 @@ func encodeReposGetReleaseResponse(response ReposGetReleaseRes, w http.ResponseW
 	case *Release:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10719,10 +10723,10 @@ func encodeReposGetReleaseResponse(response ReposGetReleaseRes, w http.ResponseW
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10738,10 +10742,10 @@ func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http
 	case *ReleaseAsset:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10753,10 +10757,10 @@ func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10765,10 +10769,10 @@ func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10784,10 +10788,10 @@ func encodeReposGetReleaseByTagResponse(response ReposGetReleaseByTagRes, w http
 	case *Release:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10796,10 +10800,10 @@ func encodeReposGetReleaseByTagResponse(response ReposGetReleaseByTagRes, w http
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10815,10 +10819,10 @@ func encodeReposGetStatusChecksProtectionResponse(response ReposGetStatusChecksP
 	case *StatusCheckPolicy:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10827,10 +10831,10 @@ func encodeReposGetStatusChecksProtectionResponse(response ReposGetStatusChecksP
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10846,8 +10850,8 @@ func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTea
 	case *ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10857,10 +10861,10 @@ func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTea
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10876,8 +10880,8 @@ func encodeReposGetTopPathsResponse(response ReposGetTopPathsRes, w http.Respons
 	case *ReposGetTopPathsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10887,10 +10891,10 @@ func encodeReposGetTopPathsResponse(response ReposGetTopPathsRes, w http.Respons
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10906,8 +10910,8 @@ func encodeReposGetTopReferrersResponse(response ReposGetTopReferrersRes, w http
 	case *ReposGetTopReferrersOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10917,10 +10921,10 @@ func encodeReposGetTopReferrersResponse(response ReposGetTopReferrersRes, w http
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10936,8 +10940,8 @@ func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUse
 	case *ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -10947,10 +10951,10 @@ func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUse
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10966,10 +10970,10 @@ func encodeReposGetViewsResponse(response ReposGetViewsRes, w http.ResponseWrite
 	case *ViewTraffic:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10978,10 +10982,10 @@ func encodeReposGetViewsResponse(response ReposGetViewsRes, w http.ResponseWrite
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10997,10 +11001,10 @@ func encodeReposGetWebhookResponse(response ReposGetWebhookRes, w http.ResponseW
 	case *Hook:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11009,10 +11013,10 @@ func encodeReposGetWebhookResponse(response ReposGetWebhookRes, w http.ResponseW
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11026,10 +11030,10 @@ func encodeReposGetWebhookResponse(response ReposGetWebhookRes, w http.ResponseW
 func encodeReposGetWebhookConfigForRepoResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -11040,12 +11044,12 @@ func encodeReposGetWebhookConfigForRepoResponse(response WebhookConfig, w http.R
 func encodeReposListAutolinksResponse(response []Autolink, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -11060,8 +11064,8 @@ func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.Respo
 	case *ReposListBranchesOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11071,10 +11075,10 @@ func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.Respo
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11090,8 +11094,8 @@ func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w 
 	case *ReposListCollaboratorsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11101,10 +11105,10 @@ func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11118,12 +11122,12 @@ func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w 
 func encodeReposListCommentsForCommitResponse(response []CommitComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -11136,12 +11140,12 @@ func encodeReposListCommentsForCommitResponse(response []CommitComment, w http.R
 func encodeReposListCommitCommentsForRepoResponse(response []CommitComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -11156,8 +11160,8 @@ func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatuse
 	case *ReposListCommitStatusesForRefOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11167,10 +11171,10 @@ func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatuse
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(301)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11186,8 +11190,8 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 	case *ReposListCommitsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11197,8 +11201,8 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 	case *ReposListCommitsApplicationJSONBadRequest:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11208,8 +11212,8 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 	case *ReposListCommitsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11219,8 +11223,8 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 	case *ReposListCommitsApplicationJSONConflict:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11230,8 +11234,8 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 	case *ReposListCommitsApplicationJSONInternalServerError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11248,8 +11252,8 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 	case *ReposListContributorsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11262,8 +11266,8 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 	case *ReposListContributorsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11273,8 +11277,8 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 	case *ReposListContributorsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11289,12 +11293,12 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 func encodeReposListDeployKeysResponse(response []DeployKey, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -11309,8 +11313,8 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 	case *ReposListDeploymentStatusesOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11320,10 +11324,10 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11337,12 +11341,12 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 func encodeReposListForOrgResponse(response []MinimalRepository, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -11355,12 +11359,12 @@ func encodeReposListForOrgResponse(response []MinimalRepository, w http.Response
 func encodeReposListForUserResponse(response []MinimalRepository, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -11375,8 +11379,8 @@ func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWri
 	case *ReposListForksOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11386,10 +11390,10 @@ func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWri
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11403,12 +11407,12 @@ func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWri
 func encodeReposListInvitationsResponse(response []RepositoryInvitation, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -11423,8 +11427,8 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 	case *ReposListInvitationsForAuthenticatedUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11437,8 +11441,8 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 	case *ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11448,8 +11452,8 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 	case *ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11459,8 +11463,8 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 	case *ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11475,10 +11479,10 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 func encodeReposListLanguagesResponse(response Language, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -11489,12 +11493,12 @@ func encodeReposListLanguagesResponse(response Language, w http.ResponseWriter, 
 func encodeReposListPagesBuildsResponse(response []PageBuild, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -11507,12 +11511,12 @@ func encodeReposListPagesBuildsResponse(response []PageBuild, w http.ResponseWri
 func encodeReposListPullRequestsAssociatedWithCommitResponse(response []PullRequestSimple, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -11525,12 +11529,12 @@ func encodeReposListPullRequestsAssociatedWithCommitResponse(response []PullRequ
 func encodeReposListReleaseAssetsResponse(response []ReleaseAsset, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -11545,8 +11549,8 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 	case *ReposListReleasesOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11556,10 +11560,10 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11573,12 +11577,12 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 func encodeReposListTagsResponse(response []Tag, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -11591,12 +11595,12 @@ func encodeReposListTagsResponse(response []Tag, w http.ResponseWriter, span tra
 func encodeReposListTeamsResponse(response []Team, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -11611,8 +11615,8 @@ func encodeReposListWebhooksResponse(response ReposListWebhooksRes, w http.Respo
 	case *ReposListWebhooksOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11622,10 +11626,10 @@ func encodeReposListWebhooksResponse(response ReposListWebhooksRes, w http.Respo
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11641,10 +11645,10 @@ func encodeReposMergeUpstreamResponse(response ReposMergeUpstreamRes, w http.Res
 	case *MergedUpstream:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11669,10 +11673,10 @@ func encodeReposPingWebhookResponse(response ReposPingWebhookRes, w http.Respons
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11698,10 +11702,10 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 	case *Topic:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11710,10 +11714,10 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11722,10 +11726,10 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11734,10 +11738,10 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11751,10 +11755,10 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 func encodeReposRequestPagesBuildResponse(response PageBuildStatus, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -11765,10 +11769,10 @@ func encodeReposRequestPagesBuildResponse(response PageBuildStatus, w http.Respo
 func encodeReposSetAdminBranchProtectionResponse(response ProtectedBranchAdminEnforced, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -11784,10 +11788,10 @@ func encodeReposTestPushWebhookResponse(response ReposTestPushWebhookRes, w http
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11801,10 +11805,10 @@ func encodeReposTestPushWebhookResponse(response ReposTestPushWebhookRes, w http
 func encodeReposTransferResponse(response MinimalRepository, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(202)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -11817,10 +11821,10 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 	case *ProtectedBranch:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11829,8 +11833,8 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 	case *ReposUpdateBranchProtectionApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11840,8 +11844,8 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 	case *ReposUpdateBranchProtectionApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11851,10 +11855,10 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11870,10 +11874,10 @@ func encodeReposUpdateCommitCommentResponse(response ReposUpdateCommitCommentRes
 	case *CommitComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11882,10 +11886,10 @@ func encodeReposUpdateCommitCommentResponse(response ReposUpdateCommitCommentRes
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11899,10 +11903,10 @@ func encodeReposUpdateCommitCommentResponse(response ReposUpdateCommitCommentRes
 func encodeReposUpdateInvitationResponse(response RepositoryInvitation, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -11915,10 +11919,10 @@ func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseRes, w http.Res
 	case *Release:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11927,10 +11931,10 @@ func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseRes, w http.Res
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11944,10 +11948,10 @@ func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseRes, w http.Res
 func encodeReposUpdateReleaseAssetResponse(response ReleaseAsset, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -11958,10 +11962,10 @@ func encodeReposUpdateReleaseAssetResponse(response ReleaseAsset, w http.Respons
 func encodeReposUpdateWebhookConfigForRepoResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -11980,8 +11984,8 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w ht
 	case *ScimDeleteUserFromOrgApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -11991,8 +11995,8 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w ht
 	case *ScimDeleteUserFromOrgApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12009,10 +12013,10 @@ func encodeSearchCommitsResponse(response SearchCommitsRes, w http.ResponseWrite
 	case *SearchCommitsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12024,10 +12028,10 @@ func encodeSearchCommitsResponse(response SearchCommitsRes, w http.ResponseWrite
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12043,10 +12047,10 @@ func encodeSearchTopicsResponse(response SearchTopicsRes, w http.ResponseWriter,
 	case *SearchTopicsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12058,10 +12062,10 @@ func encodeSearchTopicsResponse(response SearchTopicsRes, w http.ResponseWriter,
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12077,10 +12081,10 @@ func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertRes, w 
 	case *SecretScanningAlert:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12092,10 +12096,10 @@ func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertRes, w 
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12111,8 +12115,8 @@ func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAle
 	case *SecretScanningListAlertsForOrgOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12122,10 +12126,10 @@ func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAle
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12134,10 +12138,10 @@ func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAle
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12153,8 +12157,8 @@ func encodeSecretScanningListAlertsForRepoResponse(response SecretScanningListAl
 	case *SecretScanningListAlertsForRepoOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12167,10 +12171,10 @@ func encodeSecretScanningListAlertsForRepoResponse(response SecretScanningListAl
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12186,10 +12190,10 @@ func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertR
 	case *SecretScanningAlert:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12204,10 +12208,10 @@ func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertR
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12226,10 +12230,10 @@ func encodeTeamsAddMemberLegacyResponse(response TeamsAddMemberLegacyRes, w http
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12251,10 +12255,10 @@ func encodeTeamsAddOrUpdateMembershipForUserInOrgResponse(response TeamsAddOrUpd
 	case *TeamMembership:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12276,10 +12280,10 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUp
 	case *TeamMembership:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12291,10 +12295,10 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUp
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12316,10 +12320,10 @@ func encodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(response TeamsAddOrUp
 	case *TeamsAddOrUpdateProjectPermissionsInOrgForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12340,10 +12344,10 @@ func encodeTeamsCheckPermissionsForProjectInOrgResponse(response TeamsCheckPermi
 	case *TeamProject:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12362,10 +12366,10 @@ func encodeTeamsCheckPermissionsForProjectLegacyResponse(response TeamsCheckPerm
 	case *TeamProject:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12384,10 +12388,10 @@ func encodeTeamsCheckPermissionsForRepoInOrgResponse(response TeamsCheckPermissi
 	case *TeamRepository:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12409,10 +12413,10 @@ func encodeTeamsCheckPermissionsForRepoLegacyResponse(response TeamsCheckPermiss
 	case *TeamRepository:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12432,10 +12436,10 @@ func encodeTeamsCheckPermissionsForRepoLegacyResponse(response TeamsCheckPermiss
 func encodeTeamsCreateDiscussionCommentInOrgResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -12446,10 +12450,10 @@ func encodeTeamsCreateDiscussionCommentInOrgResponse(response TeamDiscussionComm
 func encodeTeamsCreateDiscussionCommentLegacyResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -12460,10 +12464,10 @@ func encodeTeamsCreateDiscussionCommentLegacyResponse(response TeamDiscussionCom
 func encodeTeamsCreateDiscussionInOrgResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -12474,10 +12478,10 @@ func encodeTeamsCreateDiscussionInOrgResponse(response TeamDiscussion, w http.Re
 func encodeTeamsCreateDiscussionLegacyResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -12488,10 +12492,10 @@ func encodeTeamsCreateDiscussionLegacyResponse(response TeamDiscussion, w http.R
 func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(response GroupMapping, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -12529,10 +12533,10 @@ func encodeTeamsGetByNameResponse(response TeamsGetByNameRes, w http.ResponseWri
 	case *TeamFull:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12541,10 +12545,10 @@ func encodeTeamsGetByNameResponse(response TeamsGetByNameRes, w http.ResponseWri
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12558,10 +12562,10 @@ func encodeTeamsGetByNameResponse(response TeamsGetByNameRes, w http.ResponseWri
 func encodeTeamsGetDiscussionCommentInOrgResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -12572,10 +12576,10 @@ func encodeTeamsGetDiscussionCommentInOrgResponse(response TeamDiscussionComment
 func encodeTeamsGetDiscussionCommentLegacyResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -12586,10 +12590,10 @@ func encodeTeamsGetDiscussionCommentLegacyResponse(response TeamDiscussionCommen
 func encodeTeamsGetDiscussionInOrgResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -12600,10 +12604,10 @@ func encodeTeamsGetDiscussionInOrgResponse(response TeamDiscussion, w http.Respo
 func encodeTeamsGetDiscussionLegacyResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -12616,10 +12620,10 @@ func encodeTeamsGetLegacyResponse(response TeamsGetLegacyRes, w http.ResponseWri
 	case *TeamFull:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12628,10 +12632,10 @@ func encodeTeamsGetLegacyResponse(response TeamsGetLegacyRes, w http.ResponseWri
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12660,10 +12664,10 @@ func encodeTeamsGetMembershipForUserInOrgResponse(response TeamsGetMembershipFor
 	case *TeamMembership:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12682,10 +12686,10 @@ func encodeTeamsGetMembershipForUserLegacyResponse(response TeamsGetMembershipFo
 	case *TeamMembership:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12694,10 +12698,10 @@ func encodeTeamsGetMembershipForUserLegacyResponse(response TeamsGetMembershipFo
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12713,8 +12717,8 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span 
 	case *TeamsListOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12724,10 +12728,10 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12741,12 +12745,12 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span 
 func encodeTeamsListChildInOrgResponse(response []Team, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -12759,12 +12763,12 @@ func encodeTeamsListChildInOrgResponse(response []Team, w http.ResponseWriter, s
 func encodeTeamsListDiscussionCommentsInOrgResponse(response []TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -12777,12 +12781,12 @@ func encodeTeamsListDiscussionCommentsInOrgResponse(response []TeamDiscussionCom
 func encodeTeamsListDiscussionCommentsLegacyResponse(response []TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -12795,12 +12799,12 @@ func encodeTeamsListDiscussionCommentsLegacyResponse(response []TeamDiscussionCo
 func encodeTeamsListDiscussionsInOrgResponse(response []TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -12813,12 +12817,12 @@ func encodeTeamsListDiscussionsInOrgResponse(response []TeamDiscussion, w http.R
 func encodeTeamsListDiscussionsLegacyResponse(response []TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -12833,8 +12837,8 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 	case *TeamsListForAuthenticatedUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12847,8 +12851,8 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 	case *TeamsListForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12858,8 +12862,8 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 	case *TeamsListForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12876,10 +12880,10 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 	case *GroupMapping:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12888,8 +12892,8 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 	case *TeamsListIdpGroupsForLegacyApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12899,8 +12903,8 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 	case *TeamsListIdpGroupsForLegacyApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12915,10 +12919,10 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 func encodeTeamsListIdpGroupsForOrgResponse(response GroupMapping, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -12929,10 +12933,10 @@ func encodeTeamsListIdpGroupsForOrgResponse(response GroupMapping, w http.Respon
 func encodeTeamsListIdpGroupsInOrgResponse(response GroupMapping, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -12943,12 +12947,12 @@ func encodeTeamsListIdpGroupsInOrgResponse(response GroupMapping, w http.Respons
 func encodeTeamsListMembersInOrgResponse(response []SimpleUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -12963,8 +12967,8 @@ func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w 
 	case *TeamsListMembersLegacyOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -12974,10 +12978,10 @@ func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12991,12 +12995,12 @@ func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w 
 func encodeTeamsListPendingInvitationsInOrgResponse(response []OrganizationInvitation, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -13009,12 +13013,12 @@ func encodeTeamsListPendingInvitationsInOrgResponse(response []OrganizationInvit
 func encodeTeamsListPendingInvitationsLegacyResponse(response []OrganizationInvitation, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -13027,12 +13031,12 @@ func encodeTeamsListPendingInvitationsLegacyResponse(response []OrganizationInvi
 func encodeTeamsListProjectsInOrgResponse(response []TeamProject, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -13047,8 +13051,8 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 	case *TeamsListProjectsLegacyOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13058,10 +13062,10 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13075,12 +13079,12 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 func encodeTeamsListReposInOrgResponse(response []MinimalRepository, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -13095,8 +13099,8 @@ func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, w http
 	case *TeamsListReposLegacyOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13106,10 +13110,10 @@ func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, w http
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13177,10 +13181,10 @@ func encodeTeamsRemoveRepoLegacyResponse(response TeamsRemoveRepoLegacyNoContent
 func encodeTeamsUpdateDiscussionCommentInOrgResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -13191,10 +13195,10 @@ func encodeTeamsUpdateDiscussionCommentInOrgResponse(response TeamDiscussionComm
 func encodeTeamsUpdateDiscussionCommentLegacyResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -13205,10 +13209,10 @@ func encodeTeamsUpdateDiscussionCommentLegacyResponse(response TeamDiscussionCom
 func encodeTeamsUpdateDiscussionInOrgResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -13219,10 +13223,10 @@ func encodeTeamsUpdateDiscussionInOrgResponse(response TeamDiscussion, w http.Re
 func encodeTeamsUpdateDiscussionLegacyResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -13233,10 +13237,10 @@ func encodeTeamsUpdateDiscussionLegacyResponse(response TeamDiscussion, w http.R
 func encodeTeamsUpdateInOrgResponse(response TeamFull, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -13255,8 +13259,8 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 	case *UsersCheckBlockedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13266,8 +13270,8 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 	case *UsersCheckBlockedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13277,8 +13281,8 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 	case *UsersCheckBlockedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13314,8 +13318,8 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 	case *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13325,8 +13329,8 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 	case *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13336,8 +13340,8 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 	case *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13360,8 +13364,8 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 	case *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13371,8 +13375,8 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 	case *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13382,8 +13386,8 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 	case *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13406,8 +13410,8 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 	case *UsersFollowApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13417,8 +13421,8 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 	case *UsersFollowApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13428,8 +13432,8 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 	case *UsersFollowApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13446,10 +13450,10 @@ func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedRes, w ht
 	case *UsersGetAuthenticatedOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13461,8 +13465,8 @@ func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedRes, w ht
 	case *UsersGetAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13472,8 +13476,8 @@ func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedRes, w ht
 	case *UsersGetAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13490,10 +13494,10 @@ func encodeUsersGetByUsernameResponse(response UsersGetByUsernameRes, w http.Res
 	case *UsersGetByUsernameOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13502,10 +13506,10 @@ func encodeUsersGetByUsernameResponse(response UsersGetByUsernameRes, w http.Res
 	case *Accepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13514,10 +13518,10 @@ func encodeUsersGetByUsernameResponse(response UsersGetByUsernameRes, w http.Res
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13533,10 +13537,10 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 	case *GpgKey:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13548,8 +13552,8 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 	case *UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13559,8 +13563,8 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 	case *UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13570,8 +13574,8 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 	case *UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13588,10 +13592,10 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 	case *Key:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13603,8 +13607,8 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 	case *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13614,8 +13618,8 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 	case *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13625,8 +13629,8 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 	case *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13643,8 +13647,8 @@ func encodeUsersListResponse(response UsersListRes, w http.ResponseWriter, span 
 	case *UsersListOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13664,8 +13668,8 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 	case *UsersListBlockedByAuthenticatedOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13678,8 +13682,8 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 	case *UsersListBlockedByAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13689,8 +13693,8 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 	case *UsersListBlockedByAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13700,8 +13704,8 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 	case *UsersListBlockedByAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13711,10 +13715,10 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13730,8 +13734,8 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 	case *UsersListEmailsForAuthenticatedOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13744,8 +13748,8 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 	case *UsersListEmailsForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13755,8 +13759,8 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 	case *UsersListEmailsForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13766,8 +13770,8 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 	case *UsersListEmailsForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13784,8 +13788,8 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 	case *UsersListFollowedByAuthenticatedOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13798,8 +13802,8 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 	case *UsersListFollowedByAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13809,8 +13813,8 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 	case *UsersListFollowedByAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13827,8 +13831,8 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 	case *UsersListFollowersForAuthenticatedUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13841,8 +13845,8 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 	case *UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13852,8 +13856,8 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 	case *UsersListFollowersForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13868,12 +13872,12 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 func encodeUsersListFollowersForUserResponse(response []SimpleUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -13886,12 +13890,12 @@ func encodeUsersListFollowersForUserResponse(response []SimpleUser, w http.Respo
 func encodeUsersListFollowingForUserResponse(response []SimpleUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -13906,8 +13910,8 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 	case *UsersListGpgKeysForAuthenticatedOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13920,8 +13924,8 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 	case *UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13931,8 +13935,8 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 	case *UsersListGpgKeysForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13942,8 +13946,8 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 	case *UsersListGpgKeysForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13958,12 +13962,12 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 func encodeUsersListGpgKeysForUserResponse(response []GpgKey, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -13978,8 +13982,8 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 	case *UsersListPublicEmailsForAuthenticatedOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -13992,8 +13996,8 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 	case *UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14003,8 +14007,8 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 	case *UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14014,8 +14018,8 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 	case *UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14030,12 +14034,12 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 func encodeUsersListPublicKeysForUserResponse(response []KeySimple, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.WriteJSON(e)
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -14050,8 +14054,8 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 	case *UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14064,8 +14068,8 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 	case *UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14075,8 +14079,8 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 	case *UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14086,8 +14090,8 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 	case *UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14110,8 +14114,8 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter,
 	case *UsersUnblockApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14121,8 +14125,8 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter,
 	case *UsersUnblockApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14132,8 +14136,8 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter,
 	case *UsersUnblockApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14156,8 +14160,8 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 	case *UsersUnfollowApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14167,8 +14171,8 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 	case *UsersUnfollowApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -14178,8 +14182,8 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 	case *UsersUnfollowApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")

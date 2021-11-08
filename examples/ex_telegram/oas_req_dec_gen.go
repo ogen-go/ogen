@@ -15,10 +15,12 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -58,22 +60,24 @@ var (
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
 	_ = regexp.MustCompile
+	_ = jx.Null
+	_ = sync.Pool{}
 )
 
 func decodeAnswerCallbackQueryPostRequest(r *http.Request, span trace.Span) (req AnswerCallbackQueryPostReqApplicationJSON, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request AnswerCallbackQueryPostReqApplicationJSON
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -90,16 +94,16 @@ func decodeAnswerPreCheckoutQueryPostRequest(r *http.Request, span trace.Span) (
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request AnswerPreCheckoutQueryPostReqApplicationJSON
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -116,16 +120,16 @@ func decodeAnswerShippingQueryPostRequest(r *http.Request, span trace.Span) (req
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request AnswerShippingQueryPostReqApplicationJSON
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -150,16 +154,16 @@ func decodeDeleteStickerFromSetPostRequest(r *http.Request, span trace.Span) (re
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request DeleteStickerFromSetPostReqApplicationJSON
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -176,16 +180,16 @@ func decodeDeleteWebhookPostRequest(r *http.Request, span trace.Span) (req Delet
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request DeleteWebhookPostReqApplicationJSON
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -202,16 +206,16 @@ func decodeGetFilePostRequest(r *http.Request, span trace.Span) (req GetFilePost
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request GetFilePostReqApplicationJSON
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -228,16 +232,16 @@ func decodeGetGameHighScoresPostRequest(r *http.Request, span trace.Span) (req G
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request GetGameHighScoresPostReqApplicationJSON
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -254,16 +258,16 @@ func decodeGetStickerSetPostRequest(r *http.Request, span trace.Span) (req GetSt
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request GetStickerSetPostReqApplicationJSON
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -280,16 +284,16 @@ func decodeGetUpdatesPostRequest(r *http.Request, span trace.Span) (req GetUpdat
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request GetUpdatesPostReqApplicationJSON
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -314,16 +318,16 @@ func decodeGetUserProfilePhotosPostRequest(r *http.Request, span trace.Span) (re
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request GetUserProfilePhotosPostReqApplicationJSON
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -348,16 +352,16 @@ func decodeSendGamePostRequest(r *http.Request, span trace.Span) (req SendGamePo
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request SendGamePostReqApplicationJSON
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -382,16 +386,16 @@ func decodeSendInvoicePostRequest(r *http.Request, span trace.Span) (req SendInv
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request SendInvoicePostReqApplicationJSON
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -416,16 +420,16 @@ func decodeSetMyCommandsPostRequest(r *http.Request, span trace.Span) (req SetMy
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request SetMyCommandsPostReqApplicationJSON
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -450,16 +454,16 @@ func decodeSetStickerPositionInSetPostRequest(r *http.Request, span trace.Span) 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request SetStickerPositionInSetPostReqApplicationJSON
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil

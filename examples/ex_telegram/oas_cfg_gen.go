@@ -15,10 +15,12 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -58,7 +60,27 @@ var (
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
 	_ = regexp.MustCompile
+	_ = jx.Null
+	_ = sync.Pool{}
 )
+
+// bufPool is pool of bytes.Buffer for encoding and decoding.
+var bufPool = &sync.Pool{
+	New: func() interface{} {
+		return new(bytes.Buffer)
+	},
+}
+
+// getBuf returns buffer from pool.
+func getBuf() *bytes.Buffer {
+	return bufPool.Get().(*bytes.Buffer)
+}
+
+// putBuf puts buffer to pool.
+func putBuf(b *bytes.Buffer) {
+	b.Reset()
+	bufPool.Put(b)
+}
 
 type config struct {
 	TracerProvider trace.TracerProvider

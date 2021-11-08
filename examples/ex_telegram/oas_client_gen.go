@@ -15,10 +15,12 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -58,6 +60,8 @@ var (
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
 	_ = regexp.MustCompile
+	_ = jx.Null
+	_ = sync.Pool{}
 )
 
 // Client implements OAS client.
@@ -116,7 +120,7 @@ func (c *Client) AnswerCallbackQueryPost(ctx context.Context, request AnswerCall
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -166,7 +170,7 @@ func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, request AnswerP
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -224,7 +228,7 @@ func (c *Client) AnswerShippingQueryPost(ctx context.Context, request AnswerShip
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -310,7 +314,7 @@ func (c *Client) DeleteStickerFromSetPost(ctx context.Context, request DeleteSti
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -360,7 +364,7 @@ func (c *Client) DeleteWebhookPost(ctx context.Context, request DeleteWebhookPos
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -410,7 +414,7 @@ func (c *Client) GetFilePost(ctx context.Context, request GetFilePostReqApplicat
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -460,7 +464,7 @@ func (c *Client) GetGameHighScoresPost(ctx context.Context, request GetGameHighS
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -582,7 +586,7 @@ func (c *Client) GetStickerSetPost(ctx context.Context, request GetStickerSetPos
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -640,7 +644,7 @@ func (c *Client) GetUpdatesPost(ctx context.Context, request GetUpdatesPostReqAp
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -698,7 +702,7 @@ func (c *Client) GetUserProfilePhotosPost(ctx context.Context, request GetUserPr
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -828,7 +832,7 @@ func (c *Client) SendGamePost(ctx context.Context, request SendGamePostReqApplic
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -886,7 +890,7 @@ func (c *Client) SendInvoicePost(ctx context.Context, request SendInvoicePostReq
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -944,7 +948,7 @@ func (c *Client) SetMyCommandsPost(ctx context.Context, request SetMyCommandsPos
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -994,7 +998,7 @@ func (c *Client) SetStickerPositionInSetPost(ctx context.Context, request SetSti
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)

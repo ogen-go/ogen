@@ -15,10 +15,12 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -58,16 +60,18 @@ var (
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
 	_ = regexp.MustCompile
+	_ = jx.Null
+	_ = sync.Pool{}
 )
 
 func encodeFoobarPostRequestJSON(req Pet, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -75,13 +79,13 @@ func encodeFoobarPostRequestJSON(req Pet, span trace.Span) (data *bytes.Buffer, 
 }
 
 func encodePetCreateRequestJSON(req Pet, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -89,12 +93,12 @@ func encodePetCreateRequestJSON(req Pet, span trace.Span) (data *bytes.Buffer, e
 }
 
 func encodePetUpdateNameAliasPostRequestJSON(req PetName, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 	// Unsupported kind "alias".
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -102,13 +106,13 @@ func encodePetUpdateNameAliasPostRequestJSON(req PetName, span trace.Span) (data
 }
 
 func encodePetUpdateNamePostRequestJSON(req string, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.Str(req)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 

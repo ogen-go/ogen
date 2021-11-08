@@ -15,10 +15,12 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -58,6 +60,8 @@ var (
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
 	_ = regexp.MustCompile
+	_ = jx.Null
+	_ = sync.Pool{}
 )
 
 // Client implements OAS client.
@@ -126,7 +130,7 @@ func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParam
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -186,7 +190,7 @@ func (c *Client) CreateSyncAction(ctx context.Context, request InstanceActionInf
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -428,7 +432,7 @@ func (c *Client) LoadSnapshot(ctx context.Context, request SnapshotLoadParams) (
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -478,7 +482,7 @@ func (c *Client) MmdsConfigPut(ctx context.Context, request MmdsConfig) (res Mmd
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -564,7 +568,7 @@ func (c *Client) MmdsPatch(ctx context.Context, request MmdsPatchReq) (res MmdsP
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -614,7 +618,7 @@ func (c *Client) MmdsPut(ctx context.Context, request MmdsPutReq) (res MmdsPutRe
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -666,7 +670,7 @@ func (c *Client) PatchBalloon(ctx context.Context, request BalloonUpdate) (res P
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -718,7 +722,7 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request BalloonS
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -778,7 +782,7 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, 
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -852,7 +856,7 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request Par
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -926,7 +930,7 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, request MachineC
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -986,7 +990,7 @@ func (c *Client) PatchVm(ctx context.Context, request VM) (res PatchVmRes, err e
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -1038,7 +1042,7 @@ func (c *Client) PutBalloon(ctx context.Context, request Balloon) (res PutBalloo
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -1090,7 +1094,7 @@ func (c *Client) PutGuestBootSource(ctx context.Context, request BootSource) (re
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -1150,7 +1154,7 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params Pu
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -1224,7 +1228,7 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request Netwo
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -1298,7 +1302,7 @@ func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuest
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -1358,7 +1362,7 @@ func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRe
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -1418,7 +1422,7 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, request MachineCon
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -1470,7 +1474,7 @@ func (c *Client) PutMetrics(ctx context.Context, request Metrics) (res PutMetric
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)

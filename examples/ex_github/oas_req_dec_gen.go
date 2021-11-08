@@ -15,10 +15,12 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -58,22 +60,24 @@ var (
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
 	_ = regexp.MustCompile
+	_ = jx.Null
+	_ = sync.Pool{}
 )
 
 func decodeActionsCreateOrUpdateEnvironmentSecretRequest(r *http.Request, span trace.Span) (req ActionsCreateOrUpdateEnvironmentSecretReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActionsCreateOrUpdateEnvironmentSecretReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -98,16 +102,16 @@ func decodeActionsCreateOrUpdateOrgSecretRequest(r *http.Request, span trace.Spa
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActionsCreateOrUpdateOrgSecretReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -132,16 +136,16 @@ func decodeActionsCreateOrUpdateRepoSecretRequest(r *http.Request, span trace.Sp
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActionsCreateOrUpdateRepoSecretReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -166,16 +170,16 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r *http.Request, span
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActionsCreateSelfHostedRunnerGroupForOrgReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -200,16 +204,16 @@ func decodeActionsSetAllowedActionsOrganizationRequest(r *http.Request, span tra
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request SelectedActions
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -226,16 +230,16 @@ func decodeActionsSetAllowedActionsRepositoryRequest(r *http.Request, span trace
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request SelectedActions
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -252,16 +256,16 @@ func decodeActionsSetGithubActionsPermissionsOrganizationRequest(r *http.Request
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActionsSetGithubActionsPermissionsOrganizationReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -286,16 +290,16 @@ func decodeActionsSetGithubActionsPermissionsRepositoryRequest(r *http.Request, 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActionsSetGithubActionsPermissionsRepositoryReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -320,16 +324,16 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r *http.Reque
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -354,16 +358,16 @@ func decodeActionsSetSelectedReposForOrgSecretRequest(r *http.Request, span trac
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActionsSetSelectedReposForOrgSecretReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -388,16 +392,16 @@ func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -422,16 +426,16 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r *http.Request, span
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActionsSetSelfHostedRunnersInGroupForOrgReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -456,16 +460,16 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r *http.Request, span
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActionsUpdateSelfHostedRunnerGroupForOrgReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -490,16 +494,16 @@ func decodeActivityMarkNotificationsAsReadRequest(r *http.Request, span trace.Sp
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActivityMarkNotificationsAsReadReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -516,16 +520,16 @@ func decodeActivityMarkRepoNotificationsAsReadRequest(r *http.Request, span trac
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActivityMarkRepoNotificationsAsReadReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -542,16 +546,16 @@ func decodeActivitySetRepoSubscriptionRequest(r *http.Request, span trace.Span) 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActivitySetRepoSubscriptionReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -568,16 +572,16 @@ func decodeActivitySetThreadSubscriptionRequest(r *http.Request, span trace.Span
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActivitySetThreadSubscriptionReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -594,16 +598,16 @@ func decodeAppsUpdateWebhookConfigForAppRequest(r *http.Request, span trace.Span
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request AppsUpdateWebhookConfigForAppReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -620,16 +624,16 @@ func decodeChecksCreateSuiteRequest(r *http.Request, span trace.Span) (req Check
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ChecksCreateSuiteReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -646,16 +650,16 @@ func decodeChecksSetSuitesPreferencesRequest(r *http.Request, span trace.Span) (
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ChecksSetSuitesPreferencesReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -672,16 +676,16 @@ func decodeCodeScanningUpdateAlertRequest(r *http.Request, span trace.Span) (req
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request CodeScanningUpdateAlertReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -706,16 +710,16 @@ func decodeCodeScanningUploadSarifRequest(r *http.Request, span trace.Span) (req
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request CodeScanningUploadSarifReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -740,16 +744,16 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(r *htt
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -774,16 +778,16 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r *http.Reque
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request EnterpriseAdminProvisionAndInviteEnterpriseGroupReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -808,16 +812,16 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r *http.Reques
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request EnterpriseAdminProvisionAndInviteEnterpriseUserReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -842,16 +846,16 @@ func decodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(r *http.Request, sp
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request SelectedActions
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -868,16 +872,16 @@ func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(r *http.R
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -902,16 +906,16 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(r *
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -936,16 +940,16 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(r *h
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -970,16 +974,16 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1004,16 +1008,16 @@ func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1038,16 +1042,16 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(r *htt
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1072,16 +1076,16 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r *http.Reques
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request EnterpriseAdminUpdateAttributeForEnterpriseUserReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1106,16 +1110,16 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(r *htt
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1140,16 +1144,16 @@ func decodeGistsCreateCommentRequest(r *http.Request, span trace.Span) (req Gist
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request GistsCreateCommentReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1174,16 +1178,16 @@ func decodeGistsUpdateCommentRequest(r *http.Request, span trace.Span) (req Gist
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request GistsUpdateCommentReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1208,16 +1212,16 @@ func decodeInteractionsSetRestrictionsForRepoRequest(r *http.Request, span trace
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request InteractionLimit
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1242,16 +1246,16 @@ func decodeIssuesAddAssigneesRequest(r *http.Request, span trace.Span) (req Issu
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request IssuesAddAssigneesReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1268,16 +1272,16 @@ func decodeIssuesRemoveAssigneesRequest(r *http.Request, span trace.Span) (req I
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request IssuesRemoveAssigneesReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1294,16 +1298,16 @@ func decodeIssuesUpdateLabelRequest(r *http.Request, span trace.Span) (req Issue
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request IssuesUpdateLabelReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1320,16 +1324,16 @@ func decodeIssuesUpdateMilestoneRequest(r *http.Request, span trace.Span) (req I
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request IssuesUpdateMilestoneReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1354,16 +1358,16 @@ func decodeMigrationsUpdateImportRequest(r *http.Request, span trace.Span) (req 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request MigrationsUpdateImportReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1380,16 +1384,16 @@ func decodeOrgsUpdateWebhookConfigForOrgRequest(r *http.Request, span trace.Span
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request OrgsUpdateWebhookConfigForOrgReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1406,16 +1410,16 @@ func decodeProjectsCreateColumnRequest(r *http.Request, span trace.Span) (req Pr
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ProjectsCreateColumnReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1432,16 +1436,16 @@ func decodeProjectsCreateForAuthenticatedUserRequest(r *http.Request, span trace
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ProjectsCreateForAuthenticatedUserReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1458,16 +1462,16 @@ func decodeProjectsCreateForOrgRequest(r *http.Request, span trace.Span) (req Pr
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ProjectsCreateForOrgReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1484,16 +1488,16 @@ func decodeProjectsCreateForRepoRequest(r *http.Request, span trace.Span) (req P
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ProjectsCreateForRepoReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1510,16 +1514,16 @@ func decodeProjectsMoveColumnRequest(r *http.Request, span trace.Span) (req Proj
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ProjectsMoveColumnReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1544,16 +1548,16 @@ func decodeProjectsUpdateRequest(r *http.Request, span trace.Span) (req Projects
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ProjectsUpdateReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1578,16 +1582,16 @@ func decodeProjectsUpdateCardRequest(r *http.Request, span trace.Span) (req Proj
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ProjectsUpdateCardReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1604,16 +1608,16 @@ func decodeProjectsUpdateColumnRequest(r *http.Request, span trace.Span) (req Pr
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ProjectsUpdateColumnReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1630,16 +1634,16 @@ func decodePullsCreateReplyForReviewCommentRequest(r *http.Request, span trace.S
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request PullsCreateReplyForReviewCommentReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1656,16 +1660,16 @@ func decodePullsCreateReviewRequest(r *http.Request, span trace.Span) (req Pulls
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request PullsCreateReviewReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1690,16 +1694,16 @@ func decodePullsDismissReviewRequest(r *http.Request, span trace.Span) (req Pull
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request PullsDismissReviewReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1716,16 +1720,16 @@ func decodePullsSubmitReviewRequest(r *http.Request, span trace.Span) (req Pulls
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request PullsSubmitReviewReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1750,16 +1754,16 @@ func decodePullsUpdateReviewRequest(r *http.Request, span trace.Span) (req Pulls
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request PullsUpdateReviewReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1776,16 +1780,16 @@ func decodePullsUpdateReviewCommentRequest(r *http.Request, span trace.Span) (re
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request PullsUpdateReviewCommentReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1802,16 +1806,16 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r *http.Request, 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReactionsCreateForTeamDiscussionCommentInOrgReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1836,16 +1840,16 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r *http.Request,
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReactionsCreateForTeamDiscussionCommentLegacyReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1870,16 +1874,16 @@ func decodeReactionsCreateForTeamDiscussionInOrgRequest(r *http.Request, span tr
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReactionsCreateForTeamDiscussionInOrgReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1904,16 +1908,16 @@ func decodeReactionsCreateForTeamDiscussionLegacyRequest(r *http.Request, span t
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReactionsCreateForTeamDiscussionLegacyReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1938,16 +1942,16 @@ func decodeReposCreateCommitStatusRequest(r *http.Request, span trace.Span) (req
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReposCreateCommitStatusReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1972,16 +1976,16 @@ func decodeReposCreateUsingTemplateRequest(r *http.Request, span trace.Span) (re
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReposCreateUsingTemplateReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -1998,16 +2002,16 @@ func decodeReposMergeUpstreamRequest(r *http.Request, span trace.Span) (req Repo
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReposMergeUpstreamReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -2024,16 +2028,16 @@ func decodeReposReplaceAllTopicsRequest(r *http.Request, span trace.Span) (req R
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReposReplaceAllTopicsReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -2058,16 +2062,16 @@ func decodeReposTransferRequest(r *http.Request, span trace.Span) (req ReposTran
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReposTransferReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -2084,16 +2088,16 @@ func decodeReposUpdateBranchProtectionRequest(r *http.Request, span trace.Span) 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReposUpdateBranchProtectionReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -2118,16 +2122,16 @@ func decodeReposUpdateCommitCommentRequest(r *http.Request, span trace.Span) (re
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReposUpdateCommitCommentReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -2144,16 +2148,16 @@ func decodeReposUpdateInvitationRequest(r *http.Request, span trace.Span) (req R
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReposUpdateInvitationReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -2178,16 +2182,16 @@ func decodeReposUpdateReleaseRequest(r *http.Request, span trace.Span) (req Repo
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReposUpdateReleaseReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -2204,16 +2208,16 @@ func decodeReposUpdateReleaseAssetRequest(r *http.Request, span trace.Span) (req
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReposUpdateReleaseAssetReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -2230,16 +2234,16 @@ func decodeReposUpdateWebhookConfigForRepoRequest(r *http.Request, span trace.Sp
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReposUpdateWebhookConfigForRepoReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -2256,16 +2260,16 @@ func decodeSecretScanningUpdateAlertRequest(r *http.Request, span trace.Span) (r
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request SecretScanningUpdateAlertReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -2290,16 +2294,16 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r *http.Request, span t
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsAddOrUpdateMembershipForUserInOrgReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -2324,16 +2328,16 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Request, span 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsAddOrUpdateMembershipForUserLegacyReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -2358,16 +2362,16 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Request, span 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsAddOrUpdateProjectPermissionsInOrgReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -2392,16 +2396,16 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r *http.Request, span tra
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsAddOrUpdateRepoPermissionsInOrgReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -2426,16 +2430,16 @@ func decodeTeamsCreateDiscussionCommentInOrgRequest(r *http.Request, span trace.
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsCreateDiscussionCommentInOrgReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -2452,16 +2456,16 @@ func decodeTeamsCreateDiscussionCommentLegacyRequest(r *http.Request, span trace
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsCreateDiscussionCommentLegacyReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -2478,16 +2482,16 @@ func decodeTeamsCreateDiscussionInOrgRequest(r *http.Request, span trace.Span) (
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsCreateDiscussionInOrgReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -2504,16 +2508,16 @@ func decodeTeamsCreateDiscussionLegacyRequest(r *http.Request, span trace.Span) 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsCreateDiscussionLegacyReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -2530,16 +2534,16 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(r *http.Request, s
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -2556,16 +2560,16 @@ func decodeTeamsUpdateDiscussionCommentInOrgRequest(r *http.Request, span trace.
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsUpdateDiscussionCommentInOrgReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -2582,16 +2586,16 @@ func decodeTeamsUpdateDiscussionCommentLegacyRequest(r *http.Request, span trace
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsUpdateDiscussionCommentLegacyReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -2608,16 +2612,16 @@ func decodeTeamsUpdateDiscussionInOrgRequest(r *http.Request, span trace.Span) (
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsUpdateDiscussionInOrgReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -2634,16 +2638,16 @@ func decodeTeamsUpdateDiscussionLegacyRequest(r *http.Request, span trace.Span) 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsUpdateDiscussionLegacyReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -2660,16 +2664,16 @@ func decodeTeamsUpdateInOrgRequest(r *http.Request, span trace.Span) (req TeamsU
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsUpdateInOrgReq
-		buf := json.GetBuffer()
-		defer json.PutBuffer(buf)
+		buf := getBuf()
+		defer putBuf(buf)
 		if _, err := io.Copy(buf, r.Body); err != nil {
 			return req, err
 		}
-		d := json.GetDecoder()
-		defer json.PutDecoder(d)
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			if err := request.ReadJSON(d); err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil

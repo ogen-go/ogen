@@ -15,10 +15,12 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -58,6 +60,8 @@ var (
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
 	_ = regexp.MustCompile
+	_ = jx.Null
+	_ = sync.Pool{}
 )
 
 func decodeCachingResponse(resp *http.Response, span trace.Span) (res WorldObjects, err error) {
@@ -65,14 +69,14 @@ func decodeCachingResponse(resp *http.Response, span trace.Span) (res WorldObjec
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
+			buf := getBuf()
+			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := json.GetDecoder()
-			defer json.PutDecoder(d)
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
 			var response WorldObjects
@@ -97,19 +101,19 @@ func decodeDBResponse(resp *http.Response, span trace.Span) (res WorldObject, er
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
+			buf := getBuf()
+			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := json.GetDecoder()
-			defer json.PutDecoder(d)
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
 			var response WorldObject
 			if err := func() error {
-				if err := response.ReadJSON(d); err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -131,19 +135,19 @@ func decodeJSONResponse(resp *http.Response, span trace.Span) (res HelloWorld, e
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
+			buf := getBuf()
+			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := json.GetDecoder()
-			defer json.PutDecoder(d)
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
 			var response HelloWorld
 			if err := func() error {
-				if err := response.ReadJSON(d); err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -165,14 +169,14 @@ func decodeQueriesResponse(resp *http.Response, span trace.Span) (res WorldObjec
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
+			buf := getBuf()
+			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := json.GetDecoder()
-			defer json.PutDecoder(d)
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
 			var response WorldObjects
@@ -197,14 +201,14 @@ func decodeUpdatesResponse(resp *http.Response, span trace.Span) (res WorldObjec
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
+			buf := getBuf()
+			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := json.GetDecoder()
-			defer json.PutDecoder(d)
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
 			var response WorldObjects

@@ -15,10 +15,12 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -58,6 +60,8 @@ var (
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
 	_ = regexp.MustCompile
+	_ = jx.Null
+	_ = sync.Pool{}
 )
 
 // Client implements OAS client.
@@ -538,7 +542,7 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -642,7 +646,7 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request Act
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -731,7 +735,7 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request Ac
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -1077,7 +1081,7 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -5669,7 +5673,7 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -5736,7 +5740,7 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -5826,7 +5830,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -5901,7 +5905,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -5991,7 +5995,7 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -6081,7 +6085,7 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -6171,7 +6175,7 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -6246,7 +6250,7 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -6336,7 +6340,7 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -8173,7 +8177,7 @@ func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request Ac
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -8225,7 +8229,7 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -8359,7 +8363,7 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request Activi
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -8441,7 +8445,7 @@ func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request Acti
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -9777,7 +9781,7 @@ func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request Apps
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -10306,7 +10310,7 @@ func (c *Client) ChecksCreateSuite(ctx context.Context, request ChecksCreateSuit
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -11251,7 +11255,7 @@ func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request ChecksS
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -12186,7 +12190,7 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanni
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -12293,7 +12297,7 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanni
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -12781,7 +12785,7 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -14566,7 +14570,7 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Co
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -14641,7 +14645,7 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -14872,7 +14876,7 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -14947,7 +14951,7 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -15022,7 +15026,7 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -15111,7 +15115,7 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -15200,7 +15204,7 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -15290,7 +15294,7 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -15365,7 +15369,7 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -15455,7 +15459,7 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -15544,7 +15548,7 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -15686,7 +15690,7 @@ func (c *Client) GistsCreateComment(ctx context.Context, request GistsCreateComm
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -16547,7 +16551,7 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateComm
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -17248,7 +17252,7 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -17330,7 +17334,7 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, request IssuesAddAssign
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -18893,7 +18897,7 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, request IssuesRemove
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -19170,7 +19174,7 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request IssuesUpdateLabe
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -19274,7 +19278,7 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request IssuesUpdate
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -20882,7 +20886,7 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, request MigrationsU
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -23595,7 +23599,7 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request Orgs
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -25837,7 +25841,7 @@ func (c *Client) ProjectsCreateColumn(ctx context.Context, request ProjectsCreat
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -25904,7 +25908,7 @@ func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -25956,7 +25960,7 @@ func (c *Client) ProjectsCreateForOrg(ctx context.Context, request ProjectsCreat
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -26023,7 +26027,7 @@ func (c *Client) ProjectsCreateForRepo(ctx context.Context, request ProjectsCrea
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -26840,7 +26844,7 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveCol
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -26915,7 +26919,7 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request ProjectsUpdateReq, 
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -26981,7 +26985,7 @@ func (c *Client) ProjectsUpdateCard(ctx context.Context, request ProjectsUpdateC
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -27047,7 +27051,7 @@ func (c *Client) ProjectsUpdateColumn(ctx context.Context, request ProjectsUpdat
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -27196,7 +27200,7 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -27316,7 +27320,7 @@ func (c *Client) PullsCreateReview(ctx context.Context, request PullsCreateRevie
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -27592,7 +27596,7 @@ func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissRev
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -28777,7 +28781,7 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -28889,7 +28893,7 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateRevie
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -29000,7 +29004,7 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpda
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -29142,7 +29146,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -29262,7 +29266,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -29367,7 +29371,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -29472,7 +29476,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -31685,7 +31689,7 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreat
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -31781,7 +31785,7 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCrea
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -39389,7 +39393,7 @@ func (c *Client) ReposMergeUpstream(ctx context.Context, request ReposMergeUpstr
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -39727,7 +39731,7 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplace
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -40043,7 +40047,7 @@ func (c *Client) ReposTransfer(ctx context.Context, request ReposTransferReq, pa
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -40133,7 +40137,7 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposU
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -40230,7 +40234,7 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpda
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -40334,7 +40338,7 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request ReposUpdateI
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -40430,7 +40434,7 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request ReposUpdateRele
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -40526,7 +40530,7 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request ReposUpdat
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -40622,7 +40626,7 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Re
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -41338,7 +41342,7 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -41512,7 +41516,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -41616,7 +41620,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -41705,7 +41709,7 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -41809,7 +41813,7 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -42248,7 +42252,7 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -42345,7 +42349,7 @@ func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -42427,7 +42431,7 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request TeamsCr
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -42509,7 +42513,7 @@ func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request TeamsC
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -42576,7 +42580,7 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -45954,7 +45958,7 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -46065,7 +46069,7 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -46161,7 +46165,7 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request TeamsUp
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -46257,7 +46261,7 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request TeamsU
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -46346,7 +46350,7 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request TeamsUpdateInOrgR
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)

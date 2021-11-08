@@ -15,10 +15,12 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -58,6 +60,8 @@ var (
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
 	_ = regexp.MustCompile
+	_ = jx.Null
+	_ = sync.Pool{}
 )
 
 func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter, span trace.Span) error {
@@ -65,10 +69,10 @@ func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter, span 
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -87,10 +91,10 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -102,10 +106,10 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -124,10 +128,10 @@ func encodeFoobarPutResponse(response FoobarPutDefStatusCode, w http.ResponseWri
 func encodePetCreateResponse(response Pet, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -138,8 +142,8 @@ func encodePetCreateResponse(response Pet, w http.ResponseWriter, span trace.Spa
 func encodePetFriendsNamesByIDResponse(response []string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -158,10 +162,10 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -170,10 +174,10 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.
 	case *PetGetDefStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -200,10 +204,10 @@ func encodePetGetAvatarByIDResponse(response PetGetAvatarByIDRes, w http.Respons
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -217,10 +221,10 @@ func encodePetGetAvatarByIDResponse(response PetGetAvatarByIDRes, w http.Respons
 func encodePetGetByNameResponse(response Pet, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -231,8 +235,8 @@ func encodePetGetByNameResponse(response Pet, w http.ResponseWriter, span trace.
 func encodePetNameByIDResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.Str(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -263,10 +267,10 @@ func encodePetUploadAvatarByIDResponse(response PetUploadAvatarByIDRes, w http.R
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}

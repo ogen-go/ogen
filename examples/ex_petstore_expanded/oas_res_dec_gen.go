@@ -15,10 +15,12 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -58,6 +60,8 @@ var (
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
 	_ = regexp.MustCompile
+	_ = jx.Null
+	_ = sync.Pool{}
 )
 
 func decodeDeletePetResponse(resp *http.Response, span trace.Span) (res DeletePetRes, err error) {
@@ -67,19 +71,19 @@ func decodeDeletePetResponse(resp *http.Response, span trace.Span) (res DeletePe
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
+			buf := getBuf()
+			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := json.GetDecoder()
-			defer json.PutDecoder(d)
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
 			var response ErrorStatusCode
 			if err := func() error {
-				if err := response.ReadJSON(d); err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil

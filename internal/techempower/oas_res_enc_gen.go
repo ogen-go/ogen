@@ -15,10 +15,12 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -58,13 +60,15 @@ var (
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
 	_ = regexp.MustCompile
+	_ = jx.Null
+	_ = sync.Pool{}
 )
 
 func encodeCachingResponse(response WorldObjects, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 	// Unsupported kind "alias".
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -76,10 +80,10 @@ func encodeCachingResponse(response WorldObjects, w http.ResponseWriter, span tr
 func encodeDBResponse(response WorldObject, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -90,10 +94,10 @@ func encodeDBResponse(response WorldObject, w http.ResponseWriter, span trace.Sp
 func encodeJSONResponse(response HelloWorld, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	response.WriteJSON(e)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -104,8 +108,8 @@ func encodeJSONResponse(response HelloWorld, w http.ResponseWriter, span trace.S
 func encodeQueriesResponse(response WorldObjects, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 	// Unsupported kind "alias".
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
@@ -117,8 +121,8 @@ func encodeQueriesResponse(response WorldObjects, w http.ResponseWriter, span tr
 func encodeUpdatesResponse(response WorldObjects, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 	// Unsupported kind "alias".
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")

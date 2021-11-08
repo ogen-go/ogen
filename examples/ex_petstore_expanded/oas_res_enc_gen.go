@@ -15,10 +15,12 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -58,6 +60,8 @@ var (
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
 	_ = regexp.MustCompile
+	_ = jx.Null
+	_ = sync.Pool{}
 )
 
 func encodeDeletePetResponse(response DeletePetRes, w http.ResponseWriter, span trace.Span) error {
@@ -68,10 +72,10 @@ func encodeDeletePetResponse(response DeletePetRes, w http.ResponseWriter, span 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}

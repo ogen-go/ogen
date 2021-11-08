@@ -15,10 +15,12 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -58,6 +60,8 @@ var (
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
 	_ = regexp.MustCompile
+	_ = jx.Null
+	_ = sync.Pool{}
 )
 
 func encodeCreateSnapshotResponse(response CreateSnapshotRes, w http.ResponseWriter, span trace.Span) error {
@@ -68,10 +72,10 @@ func encodeCreateSnapshotResponse(response CreateSnapshotRes, w http.ResponseWri
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -80,10 +84,10 @@ func encodeCreateSnapshotResponse(response CreateSnapshotRes, w http.ResponseWri
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -102,10 +106,10 @@ func encodeCreateSyncActionResponse(response CreateSyncActionRes, w http.Respons
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -114,10 +118,10 @@ func encodeCreateSyncActionResponse(response CreateSyncActionRes, w http.Respons
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -133,10 +137,10 @@ func encodeDescribeBalloonConfigResponse(response DescribeBalloonConfigRes, w ht
 	case *Balloon:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -145,10 +149,10 @@ func encodeDescribeBalloonConfigResponse(response DescribeBalloonConfigRes, w ht
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -157,10 +161,10 @@ func encodeDescribeBalloonConfigResponse(response DescribeBalloonConfigRes, w ht
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -176,10 +180,10 @@ func encodeDescribeBalloonStatsResponse(response DescribeBalloonStatsRes, w http
 	case *BalloonStats:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -188,10 +192,10 @@ func encodeDescribeBalloonStatsResponse(response DescribeBalloonStatsRes, w http
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -200,10 +204,10 @@ func encodeDescribeBalloonStatsResponse(response DescribeBalloonStatsRes, w http
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -219,10 +223,10 @@ func encodeDescribeInstanceResponse(response DescribeInstanceRes, w http.Respons
 	case *InstanceInfo:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -231,10 +235,10 @@ func encodeDescribeInstanceResponse(response DescribeInstanceRes, w http.Respons
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -250,10 +254,10 @@ func encodeGetExportVmConfigResponse(response GetExportVmConfigRes, w http.Respo
 	case *FullVmConfiguration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -262,10 +266,10 @@ func encodeGetExportVmConfigResponse(response GetExportVmConfigRes, w http.Respo
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -281,10 +285,10 @@ func encodeGetMachineConfigurationResponse(response GetMachineConfigurationRes, 
 	case *MachineConfiguration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -293,10 +297,10 @@ func encodeGetMachineConfigurationResponse(response GetMachineConfigurationRes, 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -315,10 +319,10 @@ func encodeLoadSnapshotResponse(response LoadSnapshotRes, w http.ResponseWriter,
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -327,10 +331,10 @@ func encodeLoadSnapshotResponse(response LoadSnapshotRes, w http.ResponseWriter,
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -349,10 +353,10 @@ func encodeMmdsConfigPutResponse(response MmdsConfigPutRes, w http.ResponseWrite
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -361,10 +365,10 @@ func encodeMmdsConfigPutResponse(response MmdsConfigPutRes, w http.ResponseWrite
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -380,10 +384,10 @@ func encodeMmdsGetResponse(response MmdsGetRes, w http.ResponseWriter, span trac
 	case *MmdsGetOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -392,10 +396,10 @@ func encodeMmdsGetResponse(response MmdsGetRes, w http.ResponseWriter, span trac
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -404,10 +408,10 @@ func encodeMmdsGetResponse(response MmdsGetRes, w http.ResponseWriter, span trac
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -426,10 +430,10 @@ func encodeMmdsPatchResponse(response MmdsPatchRes, w http.ResponseWriter, span 
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -438,10 +442,10 @@ func encodeMmdsPatchResponse(response MmdsPatchRes, w http.ResponseWriter, span 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -460,10 +464,10 @@ func encodeMmdsPutResponse(response MmdsPutRes, w http.ResponseWriter, span trac
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -472,10 +476,10 @@ func encodeMmdsPutResponse(response MmdsPutRes, w http.ResponseWriter, span trac
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -494,10 +498,10 @@ func encodePatchBalloonResponse(response PatchBalloonRes, w http.ResponseWriter,
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -506,10 +510,10 @@ func encodePatchBalloonResponse(response PatchBalloonRes, w http.ResponseWriter,
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -528,10 +532,10 @@ func encodePatchBalloonStatsIntervalResponse(response PatchBalloonStatsIntervalR
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -540,10 +544,10 @@ func encodePatchBalloonStatsIntervalResponse(response PatchBalloonStatsIntervalR
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -562,10 +566,10 @@ func encodePatchGuestDriveByIDResponse(response PatchGuestDriveByIDRes, w http.R
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -574,10 +578,10 @@ func encodePatchGuestDriveByIDResponse(response PatchGuestDriveByIDRes, w http.R
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -596,10 +600,10 @@ func encodePatchGuestNetworkInterfaceByIDResponse(response PatchGuestNetworkInte
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -608,10 +612,10 @@ func encodePatchGuestNetworkInterfaceByIDResponse(response PatchGuestNetworkInte
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -630,10 +634,10 @@ func encodePatchMachineConfigurationResponse(response PatchMachineConfigurationR
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -642,10 +646,10 @@ func encodePatchMachineConfigurationResponse(response PatchMachineConfigurationR
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -664,10 +668,10 @@ func encodePatchVmResponse(response PatchVmRes, w http.ResponseWriter, span trac
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -676,10 +680,10 @@ func encodePatchVmResponse(response PatchVmRes, w http.ResponseWriter, span trac
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -698,10 +702,10 @@ func encodePutBalloonResponse(response PutBalloonRes, w http.ResponseWriter, spa
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -710,10 +714,10 @@ func encodePutBalloonResponse(response PutBalloonRes, w http.ResponseWriter, spa
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -732,10 +736,10 @@ func encodePutGuestBootSourceResponse(response PutGuestBootSourceRes, w http.Res
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -744,10 +748,10 @@ func encodePutGuestBootSourceResponse(response PutGuestBootSourceRes, w http.Res
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -766,10 +770,10 @@ func encodePutGuestDriveByIDResponse(response PutGuestDriveByIDRes, w http.Respo
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -778,10 +782,10 @@ func encodePutGuestDriveByIDResponse(response PutGuestDriveByIDRes, w http.Respo
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -800,10 +804,10 @@ func encodePutGuestNetworkInterfaceByIDResponse(response PutGuestNetworkInterfac
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -812,10 +816,10 @@ func encodePutGuestNetworkInterfaceByIDResponse(response PutGuestNetworkInterfac
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -834,10 +838,10 @@ func encodePutGuestVsockResponse(response PutGuestVsockRes, w http.ResponseWrite
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -846,10 +850,10 @@ func encodePutGuestVsockResponse(response PutGuestVsockRes, w http.ResponseWrite
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -868,10 +872,10 @@ func encodePutLoggerResponse(response PutLoggerRes, w http.ResponseWriter, span 
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -880,10 +884,10 @@ func encodePutLoggerResponse(response PutLoggerRes, w http.ResponseWriter, span 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -902,10 +906,10 @@ func encodePutMachineConfigurationResponse(response PutMachineConfigurationRes, 
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -914,10 +918,10 @@ func encodePutMachineConfigurationResponse(response PutMachineConfigurationRes, 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -936,10 +940,10 @@ func encodePutMetricsResponse(response PutMetricsRes, w http.ResponseWriter, spa
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -948,10 +952,10 @@ func encodePutMetricsResponse(response PutMetricsRes, w http.ResponseWriter, spa
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.Response.WriteJSON(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}

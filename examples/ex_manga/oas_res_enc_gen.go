@@ -15,10 +15,12 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -58,6 +60,8 @@ var (
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
 	_ = regexp.MustCompile
+	_ = jx.Null
+	_ = sync.Pool{}
 )
 
 func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter, span trace.Span) error {
@@ -65,10 +69,10 @@ func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter, span trac
 	case *Book:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-		response.WriteJSON(e)
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -141,8 +145,8 @@ func encodeSearchResponse(response SearchRes, w http.ResponseWriter, span trace.
 	case *SearchOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -162,8 +166,8 @@ func encodeSearchByTagIDResponse(response SearchByTagIDRes, w http.ResponseWrite
 	case *SearchByTagIDOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := json.GetEncoder()
-		defer json.PutEncoder(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 		// Unsupported kind "alias".
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")

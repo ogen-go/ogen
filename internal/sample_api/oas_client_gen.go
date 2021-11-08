@@ -15,10 +15,12 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -58,6 +60,8 @@ var (
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
 	_ = regexp.MustCompile
+	_ = jx.Null
+	_ = sync.Pool{}
 )
 
 // Client implements OAS client.
@@ -193,7 +197,7 @@ func (c *Client) FoobarPost(ctx context.Context, request Pet) (res FoobarPostRes
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -289,7 +293,7 @@ func (c *Client) PetCreate(ctx context.Context, request Pet) (res Pet, err error
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -680,7 +684,7 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request PetName) (r
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
@@ -746,7 +750,7 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request string) (res Pet
 	if err != nil {
 		return res, err
 	}
-	defer json.PutBuffer(buf)
+	defer putBuf(buf)
 	reqBody = buf
 
 	u := uri.Clone(c.serverURL)

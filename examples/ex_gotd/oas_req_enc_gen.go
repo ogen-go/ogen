@@ -15,10 +15,12 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -58,16 +60,18 @@ var (
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
 	_ = regexp.MustCompile
+	_ = jx.Null
+	_ = sync.Pool{}
 )
 
 func encodeAddStickerToSetRequestJSON(req AddStickerToSet, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -75,13 +79,13 @@ func encodeAddStickerToSetRequestJSON(req AddStickerToSet, span trace.Span) (dat
 }
 
 func encodeAnswerCallbackQueryRequestJSON(req AnswerCallbackQuery, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -89,13 +93,13 @@ func encodeAnswerCallbackQueryRequestJSON(req AnswerCallbackQuery, span trace.Sp
 }
 
 func encodeAnswerInlineQueryRequestJSON(req AnswerInlineQuery, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -103,13 +107,13 @@ func encodeAnswerInlineQueryRequestJSON(req AnswerInlineQuery, span trace.Span) 
 }
 
 func encodeAnswerPreCheckoutQueryRequestJSON(req AnswerPreCheckoutQuery, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -117,13 +121,13 @@ func encodeAnswerPreCheckoutQueryRequestJSON(req AnswerPreCheckoutQuery, span tr
 }
 
 func encodeAnswerShippingQueryRequestJSON(req AnswerShippingQuery, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -131,13 +135,13 @@ func encodeAnswerShippingQueryRequestJSON(req AnswerShippingQuery, span trace.Sp
 }
 
 func encodeBanChatMemberRequestJSON(req BanChatMember, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -145,13 +149,13 @@ func encodeBanChatMemberRequestJSON(req BanChatMember, span trace.Span) (data *b
 }
 
 func encodeCopyMessageRequestJSON(req CopyMessage, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -159,13 +163,13 @@ func encodeCopyMessageRequestJSON(req CopyMessage, span trace.Span) (data *bytes
 }
 
 func encodeCreateChatInviteLinkRequestJSON(req CreateChatInviteLink, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -173,13 +177,13 @@ func encodeCreateChatInviteLinkRequestJSON(req CreateChatInviteLink, span trace.
 }
 
 func encodeCreateNewStickerSetRequestJSON(req CreateNewStickerSet, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -187,13 +191,13 @@ func encodeCreateNewStickerSetRequestJSON(req CreateNewStickerSet, span trace.Sp
 }
 
 func encodeDeleteChatPhotoRequestJSON(req DeleteChatPhoto, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -201,13 +205,13 @@ func encodeDeleteChatPhotoRequestJSON(req DeleteChatPhoto, span trace.Span) (dat
 }
 
 func encodeDeleteChatStickerSetRequestJSON(req DeleteChatStickerSet, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -215,13 +219,13 @@ func encodeDeleteChatStickerSetRequestJSON(req DeleteChatStickerSet, span trace.
 }
 
 func encodeDeleteMessageRequestJSON(req DeleteMessage, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -229,13 +233,13 @@ func encodeDeleteMessageRequestJSON(req DeleteMessage, span trace.Span) (data *b
 }
 
 func encodeDeleteMyCommandsRequestJSON(req DeleteMyCommands, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -243,13 +247,13 @@ func encodeDeleteMyCommandsRequestJSON(req DeleteMyCommands, span trace.Span) (d
 }
 
 func encodeDeleteStickerFromSetRequestJSON(req DeleteStickerFromSet, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -257,13 +261,13 @@ func encodeDeleteStickerFromSetRequestJSON(req DeleteStickerFromSet, span trace.
 }
 
 func encodeDeleteWebhookRequestJSON(req DeleteWebhook, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -271,13 +275,13 @@ func encodeDeleteWebhookRequestJSON(req DeleteWebhook, span trace.Span) (data *b
 }
 
 func encodeEditChatInviteLinkRequestJSON(req EditChatInviteLink, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -285,13 +289,13 @@ func encodeEditChatInviteLinkRequestJSON(req EditChatInviteLink, span trace.Span
 }
 
 func encodeEditMessageCaptionRequestJSON(req EditMessageCaption, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -299,13 +303,13 @@ func encodeEditMessageCaptionRequestJSON(req EditMessageCaption, span trace.Span
 }
 
 func encodeEditMessageLiveLocationRequestJSON(req EditMessageLiveLocation, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -313,13 +317,13 @@ func encodeEditMessageLiveLocationRequestJSON(req EditMessageLiveLocation, span 
 }
 
 func encodeEditMessageMediaRequestJSON(req EditMessageMedia, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -327,13 +331,13 @@ func encodeEditMessageMediaRequestJSON(req EditMessageMedia, span trace.Span) (d
 }
 
 func encodeEditMessageReplyMarkupRequestJSON(req EditMessageReplyMarkup, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -341,13 +345,13 @@ func encodeEditMessageReplyMarkupRequestJSON(req EditMessageReplyMarkup, span tr
 }
 
 func encodeEditMessageTextRequestJSON(req EditMessageText, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -355,13 +359,13 @@ func encodeEditMessageTextRequestJSON(req EditMessageText, span trace.Span) (dat
 }
 
 func encodeExportChatInviteLinkRequestJSON(req ExportChatInviteLink, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -369,13 +373,13 @@ func encodeExportChatInviteLinkRequestJSON(req ExportChatInviteLink, span trace.
 }
 
 func encodeForwardMessageRequestJSON(req ForwardMessage, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -383,13 +387,13 @@ func encodeForwardMessageRequestJSON(req ForwardMessage, span trace.Span) (data 
 }
 
 func encodeGetChatRequestJSON(req GetChat, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -397,13 +401,13 @@ func encodeGetChatRequestJSON(req GetChat, span trace.Span) (data *bytes.Buffer,
 }
 
 func encodeGetChatAdministratorsRequestJSON(req GetChatAdministrators, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -411,13 +415,13 @@ func encodeGetChatAdministratorsRequestJSON(req GetChatAdministrators, span trac
 }
 
 func encodeGetChatMemberRequestJSON(req GetChatMember, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -425,13 +429,13 @@ func encodeGetChatMemberRequestJSON(req GetChatMember, span trace.Span) (data *b
 }
 
 func encodeGetChatMemberCountRequestJSON(req GetChatMemberCount, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -439,13 +443,13 @@ func encodeGetChatMemberCountRequestJSON(req GetChatMemberCount, span trace.Span
 }
 
 func encodeGetFileRequestJSON(req GetFile, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -453,13 +457,13 @@ func encodeGetFileRequestJSON(req GetFile, span trace.Span) (data *bytes.Buffer,
 }
 
 func encodeGetGameHighScoresRequestJSON(req GetGameHighScores, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -467,13 +471,13 @@ func encodeGetGameHighScoresRequestJSON(req GetGameHighScores, span trace.Span) 
 }
 
 func encodeGetMyCommandsRequestJSON(req GetMyCommands, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -481,13 +485,13 @@ func encodeGetMyCommandsRequestJSON(req GetMyCommands, span trace.Span) (data *b
 }
 
 func encodeGetStickerSetRequestJSON(req GetStickerSet, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -495,13 +499,13 @@ func encodeGetStickerSetRequestJSON(req GetStickerSet, span trace.Span) (data *b
 }
 
 func encodeGetUpdatesRequestJSON(req GetUpdates, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -509,13 +513,13 @@ func encodeGetUpdatesRequestJSON(req GetUpdates, span trace.Span) (data *bytes.B
 }
 
 func encodeGetUserProfilePhotosRequestJSON(req GetUserProfilePhotos, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -523,13 +527,13 @@ func encodeGetUserProfilePhotosRequestJSON(req GetUserProfilePhotos, span trace.
 }
 
 func encodeLeaveChatRequestJSON(req LeaveChat, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -537,13 +541,13 @@ func encodeLeaveChatRequestJSON(req LeaveChat, span trace.Span) (data *bytes.Buf
 }
 
 func encodePinChatMessageRequestJSON(req PinChatMessage, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -551,13 +555,13 @@ func encodePinChatMessageRequestJSON(req PinChatMessage, span trace.Span) (data 
 }
 
 func encodePromoteChatMemberRequestJSON(req PromoteChatMember, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -565,13 +569,13 @@ func encodePromoteChatMemberRequestJSON(req PromoteChatMember, span trace.Span) 
 }
 
 func encodeRestrictChatMemberRequestJSON(req RestrictChatMember, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -579,13 +583,13 @@ func encodeRestrictChatMemberRequestJSON(req RestrictChatMember, span trace.Span
 }
 
 func encodeRevokeChatInviteLinkRequestJSON(req RevokeChatInviteLink, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -593,13 +597,13 @@ func encodeRevokeChatInviteLinkRequestJSON(req RevokeChatInviteLink, span trace.
 }
 
 func encodeSendAnimationRequestJSON(req SendAnimation, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -607,13 +611,13 @@ func encodeSendAnimationRequestJSON(req SendAnimation, span trace.Span) (data *b
 }
 
 func encodeSendAudioRequestJSON(req SendAudio, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -621,13 +625,13 @@ func encodeSendAudioRequestJSON(req SendAudio, span trace.Span) (data *bytes.Buf
 }
 
 func encodeSendChatActionRequestJSON(req SendChatAction, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -635,13 +639,13 @@ func encodeSendChatActionRequestJSON(req SendChatAction, span trace.Span) (data 
 }
 
 func encodeSendContactRequestJSON(req SendContact, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -649,13 +653,13 @@ func encodeSendContactRequestJSON(req SendContact, span trace.Span) (data *bytes
 }
 
 func encodeSendDiceRequestJSON(req SendDice, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -663,13 +667,13 @@ func encodeSendDiceRequestJSON(req SendDice, span trace.Span) (data *bytes.Buffe
 }
 
 func encodeSendDocumentRequestJSON(req SendDocument, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -677,13 +681,13 @@ func encodeSendDocumentRequestJSON(req SendDocument, span trace.Span) (data *byt
 }
 
 func encodeSendGameRequestJSON(req SendGame, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -691,13 +695,13 @@ func encodeSendGameRequestJSON(req SendGame, span trace.Span) (data *bytes.Buffe
 }
 
 func encodeSendInvoiceRequestJSON(req SendInvoice, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -705,13 +709,13 @@ func encodeSendInvoiceRequestJSON(req SendInvoice, span trace.Span) (data *bytes
 }
 
 func encodeSendLocationRequestJSON(req SendLocation, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -719,13 +723,13 @@ func encodeSendLocationRequestJSON(req SendLocation, span trace.Span) (data *byt
 }
 
 func encodeSendMediaGroupRequestJSON(req SendMediaGroup, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -733,13 +737,13 @@ func encodeSendMediaGroupRequestJSON(req SendMediaGroup, span trace.Span) (data 
 }
 
 func encodeSendMessageRequestJSON(req SendMessage, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -747,13 +751,13 @@ func encodeSendMessageRequestJSON(req SendMessage, span trace.Span) (data *bytes
 }
 
 func encodeSendPhotoRequestJSON(req SendPhoto, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -761,13 +765,13 @@ func encodeSendPhotoRequestJSON(req SendPhoto, span trace.Span) (data *bytes.Buf
 }
 
 func encodeSendPollRequestJSON(req SendPoll, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -775,13 +779,13 @@ func encodeSendPollRequestJSON(req SendPoll, span trace.Span) (data *bytes.Buffe
 }
 
 func encodeSendStickerRequestJSON(req SendSticker, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -789,13 +793,13 @@ func encodeSendStickerRequestJSON(req SendSticker, span trace.Span) (data *bytes
 }
 
 func encodeSendVenueRequestJSON(req SendVenue, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -803,13 +807,13 @@ func encodeSendVenueRequestJSON(req SendVenue, span trace.Span) (data *bytes.Buf
 }
 
 func encodeSendVideoRequestJSON(req SendVideo, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -817,13 +821,13 @@ func encodeSendVideoRequestJSON(req SendVideo, span trace.Span) (data *bytes.Buf
 }
 
 func encodeSendVideoNoteRequestJSON(req SendVideoNote, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -831,13 +835,13 @@ func encodeSendVideoNoteRequestJSON(req SendVideoNote, span trace.Span) (data *b
 }
 
 func encodeSendVoiceRequestJSON(req SendVoice, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -845,13 +849,13 @@ func encodeSendVoiceRequestJSON(req SendVoice, span trace.Span) (data *bytes.Buf
 }
 
 func encodeSetChatAdministratorCustomTitleRequestJSON(req SetChatAdministratorCustomTitle, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -859,13 +863,13 @@ func encodeSetChatAdministratorCustomTitleRequestJSON(req SetChatAdministratorCu
 }
 
 func encodeSetChatDescriptionRequestJSON(req SetChatDescription, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -873,13 +877,13 @@ func encodeSetChatDescriptionRequestJSON(req SetChatDescription, span trace.Span
 }
 
 func encodeSetChatPermissionsRequestJSON(req SetChatPermissions, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -887,13 +891,13 @@ func encodeSetChatPermissionsRequestJSON(req SetChatPermissions, span trace.Span
 }
 
 func encodeSetChatPhotoRequestJSON(req SetChatPhoto, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -901,13 +905,13 @@ func encodeSetChatPhotoRequestJSON(req SetChatPhoto, span trace.Span) (data *byt
 }
 
 func encodeSetChatStickerSetRequestJSON(req SetChatStickerSet, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -915,13 +919,13 @@ func encodeSetChatStickerSetRequestJSON(req SetChatStickerSet, span trace.Span) 
 }
 
 func encodeSetChatTitleRequestJSON(req SetChatTitle, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -929,13 +933,13 @@ func encodeSetChatTitleRequestJSON(req SetChatTitle, span trace.Span) (data *byt
 }
 
 func encodeSetGameScoreRequestJSON(req SetGameScore, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -943,13 +947,13 @@ func encodeSetGameScoreRequestJSON(req SetGameScore, span trace.Span) (data *byt
 }
 
 func encodeSetMyCommandsRequestJSON(req SetMyCommands, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -957,13 +961,13 @@ func encodeSetMyCommandsRequestJSON(req SetMyCommands, span trace.Span) (data *b
 }
 
 func encodeSetPassportDataErrorsRequestJSON(req SetPassportDataErrors, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -971,13 +975,13 @@ func encodeSetPassportDataErrorsRequestJSON(req SetPassportDataErrors, span trac
 }
 
 func encodeSetStickerPositionInSetRequestJSON(req SetStickerPositionInSet, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -985,13 +989,13 @@ func encodeSetStickerPositionInSetRequestJSON(req SetStickerPositionInSet, span 
 }
 
 func encodeSetStickerSetThumbRequestJSON(req SetStickerSetThumb, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -999,13 +1003,13 @@ func encodeSetStickerSetThumbRequestJSON(req SetStickerSetThumb, span trace.Span
 }
 
 func encodeSetWebhookRequestJSON(req SetWebhook, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -1013,13 +1017,13 @@ func encodeSetWebhookRequestJSON(req SetWebhook, span trace.Span) (data *bytes.B
 }
 
 func encodeStopMessageLiveLocationRequestJSON(req StopMessageLiveLocation, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -1027,13 +1031,13 @@ func encodeStopMessageLiveLocationRequestJSON(req StopMessageLiveLocation, span 
 }
 
 func encodeStopPollRequestJSON(req StopPoll, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -1041,13 +1045,13 @@ func encodeStopPollRequestJSON(req StopPoll, span trace.Span) (data *bytes.Buffe
 }
 
 func encodeUnbanChatMemberRequestJSON(req UnbanChatMember, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -1055,13 +1059,13 @@ func encodeUnbanChatMemberRequestJSON(req UnbanChatMember, span trace.Span) (dat
 }
 
 func encodeUnpinAllChatMessagesRequestJSON(req UnpinAllChatMessages, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -1069,13 +1073,13 @@ func encodeUnpinAllChatMessagesRequestJSON(req UnpinAllChatMessages, span trace.
 }
 
 func encodeUnpinChatMessageRequestJSON(req UnpinChatMessage, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
@@ -1083,13 +1087,13 @@ func encodeUnpinChatMessageRequestJSON(req UnpinChatMessage, span trace.Span) (d
 }
 
 func encodeUploadStickerFileRequestJSON(req UploadStickerFile, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := json.GetBuffer()
-	e := json.GetEncoder()
-	defer json.PutEncoder(e)
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-	req.WriteJSON(e)
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
-		json.PutBuffer(buf)
+		putBuf(buf)
 		return nil, err
 	}
 
