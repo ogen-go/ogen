@@ -6,8 +6,6 @@ import (
 	"github.com/go-faster/jx"
 )
 
-type RawMessage = std.RawMessage
-
 // Marshal value to json.
 func Marshal(val interface{}) ([]byte, error) {
 	return std.Marshal(val)

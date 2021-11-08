@@ -25,7 +25,7 @@ func (w World) String() string {
 
 type WorldData struct {
 	Value World
-	Raw   RawMessage
+	Raw   jx.Raw
 	Len   int
 }
 
