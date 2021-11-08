@@ -6,8 +6,8 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/go-faster/errors"
 	"github.com/google/uuid"
-	"github.com/ogen-go/errors"
 )
 
 func ToInt(s string) (int, error) {

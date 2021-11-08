@@ -3,7 +3,7 @@ package json
 import (
 	std "encoding/json"
 
-	"github.com/ogen-go/jx"
+	"github.com/go-faster/jx"
 )
 
 type RawMessage = std.RawMessage

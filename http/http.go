@@ -13,7 +13,7 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/ogen-go/errors"
+	"github.com/go-faster/errors"
 )
 
 // httpRequest is copied version of http.Request structure.

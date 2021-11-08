@@ -4,10 +4,10 @@ go 1.17
 
 require (
 	github.com/go-chi/chi/v5 v5.0.5
+	github.com/go-faster/errors v0.5.0
+	github.com/go-faster/jx v0.23.1
 	github.com/goccy/go-yaml v1.9.4
 	github.com/google/uuid v1.3.0
-	github.com/ogen-go/errors v0.4.0
-	github.com/ogen-go/jx v0.14.0
 	github.com/stretchr/testify v1.7.0
 	github.com/valyala/fasthttp v1.31.0
 	go.opentelemetry.io/otel v1.1.0

@@ -3,7 +3,7 @@ package uri
 import (
 	"strings"
 
-	"github.com/ogen-go/errors"
+	"github.com/go-faster/errors"
 )
 
 type QueryStyle string

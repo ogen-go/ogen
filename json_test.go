@@ -9,7 +9,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/require"
 
-	"github.com/ogen-go/jx"
+	"github.com/go-faster/jx"
 
 	"github.com/ogen-go/ogen/conv"
 	api "github.com/ogen-go/ogen/internal/sample_api"
@@ -36,7 +36,7 @@ func encodeObject(v json.Marshaler) []byte {
 		s.ObjEnd()
 		return s.Bytes()
 	}
-	s.ObjField("key")
+	s.FieldStart("key")
 	v.WriteJSON(s)
 	s.ObjEnd()
 	return s.Bytes()

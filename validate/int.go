@@ -1,6 +1,6 @@
 package validate
 
-import "github.com/ogen-go/errors"
+import "github.com/go-faster/errors"
 
 // Int validates integers.
 type Int struct {

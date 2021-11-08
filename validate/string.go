@@ -4,7 +4,7 @@ import (
 	"regexp"
 	"unicode"
 
-	"github.com/ogen-go/errors"
+	"github.com/go-faster/errors"
 )
 
 // String validator.

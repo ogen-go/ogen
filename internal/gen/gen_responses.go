@@ -6,7 +6,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/ogen-go/errors"
+	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/internal/ir"
 	"github.com/ogen-go/ogen/internal/oas"

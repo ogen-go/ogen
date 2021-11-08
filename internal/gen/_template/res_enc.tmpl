@@ -47,8 +47,6 @@ return nil
 {{- else if $.ContentType.JSON }}
 e := json.GetEncoder()
 defer json.PutEncoder(e)
-more := json.NewMore(e)
-defer more.Reset()
 {{ template "enc_json" res_elem $ }}
 if _, err := e.WriteTo(w); err != nil {
 	return errors.Wrap(err, "write")

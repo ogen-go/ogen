@@ -1,7 +1,7 @@
 package uri
 
 import (
-	"github.com/ogen-go/errors"
+	"github.com/go-faster/errors"
 )
 
 type valueType string

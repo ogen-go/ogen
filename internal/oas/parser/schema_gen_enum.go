@@ -3,8 +3,8 @@ package parser
 import (
 	"encoding/json"
 
-	"github.com/ogen-go/errors"
-	"github.com/ogen-go/jx"
+	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 
 	"github.com/ogen-go/ogen/internal/oas"
 )
@@ -41,7 +41,7 @@ func parseJSONValue(typ oas.SchemaType, v json.RawMessage) (interface{}, error) 
 		d    = jx.DecodeBytes(v)
 		next = d.Next()
 	)
-	if next == jx.Nil {
+	if next == jx.Null {
 		return nil, errNullValue
 	}
 	switch typ {
@@ -54,24 +54,21 @@ func parseJSONValue(typ oas.SchemaType, v json.RawMessage) (interface{}, error) 
 		if next != jx.Number {
 			return nil, errors.Errorf("expected type %q, got %q", typ, next)
 		}
-		n, err := d.Number()
+		n, err := d.Num()
 		if err != nil {
 			return nil, err
 		}
-		if _, err := n.Float64(); err == nil {
-			return nil, errors.Errorf("expected type %q, got %q", typ, next)
+		if !n.IsInt() {
+			return nil, errors.New("expected integer, got float")
 		}
 		return n.Int64()
 	case oas.Number:
 		if next != jx.Number {
 			return nil, errors.Errorf("expected type %q, got %q", typ, next)
 		}
-		n, err := d.Number()
+		n, err := d.Num()
 		if err != nil {
 			return nil, err
-		}
-		if _, err := n.Int64(); err == nil {
-			return nil, errors.Errorf("expected type %q, got %q", typ, next)
 		}
 		return n.Float64()
 	case oas.Boolean:

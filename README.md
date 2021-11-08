@@ -23,7 +23,7 @@ go get github.com/ogen-go/ogen
 # Features
 
 * No reflection or `interface{}`
-  * The json encoding is code-generated, optimized and uses [jx](https://github.com/ogen-go/jx) for speed and overcoming `encoding/json` limitations
+  * The json encoding is code-generated, optimized and uses [jx](https://github.com/go-faster/jx) for speed and overcoming `encoding/json` limitations
   * Validation is code-generated according to spec
 * No more boilerplate
   * Structures are generated from OpenAPI v3 specification

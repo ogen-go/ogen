@@ -9,8 +9,6 @@
 // WriteJSON implements json.Marshaler.
 func (s {{ $t.Name }}) WriteJSON(e *json.Encoder) {
 	e.ObjStart()
-	more := json.NewMore(e)
-	defer more.Reset()
 	{{- range $f := $t.JSON.Fields }}
 		{{ template "enc_json" field_elem $f -}}
 	{{- end }}
@@ -94,7 +92,7 @@ func (o *{{ $t.Name }}) ReadJSON(d *json.Decoder{{ if $g.Format }}, format func(
 	{{- end }}
 		return nil
 	{{- if $v.Nullable }}
-	case json.Nil:
+	case json.Null:
 		if err := d.Null(); err != nil {
 			return err
 		}

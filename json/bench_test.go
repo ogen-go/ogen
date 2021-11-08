@@ -1,11 +1,12 @@
 package json
 
 import (
-	"github.com/ogen-go/errors"
 	"fmt"
 	"testing"
 
-	"github.com/ogen-go/jx"
+	"github.com/go-faster/errors"
+
+	"github.com/go-faster/jx"
 	"github.com/stretchr/testify/require"
 )
 
@@ -77,7 +78,7 @@ func BenchmarkMarshal(b *testing.B) {
 				require.NotEmpty(b, data)
 			}
 		})
-		b.Run("jsoniter", func(b *testing.B) {
+		b.Run("jx", func(b *testing.B) {
 			b.Run("Encoder", func(b *testing.B) {
 				d.Setup(b)
 
@@ -89,17 +90,15 @@ func BenchmarkMarshal(b *testing.B) {
 					e.ObjStart()
 
 					// "id": 10,
-					e.ObjField("id")
+					e.FieldStart("id")
 					e.Int64(d.Value.ID)
-					e.More()
 
 					// "randomNumber": 12351,
-					e.ObjField("randomNumber")
+					e.FieldStart("randomNumber")
 					e.Int64(d.Value.RandomNumber)
-					e.More()
 
 					// "message": "Hello, world!"
-					e.ObjField("message")
+					e.FieldStart("message")
 					e.Str(d.Value.Message)
 
 					e.ObjEnd()

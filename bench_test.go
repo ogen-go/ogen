@@ -12,9 +12,9 @@ import (
 	"testing"
 	"time"
 
+	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
-	"github.com/ogen-go/errors"
-	"github.com/ogen-go/jx"
 	"github.com/stretchr/testify/require"
 	"github.com/valyala/fasthttp"
 	"go.opentelemetry.io/otel/trace"
@@ -162,7 +162,7 @@ func BenchmarkIntegration(b *testing.B) {
 		s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			e := jx.GetEncoder()
 			e.ObjStart()
-			e.ObjField("message")
+			e.FieldStart("message")
 			e.Str("Hello, world!")
 			e.ObjEnd()
 			if _, err := e.WriteTo(w); err != nil {

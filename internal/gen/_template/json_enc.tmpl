@@ -3,11 +3,8 @@
 {{/* Encode field key and comma if needed,
 	 or just comma if in array */}}
 {{- define "enc_json_start" -}}
-{{- if $.More  -}}
-more.More()
-{{- end -}}
 {{- if $.Tag.JSON  }}
-e.ObjField("{{ $.Tag.JSON }}")
+e.FieldStart("{{ $.Tag.JSON }}")
 {{- end }}
 {{- end -}}
 
@@ -29,13 +26,11 @@ e.ObjField("{{ $.Tag.JSON }}")
 
 {{/* Encode array with all elements */}}
 {{- define "enc_json_array_elems" }}
-	more.Down()
 	e.ArrStart()
 	for _, elem := range {{ $.Var }} {
 		{{- template "enc_json" array_elem $.Type.Item }}
 	}
 	e.ArrEnd()
-	more.Up()
 {{- end }}
 
 {{/* Encode array with respect for nil semantic */}}

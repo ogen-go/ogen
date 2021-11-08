@@ -1,7 +1,7 @@
 package validate
 
 import (
-	"github.com/ogen-go/errors"
+	"github.com/go-faster/errors"
 )
 
 // Array validates array length.

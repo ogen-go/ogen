@@ -3,7 +3,7 @@ package uri
 import (
 	"io"
 
-	"github.com/ogen-go/errors"
+	"github.com/go-faster/errors"
 )
 
 type PathDecoder struct {

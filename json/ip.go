@@ -1,8 +1,9 @@
 package json
 
 import (
-	"github.com/ogen-go/errors"
 	"net"
+
+	"github.com/go-faster/errors"
 )
 
 func ReadIP(i *Decoder) (v net.IP, err error) {

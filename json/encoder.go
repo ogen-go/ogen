@@ -1,7 +1,7 @@
 package json
 
 import (
-	"github.com/ogen-go/jx"
+	"github.com/go-faster/jx"
 )
 
 // Encoder is jx.Encoder alias.

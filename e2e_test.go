@@ -17,7 +17,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/ogen-go/jx"
+	"github.com/go-faster/jx"
 
 	"github.com/ogen-go/ogen/conv"
 	api "github.com/ogen-go/ogen/internal/sample_api"

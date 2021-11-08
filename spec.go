@@ -3,7 +3,8 @@ package ogen
 import (
 	"encoding/json"
 
-	"github.com/ogen-go/jx"
+	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 )
 
 // Spec is the root document object of the OpenAPI document.
@@ -408,17 +409,13 @@ func (p Properties) MarshalJSON() ([]byte, error) {
 	defer jx.PutEncoder(e)
 
 	e.ObjStart()
-	for i, prop := range p {
-		e.ObjField(prop.Name)
+	for _, prop := range p {
+		e.FieldStart(prop.Name)
 		b, err := json.Marshal(prop.Schema)
 		if err != nil {
-			return nil, err
+			return nil, errors.Wrap(err, "marshal")
 		}
-
-		e.RawBytes(b)
-		if i != len(p)-1 {
-			e.More()
-		}
+		e.Raw(b)
 	}
 	e.ObjEnd()
 	return e.Bytes(), nil
@@ -427,19 +424,19 @@ func (p Properties) MarshalJSON() ([]byte, error) {
 func (p *Properties) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return d.Obj(func(d *jx.Decoder, key string) error {
-		var propSchema Schema
+		var s Schema
 		b, err := d.Raw()
 		if err != nil {
 			return err
 		}
 
-		if err := json.Unmarshal(b, &propSchema); err != nil {
+		if err := json.Unmarshal(b, &s); err != nil {
 			return err
 		}
 
 		*p = append(*p, Property{
 			Name:   key,
-			Schema: propSchema,
+			Schema: s,
 		})
 		return nil
 	})

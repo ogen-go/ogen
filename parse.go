@@ -2,10 +2,11 @@ package ogen
 
 import (
 	"encoding/json"
-	"github.com/ogen-go/errors"
 
+	"github.com/go-faster/errors"
+
+	"github.com/go-faster/jx"
 	"github.com/goccy/go-yaml"
-	"github.com/ogen-go/jx"
 )
 
 func Parse(data []byte) (*Spec, error) {

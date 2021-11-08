@@ -1,6 +1,6 @@
 package json
 
-import "github.com/ogen-go/jx"
+import "github.com/go-faster/jx"
 
 const (
 	// Invalid invalid JSON element.
@@ -9,8 +9,8 @@ const (
 	String = jx.String
 	// Number JSON element 100 or 0.10.
 	Number = jx.Number
-	// Nil JSON element null.
-	Nil = jx.Nil
+	// Null JSON element null.
+	Null = jx.Null
 	// Bool JSON element true or false.
 	Bool = jx.Bool
 	// Array JSON element [].
