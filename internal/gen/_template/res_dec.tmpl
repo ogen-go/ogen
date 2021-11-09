@@ -30,59 +30,70 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 	switch resp.StatusCode {
 	{{- range $statusCode, $response := $op.Response.StatusCode }}{{/* Range over responses */}}
 	case {{ $statusCode }}:
-		{{- if $response.NoContent }}{{/* Decode NoContent response */}}
-		return {{ if eq $op.Response.Type.Kind "interface" }}&{{ end }}{{ $response.NoContent.Name }}{}, nil
-		{{- else }}{{/* Decode content response */}}
-		switch resp.Header.Get("Content-Type") {
-		{{- range $contentType, $type := $response.Contents }}{{/* Range over contents */}}
-		case "{{ $contentType }}":
-			{{- if $contentType.JSON }}{{/* Decode */}}
-			{{- template "res_dec_json" $type }}
-			return {{ if eq $op.Response.Type.Kind "interface" }}&{{ end }}response, nil
-			{{- else if $type.IsStream }}
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return nil, err
-			}
-
-			return &{{$type.Name}}{
-				Data: bytes.NewReader(b),
-			}, nil
-			{{- else }}
-			return res, errors.New("{{ $contentType }} decoder not implemented")
-			{{- end }}{{/* Decode */}}
-		{{- end }}{{/* Range over contents */}}
-		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-		{{- end }}{{/* Decode content response */}}
-	{{- end }}{{/* Range over responses */}}
+		{{- template "decode_response" xresp_elem $response (eq $op.Response.Type.Kind "interface") }}
+	{{- end }}
 	default:
-		{{- $def := $op.Response.Default }}
-		{{- if $def }}{{/* Decode default response */}}
-		{{- if $def.NoContent }}{{/* Decode NoContent response */}}
-		return {{ if eq $op.Response.Type.Kind "interface" }}&{{ end }}{{ $def.NoContent.Name }}{StatusCode: resp.StatusCode}, nil
-		{{- else }}{{/* Decode content response */}}
-		switch resp.Header.Get("Content-Type") {
-		{{- range $contentType, $type := $def.Contents }}{{/* Range over contents */}}
-		case "{{ $contentType }}":
-			{{- if $contentType.JSON }}{{/* Decode */}}
-			{{- template "res_dec_json" $type }}
-			response.StatusCode = resp.StatusCode
-			return {{ if eq $op.Response.Type.Kind "interface" }}&{{ end }}response, nil
-			{{- else }}
-			return res, errors.New("{{ $contentType }} decoder not implemented")
-			{{- end }}{{/* Decode */}}
-		{{- end }}{{/* Range over contents */}}
-		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-		{{- end }}{{/* Decode content response */}}
+		{{- if $op.Response.Default }}
+			{{- template "decode_response" xresp_elem $op.Response.Default (eq $op.Response.Type.Kind "interface") }}
 		{{- else }}
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		{{- end }}{{- /* Decode default response */}}
+			return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		{{- end }}
 	}
 }
 
 {{- end }}{{/* Range over all methods */}}
 {{ end }}
+
+{{- define "decode_response" }}
+{{- $response := $.Response }}
+{{- $ptr := $.Ptr }}
+{{- if $response.NoContent }}{{/* Decode NoContent response */}}
+	{{- if $response.Wrapped }}
+		return {{ if $ptr }}&{{ end }}{{ $response.NoContent.Name }}{
+			StatusCode: resp.StatusCode,
+		}, nil
+	{{- else }}
+		return {{ if $ptr }}&{{ end }}{{ $response.NoContent.Name }}{}, nil
+	{{- end }}
+{{- else }}{{/* Decode content response */}}
+	switch resp.Header.Get("Content-Type") {
+	{{- range $contentType, $type := $response.Contents }}{{/* Range over contents */}}
+	case "{{ $contentType }}":
+		{{- if $contentType.JSON }}
+			{{- if $response.Wrapped }}
+				{{- template "res_dec_json" ($type.MustField "Response").Type }}
+				return {{ if $ptr }}&{{ end }}{{ $type.Go }}{
+					StatusCode: resp.StatusCode,
+					Response:   response,
+				}, nil
+			{{- else }}
+				{{- template "res_dec_json" $type }}
+				return {{ if $ptr }}&{{ end }}response, nil
+			{{- end }}
+		{{- else if $type.IsStream }}
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return res, err
+			}
+
+			{{- if $response.Wrapped }}
+				return {{ if $ptr }}&{{ end }}{{ $type.Name }}{
+					StatusCode: resp.StatusCode,
+					Response:   {{ ($type.MustField "Response").Type.Name }}{
+						Data: bytes.NewReader(b),
+					},
+				}
+			{{- else }}
+				return {{ if $ptr }}&{{ end }}{{ $type.Name }}{
+					Data: bytes.NewReader(b),
+				}, nil
+			{{- end }}
+		{{- else }}
+			return res, errors.New("{{ $contentType }} decoder not implemented")
+		{{- end }}
+	{{- end }}{{/* Range over contents */}}
+	default:
+		return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+	}
+{{- end }}{{/* Decode content response */}}
+{{- end }}

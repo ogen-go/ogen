@@ -80,6 +80,7 @@ type Response struct {
 }
 
 type StatusResponse struct {
+	Wrapped   bool
 	NoContent *Type
 	Contents  map[ContentType]*Type
 	Spec      *oas.Response

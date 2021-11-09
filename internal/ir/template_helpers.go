@@ -1,6 +1,7 @@
 package ir
 
 import (
+	"fmt"
 	"strings"
 	"unicode"
 )
@@ -81,3 +82,17 @@ func (t *Type) IsInterface() bool { return t.Is(KindInterface) }
 func (t *Type) IsSum() bool       { return t.Is(KindSum) }
 func (t *Type) IsStream() bool    { return t.Is(KindStream) }
 func (t *Type) IsNumeric() bool   { return t.IsInteger() || t.IsFloat() }
+
+func (t *Type) MustField(name string) *Field {
+	if !t.Is(KindStruct) {
+		panic("unreachable")
+	}
+
+	for _, f := range t.Fields {
+		if f.Name == name {
+			return f
+		}
+	}
+
+	panic(fmt.Sprintf("field with name %q not found", name))
+}

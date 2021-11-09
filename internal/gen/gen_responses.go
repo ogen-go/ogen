@@ -175,6 +175,7 @@ func (g *Generator) wrapResponseStatusCode(resp *ir.StatusResponse) (ret *ir.Sta
 		}
 
 		return &ir.StatusResponse{
+			Wrapped:   true,
 			NoContent: g.wrapStatusCode(noc),
 			Spec:      resp.Spec,
 		}
@@ -186,6 +187,7 @@ func (g *Generator) wrapResponseStatusCode(resp *ir.StatusResponse) (ret *ir.Sta
 	}
 
 	return &ir.StatusResponse{
+		Wrapped:  true,
 		Contents: contents,
 		Spec:     resp.Spec,
 	}

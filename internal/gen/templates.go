@@ -30,6 +30,11 @@ func (e Elem) NextVar() string {
 	return e.Var + "Elem"
 }
 
+type ResponseElem struct {
+	Response *ir.StatusResponse
+	Ptr      bool
+}
+
 // templateFunctions returns functions which used in templates.
 func templateFunctions() template.FuncMap {
 	return template.FuncMap{
@@ -104,6 +109,12 @@ func templateFunctions() template.FuncMap {
 				Var:  fmt.Sprintf("s.%s", f.Name),
 				Tag:  f.Tag,
 				More: true,
+			}
+		},
+		"xresp_elem": func(r *ir.StatusResponse, ptr bool) ResponseElem {
+			return ResponseElem{
+				Response: r,
+				Ptr:      ptr,
 			}
 		},
 	}
