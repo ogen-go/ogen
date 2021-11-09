@@ -66,6 +66,8 @@ var (
 
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
+	// ErrorGet implements errorGet operation.
+	ErrorGet(ctx context.Context) (ErrorStatusCode, error)
 	// FoobarGet implements foobarGet operation.
 	FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarGetRes, error)
 	// FoobarPost implements foobarPost operation.
@@ -111,6 +113,7 @@ func NewServer(h Handler, opts ...Option) *Server {
 }
 
 func (s *Server) setupRoutes() {
+	s.mux.MethodFunc("GET", "/error", s.HandleErrorGetRequest)
 	s.mux.MethodFunc("GET", "/foobar", s.HandleFoobarGetRequest)
 	s.mux.MethodFunc("POST", "/foobar", s.HandleFoobarPostRequest)
 	s.mux.MethodFunc("PUT", "/foobar", s.HandleFoobarPutRequest)

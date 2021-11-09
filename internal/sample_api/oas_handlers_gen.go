@@ -64,6 +64,26 @@ var (
 	_ = sync.Pool{}
 )
 
+func (s *Server) HandleErrorGetRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ErrorGet`,
+		trace.WithAttributes(otelogen.OperationID(`errorGet`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	response, err := s.h.ErrorGet(ctx)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeErrorGetResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 func (s *Server) HandleFoobarGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `FoobarGet`,
 		trace.WithAttributes(otelogen.OperationID(`foobarGet`)),

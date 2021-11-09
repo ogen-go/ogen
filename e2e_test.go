@@ -158,6 +158,15 @@ func (s *sampleAPIServer) PetUploadAvatarByID(ctx context.Context, req api.Strea
 	}
 }
 
+func (s *sampleAPIServer) ErrorGet(ctx context.Context) (api.ErrorStatusCode, error) {
+	return api.ErrorStatusCode{
+		StatusCode: http.StatusInternalServerError,
+		Response: api.Error{
+			Message: "test_error",
+		},
+	}, nil
+}
+
 //go:embed _testdata/pet.json
 var petTestData string
 
@@ -370,8 +379,21 @@ func TestIntegration(t *testing.T) {
 				require.NoError(t, err)
 				assert.IsType(t, &api.ErrorStatusCode{}, got, fmt.Sprintf("receive response %v", got))
 			})
+			t.Run("ErrorGet", func(t *testing.T) {
+				got, err := client.ErrorGet(ctx)
+				require.NoError(t, err)
+
+				errStatusCode := api.ErrorStatusCode{
+					StatusCode: http.StatusInternalServerError,
+					Response: api.Error{
+						Message: "test_error",
+					},
+				}
+				assert.Equal(t, errStatusCode, got)
+			})
 		})
 	})
+
 	t.Run("TechEmpower", func(t *testing.T) {
 		// Using TechEmpower as most popular general purpose framework benchmark.
 		// https://github.com/TechEmpower/FrameworkBenchmarks/wiki/Project-Information-Framework-Tests-Overview#test-types
