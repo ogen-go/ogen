@@ -16,7 +16,7 @@ type Generator struct {
 	opt        Options
 	operations []*ir.Operation
 	types      map[string]*ir.Type
-	interfaces map[string]*ir.Type
+	interfaces map[string]*ir.TypeInterface
 	refs       struct {
 		schemas   map[string]*ir.Type
 		responses map[string]*ir.StatusResponse
@@ -42,7 +42,7 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	g := &Generator{
 		opt:        opts,
 		types:      map[string]*ir.Type{},
-		interfaces: map[string]*ir.Type{},
+		interfaces: map[string]*ir.TypeInterface{},
 		refs: struct {
 			schemas   map[string]*ir.Type
 			responses map[string]*ir.StatusResponse

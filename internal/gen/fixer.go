@@ -108,7 +108,7 @@ func (g *Generator) fixEqualResponses(op *ir.Operation) {
 
 		// TODO: Fix duplicates.
 		// g.saveType(alias)
-		g.types[alias.Name] = alias
+		g.types[alias.Alias.Name] = alias
 
 		if candidate.replaceNoc {
 			candidate.response.NoContent = alias
@@ -195,7 +195,7 @@ func (g *Generator) fixEqualRequests(op *ir.Operation) {
 
 		// TODO: Fix duplicates.
 		// g.saveType(alias)
-		g.types[alias.Name] = alias
+		g.types[alias.Alias.Name] = alias
 
 		op.Request.Contents[ir.ContentType(candidate.ctype)] = alias
 	}

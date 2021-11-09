@@ -41,41 +41,41 @@ func encodeObject(v json.Marshaler) []byte {
 	return e.Bytes()
 }
 
-func TestJSONGenerics(t *testing.T) {
-	t.Parallel()
+// func TestJSONGenerics(t *testing.T) {
+// 	t.Parallel()
 
-	for _, tc := range []struct {
-		Name   string
-		Value  api.OptNilString
-		Result string
-	}{
-		{
-			Name:   "Zero",
-			Result: "{}",
-		},
-		{
-			Name:   "Set",
-			Result: `{"key":"foo"}`,
-			Value:  api.NewOptNilString("foo"),
-		},
-		{
-			Name:   "Nil",
-			Result: `{"key":null}`,
-			Value:  api.OptNilString{Null: true, Set: true},
-		},
-	} {
-		t.Run(tc.Name, func(t *testing.T) {
-			t.Parallel()
+// 	for _, tc := range []struct {
+// 		Name   string
+// 		Value  api.OptNilString
+// 		Result string
+// 	}{
+// 		{
+// 			Name:   "Zero",
+// 			Result: "{}",
+// 		},
+// 		{
+// 			Name:   "Set",
+// 			Result: `{"key":"foo"}`,
+// 			Value:  api.NewOptNilString("foo"),
+// 		},
+// 		{
+// 			Name:   "Nil",
+// 			Result: `{"key":null}`,
+// 			Value:  api.OptNilString{Null: true, Set: true},
+// 		},
+// 	} {
+// 		t.Run(tc.Name, func(t *testing.T) {
+// 			t.Parallel()
 
-			result := encodeObject(tc.Value)
-			require.Equal(t, tc.Result, string(result), "encoding result mismatch")
-			var v api.OptNilString
-			decodeObject(t, result, &v)
-			require.Equal(t, tc.Value, v)
-			require.Equal(t, tc.Result, string(encodeObject(v)))
-		})
-	}
-}
+// 			result := encodeObject(tc.Value)
+// 			require.Equal(t, tc.Result, string(result), "encoding result mismatch")
+// 			var v api.OptNilString
+// 			decodeObject(t, result, &v)
+// 			require.Equal(t, tc.Value, v)
+// 			require.Equal(t, tc.Result, string(encodeObject(v)))
+// 		})
+// 	}
+// }
 
 func TestJSONExample(t *testing.T) {
 	t.Parallel()

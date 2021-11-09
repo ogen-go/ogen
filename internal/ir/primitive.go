@@ -51,6 +51,15 @@ func (p PrimitiveType) String() string {
 	}
 }
 
+func (p PrimitiveType) IsBuiltin() bool {
+	switch p {
+	case Time, Duration, UUID, IP, URL:
+		return false
+	default:
+		return true
+	}
+}
+
 const (
 	String PrimitiveType = iota
 	Byte

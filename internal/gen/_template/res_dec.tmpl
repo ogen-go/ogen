@@ -1,24 +1,3 @@
-{{ define "res_dec_json" }}
-{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
-buf := getBuf()
-defer putBuf(buf)
-if _, err := io.Copy(buf, resp.Body); err != nil {
-	return res, err
-}
-
-d := jx.GetDecoder()
-defer jx.PutDecoder(d)
-d.ResetBytes(buf.Bytes())
-
-var response {{ $.Go }}
-if err := func() error {
-	{{- template "dec_json" req_elem $ }}
-	return nil
-}(); err != nil {
-	return res, err
-}
-{{ end }}
-
 {{ define "res_dec" }}
 {{- /*gotype: github.com/ogen-go/ogen/internal/gen.TemplateConfig*/ -}}
 {{ $pkg := $.Package }}
@@ -30,11 +9,11 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 	switch resp.StatusCode {
 	{{- range $statusCode, $response := $op.Response.StatusCode }}{{/* Range over responses */}}
 	case {{ $statusCode }}:
-		{{- template "decode_response" xresp_elem $response (eq $op.Response.Type.Kind "interface") }}
+		{{- template "decode_response" resp_elem $response (eq $op.Response.Type.Kind "interface") }}
 	{{- end }}
 	default:
 		{{- if $op.Response.Default }}
-			{{- template "decode_response" xresp_elem $op.Response.Default (eq $op.Response.Type.Kind "interface") }}
+			{{- template "decode_response" resp_elem $op.Response.Default (eq $op.Response.Type.Kind "interface") }}
 		{{- else }}
 			return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 		{{- end }}
@@ -49,25 +28,51 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 {{- $ptr := $.Ptr }}
 {{- if $response.NoContent }}{{/* Decode NoContent response */}}
 	{{- if $response.Wrapped }}
-		return {{ if $ptr }}&{{ end }}{{ $response.NoContent.Name }}{
+		return {{ if $ptr }}&{{ end }}{{ $response.NoContent.MustName }}{
 			StatusCode: resp.StatusCode,
 		}, nil
 	{{- else }}
-		return {{ if $ptr }}&{{ end }}{{ $response.NoContent.Name }}{}, nil
+		return {{ if $ptr }}&{{ end }}{{ $response.NoContent.MustName }}{}, nil
 	{{- end }}
 {{- else }}{{/* Decode content response */}}
 	switch resp.Header.Get("Content-Type") {
 	{{- range $contentType, $type := $response.Contents }}{{/* Range over contents */}}
 	case "{{ $contentType }}":
 		{{- if $contentType.JSON }}
+			buf := getBuf()
+			defer func() { putBuf(buf) }()
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
 			{{- if $response.Wrapped }}
-				{{- template "res_dec_json" ($type.MustField "Response").Type }}
+				var response {{ ($type.MustField "Response").Type.Go }}
+				if err := func() error {
+					{{- template "decode_json" jx_elem
+						($type.MustField "Response").Type
+						"response"
+						""
+					}}
+				}(); err != nil {
+					return res, err
+				}
+				
 				return {{ if $ptr }}&{{ end }}{{ $type.Go }}{
 					StatusCode: resp.StatusCode,
 					Response:   response,
 				}, nil
 			{{- else }}
-				{{- template "res_dec_json" $type }}
+				var response {{ $type.Go }}
+				if err := func() error {
+					{{- template "decode_json" jx_elem $type "response" "" }}
+				}(); err != nil {
+					return res, err
+				}
+
 				return {{ if $ptr }}&{{ end }}response, nil
 			{{- end }}
 		{{- else if $type.IsStream }}
@@ -77,14 +82,14 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 			}
 
 			{{- if $response.Wrapped }}
-				return {{ if $ptr }}&{{ end }}{{ $type.Name }}{
+				return {{ if $ptr }}&{{ end }}{{ $type.MustName }}{
 					StatusCode: resp.StatusCode,
-					Response:   {{ ($type.MustField "Response").Type.Name }}{
+					Response:   {{ ($type.MustField "Response").Type.MustName }}{
 						Data: bytes.NewReader(b),
 					},
 				}
 			{{- else }}
-				return {{ if $ptr }}&{{ end }}{{ $type.Name }}{
+				return {{ if $ptr }}&{{ end }}{{ $type.MustName }}{
 					Data: bytes.NewReader(b),
 				}, nil
 			{{- end }}

@@ -3,9 +3,9 @@ package ir
 import (
 	"fmt"
 	"sort"
-	"strings"
 
 	"github.com/ogen-go/ogen/internal/oas"
+	"github.com/ogen-go/ogen/validate"
 )
 
 type Kind string
@@ -23,55 +23,23 @@ const (
 	KindStream    Kind = "stream"
 )
 
-type SumSpecMap struct {
-	Key  string
-	Type string
-}
-
-// SumSpec for KindSum.
-type SumSpec struct {
-	Unique        []*Field
-	Discriminator string
-	Mapping       []SumSpecMap
-}
-
 type Type struct {
-	Doc              string              // documentation
-	Kind             Kind                // kind
-	Name             string              // only for struct, alias, interface, enum
-	Primitive        PrimitiveType       // only for primitive, enum
-	AliasTo          *Type               // only for alias
-	PointerTo        *Type               // only for pointer
-	SumOf            []*Type             // only for sum
-	SumSpec          SumSpec             // only for sum
-	Item             *Type               // only for array
-	EnumVariants     []*EnumVariant      // only for enum
-	Fields           []*Field            // only for struct
-	Implements       map[*Type]struct{}  // only for struct, alias, enum
-	Implementations  map[*Type]struct{}  // only for interface
-	InterfaceMethods map[string]struct{} // only for interface
-	Schema           *oas.Schema         // for all kinds except pointer, interface. Can be nil.
-	NilSemantic      NilSemantic         // only for pointer
-	GenericOf        *Type               // only for generic
-	GenericVariant   GenericVariant      // only for generic
-	Validators       Validators
+	ghostName string
+	Doc       string
+	Kind      Kind
+	Primitive *TypePrimitive
+	Array     *TypeArray
+	Enum      *TypeEnum
+	Alias     *TypeAlias
+	Struct    *TypeStruct
+	Pointer   *TypePointer
+	Interface *TypeInterface
+	Generic   *TypeGeneric
+	Sum       *TypeSum
+	Stream    *TypeStream
 }
 
-type EnumVariant struct {
-	Name  string
-	Value interface{}
-}
-
-func (v *EnumVariant) ValueGo() string {
-	switch v := v.Value.(type) {
-	case string:
-		return `"` + v + `"`
-	default:
-		return fmt.Sprintf("%v", v)
-	}
-}
-
-func (t *Type) Pointer(sem NilSemantic) *Type {
+func (t *Type) MakePointer(sem NilSemantic) *Type {
 	return Pointer(t, sem)
 }
 
@@ -83,20 +51,12 @@ func (t *Type) Format() bool {
 	if t == nil {
 		return false
 	}
-	return t.Primitive == Time
+	return t.Kind == KindPrimitive && t.Primitive.Type == Time
 }
 
 // Tag of Field.
 type Tag struct {
 	JSON string // json tag, empty for none
-}
-
-// Field of structure.
-type Field struct {
-	Name string
-	Type *Type
-	Tag  Tag
-	Spec *oas.Property
 }
 
 func (t *Type) Is(vs ...Kind) bool {
@@ -109,25 +69,41 @@ func (t *Type) Is(vs ...Kind) bool {
 }
 
 func (t *Type) Implement(i *Type) {
-	if !t.Is(KindStruct, KindAlias, KindSum, KindStream) || !i.Is(KindInterface) {
+	if !i.Is(KindInterface) {
 		panic("unreachable")
 	}
 
-	if t.Implements == nil {
-		t.Implements = map[*Type]struct{}{}
+	switch t.Kind {
+	case KindStruct:
+		t.Struct.Implement(i.Interface)
+	case KindAlias:
+		t.Alias.Implement(i.Interface)
+	case KindSum:
+		t.Sum.Implement(i.Interface)
+	case KindStream:
+		t.Stream.Implement(i.Interface)
+	default:
+		panic(fmt.Sprintf("unexpected kind: %s", t.Kind))
 	}
-
-	i.Implementations[t] = struct{}{}
-	t.Implements[i] = struct{}{}
 }
 
 func (t *Type) Unimplement(i *Type) {
-	if !t.Is(KindStruct, KindAlias, KindSum) || !i.Is(KindInterface) {
+	if !i.Is(KindInterface) {
 		panic("unreachable")
 	}
 
-	delete(i.Implementations, t)
-	delete(t.Implements, i)
+	switch t.Kind {
+	case KindStruct:
+		t.Struct.Unimplement(i.Interface)
+	case KindAlias:
+		t.Alias.Unimplement(i.Interface)
+	case KindSum:
+		t.Sum.Unimplement(i.Interface)
+	case KindStream:
+		t.Stream.Unimplement(i.Interface)
+	default:
+		panic(fmt.Sprintf("unexpected kind: %s", t.Kind))
+	}
 }
 
 func (t *Type) AddMethod(name string) {
@@ -135,19 +111,31 @@ func (t *Type) AddMethod(name string) {
 		panic("unreachable")
 	}
 
-	t.InterfaceMethods[name] = struct{}{}
+	t.Interface.AddMethod(name)
 }
 
 func (t *Type) Go() string {
 	switch t.Kind {
 	case KindPrimitive:
-		return t.Primitive.String()
+		return t.Primitive.Go()
 	case KindArray:
-		return "[]" + t.Item.Go()
+		return t.Array.Go()
 	case KindPointer:
-		return "*" + t.PointerTo.Go()
-	case KindStruct, KindAlias, KindInterface, KindGeneric, KindEnum, KindSum, KindStream:
-		return t.Name
+		return t.Pointer.Go()
+	case KindStruct:
+		return t.Struct.Go()
+	case KindAlias:
+		return t.Alias.Go()
+	case KindInterface:
+		return t.Interface.Go()
+	case KindGeneric:
+		return t.Generic.Go()
+	case KindEnum:
+		return t.Enum.Go()
+	case KindSum:
+		return t.Sum.Go()
+	case KindStream:
+		return t.Stream.Go()
 	default:
 		panic(fmt.Sprintf("unexpected kind: %s", t.Kind))
 	}
@@ -155,17 +143,28 @@ func (t *Type) Go() string {
 
 func (t *Type) Methods() []string {
 	ms := make(map[string]struct{})
-	switch t.Kind {
-	case KindInterface:
-		ms = t.InterfaceMethods
-	case KindStruct, KindAlias, KindEnum, KindGeneric, KindSum, KindStream:
-		for i := range t.Implements {
-			for m := range i.InterfaceMethods {
+	if t.Is(KindInterface) {
+		ms = t.Interface.Methods
+	} else {
+		var impl map[*TypeInterface]struct{}
+		switch t.Kind {
+		case KindStruct:
+			impl = t.Struct.Implements
+		case KindAlias:
+			impl = t.Alias.Implements
+		case KindSum:
+			impl = t.Sum.Implements
+		case KindStream:
+			impl = t.Stream.Implements
+		default:
+			panic(fmt.Sprintf("unexpected kind: %s", t.Kind))
+		}
+
+		for i := range impl {
+			for m := range i.Methods {
 				ms[m] = struct{}{}
 			}
 		}
-	default:
-		panic(fmt.Sprintf("unexpected kind: %s", t.Kind))
 	}
 
 	var result []string
@@ -176,17 +175,85 @@ func (t *Type) Methods() []string {
 	return result
 }
 
-func (t *Type) ListImplementations() []*Type {
-	if !t.Is(KindInterface) {
+// func (t *Type) ListImplementations() []*Type {
+// 	if !t.Is(KindInterface) {
+// 		panic("unreachable")
+// 	}
+
+// 	result := make([]*Type, 0, len(t.Implementations))
+// 	for impl := range t.Implementations {
+// 		result = append(result, impl)
+// 	}
+// 	sort.SliceStable(result, func(i, j int) bool {
+// 		return strings.Compare(result[i].Name, result[j].Name) < 0
+// 	})
+// 	return result
+// }
+
+func (t *Type) Schema() *oas.Schema {
+	switch t.Kind {
+	case KindPrimitive:
+		return t.Primitive.Schema
+	case KindArray:
+		return t.Array.Schema
+	case KindStruct:
+		return t.Struct.Schema
+	case KindSum:
+		return t.Sum.Schema
+	case KindEnum:
+		return t.Enum.Schema
+	default:
+		return nil
+	}
+}
+
+func (t *Type) Name() (string, bool) {
+	switch t.Kind {
+	case KindStruct:
+		return t.Struct.Name, true
+	case KindEnum:
+		return t.Enum.Name, true
+	case KindAlias:
+		return t.Alias.Name, true
+	case KindGeneric:
+		return t.Generic.Name, true
+	case KindSum:
+		return t.Sum.Name, true
+	case KindStream:
+		return t.Stream.Name, true
+	default:
+		return "", false
+	}
+}
+
+func (t *Type) SetIntValidation(v validate.Int) {
+	if !t.IsNumeric() {
 		panic("unreachable")
 	}
 
-	result := make([]*Type, 0, len(t.Implementations))
-	for impl := range t.Implementations {
-		result = append(result, impl)
+	switch t.Kind {
+	case KindPrimitive:
+		t.Primitive.IntValidation = v
+	case KindEnum:
+		t.Enum.IntValidation = v
+	default:
+		panic("unreachable")
 	}
-	sort.SliceStable(result, func(i, j int) bool {
-		return strings.Compare(result[i].Name, result[j].Name) < 0
-	})
-	return result
+}
+
+func (t *Type) SetStringValidation(v validate.String) {
+	switch t.Kind {
+	case KindPrimitive:
+		// if t.Primitive.Type != String {
+		// 	panic(fmt.Sprintf("invalid primitive type: %q", t.Primitive.Type))
+		// }
+		t.Primitive.StringValidation = v
+	case KindEnum:
+		// if t.Enum.Type != String {
+		// 	panic(fmt.Sprintf("invalid primitive type: %q", t.Enum.Type))
+		// }
+		t.Enum.StringValidation = v
+	default:
+		panic(fmt.Sprintf("invalid type kind: %q", t.Kind))
+	}
 }

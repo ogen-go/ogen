@@ -17,7 +17,7 @@ func encode{{ $op.Name }}Response(response {{ $op.Response.Type.Go }}, w http.Re
 	{{- else }}
 	switch response := response.(type) {
 	{{- range $info := $op.ListResponseTypes }}
-	case *{{ $info.Type.Name }}:
+	case *{{ $info.Type.MustName }}:
 		{{- template "respond" $info }}
 	{{- end }}
 	default:
@@ -47,7 +47,15 @@ return nil
 {{- else if $.ContentType.JSON }}
 e := jx.GetEncoder()
 defer jx.PutEncoder(e)
-{{ template "enc_json" res_elem $ }}
+{{- if $.Default }}
+	{{- template "encode_json" jx_elem 
+		($.Type.MustField "Response").Type
+		"response.Response"
+		""
+	}}
+{{- else }}
+	{{- template "encode_json" jx_elem $.Type "response" "" }}
+{{- end }}
 if _, err := e.WriteTo(w); err != nil {
 	return errors.Wrap(err, "write")
 }

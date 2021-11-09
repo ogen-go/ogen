@@ -25,11 +25,13 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			{{- template "dec_json" req_dec_elem $t }}
+			{{- template "decode_json" jx_elem $t "request" "" }}
 			return nil
 		}(); err != nil {
 			return req, err
 		}
+		{{- /* 
+		
 		{{- if $t.NeedValidation }}
 		if err := func() error {
 			{{- template "validate" req_dec_elem $t }}
@@ -37,6 +39,9 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
 			return req, errors.Wrap(err, "validate")
 		}
 		{{- end }}
+
+		*/}}
+		
 		return {{ if or ($op.Request.Type.IsPointer) ($op.Request.Type.IsInterface) }}&{{ end }}request, nil
 		{{- else }}
 		_ = request

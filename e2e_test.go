@@ -185,8 +185,8 @@ func TestIntegration(t *testing.T) {
 			require.Error(t, err)
 			var validateErr *validate.Error
 			require.ErrorAs(t, err, &validateErr)
-			require.Len(t, validateErr.Fields, 2)
-			require.Equal(t, "invalid: id (value -1 less than 0), name (len 1 less than minimum 4)", validateErr.Error())
+			require.Len(t, validateErr.Fields, 3)
+			require.Equal(t, "invalid: id (value -1 less than 0), name (len 1 less than minimum 4), kind (invalid enum value: )", validateErr.Error())
 		})
 
 		s := httptest.NewServer(api.NewServer(&sampleAPIServer{}))

@@ -77,9 +77,8 @@ func (g *Generator) generateResponses(opName string, responses *oas.OperationRes
 			typ = ir.Alias(pascal(opName, resName), typ)
 			g.saveType(typ)
 		case ir.KindStream:
-			typ.Name = pascal(opName, resName)
+			typ.Stream.Name = pascal(opName, resName)
 			g.saveType(typ)
-		default:
 		}
 
 		typ.Implement(iface)
@@ -107,9 +106,11 @@ func (g *Generator) responseToIR(name, doc string, resp *oas.Response) (ret *ir.
 
 	if len(resp.Contents) == 0 {
 		typ := &ir.Type{
-			Kind: ir.KindStruct,
-			Name: name,
 			Doc:  doc,
+			Kind: ir.KindStruct,
+			Struct: &ir.TypeStruct{
+				Name: name,
+			},
 		}
 
 		g.saveType(typ)
@@ -194,11 +195,17 @@ func (g *Generator) wrapResponseStatusCode(resp *ir.StatusResponse) (ret *ir.Sta
 }
 
 func (g *Generator) wrapStatusCode(typ *ir.Type) (ret *ir.Type) {
-	if !typ.Is(ir.KindStruct, ir.KindAlias) {
+	typeName := ""
+	switch typ.Kind {
+	case ir.KindStruct:
+		typeName = typ.Struct.Name
+	case ir.KindAlias:
+		typeName = typ.Alias.Name
+	default:
 		panic("unreachable")
 	}
 
-	if schema := typ.Schema; schema != nil && schema.Ref != "" {
+	if schema := typ.Schema(); schema != nil && schema.Ref != "" {
 		if t, ok := g.wrapped.types[schema.Ref]; ok {
 			return t
 		}
@@ -207,19 +214,21 @@ func (g *Generator) wrapStatusCode(typ *ir.Type) (ret *ir.Type) {
 		defer func() { g.saveType(ret) }()
 	}
 
-	name := typ.Name + "StatusCode"
+	name := typeName + "StatusCode"
 	return &ir.Type{
+		Doc:  fmt.Sprintf("%s wraps %s with StatusCode.", name, typeName),
 		Kind: ir.KindStruct,
-		Name: name,
-		Doc:  fmt.Sprintf("%s wraps %s with StatusCode.", name, typ.Name),
-		Fields: []*ir.Field{
-			{
-				Name: "StatusCode",
-				Type: ir.Primitive(ir.Int, nil),
-			},
-			{
-				Name: "Response",
-				Type: typ,
+		Struct: &ir.TypeStruct{
+			Name: name,
+			Fields: []*ir.Field{
+				{
+					Name: "StatusCode",
+					Type: ir.Primitive(ir.Int, nil),
+				},
+				{
+					Name: "Response",
+					Type: typ,
+				},
 			},
 		},
 	}

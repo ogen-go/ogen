@@ -26,17 +26,27 @@ func afterDot(v string) string {
 }
 
 func (t *Type) EncodeFn() string {
-	if t.Is(KindArray) && t.Item.EncodeFn() != "" {
-		return t.Item.EncodeFn() + "Array"
+	switch t.Kind {
+	case KindArray:
+		if t.Array.Item.EncodeFn() != "" {
+			return t.Array.Item.EncodeFn() + "Array"
+		}
+	case KindPrimitive:
+		switch t.Primitive.Type {
+		case Int, Int64, Int32, String, Bool, Float32, Float64:
+			return capitalize(t.Primitive.Type.String())
+		case UUID, Time, IP, Duration, URL:
+			return afterDot(t.Primitive.Type.String())
+		}
+	case KindEnum:
+		switch t.Enum.Type {
+		case Int, Int64, Int32, String, Bool, Float32, Float64:
+			return capitalize(t.Enum.Type.String())
+		case UUID, Time, IP, Duration, URL:
+			return afterDot(t.Enum.Type.String())
+		}
 	}
-	switch t.Primitive {
-	case Int, Int64, Int32, String, Bool, Float32, Float64:
-		return capitalize(t.Primitive.String())
-	case UUID, Time, IP, Duration, URL:
-		return afterDot(t.Primitive.String())
-	default:
-		return ""
-	}
+	return ""
 }
 
 func (t Type) ToString() string {
@@ -54,24 +64,27 @@ func (t Type) FromString() string {
 }
 
 func (t *Type) IsInteger() bool {
-	switch t.Primitive {
-	case Int, Int8, Int16, Int32, Int64,
-		Uint, Uint8, Uint16, Uint32, Uint64:
-		return true
-	default:
-		return false
+	if t.Kind == KindPrimitive {
+		switch t.Primitive.Type {
+		case Int, Int8, Int16, Int32, Int64,
+			Uint, Uint8, Uint16, Uint32, Uint64:
+			return true
+		}
 	}
+	return false
 }
 
 func (t *Type) IsFloat() bool {
-	switch t.Primitive {
-	case Float32, Float64:
-		return true
-	default:
-		return false
+	if t.Kind == KindPrimitive {
+		switch t.Primitive.Type {
+		case Float32, Float64:
+			return true
+		}
 	}
+	return false
 }
 
+func (t *Type) IsPrimitive() bool { return t.Is(KindPrimitive) }
 func (t *Type) IsArray() bool     { return t.Is(KindArray) }
 func (t *Type) IsStruct() bool    { return t.Is(KindStruct) }
 func (t *Type) IsPointer() bool   { return t.Is(KindPointer) }
@@ -88,11 +101,55 @@ func (t *Type) MustField(name string) *Field {
 		panic("unreachable")
 	}
 
-	for _, f := range t.Fields {
+	for _, f := range t.Struct.Fields {
 		if f.Name == name {
 			return f
 		}
 	}
 
 	panic(fmt.Sprintf("field with name %q not found", name))
+}
+
+func (t *Type) MustName() string {
+	switch t.Kind {
+	case KindStruct:
+		return t.Struct.Name
+	case KindAlias:
+		return t.Alias.Name
+	case KindEnum:
+		return t.Enum.Name
+	case KindGeneric:
+		return t.Generic.Name
+	case KindSum:
+		return t.Sum.Name
+	case KindStream:
+		return t.Stream.Name
+	case KindInterface:
+		return t.Interface.Name
+	default:
+		// fmt.Printf("WARN: Cannot get name from %q\n", t.Kind)
+		return t.ghostName
+	}
+}
+
+func (t *Type) MustSetName(name string) {
+	switch t.Kind {
+	case KindStruct:
+		t.Struct.Name = name
+	case KindAlias:
+		t.Alias.Name = name
+	case KindEnum:
+		t.Enum.Name = name
+	case KindGeneric:
+		t.Generic.Name = name
+	case KindSum:
+		t.Sum.Name = name
+	case KindStream:
+		t.Stream.Name = name
+	case KindInterface:
+		t.Interface.Name = name
+	default:
+		// fmt.Printf("WARN: Cannot set name to %q\n", t.Kind)
+		t.ghostName = name
+	}
 }

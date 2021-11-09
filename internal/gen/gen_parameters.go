@@ -77,16 +77,16 @@ func isParamAllowed(t *ir.Type, root bool, visited map[*ir.Type]struct{}) error 
 		if !root {
 			return errors.New("nested arrays not allowed")
 		}
-		return isParamAllowed(t.Item, false, visited)
+		return isParamAllowed(t.Array.Item, false, visited)
 	case ir.KindAlias:
-		return isParamAllowed(t.AliasTo, root, visited)
+		return isParamAllowed(t.Alias.To, root, visited)
 	case ir.KindPointer:
-		return isParamAllowed(t.PointerTo, root, visited)
+		return isParamAllowed(t.Pointer.To, root, visited)
 	case ir.KindStruct:
 		if !root {
 			return errors.New("nested objects not allowed")
 		}
-		for _, field := range t.Fields {
+		for _, field := range t.Struct.Fields {
 			if err := isParamAllowed(field.Type, false, visited); err != nil {
 				// TODO: Check field.Spec existence.
 				return errors.Wrapf(err, "field %q", field.Spec.Name)
@@ -94,7 +94,7 @@ func isParamAllowed(t *ir.Type, root bool, visited map[*ir.Type]struct{}) error 
 		}
 		return nil
 	case ir.KindGeneric:
-		return isParamAllowed(t.GenericOf, root, visited)
+		return isParamAllowed(t.Generic.Of, root, visited)
 	case ir.KindSum:
 		return &ErrNotImplemented{"sum type parameter"}
 

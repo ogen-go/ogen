@@ -29,7 +29,7 @@ func (g *Generator) wrapGenerics() {
 }
 
 func (g *Generator) boxStructFields(s *ir.Type) {
-	for _, field := range s.Fields {
+	for _, field := range s.Struct.Fields {
 		if field.Spec == nil {
 			continue
 		}
@@ -52,7 +52,7 @@ func (g *Generator) boxStructFields(s *ir.Type) {
 					}, typ), ir.NilNull)
 				default:
 					// Required.
-					panic(fmt.Sprintf("recursion: %s.%s", s.Name, field.Name))
+					panic(fmt.Sprintf("recursion: %s.%s", s.Struct.Name, field.Name))
 				}
 			}
 			if v.Any() {
@@ -68,9 +68,9 @@ func (g *Generator) boxType(v ir.GenericVariant, typ *ir.Type) *ir.Type {
 		// Using special case for array nil value if possible.
 		switch {
 		case v.OnlyOptional():
-			typ.NilSemantic = ir.NilOptional
+			typ.Array.Semantic = ir.NilOptional
 		case v.OnlyNullable():
-			typ.NilSemantic = ir.NilNull
+			typ.Array.Semantic = ir.NilNull
 		default:
 			typ = ir.Generic(genericPostfix(typ.Go()),
 				typ, v,
@@ -89,12 +89,12 @@ func (g *Generator) boxType(v ir.GenericVariant, typ *ir.Type) *ir.Type {
 
 	switch {
 	case v.OnlyOptional():
-		return typ.Pointer(ir.NilOptional)
+		return typ.MakePointer(ir.NilOptional)
 	case v.OnlyNullable():
-		return typ.Pointer(ir.NilNull)
+		return typ.MakePointer(ir.NilNull)
 	default:
 		typ = ir.Generic(genericPostfix(typ.Go()),
-			typ.Pointer(ir.NilNull), ir.GenericVariant{Optional: true},
+			typ.MakePointer(ir.NilNull), ir.GenericVariant{Optional: true},
 		)
 		g.saveType(typ)
 		return typ

@@ -23,104 +23,106 @@
 
 {{- /* Define struct */ -}}
 {{- if $.IsStruct }}
-{{- if eq (len $.Fields) 0 }}{{/* Blank struct */}}
-type {{ $.Name }} struct{}
+{{- if eq (len $.Struct.Fields) 0 }}{{/* Blank struct */}}
+type {{ $.Struct.Name }} struct{}
 {{- else }}
-type {{ $.Name }} struct {
-{{- range $f := $.Fields }}
+type {{ $.Struct.Name }} struct {
+{{- range $f := $.Struct.Fields }}
 	{{ $f.Name }} {{ $f.Type.Go }} {{ if $f.Tag.JSON }}`json:"{{ $f.Tag.JSON }}"`{{ end }}
 {{- end }}
 }
+{{- end }}
+{{- range $_, $method := $.Struct.Methods }}
+	func (*{{ $.Struct.Name }}) {{ $method }}() {}
 {{- end }}
 {{/* Define struct */}}
 
 {{/* Define stream */}}
 {{- else if $.IsStream }}
-type {{ $.Name }} struct {
+type {{ $.Stream.Name }} struct {
 	Data io.Reader
 }
 
-func (s {{ $.Name }}) Read(p []byte) (n int, err error) {
+func (s {{ $.Stream.Name }}) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
+
+{{- range $method := $.Stream.Methods }}
+	func (*{{ $.Stream.Name }}) {{ $method }}() {}
+{{- end }}
 {{/* Define stream */}}
 
 {{/* Define alias */}}
 {{- else if $.IsAlias }}
-type {{ $.Name }} {{ $.AliasTo.Go }}
+type {{ $.Alias.Name }} {{ $.Alias.To.Go }}
 {{/* Define alias */}}
 
 {{/* Define enum */}}
 {{- else if $.IsEnum }}
-type {{ $.Name }} {{ $.Primitive }}
+type {{ $.Enum.Name }} {{ $.Enum.Type }}
 
 const (
-{{- range $variant := $.EnumVariants }}
-{{ $variant.Name }} {{ $.Name }} = {{ $variant.ValueGo }}
+{{- range $variant := $.Enum.EnumVariants }}
+{{ $variant.Name }} {{ $.Enum.Name }} = {{ $variant.ValueGo }}
 {{- end }}
 )
 {{/* Define enum */}}
 {{/* Define sum */}}
 {{- else if $.IsSum }}
-// {{ $.Name }} represents sum type.
-type {{ $.Name }} struct {
-	Type {{ $.Name }}Type // switch on this field
-{{- range $s := $.SumOf }}
-	{{ $s.Name }} {{ $s.Go }}
+// {{ $.Sum.Name }} represents sum type.
+type {{ $.Sum.Name }} struct {
+	Type {{ $.Sum.Name }}Type // switch on this field
+{{- range $s := $.Sum.SumOf }}
+	{{ $s.MustName }} {{ $s.Go }}
 {{- end }}
 }
 
-// {{ $.Name }}Type is oneOf type of {{ $.Name }}.
-type {{ $.Name }}Type string
+// {{ $.Sum.Name }}Type is oneOf type of {{ $.Sum.Name }}.
+type {{ $.Sum.Name }}Type string
 
-// Possible values for {{ $.Name }}Type.
+// Possible values for {{ $.Sum.Name }}Type.
 const (
-{{- range $s := $.SumOf }}
-	{{ $s.Name }}{{ $.Name }} {{ $.Name }}Type = "{{ $s.Go }}"
+{{- range $s := $.Sum.SumOf }}
+	{{ $s.MustName }}{{ $.Sum.Name }} {{ $.Sum.Name }}Type = "{{ $s.Go }}"
 {{- end }}
 )
 
-{{- range $s := $.SumOf }}
-// Is{{ $s.Name }} reports whether {{ $.Name }} is {{ $s.Go }}.
-func (s {{ $.Go }}) Is{{ $s.Name }}() bool { return s.Type == {{ $s.Name }}{{ $.Name }} }
+{{- range $s := $.Sum.SumOf }}
+// Is{{ $s.MustName }} reports whether {{ $.Sum.Name }} is {{ $s.Go }}.
+func (s {{ $.Sum.Go }}) Is{{ $s.MustName }}() bool { return s.Type == {{ $s.MustName }}{{ $.Sum.Name }} }
 {{- end }}
 
-{{- range $s := $.SumOf }}
-// Set{{ $s.Name }} sets {{ $.Name }} to {{ $s.Go }}.
-func (s *{{ $.Go }}) Set{{ $s.Name }}(v {{ $s.Go }}) {
-	s.Type = {{ $s.Name }}{{ $.Name }}
-	s.{{ $s.Name }} = v
+{{- range $s := $.Sum.SumOf }}
+// Set{{ $s.MustName }} sets {{ $.Sum.Name }} to {{ $s.Go }}.
+func (s *{{ $.Sum.Go }}) Set{{ $s.MustName }}(v {{ $s.Go }}) {
+	s.Type = {{ $s.MustName }}{{ $.Sum.Name }}
+	s.{{ $s.MustName }} = v
 }
 
-// Get{{ $s.Name }} returns {{ $s.Go }} and true boolean if {{ $.Go }} is {{ $s.Go }}.
-func (s {{ $.Go }}) Get{{ $s.Name }}()(v {{ $s.Go }}, ok bool) {
-	if !s.Is{{ $s.Name }}() {
+// Get{{ $s.MustName }} returns {{ $s.Go }} and true boolean if {{ $.Go }} is {{ $s.Go }}.
+func (s {{ $.Go }}) Get{{ $s.MustName }}()(v {{ $s.Go }}, ok bool) {
+	if !s.Is{{ $s.MustName }}() {
 		return v, false
 	}
-	return s.{{ $s.Name }}, true
+	return s.{{ $s.MustName }}, true
 }
 
-// New{{ $s.Name }}{{ $.Name }} returns new {{ $.Go }} from {{ $s.Go }}.
-func New{{ $s.Name }}{{ $.Name }}(v {{ $s.Go }}) {{ $.Go }} {
-	var s {{ $.Name }}
-	s.Set{{ $s.Name }}(v)
+// New{{ $s.MustName }}{{ $.Sum.Name }} returns new {{ $.Sum.Go }} from {{ $s.Go }}.
+func New{{ $s.MustName }}{{ $.Sum.Name }}(v {{ $s.Go }}) {{ $.Sum.Go }} {
+	var s {{ $.Sum.Name }}
+	s.Set{{ $s.MustName }}(v)
 	return s
 }
 {{- end }}
-
-{{- range $s := $.SumOf }}
-
-{{- end }}
-
 {{/* Define sum */}}
 {{/* Define generic */}}
 {{- else if $.IsGeneric }}
-{{- $g := $.GenericOf }}
-{{- $v := $.GenericVariant }}
+{{- $g := $.Generic.Of }}
+{{- $v := $.Generic.Variant }}
 
-// New{{ $.Name }} returns new {{ $.Name }} with value set to v.
-func New{{ $.Name }}(v {{ $g.Go }}) {{ $.Name }} {
-	return {{ $.Name }} {
+// New{{ $.Generic.Name }} returns new {{ $.Generic.Name }} with value set to v.
+func New{{ $.Generic.Name }}(v {{ $g.Go }}) {{ $.Generic.Name }} {
+	return {{ $.Generic.Name }} {
 		Value: v,
 	{{- if $v.Optional }}
 		Set: true,
@@ -128,8 +130,8 @@ func New{{ $.Name }}(v {{ $g.Go }}) {{ $.Name }} {
 	}
 }
 
-// {{ $.Name }} is{{ if $v.Optional }} optional{{ end }}{{ if $v.Nullable }} nullable{{ end }} {{ $g.Go }}.
-type {{ $.Name }} struct {
+// {{ $.Generic.Name }} is{{ if $v.Optional }} optional{{ end }}{{ if $v.Nullable }} nullable{{ end }} {{ $g.Go }}.
+type {{ $.Generic.Name }} struct {
 	Value {{ $g.Go }}
 {{- if $v.Optional }}
 	Set bool
@@ -141,10 +143,10 @@ type {{ $.Name }} struct {
 
 {{- if $v.Optional }}
 // IsSet returns true if {{ $.Go }} was set.
-func (o {{ $.Name }}) IsSet() bool { return o.Set }
+func (o {{ $.Generic.Name }}) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *{{ $.Name }}) Reset() {
+func (o *{{ $.Generic.Name }}) Reset() {
 	var v {{ $g.Go }}
 	o.Value = v
 	o.Set = false
@@ -155,7 +157,7 @@ func (o *{{ $.Name }}) Reset() {
 {{- end }}
 
 // SetTo sets value to v.
-func (o *{{ $.Name }}) SetTo(v {{ $g.Go }}) {
+func (o *{{ $.Generic.Name }}) SetTo(v {{ $g.Go }}) {
 {{- if $v.Optional }}
 	o.Set = true
 {{- end }}
@@ -167,11 +169,11 @@ func (o *{{ $.Name }}) SetTo(v {{ $g.Go }}) {
 
 {{- if $v.Nullable  }}
 // IsSet returns true if value is Null.
-func (o {{ $.Name }}) IsNull() bool { return o.Null }
+func (o {{ $.Generic.Name }}) IsNull() bool { return o.Null }
 {{ end }}
 
 // Get returns value and boolean that denotes whether value was set.
-func (o {{ $.Name }}) Get() (v {{ $g.Go }}, ok bool) {
+func (o {{ $.Generic.Name }}) Get() (v {{ $g.Go }}, ok bool) {
 {{- if $v.Nullable }}
 	if o.Null {
 		return v, false
@@ -186,14 +188,6 @@ func (o {{ $.Name }}) Get() (v {{ $g.Go }}, ok bool) {
 }
 {{/* end define generic */}}
 {{- else }}
-// Unexpected kind {{ $.Kind }} of {{ $.Name }}
+// Unexpected kind: {{ $.Kind }}
 {{- end }}
-
-{{/* Define methods */}}
-{{- range $method := $.Methods }}
-func (*{{ $.Name }}) {{ $method }}() {}
-{{- end }}
-{{/* end define methods */}}
-
-
 {{- end }}
