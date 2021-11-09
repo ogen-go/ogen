@@ -63,41 +63,41 @@ func (g *Generator) boxStructFields(s *ir.Type) {
 	}
 }
 
-func (g *Generator) boxType(v ir.GenericVariant, typ *ir.Type) *ir.Type {
-	if typ.IsArray() {
+func (g *Generator) boxType(v ir.GenericVariant, t *ir.Type) *ir.Type {
+	if t.IsArray() || t.Primitive == ir.ByteSlice {
 		// Using special case for array nil value if possible.
 		switch {
 		case v.OnlyOptional():
-			typ.NilSemantic = ir.NilOptional
+			t.NilSemantic = ir.NilOptional
 		case v.OnlyNullable():
-			typ.NilSemantic = ir.NilNull
+			t.NilSemantic = ir.NilNull
 		default:
-			typ = ir.Generic(genericPostfix(typ.Go()),
-				typ, v,
+			t = ir.Generic(genericPostfix(t.Go()),
+				t, v,
 			)
-			g.saveType(typ)
+			g.saveType(t)
 		}
 
-		return typ
+		return t
 	}
 
-	if typ.CanGeneric() {
-		typ = ir.Generic(genericPostfix(typ.Go()), typ, v)
-		g.saveType(typ)
-		return typ
+	if t.CanGeneric() {
+		t = ir.Generic(genericPostfix(t.Go()), t, v)
+		g.saveType(t)
+		return t
 	}
 
 	switch {
 	case v.OnlyOptional():
-		return typ.Pointer(ir.NilOptional)
+		return t.Pointer(ir.NilOptional)
 	case v.OnlyNullable():
-		return typ.Pointer(ir.NilNull)
+		return t.Pointer(ir.NilNull)
 	default:
-		typ = ir.Generic(genericPostfix(typ.Go()),
-			typ.Pointer(ir.NilNull), ir.GenericVariant{Optional: true},
+		t = ir.Generic(genericPostfix(t.Go()),
+			t.Pointer(ir.NilNull), ir.GenericVariant{Optional: true},
 		)
-		g.saveType(typ)
-		return typ
+		g.saveType(t)
+		return t
 	}
 }
 

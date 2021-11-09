@@ -57,6 +57,15 @@ type Type struct {
 	Validators       Validators
 }
 
+func (t Type) String() string {
+	var b strings.Builder
+	b.WriteString(string(t.Kind))
+	b.WriteRune('(')
+	b.WriteString(t.Go())
+	b.WriteRune(')')
+	return b.String()
+}
+
 type EnumVariant struct {
 	Name  string
 	Value interface{}

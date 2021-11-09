@@ -54,10 +54,6 @@ func (t Type) CanGeneric() bool {
 		if len(t.Fields) == 0 {
 			return false
 		}
-	case KindArray:
-		if t.Item.Primitive == Byte {
-			return false
-		}
 	case KindAlias:
 		return t.AliasTo.CanGeneric()
 	}

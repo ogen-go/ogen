@@ -126,9 +126,6 @@ func (s *{{ $t.Name }}) Decode(d *jx.Decoder) error {
 	*s = {{ $t.Name }}(v)
 	return nil
 }
-{{- else if $t.IsAlias }}
-func ({{ $t.Name }}) Encode(e *jx.Encoder) {}
-func ({{ $t.Name }}) Decode(d *jx.Decoder) error { return nil }
 {{- else if $t.IsSum }}
 // Encode encodes {{ $t.Name }} as json.
 func (s {{ $t.Name }}) Encode(e *jx.Encoder) {

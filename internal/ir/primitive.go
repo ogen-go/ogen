@@ -8,8 +8,8 @@ func (p PrimitiveType) String() string {
 	switch p {
 	case String:
 		return "string"
-	case Byte:
-		return "byte"
+	case ByteSlice:
+		return "[]byte"
 	case Int:
 		return "int"
 	case Int8:
@@ -53,7 +53,7 @@ func (p PrimitiveType) String() string {
 
 const (
 	String PrimitiveType = iota
-	Byte
+	ByteSlice
 	Int
 	Int8
 	Int16

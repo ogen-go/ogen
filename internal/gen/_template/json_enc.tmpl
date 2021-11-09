@@ -98,6 +98,6 @@ e.FieldStart("{{ $.Tag.JSON }}")
 		{{- template "enc_json_field" $ }}
 		e.{{ $j.Fn }}({{ $.Var }})
 	{{- else -}}
-		{{ errorf "unsupported kind: %s" $t.Kind }}
+		{{ errorf "unsupported: %s" $t }}
 	{{- end }}
 {{- end -}}

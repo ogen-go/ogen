@@ -186,7 +186,7 @@ func (o {{ $.Name }}) Get() (v {{ $g.Go }}, ok bool) {
 }
 {{/* end define generic */}}
 {{- else }}
-// Unexpected kind {{ $.Kind }} of {{ $.Name }}
+{{ errorf "unexpected kind %s of %s" $.Kind $.Name }}
 {{- end }}
 
 {{/* Define methods */}}

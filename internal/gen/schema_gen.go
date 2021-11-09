@@ -364,7 +364,7 @@ func parseSimple(schema *oas.Schema) (*ir.Type, error) {
 	case oas.String:
 		switch format {
 		case oas.FormatByte:
-			return ir.Array(ir.Primitive(ir.Byte, nil), ir.NilInvalid, schema), nil
+			return ir.Primitive(ir.ByteSlice, schema), nil
 		case oas.FormatDateTime, oas.FormatDate, oas.FormatTime:
 			return ir.Primitive(ir.Time, schema), nil
 		case oas.FormatDuration:

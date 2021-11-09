@@ -43,11 +43,17 @@ if err := d.Arr(func(d *jx.Decoder) error {
 	{{- $j := $t.JSON -}}
 	{{- if $t.IsPointer }}
 		{{- template "dec_json_pointer" $ }}
+	{{- else if $t.IsAlias }}
+		{
+			var unwrapped {{ $t.AliasTo.Go }}
+        	{{- template "dec_json" elem $t.AliasTo "unwrapped" }}
+			{{ $.Var }} = {{ $t.Go }}(unwrapped)
+		}
 	{{- else if $t.IsArray }}
 		{{ template "dec_json_array" $ }}
 	{{- else if $t.GenericOf }}
 		{{- template "dec_json_generic" $ }}
-	{{- else if or ($t.IsStruct) ($t.IsEnum) ($t.IsSum) }}
+	{{- else if or ($t.IsStruct) ($t.IsEnum) ($t.IsSum) ($t.IsAlias) }}
 		if err := {{ $.Var }}.Decode(d); err != nil {
 			return err
 		}
@@ -63,7 +69,7 @@ if err := d.Arr(func(d *jx.Decoder) error {
 		if err != nil {
 			 return err
 		}
-	{{- else  }}
-		return errors.New(`decoding of "{{ $t.Go }}" ({{ $t.Kind }}) is not implemented`)
+	{{- else }}
+        {{ errorf "unsupported kind: %s" $t.Kind }}
 	{{- end }}
 {{- end -}}

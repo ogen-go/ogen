@@ -247,6 +247,7 @@ func TestIntegration(t *testing.T) {
 				Email:    "foo@example.com",
 				Format:   "1-2",
 				Hostname: "example.org",
+				Base64:   []byte("hello, world!"),
 			}),
 		}
 
