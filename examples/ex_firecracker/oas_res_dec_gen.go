@@ -108,7 +108,7 @@ func decodeCreateSnapshotResponse(resp *http.Response, span trace.Span) (res Cre
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -118,8 +118,10 @@ func decodeCreateSnapshotResponse(resp *http.Response, span trace.Span) (res Cre
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -170,7 +172,7 @@ func decodeCreateSyncActionResponse(resp *http.Response, span trace.Span) (res C
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -180,8 +182,10 @@ func decodeCreateSyncActionResponse(resp *http.Response, span trace.Span) (res C
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -257,7 +261,7 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response, span trace.Span) (
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -267,8 +271,10 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response, span trace.Span) (
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -344,7 +350,7 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response, span trace.Span) (r
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -354,8 +360,10 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response, span trace.Span) (r
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -404,7 +412,7 @@ func decodeDescribeInstanceResponse(resp *http.Response, span trace.Span) (res D
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -414,8 +422,10 @@ func decodeDescribeInstanceResponse(resp *http.Response, span trace.Span) (res D
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -464,7 +474,7 @@ func decodeGetExportVmConfigResponse(resp *http.Response, span trace.Span) (res 
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -474,8 +484,10 @@ func decodeGetExportVmConfigResponse(resp *http.Response, span trace.Span) (res 
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -524,7 +536,7 @@ func decodeGetMachineConfigurationResponse(resp *http.Response, span trace.Span)
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -534,8 +546,10 @@ func decodeGetMachineConfigurationResponse(resp *http.Response, span trace.Span)
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -586,7 +600,7 @@ func decodeLoadSnapshotResponse(resp *http.Response, span trace.Span) (res LoadS
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -596,8 +610,10 @@ func decodeLoadSnapshotResponse(resp *http.Response, span trace.Span) (res LoadS
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -648,7 +664,7 @@ func decodeMmdsConfigPutResponse(resp *http.Response, span trace.Span) (res Mmds
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -658,8 +674,10 @@ func decodeMmdsConfigPutResponse(resp *http.Response, span trace.Span) (res Mmds
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -735,7 +753,7 @@ func decodeMmdsGetResponse(resp *http.Response, span trace.Span) (res MmdsGetRes
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -745,8 +763,10 @@ func decodeMmdsGetResponse(resp *http.Response, span trace.Span) (res MmdsGetRes
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -797,7 +817,7 @@ func decodeMmdsPatchResponse(resp *http.Response, span trace.Span) (res MmdsPatc
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -807,8 +827,10 @@ func decodeMmdsPatchResponse(resp *http.Response, span trace.Span) (res MmdsPatc
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -859,7 +881,7 @@ func decodeMmdsPutResponse(resp *http.Response, span trace.Span) (res MmdsPutRes
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -869,8 +891,10 @@ func decodeMmdsPutResponse(resp *http.Response, span trace.Span) (res MmdsPutRes
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -921,7 +945,7 @@ func decodePatchBalloonResponse(resp *http.Response, span trace.Span) (res Patch
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -931,8 +955,10 @@ func decodePatchBalloonResponse(resp *http.Response, span trace.Span) (res Patch
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -983,7 +1009,7 @@ func decodePatchBalloonStatsIntervalResponse(resp *http.Response, span trace.Spa
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -993,8 +1019,10 @@ func decodePatchBalloonStatsIntervalResponse(resp *http.Response, span trace.Spa
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1045,7 +1073,7 @@ func decodePatchGuestDriveByIDResponse(resp *http.Response, span trace.Span) (re
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1055,8 +1083,10 @@ func decodePatchGuestDriveByIDResponse(resp *http.Response, span trace.Span) (re
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1107,7 +1137,7 @@ func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response, span trac
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1117,8 +1147,10 @@ func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response, span trac
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1169,7 +1201,7 @@ func decodePatchMachineConfigurationResponse(resp *http.Response, span trace.Spa
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1179,8 +1211,10 @@ func decodePatchMachineConfigurationResponse(resp *http.Response, span trace.Spa
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1231,7 +1265,7 @@ func decodePatchVmResponse(resp *http.Response, span trace.Span) (res PatchVmRes
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1241,8 +1275,10 @@ func decodePatchVmResponse(resp *http.Response, span trace.Span) (res PatchVmRes
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1293,7 +1329,7 @@ func decodePutBalloonResponse(resp *http.Response, span trace.Span) (res PutBall
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1303,8 +1339,10 @@ func decodePutBalloonResponse(resp *http.Response, span trace.Span) (res PutBall
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1355,7 +1393,7 @@ func decodePutGuestBootSourceResponse(resp *http.Response, span trace.Span) (res
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1365,8 +1403,10 @@ func decodePutGuestBootSourceResponse(resp *http.Response, span trace.Span) (res
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1417,7 +1457,7 @@ func decodePutGuestDriveByIDResponse(resp *http.Response, span trace.Span) (res 
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1427,8 +1467,10 @@ func decodePutGuestDriveByIDResponse(resp *http.Response, span trace.Span) (res 
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1479,7 +1521,7 @@ func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response, span trace.
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1489,8 +1531,10 @@ func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response, span trace.
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1541,7 +1585,7 @@ func decodePutGuestVsockResponse(resp *http.Response, span trace.Span) (res PutG
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1551,8 +1595,10 @@ func decodePutGuestVsockResponse(resp *http.Response, span trace.Span) (res PutG
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1603,7 +1649,7 @@ func decodePutLoggerResponse(resp *http.Response, span trace.Span) (res PutLogge
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1613,8 +1659,10 @@ func decodePutLoggerResponse(resp *http.Response, span trace.Span) (res PutLogge
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1665,7 +1713,7 @@ func decodePutMachineConfigurationResponse(resp *http.Response, span trace.Span)
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1675,8 +1723,10 @@ func decodePutMachineConfigurationResponse(resp *http.Response, span trace.Span)
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1727,7 +1777,7 @@ func decodePutMetricsResponse(resp *http.Response, span trace.Span) (res PutMetr
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1737,8 +1787,10 @@ func decodePutMetricsResponse(resp *http.Response, span trace.Span) (res PutMetr
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}

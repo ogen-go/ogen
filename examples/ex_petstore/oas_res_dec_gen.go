@@ -81,7 +81,7 @@ func decodeCreatePetsResponse(resp *http.Response, span trace.Span) (res CreateP
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -91,8 +91,10 @@ func decodeCreatePetsResponse(resp *http.Response, span trace.Span) (res CreateP
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -139,7 +141,7 @@ func decodeListPetsResponse(resp *http.Response, span trace.Span) (res ListPetsR
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -149,8 +151,10 @@ func decodeListPetsResponse(resp *http.Response, span trace.Span) (res ListPetsR
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -199,7 +203,7 @@ func decodeShowPetByIdResponse(resp *http.Response, span trace.Span) (res ShowPe
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -209,8 +213,10 @@ func decodeShowPetByIdResponse(resp *http.Response, span trace.Span) (res ShowPe
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}

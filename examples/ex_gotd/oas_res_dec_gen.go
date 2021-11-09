@@ -106,7 +106,7 @@ func decodeAddStickerToSetResponse(resp *http.Response, span trace.Span) (res Ad
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -116,8 +116,10 @@ func decodeAddStickerToSetResponse(resp *http.Response, span trace.Span) (res Ad
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -166,7 +168,7 @@ func decodeAnswerCallbackQueryResponse(resp *http.Response, span trace.Span) (re
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -176,8 +178,10 @@ func decodeAnswerCallbackQueryResponse(resp *http.Response, span trace.Span) (re
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -226,7 +230,7 @@ func decodeAnswerInlineQueryResponse(resp *http.Response, span trace.Span) (res 
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -236,8 +240,10 @@ func decodeAnswerInlineQueryResponse(resp *http.Response, span trace.Span) (res 
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -286,7 +292,7 @@ func decodeAnswerPreCheckoutQueryResponse(resp *http.Response, span trace.Span) 
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -296,8 +302,10 @@ func decodeAnswerPreCheckoutQueryResponse(resp *http.Response, span trace.Span) 
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -346,7 +354,7 @@ func decodeAnswerShippingQueryResponse(resp *http.Response, span trace.Span) (re
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -356,8 +364,10 @@ func decodeAnswerShippingQueryResponse(resp *http.Response, span trace.Span) (re
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -406,7 +416,7 @@ func decodeBanChatMemberResponse(resp *http.Response, span trace.Span) (res BanC
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -416,8 +426,10 @@ func decodeBanChatMemberResponse(resp *http.Response, span trace.Span) (res BanC
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -466,7 +478,7 @@ func decodeCopyMessageResponse(resp *http.Response, span trace.Span) (res CopyMe
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -476,8 +488,10 @@ func decodeCopyMessageResponse(resp *http.Response, span trace.Span) (res CopyMe
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -526,7 +540,7 @@ func decodeCreateChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -536,8 +550,10 @@ func decodeCreateChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -586,7 +602,7 @@ func decodeCreateNewStickerSetResponse(resp *http.Response, span trace.Span) (re
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -596,8 +612,10 @@ func decodeCreateNewStickerSetResponse(resp *http.Response, span trace.Span) (re
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -646,7 +664,7 @@ func decodeDeleteChatPhotoResponse(resp *http.Response, span trace.Span) (res De
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -656,8 +674,10 @@ func decodeDeleteChatPhotoResponse(resp *http.Response, span trace.Span) (res De
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -706,7 +726,7 @@ func decodeDeleteChatStickerSetResponse(resp *http.Response, span trace.Span) (r
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -716,8 +736,10 @@ func decodeDeleteChatStickerSetResponse(resp *http.Response, span trace.Span) (r
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -766,7 +788,7 @@ func decodeDeleteMessageResponse(resp *http.Response, span trace.Span) (res Dele
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -776,8 +798,10 @@ func decodeDeleteMessageResponse(resp *http.Response, span trace.Span) (res Dele
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -826,7 +850,7 @@ func decodeDeleteMyCommandsResponse(resp *http.Response, span trace.Span) (res D
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -836,8 +860,10 @@ func decodeDeleteMyCommandsResponse(resp *http.Response, span trace.Span) (res D
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -886,7 +912,7 @@ func decodeDeleteStickerFromSetResponse(resp *http.Response, span trace.Span) (r
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -896,8 +922,10 @@ func decodeDeleteStickerFromSetResponse(resp *http.Response, span trace.Span) (r
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -946,7 +974,7 @@ func decodeDeleteWebhookResponse(resp *http.Response, span trace.Span) (res Dele
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -956,8 +984,10 @@ func decodeDeleteWebhookResponse(resp *http.Response, span trace.Span) (res Dele
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1006,7 +1036,7 @@ func decodeEditChatInviteLinkResponse(resp *http.Response, span trace.Span) (res
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1016,8 +1046,10 @@ func decodeEditChatInviteLinkResponse(resp *http.Response, span trace.Span) (res
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1066,7 +1098,7 @@ func decodeEditMessageCaptionResponse(resp *http.Response, span trace.Span) (res
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1076,8 +1108,10 @@ func decodeEditMessageCaptionResponse(resp *http.Response, span trace.Span) (res
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1126,7 +1160,7 @@ func decodeEditMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1136,8 +1170,10 @@ func decodeEditMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1186,7 +1222,7 @@ func decodeEditMessageMediaResponse(resp *http.Response, span trace.Span) (res E
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1196,8 +1232,10 @@ func decodeEditMessageMediaResponse(resp *http.Response, span trace.Span) (res E
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1246,7 +1284,7 @@ func decodeEditMessageReplyMarkupResponse(resp *http.Response, span trace.Span) 
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1256,8 +1294,10 @@ func decodeEditMessageReplyMarkupResponse(resp *http.Response, span trace.Span) 
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1306,7 +1346,7 @@ func decodeEditMessageTextResponse(resp *http.Response, span trace.Span) (res Ed
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1316,8 +1356,10 @@ func decodeEditMessageTextResponse(resp *http.Response, span trace.Span) (res Ed
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1366,7 +1408,7 @@ func decodeExportChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1376,8 +1418,10 @@ func decodeExportChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1426,7 +1470,7 @@ func decodeForwardMessageResponse(resp *http.Response, span trace.Span) (res For
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1436,8 +1480,10 @@ func decodeForwardMessageResponse(resp *http.Response, span trace.Span) (res For
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1486,7 +1532,7 @@ func decodeGetChatResponse(resp *http.Response, span trace.Span) (res GetChatRes
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1496,8 +1542,10 @@ func decodeGetChatResponse(resp *http.Response, span trace.Span) (res GetChatRes
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1546,7 +1594,7 @@ func decodeGetChatAdministratorsResponse(resp *http.Response, span trace.Span) (
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1556,8 +1604,10 @@ func decodeGetChatAdministratorsResponse(resp *http.Response, span trace.Span) (
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1606,7 +1656,7 @@ func decodeGetChatMemberResponse(resp *http.Response, span trace.Span) (res GetC
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1616,8 +1666,10 @@ func decodeGetChatMemberResponse(resp *http.Response, span trace.Span) (res GetC
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1666,7 +1718,7 @@ func decodeGetChatMemberCountResponse(resp *http.Response, span trace.Span) (res
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1676,8 +1728,10 @@ func decodeGetChatMemberCountResponse(resp *http.Response, span trace.Span) (res
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1726,7 +1780,7 @@ func decodeGetFileResponse(resp *http.Response, span trace.Span) (res GetFileRes
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1736,8 +1790,10 @@ func decodeGetFileResponse(resp *http.Response, span trace.Span) (res GetFileRes
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1786,7 +1842,7 @@ func decodeGetGameHighScoresResponse(resp *http.Response, span trace.Span) (res 
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1796,8 +1852,10 @@ func decodeGetGameHighScoresResponse(resp *http.Response, span trace.Span) (res 
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1846,7 +1904,7 @@ func decodeGetMeResponse(resp *http.Response, span trace.Span) (res GetMeRes, er
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1856,8 +1914,10 @@ func decodeGetMeResponse(resp *http.Response, span trace.Span) (res GetMeRes, er
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1906,7 +1966,7 @@ func decodeGetMyCommandsResponse(resp *http.Response, span trace.Span) (res GetM
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1916,8 +1976,10 @@ func decodeGetMyCommandsResponse(resp *http.Response, span trace.Span) (res GetM
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -1966,7 +2028,7 @@ func decodeGetStickerSetResponse(resp *http.Response, span trace.Span) (res GetS
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1976,8 +2038,10 @@ func decodeGetStickerSetResponse(resp *http.Response, span trace.Span) (res GetS
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -2026,7 +2090,7 @@ func decodeGetUpdatesResponse(resp *http.Response, span trace.Span) (res GetUpda
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -2036,8 +2100,10 @@ func decodeGetUpdatesResponse(resp *http.Response, span trace.Span) (res GetUpda
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -2086,7 +2152,7 @@ func decodeGetUserProfilePhotosResponse(resp *http.Response, span trace.Span) (r
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -2096,8 +2162,10 @@ func decodeGetUserProfilePhotosResponse(resp *http.Response, span trace.Span) (r
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -2146,7 +2214,7 @@ func decodeLeaveChatResponse(resp *http.Response, span trace.Span) (res LeaveCha
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -2156,8 +2224,10 @@ func decodeLeaveChatResponse(resp *http.Response, span trace.Span) (res LeaveCha
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -2206,7 +2276,7 @@ func decodePinChatMessageResponse(resp *http.Response, span trace.Span) (res Pin
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -2216,8 +2286,10 @@ func decodePinChatMessageResponse(resp *http.Response, span trace.Span) (res Pin
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -2266,7 +2338,7 @@ func decodePromoteChatMemberResponse(resp *http.Response, span trace.Span) (res 
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -2276,8 +2348,10 @@ func decodePromoteChatMemberResponse(resp *http.Response, span trace.Span) (res 
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -2326,7 +2400,7 @@ func decodeRestrictChatMemberResponse(resp *http.Response, span trace.Span) (res
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -2336,8 +2410,10 @@ func decodeRestrictChatMemberResponse(resp *http.Response, span trace.Span) (res
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -2386,7 +2462,7 @@ func decodeRevokeChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -2396,8 +2472,10 @@ func decodeRevokeChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -2446,7 +2524,7 @@ func decodeSendAnimationResponse(resp *http.Response, span trace.Span) (res Send
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -2456,8 +2534,10 @@ func decodeSendAnimationResponse(resp *http.Response, span trace.Span) (res Send
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -2506,7 +2586,7 @@ func decodeSendAudioResponse(resp *http.Response, span trace.Span) (res SendAudi
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -2516,8 +2596,10 @@ func decodeSendAudioResponse(resp *http.Response, span trace.Span) (res SendAudi
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -2566,7 +2648,7 @@ func decodeSendChatActionResponse(resp *http.Response, span trace.Span) (res Sen
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -2576,8 +2658,10 @@ func decodeSendChatActionResponse(resp *http.Response, span trace.Span) (res Sen
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -2626,7 +2710,7 @@ func decodeSendContactResponse(resp *http.Response, span trace.Span) (res SendCo
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -2636,8 +2720,10 @@ func decodeSendContactResponse(resp *http.Response, span trace.Span) (res SendCo
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -2686,7 +2772,7 @@ func decodeSendDiceResponse(resp *http.Response, span trace.Span) (res SendDiceR
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -2696,8 +2782,10 @@ func decodeSendDiceResponse(resp *http.Response, span trace.Span) (res SendDiceR
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -2746,7 +2834,7 @@ func decodeSendDocumentResponse(resp *http.Response, span trace.Span) (res SendD
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -2756,8 +2844,10 @@ func decodeSendDocumentResponse(resp *http.Response, span trace.Span) (res SendD
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -2806,7 +2896,7 @@ func decodeSendGameResponse(resp *http.Response, span trace.Span) (res SendGameR
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -2816,8 +2906,10 @@ func decodeSendGameResponse(resp *http.Response, span trace.Span) (res SendGameR
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -2866,7 +2958,7 @@ func decodeSendInvoiceResponse(resp *http.Response, span trace.Span) (res SendIn
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -2876,8 +2968,10 @@ func decodeSendInvoiceResponse(resp *http.Response, span trace.Span) (res SendIn
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -2926,7 +3020,7 @@ func decodeSendLocationResponse(resp *http.Response, span trace.Span) (res SendL
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -2936,8 +3030,10 @@ func decodeSendLocationResponse(resp *http.Response, span trace.Span) (res SendL
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -2986,7 +3082,7 @@ func decodeSendMediaGroupResponse(resp *http.Response, span trace.Span) (res Sen
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -2996,8 +3092,10 @@ func decodeSendMediaGroupResponse(resp *http.Response, span trace.Span) (res Sen
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -3046,7 +3144,7 @@ func decodeSendMessageResponse(resp *http.Response, span trace.Span) (res SendMe
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3056,8 +3154,10 @@ func decodeSendMessageResponse(resp *http.Response, span trace.Span) (res SendMe
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -3106,7 +3206,7 @@ func decodeSendPhotoResponse(resp *http.Response, span trace.Span) (res SendPhot
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3116,8 +3216,10 @@ func decodeSendPhotoResponse(resp *http.Response, span trace.Span) (res SendPhot
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -3166,7 +3268,7 @@ func decodeSendPollResponse(resp *http.Response, span trace.Span) (res SendPollR
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3176,8 +3278,10 @@ func decodeSendPollResponse(resp *http.Response, span trace.Span) (res SendPollR
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -3226,7 +3330,7 @@ func decodeSendStickerResponse(resp *http.Response, span trace.Span) (res SendSt
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3236,8 +3340,10 @@ func decodeSendStickerResponse(resp *http.Response, span trace.Span) (res SendSt
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -3286,7 +3392,7 @@ func decodeSendVenueResponse(resp *http.Response, span trace.Span) (res SendVenu
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3296,8 +3402,10 @@ func decodeSendVenueResponse(resp *http.Response, span trace.Span) (res SendVenu
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -3346,7 +3454,7 @@ func decodeSendVideoResponse(resp *http.Response, span trace.Span) (res SendVide
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3356,8 +3464,10 @@ func decodeSendVideoResponse(resp *http.Response, span trace.Span) (res SendVide
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -3406,7 +3516,7 @@ func decodeSendVideoNoteResponse(resp *http.Response, span trace.Span) (res Send
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3416,8 +3526,10 @@ func decodeSendVideoNoteResponse(resp *http.Response, span trace.Span) (res Send
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -3466,7 +3578,7 @@ func decodeSendVoiceResponse(resp *http.Response, span trace.Span) (res SendVoic
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3476,8 +3588,10 @@ func decodeSendVoiceResponse(resp *http.Response, span trace.Span) (res SendVoic
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -3526,7 +3640,7 @@ func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response, span tra
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3536,8 +3650,10 @@ func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response, span tra
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -3586,7 +3702,7 @@ func decodeSetChatDescriptionResponse(resp *http.Response, span trace.Span) (res
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3596,8 +3712,10 @@ func decodeSetChatDescriptionResponse(resp *http.Response, span trace.Span) (res
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -3646,7 +3764,7 @@ func decodeSetChatPermissionsResponse(resp *http.Response, span trace.Span) (res
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3656,8 +3774,10 @@ func decodeSetChatPermissionsResponse(resp *http.Response, span trace.Span) (res
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -3706,7 +3826,7 @@ func decodeSetChatPhotoResponse(resp *http.Response, span trace.Span) (res SetCh
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3716,8 +3836,10 @@ func decodeSetChatPhotoResponse(resp *http.Response, span trace.Span) (res SetCh
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -3766,7 +3888,7 @@ func decodeSetChatStickerSetResponse(resp *http.Response, span trace.Span) (res 
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3776,8 +3898,10 @@ func decodeSetChatStickerSetResponse(resp *http.Response, span trace.Span) (res 
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -3826,7 +3950,7 @@ func decodeSetChatTitleResponse(resp *http.Response, span trace.Span) (res SetCh
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3836,8 +3960,10 @@ func decodeSetChatTitleResponse(resp *http.Response, span trace.Span) (res SetCh
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -3886,7 +4012,7 @@ func decodeSetGameScoreResponse(resp *http.Response, span trace.Span) (res SetGa
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3896,8 +4022,10 @@ func decodeSetGameScoreResponse(resp *http.Response, span trace.Span) (res SetGa
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -3946,7 +4074,7 @@ func decodeSetMyCommandsResponse(resp *http.Response, span trace.Span) (res SetM
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3956,8 +4084,10 @@ func decodeSetMyCommandsResponse(resp *http.Response, span trace.Span) (res SetM
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -4006,7 +4136,7 @@ func decodeSetPassportDataErrorsResponse(resp *http.Response, span trace.Span) (
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -4016,8 +4146,10 @@ func decodeSetPassportDataErrorsResponse(resp *http.Response, span trace.Span) (
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -4066,7 +4198,7 @@ func decodeSetStickerPositionInSetResponse(resp *http.Response, span trace.Span)
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -4076,8 +4208,10 @@ func decodeSetStickerPositionInSetResponse(resp *http.Response, span trace.Span)
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -4126,7 +4260,7 @@ func decodeSetStickerSetThumbResponse(resp *http.Response, span trace.Span) (res
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -4136,8 +4270,10 @@ func decodeSetStickerSetThumbResponse(resp *http.Response, span trace.Span) (res
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -4186,7 +4322,7 @@ func decodeSetWebhookResponse(resp *http.Response, span trace.Span) (res SetWebh
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -4196,8 +4332,10 @@ func decodeSetWebhookResponse(resp *http.Response, span trace.Span) (res SetWebh
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -4246,7 +4384,7 @@ func decodeStopMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -4256,8 +4394,10 @@ func decodeStopMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -4306,7 +4446,7 @@ func decodeStopPollResponse(resp *http.Response, span trace.Span) (res StopPollR
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -4316,8 +4456,10 @@ func decodeStopPollResponse(resp *http.Response, span trace.Span) (res StopPollR
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -4366,7 +4508,7 @@ func decodeUnbanChatMemberResponse(resp *http.Response, span trace.Span) (res Un
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -4376,8 +4518,10 @@ func decodeUnbanChatMemberResponse(resp *http.Response, span trace.Span) (res Un
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -4426,7 +4570,7 @@ func decodeUnpinAllChatMessagesResponse(resp *http.Response, span trace.Span) (r
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -4436,8 +4580,10 @@ func decodeUnpinAllChatMessagesResponse(resp *http.Response, span trace.Span) (r
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -4486,7 +4632,7 @@ func decodeUnpinChatMessageResponse(resp *http.Response, span trace.Span) (res U
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -4496,8 +4642,10 @@ func decodeUnpinChatMessageResponse(resp *http.Response, span trace.Span) (res U
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -4546,7 +4694,7 @@ func decodeUploadStickerFileResponse(resp *http.Response, span trace.Span) (res 
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -4556,8 +4704,10 @@ func decodeUploadStickerFileResponse(resp *http.Response, span trace.Span) (res 
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}

@@ -81,7 +81,7 @@ func decodeDeletePetResponse(resp *http.Response, span trace.Span) (res DeletePe
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -91,8 +91,10 @@ func decodeDeletePetResponse(resp *http.Response, span trace.Span) (res DeletePe
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}

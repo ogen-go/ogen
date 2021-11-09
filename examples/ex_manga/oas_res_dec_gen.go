@@ -107,9 +107,8 @@ func decodeGetPageCoverImageResponse(resp *http.Response, span trace.Span) (res 
 		case "image/*":
 			b, err := io.ReadAll(resp.Body)
 			if err != nil {
-				return nil, err
+				return res, err
 			}
-
 			return &GetPageCoverImageOKImage{
 				Data: bytes.NewReader(b),
 			}, nil
@@ -130,9 +129,8 @@ func decodeGetPageImageResponse(resp *http.Response, span trace.Span) (res GetPa
 		case "image/*":
 			b, err := io.ReadAll(resp.Body)
 			if err != nil {
-				return nil, err
+				return res, err
 			}
-
 			return &GetPageImageOKImage{
 				Data: bytes.NewReader(b),
 			}, nil
@@ -153,9 +151,8 @@ func decodeGetPageThumbnailImageResponse(resp *http.Response, span trace.Span) (
 		case "image/*":
 			b, err := io.ReadAll(resp.Body)
 			if err != nil {
-				return nil, err
+				return res, err
 			}
-
 			return &GetPageThumbnailImageOKImage{
 				Data: bytes.NewReader(b),
 			}, nil

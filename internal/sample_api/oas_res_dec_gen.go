@@ -144,7 +144,7 @@ func decodeFoobarPostResponse(resp *http.Response, span trace.Span) (res FoobarP
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -154,8 +154,10 @@ func decodeFoobarPostResponse(resp *http.Response, span trace.Span) (res FoobarP
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -165,7 +167,9 @@ func decodeFoobarPostResponse(resp *http.Response, span trace.Span) (res FoobarP
 func decodeFoobarPutResponse(resp *http.Response, span trace.Span) (res FoobarPutDefStatusCode, err error) {
 	switch resp.StatusCode {
 	default:
-		return FoobarPutDefStatusCode{StatusCode: resp.StatusCode}, nil
+		return FoobarPutDefStatusCode{
+			StatusCode: resp.StatusCode,
+		}, nil
 	}
 }
 
@@ -289,7 +293,7 @@ func decodePetGetResponse(resp *http.Response, span trace.Span) (res PetGetRes, 
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response PetGetDefStatusCode
+			var response PetGetDef
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -299,8 +303,10 @@ func decodePetGetResponse(resp *http.Response, span trace.Span) (res PetGetRes, 
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &PetGetDefStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -314,9 +320,8 @@ func decodePetGetAvatarByIDResponse(resp *http.Response, span trace.Span) (res P
 		case "application/octet-stream":
 			b, err := io.ReadAll(resp.Body)
 			if err != nil {
-				return nil, err
+				return res, err
 			}
-
 			return &PetGetAvatarByIDOKApplicationOctetStream{
 				Data: bytes.NewReader(b),
 			}, nil
@@ -338,7 +343,7 @@ func decodePetGetAvatarByIDResponse(resp *http.Response, span trace.Span) (res P
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -348,8 +353,10 @@ func decodePetGetAvatarByIDResponse(resp *http.Response, span trace.Span) (res P
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -429,14 +436,18 @@ func decodePetNameByIDResponse(resp *http.Response, span trace.Span) (res string
 func decodePetUpdateNameAliasPostResponse(resp *http.Response, span trace.Span) (res PetUpdateNameAliasPostDefStatusCode, err error) {
 	switch resp.StatusCode {
 	default:
-		return PetUpdateNameAliasPostDefStatusCode{StatusCode: resp.StatusCode}, nil
+		return PetUpdateNameAliasPostDefStatusCode{
+			StatusCode: resp.StatusCode,
+		}, nil
 	}
 }
 
 func decodePetUpdateNamePostResponse(resp *http.Response, span trace.Span) (res PetUpdateNamePostDefStatusCode, err error) {
 	switch resp.StatusCode {
 	default:
-		return PetUpdateNamePostDefStatusCode{StatusCode: resp.StatusCode}, nil
+		return PetUpdateNamePostDefStatusCode{
+			StatusCode: resp.StatusCode,
+		}, nil
 	}
 }
 
@@ -459,7 +470,7 @@ func decodePetUploadAvatarByIDResponse(resp *http.Response, span trace.Span) (re
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response ErrorStatusCode
+			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -469,8 +480,10 @@ func decodePetUploadAvatarByIDResponse(resp *http.Response, span trace.Span) (re
 				return res, err
 			}
 
-			response.StatusCode = resp.StatusCode
-			return &response, nil
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
