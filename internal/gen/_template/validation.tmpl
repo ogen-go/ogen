@@ -3,7 +3,7 @@
 	{{- $t := $.Type }}
 	{{- $va := $t.Validators }}
 	{{- $validated := false }}
-	{{- if eq $t.NilSemantic "invalid" }}
+	{{- if $t.NilSemantic.Invalid }}
 		if {{ $.Var }} == nil {
 			{{- /*TODO: continue validation instead return*/ -}}
 			return errors.New("required, can't be nil")

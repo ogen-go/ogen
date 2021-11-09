@@ -6,6 +6,8 @@ import (
 	"strings"
 	"text/template"
 
+	"github.com/go-faster/errors"
+
 	"github.com/ogen-go/ogen/internal/ir"
 	"github.com/ogen-go/ogen/internal/oas"
 )
@@ -38,6 +40,9 @@ type ResponseElem struct {
 // templateFunctions returns functions which used in templates.
 func templateFunctions() template.FuncMap {
 	return template.FuncMap{
+		"errorf": func(format string, args ...interface{}) (interface{}, error) {
+			return nil, errors.Errorf(format, args...)
+		},
 		"trim": strings.TrimSpace,
 		"lower": func(v interface{}) string {
 			switch v := v.(type) {
