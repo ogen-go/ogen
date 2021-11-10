@@ -29,9 +29,17 @@ func NewServer(h Handler, opts ...Option) *Server {
 	return srv
 }
 
-func (s *Server) Register(mux chi.Mux) {
+// Register request handlers in router.
+func (s *Server) Register(r chi.Router) {
 	{{- range $op := $.Operations }}
-	mux.MethodFunc("{{ $op.Spec.HTTPMethod }}", "{{ $op.Spec.Path }}", s.Handle{{ $op.Name }}Request)
+	r.MethodFunc("{{ $op.Spec.HTTPMethod }}", "{{ $op.Spec.Path }}", s.Handle{{ $op.Name }}Request)
 	{{- end }}
+}
+
+// DefaultMux returns new *chi.Mux with called Register method on it.
+func (s *Server) DefaultMux() *chi.Mux {
+	mux := chi.NewMux()
+	s.Register(mux)
+	return mux
 }
 {{ end }}
