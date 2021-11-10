@@ -150,6 +150,7 @@ func (c *Client) AddStickerToSet(ctx context.Context, request AddStickerToSet) (
 // AnswerCallbackQuery implements answerCallbackQuery operation.
 func (c *Client) AnswerCallbackQuery(ctx context.Context, request AnswerCallbackQuery) (res AnswerCallbackQueryRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -210,6 +211,7 @@ func (c *Client) AnswerCallbackQuery(ctx context.Context, request AnswerCallback
 // AnswerInlineQuery implements answerInlineQuery operation.
 func (c *Client) AnswerInlineQuery(ctx context.Context, request AnswerInlineQuery) (res AnswerInlineQueryRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -322,6 +324,7 @@ func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, request AnswerPreCh
 // AnswerShippingQuery implements answerShippingQuery operation.
 func (c *Client) AnswerShippingQuery(ctx context.Context, request AnswerShippingQuery) (res AnswerShippingQueryRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -434,6 +437,7 @@ func (c *Client) BanChatMember(ctx context.Context, request BanChatMember) (res 
 // CopyMessage implements copyMessage operation.
 func (c *Client) CopyMessage(ctx context.Context, request CopyMessage) (res CopyMessageRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -546,6 +550,7 @@ func (c *Client) CreateChatInviteLink(ctx context.Context, request CreateChatInv
 // CreateNewStickerSet implements createNewStickerSet operation.
 func (c *Client) CreateNewStickerSet(ctx context.Context, request CreateNewStickerSet) (res CreateNewStickerSetRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -970,6 +975,7 @@ func (c *Client) EditChatInviteLink(ctx context.Context, request EditChatInviteL
 // EditMessageCaption implements editMessageCaption operation.
 func (c *Client) EditMessageCaption(ctx context.Context, request EditMessageCaption) (res EditMessageCaptionRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -1030,6 +1036,7 @@ func (c *Client) EditMessageCaption(ctx context.Context, request EditMessageCapt
 // EditMessageLiveLocation implements editMessageLiveLocation operation.
 func (c *Client) EditMessageLiveLocation(ctx context.Context, request EditMessageLiveLocation) (res EditMessageLiveLocationRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -1090,6 +1097,7 @@ func (c *Client) EditMessageLiveLocation(ctx context.Context, request EditMessag
 // EditMessageMedia implements editMessageMedia operation.
 func (c *Client) EditMessageMedia(ctx context.Context, request EditMessageMedia) (res EditMessageMediaRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -1150,6 +1158,7 @@ func (c *Client) EditMessageMedia(ctx context.Context, request EditMessageMedia)
 // EditMessageReplyMarkup implements editMessageReplyMarkup operation.
 func (c *Client) EditMessageReplyMarkup(ctx context.Context, request EditMessageReplyMarkup) (res EditMessageReplyMarkupRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -1210,6 +1219,7 @@ func (c *Client) EditMessageReplyMarkup(ctx context.Context, request EditMessage
 // EditMessageText implements editMessageText operation.
 func (c *Client) EditMessageText(ctx context.Context, request EditMessageText) (res EditMessageTextRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -1828,6 +1838,7 @@ func (c *Client) GetStickerSet(ctx context.Context, request GetStickerSet) (res 
 // GetUpdates implements getUpdates operation.
 func (c *Client) GetUpdates(ctx context.Context, request GetUpdates) (res GetUpdatesRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -1888,6 +1899,7 @@ func (c *Client) GetUpdates(ctx context.Context, request GetUpdates) (res GetUpd
 // GetUserProfilePhotos implements getUserProfilePhotos operation.
 func (c *Client) GetUserProfilePhotos(ctx context.Context, request GetUserProfilePhotos) (res GetUserProfilePhotosRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -2208,6 +2220,7 @@ func (c *Client) RevokeChatInviteLink(ctx context.Context, request RevokeChatInv
 // SendAnimation implements sendAnimation operation.
 func (c *Client) SendAnimation(ctx context.Context, request SendAnimation) (res SendAnimationRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -2268,6 +2281,7 @@ func (c *Client) SendAnimation(ctx context.Context, request SendAnimation) (res 
 // SendAudio implements sendAudio operation.
 func (c *Client) SendAudio(ctx context.Context, request SendAudio) (res SendAudioRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -2380,6 +2394,7 @@ func (c *Client) SendChatAction(ctx context.Context, request SendChatAction) (re
 // SendContact implements sendContact operation.
 func (c *Client) SendContact(ctx context.Context, request SendContact) (res SendContactRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -2440,6 +2455,7 @@ func (c *Client) SendContact(ctx context.Context, request SendContact) (res Send
 // SendDice implements sendDice operation.
 func (c *Client) SendDice(ctx context.Context, request SendDice) (res SendDiceRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -2500,6 +2516,7 @@ func (c *Client) SendDice(ctx context.Context, request SendDice) (res SendDiceRe
 // SendDocument implements sendDocument operation.
 func (c *Client) SendDocument(ctx context.Context, request SendDocument) (res SendDocumentRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -2560,6 +2577,7 @@ func (c *Client) SendDocument(ctx context.Context, request SendDocument) (res Se
 // SendGame implements sendGame operation.
 func (c *Client) SendGame(ctx context.Context, request SendGame) (res SendGameRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -2620,6 +2638,7 @@ func (c *Client) SendGame(ctx context.Context, request SendGame) (res SendGameRe
 // SendInvoice implements sendInvoice operation.
 func (c *Client) SendInvoice(ctx context.Context, request SendInvoice) (res SendInvoiceRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -2680,6 +2699,7 @@ func (c *Client) SendInvoice(ctx context.Context, request SendInvoice) (res Send
 // SendLocation implements sendLocation operation.
 func (c *Client) SendLocation(ctx context.Context, request SendLocation) (res SendLocationRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -2740,6 +2760,7 @@ func (c *Client) SendLocation(ctx context.Context, request SendLocation) (res Se
 // SendMediaGroup implements sendMediaGroup operation.
 func (c *Client) SendMediaGroup(ctx context.Context, request SendMediaGroup) (res SendMediaGroupRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -2800,6 +2821,7 @@ func (c *Client) SendMediaGroup(ctx context.Context, request SendMediaGroup) (re
 // SendMessage implements sendMessage operation.
 func (c *Client) SendMessage(ctx context.Context, request SendMessage) (res SendMessageRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -2860,6 +2882,7 @@ func (c *Client) SendMessage(ctx context.Context, request SendMessage) (res Send
 // SendPhoto implements sendPhoto operation.
 func (c *Client) SendPhoto(ctx context.Context, request SendPhoto) (res SendPhotoRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -2920,6 +2943,7 @@ func (c *Client) SendPhoto(ctx context.Context, request SendPhoto) (res SendPhot
 // SendPoll implements sendPoll operation.
 func (c *Client) SendPoll(ctx context.Context, request SendPoll) (res SendPollRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -2980,6 +3004,7 @@ func (c *Client) SendPoll(ctx context.Context, request SendPoll) (res SendPollRe
 // SendSticker implements sendSticker operation.
 func (c *Client) SendSticker(ctx context.Context, request SendSticker) (res SendStickerRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -3040,6 +3065,7 @@ func (c *Client) SendSticker(ctx context.Context, request SendSticker) (res Send
 // SendVenue implements sendVenue operation.
 func (c *Client) SendVenue(ctx context.Context, request SendVenue) (res SendVenueRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -3100,6 +3126,7 @@ func (c *Client) SendVenue(ctx context.Context, request SendVenue) (res SendVenu
 // SendVideo implements sendVideo operation.
 func (c *Client) SendVideo(ctx context.Context, request SendVideo) (res SendVideoRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -3160,6 +3187,7 @@ func (c *Client) SendVideo(ctx context.Context, request SendVideo) (res SendVide
 // SendVideoNote implements sendVideoNote operation.
 func (c *Client) SendVideoNote(ctx context.Context, request SendVideoNote) (res SendVideoNoteRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -3220,6 +3248,7 @@ func (c *Client) SendVideoNote(ctx context.Context, request SendVideoNote) (res 
 // SendVoice implements sendVoice operation.
 func (c *Client) SendVoice(ctx context.Context, request SendVoice) (res SendVoiceRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -3280,6 +3309,7 @@ func (c *Client) SendVoice(ctx context.Context, request SendVoice) (res SendVoic
 // SetChatAdministratorCustomTitle implements setChatAdministratorCustomTitle operation.
 func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, request SetChatAdministratorCustomTitle) (res SetChatAdministratorCustomTitleRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -3340,6 +3370,7 @@ func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, request Se
 // SetChatDescription implements setChatDescription operation.
 func (c *Client) SetChatDescription(ctx context.Context, request SetChatDescription) (res SetChatDescriptionRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -3556,6 +3587,7 @@ func (c *Client) SetChatStickerSet(ctx context.Context, request SetChatStickerSe
 // SetChatTitle implements setChatTitle operation.
 func (c *Client) SetChatTitle(ctx context.Context, request SetChatTitle) (res SetChatTitleRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -3668,6 +3700,7 @@ func (c *Client) SetGameScore(ctx context.Context, request SetGameScore) (res Se
 // SetMyCommands implements setMyCommands operation.
 func (c *Client) SetMyCommands(ctx context.Context, request SetMyCommands) (res SetMyCommandsRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -3728,6 +3761,7 @@ func (c *Client) SetMyCommands(ctx context.Context, request SetMyCommands) (res 
 // SetPassportDataErrors implements setPassportDataErrors operation.
 func (c *Client) SetPassportDataErrors(ctx context.Context, request SetPassportDataErrors) (res SetPassportDataErrorsRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -3944,6 +3978,7 @@ func (c *Client) SetWebhook(ctx context.Context, request SetWebhook) (res SetWeb
 // StopMessageLiveLocation implements stopMessageLiveLocation operation.
 func (c *Client) StopMessageLiveLocation(ctx context.Context, request StopMessageLiveLocation) (res StopMessageLiveLocationRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -4004,6 +4039,7 @@ func (c *Client) StopMessageLiveLocation(ctx context.Context, request StopMessag
 // StopPoll implements stopPoll operation.
 func (c *Client) StopPoll(ctx context.Context, request StopPoll) (res StopPollRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}

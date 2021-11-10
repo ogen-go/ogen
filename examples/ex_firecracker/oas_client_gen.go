@@ -98,6 +98,7 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 // CreateSnapshot implements createSnapshot operation.
 func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParams) (res CreateSnapshotRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -158,6 +159,7 @@ func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParam
 // CreateSyncAction implements createSyncAction operation.
 func (c *Client) CreateSyncAction(ctx context.Context, request InstanceActionInfo) (res CreateSyncActionRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -750,6 +752,7 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request BalloonS
 // PatchGuestDriveByID implements patchGuestDriveByID operation.
 func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, params PatchGuestDriveByIDParams) (res PatchGuestDriveByIDRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -824,6 +827,7 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, 
 // PatchGuestNetworkInterfaceByID implements patchGuestNetworkInterfaceByID operation.
 func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request PartialNetworkInterface, params PatchGuestNetworkInterfaceByIDParams) (res PatchGuestNetworkInterfaceByIDRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -898,6 +902,7 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request Par
 // PatchMachineConfiguration implements patchMachineConfiguration operation.
 func (c *Client) PatchMachineConfiguration(ctx context.Context, request MachineConfiguration) (res PatchMachineConfigurationRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -958,6 +963,7 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, request MachineC
 // PatchVm implements patchVm operation.
 func (c *Client) PatchVm(ctx context.Context, request VM) (res PatchVmRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -1122,6 +1128,7 @@ func (c *Client) PutGuestBootSource(ctx context.Context, request BootSource) (re
 // PutGuestDriveByID implements putGuestDriveByID operation.
 func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params PutGuestDriveByIDParams) (res PutGuestDriveByIDRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -1196,6 +1203,7 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params Pu
 // PutGuestNetworkInterfaceByID implements putGuestNetworkInterfaceByID operation.
 func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request NetworkInterface, params PutGuestNetworkInterfaceByIDParams) (res PutGuestNetworkInterfaceByIDRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -1270,6 +1278,7 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request Netwo
 // PutGuestVsock implements putGuestVsock operation.
 func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuestVsockRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -1330,6 +1339,7 @@ func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuest
 // PutLogger implements putLogger operation.
 func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -1390,6 +1400,7 @@ func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRe
 // PutMachineConfiguration implements putMachineConfiguration operation.
 func (c *Client) PutMachineConfiguration(ctx context.Context, request MachineConfiguration) (res PutMachineConfigurationRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}

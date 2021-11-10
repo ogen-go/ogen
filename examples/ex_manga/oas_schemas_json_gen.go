@@ -519,8 +519,41 @@ func (s *SearchByTagIDForbidden) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (SearchByTagIDOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (SearchByTagIDOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes SearchByTagIDOKApplicationJSON as json.
+func (s SearchByTagIDOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []SearchResponse(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes SearchByTagIDOKApplicationJSON from json.
+func (s *SearchByTagIDOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode SearchByTagIDOKApplicationJSON to nil`)
+	}
+	var unwrapped []SearchResponse
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem SearchResponse
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = SearchByTagIDOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s SearchForbidden) Encode(e *jx.Encoder) {
@@ -542,8 +575,41 @@ func (s *SearchForbidden) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (SearchOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (SearchOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes SearchOKApplicationJSON as json.
+func (s SearchOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []SearchResponse(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes SearchOKApplicationJSON from json.
+func (s *SearchOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode SearchOKApplicationJSON to nil`)
+	}
+	var unwrapped []SearchResponse
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem SearchResponse
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = SearchOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s SearchResponse) Encode(e *jx.Encoder) {

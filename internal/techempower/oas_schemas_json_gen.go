@@ -131,5 +131,38 @@ func (s *WorldObject) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (WorldObjects) Encode(e *jx.Encoder)       {}
-func (WorldObjects) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes WorldObjects as json.
+func (s WorldObjects) Encode(e *jx.Encoder) {
+	unwrapped := []WorldObject(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes WorldObjects from json.
+func (s *WorldObjects) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode WorldObjects to nil`)
+	}
+	var unwrapped []WorldObject
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem WorldObject
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = WorldObjects(unwrapped)
+	return nil
+}

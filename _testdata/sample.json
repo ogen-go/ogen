@@ -460,7 +460,11 @@
           },
           "format": {
             "type": "string",
-            "pattern": "$\\d-\\d^"
+            "pattern": "^\\d-\\d$"
+          },
+          "base64": {
+            "type": "string",
+            "format": "byte"
           }
         }
       },

@@ -93,7 +93,8 @@ func encodeListPetsResponse(response ListPetsRes, w http.ResponseWriter, span tr
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}

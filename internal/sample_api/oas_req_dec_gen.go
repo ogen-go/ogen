@@ -85,6 +85,7 @@ func decodeFoobarPostRequest(r *http.Request, span trace.Span) (req Pet, err err
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -119,6 +120,7 @@ func decodePetCreateRequest(r *http.Request, span trace.Span) (req Pet, err erro
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -145,24 +147,22 @@ func decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (req 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			return errors.New(`decoding of "PetName" (alias) is not implemented`)
+			{
+				var unwrapped string
+				v, err := d.Str()
+				unwrapped = string(v)
+				if err != nil {
+					return err
+				}
+				request = PetName(unwrapped)
+			}
 			return nil
 		}(); err != nil {
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
-				return err
-			}
-			if err := (validate.String{
-				MinLength:    6,
-				MinLengthSet: true,
-				MaxLength:    0,
-				MaxLengthSet: false,
-				Email:        false,
-				Hostname:     false,
-				Regex:        nil,
-			}).Validate(string(request)); err != nil {
 				return err
 			}
 			return nil
@@ -198,6 +198,7 @@ func decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req strin
 			return req, err
 		}
 		if err := func() error {
+
 			if err := (validate.String{
 				MinLength:    6,
 				MinLengthSet: true,
@@ -207,7 +208,7 @@ func decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req strin
 				Hostname:     false,
 				Regex:        nil,
 			}).Validate(string(request)); err != nil {
-				return err
+				return errors.Wrap(err, "string")
 			}
 			return nil
 		}(); err != nil {

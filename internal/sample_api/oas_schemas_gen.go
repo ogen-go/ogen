@@ -71,6 +71,7 @@ type Data struct {
 	Email       string          `json:"email"`
 	Hostname    string          `json:"hostname"`
 	Format      string          `json:"format"`
+	Base64      []byte          `json:"base64"`
 }
 
 // DataDescription represents sum type.

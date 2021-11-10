@@ -194,6 +194,7 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 				return params, errors.Wrap(err, `parse parameter petID located in query`)
 			}
 			if err := func() error {
+
 				if err := (validate.Int{
 					MinSet:       true,
 					Min:          1337,
@@ -202,7 +203,7 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 					MinExclusive: false,
 					MaxExclusive: false,
 				}).Validate(int64(params.PetID)); err != nil {
-					return err
+					return errors.Wrap(err, "int")
 				}
 				return nil
 			}(); err != nil {

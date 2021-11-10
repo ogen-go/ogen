@@ -203,6 +203,7 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 // FoobarPost implements foobarPost operation.
 func (c *Client) FoobarPost(ctx context.Context, request Pet) (res FoobarPostRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -299,6 +300,7 @@ func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDefStatusCode, err
 // PetCreate implements petCreate operation.
 func (c *Client) PetCreate(ctx context.Context, request Pet) (res Pet, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -680,18 +682,8 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 
 func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request PetName) (res PetUpdateNameAliasPostDefStatusCode, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
-			return err
-		}
-		if err := (validate.String{
-			MinLength:    6,
-			MinLengthSet: true,
-			MaxLength:    0,
-			MaxLengthSet: false,
-			Email:        false,
-			Hostname:     false,
-			Regex:        nil,
-		}).Validate(string(request)); err != nil {
 			return err
 		}
 		return nil
@@ -749,6 +741,7 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request PetName) (r
 
 func (c *Client) PetUpdateNamePost(ctx context.Context, request string) (res PetUpdateNamePostDefStatusCode, err error) {
 	if err := func() error {
+
 		if err := (validate.String{
 			MinLength:    6,
 			MinLengthSet: true,
@@ -758,7 +751,7 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request string) (res Pet
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(request)); err != nil {
-			return err
+			return errors.Wrap(err, "string")
 		}
 		return nil
 	}(); err != nil {

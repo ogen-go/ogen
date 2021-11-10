@@ -81,7 +81,21 @@ func decodeCachingResponse(resp *http.Response, span trace.Span) (res WorldObjec
 
 			var response WorldObjects
 			if err := func() error {
-				return errors.New(`decoding of "WorldObjects" (alias) is not implemented`)
+				{
+					var unwrapped []WorldObject
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem WorldObject
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = WorldObjects(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -181,7 +195,21 @@ func decodeQueriesResponse(resp *http.Response, span trace.Span) (res WorldObjec
 
 			var response WorldObjects
 			if err := func() error {
-				return errors.New(`decoding of "WorldObjects" (alias) is not implemented`)
+				{
+					var unwrapped []WorldObject
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem WorldObject
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = WorldObjects(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -213,7 +241,21 @@ func decodeUpdatesResponse(resp *http.Response, span trace.Span) (res WorldObjec
 
 			var response WorldObjects
 			if err := func() error {
-				return errors.New(`decoding of "WorldObjects" (alias) is not implemented`)
+				{
+					var unwrapped []WorldObject
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem WorldObject
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = WorldObjects(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err

@@ -510,6 +510,7 @@ func (c *Client) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCan
 // ActionsCreateOrUpdateEnvironmentSecret implements actions/create-or-update-environment-secret operation.
 func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, request ActionsCreateOrUpdateEnvironmentSecretReq, params ActionsCreateOrUpdateEnvironmentSecretParams) (res ActionsCreateOrUpdateEnvironmentSecretRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -614,6 +615,7 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 // ActionsCreateOrUpdateOrgSecret implements actions/create-or-update-org-secret operation.
 func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request ActionsCreateOrUpdateOrgSecretReq, params ActionsCreateOrUpdateOrgSecretParams) (res ActionsCreateOrUpdateOrgSecretRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -703,6 +705,7 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request Act
 // ActionsCreateOrUpdateRepoSecret implements actions/create-or-update-repo-secret operation.
 func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request ActionsCreateOrUpdateRepoSecretReq, params ActionsCreateOrUpdateRepoSecretParams) (res ActionsCreateOrUpdateRepoSecretRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -1049,6 +1052,7 @@ func (c *Client) ActionsCreateRemoveTokenForRepo(ctx context.Context, params Act
 // ActionsCreateSelfHostedRunnerGroupForOrg implements actions/create-self-hosted-runner-group-for-org operation.
 func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, request ActionsCreateSelfHostedRunnerGroupForOrgReq, params ActionsCreateSelfHostedRunnerGroupForOrgParams) (res RunnerGroupsOrg, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -5798,6 +5802,7 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 // ActionsSetGithubActionsPermissionsOrganization implements actions/set-github-actions-permissions-organization operation.
 func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, request ActionsSetGithubActionsPermissionsOrganizationReq, params ActionsSetGithubActionsPermissionsOrganizationParams) (res ActionsSetGithubActionsPermissionsOrganizationNoContent, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -5873,6 +5878,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 // ActionsSetGithubActionsPermissionsRepository implements actions/set-github-actions-permissions-repository operation.
 func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Context, request ActionsSetGithubActionsPermissionsRepositoryReq, params ActionsSetGithubActionsPermissionsRepositoryParams) (res ActionsSetGithubActionsPermissionsRepositoryNoContent, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -5963,6 +5969,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 // ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg implements actions/set-repo-access-to-self-hosted-runner-group-in-org operation.
 func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, request ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) (res ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -6053,6 +6060,7 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 // ActionsSetSelectedReposForOrgSecret implements actions/set-selected-repos-for-org-secret operation.
 func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, request ActionsSetSelectedReposForOrgSecretReq, params ActionsSetSelectedReposForOrgSecretParams) (res ActionsSetSelectedReposForOrgSecretNoContent, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -6143,6 +6151,7 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 // ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization implements actions/set-selected-repositories-enabled-github-actions-organization operation.
 func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, request ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) (res ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -6218,6 +6227,7 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 // ActionsSetSelfHostedRunnersInGroupForOrg implements actions/set-self-hosted-runners-in-group-for-org operation.
 func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, request ActionsSetSelfHostedRunnersInGroupForOrgReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) (res ActionsSetSelfHostedRunnersInGroupForOrgNoContent, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -6308,6 +6318,7 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 // ActionsUpdateSelfHostedRunnerGroupForOrg implements actions/update-self-hosted-runner-group-for-org operation.
 func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, request ActionsUpdateSelfHostedRunnerGroupForOrgReq, params ActionsUpdateSelfHostedRunnerGroupForOrgParams) (res RunnerGroupsOrg, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -12158,6 +12169,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 // CodeScanningUpdateAlert implements code-scanning/update-alert operation.
 func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanningUpdateAlertReq, params CodeScanningUpdateAlertParams) (res CodeScanningUpdateAlertRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -12265,6 +12277,7 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanni
 // CodeScanningUploadSarif implements code-scanning/upload-sarif operation.
 func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanningUploadSarifReq, params CodeScanningUploadSarifParams) (res CodeScanningUploadSarifRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -12753,6 +12766,7 @@ func (c *Client) EnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.Conte
 // EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise implements enterprise-admin/create-self-hosted-runner-group-for-enterprise operation.
 func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx context.Context, request EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams) (res RunnerGroupsEnterprise, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -14538,6 +14552,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx co
 // EnterpriseAdminProvisionAndInviteEnterpriseGroup implements enterprise-admin/provision-and-invite-enterprise-group operation.
 func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Context, request EnterpriseAdminProvisionAndInviteEnterpriseGroupReq, params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams) (res ScimEnterpriseGroup, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -14613,6 +14628,7 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Co
 // EnterpriseAdminProvisionAndInviteEnterpriseUser implements enterprise-admin/provision-and-invite-enterprise-user operation.
 func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Context, request EnterpriseAdminProvisionAndInviteEnterpriseUserReq, params EnterpriseAdminProvisionAndInviteEnterpriseUserParams) (res ScimEnterpriseUser, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -14919,6 +14935,7 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 // EnterpriseAdminSetGithubActionsPermissionsEnterprise implements enterprise-admin/set-github-actions-permissions-enterprise operation.
 func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, request EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) (res EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -14994,6 +15011,7 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 // EnterpriseAdminSetInformationForProvisionedEnterpriseGroup implements enterprise-admin/set-information-for-provisioned-enterprise-group operation.
 func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx context.Context, request EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams) (res ScimEnterpriseGroup, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -15083,6 +15101,7 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 // EnterpriseAdminSetInformationForProvisionedEnterpriseUser implements enterprise-admin/set-information-for-provisioned-enterprise-user operation.
 func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx context.Context, request EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams) (res ScimEnterpriseUser, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -15172,6 +15191,7 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 // EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise implements enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise operation.
 func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, request EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -15262,6 +15282,7 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 // EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise implements enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise operation.
 func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, request EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (res EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -15337,6 +15358,7 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 // EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise implements enterprise-admin/set-self-hosted-runners-in-group-for-enterprise operation.
 func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, request EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) (res EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -15427,6 +15449,7 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 // EnterpriseAdminUpdateAttributeForEnterpriseUser implements enterprise-admin/update-attribute-for-enterprise-user operation.
 func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Context, request EnterpriseAdminUpdateAttributeForEnterpriseUserReq, params EnterpriseAdminUpdateAttributeForEnterpriseUserParams) (res ScimEnterpriseUser, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -15516,6 +15539,7 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 // EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise implements enterprise-admin/update-self-hosted-runner-group-for-enterprise operation.
 func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx context.Context, request EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) (res RunnerGroupsEnterprise, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -15658,6 +15682,7 @@ func (c *Client) GistsCheckIsStarred(ctx context.Context, params GistsCheckIsSta
 // GistsCreateComment implements gists/create-comment operation.
 func (c *Client) GistsCreateComment(ctx context.Context, request GistsCreateCommentReq, params GistsCreateCommentParams) (res GistsCreateCommentRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -16519,6 +16544,7 @@ func (c *Client) GistsUnstar(ctx context.Context, params GistsUnstarParams) (res
 // GistsUpdateComment implements gists/update-comment operation.
 func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateCommentReq, params GistsUpdateCommentParams) (res GistsUpdateCommentRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -17220,6 +17246,7 @@ func (c *Client) InteractionsRemoveRestrictionsForRepo(ctx context.Context, para
 // InteractionsSetRestrictionsForRepo implements interactions/set-restrictions-for-repo operation.
 func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request InteractionLimit, params InteractionsSetRestrictionsForRepoParams) (res InteractionsSetRestrictionsForRepoRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -19246,6 +19273,7 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request IssuesUpdateLabe
 // IssuesUpdateMilestone implements issues/update-milestone operation.
 func (c *Client) IssuesUpdateMilestone(ctx context.Context, request IssuesUpdateMilestoneReq, params IssuesUpdateMilestoneParams) (res Milestone, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -26812,6 +26840,7 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 // ProjectsMoveColumn implements projects/move-column operation.
 func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveColumnReq, params ProjectsMoveColumnParams) (res ProjectsMoveColumnRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -26887,6 +26916,7 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveCol
 // ProjectsUpdate implements projects/update operation.
 func (c *Client) ProjectsUpdate(ctx context.Context, request ProjectsUpdateReq, params ProjectsUpdateParams) (res ProjectsUpdateRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -27288,6 +27318,7 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 // PullsCreateReview implements pulls/create-review operation.
 func (c *Client) PullsCreateReview(ctx context.Context, request PullsCreateReviewReq, params PullsCreateReviewParams) (res PullsCreateReviewRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -28749,6 +28780,7 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 // PullsSubmitReview implements pulls/submit-review operation.
 func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitReviewReq, params PullsSubmitReviewParams) (res PullsSubmitReviewRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -29114,6 +29146,7 @@ func (c *Client) RateLimitGet(ctx context.Context) (res RateLimitGetRes, err err
 // ReactionsCreateForTeamDiscussionCommentInOrg implements reactions/create-for-team-discussion-comment-in-org operation.
 func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Context, request ReactionsCreateForTeamDiscussionCommentInOrgReq, params ReactionsCreateForTeamDiscussionCommentInOrgParams) (res ReactionsCreateForTeamDiscussionCommentInOrgRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -29234,6 +29267,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 // ReactionsCreateForTeamDiscussionCommentLegacy implements reactions/create-for-team-discussion-comment-legacy operation.
 func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Context, request ReactionsCreateForTeamDiscussionCommentLegacyReq, params ReactionsCreateForTeamDiscussionCommentLegacyParams) (res Reaction, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -29339,6 +29373,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 // ReactionsCreateForTeamDiscussionInOrg implements reactions/create-for-team-discussion-in-org operation.
 func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, request ReactionsCreateForTeamDiscussionInOrgReq, params ReactionsCreateForTeamDiscussionInOrgParams) (res ReactionsCreateForTeamDiscussionInOrgRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -29444,6 +29479,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 // ReactionsCreateForTeamDiscussionLegacy implements reactions/create-for-team-discussion-legacy operation.
 func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, request ReactionsCreateForTeamDiscussionLegacyReq, params ReactionsCreateForTeamDiscussionLegacyParams) (res Reaction, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -31657,6 +31693,7 @@ func (c *Client) ReposCreateCommitSignatureProtection(ctx context.Context, param
 // ReposCreateCommitStatus implements repos/create-commit-status operation.
 func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreateCommitStatusReq, params ReposCreateCommitStatusParams) (res Status, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -39699,6 +39736,7 @@ func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params Re
 // ReposReplaceAllTopics implements repos/replace-all-topics operation.
 func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplaceAllTopicsReq, params ReposReplaceAllTopicsParams) (res ReposReplaceAllTopicsRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -40105,6 +40143,7 @@ func (c *Client) ReposTransfer(ctx context.Context, request ReposTransferReq, pa
 // ReposUpdateBranchProtection implements repos/update-branch-protection operation.
 func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposUpdateBranchProtectionReq, params ReposUpdateBranchProtectionParams) (res ReposUpdateBranchProtectionRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -40306,6 +40345,7 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpda
 // ReposUpdateInvitation implements repos/update-invitation operation.
 func (c *Client) ReposUpdateInvitation(ctx context.Context, request ReposUpdateInvitationReq, params ReposUpdateInvitationParams) (res RepositoryInvitation, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -41310,6 +41350,7 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 // SecretScanningUpdateAlert implements secret-scanning/update-alert operation.
 func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretScanningUpdateAlertReq, params SecretScanningUpdateAlertParams) (res SecretScanningUpdateAlertRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -41484,6 +41525,7 @@ func (c *Client) TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMember
 // TeamsAddOrUpdateMembershipForUserInOrg implements teams/add-or-update-membership-for-user-in-org operation.
 func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, request TeamsAddOrUpdateMembershipForUserInOrgReq, params TeamsAddOrUpdateMembershipForUserInOrgParams) (res TeamsAddOrUpdateMembershipForUserInOrgRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -41588,6 +41630,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 // TeamsAddOrUpdateMembershipForUserLegacy implements teams/add-or-update-membership-for-user-legacy operation.
 func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, request TeamsAddOrUpdateMembershipForUserLegacyReq, params TeamsAddOrUpdateMembershipForUserLegacyParams) (res TeamsAddOrUpdateMembershipForUserLegacyRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -41677,6 +41720,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 // TeamsAddOrUpdateProjectPermissionsInOrg implements teams/add-or-update-project-permissions-in-org operation.
 func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, request TeamsAddOrUpdateProjectPermissionsInOrgReq, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (res TeamsAddOrUpdateProjectPermissionsInOrgRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -41781,6 +41825,7 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 // TeamsAddOrUpdateRepoPermissionsInOrg implements teams/add-or-update-repo-permissions-in-org operation.
 func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, request TeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (res TeamsAddOrUpdateRepoPermissionsInOrgNoContent, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -46318,6 +46363,7 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request TeamsU
 // TeamsUpdateInOrg implements teams/update-in-org operation.
 func (c *Client) TeamsUpdateInOrg(ctx context.Context, request TeamsUpdateInOrgReq, params TeamsUpdateInOrgParams) (res TeamFull, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}

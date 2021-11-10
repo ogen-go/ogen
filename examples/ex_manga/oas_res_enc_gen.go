@@ -147,7 +147,8 @@ func encodeSearchResponse(response SearchRes, w http.ResponseWriter, span trace.
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -168,7 +169,8 @@ func encodeSearchByTagIDResponse(response SearchByTagIDRes, w http.ResponseWrite
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}

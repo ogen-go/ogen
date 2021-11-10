@@ -73,6 +73,7 @@ func (t *Type) IsFloat() bool {
 }
 
 func (t *Type) IsArray() bool     { return t.Is(KindArray) }
+func (t *Type) IsPrimitive() bool { return t.Is(KindPrimitive) }
 func (t *Type) IsStruct() bool    { return t.Is(KindStruct) }
 func (t *Type) IsPointer() bool   { return t.Is(KindPointer) }
 func (t *Type) IsEnum() bool      { return t.Is(KindEnum) }

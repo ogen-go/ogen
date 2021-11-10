@@ -183,7 +183,21 @@ func decodeSearchResponse(resp *http.Response, span trace.Span) (res SearchRes, 
 
 			var response SearchOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "SearchOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []SearchResponse
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem SearchResponse
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = SearchOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -217,7 +231,21 @@ func decodeSearchByTagIDResponse(resp *http.Response, span trace.Span) (res Sear
 
 			var response SearchByTagIDOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "SearchByTagIDOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []SearchResponse
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem SearchResponse
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = SearchByTagIDOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err

@@ -30,7 +30,7 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
 {{- $t := $.Type }}
 {{- $var := $.Var }}
-{{- if eq $t.Kind "primitive" }}
+{{- if $t.IsPrimitive }}
 	s, err := d.DecodeValue()
 	if err != nil {
 		return err
@@ -43,7 +43,7 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 
 	{{ $var }} = c
 	return nil
-{{- else if eq $t.Kind "enum" }}
+{{- else if $t.IsEnum }}
 	s, err := d.DecodeValue()
 	if err != nil {
 		return err
@@ -56,7 +56,7 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 
 	{{ $var }} = {{ $t.Go }}(c)
 	return nil
-{{- else if eq $t.Kind "array" }}
+{{- else if $t.IsArray }}
 	return d.DecodeArray(func(d uri.Decoder) error {
 		{{- $tmpVar := pascalMP (printf "%sItem" $var ) }}
 		var {{ $tmpVar }} {{ $t.Item.Go }}
@@ -68,7 +68,7 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 		{{ $var }} = append({{ $var }}, {{ $tmpVar }})
 		return nil
 	})
-{{- else if eq $t.Kind "alias" }}
+{{- else if $t.IsAlias }}
 	{{- $tmpVar := pascalMP (printf "%sUnderlying" $var ) }}
 	var {{ $tmpVar }} {{ $t.AliasTo.Go }}
 	if err := func() error {
@@ -78,7 +78,7 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 	}
 	{{ $var }} = {{ $t.Go }}({{ $tmpVar }})
 	return nil
-{{- else if eq $t.Kind "generic" }}
+{{- else if $t.IsGeneric }}
 	{{- $tmpVar := pascalMP (printf "%sValue" $var ) }}
 	var {{ $tmpVar }} {{ $t.GenericOf.Go }}
 	if err := func() error {
@@ -88,7 +88,7 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 	}
 	{{ $var }}.SetTo({{ $tmpVar }})
 	return nil
-{{- else if eq $t.Kind "pointer" }}
+{{- else if $t.IsPointer }}
 	{{- $tmpVar := pascalMP (printf "%sValue" $var ) }}
 	var {{ $tmpVar }} {{ $t.PointerTo.Go }}
 	if err := func() error {
@@ -98,12 +98,11 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 	}
 	{{ $var }} = &{{ $tmpVar }}
 	return nil
-{{- else if eq $t.Kind "struct" }}
+{{- else if $t.IsStruct }}
 	return {{ $var }}.decodeURI(d)
-{{- else if eq $t.Kind "sum" }}
-	// sum not supported
-	return nil
+{{- else if $t.IsSum }}
+	{{ errorf "not supported" }}
 {{- else }}
-Unexpected kind {{ $t.Kind }}
+    {{ errorf "unexpected kind" $t.Kind }}
 {{- end }}
 {{- end }}

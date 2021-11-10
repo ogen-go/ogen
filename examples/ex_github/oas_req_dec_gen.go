@@ -85,6 +85,7 @@ func decodeActionsCreateOrUpdateEnvironmentSecretRequest(r *http.Request, span t
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -119,6 +120,7 @@ func decodeActionsCreateOrUpdateOrgSecretRequest(r *http.Request, span trace.Spa
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -153,6 +155,7 @@ func decodeActionsCreateOrUpdateRepoSecretRequest(r *http.Request, span trace.Sp
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -187,6 +190,7 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r *http.Request, span
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -273,6 +277,7 @@ func decodeActionsSetGithubActionsPermissionsOrganizationRequest(r *http.Request
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -307,6 +312,7 @@ func decodeActionsSetGithubActionsPermissionsRepositoryRequest(r *http.Request, 
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -341,6 +347,7 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r *http.Reque
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -375,6 +382,7 @@ func decodeActionsSetSelectedReposForOrgSecretRequest(r *http.Request, span trac
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -409,6 +417,7 @@ func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -443,6 +452,7 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r *http.Request, span
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -477,6 +487,7 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r *http.Request, span
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -693,6 +704,7 @@ func decodeCodeScanningUpdateAlertRequest(r *http.Request, span trace.Span) (req
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -727,6 +739,7 @@ func decodeCodeScanningUploadSarifRequest(r *http.Request, span trace.Span) (req
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -761,6 +774,7 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(r *htt
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -795,6 +809,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r *http.Reque
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -829,6 +844,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r *http.Reques
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -889,6 +905,7 @@ func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(r *http.R
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -923,6 +940,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(r *
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -957,6 +975,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(r *h
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -991,6 +1010,7 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1025,6 +1045,7 @@ func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1059,6 +1080,7 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(r *htt
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1093,6 +1115,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r *http.Reques
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1127,6 +1150,7 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(r *htt
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1161,6 +1185,7 @@ func decodeGistsCreateCommentRequest(r *http.Request, span trace.Span) (req Gist
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1195,6 +1220,7 @@ func decodeGistsUpdateCommentRequest(r *http.Request, span trace.Span) (req Gist
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1229,6 +1255,7 @@ func decodeInteractionsSetRestrictionsForRepoRequest(r *http.Request, span trace
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1341,6 +1368,7 @@ func decodeIssuesUpdateMilestoneRequest(r *http.Request, span trace.Span) (req I
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1531,6 +1559,7 @@ func decodeProjectsMoveColumnRequest(r *http.Request, span trace.Span) (req Proj
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1565,6 +1594,7 @@ func decodeProjectsUpdateRequest(r *http.Request, span trace.Span) (req Projects
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1677,6 +1707,7 @@ func decodePullsCreateReviewRequest(r *http.Request, span trace.Span) (req Pulls
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1737,6 +1768,7 @@ func decodePullsSubmitReviewRequest(r *http.Request, span trace.Span) (req Pulls
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1823,6 +1855,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r *http.Request, 
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1857,6 +1890,7 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r *http.Request,
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1891,6 +1925,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgRequest(r *http.Request, span tr
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1925,6 +1960,7 @@ func decodeReactionsCreateForTeamDiscussionLegacyRequest(r *http.Request, span t
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1959,6 +1995,7 @@ func decodeReposCreateCommitStatusRequest(r *http.Request, span trace.Span) (req
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -2045,6 +2082,7 @@ func decodeReposReplaceAllTopicsRequest(r *http.Request, span trace.Span) (req R
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -2105,6 +2143,7 @@ func decodeReposUpdateBranchProtectionRequest(r *http.Request, span trace.Span) 
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -2165,6 +2204,7 @@ func decodeReposUpdateInvitationRequest(r *http.Request, span trace.Span) (req R
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -2277,6 +2317,7 @@ func decodeSecretScanningUpdateAlertRequest(r *http.Request, span trace.Span) (r
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -2311,6 +2352,7 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r *http.Request, span t
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -2345,6 +2387,7 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Request, span 
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -2379,6 +2422,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Request, span 
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -2413,6 +2457,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r *http.Request, span tra
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -2681,6 +2726,7 @@ func decodeTeamsUpdateInOrgRequest(r *http.Request, span trace.Span) (req TeamsU
 			return req, err
 		}
 		if err := func() error {
+
 			if err := request.Validate(); err != nil {
 				return err
 			}

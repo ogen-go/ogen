@@ -1917,7 +1917,15 @@ func decodeGetServiceAccountIssuerOpenIDConfigurationResponse(resp *http.Respons
 
 			var response GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped string
+					v, err := d.Str()
+					unwrapped = string(v)
+					if err != nil {
+						return err
+					}
+					response = GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7261,7 +7269,15 @@ func decodeReadCoreV1NamespacedPodLogResponse(resp *http.Response, span trace.Sp
 
 			var response ReadCoreV1NamespacedPodLogOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ReadCoreV1NamespacedPodLogOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped string
+					v, err := d.Str()
+					unwrapped = string(v)
+					if err != nil {
+						return err
+					}
+					response = ReadCoreV1NamespacedPodLogOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err

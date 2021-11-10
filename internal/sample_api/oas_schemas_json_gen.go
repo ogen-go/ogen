@@ -82,6 +82,9 @@ func (s Data) Encode(e *jx.Encoder) {
 
 	e.FieldStart("format")
 	e.Str(s.Format)
+
+	e.FieldStart("base64")
+	e.Base64(s.Base64)
 	e.ObjEnd()
 }
 
@@ -115,6 +118,12 @@ func (s *Data) Decode(d *jx.Decoder) error {
 		case "format":
 			v, err := d.Str()
 			s.Format = string(v)
+			if err != nil {
+				return err
+			}
+		case "base64":
+			v, err := d.Base64()
+			s.Base64 = []byte(v)
 			if err != nil {
 				return err
 			}
@@ -983,8 +992,31 @@ func (s *PetKind) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (PetName) Encode(e *jx.Encoder)       {}
-func (PetName) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes PetName as json.
+func (s PetName) Encode(e *jx.Encoder) {
+	unwrapped := string(s)
+	e.Str(unwrapped)
+}
+
+// Decode decodes PetName from json.
+func (s *PetName) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PetName to nil`)
+	}
+	var unwrapped string
+	if err := func() error {
+		v, err := d.Str()
+		unwrapped = string(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PetName(unwrapped)
+	return nil
+}
 
 // Encode encodes PetType as json.
 func (s PetType) Encode(e *jx.Encoder) {

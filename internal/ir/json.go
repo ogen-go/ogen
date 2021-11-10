@@ -73,7 +73,7 @@ func (j JSON) Type() string {
 	switch j.t.Primitive {
 	case Bool:
 		return "Bool"
-	case String, Time, Duration, UUID, IP, URL:
+	case String, Time, Duration, UUID, IP, URL, ByteSlice:
 		return "String"
 	default:
 		return ""
@@ -93,7 +93,7 @@ func (j JSON) raw() bool {
 		return true
 	}
 	switch j.t.Primitive {
-	case Bool, String:
+	case Bool, String, ByteSlice:
 		return true
 	default:
 		return false
@@ -107,10 +107,14 @@ func (j JSON) Fn() string {
 	if !j.raw() {
 		return ""
 	}
-	if j.t.Primitive == String {
+	switch j.t.Primitive {
+	case String:
 		return "Str"
+	case ByteSlice:
+		return "Base64"
+	default:
+		return capitalize(j.t.Primitive.String())
 	}
-	return capitalize(j.t.Primitive.String())
 }
 
 // Sum returns specification for parsing value as sum type.

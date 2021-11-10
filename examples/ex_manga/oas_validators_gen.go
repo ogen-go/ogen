@@ -67,7 +67,27 @@ var (
 func (s Book) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.ID // validation expected, but not supported
+
+		if s.ID.Set {
+			if err := func() error {
+
+				if err := (validate.Int{
+					MinSet:       true,
+					Min:          1,
+					MaxSet:       false,
+					Max:          0,
+					MinExclusive: false,
+					MaxExclusive: false,
+				}).Validate(int64(s.ID.Value)); err != nil {
+					return errors.Wrap(err, "int")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -76,7 +96,27 @@ func (s Book) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.MediaID // validation expected, but not supported
+
+		if s.MediaID.Set {
+			if err := func() error {
+
+				if err := (validate.Int{
+					MinSet:       true,
+					Min:          1,
+					MaxSet:       false,
+					Max:          0,
+					MinExclusive: false,
+					MaxExclusive: false,
+				}).Validate(int64(s.MediaID.Value)); err != nil {
+					return errors.Wrap(err, "int")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -85,7 +125,20 @@ func (s Book) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Images // validation expected, but not supported
+
+		if s.Images.Set {
+			if err := func() error {
+
+				if err := s.Images.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -94,9 +147,11 @@ func (s Book) Validate() error {
 		})
 	}
 	if err := func() error {
+
 		var failures []validate.FieldError
 		for i, elem := range s.Tags {
 			if err := func() error {
+
 				if err := elem.Validate(); err != nil {
 					return err
 				}
@@ -119,7 +174,27 @@ func (s Book) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.NumPages // validation expected, but not supported
+
+		if s.NumPages.Set {
+			if err := func() error {
+
+				if err := (validate.Int{
+					MinSet:       true,
+					Min:          0,
+					MaxSet:       false,
+					Max:          0,
+					MinExclusive: false,
+					MaxExclusive: false,
+				}).Validate(int64(s.NumPages.Value)); err != nil {
+					return errors.Wrap(err, "int")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -128,7 +203,27 @@ func (s Book) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.NumFavorites // validation expected, but not supported
+
+		if s.NumFavorites.Set {
+			if err := func() error {
+
+				if err := (validate.Int{
+					MinSet:       true,
+					Min:          0,
+					MaxSet:       false,
+					Max:          0,
+					MinExclusive: false,
+					MaxExclusive: false,
+				}).Validate(int64(s.NumFavorites.Value)); err != nil {
+					return errors.Wrap(err, "int")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -144,7 +239,27 @@ func (s Book) Validate() error {
 func (s Image) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.W // validation expected, but not supported
+
+		if s.W.Set {
+			if err := func() error {
+
+				if err := (validate.Int{
+					MinSet:       true,
+					Min:          0,
+					MaxSet:       false,
+					Max:          0,
+					MinExclusive: false,
+					MaxExclusive: false,
+				}).Validate(int64(s.W.Value)); err != nil {
+					return errors.Wrap(err, "int")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -153,7 +268,27 @@ func (s Image) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.H // validation expected, but not supported
+
+		if s.H.Set {
+			if err := func() error {
+
+				if err := (validate.Int{
+					MinSet:       true,
+					Min:          0,
+					MaxSet:       false,
+					Max:          0,
+					MinExclusive: false,
+					MaxExclusive: false,
+				}).Validate(int64(s.H.Value)); err != nil {
+					return errors.Wrap(err, "int")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -169,9 +304,11 @@ func (s Image) Validate() error {
 func (s Images) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
+
 		var failures []validate.FieldError
 		for i, elem := range s.Pages {
 			if err := func() error {
+
 				if err := elem.Validate(); err != nil {
 					return err
 				}
@@ -194,7 +331,20 @@ func (s Images) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Cover // validation expected, but not supported
+
+		if s.Cover.Set {
+			if err := func() error {
+
+				if err := s.Cover.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -203,7 +353,20 @@ func (s Images) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Thumbnail // validation expected, but not supported
+
+		if s.Thumbnail.Set {
+			if err := func() error {
+
+				if err := s.Thumbnail.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -216,18 +379,65 @@ func (s Images) Validate() error {
 	}
 	return nil
 }
+
 func (s SearchByTagIDOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+
+	var failures []validate.FieldError
+	for i, elem := range s {
+		if err := func() error {
+
+			if err := elem.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name:  fmt.Sprintf("[%d]", i),
+				Error: err,
+			})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
 	return nil
 }
 func (s SearchOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+
+	var failures []validate.FieldError
+	for i, elem := range s {
+		if err := func() error {
+
+			if err := elem.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name:  fmt.Sprintf("[%d]", i),
+				Error: err,
+			})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
 	return nil
 }
 func (s SearchResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
+
 		var failures []validate.FieldError
 		for i, elem := range s.Result {
 			if err := func() error {
+
 				if err := elem.Validate(); err != nil {
 					return err
 				}
@@ -257,7 +467,27 @@ func (s SearchResponse) Validate() error {
 func (s Tag) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.ID // validation expected, but not supported
+
+		if s.ID.Set {
+			if err := func() error {
+
+				if err := (validate.Int{
+					MinSet:       true,
+					Min:          1,
+					MaxSet:       false,
+					Max:          0,
+					MinExclusive: false,
+					MaxExclusive: false,
+				}).Validate(int64(s.ID.Value)); err != nil {
+					return errors.Wrap(err, "int")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -266,7 +496,20 @@ func (s Tag) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Type // validation expected, but not supported
+
+		if s.Type.Set {
+			if err := func() error {
+
+				if err := s.Type.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -278,4 +521,24 @@ func (s Tag) Validate() error {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
+}
+func (s TagType) Validate() error {
+	switch s {
+	case "parody":
+		return nil
+	case "character":
+		return nil
+	case "tag":
+		return nil
+	case "artist":
+		return nil
+	case "group":
+		return nil
+	case "category":
+		return nil
+	case "language":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
 }

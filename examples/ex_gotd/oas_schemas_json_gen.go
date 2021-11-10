@@ -326,7 +326,7 @@ func (s AnswerInlineQuery) Encode(e *jx.Encoder) {
 	e.FieldStart("results")
 	e.ArrStart()
 	for _, elem := range s.Results {
-		_ = elem // Unsupported kind "alias".
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 	if s.SwitchPmParameter.Set {
@@ -372,7 +372,15 @@ func (s *AnswerInlineQuery) Decode(d *jx.Decoder) error {
 			s.Results = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem InlineQueryResult
-				return errors.New(`decoding of "InlineQueryResult" (alias) is not implemented`)
+				{
+					var unwrapped string
+					v, err := d.Str()
+					unwrapped = string(v)
+					if err != nil {
+						return err
+					}
+					elem = InlineQueryResult(unwrapped)
+				}
 				s.Results = append(s.Results, elem)
 				return nil
 			}); err != nil {
@@ -3667,8 +3675,31 @@ func (s *InlineKeyboardMarkup) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (InlineQueryResult) Encode(e *jx.Encoder)       {}
-func (InlineQueryResult) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes InlineQueryResult as json.
+func (s InlineQueryResult) Encode(e *jx.Encoder) {
+	unwrapped := string(s)
+	e.Str(unwrapped)
+}
+
+// Decode decodes InlineQueryResult from json.
+func (s *InlineQueryResult) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode InlineQueryResult to nil`)
+	}
+	var unwrapped string
+	if err := func() error {
+		v, err := d.Str()
+		unwrapped = string(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = InlineQueryResult(unwrapped)
+	return nil
+}
 
 // Encode encodes InputMedia as json.
 func (s InputMedia) Encode(e *jx.Encoder) {
