@@ -31,3 +31,6 @@ tidy_examples:
 	cd examples && go mod tidy
 
 clean: tidy generate tidy_examples examples
+
+commit_gen:
+	git commit -m "chore(gen): update" ./examples ./internal/techempower ./internal/sample_api
