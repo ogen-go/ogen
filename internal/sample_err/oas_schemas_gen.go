@@ -86,13 +86,3 @@ type ErrorStatusCode struct {
 
 func (*ErrorStatusCode) dataCreateRes() {}
 func (*ErrorStatusCode) dataGetRes()    {}
-
-func ToErr(code int, err error) ErrorStatusCode {
-	return ErrorStatusCode{
-		StatusCode: code,
-		Response: Error{
-			Code:    int64(code),
-			Message: "Internal",
-		},
-	}
-}
