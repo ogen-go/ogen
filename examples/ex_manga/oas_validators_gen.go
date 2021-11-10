@@ -380,39 +380,6 @@ func (s Images) Validate() error {
 	return nil
 }
 
-func (s OptImage) Validate() error {
-	if s.Set {
-
-		if err := s.Value.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}
-	return nil
-}
-
-func (s OptImages) Validate() error {
-	if s.Set {
-
-		if err := s.Value.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}
-	return nil
-}
-
-func (s OptTagType) Validate() error {
-	if s.Set {
-
-		if err := s.Value.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}
-	return nil
-}
-
 func (s SearchByTagIDOKApplicationJSON) Validate() error {
 	if s == nil {
 		return errors.New("nil is invalid value")

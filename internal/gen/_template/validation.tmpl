@@ -159,18 +159,7 @@ func (s {{ $t.Name }}) Validate() error {
 	}
 }
 {{ else if $t.IsGeneric }}
-{{ $g := $t.GenericOf }}
-{{ $v := $t.GenericVariant }}
-func (s {{ $t.Name }}) Validate() error {
-{{- if $v.Optional }}
-	if s.Set {
-    	{{- template "validate" elem $g "s.Value" }}
-	}
-	return nil
-{{- else }}
-    {{- template "validate" elem $g "s.Value" }}
-{{- end }}
-}
+{{/* Handled in-place */}}
 {{ else if $t.IsEnum }}
 func (s {{ $t.Name }}) Validate() error {
 switch s {

@@ -132,64 +132,6 @@ func (s Data) Validate() error {
 	return nil
 }
 
-func (s OptData) Validate() error {
-	if s.Set {
-
-		if err := s.Value.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}
-	return nil
-}
-
-func (s OptFloat64) Validate() error {
-	if s.Set {
-
-		if err := (validate.Int{
-			MinSet:       true,
-			Min:          15,
-			MaxSet:       false,
-			Max:          0,
-			MinExclusive: false,
-			MaxExclusive: false,
-		}).Validate(int64(s.Value)); err != nil {
-			return errors.Wrap(err, "int")
-		}
-		return nil
-	}
-	return nil
-}
-
-func (s OptInt) Validate() error {
-	if s.Set {
-
-		if err := (validate.Int{
-			MinSet:       false,
-			Min:          0,
-			MaxSet:       false,
-			Max:          0,
-			MinExclusive: false,
-			MaxExclusive: false,
-		}).Validate(int64(s.Value)); err != nil {
-			return errors.Wrap(err, "int")
-		}
-		return nil
-	}
-	return nil
-}
-
-func (s OptPetType) Validate() error {
-	if s.Set {
-
-		if err := s.Value.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}
-	return nil
-}
-
 func (s Pet) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
