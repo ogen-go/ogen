@@ -134,6 +134,20 @@ func encodeAnswerShippingQueryRequestJSON(req AnswerShippingQuery, span trace.Sp
 	return buf, nil
 }
 
+func encodeApproveChatJoinRequestRequestJSON(req ApproveChatJoinRequest, span trace.Span) (data *bytes.Buffer, err error) {
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	req.Encode(e)
+	if _, err := e.WriteTo(buf); err != nil {
+		putBuf(buf)
+		return nil, err
+	}
+
+	return buf, nil
+}
+
 func encodeBanChatMemberRequestJSON(req BanChatMember, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
 	e := jx.GetEncoder()
@@ -177,6 +191,20 @@ func encodeCreateChatInviteLinkRequestJSON(req CreateChatInviteLink, span trace.
 }
 
 func encodeCreateNewStickerSetRequestJSON(req CreateNewStickerSet, span trace.Span) (data *bytes.Buffer, err error) {
+	buf := getBuf()
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	req.Encode(e)
+	if _, err := e.WriteTo(buf); err != nil {
+		putBuf(buf)
+		return nil, err
+	}
+
+	return buf, nil
+}
+
+func encodeDeclineChatJoinRequestRequestJSON(req DeclineChatJoinRequest, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)

@@ -374,6 +374,68 @@ func decodeAnswerShippingQueryResponse(resp *http.Response, span trace.Span) (re
 	}
 }
 
+func decodeApproveChatJoinRequestResponse(resp *http.Response, span trace.Span) (res ApproveChatJoinRequestRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Result
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	}
+}
+
 func decodeBanChatMemberResponse(resp *http.Response, span trace.Span) (res BanChatMemberRes, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -561,6 +623,68 @@ func decodeCreateChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 }
 
 func decodeCreateNewStickerSetResponse(resp *http.Response, span trace.Span) (res CreateNewStickerSetRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Result
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	}
+}
+
+func decodeDeclineChatJoinRequestResponse(resp *http.Response, span trace.Span) (res DeclineChatJoinRequestRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {

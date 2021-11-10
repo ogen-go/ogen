@@ -219,6 +219,37 @@ func encodeAnswerShippingQueryResponse(response AnswerShippingQueryRes, w http.R
 	}
 }
 
+func encodeApproveChatJoinRequestResponse(response ApproveChatJoinRequestRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/approveChatJoinRequest: unexpected response type: %T`, response)
+	}
+}
+
 func encodeBanChatMemberResponse(response BanChatMemberRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Result:
@@ -340,6 +371,37 @@ func encodeCreateNewStickerSetResponse(response CreateNewStickerSetRes, w http.R
 		return nil
 	default:
 		return errors.Errorf(`/createNewStickerSet: unexpected response type: %T`, response)
+	}
+}
+
+func encodeDeclineChatJoinRequestResponse(response DeclineChatJoinRequestRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/declineChatJoinRequest: unexpected response type: %T`, response)
 	}
 }
 
