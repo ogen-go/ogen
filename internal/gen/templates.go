@@ -3,13 +3,11 @@ package gen
 import (
 	"embed"
 	"fmt"
-	"strings"
 	"text/template"
 
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/internal/ir"
-	"github.com/ogen-go/ogen/internal/oas"
 )
 
 // Elem variable helper for recursive array or object encoding or decoding.
@@ -43,22 +41,7 @@ func templateFunctions() template.FuncMap {
 		"errorf": func(format string, args ...interface{}) (interface{}, error) {
 			return nil, errors.Errorf(format, args...)
 		},
-		"trim": strings.TrimSpace,
-		"lower": func(v interface{}) string {
-			switch v := v.(type) {
-			case oas.ParameterLocation:
-				return strings.ToLower(string(v))
-			case string:
-				return strings.ToLower(v)
-			default:
-				panic(fmt.Sprintf("unexpected value: %T", v))
-			}
-		},
-		"trimPrefix": strings.TrimPrefix,
-		"trimSuffix": strings.TrimSuffix,
-		"hasPrefix":  strings.HasPrefix,
-		"hasSuffix":  strings.HasSuffix,
-		"pascalMP":   pascalMP,
+		"pascalMP": pascalMP,
 
 		// Helpers for recursive encoding and decoding.
 		"elem": func(t *ir.Type, v string) Elem {
