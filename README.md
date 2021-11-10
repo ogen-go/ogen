@@ -4,7 +4,7 @@
 
 # ogen [![Go Reference](https://img.shields.io/badge/go-pkg-00ADD8)](https://pkg.go.dev/github.com/ogen-go/ogen#section-documentation) [![codecov](https://img.shields.io/codecov/c/github/ogen-go/ogen?label=cover)](https://codecov.io/gh/ogen-go/ogen) [![openapi v3](https://img.shields.io/badge/OAS%203-brightgreen)](https://swagger.io/specification/) [![experimental](https://img.shields.io/badge/-unstable-blueviolet)](https://go-faster.org/docs/projects/status#experimental)
 
-Opinionated OpenAPI v3 Code Generator for Go
+Opinionated OpenAPI v3 Code Generator for Go.
 
 On early stages of development. This software is **experimental** and no backward compatibility is provided.
 
